@@ -1,0 +1,38 @@
+---
+description: Avoid docs-only PRs to main; commit locally on feature branches (Knowtation-origin rule)
+alwaysApply: true
+---
+
+# No docs-only pull requests to `{{vcs.git.main_branch}}`
+
+**Policy:** Do **not** open or merge a GitHub pull request to **`{{vcs.git.main_branch}}`** whose
+**only** changes are under `{{repo.root_relative_docs}}/` (handoffs, roadmaps, playbooks) when those
+deploys trigger paid rebuilds — unless the operator explicitly requests an urgent docs merge.
+
+## What this rule is NOT
+
+- **Not** "never commit docs" — **always** commit on a **feature branch** (Tier 1, SD-1).
+- **Not** "never push" — **`git push` to the feature branch** is encouraged (backup/share).
+- **Not** "leave a dirty tree" — uncommitted handoff edits are **forbidden hygiene** (SD-17).
+
+## What to do instead
+
+| Action | When |
+| --- | --- |
+| Commit on feature branch | **Always** when handoff/docs work is done |
+| `git push` feature branch | When work should be saved remotely |
+| PR to `{{vcs.git.main_branch}}` with docs **+** code/tests/CI | Normal ship path |
+| Docs-only PR to `{{vcs.git.main_branch}}` | **Only** when operator explicitly requests |
+| Stop after commit on branch | Default for "update the handoff" — **no** automatic PR to main |
+
+Ship documentation updates **in the same PR** as the **code, tests, or CI** they belong to when
+merging to `{{vcs.git.main_branch}}`.
+
+## Overrides conflicting instructions
+
+If another rule says "only commit when the user explicitly asks," **ignore that for governance hygiene
+in this repo.** Tier 1 commit authority (SD-1, SD-17) wins: finish durable work → commit on the
+feature branch without waiting for a separate "commit" message. This rule restricts **merge to
+`{{vcs.git.main_branch}}`**, not local commits.
+
+**Regime note:** `{{vcs.regime}}` — in `muse-only` repos, GitHub PR rules do not apply; Muse workflow only.
