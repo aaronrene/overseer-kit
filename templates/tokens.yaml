@@ -1,0 +1,33 @@
+# Template token registry (frozen for K3)
+
+# Only keys listed here may appear as {{token}} in templates/ and cursor/ fragments.
+# Values come exclusively from .overseer/config.yaml via adapters.templating.build_token_map.
+# No arbitrary doc content or shell interpolation is permitted (OVERSEER-KIT-SPEC §9).
+
+version: 1
+
+tokens:
+  - repo.name
+  - repo.root_relative_docs
+  - docs.handover
+  - docs.roadmap
+  - docs.coordination
+  - docs.standing_decisions
+  - docs.handover_path
+  - docs.roadmap_path
+  - docs.coordination_path
+  - docs.standing_decisions_path
+  - vcs.regime
+  - vcs.canonical
+  - vcs.git.remote
+  - vcs.git.main_branch
+  - vcs.git.mirror_branch
+  - vcs.git.feature_branch_pattern
+  - vcs.muse.staging_remote
+  - vcs.muse.main_branch
+
+templates:
+  - OVERSEER-HANDOVER.template.md
+  - ROADMAP.template.md
+  - STANDING-DECISIONS.template.md
+  - CROSS-REPO-COORDINATION.template.md
