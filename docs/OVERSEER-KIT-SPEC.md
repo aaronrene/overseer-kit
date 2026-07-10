@@ -354,6 +354,26 @@ operator's recommendation).
 - Verdict is one of `pass` / `findings` / `blocked`. `findings` returns the cited list; `pass`
   records a review stamp in the artifact's freeze block; `blocked` triggers §6.3.
 
+**K5 design requirement (frozen):** the reviewer is **user-configurable per repo** — local model,
+remote API, or human — via an extended `freeze_contract` block in `.overseer/config.yaml`. The K5a
+Thinking phase **must** freeze this config schema before K5b builds the reviewer. Required fields:
+
+```yaml
+freeze_contract:
+  reviewer:
+    mode: agent            # agent | human
+    model: thinking-high   # label from policy/model-labels.yaml — never a hardcoded vendor slug
+    provider: local        # local | api  — portability and privacy/cost choice
+    fallback: human        # what to do if the model/provider is unreachable → fail-closed to human
+  human_escalation: [security, irreversible, real_money, gates_tier3]
+```
+
+**Guardrails (frozen):** (1) fail-closed — if `provider` is unreachable, fall back to `human` rather
+than skipping review; (2) model is a **label**, never a vendor slug, so the config is portable across
+providers; (3) `provider: local` is a **first-class** option — the kit must work fully offline with no
+API key required; (4) no core review capability may be `api`-only. These are non-negotiable: they
+preserve the kit's offline/repo-agnostic promise.
+
 ### §6.3 — Human escalation (only when necessary)
 
 The reviewer escalates to a human **only** when a finding (or the artifact's declared linkage) hits
