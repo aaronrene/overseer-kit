@@ -9,7 +9,7 @@
 **Date:** 2026-07-10  
 **Current position:** **K4a Freeze vendoring CLI contract complete** — `init|sync|status` arg contract, exit-code taxonomy, extended `version.lock` shape, deterministic `footprint_digest` algorithm, atomicity rule, and the K4b seven-tier test matrix are frozen in `docs/PHASE-K4-VENDORING-CLI-CONTRACT.md`. No CLI code written (Thinking phase).  
 **Model:** **Auto** (spec now frozen; build mechanically)  
-**Repo state:** PR [#2](https://github.com/aaronrene/overseer-kit/pull/2) (K3 + K4a freeze + K7 governance) **merged** to `main`. K4a freeze then **independently reviewed** (§6 dogfood, `gpt-5.3-codex`) → `blocked`; all findings verified and **fixed on branch `fix/k4a-freeze-review`** (corrective PR). K4b build starts once that corrective PR merges.
+**Repo state:** PR [#2](https://github.com/aaronrene/overseer-kit/pull/2) (K3 + K4a freeze + K7 governance) **merged** to `main`. K4a freeze then **independently reviewed** (§6 dogfood, `gpt-5.3-codex`, 4 rounds): `blocked → blocked → blocked → **pass**`. All findings fixed on **PR [#3](https://github.com/aaronrene/overseer-kit/pull/3) (`fix/k4a-freeze-review`)**. **K4b build starts once PR #3 merges** — the freeze is now `pass`.
 
 ### What just landed
 
@@ -79,7 +79,7 @@ Governance sync: update docs/ROADMAP.md (K4b DONE) + docs/OVERSEER-HANDOVER.md (
 
 ## Change log
 
-- **2026-07-10** — K4a freeze **independently reviewed** (dogfood of §6 Freeze-Step Reviewer, model `gpt-5.3-codex`, all findings cited file+line): verdict `blocked` (1 BLOCKER, 6 MAJOR, 2 MINOR). All findings verified accurate and resolved on `fix/k4a-freeze-review`: init no-op/refuse rule + removed phantom flag; `--only` full-lock semantics; exit-code precedence `2>6>3`; added `last_governance_sync`; reworded exit `5`; banned absolute paths in output; recursive skills glob; removed "(or standalone)". Review record added to the contract's freeze block.
+- **2026-07-10** — K4a freeze **independently reviewed over 4 rounds** (dogfood of §6 Freeze-Step Reviewer, `gpt-5.3-codex`, all findings cited file+line): `blocked → blocked → blocked → pass`. Round 1 (1 BLOCKER + 6 MAJOR + 2 MINOR): init rule, `--only` semantics, exit precedence, `last_governance_sync`, exit `5` wording, absolute-path ban, skills glob, standing-decisions, digest newline. Round 2 (destination collision, `--verbose` carve-out, carried digest). Round 3 (**ADR skeleton silently dropped** → fixed: SD skeleton always vendored to `.overseer/STANDING-DECISIONS.reference.md`, `docs.standing_decisions` is a pointer only). Round 4: `pass` + pinned `--only` to destination-path matching. Full 4-round review record in the contract's freeze block. Fixed on PR #3.
 - **2026-07-10** — Governance decision captured: dogfood `muse+git-mirror` (MuseHub canonical + GitHub mirror) deferred to new **Phase K7** (operator-run). Repo stays `git-only` until then — the Muse bridge imports existing git history, so git-first now has zero rework cost. `AGENTS.md` + `ROADMAP.md` (K7 row + regime capability tiers) updated. K4b remains the next build step.
 - **2026-07-10** — K4a Freeze CLI contract: `docs/PHASE-K4-VENDORING-CLI-CONTRACT.md` frozen (`init|sync|status` args + exit codes, `version.lock` shape + per-file manifest, `footprint_digest` algorithm, atomic/lock-last durability, seven-tier K4b matrix). Thinking phase — no code. ROADMAP + handover synced.
 - **2026-07-10** — K3 Extract shared assets: templates, policy, cursor fragments, templating module, 58 tests green.
