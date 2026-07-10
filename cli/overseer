@@ -7,7 +7,7 @@ CMD="${1:-status}"
 case "$CMD" in
   init|sync|status|governance-sync|review)
     echo "overseer-kit $VERSION: '$CMD' not implemented yet (K4/K5/9A-5)."
-    echo "See docs/ROADMAP.md — next build phase: K2 VCS adapters."
+    echo "See docs/ROADMAP.md — next build phase: K3 extract shared assets."
     exit 2
     ;;
   -h|--help|help)

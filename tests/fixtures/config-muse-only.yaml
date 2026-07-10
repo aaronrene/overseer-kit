@@ -1,0 +1,33 @@
+overseer_config_version: 1
+
+repo:
+  name: test-muse
+  root_relative_docs: docs
+
+vcs:
+  regime: muse-only
+  canonical: muse
+  git:
+    remote: origin
+    main_branch: main
+    mirror_branch: null
+    feature_branch_pattern: "feat/{slug}"
+  muse:
+    staging_remote: null
+    main_branch: main
+
+docs:
+  handover: MUSEHUB-OVERSEER-HANDOVER.md
+  roadmap: MUSEHUB-ROADMAP.md
+  coordination: null
+  standing_decisions: MUSEHUB-ROADMAP.md
+
+thresholds:
+  realign_max_commits: 50
+  drift_warn_only: true
+
+freeze_contract:
+  enabled: true
+  reviewer: agent
+  human_escalation:
+    - security

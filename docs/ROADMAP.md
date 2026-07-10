@@ -13,7 +13,7 @@
 | Phase | Model | Status | Deliverable |
 | --- | --- | --- | --- |
 | **K1 Bootstrap** | Thinking → Auto | **DONE** | Repo skeleton, promoted spec, dogfood governance docs |
-| **K2 Config + adapters** | Thinking → Auto | **TODO** | `.overseer/config.yaml` schema + VCS adapter interface + three fail-closed backends |
+| **K2 Config + adapters** | Thinking → Auto | **DONE** | `.overseer/config.yaml` schema + VCS adapter interface + three fail-closed backends |
 | **K3 Extract shared assets** | Auto | **TODO** | Templates + policy + cursor fragments from Scooling/Knowtation/MuseHub |
 | **K4 Vendoring CLI** | Thinking → Auto | **TODO** | `overseer init\|sync\|status` + `version.lock` + drift check |
 | **K5 Freeze reviewer** | Thinking → Auto | **TODO** | `overseer review --freeze` + automation routing |

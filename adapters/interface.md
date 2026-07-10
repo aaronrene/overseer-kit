@@ -21,6 +21,21 @@ Canonical copy of `docs/OVERSEER-KIT-SPEC.md` §4. K2 implements these methods f
 | `muse-only` | MuseHub | git/mirror hard no-op |
 | `git-only` | VideoFactory, external | Single-history; full governance still works |
 
+## Backends (K2)
+
+| Regime | Package | Notes |
+| --- | --- | --- |
+| `muse+git-mirror` | `adapters/muse_git_mirror/` | SD-14: never `git push origin main` |
+| `muse-only` | `adapters/muse_only/` | git/mirror hard no-op |
+| `git-only` | `adapters/git_only/` | Single-history; full governance still works |
+
+Load at runtime:
+
+```python
+from adapters import load_adapter
+adapter = load_adapter(repo_root)  # reads .overseer/config.yaml
+```
+
 ## Cross-repo safety
 
 Every Muse invocation uses explicit `muse -C <absolute-repo-root>` and confirms branch + HEAD before writes.
