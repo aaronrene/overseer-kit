@@ -31,6 +31,8 @@
 | **Read first** | `docs/PHASE-K4-VENDORING-CLI-CONTRACT.md` (the freeze — build to it exactly); `docs/OVERSEER-KIT-SPEC.md` §5/§9/§10; `adapters/config.py`, `adapters/templating.py`, `adapters/runner.py` |
 | **Hard stops** | No consumer repo migration (K6); no `governance-sync`/`review` (K5/9A-5); no live hooks; no `mirror`/`main` write; no main merge without review |
 
+**Queued after K4b (do not start early):** K5 Freeze reviewer → 9A-5 Governance Hygiene Agent → K6 Pilot install → **K7 Dogfood muse+git-mirror** (flip this repo to MuseHub canonical + GitHub mirror; operator-run). K7 design guardrail: no core governance feature may ever be MuseHub-only (`docs/ROADMAP.md` § Regime capability tiers).
+
 ### Paste-ready prompt — K4b (Auto)
 
 ```

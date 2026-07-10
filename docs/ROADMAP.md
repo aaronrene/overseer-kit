@@ -20,7 +20,7 @@
 | **K5 Freeze reviewer** | Thinking → Auto | **TODO** | `overseer review --freeze` + automation routing |
 | **9A-5 Governance Hygiene Agent** | Auto | **TODO** | `overseer governance-sync [--dry-run]` against kit VCS adapter |
 | **K6 Pilot install** | Thinking → Auto | **TODO** | `overseer init` into Scooling → Knowtation → MuseHub → VideoFactory |
-| **K7 Dogfood muse+git-mirror** | Thinking → Auto | **TODO** | Flip this repo to MuseHub canonical + GitHub mirror; vendor `MUSE-BRIDGE-WORKFLOW.template.md` + tokenized `muse-bridge-deploy.sh` into the footprint for `muse+git-mirror` consumers; parity gate + seven-tier tests. Operator-run (needs `muse`/`gh`/staging repo). |
+| **K7 Dogfood muse+git-mirror** | Thinking → Auto | **TODO** | Flip this repo to MuseHub canonical + GitHub mirror; vendor `MUSE-BRIDGE-WORKFLOW.template.md` + tokenized `muse-bridge-deploy.sh` into the footprint for `muse+git-mirror` consumers; parity gate + seven-tier tests. Operator-run (needs `muse`/`gh`/staging repo). **Frozen design guardrail:** MuseHub may only *deepen* a capability — no core governance feature may ever become MuseHub-only (see principle below). |
 
 ## Regime capability tiers (git-only baseline → MuseHub-enhanced)
 
@@ -36,6 +36,15 @@ capability. Same commands, same governance — more power when the canonical his
 | `mirror` (SD-14 safe export) | No-op | Active — isolated `.muse/mirror/` export → `muse-mirror` PR |
 | Provenance / version enrichment | Git commit metadata only | MuseHub version + provenance + social layer |
 | Route to MuseHub onboarding | — | The vendored bridge workflow *is* the introduction path |
+
+**Frozen guardrail (K7 design principle):** **No core governance feature may ever be MuseHub-only.**
+Every baseline capability (`init`/`sync`/`status`, drift, footprint digest, templates, policy, freeze
+review, governance-sync) must remain fully functional on `git-only`. MuseHub may *deepen* a capability
+(`realign`, `mirror`, provenance/version enrichment) but never *gate* the baseline. This keeps the
+GitHub-only promise credible and makes the MuseHub value proposition about **superior depth, not
+withheld function**. The VCS adapter interface (spec §4) enforces this seam: `git-only` implements
+`realign`/`mirror` as reporting no-ops; `muse+git-mirror` implements them for real; the CLI calls the
+same method names in both regimes.
 
 ## Reference repos (consumers, not owners)
 
