@@ -1,0 +1,238 @@
+"""`.overseer/config.yaml` schema validation — fail-closed on unknown version/regime."""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any
+
+import yaml
+
+from adapters.errors import ConfigError
+
+SUPPORTED_CONFIG_VERSION = 1
+SUPPORTED_REGIMES = frozenset({"muse+git-mirror", "muse-only", "git-only"})
+SUPPORTED_CANONICAL = frozenset({"muse", "git"})
+
+
+@dataclass(frozen=True)
+class GitConfig:
+    remote: str
+    main_branch: str
+    mirror_branch: str | None
+    feature_branch_pattern: str
+
+
+@dataclass(frozen=True)
+class MuseConfig:
+    staging_remote: str | None
+    main_branch: str | None
+
+
+@dataclass(frozen=True)
+class DocsConfig:
+    handover: str
+    roadmap: str
+    coordination: str | None
+    standing_decisions: str
+
+
+@dataclass(frozen=True)
+class ThresholdsConfig:
+    realign_max_commits: int
+    drift_warn_only: bool
+
+
+@dataclass(frozen=True)
+class FreezeContractConfig:
+    enabled: bool
+    reviewer: str
+    human_escalation: list[str]
+
+
+@dataclass(frozen=True)
+class RepoConfig:
+    name: str
+    root_relative_docs: str
+
+
+@dataclass(frozen=True)
+class VcsConfig:
+    regime: str
+    canonical: str
+    git: GitConfig
+    muse: MuseConfig
+
+
+@dataclass(frozen=True)
+class OverseerConfig:
+    overseer_config_version: int
+    repo: RepoConfig
+    vcs: VcsConfig
+    docs: DocsConfig
+    thresholds: ThresholdsConfig
+    freeze_contract: FreezeContractConfig
+
+
+def load_config(path: Path) -> OverseerConfig:
+    """Parse and validate config; raise ``ConfigError`` on any violation."""
+    path = path.resolve()
+    if not path.is_file():
+        raise ConfigError("config file missing", str(path))
+
+    try:
+        raw_text = path.read_text(encoding="utf-8")
+    except OSError as exc:
+        raise ConfigError(f"cannot read config: {exc}", str(path)) from exc
+
+    try:
+        raw = yaml.safe_load(raw_text)
+    except yaml.YAMLError as exc:
+        raise ConfigError(f"unparseable YAML: {exc}", str(path)) from exc
+
+    if not isinstance(raw, dict):
+        raise ConfigError("config root must be a mapping", str(path))
+
+    return _validate_config(raw, str(path))
+
+
+def _require_mapping(data: Any, field: str, path: str) -> dict[str, Any]:
+    if not isinstance(data, dict):
+        raise ConfigError(f"{field} must be a mapping", path)
+    return data
+
+
+def _require_str(data: dict[str, Any], field: str, path: str) -> str:
+    value = data.get(field)
+    if not isinstance(value, str) or not value.strip():
+        raise ConfigError(f"{field} must be a non-empty string", path)
+    return value
+
+
+def _optional_str(data: dict[str, Any], field: str) -> str | None:
+    value = data.get(field)
+    if value is None:
+        return None
+    if not isinstance(value, str):
+        raise ConfigError(f"{field} must be a string or null")
+    return value
+
+
+def _validate_config(raw: dict[str, Any], path: str) -> OverseerConfig:
+    version = raw.get("overseer_config_version")
+    if not isinstance(version, int):
+        raise ConfigError("overseer_config_version must be an integer", path)
+    if version != SUPPORTED_CONFIG_VERSION:
+        raise ConfigError(
+            f"unsupported overseer_config_version {version} "
+            f"(supported: {SUPPORTED_CONFIG_VERSION})",
+            path,
+        )
+
+    repo_raw = _require_mapping(raw.get("repo"), "repo", path)
+    repo = RepoConfig(
+        name=_require_str(repo_raw, "name", path),
+        root_relative_docs=_require_str(repo_raw, "root_relative_docs", path),
+    )
+
+    vcs_raw = _require_mapping(raw.get("vcs"), "vcs", path)
+    regime = _require_str(vcs_raw, "regime", path)
+    if regime not in SUPPORTED_REGIMES:
+        raise ConfigError(
+            f"unsupported vcs.regime {regime!r} (supported: {sorted(SUPPORTED_REGIMES)})",
+            path,
+        )
+
+    canonical = _require_str(vcs_raw, "canonical", path)
+    if canonical not in SUPPORTED_CANONICAL:
+        raise ConfigError(f"unsupported vcs.canonical {canonical!r}", path)
+
+    git_raw = _require_mapping(vcs_raw.get("git"), "vcs.git", path)
+    muse_raw = _require_mapping(vcs_raw.get("muse"), "vcs.muse", path)
+
+    git = GitConfig(
+        remote=_require_str(git_raw, "remote", path),
+        main_branch=_require_str(git_raw, "main_branch", path),
+        mirror_branch=_optional_str(git_raw, "mirror_branch"),
+        feature_branch_pattern=_require_str(git_raw, "feature_branch_pattern", path),
+    )
+    muse = MuseConfig(
+        staging_remote=_optional_str(muse_raw, "staging_remote"),
+        main_branch=_optional_str(muse_raw, "main_branch"),
+    )
+
+    _validate_regime_fields(regime, canonical, git, muse, path)
+
+    docs_raw = _require_mapping(raw.get("docs"), "docs", path)
+    docs = DocsConfig(
+        handover=_require_str(docs_raw, "handover", path),
+        roadmap=_require_str(docs_raw, "roadmap", path),
+        coordination=_optional_str(docs_raw, "coordination"),
+        standing_decisions=_require_str(docs_raw, "standing_decisions", path),
+    )
+
+    thresholds_raw = _require_mapping(raw.get("thresholds"), "thresholds", path)
+    realign_max = thresholds_raw.get("realign_max_commits")
+    if not isinstance(realign_max, int) or realign_max < 1:
+        raise ConfigError("thresholds.realign_max_commits must be a positive integer", path)
+    drift_warn = thresholds_raw.get("drift_warn_only")
+    if not isinstance(drift_warn, bool):
+        raise ConfigError("thresholds.drift_warn_only must be a boolean", path)
+    thresholds = ThresholdsConfig(
+        realign_max_commits=realign_max,
+        drift_warn_only=drift_warn,
+    )
+
+    freeze_raw = _require_mapping(raw.get("freeze_contract"), "freeze_contract", path)
+    enabled = freeze_raw.get("enabled")
+    if not isinstance(enabled, bool):
+        raise ConfigError("freeze_contract.enabled must be a boolean", path)
+    reviewer = _require_str(freeze_raw, "reviewer", path)
+    escalation = freeze_raw.get("human_escalation")
+    if not isinstance(escalation, list) or not all(isinstance(x, str) for x in escalation):
+        raise ConfigError("freeze_contract.human_escalation must be a list of strings", path)
+
+    return OverseerConfig(
+        overseer_config_version=version,
+        repo=repo,
+        vcs=VcsConfig(regime=regime, canonical=canonical, git=git, muse=muse),
+        docs=docs,
+        thresholds=thresholds,
+        freeze_contract=FreezeContractConfig(
+            enabled=enabled,
+            reviewer=reviewer,
+            human_escalation=list(escalation),
+        ),
+    )
+
+
+def _validate_regime_fields(
+    regime: str,
+    canonical: str,
+    git: GitConfig,
+    muse: MuseConfig,
+    path: str,
+) -> None:
+    if regime == "git-only":
+        if canonical != "git":
+            raise ConfigError("git-only regime requires vcs.canonical: git", path)
+        if muse.staging_remote is not None or muse.main_branch is not None:
+            raise ConfigError("git-only regime requires muse fields to be null", path)
+        return
+
+    if regime == "muse-only":
+        if canonical != "muse":
+            raise ConfigError("muse-only regime requires vcs.canonical: muse", path)
+        if not muse.main_branch:
+            raise ConfigError("muse-only regime requires vcs.muse.main_branch", path)
+        return
+
+    if regime == "muse+git-mirror":
+        if canonical != "muse":
+            raise ConfigError("muse+git-mirror regime requires vcs.canonical: muse", path)
+        if not muse.main_branch:
+            raise ConfigError("muse+git-mirror regime requires vcs.muse.main_branch", path)
+        if not muse.staging_remote:
+            raise ConfigError("muse+git-mirror regime requires vcs.muse.staging_remote", path)
+        if not git.mirror_branch:
+            raise ConfigError("muse+git-mirror regime requires vcs.git.mirror_branch", path)

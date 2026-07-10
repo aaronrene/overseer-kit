@@ -19,7 +19,7 @@ Each consumer repo keeps one small config file: `.overseer/config.yaml`.
 
 ## Status
 
-**K1 Bootstrap** — repo skeleton + frozen spec promoted from Scooling. Build phases K2–K6 + 9A-5
+**K2 Config + adapters** — config schema + three fail-closed VCS backends (`adapters/`). **K3–K6 + 9A-5**
 queued in `docs/ROADMAP.md`.
 
 ## Reference implementation
