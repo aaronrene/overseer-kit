@@ -20,6 +20,22 @@
 | **K5 Freeze reviewer** | Thinking → Auto | **TODO** | `overseer review --freeze` + automation routing |
 | **9A-5 Governance Hygiene Agent** | Auto | **TODO** | `overseer governance-sync [--dry-run]` against kit VCS adapter |
 | **K6 Pilot install** | Thinking → Auto | **TODO** | `overseer init` into Scooling → Knowtation → MuseHub → VideoFactory |
+| **K7 Dogfood muse+git-mirror** | Thinking → Auto | **TODO** | Flip this repo to MuseHub canonical + GitHub mirror; vendor `MUSE-BRIDGE-WORKFLOW.template.md` + tokenized `muse-bridge-deploy.sh` into the footprint for `muse+git-mirror` consumers; parity gate + seven-tier tests. Operator-run (needs `muse`/`gh`/staging repo). |
+
+## Regime capability tiers (git-only baseline → MuseHub-enhanced)
+
+The kit is **fully usable on GitHub alone**; MuseHub is an **optional substrate** that unlocks deeper
+capability. Same commands, same governance — more power when the canonical history is Muse.
+
+| Capability | `git-only` (baseline, no Muse) | `muse+git-mirror` (MuseHub substrate) |
+| --- | --- | --- |
+| `init` / `sync` / `status` / drift | Full | Full |
+| Governance docs + freeze review | Full | Full |
+| Canonical history | GitHub `main` | MuseHub (content-addressed, `sha256:` commit ids) |
+| `realign` (drift-repair vs canonical anchor) | No-op (single history) | Active — detects/repairs Muse↔Git inversion (the `GITHUB-MIRROR-RECONCILIATION-FOLLOWUP.md` failure) |
+| `mirror` (SD-14 safe export) | No-op | Active — isolated `.muse/mirror/` export → `muse-mirror` PR |
+| Provenance / version enrichment | Git commit metadata only | MuseHub version + provenance + social layer |
+| Route to MuseHub onboarding | — | The vendored bridge workflow *is* the introduction path |
 
 ## Reference repos (consumers, not owners)
 

@@ -76,6 +76,7 @@ Governance sync: update docs/ROADMAP.md (K4b DONE) + docs/OVERSEER-HANDOVER.md (
 
 ## Change log
 
+- **2026-07-10** — Governance decision captured: dogfood `muse+git-mirror` (MuseHub canonical + GitHub mirror) deferred to new **Phase K7** (operator-run). Repo stays `git-only` until then — the Muse bridge imports existing git history, so git-first now has zero rework cost. `AGENTS.md` + `ROADMAP.md` (K7 row + regime capability tiers) updated. K4b remains the next build step.
 - **2026-07-10** — K4a Freeze CLI contract: `docs/PHASE-K4-VENDORING-CLI-CONTRACT.md` frozen (`init|sync|status` args + exit codes, `version.lock` shape + per-file manifest, `footprint_digest` algorithm, atomic/lock-last durability, seven-tier K4b matrix). Thinking phase — no code. ROADMAP + handover synced.
 - **2026-07-10** — K3 Extract shared assets: templates, policy, cursor fragments, templating module, 58 tests green.
 - **2026-07-10** — K2 Config + adapters: config validation, three backends, unit/integration/security tests.
