@@ -8,7 +8,8 @@
 
 **Date:** 2026-07-10  
 **Current position:** **K4a Freeze vendoring CLI contract complete** — `init|sync|status` arg contract, exit-code taxonomy, extended `version.lock` shape, deterministic `footprint_digest` algorithm, atomicity rule, and the K4b seven-tier test matrix are frozen in `docs/PHASE-K4-VENDORING-CLI-CONTRACT.md`. No CLI code written (Thinking phase).  
-**Model:** **Auto** (spec now frozen; build mechanically)
+**Model:** **Auto** (spec now frozen; build mechanically)  
+**Repo state:** commits `feat/k4-vendoring-cli` (K3 catch-up + K4a freeze + K7 governance) pushed; **PR [#2](https://github.com/aaronrene/overseer-kit/pull/2) open awaiting review**. K4b build starts once the K4a freeze is reviewed/merged (spec §6 mandatory reviewed freeze).
 
 ### What just landed
 
