@@ -16,7 +16,7 @@
 | **K2 Config + adapters** | Thinking → Auto | **DONE** | `.overseer/config.yaml` schema + VCS adapter interface + three fail-closed backends |
 | **K3 Extract shared assets** | Auto | **DONE** | Templates + policy + cursor fragments; `adapters/templating.py` |
 | **K4a Freeze CLI contract** | Thinking | **DONE** | Frozen `init\|sync\|status` arg contract + `version.lock` shape + `footprint_digest` algorithm + K4b seven-tier matrix (`docs/PHASE-K4-VENDORING-CLI-CONTRACT.md`) |
-| **K4b Vendoring CLI build** | Auto | **TODO** | Implement `overseer init\|sync\|status` + `version.lock` + drift check against the K4a freeze; seven-tier tests green |
+| **K4b Vendoring CLI build** | Auto | **DONE** | `overseer init\|sync\|status` + `version.lock` + `footprint_digest` + drift check; POSIX shim → `cli/` Python runtime; 108 tests green (§K4.10 seven tiers) |
 | **K5 Freeze reviewer** | Thinking → Auto | **TODO** | `overseer review --freeze` + automation routing. **Required K5a design decision (frozen requirement):** the `freeze_contract` config block must be extended to let each repo choose its reviewer model and provider (local vs API). Proposed schema: `reviewer.mode: agent\|human`, `reviewer.model: <label from policy/model-labels.yaml>`, `reviewer.provider: local\|api`, `reviewer.fallback: human` (fail-closed if provider unreachable). No core review capability may be API-only. See K5 design note in `docs/OVERSEER-KIT-SPEC.md` §6. |
 | **9A-5 Governance Hygiene Agent** | Auto | **TODO** | `overseer governance-sync [--dry-run]` against kit VCS adapter |
 | **K6 Pilot install** | Thinking → Auto | **TODO** | `overseer init` into Scooling → Knowtation → MuseHub → VideoFactory |

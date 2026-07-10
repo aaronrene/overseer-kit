@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 from pathlib import Path
 
 from adapters.config import OverseerConfig, load_config
@@ -37,3 +38,75 @@ def make_runner(responses: dict[str, CommandResult]) -> RecordingRunner:
 
 def adapter_for(config: OverseerConfig, repo_root: Path, runner: RecordingRunner):
     return create_adapter(config, repo_root, runner=runner)
+
+
+def git_status_runner(branch: str = "main", dirty: bool = False) -> RecordingRunner:
+    """Recording runner with git-only ``status()`` responses."""
+    dirty_out = " M file" if dirty else ""
+    return make_runner(
+        {
+            "git rev-parse --abbrev-ref HEAD": ok(branch),
+            "git status --porcelain": ok(dirty_out),
+        }
+    )
+
+
+def muse_status_runner(
+    repo_root: Path,
+    branch: str = "main",
+    dirty: bool = False,
+) -> RecordingRunner:
+    """Recording runner with muse-only ``status()`` responses."""
+    root = str(repo_root.resolve())
+    dirty_out = " M file" if dirty else ""
+    return make_runner(
+        {
+            f"muse -C {root} branch --show-current": ok(branch),
+            f"muse -C {root} status --porcelain": ok(dirty_out),
+        }
+    )
+
+
+def muse_mirror_status_runner(
+    repo_root: Path,
+    branch: str = "main",
+    dirty: bool = False,
+) -> RecordingRunner:
+    """Recording runner with muse+git-mirror ``status()`` responses."""
+    root = str(repo_root.resolve())
+    dirty_out = " M file" if dirty else ""
+    return make_runner(
+        {
+            f"muse -C {root} branch --show-current": ok(branch),
+            f"muse -C {root} status --porcelain": ok(dirty_out),
+            "git rev-parse --abbrev-ref HEAD": ok(branch),
+            "git status --porcelain": ok(dirty_out),
+        }
+    )
+
+
+def run_cli(
+    argv: list[str],
+    *,
+    cwd: Path,
+    runner: RecordingRunner | None = None,
+    kit: Path | None = None,
+) -> int:
+    """Invoke ``cli.main`` with an injected runner and working directory."""
+    from cli.context import CliContext
+    from cli.main import main
+    from cli.output import OutputContext
+
+    old_cwd = Path.cwd()
+    os.chdir(cwd)
+    try:
+        ctx = CliContext.create(
+            runner=runner or make_runner({}),
+            cwd=cwd,
+            kit=kit,
+            output=OutputContext(),
+        )
+        return main(argv, ctx=ctx)
+    finally:
+        os.chdir(old_cwd)
+

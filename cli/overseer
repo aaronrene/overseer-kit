@@ -1,21 +1,9 @@
 #!/usr/bin/env sh
-# Overseer Kit CLI — K4 will implement init|sync|status|governance-sync|review
+# Overseer Kit CLI — dispatches init|sync|status to the Python runtime (K4b).
 set -eu
 ROOT="$(CDPATH= cd -- "$(dirname "$0")/.." && pwd)"
-VERSION="$(cat "$ROOT/VERSION" 2>/dev/null || echo unknown)"
-CMD="${1:-status}"
-case "$CMD" in
-  init|sync|status|governance-sync|review)
-    echo "overseer-kit $VERSION: '$CMD' not implemented yet (K4/K5/9A-5)."
-    echo "See docs/ROADMAP.md — next build phase: K3 extract shared assets."
-    exit 2
-    ;;
-  -h|--help|help)
-    echo "Usage: overseer {init|sync|status|governance-sync|review} ..."
-    exit 0
-    ;;
-  *)
-    echo "unknown command: $CMD" >&2
-    exit 1
-    ;;
-esac
+export PYTHONPATH="${ROOT}${PYTHONPATH:+:$PYTHONPATH}"
+if [ -x "$ROOT/.venv/bin/python3" ]; then
+  exec "$ROOT/.venv/bin/python3" -m cli.main "$@"
+fi
+exec python3 -m cli.main "$@"
