@@ -57,7 +57,8 @@ def build_parser() -> argparse.ArgumentParser:
 def main(argv: list[str] | None = None, *, ctx: CliContext | None = None) -> int:
     """CLI main; return exit code."""
     parser = build_parser()
-    global_argv, rest_argv = extract_global_args(list(argv or []))
+    raw_argv = list(argv) if argv is not None else sys.argv[1:]
+    global_argv, rest_argv = extract_global_args(raw_argv)
     if rest_argv and rest_argv[0] not in COMMANDS:
         print(f"unknown command: {rest_argv[0]}", file=sys.stderr)
         return 1
