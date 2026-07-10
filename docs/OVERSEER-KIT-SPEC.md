@@ -304,6 +304,11 @@ against the kit the CLI carries. If behind, it **warns** with the version delta 
 files; per `thresholds.drift_warn_only` it **never** auto-updates or blocks. Updating is always the
 explicit `overseer sync` step (review-before-write).
 
+**K4a refinement (frozen detail):** the per-command argument contract, exit-code taxonomy, the
+extended (spec-compatible, additive) `version.lock` shape with a per-file manifest, and the
+deterministic `footprint_digest` algorithm are frozen in `docs/PHASE-K4-VENDORING-CLI-CONTRACT.md`.
+K4b builds against that document.
+
 ---
 
 ## §6 — Freeze-Contract review policy (frozen)
@@ -478,7 +483,7 @@ rules). No phase is DONE until its tests pass.
 | **K1 Bootstrap** | Create `overseer-kit` repo skeleton (§2), `VERSION`/`CHANGELOG`, dual-host + self-governance docs, README. | **Thinking → Auto** |
 | **K2 Config + adapters** | `.overseer/config.yaml` schema (§3) + the VCS adapter interface (§4) + three fail-closed backends + their unit/integration/security tests. | **Thinking → Auto** |
 | **K3 Extract shared assets** | Move the existing handover/roadmap/SD-format/tier/model-label/test-tier policy out of the three repos into `templates/` + `policy/` + `cursor/`, token-parameterized. | **Auto** |
-| **K4 Vendoring CLI** | `overseer init|sync|status` + `version.lock` + drift check (§5) + seven-tier tests. | **Thinking → Auto** |
+| **K4 Vendoring CLI** | `overseer init|sync|status` + `version.lock` + drift check (§5) + seven-tier tests. Contract frozen in `docs/PHASE-K4-VENDORING-CLI-CONTRACT.md` (K4a); K4b builds against it. | **Thinking → Auto** |
 | **K5 Freeze reviewer + automation routing** | The §6 reviewer (file+line citations, verdicts, escalation) + `overseer review` + session-end/on-merge Automation templates + tests. | **Thinking → Auto** |
 | **9A-5 Governance Hygiene Agent** | The first shipped tool, built against its own frozen spec (`PHASE-9A-5-…-OUTLINE.md`), rebased onto the K2 adapter interface. | **Auto** |
 | **K6 Pilot install + migration** | `overseer init` into Scooling → Knowtation → MuseHub per §8; parity gate; external `git-only` quickstart. | **Thinking → Auto** |
