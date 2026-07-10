@@ -1,0 +1,7 @@
+labels:
+  - Thinking
+  - Auto
+  - "Thinking → Auto"
+  - "Operator + Auto"
+
+rule: Every roadmap step and handover NEXT block must include Model: one of the labels above.

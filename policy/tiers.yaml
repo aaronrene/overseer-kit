@@ -1,0 +1,16 @@
+# Tier 1 — agent may do without asking
+- feature branch commits
+- git push to feature branch
+- open PR from feature branch
+- run test suite
+- update .gitignore
+
+# Tier 2 — recommend and confirm
+- non-trivial dependency upgrades
+- cross-repo coordination changes
+
+# Tier 3 — operator authorization required
+- merge to main
+- muse push staging
+- live capability / posture gate flips
+- real payments or secrets

@@ -1,0 +1,15 @@
+tiers:
+  - id: unit
+    proves: Each function/module behaves per contract including fail-closed branches
+  - id: integration
+    proves: CLI + adapter + config compose correctly
+  - id: e2e
+    proves: Full governance-sync dry-run on fixture repo
+  - id: stress
+    proves: Large docs, boundary counts, many freeze edges
+  - id: data-integrity
+    proves: Idempotency, version.lock digest, no partial writes
+  - id: performance
+    proves: status/drift within bounded time
+  - id: security
+    proves: No secret leakage, injection-safe templating, regime least-privilege
