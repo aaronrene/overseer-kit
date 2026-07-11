@@ -4,9 +4,9 @@ set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 MIRROR_REL="${MUSE_BRIDGE_MIRROR_DIR:-.muse/mirror}"
-GIT_REMOTE="{{vcs.git.remote}}"
-MIRROR_BRANCH="{{vcs.git.mirror_branch}}"
-MAIN_BRANCH="{{vcs.git.main_branch}}"
+GIT_REMOTE="origin"
+MIRROR_BRANCH="muse-mirror"
+MAIN_BRANCH="main"
 MUSE_ROOT="${REPO_ROOT}"
 COMMIT_MSG="${1:-mirror: overseer bridge deploy}"
 

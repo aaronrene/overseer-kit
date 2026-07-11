@@ -1,0 +1,59 @@
+# .museignore — snapshot exclusion rules for this repository.
+
+[global]
+patterns = [
+    ".DS_Store",
+    "Thumbs.db",
+    "*.tmp",
+    "*.swp",
+    "*.swo",
+
+    # IDE / editor state — applies to every domain
+    ".vscode/",
+    ".idea/",
+    "*.iml",
+]
+
+[domain.code]
+# Secrets (.env, *.key, *.pem, *.p12) are blocked by the Muse engine
+# automatically — no need to list them here.
+patterns = [
+    # ── Universal build / output directories ─────────────────────────
+    "dist/",
+    "build/",
+    "out/",
+    "tmp/",
+
+    # ── Dependency trees ─────────────────────────────────────────────
+    "node_modules/",      # JavaScript / Node
+    "vendor/",            # Go, PHP (Composer)
+
+    # ── Python ───────────────────────────────────────────────────────
+    "__pycache__/",
+    "*.pyc",
+    "*.pyo",
+    ".venv/",
+    "venv/",
+    ".tox/",
+    "*.egg-info/",
+
+    # ── Rust ─────────────────────────────────────────────────────────
+    # "target/",
+
+    # ── Java / Kotlin / Scala ────────────────────────────────────────
+    # "*.class",
+    # "*.jar",
+
+    # ── Ruby ─────────────────────────────────────────────────────────
+    # ".mpack/",
+
+]
+
+# [force_track]
+# Exact repo-relative paths to track even if they match a secrets pattern.
+# Use for dev infrastructure (e.g. self-signed TLS certs) that must survive
+# clean pulls.  No glob expansion — each entry must be an exact file path.
+# paths = [
+#     "deploy/local-tls/localhost.key",
+#     "deploy/local-tls/localhost.crt",
+# ]
