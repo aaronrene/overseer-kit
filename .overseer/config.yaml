@@ -5,16 +5,17 @@ repo:
   root_relative_docs: docs
 
 vcs:
-  regime: git-only
-  canonical: git
+  regime: muse+git-mirror
+  canonical: muse
   git:
     remote: origin
     main_branch: main
-    mirror_branch: null
+    mirror_branch: muse-mirror
     feature_branch_pattern: "feat/{slug}"
   muse:
-    staging_remote: null
-    main_branch: null
+    staging_remote: staging
+    main_branch: main
+    working_dir: null
 
 docs:
   handover: OVERSEER-HANDOVER.md

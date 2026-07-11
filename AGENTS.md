@@ -2,23 +2,15 @@
 
 ## Version control
 
-- **Current regime: `git-only`** (see `.overseer/config.yaml`). GitHub is canonical **today**.
-- Default workflow: feature branch → commit → push → PR → merge to `main`.
-- Never force-push `main`.
-
-### Planned: dogfood `muse+git-mirror` (Phase K7 — tracked, not yet active)
-
-The kit sells `muse+git-mirror` as a first-class regime (`docs/OVERSEER-KIT-SPEC.md` §4/§8) but does
-not yet dogfood it. Phase **K7** will flip this repo to **MuseHub canonical + GitHub mirror**, matching
-how Scooling/Knowtation operate. Until K7 lands, this repo stays `git-only` — **do not** claim Muse is
-canonical here or run `muse` commands against it.
-
-When K7 is active, the SD-14 mirror rule applies (as in `scooling/AGENTS.md`,
-`knowtation/AGENTS.md`, and their root `MUSE-BRIDGE-WORKFLOW.md`):
-- Work is `muse commit` on a feature branch; **never** `git push origin main`.
+- **Current regime: `muse+git-mirror`** (see `.overseer/config.yaml`). **MuseHub is canonical**;
+  GitHub `main` is the mirror merge target only.
+- Feature work: `muse commit` on a feature branch; **never** `git push origin main`.
 - Mirror to GitHub only via the safe deploy script → permanent `muse-mirror` branch → PR to `main`.
 - **Never** run `muse bridge git-export --git-dir .` on the dev tree (it deletes ignored files like
   `.env.local`); the bridge target is always an isolated `.muse/mirror/` checkout.
+- Never force-push `main`.
+
+See root `MUSE-BRIDGE-WORKFLOW.md` and `scripts/muse-bridge-deploy.sh` for SD-14 mirror rules.
 
 ## Read first
 

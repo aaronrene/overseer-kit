@@ -2,8 +2,8 @@ lock_version: 1
 kit_version: 0.1.0
 config_version: 1
 installed_at: '2026-07-10T00:00:00Z'
-synced_at: '2026-07-10T23:01:54Z'
-footprint_digest: sha256:54ffb06e01c8026c9c1cca3ad2c5086d4386d1cb2668fc5c67576bd6d13beb12
+synced_at: '2026-07-11T14:25:23Z'
+footprint_digest: sha256:18d0e52f7df20f94c2dbed78ef7610c5a154bf1c4d89a102019922791e5c1917
 footprint:
 - path: .cursor/rules/governance-sync.mdc
   source: cursor/rules/governance-sync.mdc
@@ -32,9 +32,15 @@ footprint:
 - path: .overseer/policy/tiers.yaml
   source: policy/tiers.yaml
   sha256: 4b2cb197554cb63f3e05b7553acd2f417ef37f4a993c1ff3b2247869e2a5db64
+- path: MUSE-BRIDGE-WORKFLOW.md
+  source: templates/MUSE-BRIDGE-WORKFLOW.template.md
+  sha256: 08f1f73e8cb579210f05aea944928a0e7b2a6ae4ced3a4d42df7bab21543dcc2
 - path: docs/OVERSEER-HANDOVER.md
   source: templates/OVERSEER-HANDOVER.template.md
   sha256: 2f0def59002654640db32e134935cfe10708dd9037cef994e26f2e42d998a65b
 - path: docs/ROADMAP.md
   source: templates/ROADMAP.template.md
   sha256: 4e341a5af4d143806de0fc3d13717167554ef166a9fdf45a4508ba5fbba31677
+- path: scripts/muse-bridge-deploy.sh
+  source: templates/scripts/muse-bridge-deploy.sh.template
+  sha256: f3f8fa895a5dba95af5b4fa1f212fe441c6a8746a6916fb49fc81dcaae0c00dd
