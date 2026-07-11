@@ -11,6 +11,10 @@ from adapters.templating import render_template
 from cli.docs_paths import join_docs_rel
 from cli.kit_root import kit_root
 
+MUSE_BRIDGE_WORKFLOW_DEST = "MUSE-BRIDGE-WORKFLOW.md"
+MUSE_BRIDGE_DEPLOY_DEST = "scripts/muse-bridge-deploy.sh"
+EXECUTABLE_FOOTPRINT_DESTINATIONS = frozenset({MUSE_BRIDGE_DEPLOY_DEST})
+
 
 @dataclass(frozen=True)
 class FootprintFile:
@@ -48,6 +52,20 @@ def resolve_footprint(config: OverseerConfig, *, kit: Path | None = None) -> lis
                 "templates/CROSS-REPO-COORDINATION.template.md",
                 _docs_path(config, config.docs.coordination),
             )
+        )
+
+    if config.vcs.regime == "muse+git-mirror":
+        template_specs.extend(
+            [
+                (
+                    "templates/MUSE-BRIDGE-WORKFLOW.template.md",
+                    MUSE_BRIDGE_WORKFLOW_DEST,
+                ),
+                (
+                    "templates/scripts/muse-bridge-deploy.sh.template",
+                    MUSE_BRIDGE_DEPLOY_DEST,
+                ),
+            ]
         )
 
     destinations: set[str] = set()

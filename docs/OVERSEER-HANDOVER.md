@@ -4,56 +4,41 @@
 
 ---
 
-## NEXT SESSION — K7 Dogfood muse+git-mirror (Thinking first)
+## NEXT SESSION — Operator live dogfood (K7.L1/L2)
 
 **Date:** 2026-07-11  
-**Current position:** **K6b → DONE.** Pilot install seams, fixtures, quickstart, operator runbook,
-and seven-tier tests are green on fixtures only. Live consumer inits remain operator-gated via
-`docs/K6-PILOT-OPERATOR-RUNBOOK.md`. No gate flips. No K7 muse dogfood yet.  
-**Model:** **Thinking (K7a outline)** then Auto (K7b)  
-**Repo state:** `feat/k6-pilot-install` (merge to `main` before K7)
+**Current position:** **K7b DONE.** Footprint assets + regime-conditional resolver + executable
+deploy script + seven-tier tests (**254** green). Kit repo remains **`git-only`** (footprint-first
+per §K7.7). Operator flip (config/`AGENTS.md` + Muse bind + first bridge) is the next slice.  
+**Model:** **Operator** (human-gated; not Auto)  
+**Repo state:** merge `feat/k7-muse-git-mirror-dogfood` → `main`, then operator session on feature branch
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **K6b CLI** | `init --migrate` / `--include-preserved`; sync preserve + promote; kit-only `footprint_digest`; `origin: preserved\|kit` |
-| **K6b seams** | `vcs.muse.working_dir`; `root_relative_docs: "."` bare paths |
-| **K6b fixtures** | `tests/fixtures/pilot/config-{scooling,knowtation,musehub,videofactory}.yaml` |
-| **K6b docs** | `docs/GIT-ONLY-QUICKSTART.md`; `docs/K6-PILOT-OPERATOR-RUNBOOK.md` |
-| **K6b tests** | Seven tiers green (**224** total) — fixtures only; no live consumer mutation |
-| **Hard stops held** | No live init; no `--force --include-preserved` on live pilots; no gate flips; no kit muse dogfood |
+| **K7b build** | `templates/MUSE-BRIDGE-WORKFLOW.template.md` + `templates/scripts/muse-bridge-deploy.sh.template` (S1–S13); `resolve_footprint` regime gate; `write_footprint_bytes` (`0755` on deploy script); `tokens.yaml`; `tests/fixtures/config-overseer-kit-dogfood.yaml`; `docs/K7-DOGFOOD-OPERATOR-RUNBOOK.md` |
+| **Sync seed/conflict** | Default `sync` seeds absent bridge destinations; conflicts (exit `4`) when on-disk bridge files exist without lock baseline |
+| **Tests** | Seven-tier K7 matrix (§K7.8): **254** passing |
+| **Footprint-first held** | `.overseer/config.yaml` + `AGENTS.md` unchanged (`git-only` / planned) |
 
-### THE ONE NEXT STEP — K7 Thinking outline
+### THE ONE NEXT STEP — Operator live dogfood
 
 | | |
 | --- | --- |
-| **ID** | **K7a** (Thinking) → **K7b** (Auto) |
-| **Branch** | `feat/k7-muse-git-mirror-dogfood` (from updated `main` after K6b merge) |
-| **Repo** | **overseer-kit** |
-| **Ground truth** | `docs/OVERSEER-KIT-SPEC.md` §4/§8; ROADMAP K7 row; regime capability tiers |
-| **Also read** | `docs/OVERSEER-HANDOVER.md`; `AGENTS.md` (K7 regime flip notes); `docs/PHASE-K6-PILOT-INSTALL-MATRIX.md` (out of scope: live pilots still operator-run) |
-| **Hard stops** | No `git push origin main`; no staging push without Tier-3; MuseHub must only *deepen* capabilities — never make a core feature MuseHub-only |
+| **ID** | **K7 operator** (D1–D8 + L1/L2) |
+| **Runbook** | `docs/K7-DOGFOOD-OPERATOR-RUNBOOK.md` |
+| **Ground truth** | `docs/PHASE-K7-MUSE-GIT-MIRROR-DOGFOOD.md` §K7.2–§K7.4 |
+| **Config matrix** | `tests/fixtures/config-overseer-kit-dogfood.yaml` (§K7.2.3) |
+| **Hard stops** | No `muse bridge git-export --git-dir .`; no `git push origin main`; Tier-3 for `muse-mirror` → `main` merge |
 
-### Paste-ready prompt — K7a (Thinking)
+### Paste-ready prompt — operator dogfood
 
 ```
-Phase K7a — Dogfood muse+git-mirror outline (overseer-kit).
-
-Model: Thinking. Freeze WHAT/HOW for flipping this repo to MuseHub canonical + GitHub mirror.
-Do not Build. Do not run live muse bridge export on the dev tree.
-
-Read first:
-- docs/OVERSEER-HANDOVER.md (shared context + this prompt)
-- docs/ROADMAP.md (K7 row + regime capability tiers)
-- docs/OVERSEER-KIT-SPEC.md §4 / §8
-- AGENTS.md (planned muse+git-mirror regime)
-- docs/PHASE-K6-PILOT-INSTALL-MATRIX.md (K6 live pilots are separate operator work)
-
-Freeze: dogfood steps; footprint additions (MUSE-BRIDGE-WORKFLOW.template.md + tokenized
-muse-bridge-deploy.sh); parity gate for kit self-install; seven-tier matrix for K7b;
-guardrail that no core capability becomes MuseHub-only.
-Update ROADMAP + OVERSEER-HANDOVER; await freeze-review pass before K7b Auto.
+Operator session: flip overseer-kit to muse+git-mirror per docs/K7-DOGFOOD-OPERATOR-RUNBOOK.md
+(D1–D8). K7b merged. Flip .overseer/config.yaml + AGENTS.md; Muse bind (D2); overseer sync (D5);
+parity K7.P1–P10; first live bridge via ./scripts/muse-bridge-deploy.sh only (K7.L1). Record L1/L2
+in handover. Never git-export on dev tree.
 ```
 
 ---
@@ -79,14 +64,36 @@ Update ROADMAP + OVERSEER-HANDOVER; await freeze-review pass before K7b Auto.
 | **K5b reviewer** | **Cleared** — K5b-r2 `pass` + fix on `main` (PR #6 / `b06ce17`) |
 | **9A-5 governance-sync** | **DONE** — `overseer governance-sync [--dry-run]`; `tools/governance_hygiene/` |
 | **K6a pilot matrix** | **DONE** — K6a-r7 `pass`; ground truth for K6b |
-| **K6b pilot install** | **DONE** — migrate + seams + fixtures + quickstart + runbook; **224** tests green |
+| **K6b pilot install** | **DONE** — migrate + seams + fixtures + quickstart + runbook; **224** tests at K6b close |
+| **K7a dogfood freeze** | **DONE** — K7a-r2 `pass`; ground truth for K7b |
+| **K7b dogfood build** | **DONE** — bridge footprint + resolver + tests + operator runbook; **254** tests green |
 | **CLI** | `init [--migrate]` \| `sync [--include-preserved]` \| `status` \| `review --freeze` \| `governance-sync` |
-| **Tests** | **224 passing** |
-| **Branch** | `feat/k6-pilot-install` |
+| **Regime (this repo)** | Still **`git-only`** — operator flip (D3–D4) + L1/L2 pending |
 | **Live pilots** | Not claimed PASS — operator runbook only; no consumer parity stamps |
 
 ## Change log
 
+- **2026-07-11** — **K7b DONE (Auto).** Shipped regime-conditional bridge footprint
+  (`MUSE-BRIDGE-WORKFLOW.md`, `scripts/muse-bridge-deploy.sh` S1–S13), `resolve_footprint` gate,
+  executable write helper, `tokens.yaml`, `config-overseer-kit-dogfood.yaml` fixture,
+  `docs/K7-DOGFOOD-OPERATOR-RUNBOOK.md`, seven-tier tests (254 green). Sync seed/conflict for new
+  bridge destinations. Kit config/`AGENTS.md` remain `git-only`/planned (footprint-first). Next:
+  **operator live dogfood** (K7.L1/L2).
+- **2026-07-11** — **K7a-r2 `pass`.** Independent freeze review confirmed M1 + M2 + N1–N3 RESOLVED;
+  full §K7.0–§K7.10 regress clean vs SPEC §4/§8, ROADMAP regime tiers, PHASE-K4 §K4.5, AGENTS.md.
+  Cleared for **K7b**. No Build; no live muse export.
+- **2026-07-11** — **K7a 1-fix.** Resolved freeze-review M1 + M2 + N1–N3 in
+  `docs/PHASE-K7-MUSE-GIT-MIRROR-DOGFOOD.md`: S13 mirror publish; S7 `muse -C`; default-`sync`
+  new-destination seed/conflict; §K7.1 footprint-first (config/`AGENTS.md` → operator); S11/S12
+  quoted expansions. Handover + ROADMAP retargeted to **K7a-r2**. No Build.
+- **2026-07-11** — **K7a-r1 `findings`.** Independent freeze review recorded M1 + M2 (MAJOR) and
+  N1–N3 (MINOR). Not cleared for K7b.
+- **2026-07-11** — **K7a DONE (Thinking).** Froze muse+git-mirror dogfood design in
+  `docs/PHASE-K7-MUSE-GIT-MIRROR-DOGFOOD.md`: ordered flip steps, self-install config matrix,
+  regime-conditional footprint (bridge workflow + tokenized deploy script with S1–S12 safety),
+  parity gate K7.P1–P10 + operator L1/L2, no MuseHub-only core-capability guardrail, K7b
+  seven-tier matrix. Auto default = footprint-first (kit stays `git-only` until operator session).
+  No Build; no live muse export. Next was **K7a freeze-review**.
 - **2026-07-11** — **K6b DONE (Auto).** Implemented `init --migrate` / `--include-preserved`,
   sync preserve+promote, kit-only digest + `origin` lock field, `vcs.muse.working_dir`,
   `root_relative_docs: "."` normalization, pilot fixtures, `GIT-ONLY-QUICKSTART.md`,

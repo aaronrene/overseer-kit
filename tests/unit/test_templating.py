@@ -68,15 +68,23 @@ def test_render_all_templates_without_unknown_tokens(
     muse_git_mirror_config,
 ) -> None:
     templates_dir = Path(__file__).resolve().parents[2] / "templates"
-    for config in (git_only_config, muse_only_config, muse_git_mirror_config):
-        for name in (
-            "OVERSEER-HANDOVER.template.md",
-            "ROADMAP.template.md",
-            "STANDING-DECISIONS.template.md",
-            "CROSS-REPO-COORDINATION.template.md",
-        ):
+    base_templates = (
+        "OVERSEER-HANDOVER.template.md",
+        "ROADMAP.template.md",
+        "STANDING-DECISIONS.template.md",
+        "CROSS-REPO-COORDINATION.template.md",
+    )
+    bridge_templates = (
+        "MUSE-BRIDGE-WORKFLOW.template.md",
+        "scripts/muse-bridge-deploy.sh.template",
+    )
+    for config in (git_only_config, muse_only_config):
+        for name in base_templates:
             rendered = render_template(templates_dir / name, config)
             assert "{{" not in rendered, f"unsubstituted token in {name} for {config.repo.name}"
+    for name in base_templates + bridge_templates:
+        rendered = render_template(templates_dir / name, muse_git_mirror_config)
+        assert "{{" not in rendered, f"unsubstituted token in {name} for muse+git-mirror"
 
 
 def test_render_template_missing_file_raises(git_only_config, tmp_path: Path) -> None:

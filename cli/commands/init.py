@@ -8,7 +8,7 @@ from pathlib import Path
 
 from adapters.config import SUPPORTED_REGIMES, load_config
 from adapters.errors import ConfigError
-from cli.atomic import WriteFailure, atomic_write_bytes, atomic_write_text
+from cli.atomic import WriteFailure, atomic_write_text
 from cli.config_gen import (
     config_dict_to_yaml,
     configs_equal,
@@ -20,6 +20,7 @@ from cli.context import CliContext
 from cli.digest import sha256_hex
 from cli.docs_paths import living_doc_destinations, validate_muse_working_dir
 from cli.footprint import FootprintFile, footprint_tuples, resolve_footprint
+from cli.footprint_writes import write_footprint_bytes
 from cli.kn_r2 import KN_R2_DEST, evaluate_kn_r2
 from cli.output import CommandReport
 from cli.paths import PathEscapeError, confine_path, is_within_repo, resolve_config_path, resolve_repo_root
@@ -338,7 +339,7 @@ def _run_greenfield_init(
         config_path.parent.mkdir(parents=True, exist_ok=True)
         atomic_write_text(config_path, config_text)
         for item in rendered:
-            atomic_write_bytes(repo_root / item.destination, item.content)
+            write_footprint_bytes(repo_root / item.destination, item.content, destination=item.destination)
         lock = build_version_lock(
             kit_version=kit_version(),
             config_version=config.overseer_config_version,
@@ -504,7 +505,7 @@ def _run_migrate_init(
         config_path.parent.mkdir(parents=True, exist_ok=True)
         atomic_write_text(config_path, config_text)
         for dest, content in write_plan.items():
-            atomic_write_bytes(repo_root / dest, content)
+            write_footprint_bytes(repo_root / dest, content, destination=dest)
 
         from cli.version_lock import utc_now_iso
 
