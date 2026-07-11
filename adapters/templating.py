@@ -36,12 +36,14 @@ ALLOWED_TOKENS: frozenset[str] = frozenset(
 
 def build_token_map(config: OverseerConfig) -> dict[str, str]:
     """Build the substitution map from a validated ``OverseerConfig``."""
-    docs_root = config.repo.root_relative_docs.rstrip("/")
+    from cli.docs_paths import join_docs_rel, normalize_docs_root
+
+    docs_root = normalize_docs_root(config.repo.root_relative_docs)
     coordination = config.docs.coordination or ""
     standing = config.docs.standing_decisions
 
     def rel(doc: str) -> str:
-        return f"{docs_root}/{doc}"
+        return join_docs_rel(docs_root, doc)
 
     return {
         "repo.name": config.repo.name,

@@ -40,6 +40,16 @@ def build_parser() -> argparse.ArgumentParser:
     init_parser.add_argument("--force", action="store_true")
     init_parser.add_argument("--non-interactive", action="store_true")
     init_parser.add_argument("--dry-run", action="store_true")
+    init_parser.add_argument(
+        "--migrate",
+        action="store_true",
+        help="Preserve existing living docs; lock origin:preserved (K6)",
+    )
+    init_parser.add_argument(
+        "--include-preserved",
+        action="store_true",
+        help="With --force: promote living docs to origin:kit (pilot-forbidden)",
+    )
 
     sync_parser = subparsers.add_parser("sync", help="Update vendored footprint")
     sync_parser.add_argument("--dry-run", action="store_true")
@@ -48,6 +58,11 @@ def build_parser() -> argparse.ArgumentParser:
     sync_parser.add_argument("--only", action="append", metavar="GLOB")
     sync_parser.add_argument("--force", action="store_true")
     sync_parser.add_argument("-y", "--yes", action="store_true")
+    sync_parser.add_argument(
+        "--include-preserved",
+        action="store_true",
+        help="With --force: promote living docs to origin:kit (pilot-forbidden)",
+    )
 
     status_parser = subparsers.add_parser("status", help="Read-only status report")
     status_parser.add_argument("--exit-code", action="store_true")

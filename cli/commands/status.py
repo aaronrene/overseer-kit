@@ -8,7 +8,7 @@ from pathlib import Path
 from adapters.config import load_config
 from adapters.errors import ConfigError, ReadError
 from cli.context import CliContext
-from cli.digest import FootprintRecord, compute_footprint_digest, sha256_hex
+from cli.digest import sha256_hex
 from cli.drift import compute_drift
 from cli.footprint import resolve_footprint
 from cli.kit_root import kit_version
@@ -34,19 +34,38 @@ def _compute_footprint_integrity(
     repo_root: Path,
     lock,
     rendered,
-) -> str:
-    """Recompute digest from on-disk footprint bytes and compare to lock."""
-    records: list[FootprintRecord] = []
+) -> tuple[str, list[str]]:
+    """Recompute kit-only digest; report preserved-living paths separately (§K6.4)."""
+    from cli.version_lock import ORIGIN_PRESERVED, compute_lock_digest, entry_origin
+
+    prior = {entry.path: entry for entry in lock.footprint}
+    preserved_living: list[str] = []
+    kit_entries = []
     for item in rendered:
+        entry = prior.get(item.destination)
+        origin = entry_origin(entry) if entry is not None else "kit"
         dest = repo_root / item.destination
         if dest.is_file():
             content = dest.read_bytes()
         else:
             content = b""
-        records.append(FootprintRecord(path=item.destination, sha256_hex=sha256_hex(content)))
-    records.sort(key=lambda row: row.path)
-    computed = compute_footprint_digest(records)
-    return "ok" if computed == lock.footprint_digest else "mismatch"
+        digest_hex = sha256_hex(content)
+        if origin == ORIGIN_PRESERVED:
+            preserved_living.append(item.destination)
+            continue
+        from cli.version_lock import FootprintEntry, ORIGIN_KIT
+
+        kit_entries.append(
+            FootprintEntry(
+                path=item.destination,
+                source=item.source,
+                sha256=digest_hex,
+                origin=ORIGIN_KIT,
+            )
+        )
+    computed = compute_lock_digest(kit_entries)
+    integrity = "ok" if computed == lock.footprint_digest else "mismatch"
+    return integrity, preserved_living
 
 
 def _lock_summary(lock) -> dict:
@@ -128,6 +147,7 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
 
     rendered: list = []
     integrity: str | None = None
+    preserved_living: list[str] = []
     if lock is not None:
         try:
             rendered = resolve_footprint(config, kit=ctx.kit)
@@ -137,9 +157,11 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
             return 2
 
         if args.check_footprint:
-            integrity = _compute_footprint_integrity(repo_root, lock, rendered)
+            integrity, preserved_living = _compute_footprint_integrity(repo_root, lock, rendered)
             if integrity == "mismatch":
                 report.add_warning("footprint_integrity: mismatch")
+            for path in preserved_living:
+                report.add_warning(f"preserved-living: {path}")
 
     drift = compute_drift(
         cli_version=kit_version(),
@@ -171,6 +193,7 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
         "lock": _lock_summary(lock) if lock else None,
         "drift": drift,
         "footprint_integrity": integrity,
+        "preserved_living": preserved_living if args.check_footprint else [],
         "vcs": vcs_report(vcs_result, config),
         "last_governance_sync": _read_governance_sync_marker(repo_root),
         "warnings": report.warnings,

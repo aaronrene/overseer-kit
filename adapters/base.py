@@ -64,10 +64,23 @@ class BaseAdapter:
         self.config = config
         self.repo_root = repo_root.resolve()
         self.runner = runner or SubprocessRunner()
+        self._muse_cwd = self._resolve_muse_cwd()
+
+    def _resolve_muse_cwd(self) -> Path:
+        """Install root, or ``install_root / vcs.muse.working_dir`` (§K6.5.1)."""
+        from cli.docs_paths import validate_muse_working_dir
+
+        working = validate_muse_working_dir(self.repo_root, self.config.vcs.muse.working_dir)
+        return working if working is not None else self.repo_root
 
     @property
     def regime(self) -> str:
         return self.config.vcs.regime
+
+    @property
+    def muse_cwd(self) -> Path:
+        """Absolute directory passed to ``muse -C``."""
+        return self._muse_cwd
 
     def _git(self, *args: str) -> CommandResult | ReadError:
         cmd = "git " + " ".join(quote_arg(a) for a in args)
@@ -79,7 +92,7 @@ class BaseAdapter:
     def _muse(self, *args: str) -> CommandResult | ReadError:
         cmd = (
             "muse -C "
-            + quote_arg(str(self.repo_root))
+            + quote_arg(str(self._muse_cwd))
             + " "
             + " ".join(quote_arg(a) for a in args)
         )

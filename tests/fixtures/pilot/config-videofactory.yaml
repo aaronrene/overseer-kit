@@ -1,0 +1,32 @@
+overseer_config_version: 1
+repo:
+  name: VideoFactory
+  root_relative_docs: "."
+vcs:
+  regime: git-only
+  canonical: git
+  git:
+    remote: origin
+    main_branch: main
+    mirror_branch: null
+    feature_branch_pattern: "feat/{slug}"
+  muse:
+    staging_remote: null
+    main_branch: null
+    working_dir: null
+docs:
+  handover: OVERSEER_HANDOVER.md
+  roadmap: ROADMAP.md
+  coordination: null
+  standing_decisions: ROADMAP.md
+thresholds:
+  realign_max_commits: 50
+  drift_warn_only: true
+freeze_contract:
+  enabled: true
+  reviewer:
+    mode: agent
+    model: thinking-high
+    provider: local
+    fallback: human
+  human_escalation: [security, irreversible, real_money, gates_tier3]

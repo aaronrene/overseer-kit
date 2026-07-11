@@ -1,0 +1,20 @@
+---
+description: Avoid docs-only PRs to main; commit locally on feature branches
+alwaysApply: true
+---
+
+# No docs-only pull requests to `main`
+
+**Policy:** Do **not** open or merge a GitHub pull request to **`main`** whose
+**only** changes are under `docs/` (handoffs, roadmaps, playbooks) when those
+deploys trigger paid rebuilds — unless the operator explicitly requests an urgent docs merge.
+
+## What this rule is NOT
+
+- **Not** "never commit docs" — **always** commit on a **feature branch** (Tier 1, SD-1).
+- **Not** "never push" — **`git push` to the feature branch** is encouraged (backup/share).
+
+## What to do instead
+
+Ship documentation updates **in the same PR** as the **code, tests, or CI** they belong to when
+merging to `main`.

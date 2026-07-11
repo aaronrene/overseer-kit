@@ -8,6 +8,7 @@ from pathlib import Path
 from adapters.config import OverseerConfig
 from adapters.errors import ConfigError
 from adapters.templating import render_template
+from cli.docs_paths import join_docs_rel
 from cli.kit_root import kit_root
 
 
@@ -25,8 +26,7 @@ class FootprintFile:
 
 
 def _docs_path(config: OverseerConfig, doc_name: str) -> str:
-    root = config.repo.root_relative_docs.rstrip("/")
-    return f"{root}/{doc_name}"
+    return join_docs_rel(config.repo.root_relative_docs, doc_name)
 
 
 def resolve_footprint(config: OverseerConfig, *, kit: Path | None = None) -> list[FootprintFile]:

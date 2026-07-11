@@ -21,8 +21,9 @@
 | **K5b Freeze reviewer build** | Auto | **DONE** | `overseer review --freeze` + nested `freeze_contract.reviewer` parse (legacy string normalization) + `reviewer_models` in `policy/model-labels.yaml` + `tools/freeze_reviewer/` engine (injectable local\|api; `fallback: human` fail-closed) + §K5.9 report + stamp write + Automation templates + seven-tier tests. Cleared by K5b-r2 `pass` + PR #6 on `main` (not by premature PR #5 merge alone). |
 | **K5b-r Merge gate review** | Thinking | **DONE** | Round 1 `blocked` (F1–F6 on PR #5). F1–F5 fixed (PR #6). **K5b-r2 → `pass`** ([review](https://github.com/aaronrene/overseer-kit/pull/6#pullrequestreview-4676205810)). K5b cleared. |
 | **9A-5 Governance Hygiene Agent** | Auto | **DONE** | `overseer governance-sync [--dry-run]` against kit VCS adapter — `tools/governance_hygiene/` + seven-tier tests (**181** green) |
-| **K6 Pilot install** | Thinking → Auto | **TODO** (NEXT) | `overseer init` into Scooling → Knowtation → MuseHub → VideoFactory |
-| **K7 Dogfood muse+git-mirror** | Thinking → Auto | **TODO** | Flip this repo to MuseHub canonical + GitHub mirror; vendor `MUSE-BRIDGE-WORKFLOW.template.md` + tokenized `muse-bridge-deploy.sh` into the footprint for `muse+git-mirror` consumers; parity gate + seven-tier tests. Operator-run (needs `muse`/`gh`/staging repo). **Frozen design guardrail:** MuseHub may only *deepen* a capability — no core governance feature may ever become MuseHub-only (see principle below). |
+| **K6a Freeze pilot install matrix** | Thinking | **DONE** | Frozen install order + per-repo config matrix + `init --migrate` preserve contract + parity gate (P1–P7 + per-repo extras) + Muse `working_dir` / VF `.` docs-root seams + K6b seven-tier matrix (`docs/PHASE-K6-PILOT-INSTALL-MATRIX.md`). Rounds 1–5 **`blocked`** → fixes through **5-fix**; Round 6 **`findings`** (R6-M1) → **6-fix**; **K6a-r7 → `pass`** (R6-M1 + R5/R4 spot-check + full §K6.0–§K6.10 regress). Cleared for K6b. |
+| **K6b Pilot install build** | Auto | **DONE** | Additive `init --migrate` + `--include-preserved`; `vcs.muse.working_dir` + `root_relative_docs: "."` seams; `origin: preserved\|kit` lock + kit-only digest; `tests/fixtures/pilot/*`; `docs/GIT-ONLY-QUICKSTART.md` + `docs/K6-PILOT-OPERATOR-RUNBOOK.md`; seven-tier tests (**224** green). Live consumer inits remain operator-gated; no gate flips; no K7 muse dogfood. |
+| **K7 Dogfood muse+git-mirror** | Thinking → Auto | **TODO** (NEXT) | Flip this repo to MuseHub canonical + GitHub mirror; vendor `MUSE-BRIDGE-WORKFLOW.template.md` + tokenized `muse-bridge-deploy.sh` into the footprint for `muse+git-mirror` consumers; parity gate + seven-tier tests. Operator-run (needs `muse`/`gh`/staging repo). **Frozen design guardrail:** MuseHub may only *deepen* a capability — no core governance feature may ever become MuseHub-only (see principle below). |
 
 ## Regime capability tiers (git-only baseline → MuseHub-enhanced)
 
@@ -70,6 +71,7 @@ same method names in both regimes.
 - `docs/OVERSEER-KIT-SPEC.md` — frozen architecture
 - `docs/PHASE-K4-VENDORING-CLI-CONTRACT.md` — frozen K4 CLI contract (K4a); K4b builds against it
 - `docs/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md` — frozen K5 reviewer contract (K5a); K5b builds against it
+- `docs/PHASE-K6-PILOT-INSTALL-MATRIX.md` — frozen K6 pilot install matrix (K6a); K6b builds against it
 - `templates/` + `policy/` + `cursor/` — vendored footprint (K3)
 - `docs/PHASE-9A-5-GOVERNANCE-HYGIENE-AGENT-OUTLINE.md` — first agent tool
 - Scooling `docs/PHASE-9A-MULTI-AGENT-OVERSEER-ROUTER-OUTLINE.md` — runtime org-chart reference

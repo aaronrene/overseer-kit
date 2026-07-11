@@ -1,4 +1,4 @@
-"""``.overseer/version.lock`` reader/writer per §K4.6."""
+"""``.overseer/version.lock`` reader/writer per §K4.6 + §K6.4 ``origin``."""
 
 from __future__ import annotations
 
@@ -13,6 +13,9 @@ from cli.digest import FootprintRecord, compute_footprint_digest, sha256_hex
 
 SUPPORTED_LOCK_VERSION = 1
 LOCK_FILENAME = "version.lock"
+ORIGIN_KIT = "kit"
+ORIGIN_PRESERVED = "preserved"
+SUPPORTED_ORIGINS = frozenset({ORIGIN_KIT, ORIGIN_PRESERVED})
 
 
 @dataclass(frozen=True)
@@ -22,11 +25,12 @@ class FootprintEntry:
     path: str
     source: str
     sha256: str
+    origin: str = ORIGIN_KIT
 
 
 @dataclass(frozen=True)
 class VersionLock:
-    """Parsed ``version.lock`` with full §K4.6 shape."""
+    """Parsed ``version.lock`` with full §K4.6 shape + optional ``origin``."""
 
     lock_version: int
     kit_version: str
@@ -38,6 +42,20 @@ class VersionLock:
 
     def to_dict(self) -> dict[str, Any]:
         """Serialize to a YAML-compatible mapping."""
+        footprint_rows: list[dict[str, Any]] = []
+        for entry in self.footprint:
+            row: dict[str, Any] = {
+                "path": entry.path,
+                "source": entry.source,
+                "sha256": entry.sha256,
+            }
+            # Omit default kit origin for greenfield lock compatibility; always
+            # write preserved (and kit when any preserved exists for clarity).
+            if entry.origin != ORIGIN_KIT or any(
+                e.origin == ORIGIN_PRESERVED for e in self.footprint
+            ):
+                row["origin"] = entry.origin
+            footprint_rows.append(row)
         return {
             "lock_version": self.lock_version,
             "kit_version": self.kit_version,
@@ -45,14 +63,7 @@ class VersionLock:
             "installed_at": self.installed_at,
             "synced_at": self.synced_at,
             "footprint_digest": self.footprint_digest,
-            "footprint": [
-                {
-                    "path": entry.path,
-                    "source": entry.source,
-                    "sha256": entry.sha256,
-                }
-                for entry in self.footprint
-            ],
+            "footprint": footprint_rows,
         }
 
 
@@ -68,6 +79,34 @@ def utc_now_iso() -> str:
 def lock_path(repo_root: Path) -> Path:
     """Return the default lock file path."""
     return repo_root / ".overseer" / LOCK_FILENAME
+
+
+def entry_origin(entry: FootprintEntry | dict[str, Any]) -> str:
+    """Return origin for a lock entry; omitted defaults to ``kit`` (§K6.4)."""
+    if isinstance(entry, FootprintEntry):
+        return entry.origin
+    origin = entry.get("origin", ORIGIN_KIT)
+    return origin if isinstance(origin, str) else ORIGIN_KIT
+
+
+def kit_only_records(entries: list[FootprintEntry] | tuple[FootprintEntry, ...]) -> list[FootprintRecord]:
+    """Build digest records over ``origin: kit`` (and omitted-default kit) only."""
+    records: list[FootprintRecord] = []
+    for entry in entries:
+        if entry_origin(entry) == ORIGIN_PRESERVED:
+            continue
+        records.append(FootprintRecord(path=entry.path, sha256_hex=entry.sha256))
+    return records
+
+
+def compute_lock_digest(entries: list[FootprintEntry] | tuple[FootprintEntry, ...]) -> str:
+    """Compute ``footprint_digest`` per §K6.4 kit-only rule when preserved exist."""
+    has_preserved = any(entry_origin(e) == ORIGIN_PRESERVED for e in entries)
+    if has_preserved:
+        records = kit_only_records(entries)
+    else:
+        records = [FootprintRecord(path=e.path, sha256_hex=e.sha256) for e in entries]
+    return compute_footprint_digest(records)
 
 
 def read_version_lock(path: Path) -> VersionLock:
@@ -137,11 +176,15 @@ def read_version_lock(path: Path) -> VersionLock:
         for field in ("path", "source", "sha256"):
             if field not in item or not isinstance(item[field], str):
                 raise LockError(f"footprint entry missing or invalid {field}")
+        origin = item.get("origin", ORIGIN_KIT)
+        if not isinstance(origin, str) or origin not in SUPPORTED_ORIGINS:
+            raise LockError(f"footprint entry origin must be kit|preserved, got {origin!r}")
         entries.append(
             FootprintEntry(
                 path=item["path"],
                 source=item["source"],
                 sha256=item["sha256"],
+                origin=origin,
             )
         )
 
@@ -165,18 +208,26 @@ def build_version_lock(
     installed_at: str | None = None,
     synced_at: str | None = None,
     prior_installed_at: str | None = None,
+    origins: dict[str, str] | None = None,
 ) -> VersionLock:
-    """Build a new lock from rendered footprint ``(dest_path, source, bytes)`` tuples."""
+    """Build a new lock from rendered footprint ``(dest_path, source, bytes)`` tuples.
+
+    ``origins`` maps destination path → ``kit|preserved`` (default ``kit``).
+    """
     now = utc_now_iso()
+    origin_map = origins or {}
     sorted_footprint = sorted(footprint, key=lambda item: item[0])
-    records: list[FootprintRecord] = []
     entries: list[FootprintEntry] = []
     for dest, source, content in sorted_footprint:
         hex_digest = sha256_hex(content)
-        records.append(FootprintRecord(path=dest, sha256_hex=hex_digest))
-        entries.append(FootprintEntry(path=dest, source=source, sha256=hex_digest))
+        origin = origin_map.get(dest, ORIGIN_KIT)
+        if origin not in SUPPORTED_ORIGINS:
+            origin = ORIGIN_KIT
+        entries.append(
+            FootprintEntry(path=dest, source=source, sha256=hex_digest, origin=origin)
+        )
     entries_tuple = tuple(entries)
-    digest = compute_footprint_digest(records)
+    digest = compute_lock_digest(entries_tuple)
     return VersionLock(
         lock_version=SUPPORTED_LOCK_VERSION,
         kit_version=kit_version,
@@ -197,11 +248,8 @@ def build_version_lock_from_entries(
     synced_at: str | None = None,
 ) -> VersionLock:
     """Build a lock from explicit manifest entries (for partial ``--only`` sync)."""
-    from cli.digest import compute_footprint_digest, FootprintRecord
-
     sorted_entries = sorted(entries, key=lambda e: e.path)
-    records = [FootprintRecord(path=e.path, sha256_hex=e.sha256) for e in sorted_entries]
-    digest = compute_footprint_digest(records)
+    digest = compute_lock_digest(sorted_entries)
     return VersionLock(
         lock_version=SUPPORTED_LOCK_VERSION,
         kit_version=kit_version,
