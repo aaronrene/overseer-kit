@@ -4,75 +4,91 @@
 
 ---
 
-## NEXT SESSION — K5b-r Merge gate review (Thinking)
+## NEXT SESSION — K5b-r2 Re-review after F1–F5 fixes (Thinking)
 
 **Date:** 2026-07-10  
-**Current position:** **K5b build DONE.** PR open on `feat/k5-freeze-reviewer-contract`. **161 tests green.** **`main` merge blocked** until independent implementation review passes.  
+**Current position:** K5b-r round 1 → **`blocked`** (F1–F6). Fixes for **F1–F5** are on branch `fix/k5b-r-findings` (uncommitted until operator commits). PR #5 was merged to `main` **before** K5b-r (F6 process violation) — clearance still requires Thinking re-review `pass`, then fix PR merge.  
 **Model:** **Thinking** (`thinking-high` — Independent Freeze-Step Reviewer)  
-**Repo state:** PR pending; do **not** merge to `main` without K5b-r `pass`.
+**Repo state:** `fix/k5b-r-findings` holds remediation; **170 tests green**; dogfood `review --freeze` on K5a contract → **`pass` / exit 0**. Do **not** treat K5b as cleared until K5b-r2 `pass`.
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **K5b Freeze reviewer build** | `overseer review --freeze` CLI; nested `freeze_contract.reviewer` + legacy normalization; `reviewer_models` registry; `tools/freeze_reviewer/` engine; §K5.9 report; idempotent stamp; Automation templates; 53 new tests → **161 total green** |
-| **K5a contract (already reviewed)** | `docs/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md` — round 3 → **`pass`**. This is ground truth; **do not re-derive** during K5b-r — verify implementation matches it. |
-| **K4b Vendoring CLI** | `init` \| `sync` \| `status`; PR #4 merged |
+| **K5b-r round 1** | Verdict **`blocked`**. Recorded on [PR #5](https://github.com/aaronrene/overseer-kit/pull/5#issuecomment-4941300173). F1–F6 cited. |
+| **F1–F5 remediation** | Branch `fix/k5b-r-findings`: ChecklistEngine no longer keyword-matches escalation vocabulary; nested agent reviewer fields fail-closed; stamp serializer preserves key order; human-mode JSON asserts; idempotent stamp line. |
+| **F6** | Process only — PR #5 already on `main` with zero reviews. Fix via this re-review + merge of `fix/k5b-r-findings`; do not claim prior merge was clearance. |
+| **K5a contract** | Still ground truth (round 3 `pass`). **Do not re-derive.** |
 
-### Review model — yes, use Thinking
+### Round-1 findings → fix status
 
-| Question | Answer |
-| --- | --- |
-| Re-review the K5a **contract doc**? | **No** — K5a round 3 already `pass`. The contract stays frozen ground truth. |
-| What needs review now? | The K5b **implementation** (PR diff + test matrix) against the K5a contract §K5.1–§K5.12. |
-| Which model? | **Thinking** (`thinking-high` per `policy/model-labels.yaml` → `reviewer_models`). Auto built it; Thinking verifies it. |
-| Why Thinking? | SPEC §6: frozen outputs consumed without re-deriving need reviewed freeze; K5b gates Tier 3 (`gates_tier3` — merge to `main`); security/injection surfaces in the reviewer itself. |
-| Dogfood? | Run `cli/overseer review --freeze docs/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md --dry-run` on the PR branch as a smoke check; **K5b-r still requires** independent cited regression of implementation vs contract (CLI, config, engine, tests). |
+| ID | Sev | Status | Fix locus |
+| --- | --- | --- | --- |
+| F1 | BLOCKER | **Fixed (awaiting re-review)** | `tools/freeze_reviewer/providers/base.py` — removed `ESCALATION_KEYWORDS`; C4 = concrete path/secret surfaces only |
+| F2 | MAJOR | **Fixed (awaiting re-review)** | `adapters/config.py` — missing `model`/`provider`/`fallback` when `mode: agent` → `ConfigError` |
+| F3 | MAJOR | **Fixed (awaiting re-review)** | `tools/freeze_reviewer/serializer.py` — preserve key order; place `review_stamp` per §K5.7 |
+| F4 | MINOR | **Fixed (awaiting re-review)** | `tests/integration/test_cli_review_freeze.py` — assert §K5.9 escalation JSON fields |
+| F5 | MINOR | **Fixed (awaiting re-review)** | `tools/freeze_reviewer/report.py` — `Stamp: (unchanged — idempotent)` |
+| F6 | BLOCKER | **Process** | Premature merge; cleared only after K5b-r2 `pass` + fix PR on `main` |
 
-### THE ONE NEXT STEP — **Model: Thinking** — K5b-r Merge gate review
+### THE ONE NEXT STEP — **Model: Thinking** — K5b-r2
 
 | | |
 | --- | --- |
-| **ID** | **K5b-r** |
-| **Branch** | Review PR branch `feat/k5-freeze-reviewer-contract` (do not merge until `pass`) |
+| **ID** | **K5b-r2** |
+| **Branch** | `fix/k5b-r-findings` (commit/push/PR if not already; review that diff vs `main`) |
 | **Repo** | **overseer-kit** |
 | **Ground truth** | `docs/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md` (K5a — reviewed `pass`, round 3) |
-| **Read first** | K5a contract §K5.1–§K5.12; PR diff; `docs/OVERSEER-KIT-SPEC.md` §6; `cursor/skills/freeze-review/SKILL.md`; `policy/model-labels.yaml` (`reviewer_models`) |
-| **Hard stops** | No contract redesign; no implementation changes during review (findings → fix branch or follow-up); no `main` merge on `findings`/`blocked` |
+| **Prior review** | K5b-r round 1 `blocked` — F1–F6 on PR #5 comment |
+| **Hard stops** | No contract redesign; no implementation changes during review; no “cleared” claim without `pass` |
 
-**After K5b-r `pass`:** merge PR → pull `main` → **9A-5 Governance Hygiene Agent** (Auto).
+**After K5b-r2 `pass`:** merge `fix/k5b-r-findings` → pull `main` → **9A-5 Governance Hygiene Agent** (Auto).
 
-### Paste-ready prompt — K5b-r (Thinking) — now
+### Paste-ready prompt — K5b-r2 (Thinking) — now
 
 ```
-Phase K5b-r — Merge gate review (overseer-kit).
+Phase K5b-r2 — Re-review after K5b-r blocked findings (overseer-kit).
 
-Model: Thinking (thinking-high). Independent Freeze-Step Reviewer — verify K5b implementation against docs/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md. Do NOT re-derive the contract (K5a round 3 pass is ground truth).
+Model: Thinking (thinking-high). Independent Freeze-Step Reviewer — verify F1–F5 remediation against docs/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md. Do NOT re-derive the contract (K5a round 3 pass is ground truth). Do NOT re-litigate K5b wholesale unless a regression appears.
 
-Read first: docs/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md (§K5.1–§K5.12); PR diff on feat/k5-freeze-reviewer-contract; docs/OVERSEER-KIT-SPEC.md §6; cursor/skills/freeze-review/SKILL.md; policy/model-labels.yaml (reviewer_models).
+Read first:
+- docs/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md (§K5.1–§K5.12)
+- K5b-r round-1 review on PR #5 (blocked; F1–F6)
+- Diff on fix/k5b-r-findings vs main
+- docs/OVERSEER-HANDOVER.md (current NEXT SESSION)
+- policy/model-labels.yaml (reviewer_models)
 
-Scope: K5b implementation only — cli/commands/review.py, adapters/config.py, tools/freeze_reviewer/, policy/model-labels.yaml, tests/ (§K5.12 matrix), cursor/automations/, governance doc updates.
+Scope: remediation only + regression of touched surfaces —
+  tools/freeze_reviewer/providers/base.py
+  adapters/config.py
+  tools/freeze_reviewer/serializer.py
+  tools/freeze_reviewer/report.py
+  tests/unit/test_checklist_engine.py
+  tests/unit/test_serializer_key_order.py
+  tests/unit/test_report_stamp_line.py
+  tests/unit/test_reviewer_config.py
+  tests/integration/test_cli_review_freeze.py
 
-Checks (cite file+line for every finding):
-1. CLI args/exits/precedence (2>4>5>8>7>0; never 3) match §K5.1–§K5.2
-2. Nested reviewer config + legacy string normalization (config version 1) match §K5.3
-3. reviewer_models registry — labels only, no vendor slugs
-4. Engine: injectable providers; fallback:human fail-closed; never fabricate pass; artifact text = data
-5. Findings/verdicts/stable sort/stamp/idempotent digest match §K5.6–§K5.7
-6. Unified §K5.9 report (--json vs human)
-7. Automation templates + degrade docs (§K5.10)
-8. adapter.status() only; seven-tier tests green; no secrets in output
+Confirm each round-1 finding (cite file+line):
+1. F1 RESOLVED: ChecklistEngine does not keyword-match security/irreversible/real_money/gates_tier3 vocabulary; C4 still fires on absolute paths / secret-assignment patterns; dogfood of K5a contract is not false-blocked
+2. F2 RESOLVED: nested reviewer mode=agent with missing model|provider|fallback → ConfigError / exit 2 (no silent defaults)
+3. F3 RESOLVED: dump_freeze_mapping preserves existing key relative order; review_stamp after frozen_inputs else after outputs else last
+4. F4 RESOLVED: --mode human integration asserts §K5.9 escalation/reason/checklist/instructions
+5. F5 RESOLVED: idempotent pass human report does not claim "verdict != pass"
+6. F6 PROCESS: note premature PR #5 merge; clearance = this pass + fix branch on main (not the original merge)
+7. Full regression smoke: exits/precedence; legacy config; injectable providers + fallback:human; stamp idempotent digest; adapter.status() only; seven-tier tests green; no secrets
 
-Dogfood smoke (optional): cli/overseer review --freeze docs/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md --dry-run
+Dogfood (required): cli/overseer review --freeze docs/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md --dry-run --json
+  Expect: no false escalation-category findings from keyword discussion.
 
-Verdict: pass | findings | blocked. Record in PR review. gates_tier3 applies — blocked/findings with security findings require human before merge.
+Verdict: pass | findings | blocked. Record on the fix PR. gates_tier3 applies.
 
-Hard stops: no contract redesign; no merge to main without pass.
+Hard stops: no contract redesign; no merge clearance without pass.
 ```
 
-### Queued after K5b-r merge
+### Queued after K5b-r2 pass + fix merge
 
-- **9A-5 Governance Hygiene Agent** (Auto) — paste-ready prompt unchanged; run only after K5b PR merges.
+- **9A-5 Governance Hygiene Agent** (Auto) — run only after K5b-r2 `pass` and `fix/k5b-r-findings` is on `main`.
 
 ---
 
@@ -81,14 +97,16 @@ Hard stops: no contract redesign; no merge to main without pass.
 | Area | State |
 | --- | --- |
 | **Kit version** | `0.1.0` (`VERSION`) |
-| **K5a contract** | `docs/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md` — reviewed → `pass` (round 3); ground truth for K5b-r |
-| **K5b reviewer** | Built on `feat/k5-freeze-reviewer-contract`; PR open; merge blocked |
-| **Config schema** | Nested `freeze_contract.reviewer.{mode,model,provider,fallback}` + legacy normalization |
+| **K5a contract** | `docs/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md` — reviewed → `pass` (round 3); ground truth |
+| **K5b reviewer** | On `main` via premature PR #5 merge; **not cleared** until K5b-r2 |
+| **K5b-r** | Round 1 **`blocked`** (F1–F6). F1–F5 fixed on `fix/k5b-r-findings` awaiting K5b-r2 |
+| **Config schema** | Nested `freeze_contract.reviewer.{mode,model,provider,fallback}` required when `mode: agent`; legacy string normalization unchanged |
 | **CLI** | `init` \| `sync` \| `status` \| `review --freeze` |
-| **Tests** | **161 passing** (§K5.12 seven tiers) |
+| **Tests** | **170 passing** (53 K5b + F1–F5 coverage) |
+| **Dogfood** | `review --freeze` K5a contract `--dry-run` → **pass / 0** (post-F1) |
 
 ## Change log
 
-- **2026-07-10** — K5b build DONE; governance updated for **K5b-r Thinking merge gate** (implementation review, not K5a re-review). PR pending; 9A-5 queued after merge.
-- **2026-07-10** — K5b Freeze reviewer build: `overseer review --freeze` per §K5.1–§K5.11; 161 tests green.
+- **2026-07-10** — K5b-r round 1 **`blocked`** (F1–F6). F1–F5 remediated on `fix/k5b-r-findings`; handover retargeted to **K5b-r2 Thinking**. 170 tests green; dogfood pass. 9A-5 still gated on K5b-r2 `pass` + fix merge.
+- **2026-07-10** — K5b build landed (PR #5 merged early — F6). Round-1 review recorded on PR #5.
 - **2026-07-10** — K5a round 3 `pass`; cleared for K5b Auto build.

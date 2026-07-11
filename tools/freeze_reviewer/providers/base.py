@@ -14,12 +14,6 @@ ABSOLUTE_PATH_RE = re.compile(r"(?:^|[\s`'\"])(/[A-Za-z0-9._-]+){2,}")
 SECRET_RE = re.compile(r"(?i)(api[_-]?key|secret|token|password)\s*[:=]\s*\S+")
 TIER_MATRIX_RE = re.compile(r"seven[- ]tier|7[- ]tier", re.IGNORECASE)
 GROUND_TRUTH_RE = re.compile(r"frozen:\s*true|ground truth|ground-truth", re.IGNORECASE)
-ESCALATION_KEYWORDS = {
-    "C4": ("security", "injection", "secret"),
-    "C5": ("irreversible", "non-revertible", "delete"),
-    "C6": ("real money", "billing", "live model spend"),
-    "C7": ("gates_tier3", "merge to `main`", "merge to main", "tier 3", "tier-3"),
-}
 
 
 class ReviewProvider(Protocol):
@@ -41,7 +35,16 @@ class ReviewProvider(Protocol):
 
 @dataclass
 class ChecklistEngine:
-    """Rule-based checklist evaluation shared by local and api providers."""
+    """Rule-based checklist evaluation shared by local and api providers.
+
+    Heuristic detectors emit findings only for concrete risk *surfaces* (missing
+    ground-truth/matrix evidence; absolute paths; secret-assignment patterns;
+    missing citation discipline). C5–C7 (irreversibility / real money / Tier-3
+    linkage) require judgment of whether the artifact *introduces* those risks —
+    normative discussion of the words is not a finding. Nuanced C5–C7 verdicts
+    come from scripted/model providers; this engine does not keyword-match
+    escalation vocabulary (§K5.5 / SPEC §6.3).
+    """
 
     def evaluate(
         self,
@@ -105,31 +108,7 @@ class ChecklistEngine:
                     )
                     break
 
-        for check_id, keywords in ESCALATION_KEYWORDS.items():
-            if check_id not in check_ids:
-                continue
-            for line_no, line in enumerate(lines, start=1):
-                lowered = line.lower()
-                if any(keyword in lowered for keyword in keywords):
-                    category = {
-                        "C4": "security",
-                        "C5": "irreversible",
-                        "C6": "real_money",
-                        "C7": "gates_tier3",
-                    }[check_id]
-                    findings.append(
-                        Finding(
-                            check=check_id,
-                            severity="BLOCKER",
-                            category=category,  # type: ignore[arg-type]
-                            path=artifact_path,
-                            line=line_no,
-                            message=f"Checklist {check_id} keyword match in artifact.",
-                        ).with_citation()
-                    )
-                    break
-
-        if "C8" in check_ids and "file+line" not in artifact_text and "file+line" not in artifact_text.lower():
+        if "C8" in check_ids and "file+line" not in artifact_text.lower():
             findings.append(
                 Finding(
                     check="C8",

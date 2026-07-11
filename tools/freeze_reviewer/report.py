@@ -97,6 +97,8 @@ def render_human_report(*, freeze_path: str, result: ReviewResult) -> str:
         lines.append("Stamp: (dry-run — would write)")
     elif result.verdict == "pass" and result.stamp and result.no_stamp:
         lines.append("Stamp: (not written — no-stamp)")
+    elif result.verdict == "pass" and result.stamp and not result.stamp_written:
+        lines.append("Stamp: (unchanged — idempotent)")
     else:
         lines.append("Stamp: (not written — verdict != pass)")
     return "\n".join(lines)

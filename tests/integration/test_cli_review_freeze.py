@@ -126,13 +126,39 @@ def test_mode_human_skips_provider(tmp_path: Path) -> None:
         p.review = wrapped  # type: ignore[method-assign]
         return p
 
-    code = run_cli(
-        ["review", "--freeze", artifact.relative_to(tmp_path).as_posix(), "--mode", "human", "--json"],
-        cwd=tmp_path,
-        runner=git_status_runner(),
-        kit=kit_root(),
-        review_provider_factory=counting_factory,
-        json_mode=True,
-    )
+    buffer = StringIO()
+    from contextlib import redirect_stdout
+    from cli.context import CliContext
+    from cli.main import main
+    from cli.output import OutputContext
+    import os
+
+    old = Path.cwd()
+    os.chdir(tmp_path)
+    try:
+        ctx = CliContext.create(
+            runner=git_status_runner(),
+            cwd=tmp_path,
+            kit=kit_root(),
+            output=OutputContext(json_mode=True),
+            review_provider_factory=counting_factory,
+        )
+        with redirect_stdout(buffer):
+            code = main(
+                ["review", "--freeze", artifact.relative_to(tmp_path).as_posix(), "--mode", "human", "--json"],
+                ctx=ctx,
+            )
+    finally:
+        os.chdir(old)
+
     assert code == 8
     assert called["n"] == 0
+    payload = json.loads(buffer.getvalue())
+    assert payload["escalation"] == "human"
+    assert payload["reason"] == "mode_human"
+    assert payload["checklist"] == ["C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8"]
+    assert payload["instructions"]
+    assert "Freeze-Step Review" in payload["instructions"]
+    assert payload["stamp"] is None
+    assert payload["exit_code"] == 8
+    assert payload["verdict"] == "blocked"
