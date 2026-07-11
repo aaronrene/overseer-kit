@@ -1,0 +1,11 @@
+{
+  "name": "overseer-freeze-review-session-end",
+  "description": "Session-end freeze check (dry-run) — degrade to CLI when Automations unavailable",
+  "trigger": "session_end",
+  "command": "overseer review --freeze docs/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md --dry-run",
+  "degrade": {
+    "manual_cli": "overseer review --freeze <freeze-artifact> --dry-run",
+    "skill": "/freeze-review"
+  },
+  "note": "Template only — operator must enable in Cursor (Tier 2/3). Never treat unavailability as pass."
+}

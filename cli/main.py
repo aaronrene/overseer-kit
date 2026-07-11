@@ -8,8 +8,9 @@ from pathlib import Path
 
 from cli.args import extract_global_args
 
-COMMANDS = frozenset({"init", "sync", "status"})
+COMMANDS = frozenset({"init", "sync", "status", "review"})
 from cli.commands.init import run_init
+from cli.commands.review import run_review
 from cli.commands.status import run_status
 from cli.commands.sync import run_sync
 from cli.context import CliContext
@@ -50,6 +51,15 @@ def build_parser() -> argparse.ArgumentParser:
     status_parser = subparsers.add_parser("status", help="Read-only status report")
     status_parser.add_argument("--exit-code", action="store_true")
     status_parser.add_argument("--check-footprint", action="store_true")
+
+    review_parser = subparsers.add_parser("review", help="Freeze-contract review")
+    review_parser.add_argument("--freeze", required=True, dest="freeze_path", metavar="PATH")
+    review_parser.add_argument("--dry-run", action="store_true")
+    review_parser.add_argument("--mode", choices=["agent", "human"])
+    review_parser.add_argument("--provider", choices=["local", "api"])
+    review_parser.add_argument("--model", metavar="LABEL")
+    review_parser.add_argument("--no-stamp", action="store_true")
+    review_parser.add_argument("--checklist", metavar="PATH")
 
     return parser
 
@@ -101,6 +111,8 @@ def main(argv: list[str] | None = None, *, ctx: CliContext | None = None) -> int
         return run_sync(args, runtime)
     if args.command == "status":
         return run_status(args, runtime)
+    if args.command == "review":
+        return run_review(args, runtime, raw_argv=rest_argv)
 
     parser.error(f"unknown command: {args.command}")
     return 1

@@ -19,7 +19,7 @@ dev = [
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["adapters*", "cli*"]
+include = ["adapters*", "cli*", "tools*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

@@ -44,7 +44,12 @@ def default_config_dict(
         },
         "freeze_contract": {
             "enabled": True,
-            "reviewer": "agent",
+            "reviewer": {
+                "mode": "agent",
+                "model": "thinking-high",
+                "provider": "local",
+                "fallback": "human",
+            },
             "human_escalation": ["security"],
         },
     }
@@ -183,7 +188,12 @@ def config_to_dict(config: OverseerConfig) -> dict:
         },
         "freeze_contract": {
             "enabled": config.freeze_contract.enabled,
-            "reviewer": config.freeze_contract.reviewer,
+            "reviewer": {
+                "mode": config.freeze_contract.reviewer.mode,
+                "model": config.freeze_contract.reviewer.model,
+                "provider": config.freeze_contract.reviewer.provider,
+                "fallback": config.freeze_contract.reviewer.fallback,
+            },
             "human_escalation": list(config.freeze_contract.human_escalation),
         },
     }

@@ -91,6 +91,8 @@ def run_cli(
     cwd: Path,
     runner: RecordingRunner | None = None,
     kit: Path | None = None,
+    review_provider_factory=None,
+    json_mode: bool = False,
 ) -> int:
     """Invoke ``cli.main`` with an injected runner and working directory."""
     from cli.context import CliContext
@@ -104,9 +106,50 @@ def run_cli(
             runner=runner or make_runner({}),
             cwd=cwd,
             kit=kit,
-            output=OutputContext(),
+            output=OutputContext(json_mode=json_mode),
+            review_provider_factory=review_provider_factory,
         )
         return main(argv, ctx=ctx)
     finally:
         os.chdir(old_cwd)
+
+
+def seed_freeze_repo(repo_root: Path, *, config_name: str = "config-git-only.yaml") -> Path:
+    """Write config and copy a freeze artifact fixture into a temp repo."""
+    write_config(repo_root, config_name)
+    docs = repo_root / "docs"
+    docs.mkdir(parents=True, exist_ok=True)
+    artifact = docs / "FREEZE.md"
+    artifact.write_text((FIXTURES / "freeze-artifact.md").read_text(encoding="utf-8"), encoding="utf-8")
+    return artifact
+
+
+def pass_provider_factory():
+    """Factory returning a provider that always passes."""
+    from tools.freeze_reviewer.providers.base import LocalReviewProvider
+
+    def _factory(_provider_name: str) -> LocalReviewProvider:
+        return LocalReviewProvider(scripted_findings=[])
+
+    return _factory
+
+
+def findings_provider_factory(findings):
+    """Factory returning a provider with scripted findings."""
+    from tools.freeze_reviewer.providers.base import LocalReviewProvider
+
+    def _factory(_provider_name: str) -> LocalReviewProvider:
+        return LocalReviewProvider(scripted_findings=list(findings))
+
+    return _factory
+
+
+def unreachable_provider_factory(cause: str = "offline"):
+    """Factory returning an unreachable local provider."""
+    from tools.freeze_reviewer.providers.base import LocalReviewProvider
+
+    def _factory(_provider_name: str) -> LocalReviewProvider:
+        return LocalReviewProvider(force_unreachable=True, unreachable_cause=cause)
+
+    return _factory
 

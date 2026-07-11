@@ -52,3 +52,16 @@ handover_regeneration:
 
 standing_decisions:
   - SD-3
+
+reviewer_models:
+  - id: thinking-high
+    display: Thinking (high)
+    meaning: >
+      Extended reasoning for freeze-contract review — interfaces, fail-closed rules,
+      security, escalation edges, test-matrix completeness.
+    cursor_model_hint: extended thinking / Opus-class / gpt-5.3-codex-class
+  - id: auto-default
+    display: Auto (default)
+    meaning: >
+      Faster mechanical review pass against an already-structured freeze checklist.
+    cursor_model_hint: default / Composer / Sonnet-class
