@@ -18,7 +18,7 @@ class MuseGitMirrorAdapter(BaseAdapter):
     """Scooling/Knowtation backend — Muse canonical with GitHub mirror."""
 
     def status(self) -> StatusResult | ReadError:
-        muse_branch = self._muse("branch", "--show-current")
+        muse_branch = self._muse("rev-parse", "--abbrev-ref", "HEAD")
         if isinstance(muse_branch, ReadError):
             return muse_branch
         muse_dirty = self._muse("status", "--porcelain")
@@ -170,7 +170,7 @@ class MuseGitMirrorAdapter(BaseAdapter):
         if isinstance(checkout, ReadError):
             return checkout
 
-        current = self._muse("branch", "--show-current")
+        current = self._muse("rev-parse", "--abbrev-ref", "HEAD")
         if isinstance(current, ReadError):
             return current
         if current.stdout.strip() != branch:

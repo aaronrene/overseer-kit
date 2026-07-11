@@ -26,10 +26,10 @@ def test_muse_git_mirror_uses_absolute_repo_root(muse_git_mirror_config, repo_ro
     root = str(repo_root.resolve())
     runner = make_runner(
         {
-            f"muse -C {root} branch": ok("main"),
-            f"muse -C {root} status": ok(""),
-            "git rev-parse": ok("main"),
-            "git status": ok(""),
+            f"muse -C {root} rev-parse --abbrev-ref HEAD": ok("main"),
+            f"muse -C {root} status --porcelain": ok(""),
+            "git rev-parse --abbrev-ref HEAD": ok("main"),
+            "git status --porcelain": ok(""),
         }
     )
     adapter = adapter_for(muse_git_mirror_config, repo_root, runner)

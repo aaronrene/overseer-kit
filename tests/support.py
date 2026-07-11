@@ -78,7 +78,7 @@ def muse_mirror_status_runner(
     dirty_out = " M file" if dirty else ""
     return make_runner(
         {
-            f"muse -C {root} branch --show-current": ok(branch),
+            f"muse -C {root} rev-parse --abbrev-ref HEAD": ok(branch),
             f"muse -C {root} status --porcelain": ok(dirty_out),
             "git rev-parse --abbrev-ref HEAD": ok(branch),
             "git status --porcelain": ok(dirty_out),

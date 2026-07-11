@@ -4,42 +4,30 @@
 
 ---
 
-## NEXT SESSION — K7 operator follow-up (adapter + template fixes)
+## NEXT SESSION — post-K7 close-out hygiene
 
 **Date:** 2026-07-11  
-**Current position:** **K7 operator L1 DONE; L2 PR open (Tier-3 merge pending).** overseer-kit is
-**`muse+git-mirror` live** — Muse canonical, GitHub mirror via `muse-mirror` only.  
-**Model:** **Auto** (adapter `branch --show-current` → `rev-parse --abbrev-ref`; re-run K7 tests)  
-**Repo state:** PR [#10](https://github.com/aaronrene/overseer-kit/pull/10) `muse-mirror` → `main` open;
-**do not merge without Tier-3 authorization**
+**Current position:** **K7 operator DONE** — `muse+git-mirror` live; adapter branch probe fixed for
+`muse 0.2.0rc15`; deploy template re-synced; PR [#10](https://github.com/aaronrene/overseer-kit/pull/10)
+merged to `main` (Tier-3). **255** tests green.  
+**Model:** **Auto** (routine hygiene / next phase when scheduled)
 
-### What just landed (operator session)
+### What just landed (close-out session)
 
 | Slice | Deliverable |
 | --- | --- |
-| **D2** | `muse init` + bootstrap commit on Muse `main` (`sha256:88363a6e…`) |
-| **D3–D4** | `.overseer/config.yaml` → `muse+git-mirror`; `AGENTS.md` active SD-14 |
-| **D5** | `overseer sync --only` bridge footprint; `MUSE-BRIDGE-WORKFLOW.md` + `scripts/muse-bridge-deploy.sh` |
-| **D6** | P1/P2/P3/P10 verified live; P4–P8 blocked by `muse branch --show-current` unsupported on `0.2.0rc15` |
-| **K7.L1** | First `./scripts/muse-bridge-deploy.sh` → `.muse/mirror/` only; mirror commit `209cd3f`; dev-tree sentinel OK |
-| **K7.L2** | PR [#10](https://github.com/aaronrene/overseer-kit/pull/10) opened (`muse-mirror` → `main`); merge **pending Tier-3** |
-| **Live fixes** | Deploy script: bash 3.2 `_resolve_abs`, `GIT_REMOTE_URL` clone, `--commit-message` (not `--message`) |
+| **Adapter** | `MuseGitMirrorAdapter` branch probe: `muse rev-parse --abbrev-ref HEAD` (replaces unsupported `branch --show-current` on `0.2.0rc15`) |
+| **Template** | `templates/scripts/muse-bridge-deploy.sh.template` — bash 3.2 `_resolve_abs`, `GIT_REMOTE_URL` clone, `--commit-message` |
+| **Tests** | Seven-tier suite **255** green; unit test locks rev-parse branch probe |
+| **K7.L2** | PR [#10](https://github.com/aaronrene/overseer-kit/pull/10) **merged** (`muse-mirror` → `main`, Tier-3) |
 
 ### THE ONE NEXT STEP
 
 | | |
 | --- | --- |
-| **ID** | **K7 operator close-out** |
-| **Action** | Fix adapter `branch --show-current` → `muse rev-parse --abbrev-ref HEAD`; re-sync deploy template; Tier-3 merge PR #10 |
+| **ID** | **Post-K7 hygiene** |
+| **Action** | Commit adapter + template fixes on feature branch → bridge deploy → PR to `main`; verify live P4–P8 parity gates |
 | **Hard stops** | No `git-export --git-dir .`; no `git push origin main`; no force-push `main` |
-
-### Paste-ready prompt
-
-```
-K7 operator close-out: fix MuseGitMirrorAdapter branch probe for muse 0.2.0rc15 (rev-parse --abbrev-ref);
-re-sync deploy script template (bash 3.2 + GIT_REMOTE_URL + --commit-message fixes already in template);
-re-run K7 seven-tier tests; Tier-3 merge PR #10 muse-mirror → main when authorized.
-```
 
 ---
 
@@ -67,13 +55,18 @@ re-run K7 seven-tier tests; Tier-3 merge PR #10 muse-mirror → main when author
 | **K6b pilot install** | **DONE** — migrate + seams + fixtures + quickstart + runbook; **224** tests at K6b close |
 | **K7a dogfood freeze** | **DONE** — K7a-r2 `pass`; ground truth for K7b |
 | **K7b dogfood build** | **DONE** — bridge footprint + resolver + tests + operator runbook; **254** tests green |
-| **K7 operator L1/L2** | **L1 DONE** — first safe bridge `209cd3f` via `.muse/mirror/`; **L2 PR open** [#10](https://github.com/aaronrene/overseer-kit/pull/10) (Tier-3 merge pending) |
+| **K7 operator L1/L2** | **DONE** — first safe bridge `209cd3f` via `.muse/mirror/`; PR [#10](https://github.com/aaronrene/overseer-kit/pull/10) merged (Tier-3); adapter `rev-parse --abbrev-ref HEAD` fix; template re-synced; **255** tests green |
 | **CLI** | `init [--migrate]` \| `sync [--include-preserved]` \| `status` \| `review --freeze` \| `governance-sync` |
 | **Regime (this repo)** | **`muse+git-mirror` active** — Muse canonical; mirror via `scripts/muse-bridge-deploy.sh` only |
 | **Live pilots** | Not claimed PASS — operator runbook only; no consumer parity stamps |
 
 ## Change log
 
+- **2026-07-11** — **K7 operator close-out (Auto).** `MuseGitMirrorAdapter` branch probe switched to
+  `muse rev-parse --abbrev-ref HEAD` for `0.2.0rc15` compatibility (status + commit_feature).
+  Deploy template re-synced (bash 3.2 `_resolve_abs`, `GIT_REMOTE_URL`, `--commit-message`).
+  Seven-tier suite **255** green. PR [#10](https://github.com/aaronrene/overseer-kit/pull/10)
+  **merged** (`muse-mirror` → `main`, Tier-3). K7 operator phase **DONE**.
 - **2026-07-11** — **K7 operator L1/L2 (human).** Flipped `.overseer/config.yaml` + `AGENTS.md` to
   active `muse+git-mirror`; `muse init` + bootstrap commit on Muse `main`; `overseer sync --only`
   bridge footprint; parity P1/P2/P3/P10 live; P4–P8 blocked on `muse branch --show-current` vs

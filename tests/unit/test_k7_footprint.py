@@ -78,6 +78,9 @@ def test_rendered_deploy_script_safety_invariants(muse_git_mirror_config) -> Non
     assert "muse-mirror" in script
     assert "main" in script
     assert 'push "${GIT_REMOTE}" "${MIRROR_BRANCH}"' in script
+    assert "GIT_REMOTE_URL=" in script
+    assert '--commit-message "${COMMIT_MSG}"' in script
+    assert "--message " not in script
     assert "--no-push" not in script
     assert 'git push origin main' not in script
     assert 'push "${GIT_REMOTE}" "${MAIN_BRANCH}"' not in script
