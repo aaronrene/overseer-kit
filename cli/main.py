@@ -8,7 +8,8 @@ from pathlib import Path
 
 from cli.args import extract_global_args
 
-COMMANDS = frozenset({"init", "sync", "status", "review"})
+COMMANDS = frozenset({"init", "sync", "status", "review", "governance-sync"})
+from cli.commands.governance_sync import run_governance_sync_command
 from cli.commands.init import run_init
 from cli.commands.review import run_review
 from cli.commands.status import run_status
@@ -60,6 +61,21 @@ def build_parser() -> argparse.ArgumentParser:
     review_parser.add_argument("--model", metavar="LABEL")
     review_parser.add_argument("--no-stamp", action="store_true")
     review_parser.add_argument("--checklist", metavar="PATH")
+
+    gs_parser = subparsers.add_parser(
+        "governance-sync",
+        help="Governance hygiene agent (default dry-run)",
+    )
+    gs_parser.add_argument(
+        "--write",
+        action="store_true",
+        help="Apply doc patches, commit on feature branch, and push (default is dry-run)",
+    )
+    gs_parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Explicit dry-run (default when --write is absent)",
+    )
 
     return parser
 
@@ -113,6 +129,8 @@ def main(argv: list[str] | None = None, *, ctx: CliContext | None = None) -> int
         return run_status(args, runtime)
     if args.command == "review":
         return run_review(args, runtime, raw_argv=rest_argv)
+    if args.command == "governance-sync":
+        return run_governance_sync_command(args, runtime)
 
     parser.error(f"unknown command: {args.command}")
     return 1

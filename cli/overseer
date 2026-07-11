@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-# Overseer Kit CLI — dispatches init|sync|status to the Python runtime (K4b).
+# Overseer Kit CLI — POSIX shim → python -m cli.main (init|sync|status|review|governance-sync).
 set -eu
 ROOT="$(CDPATH= cd -- "$(dirname "$0")/.." && pwd)"
 export PYTHONPATH="${ROOT}${PYTHONPATH:+:$PYTHONPATH}"
