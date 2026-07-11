@@ -70,8 +70,11 @@ def test_sync_options_parsed() -> None:
     assert args.yes is True
 
 
-def test_status_options_parsed() -> None:
+def test_governance_sync_argparse() -> None:
     parser = build_parser()
-    args = parser.parse_args(["status", "--exit-code", "--check-footprint"])
-    assert args.exit_code is True
-    assert args.check_footprint is True
+    args = parser.parse_args(["governance-sync"])
+    assert args.command == "governance-sync"
+    assert args.write is False
+    args_write = parser.parse_args(["governance-sync", "--write"])
+    assert args_write.write is True
+

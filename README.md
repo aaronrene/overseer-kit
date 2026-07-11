@@ -10,17 +10,24 @@ Scooling, Knowtation, MuseHub, VideoFactory, and any other repo. Instead of hand
 `OVERSEER-HANDOVER.md`, tier rules, and model labels into every project, you run:
 
 ```bash
-/path/to/overseer-kit/cli/overseer init    # first install into a consumer repo
-/path/to/overseer-kit/cli/overseer sync    # pull template/policy updates
-/path/to/overseer-kit/cli/overseer status  # drift + VCS regime check
+./cli/overseer init              # first install (POSIX shim → python -m cli.main)
+./cli/overseer sync              # pull template/policy updates
+./cli/overseer status            # drift + VCS regime check
+./cli/overseer governance-sync   # handover/roadmap hygiene (default: dry-run)
+./cli/overseer review --freeze <path>
+
+# Equivalent without the shim:
+.venv/bin/python -m cli.main governance-sync --dry-run
 ```
+
+Do **not** run `python cli/overseer` — `cli/overseer` is a shell script, not Python.
 
 Each consumer repo keeps one small config file: `.overseer/config.yaml`.
 
 ## Status
 
-**K2 Config + adapters** — config schema + three fail-closed VCS backends (`adapters/`). **K3–K6 + 9A-5**
-queued in `docs/ROADMAP.md`.
+**K5b + 9A-5** — freeze reviewer + governance-sync CLI live. **K6 Pilot install** is NEXT
+(Thinking → Auto). See `docs/ROADMAP.md`.
 
 ## Reference implementation
 
