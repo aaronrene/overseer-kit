@@ -1,0 +1,52 @@
+# Two-lane consumer fixture (§K8) — queue + optional active video lane
+overseer_config_version: 1
+
+repo:
+  name: TwoLaneExample
+  root_relative_docs: "."
+
+vcs:
+  regime: git-only
+  canonical: git
+  git:
+    remote: origin
+    main_branch: main
+    mirror_branch: null
+    feature_branch_pattern: "feat/{slug}"
+  muse:
+    staging_remote: null
+    main_branch: null
+    working_dir: null
+
+docs:
+  handover: QUEUE_HANDOVER.md
+  roadmap: QUEUE_ROADMAP.md
+  handover_title: Queue Handover
+  roadmap_title: Queue Roadmap
+  coordination: null
+  standing_decisions: QUEUE_ROADMAP.md
+  default_lane: queue
+  lanes:
+    queue:
+      handover: QUEUE_HANDOVER.md
+      roadmap: QUEUE_ROADMAP.md
+      handover_title: Queue Handover
+      roadmap_title: Queue Roadmap
+    active:
+      handover: videos/_active/HANDOVER.md
+      roadmap: videos/_active/ROADMAP.md
+      handover_title: Active Handover
+      roadmap_title: Active Roadmap
+
+thresholds:
+  realign_max_commits: 50
+  drift_warn_only: true
+
+freeze_contract:
+  enabled: true
+  reviewer:
+    mode: agent
+    model: thinking-high
+    provider: local
+    fallback: human
+  human_escalation: [security, irreversible, real_money, gates_tier3]

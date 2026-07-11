@@ -34,12 +34,14 @@ def test_empty_root_relative_docs_fails_closed(tmp_path: Path) -> None:
 def test_videofactory_bare_paths(tmp_path: Path) -> None:
     config = load_config(PILOT / "config-videofactory.yaml")
     tokens = build_token_map(config)
-    assert tokens["docs.handover_path"] == "OVERSEER_HANDOVER.md"
-    assert tokens["docs.roadmap_path"] == "ROADMAP.md"
+    assert tokens["docs.handover_path"] == "VIDEO_OVERSEER_HANDOVER.md"
+    assert tokens["docs.roadmap_path"] == "VIDEO_PRODUCTION_STATUS_BOARD.md"
+    assert tokens["docs.handover_title"] == "Video Overseer Handover"
+    assert tokens["docs.roadmap_title"] == "Video Production Status Board"
     assert not tokens["docs.handover_path"].startswith("./")
     assert not tokens["docs.handover_path"].startswith("/")
     rendered = resolve_footprint(config)
     dests = {f.destination for f in rendered}
-    assert "OVERSEER_HANDOVER.md" in dests
-    assert "ROADMAP.md" in dests
+    assert "VIDEO_OVERSEER_HANDOVER.md" in dests
+    assert "VIDEO_PRODUCTION_STATUS_BOARD.md" in dests
     assert "docs/OVERSEER_HANDOVER.md" not in dests

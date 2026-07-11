@@ -8,12 +8,14 @@ import pytest
 
 from adapters.config import SUPPORTED_CONFIG_VERSION, load_config
 from adapters.errors import ConfigError
-from tests.support import write_config
+from tests.support import load_fixture_config, write_config
 
 
 def test_load_valid_git_only_config(git_only_config) -> None:
     assert git_only_config.vcs.regime == "git-only"
     assert git_only_config.overseer_config_version == SUPPORTED_CONFIG_VERSION
+    assert git_only_config.docs.handover_title == "Overseer Handover"
+    assert git_only_config.docs.roadmap_title == "Roadmap"
 
 
 def test_missing_config_raises(tmp_path: Path) -> None:
@@ -72,3 +74,38 @@ def test_muse_git_mirror_missing_mirror_branch_raises(repo_root: Path) -> None:
     path.write_text(text, encoding="utf-8")
     with pytest.raises(ConfigError, match="mirror_branch"):
         load_config(path)
+
+
+def test_load_two_lane_config(repo_root: Path) -> None:
+    cfg = load_fixture_config(repo_root, "config-two-lane.yaml")
+    assert cfg.docs.default_lane == "queue"
+    assert cfg.docs.lanes is not None
+    assert set(cfg.docs.lanes) == {"queue", "active"}
+    assert cfg.docs.lanes["active"].handover == "videos/_active/HANDOVER.md"
+
+
+def test_lanes_default_lane_mismatch_raises(repo_root: Path) -> None:
+    path = write_config(repo_root, "config-two-lane.yaml")
+    text = path.read_text(encoding="utf-8").replace(
+        "handover: QUEUE_HANDOVER.md",
+        "handover: WRONG.md",
+        1,
+    )
+    path.write_text(text, encoding="utf-8")
+    with pytest.raises(ConfigError, match="must match docs.lanes"):
+        load_config(path)
+
+
+def test_resolve_lane_docs_single_lane(git_only_config) -> None:
+    from adapters.config import resolve_lane_docs
+
+    docs = resolve_lane_docs(git_only_config, None)
+    assert docs.handover == git_only_config.docs.handover
+
+
+def test_resolve_lane_docs_unknown_lane_raises(repo_root: Path) -> None:
+    from adapters.config import resolve_lane_docs
+
+    cfg = load_fixture_config(repo_root, "config-two-lane.yaml")
+    with pytest.raises(ConfigError, match="unknown lane"):
+        resolve_lane_docs(cfg, "missing")

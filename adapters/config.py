@@ -39,11 +39,25 @@ class MuseConfig:
 
 
 @dataclass(frozen=True)
+class LaneDocsConfig:
+    """One handover + roadmap pair (K8 multi-lane)."""
+
+    handover: str
+    roadmap: str
+    handover_title: str
+    roadmap_title: str
+
+
+@dataclass(frozen=True)
 class DocsConfig:
     handover: str
     roadmap: str
     coordination: str | None
     standing_decisions: str
+    handover_title: str
+    roadmap_title: str
+    default_lane: str | None = None
+    lanes: dict[str, LaneDocsConfig] | None = None
 
 
 @dataclass(frozen=True)
@@ -183,11 +197,30 @@ def _validate_config(raw: dict[str, Any], path: str) -> OverseerConfig:
     _validate_regime_fields(regime, canonical, git, muse, path)
 
     docs_raw = _require_mapping(raw.get("docs"), "docs", path)
+    lanes = _parse_lanes(docs_raw.get("lanes"), path)
+    default_lane = _optional_str(docs_raw, "default_lane")
+    handover = _require_str(docs_raw, "handover", path)
+    roadmap = _require_str(docs_raw, "roadmap", path)
+    handover_title = _optional_str(docs_raw, "handover_title") or "Overseer Handover"
+    roadmap_title = _optional_str(docs_raw, "roadmap_title") or "Roadmap"
+    _validate_lanes_config(
+        lanes=lanes,
+        default_lane=default_lane,
+        handover=handover,
+        roadmap=roadmap,
+        handover_title=handover_title,
+        roadmap_title=roadmap_title,
+        path=path,
+    )
     docs = DocsConfig(
-        handover=_require_str(docs_raw, "handover", path),
-        roadmap=_require_str(docs_raw, "roadmap", path),
+        handover=handover,
+        roadmap=roadmap,
         coordination=_optional_str(docs_raw, "coordination"),
         standing_decisions=_require_str(docs_raw, "standing_decisions", path),
+        handover_title=handover_title,
+        roadmap_title=roadmap_title,
+        default_lane=default_lane,
+        lanes=lanes,
     )
 
     thresholds_raw = _require_mapping(raw.get("thresholds"), "thresholds", path)
@@ -311,6 +344,90 @@ def _parse_reviewer_config(raw_reviewer: Any, path: str) -> ReviewerConfig:
         provider=provider,
         fallback=fallback,
     )
+
+
+def _parse_lanes(raw_lanes: Any, path: str) -> dict[str, LaneDocsConfig] | None:
+    """Parse optional ``docs.lanes`` mapping (§K8)."""
+    if raw_lanes is None:
+        return None
+    if not isinstance(raw_lanes, dict):
+        raise ConfigError("docs.lanes must be a mapping", path)
+    lanes: dict[str, LaneDocsConfig] = {}
+    for lane_name, lane_raw in raw_lanes.items():
+        if not isinstance(lane_name, str) or not lane_name.strip():
+            raise ConfigError("docs.lanes keys must be non-empty strings", path)
+        lane_map = _require_mapping(lane_raw, f"docs.lanes.{lane_name}", path)
+        lanes[lane_name.strip()] = LaneDocsConfig(
+            handover=_require_str(lane_map, "handover", path),
+            roadmap=_require_str(lane_map, "roadmap", path),
+            handover_title=_optional_str(lane_map, "handover_title") or "Overseer Handover",
+            roadmap_title=_optional_str(lane_map, "roadmap_title") or "Roadmap",
+        )
+    return lanes
+
+
+def _validate_lanes_config(
+    *,
+    lanes: dict[str, LaneDocsConfig] | None,
+    default_lane: str | None,
+    handover: str,
+    roadmap: str,
+    handover_title: str,
+    roadmap_title: str,
+    path: str,
+) -> None:
+    """Fail closed on inconsistent multi-lane docs config (§K8)."""
+    if lanes is None:
+        if default_lane is not None:
+            raise ConfigError("docs.default_lane requires docs.lanes", path)
+        return
+    if not lanes:
+        raise ConfigError("docs.lanes must not be empty when present", path)
+    if not default_lane or not default_lane.strip():
+        raise ConfigError("docs.default_lane is required when docs.lanes is set", path)
+    default_lane = default_lane.strip()
+    if default_lane not in lanes:
+        raise ConfigError(
+            f"docs.default_lane {default_lane!r} is not a key in docs.lanes",
+            path,
+        )
+    default = lanes[default_lane]
+    if handover != default.handover or roadmap != default.roadmap:
+        raise ConfigError(
+            "docs.handover and docs.roadmap must match docs.lanes[default_lane]",
+            path,
+        )
+    if handover_title != default.handover_title or roadmap_title != default.roadmap_title:
+        raise ConfigError(
+            "docs.handover_title and docs.roadmap_title must match docs.lanes[default_lane]",
+            path,
+        )
+
+
+def resolve_lane_docs(config: OverseerConfig, lane: str | None) -> LaneDocsConfig:
+    """Return the handover/roadmap pair for ``lane`` or the default lane (§K8)."""
+    docs = config.docs
+    if docs.lanes is None:
+        if lane is not None:
+            raise ConfigError("docs.lanes is not configured; --lane is not supported")
+        return LaneDocsConfig(
+            handover=docs.handover,
+            roadmap=docs.roadmap,
+            handover_title=docs.handover_title,
+            roadmap_title=docs.roadmap_title,
+        )
+    name = (lane or docs.default_lane or "").strip()
+    if name not in docs.lanes:
+        known = ", ".join(sorted(docs.lanes))
+        raise ConfigError(f"unknown lane {name!r} (configured: {known})")
+    return docs.lanes[name]
+
+
+def list_configured_lanes(config: OverseerConfig) -> tuple[str, ...]:
+    """Return sorted lane names; single implicit lane when ``docs.lanes`` is absent."""
+    if config.docs.lanes is None:
+        return ("default",)
+    return tuple(sorted(config.docs.lanes))
 
 
 def _validate_regime_fields(

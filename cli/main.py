@@ -91,6 +91,16 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Explicit dry-run (default when --write is absent)",
     )
+    gs_parser.add_argument(
+        "--lane",
+        metavar="NAME",
+        help="Sync only this configured docs lane (requires docs.lanes in config)",
+    )
+    gs_parser.add_argument(
+        "--all-lanes",
+        action="store_true",
+        help="Sync every configured lane; skip lanes with missing doc files",
+    )
 
     return parser
 

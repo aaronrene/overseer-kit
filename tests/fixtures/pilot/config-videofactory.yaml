@@ -1,7 +1,21 @@
+# VideoFactory — overseer kit consumer config (prepared pilot fixture)
+#
+# Install (migrate preserves your existing status board + handover):
+#   <kit>/cli/overseer -C <videofactory-root> init --migrate \
+#     --from-config <kit>/tests/fixtures/pilot/config-videofactory.yaml --non-interactive
+#
+# Greenfield (empty repo):
+#   add --regime git-only if not using --from-config
+#
+# See docs/VIDEOFACTORY-OVERSEER-SETUP.md for multi-repo workspace naming.
+
 overseer_config_version: 1
+
 repo:
   name: VideoFactory
+  # Living docs at repo root (VIDEO_*.md), not under docs/
   root_relative_docs: "."
+
 vcs:
   regime: git-only
   canonical: git
@@ -14,18 +28,27 @@ vcs:
     staging_remote: null
     main_branch: null
     working_dir: null
+
 docs:
-  handover: OVERSEER_HANDOVER.md
-  roadmap: ROADMAP.md
+  # Filenames — per-repo; kit resolves paths via tokens (governance-sync, handover, rules).
+  handover: VIDEO_OVERSEER_HANDOVER.md
+  roadmap: VIDEO_PRODUCTION_STATUS_BOARD.md
+  # Display titles in seeded templates (rename freely; filenames above are the paths).
+  handover_title: Video Overseer Handover
+  roadmap_title: Video Production Status Board
   coordination: null
-  standing_decisions: ROADMAP.md
+  # Standing decisions may live in the status board or a separate file.
+  standing_decisions: VIDEO_PRODUCTION_STATUS_BOARD.md
+
 thresholds:
   realign_max_commits: 50
   drift_warn_only: true
+
 freeze_contract:
   enabled: true
   reviewer:
     mode: agent
+    # Label from policy/model-labels.yaml — pick thinking-capable model in Cursor for reviews.
     model: thinking-high
     provider: local
     fallback: human

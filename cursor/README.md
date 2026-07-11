@@ -12,7 +12,10 @@ with any AI assistant — see root `README.md` § AI tool compatibility.
 | `rules/tier-authority.mdc` | Tier 1/2/3 when to act vs ask |
 | `rules/no-docs-only-pr-to-main.mdc` | Docs-only PR guard (configurable per consumer) |
 | `skills/governance-sync/SKILL.md` | Session-end hygiene agent workflow |
-| `skills/freeze-review/SKILL.md` | Frozen spec review before Auto build (§6) |
+| `skills/freeze-review/SKILL.md` | Single-pass frozen spec review before Auto build (§6) |
+| `skills/freeze-review-loop/SKILL.md` | **Optional** bounded loop until freeze `pass` (`/freeze-review-loop`) |
+| `skills/build-verification-review/SKILL.md` | **Mandatory** post-build honesty review (`.cursor/rules/build-verification-required.mdc`) |
+| `rules/build-verification-required.mdc` | Always-on: no DONE without `/build-verification-review` pass |
 | `automations/*.json` | Optional Automation templates (not auto-enabled; Tier-3 to enable) |
 
 **Degrade path:** when Automations are unavailable, use `./cli/overseer governance-sync` and

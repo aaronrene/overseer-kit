@@ -44,6 +44,17 @@ security, irreversibility, real money, or Tier-3 gates.
 /path/to/overseer-kit/cli/overseer review --freeze <path>
 ```
 
+## Multi-round loop (optional)
+
+For bounded review → fix → re-review until `pass`, use **`cursor/skills/freeze-review-loop/SKILL.md`**
+(`/freeze-review-loop`). Not automatic — invoke when a frozen spec must clear before `{step}b` Auto build.
+
+## After Auto build (honesty gate)
+
+Freeze review guards the **spec**. **`cursor/skills/build-verification-review/SKILL.md`**
+(`/build-verification-review`) guards the **implementation** — run before marking the phase DONE.
+Manual/opt-in today; required by SD-3 discipline even when not enforced by CLI.
+
 ## Escalate to human when
 
 - `security` — auth, scope, secrets, injection

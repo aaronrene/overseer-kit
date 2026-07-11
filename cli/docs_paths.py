@@ -28,14 +28,29 @@ def join_docs_rel(root_relative_docs: str, doc_name: str) -> str:
 
 
 def living_doc_destinations(config: OverseerConfig) -> frozenset[str]:
-    """Return footprint destination paths for configured living docs."""
-    docs = {
-        join_docs_rel(config.repo.root_relative_docs, config.docs.handover),
-        join_docs_rel(config.repo.root_relative_docs, config.docs.roadmap),
-    }
+    """Return footprint destination paths for configured living docs (all lanes)."""
+    docs_root = config.repo.root_relative_docs
+    docs: set[str] = set()
+    if config.docs.lanes is None:
+        docs.add(join_docs_rel(docs_root, config.docs.handover))
+        docs.add(join_docs_rel(docs_root, config.docs.roadmap))
+    else:
+        for lane in config.docs.lanes.values():
+            docs.add(join_docs_rel(docs_root, lane.handover))
+            docs.add(join_docs_rel(docs_root, lane.roadmap))
     if config.docs.coordination:
-        docs.add(join_docs_rel(config.repo.root_relative_docs, config.docs.coordination))
+        docs.add(join_docs_rel(docs_root, config.docs.coordination))
     return frozenset(docs)
+
+
+def lane_living_doc_abs(
+    repo_root: Path,
+    config: OverseerConfig,
+    lane_docs: LaneDocsConfig,
+    doc_name: str,
+) -> Path:
+    """Absolute path to a lane living doc under ``repo_root``."""
+    return repo_root / join_docs_rel(config.repo.root_relative_docs, doc_name)
 
 
 def living_doc_abs(repo_root: Path, config: OverseerConfig, doc_name: str) -> Path:
