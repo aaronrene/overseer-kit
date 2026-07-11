@@ -4,7 +4,24 @@
 
 ---
 
-## NEXT SESSION — K8b close-out or K6 live pilots (optional)
+## NEXT SESSION — Expand layered honesty vision → freeze K9a (▶ NEXT)
+
+**Date:** 2026-07-11  
+**Current position:** **K8 DONE**. VF Option B + kit init dogfooded (VideoFactory PR #34).  
+**Vision draft:** `docs/OVERSEER-KIT-LAYERED-HONESTY-VISION.md` (L0–L3, two legs, Muse scenarios, Track N, modularity).  
+**Model:** **Thinking (high)**
+
+### THE ONE NEXT STEP
+
+| | |
+| --- | --- |
+| **ID** | **K9a** (after vision expansion) |
+| **Action** | Paste §12 prompt from the vision doc; expand → draft freeze contract for L1 checkpoints + L2 honesty modules; MuseHub collab answers; Track N landing wireframe |
+| **Hard stops** | No Auto build until freeze `pass`; no Muse-required baseline; no media model QC as authority |
+
+---
+
+## NEXT SESSION — K8b close-out or K6 live pilots (optional — reference)
 
 **Date:** 2026-07-11  
 **Current position:** **K8 DONE** — multi-lane `docs.lanes` + `governance-sync --lane` / `--all-lanes`.
@@ -16,7 +33,7 @@
 | | |
 | --- | --- |
 | **ID** | **K6 live pilots** (optional) or **public prep** |
-| **Action** | VF `init --migrate`; or add LICENSE + commit pending footprint skills |
+| **Action** | VF `init --migrate` (done on VF); or add LICENSE + public prep under Track N |
 | **Hard stops** | No Tier-3 without authorization |
 
 ---

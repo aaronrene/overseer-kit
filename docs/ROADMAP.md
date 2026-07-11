@@ -28,6 +28,13 @@
 | **K7 operator live dogfood** | Operator | **DONE** | D2–D5 flip to `muse+git-mirror`; first safe bridge via `.muse/mirror/` (`209cd3f`); PR [#10](https://github.com/aaronrene/overseer-kit/pull/10) merged (Tier-3); adapter `rev-parse --abbrev-ref HEAD` fix; deploy template re-synced; **255** tests green. |
 | **K8a Freeze multi-lane docs** | Thinking | **DONE** | Frozen `docs.lanes` + `docs.default_lane` schema + `governance-sync --lane` / `--all-lanes` contract (`docs/PHASE-K8-MULTI-LANE-DOCS-CONTRACT.md`). |
 | **K8b Multi-lane docs build** | Auto | **DONE** | `docs.lanes` + `default_lane` in config; `governance-sync --lane` / `--all-lanes`; all-lane footprint; fixture `config-two-lane.yaml`; **266** tests green. |
+| **K9a Freeze L1+L2 modules** | Thinking | **▶ NEXT** | Freeze checkpoint plugin + honesty module contracts from `docs/OVERSEER-KIT-LAYERED-HONESTY-VISION.md` (L0–L3; two legs; Muse on-ramp; Track N landing seed) |
+| **K9b Checkpoint plugin build** | Auto | TODO | Generic L1 orchestrator + schema; VF remains reference pack |
+| **K10 Honesty module** | Thinking → Auto | TODO | Productize Track H as opt-in L2 (ledger, roles, co-requirement) |
+| **K11 API/CI freeze provider** | Auto | TODO | Real headless `provider: api` + Actions example |
+| **K12 / Track N** | Thinking → Auto | TODO | Public landing, scenario gallery, GitHub→MuseHub funnel |
+
+**Vision baton (expand next):** `docs/OVERSEER-KIT-LAYERED-HONESTY-VISION.md`
 
 ## Regime capability tiers (git-only baseline → MuseHub-enhanced)
 
