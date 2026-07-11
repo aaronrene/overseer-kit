@@ -14,7 +14,10 @@ _resolve_abs() {
   local base="$1"
   local rel="$2"
   if [[ "${rel}" = /* ]]; then
-    (cd "$(dirname "${rel}")" && pwd)/$(basename "${rel}")
+    local dir base_name
+    dir="$(cd "$(dirname "${rel}")" && pwd)"
+    base_name="$(basename "${rel}")"
+    echo "${dir}/${base_name}"
   else
     echo "${base%/}/${rel#./}"
   fi
@@ -22,6 +25,11 @@ _resolve_abs() {
 
 REPO_ABS="$(cd "${REPO_ROOT}" && pwd -P)"
 MIRROR_ABS="$(_resolve_abs "${REPO_ROOT}" "${MIRROR_REL}")"
+GIT_REMOTE_URL="$(git -C "${REPO_ROOT}" config --get "remote.${GIT_REMOTE}.url" 2>/dev/null || true)"
+if [[ -z "${GIT_REMOTE_URL}" ]]; then
+  echo "refused: git remote '${GIT_REMOTE}' URL not configured" >&2
+  exit 1
+fi
 
 # S3: refuse repo-root export (blocks --git-dir .)
 if [[ "${MIRROR_ABS}" == "${REPO_ABS}" ]]; then
@@ -32,10 +40,10 @@ fi
 # S4: provision / update isolated mirror checkout on mirror_branch from remote
 mkdir -p "$(dirname "${MIRROR_ABS}")"
 if [[ ! -d "${MIRROR_ABS}/.git" ]]; then
-  if git clone --branch "${MIRROR_BRANCH}" "${GIT_REMOTE}" "${MIRROR_ABS}" 2>/dev/null; then
+  if git clone --branch "${MIRROR_BRANCH}" "${GIT_REMOTE_URL}" "${MIRROR_ABS}" 2>/dev/null; then
     :
   else
-    git clone "${GIT_REMOTE}" "${MIRROR_ABS}"
+    git clone "${GIT_REMOTE_URL}" "${MIRROR_ABS}"
     git -C "${MIRROR_ABS}" checkout -B "${MIRROR_BRANCH}" 2>/dev/null \
       || git -C "${MIRROR_ABS}" checkout "${MIRROR_BRANCH}"
   fi
@@ -63,7 +71,7 @@ muse -C "${MUSE_ROOT}" bridge git-export \
   --exclude ".muse/*" \
   --exclude ".env" \
   --exclude ".env.local" \
-  --message "${COMMIT_MSG}"
+  --commit-message "${COMMIT_MSG}"
 
 # S5 post-export sentinel check
 if [[ ! -f "${SENTINEL}" ]]; then

@@ -4,41 +4,41 @@
 
 ---
 
-## NEXT SESSION — Operator live dogfood (K7.L1/L2)
+## NEXT SESSION — K7 operator follow-up (adapter + template fixes)
 
 **Date:** 2026-07-11  
-**Current position:** **K7b DONE.** Footprint assets + regime-conditional resolver + executable
-deploy script + seven-tier tests (**254** green). Kit repo remains **`git-only`** (footprint-first
-per §K7.7). Operator flip (config/`AGENTS.md` + Muse bind + first bridge) is the next slice.  
-**Model:** **Operator** (human-gated; not Auto)  
-**Repo state:** merge `feat/k7-muse-git-mirror-dogfood` → `main`, then operator session on feature branch
+**Current position:** **K7 operator L1 DONE; L2 PR open (Tier-3 merge pending).** overseer-kit is
+**`muse+git-mirror` live** — Muse canonical, GitHub mirror via `muse-mirror` only.  
+**Model:** **Auto** (adapter `branch --show-current` → `rev-parse --abbrev-ref`; re-run K7 tests)  
+**Repo state:** PR [#10](https://github.com/aaronrene/overseer-kit/pull/10) `muse-mirror` → `main` open;
+**do not merge without Tier-3 authorization**
 
-### What just landed
+### What just landed (operator session)
 
 | Slice | Deliverable |
 | --- | --- |
-| **K7b build** | `templates/MUSE-BRIDGE-WORKFLOW.template.md` + `templates/scripts/muse-bridge-deploy.sh.template` (S1–S13); `resolve_footprint` regime gate; `write_footprint_bytes` (`0755` on deploy script); `tokens.yaml`; `tests/fixtures/config-overseer-kit-dogfood.yaml`; `docs/K7-DOGFOOD-OPERATOR-RUNBOOK.md` |
-| **Sync seed/conflict** | Default `sync` seeds absent bridge destinations; conflicts (exit `4`) when on-disk bridge files exist without lock baseline |
-| **Tests** | Seven-tier K7 matrix (§K7.8): **254** passing |
-| **Footprint-first held** | `.overseer/config.yaml` + `AGENTS.md` unchanged (`git-only` / planned) |
+| **D2** | `muse init` + bootstrap commit on Muse `main` (`sha256:88363a6e…`) |
+| **D3–D4** | `.overseer/config.yaml` → `muse+git-mirror`; `AGENTS.md` active SD-14 |
+| **D5** | `overseer sync --only` bridge footprint; `MUSE-BRIDGE-WORKFLOW.md` + `scripts/muse-bridge-deploy.sh` |
+| **D6** | P1/P2/P3/P10 verified live; P4–P8 blocked by `muse branch --show-current` unsupported on `0.2.0rc15` |
+| **K7.L1** | First `./scripts/muse-bridge-deploy.sh` → `.muse/mirror/` only; mirror commit `209cd3f`; dev-tree sentinel OK |
+| **K7.L2** | PR [#10](https://github.com/aaronrene/overseer-kit/pull/10) opened (`muse-mirror` → `main`); merge **pending Tier-3** |
+| **Live fixes** | Deploy script: bash 3.2 `_resolve_abs`, `GIT_REMOTE_URL` clone, `--commit-message` (not `--message`) |
 
-### THE ONE NEXT STEP — Operator live dogfood
+### THE ONE NEXT STEP
 
 | | |
 | --- | --- |
-| **ID** | **K7 operator** (D1–D8 + L1/L2) |
-| **Runbook** | `docs/K7-DOGFOOD-OPERATOR-RUNBOOK.md` |
-| **Ground truth** | `docs/PHASE-K7-MUSE-GIT-MIRROR-DOGFOOD.md` §K7.2–§K7.4 |
-| **Config matrix** | `tests/fixtures/config-overseer-kit-dogfood.yaml` (§K7.2.3) |
-| **Hard stops** | No `muse bridge git-export --git-dir .`; no `git push origin main`; Tier-3 for `muse-mirror` → `main` merge |
+| **ID** | **K7 operator close-out** |
+| **Action** | Fix adapter `branch --show-current` → `muse rev-parse --abbrev-ref HEAD`; re-sync deploy template; Tier-3 merge PR #10 |
+| **Hard stops** | No `git-export --git-dir .`; no `git push origin main`; no force-push `main` |
 
-### Paste-ready prompt — operator dogfood
+### Paste-ready prompt
 
 ```
-Operator session: flip overseer-kit to muse+git-mirror per docs/K7-DOGFOOD-OPERATOR-RUNBOOK.md
-(D1–D8). K7b merged. Flip .overseer/config.yaml + AGENTS.md; Muse bind (D2); overseer sync (D5);
-parity K7.P1–P10; first live bridge via ./scripts/muse-bridge-deploy.sh only (K7.L1). Record L1/L2
-in handover. Never git-export on dev tree.
+K7 operator close-out: fix MuseGitMirrorAdapter branch probe for muse 0.2.0rc15 (rev-parse --abbrev-ref);
+re-sync deploy script template (bash 3.2 + GIT_REMOTE_URL + --commit-message fixes already in template);
+re-run K7 seven-tier tests; Tier-3 merge PR #10 muse-mirror → main when authorized.
 ```
 
 ---
@@ -67,12 +67,21 @@ in handover. Never git-export on dev tree.
 | **K6b pilot install** | **DONE** — migrate + seams + fixtures + quickstart + runbook; **224** tests at K6b close |
 | **K7a dogfood freeze** | **DONE** — K7a-r2 `pass`; ground truth for K7b |
 | **K7b dogfood build** | **DONE** — bridge footprint + resolver + tests + operator runbook; **254** tests green |
+| **K7 operator L1/L2** | **L1 DONE** — first safe bridge `209cd3f` via `.muse/mirror/`; **L2 PR open** [#10](https://github.com/aaronrene/overseer-kit/pull/10) (Tier-3 merge pending) |
 | **CLI** | `init [--migrate]` \| `sync [--include-preserved]` \| `status` \| `review --freeze` \| `governance-sync` |
-| **Regime (this repo)** | Still **`git-only`** — operator flip (D3–D4) + L1/L2 pending |
+| **Regime (this repo)** | **`muse+git-mirror` active** — Muse canonical; mirror via `scripts/muse-bridge-deploy.sh` only |
 | **Live pilots** | Not claimed PASS — operator runbook only; no consumer parity stamps |
 
 ## Change log
 
+- **2026-07-11** — **K7 operator L1/L2 (human).** Flipped `.overseer/config.yaml` + `AGENTS.md` to
+  active `muse+git-mirror`; `muse init` + bootstrap commit on Muse `main`; `overseer sync --only`
+  bridge footprint; parity P1/P2/P3/P10 live; P4–P8 blocked on `muse branch --show-current` vs
+  `0.2.0rc15`. **K7.L1:** `./scripts/muse-bridge-deploy.sh "mirror: K7 operator flip — first live
+  bridge (L1)"` → isolated `.muse/mirror/` → `origin/muse-mirror` @ `209cd3f`; dev-tree sentinel OK.
+  **K7.L2:** PR [#10](https://github.com/aaronrene/overseer-kit/pull/10) opened (`muse-mirror` →
+  `main`); merge pending Tier-3. Live script fixes: bash 3.2 `_resolve_abs`, `GIT_REMOTE_URL` clone,
+  `--commit-message`. Never `git-export --git-dir .`.
 - **2026-07-11** — **K7b DONE (Auto).** Shipped regime-conditional bridge footprint
   (`MUSE-BRIDGE-WORKFLOW.md`, `scripts/muse-bridge-deploy.sh` S1–S13), `resolve_footprint` gate,
   executable write helper, `tokens.yaml`, `config-overseer-kit-dogfood.yaml` fixture,
