@@ -4,54 +4,75 @@
 
 ---
 
-## NEXT SESSION — K4b DONE; start K5a freeze reviewer
+## NEXT SESSION — K5b-r Merge gate review (Thinking)
 
 **Date:** 2026-07-10  
-**Current position:** **K4b Vendoring CLI build complete** — `overseer init|sync|status` implemented in `cli/` Python runtime, dispatched by `cli/overseer` shim; `version.lock` reader/writer + §K4.7 `footprint_digest`; atomic per-file writes with lock-last durability; all §K4.10 seven-tier tests green (108 total). K4a freeze independently reviewed (`pass`, 4 rounds, PR #3 merged).  
-**Model:** **Thinking** (K5a must freeze reviewer-model config schema before K5b builds)  
-**Repo state:** PR [#4](https://github.com/aaronrene/overseer-kit/pull/4) (`feat/k4-vendoring-cli`) open for review; **no `main` merge without review**.
+**Current position:** **K5b build DONE.** PR open on `feat/k5-freeze-reviewer-contract`. **161 tests green.** **`main` merge blocked** until independent implementation review passes.  
+**Model:** **Thinking** (`thinking-high` — Independent Freeze-Step Reviewer)  
+**Repo state:** PR pending; do **not** merge to `main` without K5b-r `pass`.
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **K4b Vendoring CLI** | `cli/` package: `init`, `sync`, `status`; `footprint.py`, `digest.py`, `version_lock.py`, `sync_classify.py`; shim execs `python3 -m cli.main`; `.overseer/version.lock` updated to real `sha256:54ffb06e…` digest |
-| **K4a Freeze CLI contract** | `docs/PHASE-K4-VENDORING-CLI-CONTRACT.md` — reviewed `pass` (4 rounds) |
-| **K3 Extract shared assets** | `templates/`, `policy/`, `cursor/`; `adapters/templating.py` |
-| **K2 Config + adapters** | Config schema + three fail-closed VCS backends |
-| **K1 Bootstrap** | Repo skeleton, promoted spec, dogfood config |
+| **K5b Freeze reviewer build** | `overseer review --freeze` CLI; nested `freeze_contract.reviewer` + legacy normalization; `reviewer_models` registry; `tools/freeze_reviewer/` engine; §K5.9 report; idempotent stamp; Automation templates; 53 new tests → **161 total green** |
+| **K5a contract (already reviewed)** | `docs/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md` — round 3 → **`pass`**. This is ground truth; **do not re-derive** during K5b-r — verify implementation matches it. |
+| **K4b Vendoring CLI** | `init` \| `sync` \| `status`; PR #4 merged |
 
-### THE ONE NEXT STEP — **Model: Thinking (K5a)**
+### Review model — yes, use Thinking
 
-**K5a Freeze reviewer** — freeze `overseer review --freeze` arg contract + extend `freeze_contract.reviewer.{mode, model, provider, fallback}` schema per `docs/OVERSEER-KIT-SPEC.md` §6.2.
+| Question | Answer |
+| --- | --- |
+| Re-review the K5a **contract doc**? | **No** — K5a round 3 already `pass`. The contract stays frozen ground truth. |
+| What needs review now? | The K5b **implementation** (PR diff + test matrix) against the K5a contract §K5.1–§K5.12. |
+| Which model? | **Thinking** (`thinking-high` per `policy/model-labels.yaml` → `reviewer_models`). Auto built it; Thinking verifies it. |
+| Why Thinking? | SPEC §6: frozen outputs consumed without re-deriving need reviewed freeze; K5b gates Tier 3 (`gates_tier3` — merge to `main`); security/injection surfaces in the reviewer itself. |
+| Dogfood? | Run `cli/overseer review --freeze docs/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md --dry-run` on the PR branch as a smoke check; **K5b-r still requires** independent cited regression of implementation vs contract (CLI, config, engine, tests). |
+
+### THE ONE NEXT STEP — **Model: Thinking** — K5b-r Merge gate review
 
 | | |
 | --- | --- |
-| **ID** | **K5a** |
-| **Branch** | `feat/k5-freeze-reviewer-contract` |
+| **ID** | **K5b-r** |
+| **Branch** | Review PR branch `feat/k5-freeze-reviewer-contract` (do not merge until `pass`) |
 | **Repo** | **overseer-kit** |
-| **Read first** | `docs/OVERSEER-KIT-SPEC.md` §6.2; `docs/ROADMAP.md` K5 row; `policy/model-labels.yaml`; `tools/freeze_reviewer/README.md` |
-| **Hard stops** | No `review --freeze` implementation (K5b); no governance-sync (9A-5); no consumer migration (K6); no `main` merge without review |
+| **Ground truth** | `docs/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md` (K5a — reviewed `pass`, round 3) |
+| **Read first** | K5a contract §K5.1–§K5.12; PR diff; `docs/OVERSEER-KIT-SPEC.md` §6; `cursor/skills/freeze-review/SKILL.md`; `policy/model-labels.yaml` (`reviewer_models`) |
+| **Hard stops** | No contract redesign; no implementation changes during review (findings → fix branch or follow-up); no `main` merge on `findings`/`blocked` |
 
-**Queued after K5a (do not start early):**
-- **K5b Freeze reviewer build** (Auto) — implement `overseer review --freeze`; **K5a must freeze the reviewer-model config schema** (`local|api` provider + `fallback: human` fail-closed; spec §6.2). No core review capability may be API-only.
-- **9A-5 Governance Hygiene Agent** (Auto) — `overseer governance-sync [--dry-run]`
-- **K6 Pilot install** (Thinking → Auto) — `overseer init` into Scooling → Knowtation → MuseHub → VideoFactory
-- **K7 Dogfood muse+git-mirror** (Thinking → Auto, operator-run) — flip this repo to MuseHub canonical + GitHub mirror. Guardrail: no core governance feature may ever be MuseHub-only (`docs/ROADMAP.md` § Regime capability tiers).
+**After K5b-r `pass`:** merge PR → pull `main` → **9A-5 Governance Hygiene Agent** (Auto).
 
-### Paste-ready prompt — K5a (Thinking)
+### Paste-ready prompt — K5b-r (Thinking) — now
 
 ```
-Phase K5a — Freeze reviewer contract (overseer-kit).
+Phase K5b-r — Merge gate review (overseer-kit).
 
-Model: Thinking. Freeze the `overseer review --freeze` contract and the extended freeze_contract.reviewer schema — do not implement the reviewer CLI.
+Model: Thinking (thinking-high). Independent Freeze-Step Reviewer — verify K5b implementation against docs/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md. Do NOT re-derive the contract (K5a round 3 pass is ground truth).
 
-Read first: docs/OVERSEER-KIT-SPEC.md §6.2; docs/ROADMAP.md K5; policy/model-labels.yaml; tools/freeze_reviewer/README.md; docs/PHASE-K4-VENDORING-CLI-CONTRACT.md (pattern for freeze doc).
+Read first: docs/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md (§K5.1–§K5.12); PR diff on feat/k5-freeze-reviewer-contract; docs/OVERSEER-KIT-SPEC.md §6; cursor/skills/freeze-review/SKILL.md; policy/model-labels.yaml (reviewer_models).
 
-Deliverables: frozen contract doc for review --freeze (args, exit codes, reviewer-model config schema with local|api provider + fallback: human); seven-tier test matrix for K5b; governance sync on completion.
+Scope: K5b implementation only — cli/commands/review.py, adapters/config.py, tools/freeze_reviewer/, policy/model-labels.yaml, tests/ (§K5.12 matrix), cursor/automations/, governance doc updates.
 
-Hard stops: no K5b build; no governance-sync; no main merge without review.
+Checks (cite file+line for every finding):
+1. CLI args/exits/precedence (2>4>5>8>7>0; never 3) match §K5.1–§K5.2
+2. Nested reviewer config + legacy string normalization (config version 1) match §K5.3
+3. reviewer_models registry — labels only, no vendor slugs
+4. Engine: injectable providers; fallback:human fail-closed; never fabricate pass; artifact text = data
+5. Findings/verdicts/stable sort/stamp/idempotent digest match §K5.6–§K5.7
+6. Unified §K5.9 report (--json vs human)
+7. Automation templates + degrade docs (§K5.10)
+8. adapter.status() only; seven-tier tests green; no secrets in output
+
+Dogfood smoke (optional): cli/overseer review --freeze docs/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md --dry-run
+
+Verdict: pass | findings | blocked. Record in PR review. gates_tier3 applies — blocked/findings with security findings require human before merge.
+
+Hard stops: no contract redesign; no merge to main without pass.
 ```
+
+### Queued after K5b-r merge
+
+- **9A-5 Governance Hygiene Agent** (Auto) — paste-ready prompt unchanged; run only after K5b PR merges.
 
 ---
 
@@ -60,25 +81,14 @@ Hard stops: no K5b build; no governance-sync; no main merge without review.
 | Area | State |
 | --- | --- |
 | **Kit version** | `0.1.0` (`VERSION`) |
-| **Spec** | Frozen in `docs/OVERSEER-KIT-SPEC.md` |
-| **Config schema** | `adapters/config.py` — version 1, regimes `muse+git-mirror` \| `muse-only` \| `git-only` |
-| **VCS adapters** | `adapters/git_only/`, `muse_only/`, `muse_git_mirror/` — §4 interface, fail-closed reads |
-| **Templates** | `templates/*.template.md` — handover, roadmap, standing decisions, coordination |
-| **Policy** | `policy/tiers.yaml`, `model-labels.yaml`, `test-tiers.yaml` |
-| **Cursor footprint** | `cursor/rules/` + `cursor/skills/` (source); vendored to `.cursor/` on `init` |
-| **Templating** | `adapters/templating.py` — fixed-key substitution, fail-closed |
-| **CLI** | `cli/overseer` shim → `cli/main.py`; `init` \| `sync` \| `status` per `docs/PHASE-K4-VENDORING-CLI-CONTRACT.md` |
-| **version.lock** | Full §K4.6 shape; `footprint_digest: sha256:54ffb06e01c8026c9c1cca3ad2c5086d4386d1cb2668fc5c67576bd6d13beb12` |
-| **Tests** | **108 passing** — unit, integration, e2e, stress, data-integrity, performance, security (§K4.10) |
-| **Scooling reference** | Phase 9A runtime @ `scooling/src/phase9a/` |
+| **K5a contract** | `docs/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md` — reviewed → `pass` (round 3); ground truth for K5b-r |
+| **K5b reviewer** | Built on `feat/k5-freeze-reviewer-contract`; PR open; merge blocked |
+| **Config schema** | Nested `freeze_contract.reviewer.{mode,model,provider,fallback}` + legacy normalization |
+| **CLI** | `init` \| `sync` \| `status` \| `review --freeze` |
+| **Tests** | **161 passing** (§K5.12 seven tiers) |
 
 ## Change log
 
-- **2026-07-10** — K4b Vendoring CLI build: `cli/` package with `init|sync|status`, `version.lock` reader/writer, §K4.7 `footprint_digest`, atomic lock-last writes; shim dispatches to Python; 108 tests green across seven tiers; `.overseer/version.lock` updated from `sha256:pending-k4` to computed digest. ROADMAP + handover synced. PR #4.
-- **2026-07-10** — K5 reviewer-model config requirement frozen: `freeze_contract.reviewer.{mode, model, provider, fallback}` schema captured in `docs/OVERSEER-KIT-SPEC.md` §6.2 and `docs/ROADMAP.md` K5 row. `provider: local` is first-class; fail-closed to `human` if unreachable; model is a label, never a vendor slug. K5a Thinking must freeze this schema before K5b builds the reviewer.
-- **2026-07-10** — K4a freeze **independently reviewed over 4 rounds** (dogfood of §6 Freeze-Step Reviewer, `gpt-5.3-codex`, all findings cited file+line): `blocked → blocked → blocked → pass`. Round 1 (1 BLOCKER + 6 MAJOR + 2 MINOR): init rule, `--only` semantics, exit precedence, `last_governance_sync`, exit `5` wording, absolute-path ban, skills glob, standing-decisions, digest newline. Round 2 (destination collision, `--verbose` carve-out, carried digest). Round 3 (**ADR skeleton silently dropped** → fixed: SD skeleton always vendored to `.overseer/STANDING-DECISIONS.reference.md`, `docs.standing_decisions` is a pointer only). Round 4: `pass` + pinned `--only` to destination-path matching. Full 4-round review record in the contract's freeze block. Fixed on PR #3.
-- **2026-07-10** — Governance decision captured: dogfood `muse+git-mirror` (MuseHub canonical + GitHub mirror) deferred to new **Phase K7** (operator-run). Repo stays `git-only` until then. `AGENTS.md` + `ROADMAP.md` (K7 row + regime capability tiers) updated.
-- **2026-07-10** — K4a Freeze CLI contract: `docs/PHASE-K4-VENDORING-CLI-CONTRACT.md` frozen. Thinking phase — no code. ROADMAP + handover synced.
-- **2026-07-10** — K3 Extract shared assets: templates, policy, cursor fragments, templating module, 58 tests green.
-- **2026-07-10** — K2 Config + adapters: config validation, three backends, unit/integration/security tests.
-- **2026-07-10** — K1 Bootstrap: repo created; spec promoted from Scooling; dogfood governance initialized.
+- **2026-07-10** — K5b build DONE; governance updated for **K5b-r Thinking merge gate** (implementation review, not K5a re-review). PR pending; 9A-5 queued after merge.
+- **2026-07-10** — K5b Freeze reviewer build: `overseer review --freeze` per §K5.1–§K5.11; 161 tests green.
+- **2026-07-10** — K5a round 3 `pass`; cleared for K5b Auto build.

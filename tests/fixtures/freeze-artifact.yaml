@@ -1,0 +1,10 @@
+phase: K5b-test
+outputs:
+  - id: test-output
+    path: docs/TEST-FREEZE.yaml
+    frozen: true
+frozen_inputs:
+  - id: parent-spec
+    path: docs/OVERSEER-KIT-SPEC.md
+
+# Seven-tier test matrix present for checklist C2.

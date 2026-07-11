@@ -374,6 +374,12 @@ providers; (3) `provider: local` is a **first-class** option — the kit must wo
 API key required; (4) no core review capability may be `api`-only. These are non-negotiable: they
 preserve the kit's offline/repo-agnostic promise.
 
+**K5a refinement (frozen detail):** the `overseer review --freeze` argument contract, review-specific
+exit codes (`7` findings / `8` blocked-or-human), extended `freeze_contract.reviewer` schema with
+legacy-string normalization, finding/verdict/stamp/escalation rules, provider reachability + human
+packet, Automation degrade path, and the K5b seven-tier test matrix are frozen in
+`docs/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md`. K5b builds against that document.
+
 ### §6.3 — Human escalation (only when necessary)
 
 The reviewer escalates to a human **only** when a finding (or the artifact's declared linkage) hits
@@ -504,7 +510,7 @@ rules). No phase is DONE until its tests pass.
 | **K2 Config + adapters** | `.overseer/config.yaml` schema (§3) + the VCS adapter interface (§4) + three fail-closed backends + their unit/integration/security tests. | **Thinking → Auto** |
 | **K3 Extract shared assets** | Move the existing handover/roadmap/SD-format/tier/model-label/test-tier policy out of the three repos into `templates/` + `policy/` + `cursor/`, token-parameterized. | **Auto** |
 | **K4 Vendoring CLI** | `overseer init|sync|status` + `version.lock` + drift check (§5) + seven-tier tests. Contract frozen in `docs/PHASE-K4-VENDORING-CLI-CONTRACT.md` (K4a); K4b builds against it. | **Thinking → Auto** |
-| **K5 Freeze reviewer + automation routing** | The §6 reviewer (file+line citations, verdicts, escalation) + `overseer review` + session-end/on-merge Automation templates + tests. | **Thinking → Auto** |
+| **K5 Freeze reviewer + automation routing** | The §6 reviewer (file+line citations, verdicts, escalation) + `overseer review` + session-end/on-merge Automation templates + tests. Contract frozen in `docs/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md` (K5a); K5b builds against it. | **Thinking → Auto** |
 | **9A-5 Governance Hygiene Agent** | The first shipped tool, built against its own frozen spec (`PHASE-9A-5-…-OUTLINE.md`), rebased onto the K2 adapter interface. | **Auto** |
 | **K6 Pilot install + migration** | `overseer init` into Scooling → Knowtation → MuseHub per §8; parity gate; external `git-only` quickstart. | **Thinking → Auto** |
 

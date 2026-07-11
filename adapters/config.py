@@ -13,6 +13,14 @@ from adapters.errors import ConfigError
 SUPPORTED_CONFIG_VERSION = 1
 SUPPORTED_REGIMES = frozenset({"muse+git-mirror", "muse-only", "git-only"})
 SUPPORTED_CANONICAL = frozenset({"muse", "git"})
+REVIEWER_MODES = frozenset({"agent", "human"})
+REVIEWER_PROVIDERS = frozenset({"local", "api"})
+REVIEWER_FALLBACK = frozenset({"human"})
+HUMAN_ESCALATION_TOKENS = frozenset({"security", "irreversible", "real_money", "gates_tier3"})
+DEFAULT_REVIEWER_MODEL = "thinking-high"
+DEFAULT_REVIEWER_PROVIDER = "local"
+DEFAULT_REVIEWER_FALLBACK = "human"
+REVIEWER_MAPPING_KEYS = frozenset({"mode", "model", "provider", "fallback"})
 
 
 @dataclass(frozen=True)
@@ -44,9 +52,17 @@ class ThresholdsConfig:
 
 
 @dataclass(frozen=True)
+class ReviewerConfig:
+    mode: str
+    model: str
+    provider: str
+    fallback: str
+
+
+@dataclass(frozen=True)
 class FreezeContractConfig:
     enabled: bool
-    reviewer: str
+    reviewer: ReviewerConfig
     human_escalation: list[str]
 
 
@@ -187,10 +203,11 @@ def _validate_config(raw: dict[str, Any], path: str) -> OverseerConfig:
     enabled = freeze_raw.get("enabled")
     if not isinstance(enabled, bool):
         raise ConfigError("freeze_contract.enabled must be a boolean", path)
-    reviewer = _require_str(freeze_raw, "reviewer", path)
+    reviewer = _parse_reviewer_config(freeze_raw.get("reviewer"), path)
     escalation = freeze_raw.get("human_escalation")
     if not isinstance(escalation, list) or not all(isinstance(x, str) for x in escalation):
         raise ConfigError("freeze_contract.human_escalation must be a list of strings", path)
+    _validate_human_escalation(list(escalation), path)
 
     return OverseerConfig(
         overseer_config_version=version,
@@ -203,6 +220,69 @@ def _validate_config(raw: dict[str, Any], path: str) -> OverseerConfig:
             reviewer=reviewer,
             human_escalation=list(escalation),
         ),
+    )
+
+
+def _validate_human_escalation(tokens: list[str], path: str) -> None:
+    for token in tokens:
+        if token not in HUMAN_ESCALATION_TOKENS:
+            raise ConfigError(
+                f"unknown freeze_contract.human_escalation token {token!r}",
+                path,
+            )
+
+
+def _parse_reviewer_config(raw_reviewer: Any, path: str) -> ReviewerConfig:
+    """Parse nested reviewer mapping or legacy string (§K5.3)."""
+    if isinstance(raw_reviewer, str):
+        if raw_reviewer not in REVIEWER_MODES:
+            raise ConfigError(
+                f"freeze_contract.reviewer legacy string must be agent|human, got {raw_reviewer!r}",
+                path,
+            )
+        return ReviewerConfig(
+            mode=raw_reviewer,
+            model=DEFAULT_REVIEWER_MODEL,
+            provider=DEFAULT_REVIEWER_PROVIDER,
+            fallback=DEFAULT_REVIEWER_FALLBACK,
+        )
+
+    reviewer_raw = _require_mapping(raw_reviewer, "freeze_contract.reviewer", path)
+    extra = set(reviewer_raw) - REVIEWER_MAPPING_KEYS
+    if extra:
+        raise ConfigError(
+            f"unknown freeze_contract.reviewer keys: {sorted(extra)}",
+            path,
+        )
+
+    mode = _require_str(reviewer_raw, "mode", path)
+    if mode not in REVIEWER_MODES:
+        raise ConfigError(f"freeze_contract.reviewer.mode must be agent|human", path)
+
+    model = reviewer_raw.get("model", DEFAULT_REVIEWER_MODEL)
+    provider = reviewer_raw.get("provider", DEFAULT_REVIEWER_PROVIDER)
+    fallback = reviewer_raw.get("fallback", DEFAULT_REVIEWER_FALLBACK)
+
+    if mode == "agent":
+        if not isinstance(model, str) or not model.strip():
+            raise ConfigError("freeze_contract.reviewer.model must be a non-empty string", path)
+        if provider not in REVIEWER_PROVIDERS:
+            raise ConfigError("freeze_contract.reviewer.provider must be local|api", path)
+        if fallback not in REVIEWER_FALLBACK:
+            raise ConfigError("freeze_contract.reviewer.fallback must be human", path)
+    else:
+        if not isinstance(model, str) or not model.strip():
+            model = DEFAULT_REVIEWER_MODEL
+        if provider not in REVIEWER_PROVIDERS:
+            provider = DEFAULT_REVIEWER_PROVIDER
+        if fallback not in REVIEWER_FALLBACK:
+            fallback = DEFAULT_REVIEWER_FALLBACK
+
+    return ReviewerConfig(
+        mode=mode,
+        model=model,
+        provider=provider,
+        fallback=fallback,
     )
 
 

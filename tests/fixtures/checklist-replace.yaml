@@ -1,0 +1,4 @@
+checks:
+  - id: X1
+    title: Custom only
+    typical_severity: MAJOR

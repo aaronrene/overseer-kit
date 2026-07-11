@@ -1,0 +1,11 @@
+{
+  "name": "overseer-freeze-review-on-merge",
+  "description": "Pre-Auto-build freeze gate on feature branch — degrade to CLI/CI when Automations unavailable",
+  "trigger": "on_merge_request",
+  "command": "overseer review --freeze docs/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md",
+  "degrade": {
+    "manual_cli": "overseer review --freeze <freeze-artifact>",
+    "ci": "Run the same command in CI — no silent skip"
+  },
+  "note": "Template only — operator must enable. Stamp write occurs on pass (non-dry-run)."
+}
