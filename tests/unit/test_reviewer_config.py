@@ -82,6 +82,15 @@ def test_extra_reviewer_keys_rejected(repo_root: Path) -> None:
         load_config(path)
 
 
+def test_missing_agent_reviewer_fields_rejected(repo_root: Path) -> None:
+    path = write_config(repo_root, "config-git-only.yaml")
+    data = yaml.safe_load(path.read_text(encoding="utf-8"))
+    data["freeze_contract"]["reviewer"] = {"mode": "agent"}
+    path.write_text(yaml.safe_dump(data), encoding="utf-8")
+    with pytest.raises(ConfigError, match="required when mode is agent"):
+        load_config(path)
+
+
 def test_init_emits_nested_reviewer() -> None:
     data = default_config_dict(regime="git-only", repo_name="x", docs_dir="docs")
     reviewer = data["freeze_contract"]["reviewer"]

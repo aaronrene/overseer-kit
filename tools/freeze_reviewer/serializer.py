@@ -6,20 +6,28 @@ from typing import Any
 
 import yaml
 
-FREEZE_KEY_ORDER = ("phase", "outputs", "frozen_inputs", "review_stamp")
-
 
 def _ordered_mapping_items(data: dict[str, Any]) -> list[tuple[str, Any]]:
-    """Preserve known key order; append unknown keys in sorted order for stability."""
-    seen: set[str] = set()
-    items: list[tuple[str, Any]] = []
-    for key in FREEZE_KEY_ORDER:
-        if key in data:
-            items.append((key, data[key]))
-            seen.add(key)
-    for key in sorted(data):
-        if key not in seen:
-            items.append((key, data[key]))
+    """Preserve existing keys' relative order; place ``review_stamp`` per §K5.7.
+
+    Contract: preserve existing keys' relative order; place ``review_stamp`` after
+    ``frozen_inputs`` if present, else after ``outputs``, else last.
+    """
+    stamp_present = "review_stamp" in data
+    items: list[tuple[str, Any]] = [
+        (key, value) for key, value in data.items() if key != "review_stamp"
+    ]
+    if not stamp_present:
+        return items
+
+    keys = [key for key, _ in items]
+    if "frozen_inputs" in keys:
+        insert_at = keys.index("frozen_inputs") + 1
+    elif "outputs" in keys:
+        insert_at = keys.index("outputs") + 1
+    else:
+        insert_at = len(items)
+    items.insert(insert_at, ("review_stamp", data["review_stamp"]))
     return items
 
 

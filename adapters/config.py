@@ -259,11 +259,17 @@ def _parse_reviewer_config(raw_reviewer: Any, path: str) -> ReviewerConfig:
     if mode not in REVIEWER_MODES:
         raise ConfigError(f"freeze_contract.reviewer.mode must be agent|human", path)
 
-    model = reviewer_raw.get("model", DEFAULT_REVIEWER_MODEL)
-    provider = reviewer_raw.get("provider", DEFAULT_REVIEWER_PROVIDER)
-    fallback = reviewer_raw.get("fallback", DEFAULT_REVIEWER_FALLBACK)
-
     if mode == "agent":
+        # §K5.3: all required fields for agent mode must be present; missing → 2.
+        for field_name in ("model", "provider", "fallback"):
+            if field_name not in reviewer_raw:
+                raise ConfigError(
+                    f"freeze_contract.reviewer.{field_name} is required when mode is agent",
+                    path,
+                )
+        model = reviewer_raw["model"]
+        provider = reviewer_raw["provider"]
+        fallback = reviewer_raw["fallback"]
         if not isinstance(model, str) or not model.strip():
             raise ConfigError("freeze_contract.reviewer.model must be a non-empty string", path)
         if provider not in REVIEWER_PROVIDERS:
@@ -271,6 +277,10 @@ def _parse_reviewer_config(raw_reviewer: Any, path: str) -> ReviewerConfig:
         if fallback not in REVIEWER_FALLBACK:
             raise ConfigError("freeze_contract.reviewer.fallback must be human", path)
     else:
+        # Human mode: model/provider/fallback optional; unused at runtime (§K5.2 step 6).
+        model = reviewer_raw.get("model", DEFAULT_REVIEWER_MODEL)
+        provider = reviewer_raw.get("provider", DEFAULT_REVIEWER_PROVIDER)
+        fallback = reviewer_raw.get("fallback", DEFAULT_REVIEWER_FALLBACK)
         if not isinstance(model, str) or not model.strip():
             model = DEFAULT_REVIEWER_MODEL
         if provider not in REVIEWER_PROVIDERS:
