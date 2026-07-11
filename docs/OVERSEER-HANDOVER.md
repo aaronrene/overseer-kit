@@ -4,28 +4,62 @@
 
 ---
 
-## NEXT SESSION — consumer pilot installs (optional)
+## NEXT SESSION — K8b close-out or K6 live pilots (optional)
 
 **Date:** 2026-07-11  
-**Current position:** **K7 DONE** — build queue through operator dogfood complete; PR
-[#11](https://github.com/aaronrene/overseer-kit/pull/11) merged (`muse-mirror` → `main`, Tier-3).
-README updated for repo-agnostic MuseHub guidance. **255** tests green.  
-**Model:** **Operator** (live consumer inits remain human-gated)
+**Current position:** **K8 DONE** — multi-lane `docs.lanes` + `governance-sync --lane` / `--all-lanes`.
+**266** tests green. VF Option B prompt at `docs/VIDEOFACTORY-CHECKPOINT-BUILD-PROMPT.md`.  
+**Model:** **Operator** (pilots) or **Auto** (README/LICENSE public-prep)
+
+### THE ONE NEXT STEP
+
+| | |
+| --- | --- |
+| **ID** | **K6 live pilots** (optional) or **public prep** |
+| **Action** | VF `init --migrate`; or add LICENSE + commit pending footprint skills |
+| **Hard stops** | No Tier-3 without authorization |
+
+---
+
+## NEXT SESSION — K8b multi-lane docs build (Auto)
+
+**Date:** 2026-07-11  
+**Current position:** **K8a DONE** — frozen multi-lane contract in
+`docs/PHASE-K8-MULTI-LANE-DOCS-CONTRACT.md`. **K8b WIP** — config + `governance-sync --lane`
+implementation in tree. Prior K7 close-out on `main`.  
+**Model:** **Auto**
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **K7 close-out PR** | [#11](https://github.com/aaronrene/overseer-kit/pull/11) merged — adapter rev-parse + template sync on `main` |
-| **README** | Repo-agnostic positioning; `git-only` vs `muse+git-mirror`; MuseHub connect path; removed consumer-project list |
+| **K8a** | `docs/PHASE-K8-MULTI-LANE-DOCS-CONTRACT.md` — `docs.lanes`, `default_lane`, CLI flags |
+| **VF prompt** | `docs/VIDEOFACTORY-CHECKPOINT-BUILD-PROMPT.md` — Option B (manifest + verify + PROGRESS) |
+| **K8b (partial)** | `adapters/config.py` lanes parse; `governance-sync --lane` / `--all-lanes` |
+
+### THE ONE NEXT STEP
+
+| | |
+| --- | --- |
+| **ID** | **K8b** |
+| **Action** | Finish seven-tier tests green; VF fixture optional `lanes.active`; update README |
+| **Hard stops** | Backward compat: single-lane configs unchanged; no Tier-3 without review |
+
+---
+
+## NEXT SESSION — consumer pilot installs (optional, after K8b)
+
+**Date:** 2026-07-11  
+**Current position:** K6 live pilots remain operator-gated per `docs/K6-PILOT-OPERATOR-RUNBOOK.md`.  
+**Model:** **Operator**
 
 ### THE ONE NEXT STEP
 
 | | |
 | --- | --- |
 | **ID** | **K6 live pilots** (optional) |
-| **Action** | Per `docs/K6-PILOT-OPERATOR-RUNBOOK.md` — one consumer repo at a time; parity P1–P7 before next |
-| **Hard stops** | No `--force --include-preserved` on live consumers; no Tier-3 gate flips without authorization |
+| **Action** | One consumer repo at a time; parity P1–P7 before next |
+| **Hard stops** | No `--force --include-preserved` on live consumers |
 
 ---
 
@@ -54,12 +88,20 @@ README updated for repo-agnostic MuseHub guidance. **255** tests green.
 | **K7a dogfood freeze** | **DONE** — K7a-r2 `pass`; ground truth for K7b |
 | **K7b dogfood build** | **DONE** — bridge footprint + resolver + tests + operator runbook; **254** tests green |
 | **K7 operator L1/L2** | **DONE** — first safe bridge `209cd3f` via `.muse/mirror/`; PR [#10](https://github.com/aaronrene/overseer-kit/pull/10) merged (Tier-3); adapter `rev-parse --abbrev-ref HEAD` fix; template re-synced; **255** tests green |
-| **CLI** | `init [--migrate]` \| `sync [--include-preserved]` \| `status` \| `review --freeze` \| `governance-sync` |
+| **K8a multi-lane freeze** | **DONE** — `docs/PHASE-K8-MULTI-LANE-DOCS-CONTRACT.md` |
+| **K8b multi-lane build** | **DONE** — `docs.lanes` + `governance-sync --lane` / `--all-lanes`; **266** tests green |
+| **VF Option B prompt** | `docs/VIDEOFACTORY-CHECKPOINT-BUILD-PROMPT.md` |
+| **CLI** | `init [--migrate]` \| `sync` \| `status` \| `review --freeze` \| `governance-sync [--lane NAME] [--all-lanes]` |
 | **Regime (this repo)** | **`muse+git-mirror` active** — Muse canonical; mirror via `scripts/muse-bridge-deploy.sh` only |
 | **Live pilots** | Not claimed PASS — operator runbook only; no consumer parity stamps |
 
 ## Change log
 
+- **2026-07-11** — **K8 DONE (Thinking + Auto).** Multi-lane living docs: optional `docs.lanes` +
+  `default_lane` in `.overseer/config.yaml`; `overseer governance-sync --lane NAME` and
+  `--all-lanes` (skips missing lane files). Backward compatible single-lane configs unchanged.
+  Contract: `docs/PHASE-K8-MULTI-LANE-DOCS-CONTRACT.md`. **266** tests green. VF Option B prompt:
+  `docs/VIDEOFACTORY-CHECKPOINT-BUILD-PROMPT.md`.
 - **2026-07-11** — **README expansion (post-K7).** Consumer README: handover/overseer concepts,
   benefits, end-to-end flow, model label sources, AI tool compatibility matrix (Cursor / Claude Code /
   Copilot / paste-only), neutral cursor/README. PR [#11](https://github.com/aaronrene/overseer-kit/pull/11)

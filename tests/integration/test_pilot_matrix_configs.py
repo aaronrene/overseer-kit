@@ -41,8 +41,10 @@ def test_videofactory_bare_paths_and_git_only() -> None:
     assert config.vcs.regime == "git-only"
     assert config.repo.root_relative_docs == "."
     dests = {f.destination for f in resolve_footprint(config)}
-    assert "OVERSEER_HANDOVER.md" in dests
-    assert "ROADMAP.md" in dests
+    assert "VIDEO_OVERSEER_HANDOVER.md" in dests
+    assert "VIDEO_PRODUCTION_STATUS_BOARD.md" in dests
+    assert config.docs.handover_title == "Video Overseer Handover"
+    assert config.docs.roadmap_title == "Video Production Status Board"
 
 
 def test_all_pilot_configs_have_thresholds_and_nested_reviewer() -> None:

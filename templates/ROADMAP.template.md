@@ -1,4 +1,4 @@
-# {{repo.name}} — Roadmap
+# {{docs.roadmap_title}} — {{repo.name}}
 
 ## Phase Model Key
 
@@ -22,7 +22,9 @@ include **`Model:`**.
 ## Definition of Done (every phase)
 
 - Deliverables match frozen spec for the phase
+- **Freeze review `pass`** before any **Auto** build that consumes a `frozen: true` artifact (`/freeze-review-loop` when findings)
 - Required seven-tier tests green locally (`policy/test-tiers.yaml`)
+- **Build verification `pass`** after any **Auto** (`{step}b`) phase before status → **DONE** (`/build-verification-review`; thinking-high)
 - No secrets committed
 - Both `{{docs.roadmap_path}}` and `{{docs.handover_path}}` updated together (SD-17)
 - Feature branch → commit → (push/PR per `{{vcs.regime}}` rules); no `{{vcs.git.main_branch}}` merge without Tier 3

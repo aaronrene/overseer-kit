@@ -159,6 +159,23 @@ the `overseer` CLI work the same regardless of which assistant you use.
 **Degrade path (by design):** if Cursor Automations are unavailable, `overseer governance-sync`
 and `overseer review --freeze` are the portable fallback — no Cursor-only gate on core governance.
 
+## Two review gates (honesty discipline)
+
+SD-3 **`Thinking → Auto`** is two gates, not one:
+
+| Gate | When | Skill | Enforced how |
+| --- | --- | --- | --- |
+| **Freeze review** | After `{step}a` freezes the spec | `/freeze-review-loop` | ROADMAP DoD + handover paste blocks |
+| **Build verification** | After `{step}b`, **before DONE** | `/build-verification-review` | **Always-on** `.cursor/rules/build-verification-required.mdc` + ROADMAP DoD |
+| **Mechanical tests** | During/after build | `policy/test-tiers.yaml` | ROADMAP Definition of Done |
+
+Skills run in the **agent session** (not a background daemon). The always-on rule prevents marking
+DONE without verification. Escalation categories still stop for a human.
+
+**Custom doc names** (VideoFactory, MuseHub, multi-repo workspaces): set `docs.handover`,
+`docs.roadmap`, `docs.handover_title`, `docs.roadmap_title` in `.overseer/config.yaml` — see
+`docs/VIDEOFACTORY-OVERSEER-SETUP.md`.
+
 ---
 
 ## VCS regimes
@@ -279,10 +296,12 @@ codebases — see `docs/OVERSEER-KIT-SPEC.md`. The kit does not ship product ada
 | `policy/tiers.yaml` | Decision authority Tier 1/2/3 |
 | `policy/test-tiers.yaml` | Seven-tier test contract |
 | `docs/GIT-ONLY-QUICKSTART.md` | Greenfield install without Muse |
-| `docs/K6-PILOT-OPERATOR-RUNBOOK.md` | Migrate + install on consumer repos |
+| `docs/VIDEOFACTORY-OVERSEER-SETUP.md` | VideoFactory install + custom doc names |
 | `docs/K7-DOGFOOD-OPERATOR-RUNBOOK.md` | Flip a repo to `muse+git-mirror` |
 | `MUSE-BRIDGE-WORKFLOW.md` | SD-14 mirror rules (vendored when regime requires) |
 | `cursor/README.md` | What ships into `.cursor/` on init/sync |
+| `.cursor/skills/freeze-review-loop/SKILL.md` | Bounded pre-build freeze loop (opt-in) |
+| `.cursor/skills/build-verification-review/SKILL.md` | Post-build honesty review (opt-in) |
 
 ---
 
