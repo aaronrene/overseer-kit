@@ -4,30 +4,28 @@
 
 ---
 
-## NEXT SESSION — post-K7 close-out hygiene
+## NEXT SESSION — consumer pilot installs (optional)
 
 **Date:** 2026-07-11  
-**Current position:** **K7 operator DONE** — `muse+git-mirror` live; adapter branch probe fixed for
-`muse 0.2.0rc15`; deploy template re-synced; PR [#10](https://github.com/aaronrene/overseer-kit/pull/10)
-merged to `main` (Tier-3). **255** tests green.  
-**Model:** **Auto** (routine hygiene / next phase when scheduled)
+**Current position:** **K7 DONE** — build queue through operator dogfood complete; PR
+[#11](https://github.com/aaronrene/overseer-kit/pull/11) merged (`muse-mirror` → `main`, Tier-3).
+README updated for repo-agnostic MuseHub guidance. **255** tests green.  
+**Model:** **Operator** (live consumer inits remain human-gated)
 
-### What just landed (close-out session)
+### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **Adapter** | `MuseGitMirrorAdapter` branch probe: `muse rev-parse --abbrev-ref HEAD` (replaces unsupported `branch --show-current` on `0.2.0rc15`) |
-| **Template** | `templates/scripts/muse-bridge-deploy.sh.template` — bash 3.2 `_resolve_abs`, `GIT_REMOTE_URL` clone, `--commit-message` |
-| **Tests** | Seven-tier suite **255** green; unit test locks rev-parse branch probe |
-| **K7.L2** | PR [#10](https://github.com/aaronrene/overseer-kit/pull/10) **merged** (`muse-mirror` → `main`, Tier-3) |
+| **K7 close-out PR** | [#11](https://github.com/aaronrene/overseer-kit/pull/11) merged — adapter rev-parse + template sync on `main` |
+| **README** | Repo-agnostic positioning; `git-only` vs `muse+git-mirror`; MuseHub connect path; removed consumer-project list |
 
 ### THE ONE NEXT STEP
 
 | | |
 | --- | --- |
-| **ID** | **Post-K7 hygiene** |
-| **Action** | Commit adapter + template fixes on feature branch → bridge deploy → PR to `main`; verify live P4–P8 parity gates |
-| **Hard stops** | No `git-export --git-dir .`; no `git push origin main`; no force-push `main` |
+| **ID** | **K6 live pilots** (optional) |
+| **Action** | Per `docs/K6-PILOT-OPERATOR-RUNBOOK.md` — one consumer repo at a time; parity P1–P7 before next |
+| **Hard stops** | No `--force --include-preserved` on live consumers; no Tier-3 gate flips without authorization |
 
 ---
 
@@ -62,6 +60,10 @@ merged to `main` (Tier-3). **255** tests green.
 
 ## Change log
 
+- **2026-07-11** — **README expansion (post-K7).** Consumer README: handover/overseer concepts,
+  benefits, end-to-end flow, model label sources, AI tool compatibility matrix (Cursor / Claude Code /
+  Copilot / paste-only), neutral cursor/README. PR [#11](https://github.com/aaronrene/overseer-kit/pull/11)
+  already on `main`.
 - **2026-07-11** — **K7 operator close-out (Auto).** `MuseGitMirrorAdapter` branch probe switched to
   `muse rev-parse --abbrev-ref HEAD` for `0.2.0rc15` compatibility (status + commit_feature).
   Deploy template re-synced (bash 3.2 `_resolve_abs`, `GIT_REMOTE_URL`, `--commit-message`).
