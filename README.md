@@ -1,5 +1,4 @@
-# Overseer Kit
-
+# 🆗 Overseer Kit
 Portable governance for AI-assisted development: handover/roadmap discipline, VCS hygiene,
 freeze-contract review, and repo-agnostic tooling you inject into any project.
 
