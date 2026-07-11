@@ -174,6 +174,7 @@ def config_to_dict(config: OverseerConfig) -> dict:
             "muse": {
                 "staging_remote": config.vcs.muse.staging_remote,
                 "main_branch": config.vcs.muse.main_branch,
+                "working_dir": config.vcs.muse.working_dir,
             },
         },
         "docs": {

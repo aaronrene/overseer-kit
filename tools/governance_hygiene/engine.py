@@ -31,9 +31,10 @@ def run_governance_sync(
     emit,
 ) -> GovernanceSyncResult:
     """Execute governance-sync; default dry-run is inert (§7)."""
-    docs_dir = repo_root / config.repo.root_relative_docs
-    handover_path = docs_dir / config.docs.handover
-    roadmap_path = docs_dir / config.docs.roadmap
+    from cli.docs_paths import living_doc_abs
+
+    handover_path = living_doc_abs(repo_root, config, config.docs.handover)
+    roadmap_path = living_doc_abs(repo_root, config, config.docs.roadmap)
 
     for path in (handover_path, roadmap_path):
         if not path.is_file():

@@ -35,6 +35,7 @@ class GitConfig:
 class MuseConfig:
     staging_remote: str | None
     main_branch: str | None
+    working_dir: str | None = None
 
 
 @dataclass(frozen=True)
@@ -175,7 +176,9 @@ def _validate_config(raw: dict[str, Any], path: str) -> OverseerConfig:
     muse = MuseConfig(
         staging_remote=_optional_str(muse_raw, "staging_remote"),
         main_branch=_optional_str(muse_raw, "main_branch"),
+        working_dir=_optional_str(muse_raw, "working_dir"),
     )
+    _validate_muse_working_dir_shape(muse.working_dir, path)
 
     _validate_regime_fields(regime, canonical, git, muse, path)
 
@@ -221,6 +224,20 @@ def _validate_config(raw: dict[str, Any], path: str) -> OverseerConfig:
             human_escalation=list(escalation),
         ),
     )
+
+
+def _validate_muse_working_dir_shape(working_dir: str | None, path: str) -> None:
+    """Fail closed on absolute / ``..`` working_dir values (§K6.5.1)."""
+    if working_dir is None:
+        return
+    text = working_dir.strip()
+    if not text:
+        raise ConfigError("vcs.muse.working_dir must be a non-empty string or null", path)
+    candidate = Path(text)
+    if candidate.is_absolute():
+        raise ConfigError("vcs.muse.working_dir must be relative to the install root", path)
+    if ".." in candidate.parts:
+        raise ConfigError("vcs.muse.working_dir must not contain '..' path segments", path)
 
 
 def _validate_human_escalation(tokens: list[str], path: str) -> None:

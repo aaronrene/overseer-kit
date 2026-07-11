@@ -10,6 +10,7 @@ from adapters.factory import create_adapter
 from adapters.runner import CommandResult, RecordingRunner
 
 FIXTURES = Path(__file__).resolve().parent / "fixtures"
+PILOT = FIXTURES / "pilot"
 
 
 def write_config(repo_root: Path, name: str) -> Path:
@@ -152,4 +153,36 @@ def unreachable_provider_factory(cause: str = "offline"):
         return LocalReviewProvider(force_unreachable=True, unreachable_cause=cause)
 
     return _factory
+
+
+def seed_pilot_tree(
+    repo_root: Path,
+    *,
+    handover_rel: str,
+    handover_text: str = "# Hand preserved handover\n",
+    roadmap_rel: str | None = None,
+    roadmap_text: str | None = None,
+    extra_cursor_rules: dict[str, str] | None = None,
+) -> None:
+    """Create a pre-existing living-doc layout for migrate fixtures."""
+    hand = repo_root / handover_rel
+    hand.parent.mkdir(parents=True, exist_ok=True)
+    hand.write_text(handover_text, encoding="utf-8")
+    if roadmap_rel is not None:
+        road = repo_root / roadmap_rel
+        road.parent.mkdir(parents=True, exist_ok=True)
+        road.write_text(roadmap_text or "# Hand preserved roadmap\n", encoding="utf-8")
+    if extra_cursor_rules:
+        rules = repo_root / ".cursor" / "rules"
+        rules.mkdir(parents=True, exist_ok=True)
+        for name, text in extra_cursor_rules.items():
+            (rules / name).write_text(text, encoding="utf-8")
+
+
+def lock_origins(repo_root: Path) -> dict[str, str]:
+    """Return path → origin map from ``version.lock``."""
+    from cli.version_lock import entry_origin, read_version_lock
+
+    lock = read_version_lock(repo_root / ".overseer" / "version.lock")
+    return {e.path: entry_origin(e) for e in lock.footprint}
 

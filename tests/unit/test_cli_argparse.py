@@ -70,6 +70,18 @@ def test_sync_options_parsed() -> None:
     assert args.yes is True
 
 
+def test_migrate_and_include_preserved_flags_parsed() -> None:
+    parser = build_parser()
+    args = parser.parse_args(
+        ["init", "--migrate", "--include-preserved", "--force", "--non-interactive"]
+    )
+    assert args.migrate is True
+    assert args.include_preserved is True
+    assert args.force is True
+    sync_args = parser.parse_args(["sync", "--include-preserved", "--force", "-y"])
+    assert sync_args.include_preserved is True
+
+
 def test_governance_sync_argparse() -> None:
     parser = build_parser()
     args = parser.parse_args(["governance-sync"])
