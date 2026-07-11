@@ -31,3 +31,5 @@ templates:
   - ROADMAP.template.md
   - STANDING-DECISIONS.template.md
   - CROSS-REPO-COORDINATION.template.md
+  - MUSE-BRIDGE-WORKFLOW.template.md
+  - scripts/muse-bridge-deploy.sh.template

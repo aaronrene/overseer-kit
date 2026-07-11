@@ -9,11 +9,12 @@ from pathlib import Path
 
 from adapters.config import load_config
 from adapters.errors import ConfigError
-from cli.atomic import WriteFailure, atomic_write_bytes
+from cli.atomic import WriteFailure
 from cli.context import CliContext
 from cli.digest import sha256_hex
 from cli.docs_paths import living_doc_destinations, validate_muse_working_dir
 from cli.footprint import resolve_footprint
+from cli.footprint_writes import write_footprint_bytes
 from cli.kit_root import kit_version
 from cli.output import CommandReport
 from cli.sanitize import format_config_error, sanitize_text
@@ -248,7 +249,11 @@ def run_sync(args: Namespace, ctx: CliContext) -> int:
     writes: dict[str, bytes] = {}
     try:
         for row in writes_needed:
-            atomic_write_bytes(repo_root / row.destination, row.new_content)
+            write_footprint_bytes(
+                repo_root / row.destination,
+                row.new_content,
+                destination=row.destination,
+            )
             writes[row.destination] = row.new_content
 
         entries = _build_post_sync_entries(

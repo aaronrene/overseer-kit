@@ -41,17 +41,17 @@ def test_write_failure_leaves_lock_unchanged(tmp_path: Path) -> None:
     before = read_version_lock(tmp_path / ".overseer" / "version.lock")
     calls = {"n": 0}
 
-    def flaky_write(path: Path, data: bytes) -> None:
+    def flaky_write(path: Path, data: bytes, *, destination: str) -> None:
         calls["n"] += 1
         if calls["n"] == 2:
             from cli.atomic import WriteFailure
 
             raise WriteFailure(path, OSError("simulated failure"))
-        from cli.atomic import atomic_write_bytes as real
+        from cli.footprint_writes import write_footprint_bytes as real
 
-        real(path, data)
+        real(path, data, destination=destination)
 
-    with patch("cli.commands.init.atomic_write_bytes", side_effect=flaky_write):
+    with patch("cli.commands.init.write_footprint_bytes", side_effect=flaky_write):
         code = run_cli(
             ["init", "--regime", "git-only", "--non-interactive", "--force"],
             cwd=tmp_path,

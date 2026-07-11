@@ -16,6 +16,8 @@ def test_scooling_config_loads_and_includes_coordination() -> None:
     dests = {f.destination for f in resolve_footprint(config)}
     assert "docs/CROSS-REPO-COORDINATION.md" in dests
     assert "docs/OVERSEER-HANDOVER.md" in dests
+    assert "MUSE-BRIDGE-WORKFLOW.md" in dests
+    assert "scripts/muse-bridge-deploy.sh" in dests
 
 
 def test_knowtation_config_skips_coordination() -> None:

@@ -23,7 +23,8 @@
 | **9A-5 Governance Hygiene Agent** | Auto | **DONE** | `overseer governance-sync [--dry-run]` against kit VCS adapter — `tools/governance_hygiene/` + seven-tier tests (**181** green) |
 | **K6a Freeze pilot install matrix** | Thinking | **DONE** | Frozen install order + per-repo config matrix + `init --migrate` preserve contract + parity gate (P1–P7 + per-repo extras) + Muse `working_dir` / VF `.` docs-root seams + K6b seven-tier matrix (`docs/PHASE-K6-PILOT-INSTALL-MATRIX.md`). Rounds 1–5 **`blocked`** → fixes through **5-fix**; Round 6 **`findings`** (R6-M1) → **6-fix**; **K6a-r7 → `pass`** (R6-M1 + R5/R4 spot-check + full §K6.0–§K6.10 regress). Cleared for K6b. |
 | **K6b Pilot install build** | Auto | **DONE** | Additive `init --migrate` + `--include-preserved`; `vcs.muse.working_dir` + `root_relative_docs: "."` seams; `origin: preserved\|kit` lock + kit-only digest; `tests/fixtures/pilot/*`; `docs/GIT-ONLY-QUICKSTART.md` + `docs/K6-PILOT-OPERATOR-RUNBOOK.md`; seven-tier tests (**224** green). Live consumer inits remain operator-gated; no gate flips; no K7 muse dogfood. |
-| **K7 Dogfood muse+git-mirror** | Thinking → Auto | **TODO** (NEXT) | Flip this repo to MuseHub canonical + GitHub mirror; vendor `MUSE-BRIDGE-WORKFLOW.template.md` + tokenized `muse-bridge-deploy.sh` into the footprint for `muse+git-mirror` consumers; parity gate + seven-tier tests. Operator-run (needs `muse`/`gh`/staging repo). **Frozen design guardrail:** MuseHub may only *deepen* a capability — no core governance feature may ever become MuseHub-only (see principle below). |
+| **K7a Freeze muse+git-mirror dogfood** | Thinking | **DONE** | Frozen dogfood steps + regime-conditional footprint + parity K7.P1–P10 + §K7.5 guardrail + §K7.8 matrix (`docs/PHASE-K7-MUSE-GIT-MIRROR-DOGFOOD.md`). **K7a-r1 → `findings`** → **1-fix** → **K7a-r2 → `pass`** (M1/M2/N1–N3 confirmed RESOLVED; full §K7.0–§K7.10 regress clean). Cleared for K7b. No Build; no live muse bridge export on the dev tree. |
+| **K7b Dogfood muse+git-mirror build** | Auto | **DONE** | Footprint assets (`MUSE-BRIDGE-WORKFLOW.template.md`, `muse-bridge-deploy.sh` S1–S13), regime-conditional `resolve_footprint`, executable script write, `config-overseer-kit-dogfood.yaml` fixture, `docs/K7-DOGFOOD-OPERATOR-RUNBOOK.md`, seven-tier tests (**254** green). Kit stays `git-only` until operator L1/L2. No live `git-export` on dev tree. |
 
 ## Regime capability tiers (git-only baseline → MuseHub-enhanced)
 
@@ -72,6 +73,7 @@ same method names in both regimes.
 - `docs/PHASE-K4-VENDORING-CLI-CONTRACT.md` — frozen K4 CLI contract (K4a); K4b builds against it
 - `docs/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md` — frozen K5 reviewer contract (K5a); K5b builds against it
 - `docs/PHASE-K6-PILOT-INSTALL-MATRIX.md` — frozen K6 pilot install matrix (K6a); K6b builds against it
+- `docs/PHASE-K7-MUSE-GIT-MIRROR-DOGFOOD.md` — frozen K7 dogfood design (K7a); K7b builds against it
 - `templates/` + `policy/` + `cursor/` — vendored footprint (K3)
 - `docs/PHASE-9A-5-GOVERNANCE-HYGIENE-AGENT-OUTLINE.md` — first agent tool
 - Scooling `docs/PHASE-9A-MULTI-AGENT-OVERSEER-ROUTER-OUTLINE.md` — runtime org-chart reference
