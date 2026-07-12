@@ -1,0 +1,14 @@
+schema_version: 1
+template_id: two_step
+slug: demo-complete
+current_step: beta
+meta: {}
+steps:
+  alpha:
+    verified: true
+    verified_at: "2026-07-12T00:00:00Z"
+    artifact_sha256: null
+  beta:
+    verified: true
+    verified_at: "2026-07-12T00:00:01Z"
+    artifact_sha256: abcdef0123456789

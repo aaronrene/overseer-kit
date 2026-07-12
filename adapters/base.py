@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import re
 from pathlib import Path
 from typing import Protocol, Union
@@ -100,6 +101,30 @@ class BaseAdapter:
         if not result.ok:
             return ReadError(cmd, result.stderr or result.stdout, result.exit_code)
         return result
+
+    def _muse_dirty(self) -> bool | ReadError:
+        """Return Muse working-tree dirty flag (Muse 0.2+ ``status --json``; legacy ``--porcelain``)."""
+        json_result = self._muse("status", "--json")
+        if not isinstance(json_result, ReadError):
+            try:
+                payload = json.loads(json_result.stdout)
+            except json.JSONDecodeError:
+                return ReadError(
+                    "muse status --json",
+                    "invalid JSON from muse status",
+                )
+            if isinstance(payload, dict):
+                if "dirty" in payload:
+                    return bool(payload["dirty"])
+                total = payload.get("total_changes")
+                if isinstance(total, int):
+                    return total > 0
+            return ReadError("muse status --json", "missing dirty/total_changes field")
+
+        porcelain = self._muse("status", "--porcelain")
+        if isinstance(porcelain, ReadError):
+            return porcelain
+        return bool(porcelain.stdout.strip())
 
     def _is_protected_branch(self, branch: str) -> bool:
         git_main = self.config.vcs.git.main_branch

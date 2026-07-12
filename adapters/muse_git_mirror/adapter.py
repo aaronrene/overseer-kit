@@ -21,7 +21,7 @@ class MuseGitMirrorAdapter(BaseAdapter):
         muse_branch = self._muse("rev-parse", "--abbrev-ref", "HEAD")
         if isinstance(muse_branch, ReadError):
             return muse_branch
-        muse_dirty = self._muse("status", "--porcelain")
+        muse_dirty = self._muse_dirty()
         if isinstance(muse_dirty, ReadError):
             return muse_dirty
         git_branch = self._git("rev-parse", "--abbrev-ref", "HEAD")
@@ -36,7 +36,7 @@ class MuseGitMirrorAdapter(BaseAdapter):
             f"git-branch={git_branch.stdout}",
             "sd-14: never git push origin main",
         ]
-        dirty = bool(muse_dirty.stdout.strip() or git_dirty.stdout.strip())
+        dirty = muse_dirty or bool(git_dirty.stdout.strip())
         return StatusResult(
             regime=self.regime,
             dirty=dirty,

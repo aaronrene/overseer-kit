@@ -8,12 +8,15 @@ from pathlib import Path
 
 from cli.args import extract_global_args
 
-COMMANDS = frozenset({"init", "sync", "status", "review", "governance-sync"})
+COMMANDS = frozenset({"init", "sync", "status", "review", "governance-sync", "verify-step", "honesty-status", "ledger"})
 from cli.commands.governance_sync import run_governance_sync_command
+from cli.commands.honesty_status import run_honesty_status_command
 from cli.commands.init import run_init
+from cli.commands.ledger import run_ledger_command
 from cli.commands.review import run_review
 from cli.commands.status import run_status
 from cli.commands.sync import run_sync
+from cli.commands.verify_step import run_verify_step_command
 from cli.context import CliContext
 from cli.kit_root import kit_version
 from cli.output import OutputContext
@@ -102,6 +105,40 @@ def build_parser() -> argparse.ArgumentParser:
         help="Sync every configured lane; skip lanes with missing doc files",
     )
 
+    vs_parser = subparsers.add_parser("verify-step", help="L1 checkpoint orchestrator (K9b)")
+    vs_parser.add_argument("--manifest", metavar="PATH", help="Active manifest path")
+    vs_parser.add_argument("--step", metavar="ID", help="Verify one step")
+    vs_parser.add_argument(
+        "--through",
+        metavar="TOKEN",
+        help="Verify through current step (only 'current' accepted)",
+    )
+    vs_parser.add_argument("--all", action="store_true", help="Verify full template order")
+    vs_parser.add_argument("--policy", metavar="PATH", help="Policy file override")
+    vs_parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Plan only; no script invoke or manifest writes",
+    )
+
+    hs_parser = subparsers.add_parser("honesty-status", help="L2 co-requirement check (K10)")
+    hs_parser.add_argument("--hook", metavar="HOOK")
+    hs_parser.add_argument("--artifact", metavar="PATH")
+    hs_parser.add_argument("--producer-session", metavar="ID")
+
+    ledger_parser = subparsers.add_parser("ledger", help="L2 verdict ledger (K10)")
+    ledger_sub = ledger_parser.add_subparsers(dest="ledger_action", required=True)
+
+    append_parser = ledger_sub.add_parser("append", help="Append a ledger entry")
+    append_parser.add_argument("--kind", metavar="KIND", required=True)
+    append_parser.add_argument("--file", metavar="JSON_PATH")
+    append_parser.add_argument("--stdin", action="store_true")
+
+    ledger_sub.add_parser("verify", help="Verify ledger hash chain")
+
+    show_parser = ledger_sub.add_parser("show", help="Show recent ledger entries")
+    show_parser.add_argument("--last", type=int, metavar="N")
+
     return parser
 
 
@@ -156,6 +193,12 @@ def main(argv: list[str] | None = None, *, ctx: CliContext | None = None) -> int
         return run_review(args, runtime, raw_argv=rest_argv)
     if args.command == "governance-sync":
         return run_governance_sync_command(args, runtime)
+    if args.command == "verify-step":
+        return run_verify_step_command(args, runtime)
+    if args.command == "honesty-status":
+        return run_honesty_status_command(args, runtime)
+    if args.command == "ledger":
+        return run_ledger_command(args, runtime)
 
     parser.error(f"unknown command: {args.command}")
     return 1

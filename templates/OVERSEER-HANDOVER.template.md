@@ -1,6 +1,8 @@
 # {{docs.handover_title}} — {{repo.name}}
 
-**Living relay for {{repo.name}}.** Paste the **NEXT SESSION** block into a fresh chat.
+**Public product name:** 🆗 Overseer Kit — `{{repo.name}}` is the repo slug only, not the public brand.
+
+**Living relay for 🆗 Overseer Kit in {{repo.name}}.** Paste the **NEXT SESSION** block into a fresh chat.
 
 ---
 
@@ -44,9 +46,9 @@ Hard stops: <hard stops>
 
 Governance sync: update {{docs.roadmap_path}} + {{docs.handover_path}} on completion.
 
-If this is **{step}b (Auto)** or Model is **Auto**: before marking the phase **DONE**, run
-**`/build-verification-review`** against the frozen spec for this phase. Do not mark **DONE** until
-build verification verdict is **pass** (thinking-high model).
+Governance gates (mandatory — remind only; silence is not pass):
+- Freeze review: /freeze-review-loop before Thinking freeze → DONE; overseer review --freeze when CLI green
+- Build verification: /build-verification-review after every Auto {step}b before ROADMAP DONE
 ```
 
 ---

@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 
 from cli.footprint import MUSE_BRIDGE_DEPLOY_DEST, MUSE_BRIDGE_WORKFLOW_DEST
-from tests.support import FIXTURES, muse_mirror_status_runner, ok, run_cli
+from tests.support import FIXTURES, muse_mirror_status_runner, ok, run_cli, seed_muse_substrate
 
 
 def test_k7_fixture_dogfood_cycle_no_live_muse(tmp_path: Path) -> None:
@@ -22,7 +22,7 @@ def test_k7_fixture_dogfood_cycle_no_live_muse(tmp_path: Path) -> None:
             ),
         }
     )
-    (tmp_path / ".muse").mkdir(exist_ok=True)
+    seed_muse_substrate(tmp_path)
     (tmp_path / ".muse" / "git-bridge.toml").write_text(
         '[last_export]\ngit_sha = "' + ("d" * 40) + '"\n'
         '[last_import]\ngit_sha = "' + ("d" * 40) + '"\n',

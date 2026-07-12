@@ -4,12 +4,14 @@ from __future__ import annotations
 
 import json
 from dataclasses import dataclass
+from pathlib import Path
 
 from adapters.base import VcsAdapter
 from adapters.config import OverseerConfig
 from adapters.errors import ReadError
 from adapters.runner import CommandRunner
 from tools.governance_hygiene.types import MergedPullRequest, VerifiedReads
+from tools.substrate_health import check_substrate
 
 GH_MERGED_LIMIT = 5
 
@@ -27,9 +29,20 @@ def perform_verified_reads(
     config: OverseerConfig,
     adapter: VcsAdapter,
     runner: CommandRunner,
+    *,
+    repo_root: Path | None = None,
 ) -> VerifiedReads | ReadFailure:
     """Execute R1–R5; stop at the first failure."""
     regime = config.vcs.regime
+
+    if repo_root is not None:
+        substrate = check_substrate(config, repo_root)
+        if not substrate.ok:
+            return ReadFailure(
+                "substrate-health",
+                substrate.message,
+                regime,
+            )
 
     status = adapter.status()
     if isinstance(status, ReadError):

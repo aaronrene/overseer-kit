@@ -22,6 +22,7 @@ def test_status_reads_both_histories(muse_git_mirror_config, repo_root) -> None:
     runner = make_runner(
         {
             f"muse -C {root} rev-parse --abbrev-ref HEAD": ok("main"),
+            f"muse -C {root} status --json": ok('{"dirty": false}'),
             f"muse -C {root} status --porcelain": ok(""),
             "git rev-parse": ok("main"),
             "git status": ok(" M file"),

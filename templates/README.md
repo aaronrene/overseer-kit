@@ -25,3 +25,12 @@ text = render_template(Path("templates/OVERSEER-HANDOVER.template.md"), config)
 ```
 
 Kit ships **format and skeletons**, not repo-specific Standing Decision contents.
+
+## Public branding (locked at KH1 close-out)
+
+| Token / surface | Meaning |
+| --- | --- |
+| **🆗 Overseer Kit** | Public product display name (locked) |
+| `{{repo.name}}` | Consumer repo slug — technical identifier, not the public brand |
+| `{{docs.handover_title}}` | Per-consumer handover title (default: `Overseer Handover`) |
+| Landing (`docs/landing/`) | Uses **🆗 Overseer Kit** in page title and hero |

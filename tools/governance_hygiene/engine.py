@@ -16,9 +16,35 @@ from tools.governance_hygiene.drift import detect_drift
 from tools.governance_hygiene.patch import build_handover_patches, build_roadmap_patches
 from tools.governance_hygiene.reads import ReadFailure, perform_verified_reads
 from tools.governance_hygiene.realign import execute_realign_guard, plan_realign
+from tools.governance_gates import scan_governance_gates
+from tools.governance_gates.format import format_pending_gate_lines
 from tools.governance_hygiene.types import DriftReport, GovernanceSyncResult, PatchPlan, VerifiedReads
 
 GOVERNANCE_SYNC_MARKER = "last_governance_sync"
+
+
+def _emit_governance_gate_footer(
+    config: OverseerConfig,
+    repo_root: Path,
+    *,
+    handover_text: str,
+    roadmap_text: str,
+    emit,
+) -> None:
+    """Append §KH1.9 gate reminders when governance-sync surface is enabled."""
+    if not config.governance_gates.remind:
+        return
+    if "governance-sync" not in config.governance_gates.surfaces:
+        return
+    result = scan_governance_gates(
+        config,
+        repo_root,
+        handover_text=handover_text,
+        roadmap_text=roadmap_text,
+    )
+    emit("")
+    for line in format_pending_gate_lines(result):
+        emit(line)
 
 
 def run_governance_sync(
@@ -179,7 +205,7 @@ def _run_single_lane(
                 messages=(f"missing governance doc: {path.name}",),
             )
 
-    reads = perform_verified_reads(config, adapter, runner)
+    reads = perform_verified_reads(config, adapter, runner, repo_root=repo_root)
     if isinstance(reads, ReadFailure):
         emit(f"read failed [{reads.regime}]: {reads.command}")
         emit(reads.message)
@@ -214,6 +240,13 @@ def _run_single_lane(
 
     if drift.fully_aligned:
         emit("governance-sync: aligned (D1–D3)")
+        _emit_governance_gate_footer(
+            config,
+            repo_root,
+            handover_text=handover_text,
+            roadmap_text=roadmap_text,
+            emit=emit,
+        )
         return GovernanceSyncResult(
             exit_code=0,
             dry_run=dry_run,
@@ -284,6 +317,13 @@ def _run_single_lane(
         emit("dry-run: no writes, commits, or realign apply")
         if pr_url:
             emit(f"docs-only PR URL (operator-gated): {pr_url}")
+        _emit_governance_gate_footer(
+            config,
+            repo_root,
+            handover_text=handover_text,
+            roadmap_text=roadmap_text,
+            emit=emit,
+        )
         return GovernanceSyncResult(
             exit_code=0,
             dry_run=True,

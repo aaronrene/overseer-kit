@@ -11,6 +11,8 @@ from adapters.runner import CommandResult, RecordingRunner
 
 FIXTURES = Path(__file__).resolve().parent / "fixtures"
 PILOT = FIXTURES / "pilot"
+CHECKPOINTS = FIXTURES / "checkpoints"
+HONESTY = FIXTURES / "honesty"
 
 
 def write_config(repo_root: Path, name: str) -> Path:
@@ -93,6 +95,7 @@ def run_cli(
     runner: RecordingRunner | None = None,
     kit: Path | None = None,
     review_provider_factory=None,
+    script_executor=None,
     json_mode: bool = False,
 ) -> int:
     """Invoke ``cli.main`` with an injected runner and working directory."""
@@ -109,15 +112,27 @@ def run_cli(
             kit=kit,
             output=OutputContext(json_mode=json_mode),
             review_provider_factory=review_provider_factory,
+            script_executor=script_executor,
         )
         return main(argv, ctx=ctx)
     finally:
         os.chdir(old_cwd)
 
 
+def seed_muse_substrate(repo_root: Path) -> None:
+    """Create minimal healthy ``.muse/`` for muse-backed regime tests."""
+    muse = repo_root / ".muse"
+    muse.mkdir(parents=True, exist_ok=True)
+    (muse / "HEAD").write_text("ref: refs/heads/main\n", encoding="utf-8")
+    (muse / "repo.json").write_text("{}", encoding="utf-8")
+    (muse / "config.toml").write_text("", encoding="utf-8")
+
+
 def seed_freeze_repo(repo_root: Path, *, config_name: str = "config-git-only.yaml") -> Path:
     """Write config and copy a freeze artifact fixture into a temp repo."""
     write_config(repo_root, config_name)
+    if "muse" in config_name:
+        seed_muse_substrate(repo_root)
     docs = repo_root / "docs"
     docs.mkdir(parents=True, exist_ok=True)
     artifact = docs / "FREEZE.md"
@@ -153,6 +168,146 @@ def unreachable_provider_factory(cause: str = "offline"):
         return LocalReviewProvider(force_unreachable=True, unreachable_cause=cause)
 
     return _factory
+
+
+class FakeHttpTransport:
+    """Recording HTTP transport for API provider tests (no network)."""
+
+    def __init__(
+        self,
+        *,
+        health_status: int = 200,
+        health_body: bytes = b'{"status":"ok"}',
+        review_status: int = 200,
+        review_body: bytes | None = None,
+        fail_health: bool = False,
+        fail_review: bool = False,
+    ) -> None:
+        self.health_status = health_status
+        self.health_body = health_body
+        self.review_status = review_status
+        self.review_body = review_body or b'{"findings":[]}'
+        self.fail_health = fail_health
+        self.fail_review = fail_review
+        self.calls: list[dict] = []
+
+    def request(
+        self,
+        *,
+        method: str,
+        url: str,
+        headers: dict[str, str],
+        body: bytes | None = None,
+        timeout: float = 30.0,
+    ) -> tuple[int, bytes]:
+        from tools.freeze_reviewer.providers.api_client import ProviderTransportError
+
+        self.calls.append(
+            {
+                "method": method,
+                "url": url,
+                "headers": dict(headers),
+                "body": body,
+            }
+        )
+        if "/health" in url:
+            if self.fail_health:
+                raise ProviderTransportError("health transport failure")
+            return self.health_status, self.health_body
+        if self.fail_review:
+            raise ProviderTransportError("review transport failure")
+        return self.review_status, self.review_body
+
+
+def api_provider_factory(transport: FakeHttpTransport):
+    """Factory returning an API provider wired to a fake HTTP transport."""
+    from tools.freeze_reviewer.providers.api_client import ReviewApiClient
+    from tools.freeze_reviewer.providers.base import ApiReviewProvider
+
+    def _factory(_provider_name: str) -> ApiReviewProvider:
+        client = ReviewApiClient(transport=transport)
+        return ApiReviewProvider(client=client)
+
+    return _factory
+
+
+def api_unreachable_provider_factory(cause: str = "API provider unavailable"):
+    """Factory returning a forced-unreachable API provider."""
+    from tools.freeze_reviewer.providers.base import ApiReviewProvider
+
+    def _factory(_provider_name: str) -> ApiReviewProvider:
+        return ApiReviewProvider(force_unreachable=True, unreachable_cause=cause)
+
+    return _factory
+
+
+def seed_checkpoint_repo(repo_root: Path) -> None:
+    """Copy checkpoint fixture pack into a temp repo and mark scripts executable."""
+    import shutil
+    import stat
+
+    (repo_root / ".overseer").mkdir(parents=True, exist_ok=True)
+    config_src = CHECKPOINTS / "config-checkpoints-enabled.yaml"
+    (repo_root / ".overseer" / "config.yaml").write_text(
+        config_src.read_text(encoding="utf-8"),
+        encoding="utf-8",
+    )
+    for rel in ("policy", "manifests", "scripts"):
+        src = CHECKPOINTS / rel
+        dest = repo_root / rel
+        if dest.exists():
+            shutil.rmtree(dest)
+        shutil.copytree(src, dest)
+    for script in (repo_root / "scripts" / "verify").glob("*.py"):
+        script.chmod(script.stat().st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
+
+
+def load_checkpoint_config(repo_root: Path) -> OverseerConfig:
+    """Load checkpoint-enabled config from a seeded repo."""
+    seed_checkpoint_repo(repo_root)
+    return load_config(repo_root / ".overseer" / "config.yaml")
+
+
+def seed_honesty_repo(repo_root: Path) -> None:
+    """Copy honesty fixture pack into a temp repo."""
+    import shutil
+
+    (repo_root / ".overseer").mkdir(parents=True, exist_ok=True)
+    config_src = HONESTY / "config-honesty-enabled.yaml"
+    (repo_root / ".overseer" / "config.yaml").write_text(
+        config_src.read_text(encoding="utf-8"),
+        encoding="utf-8",
+    )
+    for rel in ("artifacts", "entries"):
+        src = HONESTY / rel
+        dest = repo_root / rel
+        if dest.exists():
+            shutil.rmtree(dest)
+        shutil.copytree(src, dest)
+
+
+def load_honesty_config(repo_root: Path) -> OverseerConfig:
+    """Load honesty-enabled config from a seeded repo."""
+    seed_honesty_repo(repo_root)
+    return load_config(repo_root / ".overseer" / "config.yaml")
+
+
+def honesty_artifact_hash(repo_root: Path) -> str:
+    """SHA-256 of the fixture sample artifact."""
+    from tools.honesty.artifact import sha256_file_bytes
+
+    return sha256_file_bytes(repo_root / "artifacts" / "sample.txt")
+
+
+def load_honesty_entry(repo_root: Path, name: str, *, artifact_hash: str | None = None) -> dict:
+    """Load a verdict entry fixture with artifact hash substituted."""
+    import json
+
+    text = (HONESTY / "entries" / name).read_text(encoding="utf-8")
+    if artifact_hash is None:
+        artifact_hash = honesty_artifact_hash(repo_root)
+    text = text.replace("PLACEHOLDER", artifact_hash)
+    return json.loads(text)
 
 
 def seed_pilot_tree(

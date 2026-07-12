@@ -1,13 +1,13 @@
 # Overseer Kit — Layered Honesty Architecture Vision
 
-**Status:** Draft for expansion (Thinking-tier handoff) · **Not frozen**  
+**Status:** Expanded 2026-07-11 · **Architecture vocabulary stable** · K9a contract **frozen** (K9a-r9 → `pass`)  
 **Date:** 2026-07-11  
 **Audience:** Overseer Kit maintainers, MuseHub collaborators, VideoFactory operators, future open-source adopters  
 **Companion (VF dogfood):** VideoFactory PR #34 merged — Option B checkpoints + kit `init --migrate`  
-**Next session:** Expand scenarios, freeze K9a contract, draft landing-page copy/art direction  
+**K9a contract:** `docs/PHASE-K9A-L1-L2-MODULE-FREEZE.md`  
+**Consumer pattern:** `docs/CONSUMER-ADAPTER-PATTERN.md`  
 
-> **How to use this doc:** Treat it as the baton for a deeper Thinking session. Challenge every recommendation. Add domains we missed. Do **not** start Auto build until a K9a freeze contract exists and passes `/freeze-review-loop`.
-
+> **How to use this doc:** Vision + vocabulary for L0–L3. Normative build contracts live in `PHASE-K9A-*`. K9a freeze review → `pass` (K9a-r9). K9b builds L1 only; K10 builds L2.
 ---
 
 ## 0. Plain-language summary
@@ -182,16 +182,19 @@ checkpoints:
 3. Dogfood L1 on next live BOR step before more paid spend.  
 4. Enable VF multi-lane only if needed; **queue lane alone is correct** for Option B (per-video = manifest, not second roadmap).
 
-### 3.2 Next Thinking freeze (K9a — proposed)
+### 3.2 K9a freeze (drafted 2026-07-11 — pending review)
 
-Freeze a kit contract covering:
+Normative contract: `docs/PHASE-K9A-L1-L2-MODULE-FREEZE.md`
+
+Covers:
 
 - `checkpoints:` config schema (L1 plugin)  
 - `honesty:` config schema (L2 module) — roles, ledger path, co-requirement hooks  
-- CLI stubs: `overseer verify-step`, `overseer honesty-status`, `overseer ledger verify`  
-- Exit codes + seven-tier test matrix  
-- Explicit non-goals (no media QC models; no Muse-required baseline)
+- CLI: `overseer verify-step`, `overseer honesty-status`, `overseer ledger`  
+- Exit codes `10`–`11` (L1) + `20`–`24` (L2) + seven-tier matrices  
+- Explicit non-goals (no media QC models; no Muse-required baseline; no VF domain in core)
 
+**Gate:** freeze review `pass` before K9b Auto — **cleared (K9a-r9).**
 ### 3.3 Next Auto builds (after K9a pass)
 
 | ID | Deliverable |
@@ -475,10 +478,11 @@ flowchart TD
 | Track | Home | Intent | Status |
 |-------|------|--------|--------|
 | **K1–K8** | Overseer Kit | Core governance + multi-lane | DONE |
-| **K9** | Overseer Kit | L1 checkpoint plugin contract + build | Proposed |
-| **K10** | Overseer Kit | L2 honesty module (Track H productized) | Proposed |
-| **K11** | Overseer Kit | API/CI freeze provider | Proposed |
-| **K12 / Track N** | Overseer Kit | Open-source landing, narrative, scenario gallery | Proposed |
+| **K9a** | Overseer Kit | Freeze L1+L2 module contracts | Drafted — pending freeze review |
+| **K9b** | Overseer Kit | Build L1 checkpoint orchestrator | Blocked on K9a `pass` |
+| **K10** | Overseer Kit | L2 honesty module (Track H productized) | TODO after K9a |
+| **K11** | Overseer Kit | API/CI freeze provider | TODO |
+| **K12 / Track N** | Overseer Kit | Open-source landing, narrative, scenario gallery | Seeded in §8; build later |
 | **Track H** | VideoFactory (→ kit) | Honest factory org chart + ledger | Spec draft; park→port |
 | **Track M** | VideoFactory / Muse plugin | Movie/serial continuity, timeline domain | Prepared / Muse VID-* |
 | **FACTORY-WIRE** | VideoFactory | Invocation wiring | DONE |
@@ -572,41 +576,55 @@ Not “another agent framework.” **Governance + honesty for people who already
 
 ---
 
-## 11. Definition of Done for *this vision* (expansion session)
+## 11. Expansion results (2026-07-11 Thinking) — challenges + decisions
 
-Next Thinking session should produce:
+### 11.1 Challenges to the draft (and resolutions)
 
-1. Redlines on L0–L3 vocabulary  
-2. K9a freeze contract draft (checkpoints + honesty config + CLI + exits + tests)  
-3. MuseHub collaboration one-pager (from §6.9)  
-4. Track N landing wireframe + graphic list  
-5. Explicit non-goals signed by owner  
-6. Updated kit `ROADMAP.md` / `OVERSEER-HANDOVER.md` NEXT = K9a  
+| Challenge | Resolution frozen in K9a |
+|-----------|--------------------------|
+| Is L2 useless without L1? | Allowed with **warn** (`require_l1_evidence: warn\|require`); remake risk documented |
+| Are “two legs” enough? | Yes + thin Seam C (K11). No agent-mesh OS |
+| Does Track H *is* the plan? | **No** — Track H is L2 source material for K10; kit master plan is L0→L3 |
+| Cap lanes at 2? | **No** — K8 is N-ary; soft warn >4 |
+| VF files in kit `docs/` root? | **Hygiene:** move to `docs/consumers/videofactory/`; kit-neutral root |
+| Muse objects before Muse collab? | File ledger first; Muse blob = same bytes; capability 1:1 map deferred |
+| Missing domains? | Added pack stubs already (§5.4); no new layer required |
+| Exit codes vs VF SIN 60–64? | Kit uses `10`–`11` (L1) and `20`–`24` (L2); VF maps at boundary |
 
-**Not in scope for that session:** Auto implementation.
+### 11.2 Deliverables completed this expansion
+
+1. Redlines → §11.1 + K9a §K9.0–§K9.1  
+2. K9a contract → `docs/PHASE-K9A-L1-L2-MODULE-FREEZE.md`  
+3. MuseHub answers → K9a §K9.14 (open: exact Muse schema types)  
+4. Track N wireframe → vision §8 + K9a §K9.13  
+5. Non-goals → K9a §K9.0  
+6. ROADMAP + HANDOVER → NEXT = K9a freeze review → K9b  
+
+### 11.3 Still required before Auto
+
+- Independent `overseer review --freeze` on the K9a contract → `pass`  
+- Owner acknowledgment of non-goals (no Muse-required baseline; no media QC authority)
 
 ---
 
-## 12. Copy-paste prompt — next Thinking session
+## 12. Copy-paste prompt — next session (freeze review → K9b)
 
 ```text
-Project: Overseer Kit — expand Layered Honesty Architecture Vision → freeze K9a.
-Model: Thinking (high).
-Read: docs/OVERSEER-KIT-LAYERED-HONESTY-VISION.md (this file);
-  docs/OVERSEER-KIT-SPEC.md; docs/ROADMAP.md; docs/PHASE-K8-MULTI-LANE-DOCS-CONTRACT.md;
-  docs/VIDEOFACTORY-CHECKPOINT-BUILD-PROMPT.md;
-  VideoFactory docs/thinking/VF-OVERSEER-HONEST-FACTORY-SPEC-20260709.md (Track H).
+Project: Overseer Kit — K9a freeze review, then K9b only if pass.
+Model: Thinking (high) for review; Auto for K9b after pass.
+Read: docs/PHASE-K9A-L1-L2-MODULE-FREEZE.md;
+  docs/OVERSEER-KIT-LAYERED-HONESTY-VISION.md;
+  docs/OVERSEER-KIT-SPEC.md; docs/ROADMAP.md; docs/OVERSEER-HANDOVER.md;
+  docs/CONSUMER-ADAPTER-PATTERN.md.
 
 Tasks:
-1) Challenge L0–L3 and the two legs; fix gaps.
-2) Draft K9a frozen contract: checkpoints + honesty modules, CLI, exits, seven-tier matrix.
-3) Expand MuseHub scenarios with org-specific flows; answer §6.9 or mark open.
-4) Decide lane guidance (>N) vs multi-repo; document soft limits.
-5) Outline Track N landing page sections + graphics brief.
-6) Update ROADMAP + OVERSEER-HANDOVER NEXT to K9a; do not Auto-build.
+1) Run overseer review --freeze on PHASE-K9A-L1-L2-MODULE-FREEZE.md
+2) Resolve any findings; re-review until pass
+3) Only after pass: Auto K9b = L1 orchestrator only (not L2)
+4) Update ROADMAP + HANDOVER together
 
-Hard stops: no Muse-required baseline; no media model QC as authority;
-  no unbounded plugin system; no Tier-3 without owner.
+Hard stops: no L2 build in K9b; no VF domain scripts in kit core;
+  no Muse-required baseline; no media model QC as authority.
 ```
 
 ---
@@ -616,6 +634,7 @@ Hard stops: no Muse-required baseline; no media model QC as authority;
 | Date | Note |
 |------|------|
 | 2026-07-11 | Initial vision from VF Option B + kit init dogfood + Track H reposition + Muse on-ramp brainstorm |
+| 2026-07-11 | Expansion: challenged L0–L3; drafted K9a contract; consumer doc hygiene; Muse §6.9 answers; Track N seed confirmed |
 
 ---
 
@@ -637,10 +656,12 @@ Hard stops: no Muse-required baseline; no media model QC as authority;
 |------|------|
 | `docs/OVERSEER-KIT-SPEC.md` | Frozen kit architecture |
 | `docs/PHASE-K8-MULTI-LANE-DOCS-CONTRACT.md` | N-lane docs |
-| `docs/VIDEOFACTORY-CHECKPOINT-BUILD-PROMPT.md` | L1 VF build prompt |
-| `docs/VIDEOFACTORY-OVERSEER-SETUP.md` | VF consumer setup |
+| `docs/PHASE-K9A-L1-L2-MODULE-FREEZE.md` | K9a normative contract |
+| `docs/CONSUMER-ADAPTER-PATTERN.md` | How consumers plug in |
+| `docs/consumers/videofactory/CHECKPOINT-BUILD-PROMPT.md` | L1 VF build prompt (reference) |
+| `docs/consumers/videofactory/OVERSEER-SETUP.md` | VF consumer setup (reference) |
 | VideoFactory `policy/video-checkpoints.yaml` | L1 machine truth (dogfood) |
-| VideoFactory `docs/thinking/VF-OVERSEER-HONEST-FACTORY-SPEC-20260709.md` | L2 draft |
+| VideoFactory `docs/thinking/VF-OVERSEER-HONEST-FACTORY-SPEC-20260709.md` | L2 draft (Track H) |
 
 ## Appendix C — Power thesis (one paragraph)
 

@@ -24,12 +24,12 @@ class MuseOnlyAdapter(BaseAdapter):
         branch_result = self._muse("branch", "--show-current")
         if isinstance(branch_result, ReadError):
             return branch_result
-        dirty_result = self._muse("status", "--porcelain")
+        dirty_result = self._muse_dirty()
         if isinstance(dirty_result, ReadError):
             return dirty_result
         return StatusResult(
             regime=self.regime,
-            dirty=bool(dirty_result.stdout.strip()),
+            dirty=dirty_result,
             branch=branch_result.stdout,
             notes=["canonical=muse", "git-forbidden"],
         )

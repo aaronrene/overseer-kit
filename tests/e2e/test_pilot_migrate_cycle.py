@@ -13,6 +13,7 @@ from tests.support import (
     ok,
     run_cli,
     seed_pilot_tree,
+    seed_muse_substrate,
 )
 
 
@@ -34,7 +35,7 @@ def test_pilot_migrate_cycle_preserves_and_seeds(tmp_path: Path) -> None:
             ),
         }
     )
-    (tmp_path / ".muse").mkdir(exist_ok=True)
+    seed_muse_substrate(tmp_path)
     (tmp_path / ".muse" / "git-bridge.toml").write_text(
         '[last_export]\ngit_sha = "' + ("c" * 40) + '"\n'
         '[last_import]\ngit_sha = "' + ("c" * 40) + '"\n',

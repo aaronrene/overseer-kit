@@ -90,3 +90,18 @@ def test_governance_sync_argparse() -> None:
     args_write = parser.parse_args(["governance-sync", "--write"])
     assert args_write.write is True
 
+
+def test_verify_step_argparse() -> None:
+    from cli.args import extract_global_args
+
+    parser = build_parser()
+    raw = ["verify-step", "--step", "alpha", "--dry-run", "--json"]
+    global_argv, rest_argv = extract_global_args(raw)
+    args = parser.parse_args(global_argv + rest_argv)
+    assert args.command == "verify-step"
+    assert args.step == "alpha"
+    assert args.dry_run is True
+    assert args.json is True
+    through_args = parser.parse_args(["verify-step", "--through", "current"])
+    assert through_args.through == "current"
+

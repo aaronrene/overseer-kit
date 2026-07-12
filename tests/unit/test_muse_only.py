@@ -13,7 +13,7 @@ def test_status_success(muse_only_config, repo_root) -> None:
     runner = make_runner(
         {
             f"muse -C {root} branch": ok("feat/hub"),
-            f"muse -C {root} status": ok(""),
+            f"muse -C {root} status --json": ok('{"dirty": false, "branch": "feat/hub"}'),
         }
     )
     adapter = adapter_for(muse_only_config, repo_root, runner)
