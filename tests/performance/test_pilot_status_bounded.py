@@ -21,7 +21,7 @@ def test_pilot_status_and_dry_run_bounded(tmp_path: Path) -> None:
     root = str(tmp_path.resolve())
     runner.responses.update(
         {
-            f"muse -C {root} rev-parse main": ok('{"commit_id": "' + "a" * 40 + '"}'),
+            f"muse -C {root} rev-parse main": ok("a" * 40),
             "git rev-parse origin/main": ok("b" * 40),
             "gh pr list --state merged --limit 5 --json number,title,mergeCommit,mergedAt": ok(
                 json.dumps([])

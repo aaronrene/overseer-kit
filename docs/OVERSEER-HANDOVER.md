@@ -98,7 +98,7 @@ Governance gates (mandatory — remind only; silence is not pass):
 | **Track P / P0** | **DONE** — agent identity & signed provenance; contract reviewed → `pass` (P0-r2), stamp `sha256:7db8681…` |
 | **Track P / P1** | **DONE** — agent provenance build-verified → `pass` (P1-BV-r2); BV1 (§P0.6 verify-surface parity) fixed; **429** tests green (+30 §P0.8) |
 | **Track Q / Q0–Q2** | **TODO** — Overseer App: local web UI over the existing engine (Q1) packaged with **Tauri** into a cross-platform desktop app (Q2); needs Q0 Thinking freeze first; not yet started |
-| **Muse dogfood** | **D2 repaired** + substrate health + gate reminders live; `muse log --format=%H` adapter bug fixed (`rev-parse` + JSON) |
+| **Muse dogfood** | **D2 repaired** + substrate health + gate reminders live; `muse rev-parse` reads plain-text SHA (0.2.x returns bare SHA on success; JSON only on failure/non-zero); `governance-sync --dry-run` exits 0; muse canonical HEAD `sha256:4671b7f…` |
 | **KH1b** | **DONE** — substrate §1 + gate reminders §2 |
 | **Public brand** | **🆗 Overseer Kit** (locked in template + landing) |
 | **CLI** | `init` \| `sync` \| `status` \| `review --freeze` \| `governance-sync` \| `verify-step` \| `honesty-status` \| `ledger` |
@@ -110,9 +110,11 @@ Governance gates (mandatory — remind only; silence is not pass):
 
 | Item | Value |
 | --- | --- |
-| Branch | `docs/k9-layered-honesty-vision` (uncommitted P1 build + BV1 fix) |
-| HEAD | `d91193b` |
-| Dirty | yes (Track P / P1 build + BV1 fix + muse adapter compat + governance-sync) |
+| Branch | `docs/k9-layered-honesty-vision` |
+| HEAD | `03ecf33` |
+| Muse HEAD | `sha256:4671b7f…` (branch `main`, 316 files, first muse commit) |
+| GitHub bridge | PR #15 — `muse-mirror → main` |
+| Dirty | yes (adapter plain-text SHA fix + 6 test mocks + bridge sentinel) |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -125,6 +127,17 @@ Governance gates (mandatory — remind only; silence is not pass):
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-12** — **Muse adapter plain-text SHA fix + first muse canonical commit + GitHub bridge (PR #15).**
+  Follow-up to the earlier `rev-parse` compat fix: discovered `muse rev-parse` (0.2.x) returns a
+  **bare SHA string** on success (exit 0) and JSON only on failure (exit 1); the prior helper tried to
+  parse JSON on the success path, causing `governance-sync --dry-run` to emit `invalid JSON in
+  rev-parse output` after the first muse commit existed. Fixed `_muse_rev_parse_sha` in
+  `adapters/base.py` to read `result.stdout.strip()` directly; updated 6 test mocks (3 e2e + 1 perf
+  + 1 security + 1 unit) from JSON-wrapped responses to plain SHA strings.
+  `governance-sync --dry-run` now exits 0. First **muse canonical commit** created:
+  `sha256:4671b7f...` (316 files, branch `main`, author `aaronrene`, agent `cursor-agent`).
+  **GitHub bridge** via `scripts/muse-bridge-deploy.sh`: exported 316 files to git `muse-mirror`
+  branch; PR #15 opened (`muse-mirror -> main`). **429** tests still green.
 - **2026-07-12** — **Muse adapter compat fix: `muse log --format=%H` → `rev-parse` + JSON.** Muse
   0.2.0rc15 removed the git-style `--format=%H` flag from `muse log`; all four call sites in
   `adapters/muse_only/adapter.py` + `adapters/muse_git_mirror/adapter.py` now use

@@ -122,14 +122,14 @@ def test_mirror_requires_operator_before_push(muse_git_mirror_config, repo_root)
 
 
 def test_commit_feature_uses_rev_parse_for_branch_probe(muse_git_mirror_config, repo_root) -> None:
-    """muse 0.2.0rc15 lacks ``muse log --format=%H``; use ``rev-parse`` + JSON ``commit_id``."""
+    """muse 0.2.0rc15 lacks ``muse log --format=%H``; use ``muse rev-parse`` (returns plain SHA on success)."""
     root = str(repo_root)
     runner = make_runner(
         {
             f"muse -C {root} checkout": ok(""),
             f"muse -C {root} rev-parse --abbrev-ref HEAD": ok("feat/k7"),
             f"muse -C {root} commit": ok(""),
-            f"muse -C {root} rev-parse HEAD": ok('{"commit_id": "sha256:abc"}'),
+            f"muse -C {root} rev-parse HEAD": ok('sha256:abc'),
         }
     )
     adapter = adapter_for(muse_git_mirror_config, repo_root, runner)

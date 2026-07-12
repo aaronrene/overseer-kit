@@ -9,3 +9,4 @@ node_modules/
 !.env.example
 .overseer/scratch/
 .muse/
+.overseer/.muse-bridge-sentinel
