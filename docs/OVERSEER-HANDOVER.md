@@ -103,6 +103,7 @@ Governance sync: update docs/ROADMAP.md + docs/OVERSEER-HANDOVER.md on completio
 | **KH1 Handover relay** | **DONE** — contract `pass` (KH1-r2); §KH1.6 close-out complete |
 | **Track P / P0** | **DONE** — agent identity & signed provenance; contract reviewed → `pass` (P0-r2), stamp `sha256:7db8681…` |
 | **Track P / P1** | **TODO** — Auto build of the frozen `provenance` envelope (§P0.8 matrix) |
+| **Track Q / Q0–Q2** | **TODO** — Overseer App: local web UI over the existing engine (Q1) packaged with **Tauri** into a cross-platform desktop app (Q2); needs Q0 Thinking freeze first; not yet started |
 | **Muse dogfood** | **D2 repaired** + substrate health + gate reminders live |
 | **KH1b** | **DONE** — substrate §1 + gate reminders §2 |
 | **Public brand** | **🆗 Overseer Kit** (locked in template + landing) |
@@ -130,6 +131,22 @@ Governance sync: update docs/ROADMAP.md + docs/OVERSEER-HANDOVER.md on completio
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-12** — **Track Q — Overseer App queued (promoted from exploration backlog).** Added
+  **Q0** (Thinking freeze — `overseer app` scope: local-only web UI over the existing Python engine,
+  zero engine rewrite, `127.0.0.1`-only, same fail-closed gates as the CLI), **Q1** (Auto — build the
+  local web UI), **Q2** (Auto — package Q1 with **Tauri** into an installable cross-platform desktop
+  app; native macOS/SwiftUI explicitly deferred) to the ROADMAP build queue. Removed the now-queued
+  Track Q entry from the exploration backlog (P-deploy, hosted dashboard, P-route reference remain
+  ideas-only). Verified `overseer status` gate scanner parses the new rows cleanly (0 pending gates).
+  NEXT unchanged — **Track P / P1** remains the active build; Track Q awaits its own Q0 freeze session.
+- **2026-07-12** — **Roadmap slices + exploration backlog added.** Queued **Track P / P-route**
+  (declarative model-routing *policy*, not a dispatcher), **P-cost** (cost-*awareness* surface, not a
+  dollar pricer), **P-evidence** (verification evidence capture) as TODO (each needs a Thinking freeze
+  before build). Added an **Exploration backlog** section: **P-deploy** (deployment gate), **Track Q —
+  Overseer App** (local GUI over the Python engine → Tauri desktop; Swift/native deferred; hosted
+  read-only dashboard as a separate variant), hosted governance dashboard, and a P-route runtime
+  reference (consumer-side). All captured as ideas only; boundary held: kit = governance/frontend,
+  never runtime/dispatcher/model-host. NEXT unchanged (Track P / P1 build).
 - **2026-07-12** — **Track P / P0 DONE (freeze reviewed → `pass`).** Ran `/freeze-review-loop` on
   `docs/PHASE-TRACK-P-P0-AGENT-PROVENANCE.md`: round 1 checklist gate raised F1 (C8 citation
   discipline) + F2 (C4 path-like token `/api/social/...` in §P0.9) — both non-escalating heuristic
