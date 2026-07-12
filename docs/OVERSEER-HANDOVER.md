@@ -6,63 +6,66 @@
 
 ---
 
-## NEXT SESSION — Track P / P-route Thinking freeze (▶ NEXT)
+## NEXT SESSION — Track P / P-route Auto build (▶ NEXT)
 
 **Date:** 2026-07-12  
-**Current position:** **Track P / P1 DONE** — build verified → `pass` (P1-BV-r2). Build-verification round 1 raised **BV1** (§P0.6 parity: `verify` did not emit exit `2` on a hash-consistent but structurally malformed `provenance`); fixed in `tools/honesty/ledger.py` `verify_chain` + CLI message + regression test; round 2 `pass`. **429** tests green (+30 §P0.8). Track P provenance primitive is now shipped and verified.  
-**Model:** **thinking-high** (Thinking freeze — design + freeze the next contract before any Auto build)  
-**Operator choice:** the default next slice below is **Track P / P-route** (declarative model-routing *policy*). Operator may instead pick **Track P / P-cost**, **Track P / P-evidence**, or **Track Q / Q0** (Overseer App freeze) — each is a Thinking freeze and each must clear the "governance, not runtime" boundary.
+**Current position:** **Track P / P-route Thinking freeze DONE** — `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` **reviewed → `pass` (P-route-r2)**, stamp digest `sha256:ab6b6a9…`. Froze the declarative model-routing policy: `policy/model-routing.yaml` schema (`{position, phase_tier, gate} → model_tier + fallback`), the additive `model_tiers` extension to `policy/model-labels.yaml`, an optional default-inert `model_routing:` config block, a read-only `overseer route` surface + exit codes `30`/`31`, the rule-holder-not-executor boundary, and the seven-tier matrix. **No code landed** (spec-only). Predecessor **Track P / P1 DONE** (agent provenance build-verified, **429** tests green).  
+**Model:** **Auto** (mechanical build against the frozen P-route contract — no redesign)  
+**Operator choice:** the default next slice below is the **Track P / P-route Auto build**. Operator may instead pick **Track P / P-cost**, **Track P / P-evidence**, or **Track Q / Q0** (Overseer App freeze) — the latter three are Thinking freezes and each must clear the "governance, not runtime" boundary.
 
 <!-- overseer:anchor:done-recently -->
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **Track P / P1 DONE (build-verified)** | `provenance` envelope on non-genesis ledger entries; `compute_entry_hash` excludes `provenance.sig` (legacy hashes unchanged); Ed25519 verify in `ledger verify` + `honesty-status`; `honesty.require_agent_signature` (git-only `true` → config exit `26`); append/verify exit `25`/`26`; Muse registry seam (`tools/honesty/muse_registry.py`); `cryptography` dep for verify-only path |
-| **Build verification** | `/build-verification-review` V1–V8 vs frozen §P0. Round 1 → **BV1** (§P0.6: `verify` must emit `2` on malformed provenance) → fixed (`verify_chain` structural validation + CLI message + regression test). Round 2 → **`pass`** |
-| **Tests** | Seven-tier §P0.8 matrix — **30** new tests; **429** total green |
+| **Track P / P-route Thinking freeze DONE** | `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` reviewed → `pass` (P-route-r2), stamp `sha256:ab6b6a9…`. Frozen: `policy/model-routing.yaml` schema (first-match-wins + mandatory `defaults`; `fallback[0] == model_tier` terminating in `human`); `model_tiers` extension for `policy/model-labels.yaml` (abstract tiers, no vendor slugs); optional `model_routing:` config; read-only `overseer route` + exit `30`/`31`; seven-tier matrix. Kit = rule-holder, runtime = executor; **no model calls in the kit.** |
+| **Freeze review** | `/freeze-review-loop`: checklist gate clean both rounds; P-route-r1 raised two non-escalating MINOR consistency findings (R1-N1 exit-`31` wording, R1-N2 `model_tier`↔`fallback[0]`) → fixed; **P-route-r2 → `pass`** |
+| **Track P / P1 DONE (build-verified)** | `provenance` envelope + Ed25519 verify + `require_agent_signature` + exit `25`/`26`; **429** tests green (+30 §P0.8) |
 | **Track P / P0 DONE** | Contract reviewed → `pass` (P0-r2); stamp `sha256:7db8681…` |
-| **KH1b** | Substrate health + gate reminders live |
 <!-- /overseer:anchor:done-recently -->
 
-### THE ONE NEXT STEP — **Model: thinking-high (Thinking freeze: Track P / P-route)**
+### THE ONE NEXT STEP — **Model: Auto (Track P / P-route Auto build)**
 
-Draft and freeze the **Track P / P-route** contract (P0-style): a **declarative model-routing policy** in `policy/model-routing.yaml` mapping `position / phase-tier / gate → model tier + fallback`, consumed by the *runtime* (Cursor / OpenRouter / Scooling). The kit stays the rule-holder, never the executor — **no model calls added to the kit.** Freeze WHAT + HOW + the seven-tier test matrix before any Auto build. (Operator may instead pick P-cost, P-evidence, or Track Q / Q0.)
+Build the **Track P / P-route** deliverables mechanically against the frozen contract `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md`. Do **not** re-derive the contract. Vendor `policy/model-routing.yaml`; extend (do not fork) `policy/model-labels.yaml` with `model_tiers`; add the optional `model_routing:` config parse; ship a read-only `overseer route` (resolve / `--validate` / explain) that performs **no model call, no network, no dispatch, holds no key**; add exit codes `30`/`31`; land all seven tiers green. Then run `/build-verification-review` before ROADMAP status → DONE.
 
 | | |
 | --- | --- |
-| **ID** | **Track P / P-route freeze** |
-| **Branch** | `feat/track-p-route-freeze` (slug = `track-p-route-freeze`) |
-| **Read first** | `docs/ROADMAP.md` (Track P / P-route row + Exploration backlog); `policy/model-labels.yaml`; `docs/PHASE-TRACK-P-P0-AGENT-PROVENANCE.md` (freeze-doc shape); `docs/OVERSEER-KIT-SPEC.md` §6 (freeze ceremony) |
-| **Freeze** | Contract doc `docs/PHASE-TRACK-P-P-ROUTE-*.md`; extends (does not fork) `policy/model-labels.yaml`; seven-tier matrix; boundary = policy only, no dispatcher/model-host |
-| **Hard stops** | No Auto build until freeze reviewed → `pass`; no model calls / runtime dispatch in the kit; no Tier-3 merge without authorization |
+| **ID** | **Track P / P-route build** |
+| **Branch** | `feat/track-p-route-build` (slug = `track-p-route-build`) |
+| **Read first** | `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` (frozen contract — build target); `policy/model-labels.yaml` (extend `model_tiers`); `docs/ROADMAP.md` (Track P / P-route build row); `policy/test-tiers.yaml` (seven tiers) |
+| **Build** | `policy/model-routing.yaml`; `model_tiers` in `policy/model-labels.yaml`; `model_routing:` config; `overseer route`; exit `30`/`31`; seven-tier tests |
+| **Hard stops** | No redesign of the frozen contract; no model call / network / dispatch / API key in the kit; no vendor slug in policy; run `/build-verification-review` before DONE; no Tier-3 merge without authorization |
 
 <!-- overseer:anchor:paste-ready-prompt -->
-### Paste-ready prompt — Track P / P-route Thinking freeze
+### Paste-ready prompt — Track P / P-route Auto build
 
 ```
-Phase Track P / P-route — Thinking freeze (overseer-kit).
+Phase Track P / P-route — Auto build (overseer-kit).
 
-Model: thinking-high (design + freeze the contract; NOT an Auto build session).
+Model: Auto (mechanical implementation against the frozen contract; NO redesign).
 
 Shared context:
 - Project: 🆗 Overseer Kit — repo-agnostic governance vendoring CLI
-- Read first: docs/ROADMAP.md (Track P / P-route row + Exploration backlog);
-  policy/model-labels.yaml; docs/PHASE-TRACK-P-P0-AGENT-PROVENANCE.md (freeze-doc shape);
-  docs/OVERSEER-KIT-SPEC.md §6 (freeze ceremony)
-- Predecessor: Track P / P1 DONE (agent provenance shipped + build-verified, 429 tests green)
+- Read first: docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md (frozen contract, reviewed -> pass);
+  policy/model-labels.yaml (extend with model_tiers); docs/ROADMAP.md (Track P / P-route build row);
+  policy/test-tiers.yaml (seven tiers)
+- Predecessor: Track P / P-route Thinking freeze DONE (reviewed -> pass, P-route-r2)
 - Boundary (K7 / AGENTS.md): the kit is governance/frontend, NEVER a runtime/dispatcher/model-host
 
-Task:
-- Draft docs/PHASE-TRACK-P-P-ROUTE-*.md freezing a DECLARATIVE model-routing POLICY:
-  policy/model-routing.yaml mapping position / phase-tier / gate -> model tier + fallback,
-  consumed by the runtime (Cursor / OpenRouter / Scooling). Extend (do not fork) model-labels.yaml.
-- Freeze WHAT + HOW + a seven-tier test matrix the Auto build must satisfy. NO model calls in the kit.
-- Run /freeze-review-loop until `pass`; write the review stamp via `overseer review --freeze`.
-- On pass: ROADMAP Track P / P-route -> (freeze DONE, queue P-route Auto build); update this handover.
+Task (build exactly to the frozen §PR.3-§PR.8 contract; do not re-derive):
+- Vendor policy/model-routing.yaml (version 1): {position, phase_tier, gate} -> model_tier + fallback;
+  ordered first-match-wins; mandatory defaults terminal; fallback[0] == model_tier, terminating in human.
+- Extend (do not fork) policy/model-labels.yaml with a model_tiers section (abstract capability tiers;
+  NO vendor slugs / endpoints / prices / keys).
+- Add optional default-inert model_routing: config block (enabled:false; policy path).
+- Ship read-only `overseer route` (resolve / --validate / explain) — NO model call, NO network,
+  NO dispatch, NO API key. Exit codes 30 (malformed policy) / 31 (missing/unreadable policy).
+- Land all seven tiers green per §PR.8.
+- Run /build-verification-review vs the frozen contract before marking DONE.
+- On pass: ROADMAP Track P / P-route build -> DONE; update this handover.
 
 Governance gates (mandatory — remind only; silence is not pass):
-- Freeze review: this session freezes the contract; no Auto build until reviewed -> `pass`
+- Build verification: run /build-verification-review before ROADMAP status -> DONE
 - overseer status and overseer governance-sync emit pending gates for the active slice
 ```
 <!-- /overseer:anchor:paste-ready-prompt -->
@@ -97,6 +100,7 @@ Governance gates (mandatory — remind only; silence is not pass):
 | **KH1 Handover relay** | **DONE** — contract `pass` (KH1-r2); §KH1.6 close-out complete |
 | **Track P / P0** | **DONE** — agent identity & signed provenance; contract reviewed → `pass` (P0-r2), stamp `sha256:7db8681…` |
 | **Track P / P1** | **DONE** — agent provenance build-verified → `pass` (P1-BV-r2); BV1 (§P0.6 verify-surface parity) fixed; **429** tests green (+30 §P0.8) |
+| **Track P / P-route** | **Thinking freeze DONE** — `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` reviewed → `pass` (P-route-r2), stamp `sha256:ab6b6a9…`. Declarative model-routing *policy* frozen (schema + `model_tiers` extension + optional `model_routing:` config + read-only `overseer route` + exit `30`/`31` + seven-tier matrix). Spec-only; **P-route Auto build queued** (TODO). Kit = rule-holder, runtime = executor |
 | **Track Q / Q0–Q2** | **TODO** — Overseer App: local web UI over the existing engine (Q1) packaged with **Tauri** into a cross-platform desktop app (Q2); needs Q0 Thinking freeze first; not yet started |
 | **Muse dogfood** | **D2 repaired** + substrate health + gate reminders live; `muse rev-parse` reads plain-text SHA (0.2.x returns bare SHA on success; JSON only on failure/non-zero); `governance-sync --dry-run` exits 0; muse canonical HEAD `sha256:4671b7f…` |
 | **KH1b** | **DONE** — substrate §1 + gate reminders §2 |
@@ -110,11 +114,11 @@ Governance gates (mandatory — remind only; silence is not pass):
 
 | Item | Value |
 | --- | --- |
-| Branch | `docs/k9-layered-honesty-vision` |
-| HEAD | `03ecf33` |
+| Branch | `feat/track-p-route-freeze` |
+| HEAD | `52b7e6e` |
 | Muse HEAD | `sha256:4671b7f…` (branch `main`, 316 files, first muse commit) |
 | GitHub bridge | PR #15 — `muse-mirror → main` |
-| Dirty | yes (adapter plain-text SHA fix + 6 test mocks + bridge sentinel) |
+| Dirty | yes (P-route freeze doc + ROADMAP + handover; adapter plain-text SHA fix + 6 test mocks + bridge sentinel) |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -127,6 +131,25 @@ Governance gates (mandatory — remind only; silence is not pass):
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-12** — **Track P / P-route Thinking freeze DONE (reviewed → `pass`).** Drafted and froze
+  `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md`: a **declarative model-routing policy** (not a runtime
+  dispatcher). Frozen surface — `policy/model-routing.yaml` (`version 1`) mapping the selector triple
+  `{position, phase_tier, gate}` → `model_tier` + ordered `fallback`, resolved by first-match-wins
+  with a mandatory `defaults` terminal (total resolution); `fallback[0] == model_tier` and every chain
+  terminates in `human` (fail-closed, mirrors the freeze-reviewer `fallback: human`); the additive
+  `model_tiers` section extending (not forking) `policy/model-labels.yaml` with abstract capability
+  tiers (no vendor slugs / endpoints / prices / keys); an optional default-inert `model_routing:`
+  config block; a read-only `overseer route` surface (resolve / `--validate` / explain — no model
+  call, no network, no dispatch, no key); non-overlapping exit codes `30` (malformed policy) / `31`
+  (missing/unreadable policy); the rule-holder-not-executor boundary table; and the §PR.8 seven-tier
+  matrix. **Boundary held (K7 / AGENTS.md):** the kit holds and validates the rulebook; the runtime
+  (Cursor / OpenRouter / Scooling 9A) maps a tier to a concrete model and executes. `/freeze-review-loop`:
+  checklist gate clean both rounds; **P-route-r1** raised two non-escalating MINOR consistency findings
+  (R1-N1 exit-`31` wording vs. the `enabled:false` explicit-`route` path; R1-N2 unspecified
+  `model_tier`↔`fallback[0]` relationship) → fixed minimally; **P-route-r2 → `pass`**; stamp written by
+  `overseer review --freeze` (digest `sha256:ab6b6a9…`). **Spec-only — no code landed.** ROADMAP:
+  Track P / P-route → **DONE (Thinking)**; added **Track P / P-route build** (Auto, TODO). Handover NEXT
+  flips to the P-route Auto build. **429** tests unchanged.
 - **2026-07-12** — **Muse adapter plain-text SHA fix + first muse canonical commit + GitHub bridge (PR #15).**
   Follow-up to the earlier `rev-parse` compat fix: discovered `muse rev-parse` (0.2.x) returns a
   **bare SHA string** on success (exit 0) and JSON only on failure (exit 1); the prior helper tried to
