@@ -6,55 +6,61 @@
 
 ---
 
-## NEXT SESSION — Track P / P0 (freeze) (▶ NEXT)
+## NEXT SESSION — Track P / P0 freeze-review (▶ NEXT)
 
 **Date:** 2026-07-12  
-**Current position:** **KH1 DONE** (§KH1.6 close-out complete); **KH1b DONE**; **399** tests green. Track P seeded — **P0 Thinking freeze** is next (scope at session).  
-**Model:** **Thinking** (Track P / P0 — spec freeze only; no code)
+**Current position:** **KH1 DONE**; **KH1b DONE**; **399** tests green. **Track P / P0 scope LOCKED = Agent identity & signed provenance.** Contract **drafted** at `docs/PHASE-TRACK-P-P0-AGENT-PROVENANCE.md` — **pending freeze-review `pass`** before any P1 Auto build. Social confirmed **consumer-only** (Muse protocol + Schooling UI); not a kit feature.  
+**Model:** **Thinking** (freeze review of the drafted P0 contract — no code)
 
 <!-- overseer:anchor:done-recently -->
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **KH1 close-out** | 🆗 branding lock in template + `templates/README.md`; Track P row seeded; KH1 → **DONE** |
+| **Track P / P0 draft** | `docs/PHASE-TRACK-P-P0-AGENT-PROVENANCE.md` — optional `provenance` envelope (`agent_id`/`model_id`/Ed25519 `sig`) on ledger entries; shared with Muse social domain; soft (git-only) / hard (Muse) |
+| **Session commit** | `aa9cf74` — synced git branch with muse-mirrored K9b/K10/K11/K12 + landed KH1b + KH1 close-out; `.muse/` gitignored |
+| **KH1 close-out** | 🆗 branding lock in template + `templates/README.md`; KH1 → **DONE** |
 | **KH1b** | Substrate health + §KH1.9 gate reminders live (`tools/governance_gates/`) |
-| **KH1-r2** | Handover relay standard frozen + reviewed → **`pass`** |
-| **Muse dogfood** | D2 repaired; substrate + gate reminders on `status`/`review`/`governance-sync` |
-| **K12 / Track N** | Public landing + scenario gallery (**399** tests green) |
+| **Social scoping** | Muse owns social protocol (Phases 00–02 done); Schooling gets thin social page; kit supplies provenance schema only |
 <!-- /overseer:anchor:done-recently -->
 
-### THE ONE NEXT STEP — **Model: Thinking (Track P / P0 freeze)**
+### THE ONE NEXT STEP — **Model: Thinking (Track P / P0 freeze-review)**
 
-Freeze Track P **P0** scope in a `docs/PHASE-TRACK-P-P0-*.md` contract (Thinking only — no Auto build).
+Run `/freeze-review-loop` on the **drafted** `docs/PHASE-TRACK-P-P0-AGENT-PROVENANCE.md`, resolve any
+findings, then `overseer review --freeze` when CLI green. Record the verdict in the contract's Review
+record table. **Do not build P1 until `pass`.**
 
 | | |
 | --- | --- |
-| **ID** | **Track P / P0** |
+| **ID** | **Track P / P0** (Agent identity & signed provenance) |
 | **Branch** | `feat/track-p-p0` (slug = `track-p-p0`) |
 | **Repo** | **overseer-kit** |
-| **Read first** | `docs/ROADMAP.md`; `docs/OVERSEER-KIT-LAYERED-HONESTY-VISION.md`; this handover |
-| **Hard stops** | No secrets; no commit/push without consent; **P0 = spec freeze only — no code** |
+| **Read first** | `docs/PHASE-TRACK-P-P0-AGENT-PROVENANCE.md`; `tools/honesty/{canonical,validate,ledger}.py`; `docs/OVERSEER-KIT-LAYERED-HONESTY-VISION.md` §2.4 |
+| **Hard stops** | No secrets; no commit/push without consent; **P0 = spec freeze only — no code**; no social features in the kit |
 
 <!-- overseer:anchor:paste-ready-prompt -->
-### Paste-ready prompt — Track P / P0 (freeze)
+### Paste-ready prompt — Track P / P0 freeze-review
 
 ```
-Phase Track P / P0 — Product lane bootstrap freeze (overseer-kit).
+Phase Track P / P0 — Agent identity & signed provenance freeze-review (overseer-kit).
 
 Model: Thinking.
 
 Shared context:
 - Project: 🆗 Overseer Kit — repo-agnostic governance vendoring CLI
-- Read: docs/ROADMAP.md; docs/OVERSEER-KIT-LAYERED-HONESTY-VISION.md; docs/OVERSEER-HANDOVER.md
-- Guardrails: no secrets; fail-closed; no commit/push without consent
+- Read: docs/PHASE-TRACK-P-P0-AGENT-PROVENANCE.md; tools/honesty/{canonical,validate,ledger}.py;
+  docs/OVERSEER-KIT-LAYERED-HONESTY-VISION.md §2.4; docs/OVERSEER-HANDOVER.md
+- Guardrails: no secrets; fail-closed; no commit/push without consent; no social features in the kit
 - Close: update docs/ROADMAP.md + docs/OVERSEER-HANDOVER.md together
 
-Task (P0 Thinking freeze only — no Auto build):
-- Define Track P product-lane scope with operator (what P builds after P0 passes).
-- Freeze contract at docs/PHASE-TRACK-P-P0-<slug>.md with frozen: true YAML block + Review record.
-- Run /freeze-review-loop then overseer review --freeze when CLI green.
-- Flip handover NEXT to Track P / P1 or first P build slice after pass.
+Task (P0 Thinking freeze-review only — no Auto build):
+- Scope is LOCKED: optional `provenance` envelope (agent_id/model_id/Ed25519 sig) on honesty ledger
+  entries; soft under git-only, hard under Muse; shared schema with the Muse social domain (issue #6).
+- Review the drafted contract against tools/honesty reality (canonical hash excludes provenance.sig;
+  v stays 1; git-only never hard-requires signatures — K7 guardrail).
+- Run /freeze-review-loop then overseer review --freeze when CLI green; record verdict in the
+  contract Review record table.
+- On `pass`: flip ROADMAP P0 → DONE, add P1 (Auto build) row, flip handover NEXT to Track P / P1.
 
 Governance gates (mandatory — remind only; silence is not pass):
 - Freeze review: /freeze-review-loop before Thinking freeze → DONE; overseer review --freeze when CLI green
@@ -93,7 +99,7 @@ Governance sync: update docs/ROADMAP.md + docs/OVERSEER-HANDOVER.md on completio
 | **Kit version** | `0.1.0` (`VERSION`) |
 | **K12 / Track N** | **DONE** — landing + scenario gallery + LICENSE + funnel; **399** tests green |
 | **KH1 Handover relay** | **DONE** — contract `pass` (KH1-r2); §KH1.6 close-out complete |
-| **Track P / P0** | **TODO** — product lane bootstrap; P0 Thinking freeze next |
+| **Track P / P0** | **WIP** — agent identity & signed provenance; contract drafted (`docs/PHASE-TRACK-P-P0-AGENT-PROVENANCE.md`), pending freeze-review `pass` |
 | **Muse dogfood** | **D2 repaired** + substrate health + gate reminders live |
 | **KH1b** | **DONE** — substrate §1 + gate reminders §2 |
 | **Public brand** | **🆗 Overseer Kit** (locked in template + landing) |
@@ -107,8 +113,8 @@ Governance sync: update docs/ROADMAP.md + docs/OVERSEER-HANDOVER.md on completio
 | Item | Value |
 | --- | --- |
 | Branch | `docs/k9-layered-honesty-vision` |
-| HEAD | `343093cfdbc226172521b96ed7ce21f625c24c33` |
-| Dirty | yes |
+| HEAD | `aa9cf74` (session commit — synced muse-mirrored work + KH1b/KH1 close-out) |
+| Dirty | yes (Track P / P0 contract + governance-sync doc edits pending commit) |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -121,6 +127,16 @@ Governance sync: update docs/ROADMAP.md + docs/OVERSEER-HANDOVER.md on completio
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-12** — **Track P / P0 scope LOCKED + contract drafted.** After reviewing the Muse social
+  domain (issue #6) and the Abacus/GPT-5.6 orchestration transcript, held the kit boundary:
+  **no social features in the kit.** Track P narrowed to **agent identity & signed provenance** —
+  drafted `docs/PHASE-TRACK-P-P0-AGENT-PROVENANCE.md` (optional `provenance` envelope on ledger
+  entries; canonical hash excludes `provenance.sig`; `v` stays 1; soft under git-only, hard under
+  Muse; shared schema with Muse social). Social confirmed consumer-only (Muse protocol +
+  Schooling UI). Pending freeze-review `pass` before P1 Auto build.
+- **2026-07-12** — **Session git commit `aa9cf74`.** Synced the git branch with muse-mirrored
+  K9b/K10/K11/K12 work (branch was far behind the working tree) and landed this session's KH1b +
+  KH1 close-out. `.muse/` added to `.gitignore`; no secrets; 143 files, **399** tests green.
 - **2026-07-12** — **KH1 DONE (close-out §KH1.6).** Locked public branding **🆗 Overseer Kit** in
   `templates/OVERSEER-HANDOVER.template.md` + `templates/README.md` token guidance; seeded **Track P / P0**
   row in ROADMAP; flipped handover NEXT → **Track P / P0 (freeze)**. KH1 + KH1b both **DONE**. **399** tests green.
