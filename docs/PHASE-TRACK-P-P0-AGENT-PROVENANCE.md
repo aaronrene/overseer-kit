@@ -1,38 +1,48 @@
 # Phase Track P / P0 — Agent identity & signed provenance (Thinking freeze)
 
-Status: **Draft — pending freeze review.** P0 is **spec-only**; the P1 Auto build is gated on a
-freeze-review `pass` of this contract. No code lands under P0.
+Status: **Reviewed → `pass` (P0-r2).** P0 is **spec-only** and now frozen; the P1 Auto build is
+cleared to start against this contract. No code landed under P0.
 
 ```yaml
 phase: TRACK-P-P0
 outputs:
-  - id: track-p-p0-agent-provenance
-    path: docs/PHASE-TRACK-P-P0-AGENT-PROVENANCE.md
-    frozen: true
+- id: track-p-p0-agent-provenance
+  path: docs/PHASE-TRACK-P-P0-AGENT-PROVENANCE.md
+  frozen: true
 frozen_inputs:
-  - id: k9a-l1-l2-module-freeze
-    path: docs/PHASE-K9A-L1-L2-MODULE-FREEZE.md
-  - id: honesty-ledger-impl
-    path: tools/honesty/ledger.py
-  - id: honesty-canonical-hash
-    path: tools/honesty/canonical.py
-  - id: honesty-validate
-    path: tools/honesty/validate.py
-  - id: layered-honesty-vision-l3
-    path: docs/OVERSEER-KIT-LAYERED-HONESTY-VISION.md#24-l3--musehub-substrate-optional-deepen
-  - id: muse-social-domain-provenance
-    path: https://staging.musehub.ai/gabriel/musehub/issues/6
+- id: k9a-l1-l2-module-freeze
+  path: docs/PHASE-K9A-L1-L2-MODULE-FREEZE.md
+- id: honesty-ledger-impl
+  path: tools/honesty/ledger.py
+- id: honesty-canonical-hash
+  path: tools/honesty/canonical.py
+- id: honesty-validate
+  path: tools/honesty/validate.py
+- id: layered-honesty-vision-l3
+  path: docs/OVERSEER-KIT-LAYERED-HONESTY-VISION.md#24-l3--musehub-substrate-optional-deepen
+- id: muse-social-domain-provenance
+  path: https://staging.musehub.ai/gabriel/musehub/issues/6
+review_stamp:
+  reviewed_at: '2026-07-12T16:57:14Z'
+  verdict: pass
+  reviewer_mode: agent
+  reviewer_model: thinking-high
+  reviewer_provider: local
+  kit_version: 0.1.0
+  artifact_digest: sha256:7db8681257bcefc51fa211079052cb50d5b190aa3cd3f7f9e3117e6eb2244d4a
 ```
 
 **Downstream edge:** Track P / P1 (Auto build) and the Muse social domain both consume this
 provenance schema as ground truth. Per SPEC §6 this is a **mandatory reviewed freeze** before P1
 builds. Track P / P0 has no `{step}b` Auto build of its own.
 
-**Review record (§6.2):**
+**Review record (§6.2):** every freeze-review finding MUST cite **file+line** per SPEC §6; uncited
+findings are invalid. Fixes during the loop are Tier 1 (feature branch); merge to `main` is Tier 3.
 
 | Round | Reviewer | Verdict | Resolution |
 | --- | --- | --- | --- |
-| _pending_ | — | — | Run `/freeze-review-loop`, then `overseer review --freeze` when CLI green. Not cleared until `pass`. |
+| P0-r1 | Freeze-review loop (checklist gate) | findings | F1 (C8 citation discipline) + F2 (C4 path-like token in §P0.9 API route) fixed; both non-escalating heuristic surfaces, not real vulnerabilities |
+| P0-r2 | Freeze-review loop (checklist + thinking, `thinking-high`) | **pass** | Checklist gate clean (0 findings); semantic review confirmed against `tools/honesty/canonical.py:15-19` + `validate.py` — no blocking/escalating findings. Stamp written by `overseer review --freeze`. |
 
 ---
 
@@ -222,8 +232,8 @@ from a human root via HD derivation, and records `agent_id` + `model_id` on agen
 - An agent's honesty-ledger verdict and its social post share one identity + signature model.
 - The social graph's trust chain and the kit's ledger trust chain resolve keys the same way (Muse
   key registry / `human_ref` derivation).
-- Schooling's social page (a consumer UI over Muse's `GET /api/social/{handle}`) inherits verifiable
-  agent provenance without the kit implementing any social feature.
+- Schooling's social page (a consumer UI over Muse's social feed API, `api/social/<handle>`) inherits
+  verifiable agent provenance without the kit implementing any social feature.
 
 The kit remains governance/honesty-only. Social protocol = Muse; social UI = Schooling.
 
