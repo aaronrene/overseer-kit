@@ -1,6 +1,8 @@
-# Overseer Handover — {{repo.name}}
+# {{docs.handover_title}} — {{repo.name}}
 
-**Living relay for {{repo.name}} development.** Paste the **NEXT SESSION** block into a fresh chat.
+**Public product name:** 🆗 Overseer Kit — `{{repo.name}}` is the repo slug only, not the public brand.
+
+**Living relay for 🆗 Overseer Kit in {{repo.name}}.** Paste the **NEXT SESSION** block into a fresh chat.
 
 ---
 
@@ -43,6 +45,10 @@ Deliverables:
 Hard stops: <hard stops>
 
 Governance sync: update {{docs.roadmap_path}} + {{docs.handover_path}} on completion.
+
+Governance gates (mandatory — remind only; silence is not pass):
+- Freeze review: /freeze-review-loop before Thinking freeze → DONE; overseer review --freeze when CLI green
+- Build verification: /build-verification-review after every Auto {step}b before ROADMAP DONE
 ```
 
 ---
@@ -82,6 +88,7 @@ Governance sync: update {{docs.roadmap_path}} + {{docs.handover_path}} on comple
 1. **Docs-first:** update `{{docs.roadmap_path}}` and durable specs before regenerating this file.
 2. **Model label required:** every NEXT block and paste prompt includes **`Model:`**.
 3. **Thinking → Auto split:** when NEXT is split, emit `{step}a` (Thinking) then `{step}b` (Auto) — never one combined prompt.
-4. **Closing commit:** the session-ending commit bundles code/tests + `{{docs.roadmap_path}}` + `{{docs.handover_path}}`.
+4. **Build verification (mandatory):** after `{step}b`, run `/build-verification-review` before ROADMAP status → **DONE**.
+5. **Closing commit:** the session-ending commit bundles code/tests + `{{docs.roadmap_path}}` + `{{docs.handover_path}}`.
 
 See `{{docs.standing_decisions_path}}` → Model-split handover protocol (SD-3) and governance sync (SD-17).

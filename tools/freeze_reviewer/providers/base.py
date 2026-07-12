@@ -1,13 +1,15 @@
-"""Review provider interface and implementations (§K5.8)."""
+"""Review provider interface and implementations (§K5.8 / K11)."""
 
 from __future__ import annotations
 
-import os
 import re
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Protocol
 
 from tools.freeze_reviewer.checklist import BUILTIN_CHECKLIST
+from tools.freeze_reviewer.providers.api_client import ReviewApiClient
+from tools.freeze_reviewer.providers.api_response import ProviderReviewError
 from tools.freeze_reviewer.types import ChecklistItem, Finding, ReviewerSettings
 
 ABSOLUTE_PATH_RE = re.compile(r"(?:^|[\s`'\"])(/[A-Za-z0-9._-]+){2,}")
@@ -160,19 +162,26 @@ class LocalReviewProvider:
 
 @dataclass
 class ApiReviewProvider:
-    """Remote API provider with shared engine surface (§K5.8)."""
+    """Headless remote API provider (§K5.8 / K11)."""
 
-    engine: ChecklistEngine = field(default_factory=ChecklistEngine)
-    env_var: str = "OVERSEER_REVIEW_API_KEY"
+    kit_root: Path | None = None
+    client: ReviewApiClient | None = None
+    force_unreachable: bool = False
+    unreachable_cause: str | None = None
     scripted_findings: list[Finding] | None = None
     review_calls: int = 0
     reachable_calls: int = 0
 
+    def _client(self) -> ReviewApiClient:
+        if self.client is not None:
+            return self.client
+        return ReviewApiClient(kit_root=self.kit_root)
+
     def reachable(self) -> tuple[bool, str | None]:
         self.reachable_calls += 1
-        if os.environ.get(self.env_var):
-            return True, None
-        return False, "missing API credentials"
+        if self.force_unreachable:
+            return False, self.unreachable_cause or "API provider unavailable"
+        return self._client().reachable()
 
     def review(
         self,
@@ -185,17 +194,26 @@ class ApiReviewProvider:
         self.review_calls += 1
         if self.scripted_findings is not None:
             return list(self.scripted_findings)
-        return self.engine.evaluate(
-            artifact_text=artifact_text,
-            artifact_path=artifact_path,
-            checklist=checklist,
-        )
+        try:
+            return self._client().review(
+                artifact_text=artifact_text,
+                artifact_path=artifact_path,
+                checklist=checklist,
+                reviewer=reviewer,
+            )
+        except ProviderReviewError as exc:
+            raise ProviderReviewError(str(exc)) from exc
 
 
-def provider_for(settings: ReviewerSettings, provider: ReviewProvider | None = None) -> ReviewProvider:
+def provider_for(
+    settings: ReviewerSettings,
+    provider: ReviewProvider | None = None,
+    *,
+    kit_root: Path | None = None,
+) -> ReviewProvider:
     """Construct the effective provider unless a test double is injected."""
     if provider is not None:
         return provider
     if settings.provider == "api":
-        return ApiReviewProvider()
+        return ApiReviewProvider(kit_root=kit_root)
     return LocalReviewProvider()

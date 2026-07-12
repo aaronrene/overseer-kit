@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import re
 from pathlib import Path
 from typing import Protocol, Union
@@ -100,6 +101,52 @@ class BaseAdapter:
         if not result.ok:
             return ReadError(cmd, result.stderr or result.stdout, result.exit_code)
         return result
+
+    def _muse_rev_parse_sha(self, ref: str) -> "HeadResult | ReadError":
+        """Resolve a muse ref to its commit id via ``muse rev-parse`` (Muse 0.2+ JSON).
+
+        Muse 0.2.x emits ``{"commit_id": "<sha>", ...}`` on stdout (exit 0) and sets
+        exit_code=1 when the ref is unknown, so ``_muse`` already fail-closes on
+        unknown refs before we even reach the JSON parser.
+        """
+        result = self._muse("rev-parse", ref)
+        if isinstance(result, ReadError):
+            return result
+        try:
+            payload = json.loads(result.stdout)
+        except json.JSONDecodeError:
+            return ReadError(f"muse rev-parse {ref}", "invalid JSON in rev-parse output")
+        if not isinstance(payload, dict):
+            return ReadError(f"muse rev-parse {ref}", "unexpected JSON shape from rev-parse")
+        commit_id = payload.get("commit_id")
+        if not isinstance(commit_id, str) or not commit_id.strip():
+            reason = payload.get("error") or "empty commit_id"
+            return ReadError(f"muse rev-parse {ref}", str(reason))
+        return HeadResult(sha=commit_id.strip(), kind="muse")
+
+    def _muse_dirty(self) -> bool | ReadError:
+        """Return Muse working-tree dirty flag (Muse 0.2+ ``status --json``; legacy ``--porcelain``)."""
+        json_result = self._muse("status", "--json")
+        if not isinstance(json_result, ReadError):
+            try:
+                payload = json.loads(json_result.stdout)
+            except json.JSONDecodeError:
+                return ReadError(
+                    "muse status --json",
+                    "invalid JSON from muse status",
+                )
+            if isinstance(payload, dict):
+                if "dirty" in payload:
+                    return bool(payload["dirty"])
+                total = payload.get("total_changes")
+                if isinstance(total, int):
+                    return total > 0
+            return ReadError("muse status --json", "missing dirty/total_changes field")
+
+        porcelain = self._muse("status", "--porcelain")
+        if isinstance(porcelain, ReadError):
+            return porcelain
+        return bool(porcelain.stdout.strip())
 
     def _is_protected_branch(self, branch: str) -> bool:
         git_main = self.config.vcs.git.main_branch

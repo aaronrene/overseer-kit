@@ -16,9 +16,35 @@ from tools.governance_hygiene.drift import detect_drift
 from tools.governance_hygiene.patch import build_handover_patches, build_roadmap_patches
 from tools.governance_hygiene.reads import ReadFailure, perform_verified_reads
 from tools.governance_hygiene.realign import execute_realign_guard, plan_realign
+from tools.governance_gates import scan_governance_gates
+from tools.governance_gates.format import format_pending_gate_lines
 from tools.governance_hygiene.types import DriftReport, GovernanceSyncResult, PatchPlan, VerifiedReads
 
 GOVERNANCE_SYNC_MARKER = "last_governance_sync"
+
+
+def _emit_governance_gate_footer(
+    config: OverseerConfig,
+    repo_root: Path,
+    *,
+    handover_text: str,
+    roadmap_text: str,
+    emit,
+) -> None:
+    """Append §KH1.9 gate reminders when governance-sync surface is enabled."""
+    if not config.governance_gates.remind:
+        return
+    if "governance-sync" not in config.governance_gates.surfaces:
+        return
+    result = scan_governance_gates(
+        config,
+        repo_root,
+        handover_text=handover_text,
+        roadmap_text=roadmap_text,
+    )
+    emit("")
+    for line in format_pending_gate_lines(result):
+        emit(line)
 
 
 def run_governance_sync(
@@ -28,16 +54,146 @@ def run_governance_sync(
     runner: CommandRunner,
     *,
     dry_run: bool = True,
+    lane: str | None = None,
+    all_lanes: bool = False,
     emit,
 ) -> GovernanceSyncResult:
     """Execute governance-sync; default dry-run is inert (§7)."""
-    from cli.docs_paths import living_doc_abs
+    if all_lanes and lane is not None:
+        return GovernanceSyncResult(
+            exit_code=2,
+            dry_run=dry_run,
+            reads=None,
+            drift=None,
+            plan=None,
+            committed=False,
+            commit_sha=None,
+            messages=("cannot use --lane with --all-lanes",),
+        )
 
-    handover_path = living_doc_abs(repo_root, config, config.docs.handover)
-    roadmap_path = living_doc_abs(repo_root, config, config.docs.roadmap)
+    if all_lanes:
+        return _run_all_lanes(
+            config,
+            repo_root,
+            adapter,
+            runner,
+            dry_run=dry_run,
+            emit=emit,
+        )
+
+    lane_name = lane
+    if config.docs.lanes is not None and lane is None:
+        lane_name = config.docs.default_lane
+    return _run_single_lane(
+        config,
+        repo_root,
+        adapter,
+        runner,
+        lane=lane_name,
+        dry_run=dry_run,
+        skip_missing=False,
+        emit=emit,
+    )
+
+
+def _run_all_lanes(
+    config: OverseerConfig,
+    repo_root: Path,
+    adapter: VcsAdapter,
+    runner: CommandRunner,
+    *,
+    dry_run: bool,
+    emit,
+) -> GovernanceSyncResult:
+    """Sync every configured lane; skip lanes with missing doc files (§K8)."""
+    if config.docs.lanes is None:
+        lane_names: tuple[str | None, ...] = (None,)
+    else:
+        lane_names = tuple(sorted(config.docs.lanes.keys()))
+
+    last_result: GovernanceSyncResult | None = None
+    for lane_name in lane_names:
+        name_label = lane_name if lane_name is not None else "default"
+        emit(f"lane: {name_label}")
+        result = _run_single_lane(
+            config,
+            repo_root,
+            adapter,
+            runner,
+            lane=lane_name,
+            dry_run=dry_run,
+            skip_missing=True,
+            emit=emit,
+        )
+        last_result = result
+        if result.exit_code == 4:
+            emit(f"skipping lane {name_label}: missing governance doc(s)")
+            continue
+        if result.exit_code != 0:
+            return result
+    if last_result is None:
+        return GovernanceSyncResult(
+            exit_code=0,
+            dry_run=dry_run,
+            reads=None,
+            drift=None,
+            plan=None,
+            committed=False,
+            commit_sha=None,
+            messages=("no lanes configured",),
+        )
+    return last_result
+
+
+def _run_single_lane(
+    config: OverseerConfig,
+    repo_root: Path,
+    adapter: VcsAdapter,
+    runner: CommandRunner,
+    *,
+    lane: str | None,
+    dry_run: bool,
+    skip_missing: bool,
+    emit,
+) -> GovernanceSyncResult:
+    """Sync one handover + roadmap pair."""
+    from adapters.config import resolve_lane_docs
+    from cli.docs_paths import lane_living_doc_abs
+
+    try:
+        lane_docs = resolve_lane_docs(config, lane)
+    except Exception as exc:
+        from adapters.errors import ConfigError
+
+        if isinstance(exc, ConfigError):
+            return GovernanceSyncResult(
+                exit_code=2,
+                dry_run=dry_run,
+                reads=None,
+                drift=None,
+                plan=None,
+                committed=False,
+                commit_sha=None,
+                messages=(str(exc),),
+            )
+        raise
+
+    handover_path = lane_living_doc_abs(repo_root, config, lane_docs, lane_docs.handover)
+    roadmap_path = lane_living_doc_abs(repo_root, config, lane_docs, lane_docs.roadmap)
 
     for path in (handover_path, roadmap_path):
         if not path.is_file():
+            if skip_missing:
+                return GovernanceSyncResult(
+                    exit_code=4,
+                    dry_run=dry_run,
+                    reads=None,
+                    drift=None,
+                    plan=None,
+                    committed=False,
+                    commit_sha=None,
+                    messages=(f"missing governance doc: {path.name}",),
+                )
             return GovernanceSyncResult(
                 exit_code=4,
                 dry_run=dry_run,
@@ -49,7 +205,7 @@ def run_governance_sync(
                 messages=(f"missing governance doc: {path.name}",),
             )
 
-    reads = perform_verified_reads(config, adapter, runner)
+    reads = perform_verified_reads(config, adapter, runner, repo_root=repo_root)
     if isinstance(reads, ReadFailure):
         emit(f"read failed [{reads.regime}]: {reads.command}")
         emit(reads.message)
@@ -84,6 +240,13 @@ def run_governance_sync(
 
     if drift.fully_aligned:
         emit("governance-sync: aligned (D1–D3)")
+        _emit_governance_gate_footer(
+            config,
+            repo_root,
+            handover_text=handover_text,
+            roadmap_text=roadmap_text,
+            emit=emit,
+        )
         return GovernanceSyncResult(
             exit_code=0,
             dry_run=dry_run,
@@ -154,6 +317,13 @@ def run_governance_sync(
         emit("dry-run: no writes, commits, or realign apply")
         if pr_url:
             emit(f"docs-only PR URL (operator-gated): {pr_url}")
+        _emit_governance_gate_footer(
+            config,
+            repo_root,
+            handover_text=handover_text,
+            roadmap_text=roadmap_text,
+            emit=emit,
+        )
         return GovernanceSyncResult(
             exit_code=0,
             dry_run=True,

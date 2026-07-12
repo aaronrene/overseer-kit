@@ -17,6 +17,9 @@ from cli.paths import is_within_repo, resolve_config_path, resolve_repo_root
 from cli.sanitize import format_config_error, sanitize_text
 from cli.vcs_status import read_vcs_status, vcs_report
 from cli.version_lock import LockError, lock_path, read_version_lock
+from tools.governance_gates import scan_governance_gates
+from tools.governance_gates.format import format_pending_gate_lines, pending_gates_payload
+from tools.substrate_health import check_substrate
 
 
 GOVERNANCE_SYNC_MARKER = "last_governance_sync"
@@ -85,11 +88,12 @@ def _exit_code_from_conditions(
     integrity: str | None,
     drift_status: str | None,
     use_exit_code: bool,
+    substrate_ok: bool = True,
 ) -> int:
     """Apply frozen precedence: 2 > 6 > 3 > 0."""
     if not use_exit_code:
         return 0
-    if config_error:
+    if config_error or not substrate_ok:
         return 2
     if integrity == "mismatch":
         return 6
@@ -137,6 +141,19 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
             ctx.output.emit_json(payload)
         return 2
 
+    substrate = check_substrate(config, repo_root)
+    if not substrate.ok:
+        report.add_warning(f"substrate: {substrate.state} — {substrate.message}")
+        if substrate.remediation:
+            report.add_warning(f"substrate-remediation: {substrate.remediation}")
+
+    gate_scan = None
+    if config.governance_gates.remind and "status" in config.governance_gates.surfaces:
+        gate_scan = scan_governance_gates(config, repo_root)
+        if gate_scan.pending:
+            for line in format_pending_gate_lines(gate_scan):
+                report.add_warning(line)
+
     lock_file = lock_path(repo_root)
     lock = None
     try:
@@ -177,6 +194,7 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
         ctx.output.error(sanitize_text(str(vcs_result), repo_root))
         payload = {
             "initialized": True,
+            "substrate": _substrate_payload(substrate),
             "vcs": {
                 "error": sanitize_text(str(vcs_result), repo_root),
                 "command": sanitize_text(vcs_result.command, repo_root),
@@ -190,12 +208,16 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
     payload = {
         "initialized": True,
         "kit_version": kit_version(),
+        "substrate": _substrate_payload(substrate),
         "lock": _lock_summary(lock) if lock else None,
         "drift": drift,
         "footprint_integrity": integrity,
         "preserved_living": preserved_living if args.check_footprint else [],
         "vcs": vcs_report(vcs_result, config),
         "last_governance_sync": _read_governance_sync_marker(repo_root),
+        "governance_gates": pending_gates_payload(gate_scan)
+        if gate_scan is not None
+        else {"enabled": False, "suppressed": False, "active_phases": [], "pending": []},
         "warnings": report.warnings,
     }
     if lock_error:
@@ -206,6 +228,7 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
         integrity=integrity if args.check_footprint else None,
         drift_status=drift["status"],
         use_exit_code=args.exit_code,
+        substrate_ok=substrate.ok,
     )
     if lock_error and args.exit_code:
         exit_code = 6 if exit_code == 0 else max(exit_code, 6)
@@ -214,13 +237,31 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
         ctx.output.emit_json(payload)
     else:
         ctx.output.emit(f"kit_version: {payload['kit_version']}")
+        if not substrate.ok:
+            ctx.output.emit(f"substrate: {substrate.state} — {substrate.message}")
+            if substrate.remediation:
+                ctx.output.emit(f"substrate-remediation: {substrate.remediation}")
         if lock:
             ctx.output.emit(f"lock kit_version: {lock.kit_version}")
         ctx.output.emit(f"drift: {drift['status']}")
         if integrity:
             ctx.output.emit(f"footprint_integrity: {integrity}")
+        if gate_scan is not None and gate_scan.pending:
+            ctx.output.emit("")
+            for line in format_pending_gate_lines(gate_scan):
+                ctx.output.emit(line)
         ctx.output.emit(f"vcs.regime: {vcs_result.regime}")
         ctx.output.emit(f"vcs.branch: {vcs_result.branch}")
         ctx.output.emit(f"vcs.dirty: {vcs_result.dirty}")
 
     return exit_code
+
+
+def _substrate_payload(substrate) -> dict:
+    return {
+        "state": substrate.state,
+        "ok": substrate.ok,
+        "missing": list(substrate.missing),
+        "remediation": substrate.remediation,
+        "message": substrate.message,
+    }

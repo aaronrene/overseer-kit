@@ -1,0 +1,28 @@
+version: 1
+placeholder_tokens:
+  - PLACEHOLDER_TOKEN
+
+steps:
+  alpha:
+    verify_script: scripts/verify/verify_alpha.py
+    description: first fixture step
+  beta:
+    verify_script: scripts/verify/verify_beta.py
+    description: second fixture step with artifact hash
+  gamma:
+    verify_script: scripts/verify/verify_gamma_fail.py
+    description: failing fixture step
+
+templates:
+  two_step:
+    steps: [alpha, beta]
+  three_step:
+    steps: [alpha, beta, gamma]
+  broken_unused:
+    steps: [missing_step]
+
+overrides:
+  default:
+    domain: fixture
+  two_step:
+    slug: demo

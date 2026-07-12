@@ -1,0 +1,51 @@
+# K12 Track N landing contract (machine-readable)
+# Validated by tools/landing/validate.py
+
+version: 1
+license: Apache-2.0
+
+sections:
+  - id: hero
+  - id: problem
+  - id: l0
+  - id: l1
+  - id: l2
+  - id: l3
+  - id: modularity
+  - id: personas
+  - id: quickstart
+  - id: musehub-upgrade
+  - id: roadmap-public
+  - id: funnel
+
+personas:
+  - id: A
+    slug: video-studio
+    title: Video studio
+    status: dogfood
+  - id: B
+    slug: research-pipeline
+    title: Research paper pipeline
+    status: reference
+  - id: C
+    slug: accounting-close
+    title: Accounting close
+    status: aspirational
+  - id: D
+    slug: classroom
+    title: Classroom / Scooling
+    status: reference
+  - id: E
+    slug: multi-org-oss
+    title: Multi-org open source
+    status: dogfood
+
+status_badges:
+  - dogfood
+  - reference
+  - aspirational
+
+funnel_steps:
+  - github
+  - kit
+  - musehub

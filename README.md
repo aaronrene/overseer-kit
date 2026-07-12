@@ -159,6 +159,23 @@ the `overseer` CLI work the same regardless of which assistant you use.
 **Degrade path (by design):** if Cursor Automations are unavailable, `overseer governance-sync`
 and `overseer review --freeze` are the portable fallback — no Cursor-only gate on core governance.
 
+## Two review gates (honesty discipline)
+
+SD-3 **`Thinking → Auto`** is two gates, not one:
+
+| Gate | When | Skill | Enforced how |
+| --- | --- | --- | --- |
+| **Freeze review** | After `{step}a` freezes the spec | `/freeze-review-loop` | ROADMAP DoD + handover paste blocks |
+| **Build verification** | After `{step}b`, **before DONE** | `/build-verification-review` | **Always-on** `.cursor/rules/build-verification-required.mdc` + ROADMAP DoD |
+| **Mechanical tests** | During/after build | `policy/test-tiers.yaml` | ROADMAP Definition of Done |
+
+Skills run in the **agent session** (not a background daemon). The always-on rule prevents marking
+DONE without verification. Escalation categories still stop for a human.
+
+**Custom doc names** (VideoFactory, MuseHub, multi-repo workspaces): set `docs.handover`,
+`docs.roadmap`, `docs.handover_title`, `docs.roadmap_title` in `.overseer/config.yaml` — see
+`docs/consumers/videofactory/OVERSEER-SETUP.md`.
+
 ---
 
 ## VCS regimes
@@ -255,8 +272,11 @@ This writes: governance docs, `policy/`, `.cursor/` fragments, `.overseer/versio
 
 ## Status
 
-**K7 DONE** — vendoring CLI, freeze reviewer, governance-sync, pilot install/migrate, Muse bridge
-footprint, operator dogfood on this repo. **255** seven-tier tests green. See `docs/ROADMAP.md`.
+**K12 DONE** — Track N public landing, scenario gallery, Apache-2.0 LICENSE, SECURITY.md,
+GitHub→MuseHub funnel. **380** seven-tier tests green. See `docs/ROADMAP.md`.
+
+**Public landing:** open [`docs/landing/index.html`](docs/landing/index.html) locally or enable
+GitHub Pages from the `/docs/landing` path on your default branch.
 
 ---
 
@@ -279,10 +299,16 @@ codebases — see `docs/OVERSEER-KIT-SPEC.md`. The kit does not ship product ada
 | `policy/tiers.yaml` | Decision authority Tier 1/2/3 |
 | `policy/test-tiers.yaml` | Seven-tier test contract |
 | `docs/GIT-ONLY-QUICKSTART.md` | Greenfield install without Muse |
-| `docs/K6-PILOT-OPERATOR-RUNBOOK.md` | Migrate + install on consumer repos |
+| `docs/consumers/videofactory/OVERSEER-SETUP.md` | VideoFactory install + custom doc names |
+| `docs/CONSUMER-ADAPTER-PATTERN.md` | How any consumer plugs into L0–L2 |
+| `docs/landing/index.html` | Track N public landing (K12) |
+| `docs/landing/scenarios/index.html` | Scenario gallery A–E |
+| `docs/PHASE-K12-TRACK-N-LANDING-CONTRACT.md` | K12 landing freeze contract |
 | `docs/K7-DOGFOOD-OPERATOR-RUNBOOK.md` | Flip a repo to `muse+git-mirror` |
 | `MUSE-BRIDGE-WORKFLOW.md` | SD-14 mirror rules (vendored when regime requires) |
 | `cursor/README.md` | What ships into `.cursor/` on init/sync |
+| `.cursor/skills/freeze-review-loop/SKILL.md` | Bounded pre-build freeze loop (opt-in) |
+| `.cursor/skills/build-verification-review/SKILL.md` | Post-build honesty review (opt-in) |
 
 ---
 

@@ -26,6 +26,43 @@
 | **K7a Freeze muse+git-mirror dogfood** | Thinking | **DONE** | Frozen dogfood steps + regime-conditional footprint + parity K7.P1–P10 + §K7.5 guardrail + §K7.8 matrix (`docs/PHASE-K7-MUSE-GIT-MIRROR-DOGFOOD.md`). **K7a-r1 → `findings`** → **1-fix** → **K7a-r2 → `pass`** (M1/M2/N1–N3 confirmed RESOLVED; full §K7.0–§K7.10 regress clean). Cleared for K7b. No Build; no live muse bridge export on the dev tree. |
 | **K7b Dogfood muse+git-mirror build** | Auto | **DONE** | Footprint assets (`MUSE-BRIDGE-WORKFLOW.template.md`, `muse-bridge-deploy.sh` S1–S13), regime-conditional `resolve_footprint`, executable script write, `config-overseer-kit-dogfood.yaml` fixture, `docs/K7-DOGFOOD-OPERATOR-RUNBOOK.md`, seven-tier tests (**254** green). No live `git-export` on dev tree. |
 | **K7 operator live dogfood** | Operator | **DONE** | D2–D5 flip to `muse+git-mirror`; first safe bridge via `.muse/mirror/` (`209cd3f`); PR [#10](https://github.com/aaronrene/overseer-kit/pull/10) merged (Tier-3); adapter `rev-parse --abbrev-ref HEAD` fix; deploy template re-synced; **255** tests green. |
+| **K8a Freeze multi-lane docs** | Thinking | **DONE** | Frozen `docs.lanes` + `docs.default_lane` schema + `governance-sync --lane` / `--all-lanes` contract (`docs/PHASE-K8-MULTI-LANE-DOCS-CONTRACT.md`). |
+| **K8b Multi-lane docs build** | Auto | **DONE** | `docs.lanes` + `default_lane` in config; `governance-sync --lane` / `--all-lanes`; all-lane footprint; fixture `config-two-lane.yaml`; **266** tests green. |
+| **K9a Freeze L1+L2 modules** | Thinking | **DONE** | Contract in `docs/PHASE-K9A-L1-L2-MODULE-FREEZE.md`. Rounds 1–8 → `findings` + fixes; **K9a-r9 → `pass`** (all prior findings confirmed RESOLVED; full §K9.0–§K9.19 regress clean). Cleared for K9b (L1) and K10 (L2). |
+| **K9b Checkpoint plugin build** | Auto | **DONE** | L1 `verify-step` orchestrator + config parse + fixture pack + seven-tier tests (**302** green) |
+| **KH1 Handover relay standard** | Thinking | **DONE** | **KH1-r2 → `pass`.** Contract + dogfood handover aligned; §KH1.6 close-out complete (🆗 branding lock + Track P seed). |
+| **KH1b Substrate + gate reminders** | Auto | **DONE** | **§1 substrate health:** `tools/substrate_health/` fail-closed on hollow `.muse/`. **§2 gate reminders:** `tools/governance_gates/` + `governance_gates` config + `overseer status` pending-gates + `governance-sync` footer + handover template checklist (§KH1.9). **399** tests green. |
+| **Track P / P0** | Thinking | **DONE** | **Agent identity & signed provenance** freeze — `docs/PHASE-TRACK-P-P0-AGENT-PROVENANCE.md` **reviewed → `pass` (P0-r2)**, stamp digest `sha256:7db8681…`. Optional `provenance` envelope (`agent_id`/`model_id`/Ed25519 `sig`) on ledger entries; canonical hash excludes `provenance.sig` (v1 chain unbroken); soft under git-only, hard under Muse. Shared schema with Muse social domain. Social stays consumer-only. |
+| **Track P / P1** | Auto | **DONE** | **Build verified → `pass` (P1-BV-r2).** Optional `provenance` envelope + Ed25519 verify + `require_agent_signature` + exit codes `25`/`26`; canonical hash excludes `provenance.sig` (v1 chain unbroken). Build-verification round 1 raised **BV1** (§P0.6 parity: `verify` did not emit `2` on hash-consistent malformed provenance) → fixed in `tools/honesty/ledger.py` `verify_chain` + CLI message + regression test; round 2 **`pass`**. **429** tests green (+30 §P0.8). |
+| **Track P / P-route** | Thinking → Auto | **TODO** | **Declarative model-routing policy** (not a runtime dispatcher). `policy/model-routing.yaml`: map `position/phase-tier/gate → model tier + fallback`; the *runtime* (Cursor, OpenRouter, Scooling) consumes it. Kit stays the rule-holder, never the executor. Extends `policy/model-labels.yaml`. **Needs Thinking freeze (P0-style) before build.** No model calls added to the kit. |
+| **Track P / P-cost** | Thinking → Auto | **TODO** | **Cost-awareness surface** (not a dollar pricer). Surface each phase's tier/position + a "paid step before spend" flag on `overseer status` / handover (aligns with vision §1.2 fail-closed-before-spend). Actual dollar math stays in the runtime that knows its provider/OpenRouter prices — kit is price-agnostic by design. **Needs Thinking freeze before build.** |
+| **Track P / P-evidence** | Thinking → Auto | **TODO** | **Verification evidence capture.** Extend build-verification + honesty ledger to record verification artifacts (test-output hash, deploy/health check ref, screenshot ref) as ledger evidence — closes the "claims vs verifiable state" gap (build-verification V8). Reuses the L2 ledger. **Needs Thinking freeze before build.** |
+| **Track Q / Q0 Freeze Overseer App** | Thinking | **TODO** | Freeze contract for `overseer app`: local-only web UI **over the existing Python engine** (zero engine rewrite — reuses `cli/`/`tools/`/`adapters/` as-is); scope = read/act on `status`, `ROADMAP`/`HANDOVER`, `review --freeze`, `governance-sync`, `ledger`/`honesty-status`; bind `127.0.0.1`-only (no LAN/remote exposure by default); auth story for a local server; fail-closed parity with the CLI (no new capabilities, no bypass of gates); seven-tier matrix. **Boundary:** a frontend/distribution of governance, never a runtime/dispatcher/model-host. Contract doc: `docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md` (to be drafted). |
+| **Track Q / Q1 Local web UI build** | Auto | **TODO** | Build `overseer app` against the frozen Q0 contract: FastAPI/stdlib localhost server + minimal web frontend calling the existing engine functions directly (no HTTP re-implementation of CLI logic); read-only views first (status/roadmap/handover/gates), then gated write actions (`review --freeze`, `governance-sync`) behind the same fail-closed checks as the CLI. **Gated on `/build-verification-review`.** |
+| **Track Q / Q2 Tauri desktop packaging** | Auto | **TODO** | Package Q1's local web UI into an installable cross-platform desktop app using **Tauri** (bundles the Python engine + serves the same localhost UI in a native window; macOS/Windows/Linux from one codebase). No new engine logic — packaging only. Native macOS/SwiftUI explicitly deferred (would either shell out to the same CLI or require a full parallel rewrite — not worth it before Q1 proves demand). **Gated on `/build-verification-review`.** |
+| **K10 Honesty module** | Auto | **DONE** | L2 `honesty-status` + `ledger {append,verify,show}` + role gates + fixture pack + seven-tier tests (**340** green); SPEC §5 updated |
+| **K11 API/CI freeze provider** | Auto | **DONE** | Headless `provider: api` HTTP client (`/health`, `/review`) + `OVERSEER_REVIEW_API_KEY`/`OVERSEER_REVIEW_API_URL` + GitHub Actions example + `templates/ci/` vendored workflow; seven-tier K11 tests (**361** green) |
+| **K12 / Track N** | Thinking → Auto | **DONE** | Public landing, scenario gallery, GitHub→MuseHub funnel, Apache-2.0 LICENSE, SECURITY.md; `tools/landing/` validator; seven-tier K12 tests (**380** total green) |
+
+**Vision baton:** `docs/OVERSEER-KIT-LAYERED-HONESTY-VISION.md` (expanded)  
+**K9a contract:** `docs/PHASE-K9A-L1-L2-MODULE-FREEZE.md`  
+**Consumer pattern:** `docs/CONSUMER-ADAPTER-PATTERN.md`  
+**Handover UX debt:** none (KH1 + KH1b **DONE**)
+
+## Exploration backlog (ideas — NOT queued; each needs its own Thinking freeze before it becomes a phase)
+
+These are captured so they are not lost. None are committed scope. Each must pass a P0-style Thinking
+freeze (and clear the "governance, not runtime" boundary) before entering the build queue.
+
+| Idea | Sketch | Boundary check |
+| --- | --- | --- |
+| **P-deploy — deployment gate** | Live-deploy sibling of build-verification: a gate that records a verifiable deploy/health check before a "shipped" claim can be marked DONE. Fits the transcript's "always-on agent with root access deploying to public URLs" risk. | Kit records/gates the *claim*; it never performs the deploy. |
+| **Hosted governance dashboard** | Read-only web view of a repo's governance state (roadmap/handover/gates) sourced from GitHub/MuseHub APIs — for "see my org's governance at a glance" without a local install. Distinct from Track Q (queued below): this variant is hosted/remote and read-only; it cannot touch local repos, git, or muse. | Read-only; the authoritative workflow stays local (repo + git/muse). |
+| **P-route runtime reference** | An *example* runtime adapter (in a consumer repo, e.g. Scooling) that consumes `P-route` policy + OpenRouter — to prove the policy end-to-end. | Lives in a consumer, not the kit (per `AGENTS.md` — Scooling 9A router is reference-only). |
+
+## Dogfood integrity gate (mandatory — not optional)
+
+When `vcs.regime` is `muse+git-mirror` or `muse-only`, **`overseer status --exit-code` must report `substrate.ok: true`** before any phase on this repo is marked DONE. Hollow `.muse/` (config flip without K7 D2 `muse init`) is the exact Muse↔Git inversion failure mode this kit exists to catch. Remediation: `muse init --force .` (Tier 1).
 
 ## Regime capability tiers (git-only baseline → MuseHub-enhanced)
 
@@ -75,6 +112,12 @@ same method names in both regimes.
 - `docs/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md` — frozen K5 reviewer contract (K5a); K5b builds against it
 - `docs/PHASE-K6-PILOT-INSTALL-MATRIX.md` — frozen K6 pilot install matrix (K6a); K6b builds against it
 - `docs/PHASE-K7-MUSE-GIT-MIRROR-DOGFOOD.md` — frozen K7 dogfood design (K7a); K7b builds against it
+- `docs/PHASE-K8-MULTI-LANE-DOCS-CONTRACT.md` — frozen K8 multi-lane docs (K8a); K8b builds against it
+- `docs/PHASE-K9A-L1-L2-MODULE-FREEZE.md` — K9a L1+L2 module freeze (**K9a-r9 → `pass`**); K9b/K10 build against it
+- `docs/PHASE-K12-TRACK-N-LANDING-CONTRACT.md` — K12 Track N landing freeze (K12 build against it)
+- `docs/PHASE-KH1-HANDOVER-RELAY-STANDARD.md` — KH1 handover relay standard (Thinking freeze; D4 shape checklist)
+- `docs/CONSUMER-ADAPTER-PATTERN.md` — consumer plug-in pattern
+- `docs/consumers/` — per-consumer reference adapters (not kit architecture)
 - `templates/` + `policy/` + `cursor/` — vendored footprint (K3)
 - `docs/PHASE-9A-5-GOVERNANCE-HYGIENE-AGENT-OUTLINE.md` — first agent tool
 - Scooling `docs/PHASE-9A-MULTI-AGENT-OVERSEER-ROUTER-OUTLINE.md` — runtime org-chart reference

@@ -13,6 +13,7 @@ from tools.freeze_reviewer.findings import (
     validate_and_repair_findings,
     verdict_exit_code,
 )
+from tools.freeze_reviewer.providers.api_response import ProviderReviewError
 from tools.freeze_reviewer.providers.base import ReviewProvider, provider_for
 from tools.freeze_reviewer.stamp import build_stamp, write_stamp_or_fail
 from tools.freeze_reviewer.types import ChecklistItem, ReviewResult, ReviewerSettings
@@ -34,6 +35,7 @@ class ReviewOptions:
     model: str | None = None
     checklist: list[ChecklistItem] | None = None
     kit_version: str = "0.1.0"
+    kit_root: Path | None = None
     injected_provider: ReviewProvider | None = None
 
 
@@ -91,7 +93,7 @@ def run_freeze_review(
         result.reason = "mode_human"
         return result
 
-    provider = provider_for(reviewer, options.injected_provider)
+    provider = provider_for(reviewer, options.injected_provider, kit_root=options.kit_root)
     reachable, cause = provider.reachable()
     if not reachable:
         result.verdict = "blocked"
@@ -100,12 +102,19 @@ def run_freeze_review(
         result.provider_cause = cause
         return result
 
-    raw_findings = provider.review(
-        artifact_text=parsed.text,
-        artifact_path=rel_path,
-        checklist=checklist,
-        reviewer=reviewer,
-    )
+    try:
+        raw_findings = provider.review(
+            artifact_text=parsed.text,
+            artifact_path=rel_path,
+            checklist=checklist,
+            reviewer=reviewer,
+        )
+    except ProviderReviewError as exc:
+        result.verdict = "blocked"
+        result.escalation = "human"
+        result.reason = "provider_unreachable"
+        result.provider_cause = str(exc)
+        return result
     findings = validate_and_repair_findings(raw_findings, artifact_path=rel_path)
     result.findings = findings
     result.verdict = derive_verdict(findings, human_escalation=config.freeze_contract.human_escalation)

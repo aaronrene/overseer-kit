@@ -17,6 +17,7 @@ from tools.freeze_reviewer.checklist import builtin_checklist, load_checklist_fi
 from tools.freeze_reviewer.engine import ReviewOptions, resolve_exit_code, resolve_reviewer_settings, run_freeze_review
 from tools.freeze_reviewer.labels import validate_reviewer_model
 from tools.freeze_reviewer.report import build_report, render_human_report
+from tools.substrate_health import check_substrate
 
 DISALLOWED_FLAGS = frozenset(
     {
@@ -127,6 +128,13 @@ def run_review(args: Namespace, ctx: CliContext, *, raw_argv: list[str] | None =
             return 1
 
     adapter = create_adapter(config, repo_root, runner=ctx.runner)
+    substrate = check_substrate(config, repo_root)
+    if not substrate.ok:
+        ctx.output.error(f"substrate: {substrate.state} — {substrate.message}")
+        if substrate.remediation:
+            ctx.output.error(f"remediation: {substrate.remediation}")
+        return 2
+
     status = adapter.status()
     if isinstance(status, ReadError):
         ctx.output.error(str(status))
@@ -144,6 +152,7 @@ def run_review(args: Namespace, ctx: CliContext, *, raw_argv: list[str] | None =
         model=args.model,
         checklist=checklist,
         kit_version=kit_version(),
+        kit_root=ctx.kit,
         injected_provider=injected_provider,
     )
 

@@ -28,6 +28,7 @@ class ConfigError(Exception):
 
     message: str
     path: str | None = None
+    exit_code: int | None = None
 
     def __str__(self) -> str:
         if self.path:

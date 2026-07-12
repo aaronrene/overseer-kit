@@ -1,0 +1,15 @@
+schema_version: 1
+template_id: two_step
+slug: demo-unit
+current_step: alpha
+meta:
+  branch: fixture
+steps:
+  alpha:
+    verified: false
+    verified_at: null
+    artifact_sha256: null
+  beta:
+    verified: false
+    verified_at: null
+    artifact_sha256: null
