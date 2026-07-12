@@ -341,3 +341,94 @@ def lock_origins(repo_root: Path) -> dict[str, str]:
     lock = read_version_lock(repo_root / ".overseer" / "version.lock")
     return {e.path: entry_origin(e) for e in lock.footprint}
 
+
+def generate_ed25519_keypair() -> tuple[object, str]:
+    """Return ``(private_key, ed25519:<base64> pubkey token)`` for tests only."""
+    from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
+
+    from tools.honesty.ed25519_util import encode_ed25519_token
+
+    private_key = Ed25519PrivateKey.generate()
+    pubkey_token = encode_ed25519_token(private_key.public_key().public_bytes_raw())
+    return private_key, pubkey_token
+
+
+def sign_entry_hash(private_key: object, entry_hash_hex: str) -> str:
+    """Sign lowercase hex ``entry_hash_hex``; return ``ed25519:<base64>`` token (tests only)."""
+    from tools.honesty.ed25519_util import encode_ed25519_token
+
+    sig_bytes = private_key.sign(entry_hash_hex.encode("utf-8"))  # type: ignore[attr-defined]
+    return encode_ed25519_token(sig_bytes)
+
+
+def attach_signed_provenance(
+    body: dict,
+    *,
+    pubkey_token: str,
+    agent_id: str = "cursor-agent",
+    model_id: str = "gpt-5.6",
+    human_ref: str | None = None,
+) -> dict:
+    """Return a copy of ``body`` with unsigned provenance identity fields."""
+    provenance: dict = {"agent_id": agent_id, "model_id": model_id}
+    if human_ref is not None:
+        provenance["human_ref"] = human_ref
+    signed = dict(body)
+    signed["provenance"] = provenance
+    signed["_test_pubkey"] = pubkey_token
+    return signed
+
+
+def sign_append_body(
+    body: dict,
+    *,
+    kind: str,
+    prev_hash: str,
+    private_key: object,
+    pubkey_token: str | None = None,
+) -> dict:
+    """Validate, hash, sign, and return an append-ready body with ``provenance.sig``."""
+    from tools.honesty.validate import validate_append_body
+
+    pubkey = pubkey_token or body.pop("_test_pubkey", None)
+    if pubkey is None:
+        raise ValueError("pubkey_token required")
+    draft = dict(body)
+    draft.pop("_test_pubkey", None)
+    validated = validate_append_body(kind=kind, body=draft)
+    preview = dict(validated)
+    preview["prev_hash"] = prev_hash
+    preview["provenance"] = {**validated["provenance"], "pubkey": pubkey}
+    entry_hash = compute_entry_hash(preview)
+    signed = dict(validated)
+    signed["provenance"] = {
+        **validated["provenance"],
+        "pubkey": pubkey,
+        "sig": sign_entry_hash(private_key, entry_hash),
+    }
+    return signed
+
+
+def compute_entry_hash(body: dict) -> str:
+    """Re-export for tests building signing previews."""
+    from tools.honesty.canonical import compute_entry_hash as _compute
+
+    return _compute(body)
+
+
+def finalize_signed_body(body: dict, *, private_key: object, prev_hash: str) -> dict:
+    """Compute envelope hashes and attach ``provenance.sig`` (tests / direct ledger writes)."""
+    from tools.honesty.canonical import compute_entry_hash
+    from tools.honesty.genesis import utc_now_z
+
+    entry = dict(body)
+    if not entry.get("ts"):
+        entry["ts"] = utc_now_z()
+    entry["prev_hash"] = prev_hash
+    entry_hash = compute_entry_hash(entry)
+    entry["entry_hash"] = entry_hash
+    provenance = dict(entry.get("provenance", {}))
+    provenance["sig"] = sign_entry_hash(private_key, entry_hash)
+    entry["provenance"] = provenance
+    return entry
+

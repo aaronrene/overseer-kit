@@ -40,6 +40,7 @@ HONESTY_KEYS = frozenset(
         "require_l1_evidence",
         "allow_signed_approval",
         "ci_reexecutor",
+        "require_agent_signature",
     }
 )
 MODULES_GOVERNANCE_KEYS = frozenset({"enabled"})
@@ -154,6 +155,7 @@ class HonestyConfig:
     require_l1_evidence: str = "warn"
     allow_signed_approval: bool = False
     ci_reexecutor: str | None = None
+    require_agent_signature: bool = False
 
 
 @dataclass(frozen=True)
@@ -341,6 +343,12 @@ def _validate_config(raw: dict[str, Any], path: str) -> OverseerConfig:
     _validate_human_escalation(list(escalation), path)
 
     checkpoints, honesty, modules, extensions, extension_warnings = _parse_k9_modules(raw, path)
+    if honesty.require_agent_signature and regime == "git-only":
+        raise ConfigError(
+            "honesty.require_agent_signature is forbidden under git-only",
+            path,
+            exit_code=26,
+        )
     governance_gates = _parse_governance_gates(raw.get("governance_gates"), path)
 
     return OverseerConfig(
@@ -679,6 +687,10 @@ def _parse_honesty(raw_honesty: Any, path: str) -> HonestyConfig:
     if not isinstance(allow_signed, bool):
         raise ConfigError("honesty.allow_signed_approval must be a boolean", path)
 
+    require_agent_signature = h_raw.get("require_agent_signature", False)
+    if not isinstance(require_agent_signature, bool):
+        raise ConfigError("honesty.require_agent_signature must be a boolean", path)
+
     require_verdict_on = _parse_require_verdict_on(h_raw.get("require_verdict_on"), path)
 
     if enabled and (ledger is None or not ledger.strip()):
@@ -692,6 +704,7 @@ def _parse_honesty(raw_honesty: Any, path: str) -> HonestyConfig:
         require_l1_evidence=require_l1,
         allow_signed_approval=allow_signed,
         ci_reexecutor=ci_reexecutor,
+        require_agent_signature=require_agent_signature,
     )
 
 

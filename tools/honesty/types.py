@@ -36,6 +36,14 @@ ACTOR_ROLES = frozenset({"owner", "overseer", "producer", "verifier"})
 HOOK_NAMES = frozenset({"board_done", "handoff", "register"})
 
 
+class EntryValidationError(Exception):
+    """Raised when an append body fails schema or role checks."""
+
+    def __init__(self, exit_code: int, message: str) -> None:
+        super().__init__(message)
+        self.exit_code = exit_code
+
+
 @dataclass
 class HonestyStatusJson:
     """Frozen honesty-status JSON schema payload (§K9.9)."""

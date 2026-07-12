@@ -47,13 +47,7 @@ class MuseGitMirrorAdapter(BaseAdapter):
     def read_head(self, ref: str) -> HeadResult | ReadError:
         if ref.startswith("muse:") or ref.startswith("sha256:"):
             muse_ref = ref.removeprefix("muse:")
-            result = self._muse("log", "-1", "--format=%H", muse_ref)
-            if isinstance(result, ReadError):
-                return result
-            sha = result.stdout.strip()
-            if not sha:
-                return ReadError(f"muse log {muse_ref}", "empty sha")
-            return HeadResult(sha=sha, kind="muse")
+            return self._muse_rev_parse_sha(muse_ref)
 
         result = self._git("rev-parse", ref)
         if isinstance(result, ReadError):
@@ -189,10 +183,10 @@ class MuseGitMirrorAdapter(BaseAdapter):
         if isinstance(commit, ReadError):
             return commit
 
-        head = self._muse("log", "-1", "--format=%H")
+        head = self._muse_rev_parse_sha("HEAD")
         if isinstance(head, ReadError):
             return head
-        return CommitResult(committed=True, sha=head.stdout.strip())
+        return CommitResult(committed=True, sha=head.sha)
 
     def mirror(self, *, dry_run: bool) -> MirrorResult | ReadError:
         status = self._muse("bridge", "git-status")

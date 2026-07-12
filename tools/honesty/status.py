@@ -11,6 +11,11 @@ from cli.paths import confine_path, repo_relative
 from tools.honesty.artifact import sha256_file_bytes
 from tools.honesty.gate import check_roles_file, honesty_module_disabled, hook_enabled
 from tools.honesty.ledger_io import read_ledger_entries
+from tools.honesty.provenance import (
+    provenance_has_signature,
+    signature_required_for_kind,
+    verify_entry_provenance,
+)
 from tools.honesty.types import HOOK_NAMES, HonestyStatusJson, HonestyStatusResult
 
 
@@ -234,6 +239,44 @@ def run_honesty_status(
 
     winner = matches[-1]
     matched_hash = winner.get("entry_hash")
+
+    if signature_required_for_kind(
+        require_agent_signature=config.honesty.require_agent_signature,
+        kind=str(winner.get("kind", "")),
+    ) and not provenance_has_signature(winner):
+        payload = HonestyStatusJson(
+            ok=False,
+            exit_code=26,
+            hook=hook,
+            artifact=artifact_rel,
+            artifact_sha256=artifact_sha256,
+            producer_session=options.producer_session,
+            matched_verdict_hash=matched_hash if isinstance(matched_hash, str) else None,
+            error="refused",
+        )
+        return HonestyStatusResult(
+            exit_code=26,
+            json_payload=payload,
+            stderr_extra=roles_warn or "",
+        )
+
+    sig_code = verify_entry_provenance(winner, regime=config.vcs.regime)
+    if sig_code != 0:
+        payload = HonestyStatusJson(
+            ok=False,
+            exit_code=sig_code,
+            hook=hook,
+            artifact=artifact_rel,
+            artifact_sha256=artifact_sha256,
+            producer_session=options.producer_session,
+            matched_verdict_hash=matched_hash if isinstance(matched_hash, str) else None,
+            error="refused",
+        )
+        return HonestyStatusResult(
+            exit_code=sig_code,
+            json_payload=payload,
+            stderr_extra=roles_warn or "",
+        )
 
     mode = config.honesty.require_l1_evidence
     warn_msg = ""

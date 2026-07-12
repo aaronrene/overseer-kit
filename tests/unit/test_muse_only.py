@@ -41,7 +41,9 @@ def test_read_head_rejects_git_ref(muse_only_config, repo_root) -> None:
 
 def test_read_canonical_anchor(muse_only_config, repo_root) -> None:
     root = str(repo_root)
-    runner = make_runner({f"muse -C {root} log": ok("sha256:abc")})
+    runner = make_runner(
+        {f"muse -C {root} rev-parse main": ok('{"commit_id": "sha256:abc"}')}
+    )
     adapter = adapter_for(muse_only_config, repo_root, runner)
     result = adapter.read_canonical_anchor()
     assert result.anchor_sha == "sha256:abc"

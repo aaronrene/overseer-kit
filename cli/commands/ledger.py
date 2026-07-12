@@ -9,7 +9,7 @@ from adapters.config import load_config
 from adapters.errors import ConfigError
 from cli.context import CliContext
 from cli.paths import resolve_config_path, resolve_repo_root
-from cli.sanitize import format_config_error
+from cli.sanitize import config_exit_code, format_config_error
 from tools.honesty.ledger import append_entry, parse_append_body, show_entries, verify_ledger_file
 from tools.honesty.types import ENTRY_KINDS, LedgerAppendOptions
 
@@ -39,7 +39,7 @@ def _load_config_or_exit(args: Namespace, ctx: CliContext):
         config = load_config(config_path)
     except ConfigError as exc:
         ctx.output.error(format_config_error(exc, repo_root))
-        return None, None, 2
+        return None, None, config_exit_code(exc)
 
     for warning in config.extension_warnings:
         ctx.output.warn(warning)
@@ -103,6 +103,10 @@ def _run_append(args: Namespace, ctx: CliContext) -> int:
         ctx.output.error("ledger write failed")
     elif result.exit_code == 2:
         ctx.output.error("invalid ledger entry")
+    elif result.exit_code == 25:
+        ctx.output.error("provenance signature verification failed")
+    elif result.exit_code == 26:
+        ctx.output.error("signature required but absent")
 
     return result.exit_code
 
@@ -122,6 +126,12 @@ def _run_verify(args: Namespace, ctx: CliContext) -> int:
 
     if result.exit_code == 22:
         ctx.output.error("ledger chain broken")
+    elif result.exit_code == 25:
+        ctx.output.error("provenance signature verification failed")
+    elif result.exit_code == 26:
+        ctx.output.error("signature required but absent")
+    elif result.exit_code == 2:
+        ctx.output.error("malformed provenance envelope")
     elif result.exit_code == 4:
         ctx.output.error("refused")
     return result.exit_code

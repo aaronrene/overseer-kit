@@ -17,12 +17,31 @@ from tools.honesty.ledger_io import (
     read_ledger_entries,
     serialize_entry,
 )
-from tools.honesty.types import LedgerAppendOptions, LedgerResult
-from tools.honesty.validate import EntryValidationError, find_passing_verdict, validate_append_body
+from tools.honesty.muse_registry import MuseAgentKeyRegistry
+from tools.honesty.provenance import (
+    provenance_has_signature,
+    signature_required_for_kind,
+    validate_provenance,
+    verify_entry_provenance,
+)
+from tools.honesty.types import EntryValidationError, LedgerAppendOptions, LedgerResult
+from tools.honesty.validate import find_passing_verdict, validate_append_body
 
 
-def verify_chain(entries: list[dict[str, Any]]) -> int:
-    """Walk the hash chain; return ``0`` or ``22``."""
+def verify_chain(
+    entries: list[dict[str, Any]],
+    *,
+    regime: str = "git-only",
+    require_agent_signature: bool = False,
+    registry: MuseAgentKeyRegistry | None = None,
+) -> int:
+    """Walk the hash chain and verify optional provenance; return ``0``, ``2``, ``22``, ``25``, or ``26``.
+
+    Exit ``2`` when a stored ``provenance`` envelope is structurally malformed
+    (§P0.6 names ``verify`` as a surface for the malformed-provenance code), ``22``
+    on chain breakage, ``25`` on signature failure, ``26`` when a required signature
+    is absent.
+    """
     if not entries:
         return 0
 
@@ -39,6 +58,22 @@ def verify_chain(entries: list[dict[str, Any]]) -> int:
         if computed != stored_hash.lower():
             return 22
         expected_prev = stored_hash.lower()
+
+    for entry in entries:
+        kind = entry.get("kind")
+        if kind == "genesis":
+            continue
+        if "provenance" in entry:
+            try:
+                validate_provenance(entry["provenance"])
+            except EntryValidationError as exc:
+                return exc.exit_code
+        if signature_required_for_kind(require_agent_signature=require_agent_signature, kind=str(kind)):
+            if not provenance_has_signature(entry):
+                return 26
+        sig_code = verify_entry_provenance(entry, regime=regime, registry=registry)
+        if sig_code != 0:
+            return sig_code
     return 0
 
 
@@ -94,6 +129,12 @@ def append_entry(
         if not find_passing_verdict(existing, artifact_sha256=artifact_sha, bound_verdict_hash=bound_hash):
             return LedgerResult(exit_code=21, stderr_extra="approval without bound passing verdict")
 
+    if signature_required_for_kind(
+        require_agent_signature=config.honesty.require_agent_signature,
+        kind=options.kind,
+    ) and not provenance_has_signature(body):
+        return LedgerResult(exit_code=26, stderr_extra="signature required but absent")
+
     lines_to_write: list[str] = []
     prev_hash = existing[-1]["entry_hash"].lower() if existing else GENESIS_PREV
 
@@ -103,6 +144,10 @@ def append_entry(
         prev_hash = genesis["entry_hash"].lower()
 
     entry = _finalize_entry(body, prev_hash)
+    if provenance_has_signature(entry):
+        sig_code = verify_entry_provenance(entry, regime=config.vcs.regime)
+        if sig_code != 0:
+            return LedgerResult(exit_code=sig_code, stderr_extra="provenance signature verification failed")
     lines_to_write.append(serialize_entry(entry))
 
     try:
@@ -140,7 +185,11 @@ def verify_ledger_file(
     except ValueError as exc:
         return LedgerResult(exit_code=22, stderr_extra=str(exc))
 
-    code = verify_chain(entries)
+    code = verify_chain(
+        entries,
+        regime=config.vcs.regime,
+        require_agent_signature=config.honesty.require_agent_signature,
+    )
     return LedgerResult(exit_code=code, stderr_extra=roles_warn or "")
 
 

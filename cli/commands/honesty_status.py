@@ -9,7 +9,7 @@ from adapters.config import load_config
 from adapters.errors import ConfigError
 from cli.context import CliContext
 from cli.paths import resolve_config_path, resolve_repo_root
-from cli.sanitize import format_config_error
+from cli.sanitize import config_exit_code, format_config_error
 from tools.honesty.status import HonestyStatusOptions, run_honesty_status
 from tools.honesty.types import HonestyStatusJson
 
@@ -37,19 +37,20 @@ def run_honesty_status_command(args: Namespace, ctx: CliContext) -> int:
     try:
         config = load_config(config_path)
     except ConfigError as exc:
+        exit_code = config_exit_code(exc)
         ctx.output.error(format_config_error(exc, repo_root))
         if args.json:
             ctx.output.emit_json(
                 HonestyStatusJson(
                     ok=False,
-                    exit_code=2,
+                    exit_code=exit_code,
                     hook=getattr(args, "hook", None),
                     artifact=getattr(args, "artifact", None),
                     producer_session=getattr(args, "producer_session", None),
                     error="config",
                 ).to_dict()
             )
-        return 2
+        return exit_code
 
     for warning in config.extension_warnings:
         ctx.output.warn(warning)
@@ -75,6 +76,10 @@ def run_honesty_status_command(args: Namespace, ctx: CliContext) -> int:
         ctx.output.error("refused")
     elif result.exit_code == 20:
         ctx.output.error("missing independent verdict")
+    elif result.exit_code == 25:
+        ctx.output.error("provenance signature verification failed")
+    elif result.exit_code == 26:
+        ctx.output.error("signature required but absent")
     elif result.exit_code == 1:
         ctx.output.error("usage")
 

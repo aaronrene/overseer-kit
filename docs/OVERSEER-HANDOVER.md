@@ -6,70 +6,64 @@
 
 ---
 
-## NEXT SESSION — Track P / P1 (Auto build) (▶ NEXT)
+## NEXT SESSION — Track P / P-route Thinking freeze (▶ NEXT)
 
 **Date:** 2026-07-12  
-**Current position:** **KH1/KH1b DONE**; **Track P / P0 DONE** — `docs/PHASE-TRACK-P-P0-AGENT-PROVENANCE.md` **reviewed → `pass` (P0-r2)**, stamp digest `sha256:7db8681…`. **399** tests green. Next is the **P1 Auto build** of the frozen `provenance` envelope. Social confirmed **consumer-only** (Muse protocol + Schooling UI); not a kit feature.  
-**Model:** **Auto** (P1 — build exactly against the frozen §P0 contract; no redesign)
+**Current position:** **Track P / P1 DONE** — build verified → `pass` (P1-BV-r2). Build-verification round 1 raised **BV1** (§P0.6 parity: `verify` did not emit exit `2` on a hash-consistent but structurally malformed `provenance`); fixed in `tools/honesty/ledger.py` `verify_chain` + CLI message + regression test; round 2 `pass`. **429** tests green (+30 §P0.8). Track P provenance primitive is now shipped and verified.  
+**Model:** **thinking-high** (Thinking freeze — design + freeze the next contract before any Auto build)  
+**Operator choice:** the default next slice below is **Track P / P-route** (declarative model-routing *policy*). Operator may instead pick **Track P / P-cost**, **Track P / P-evidence**, or **Track Q / Q0** (Overseer App freeze) — each is a Thinking freeze and each must clear the "governance, not runtime" boundary.
 
 <!-- overseer:anchor:done-recently -->
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **Track P / P0 DONE** | `docs/PHASE-TRACK-P-P0-AGENT-PROVENANCE.md` **reviewed → `pass` (P0-r2)** via `/freeze-review-loop` + `overseer review --freeze` (stamp digest `sha256:7db8681…`). Optional `provenance` envelope on ledger entries; soft (git-only) / hard (Muse) |
-| **Session commits** | `aa9cf74` (synced muse-mirrored K9b/K10/K11/K12 + KH1b/KH1 close-out; `.muse/` gitignored) · `361d078` (P0 contract governance-sync) |
-| **KH1 close-out** | 🆗 branding lock in template + `templates/README.md`; KH1 → **DONE** |
-| **KH1b** | Substrate health + §KH1.9 gate reminders live (`tools/governance_gates/`) |
-| **Social scoping** | Muse owns social protocol (Phases 00–02 done); Schooling gets thin social page; kit supplies provenance schema only |
+| **Track P / P1 DONE (build-verified)** | `provenance` envelope on non-genesis ledger entries; `compute_entry_hash` excludes `provenance.sig` (legacy hashes unchanged); Ed25519 verify in `ledger verify` + `honesty-status`; `honesty.require_agent_signature` (git-only `true` → config exit `26`); append/verify exit `25`/`26`; Muse registry seam (`tools/honesty/muse_registry.py`); `cryptography` dep for verify-only path |
+| **Build verification** | `/build-verification-review` V1–V8 vs frozen §P0. Round 1 → **BV1** (§P0.6: `verify` must emit `2` on malformed provenance) → fixed (`verify_chain` structural validation + CLI message + regression test). Round 2 → **`pass`** |
+| **Tests** | Seven-tier §P0.8 matrix — **30** new tests; **429** total green |
+| **Track P / P0 DONE** | Contract reviewed → `pass` (P0-r2); stamp `sha256:7db8681…` |
+| **KH1b** | Substrate health + gate reminders live |
 <!-- /overseer:anchor:done-recently -->
 
-### THE ONE NEXT STEP — **Model: Auto (Track P / P1 build)**
+### THE ONE NEXT STEP — **Model: thinking-high (Thinking freeze: Track P / P-route)**
 
-Build the frozen `provenance` envelope **exactly** against `docs/PHASE-TRACK-P-P0-AGENT-PROVENANCE.md`
-(reviewed → `pass`). No redesign. Then run `/build-verification-review` before marking P1 DONE.
+Draft and freeze the **Track P / P-route** contract (P0-style): a **declarative model-routing policy** in `policy/model-routing.yaml` mapping `position / phase-tier / gate → model tier + fallback`, consumed by the *runtime* (Cursor / OpenRouter / Scooling). The kit stays the rule-holder, never the executor — **no model calls added to the kit.** Freeze WHAT + HOW + the seven-tier test matrix before any Auto build. (Operator may instead pick P-cost, P-evidence, or Track Q / Q0.)
 
 | | |
 | --- | --- |
-| **ID** | **Track P / P1** (Auto build of P0 contract) |
-| **Branch** | `feat/track-p-p1` (slug = `track-p-p1`) |
-| **Repo** | **overseer-kit** |
-| **Read first** | `docs/PHASE-TRACK-P-P0-AGENT-PROVENANCE.md` (frozen); `tools/honesty/{canonical,validate,ledger,types}.py` |
-| **Build** | `provenance` envelope + `compute_entry_hash` excludes `provenance.sig`; Ed25519 verify; `require_agent_signature` config; exit codes `25`/`26`; seven-tier matrix (§P0.8) |
-| **Hard stops** | No secrets; no commit/push without consent; no redesign of frozen §P0; **no social features in the kit**; git-only never hard-requires keys (K7) |
+| **ID** | **Track P / P-route freeze** |
+| **Branch** | `feat/track-p-route-freeze` (slug = `track-p-route-freeze`) |
+| **Read first** | `docs/ROADMAP.md` (Track P / P-route row + Exploration backlog); `policy/model-labels.yaml`; `docs/PHASE-TRACK-P-P0-AGENT-PROVENANCE.md` (freeze-doc shape); `docs/OVERSEER-KIT-SPEC.md` §6 (freeze ceremony) |
+| **Freeze** | Contract doc `docs/PHASE-TRACK-P-P-ROUTE-*.md`; extends (does not fork) `policy/model-labels.yaml`; seven-tier matrix; boundary = policy only, no dispatcher/model-host |
+| **Hard stops** | No Auto build until freeze reviewed → `pass`; no model calls / runtime dispatch in the kit; no Tier-3 merge without authorization |
 
 <!-- overseer:anchor:paste-ready-prompt -->
-### Paste-ready prompt — Track P / P1 (Auto build)
+### Paste-ready prompt — Track P / P-route Thinking freeze
 
 ```
-Phase Track P / P1 — Build agent identity & signed provenance (overseer-kit).
+Phase Track P / P-route — Thinking freeze (overseer-kit).
 
-Model: Auto (build exactly against the frozen §P0 contract; no redesign).
+Model: thinking-high (design + freeze the contract; NOT an Auto build session).
 
 Shared context:
 - Project: 🆗 Overseer Kit — repo-agnostic governance vendoring CLI
-- Read (frozen, do not redesign): docs/PHASE-TRACK-P-P0-AGENT-PROVENANCE.md (reviewed → pass)
-- Read (extend): tools/honesty/{canonical,validate,ledger,types}.py; adapters/config.py honesty block
-- Guardrails: no secrets; fail-closed; no commit/push without consent; no social features in the kit;
-  git-only must never hard-require signatures (K7 guardrail)
-- Close: update docs/ROADMAP.md + docs/OVERSEER-HANDOVER.md together
+- Read first: docs/ROADMAP.md (Track P / P-route row + Exploration backlog);
+  policy/model-labels.yaml; docs/PHASE-TRACK-P-P0-AGENT-PROVENANCE.md (freeze-doc shape);
+  docs/OVERSEER-KIT-SPEC.md §6 (freeze ceremony)
+- Predecessor: Track P / P1 DONE (agent provenance shipped + build-verified, 429 tests green)
+- Boundary (K7 / AGENTS.md): the kit is governance/frontend, NEVER a runtime/dispatcher/model-host
 
-Task (Auto build against frozen §P0):
-- Add optional `provenance` envelope (agent_id/model_id/human_ref/sig/pubkey) to non-genesis entries;
-  validate per §P0.3 (strict keys; both sig+pubkey or neither; agent_id/model_id required when present).
-- Extend compute_entry_hash to strip BOTH entry_hash and provenance.sig (prove legacy entries hash
-  unchanged — data-integrity tier). sig = ed25519 over the lowercase-hex entry_hash string.
-- Add honesty.require_agent_signature config (default false; true under git-only = config error 26).
-- Add exit codes: 25 (sig present but invalid), 26 (required-but-absent / git-only misconfig).
-- Ed25519 verify path in ledger verify + honesty-status; pubkey from entry (git-only) or Muse registry.
-- Seven-tier test matrix per §P0.8. Then /build-verification-review before ROADMAP DONE.
+Task:
+- Draft docs/PHASE-TRACK-P-P-ROUTE-*.md freezing a DECLARATIVE model-routing POLICY:
+  policy/model-routing.yaml mapping position / phase-tier / gate -> model tier + fallback,
+  consumed by the runtime (Cursor / OpenRouter / Scooling). Extend (do not fork) model-labels.yaml.
+- Freeze WHAT + HOW + a seven-tier test matrix the Auto build must satisfy. NO model calls in the kit.
+- Run /freeze-review-loop until `pass`; write the review stamp via `overseer review --freeze`.
+- On pass: ROADMAP Track P / P-route -> (freeze DONE, queue P-route Auto build); update this handover.
 
 Governance gates (mandatory — remind only; silence is not pass):
-- Freeze review: /freeze-review-loop before Thinking freeze → DONE; overseer review --freeze when CLI green
-- Build verification: /build-verification-review after every Auto {step}b before ROADMAP DONE
+- Freeze review: this session freezes the contract; no Auto build until reviewed -> `pass`
 - overseer status and overseer governance-sync emit pending gates for the active slice
-
-Governance sync: update docs/ROADMAP.md + docs/OVERSEER-HANDOVER.md on completion.
 ```
 <!-- /overseer:anchor:paste-ready-prompt -->
 
@@ -99,12 +93,12 @@ Governance sync: update docs/ROADMAP.md + docs/OVERSEER-HANDOVER.md on completio
 | **Governance docs** | `docs/OVERSEER-HANDOVER.md`, `docs/ROADMAP.md` |
 | **KH1 contract** | `docs/PHASE-KH1-HANDOVER-RELAY-STANDARD.md` — **reviewed → `pass` (KH1-r2)** |
 | **Kit version** | `0.1.0` (`VERSION`) |
-| **K12 / Track N** | **DONE** — landing + scenario gallery + LICENSE + funnel; **399** tests green |
+| **K12 / Track N** | **DONE** — landing + scenario gallery + LICENSE + funnel |
 | **KH1 Handover relay** | **DONE** — contract `pass` (KH1-r2); §KH1.6 close-out complete |
 | **Track P / P0** | **DONE** — agent identity & signed provenance; contract reviewed → `pass` (P0-r2), stamp `sha256:7db8681…` |
-| **Track P / P1** | **TODO** — Auto build of the frozen `provenance` envelope (§P0.8 matrix) |
+| **Track P / P1** | **DONE** — agent provenance build-verified → `pass` (P1-BV-r2); BV1 (§P0.6 verify-surface parity) fixed; **429** tests green (+30 §P0.8) |
 | **Track Q / Q0–Q2** | **TODO** — Overseer App: local web UI over the existing engine (Q1) packaged with **Tauri** into a cross-platform desktop app (Q2); needs Q0 Thinking freeze first; not yet started |
-| **Muse dogfood** | **D2 repaired** + substrate health + gate reminders live |
+| **Muse dogfood** | **D2 repaired** + substrate health + gate reminders live; `muse log --format=%H` adapter bug fixed (`rev-parse` + JSON) |
 | **KH1b** | **DONE** — substrate §1 + gate reminders §2 |
 | **Public brand** | **🆗 Overseer Kit** (locked in template + landing) |
 | **CLI** | `init` \| `sync` \| `status` \| `review --freeze` \| `governance-sync` \| `verify-step` \| `honesty-status` \| `ledger` |
@@ -116,9 +110,9 @@ Governance sync: update docs/ROADMAP.md + docs/OVERSEER-HANDOVER.md on completio
 
 | Item | Value |
 | --- | --- |
-| Branch | `docs/k9-layered-honesty-vision` |
-| HEAD | `aa9cf74` (session commit — synced muse-mirrored work + KH1b/KH1 close-out) |
-| Dirty | yes (Track P / P0 contract + governance-sync doc edits pending commit) |
+| Branch | `docs/k9-layered-honesty-vision` (uncommitted P1 build + BV1 fix) |
+| HEAD | `d91193b` |
+| Dirty | yes (Track P / P1 build + BV1 fix + muse adapter compat + governance-sync) |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -131,6 +125,32 @@ Governance sync: update docs/ROADMAP.md + docs/OVERSEER-HANDOVER.md on completio
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-12** — **Muse adapter compat fix: `muse log --format=%H` → `rev-parse` + JSON.** Muse
+  0.2.0rc15 removed the git-style `--format=%H` flag from `muse log`; all four call sites in
+  `adapters/muse_only/adapter.py` + `adapters/muse_git_mirror/adapter.py` now use
+  `muse rev-parse <ref>` and parse the `commit_id` field from JSON output (same pattern as
+  `_muse_dirty`). Added `_muse_rev_parse_sha` helper to `adapters/base.py`. Updated 7 test mocks
+  to use the new command. `governance-sync --dry-run` error now reads `muse rev-parse main: not found`
+  (accurate: muse substrate has no commits on this dogfood tree) instead of an `--format=%H` syntax
+  crash. **429** tests still green.
+- **2026-07-12** — **Track P / P1 DONE — build verified → `pass` (P1-BV-r2).** Ran
+  `/build-verification-review` (V1–V8) against frozen `docs/PHASE-TRACK-P-P0-AGENT-PROVENANCE.md`.
+  V1/V3/V4/V5/V6/V7/V8 clean on first pass; **428** tests confirmed green; §P0.8 seven-tier matrix
+  (29 tests) exercises real paths; no social features; no secrets; K7 git-only guardrail intact
+  (`config.py:346` forbids `require_agent_signature` under git-only, exit `26`). **Round 1 finding
+  BV1** (V2, MAJOR): §P0.6 names `verify` as a surface for exit `2` (malformed provenance), but
+  `verify_chain` (`tools/honesty/ledger.py`) validated provenance structure only at append — a
+  hash-consistent but structurally malformed `provenance` (unknown key) returned `0` instead of `2`.
+  **Fix (feature branch, no commit):** `verify_chain` now runs `validate_provenance` per non-genesis
+  entry → exit `2`; `cli/commands/ledger.py` verify path emits "malformed provenance envelope";
+  added data-integrity regression `test_verify_flags_malformed_provenance_exit_2`. **Round 2 → `pass`**;
+  **429** tests green (+30 §P0.8). ROADMAP P1 → **DONE**; NEXT flips to Track P / P-route Thinking freeze.
+- **2026-07-12** — **Track P / P1 Auto build landed (WIP).** Shipped optional `provenance` envelope
+  (`agent_id`/`model_id`/Ed25519 `sig`/`pubkey`) on non-genesis ledger entries; extended
+  `compute_entry_hash` to exclude `provenance.sig` (v1 chain unbroken); `honesty.require_agent_signature`
+  config (git-only `true` → config exit `26`); ledger/honesty-status verify exit `25`/`26`; Muse key
+  registry seam; `cryptography` dependency for verify-only path. Seven-tier §P0.8 matrix: **29** new
+  tests; **428** total green. ROADMAP P1 → **WIP** pending mandatory `/build-verification-review`.
 - **2026-07-12** — **Track Q — Overseer App queued (promoted from exploration backlog).** Added
   **Q0** (Thinking freeze — `overseer app` scope: local-only web UI over the existing Python engine,
   zero engine rewrite, `127.0.0.1`-only, same fail-closed gates as the CLI), **Q1** (Auto — build the

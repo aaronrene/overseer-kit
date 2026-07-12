@@ -4,15 +4,8 @@ from __future__ import annotations
 
 from typing import Any
 
-from tools.honesty.types import ACTOR_ROLES, ENTRY_KINDS
-
-
-class EntryValidationError(Exception):
-    """Raised when an append body fails schema or role checks."""
-
-    def __init__(self, exit_code: int, message: str) -> None:
-        super().__init__(message)
-        self.exit_code = exit_code
+from tools.honesty.provenance import validate_provenance
+from tools.honesty.types import ACTOR_ROLES, ENTRY_KINDS, EntryValidationError
 
 
 def _require_mapping(value: Any, field: str) -> dict[str, Any]:
@@ -51,7 +44,7 @@ def validate_append_body(*, kind: str, body: dict[str, Any]) -> dict[str, Any]:
     if kind == "genesis":
         if "actor_role" in merged or "actor_session_id" in merged:
             raise EntryValidationError(2, "genesis must not carry actor fields")
-        for key in ("assignment", "artifact_sha256", "passed", "evidence", "subject", "ruling", "bound_verdict_hash", "hook", "ok", "reason"):
+        for key in ("assignment", "artifact_sha256", "passed", "evidence", "subject", "ruling", "bound_verdict_hash", "hook", "ok", "reason", "provenance"):
             if key in merged:
                 raise EntryValidationError(2, f"genesis must not carry {key}")
         return merged
@@ -104,6 +97,9 @@ def validate_append_body(*, kind: str, body: dict[str, Any]) -> dict[str, Any]:
         reason = merged.get("reason")
         if reason is not None and not isinstance(reason, str):
             raise EntryValidationError(2, "reason must be a string when present")
+
+    if "provenance" in merged:
+        merged["provenance"] = validate_provenance(merged["provenance"])
 
     return merged
 

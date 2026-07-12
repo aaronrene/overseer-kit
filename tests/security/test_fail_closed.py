@@ -22,7 +22,7 @@ def test_git_status_error_surfaces_exact_command(git_only_config, repo_root) -> 
 
 def test_muse_read_head_never_fabricates_sha(muse_only_config, repo_root) -> None:
     root = str(repo_root)
-    runner = make_runner({f"muse -C {root} log": fail("ref missing")})
+    runner = make_runner({f"muse -C {root} rev-parse main": fail("ref missing")})
     adapter = adapter_for(muse_only_config, repo_root, runner)
     result = adapter.read_head("muse:main")
     assert isinstance(result, ReadError)
