@@ -18,6 +18,8 @@ from cli.sanitize import format_config_error, sanitize_text
 from cli.vcs_status import read_vcs_status, vcs_report
 from cli.version_lock import LockError, lock_path, read_version_lock
 from cli.commands.route import routing_policy_status
+from tools.cost_awareness.format import format_cost_awareness_lines
+from tools.cost_awareness.surface import build_cost_awareness_report, cost_awareness_payload
 from tools.footprint_integrity import check_footprint_integrity
 from tools.governance_gates import scan_governance_gates
 from tools.governance_gates.format import format_pending_gate_lines, pending_gates_payload
@@ -237,6 +239,26 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
         violation = model_routing_status.get("violation") or "invalid"
         report.add_warning(f"model_routing: invalid — {violation}")
 
+    cost_report = None
+    if config.cost_awareness.enabled and "status" in config.cost_awareness.surfaces:
+        cost_report = build_cost_awareness_report(config, repo_root, kit_root=ctx.kit)
+        if cost_report.invalid:
+            violation = cost_report.violation or "invalid"
+            report.add_warning(f"cost_awareness: invalid — {violation}")
+        elif cost_report.exit_code == 31:
+            ctx.output.error(cost_report.violation or "routing policy file missing or unreadable")
+            payload = {
+                "initialized": True,
+                "cost_awareness": cost_awareness_payload(cost_report),
+                "warnings": report.warnings,
+            }
+            if ctx.output.json_mode:
+                ctx.output.emit_json(payload)
+            return 31
+        else:
+            for line in format_cost_awareness_lines(cost_report):
+                report.add_warning(line)
+
     payload = {
         "initialized": True,
         "kit_version": kit_version(),
@@ -255,6 +277,8 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
         "model_routing": model_routing_status,
         "warnings": report.warnings,
     }
+    if cost_report is not None:
+        payload["cost_awareness"] = cost_awareness_payload(cost_report)
     if lock_error:
         payload["lock_error"] = True
 
@@ -297,6 +321,13 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
             ctx.output.emit("")
             for line in format_pending_gate_lines(gate_scan):
                 ctx.output.emit(line)
+        if cost_report is not None and config.cost_awareness.enabled:
+            if cost_report.invalid:
+                violation = cost_report.violation or "invalid"
+                ctx.output.emit(f"cost_awareness: invalid — {violation}")
+            else:
+                for line in format_cost_awareness_lines(cost_report):
+                    ctx.output.emit(line)
         ctx.output.emit(f"vcs.regime: {vcs_result.regime}")
         ctx.output.emit(f"vcs.branch: {vcs_result.branch}")
         ctx.output.emit(f"vcs.dirty: {vcs_result.dirty}")

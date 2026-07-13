@@ -87,7 +87,7 @@ def run_review(args: Namespace, ctx: CliContext, *, raw_argv: list[str] | None =
     repo_root = resolve_repo_root(cwd=ctx.cwd, repo_arg=args.repo, command="review")
     overseer_dir = repo_root / ".overseer"
     if not overseer_dir.is_dir():
-        ctx.output.error("not initialized — run overseer init first")
+        ctx.output.error("not initialized — run ok init first")
         return 2
 
     config_path = resolve_config_path(repo_root, args.config)

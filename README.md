@@ -15,17 +15,17 @@ Instead of hand-copying handover notes, tier rules, and model labels into every 
 vendor the kit locally and keep one small config file: `.overseer/config.yaml`.
 
 ```bash
-./cli/overseer init              # first install (POSIX shim → python -m cli.main)
-./cli/overseer sync              # pull template/policy updates
-./cli/overseer status            # drift + VCS regime check
-./cli/overseer governance-sync   # handover/roadmap hygiene (default: dry-run)
-./cli/overseer review --freeze <path>
+./cli/ok init              # first install (POSIX shim → python -m cli.main)
+./cli/ok sync              # pull template/policy updates
+./cli/ok status            # drift + VCS regime check
+./cli/ok governance-sync   # handover/roadmap hygiene (default: dry-run)
+./cli/ok review --freeze <path>
 
 # Equivalent without the shim:
 .venv/bin/python -m cli.main governance-sync --dry-run
 ```
 
-Do **not** run `python cli/overseer` — `cli/overseer` is a shell script, not Python.
+Do **not** run `python cli/ok` — `cli/ok` is a shell script, not Python. The compatibility shim `cli/overseer` prints a one-line stderr deprecation and runs the same runtime.
 
 **Guardrail:** every baseline capability works on plain GitHub. MuseHub is an **optional**
 substrate that deepens version control — it never gates core governance features.
@@ -64,7 +64,7 @@ the handover at a time.
 | **No doc drift** | `governance-sync` compares docs to real VCS state and patches handover/roadmap together (SD-17). |
 | **Safe phase boundaries** | Thinking phases freeze contracts; Auto phases build mechanically against them — reviewed before downstream work depends on them (§6 freeze contract). |
 | **Clear authority** | Tier 1/2/3 policy (`policy/tiers.yaml`) — agents act on routine work, ask once on design choices, stop on merges/staging/secrets/money. |
-| **One place to improve** | Fix governance once in the kit; `overseer sync` updates every consumer footprint. |
+| **One place to improve** | Fix governance once in the kit; `ok sync` updates every consumer footprint. |
 | **VCS honesty** | Adapter reads fail-closed; optional MuseHub `realign` + safe mirror export prevent canonical-history inversions. |
 | **Test discipline** | RULE #0 seven-tier contract (`policy/test-tiers.yaml`) — unit through security before a phase is DONE. |
 | **Tool portability** | Policy, templates, and CLI are IDE-agnostic; Cursor gets first-class rules/skills on top. |
@@ -84,7 +84,7 @@ the handover at a time.
   (design + freeze spec)                  (build to frozen spec)
          │                                       │
          ▼                                       ▼
-  overseer review --freeze                  seven-tier tests
+  ok review --freeze                  seven-tier tests
   (pass / findings / blocked)                      │
          │                                       ▼
          └───────────────┬───────────────────────┘
@@ -103,9 +103,9 @@ the handover at a time.
 1. **Read** `docs/ROADMAP.md` target phase and `docs/OVERSEER-HANDOVER.md` NEXT block.
 2. **Paste** the handover prompt into your AI session (any tool — see below).
 3. **Thinking phase** (if applicable): produce or update a frozen spec; commit on a feature branch.
-4. **Freeze review**: `./cli/overseer review --freeze <spec-path> [--dry-run]`.
+4. **Freeze review**: `./cli/ok review --freeze <spec-path> [--dry-run]`.
 5. **Auto phase** (if applicable): implement exactly against the frozen spec; run tests.
-6. **Governance sync**: `./cli/overseer governance-sync --dry-run` then apply when correct.
+6. **Governance sync**: `./cli/ok governance-sync --dry-run` then apply when correct.
 7. **Close**: update ROADMAP status row + handover NEXT block together; feature-branch commit.
 8. **Publish**: open PR; merge to `main` only with Tier-3 operator authorization.
 
@@ -124,7 +124,7 @@ of model* to use; you select the actual model in your IDE or CLI.
 | **`policy/model-labels.yaml`** | Canonical labels: `Thinking`, `Auto`, `Thinking → Auto`, `Operator + Auto`. Every roadmap row and handover NEXT block must include `Model:`. |
 | **`docs/ROADMAP.md`** | Phase Model Key table + per-phase `Model` column in the build queue. |
 | **`docs/OVERSEER-HANDOVER.md`** | `Model:` on NEXT SESSION and paste-ready prompts; split rules for `{step}a` / `{step}b`. |
-| **`.overseer/config.yaml` → `freeze_contract.reviewer`** | Freeze reviewer provider/mode (local or API) for `overseer review --freeze`. |
+| **`.overseer/config.yaml` → `freeze_contract.reviewer`** | Freeze reviewer provider/mode (local or API) for `ok review --freeze`. |
 | **`policy/model-labels.yaml` → `reviewer_models`** | Hints for freeze-review model tier (`thinking-high` vs `auto-default`). |
 | **`cursor_model_hint` fields** | Non-binding guidance mapping labels to common IDE model families. |
 
@@ -156,8 +156,18 @@ the `overseer` CLI work the same regardless of which assistant you use.
 | **GitHub Copilot** | Same docs + CLI; no skills/automations. Rely on handover paste blocks and `policy/tiers.yaml` for authority boundaries. |
 | **Any other assistant** | Fully supported via **docs-first**: open HANDOVER, paste the prompt, follow ROADMAP phase, run CLI commands yourself, commit on a feature branch. |
 
-**Degrade path (by design):** if Cursor Automations are unavailable, `overseer governance-sync`
-and `overseer review --freeze` are the portable fallback — no Cursor-only gate on core governance.
+**Degrade path (by design):** if Cursor Automations are unavailable, `ok governance-sync`
+and `ok review --freeze` are the portable fallback — no Cursor-only gate on core governance.
+
+### Overseer App (Track Q — local UI + desktop)
+
+| Surface | Command / path | Notes |
+| --- | --- | --- |
+| **Web UI** | `ok app` | Loopback server + browser; session credentials printed once on stderr |
+| **Desktop shell** | `desktop/` (Tauri) | Spawns `ok app`; same UI in a native window — build from source today |
+| **Operator guide** | `docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md` | Normie path (any chatbot), dev path, Scooling consumer notes, release honesty |
+
+Pre-built desktop installers are **not** published from CI yet — see the runbook §Release vs dev.
 
 ## Two review gates (honesty discipline)
 
@@ -193,9 +203,9 @@ Same CLI commands in every regime. The adapter layer handles the differences fai
 No MuseHub required. See `docs/GIT-ONLY-QUICKSTART.md`.
 
 ```bash
-./cli/overseer init --regime git-only --non-interactive
-./cli/overseer status --check-footprint
-./cli/overseer governance-sync --dry-run
+./cli/ok init --regime git-only --non-interactive
+./cli/ok status --check-footprint
+./cli/ok governance-sync --dry-run
 ```
 
 Repos that already have hand-authored handover/roadmap files should use `init --migrate` instead
@@ -216,7 +226,7 @@ Repos that already have hand-authored handover/roadmap files should use `init --
 2. Initialize Muse in the repo: `muse -C <repo-root> init` (creates `.muse/` locally).
 3. Flip `.overseer/config.yaml` to `regime: muse+git-mirror`, `canonical: muse`, and set
    `vcs.git.mirror_branch` (typically `muse-mirror`).
-4. Run `./cli/overseer sync` — seeds `MUSE-BRIDGE-WORKFLOW.md` and
+4. Run `./cli/ok sync` — seeds `MUSE-BRIDGE-WORKFLOW.md` and
    `scripts/muse-bridge-deploy.sh` when the regime requires them.
 5. **Day-to-day:** `muse commit` on feature branches in Muse.
 6. **Publish to GitHub:** only via the safe deploy script:
@@ -241,11 +251,11 @@ Full operator steps: `docs/K7-DOGFOOD-OPERATOR-RUNBOOK.md` and root `MUSE-BRIDGE
 ### First install (any repo)
 
 ```bash
-# From a clone of this kit (or path to cli/overseer):
-./cli/overseer -C <your-repo> init --regime git-only --non-interactive
+# From a clone of this kit (or path to cli/ok):
+./cli/ok -C <your-repo> init --regime git-only --non-interactive
 
 # Or migrate an existing repo with living docs:
-./cli/overseer -C <your-repo> init --migrate --from-config <prepared.yaml> --non-interactive
+./cli/ok -C <your-repo> init --migrate --from-config <prepared.yaml> --non-interactive
 ```
 
 This writes: governance docs, `policy/`, `.cursor/` fragments, `.overseer/version.lock`, and
@@ -256,16 +266,16 @@ This writes: governance docs, `policy/`, `.cursor/` fragments, `.overseer/versio
 1. Open `docs/OVERSEER-HANDOVER.md` → copy **Paste-ready prompt**.
 2. Work on a **feature branch** (Tier 1).
 3. Run tests for your phase tier.
-4. Before ending: `./cli/overseer governance-sync --dry-run` → fix drift → apply if needed.
+4. Before ending: `./cli/ok governance-sync --dry-run` → fix drift → apply if needed.
 5. Commit docs + code together on the feature branch.
 6. Open PR; merge only with Tier-3 authorization.
 
 ### Pull kit updates
 
 ```bash
-./cli/overseer sync              # preview drift
-./cli/overseer sync -y           # apply kit footprint updates
-./cli/overseer status --check-footprint
+./cli/ok sync              # preview drift
+./cli/ok sync -y           # apply kit footprint updates
+./cli/ok status --check-footprint
 ```
 
 ---

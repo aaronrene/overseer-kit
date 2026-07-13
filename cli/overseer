@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
-# Overseer Kit CLI — POSIX shim → python -m cli.main (init|sync|status|review|governance-sync).
+# Overseer Kit CLI — compatibility POSIX shim → python -m cli.main (deprecated; use cli/ok).
 set -eu
+echo "warning: 'overseer' is deprecated; use 'ok' (same commands)." >&2
 ROOT="$(CDPATH= cd -- "$(dirname "$0")/.." && pwd)"
 export PYTHONPATH="${ROOT}${PYTHONPATH:+:$PYTHONPATH}"
 if [ -x "$ROOT/.venv/bin/python3" ]; then

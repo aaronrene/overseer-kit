@@ -15,7 +15,7 @@ findings; a fixer applies **only** those citations; the reviewer re-checks until
 ## When to use
 
 - Roadmap step **`{step}a` (Thinking)** just committed a freeze artifact
-- `overseer review --freeze <path>` returned `findings` or you need deep review beyond the checklist
+- `ok review --freeze <path>` returned `findings` or you need deep review beyond the checklist
 - Before clearing **`{step}b` (Auto)** in the handover
 
 ## Model
@@ -58,7 +58,7 @@ while ROUND <= MAX_ROUNDS:
      - Do NOT trust prior round summaries — re-read files
 
   2. If pass:
-     - Run: overseer review --freeze <artifact-path>
+     - Run: ok review --freeze <artifact-path>
      - If CLI pass: stamp ok; update artifact Review-record table; EXIT success
 
   3. If blocked OR escalating finding:
@@ -80,7 +80,7 @@ If ROUND > MAX_ROUNDS:
 After fixer commits, before next review round:
 
 ```bash
-./cli/overseer review --freeze <artifact-path> --dry-run
+./cli/ok review --freeze <artifact-path> --dry-run
 ```
 
 Checklist gate catches structural gaps; thinking review catches semantic dishonesty.

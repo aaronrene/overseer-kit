@@ -40,8 +40,8 @@ security, irreversibility, real money, or Tier-3 gates.
 ## CLI (when K5 lands)
 
 ```bash
-/path/to/overseer-kit/cli/overseer review --freeze <path> --dry-run
-/path/to/overseer-kit/cli/overseer review --freeze <path>
+/path/to/overseer-kit/cli/ok review --freeze <path> --dry-run
+/path/to/overseer-kit/cli/ok review --freeze <path>
 ```
 
 ## Multi-round loop (optional)

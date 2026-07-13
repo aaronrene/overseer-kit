@@ -37,7 +37,7 @@ from cli.version_lock import (
     read_version_lock,
 )
 
-REMEDIATION = "overseer sync"
+REMEDIATION = "ok sync"
 
 
 @dataclass(frozen=True)
@@ -90,7 +90,7 @@ def check_footprint_integrity(
             return FootprintIntegrityReport(
                 state="unreadable",
                 message=f"could not read version.lock — failing closed: {exc}",
-                remediation="overseer init",
+                remediation="ok init",
             )
 
     missing = tuple(

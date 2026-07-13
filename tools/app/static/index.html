@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Overseer App</title>
+  <link rel="stylesheet" href="/assets/app.css">
+</head>
+<body>
+  <header>
+    <h1>Overseer App</h1>
+    <p class="subtitle">Local governance UI — loopback only</p>
+  </header>
+
+  <section id="auth-panel" class="panel">
+    <h2>Session bootstrap</h2>
+    <p>Paste the session credential and CSRF values printed once in the terminal when you started <code>overseer app</code>.</p>
+    <label>Session credential <input id="session-input" type="password" autocomplete="off"></label>
+    <label>CSRF token <input id="csrf-input" type="password" autocomplete="off"></label>
+    <button id="auth-save" type="button">Connect</button>
+    <p id="auth-status" class="status"></p>
+  </section>
+
+  <nav class="tabs" id="tabs" hidden>
+    <button type="button" data-tab="status" class="active">Status</button>
+    <button type="button" data-tab="roadmap">Roadmap</button>
+    <button type="button" data-tab="handover">Handover</button>
+    <button type="button" data-tab="gates">Gates</button>
+    <button type="button" data-tab="actions">Actions</button>
+    <button type="button" data-tab="ledger">Ledger</button>
+  </nav>
+
+  <main id="content" hidden>
+    <section id="tab-status" class="tab-panel active">
+      <button id="refresh-status" type="button">Refresh status</button>
+      <pre id="status-output"></pre>
+    </section>
+
+    <section id="tab-roadmap" class="tab-panel">
+      <button id="load-roadmap" type="button">Load roadmap</button>
+      <pre id="roadmap-output"></pre>
+    </section>
+
+    <section id="tab-handover" class="tab-panel">
+      <button id="load-handover" type="button">Load handover</button>
+      <pre id="handover-output"></pre>
+    </section>
+
+    <section id="tab-gates" class="tab-panel">
+      <button id="load-gates" type="button">Load gates</button>
+      <pre id="gates-output"></pre>
+    </section>
+
+    <section id="tab-actions" class="tab-panel">
+      <h3>Freeze review</h3>
+      <label>Artifact path <input id="freeze-path" type="text" placeholder="docs/PHASE-....md"></label>
+      <label><input id="freeze-dry-run" type="checkbox" checked> Dry run (default)</label>
+      <button id="run-freeze" type="button">Run freeze review</button>
+      <pre id="freeze-output"></pre>
+
+      <h3>Governance sync</h3>
+      <label><input id="sync-write" type="checkbox"> Write (requires explicit confirm)</label>
+      <button id="run-sync" type="button">Run governance sync</button>
+      <pre id="sync-output"></pre>
+
+      <h3>Honesty status</h3>
+      <button id="run-honesty" type="button">Run honesty-status (fixture hook)</button>
+      <pre id="honesty-output"></pre>
+    </section>
+
+    <section id="tab-ledger" class="tab-panel">
+      <button id="ledger-show" type="button">Show ledger</button>
+      <button id="ledger-verify" type="button">Verify ledger</button>
+      <pre id="ledger-output"></pre>
+    </section>
+  </main>
+
+  <script src="/assets/app.js"></script>
+</body>
+</html>

@@ -33,16 +33,16 @@ KIT=/path/to/overseer-kit
 VF=/path/to/videofactory
 
 # Dry-run first (migrate preserves existing living docs)
-$KIT/cli/overseer -C $VF init --migrate \
+$KIT/cli/ok -C $VF init --migrate \
   --from-config $KIT/tests/fixtures/pilot/config-videofactory.yaml \
   --non-interactive --dry-run
 
 # Apply
-$KIT/cli/overseer -C $VF init --migrate \
+$KIT/cli/ok -C $VF init --migrate \
   --from-config $KIT/tests/fixtures/pilot/config-videofactory.yaml \
   --non-interactive
 
-$KIT/cli/overseer -C $VF status --check-footprint
+$KIT/cli/ok -C $VF status --check-footprint
 ```
 
 If you **already** have a Video Production Status Board and handover file with different names,

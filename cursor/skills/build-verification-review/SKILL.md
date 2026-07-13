@@ -18,7 +18,7 @@ paths, docs/marketing that overstate what shipped, and scope drift from the froz
 
 | Gate | When | Tool today |
 | --- | --- | --- |
-| **Freeze review** | Before Auto build (`{step}a`) | `freeze-review` / `freeze-review-loop` + `overseer review --freeze` |
+| **Freeze review** | Before Auto build (`{step}a`) | `freeze-review` / `freeze-review-loop` + `ok review --freeze` |
 | **Build verification** | After Auto build (`{step}b`) | **This skill** (thinking model; manual/opt-in) |
 | **Mechanical proof** | During/after build | Seven-tier tests (`policy/test-tiers.yaml`) |
 
@@ -44,7 +44,7 @@ possible (fresh chat or explicit "verifier" role). Never Auto for this gate.
 3. `{{docs.handover_path}}` — what the build session claims landed
 4. **Git diff** vs feature-branch base (or `muse`/`git` log for the build commits)
 5. Test files — do they assert real behavior or tautologies?
-6. `overseer status` — footprint/drift if kit files touched
+6. `ok status` — footprint/drift if kit files touched
 
 ## Verification checklist (every item needs evidence)
 
@@ -57,7 +57,34 @@ possible (fresh chat or explicit "verifier" role). Never Auto for this gate.
 | V5 | No silent deletion of frozen requirements | Spec requirement removed without spec update |
 | V6 | Governance docs truthful | ROADMAP/HANDOVER say DONE but tests fail or deliverables missing |
 | V7 | No secrets, injection surfaces, or unsafe defaults introduced | grep + read changed paths |
-| V8 | Agent claims match verifiable git state | "All green" but diff empty or unrelated |
+| V8 | Agent claims match verifiable state **and** (when `honesty.enabled`) are bound to ledger `verification_evidence` artifacts | "All green" with empty/unrelated diff; "tests passed" with no `test_output` hash; "deployed" / "healthy" with no `deploy_health` ref+hash; "UI verified" with no `screenshot` hash — or a claimed `pass` with no matching ledger entry when `require_verification_evidence: require` |
+
+**Evidence table (required in skill output whenever honesty module is enabled, and recommended
+always):**
+
+```markdown
+### Evidence
+| type | sha256 | ref | notes |
+| --- | --- | --- | --- |
+| test_output | <64 hex> | <label or path> | <optional> |
+```
+
+Rules for a skill verdict of **`pass`** (frozen process rules):
+
+1. V1–V7 unchanged in meaning.
+2. V8 requires citing verifiable git/test state as today.
+3. When `honesty.enabled: true`, a `pass` MUST be accompanied by appending (or confirming a prior
+   append of) a `verification_evidence` entry with `bv_verdict: pass`, matching `phase_id` +
+   `frozen_spec` + `round`, and a non-empty `artifacts` list that includes at least one
+   `test_output` artifact whose `sha256` digests the test output the reviewer actually used.
+4. `deploy_health` and `screenshot` artifacts are **required in the entry only when the build
+   session's claims mention deploy/health or visual/UI proof**; otherwise they are omitted. The
+   skill must not invent fake deploy/screenshot evidence.
+5. When `honesty.enabled: false`, ledger append is skipped; V8 still requires claims↔git/test
+   honesty in the review text (baseline without L2).
+6. `findings` / `blocked` rounds MAY append `verification_evidence` with the corresponding
+   `bv_verdict` so the chain records failed rounds; this is allowed but not required for skill
+   progress. A later `pass` round is a separate append (new `round`).
 
 ## Verdicts
 
@@ -99,9 +126,9 @@ One paragraph: what actually shipped, backed by paths in the diff.
 ## CLI helpers (non-substitute)
 
 ```bash
-./cli/overseer status
+./cli/ok status
 # run the phase's seven-tier test command
-./cli/overseer governance-sync --dry-run
+./cli/ok governance-sync --dry-run
 ```
 
 CLI cannot replace thinking verification — run this skill after tests pass.

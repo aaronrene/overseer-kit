@@ -41,7 +41,7 @@ def test_corrupt_lock_is_unreadable(tmp_path: Path) -> None:
     report = check_footprint_integrity(tmp_path)
     assert not report.ok
     assert report.state == "unreadable"
-    assert report.remediation == "overseer init"
+    assert report.remediation == "ok init"
 
 
 def test_all_declared_present_is_ok(tmp_path: Path) -> None:
@@ -64,7 +64,7 @@ def test_declared_but_absent_is_missing(tmp_path: Path) -> None:
     assert not report.ok
     assert report.state == "missing"
     assert report.missing == ("a.mdc",)
-    assert report.remediation == "overseer sync"
+    assert report.remediation == "ok sync"
     assert "a.mdc" in report.message
 
 

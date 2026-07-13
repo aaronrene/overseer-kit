@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import os
+import subprocess
+from dataclasses import dataclass
 from pathlib import Path
 
 from adapters.config import OverseerConfig, load_config
@@ -13,6 +15,57 @@ FIXTURES = Path(__file__).resolve().parent / "fixtures"
 PILOT = FIXTURES / "pilot"
 CHECKPOINTS = FIXTURES / "checkpoints"
 HONESTY = FIXTURES / "honesty"
+KIT_ROOT = Path(__file__).resolve().parent.parent
+OVERSEER_DEPRECATION_LINE = "warning: 'overseer' is deprecated; use 'ok' (same commands).\n"
+
+
+@dataclass(frozen=True)
+class ShimResult:
+    """Captured POSIX shim subprocess output."""
+
+    exit_code: int
+    stdout: str
+    stderr: str
+
+
+def seed_git_repo(repo_root: Path) -> None:
+    """Initialize a minimal git repo for subprocess shim tests."""
+    subprocess.run(["git", "init", "-b", "main"], cwd=repo_root, check=True, capture_output=True)
+    subprocess.run(["git", "config", "user.email", "test@example.com"], cwd=repo_root, check=True, capture_output=True)
+    subprocess.run(["git", "config", "user.name", "test"], cwd=repo_root, check=True, capture_output=True)
+    subprocess.run(
+        ["git", "commit", "--allow-empty", "-m", "seed"],
+        cwd=repo_root,
+        check=True,
+        capture_output=True,
+    )
+
+
+def run_shim(
+    shim: str,
+    argv: list[str],
+    *,
+    cwd: Path,
+    env: dict[str, str] | None = None,
+) -> ShimResult:
+    """Invoke ``cli/<shim>`` as a subprocess (§Q2A.10 integration/e2e helper)."""
+    script = KIT_ROOT / "cli" / shim
+    proc_env = os.environ.copy()
+    if env:
+        proc_env.update(env)
+    completed = subprocess.run(
+        [str(script), *argv],
+        cwd=cwd,
+        env=proc_env,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    return ShimResult(
+        exit_code=completed.returncode,
+        stdout=completed.stdout,
+        stderr=completed.stderr,
+    )
 
 
 def write_config(repo_root: Path, name: str) -> Path:

@@ -42,25 +42,25 @@ Substitute the real install root via `-C` only — fixtures must not contain abs
 2. Optionally dry-run first:
 
    ```bash
-   ./cli/overseer -C <repo-root> init --migrate --from-config <prepared.yaml> --non-interactive --dry-run
+   ./cli/ok -C <repo-root> init --migrate --from-config <prepared.yaml> --non-interactive --dry-run
    ```
 
 3. Apply migrate (**never** pass `--force --include-preserved`):
 
    ```bash
-   ./cli/overseer -C <repo-root> init --migrate --from-config <prepared.yaml> --non-interactive
+   ./cli/ok -C <repo-root> init --migrate --from-config <prepared.yaml> --non-interactive
    ```
 
 4. Check footprint:
 
    ```bash
-   ./cli/overseer -C <repo-root> status --check-footprint
+   ./cli/ok -C <repo-root> status --check-footprint
    ```
 
 5. Parity probe:
 
    ```bash
-   ./cli/overseer -C <repo-root> governance-sync --dry-run
+   ./cli/ok -C <repo-root> governance-sync --dry-run
    ```
 
    Evaluate universal criteria P1–P7 and per-repo extras in

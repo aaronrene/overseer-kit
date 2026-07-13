@@ -8,7 +8,10 @@ from pathlib import Path
 
 from cli.args import extract_global_args
 
-COMMANDS = frozenset({"init", "sync", "status", "review", "governance-sync", "verify-step", "honesty-status", "ledger", "route"})
+COMMANDS = frozenset(
+    {"init", "sync", "status", "review", "governance-sync", "verify-step", "honesty-status", "ledger", "route", "app"}
+)
+from cli.commands.app import run_app
 from cli.commands.governance_sync import run_governance_sync_command
 from cli.commands.honesty_status import run_honesty_status_command
 from cli.commands.init import run_init
@@ -25,7 +28,7 @@ from cli.output import OutputContext
 
 def build_parser() -> argparse.ArgumentParser:
     """Construct the frozen argument parser."""
-    parser = argparse.ArgumentParser(prog="overseer", description="Overseer Kit vendoring CLI")
+    parser = argparse.ArgumentParser(prog="ok", description="Overseer Kit vendoring CLI")
     parser.add_argument("--version", action="store_true", help="Print kit version and exit")
     parser.add_argument("-C", "--repo", metavar="PATH", help="Repo root")
     parser.add_argument("--config", metavar="PATH", help="Config file path")
@@ -126,6 +129,8 @@ def build_parser() -> argparse.ArgumentParser:
     hs_parser.add_argument("--hook", metavar="HOOK")
     hs_parser.add_argument("--artifact", metavar="PATH")
     hs_parser.add_argument("--producer-session", metavar="ID")
+    hs_parser.add_argument("--verification-evidence", metavar="PHASE_ID")
+    hs_parser.add_argument("--frozen-spec", metavar="PATH_STRING")
 
     ledger_parser = subparsers.add_parser("ledger", help="L2 verdict ledger (K10)")
     ledger_sub = ledger_parser.add_subparsers(dest="ledger_action", required=True)
@@ -145,6 +150,11 @@ def build_parser() -> argparse.ArgumentParser:
     route_parser.add_argument("--phase-tier", metavar="ID", dest="phase_tier")
     route_parser.add_argument("--gate", metavar="ID")
     route_parser.add_argument("--validate", action="store_true")
+
+    app_parser = subparsers.add_parser("app", help="Local loopback web UI (Track Q)")
+    app_parser.add_argument("--port", type=int, default=8765, metavar="PORT")
+    app_parser.add_argument("--bind", default="127.0.0.1", metavar="ADDRESS")
+    app_parser.add_argument("--open", action="store_true", help="Open default browser after listen")
 
     return parser
 
@@ -208,6 +218,8 @@ def main(argv: list[str] | None = None, *, ctx: CliContext | None = None) -> int
         return run_ledger_command(args, runtime)
     if args.command == "route":
         return run_route_command(args, runtime)
+    if args.command == "app":
+        return run_app(args, runtime)
 
     parser.error(f"unknown command: {args.command}")
     return 1

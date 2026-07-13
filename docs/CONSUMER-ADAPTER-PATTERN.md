@@ -28,11 +28,11 @@ your domain.
 KIT=/path/to/overseer-kit
 REPO=/path/to/consumer
 
-$KIT/cli/overseer -C $REPO init --migrate \
+$KIT/cli/ok -C $REPO init --migrate \
   --from-config $KIT/tests/fixtures/pilot/config-<consumer>.yaml \
   --non-interactive --dry-run
 # then apply without --dry-run
-$KIT/cli/overseer -C $REPO status --check-footprint
+$KIT/cli/ok -C $REPO status --check-footprint
 ```
 
 Customize only `.overseer/config.yaml` (regime, doc paths, future `checkpoints:` / `honesty:`).

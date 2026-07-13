@@ -38,6 +38,7 @@ HONESTY_KEYS = frozenset(
         "roles_file",
         "require_verdict_on",
         "require_l1_evidence",
+        "require_verification_evidence",
         "allow_signed_approval",
         "ci_reexecutor",
         "require_agent_signature",
@@ -60,6 +61,8 @@ GOVERNANCE_GATES_KEYS = frozenset(
 L1_EVIDENCE_MODES = frozenset({"off", "warn", "require"})
 MODEL_ROUTING_KEYS = frozenset({"enabled", "policy"})
 DEFAULT_MODEL_ROUTING_POLICY = "policy/model-routing.yaml"
+COST_AWARENESS_SURFACES = frozenset({"status", "governance-sync"})
+COST_AWARENESS_KEYS = frozenset({"enabled", "surfaces"})
 
 
 @dataclass(frozen=True)
@@ -155,6 +158,7 @@ class HonestyConfig:
     roles_file: str | None = None
     require_verdict_on: frozenset[str] = frozenset({"board_done", "handoff", "register"})
     require_l1_evidence: str = "warn"
+    require_verification_evidence: str = "off"
     allow_signed_approval: bool = False
     ci_reexecutor: str | None = None
     require_agent_signature: bool = False
@@ -188,6 +192,14 @@ class ModelRoutingConfig:
 
 
 @dataclass(frozen=True)
+class CostAwarenessConfig:
+    """Optional cost-awareness surface settings (§PC.6)."""
+
+    enabled: bool = False
+    surfaces: frozenset[str] = frozenset(COST_AWARENESS_SURFACES)
+
+
+@dataclass(frozen=True)
 class ExtensionEntry:
     """One extensions[] escape-hatch entry (§K9.2)."""
 
@@ -211,6 +223,7 @@ class OverseerConfig:
     extension_warnings: tuple[str, ...] = ()
     governance_gates: GovernanceGatesConfig = GovernanceGatesConfig()
     model_routing: ModelRoutingConfig = ModelRoutingConfig()
+    cost_awareness: CostAwarenessConfig = CostAwarenessConfig()
 
 
 def load_config(path: Path) -> OverseerConfig:
@@ -362,6 +375,7 @@ def _validate_config(raw: dict[str, Any], path: str) -> OverseerConfig:
         )
     governance_gates = _parse_governance_gates(raw.get("governance_gates"), path)
     model_routing = _parse_model_routing(raw.get("model_routing"), path)
+    cost_awareness = _parse_cost_awareness(raw.get("cost_awareness"), path)
 
     return OverseerConfig(
         overseer_config_version=version,
@@ -381,6 +395,7 @@ def _validate_config(raw: dict[str, Any], path: str) -> OverseerConfig:
         extension_warnings=extension_warnings,
         governance_gates=governance_gates,
         model_routing=model_routing,
+        cost_awareness=cost_awareness,
     )
 
 
@@ -696,6 +711,10 @@ def _parse_honesty(raw_honesty: Any, path: str) -> HonestyConfig:
     if not isinstance(require_l1, str) or require_l1 not in L1_EVIDENCE_MODES:
         raise ConfigError("honesty.require_l1_evidence must be off|warn|require", path)
 
+    require_verification = h_raw.get("require_verification_evidence", "off")
+    if not isinstance(require_verification, str) or require_verification not in L1_EVIDENCE_MODES:
+        raise ConfigError("honesty.require_verification_evidence must be off|warn|require", path)
+
     allow_signed = h_raw.get("allow_signed_approval", False)
     if not isinstance(allow_signed, bool):
         raise ConfigError("honesty.allow_signed_approval must be a boolean", path)
@@ -715,6 +734,7 @@ def _parse_honesty(raw_honesty: Any, path: str) -> HonestyConfig:
         roles_file=roles_file,
         require_verdict_on=require_verdict_on,
         require_l1_evidence=require_l1,
+        require_verification_evidence=require_verification,
         allow_signed_approval=allow_signed,
         ci_reexecutor=ci_reexecutor,
         require_agent_signature=require_agent_signature,
@@ -881,6 +901,37 @@ def _parse_model_routing(raw_routing: Any, path: str) -> ModelRoutingConfig:
     _validate_repo_relative_path(policy, "model_routing.policy", path)
 
     return ModelRoutingConfig(enabled=enabled, policy=policy.strip())
+
+
+def _parse_cost_awareness(raw_cost: Any, path: str) -> CostAwarenessConfig:
+    """Parse optional ``cost_awareness`` section (§PC.6)."""
+    if raw_cost is None:
+        return CostAwarenessConfig()
+    cost_raw = _require_mapping(raw_cost, "cost_awareness", path)
+    extra = set(cost_raw) - COST_AWARENESS_KEYS
+    if extra:
+        raise ConfigError(f"unknown cost_awareness keys: {sorted(extra)}", path)
+
+    enabled = cost_raw.get("enabled", False)
+    if not isinstance(enabled, bool):
+        raise ConfigError("cost_awareness.enabled must be a boolean", path)
+
+    surfaces: frozenset[str] = frozenset(COST_AWARENESS_SURFACES)
+    if "surfaces" in cost_raw:
+        raw_surfaces = cost_raw["surfaces"]
+        if not isinstance(raw_surfaces, list) or not raw_surfaces:
+            raise ConfigError("cost_awareness.surfaces must be a non-empty list", path)
+        parsed: set[str] = set()
+        for item in raw_surfaces:
+            if not isinstance(item, str) or item not in COST_AWARENESS_SURFACES:
+                raise ConfigError(
+                    "cost_awareness.surfaces entries must be status|governance-sync",
+                    path,
+                )
+            parsed.add(item)
+        surfaces = frozenset(parsed)
+
+    return CostAwarenessConfig(enabled=enabled, surfaces=surfaces)
 
 
 def _parse_extensions(

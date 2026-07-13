@@ -7,7 +7,7 @@ VideoFactory is the in-house `git-only` reference after its K6 pilot parity PASS
 
 ## Prerequisites
 
-- A clone of [overseer-kit](https://github.com/aaronrene/overseer-kit) (or a path to its `cli/overseer` shim)
+- A clone of [overseer-kit](https://github.com/aaronrene/overseer-kit) (or a path to its `cli/ok` shim)
 - A GitHub repository (empty or existing)
 - Python 3.11+ available to the shim (kit `.venv` is fine)
 
@@ -19,16 +19,16 @@ From your consumer repo (or with `-C <repo>`):
 
 ```bash
 # Greenfield (empty / new repo)
-<path-to-overseer-kit>/cli/overseer -C . init --regime git-only --non-interactive
+<path-to-overseer-kit>/cli/ok -C . init --regime git-only --non-interactive
 
 # Status + footprint check
-<path-to-overseer-kit>/cli/overseer -C . status --check-footprint
+<path-to-overseer-kit>/cli/ok -C . status --check-footprint
 
 # Governance hygiene probe (default dry-run — writes nothing)
-<path-to-overseer-kit>/cli/overseer -C . governance-sync --dry-run
+<path-to-overseer-kit>/cli/ok -C . governance-sync --dry-run
 
 # Freeze review on a sample artifact
-<path-to-overseer-kit>/cli/overseer -C . review --freeze docs/<artifact> --dry-run
+<path-to-overseer-kit>/cli/ok -C . review --freeze docs/<artifact> --dry-run
 ```
 
 For repos that **already** have hand-authored handover/roadmap files, use migrate

@@ -1,6 +1,6 @@
 # Governance Hygiene Agent (Phase 9A-5)
 
-Repo-agnostic agent invoked as `overseer governance-sync` (default: dry-run).
+Repo-agnostic agent invoked as `ok governance-sync` (default: dry-run).
 
 ## Layout
 
@@ -15,8 +15,8 @@ Repo-agnostic agent invoked as `overseer governance-sync` (default: dry-run).
 ## CLI
 
 ```bash
-overseer governance-sync          # dry-run (default)
-overseer governance-sync --write  # apply patches + feature-branch commit + push
+ok governance-sync          # dry-run (default)
+ok governance-sync --write  # apply patches + feature-branch commit + push
 ```
 
 Ground truth: `docs/PHASE-9A-5-GOVERNANCE-HYGIENE-AGENT-OUTLINE.md`

@@ -6,66 +6,43 @@
 
 ---
 
-## NEXT SESSION — Track P / P-cost Thinking freeze (▶ NEXT)
+## NEXT SESSION — Track Q complete; operator choice (▶ NEXT)
 
 **Date:** 2026-07-13  
-**Current position:** **Track P / P-route Auto build DONE (build-verified → `pass`, P-route-BV-r1).** Shipped declarative model-routing policy mechanically against frozen `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md`: vendored `policy/model-routing.yaml` (v1; `{position, phase_tier, gate}` → `model_tier` + ordered `fallback`; first-match-wins + mandatory `defaults`; `fallback[0] == model_tier` terminating in `human`); extended `policy/model-labels.yaml` with `model_tiers` (abstract capability tiers, no vendor slugs); optional default-inert `model_routing:` config (`enabled: false`, `policy` path); read-only `overseer route` (resolve / `--validate` / explain) with exit `30`/`31`; `overseer status` routing-validity line when `enabled: true`. Kit holds and validates the rulebook only — **no model call, no network, no dispatch, no key.** **529** tests green (+43 §PR.8). Predecessor **Track P / P-route Thinking freeze DONE** (reviewed → `pass`, P-route-r2).  
-**Model:** **Thinking** (cost-awareness surface freeze — not a dollar pricer; governance boundary)  
-**Operator choice:** default next slice is **Track P / P-cost Thinking freeze**. Operator may instead pick **Track P / P-evidence** or **Track Q / Q0** (Overseer App freeze).
+**Current position:** **Track Q / Q3 Tauri desktop packaging DONE (build-verified → `pass`, Q3-BV-r1).**  
+Track Q delivery chain **Q0 → Q1 → Q2b → Q3** is complete: local web UI, canonical `ok` CLI, and cross-platform Tauri desktop shell.  
+**Model:** **Operator choice** — no further Track Q slice is queued; see ROADMAP exploration backlog for ideas requiring a new Thinking freeze.  
+**Operator choice:** pick the next phase from exploration backlog or consumer dogfood; no default Auto build is queued.
 
-<!-- overseer:anchor:done-recently -->
+
+
 ### What just landed
 
-| Slice | Deliverable |
-| --- | --- |
-| **Track P / P-route Auto build DONE (build-verified)** | `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` built → `/build-verification-review` **`pass` (P-route-BV-r1)**. Vendored `policy/model-routing.yaml`; `model_tiers` in `policy/model-labels.yaml`; optional `model_routing:` config; read-only `overseer route` + exit `30`/`31`; status routing-validity when enabled. **529** tests green (+43 §PR.8). |
-| **KH3 Footprint self-integrity hard gate DONE (Thinking + Auto)** | `docs/PHASE-KH3-FOOTPRINT-INTEGRITY-HARD-GATE.md` reviewed → `pass` (KH3-r2). New `tools/footprint_integrity/` (`FootprintIntegrityReport`/`check_footprint_integrity`, frozen trigger: `version.lock`-declared + non-`preserved` + absent from disk — existence-only, never content-hash); wired fail-closed into `status --exit-code` (always-on, no flag), `review --freeze`, `governance-sync` (exit `2`, no renumbering of the frozen `2 > 6 > 3 > 0` precedence). **486** tests green (+30 §KH3.8). |
-| **Self-footprint seed (hygiene, PR #20)** | Seeded the 13 kit-owned files `version.lock` had declared since K4b but were never rendered — real `overseer sync --yes`, zero `--force` (all `missing`, not conflicts). Verified no secrets, no unsubstituted-token bugs. |
-| **KH2 Muse-sync hard gate DONE (Thinking + Auto)** | `docs/PHASE-KH2-MUSE-SYNC-HARD-GATE.md` reviewed → `pass` (KH2-r2). `StatusResult.muse_dirty`/`git_dirty` (all three adapters); `tools/muse_sync/` (`MuseSyncReport`/`check_muse_sync`, frozen trigger `muse_dirty and not git_dirty`); wired fail-closed into `status --exit-code`, `review --freeze`, `governance-sync` (exit `2`, no renumbering of the frozen `2 > 6 > 3 > 0` precedence). **456** tests green (+27 §KH2.8). |
-| **Muse-sync catch-up (hygiene)** | Muse main was 2 git commits behind (`52b7e6e`, `4eb6d26` — the muse-rev-parse fix and the P-route freeze) with no matching `muse commit`. Ran `muse code add -A && muse commit` — catch-up commit `sha256:3e14450f…`. |
-| **Track P / P-route Thinking freeze DONE** | `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` reviewed → `pass` (P-route-r2), stamp `sha256:ab6b6a9…`. Frozen: `policy/model-routing.yaml` schema (first-match-wins + mandatory `defaults`; `fallback[0] == model_tier` terminating in `human`); `model_tiers` extension for `policy/model-labels.yaml` (abstract tiers, no vendor slugs); optional `model_routing:` config; read-only `overseer route` + exit `30`/`31`; seven-tier matrix. Kit = rule-holder, runtime = executor; **no model calls in the kit.** |
-| **Track P / P1 DONE (build-verified)** | `provenance` envelope + Ed25519 verify + `require_agent_signature` + exit `25`/`26`; **429** tests green (+30 §P0.8) |
-<!-- /overseer:anchor:done-recently -->
 
-### THE ONE NEXT STEP — **Model: Thinking (Track P / P-cost freeze)**
+| Slice                                                             | Deliverable                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Track Q / Q3 Tauri desktop packaging DONE (build-verified)**   | Tauri shell (`desktop/`) spawns canonical **`ok app`** and loads Q1 loopback UI in a native window; `tools/desktop/` launcher contract + banner parse + manifest validation; `scripts/bundle-desktop-kit.sh` bundles Python engine for release; in-memory auth bootstrap (no `localStorage`); macOS/Windows/Linux from one codebase; **no** engine subcommand/API changes. `/build-verification-review` **`pass` (Q3-BV-r1)**. **696** tests green (+28 §Q3). |
+| **Track Q / Q2b OK CLI entrypoint build DONE (build-verified)**   | Built against frozen `docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md` → `/build-verification-review` **`pass` (Q2b-BV-r1)**. Shipped: `cli/ok` + `cli/overseer` deprecation shim; `prog="ok"`; operator docs/templates/twin skills/CI → `ok`; SPEC §5 + K4.1 naming; remediation strings → `ok`; shims excluded from footprint. **668** tests green (+14 §Q2A.10). Cleared for Q3.                                                                                                              |
+| **Track Q / Q2a Freeze OK CLI entrypoint DONE (Thinking)**        | `docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md` reviewed → `pass` (Q2a-r2), stamp `sha256:dbfbf9ad…`. Freezes `cli/ok` canonical + `cli/overseer` compat deprecation; `prog="ok"`; SPEC/K4.1 naming amendment; engine shims **not** footprint members; seven-tier §Q2A.10. **Spec-only — no code landed.** Cleared for Q2b.                                                                                                      |
+| **Track Q / Q1 Local web UI build DONE (build-verified)**         | Built against frozen `docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md` → `/build-verification-review` **`pass` (Q1-BV-r1)**. Shipped: `ok app` stdlib loopback server + static UI; `tools/app/` + `cli/commands/app.py`; closed `api/*` handlers; Bearer + CSRF auth. **654** tests green (+42 §Q0.12).                                                                                                                                    |
 
-Freeze the **Track P / P-cost** cost-*awareness* surface (not a dollar pricer): surface each phase's tier/position + a "paid step before spend" flag on `overseer status` / handover. Actual dollar math stays in the runtime — kit is price-agnostic by design. Hold the governance boundary (kit = rule-holder, never runtime/dispatcher/model-host).
 
-| | |
-| --- | --- |
-| **ID** | **Track P / P-cost** (Thinking freeze) |
-| **Branch** | `feat/track-p-cost-freeze` (slug = `track-p-cost-freeze`) |
-| **Read first** | `docs/ROADMAP.md` (P-cost row); `docs/OVERSEER-KIT-LAYERED-HONESTY-VISION.md` §1.2; `policy/tiers.yaml`; `AGENTS.md` boundary |
-| **Freeze** | Draft `docs/PHASE-TRACK-P-P-COST-AWARENESS.md`; seven-tier test matrix; run `/freeze-review-loop` before Auto build |
-| **Hard stops** | No dollar pricer in the kit; no redesign of P-route; no Tier-3 merge without authorization |
 
-<!-- overseer:anchor:paste-ready-prompt -->
-### Paste-ready prompt — Track P / P-cost Thinking freeze
 
-```
-Phase Track P / P-cost — Thinking freeze (overseer-kit).
+### THE ONE NEXT STEP — **Model: Operator choice**
 
-Model: Thinking (contract freeze + seven-tier test matrix; NO implementation).
+Track Q is **complete** (Q0–Q3). No Auto build is queued until a new Thinking freeze promotes work from the exploration backlog.
 
-Shared context:
-- Project: 🆗 Overseer Kit — repo-agnostic governance vendoring CLI
-- Read first: docs/ROADMAP.md (P-cost row); docs/OVERSEER-KIT-LAYERED-HONESTY-VISION.md §1.2;
-  policy/tiers.yaml; AGENTS.md boundary
-- Predecessor: Track P / P-route build DONE (build-verified → pass, P-route-BV-r1)
-- Boundary (K7 / AGENTS.md): the kit is governance/frontend, NEVER a runtime/dispatcher/model-host
 
-Task (freeze only — no code):
-- Draft docs/PHASE-TRACK-P-P-COST-AWARENESS.md: cost-awareness surface (not a dollar pricer).
-- Surface each phase's tier/position + "paid step before spend" on overseer status / handover.
-- Dollar math stays in the runtime; kit is price-agnostic.
-- Seven-tier test matrix; run /freeze-review-loop before queueing Auto build.
-- On pass: ROADMAP P-cost → DONE (Thinking); update handover with P-cost Auto build prompt.
+|                |                                                                                                                                     |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| **ID**         | **Operator choice**                                                                                                                 |
+| **Read first** | `docs/ROADMAP.md` (exploration backlog); `docs/OVERSEER-HANDOVER.md`                                                                |
+| **Options**    | **P-deploy** deployment gate (Thinking freeze first); hosted governance dashboard (Thinking); consumer P-route reference; or consumer dogfood |
+| **Hard stops** | No Tier-3 merge without authorization; new scope needs its own Thinking freeze before Auto build                                      |
 
-Governance gates (mandatory — remind only; silence is not pass):
-- Freeze review: run /freeze-review-loop before ROADMAP status → DONE (Thinking)
-- overseer status and overseer governance-sync emit pending gates for the active slice
-```
-<!-- /overseer:anchor:paste-ready-prompt -->
+
+
 
 ---
 
@@ -78,8 +55,8 @@ Governance gates (mandatory — remind only; silence is not pass):
 | **Guardrails** | No secrets; fail-closed VCS reads; no MuseHub-only baseline features; no Tier-3 automation |
 | **Tests** | Seven tiers per `policy/test-tiers.yaml` before DONE |
 | **Close** | Update ROADMAP + this handover together; feature branch → PR (no commit/push without consent) |
-| **Governance gates** | §KH1.9 **live** — `overseer status` + `governance-sync` pending-gate reminders |
-| **Muse dev tree** | `overseer status --exit-code` must show `substrate.ok: true`, `muse_sync.ok: true`, **and** `footprint_self_integrity.ok: true` before phase DONE. Hollow substrate → `muse init --force .`; Muse behind Git (`muse_sync: pending`) → `muse code add -A && muse commit -m "…"`; declared-but-absent kit file (`footprint_self_integrity: missing`) → `overseer sync` (all Tier 1) |
+| **Governance gates** | §KH1.9 **live** — `ok status` + `governance-sync` pending-gate reminders |
+| **Muse dev tree** | `ok status --exit-code` must show `substrate.ok: true`, `muse_sync.ok: true`, **and** `footprint_self_integrity.ok: true` before phase DONE. Hollow substrate → `muse init --force .`; Muse behind Git (`muse_sync: pending`) → `muse code add -A && muse commit -m "…"`; declared-but-absent kit file (`footprint_self_integrity: missing`) → `ok sync` (all Tier 1) |
 
 ---
 
@@ -100,13 +77,20 @@ Governance gates (mandatory — remind only; silence is not pass):
 | **Track P / P0** | **DONE** — agent identity & signed provenance; contract reviewed → `pass` (P0-r2), stamp `sha256:7db8681…` |
 | **Track P / P1** | **DONE** — agent provenance build-verified → `pass` (P1-BV-r2); BV1 (§P0.6 verify-surface parity) fixed; **429** tests green (+30 §P0.8) |
 | **Track P / P-route** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` reviewed → `pass`, P-route-r2) + Auto build (build-verified → `pass`, P-route-BV-r1). Declarative model-routing policy shipped: `policy/model-routing.yaml`, `model_tiers`, `model_routing:` config, `overseer route`, exit `30`/`31`. **529** tests green (+43 §PR.8). Kit = rule-holder, runtime = executor |
-| **Track Q / Q0–Q2** | **TODO** — Overseer App: local web UI over the existing engine (Q1) packaged with **Tauri** into a cross-platform desktop app (Q2); needs Q0 Thinking freeze first; not yet started |
+| **Track P / P-cost** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-P-P-COST-AWARENESS.md` reviewed → `pass`, P-cost-r2) + Auto build (build-verified → `pass`, P-cost-BV-r1). Cost-awareness surface shipped: `cost_class` on `model_tiers`, `tools/cost_awareness/`, `cost_awareness:` config, additive `overseer route` cost fields, exit `32`, status + governance-sync reminders. **569** tests green (+40 §PC.9). Kit = cost-awareness rule-holder, runtime = spender |
+| **Track P / P-evidence** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-P-P-EVIDENCE.md` reviewed → `pass`, P-evidence-r3) + Auto build (build-verified → `pass`, P-evidence-BV-r1). Verification-evidence capture shipped: `verification_evidence` kind, artifact types, `require_verification_evidence`, honesty-status Mode B, exit `33`, twin build-verification V8 delta. **612** tests green (+43 §PE.10). Kit records/gates; never deploys |
+| **Track Q / Q0** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md` reviewed → `pass`, Q0-r2), stamp `sha256:3c3f6229…`. Freezes `overseer app` local-only UI contract |
+| **Track Q / Q1** | **DONE** — Auto build (build-verified → `pass`, Q1-BV-r1). `overseer app` stdlib loopback server + static UI; `tools/app/` + `cli/commands/app.py`; closed `api/*`; Bearer + CSRF; seven-tier §Q0.12. **654** tests green (+42) |
+| **Track Q / Q2a**         | **DONE** — Thinking freeze (`docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md` reviewed → `pass`, Q2a-r2), stamp `sha256:dbfbf9ad…`. Freezes canonical `ok` CLI entrypoint + `overseer` compat shim; seven-tier §Q2A.10. Spec-only. Cleared for Q2b |
+| **Track Q / Q2b**         | **DONE** — Auto build (build-verified → `pass`, Q2b-BV-r1). `cli/ok` canonical + `cli/overseer` deprecation; `prog="ok"`; operator docs/templates/skills/CI pass; SPEC §5 + K4.1 naming; shims not footprint members. **668** tests green (+14 §Q2A.10). Cleared for Q3 |
+| **Track Q / Q3**          | **DONE** — Auto build (build-verified → `pass`, Q3-BV-r1). Tauri desktop shell (`desktop/`) invokes `ok app`; `tools/desktop/` + bundle script; seven-tier §Q3. **696** tests green (+28). Track Q chain complete |
+| **CLI entrypoint**        | **`ok`** (canonical `./cli/ok`); **`overseer`** compat shim (`./cli/overseer`, one-line stderr deprecation) |
+| **CLI subcommands**       | `init` \| `sync` \| `status` \| `review --freeze` \| `governance-sync` \| `verify-step` \| `honesty-status` \| `ledger` \| `route` \| `app` |
 | **Muse dogfood** | **D2 repaired** + substrate health + gate reminders + **muse-sync hard gate (KH2)** + **footprint self-integrity hard gate (KH3)** live; `muse rev-parse` reads plain-text SHA (0.2.x returns bare SHA on success; JSON only on failure/non-zero); `governance-sync --dry-run` exits 0; muse canonical HEAD `sha256:3e14450f…` (catch-up commit; genesis `sha256:4671b7f…`) |
 | **KH1b** | **DONE** — substrate §1 + gate reminders §2 |
 | **KH2** | **DONE** — Muse-sync hard gate (freeze `pass` KH2-r2 + Auto build); `tools/muse_sync/`; fail-closed on `status --exit-code` / `review --freeze` / `governance-sync` |
 | **KH3** | **DONE** — Footprint self-integrity hard gate (freeze `pass` KH3-r2 + Auto build); `tools/footprint_integrity/`; fail-closed on `status --exit-code` / `review --freeze` / `governance-sync` when a declared kit-owned file is absent from disk |
 | **Public brand** | **🆗 Overseer Kit** (locked in template + landing) |
-| **CLI** | `init` \| `sync` \| `status` \| `review --freeze` \| `governance-sync` \| `verify-step` \| `honesty-status` \| `ledger` \| `route` |
 | **Public landing** | `docs/landing/index.html` · scenario gallery `docs/landing/scenarios/index.html` |
 <!-- /overseer:anchor:verified-snapshot -->
 
@@ -115,11 +99,11 @@ Governance gates (mandatory — remind only; silence is not pass):
 
 | Item | Value |
 | --- | --- |
-| Branch | `feat/track-p-route-build` |
-| HEAD (pre closing-commit) | uncommitted (P-route build + governance sync) |
-| Muse HEAD | `sha256:4543518e…` (branch `main`; adds the 13 seeded self-footprint files; genesis `sha256:4671b7f…`) |
-| GitHub bridge | PR #15 / #16 — superseded by merged #18/#19/#20; no bridge PR currently open |
-| Dirty | yes (P-route build + ROADMAP + this handover — pending closing commit on `feat/track-p-route-build`) |
+| Branch                    | uncommitted (Q2b build + governance)                                                                     |
+| HEAD (pre closing-commit) | Q2b OK CLI entrypoint build                                                                              |
+| Muse HEAD | catch-up may be needed after this commit |
+| GitHub bridge | no bridge PR currently open |
+| Dirty                     | yes (Q2b build — commit on feature branch when ready)                                                    |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -132,6 +116,110 @@ Governance gates (mandatory — remind only; silence is not pass):
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-13** — **Track Q / Q3 Tauri desktop packaging DONE (build-verified → `pass`, Q3-BV-r1).**
+  Shipped cross-platform Tauri shell (`desktop/`): Rust launcher spawns canonical **`ok app`**,
+  parses one-time stderr banner (`url`, `session_credential`, `csrf_token`), loads Q1 loopback UI
+  via `WebviewUrl::External`, and injects in-memory auth bootstrap (no `localStorage`). Python
+  packaging contract in `tools/desktop/` (launcher argv builder, banner parser, manifest validator,
+  init-script generator); `scripts/bundle-desktop-kit.sh` copies engine into Tauri resources for
+  release builds. **No** new engine subcommands, exit codes, or `api/*` surface changes. Seven-tier
+  §Q3: **28** new tests (**696** total green). `/build-verification-review` round 1 → **`pass`**
+  (V1–V8 clean). ROADMAP: Track Q / Q3 → **DONE**; Track Q chain complete; NEXT → operator choice.
+- **2026-07-13** — **Track Q / Q2b OK CLI entrypoint build DONE (build-verified → `pass`, Q2b-BV-r1).**
+  Built mechanically against frozen `docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md`: shipped `cli/ok`
+  canonical POSIX shim + `cli/overseer` compatibility shim (exact one-line stderr deprecation);
+  `argparse` prog `ok`; operator-facing remediation/banner strings → `ok`; operator docs/templates/
+  twin `.cursor/` + `cursor/` skills/CI examples → `ok`; SPEC §5 command table + K4.1 invocation
+  amended; footprint integrity + muse-sync remediation strings updated; engine shims explicitly
+  excluded from `resolve_footprint` / `version.lock`. Seven-tier §Q2A.10: **14** new tests (**668**
+  total green). `/build-verification-review` round 1 → **`pass`** (V1–V8 clean). ROADMAP: Track Q /
+  Q2b → **DONE**; NEXT → **Track Q / Q3** Tauri (`ok app` launcher).
+- **2026-07-13** — **Track Q / Q2a Freeze OK CLI entrypoint DONE (reviewed → `pass`, Q2a-r2).**
+  Drafted and froze `docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md`: canonical CLI name `ok`
+  (`cli/ok` → `python -m cli.main`; `argparse` prog `ok`); `cli/overseer` remains compatibility
+  shim with exact one-line stderr deprecation per process; no subcommand/exit-code/`.overseer/`
+  path changes; engine shims explicitly **not** footprint members (supersedes earlier Q2b
+  “footprint + version.lock entry” wording); SPEC §5 command table must rewrite to `ok …` in Q2b;
+  existing-test stderr migration rule; twin `.cursor/` + `cursor/` skill doc pass; seven-tier
+  §Q2A.10. Freeze-review loop: r1 findings (C4 path placeholder; existing-test migration; SPEC
+  rewrite mandate; DoD shim spelling; twin skills) → fixed; **Q2a-r2 → `pass`**; stamp
+  `sha256:dbfbf9ad…`. **Spec-only — no code landed.** ROADMAP: Track Q / Q2a → **DONE (Thinking)**;
+  NEXT → **Track Q / Q2b**.
+- **2026-07-13** — **Track Q / Q0 Freeze Overseer App DONE (reviewed → `pass`, Q0-r2).**
+  Drafted and froze `docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md`: local-only `overseer app` web UI over
+  the existing Python engine (zero rewrite). Frozen surface — CLI `overseer app`; bind default
+  `127.0.0.1` (allow `localhost`/`::1`; refuse non-loopback); Bearer + CSRF-header auth (cookies
+  deferred); stdlib HTTP server (FastAPI not required); closed `api/*` read/act set (status,
+  ROADMAP/HANDOVER, review --freeze, governance-sync, ledger, honesty-status) with §Q0.7.6 body
+  schemas; fail-closed CLI parity; seven-tier §Q0.12. Freeze-review loop: r1 findings (path
+  notation C4 false positive; CORS/`::1`; POST schemas; status exit_code semantics; auth narrowed;
+  multi-lane CLI-only) → fixed; **Q0-r2 → `pass`**; stamp `sha256:3c3f6229…`. **Spec-only — no
+  code landed.** ROADMAP: Track Q / Q0 → **DONE (Thinking)**; NEXT → **Track Q / Q1**.
+
+- **2026-07-13** — **Track P / P-evidence Auto build DONE (build-verified → `pass`, P-evidence-BV-r1).**
+  Built mechanically against frozen `docs/PHASE-TRACK-P-P-EVIDENCE.md` (no redesign): ledger kind
+  `verification_evidence` + `validate_verification_artifacts` (§PE.3–§PE.4); genesis forbid-list
+  extended; `honesty.require_verification_evidence: off|warn|require` (default `off`; `HONESTY_KEYS`
+  membership); honesty-status Mode B (`--verification-evidence` / `--frozen-spec`) with Mode A/B
+  mutual exclusion; exit `33` + `missing_verification_evidence`; twin build-verification V8 + Evidence
+  table skill delta (`.cursor/` + `cursor/` paths). Seven-tier §PE.10 matrix: **43** new tests
+  (**612** total green). `/build-verification-review` round 1 → **`pass`** (V1–V8 clean). ROADMAP
+  P-evidence build → **DONE**; NEXT was **Track Q / Q0** (now also DONE this session).
+
+- **2026-07-13** — **Track P / P-evidence Thinking freeze DONE (reviewed → `pass`, P-evidence-r3).**
+  Drafted and froze `docs/PHASE-TRACK-P-P-EVIDENCE.md`: verification-evidence capture that closes
+  build-verification V8's durability gap. Frozen surface — ledger kind `verification_evidence`
+  (additive K9a enum amendment; `actor_role=verifier`); closed artifact types
+  `test_output`\|`deploy_health`\|`screenshot` (content hashes + opaque refs; no blobs in ledger;
+  kit never deploys / HTTP-probes / screenshots); `honesty.require_verification_evidence:
+  off\|warn\|require` (default `off`; must join `HONESTY_KEYS`); honesty-status Mode A/B mutual
+  exclusion (`--verification-evidence` / `--frozen-spec`); exit `33` +
+  `missing_verification_evidence`; normative build-verification skill V8 + Evidence table delta
+  (both twin paths); seven-tier §PE.10 matrix. Freeze-review loop: r1 findings (Mode B JSON/token,
+  Mode A/B mutual exclusion, `frozen_spec` opacity, flag names, K9a amendment note) → fixed; r2
+  findings (`HONESTY_KEYS`, `off` wording) → fixed; **P-evidence-r3 → `pass`**; stamp written by
+  `overseer review --freeze` (digest `sha256:c1b9fb3…`). **Spec-only — no code landed.** ROADMAP:
+  Track P / P-evidence → **DONE (Thinking)**; added **Track P / P-evidence build** (Auto, TODO).
+  Handover NEXT flips to the P-evidence Auto build. **569** tests unchanged.
+
+- **2026-07-13** — **Track P / P-cost Auto build DONE (build-verified → `pass`, P-cost-BV-r1).**
+  Built mechanically against frozen `docs/PHASE-TRACK-P-P-COST-AWARENESS.md` (no redesign): optional
+  `cost_class` on `model_tiers` (closed vocabulary `free|low|moderate|high`; recognized key); deterministic
+  `paid_step_before_spend` derivation; additive `cost_class` + `paid_step_before_spend` on read-only
+  `overseer route` (resolution unchanged); optional default-inert `cost_awareness:` config; active-slice
+  spend-awareness surface on `overseer status` (+ `--json`) and `governance-sync` footer (reuses §KH1.9
+  scan; reminder-only); exit `32` confined to `overseer route` (status/governance-sync degrade to warning);
+  handover template spend-awareness reminder. New module `tools/cost_awareness/`; seven-tier §PC.9 matrix:
+  **40** new tests (**569** total green). `/build-verification-review` round 1 → **`pass`** (V1–V8 clean).
+  ROADMAP P-cost build → **DONE**; NEXT → **Track P / P-evidence Thinking freeze**.
+- **2026-07-13** — **Track P / P-cost Thinking freeze DONE (reviewed → `pass`, P-cost-r2).** Drafted
+  and froze `docs/PHASE-TRACK-P-P-COST-AWARENESS.md`: a **cost-*awareness* surface, not a dollar
+  pricer**. Frozen surface — an optional, ordinal, **currency-free** `cost_class`
+  (`free < low < moderate < high`) on each `model_tiers[]` entry; a deterministic
+  `paid_step_before_spend` derivation (`free` + the reserved `human` terminal are unpaid; any other
+  band — and, conservatively, an **absent** band → `unknown` — is paid, mirroring vision §1.2
+  fail-closed-before-spend); an **additive** `cost_class` + `paid_step_before_spend` annotation on the
+  read-only `overseer route` output (routing resolution itself unchanged); an optional default-inert
+  `cost_awareness:` config block (`enabled: false`, `surfaces: [status, governance-sync]`); a
+  read-only **active-slice spend-awareness surface** on `overseer status` (+ `--json` key) and the
+  `overseer governance-sync` footer that reuses the existing §KH1.9 active-slice scan (derives
+  `phase_tier` from the slice `Model:` label and `gate` from any pending governance gate; `position`
+  stays `None` — deliberate coarseness, the runtime resolves precisely via `overseer route`),
+  **reminder-only and never blocking**; a single new non-overlapping exit code `32` (malformed cost
+  metadata, **confined to `overseer route`** — `status`/`governance-sync` degrade to a
+  `cost_awareness: invalid` warning, matching the frozen `model_routing: invalid` precedent); the
+  rule-holder-not-spender boundary table; and the §PC.9 seven-tier matrix. **Boundary held (K7 /
+  `AGENTS.md`):** the kit declares the bands and derives the paid flag; the runtime (Cursor /
+  OpenRouter / Scooling 9A) converts a band into money and decides spend. **No dollar amount,
+  currency, price, budget, spend cap, network connection, or model call in the kit.**
+  `/freeze-review-loop`: CLI checklist gate clean both rounds; **P-cost-r1** raised one
+  non-escalating MAJOR internal-consistency finding (R1-M1: the exit-code section described a
+  malformed-cost-metadata fault as both exit `32` and the existing `2` fail-closed tier on
+  `overseer status`, contradicting the warning-only `model_routing` precedent) → fixed minimally by
+  confining `32` to `overseer route` and degrading the informational surfaces to a warning;
+  **P-cost-r2 → `pass`**; stamp written by `overseer review --freeze` (digest `sha256:9f26678…`).
+  **Spec-only — no code landed.** ROADMAP: Track P / P-cost → **DONE (Thinking)**; added **Track P /
+  P-cost build** (Auto, TODO). Handover NEXT flips to the P-cost Auto build. **529** tests unchanged.
 - **2026-07-13** — **Track P / P-route Auto build DONE (build-verified → `pass`, P-route-BV-r1).**
   Built mechanically against frozen `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` (no redesign):
   vendored `policy/model-routing.yaml` (v1; first-match-wins + mandatory `defaults`; `fallback[0] ==
