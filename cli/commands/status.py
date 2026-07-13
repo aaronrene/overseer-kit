@@ -17,6 +17,7 @@ from cli.paths import is_within_repo, resolve_config_path, resolve_repo_root
 from cli.sanitize import format_config_error, sanitize_text
 from cli.vcs_status import read_vcs_status, vcs_report
 from cli.version_lock import LockError, lock_path, read_version_lock
+from tools.footprint_integrity import check_footprint_integrity
 from tools.governance_gates import scan_governance_gates
 from tools.governance_gates.format import format_pending_gate_lines, pending_gates_payload
 from tools.muse_sync import check_muse_sync
@@ -91,11 +92,17 @@ def _exit_code_from_conditions(
     use_exit_code: bool,
     substrate_ok: bool = True,
     muse_sync_ok: bool = True,
+    footprint_self_integrity_ok: bool = True,
 ) -> int:
-    """Apply frozen precedence: 2 > 6 > 3 > 0 (§KH2.5: muse_sync_ok folds into the 2 tier)."""
+    """Apply frozen precedence: 2 > 6 > 3 > 0.
+
+    §KH2.5: ``muse_sync_ok`` folds into the 2 tier. §KH3.5: ``footprint_self_integrity_ok``
+    (declared-but-absent kit-owned files) also folds into the same 2 tier, distinct from and
+    independent of the opt-in ``--check-footprint`` content-digest ``integrity`` tier (6).
+    """
     if not use_exit_code:
         return 0
-    if config_error or not substrate_ok or not muse_sync_ok:
+    if config_error or not substrate_ok or not muse_sync_ok or not footprint_self_integrity_ok:
         return 2
     if integrity == "mismatch":
         return 6
@@ -182,6 +189,17 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
             for path in preserved_living:
                 report.add_warning(f"preserved-living: {path}")
 
+    footprint_self_integrity = check_footprint_integrity(repo_root, lock=lock)
+    if not footprint_self_integrity.ok:
+        report.add_warning(
+            f"footprint_self_integrity: {footprint_self_integrity.state} — "
+            f"{footprint_self_integrity.message}"
+        )
+        if footprint_self_integrity.remediation:
+            report.add_warning(
+                f"footprint_self_integrity-remediation: {footprint_self_integrity.remediation}"
+            )
+
     drift = compute_drift(
         cli_version=kit_version(),
         lock=lock,
@@ -218,6 +236,7 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
         "kit_version": kit_version(),
         "substrate": _substrate_payload(substrate),
         "muse_sync": _muse_sync_payload(muse_sync),
+        "footprint_self_integrity": _footprint_self_integrity_payload(footprint_self_integrity),
         "lock": _lock_summary(lock) if lock else None,
         "drift": drift,
         "footprint_integrity": integrity,
@@ -239,6 +258,7 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
         use_exit_code=args.exit_code,
         substrate_ok=substrate.ok,
         muse_sync_ok=muse_sync.ok,
+        footprint_self_integrity_ok=footprint_self_integrity.ok,
     )
     if lock_error and args.exit_code:
         exit_code = 6 if exit_code == 0 else max(exit_code, 6)
@@ -287,4 +307,14 @@ def _muse_sync_payload(muse_sync) -> dict:
         "ok": muse_sync.ok,
         "remediation": muse_sync.remediation,
         "message": muse_sync.message,
+    }
+
+
+def _footprint_self_integrity_payload(report) -> dict:
+    return {
+        "state": report.state,
+        "ok": report.ok,
+        "missing": list(report.missing),
+        "remediation": report.remediation,
+        "message": report.message,
     }
