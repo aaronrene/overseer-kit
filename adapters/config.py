@@ -58,6 +58,8 @@ GOVERNANCE_GATES_KEYS = frozenset(
     }
 )
 L1_EVIDENCE_MODES = frozenset({"off", "warn", "require"})
+MODEL_ROUTING_KEYS = frozenset({"enabled", "policy"})
+DEFAULT_MODEL_ROUTING_POLICY = "policy/model-routing.yaml"
 
 
 @dataclass(frozen=True)
@@ -178,6 +180,14 @@ class GovernanceGatesConfig:
 
 
 @dataclass(frozen=True)
+class ModelRoutingConfig:
+    """Optional model-routing policy settings (§PR.5)."""
+
+    enabled: bool = False
+    policy: str = DEFAULT_MODEL_ROUTING_POLICY
+
+
+@dataclass(frozen=True)
 class ExtensionEntry:
     """One extensions[] escape-hatch entry (§K9.2)."""
 
@@ -200,6 +210,7 @@ class OverseerConfig:
     extensions: tuple[ExtensionEntry, ...] = ()
     extension_warnings: tuple[str, ...] = ()
     governance_gates: GovernanceGatesConfig = GovernanceGatesConfig()
+    model_routing: ModelRoutingConfig = ModelRoutingConfig()
 
 
 def load_config(path: Path) -> OverseerConfig:
@@ -350,6 +361,7 @@ def _validate_config(raw: dict[str, Any], path: str) -> OverseerConfig:
             exit_code=26,
         )
     governance_gates = _parse_governance_gates(raw.get("governance_gates"), path)
+    model_routing = _parse_model_routing(raw.get("model_routing"), path)
 
     return OverseerConfig(
         overseer_config_version=version,
@@ -368,6 +380,7 @@ def _validate_config(raw: dict[str, Any], path: str) -> OverseerConfig:
         extensions=extensions,
         extension_warnings=extension_warnings,
         governance_gates=governance_gates,
+        model_routing=model_routing,
     )
 
 
@@ -847,6 +860,27 @@ def _parse_governance_gates(raw_gates: Any, path: str) -> GovernanceGatesConfig:
         build_verification_required=build_required,
         surfaces=surfaces,
     )
+
+
+def _parse_model_routing(raw_routing: Any, path: str) -> ModelRoutingConfig:
+    """Parse optional ``model_routing`` section (§PR.5)."""
+    if raw_routing is None:
+        return ModelRoutingConfig()
+    routing_raw = _require_mapping(raw_routing, "model_routing", path)
+    extra = set(routing_raw) - MODEL_ROUTING_KEYS
+    if extra:
+        raise ConfigError(f"unknown model_routing keys: {sorted(extra)}", path)
+
+    enabled = routing_raw.get("enabled", False)
+    if not isinstance(enabled, bool):
+        raise ConfigError("model_routing.enabled must be a boolean", path)
+
+    policy = routing_raw.get("policy", DEFAULT_MODEL_ROUTING_POLICY)
+    if not isinstance(policy, str) or not policy.strip():
+        raise ConfigError("model_routing.policy must be a non-empty string", path)
+    _validate_repo_relative_path(policy, "model_routing.policy", path)
+
+    return ModelRoutingConfig(enabled=enabled, policy=policy.strip())
 
 
 def _parse_extensions(

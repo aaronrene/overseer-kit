@@ -17,6 +17,7 @@ from cli.paths import is_within_repo, resolve_config_path, resolve_repo_root
 from cli.sanitize import format_config_error, sanitize_text
 from cli.vcs_status import read_vcs_status, vcs_report
 from cli.version_lock import LockError, lock_path, read_version_lock
+from cli.commands.route import routing_policy_status
 from tools.footprint_integrity import check_footprint_integrity
 from tools.governance_gates import scan_governance_gates
 from tools.governance_gates.format import format_pending_gate_lines, pending_gates_payload
@@ -231,6 +232,11 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
         if muse_sync.remediation:
             report.add_warning(f"muse_sync-remediation: {muse_sync.remediation}")
 
+    model_routing_status = routing_policy_status(config, repo_root, kit_root=ctx.kit)
+    if model_routing_status.get("enabled") and not model_routing_status.get("valid"):
+        violation = model_routing_status.get("violation") or "invalid"
+        report.add_warning(f"model_routing: invalid — {violation}")
+
     payload = {
         "initialized": True,
         "kit_version": kit_version(),
@@ -246,6 +252,7 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
         "governance_gates": pending_gates_payload(gate_scan)
         if gate_scan is not None
         else {"enabled": False, "suppressed": False, "active_phases": [], "pending": []},
+        "model_routing": model_routing_status,
         "warnings": report.warnings,
     }
     if lock_error:
@@ -280,6 +287,12 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
         ctx.output.emit(f"drift: {drift['status']}")
         if integrity:
             ctx.output.emit(f"footprint_integrity: {integrity}")
+        if model_routing_status.get("enabled"):
+            if model_routing_status.get("valid"):
+                ctx.output.emit("model_routing: valid")
+            else:
+                violation = model_routing_status.get("violation") or "invalid"
+                ctx.output.emit(f"model_routing: invalid — {violation}")
         if gate_scan is not None and gate_scan.pending:
             ctx.output.emit("")
             for line in format_pending_gate_lines(gate_scan):
