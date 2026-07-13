@@ -133,6 +133,29 @@ Governance gates (mandatory — remind only; silence is not pass):
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-12** — **Hygiene: reclassify `docs/ROADMAP.md` + `docs/OVERSEER-HANDOVER.md` as
+  `origin: preserved` in `.overseer/version.lock`; refresh stale `scripts/muse-bridge-deploy.sh` hash.**
+  Root-caused a `footprint_integrity: mismatch` on `overseer status --check-footprint`. Verified by
+  rendering each file fresh from its current template + `.overseer/config.yaml` and diffing byte-for-byte
+  against the live file: `ROADMAP.md`/`OVERSEER-HANDOVER.md` render to a ~2KB generic seed skeleton vs.
+  ~20–28KB live content — genuine, intentional living-doc growth, not drift, confirmed **not** a
+  section-structure problem (headers identical `aa9cf74`→`HEAD`, single `NEXT SESSION` block +
+  fenced `Paste-ready prompt` stable since `aa9cf74` 2026-07-12 09:25; the multi-block/table regression
+  the operator recalled was `3061b5d`→`343093c`, 2026-07-11 08:19–14:12, already self-corrected before
+  this fix). `scripts/muse-bridge-deploy.sh`'s fresh render was **byte-identical** to the live file — not
+  a customization at all, just a stale `version.lock` hash from before the last real edit; kept
+  `origin: kit` and refreshed via `overseer sync --force --only scripts/muse-bridge-deploy.sh` (file
+  bytes unchanged, confirmed via `git diff --stat`). Root cause of why `origin: preserved` had to be set
+  by hand: `cli/commands/sync.py::_is_preserved_path` only falls back to config's `living_doc_destinations()`
+  when a path has **no** prior lock entry; once an entry exists (as here, from initial install) its
+  explicit/default `origin` wins, so a living doc that got its first lock entry as `kit` stays `kit`
+  forever without a manual reclassification — this is the supported §K6.4 mechanism, not a workaround.
+  456/456 tests green post-fix. **New finding surfacing separately (not yet actioned):** `overseer status
+  --check-footprint` still reports `mismatch` for a different, unrelated reason — `.cursor/rules/`,
+  `.cursor/skills/`, `.overseer/policy/*.yaml`, and `.overseer/STANDING-DECISIONS.reference.md` are all
+  declared in `version.lock` but do not exist anywhere in the working tree or git history (no
+  `.gitignore` exclusion either) — flagged to the operator for a decision before touching it.
+
 - **2026-07-12** — **KH2 Muse-sync hard gate DONE (Thinking + Auto, same session — permanent fix for
   live MuseHub/GitHub drift).** Diagnosed why Muse fell behind Git on this repo: two git commits
   (`52b7e6e`, `4eb6d26`) landed with no matching `muse commit`, despite `muse+git-mirror` declaring
