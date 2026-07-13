@@ -19,6 +19,7 @@ from cli.vcs_status import read_vcs_status, vcs_report
 from cli.version_lock import LockError, lock_path, read_version_lock
 from tools.governance_gates import scan_governance_gates
 from tools.governance_gates.format import format_pending_gate_lines, pending_gates_payload
+from tools.muse_sync import check_muse_sync
 from tools.substrate_health import check_substrate
 
 
@@ -89,11 +90,12 @@ def _exit_code_from_conditions(
     drift_status: str | None,
     use_exit_code: bool,
     substrate_ok: bool = True,
+    muse_sync_ok: bool = True,
 ) -> int:
-    """Apply frozen precedence: 2 > 6 > 3 > 0."""
+    """Apply frozen precedence: 2 > 6 > 3 > 0 (§KH2.5: muse_sync_ok folds into the 2 tier)."""
     if not use_exit_code:
         return 0
-    if config_error or not substrate_ok:
+    if config_error or not substrate_ok or not muse_sync_ok:
         return 2
     if integrity == "mismatch":
         return 6
@@ -205,10 +207,17 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
             ctx.output.emit_json(payload)
         return 2
 
+    muse_sync = check_muse_sync(config, vcs_result)
+    if not muse_sync.ok:
+        report.add_warning(f"muse_sync: {muse_sync.state} — {muse_sync.message}")
+        if muse_sync.remediation:
+            report.add_warning(f"muse_sync-remediation: {muse_sync.remediation}")
+
     payload = {
         "initialized": True,
         "kit_version": kit_version(),
         "substrate": _substrate_payload(substrate),
+        "muse_sync": _muse_sync_payload(muse_sync),
         "lock": _lock_summary(lock) if lock else None,
         "drift": drift,
         "footprint_integrity": integrity,
@@ -229,6 +238,7 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
         drift_status=drift["status"],
         use_exit_code=args.exit_code,
         substrate_ok=substrate.ok,
+        muse_sync_ok=muse_sync.ok,
     )
     if lock_error and args.exit_code:
         exit_code = 6 if exit_code == 0 else max(exit_code, 6)
@@ -241,6 +251,10 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
             ctx.output.emit(f"substrate: {substrate.state} — {substrate.message}")
             if substrate.remediation:
                 ctx.output.emit(f"substrate-remediation: {substrate.remediation}")
+        if not muse_sync.ok:
+            ctx.output.emit(f"muse_sync: {muse_sync.state} — {muse_sync.message}")
+            if muse_sync.remediation:
+                ctx.output.emit(f"muse_sync-remediation: {muse_sync.remediation}")
         if lock:
             ctx.output.emit(f"lock kit_version: {lock.kit_version}")
         ctx.output.emit(f"drift: {drift['status']}")
@@ -264,4 +278,13 @@ def _substrate_payload(substrate) -> dict:
         "missing": list(substrate.missing),
         "remediation": substrate.remediation,
         "message": substrate.message,
+    }
+
+
+def _muse_sync_payload(muse_sync) -> dict:
+    return {
+        "state": muse_sync.state,
+        "ok": muse_sync.ok,
+        "remediation": muse_sync.remediation,
+        "message": muse_sync.message,
     }
