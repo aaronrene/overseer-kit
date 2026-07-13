@@ -90,5 +90,6 @@ Governance gates (mandatory — remind only; silence is not pass):
 3. **Thinking → Auto split:** when NEXT is split, emit `{step}a` (Thinking) then `{step}b` (Auto) — never one combined prompt.
 4. **Build verification (mandatory):** after `{step}b`, run `/build-verification-review` before ROADMAP status → **DONE**.
 5. **Closing commit:** the session-ending commit bundles code/tests + `{{docs.roadmap_path}}` + `{{docs.handover_path}}`.
+6. **Spend awareness:** when `cost_awareness.enabled: true`, `overseer status` and `governance-sync` surface the active slice's cost band and paid-step flag (reminder-only; silence is not pass).
 
 See `{{docs.standing_decisions_path}}` → Model-split handover protocol (SD-3) and governance sync (SD-17).

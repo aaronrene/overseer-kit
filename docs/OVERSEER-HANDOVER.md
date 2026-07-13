@@ -6,18 +6,19 @@
 
 ---
 
-## NEXT SESSION — Track P / P-cost Auto build (▶ NEXT)
+## NEXT SESSION — Track P / P-evidence Thinking freeze (▶ NEXT)
 
 **Date:** 2026-07-13  
-**Current position:** **Track P / P-cost Thinking freeze DONE (reviewed → `pass`, P-cost-r2).** Froze `docs/PHASE-TRACK-P-P-COST-AWARENESS.md` (stamp digest `sha256:9f26678…`): a **cost-*awareness* surface, not a dollar pricer**. Frozen surface — optional, ordinal, currency-free `cost_class` (`free < low < moderate < high`) on each `model_tiers[]` entry; deterministic `paid_step_before_spend` derivation (`free` + reserved `human` unpaid; absent band conservatively paid); additive `cost_class` + `paid_step_before_spend` annotation on read-only `overseer route`; optional default-inert `cost_awareness:` config (`enabled: false`, `surfaces: [status, governance-sync]`); a read-only active-slice spend-awareness surface on `overseer status` (+ `--json`) and the `governance-sync` footer (reuses §KH1.9 active-slice scan; **reminder-only, never blocks**); exit `32` (malformed cost metadata, confined to `overseer route`); seven-tier §PC.9 matrix. **No dollar amount, currency, budget, spend cap, network, or model call in the kit** — the runtime converts a band to money and decides spend. Predecessor **Track P / P-route** (Thinking freeze + Auto build) **DONE**, **529** tests green.  
-**Model:** **Auto** (mechanical build against the frozen P-cost contract; run seven tiers; feature-branch commit)  
-**Operator choice:** default next slice is the **Track P / P-cost Auto build**. Operator may instead pick **Track P / P-evidence** or **Track Q / Q0** (Overseer App freeze).
+**Current position:** **Track P / P-cost Auto build DONE (build-verified → `pass`, P-cost-BV-r1).** Built mechanically against frozen `docs/PHASE-TRACK-P-P-COST-AWARENESS.md`: optional currency-free `cost_class` on `model_tiers`; `paid_step_before_spend` derivation; additive cost annotation on `overseer route`; optional `cost_awareness:` config; active-slice spend-awareness surface on `overseer status` + `governance-sync` footer (reminder-only); exit `32` confined to `overseer route`; handover template spend-awareness reminder; **569** tests green (+40 §PC.9). Predecessor **Track P / P-route** **DONE**, **529** tests green.  
+**Model:** **Thinking** (design + freeze spec for verification-evidence capture; no mechanical build until freeze → `pass`)  
+**Operator choice:** default next slice is **Track P / P-evidence Thinking freeze**. Operator may instead pick **Track Q / Q0** (Overseer App freeze).
 
 <!-- overseer:anchor:done-recently -->
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
+| **Track P / P-cost Auto build DONE (build-verified)** | Built against frozen `docs/PHASE-TRACK-P-P-COST-AWARENESS.md` → `/build-verification-review` **`pass` (P-cost-BV-r1)**. Shipped: `cost_class` on `model_tiers`; `tools/cost_awareness/` (derive + active-slice surface); `cost_awareness:` config; additive `overseer route` cost fields; exit `32`; status + governance-sync spend-awareness reminders; handover template line. **569** tests green (+40 §PC.9). Kit = cost-awareness rule-holder, runtime = spender. |
 | **Track P / P-cost Thinking freeze DONE** | `docs/PHASE-TRACK-P-P-COST-AWARENESS.md` reviewed → `pass` (P-cost-r2), stamp `sha256:9f26678…`. Freezes optional currency-free `cost_class` on `model_tiers`; `paid_step_before_spend` derivation; additive cost annotation on `overseer route`; optional `cost_awareness:` config; active-slice spend-awareness surface on `overseer status` + `governance-sync` footer (reminder-only); exit `32`; seven-tier matrix. Kit = cost-awareness rule-holder, runtime = spender; **price-agnostic by design.** Spec-only — no code landed. |
 | **Track P / P-route Auto build DONE (build-verified)** | `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` built → `/build-verification-review` **`pass` (P-route-BV-r1)**. Vendored `policy/model-routing.yaml`; `model_tiers` in `policy/model-labels.yaml`; optional `model_routing:` config; read-only `overseer route` + exit `30`/`31`; status routing-validity when enabled. **529** tests green (+43 §PR.8). |
 | **KH3 Footprint self-integrity hard gate DONE (Thinking + Auto)** | `docs/PHASE-KH3-FOOTPRINT-INTEGRITY-HARD-GATE.md` reviewed → `pass` (KH3-r2). New `tools/footprint_integrity/` (`FootprintIntegrityReport`/`check_footprint_integrity`, frozen trigger: `version.lock`-declared + non-`preserved` + absent from disk — existence-only, never content-hash); wired fail-closed into `status --exit-code` (always-on, no flag), `review --freeze`, `governance-sync` (exit `2`, no renumbering of the frozen `2 > 6 > 3 > 0` precedence). **486** tests green (+30 §KH3.8). |
@@ -28,60 +29,39 @@
 | **Track P / P1 DONE (build-verified)** | `provenance` envelope + Ed25519 verify + `require_agent_signature` + exit `25`/`26`; **429** tests green (+30 §P0.8) |
 <!-- /overseer:anchor:done-recently -->
 
-### THE ONE NEXT STEP — **Model: Auto (Track P / P-cost build)**
+### THE ONE NEXT STEP — **Model: Thinking (Track P / P-evidence freeze)**
 
-Build the **Track P / P-cost** cost-awareness surface mechanically against the frozen
-`docs/PHASE-TRACK-P-P-COST-AWARENESS.md` (reviewed → `pass`, P-cost-r2). Do **not** re-derive or
-redesign the contract. Hold the boundary: kit declares currency-free cost bands and derives the
-paid flag; the runtime converts a band into dollars and decides spend. **No dollar amount, currency,
-budget, spend cap, network call, or model call in the kit.**
+Freeze the **Track P / P-evidence** verification-evidence capture contract — extend build-verification +
+honesty ledger to record verification artifacts (test-output hash, deploy/health check ref, screenshot
+ref) as ledger evidence. **Needs Thinking freeze before build** (`docs/ROADMAP.md` exploration row).
 
 | | |
 | --- | --- |
-| **ID** | **Track P / P-cost build** (Auto) |
-| **Branch** | `feat/track-p-cost-build` (slug = `track-p-cost-build`) |
-| **Read first** | `docs/PHASE-TRACK-P-P-COST-AWARENESS.md` (frozen contract); `docs/ROADMAP.md` (P-cost build row); `policy/model-labels.yaml`; `policy/model-routing.yaml`; `AGENTS.md` boundary |
-| **Build** | §PC.3 `cost_class` key on `model_tiers`; §PC.4 `paid_step_before_spend`; §PC.5 `overseer route` annotation; §PC.6 `cost_awareness:` config; §PC.7 active-slice surface + exit `32`; §PC.9 seven-tier tests |
-| **Hard stops** | No dollar/currency/budget/spend-cap/network/model-call in the kit; no redesign of the frozen contract or P-route; no Tier-3 merge without authorization |
+| **ID** | **Track P / P-evidence** (Thinking) |
+| **Branch** | `feat/track-p-evidence-freeze` (slug = `track-p-evidence-freeze`) |
+| **Read first** | `docs/ROADMAP.md` (P-evidence row); `docs/OVERSEER-KIT-LAYERED-HONESTY-VISION.md`; existing build-verification skill; L2 ledger (`tools/honesty/`) |
+| **Deliver** | Frozen contract doc `docs/PHASE-TRACK-P-P-EVIDENCE.md`; seven-tier test matrix; boundary table (kit records claims, never performs deploy) |
+| **Hard stops** | No live deploy; no redesign of P-cost or P-route; no Tier-3 merge without authorization |
 
 <!-- overseer:anchor:paste-ready-prompt -->
-### Paste-ready prompt — Track P / P-cost Auto build
+### Paste-ready prompt — Track P / P-evidence Thinking freeze
 
 ```
-Phase Track P / P-cost build — Auto (overseer-kit).
+Phase Track P / P-evidence freeze — Thinking (overseer-kit).
 
-Model: Auto (mechanical build against a frozen, reviewed spec; run seven tiers; feature-branch commit).
+Model: thinking-high (design + freeze spec; no mechanical build until freeze → pass).
 
-Shared context:
-- Project: 🆗 Overseer Kit — repo-agnostic governance vendoring CLI
-- Frozen spec (ground truth — do NOT re-derive): docs/PHASE-TRACK-P-P-COST-AWARENESS.md
-  (reviewed → pass, P-cost-r2, stamp sha256:9f26678…)
-- Read first: that contract; docs/ROADMAP.md (P-cost build row); policy/model-labels.yaml;
-  policy/model-routing.yaml; AGENTS.md boundary
-- Boundary (K7 / AGENTS.md): the kit declares currency-free cost bands + derives the paid flag;
-  the runtime converts a band to dollars and decides spend. NEVER a runtime/dispatcher/model-host/spender.
+Read first: docs/ROADMAP.md (P-evidence row); docs/OVERSEER-KIT-LAYERED-HONESTY-VISION.md;
+  .cursor/skills/build-verification-review/SKILL.md; tools/honesty/ ledger module.
 
-Task (build exactly to the frozen contract — no redesign):
-- §PC.3: optional cost_class key on each model_tiers[] entry (closed vocab free|low|moderate|high;
-  recognized key, not rejected as unknown; invalid value/type → exit 32).
-- §PC.4: deterministic paid_step_before_spend (free + reserved human unpaid; absent band → unknown, paid).
-- §PC.5: additive cost_class + paid_step_before_spend on overseer route output (resolution unchanged).
-- §PC.6: optional cost_awareness: config (enabled default false; surfaces default [status, governance-sync]).
-- §PC.7: read-only active-slice spend-awareness surface on overseer status (+ --json) and the
-  governance-sync footer (reuse §KH1.9 active-slice scan; reminder-only, never blocks); exit 32
-  confined to overseer route; status/governance-sync degrade to a warning on malformed cost metadata.
-- Add a static "Spend awareness" reminder line to templates/OVERSEER-HANDOVER.template.md.
-- §PC.9: all seven test tiers green locally before DONE.
+Task: freeze verification-evidence capture — extend build-verification + honesty ledger to record
+verification artifacts (test-output hash, deploy/health check ref, screenshot ref) as ledger evidence.
 
-Hard stops:
-- No dollar amount, currency symbol, price, budget, spend cap, network call, or model call in the kit.
-- No change to P-route resolution / model-routing schema / exit codes 30,31.
-- No Tier-3 merge to main without operator authorization.
+Hard stops: kit records/gates claims; never performs deploy; no Tier-3 merge without authorization.
 
 Governance gates (mandatory — remind only; silence is not pass):
-- Build verification: run /build-verification-review before ROADMAP status → DONE (Auto).
-- overseer status and overseer governance-sync emit pending gates for the active slice.
-- Update docs/ROADMAP.md + docs/OVERSEER-HANDOVER.md together in the closing commit (SD-17).
+- Freeze review: /freeze-review-loop before Thinking freeze → DONE
+- Update docs/ROADMAP.md + docs/OVERSEER-HANDOVER.md together on completion (SD-17).
 ```
 <!-- /overseer:anchor:paste-ready-prompt -->
 
@@ -118,7 +98,7 @@ Governance gates (mandatory — remind only; silence is not pass):
 | **Track P / P0** | **DONE** — agent identity & signed provenance; contract reviewed → `pass` (P0-r2), stamp `sha256:7db8681…` |
 | **Track P / P1** | **DONE** — agent provenance build-verified → `pass` (P1-BV-r2); BV1 (§P0.6 verify-surface parity) fixed; **429** tests green (+30 §P0.8) |
 | **Track P / P-route** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` reviewed → `pass`, P-route-r2) + Auto build (build-verified → `pass`, P-route-BV-r1). Declarative model-routing policy shipped: `policy/model-routing.yaml`, `model_tiers`, `model_routing:` config, `overseer route`, exit `30`/`31`. **529** tests green (+43 §PR.8). Kit = rule-holder, runtime = executor |
-| **Track P / P-cost** | **Thinking freeze DONE** — `docs/PHASE-TRACK-P-P-COST-AWARENESS.md` reviewed → `pass` (P-cost-r2), stamp `sha256:9f26678…`. Cost-*awareness* surface (not a dollar pricer): optional currency-free `cost_class` (`free<low<moderate<high`) on `model_tiers`; `paid_step_before_spend` derivation; additive cost annotation on `overseer route`; optional `cost_awareness:` config; active-slice spend-awareness surface on `overseer status` + `governance-sync` footer (reminder-only); exit `32`; seven-tier matrix. **Auto build TODO** (gated on `/build-verification-review`). Kit = cost-awareness rule-holder, runtime = spender; price-agnostic by design |
+| **Track P / P-cost** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-P-P-COST-AWARENESS.md` reviewed → `pass`, P-cost-r2) + Auto build (build-verified → `pass`, P-cost-BV-r1). Cost-awareness surface shipped: `cost_class` on `model_tiers`, `tools/cost_awareness/`, `cost_awareness:` config, additive `overseer route` cost fields, exit `32`, status + governance-sync reminders. **569** tests green (+40 §PC.9). Kit = cost-awareness rule-holder, runtime = spender |
 | **Track Q / Q0–Q2** | **TODO** — Overseer App: local web UI over the existing engine (Q1) packaged with **Tauri** into a cross-platform desktop app (Q2); needs Q0 Thinking freeze first; not yet started |
 | **Muse dogfood** | **D2 repaired** + substrate health + gate reminders + **muse-sync hard gate (KH2)** + **footprint self-integrity hard gate (KH3)** live; `muse rev-parse` reads plain-text SHA (0.2.x returns bare SHA on success; JSON only on failure/non-zero); `governance-sync --dry-run` exits 0; muse canonical HEAD `sha256:3e14450f…` (catch-up commit; genesis `sha256:4671b7f…`) |
 | **KH1b** | **DONE** — substrate §1 + gate reminders §2 |
@@ -134,11 +114,11 @@ Governance gates (mandatory — remind only; silence is not pass):
 
 | Item | Value |
 | --- | --- |
-| Branch | `feat/track-p-cost-freeze` (branched from `feat/track-p-route-build` @ `16e3006`) |
-| HEAD (pre closing-commit) | uncommitted (P-cost freeze doc + ROADMAP + this handover) |
+| Branch | `feat/track-p-cost-freeze` (P-cost build + governance sync pending closing commit) |
+| HEAD (pre closing-commit) | uncommitted (P-cost build code + tests + ROADMAP + this handover) |
 | Muse HEAD | `sha256:4543518e…` (branch `main`; genesis `sha256:4671b7f…`) |
 | GitHub bridge | no bridge PR currently open |
-| Dirty | yes (new `docs/PHASE-TRACK-P-P-COST-AWARENESS.md` + ROADMAP + this handover — pending closing commit on `feat/track-p-cost-freeze`) |
+| Dirty | yes (P-cost build + governance docs — pending closing commit) |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -151,6 +131,16 @@ Governance gates (mandatory — remind only; silence is not pass):
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-13** — **Track P / P-cost Auto build DONE (build-verified → `pass`, P-cost-BV-r1).**
+  Built mechanically against frozen `docs/PHASE-TRACK-P-P-COST-AWARENESS.md` (no redesign): optional
+  `cost_class` on `model_tiers` (closed vocabulary `free|low|moderate|high`; recognized key); deterministic
+  `paid_step_before_spend` derivation; additive `cost_class` + `paid_step_before_spend` on read-only
+  `overseer route` (resolution unchanged); optional default-inert `cost_awareness:` config; active-slice
+  spend-awareness surface on `overseer status` (+ `--json`) and `governance-sync` footer (reuses §KH1.9
+  scan; reminder-only); exit `32` confined to `overseer route` (status/governance-sync degrade to warning);
+  handover template spend-awareness reminder. New module `tools/cost_awareness/`; seven-tier §PC.9 matrix:
+  **40** new tests (**569** total green). `/build-verification-review` round 1 → **`pass`** (V1–V8 clean).
+  ROADMAP P-cost build → **DONE**; NEXT → **Track P / P-evidence Thinking freeze**.
 - **2026-07-13** — **Track P / P-cost Thinking freeze DONE (reviewed → `pass`, P-cost-r2).** Drafted
   and froze `docs/PHASE-TRACK-P-P-COST-AWARENESS.md`: a **cost-*awareness* surface, not a dollar
   pricer**. Frozen surface — an optional, ordinal, **currency-free** `cost_class`

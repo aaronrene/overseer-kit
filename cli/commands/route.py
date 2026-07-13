@@ -10,7 +10,8 @@ from adapters.errors import ConfigError
 from cli.context import CliContext
 from cli.paths import PathEscapeError, confine_path, is_within_repo, resolve_config_path, resolve_repo_root
 from cli.sanitize import config_exit_code, format_config_error
-from tools.model_routing.labels import RoutingPolicyError
+from tools.cost_awareness.derive import derive_cost_view
+from tools.model_routing.labels import RoutingPolicyError, load_model_tier_cost_bands
 from tools.model_routing.policy import load_routing_policy, validate_routing_policy
 from tools.model_routing.resolve import resolve_route
 from tools.model_routing.types import RouteSelector
@@ -106,7 +107,14 @@ def _run_resolve(
         ctx.output.error(exc.message)
         return exc.exit_code
 
+    try:
+        cost_bands = load_model_tier_cost_bands(kit_root, fail_closed=True)
+    except RoutingPolicyError as exc:
+        ctx.output.error(exc.message)
+        return exc.exit_code
+
     decision = resolve_route(policy, query)
+    cost_class, paid_step_before_spend = derive_cost_view(decision.model_tier, cost_bands)
     payload = {
         "route_id": decision.route_id,
         "model_tier": decision.model_tier,
@@ -117,6 +125,8 @@ def _run_resolve(
             "gate": query.gate,
         },
         "policy": config.model_routing.policy,
+        "cost_class": cost_class,
+        "paid_step_before_spend": paid_step_before_spend,
     }
     if ctx.output.json_mode:
         ctx.output.emit_json(payload)
@@ -124,6 +134,8 @@ def _run_resolve(
         ctx.output.emit(f"route_id: {decision.route_id}")
         ctx.output.emit(f"model_tier: {decision.model_tier}")
         ctx.output.emit(f"fallback: {', '.join(decision.fallback)}")
+        ctx.output.emit(f"cost_class: {cost_class}")
+        ctx.output.emit(f"paid_step_before_spend: {paid_step_before_spend}")
     return 0
 
 

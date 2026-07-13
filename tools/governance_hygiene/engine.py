@@ -18,6 +18,8 @@ from tools.governance_hygiene.reads import ReadFailure, perform_verified_reads
 from tools.governance_hygiene.realign import execute_realign_guard, plan_realign
 from tools.governance_gates import scan_governance_gates
 from tools.governance_gates.format import format_pending_gate_lines
+from tools.cost_awareness.format import format_cost_awareness_lines
+from tools.cost_awareness.surface import build_cost_awareness_report
 from tools.governance_hygiene.types import DriftReport, GovernanceSyncResult, PatchPlan, VerifiedReads
 
 GOVERNANCE_SYNC_MARKER = "last_governance_sync"
@@ -30,21 +32,45 @@ def _emit_governance_gate_footer(
     handover_text: str,
     roadmap_text: str,
     emit,
-) -> None:
-    """Append §KH1.9 gate reminders when governance-sync surface is enabled."""
-    if not config.governance_gates.remind:
-        return
-    if "governance-sync" not in config.governance_gates.surfaces:
-        return
-    result = scan_governance_gates(
-        config,
-        repo_root,
-        handover_text=handover_text,
-        roadmap_text=roadmap_text,
-    )
-    emit("")
-    for line in format_pending_gate_lines(result):
-        emit(line)
+    kit_root: Path | None = None,
+) -> int | None:
+    """Append §KH1.9 gate reminders and §PC.7 spend-awareness when enabled.
+
+    Returns an exit code when cost-awareness fails closed (e.g. missing policy);
+    otherwise ``None``.
+    """
+    if config.governance_gates.remind:
+        if "governance-sync" in config.governance_gates.surfaces:
+            result = scan_governance_gates(
+                config,
+                repo_root,
+                handover_text=handover_text,
+                roadmap_text=roadmap_text,
+            )
+            emit("")
+            for line in format_pending_gate_lines(result):
+                emit(line)
+
+    if (
+        config.cost_awareness.enabled
+        and "governance-sync" in config.cost_awareness.surfaces
+        and kit_root is not None
+    ):
+        cost_report = build_cost_awareness_report(
+            config,
+            repo_root,
+            kit_root=kit_root,
+            handover_text=handover_text,
+            roadmap_text=roadmap_text,
+        )
+        if cost_report.exit_code == 31:
+            emit("")
+            emit(cost_report.violation or "routing policy file missing or unreadable")
+            return 31
+        emit("")
+        for line in format_cost_awareness_lines(cost_report):
+            emit(line)
+    return None
 
 
 def run_governance_sync(
@@ -57,6 +83,7 @@ def run_governance_sync(
     lane: str | None = None,
     all_lanes: bool = False,
     emit,
+    kit_root: Path | None = None,
 ) -> GovernanceSyncResult:
     """Execute governance-sync; default dry-run is inert (§7)."""
     if all_lanes and lane is not None:
@@ -79,6 +106,7 @@ def run_governance_sync(
             runner,
             dry_run=dry_run,
             emit=emit,
+            kit_root=kit_root,
         )
 
     lane_name = lane
@@ -93,6 +121,7 @@ def run_governance_sync(
         dry_run=dry_run,
         skip_missing=False,
         emit=emit,
+        kit_root=kit_root,
     )
 
 
@@ -104,6 +133,7 @@ def _run_all_lanes(
     *,
     dry_run: bool,
     emit,
+    kit_root: Path | None = None,
 ) -> GovernanceSyncResult:
     """Sync every configured lane; skip lanes with missing doc files (§K8)."""
     if config.docs.lanes is None:
@@ -124,6 +154,7 @@ def _run_all_lanes(
             dry_run=dry_run,
             skip_missing=True,
             emit=emit,
+            kit_root=kit_root,
         )
         last_result = result
         if result.exit_code == 4:
@@ -155,6 +186,7 @@ def _run_single_lane(
     dry_run: bool,
     skip_missing: bool,
     emit,
+    kit_root: Path | None = None,
 ) -> GovernanceSyncResult:
     """Sync one handover + roadmap pair."""
     from adapters.config import resolve_lane_docs
@@ -240,15 +272,16 @@ def _run_single_lane(
 
     if drift.fully_aligned:
         emit("governance-sync: aligned (D1–D3)")
-        _emit_governance_gate_footer(
+        footer_code = _emit_governance_gate_footer(
             config,
             repo_root,
             handover_text=handover_text,
             roadmap_text=roadmap_text,
             emit=emit,
+            kit_root=kit_root,
         )
         return GovernanceSyncResult(
-            exit_code=0,
+            exit_code=footer_code or 0,
             dry_run=dry_run,
             reads=reads,
             drift=drift,
@@ -317,15 +350,16 @@ def _run_single_lane(
         emit("dry-run: no writes, commits, or realign apply")
         if pr_url:
             emit(f"docs-only PR URL (operator-gated): {pr_url}")
-        _emit_governance_gate_footer(
+        footer_code = _emit_governance_gate_footer(
             config,
             repo_root,
             handover_text=handover_text,
             roadmap_text=roadmap_text,
             emit=emit,
+            kit_root=kit_root,
         )
         return GovernanceSyncResult(
-            exit_code=0,
+            exit_code=footer_code or 0,
             dry_run=True,
             reads=reads,
             drift=drift,
