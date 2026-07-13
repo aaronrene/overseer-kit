@@ -65,3 +65,28 @@ reviewer_models:
     meaning: >
       Faster mechanical review pass against an already-structured freeze checklist.
     cursor_model_hint: default / Composer / Sonnet-class
+
+model_tiers:
+  - id: deep-reasoning
+    display: Deep reasoning
+    meaning: >
+      Extended-thinking / frontier-class reasoning for contract freezes, disputes,
+      overseer rulings, and security-sensitive review.
+    cursor_model_hint: extended thinking / Opus-class
+  - id: standard
+    display: Standard
+    meaning: >
+      Balanced capability for mechanical builds against a frozen spec and routine
+      verification steps.
+    cursor_model_hint: default / Composer / Sonnet-class
+  - id: fast
+    display: Fast
+    meaning: >
+      Low-latency, low-cost tier for trivial or high-volume low-stakes steps.
+    cursor_model_hint: fast / mini-class
+  - id: local-offline
+    display: Local (offline)
+    meaning: >
+      Locally hosted model for offline or privacy-first runtimes; preserves the
+      kit's offline promise. The kit still performs no call — the runtime does.
+    cursor_model_hint: local / on-device

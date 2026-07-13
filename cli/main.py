@@ -8,7 +8,7 @@ from pathlib import Path
 
 from cli.args import extract_global_args
 
-COMMANDS = frozenset({"init", "sync", "status", "review", "governance-sync", "verify-step", "honesty-status", "ledger"})
+COMMANDS = frozenset({"init", "sync", "status", "review", "governance-sync", "verify-step", "honesty-status", "ledger", "route"})
 from cli.commands.governance_sync import run_governance_sync_command
 from cli.commands.honesty_status import run_honesty_status_command
 from cli.commands.init import run_init
@@ -16,6 +16,7 @@ from cli.commands.ledger import run_ledger_command
 from cli.commands.review import run_review
 from cli.commands.status import run_status
 from cli.commands.sync import run_sync
+from cli.commands.route import run_route_command
 from cli.commands.verify_step import run_verify_step_command
 from cli.context import CliContext
 from cli.kit_root import kit_version
@@ -139,6 +140,12 @@ def build_parser() -> argparse.ArgumentParser:
     show_parser = ledger_sub.add_parser("show", help="Show recent ledger entries")
     show_parser.add_argument("--last", type=int, metavar="N")
 
+    route_parser = subparsers.add_parser("route", help="Read-only model-routing resolution (§PR.6)")
+    route_parser.add_argument("--position", metavar="STR")
+    route_parser.add_argument("--phase-tier", metavar="ID", dest="phase_tier")
+    route_parser.add_argument("--gate", metavar="ID")
+    route_parser.add_argument("--validate", action="store_true")
+
     return parser
 
 
@@ -199,6 +206,8 @@ def main(argv: list[str] | None = None, *, ctx: CliContext | None = None) -> int
         return run_honesty_status_command(args, runtime)
     if args.command == "ledger":
         return run_ledger_command(args, runtime)
+    if args.command == "route":
+        return run_route_command(args, runtime)
 
     parser.error(f"unknown command: {args.command}")
     return 1

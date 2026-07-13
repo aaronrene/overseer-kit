@@ -6,18 +6,19 @@
 
 ---
 
-## NEXT SESSION — Track P / P-route Auto build (▶ NEXT)
+## NEXT SESSION — Track P / P-cost Thinking freeze (▶ NEXT)
 
 **Date:** 2026-07-13  
-**Current position:** **KH3 Footprint self-integrity hard gate DONE (Thinking + Auto, same session) — second permanent hygiene fix in as many sessions.** This session's own hygiene investigation found 13 kit-owned files (`.cursor/rules/*`, `.cursor/skills/*/SKILL.md`, `.overseer/policy/*.yaml`, `.overseer/STANDING-DECISIONS.reference.md`) declared in `.overseer/version.lock` since K4b (2026-07-10) but never actually rendered to disk on this dogfood repo — a 3-day, 20-merged-PR blind spot, because the one check that could have caught it (`overseer status --check-footprint`) is opt-in and was never wired into `review --freeze` / `governance-sync`. Seeded the 13 files for real via `overseer sync --yes` (PR #20), **then** closed the detection gap permanently: froze + built `docs/PHASE-KH3-FOOTPRINT-INTEGRITY-HARD-GATE.md` (**reviewed → `pass`, KH3-r2**) — a new always-on `tools/footprint_integrity/` probe wired fail-closed into `status --exit-code` / `review --freeze` / `governance-sync`, triggering **only** when a `version.lock`-declared, non-`preserved` file is completely absent from disk (deliberately existence-only, never content-hash, to avoid false-closing on the same benign drift class KH2/the prior session's hygiene fix already hit for `scripts/muse-bridge-deploy.sh`). **486** tests green (+30 §KH3.8). Predecessor **KH2 Muse-sync hard gate DONE** (same pattern, for MuseHub/GitHub drift instead of self-footprint drift) — see prior change-log entry.  
-**Model:** **Auto** (mechanical build against the frozen P-route contract — no redesign)  
-**Operator choice:** the default next slice below is the **Track P / P-route Auto build**. Operator may instead pick **Track P / P-cost**, **Track P / P-evidence**, or **Track Q / Q0** (Overseer App freeze) — the latter three are Thinking freezes and each must clear the "governance, not runtime" boundary.
+**Current position:** **Track P / P-route Auto build DONE (build-verified → `pass`, P-route-BV-r1).** Shipped declarative model-routing policy mechanically against frozen `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md`: vendored `policy/model-routing.yaml` (v1; `{position, phase_tier, gate}` → `model_tier` + ordered `fallback`; first-match-wins + mandatory `defaults`; `fallback[0] == model_tier` terminating in `human`); extended `policy/model-labels.yaml` with `model_tiers` (abstract capability tiers, no vendor slugs); optional default-inert `model_routing:` config (`enabled: false`, `policy` path); read-only `overseer route` (resolve / `--validate` / explain) with exit `30`/`31`; `overseer status` routing-validity line when `enabled: true`. Kit holds and validates the rulebook only — **no model call, no network, no dispatch, no key.** **529** tests green (+43 §PR.8). Predecessor **Track P / P-route Thinking freeze DONE** (reviewed → `pass`, P-route-r2).  
+**Model:** **Thinking** (cost-awareness surface freeze — not a dollar pricer; governance boundary)  
+**Operator choice:** default next slice is **Track P / P-cost Thinking freeze**. Operator may instead pick **Track P / P-evidence** or **Track Q / Q0** (Overseer App freeze).
 
 <!-- overseer:anchor:done-recently -->
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
+| **Track P / P-route Auto build DONE (build-verified)** | `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` built → `/build-verification-review` **`pass` (P-route-BV-r1)**. Vendored `policy/model-routing.yaml`; `model_tiers` in `policy/model-labels.yaml`; optional `model_routing:` config; read-only `overseer route` + exit `30`/`31`; status routing-validity when enabled. **529** tests green (+43 §PR.8). |
 | **KH3 Footprint self-integrity hard gate DONE (Thinking + Auto)** | `docs/PHASE-KH3-FOOTPRINT-INTEGRITY-HARD-GATE.md` reviewed → `pass` (KH3-r2). New `tools/footprint_integrity/` (`FootprintIntegrityReport`/`check_footprint_integrity`, frozen trigger: `version.lock`-declared + non-`preserved` + absent from disk — existence-only, never content-hash); wired fail-closed into `status --exit-code` (always-on, no flag), `review --freeze`, `governance-sync` (exit `2`, no renumbering of the frozen `2 > 6 > 3 > 0` precedence). **486** tests green (+30 §KH3.8). |
 | **Self-footprint seed (hygiene, PR #20)** | Seeded the 13 kit-owned files `version.lock` had declared since K4b but were never rendered — real `overseer sync --yes`, zero `--force` (all `missing`, not conflicts). Verified no secrets, no unsubstituted-token bugs. |
 | **KH2 Muse-sync hard gate DONE (Thinking + Auto)** | `docs/PHASE-KH2-MUSE-SYNC-HARD-GATE.md` reviewed → `pass` (KH2-r2). `StatusResult.muse_dirty`/`git_dirty` (all three adapters); `tools/muse_sync/` (`MuseSyncReport`/`check_muse_sync`, frozen trigger `muse_dirty and not git_dirty`); wired fail-closed into `status --exit-code`, `review --freeze`, `governance-sync` (exit `2`, no renumbering of the frozen `2 > 6 > 3 > 0` precedence). **456** tests green (+27 §KH2.8). |
@@ -26,48 +27,42 @@
 | **Track P / P1 DONE (build-verified)** | `provenance` envelope + Ed25519 verify + `require_agent_signature` + exit `25`/`26`; **429** tests green (+30 §P0.8) |
 <!-- /overseer:anchor:done-recently -->
 
-### THE ONE NEXT STEP — **Model: Auto (Track P / P-route Auto build)**
+### THE ONE NEXT STEP — **Model: Thinking (Track P / P-cost freeze)**
 
-Build the **Track P / P-route** deliverables mechanically against the frozen contract `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md`. Do **not** re-derive the contract. Vendor `policy/model-routing.yaml`; extend (do not fork) `policy/model-labels.yaml` with `model_tiers`; add the optional `model_routing:` config parse; ship a read-only `overseer route` (resolve / `--validate` / explain) that performs **no model call, no network, no dispatch, holds no key**; add exit codes `30`/`31`; land all seven tiers green. Then run `/build-verification-review` before ROADMAP status → DONE.
+Freeze the **Track P / P-cost** cost-*awareness* surface (not a dollar pricer): surface each phase's tier/position + a "paid step before spend" flag on `overseer status` / handover. Actual dollar math stays in the runtime — kit is price-agnostic by design. Hold the governance boundary (kit = rule-holder, never runtime/dispatcher/model-host).
 
 | | |
 | --- | --- |
-| **ID** | **Track P / P-route build** |
-| **Branch** | `feat/track-p-route-build` (slug = `track-p-route-build`) |
-| **Read first** | `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` (frozen contract — build target); `policy/model-labels.yaml` (extend `model_tiers`); `docs/ROADMAP.md` (Track P / P-route build row); `policy/test-tiers.yaml` (seven tiers) |
-| **Build** | `policy/model-routing.yaml`; `model_tiers` in `policy/model-labels.yaml`; `model_routing:` config; `overseer route`; exit `30`/`31`; seven-tier tests |
-| **Hard stops** | No redesign of the frozen contract; no model call / network / dispatch / API key in the kit; no vendor slug in policy; run `/build-verification-review` before DONE; no Tier-3 merge without authorization |
+| **ID** | **Track P / P-cost** (Thinking freeze) |
+| **Branch** | `feat/track-p-cost-freeze` (slug = `track-p-cost-freeze`) |
+| **Read first** | `docs/ROADMAP.md` (P-cost row); `docs/OVERSEER-KIT-LAYERED-HONESTY-VISION.md` §1.2; `policy/tiers.yaml`; `AGENTS.md` boundary |
+| **Freeze** | Draft `docs/PHASE-TRACK-P-P-COST-AWARENESS.md`; seven-tier test matrix; run `/freeze-review-loop` before Auto build |
+| **Hard stops** | No dollar pricer in the kit; no redesign of P-route; no Tier-3 merge without authorization |
 
 <!-- overseer:anchor:paste-ready-prompt -->
-### Paste-ready prompt — Track P / P-route Auto build
+### Paste-ready prompt — Track P / P-cost Thinking freeze
 
 ```
-Phase Track P / P-route — Auto build (overseer-kit).
+Phase Track P / P-cost — Thinking freeze (overseer-kit).
 
-Model: Auto (mechanical implementation against the frozen contract; NO redesign).
+Model: Thinking (contract freeze + seven-tier test matrix; NO implementation).
 
 Shared context:
 - Project: 🆗 Overseer Kit — repo-agnostic governance vendoring CLI
-- Read first: docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md (frozen contract, reviewed -> pass);
-  policy/model-labels.yaml (extend with model_tiers); docs/ROADMAP.md (Track P / P-route build row);
-  policy/test-tiers.yaml (seven tiers)
-- Predecessor: Track P / P-route Thinking freeze DONE (reviewed -> pass, P-route-r2)
+- Read first: docs/ROADMAP.md (P-cost row); docs/OVERSEER-KIT-LAYERED-HONESTY-VISION.md §1.2;
+  policy/tiers.yaml; AGENTS.md boundary
+- Predecessor: Track P / P-route build DONE (build-verified → pass, P-route-BV-r1)
 - Boundary (K7 / AGENTS.md): the kit is governance/frontend, NEVER a runtime/dispatcher/model-host
 
-Task (build exactly to the frozen §PR.3-§PR.8 contract; do not re-derive):
-- Vendor policy/model-routing.yaml (version 1): {position, phase_tier, gate} -> model_tier + fallback;
-  ordered first-match-wins; mandatory defaults terminal; fallback[0] == model_tier, terminating in human.
-- Extend (do not fork) policy/model-labels.yaml with a model_tiers section (abstract capability tiers;
-  NO vendor slugs / endpoints / prices / keys).
-- Add optional default-inert model_routing: config block (enabled:false; policy path).
-- Ship read-only `overseer route` (resolve / --validate / explain) — NO model call, NO network,
-  NO dispatch, NO API key. Exit codes 30 (malformed policy) / 31 (missing/unreadable policy).
-- Land all seven tiers green per §PR.8.
-- Run /build-verification-review vs the frozen contract before marking DONE.
-- On pass: ROADMAP Track P / P-route build -> DONE; update this handover.
+Task (freeze only — no code):
+- Draft docs/PHASE-TRACK-P-P-COST-AWARENESS.md: cost-awareness surface (not a dollar pricer).
+- Surface each phase's tier/position + "paid step before spend" on overseer status / handover.
+- Dollar math stays in the runtime; kit is price-agnostic.
+- Seven-tier test matrix; run /freeze-review-loop before queueing Auto build.
+- On pass: ROADMAP P-cost → DONE (Thinking); update handover with P-cost Auto build prompt.
 
 Governance gates (mandatory — remind only; silence is not pass):
-- Build verification: run /build-verification-review before ROADMAP status -> DONE
+- Freeze review: run /freeze-review-loop before ROADMAP status → DONE (Thinking)
 - overseer status and overseer governance-sync emit pending gates for the active slice
 ```
 <!-- /overseer:anchor:paste-ready-prompt -->
@@ -104,14 +99,14 @@ Governance gates (mandatory — remind only; silence is not pass):
 | **KH1 Handover relay** | **DONE** — contract `pass` (KH1-r2); §KH1.6 close-out complete |
 | **Track P / P0** | **DONE** — agent identity & signed provenance; contract reviewed → `pass` (P0-r2), stamp `sha256:7db8681…` |
 | **Track P / P1** | **DONE** — agent provenance build-verified → `pass` (P1-BV-r2); BV1 (§P0.6 verify-surface parity) fixed; **429** tests green (+30 §P0.8) |
-| **Track P / P-route** | **Thinking freeze DONE** — `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` reviewed → `pass` (P-route-r2), stamp `sha256:ab6b6a9…`. Declarative model-routing *policy* frozen (schema + `model_tiers` extension + optional `model_routing:` config + read-only `overseer route` + exit `30`/`31` + seven-tier matrix). Spec-only; **P-route Auto build queued** (TODO). Kit = rule-holder, runtime = executor |
+| **Track P / P-route** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` reviewed → `pass`, P-route-r2) + Auto build (build-verified → `pass`, P-route-BV-r1). Declarative model-routing policy shipped: `policy/model-routing.yaml`, `model_tiers`, `model_routing:` config, `overseer route`, exit `30`/`31`. **529** tests green (+43 §PR.8). Kit = rule-holder, runtime = executor |
 | **Track Q / Q0–Q2** | **TODO** — Overseer App: local web UI over the existing engine (Q1) packaged with **Tauri** into a cross-platform desktop app (Q2); needs Q0 Thinking freeze first; not yet started |
 | **Muse dogfood** | **D2 repaired** + substrate health + gate reminders + **muse-sync hard gate (KH2)** + **footprint self-integrity hard gate (KH3)** live; `muse rev-parse` reads plain-text SHA (0.2.x returns bare SHA on success; JSON only on failure/non-zero); `governance-sync --dry-run` exits 0; muse canonical HEAD `sha256:3e14450f…` (catch-up commit; genesis `sha256:4671b7f…`) |
 | **KH1b** | **DONE** — substrate §1 + gate reminders §2 |
 | **KH2** | **DONE** — Muse-sync hard gate (freeze `pass` KH2-r2 + Auto build); `tools/muse_sync/`; fail-closed on `status --exit-code` / `review --freeze` / `governance-sync` |
 | **KH3** | **DONE** — Footprint self-integrity hard gate (freeze `pass` KH3-r2 + Auto build); `tools/footprint_integrity/`; fail-closed on `status --exit-code` / `review --freeze` / `governance-sync` when a declared kit-owned file is absent from disk |
 | **Public brand** | **🆗 Overseer Kit** (locked in template + landing) |
-| **CLI** | `init` \| `sync` \| `status` \| `review --freeze` \| `governance-sync` \| `verify-step` \| `honesty-status` \| `ledger` |
+| **CLI** | `init` \| `sync` \| `status` \| `review --freeze` \| `governance-sync` \| `verify-step` \| `honesty-status` \| `ledger` \| `route` |
 | **Public landing** | `docs/landing/index.html` · scenario gallery `docs/landing/scenarios/index.html` |
 <!-- /overseer:anchor:verified-snapshot -->
 
@@ -120,11 +115,11 @@ Governance gates (mandatory — remind only; silence is not pass):
 
 | Item | Value |
 | --- | --- |
-| Branch | `feat/kh3-footprint-integrity-hard-gate` (cut from `main` @ `5b062a4`, post-PR #20) |
-| HEAD (pre closing-commit) | `5b062a4` |
+| Branch | `feat/track-p-route-build` |
+| HEAD (pre closing-commit) | uncommitted (P-route build + governance sync) |
 | Muse HEAD | `sha256:4543518e…` (branch `main`; adds the 13 seeded self-footprint files; genesis `sha256:4671b7f…`) |
 | GitHub bridge | PR #15 / #16 — superseded by merged #18/#19/#20; no bridge PR currently open |
-| Dirty | yes (KH3 freeze doc + `tools/footprint_integrity/` + status/review/governance-hygiene wiring + seven-tier tests + ROADMAP + this handover — pending this session's closing commit on `feat/kh3-footprint-integrity-hard-gate`) |
+| Dirty | yes (P-route build + ROADMAP + this handover — pending closing commit on `feat/track-p-route-build`) |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -136,6 +131,18 @@ Governance gates (mandatory — remind only; silence is not pass):
 
 <!-- overseer:anchor:change-log -->
 ## Change log
+
+- **2026-07-13** — **Track P / P-route Auto build DONE (build-verified → `pass`, P-route-BV-r1).**
+  Built mechanically against frozen `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` (no redesign):
+  vendored `policy/model-routing.yaml` (v1; first-match-wins + mandatory `defaults`; `fallback[0] ==
+  model_tier` terminating in `human`); extended `policy/model-labels.yaml` with `model_tiers`
+  (abstract capability tiers, no vendor slugs); optional default-inert `model_routing:` config block;
+  read-only `overseer route` (resolve / `--validate` / explain — no model call, no network, no
+  dispatch, no key); exit codes `30` (malformed policy) / `31` (missing/unreadable policy);
+  `overseer status` routing-validity line when `model_routing.enabled: true`. New module
+  `tools/model_routing/`; seven-tier §PR.8 matrix: **43** new tests (**529** total green).
+  `/build-verification-review` round 1 → **`pass`** (V1–V8 clean). ROADMAP P-route build → **DONE**;
+  NEXT → **Track P / P-cost Thinking freeze**.
 
 - **2026-07-13** — **KH3 Footprint self-integrity hard gate DONE (Thinking + Auto, same session —
   permanent fix for this repo's own self-footprint drift).** Direct follow-on to the seed-fix below:
