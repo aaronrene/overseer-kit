@@ -13,6 +13,7 @@ from tests.support import (
     ok,
     run_cli,
     seed_pilot_tree,
+    seed_muse_substrate,
 )
 
 
@@ -27,14 +28,14 @@ def test_pilot_migrate_cycle_preserves_and_seeds(tmp_path: Path) -> None:
     root = str(tmp_path.resolve())
     runner.responses.update(
         {
-            f"muse -C {root} log -1 --format=%H main": ok("a" * 40),
+            f"muse -C {root} rev-parse main": ok("a" * 40),
             "git rev-parse origin/main": ok("b" * 40),
             "gh pr list --state merged --limit 5 --json number,title,mergeCommit,mergedAt": ok(
                 json.dumps([])
             ),
         }
     )
-    (tmp_path / ".muse").mkdir(exist_ok=True)
+    seed_muse_substrate(tmp_path)
     (tmp_path / ".muse" / "git-bridge.toml").write_text(
         '[last_export]\ngit_sha = "' + ("c" * 40) + '"\n'
         '[last_import]\ngit_sha = "' + ("c" * 40) + '"\n',

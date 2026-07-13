@@ -62,7 +62,7 @@ def test_muse_only_never_invokes_git(tmp_path: Path) -> None:
         {
             f"muse -C {root} branch --show-current": ok("main"),
             f"muse -C {root} status --porcelain": ok(""),
-            f"muse -C {root} log -1 --format=%H main": ok("sha256:abc"),
+            f"muse -C {root} rev-parse main": ok('sha256:abc'),
         }
     )
     code = run_cli(["governance-sync"], cwd=tmp_path, runner=runner, kit=kit_root())

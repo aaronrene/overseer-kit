@@ -6,7 +6,7 @@ import time
 from pathlib import Path
 
 from cli.footprint import MUSE_BRIDGE_WORKFLOW_DEST
-from tests.support import FIXTURES, muse_mirror_status_runner, run_cli
+from tests.support import FIXTURES, muse_mirror_status_runner, run_cli, seed_muse_substrate
 
 
 def test_check_footprint_bounded_with_bridge_files(tmp_path: Path) -> None:
@@ -24,6 +24,7 @@ def test_check_footprint_bounded_with_bridge_files(tmp_path: Path) -> None:
         )
         == 0
     )
+    seed_muse_substrate(tmp_path)
     workflow = tmp_path / MUSE_BRIDGE_WORKFLOW_DEST
     workflow.write_text(workflow.read_text(encoding="utf-8") + ("\n# padding\n" * 2000), encoding="utf-8")
 

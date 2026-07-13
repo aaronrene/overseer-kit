@@ -7,7 +7,7 @@
 # Greenfield (empty repo):
 #   add --regime git-only if not using --from-config
 #
-# See docs/VIDEOFACTORY-OVERSEER-SETUP.md for multi-repo workspace naming.
+# See docs/consumers/videofactory/OVERSEER-SETUP.md for multi-repo workspace naming.
 
 overseer_config_version: 1
 

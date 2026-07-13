@@ -174,7 +174,7 @@ DONE without verification. Escalation categories still stop for a human.
 
 **Custom doc names** (VideoFactory, MuseHub, multi-repo workspaces): set `docs.handover`,
 `docs.roadmap`, `docs.handover_title`, `docs.roadmap_title` in `.overseer/config.yaml` — see
-`docs/VIDEOFACTORY-OVERSEER-SETUP.md`.
+`docs/consumers/videofactory/OVERSEER-SETUP.md`.
 
 ---
 
@@ -272,8 +272,11 @@ This writes: governance docs, `policy/`, `.cursor/` fragments, `.overseer/versio
 
 ## Status
 
-**K7 DONE** — vendoring CLI, freeze reviewer, governance-sync, pilot install/migrate, Muse bridge
-footprint, operator dogfood on this repo. **255** seven-tier tests green. See `docs/ROADMAP.md`.
+**K12 DONE** — Track N public landing, scenario gallery, Apache-2.0 LICENSE, SECURITY.md,
+GitHub→MuseHub funnel. **380** seven-tier tests green. See `docs/ROADMAP.md`.
+
+**Public landing:** open [`docs/landing/index.html`](docs/landing/index.html) locally or enable
+GitHub Pages from the `/docs/landing` path on your default branch.
 
 ---
 
@@ -296,7 +299,11 @@ codebases — see `docs/OVERSEER-KIT-SPEC.md`. The kit does not ship product ada
 | `policy/tiers.yaml` | Decision authority Tier 1/2/3 |
 | `policy/test-tiers.yaml` | Seven-tier test contract |
 | `docs/GIT-ONLY-QUICKSTART.md` | Greenfield install without Muse |
-| `docs/VIDEOFACTORY-OVERSEER-SETUP.md` | VideoFactory install + custom doc names |
+| `docs/consumers/videofactory/OVERSEER-SETUP.md` | VideoFactory install + custom doc names |
+| `docs/CONSUMER-ADAPTER-PATTERN.md` | How any consumer plugs into L0–L2 |
+| `docs/landing/index.html` | Track N public landing (K12) |
+| `docs/landing/scenarios/index.html` | Scenario gallery A–E |
+| `docs/PHASE-K12-TRACK-N-LANDING-CONTRACT.md` | K12 landing freeze contract |
 | `docs/K7-DOGFOOD-OPERATOR-RUNBOOK.md` | Flip a repo to `muse+git-mirror` |
 | `MUSE-BRIDGE-WORKFLOW.md` | SD-14 mirror rules (vendored when regime requires) |
 | `cursor/README.md` | What ships into `.cursor/` on init/sync |

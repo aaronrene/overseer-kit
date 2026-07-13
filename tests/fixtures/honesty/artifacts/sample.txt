@@ -1,0 +1,1 @@
+sample artifact for honesty co-requirement tests

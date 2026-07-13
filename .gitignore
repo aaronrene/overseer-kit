@@ -8,3 +8,5 @@ node_modules/
 .env.*
 !.env.example
 .overseer/scratch/
+.muse/
+.overseer/.muse-bridge-sentinel

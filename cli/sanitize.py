@@ -14,3 +14,9 @@ def sanitize_text(text: str, repo_root: Path) -> str:
 def format_config_error(exc, repo_root: Path) -> str:
     """Format a config error without leaking absolute paths."""
     return exc.message
+
+
+def config_exit_code(exc) -> int:
+    """Map a ``ConfigError`` to its CLI exit code (default ``2``)."""
+    code = getattr(exc, "exit_code", None)
+    return code if isinstance(code, int) else 2

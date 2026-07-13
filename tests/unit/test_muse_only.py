@@ -13,7 +13,7 @@ def test_status_success(muse_only_config, repo_root) -> None:
     runner = make_runner(
         {
             f"muse -C {root} branch": ok("feat/hub"),
-            f"muse -C {root} status": ok(""),
+            f"muse -C {root} status --json": ok('{"dirty": false, "branch": "feat/hub"}'),
         }
     )
     adapter = adapter_for(muse_only_config, repo_root, runner)
@@ -41,7 +41,9 @@ def test_read_head_rejects_git_ref(muse_only_config, repo_root) -> None:
 
 def test_read_canonical_anchor(muse_only_config, repo_root) -> None:
     root = str(repo_root)
-    runner = make_runner({f"muse -C {root} log": ok("sha256:abc")})
+    runner = make_runner(
+        {f"muse -C {root} rev-parse main": ok('sha256:abc')}
+    )
     adapter = adapter_for(muse_only_config, repo_root, runner)
     result = adapter.read_canonical_anchor()
     assert result.anchor_sha == "sha256:abc"

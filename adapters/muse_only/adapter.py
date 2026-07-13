@@ -24,12 +24,12 @@ class MuseOnlyAdapter(BaseAdapter):
         branch_result = self._muse("branch", "--show-current")
         if isinstance(branch_result, ReadError):
             return branch_result
-        dirty_result = self._muse("status", "--porcelain")
+        dirty_result = self._muse_dirty()
         if isinstance(dirty_result, ReadError):
             return dirty_result
         return StatusResult(
             regime=self.regime,
-            dirty=bool(dirty_result.stdout.strip()),
+            dirty=dirty_result,
             branch=branch_result.stdout,
             notes=["canonical=muse", "git-forbidden"],
         )
@@ -38,13 +38,7 @@ class MuseOnlyAdapter(BaseAdapter):
         if ref.startswith("origin/") or ref.startswith(self.config.vcs.git.remote + "/"):
             return ReadError("read_head", GIT_FORBIDDEN)
         muse_ref = ref.removeprefix("muse:")
-        result = self._muse("log", "-1", "--format=%H", muse_ref)
-        if isinstance(result, ReadError):
-            return result
-        sha = result.stdout.strip()
-        if not sha:
-            return ReadError(f"muse log {muse_ref}", "empty sha")
-        return HeadResult(sha=sha, kind="muse")
+        return self._muse_rev_parse_sha(muse_ref)
 
     def read_canonical_anchor(self) -> AnchorResult | ReadError:
         main = self.config.vcs.muse.main_branch
@@ -94,10 +88,10 @@ class MuseOnlyAdapter(BaseAdapter):
         if isinstance(commit, ReadError):
             return commit
 
-        head = self._muse("log", "-1", "--format=%H")
+        head = self._muse_rev_parse_sha("HEAD")
         if isinstance(head, ReadError):
             return head
-        return CommitResult(committed=True, sha=head.stdout.strip())
+        return CommitResult(committed=True, sha=head.sha)
 
     def mirror(self, *, dry_run: bool) -> MirrorResult:
         return MirrorResult(

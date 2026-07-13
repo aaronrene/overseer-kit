@@ -35,3 +35,14 @@ freeze_contract:
     - irreversible
     - real_money
     - gates_tier3
+
+governance_gates:
+  remind: true
+  freeze_review:
+    required_before_auto: true
+  build_verification:
+    required_before_done: true
+  surfaces:
+    - status
+    - governance-sync
+    - handover-paste

@@ -5,7 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from cli.version_lock import ORIGIN_KIT, ORIGIN_PRESERVED, read_version_lock
-from tests.support import PILOT, git_status_runner, muse_mirror_status_runner, lock_origins, run_cli, seed_pilot_tree
+from tests.support import PILOT, git_status_runner, muse_mirror_status_runner, lock_origins, run_cli, seed_muse_substrate, seed_pilot_tree
 
 
 def _migrate(tmp_path: Path, *extra: str) -> int:
@@ -170,6 +170,7 @@ def test_promote_then_hand_edit_flips_integrity(tmp_path: Path) -> None:
     )
     assert lock_origins(tmp_path)["docs/OVERSEER-HANDOVER.md"] == ORIGIN_KIT
     (tmp_path / "docs/OVERSEER-HANDOVER.md").write_text("# after promote edit\n", encoding="utf-8")
+    seed_muse_substrate(tmp_path)
     code = run_cli(
         ["status", "--check-footprint", "--exit-code"],
         cwd=tmp_path,

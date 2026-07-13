@@ -283,6 +283,11 @@ external change produces the same result.
 | `overseer status` | Report: kit version, `version.lock` version, drift (behind/ahead), VCS regime, dirty tree, last governance-sync. Read-only. | No | Yes |
 | `overseer governance-sync` | Run the Governance Hygiene Agent (Phase 9A-5) against this repo's `.overseer/config.yaml`: detect drift between docs and true VCS state, patch handover/roadmap, guard-realign, commit to a feature branch. `--dry-run` = report only. | Yes (docs, feature branch) | Yes |
 | `overseer review --freeze <path>` | Run the Freeze-Step Reviewer (§6) on a freeze artifact; emit findings with **file+line citations**; set exit status by verdict; escalate to human per config. `--dry-run` prints the review only. | No (review output only) | Yes |
+| `overseer verify-step [--manifest PATH] [--step ID \| --through current \| --all] [--policy PATH] [--dry-run] [--json]` | L1 checkpoint orchestrator (K9b): run domain verify scripts in template order; update active manifest per step; optional `--dry-run` plan-only. Module gate: `checkpoints.enabled` must be true. Exit extensions: `10` verify fail, `11` step order. | Yes (manifest + optional progress) | Yes (re-verify overwrites) |
+| `overseer honesty-status --hook HOOK --artifact PATH [--producer-session ID] [--json]` | L2 co-requirement check (K10): require a passing independent `verdict` for artifact SHA before board/handoff/register hooks. Module gate: `honesty.enabled` must be true. Exit extensions: `20` missing verdict, `4` hook not enabled / module off. | No | Yes |
+| `overseer ledger append --kind KIND [--file JSON_PATH \| --stdin]` | L2 verdict ledger append (K10): hash-chained JSONL entry with role gates. Auto-genesis on first append. Exit extensions: `21`–`24`, `22` on verify. | Yes (ledger) | Append-only |
+| `overseer ledger verify` | L2 ledger chain verification (K10). Missing/empty ledger → `0`. Break → `22`. | No | Yes |
+| `overseer ledger show [--last N]` | L2 ledger read (K10): print last N JSONL records. Missing/empty → `0` with no lines. Default N=20. | No | Yes |
 
 **Vendored footprint (frozen — what `init`/`sync` copy into a consumer):** the contents of
 `templates/` (token-substituted with `.overseer/config.yaml` values), `policy/`, and `cursor/`,

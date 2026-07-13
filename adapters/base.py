@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import re
 from pathlib import Path
 from typing import Protocol, Union
@@ -100,6 +101,46 @@ class BaseAdapter:
         if not result.ok:
             return ReadError(cmd, result.stderr or result.stdout, result.exit_code)
         return result
+
+    def _muse_rev_parse_sha(self, ref: str) -> "HeadResult | ReadError":
+        """Resolve a muse ref to its commit id via ``muse rev-parse`` (Muse 0.2+).
+
+        Muse 0.2.x prints the commit id as a bare string on stdout (exit 0).
+        On failure (unknown ref / empty repo) it exits non-zero with JSON on
+        stdout — ``_muse`` already converts non-zero exits to ``ReadError``,
+        so by the time we read ``result.stdout`` the value is always a plain SHA.
+        """
+        result = self._muse("rev-parse", ref)
+        if isinstance(result, ReadError):
+            return result
+        sha = result.stdout.strip()
+        if not sha:
+            return ReadError(f"muse rev-parse {ref}", "empty sha")
+        return HeadResult(sha=sha, kind="muse")
+
+    def _muse_dirty(self) -> bool | ReadError:
+        """Return Muse working-tree dirty flag (Muse 0.2+ ``status --json``; legacy ``--porcelain``)."""
+        json_result = self._muse("status", "--json")
+        if not isinstance(json_result, ReadError):
+            try:
+                payload = json.loads(json_result.stdout)
+            except json.JSONDecodeError:
+                return ReadError(
+                    "muse status --json",
+                    "invalid JSON from muse status",
+                )
+            if isinstance(payload, dict):
+                if "dirty" in payload:
+                    return bool(payload["dirty"])
+                total = payload.get("total_changes")
+                if isinstance(total, int):
+                    return total > 0
+            return ReadError("muse status --json", "missing dirty/total_changes field")
+
+        porcelain = self._muse("status", "--porcelain")
+        if isinstance(porcelain, ReadError):
+            return porcelain
+        return bool(porcelain.stdout.strip())
 
     def _is_protected_branch(self, branch: str) -> bool:
         git_main = self.config.vcs.git.main_branch

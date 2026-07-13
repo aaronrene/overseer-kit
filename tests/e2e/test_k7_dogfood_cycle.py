@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 
 from cli.footprint import MUSE_BRIDGE_DEPLOY_DEST, MUSE_BRIDGE_WORKFLOW_DEST
-from tests.support import FIXTURES, muse_mirror_status_runner, ok, run_cli
+from tests.support import FIXTURES, muse_mirror_status_runner, ok, run_cli, seed_muse_substrate
 
 
 def test_k7_fixture_dogfood_cycle_no_live_muse(tmp_path: Path) -> None:
@@ -14,7 +14,7 @@ def test_k7_fixture_dogfood_cycle_no_live_muse(tmp_path: Path) -> None:
     root = str(tmp_path.resolve())
     runner.responses.update(
         {
-            f"muse -C {root} log -1 --format=%H main": ok("a" * 40),
+            f"muse -C {root} rev-parse main": ok("a" * 40),
             "git rev-parse origin/main": ok("b" * 40),
             "git rev-parse origin/muse-mirror": ok("c" * 40),
             "gh pr list --state merged --limit 5 --json number,title,mergeCommit,mergedAt": ok(
@@ -22,7 +22,7 @@ def test_k7_fixture_dogfood_cycle_no_live_muse(tmp_path: Path) -> None:
             ),
         }
     )
-    (tmp_path / ".muse").mkdir(exist_ok=True)
+    seed_muse_substrate(tmp_path)
     (tmp_path / ".muse" / "git-bridge.toml").write_text(
         '[last_export]\ngit_sha = "' + ("d" * 40) + '"\n'
         '[last_import]\ngit_sha = "' + ("d" * 40) + '"\n',

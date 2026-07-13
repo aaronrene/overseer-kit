@@ -1,0 +1,10 @@
+{
+  "actor_role": "verifier",
+  "actor_session_id": "verifier-session-1",
+  "artifact_sha256": "PLACEHOLDER",
+  "passed": true,
+  "evidence": {
+    "reexecuted": ["verify-step:export"],
+    "notes": "ok"
+  }
+}
