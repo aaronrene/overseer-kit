@@ -78,7 +78,8 @@ See `docs/PHASE-K8-MULTI-LANE-DOCS-CONTRACT.md` and vision §5.2.
 | Consumer | Kit docs |
 | --- | --- |
 | VideoFactory | `docs/consumers/videofactory/OVERSEER-SETUP.md`, `CHECKPOINT-BUILD-PROMPT.md` |
-| MuseHub / Knowtation / Scooling | Add under `docs/consumers/<name>/` when piloted |
+| Scooling | `docs/consumers/scooling/OVERSEER-SETUP.md` |
+| MuseHub / Knowtation | Add under `docs/consumers/<name>/` when piloted |
 
 Fixture configs: `tests/fixtures/pilot/`.
 

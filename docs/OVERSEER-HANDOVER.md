@@ -6,13 +6,14 @@
 
 ---
 
-## NEXT SESSION — Track Q complete; operator choice (▶ NEXT)
+## NEXT SESSION — Track O / O0 Normie custody funnel freeze (▶ NEXT)
 
 **Date:** 2026-07-13  
-**Current position:** **Track Q / Q3 Tauri desktop packaging DONE (build-verified → `pass`, Q3-BV-r1).**  
-Track Q delivery chain **Q0 → Q1 → Q2b → Q3** is complete: local web UI, canonical `ok` CLI, and cross-platform Tauri desktop shell.  
-**Model:** **Operator choice** — no further Track Q slice is queued; see ROADMAP exploration backlog for ideas requiring a new Thinking freeze.  
-**Operator choice:** pick the next phase from exploration backlog or consumer dogfood; no default Auto build is queued.
+**Current position:** **K6-Scooling consumer runbook DONE.** Track Q (Q0→Q3) complete; Scooling
+setup doc landed under `docs/consumers/scooling/`. Live Scooling `ok init` remains operator-gated.  
+**Model:** **Thinking**  
+**Operator note:** Draft seed exists at `docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md` — refine,
+freeze-review to `pass`, then Auto may implement product contracts only as scoped.
 
 
 
@@ -21,26 +22,52 @@ Track Q delivery chain **Q0 → Q1 → Q2b → Q3** is complete: local web UI, c
 
 | Slice                                                             | Deliverable                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Track Q / Q3 Tauri desktop packaging DONE (build-verified)**   | Tauri shell (`desktop/`) spawns canonical **`ok app`** and loads Q1 loopback UI in a native window; `tools/desktop/` launcher contract + banner parse + manifest validation; `scripts/bundle-desktop-kit.sh` bundles Python engine for release; in-memory auth bootstrap (no `localStorage`); macOS/Windows/Linux from one codebase; **no** engine subcommand/API changes. `/build-verification-review` **`pass` (Q3-BV-r1)**. **696** tests green (+28 §Q3). |
-| **Track Q / Q2b OK CLI entrypoint build DONE (build-verified)**   | Built against frozen `docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md` → `/build-verification-review` **`pass` (Q2b-BV-r1)**. Shipped: `cli/ok` + `cli/overseer` deprecation shim; `prog="ok"`; operator docs/templates/twin skills/CI → `ok`; SPEC §5 + K4.1 naming; remediation strings → `ok`; shims excluded from footprint. **668** tests green (+14 §Q2A.10). Cleared for Q3.                                                                                                              |
-| **Track Q / Q2a Freeze OK CLI entrypoint DONE (Thinking)**        | `docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md` reviewed → `pass` (Q2a-r2), stamp `sha256:dbfbf9ad…`. Freezes `cli/ok` canonical + `cli/overseer` compat deprecation; `prog="ok"`; SPEC/K4.1 naming amendment; engine shims **not** footprint members; seven-tier §Q2A.10. **Spec-only — no code landed.** Cleared for Q2b.                                                                                                      |
-| **Track Q / Q1 Local web UI build DONE (build-verified)**         | Built against frozen `docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md` → `/build-verification-review` **`pass` (Q1-BV-r1)**. Shipped: `ok app` stdlib loopback server + static UI; `tools/app/` + `cli/commands/app.py`; closed `api/*` handlers; Bearer + CSRF auth. **654** tests green (+42 §Q0.12).                                                                                                                                    |
+| **K6-Scooling consumer runbook DONE**                             | `docs/consumers/scooling/OVERSEER-SETUP.md` (install, SC-P1/SC-P2, kit-vs-runtime boundary, day-to-day, no live init); K6 runbook + consumer-adapter cross-links; ROADMAP rows for K6-Scooling + Track O / O0.                                                                                                                                                                                                                |
+| **Track Q / Q3 Tauri desktop packaging DONE (build-verified)**   | Tauri shell (`desktop/`) spawns canonical **`ok app`** and loads Q1 loopback UI; `tools/desktop/` + `scripts/bundle-desktop-kit.sh`; **696** tests green (+28 §Q3). `/build-verification-review` **`pass` (Q3-BV-r1)**.                                                                                                                                                                                                      |
+| **Track Q / Q2b OK CLI entrypoint build DONE (build-verified)**   | `cli/ok` + `cli/overseer` deprecation; `prog="ok"`; docs/templates/skills → `ok`. **668** tests green (+14 §Q2A.10).                                                                                                                                                                                                                                                                                                         |
+| **Handover shape repair (KH1)**                                   | Closed Q3 “operator choice” NEXT that omitted paste-ready fence and used invalid `Model: Operator choice` (not in `policy/model-labels.yaml`). Restored H2–H8 shape. |
 
 
 
-
-### THE ONE NEXT STEP — **Model: Operator choice**
-
-Track Q is **complete** (Q0–Q3). No Auto build is queued until a new Thinking freeze promotes work from the exploration backlog.
+### THE ONE NEXT STEP — **Model: Thinking**
 
 
 |                |                                                                                                                                     |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID**         | **Operator choice**                                                                                                                 |
-| **Read first** | `docs/ROADMAP.md` (exploration backlog); `docs/OVERSEER-HANDOVER.md`                                                                |
-| **Options**    | **P-deploy** deployment gate (Thinking freeze first); hosted governance dashboard (Thinking); consumer P-route reference; or consumer dogfood |
-| **Hard stops** | No Tier-3 merge without authorization; new scope needs its own Thinking freeze before Auto build                                      |
+| **ID**         | **Track O / O0** (Thinking)                                                                                                         |
+| **Branch**     | `feat/track-o-o0-normie-custody-freeze` (suggested)                                                                                 |
+| **Read first** | `docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md` (draft); `docs/ROADMAP.md`; `docs/OVERSEER-KIT-SPEC.md` §4; `docs/consumers/scooling/OVERSEER-SETUP.md`; `docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md` |
+| **Deliver**    | Freeze normie custody funnel: Muse-first start, optional GitHub backup, optional Knowtation bind; kit vs product boundary; seven-tier matrix for later Auto. Review → `pass` before any build. |
+| **Hard stops** | Spec-only — no signup UI / account glue code in Thinking; no live consumer init; no Tier-3 merge without authorization |
 
+
+
+### Paste-ready prompt — Track O / O0
+
+```
+Phase Track O / O0 — Freeze Normie custody funnel (overseer-kit).
+
+Model: Thinking
+
+Read first: docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md (draft seed);
+  docs/ROADMAP.md (Track O / O0 row + exploration backlog);
+  docs/OVERSEER-KIT-SPEC.md §4 regimes + K7 MuseHub-optional guardrail;
+  docs/consumers/scooling/OVERSEER-SETUP.md;
+  docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md;
+  docs/PHASE-KH1-HANDOVER-RELAY-STANDARD.md (§KH1.2 Model + paste fence rules).
+
+Task: refine the draft into a freeze-contract document and review to pass:
+  - Muse-first personal space (no Git required to start)
+  - Optional one-click GitHub backup (muse+git-mirror upgrade)
+  - Optional Knowtation vault binding (same custody identity)
+  - Scooling optional entry product — NOT required to use Overseer Kit
+  - Boundary: kit = regimes + CLI; Scooling/Knowtation = wizards/UX
+  - Seven-tier matrix for any future Auto; no MuseHub-only baseline
+  - Update ROADMAP + HANDOVER together after freeze pass (SD-17)
+
+Hard stops: Thinking only — no product UI code; no live init; /freeze-review-loop → pass
+  before frozen: true; no Tier-3 merge without authorization.
+```
 
 
 
@@ -57,6 +84,7 @@ Track Q is **complete** (Q0–Q3). No Auto build is queued until a new Thinking 
 | **Close** | Update ROADMAP + this handover together; feature branch → PR (no commit/push without consent) |
 | **Governance gates** | §KH1.9 **live** — `ok status` + `governance-sync` pending-gate reminders |
 | **Muse dev tree** | `ok status --exit-code` must show `substrate.ok: true`, `muse_sync.ok: true`, **and** `footprint_self_integrity.ok: true` before phase DONE. Hollow substrate → `muse init --force .`; Muse behind Git (`muse_sync: pending`) → `muse code add -A && muse commit -m "…"`; declared-but-absent kit file (`footprint_self_integrity: missing`) → `ok sync` (all Tier 1) |
+| **Handover shape (KH1)** | Every NEXT must include valid **`Model:`** from `policy/model-labels.yaml` **and** a `### Paste-ready prompt` fenced block (H7/H8). Never use `Operator choice` as a Model label. |
 
 ---
 
@@ -84,6 +112,8 @@ Track Q is **complete** (Q0–Q3). No Auto build is queued until a new Thinking 
 | **Track Q / Q2a**         | **DONE** — Thinking freeze (`docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md` reviewed → `pass`, Q2a-r2), stamp `sha256:dbfbf9ad…`. Freezes canonical `ok` CLI entrypoint + `overseer` compat shim; seven-tier §Q2A.10. Spec-only. Cleared for Q2b |
 | **Track Q / Q2b**         | **DONE** — Auto build (build-verified → `pass`, Q2b-BV-r1). `cli/ok` canonical + `cli/overseer` deprecation; `prog="ok"`; operator docs/templates/skills/CI pass; SPEC §5 + K4.1 naming; shims not footprint members. **668** tests green (+14 §Q2A.10). Cleared for Q3 |
 | **Track Q / Q3**          | **DONE** — Auto build (build-verified → `pass`, Q3-BV-r1). Tauri desktop shell (`desktop/`) invokes `ok app`; `tools/desktop/` + bundle script; seven-tier §Q3. **696** tests green (+28). Track Q chain complete |
+| **K6-Scooling runbook**   | **DONE** — `docs/consumers/scooling/OVERSEER-SETUP.md` (kit-side; live init still operator-gated) |
+| **Track O / O0**          | **TODO** — Normie custody funnel Thinking freeze (draft seed landed; **NEXT**) |
 | **CLI entrypoint**        | **`ok`** (canonical `./cli/ok`); **`overseer`** compat shim (`./cli/overseer`, one-line stderr deprecation) |
 | **CLI subcommands**       | `init` \| `sync` \| `status` \| `review --freeze` \| `governance-sync` \| `verify-step` \| `honesty-status` \| `ledger` \| `route` \| `app` |
 | **Muse dogfood** | **D2 repaired** + substrate health + gate reminders + **muse-sync hard gate (KH2)** + **footprint self-integrity hard gate (KH3)** live; `muse rev-parse` reads plain-text SHA (0.2.x returns bare SHA on success; JSON only on failure/non-zero); `governance-sync --dry-run` exits 0; muse canonical HEAD `sha256:3e14450f…` (catch-up commit; genesis `sha256:4671b7f…`) |
@@ -99,11 +129,11 @@ Track Q is **complete** (Q0–Q3). No Auto build is queued until a new Thinking 
 
 | Item | Value |
 | --- | --- |
-| Branch                    | uncommitted (Q2b build + governance)                                                                     |
-| HEAD (pre closing-commit) | Q2b OK CLI entrypoint build                                                                              |
+| Branch                    | `feat/track-q-desktop-complete` (PR #23)                                                                 |
+| HEAD                      | Track Q complete + K6-Scooling runbook / Track O seed / KH1 handover repair                              |
 | Muse HEAD | catch-up may be needed after this commit |
-| GitHub bridge | no bridge PR currently open |
-| Dirty                     | yes (Q2b build — commit on feature branch when ready)                                                    |
+| GitHub bridge | PR #23 open (`feat/track-q-desktop-complete`) |
+| Dirty                     | commit on feature branch when ready                                                                      |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -116,6 +146,12 @@ Track Q is **complete** (Q0–Q3). No Auto build is queued until a new Thinking 
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-13** — **K6-Scooling consumer runbook + KH1 handover repair + Track O seed.**
+  Added `docs/consumers/scooling/OVERSEER-SETUP.md`; cross-linked K6 operator runbook +
+  `CONSUMER-ADAPTER-PATTERN.md`; queued Track O / O0 draft
+  `docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md` (not frozen). Fixed Q3 close-out failure:
+  NEXT had used invalid `Model: Operator choice` and omitted the paste-ready fence (KH1 H7/H8).
+  ROADMAP: K6-Scooling → **DONE**; Track O / O0 → **TODO (Thinking)**; NEXT → Track O / O0.
 - **2026-07-13** — **Track Q / Q3 Tauri desktop packaging DONE (build-verified → `pass`, Q3-BV-r1).**
   Shipped cross-platform Tauri shell (`desktop/`): Rust launcher spawns canonical **`ok app`**,
   parses one-time stderr banner (`url`, `session_credential`, `csrf_token`), loads Q1 loopback UI
@@ -124,7 +160,8 @@ Track Q is **complete** (Q0–Q3). No Auto build is queued until a new Thinking 
   init-script generator); `scripts/bundle-desktop-kit.sh` copies engine into Tauri resources for
   release builds. **No** new engine subcommands, exit codes, or `api/*` surface changes. Seven-tier
   §Q3: **28** new tests (**696** total green). `/build-verification-review` round 1 → **`pass`**
-  (V1–V8 clean). ROADMAP: Track Q / Q3 → **DONE**; Track Q chain complete; NEXT → operator choice.
+  (V1–V8 clean). ROADMAP: Track Q / Q3 → **DONE**; Track Q chain complete; NEXT was briefly
+  mis-set to operator-choice without paste fence (repaired same day in K6-Scooling close-out).
 - **2026-07-13** — **Track Q / Q2b OK CLI entrypoint build DONE (build-verified → `pass`, Q2b-BV-r1).**
   Built mechanically against frozen `docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md`: shipped `cli/ok`
   canonical POSIX shim + `cli/overseer` compatibility shim (exact one-line stderr deprecation);
