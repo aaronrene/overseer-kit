@@ -6,15 +6,15 @@
 
 ---
 
-## NEXT SESSION — Track P / P-deploy deployment-gate freeze (▶ NEXT)
+## NEXT SESSION — Track P / P-deploy Auto build (▶ NEXT)
 
 **Date:** 2026-07-13  
-**Current position:** **Track O / O3 Stage 3 upgrade-regime build DONE** (build-verified →
-`pass`, O3-BV-r2). Track O kit chain (O0–O3) complete; §O2.6 product one-click may wrap
-**only** `ok upgrade-regime`. Live Scooling `ok init` remains operator-gated.  
-**Model:** **thinking-high**  
-**Operator note:** Next queued exploration item is **P-deploy** (Thinking freeze only). Spec-only —
-no deploy execution in the kit.
+**Current position:** **Track P / P-deploy Thinking DONE** (freeze reviewed → `pass`, P-deploy-r3,
+stamp `sha256:a9fe1cd9…`). Spec-only — no Mode C / skill / config code landed. Track O kit chain
+(O0–O3) remains complete.  
+**Model:** **Auto**  
+**Operator note:** Build mechanically against frozen `docs/PHASE-TRACK-P-P-DEPLOY.md`. Kit must not
+deploy or HTTP-probe production.
 
 
 ### What just landed
@@ -22,46 +22,47 @@ no deploy execution in the kit.
 
 | Slice                                                             | Deliverable                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Track O / O3 Stage 3 upgrade-regime build DONE (Auto)**         | `ok upgrade-regime` (§O2.7); runbook `docs/TRACK-O-STAGE3-UPGRADE-OPERATOR-RUNBOOK.md`; product-contract + `tools/track_o/` retarget; SPEC §5. Seven-tier §O2.9. Full suite **761** green. `/build-verification-review` **`pass` (O3-BV-r2)**. No signup UI; no live consumer init; no C8.                                                                                                                                       |
-| **Track O / O2 Stage 3 kit upgrade ceremony DONE (Thinking)**     | `docs/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md` reviewed → **`pass` (O2-r3)**, stamp `sha256:ac970077…`.                                                                                                                                                                                                                                                                                                                    |
-| **Track O / O1 Normie custody product contracts DONE (Auto)**     | Product contract pack + harness; **728** suite baseline before O3.                                                                                                                                                                                                                                                                                                                                                             |
-| **Track O / O0 Normie custody funnel DONE (Thinking)**            | `docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md` reviewed → **`pass` (O0-r3)**.                                                                                                                                                                                                                                                                                                                                                |
+| **Track P / P-deploy deployment gate DONE (Thinking)**            | `docs/PHASE-TRACK-P-P-DEPLOY.md` reviewed → **`pass` (P-deploy-r3)**, stamp `sha256:a9fe1cd9…`. Mode C + `require_deploy_health` + `/deploy-verification-review` + exit `34` + rejection table + §PD.9. Reuses P-evidence `deploy_health`. Spec-only.                                                                                                              |
+| **Track O / O3 Stage 3 upgrade-regime build DONE (Auto)**         | `ok upgrade-regime` (§O2.7); runbook; **761** suite baseline; BV **`pass` (O3-BV-r2)**.                                                                                                                                                                                                                                                                                                                                       |
+| **Track O / O2–O0**                                               | Ceremony + product contracts + funnel — **DONE** (unchanged by P-deploy).                                                                                                                                                                                                                                                                                                                                                      |
 
 
 
-### THE ONE NEXT STEP — **Model: thinking-high**
+### THE ONE NEXT STEP — **Model: Auto**
 
 
 |                |                                                                                                                                     |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID**         | **Track P / P-deploy** (Thinking)                                                                                                   |
-| **Branch**     | `feat/track-p-p-deploy-freeze` (suggested)                                                                                          |
-| **Read first** | `docs/ROADMAP.md` exploration backlog P-deploy; `docs/PHASE-TRACK-P-P-EVIDENCE.md`; build-verification skill V8                   |
-| **Deliver**    | Freeze deploy/health claim gate (kit records/gates only — never deploys); seven-tier matrix; stamp via `/freeze-review-loop` → `pass` |
-| **Hard stops** | No kit-side deploy/HTTP probe to production; no Tier-3 merge; no redesign of Track O ceremony                                       |
+| **ID**         | **Track P / P-deploy build** (Auto)                                                                                                 |
+| **Branch**     | `feat/track-p-p-deploy-build` (suggested; or continue `feat/track-p-p-deploy-freeze`)                                              |
+| **Read first** | `docs/PHASE-TRACK-P-P-DEPLOY.md` (frozen); `docs/PHASE-TRACK-P-P-EVIDENCE.md`; `tools/honesty/status.py`                            |
+| **Deliver**    | Mode C + `require_deploy_health` + twin deploy-verification skill; seven-tier §PD.9; `/build-verification-review` → `pass`         |
+| **Hard stops** | No kit-side deploy/HTTP probe; no Track O redesign; no Tier-3 merge                                                                  |
 
 
 
-### Paste-ready prompt — Track P / P-deploy
+### Paste-ready prompt — Track P / P-deploy build
 
 ```
-Phase Track P / P-deploy — deployment-gate freeze (overseer-kit).
+Phase Track P / P-deploy build — deployment gate (overseer-kit).
 
-Model: thinking-high
+Model: Auto
 
-Read first: docs/ROADMAP.md (exploration backlog P-deploy);
+Read first: docs/PHASE-TRACK-P-P-DEPLOY.md (frozen: true, reviewed → pass);
   docs/PHASE-TRACK-P-P-EVIDENCE.md;
-  docs/OVERSEER-KIT-SPEC.md;
-  .cursor/skills/freeze-review-loop/SKILL.md;
-  docs/OVERSEER-HANDOVER.md (shared context).
+  docs/ROADMAP.md (P-deploy build row);
+  docs/OVERSEER-HANDOVER.md (shared context);
+  .cursor/skills/build-verification-review/SKILL.md.
 
-Task: Thinking freeze only — define the live-deploy sibling of build-verification:
-  - Kit records/gates a verifiable deploy/health claim before "shipped" → DONE
-  - Boundary: kit never performs the deploy / never HTTP-probes production by default
-  - Artifact types / ledger linkage vs P-evidence; seven-tier matrix; rejection table
-  - Stamp via /freeze-review-loop → pass; queue Auto only after frozen: true
+Task: Build mechanically against the frozen P-deploy contract — no redesign:
+  - honesty.require_deploy_health (off|warn|require, default off; HONESTY_KEYS + HonestyConfig)
+  - find_matching_deploy_health; honesty-status Mode C (--deploy-health + §PD.5.0 resolution)
+  - exit 34 + missing_deploy_health; Mode C JSON block
+  - twin cursor/skills + .cursor/skills deploy-verification-review/SKILL.md (D1–D8)
+  - seven-tier §PD.9 green; /build-verification-review → pass before DONE
+  - governance sync ROADMAP + HANDOVER
 
-Hard stops: no deploy code in kit; no live consumer probes; no Tier-3 merge; no Track O redesign.
+Hard stops: no deploy/HTTP probe code in kit; no Track O redesign; no Tier-3 merge.
 ```
 
 
@@ -102,6 +103,7 @@ Hard stops: no deploy code in kit; no live consumer probes; no Tier-3 merge; no 
 | **Track P / P-route** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` reviewed → `pass`, P-route-r2) + Auto build (build-verified → `pass`, P-route-BV-r1). Declarative model-routing policy shipped: `policy/model-routing.yaml`, `model_tiers`, `model_routing:` config, `overseer route`, exit `30`/`31`. **529** tests green (+43 §PR.8). Kit = rule-holder, runtime = executor |
 | **Track P / P-cost** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-P-P-COST-AWARENESS.md` reviewed → `pass`, P-cost-r2) + Auto build (build-verified → `pass`, P-cost-BV-r1). Cost-awareness surface shipped: `cost_class` on `model_tiers`, `tools/cost_awareness/`, `cost_awareness:` config, additive `overseer route` cost fields, exit `32`, status + governance-sync reminders. **569** tests green (+40 §PC.9). Kit = cost-awareness rule-holder, runtime = spender |
 | **Track P / P-evidence** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-P-P-EVIDENCE.md` reviewed → `pass`, P-evidence-r3) + Auto build (build-verified → `pass`, P-evidence-BV-r1). Verification-evidence capture shipped: `verification_evidence` kind, artifact types, `require_verification_evidence`, honesty-status Mode B, exit `33`, twin build-verification V8 delta. **612** tests green (+43 §PE.10). Kit records/gates; never deploys |
+| **Track P / P-deploy** | **DONE (Thinking)** — deployment-gate freeze (`docs/PHASE-TRACK-P-P-DEPLOY.md` reviewed → `pass`, P-deploy-r3), stamp `sha256:a9fe1cd9…`. Mode C + `require_deploy_health` + `/deploy-verification-review` + exit `34` + §PD.9. Spec-only — Auto build queued. Kit records/gates; never deploys/probes |
 | **Track Q / Q0** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md` reviewed → `pass`, Q0-r2), stamp `sha256:3c3f6229…`. Freezes `overseer app` local-only UI contract |
 | **Track Q / Q1** | **DONE** — Auto build (build-verified → `pass`, Q1-BV-r1). `overseer app` stdlib loopback server + static UI; `tools/app/` + `cli/commands/app.py`; closed `api/*`; Bearer + CSRF; seven-tier §Q0.12. **654** tests green (+42) |
 | **Track Q / Q2a**         | **DONE** — Thinking freeze (`docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md` reviewed → `pass`, Q2a-r2), stamp `sha256:dbfbf9ad…`. Freezes canonical `ok` CLI entrypoint + `overseer` compat shim; seven-tier §Q2A.10. Spec-only. Cleared for Q2b |
@@ -127,11 +129,11 @@ Hard stops: no deploy code in kit; no live consumer probes; no Tier-3 merge; no 
 
 | Item | Value |
 | --- | --- |
-| Branch                    | `feat/track-o-o3-upgrade-regime`                                                                        |
-| HEAD                      | Track O / O3 Stage 3 upgrade-regime build (BV O3-BV-r2) + ROADMAP/HANDOVER close-out                    |
-| Muse HEAD | `sha256:ce27cf6e…` (O3 build close-out) |
+| Branch                    | `feat/track-p-p-deploy-freeze`                                                                          |
+| HEAD                      | Track P / P-deploy Thinking freeze (reviewed → `pass`, P-deploy-r3) + ROADMAP/HANDOVER close-out        |
+| Muse HEAD | (feature-branch; muse commit after Git close-out if substrate catch-up needed) |
 | GitHub bridge | Feature branch (no merge) |
-| Dirty                     | clean after O3 close-out                                                                                |
+| Dirty                     | clean after P-deploy Thinking close-out                                                                 |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -144,6 +146,17 @@ Hard stops: no deploy code in kit; no live consumer probes; no Tier-3 merge; no 
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-13** — **Track P / P-deploy Thinking freeze DONE (reviewed → `pass`, P-deploy-r3).**
+  Froze the live-deploy sibling of build-verification in `docs/PHASE-TRACK-P-P-DEPLOY.md`: reuses
+  P-evidence `verification_evidence` + `deploy_health` (no new ledger kind); `honesty.require_deploy_health`
+  (`off|warn|require`, default `off`; `HONESTY_KEYS` + `HonestyConfig`); honesty-status Mode C
+  (`--deploy-health`, shared `--frozen-spec`, §PD.5.0 resolution algorithm); exit `34` +
+  `missing_deploy_health`; twin `/deploy-verification-review` skill (D1–D8); boundary + rejection
+  table; seven-tier §PD.9. Freeze-review loop: r1 (Mode C/`--frozen-spec` resolution + CLI wiring) →
+  fixed; r2 (`HonestyConfig` field; "by default" probe weasel; BV-waiver wording) → fixed;
+  **P-deploy-r3 → `pass`**; stamp `sha256:a9fe1cd9…`. **Spec-only — no code landed.** Hard stops
+  held (no deploy/probe code; no Track O redesign; no Tier-3 merge). ROADMAP: P-deploy Thinking →
+  **DONE**; added **Track P / P-deploy build** (Auto, TODO). Handover NEXT → **P-deploy Auto build**.
 - **2026-07-13** — **Track O / O3 Stage 3 upgrade-regime build DONE (build-verified → `pass`, O3-BV-r2).**
   Shipped `ok upgrade-regime` against frozen O2: `--from muse-only --to muse+git-mirror` with
   `--dry-run` / `--apply` / `--live-bridge` / `--force` / `-y`; C0–C5 fail-closed; G1–G8; hard-stop
