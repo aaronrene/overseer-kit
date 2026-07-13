@@ -133,6 +133,25 @@ Governance gates (mandatory — remind only; silence is not pass):
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-13** — **Hygiene: seed 13 self-footprint files that were declared in
+  `.overseer/version.lock` since K4b (2026-07-10) but never actually existed on disk** — `.cursor/rules/*`
+  (4 files), `.cursor/skills/*/SKILL.md` (4 files), `.overseer/policy/*.yaml` (3 files),
+  `.overseer/STANDING-DECISIONS.reference.md`. Root cause: the K4b commit (`042ac5c`) hand-authored the
+  full manifest shape in `version.lock` to spec out §K4 without ever running `overseer init`/`sync`
+  against this dogfood repo itself, and no later phase closed that gap — `overseer status
+  --check-footprint` never caught it because `MISSING` classification only blocks `overseer sync`
+  (needs a write), it does not fail `status`'s digest check the way `both-changed` does. Confirmed this
+  is the exact, already-frozen §K7.3 "new destination absent on disk → seed" path (`docs/PHASE-K7-MUSE-GIT-MIRROR-DOGFOOD.md`
+  line 285), so ran `overseer sync --yes` for real (no `--force` needed — none of the 13 were
+  conflicts, only `missing`). Verified: no unsubstituted `{{token}}` leakage bugs — `.mdc`/`SKILL.md`/
+  policy `*.yaml` files are copied **verbatim** by design (§K4.5, `cli/footprint.py`); the `{{docs.*}}` /
+  `{{vcs.*}}` notation inside them is intentional human-readable prose, not a live template token (only
+  `ROADMAP.template.md`, `OVERSEER-HANDOVER.template.md`, `STANDING-DECISIONS.template.md`,
+  `MUSE-BRIDGE-WORKFLOW.template.md`, and `muse-bridge-deploy.sh.template` go through real
+  `render_template()` substitution). No secrets in any seeded file (scanned). `overseer status
+  --check-footprint` now reports `footprint_integrity: ok` with `preserved_living` correctly listing only
+  the two living docs. 456/456 tests green post-fix.
+
 - **2026-07-12** — **Hygiene: reclassify `docs/ROADMAP.md` + `docs/OVERSEER-HANDOVER.md` as
   `origin: preserved` in `.overseer/version.lock`; refresh stale `scripts/muse-bridge-deploy.sh` hash.**
   Root-caused a `footprint_integrity: mismatch` on `overseer status --check-footprint`. Verified by
