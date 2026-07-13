@@ -104,7 +104,8 @@ Cursor rules/skills are an optional boost when the footprint is installed.
 | Does kit install create a Scooling user account? | **No** |
 | Does Scooling install create a Knowtation vault? | **No** — separate product |
 | Muse without Git? | Possible via `muse-only` regime in **other** products; Scooling dogfood is `muse+git-mirror` |
-| Normie vault ↔ GitHub backup UX | **Not this runbook** — see exploration backlog **Track O / O-onboard** |
+| Normie custody path (Start → Work → optional GitHub backup → optional Knowtation bind) | **Track O** — normative product contract: `docs/TRACK-O-NORMIE-CUSTODY-PRODUCT-CONTRACT.md` (freeze: `docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md`). Scooling is an **optional** entry product, never required for kit custody. Stage 3 kit upgrade ceremony remains deferred to O2. |
+| Knowtation Stage 4 stub | `docs/consumers/knowtation/OVERSEER-SETUP.md` (no live Knowtation `ok init` in O1) |
 
 ## Hard stops
 
