@@ -6,61 +6,63 @@
 
 ---
 
-## NEXT SESSION — Track P / P-evidence Thinking freeze (▶ NEXT)
+## NEXT SESSION — Track P / P-evidence Auto build (▶ NEXT)
 
 **Date:** 2026-07-13  
-**Current position:** **Track P / P-cost Auto build DONE (build-verified → `pass`, P-cost-BV-r1).** Built mechanically against frozen `docs/PHASE-TRACK-P-P-COST-AWARENESS.md`: optional currency-free `cost_class` on `model_tiers`; `paid_step_before_spend` derivation; additive cost annotation on `overseer route`; optional `cost_awareness:` config; active-slice spend-awareness surface on `overseer status` + `governance-sync` footer (reminder-only); exit `32` confined to `overseer route`; handover template spend-awareness reminder; **569** tests green (+40 §PC.9). Predecessor **Track P / P-route** **DONE**, **529** tests green.  
-**Model:** **Thinking** (design + freeze spec for verification-evidence capture; no mechanical build until freeze → `pass`)  
-**Operator choice:** default next slice is **Track P / P-evidence Thinking freeze**. Operator may instead pick **Track Q / Q0** (Overseer App freeze).
+**Current position:** **Track P / P-evidence Thinking freeze DONE (reviewed → `pass`, P-evidence-r3).** Frozen `docs/PHASE-TRACK-P-P-EVIDENCE.md` (stamp `sha256:c1b9fb3…`): ledger kind `verification_evidence`; artifact types `test_output`\|`deploy_health`\|`screenshot`; `require_verification_evidence`; honesty-status Mode B; exit `33`; build-verification V8 skill delta; boundary = kit records/gates, never deploys. **Spec-only — no code landed.** Predecessor **Track P / P-cost** **DONE**, **569** tests green.  
+**Model:** **Auto** (mechanical build against frozen P-evidence contract; no redesign)  
+**Operator choice:** default next slice is **Track P / P-evidence Auto build**. Operator may instead pick **Track Q / Q0** (Overseer App freeze).
 
 <!-- overseer:anchor:done-recently -->
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
+| **Track P / P-evidence Thinking freeze DONE** | `docs/PHASE-TRACK-P-P-EVIDENCE.md` reviewed → `pass` (P-evidence-r3), stamp `sha256:c1b9fb3…`. Freezes `verification_evidence` ledger kind; closed artifact types `test_output`\|`deploy_health`\|`screenshot` (hashes + opaque refs); `honesty.require_verification_evidence`; honesty-status Mode A/B; exit `33` + `missing_verification_evidence`; normative build-verification V8 + Evidence table; seven-tier §PE.10 matrix. Kit records/gates claims; **never deploys.** Spec-only — no code landed. |
 | **Track P / P-cost Auto build DONE (build-verified)** | Built against frozen `docs/PHASE-TRACK-P-P-COST-AWARENESS.md` → `/build-verification-review` **`pass` (P-cost-BV-r1)**. Shipped: `cost_class` on `model_tiers`; `tools/cost_awareness/` (derive + active-slice surface); `cost_awareness:` config; additive `overseer route` cost fields; exit `32`; status + governance-sync spend-awareness reminders; handover template line. **569** tests green (+40 §PC.9). Kit = cost-awareness rule-holder, runtime = spender. |
 | **Track P / P-cost Thinking freeze DONE** | `docs/PHASE-TRACK-P-P-COST-AWARENESS.md` reviewed → `pass` (P-cost-r2), stamp `sha256:9f26678…`. Freezes optional currency-free `cost_class` on `model_tiers`; `paid_step_before_spend` derivation; additive cost annotation on `overseer route`; optional `cost_awareness:` config; active-slice spend-awareness surface on `overseer status` + `governance-sync` footer (reminder-only); exit `32`; seven-tier matrix. Kit = cost-awareness rule-holder, runtime = spender; **price-agnostic by design.** Spec-only — no code landed. |
 | **Track P / P-route Auto build DONE (build-verified)** | `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` built → `/build-verification-review` **`pass` (P-route-BV-r1)**. Vendored `policy/model-routing.yaml`; `model_tiers` in `policy/model-labels.yaml`; optional `model_routing:` config; read-only `overseer route` + exit `30`/`31`; status routing-validity when enabled. **529** tests green (+43 §PR.8). |
-| **KH3 Footprint self-integrity hard gate DONE (Thinking + Auto)** | `docs/PHASE-KH3-FOOTPRINT-INTEGRITY-HARD-GATE.md` reviewed → `pass` (KH3-r2). New `tools/footprint_integrity/` (`FootprintIntegrityReport`/`check_footprint_integrity`, frozen trigger: `version.lock`-declared + non-`preserved` + absent from disk — existence-only, never content-hash); wired fail-closed into `status --exit-code` (always-on, no flag), `review --freeze`, `governance-sync` (exit `2`, no renumbering of the frozen `2 > 6 > 3 > 0` precedence). **486** tests green (+30 §KH3.8). |
-| **Self-footprint seed (hygiene, PR #20)** | Seeded the 13 kit-owned files `version.lock` had declared since K4b but were never rendered — real `overseer sync --yes`, zero `--force` (all `missing`, not conflicts). Verified no secrets, no unsubstituted-token bugs. |
-| **KH2 Muse-sync hard gate DONE (Thinking + Auto)** | `docs/PHASE-KH2-MUSE-SYNC-HARD-GATE.md` reviewed → `pass` (KH2-r2). `StatusResult.muse_dirty`/`git_dirty` (all three adapters); `tools/muse_sync/` (`MuseSyncReport`/`check_muse_sync`, frozen trigger `muse_dirty and not git_dirty`); wired fail-closed into `status --exit-code`, `review --freeze`, `governance-sync` (exit `2`, no renumbering of the frozen `2 > 6 > 3 > 0` precedence). **456** tests green (+27 §KH2.8). |
-| **Muse-sync catch-up (hygiene)** | Muse main was 2 git commits behind (`52b7e6e`, `4eb6d26` — the muse-rev-parse fix and the P-route freeze) with no matching `muse commit`. Ran `muse code add -A && muse commit` — catch-up commit `sha256:3e14450f…`. |
-| **Track P / P-route Thinking freeze DONE** | `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` reviewed → `pass` (P-route-r2), stamp `sha256:ab6b6a9…`. Frozen: `policy/model-routing.yaml` schema (first-match-wins + mandatory `defaults`; `fallback[0] == model_tier` terminating in `human`); `model_tiers` extension for `policy/model-labels.yaml` (abstract tiers, no vendor slugs); optional `model_routing:` config; read-only `overseer route` + exit `30`/`31`; seven-tier matrix. Kit = rule-holder, runtime = executor; **no model calls in the kit.** |
+| **KH3 Footprint self-integrity hard gate DONE (Thinking + Auto)** | `docs/PHASE-KH3-FOOTPRINT-INTEGRITY-HARD-GATE.md` reviewed → `pass` (KH3-r2). New `tools/footprint_integrity/`; wired fail-closed into `status --exit-code`, `review --freeze`, `governance-sync`. **486** tests green (+30 §KH3.8). |
+| **Track P / P-route Thinking freeze DONE** | `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` reviewed → `pass` (P-route-r2), stamp `sha256:ab6b6a9…`. Kit = rule-holder, runtime = executor; **no model calls in the kit.** |
 | **Track P / P1 DONE (build-verified)** | `provenance` envelope + Ed25519 verify + `require_agent_signature` + exit `25`/`26`; **429** tests green (+30 §P0.8) |
 <!-- /overseer:anchor:done-recently -->
 
-### THE ONE NEXT STEP — **Model: Thinking (Track P / P-evidence freeze)**
+### THE ONE NEXT STEP — **Model: Auto (Track P / P-evidence build)**
 
-Freeze the **Track P / P-evidence** verification-evidence capture contract — extend build-verification +
-honesty ledger to record verification artifacts (test-output hash, deploy/health check ref, screenshot
-ref) as ledger evidence. **Needs Thinking freeze before build** (`docs/ROADMAP.md` exploration row).
+Build the **Track P / P-evidence** verification-evidence capture surface mechanically against frozen
+`docs/PHASE-TRACK-P-P-EVIDENCE.md`. No redesign. Run `/build-verification-review` before marking DONE.
 
 | | |
 | --- | --- |
-| **ID** | **Track P / P-evidence** (Thinking) |
-| **Branch** | `feat/track-p-evidence-freeze` (slug = `track-p-evidence-freeze`) |
-| **Read first** | `docs/ROADMAP.md` (P-evidence row); `docs/OVERSEER-KIT-LAYERED-HONESTY-VISION.md`; existing build-verification skill; L2 ledger (`tools/honesty/`) |
-| **Deliver** | Frozen contract doc `docs/PHASE-TRACK-P-P-EVIDENCE.md`; seven-tier test matrix; boundary table (kit records claims, never performs deploy) |
-| **Hard stops** | No live deploy; no redesign of P-cost or P-route; no Tier-3 merge without authorization |
+| **ID** | **Track P / P-evidence build** (Auto) |
+| **Branch** | `feat/track-p-evidence-build` (slug = `track-p-evidence-build`) — or continue `feat/track-p-evidence-freeze` if operator prefers one PR |
+| **Read first** | `docs/PHASE-TRACK-P-P-EVIDENCE.md` (frozen); `tools/honesty/`; `cursor/skills/build-verification-review/SKILL.md`; `adapters/config.py` (`HONESTY_KEYS`) |
+| **Deliver** | `verification_evidence` kind + validate/append; `require_verification_evidence`; honesty-status Mode B; exit `33`; twin skill updates; seven-tier §PE.10 tests |
+| **Hard stops** | No live deploy / HTTP health probe / screenshot capture in the kit; no redesign of P-cost/P-route/P0; no Tier-3 merge without authorization |
 
 <!-- overseer:anchor:paste-ready-prompt -->
-### Paste-ready prompt — Track P / P-evidence Thinking freeze
+### Paste-ready prompt — Track P / P-evidence Auto build
 
 ```
-Phase Track P / P-evidence freeze — Thinking (overseer-kit).
+Phase Track P / P-evidence build — Auto (overseer-kit).
 
-Model: thinking-high (design + freeze spec; no mechanical build until freeze → pass).
+Model: Auto (mechanical implementation against frozen spec; no redesign).
 
-Read first: docs/ROADMAP.md (P-evidence row); docs/OVERSEER-KIT-LAYERED-HONESTY-VISION.md;
-  .cursor/skills/build-verification-review/SKILL.md; tools/honesty/ ledger module.
+Read first: docs/PHASE-TRACK-P-P-EVIDENCE.md (frozen ground truth);
+  tools/honesty/{types,validate,ledger,status}.py; adapters/config.py;
+  cursor/skills/build-verification-review/SKILL.md (+ .cursor twin).
 
-Task: freeze verification-evidence capture — extend build-verification + honesty ledger to record
-verification artifacts (test-output hash, deploy/health check ref, screenshot ref) as ledger evidence.
+Task: implement verification-evidence capture per §§PE.3–PE.8 — ledger kind
+verification_evidence; artifact types test_output|deploy_health|screenshot; config
+require_verification_evidence; honesty-status Mode B (--verification-evidence /
+--frozen-spec); exit 33 + missing_verification_evidence; update both skill paths per §PE.7;
+seven-tier §PE.10 tests green.
 
-Hard stops: kit records/gates claims; never performs deploy; no Tier-3 merge without authorization.
+Before DONE: /build-verification-review (thinking-high) → pass.
+Hard stops: kit never deploys / probes / screenshots; no Tier-3 merge without authorization.
 
 Governance gates (mandatory — remind only; silence is not pass):
-- Freeze review: /freeze-review-loop before Thinking freeze → DONE
+- Build verification: /build-verification-review before Auto → DONE
 - Update docs/ROADMAP.md + docs/OVERSEER-HANDOVER.md together on completion (SD-17).
 ```
 <!-- /overseer:anchor:paste-ready-prompt -->
@@ -99,6 +101,7 @@ Governance gates (mandatory — remind only; silence is not pass):
 | **Track P / P1** | **DONE** — agent provenance build-verified → `pass` (P1-BV-r2); BV1 (§P0.6 verify-surface parity) fixed; **429** tests green (+30 §P0.8) |
 | **Track P / P-route** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` reviewed → `pass`, P-route-r2) + Auto build (build-verified → `pass`, P-route-BV-r1). Declarative model-routing policy shipped: `policy/model-routing.yaml`, `model_tiers`, `model_routing:` config, `overseer route`, exit `30`/`31`. **529** tests green (+43 §PR.8). Kit = rule-holder, runtime = executor |
 | **Track P / P-cost** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-P-P-COST-AWARENESS.md` reviewed → `pass`, P-cost-r2) + Auto build (build-verified → `pass`, P-cost-BV-r1). Cost-awareness surface shipped: `cost_class` on `model_tiers`, `tools/cost_awareness/`, `cost_awareness:` config, additive `overseer route` cost fields, exit `32`, status + governance-sync reminders. **569** tests green (+40 §PC.9). Kit = cost-awareness rule-holder, runtime = spender |
+| **Track P / P-evidence** | **Thinking DONE** — `docs/PHASE-TRACK-P-P-EVIDENCE.md` reviewed → `pass` (P-evidence-r3), stamp `sha256:c1b9fb3…`. Auto build **TODO** (cleared). Verification-evidence capture: ledger kind + artifact types + Mode B honesty-status + exit `33` + skill V8 delta. Kit records/gates; never deploys |
 | **Track Q / Q0–Q2** | **TODO** — Overseer App: local web UI over the existing engine (Q1) packaged with **Tauri** into a cross-platform desktop app (Q2); needs Q0 Thinking freeze first; not yet started |
 | **Muse dogfood** | **D2 repaired** + substrate health + gate reminders + **muse-sync hard gate (KH2)** + **footprint self-integrity hard gate (KH3)** live; `muse rev-parse` reads plain-text SHA (0.2.x returns bare SHA on success; JSON only on failure/non-zero); `governance-sync --dry-run` exits 0; muse canonical HEAD `sha256:3e14450f…` (catch-up commit; genesis `sha256:4671b7f…`) |
 | **KH1b** | **DONE** — substrate §1 + gate reminders §2 |
@@ -114,11 +117,11 @@ Governance gates (mandatory — remind only; silence is not pass):
 
 | Item | Value |
 | --- | --- |
-| Branch | `feat/track-p-cost-freeze` (P-cost build + governance sync pending closing commit) |
-| HEAD (pre closing-commit) | uncommitted (P-cost build code + tests + ROADMAP + this handover) |
-| Muse HEAD | `sha256:4543518e…` (branch `main`; genesis `sha256:4671b7f…`) |
+| Branch | `feat/track-p-evidence-freeze` |
+| HEAD (pre closing-commit) | uncommitted (P-evidence freeze + ROADMAP + this handover) |
+| Muse HEAD | `sha256:4543518e…` (branch `main`; genesis `sha256:4671b7f…`) — catch-up may be needed after this commit |
 | GitHub bridge | no bridge PR currently open |
-| Dirty | yes (P-cost build + governance docs — pending closing commit) |
+| Dirty | yes (freeze doc + governance — pending closing commit) |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -130,6 +133,22 @@ Governance gates (mandatory — remind only; silence is not pass):
 
 <!-- overseer:anchor:change-log -->
 ## Change log
+
+- **2026-07-13** — **Track P / P-evidence Thinking freeze DONE (reviewed → `pass`, P-evidence-r3).**
+  Drafted and froze `docs/PHASE-TRACK-P-P-EVIDENCE.md`: verification-evidence capture that closes
+  build-verification V8's durability gap. Frozen surface — ledger kind `verification_evidence`
+  (additive K9a enum amendment; `actor_role=verifier`); closed artifact types
+  `test_output`\|`deploy_health`\|`screenshot` (content hashes + opaque refs; no blobs in ledger;
+  kit never deploys / HTTP-probes / screenshots); `honesty.require_verification_evidence:
+  off\|warn\|require` (default `off`; must join `HONESTY_KEYS`); honesty-status Mode A/B mutual
+  exclusion (`--verification-evidence` / `--frozen-spec`); exit `33` +
+  `missing_verification_evidence`; normative build-verification skill V8 + Evidence table delta
+  (both twin paths); seven-tier §PE.10 matrix. Freeze-review loop: r1 findings (Mode B JSON/token,
+  Mode A/B mutual exclusion, `frozen_spec` opacity, flag names, K9a amendment note) → fixed; r2
+  findings (`HONESTY_KEYS`, `off` wording) → fixed; **P-evidence-r3 → `pass`**; stamp written by
+  `overseer review --freeze` (digest `sha256:c1b9fb3…`). **Spec-only — no code landed.** ROADMAP:
+  Track P / P-evidence → **DONE (Thinking)**; added **Track P / P-evidence build** (Auto, TODO).
+  Handover NEXT flips to the P-evidence Auto build. **569** tests unchanged.
 
 - **2026-07-13** — **Track P / P-cost Auto build DONE (build-verified → `pass`, P-cost-BV-r1).**
   Built mechanically against frozen `docs/PHASE-TRACK-P-P-COST-AWARENESS.md` (no redesign): optional
