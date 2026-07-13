@@ -131,9 +131,9 @@ Hard stops: no signup UI; no Stage 3 kit upgrade ceremony; no new CLI/regime ada
 | --- | --- |
 | Branch                    | `feat/track-o-o0-normie-custody-freeze`                                                              |
 | HEAD                      | Track O / O0 freeze pass (O0-r3) + ROADMAP/HANDOVER close-out                                        |
-| Muse HEAD | catch-up may be needed after this commit |
-| GitHub bridge | prior PR #23 on `feat/track-q-desktop-complete` (separate branch) |
-| Dirty                     | commit on feature branch when ready                                                                      |
+| Muse HEAD | `sha256:96774a9b…` (vscode align) / prior O0 `sha256:a72c6667…` |
+| GitHub bridge | Feature branch pushed: `feat/track-o-o0-normie-custody-freeze` (no merge) |
+| Dirty                     | clean (git + muse)                                                                                   |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
