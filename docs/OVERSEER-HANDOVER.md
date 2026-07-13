@@ -8,8 +8,8 @@
 
 ## NEXT SESSION — Track P / P-route Auto build (▶ NEXT)
 
-**Date:** 2026-07-12  
-**Current position:** **KH2 Muse-sync hard gate DONE (Thinking + Auto, same session).** MuseHub had drifted behind Git on this exact repo (two git commits landed with no matching `muse commit`, despite `muse+git-mirror` declaring Muse canonical) — root-caused to a process gap, not a tooling bug: `tools/substrate_health/` only ever checked that `.muse/` **files exist**, never that Muse's **content** was current. Closed permanently: froze + built `docs/PHASE-KH2-MUSE-SYNC-HARD-GATE.md` (**reviewed → `pass`, KH2-r2**) — a fail-closed gate on `overseer status --exit-code` / `review --freeze` / `governance-sync` that refuses (exit `2`) exactly when Git is clean but Muse is not (mid-edit "both dirty" is a frozen non-trigger, never blocked). Catch-up `muse commit` run as Tier-1 hygiene (`sha256:3e14450f…`). **456** tests green (+27 §KH2.8). Predecessor **Track P / P-route Thinking freeze DONE** — `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` **reviewed → `pass` (P-route-r2)**, stamp digest `sha256:ab6b6a9…` (spec-only, no code landed); froze the declarative model-routing policy: `policy/model-routing.yaml` schema, the additive `model_tiers` extension to `policy/model-labels.yaml`, an optional default-inert `model_routing:` config block, a read-only `overseer route` surface + exit codes `30`/`31`, the rule-holder-not-executor boundary, and the seven-tier matrix.  
+**Date:** 2026-07-13  
+**Current position:** **KH3 Footprint self-integrity hard gate DONE (Thinking + Auto, same session) — second permanent hygiene fix in as many sessions.** This session's own hygiene investigation found 13 kit-owned files (`.cursor/rules/*`, `.cursor/skills/*/SKILL.md`, `.overseer/policy/*.yaml`, `.overseer/STANDING-DECISIONS.reference.md`) declared in `.overseer/version.lock` since K4b (2026-07-10) but never actually rendered to disk on this dogfood repo — a 3-day, 20-merged-PR blind spot, because the one check that could have caught it (`overseer status --check-footprint`) is opt-in and was never wired into `review --freeze` / `governance-sync`. Seeded the 13 files for real via `overseer sync --yes` (PR #20), **then** closed the detection gap permanently: froze + built `docs/PHASE-KH3-FOOTPRINT-INTEGRITY-HARD-GATE.md` (**reviewed → `pass`, KH3-r2**) — a new always-on `tools/footprint_integrity/` probe wired fail-closed into `status --exit-code` / `review --freeze` / `governance-sync`, triggering **only** when a `version.lock`-declared, non-`preserved` file is completely absent from disk (deliberately existence-only, never content-hash, to avoid false-closing on the same benign drift class KH2/the prior session's hygiene fix already hit for `scripts/muse-bridge-deploy.sh`). **486** tests green (+30 §KH3.8). Predecessor **KH2 Muse-sync hard gate DONE** (same pattern, for MuseHub/GitHub drift instead of self-footprint drift) — see prior change-log entry.  
 **Model:** **Auto** (mechanical build against the frozen P-route contract — no redesign)  
 **Operator choice:** the default next slice below is the **Track P / P-route Auto build**. Operator may instead pick **Track P / P-cost**, **Track P / P-evidence**, or **Track Q / Q0** (Overseer App freeze) — the latter three are Thinking freezes and each must clear the "governance, not runtime" boundary.
 
@@ -18,6 +18,8 @@
 
 | Slice | Deliverable |
 | --- | --- |
+| **KH3 Footprint self-integrity hard gate DONE (Thinking + Auto)** | `docs/PHASE-KH3-FOOTPRINT-INTEGRITY-HARD-GATE.md` reviewed → `pass` (KH3-r2). New `tools/footprint_integrity/` (`FootprintIntegrityReport`/`check_footprint_integrity`, frozen trigger: `version.lock`-declared + non-`preserved` + absent from disk — existence-only, never content-hash); wired fail-closed into `status --exit-code` (always-on, no flag), `review --freeze`, `governance-sync` (exit `2`, no renumbering of the frozen `2 > 6 > 3 > 0` precedence). **486** tests green (+30 §KH3.8). |
+| **Self-footprint seed (hygiene, PR #20)** | Seeded the 13 kit-owned files `version.lock` had declared since K4b but were never rendered — real `overseer sync --yes`, zero `--force` (all `missing`, not conflicts). Verified no secrets, no unsubstituted-token bugs. |
 | **KH2 Muse-sync hard gate DONE (Thinking + Auto)** | `docs/PHASE-KH2-MUSE-SYNC-HARD-GATE.md` reviewed → `pass` (KH2-r2). `StatusResult.muse_dirty`/`git_dirty` (all three adapters); `tools/muse_sync/` (`MuseSyncReport`/`check_muse_sync`, frozen trigger `muse_dirty and not git_dirty`); wired fail-closed into `status --exit-code`, `review --freeze`, `governance-sync` (exit `2`, no renumbering of the frozen `2 > 6 > 3 > 0` precedence). **456** tests green (+27 §KH2.8). |
 | **Muse-sync catch-up (hygiene)** | Muse main was 2 git commits behind (`52b7e6e`, `4eb6d26` — the muse-rev-parse fix and the P-route freeze) with no matching `muse commit`. Ran `muse code add -A && muse commit` — catch-up commit `sha256:3e14450f…`. |
 | **Track P / P-route Thinking freeze DONE** | `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` reviewed → `pass` (P-route-r2), stamp `sha256:ab6b6a9…`. Frozen: `policy/model-routing.yaml` schema (first-match-wins + mandatory `defaults`; `fallback[0] == model_tier` terminating in `human`); `model_tiers` extension for `policy/model-labels.yaml` (abstract tiers, no vendor slugs); optional `model_routing:` config; read-only `overseer route` + exit `30`/`31`; seven-tier matrix. Kit = rule-holder, runtime = executor; **no model calls in the kit.** |
@@ -82,7 +84,7 @@ Governance gates (mandatory — remind only; silence is not pass):
 | **Tests** | Seven tiers per `policy/test-tiers.yaml` before DONE |
 | **Close** | Update ROADMAP + this handover together; feature branch → PR (no commit/push without consent) |
 | **Governance gates** | §KH1.9 **live** — `overseer status` + `governance-sync` pending-gate reminders |
-| **Muse dev tree** | `overseer status --exit-code` must show `substrate.ok: true` **and** `muse_sync.ok: true` before phase DONE. Hollow substrate → `muse init --force .`; Muse behind Git (`muse_sync: pending`) → `muse code add -A && muse commit -m "…"` (both Tier 1) |
+| **Muse dev tree** | `overseer status --exit-code` must show `substrate.ok: true`, `muse_sync.ok: true`, **and** `footprint_self_integrity.ok: true` before phase DONE. Hollow substrate → `muse init --force .`; Muse behind Git (`muse_sync: pending`) → `muse code add -A && muse commit -m "…"`; declared-but-absent kit file (`footprint_self_integrity: missing`) → `overseer sync` (all Tier 1) |
 
 ---
 
@@ -96,6 +98,7 @@ Governance gates (mandatory — remind only; silence is not pass):
 | **Governance docs** | `docs/OVERSEER-HANDOVER.md`, `docs/ROADMAP.md` |
 | **KH1 contract** | `docs/PHASE-KH1-HANDOVER-RELAY-STANDARD.md` — **reviewed → `pass` (KH1-r2)** |
 | **KH2 contract** | `docs/PHASE-KH2-MUSE-SYNC-HARD-GATE.md` — **reviewed → `pass` (KH2-r2)**; Auto build **DONE** |
+| **KH3 contract** | `docs/PHASE-KH3-FOOTPRINT-INTEGRITY-HARD-GATE.md` — **reviewed → `pass` (KH3-r2)**; Auto build **DONE** |
 | **Kit version** | `0.1.0` (`VERSION`) |
 | **K12 / Track N** | **DONE** — landing + scenario gallery + LICENSE + funnel |
 | **KH1 Handover relay** | **DONE** — contract `pass` (KH1-r2); §KH1.6 close-out complete |
@@ -103,24 +106,25 @@ Governance gates (mandatory — remind only; silence is not pass):
 | **Track P / P1** | **DONE** — agent provenance build-verified → `pass` (P1-BV-r2); BV1 (§P0.6 verify-surface parity) fixed; **429** tests green (+30 §P0.8) |
 | **Track P / P-route** | **Thinking freeze DONE** — `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` reviewed → `pass` (P-route-r2), stamp `sha256:ab6b6a9…`. Declarative model-routing *policy* frozen (schema + `model_tiers` extension + optional `model_routing:` config + read-only `overseer route` + exit `30`/`31` + seven-tier matrix). Spec-only; **P-route Auto build queued** (TODO). Kit = rule-holder, runtime = executor |
 | **Track Q / Q0–Q2** | **TODO** — Overseer App: local web UI over the existing engine (Q1) packaged with **Tauri** into a cross-platform desktop app (Q2); needs Q0 Thinking freeze first; not yet started |
-| **Muse dogfood** | **D2 repaired** + substrate health + gate reminders + **muse-sync hard gate (KH2)** live; `muse rev-parse` reads plain-text SHA (0.2.x returns bare SHA on success; JSON only on failure/non-zero); `governance-sync --dry-run` exits 0; muse canonical HEAD `sha256:3e14450f…` (catch-up commit; genesis `sha256:4671b7f…`) |
+| **Muse dogfood** | **D2 repaired** + substrate health + gate reminders + **muse-sync hard gate (KH2)** + **footprint self-integrity hard gate (KH3)** live; `muse rev-parse` reads plain-text SHA (0.2.x returns bare SHA on success; JSON only on failure/non-zero); `governance-sync --dry-run` exits 0; muse canonical HEAD `sha256:3e14450f…` (catch-up commit; genesis `sha256:4671b7f…`) |
 | **KH1b** | **DONE** — substrate §1 + gate reminders §2 |
 | **KH2** | **DONE** — Muse-sync hard gate (freeze `pass` KH2-r2 + Auto build); `tools/muse_sync/`; fail-closed on `status --exit-code` / `review --freeze` / `governance-sync` |
+| **KH3** | **DONE** — Footprint self-integrity hard gate (freeze `pass` KH3-r2 + Auto build); `tools/footprint_integrity/`; fail-closed on `status --exit-code` / `review --freeze` / `governance-sync` when a declared kit-owned file is absent from disk |
 | **Public brand** | **🆗 Overseer Kit** (locked in template + landing) |
 | **CLI** | `init` \| `sync` \| `status` \| `review --freeze` \| `governance-sync` \| `verify-step` \| `honesty-status` \| `ledger` |
 | **Public landing** | `docs/landing/index.html` · scenario gallery `docs/landing/scenarios/index.html` |
 <!-- /overseer:anchor:verified-snapshot -->
 
 <!-- overseer:anchor:vcs-table -->
-## VCS (verified 2026-07-12)
+## VCS (verified 2026-07-13)
 
 | Item | Value |
 | --- | --- |
-| Branch | `feat/kh2-muse-sync-hard-gate` (cut from `feat/track-p-route-freeze` @ `4eb6d26`, open as PR #16) |
-| HEAD (pre closing-commit) | `4eb6d26` |
-| Muse HEAD | `sha256:3e14450f…` (branch `main`; catch-up commit capturing the P-route freeze + adapter fix that had drifted; genesis `sha256:4671b7f…`) |
-| GitHub bridge | PR #15 — `muse-mirror → main` (still open); PR #16 — `feat/track-p-route-freeze → main` (still open) |
-| Dirty | yes (KH2 freeze doc + `tools/muse_sync/` + adapter/CLI wiring + seven-tier tests + ROADMAP + this handover — pending this session's closing commit on `feat/kh2-muse-sync-hard-gate`) |
+| Branch | `feat/kh3-footprint-integrity-hard-gate` (cut from `main` @ `5b062a4`, post-PR #20) |
+| HEAD (pre closing-commit) | `5b062a4` |
+| Muse HEAD | `sha256:4543518e…` (branch `main`; adds the 13 seeded self-footprint files; genesis `sha256:4671b7f…`) |
+| GitHub bridge | PR #15 / #16 — superseded by merged #18/#19/#20; no bridge PR currently open |
+| Dirty | yes (KH3 freeze doc + `tools/footprint_integrity/` + status/review/governance-hygiene wiring + seven-tier tests + ROADMAP + this handover — pending this session's closing commit on `feat/kh3-footprint-integrity-hard-gate`) |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -132,6 +136,38 @@ Governance gates (mandatory — remind only; silence is not pass):
 
 <!-- overseer:anchor:change-log -->
 ## Change log
+
+- **2026-07-13** — **KH3 Footprint self-integrity hard gate DONE (Thinking + Auto, same session —
+  permanent fix for this repo's own self-footprint drift).** Direct follow-on to the seed-fix below:
+  after seeding the 13 missing files, closed *why* they were ever silently missing for three days.
+  Root cause: `overseer status --check-footprint` (the only existing check that could see this) is an
+  opt-in flag, and is not wired into `review --freeze` or `governance-sync` at all — confirmed by
+  direct search of both modules. **Freeze** (`docs/PHASE-KH3-FOOTPRINT-INTEGRITY-HARD-GATE.md`,
+  self-reviewed via `overseer review --freeze` checklist + semantic pass; round 1 raised one
+  non-escalating MAJOR scope-risk finding — R1-M1: the initial draft trigger was "any kit-owned
+  digest mismatch," which would fail-close `review --freeze`/`governance-sync` for *any* consumer
+  repo with a legitimate, not-yet-`preserved` content drift (the exact false-positive class this
+  session's prior hygiene fix hit for `scripts/muse-bridge-deploy.sh`) — narrowed to
+  **declared-but-absent-from-disk only**; **KH3-r2 → `pass`**, stamp digest
+  `sha256:4ad2c038…`): new `tools/footprint_integrity/` (`FootprintIntegrityReport`/
+  `check_footprint_integrity`) checks every non-`preserved` entry **already recorded in
+  `version.lock`** for existence on disk — deliberately never re-resolves the current kit templates
+  and never hashes content, so it cannot fail-close on benign drift or on lightweight test fixtures.
+  **Auto build** wires it into the same three fail-closed choke points KH1b/KH2 use — `overseer
+  status --exit-code` (always-on, no flag — new additive `footprint_self_integrity` JSON key,
+  distinct from the existing opt-in `footprint_integrity` string key, which is byte-for-byte
+  unchanged), `overseer review --freeze`, `overseer governance-sync` — all reusing the existing exit
+  code `2`. **Build-time refinement from the frozen §KH3.4 draft** (documented transparently, not a
+  redesign): switched from checking against a fresh `resolve_footprint()` re-render to checking only
+  what `version.lock` itself already declares — strictly narrower and more faithful to the actual
+  incident (a kit template that has never been through a completed `sync` yet is *drift*, already
+  covered by the existing `overseer status` drift check, not "declared but missing"), and this
+  change alone took the initial implementation from 31 failing pre-existing tests (fixtures with
+  synthetic/empty locks that don't declare the full self-footprint) down to 0. Seven-tier KH3 matrix:
+  **30** new tests (**486** total green). Verified live on this repo: `overseer status
+  --check-footprint --exit-code` exits `0` with `footprint_self_integrity: {state: ok}` post-fix.
+  ROADMAP: added **KH3a** (Thinking, DONE) + **KH3b** (Auto, DONE). NEXT reverts to the **Track P /
+  P-route Auto build** (unchanged from before this detour, same as KH2's precedent).
 
 - **2026-07-13** — **Hygiene: seed 13 self-footprint files that were declared in
   `.overseer/version.lock` since K4b (2026-07-10) but never actually existed on disk** — `.cursor/rules/*`
