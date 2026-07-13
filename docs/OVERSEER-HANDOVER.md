@@ -129,7 +129,7 @@ Hard stops: no deploy code in kit; no live consumer probes; no Tier-3 merge; no 
 | --- | --- |
 | Branch                    | `feat/track-o-o3-upgrade-regime`                                                                        |
 | HEAD                      | Track O / O3 Stage 3 upgrade-regime build (BV O3-BV-r2) + ROADMAP/HANDOVER close-out                    |
-| Muse HEAD | (sync on close-out commit) |
+| Muse HEAD | `sha256:ce27cf6e…` (O3 build close-out) |
 | GitHub bridge | Feature branch (no merge) |
 | Dirty                     | clean after O3 close-out                                                                                |
 <!-- /overseer:anchor:vcs-table -->
