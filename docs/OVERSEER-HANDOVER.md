@@ -9,7 +9,7 @@
 ## NEXT SESSION — Track P / P-route Auto build (▶ NEXT)
 
 **Date:** 2026-07-12  
-**Current position:** **Track P / P-route Thinking freeze DONE** — `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` **reviewed → `pass` (P-route-r2)**, stamp digest `sha256:ab6b6a9…`. Froze the declarative model-routing policy: `policy/model-routing.yaml` schema (`{position, phase_tier, gate} → model_tier + fallback`), the additive `model_tiers` extension to `policy/model-labels.yaml`, an optional default-inert `model_routing:` config block, a read-only `overseer route` surface + exit codes `30`/`31`, the rule-holder-not-executor boundary, and the seven-tier matrix. **No code landed** (spec-only). Predecessor **Track P / P1 DONE** (agent provenance build-verified, **429** tests green).  
+**Current position:** **KH2 Muse-sync hard gate DONE (Thinking + Auto, same session).** MuseHub had drifted behind Git on this exact repo (two git commits landed with no matching `muse commit`, despite `muse+git-mirror` declaring Muse canonical) — root-caused to a process gap, not a tooling bug: `tools/substrate_health/` only ever checked that `.muse/` **files exist**, never that Muse's **content** was current. Closed permanently: froze + built `docs/PHASE-KH2-MUSE-SYNC-HARD-GATE.md` (**reviewed → `pass`, KH2-r2**) — a fail-closed gate on `overseer status --exit-code` / `review --freeze` / `governance-sync` that refuses (exit `2`) exactly when Git is clean but Muse is not (mid-edit "both dirty" is a frozen non-trigger, never blocked). Catch-up `muse commit` run as Tier-1 hygiene (`sha256:3e14450f…`). **456** tests green (+27 §KH2.8). Predecessor **Track P / P-route Thinking freeze DONE** — `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` **reviewed → `pass` (P-route-r2)**, stamp digest `sha256:ab6b6a9…` (spec-only, no code landed); froze the declarative model-routing policy: `policy/model-routing.yaml` schema, the additive `model_tiers` extension to `policy/model-labels.yaml`, an optional default-inert `model_routing:` config block, a read-only `overseer route` surface + exit codes `30`/`31`, the rule-holder-not-executor boundary, and the seven-tier matrix.  
 **Model:** **Auto** (mechanical build against the frozen P-route contract — no redesign)  
 **Operator choice:** the default next slice below is the **Track P / P-route Auto build**. Operator may instead pick **Track P / P-cost**, **Track P / P-evidence**, or **Track Q / Q0** (Overseer App freeze) — the latter three are Thinking freezes and each must clear the "governance, not runtime" boundary.
 
@@ -18,10 +18,10 @@
 
 | Slice | Deliverable |
 | --- | --- |
+| **KH2 Muse-sync hard gate DONE (Thinking + Auto)** | `docs/PHASE-KH2-MUSE-SYNC-HARD-GATE.md` reviewed → `pass` (KH2-r2). `StatusResult.muse_dirty`/`git_dirty` (all three adapters); `tools/muse_sync/` (`MuseSyncReport`/`check_muse_sync`, frozen trigger `muse_dirty and not git_dirty`); wired fail-closed into `status --exit-code`, `review --freeze`, `governance-sync` (exit `2`, no renumbering of the frozen `2 > 6 > 3 > 0` precedence). **456** tests green (+27 §KH2.8). |
+| **Muse-sync catch-up (hygiene)** | Muse main was 2 git commits behind (`52b7e6e`, `4eb6d26` — the muse-rev-parse fix and the P-route freeze) with no matching `muse commit`. Ran `muse code add -A && muse commit` — catch-up commit `sha256:3e14450f…`. |
 | **Track P / P-route Thinking freeze DONE** | `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` reviewed → `pass` (P-route-r2), stamp `sha256:ab6b6a9…`. Frozen: `policy/model-routing.yaml` schema (first-match-wins + mandatory `defaults`; `fallback[0] == model_tier` terminating in `human`); `model_tiers` extension for `policy/model-labels.yaml` (abstract tiers, no vendor slugs); optional `model_routing:` config; read-only `overseer route` + exit `30`/`31`; seven-tier matrix. Kit = rule-holder, runtime = executor; **no model calls in the kit.** |
-| **Freeze review** | `/freeze-review-loop`: checklist gate clean both rounds; P-route-r1 raised two non-escalating MINOR consistency findings (R1-N1 exit-`31` wording, R1-N2 `model_tier`↔`fallback[0]`) → fixed; **P-route-r2 → `pass`** |
 | **Track P / P1 DONE (build-verified)** | `provenance` envelope + Ed25519 verify + `require_agent_signature` + exit `25`/`26`; **429** tests green (+30 §P0.8) |
-| **Track P / P0 DONE** | Contract reviewed → `pass` (P0-r2); stamp `sha256:7db8681…` |
 <!-- /overseer:anchor:done-recently -->
 
 ### THE ONE NEXT STEP — **Model: Auto (Track P / P-route Auto build)**
@@ -82,7 +82,7 @@ Governance gates (mandatory — remind only; silence is not pass):
 | **Tests** | Seven tiers per `policy/test-tiers.yaml` before DONE |
 | **Close** | Update ROADMAP + this handover together; feature branch → PR (no commit/push without consent) |
 | **Governance gates** | §KH1.9 **live** — `overseer status` + `governance-sync` pending-gate reminders |
-| **Muse dev tree** | `overseer status --exit-code` must show `substrate.ok: true` before phase DONE. Hollow → `muse init --force .` (Tier 1) |
+| **Muse dev tree** | `overseer status --exit-code` must show `substrate.ok: true` **and** `muse_sync.ok: true` before phase DONE. Hollow substrate → `muse init --force .`; Muse behind Git (`muse_sync: pending`) → `muse code add -A && muse commit -m "…"` (both Tier 1) |
 
 ---
 
@@ -95,6 +95,7 @@ Governance gates (mandatory — remind only; silence is not pass):
 | **VCS regime** | `muse+git-mirror` (canonical: muse) |
 | **Governance docs** | `docs/OVERSEER-HANDOVER.md`, `docs/ROADMAP.md` |
 | **KH1 contract** | `docs/PHASE-KH1-HANDOVER-RELAY-STANDARD.md` — **reviewed → `pass` (KH1-r2)** |
+| **KH2 contract** | `docs/PHASE-KH2-MUSE-SYNC-HARD-GATE.md` — **reviewed → `pass` (KH2-r2)**; Auto build **DONE** |
 | **Kit version** | `0.1.0` (`VERSION`) |
 | **K12 / Track N** | **DONE** — landing + scenario gallery + LICENSE + funnel |
 | **KH1 Handover relay** | **DONE** — contract `pass` (KH1-r2); §KH1.6 close-out complete |
@@ -102,8 +103,9 @@ Governance gates (mandatory — remind only; silence is not pass):
 | **Track P / P1** | **DONE** — agent provenance build-verified → `pass` (P1-BV-r2); BV1 (§P0.6 verify-surface parity) fixed; **429** tests green (+30 §P0.8) |
 | **Track P / P-route** | **Thinking freeze DONE** — `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` reviewed → `pass` (P-route-r2), stamp `sha256:ab6b6a9…`. Declarative model-routing *policy* frozen (schema + `model_tiers` extension + optional `model_routing:` config + read-only `overseer route` + exit `30`/`31` + seven-tier matrix). Spec-only; **P-route Auto build queued** (TODO). Kit = rule-holder, runtime = executor |
 | **Track Q / Q0–Q2** | **TODO** — Overseer App: local web UI over the existing engine (Q1) packaged with **Tauri** into a cross-platform desktop app (Q2); needs Q0 Thinking freeze first; not yet started |
-| **Muse dogfood** | **D2 repaired** + substrate health + gate reminders live; `muse rev-parse` reads plain-text SHA (0.2.x returns bare SHA on success; JSON only on failure/non-zero); `governance-sync --dry-run` exits 0; muse canonical HEAD `sha256:4671b7f…` |
+| **Muse dogfood** | **D2 repaired** + substrate health + gate reminders + **muse-sync hard gate (KH2)** live; `muse rev-parse` reads plain-text SHA (0.2.x returns bare SHA on success; JSON only on failure/non-zero); `governance-sync --dry-run` exits 0; muse canonical HEAD `sha256:3e14450f…` (catch-up commit; genesis `sha256:4671b7f…`) |
 | **KH1b** | **DONE** — substrate §1 + gate reminders §2 |
+| **KH2** | **DONE** — Muse-sync hard gate (freeze `pass` KH2-r2 + Auto build); `tools/muse_sync/`; fail-closed on `status --exit-code` / `review --freeze` / `governance-sync` |
 | **Public brand** | **🆗 Overseer Kit** (locked in template + landing) |
 | **CLI** | `init` \| `sync` \| `status` \| `review --freeze` \| `governance-sync` \| `verify-step` \| `honesty-status` \| `ledger` |
 | **Public landing** | `docs/landing/index.html` · scenario gallery `docs/landing/scenarios/index.html` |
@@ -114,11 +116,11 @@ Governance gates (mandatory — remind only; silence is not pass):
 
 | Item | Value |
 | --- | --- |
-| Branch | `feat/track-p-route-freeze` |
-| HEAD | `52b7e6e` |
-| Muse HEAD | `sha256:4671b7f…` (branch `main`, 316 files, first muse commit) |
-| GitHub bridge | PR #15 — `muse-mirror → main` |
-| Dirty | yes (P-route freeze doc + ROADMAP + handover; adapter plain-text SHA fix + 6 test mocks + bridge sentinel) |
+| Branch | `feat/kh2-muse-sync-hard-gate` (cut from `feat/track-p-route-freeze` @ `4eb6d26`, open as PR #16) |
+| HEAD (pre closing-commit) | `4eb6d26` |
+| Muse HEAD | `sha256:3e14450f…` (branch `main`; catch-up commit capturing the P-route freeze + adapter fix that had drifted; genesis `sha256:4671b7f…`) |
+| GitHub bridge | PR #15 — `muse-mirror → main` (still open); PR #16 — `feat/track-p-route-freeze → main` (still open) |
+| Dirty | yes (KH2 freeze doc + `tools/muse_sync/` + adapter/CLI wiring + seven-tier tests + ROADMAP + this handover — pending this session's closing commit on `feat/kh2-muse-sync-hard-gate`) |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -131,6 +133,36 @@ Governance gates (mandatory — remind only; silence is not pass):
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-12** — **KH2 Muse-sync hard gate DONE (Thinking + Auto, same session — permanent fix for
+  live MuseHub/GitHub drift).** Diagnosed why Muse fell behind Git on this repo: two git commits
+  (`52b7e6e`, `4eb6d26`) landed with no matching `muse commit`, despite `muse+git-mirror` declaring
+  Muse canonical (`AGENTS.md`) — a **process gap**, not a tooling defect: `tools/substrate_health/`
+  (KH1b) only ever checked that `.muse/HEAD`/`repo.json`/`config.toml` **exist**, never that Muse's
+  tracked **content** was current, so nothing could have caught it. Ran the catch-up
+  `muse code add -A && muse commit` first (Tier 1; commit `sha256:3e14450f…`), then froze and built
+  the permanent gate in the same session so this cannot recur silently. **Freeze**
+  (`docs/PHASE-KH2-MUSE-SYNC-HARD-GATE.md`, self-reviewed via `/freeze-review-loop`; round 1 raised one
+  non-escalating MAJOR internal-consistency finding — R1-M1, the `governance-sync` wiring row
+  described `StatusResult` as available before `adapter.status()` is actually called in
+  `tools/governance_hygiene/reads.py`, contradicting the verified call order — fixed; **KH2-r2 →
+  `pass`**): adds `StatusResult.muse_dirty`/`git_dirty` (populated by all three adapters, defaulted
+  `None` — fully additive, existing `.dirty` meaning unchanged); a new `tools/muse_sync/` probe
+  (`MuseSyncReport`/`check_muse_sync`) whose **frozen trigger** is precisely `muse_dirty and not
+  git_dirty` — Git already clean (committed) while Muse's tracked snapshot still differs — so normal
+  mid-edit work (both dirty, nothing committed anywhere yet) is a **frozen non-trigger** and is never
+  falsely blocked; `not_applicable` for `muse-only`/`git-only` (single-history regimes have no
+  cross-VCS gap). **Auto build** wires `check_muse_sync` into the same three fail-closed choke points
+  `substrate_health` already uses — `overseer status --exit-code`, `overseer review --freeze`,
+  `overseer governance-sync` — all reusing the **existing exit code `2`** (no renumbering of the
+  frozen `status` precedence `2 > 6 > 3 > 0`). Documented boundary (§KH2.6, stated plainly, not
+  oversold): does not catch drift re-masked by a *later* uncommitted edit stacked on top of an
+  already-missed git commit — closing that fully needs a persisted Git-SHA anchor, deliberately
+  deferred as separate scope. Seven-tier KH2 matrix: **27** new tests (**456** total green). Verified
+  live on this repo: `overseer status --exit-code` now exits `0` post-catch-up, and would have exited
+  `2` at the exact moment the drift first occurred had this gate existed then. ROADMAP: added **KH2a**
+  (Thinking, DONE) + **KH2b** (Auto, DONE). Branch `feat/kh2-muse-sync-hard-gate` (kept separate from
+  the still-open P-route PR #16 to keep both PRs single-concern). NEXT reverts to the **Track P /
+  P-route Auto build** (unchanged from before this detour).
 - **2026-07-12** — **Track P / P-route Thinking freeze DONE (reviewed → `pass`).** Drafted and froze
   `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md`: a **declarative model-routing policy** (not a runtime
   dispatcher). Frozen surface — `policy/model-routing.yaml` (`version 1`) mapping the selector triple

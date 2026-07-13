@@ -17,6 +17,7 @@ from tools.freeze_reviewer.checklist import builtin_checklist, load_checklist_fi
 from tools.freeze_reviewer.engine import ReviewOptions, resolve_exit_code, resolve_reviewer_settings, run_freeze_review
 from tools.freeze_reviewer.labels import validate_reviewer_model
 from tools.freeze_reviewer.report import build_report, render_human_report
+from tools.muse_sync import check_muse_sync
 from tools.substrate_health import check_substrate
 
 DISALLOWED_FLAGS = frozenset(
@@ -138,6 +139,13 @@ def run_review(args: Namespace, ctx: CliContext, *, raw_argv: list[str] | None =
     status = adapter.status()
     if isinstance(status, ReadError):
         ctx.output.error(str(status))
+        return 2
+
+    muse_sync = check_muse_sync(config, status)
+    if not muse_sync.ok:
+        ctx.output.error(f"muse_sync: {muse_sync.state} — {muse_sync.message}")
+        if muse_sync.remediation:
+            ctx.output.error(f"remediation: {muse_sync.remediation}")
         return 2
 
     injected_provider = None

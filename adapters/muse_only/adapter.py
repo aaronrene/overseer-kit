@@ -32,6 +32,8 @@ class MuseOnlyAdapter(BaseAdapter):
             dirty=dirty_result,
             branch=branch_result.stdout,
             notes=["canonical=muse", "git-forbidden"],
+            muse_dirty=dirty_result,
+            git_dirty=None,
         )
 
     def read_head(self, ref: str) -> HeadResult | ReadError:

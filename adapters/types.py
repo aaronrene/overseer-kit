@@ -15,6 +15,8 @@ class StatusResult:
     dirty: bool
     branch: str
     notes: list[str] = field(default_factory=list)
+    muse_dirty: bool | None = None
+    git_dirty: bool | None = None
 
 
 @dataclass(frozen=True)
