@@ -38,6 +38,7 @@ HONESTY_KEYS = frozenset(
         "roles_file",
         "require_verdict_on",
         "require_l1_evidence",
+        "require_verification_evidence",
         "allow_signed_approval",
         "ci_reexecutor",
         "require_agent_signature",
@@ -157,6 +158,7 @@ class HonestyConfig:
     roles_file: str | None = None
     require_verdict_on: frozenset[str] = frozenset({"board_done", "handoff", "register"})
     require_l1_evidence: str = "warn"
+    require_verification_evidence: str = "off"
     allow_signed_approval: bool = False
     ci_reexecutor: str | None = None
     require_agent_signature: bool = False
@@ -709,6 +711,10 @@ def _parse_honesty(raw_honesty: Any, path: str) -> HonestyConfig:
     if not isinstance(require_l1, str) or require_l1 not in L1_EVIDENCE_MODES:
         raise ConfigError("honesty.require_l1_evidence must be off|warn|require", path)
 
+    require_verification = h_raw.get("require_verification_evidence", "off")
+    if not isinstance(require_verification, str) or require_verification not in L1_EVIDENCE_MODES:
+        raise ConfigError("honesty.require_verification_evidence must be off|warn|require", path)
+
     allow_signed = h_raw.get("allow_signed_approval", False)
     if not isinstance(allow_signed, bool):
         raise ConfigError("honesty.allow_signed_approval must be a boolean", path)
@@ -728,6 +734,7 @@ def _parse_honesty(raw_honesty: Any, path: str) -> HonestyConfig:
         roles_file=roles_file,
         require_verdict_on=require_verdict_on,
         require_l1_evidence=require_l1,
+        require_verification_evidence=require_verification,
         allow_signed_approval=allow_signed,
         ci_reexecutor=ci_reexecutor,
         require_agent_signature=require_agent_signature,

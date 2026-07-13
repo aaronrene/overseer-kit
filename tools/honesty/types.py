@@ -10,6 +10,7 @@ HonestyErrorToken = Literal[
     "config",
     "refused",
     "missing_verdict",
+    "missing_verification_evidence",
     "approval_integrity",
     "ledger_broken",
     "role_violation",
@@ -28,8 +29,12 @@ ENTRY_KINDS = frozenset(
         "approval_recorded",
         "board_advance",
         "hook_check",
+        "verification_evidence",
     }
 )
+
+VERIFICATION_ARTIFACT_TYPES = frozenset({"test_output", "deploy_health", "screenshot"})
+BV_VERDICTS = frozenset({"pass", "findings", "blocked"})
 
 ACTOR_ROLES = frozenset({"owner", "overseer", "producer", "verifier"})
 
@@ -57,9 +62,10 @@ class HonestyStatusJson:
     producer_session: str | None = None
     matched_verdict_hash: str | None = None
     error: HonestyErrorToken = None
+    verification_evidence: dict[str, Any] | None = None
 
     def to_dict(self) -> dict[str, Any]:
-        return {
+        payload: dict[str, Any] = {
             "ok": self.ok,
             "exit_code": self.exit_code,
             "command": self.command,
@@ -70,6 +76,9 @@ class HonestyStatusJson:
             "matched_verdict_hash": self.matched_verdict_hash,
             "error": self.error,
         }
+        if self.verification_evidence is not None:
+            payload["verification_evidence"] = self.verification_evidence
+        return payload
 
 
 @dataclass

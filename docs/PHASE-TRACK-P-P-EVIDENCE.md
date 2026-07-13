@@ -555,9 +555,9 @@ The P-evidence Auto build ships all seven tiers green locally before DONE
 
 ## §PE.13 — Definition of Done (Auto build — for the next session)
 
-- [ ] Mechanical implementation matches §§PE.3–PE.8
-- [ ] Both skill paths updated per §PE.7
-- [ ] Seven-tier matrix §PE.10 green
-- [ ] `/build-verification-review` → `pass` before ROADMAP Auto row → DONE
-- [ ] Governance sync (ROADMAP + HANDOVER) in the closing commit
-- [ ] Feature-branch push / PR only; merge remains Tier 3
+- [x] Mechanical implementation matches §§PE.3–PE.8
+- [x] Both skill paths updated per §PE.7
+- [x] Seven-tier matrix §PE.10 green
+- [x] `/build-verification-review` → `pass` before ROADMAP Auto row → DONE
+- [x] Governance sync (ROADMAP + HANDOVER) in the closing commit
+- [x] Feature-branch push / PR only; merge remains Tier 3

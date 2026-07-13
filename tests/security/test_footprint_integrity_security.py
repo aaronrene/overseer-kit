@@ -29,7 +29,7 @@ def test_corrupt_lock_fails_closed_not_ok(tmp_path: Path) -> None:
 def test_remediation_text_is_static_never_shell_invoked(tmp_path: Path) -> None:
     lock = _lock([FootprintEntry(path="a.mdc", source="s", sha256="0" * 64, origin=ORIGIN_KIT)])
     report = check_footprint_integrity(tmp_path, lock=lock)
-    assert report.remediation == "overseer sync"
+    assert report.remediation == "ok sync"
     # A literal string, not an f-string interpolating any path/content — nothing to inject.
     assert "{" not in report.remediation
     assert "$" not in report.remediation

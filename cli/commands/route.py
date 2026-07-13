@@ -27,7 +27,7 @@ def run_route_command(args: Namespace, ctx: CliContext) -> int:
     repo_root = resolve_repo_root(cwd=ctx.cwd, repo_arg=args.repo, command="route")
     overseer_dir = repo_root / ".overseer"
     if not overseer_dir.is_dir():
-        ctx.output.error("not initialized — run overseer init first")
+        ctx.output.error("not initialized — run ok init first")
         return 1
 
     config_path = resolve_config_path(repo_root, args.config)

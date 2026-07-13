@@ -26,8 +26,8 @@ truth. This automates the SD-17 obligation — it does not invent new policy.
 ## CLI (when K4/K5 land)
 
 ```bash
-/path/to/overseer-kit/cli/overseer governance-sync --dry-run
-/path/to/overseer-kit/cli/overseer governance-sync
+/path/to/overseer-kit/cli/ok governance-sync --dry-run
+/path/to/overseer-kit/cli/ok governance-sync
 ```
 
 **Default: dry-run.** Writes only on explicit non-dry-run; never on `{{vcs.git.main_branch}}`.

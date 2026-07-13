@@ -18,5 +18,5 @@ with any AI assistant — see root `README.md` § AI tool compatibility.
 | `rules/build-verification-required.mdc` | Always-on: no DONE without `/build-verification-review` pass |
 | `automations/*.json` | Optional Automation templates (not auto-enabled; Tier-3 to enable) |
 
-**Degrade path:** when Automations are unavailable, use `./cli/overseer governance-sync` and
-`./cli/overseer review --freeze` from the terminal instead.
+**Degrade path:** when Automations are unavailable, use `./cli/ok governance-sync` and
+`./cli/ok review --freeze` from the terminal instead.

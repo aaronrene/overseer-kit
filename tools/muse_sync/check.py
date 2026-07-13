@@ -53,7 +53,7 @@ def check_muse_sync(config: OverseerConfig, status: StatusResult) -> MuseSyncRep
             regime=regime,
             state="unreadable",
             message="could not determine Muse/Git working-tree state — failing closed",
-            remediation="re-run overseer status once the adapter can read muse/git state",
+            remediation="re-run ok status once the adapter can read muse/git state",
         )
 
     if status.muse_dirty and not status.git_dirty:

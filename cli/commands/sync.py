@@ -124,7 +124,7 @@ def run_sync(args: Namespace, ctx: CliContext) -> int:
         return 4
 
     if not config_path.is_file():
-        ctx.output.error("config missing: run `overseer init` first")
+        ctx.output.error("config missing: run `ok init` first")
         return 2
 
     try:

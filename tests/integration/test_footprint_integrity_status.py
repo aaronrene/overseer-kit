@@ -46,7 +46,7 @@ def test_status_json_payload_reports_missing_self_footprint(tmp_path: Path, caps
     assert payload["footprint_self_integrity"]["state"] == "missing"
     assert payload["footprint_self_integrity"]["ok"] is False
     assert ".cursor/rules/governance-sync.mdc" in payload["footprint_self_integrity"]["missing"]
-    assert payload["footprint_self_integrity"]["remediation"] == "overseer sync"
+    assert payload["footprint_self_integrity"]["remediation"] == "ok sync"
 
 
 def test_status_json_payload_reports_ok_when_complete(tmp_path: Path, capsys) -> None:

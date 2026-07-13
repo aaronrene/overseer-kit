@@ -6,13 +6,13 @@
 
 ---
 
-## NEXT SESSION — Track Q / Q2b OK CLI entrypoint build (▶ NEXT)
+## NEXT SESSION — Track Q complete; operator choice (▶ NEXT)
 
 **Date:** 2026-07-13  
-**Current position:** **Track Q / Q2a Freeze OK CLI entrypoint DONE (reviewed → `pass`, Q2a-r2).**
-Canonical CLI name is frozen as **`ok`**; `overseer` remains compatibility-only.  
-**Model:** **Auto** (build mechanically against frozen Q2a; no redesign)  
-**Operator choice:** default next slice is **Track Q / Q2b**, then **Q3** Tauri (invokes `ok app`).
+**Current position:** **Track Q / Q3 Tauri desktop packaging DONE (build-verified → `pass`, Q3-BV-r1).**  
+Track Q delivery chain **Q0 → Q1 → Q2b → Q3** is complete: local web UI, canonical `ok` CLI, and cross-platform Tauri desktop shell.  
+**Model:** **Operator choice** — no further Track Q slice is queued; see ROADMAP exploration backlog for ideas requiring a new Thinking freeze.  
+**Operator choice:** pick the next phase from exploration backlog or consumer dogfood; no default Auto build is queued.
 
 
 
@@ -21,60 +21,25 @@ Canonical CLI name is frozen as **`ok`**; `overseer` remains compatibility-only.
 
 | Slice                                                             | Deliverable                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Track Q / Q3 Tauri desktop packaging DONE (build-verified)**   | Tauri shell (`desktop/`) spawns canonical **`ok app`** and loads Q1 loopback UI in a native window; `tools/desktop/` launcher contract + banner parse + manifest validation; `scripts/bundle-desktop-kit.sh` bundles Python engine for release; in-memory auth bootstrap (no `localStorage`); macOS/Windows/Linux from one codebase; **no** engine subcommand/API changes. `/build-verification-review` **`pass` (Q3-BV-r1)**. **696** tests green (+28 §Q3). |
+| **Track Q / Q2b OK CLI entrypoint build DONE (build-verified)**   | Built against frozen `docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md` → `/build-verification-review` **`pass` (Q2b-BV-r1)**. Shipped: `cli/ok` + `cli/overseer` deprecation shim; `prog="ok"`; operator docs/templates/twin skills/CI → `ok`; SPEC §5 + K4.1 naming; remediation strings → `ok`; shims excluded from footprint. **668** tests green (+14 §Q2A.10). Cleared for Q3.                                                                                                              |
 | **Track Q / Q2a Freeze OK CLI entrypoint DONE (Thinking)**        | `docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md` reviewed → `pass` (Q2a-r2), stamp `sha256:dbfbf9ad…`. Freezes `cli/ok` canonical + `cli/overseer` compat deprecation; `prog="ok"`; SPEC/K4.1 naming amendment; engine shims **not** footprint members; seven-tier §Q2A.10. **Spec-only — no code landed.** Cleared for Q2b.                                                                                                      |
-| **Track Q / Q1 Local web UI build DONE (build-verified)**         | Built against frozen `docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md` → `/build-verification-review` `**pass` (Q1-BV-r1)**. Shipped: `overseer app` stdlib loopback server + static UI; `tools/app/` + `cli/commands/app.py`; closed `api/`* handlers calling existing engine; Bearer + CSRF auth; inert-first writes. **654** tests green (+42 §Q0.12).                                                                                |
-| **Track Q / Q0 Freeze Overseer App DONE (Thinking)**              | `docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md` reviewed → `pass` (Q0-r2), stamp `sha256:3c3f6229…`. Freezes `overseer app` contract. Spec-only at freeze time.                                                                                                                                                                                                                                                                        |
-| **Track P / P-evidence Auto build DONE (build-verified)**         | Built against frozen `docs/PHASE-TRACK-P-P-EVIDENCE.md` → `/build-verification-review` `**pass` (P-evidence-BV-r1)**. Shipped: `verification_evidence` kind + `validate_verification_artifacts`; `honesty.require_verification_evidence`; honesty-status Mode B; exit `33` + `missing_verification_evidence`; twin build-verification V8 + Evidence table. **612** tests green (+43 §PE.10). Kit records/gates; never deploys. |
-| **Track P / P-evidence Thinking freeze DONE**                     | `docs/PHASE-TRACK-P-P-EVIDENCE.md` reviewed → `pass` (P-evidence-r3), stamp `sha256:c1b9fb3…`. Freezes `verification_evidence` ledger kind; closed artifact types; Mode A/B; exit `33`; V8 Evidence table; seven-tier §PE.10. Spec-only at freeze time.                                                                                                                                                                        |
-| **Track P / P-cost Auto build DONE (build-verified)**             | Built against frozen `docs/PHASE-TRACK-P-P-COST-AWARENESS.md` → `/build-verification-review` `**pass` (P-cost-BV-r1)**. **569** tests green (+40 §PC.9).                                                                                                                                                                                                                                                                       |
-| **Track P / P-cost Thinking freeze DONE**                         | `docs/PHASE-TRACK-P-P-COST-AWARENESS.md` reviewed → `pass` (P-cost-r2), stamp `sha256:9f26678…`.                                                                                                                                                                                                                                                                                                                               |
-| **Track P / P-route Auto build DONE (build-verified)**            | `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` built → `/build-verification-review` `**pass` (P-route-BV-r1)**. **529** tests green (+43 §PR.8).                                                                                                                                                                                                                                                                                |
+| **Track Q / Q1 Local web UI build DONE (build-verified)**         | Built against frozen `docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md` → `/build-verification-review` **`pass` (Q1-BV-r1)**. Shipped: `ok app` stdlib loopback server + static UI; `tools/app/` + `cli/commands/app.py`; closed `api/*` handlers; Bearer + CSRF auth. **654** tests green (+42 §Q0.12).                                                                                                                                    |
 
 
 
 
-### THE ONE NEXT STEP — **Model: Auto (Track Q / Q2b OK CLI entrypoint build)**
+### THE ONE NEXT STEP — **Model: Operator choice**
 
-Ship `cli/ok` + compat `cli/overseer` deprecation against the frozen Q2a contract.
+Track Q is **complete** (Q0–Q3). No Auto build is queued until a new Thinking freeze promotes work from the exploration backlog.
 
 
 |                |                                                                                                                                     |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID**         | **Track Q / Q2b** (Auto)                                                                                                            |
-| **Branch**     | `feat/track-q-q2b-ok-cli-build` (suggested slug)                                                                                    |
-| **Read first** | `docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md` (frozen); `docs/ROADMAP.md` (Q2b row); `docs/OVERSEER-HANDOVER.md`                     |
-| **Deliver**    | `cli/ok`; `cli/overseer` one-line stderr deprecation; `prog="ok"`; docs/templates/CI/skills pass; SPEC §5 + K4.1 naming; §Q2A.10 seven-tier tests; **no** footprint row for shims |
-| **Hard stops** | No redesign; no silent removal of `overseer` shim; no DONE without `/build-verification-review` → `pass`; no Tier-3 merge without authorization |
-
-
-
-### Paste-ready prompt — Track Q / Q2b OK CLI entrypoint build
-
-```
-Phase Track Q / Q2b — OK CLI entrypoint build (overseer-kit).
-
-Model: Auto (build mechanically against frozen Q2a; no redesign).
-
-Read first: docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md (frozen ground truth);
-  docs/ROADMAP.md (Q2b row); docs/OVERSEER-HANDOVER.md.
-
-Task: implement frozen Q2a exactly:
-  - Add cli/ok POSIX shim → python -m cli.main (executable; no deprecation line)
-  - Update cli/overseer: print exact one-line stderr deprecation once, then same exec
-  - argparse prog="ok"; migrate operator-facing remediation/banner strings to ok
-  - Update operator docs, templates, twin .cursor/ + cursor/ skills, CI examples to ok
-  - Amend SPEC §5 + K4.1 entrypoint naming only (command table → ok …)
-  - Migrate existing tests that assume empty stderr from ./cli/overseer
-  - Do NOT add cli/ok or cli/overseer to footprint / version.lock manifest
-  - Do NOT remove cli/overseer; do NOT change subcommands, exit codes, or .overseer/ paths
-  - Seven-tier tests per §Q2A.10; /build-verification-review → pass before DONE
-
-Hard stops: no silent breaking removal of overseer shim; no Tier-3 merge without authorization.
-
-Governance gates:
-- Build verification before DONE
-- Update docs/ROADMAP.md + docs/OVERSEER-HANDOVER.md together on completion (SD-17).
-```
+| **ID**         | **Operator choice**                                                                                                                 |
+| **Read first** | `docs/ROADMAP.md` (exploration backlog); `docs/OVERSEER-HANDOVER.md`                                                                |
+| **Options**    | **P-deploy** deployment gate (Thinking freeze first); hosted governance dashboard (Thinking); consumer P-route reference; or consumer dogfood |
+| **Hard stops** | No Tier-3 merge without authorization; new scope needs its own Thinking freeze before Auto build                                      |
 
 
 
@@ -90,8 +55,8 @@ Governance gates:
 | **Guardrails** | No secrets; fail-closed VCS reads; no MuseHub-only baseline features; no Tier-3 automation |
 | **Tests** | Seven tiers per `policy/test-tiers.yaml` before DONE |
 | **Close** | Update ROADMAP + this handover together; feature branch → PR (no commit/push without consent) |
-| **Governance gates** | §KH1.9 **live** — `overseer status` + `governance-sync` pending-gate reminders |
-| **Muse dev tree** | `overseer status --exit-code` must show `substrate.ok: true`, `muse_sync.ok: true`, **and** `footprint_self_integrity.ok: true` before phase DONE. Hollow substrate → `muse init --force .`; Muse behind Git (`muse_sync: pending`) → `muse code add -A && muse commit -m "…"`; declared-but-absent kit file (`footprint_self_integrity: missing`) → `overseer sync` (all Tier 1) |
+| **Governance gates** | §KH1.9 **live** — `ok status` + `governance-sync` pending-gate reminders |
+| **Muse dev tree** | `ok status --exit-code` must show `substrate.ok: true`, `muse_sync.ok: true`, **and** `footprint_self_integrity.ok: true` before phase DONE. Hollow substrate → `muse init --force .`; Muse behind Git (`muse_sync: pending`) → `muse code add -A && muse commit -m "…"`; declared-but-absent kit file (`footprint_self_integrity: missing`) → `ok sync` (all Tier 1) |
 
 ---
 
@@ -117,13 +82,15 @@ Governance gates:
 | **Track Q / Q0** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md` reviewed → `pass`, Q0-r2), stamp `sha256:3c3f6229…`. Freezes `overseer app` local-only UI contract |
 | **Track Q / Q1** | **DONE** — Auto build (build-verified → `pass`, Q1-BV-r1). `overseer app` stdlib loopback server + static UI; `tools/app/` + `cli/commands/app.py`; closed `api/*`; Bearer + CSRF; seven-tier §Q0.12. **654** tests green (+42) |
 | **Track Q / Q2a**         | **DONE** — Thinking freeze (`docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md` reviewed → `pass`, Q2a-r2), stamp `sha256:dbfbf9ad…`. Freezes canonical `ok` CLI entrypoint + `overseer` compat shim; seven-tier §Q2A.10. Spec-only. Cleared for Q2b |
-| **Track Q / Q2b–Q3**     | **TODO** — **Q2b** ship `cli/ok` + compat shim (Auto, **NEXT**); **Q3** Tauri packaging (invokes `ok app`) |
+| **Track Q / Q2b**         | **DONE** — Auto build (build-verified → `pass`, Q2b-BV-r1). `cli/ok` canonical + `cli/overseer` deprecation; `prog="ok"`; operator docs/templates/skills/CI pass; SPEC §5 + K4.1 naming; shims not footprint members. **668** tests green (+14 §Q2A.10). Cleared for Q3 |
+| **Track Q / Q3**          | **DONE** — Auto build (build-verified → `pass`, Q3-BV-r1). Tauri desktop shell (`desktop/`) invokes `ok app`; `tools/desktop/` + bundle script; seven-tier §Q3. **696** tests green (+28). Track Q chain complete |
+| **CLI entrypoint**        | **`ok`** (canonical `./cli/ok`); **`overseer`** compat shim (`./cli/overseer`, one-line stderr deprecation) |
+| **CLI subcommands**       | `init` \| `sync` \| `status` \| `review --freeze` \| `governance-sync` \| `verify-step` \| `honesty-status` \| `ledger` \| `route` \| `app` |
 | **Muse dogfood** | **D2 repaired** + substrate health + gate reminders + **muse-sync hard gate (KH2)** + **footprint self-integrity hard gate (KH3)** live; `muse rev-parse` reads plain-text SHA (0.2.x returns bare SHA on success; JSON only on failure/non-zero); `governance-sync --dry-run` exits 0; muse canonical HEAD `sha256:3e14450f…` (catch-up commit; genesis `sha256:4671b7f…`) |
 | **KH1b** | **DONE** — substrate §1 + gate reminders §2 |
 | **KH2** | **DONE** — Muse-sync hard gate (freeze `pass` KH2-r2 + Auto build); `tools/muse_sync/`; fail-closed on `status --exit-code` / `review --freeze` / `governance-sync` |
 | **KH3** | **DONE** — Footprint self-integrity hard gate (freeze `pass` KH3-r2 + Auto build); `tools/footprint_integrity/`; fail-closed on `status --exit-code` / `review --freeze` / `governance-sync` when a declared kit-owned file is absent from disk |
 | **Public brand** | **🆗 Overseer Kit** (locked in template + landing) |
-| **CLI** | `init` \| `sync` \| `status` \| `review --freeze` \| `governance-sync` \| `verify-step` \| `honesty-status` \| `ledger` \| `route` \| `app` |
 | **Public landing** | `docs/landing/index.html` · scenario gallery `docs/landing/scenarios/index.html` |
 <!-- /overseer:anchor:verified-snapshot -->
 
@@ -132,11 +99,11 @@ Governance gates:
 
 | Item | Value |
 | --- | --- |
-| Branch                    | `feat/track-q-q2a-ok-cli-freeze`                                                                         |
-| HEAD (pre closing-commit) | uncommitted (Q2a freeze + governance; prior Q1/P-evidence build files still dirty in tree)               |
-| Muse HEAD | `sha256:4543518e…` (branch `main`; genesis `sha256:4671b7f…`) — catch-up may be needed after this commit |
+| Branch                    | uncommitted (Q2b build + governance)                                                                     |
+| HEAD (pre closing-commit) | Q2b OK CLI entrypoint build                                                                              |
+| Muse HEAD | catch-up may be needed after this commit |
 | GitHub bridge | no bridge PR currently open |
-| Dirty                     | yes (Q2a freeze docs + prior Q1/P-evidence build files — commit Q2a freeze separately)                   |
+| Dirty                     | yes (Q2b build — commit on feature branch when ready)                                                    |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -149,6 +116,24 @@ Governance gates:
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-13** — **Track Q / Q3 Tauri desktop packaging DONE (build-verified → `pass`, Q3-BV-r1).**
+  Shipped cross-platform Tauri shell (`desktop/`): Rust launcher spawns canonical **`ok app`**,
+  parses one-time stderr banner (`url`, `session_credential`, `csrf_token`), loads Q1 loopback UI
+  via `WebviewUrl::External`, and injects in-memory auth bootstrap (no `localStorage`). Python
+  packaging contract in `tools/desktop/` (launcher argv builder, banner parser, manifest validator,
+  init-script generator); `scripts/bundle-desktop-kit.sh` copies engine into Tauri resources for
+  release builds. **No** new engine subcommands, exit codes, or `api/*` surface changes. Seven-tier
+  §Q3: **28** new tests (**696** total green). `/build-verification-review` round 1 → **`pass`**
+  (V1–V8 clean). ROADMAP: Track Q / Q3 → **DONE**; Track Q chain complete; NEXT → operator choice.
+- **2026-07-13** — **Track Q / Q2b OK CLI entrypoint build DONE (build-verified → `pass`, Q2b-BV-r1).**
+  Built mechanically against frozen `docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md`: shipped `cli/ok`
+  canonical POSIX shim + `cli/overseer` compatibility shim (exact one-line stderr deprecation);
+  `argparse` prog `ok`; operator-facing remediation/banner strings → `ok`; operator docs/templates/
+  twin `.cursor/` + `cursor/` skills/CI examples → `ok`; SPEC §5 command table + K4.1 invocation
+  amended; footprint integrity + muse-sync remediation strings updated; engine shims explicitly
+  excluded from `resolve_footprint` / `version.lock`. Seven-tier §Q2A.10: **14** new tests (**668**
+  total green). `/build-verification-review` round 1 → **`pass`** (V1–V8 clean). ROADMAP: Track Q /
+  Q2b → **DONE**; NEXT → **Track Q / Q3** Tauri (`ok app` launcher).
 - **2026-07-13** — **Track Q / Q2a Freeze OK CLI entrypoint DONE (reviewed → `pass`, Q2a-r2).**
   Drafted and froze `docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md`: canonical CLI name `ok`
   (`cli/ok` → `python -m cli.main`; `argparse` prog `ok`); `cli/overseer` remains compatibility

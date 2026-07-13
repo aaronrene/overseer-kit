@@ -50,14 +50,14 @@ Work on a **feature branch** unless noted Tier-3.
 ### D5 example (after D3–D4)
 
 ```bash
-./cli/overseer -C <repo-root> sync -y
-./cli/overseer -C <repo-root> status --check-footprint
+./cli/ok -C <repo-root> sync -y
+./cli/ok -C <repo-root> status --check-footprint
 ```
 
 ### D6 example
 
 ```bash
-./cli/overseer -C <repo-root> governance-sync --dry-run
+./cli/ok -C <repo-root> governance-sync --dry-run
 ```
 
 Evaluate K7.P1–P10 in `docs/PHASE-K7-MUSE-GIT-MIRROR-DOGFOOD.md` §K7.4.1.
