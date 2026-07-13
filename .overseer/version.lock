@@ -2,8 +2,8 @@ lock_version: 1
 kit_version: 0.1.0
 config_version: 1
 installed_at: '2026-07-10T00:00:00Z'
-synced_at: '2026-07-13T07:15:41Z'
-footprint_digest: sha256:ec7dc56f1d78af1a674c1eeafee73892fc76bc7897a13a2175cd9499e2c734ff
+synced_at: '2026-07-13T07:26:49Z'
+footprint_digest: sha256:b4958fdf85e77a3065037465493b5fa9ce77a489fd77e6d508b6639817121dfa
 footprint:
 - path: .cursor/rules/build-verification-required.mdc
   source: cursor/rules/build-verification-required.mdc
@@ -35,7 +35,7 @@ footprint:
   origin: kit
 - path: .cursor/skills/freeze-review/SKILL.md
   source: cursor/skills/freeze-review/SKILL.md
-  sha256: 3fb3946c62fd770ade353cd75b99f4ddf03453f4545c4c86eefc6dfe6e5b1269
+  sha256: ed12784e331125877ca3de790cd4f19e981471197b3284fc2eb7cb79f38ac631
   origin: kit
 - path: .cursor/skills/governance-sync/SKILL.md
   source: cursor/skills/governance-sync/SKILL.md
@@ -47,7 +47,7 @@ footprint:
   origin: kit
 - path: .overseer/policy/model-labels.yaml
   source: policy/model-labels.yaml
-  sha256: a239e211085efa3f77671a627b9dc0fba2717fb23466f3454f67f96f65a71241
+  sha256: b722b8490eadaca7ab9a601358901bde6e52432f7a69f3a0985c42d94c37934c
   origin: kit
 - path: .overseer/policy/test-tiers.yaml
   source: policy/test-tiers.yaml
