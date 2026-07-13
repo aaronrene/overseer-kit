@@ -136,7 +136,7 @@ Hard stops: no signup UI; no live consumer ok init; no Tier-3 merge without auth
 | HEAD                      | Track O / O2 Stage 3 ceremony freeze (reviewed O2-r3) + ROADMAP/HANDOVER close-out                      |
 | Muse HEAD | `sha256:a030655f…` (O2 freeze close-out) |
 | GitHub bridge | Feature branch (no merge) |
-| Dirty                     | clean after closing commit                                                                               |
+| Dirty                     | clean after O2 freeze close-out                                                                          |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
