@@ -6,14 +6,16 @@
 
 ---
 
-## NEXT SESSION — Track O / O2 Stage 3 kit upgrade ceremony freeze (▶ NEXT)
+## NEXT SESSION — Track O / O3 Stage 3 upgrade-regime build (▶ NEXT)
 
 **Date:** 2026-07-13  
-**Current position:** **Track O / O1 Normie custody product contracts DONE** (build-verified →
-`pass`, O1-BV-r1). O0 freeze remains ground truth. Stage 3 kit upgrade ceremony is the next
-Thinking freeze (O2). Live Scooling `ok init` remains operator-gated.  
-**Model:** **Thinking**  
-**Operator note:** Freeze only — no Auto implementation of upgrade ceremony until O2 `pass`.
+**Current position:** **Track O / O2 Stage 3 kit upgrade ceremony freeze DONE** (reviewed →
+`pass`, O2-r3), stamp `sha256:ac970077…`. O0/O1 remain ground truth for Stages 1–4 product
+contracts; O2 freezes the kit ceremony for `muse-only` → `muse+git-mirror`. O3 Auto implements
+`ok upgrade-regime`. Live Scooling `ok init` remains operator-gated.  
+**Model:** **Auto**  
+**Operator note:** Build only against O2 freeze — no redesign; no signup UI; no live consumer init;
+no C8 merge to `main`.
 
 
 
@@ -22,48 +24,49 @@ Thinking freeze (O2). Live Scooling `ok init` remains operator-gated.
 
 | Slice                                                             | Deliverable                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Track O / O2 Stage 3 kit upgrade ceremony DONE (Thinking)**     | `docs/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md` reviewed → **`pass` (O2-r3)**, stamp `sha256:ac970077…`. Freezes C0–C8, §O2.4 migrate/force, G1–G8 bridge gates, §O2.6 product unlock, `ok upgrade-regime` O3 deliverables, §O2.9 seven-tier. **Spec-only — no ceremony code.**                                                                                                                                              |
 | **Track O / O1 Normie custody product contracts DONE (Auto)**     | Product contract pack + harness. `docs/TRACK-O-NORMIE-CUSTODY-PRODUCT-CONTRACT.md`; Scooling Track O cross-link; `docs/consumers/knowtation/OVERSEER-SETUP.md` stub; `tools/track_o/` + seven-tier §O0.8 (**+32**). Full suite **728** green. `/build-verification-review` **`pass` (O1-BV-r1)**. No signup UI; no Stage 3 ceremony; no live consumer init.                                                                      |
 | **Track O / O0 Normie custody funnel DONE (Thinking)**            | `docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md` reviewed → **`pass` (O0-r3)**, stamp `sha256:642076c9…`.                                                                                                                                                                                                                                                                                                                      |
-| **K6-Scooling runbook + Track Q (Q0→Q3)**                         | Remain complete (prior sessions).                                                                                                                                                                                                                                                                                                                                                                                              |
 
 
 
-### THE ONE NEXT STEP — **Model: Thinking**
+### THE ONE NEXT STEP — **Model: Auto**
 
 
 |                |                                                                                                                                     |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID**         | **Track O / O2** (Thinking)                                                                                                         |
-| **Branch**     | `feat/track-o-o2-stage3-upgrade-ceremony-freeze` (suggested)                                                                        |
-| **Read first** | `docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md` §O0.3.3; `docs/TRACK-O-NORMIE-CUSTODY-PRODUCT-CONTRACT.md`; K7 dogfood/bridge docs |
-| **Deliver**    | Freeze kit ceremony for `muse-only` → `muse+git-mirror` (footprint re-seed, migrate/force interaction, bridge dry-run gates, seven-tier matrix). Review → `pass` before any Auto. |
-| **Hard stops** | No product one-click yet; no silent `vcs.regime` edit; no Tier-3 merge without authorization; no live consumer init                 |
+| **ID**         | **Track O / O3** (Auto)                                                                                                             |
+| **Branch**     | `feat/track-o-o3-upgrade-regime` (suggested)                                                                                        |
+| **Read first** | `docs/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md` (frozen); O0 §O0.3.3; K7 dogfood; product contract                               |
+| **Deliver**    | `ok upgrade-regime` per §O2.7; runbook `docs/TRACK-O-STAGE3-UPGRADE-OPERATOR-RUNBOOK.md`; retarget product contract + Track O harness keywords together; seven-tier §O2.9; `/build-verification-review` → `pass` before DONE |
+| **Hard stops** | No signup UI; no live consumer `ok init`; no silent `vcs.regime` edit; no C8 merge; no redesign of O2 freeze                         |
 
 
 
-### Paste-ready prompt — Track O / O2
+### Paste-ready prompt — Track O / O3
 
 ```
-Phase Track O / O2 — Stage 3 kit upgrade ceremony freeze (overseer-kit).
+Phase Track O / O3 — Stage 3 upgrade-regime build (overseer-kit).
 
-Model: Thinking
+Model: Auto
 
-Read first: docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md (§O0.3.3 deferred ceremony);
-  docs/TRACK-O-NORMIE-CUSTODY-PRODUCT-CONTRACT.md (O1 product contract);
+Read first: docs/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md (frozen O2 ceremony);
+  docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md (§O0.3.3);
+  docs/TRACK-O-NORMIE-CUSTODY-PRODUCT-CONTRACT.md;
   docs/PHASE-K7-MUSE-GIT-MIRROR-DOGFOOD.md;
-  docs/K7-DOGFOOD-OPERATOR-RUNBOOK.md;
-  docs/ROADMAP.md (Track O / O2 row).
+  docs/ROADMAP.md (Track O / O3 row).
 
-Task: Thinking freeze only — define the kit upgrade ceremony for muse-only → muse+git-mirror:
-  - Footprint re-seed / init --migrate|--force interaction (no silent vcs.regime edit)
-  - Bridge dry-run gates (SD-14 isolated mirror → muse-mirror PR; never push main)
-  - Product UX unlock criteria (when Stage 3 one-click may wrap the ceremony)
-  - Explicit non-goals + seven-tier matrix for later Auto
-  - /freeze-review-loop → pass; stamp via ok review --freeze
+Task: Auto build only — implement against O2 freeze (do not redesign):
+  - ok upgrade-regime (--from muse-only --to muse+git-mirror; --dry-run / --apply /
+    --live-bridge / --force per §O2.7) composing init/sync/status + K7 bridge invariants
+  - C0–C5 fail-closed; G1–G8 gates; hard-stop before C8
+  - docs/TRACK-O-STAGE3-UPGRADE-OPERATOR-RUNBOOK.md
+  - Retarget product contract Stage 3 + tools/track_o harness keywords together
+  - Seven-tier §O2.9 green; /build-verification-review → pass before DONE
   - Update ROADMAP + HANDOVER together (SD-17)
 
-Hard stops: no Auto implementation in this session; no signup UI; no live consumer ok init;
-  no Tier-3 merge without authorization.
+Hard stops: no signup UI; no live consumer ok init; no Tier-3 merge without authorization;
+  no adapter rewrite; no git-only → muse+git-mirror productization.
 ```
 
 
@@ -112,7 +115,8 @@ Hard stops: no Auto implementation in this session; no signup UI; no live consum
 | **K6-Scooling runbook**   | **DONE** — `docs/consumers/scooling/OVERSEER-SETUP.md` (kit-side; live init still operator-gated; Track O cross-link in O1) |
 | **Track O / O0**          | **DONE** — Normie custody funnel Thinking freeze (`docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md` reviewed → `pass`, O0-r3), stamp `sha256:642076c9…` |
 | **Track O / O1**          | **DONE** — Product contracts build-verified → `pass` (O1-BV-r1). Contract + Scooling/Knowtation stubs + `tools/track_o/` + §O0.8. **728** tests green (+32) |
-| **Track O / O2**          | **TODO** — Stage 3 kit upgrade ceremony Thinking freeze (NEXT) |
+| **Track O / O2**          | **DONE** — Stage 3 kit upgrade ceremony Thinking freeze (`docs/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md` reviewed → `pass`, O2-r3), stamp `sha256:ac970077…` |
+| **Track O / O3**          | **TODO** — `ok upgrade-regime` Auto build against O2 freeze (NEXT) |
 | **CLI entrypoint**        | **`ok`** (canonical `./cli/ok`); **`overseer`** compat shim (`./cli/overseer`, one-line stderr deprecation) |
 | **CLI subcommands**       | `init` \| `sync` \| `status` \| `review --freeze` \| `governance-sync` \| `verify-step` \| `honesty-status` \| `ledger` \| `route` \| `app` |
 | **Muse dogfood** | **D2 repaired** + substrate health + gate reminders + **muse-sync hard gate (KH2)** + **footprint self-integrity hard gate (KH3)** live; `muse rev-parse` reads plain-text SHA (0.2.x returns bare SHA on success; JSON only on failure/non-zero); `governance-sync --dry-run` exits 0; muse canonical HEAD `sha256:3e14450f…` (catch-up commit; genesis `sha256:4671b7f…`) |
@@ -128,9 +132,9 @@ Hard stops: no Auto implementation in this session; no signup UI; no live consum
 
 | Item | Value |
 | --- | --- |
-| Branch                    | `feat/track-o-o1-normie-custody-contracts`                                                              |
-| HEAD                      | Track O / O1 product contracts (build-verified O1-BV-r1) + ROADMAP/HANDOVER close-out                   |
-| Muse HEAD | (will update on muse commit; pre-commit `sha256:a2268574…`) |
+| Branch                    | `feat/track-o-o2-stage3-upgrade-ceremony-freeze`                                                        |
+| HEAD                      | Track O / O2 Stage 3 ceremony freeze (reviewed O2-r3) + ROADMAP/HANDOVER close-out                      |
+| Muse HEAD | `sha256:a030655f…` (O2 freeze close-out) |
 | GitHub bridge | Feature branch (no merge) |
 | Dirty                     | clean after closing commit                                                                               |
 <!-- /overseer:anchor:vcs-table -->
@@ -145,6 +149,15 @@ Hard stops: no Auto implementation in this session; no signup UI; no live consum
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-13** — **Track O / O2 Stage 3 kit upgrade ceremony freeze DONE (reviewed → `pass`, O2-r3).**
+  Closed §O0.3.3 deferral in `docs/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md`: C0–C8 ceremony for
+  `muse-only` → `muse+git-mirror`; complete config write (no silent `vcs.regime` edit); footprint
+  re-seed via sync/migrate + `--force` rules; bridge dry-run gates G1–G8 (SD-14); product unlock
+  §O2.6 (one-click only after O3 BV `pass`); O3 deliverable `ok upgrade-regime` + runbook +
+  contract/harness retarget; seven-tier §O2.9. Freeze-review loop: r1 (C1 repair / G8 / CLI flags) →
+  fixed; r2 (product-contract retarget deferred to O3 for harness atomicity) → fixed; **O2-r3 →
+  `pass`**; stamp `sha256:ac970077…`. **Spec-only — no ceremony code landed.** ROADMAP: O2 → DONE;
+  O3 Auto queued. Handover NEXT → **Track O / O3**.
 - **2026-07-13** — **Track O / O1 Normie custody product contracts DONE (build-verified → `pass`, O1-BV-r1).**
   Built mechanically against frozen O0: shipped `docs/TRACK-O-NORMIE-CUSTODY-PRODUCT-CONTRACT.md`
   (Stages 1–4, §O0.3.3 deferred Stage 3 ceremony, boundary + rejection tables — no redesign);
