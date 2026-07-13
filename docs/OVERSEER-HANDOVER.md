@@ -6,14 +6,16 @@
 
 ---
 
-## NEXT SESSION — Track O / O0 Normie custody funnel freeze (▶ NEXT)
+## NEXT SESSION — Track O / O1 Normie custody product contracts (▶ NEXT)
 
 **Date:** 2026-07-13  
-**Current position:** **K6-Scooling consumer runbook DONE.** Track Q (Q0→Q3) complete; Scooling
-setup doc landed under `docs/consumers/scooling/`. Live Scooling `ok init` remains operator-gated.  
-**Model:** **Thinking**  
-**Operator note:** Draft seed exists at `docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md` — refine,
-freeze-review to `pass`, then Auto may implement product contracts only as scoped.
+**Current position:** **Track O / O0 Normie custody funnel freeze DONE** (reviewed → `pass`,
+O0-r3). K6-Scooling runbook + Track Q (Q0→Q3) remain complete. Live Scooling `ok init` remains
+operator-gated. Stage 3 kit upgrade ceremony deferred to later Thinking (O2).  
+**Model:** **Auto**  
+**Operator note:** Build mechanically against frozen
+`docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md` — product contracts only; no signup UI; no
+Stage 3 ceremony; no live consumer init.
 
 
 
@@ -22,51 +24,48 @@ freeze-review to `pass`, then Auto may implement product contracts only as scope
 
 | Slice                                                             | Deliverable                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **K6-Scooling consumer runbook DONE**                             | `docs/consumers/scooling/OVERSEER-SETUP.md` (install, SC-P1/SC-P2, kit-vs-runtime boundary, day-to-day, no live init); K6 runbook + consumer-adapter cross-links; ROADMAP rows for K6-Scooling + Track O / O0.                                                                                                                                                                                                                |
-| **Track Q / Q3 Tauri desktop packaging DONE (build-verified)**   | Tauri shell (`desktop/`) spawns canonical **`ok app`** and loads Q1 loopback UI; `tools/desktop/` + `scripts/bundle-desktop-kit.sh`; **696** tests green (+28 §Q3). `/build-verification-review` **`pass` (Q3-BV-r1)**.                                                                                                                                                                                                      |
-| **Track Q / Q2b OK CLI entrypoint build DONE (build-verified)**   | `cli/ok` + `cli/overseer` deprecation; `prog="ok"`; docs/templates/skills → `ok`. **668** tests green (+14 §Q2A.10).                                                                                                                                                                                                                                                                                                         |
-| **Handover shape repair (KH1)**                                   | Closed Q3 “operator choice” NEXT that omitted paste-ready fence and used invalid `Model: Operator choice` (not in `policy/model-labels.yaml`). Restored H2–H8 shape. |
+| **Track O / O0 Normie custody funnel DONE (Thinking)**            | `docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md` reviewed → **`pass` (O0-r3)**, stamp `sha256:642076c9…`. Freezes Stages 1–4, §O0.3.3 deferred Stage 3 ceremony, boundary/rejection tables, O1 product-contracts-only scope, seven-tier §O0.8. **Spec-only.**                                                                                                                                                                      |
+| **K6-Scooling consumer runbook DONE**                             | `docs/consumers/scooling/OVERSEER-SETUP.md` (install, SC-P1/SC-P2, kit-vs-runtime boundary, day-to-day, no live init); K6 runbook + consumer-adapter cross-links.                                                                                                                                                                                                                                                                |
+| **Track Q / Q3 Tauri desktop packaging DONE (build-verified)**   | Tauri shell (`desktop/`) spawns canonical **`ok app`** and loads Q1 loopback UI; **696** tests green (+28 §Q3). `/build-verification-review` **`pass` (Q3-BV-r1)**.                                                                                                                                                                                                                                                            |
 
 
 
-### THE ONE NEXT STEP — **Model: Thinking**
+### THE ONE NEXT STEP — **Model: Auto**
 
 
 |                |                                                                                                                                     |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID**         | **Track O / O0** (Thinking)                                                                                                         |
-| **Branch**     | `feat/track-o-o0-normie-custody-freeze` (suggested)                                                                                 |
-| **Read first** | `docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md` (draft); `docs/ROADMAP.md`; `docs/OVERSEER-KIT-SPEC.md` §4; `docs/consumers/scooling/OVERSEER-SETUP.md`; `docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md` |
-| **Deliver**    | Freeze normie custody funnel: Muse-first start, optional GitHub backup, optional Knowtation bind; kit vs product boundary; seven-tier matrix for later Auto. Review → `pass` before any build. |
-| **Hard stops** | Spec-only — no signup UI / account glue code in Thinking; no live consumer init; no Tier-3 merge without authorization |
+| **ID**         | **Track O / O1** (Auto)                                                                                                             |
+| **Branch**     | `feat/track-o-o1-normie-custody-contracts` (suggested)                                                                              |
+| **Read first** | `docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md` (frozen); `docs/ROADMAP.md`; `docs/consumers/scooling/OVERSEER-SETUP.md`            |
+| **Deliver**    | Product contract pack only: `docs/TRACK-O-NORMIE-CUSTODY-PRODUCT-CONTRACT.md`; Scooling cross-link; Knowtation stub; docs integrity harness + seven-tier §O0.8; `/build-verification-review` → `pass` before DONE |
+| **Hard stops** | No signup UI / account glue; no Stage 3 upgrade ceremony; no live consumer init; no Tier-3 merge without authorization |
 
 
 
-### Paste-ready prompt — Track O / O0
+### Paste-ready prompt — Track O / O1
 
 ```
-Phase Track O / O0 — Freeze Normie custody funnel (overseer-kit).
+Phase Track O / O1 — Normie custody product contracts (overseer-kit).
 
-Model: Thinking
+Model: Auto
 
-Read first: docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md (draft seed);
-  docs/ROADMAP.md (Track O / O0 row + exploration backlog);
-  docs/OVERSEER-KIT-SPEC.md §4 regimes + K7 MuseHub-optional guardrail;
+Read first: docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md (frozen, reviewed → pass O0-r3);
+  docs/ROADMAP.md (Track O / O1 row);
   docs/consumers/scooling/OVERSEER-SETUP.md;
-  docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md;
-  docs/PHASE-KH1-HANDOVER-RELAY-STANDARD.md (§KH1.2 Model + paste fence rules).
+  policy/test-tiers.yaml.
 
-Task: refine the draft into a freeze-contract document and review to pass:
-  - Muse-first personal space (no Git required to start)
-  - Optional one-click GitHub backup (muse+git-mirror upgrade)
-  - Optional Knowtation vault binding (same custody identity)
-  - Scooling optional entry product — NOT required to use Overseer Kit
-  - Boundary: kit = regimes + CLI; Scooling/Knowtation = wizards/UX
-  - Seven-tier matrix for any future Auto; no MuseHub-only baseline
-  - Update ROADMAP + HANDOVER together after freeze pass (SD-17)
+Task: build mechanically against frozen O0 — product contracts only:
+  - Ship docs/TRACK-O-NORMIE-CUSTODY-PRODUCT-CONTRACT.md (restate Stages 1–4, §O0.3.3
+    deferred Stage 3 ceremony, boundary + rejection tables — no redesign)
+  - Cross-link docs/consumers/scooling/OVERSEER-SETUP.md → Track O stages
+  - Create docs/consumers/knowtation/OVERSEER-SETUP.md stub (Stage 4 pointer; no live init)
+  - Docs integrity harness under tests/ + full seven-tier §O0.8 (skipping a tier forbidden)
+  - /build-verification-review → pass before ROADMAP DONE
+  - Update ROADMAP + HANDOVER together (SD-17)
 
-Hard stops: Thinking only — no product UI code; no live init; /freeze-review-loop → pass
-  before frozen: true; no Tier-3 merge without authorization.
+Hard stops: no signup UI; no Stage 3 kit upgrade ceremony; no new CLI/regime adapters;
+  no live consumer ok init; no Tier-3 merge without authorization.
 ```
 
 
@@ -113,7 +112,8 @@ Hard stops: Thinking only — no product UI code; no live init; /freeze-review-l
 | **Track Q / Q2b**         | **DONE** — Auto build (build-verified → `pass`, Q2b-BV-r1). `cli/ok` canonical + `cli/overseer` deprecation; `prog="ok"`; operator docs/templates/skills/CI pass; SPEC §5 + K4.1 naming; shims not footprint members. **668** tests green (+14 §Q2A.10). Cleared for Q3 |
 | **Track Q / Q3**          | **DONE** — Auto build (build-verified → `pass`, Q3-BV-r1). Tauri desktop shell (`desktop/`) invokes `ok app`; `tools/desktop/` + bundle script; seven-tier §Q3. **696** tests green (+28). Track Q chain complete |
 | **K6-Scooling runbook**   | **DONE** — `docs/consumers/scooling/OVERSEER-SETUP.md` (kit-side; live init still operator-gated) |
-| **Track O / O0**          | **TODO** — Normie custody funnel Thinking freeze (draft seed landed; **NEXT**) |
+| **Track O / O0**          | **DONE** — Normie custody funnel Thinking freeze (`docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md` reviewed → `pass`, O0-r3), stamp `sha256:642076c9…`. Stage 3 ceremony deferred to O2 |
+| **Track O / O1**          | **TODO** — Product contracts Auto build against frozen O0 (NEXT) |
 | **CLI entrypoint**        | **`ok`** (canonical `./cli/ok`); **`overseer`** compat shim (`./cli/overseer`, one-line stderr deprecation) |
 | **CLI subcommands**       | `init` \| `sync` \| `status` \| `review --freeze` \| `governance-sync` \| `verify-step` \| `honesty-status` \| `ledger` \| `route` \| `app` |
 | **Muse dogfood** | **D2 repaired** + substrate health + gate reminders + **muse-sync hard gate (KH2)** + **footprint self-integrity hard gate (KH3)** live; `muse rev-parse` reads plain-text SHA (0.2.x returns bare SHA on success; JSON only on failure/non-zero); `governance-sync --dry-run` exits 0; muse canonical HEAD `sha256:3e14450f…` (catch-up commit; genesis `sha256:4671b7f…`) |
@@ -129,10 +129,10 @@ Hard stops: Thinking only — no product UI code; no live init; /freeze-review-l
 
 | Item | Value |
 | --- | --- |
-| Branch                    | `feat/track-q-desktop-complete` (PR #23)                                                                 |
-| HEAD                      | Track Q complete + K6-Scooling runbook / Track O seed / KH1 handover repair                              |
+| Branch                    | `feat/track-o-o0-normie-custody-freeze`                                                              |
+| HEAD                      | Track O / O0 freeze pass (O0-r3) + ROADMAP/HANDOVER close-out                                        |
 | Muse HEAD | catch-up may be needed after this commit |
-| GitHub bridge | PR #23 open (`feat/track-q-desktop-complete`) |
+| GitHub bridge | prior PR #23 on `feat/track-q-desktop-complete` (separate branch) |
 | Dirty                     | commit on feature branch when ready                                                                      |
 <!-- /overseer:anchor:vcs-table -->
 
@@ -146,6 +146,15 @@ Hard stops: Thinking only — no product UI code; no live init; /freeze-review-l
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-13** — **Track O / O0 Normie custody funnel freeze DONE (reviewed → `pass`, O0-r3).**
+  Refined draft seed into freeze contract `docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md`: Track O
+  vs K6/Q identity; Stages 1–4; §O0.3.3 Stage 3 kit upgrade ceremony deferred (no silent
+  `vcs.regime` edit; product one-click blocked until O2); custody identity; kit vs
+  Scooling/Knowtation/MuseHub boundary; rejection table; O1 product-contracts-only deliverables
+  (exact paths); seven-tier §O0.8. Freeze-review loop: r1 findings (Stage 3 ceremony gap; stress
+  tier; Knowtation path; exact contract path; backlog wording) → fixed; r2 residual Stage 3
+  consistency → fixed; **O0-r3 → `pass`**; stamp `sha256:642076c9…`. **Spec-only — no code landed.**
+  ROADMAP: O0 → DONE; O1 Auto queued; exploration backlog promoted. Handover NEXT → **Track O / O1**.
 - **2026-07-13** — **K6-Scooling consumer runbook + KH1 handover repair + Track O seed.**
   Added `docs/consumers/scooling/OVERSEER-SETUP.md`; cross-linked K6 operator runbook +
   `CONSUMER-ADAPTER-PATTERN.md`; queued Track O / O0 draft
