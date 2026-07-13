@@ -6,15 +6,15 @@
 
 ---
 
-## NEXT SESSION — Track P / P-deploy Auto build (▶ NEXT)
+## NEXT SESSION — Hosted governance dashboard Thinking (▶ NEXT)
 
 **Date:** 2026-07-13  
-**Current position:** **Track P / P-deploy Thinking DONE** (freeze reviewed → `pass`, P-deploy-r3,
-stamp `sha256:a9fe1cd9…`). Spec-only — no Mode C / skill / config code landed. Track O kit chain
-(O0–O3) remains complete.  
-**Model:** **Auto**  
-**Operator note:** Build mechanically against frozen `docs/PHASE-TRACK-P-P-DEPLOY.md`. Kit must not
-deploy or HTTP-probe production.
+**Current position:** **Track P / P-deploy build DONE** (build-verified → `pass`, P-deploy-BV-r1).
+Mode C + `require_deploy_health` + twin `/deploy-verification-review` shipped. Track P named kit
+slices and Track O / Track Q kit chains remain complete.  
+**Model:** **Thinking**  
+**Operator note:** Next exploration-backlog freeze — hosted read-only governance dashboard
+(not Track Q local UI). Kit must stay governance/recorder; no remote write path.
 
 
 ### What just landed
@@ -22,47 +22,46 @@ deploy or HTTP-probe production.
 
 | Slice                                                             | Deliverable                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Track P / P-deploy deployment gate DONE (Thinking)**            | `docs/PHASE-TRACK-P-P-DEPLOY.md` reviewed → **`pass` (P-deploy-r3)**, stamp `sha256:a9fe1cd9…`. Mode C + `require_deploy_health` + `/deploy-verification-review` + exit `34` + rejection table + §PD.9. Reuses P-evidence `deploy_health`. Spec-only.                                                                                                              |
-| **Track O / O3 Stage 3 upgrade-regime build DONE (Auto)**         | `ok upgrade-regime` (§O2.7); runbook; **761** suite baseline; BV **`pass` (O3-BV-r2)**.                                                                                                                                                                                                                                                                                                                                       |
-| **Track O / O2–O0**                                               | Ceremony + product contracts + funnel — **DONE** (unchanged by P-deploy).                                                                                                                                                                                                                                                                                                                                                      |
+| **Track P / P-deploy build DONE (Auto)**                          | Built against `docs/PHASE-TRACK-P-P-DEPLOY.md` → BV **`pass` (P-deploy-BV-r1)**. `require_deploy_health`; Mode C `--deploy-health`; exit `34`; twin `/deploy-verification-review` (D1–D8). **798** tests green (+37 §PD.9). No deploy/HTTP probe code.                                                                                                              |
+| **Track P / P-deploy deployment gate DONE (Thinking)**            | `docs/PHASE-TRACK-P-P-DEPLOY.md` reviewed → **`pass` (P-deploy-r3)**, stamp `sha256:a9fe1cd9…`.                                                                                                                                                                                                                                                                                                                                |
+| **Track O / O3 Stage 3 upgrade-regime build DONE (Auto)**         | `ok upgrade-regime` (§O2.7); runbook; BV **`pass` (O3-BV-r2)**.                                                                                                                                                                                                                                                                                                                                                                |
 
 
 
-### THE ONE NEXT STEP — **Model: Auto**
+### THE ONE NEXT STEP — **Model: Thinking**
 
 
 |                |                                                                                                                                     |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID**         | **Track P / P-deploy build** (Auto)                                                                                                 |
-| **Branch**     | `feat/track-p-p-deploy-build` (suggested; or continue `feat/track-p-p-deploy-freeze`)                                              |
-| **Read first** | `docs/PHASE-TRACK-P-P-DEPLOY.md` (frozen); `docs/PHASE-TRACK-P-P-EVIDENCE.md`; `tools/honesty/status.py`                            |
-| **Deliver**    | Mode C + `require_deploy_health` + twin deploy-verification skill; seven-tier §PD.9; `/build-verification-review` → `pass`         |
-| **Hard stops** | No kit-side deploy/HTTP probe; no Track O redesign; no Tier-3 merge                                                                  |
+| **ID**         | **Hosted governance dashboard** (Thinking freeze)                                                                                   |
+| **Branch**     | `feat/hosted-governance-dashboard-freeze` (suggested)                                                                               |
+| **Read first** | `docs/ROADMAP.md` exploration backlog; Track Q Q0 (local vs hosted contrast)                                                        |
+| **Deliver**    | Freeze read-only remote dashboard contract; boundary + rejection; seven-tier matrix; freeze-review → `pass`                         |
+| **Hard stops** | No write APIs to consumer repos; no Track Q redesign; no Tier-3 merge                                                                |
 
 
 
-### Paste-ready prompt — Track P / P-deploy build
+### Paste-ready prompt — Hosted governance dashboard Thinking
 
 ```
-Phase Track P / P-deploy build — deployment gate (overseer-kit).
+Phase Hosted governance dashboard — Thinking freeze (overseer-kit).
 
-Model: Auto
+Model: Thinking
 
-Read first: docs/PHASE-TRACK-P-P-DEPLOY.md (frozen: true, reviewed → pass);
-  docs/PHASE-TRACK-P-P-EVIDENCE.md;
-  docs/ROADMAP.md (P-deploy build row);
+Read first: docs/ROADMAP.md (exploration backlog row);
+  docs/OVERSEER-KIT-SPEC.md;
   docs/OVERSEER-HANDOVER.md (shared context);
-  .cursor/skills/build-verification-review/SKILL.md.
+  docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md (local UI contrast — do not merge scopes);
+  .cursor/skills/freeze-review-loop/SKILL.md.
 
-Task: Build mechanically against the frozen P-deploy contract — no redesign:
-  - honesty.require_deploy_health (off|warn|require, default off; HONESTY_KEYS + HonestyConfig)
-  - find_matching_deploy_health; honesty-status Mode C (--deploy-health + §PD.5.0 resolution)
-  - exit 34 + missing_deploy_health; Mode C JSON block
-  - twin cursor/skills + .cursor/skills deploy-verification-review/SKILL.md (D1–D8)
-  - seven-tier §PD.9 green; /build-verification-review → pass before DONE
-  - governance sync ROADMAP + HANDOVER
+Task: Freeze a reviewed contract for a hosted, read-only governance dashboard:
+  - Scope: org/repo roadmap + handover + gate status via GitHub/MuseHub APIs (or equivalent)
+  - Explicit non-goals: no local git/muse mutation; not a Track Q rewrite; not CD/deploy
+  - Boundary + rejection table; capability tiers; seven-tier test matrix for a later Auto
+  - Write docs/PHASE-HOSTED-GOVERNANCE-DASHBOARD.md (or agreed path); freeze-review → pass
+  - Governance sync ROADMAP + HANDOVER; no code in Thinking
 
-Hard stops: no deploy/HTTP probe code in kit; no Track O redesign; no Tier-3 merge.
+Hard stops: no code beyond contracts; no Tier-3 merge; kit remains governance — never runtime host of product data stores.
 ```
 
 
@@ -103,7 +102,7 @@ Hard stops: no deploy/HTTP probe code in kit; no Track O redesign; no Tier-3 mer
 | **Track P / P-route** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` reviewed → `pass`, P-route-r2) + Auto build (build-verified → `pass`, P-route-BV-r1). Declarative model-routing policy shipped: `policy/model-routing.yaml`, `model_tiers`, `model_routing:` config, `overseer route`, exit `30`/`31`. **529** tests green (+43 §PR.8). Kit = rule-holder, runtime = executor |
 | **Track P / P-cost** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-P-P-COST-AWARENESS.md` reviewed → `pass`, P-cost-r2) + Auto build (build-verified → `pass`, P-cost-BV-r1). Cost-awareness surface shipped: `cost_class` on `model_tiers`, `tools/cost_awareness/`, `cost_awareness:` config, additive `overseer route` cost fields, exit `32`, status + governance-sync reminders. **569** tests green (+40 §PC.9). Kit = cost-awareness rule-holder, runtime = spender |
 | **Track P / P-evidence** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-P-P-EVIDENCE.md` reviewed → `pass`, P-evidence-r3) + Auto build (build-verified → `pass`, P-evidence-BV-r1). Verification-evidence capture shipped: `verification_evidence` kind, artifact types, `require_verification_evidence`, honesty-status Mode B, exit `33`, twin build-verification V8 delta. **612** tests green (+43 §PE.10). Kit records/gates; never deploys |
-| **Track P / P-deploy** | **DONE (Thinking)** — deployment-gate freeze (`docs/PHASE-TRACK-P-P-DEPLOY.md` reviewed → `pass`, P-deploy-r3), stamp `sha256:a9fe1cd9…`. Mode C + `require_deploy_health` + `/deploy-verification-review` + exit `34` + §PD.9. Spec-only — Auto build queued. Kit records/gates; never deploys/probes |
+| **Track P / P-deploy** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-P-P-DEPLOY.md` reviewed → `pass`, P-deploy-r3) + Auto build (build-verified → `pass`, P-deploy-BV-r1). Mode C + `require_deploy_health` + twin `/deploy-verification-review` + exit `34`. **798** tests green (+37 §PD.9). Kit records/gates; never deploys/probes |
 | **Track Q / Q0** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md` reviewed → `pass`, Q0-r2), stamp `sha256:3c3f6229…`. Freezes `overseer app` local-only UI contract |
 | **Track Q / Q1** | **DONE** — Auto build (build-verified → `pass`, Q1-BV-r1). `overseer app` stdlib loopback server + static UI; `tools/app/` + `cli/commands/app.py`; closed `api/*`; Bearer + CSRF; seven-tier §Q0.12. **654** tests green (+42) |
 | **Track Q / Q2a**         | **DONE** — Thinking freeze (`docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md` reviewed → `pass`, Q2a-r2), stamp `sha256:dbfbf9ad…`. Freezes canonical `ok` CLI entrypoint + `overseer` compat shim; seven-tier §Q2A.10. Spec-only. Cleared for Q2b |
@@ -129,11 +128,11 @@ Hard stops: no deploy/HTTP probe code in kit; no Track O redesign; no Tier-3 mer
 
 | Item | Value |
 | --- | --- |
-| Branch                    | `feat/track-p-p-deploy-freeze`                                                                          |
-| HEAD                      | Track P / P-deploy Thinking freeze (reviewed → `pass`, P-deploy-r3) + ROADMAP/HANDOVER close-out        |
+| Branch                    | `feat/track-p-p-deploy-build`                                                                           |
+| HEAD                      | Track P / P-deploy Auto build (BV `pass`, P-deploy-BV-r1) + ROADMAP/HANDOVER close-out                   |
 | Muse HEAD | (feature-branch; muse commit after Git close-out if substrate catch-up needed) |
 | GitHub bridge | Feature branch (no merge) |
-| Dirty                     | clean after P-deploy Thinking close-out                                                                 |
+| Dirty                     | clean after P-deploy Auto close-out                                                                     |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -146,6 +145,14 @@ Hard stops: no deploy/HTTP probe code in kit; no Track O redesign; no Tier-3 mer
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-13** — **Track P / P-deploy Auto build DONE (build-verified → `pass`, P-deploy-BV-r1).**
+  Built mechanically against frozen `docs/PHASE-TRACK-P-P-DEPLOY.md`: `honesty.require_deploy_health`
+  (`off|warn|require`, default `off`; `HONESTY_KEYS` + `HonestyConfig`); `find_matching_deploy_health`;
+  honesty-status Mode C (`--deploy-health`, shared `--frozen-spec`, §PD.5.0); exit `34` +
+  `missing_deploy_health` + Mode C JSON block; twin `/deploy-verification-review` (D1–D8); optional
+  pointer in `build-verification-required.mdc`. Seven-tier §PD.9 (**+37**); full suite **798** green.
+  No kit-side deploy/HTTP probe; no Track O redesign; no Tier-3 merge. ROADMAP: P-deploy build →
+  **DONE**. Handover NEXT → **Hosted governance dashboard** Thinking (exploration backlog).
 - **2026-07-13** — **Track P / P-deploy Thinking freeze DONE (reviewed → `pass`, P-deploy-r3).**
   Froze the live-deploy sibling of build-verification in `docs/PHASE-TRACK-P-P-DEPLOY.md`: reuses
   P-evidence `verification_evidence` + `deploy_health` (no new ledger kind); `honesty.require_deploy_health`

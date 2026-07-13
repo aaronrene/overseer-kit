@@ -83,6 +83,39 @@ def find_matching_verification_evidence(
     return matches[-1] if matches else None
 
 
+def find_matching_deploy_health(
+    entries: list[dict[str, Any]],
+    *,
+    phase_id: str,
+    frozen_spec: str | None,
+) -> dict[str, Any] | None:
+    """Return the last Mode C match: pass + ≥1 ``deploy_health`` artifact (§PD.3).
+
+    Does not open network or treat ``ref`` as a URL.
+    """
+    matches: list[dict[str, Any]] = []
+    for entry in entries:
+        if entry.get("kind") != "verification_evidence":
+            continue
+        if entry.get("actor_role") != "verifier":
+            continue
+        if entry.get("bv_verdict") != "pass":
+            continue
+        if entry.get("phase_id") != phase_id:
+            continue
+        if frozen_spec is not None and entry.get("frozen_spec") != frozen_spec:
+            continue
+        artifacts = entry.get("artifacts")
+        if not isinstance(artifacts, list):
+            continue
+        if not any(
+            isinstance(item, dict) and item.get("type") == "deploy_health" for item in artifacts
+        ):
+            continue
+        matches.append(entry)
+    return matches[-1] if matches else None
+
+
 def _require_non_empty_str(value: Any, field: str) -> str:
     if not isinstance(value, str) or not value.strip():
         raise EntryValidationError(2, f"{field} must be a non-empty string")

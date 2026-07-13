@@ -511,10 +511,10 @@ The P-deploy Auto build ships all seven tiers green locally before DONE
 
 ## §PD.12 — Definition of Done (Auto build — for the next session)
 
-- [ ] Mechanical implementation matches §§PD.3–PD.7
-- [ ] Twin deploy-verification skill paths added per §PD.6
-- [ ] Seven-tier matrix §PD.9 green
-- [ ] `/build-verification-review` → `pass` before ROADMAP Auto row → DONE
-- [ ] Governance sync (ROADMAP + HANDOVER) in the closing commit
-- [ ] Feature-branch push / PR only; merge remains Tier 3
-- [ ] No deploy/HTTP probe code introduced in the kit
+- [x] Mechanical implementation matches §§PD.3–PD.7
+- [x] Twin deploy-verification skill paths added per §PD.6
+- [x] Seven-tier matrix §PD.9 green
+- [x] `/build-verification-review` → `pass` before ROADMAP Auto row → DONE
+- [x] Governance sync (ROADMAP + HANDOVER) in the closing commit
+- [x] Feature-branch push / PR only; merge remains Tier 3
+- [x] No deploy/HTTP probe code introduced in the kit
