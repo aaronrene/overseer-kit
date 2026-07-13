@@ -89,10 +89,9 @@ Invalid JSON, non-2xx status, or transport errors during `review()` → `provide
 
 Kit ships:
 
-- `.github/workflows/freeze-review.yml` — dogfood example in this repo
-- `templates/ci/freeze-review-github-actions.yml` — vendored copy for consumer repos via `overseer sync`
+- `templates/ci/freeze-review-github-actions.yml` — vendored copy for consumer repos via `overseer sync`. Copy it to `.github/workflows/freeze-review.yml` **in the consumer repo** once `OVERSEER_REVIEW_API_KEY`/`OVERSEER_REVIEW_API_URL` are configured there — this kit's own repo intentionally does not run it live, since it dogfoods `overseer review --freeze` via the local CLI (`provider: local`) for every phase instead of a hosted API.
 
-Configure repository secret `OVERSEER_REVIEW_API_KEY` and variable `OVERSEER_REVIEW_API_URL`. The example workflow uses `--dry-run` (safe CI default per `policy/test-tiers.yaml`).
+Configure repository secret `OVERSEER_REVIEW_API_KEY` and variable `OVERSEER_REVIEW_API_URL` in the consumer repo before enabling this workflow there. The template uses `--dry-run` (safe CI default per `policy/test-tiers.yaml`).
 
 ## Automation degrade (§K5.10)
 

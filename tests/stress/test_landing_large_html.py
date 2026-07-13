@@ -25,7 +25,7 @@ def test_validator_large_padded_html_bounded(tmp_path: Path) -> None:
         "docs/ROADMAP.md",
         "docs/PHASE-K12-TRACK-N-LANDING-CONTRACT.md",
         "docs/consumers/videofactory/OVERSEER-SETUP.md",
-        ".github/workflows/freeze-review.yml",
+        "templates/ci/freeze-review-github-actions.yml",
     ]
     for rel in linked:
         path = tmp_path / rel
