@@ -9,7 +9,19 @@ from pathlib import Path
 from cli.args import extract_global_args
 
 COMMANDS = frozenset(
-    {"init", "sync", "status", "review", "governance-sync", "verify-step", "honesty-status", "ledger", "route", "app"}
+    {
+        "init",
+        "sync",
+        "status",
+        "review",
+        "governance-sync",
+        "verify-step",
+        "honesty-status",
+        "ledger",
+        "route",
+        "app",
+        "upgrade-regime",
+    }
 )
 from cli.commands.app import run_app
 from cli.commands.governance_sync import run_governance_sync_command
@@ -20,6 +32,7 @@ from cli.commands.review import run_review
 from cli.commands.status import run_status
 from cli.commands.sync import run_sync
 from cli.commands.route import run_route_command
+from cli.commands.upgrade_regime import run_upgrade_regime_command
 from cli.commands.verify_step import run_verify_step_command
 from cli.context import CliContext
 from cli.kit_root import kit_version
@@ -156,6 +169,51 @@ def build_parser() -> argparse.ArgumentParser:
     app_parser.add_argument("--bind", default="127.0.0.1", metavar="ADDRESS")
     app_parser.add_argument("--open", action="store_true", help="Open default browser after listen")
 
+    ur_parser = subparsers.add_parser(
+        "upgrade-regime",
+        help="Stage 3 ceremony: muse-only → muse+git-mirror (Track O / O3)",
+    )
+    ur_parser.add_argument(
+        "--from",
+        dest="from_regime",
+        required=True,
+        choices=["muse-only"],
+        help="Start regime (only muse-only supported in O3)",
+    )
+    ur_parser.add_argument(
+        "--to",
+        dest="to_regime",
+        required=True,
+        choices=["muse+git-mirror"],
+        help="Target regime (only muse+git-mirror supported in O3)",
+    )
+    ur_parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Plan C0–C5 + G1–G8 report; no writes (default when --apply absent)",
+    )
+    ur_parser.add_argument(
+        "--apply",
+        action="store_true",
+        help="Perform C2–C4 writes and C5 gates; no C7 unless --live-bridge",
+    )
+    ur_parser.add_argument(
+        "--live-bridge",
+        action="store_true",
+        help="After apply + G1–G8, run C7 via scripts/muse-bridge-deploy.sh (requires -y)",
+    )
+    ur_parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Overwrite conflicting kit-owned bridge assets only (never include-preserved)",
+    )
+    ur_parser.add_argument(
+        "-y",
+        "--yes",
+        action="store_true",
+        help="C6 consent for --live-bridge after gates pass (refuse --yes alone without gates)",
+    )
+
     return parser
 
 
@@ -220,6 +278,8 @@ def main(argv: list[str] | None = None, *, ctx: CliContext | None = None) -> int
         return run_route_command(args, runtime)
     if args.command == "app":
         return run_app(args, runtime)
+    if args.command == "upgrade-regime":
+        return run_upgrade_regime_command(args, runtime)
 
     parser.error(f"unknown command: {args.command}")
     return 1

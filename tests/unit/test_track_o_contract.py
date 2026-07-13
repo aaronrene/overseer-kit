@@ -42,7 +42,7 @@ def test_real_contract_has_required_stage_labels() -> None:
     assert result.ok, result.errors
 
 
-def test_real_contract_has_deferred_ceremony_keywords() -> None:
+def test_real_contract_has_stage3_ceremony_keywords() -> None:
     text = CONTRACT.read_text(encoding="utf-8")
     result = ValidationResult(ok=True)
     check_deferred_ceremony(text, result)

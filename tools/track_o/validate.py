@@ -1,7 +1,9 @@
-"""Fail-closed docs integrity harness for Track O / O1 product contracts (§O0.8).
+"""Fail-closed docs integrity harness for Track O product contracts (§O0.8 / O3 retarget).
 
 Validates the normative product contract + consumer stubs without rewriting files,
 opening network sockets, or walking the filesystem outside declared relative paths.
+After O3: Stage 3 points at O2 freeze + ``ok upgrade-regime``; one-click stays blocked
+until §O2.6 (no deferred-to-O2 shipping claim).
 """
 
 from __future__ import annotations
@@ -14,6 +16,8 @@ from pathlib import Path
 CONTRACT_REL = Path("docs/TRACK-O-NORMIE-CUSTODY-PRODUCT-CONTRACT.md")
 SCOOLING_REL = Path("docs/consumers/scooling/OVERSEER-SETUP.md")
 KNOWTATION_REL = Path("docs/consumers/knowtation/OVERSEER-SETUP.md")
+RUNBOOK_REL = Path("docs/TRACK-O-STAGE3-UPGRADE-OPERATOR-RUNBOOK.md")
+O2_FREEZE_REL = Path("docs/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md")
 PACK_RELS: tuple[Path, ...] = (CONTRACT_REL, SCOOLING_REL, KNOWTATION_REL)
 
 STAGE_LABELS: tuple[str, ...] = (
@@ -23,11 +27,16 @@ STAGE_LABELS: tuple[str, ...] = (
     "Stage 4 — Optional Knowtation bind",
 )
 
-DEFERRED_CEREMONY_KEYWORDS: tuple[str, ...] = (
-    "deferred to Thinking O2",
+# O3 ceremony markers (replaces O1 "deferred to Thinking O2" keywords).
+STAGE3_CEREMONY_KEYWORDS: tuple[str, ...] = (
+    "ok upgrade-regime",
+    "PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY",
     "one-click",
     "Silent config edit",
 )
+
+# Backward-compatible alias for unit tests that still import the O1 name.
+DEFERRED_CEREMONY_KEYWORDS = STAGE3_CEREMONY_KEYWORDS
 
 REJECTION_KEYWORDS: tuple[str, ...] = (
     "Require Scooling signup before `ok init`",
@@ -41,9 +50,17 @@ MUSEHUB_OPTIONAL = "no MuseHub-only baseline"
 SILENT_REGIME_REJECTION = "Silent `vcs.regime` edit for Stage 3"
 OPERATOR_GATED = "operator-gated"
 
-STAGE3_DEFERRED_MARKERS: tuple[str, ...] = (
+# Forbidden residual O1 shipping deferral language after O3 retarget.
+STAGE3_FORBIDDEN_DEFERRED_MARKERS: tuple[str, ...] = (
     "deferred to Thinking O2",
     "deferred to O2",
+    "coming soon / operator-assisted",
+)
+
+# Required pointers after O3.
+STAGE3_REQUIRED_MARKERS: tuple[str, ...] = (
+    "ok upgrade-regime",
+    "PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY",
 )
 
 # Forbidden: absolute machine paths that look like /Users/... or Windows drive roots.
@@ -77,7 +94,8 @@ Preferred muse-only.
 Living docs.
 
 ### Stage 3 — Optional GitHub backup
-Kit automated upgrade ceremony: deferred to Thinking O2. Products must not ship one-click.
+Kit ceremony: docs/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md and ok upgrade-regime.
+Products must not ship one-click until §O2.6.
 Silent config edit of only vcs.regime is forbidden.
 
 ### Stage 4 — Optional Knowtation bind
@@ -136,11 +154,16 @@ def check_stage_labels(text: str, result: ValidationResult, *, label: str = "con
             result.add("missing_stage", f"{label}: missing {stage!r}")
 
 
-def check_deferred_ceremony(text: str, result: ValidationResult, *, label: str = "contract") -> None:
-    """Require §O0.3.3 deferred-ceremony keywords in the product contract."""
-    for keyword in DEFERRED_CEREMONY_KEYWORDS:
+def check_stage3_ceremony(text: str, result: ValidationResult, *, label: str = "contract") -> None:
+    """Require O3 Stage 3 ceremony keywords (O2 freeze + ok upgrade-regime)."""
+    for keyword in STAGE3_CEREMONY_KEYWORDS:
         if keyword not in text:
-            result.add("missing_deferred", f"{label}: missing {keyword!r}")
+            result.add("missing_stage3", f"{label}: missing {keyword!r}")
+
+
+def check_deferred_ceremony(text: str, result: ValidationResult, *, label: str = "contract") -> None:
+    """Alias for ``check_stage3_ceremony`` (O1 harness name retained for unit imports)."""
+    check_stage3_ceremony(text, result, label=label)
 
 
 def check_rejection_keywords(text: str, result: ValidationResult, *, label: str = "contract") -> None:
@@ -173,15 +196,30 @@ def check_not_one_click_shipped(text: str, result: ValidationResult, *, label: s
         result.add("one_click_shipped", f"{label}: claims Stage 3 one-click shipped without O2")
 
 
+def check_stage3_not_deferred_shipping(text: str, result: ValidationResult, *, label: str) -> None:
+    """Fail if Stage 3 still uses O1 'deferred to O2' / 'coming soon' shipping language."""
+    for marker in STAGE3_FORBIDDEN_DEFERRED_MARKERS:
+        if marker in text:
+            result.add("stage3_stale_deferral", f"{label}: stale marker {marker!r}")
+
+
+def check_stage3_points_at_ceremony(text: str, result: ValidationResult, *, label: str) -> None:
+    for marker in STAGE3_REQUIRED_MARKERS:
+        if marker not in text:
+            result.add("stage3_missing_pointer", f"{label}: missing {marker!r}")
+
+
 def validate_contract_text(text: str, result: ValidationResult, *, label: str = "contract") -> None:
     """Unit-level checks against a product-contract body (fixtures or real doc)."""
     check_stage_labels(text, result, label=label)
-    check_deferred_ceremony(text, result, label=label)
+    check_stage3_ceremony(text, result, label=label)
     check_rejection_keywords(text, result, label=label)
     check_boundary_kit_owns(text, result, label=label)
     check_not_one_click_shipped(text, result, label=label)
     check_no_abs_machine_paths(text, result, label=label)
     check_no_secret_patterns(text, result, label=label)
+    check_stage3_not_deferred_shipping(text, result, label=label)
+    check_stage3_points_at_ceremony(text, result, label=label)
     if MUSEHUB_OPTIONAL not in text:
         result.add("missing_k7", f"{label}: missing {MUSEHUB_OPTIONAL!r}")
     if SILENT_REGIME_REJECTION not in text:
@@ -207,7 +245,7 @@ def validate_consumer_stub(
 def validate_track_o_pack(kit_root: Path) -> ValidationResult:
     """Validate the real Track O contract pack under ``kit_root`` (fail-closed).
 
-    Only opens the three declared relative paths. Does not rewrite any file.
+    Only opens the declared relative paths. Does not rewrite any file.
     """
     result = ValidationResult(ok=True)
     root = kit_root.resolve()
@@ -229,8 +267,6 @@ def validate_track_o_pack(kit_root: Path) -> ValidationResult:
     contract_key = str(CONTRACT_REL)
     if contract_key in texts:
         validate_contract_text(texts[contract_key], result, label=contract_key)
-        if not any(m in texts[contract_key] for m in STAGE3_DEFERRED_MARKERS):
-            result.add("stage3_not_deferred", f"{contract_key}: Stage 3 not marked deferred")
 
     scooling_key = str(SCOOLING_REL)
     if scooling_key in texts:
@@ -241,14 +277,19 @@ def validate_track_o_pack(kit_root: Path) -> ValidationResult:
                 "scooling_mandatory",
                 f"{scooling_key}: must keep Scooling optional for kit custody",
             )
-        # Explicit anti-mandatory phrasing from O1 cross-link.
         if "never required" not in body.lower() and "optional** entry" not in body and "optional entry" not in body.lower():
             result.add(
                 "scooling_mandatory",
                 f"{scooling_key}: must state Scooling is optional / not required",
             )
-        if not any(m in body for m in STAGE3_DEFERRED_MARKERS):
-            result.add("stage3_not_deferred", f"{scooling_key}: Stage 3 deferral missing")
+        check_stage3_not_deferred_shipping(body, result, label=scooling_key)
+        if "ok upgrade-regime" not in body and "O2" not in body and "STAGE3" not in body.upper():
+            # Scooling must point at Stage 3 ceremony / unlock, not claim deferred shipping.
+            if "PHASE-TRACK-O-O2" not in body and "upgrade-regime" not in body:
+                result.add(
+                    "stage3_missing_pointer",
+                    f"{scooling_key}: missing Stage 3 ceremony / upgrade-regime pointer",
+                )
 
     knowtation_key = str(KNOWTATION_REL)
     if knowtation_key in texts:
@@ -256,6 +297,12 @@ def validate_track_o_pack(kit_root: Path) -> ValidationResult:
         body = texts[knowtation_key]
         if "Stage 4" not in body:
             result.add("missing_stage4", f"{knowtation_key}: Stage 4 pointer missing")
+
+    runbook = _resolve_under_root(root, RUNBOOK_REL)
+    if runbook is None:
+        result.add("path_escape", f"{RUNBOOK_REL} escapes kit root")
+    elif not runbook.is_file():
+        result.add("missing_file", str(RUNBOOK_REL))
 
     return result
 
