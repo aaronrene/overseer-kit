@@ -6,68 +6,78 @@
 
 ---
 
-## NEXT SESSION — Track Q / Q1 Local web UI build (▶ NEXT)
+## NEXT SESSION — Track Q / Q2b OK CLI entrypoint build (▶ NEXT)
 
 **Date:** 2026-07-13  
-**Current position:** **Track Q / Q0 Freeze Overseer App DONE (reviewed → `pass`, Q0-r2).** Frozen
-`docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md` (stamp `sha256:3c3f6229…`): `overseer app` local-only UI
-over existing Python engine; loopback bind; Bearer + CSRF auth; stdlib server; CLI-parity
-fail-closed API; seven-tier §Q0.12. **Spec-only — no app code landed.** Predecessor **Track P /
-P-evidence** Auto build **DONE** (build-verified → `pass`, P-evidence-BV-r1), **612** tests green.  
-**Model:** **Auto** (mechanical build against frozen Q0; no redesign)  
-**Operator choice:** default next slice is **Track Q / Q1**. Operator may reprioritize exploration backlog items.
+**Current position:** **Track Q / Q2a Freeze OK CLI entrypoint DONE (reviewed → `pass`, Q2a-r2).**
+Canonical CLI name is frozen as **`ok`**; `overseer` remains compatibility-only.  
+**Model:** **Auto** (build mechanically against frozen Q2a; no redesign)  
+**Operator choice:** default next slice is **Track Q / Q2b**, then **Q3** Tauri (invokes `ok app`).
 
-<!-- overseer:anchor:done-recently -->
+
+
 ### What just landed
 
-| Slice | Deliverable |
-| --- | --- |
-| **Track Q / Q0 Freeze Overseer App DONE (Thinking)** | `docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md` reviewed → `pass` (Q0-r2), stamp `sha256:3c3f6229…`. Freezes `overseer app`: local-only web UI over existing engine (zero rewrite); closed `api/*` surface; `127.0.0.1` default bind (+ `localhost`/`::1`); Bearer + CSRF-header auth; stdlib HTTP server; fail-closed CLI parity; seven-tier §Q0.12. Boundary: frontend/distribution of governance, never runtime. **Spec-only — no code landed.** |
-| **Track P / P-evidence Auto build DONE (build-verified)** | Built against frozen `docs/PHASE-TRACK-P-P-EVIDENCE.md` → `/build-verification-review` **`pass` (P-evidence-BV-r1)**. Shipped: `verification_evidence` kind + `validate_verification_artifacts`; `honesty.require_verification_evidence`; honesty-status Mode B; exit `33` + `missing_verification_evidence`; twin build-verification V8 + Evidence table. **612** tests green (+43 §PE.10). Kit records/gates; never deploys. |
-| **Track P / P-evidence Thinking freeze DONE** | `docs/PHASE-TRACK-P-P-EVIDENCE.md` reviewed → `pass` (P-evidence-r3), stamp `sha256:c1b9fb3…`. Freezes `verification_evidence` ledger kind; closed artifact types; Mode A/B; exit `33`; V8 Evidence table; seven-tier §PE.10. Spec-only at freeze time. |
-| **Track P / P-cost Auto build DONE (build-verified)** | Built against frozen `docs/PHASE-TRACK-P-P-COST-AWARENESS.md` → `/build-verification-review` **`pass` (P-cost-BV-r1)**. **569** tests green (+40 §PC.9). |
-| **Track P / P-cost Thinking freeze DONE** | `docs/PHASE-TRACK-P-P-COST-AWARENESS.md` reviewed → `pass` (P-cost-r2), stamp `sha256:9f26678…`. |
-| **Track P / P-route Auto build DONE (build-verified)** | `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` built → `/build-verification-review` **`pass` (P-route-BV-r1)**. **529** tests green (+43 §PR.8). |
-| **KH3 Footprint self-integrity hard gate DONE (Thinking + Auto)** | `docs/PHASE-KH3-FOOTPRINT-INTEGRITY-HARD-GATE.md` reviewed → `pass` (KH3-r2). **486** tests green (+30 §KH3.8). |
-| **Track P / P1 DONE (build-verified)** | `provenance` envelope + Ed25519 verify + `require_agent_signature` + exit `25`/`26`; **429** tests green (+30 §P0.8) |
-<!-- /overseer:anchor:done-recently -->
 
-### THE ONE NEXT STEP — **Model: Auto (Track Q / Q1 Local web UI build)**
+| Slice                                                             | Deliverable                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Track Q / Q2a Freeze OK CLI entrypoint DONE (Thinking)**        | `docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md` reviewed → `pass` (Q2a-r2), stamp `sha256:dbfbf9ad…`. Freezes `cli/ok` canonical + `cli/overseer` compat deprecation; `prog="ok"`; SPEC/K4.1 naming amendment; engine shims **not** footprint members; seven-tier §Q2A.10. **Spec-only — no code landed.** Cleared for Q2b.                                                                                                      |
+| **Track Q / Q1 Local web UI build DONE (build-verified)**         | Built against frozen `docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md` → `/build-verification-review` `**pass` (Q1-BV-r1)**. Shipped: `overseer app` stdlib loopback server + static UI; `tools/app/` + `cli/commands/app.py`; closed `api/`* handlers calling existing engine; Bearer + CSRF auth; inert-first writes. **654** tests green (+42 §Q0.12).                                                                                |
+| **Track Q / Q0 Freeze Overseer App DONE (Thinking)**              | `docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md` reviewed → `pass` (Q0-r2), stamp `sha256:3c3f6229…`. Freezes `overseer app` contract. Spec-only at freeze time.                                                                                                                                                                                                                                                                        |
+| **Track P / P-evidence Auto build DONE (build-verified)**         | Built against frozen `docs/PHASE-TRACK-P-P-EVIDENCE.md` → `/build-verification-review` `**pass` (P-evidence-BV-r1)**. Shipped: `verification_evidence` kind + `validate_verification_artifacts`; `honesty.require_verification_evidence`; honesty-status Mode B; exit `33` + `missing_verification_evidence`; twin build-verification V8 + Evidence table. **612** tests green (+43 §PE.10). Kit records/gates; never deploys. |
+| **Track P / P-evidence Thinking freeze DONE**                     | `docs/PHASE-TRACK-P-P-EVIDENCE.md` reviewed → `pass` (P-evidence-r3), stamp `sha256:c1b9fb3…`. Freezes `verification_evidence` ledger kind; closed artifact types; Mode A/B; exit `33`; V8 Evidence table; seven-tier §PE.10. Spec-only at freeze time.                                                                                                                                                                        |
+| **Track P / P-cost Auto build DONE (build-verified)**             | Built against frozen `docs/PHASE-TRACK-P-P-COST-AWARENESS.md` → `/build-verification-review` `**pass` (P-cost-BV-r1)**. **569** tests green (+40 §PC.9).                                                                                                                                                                                                                                                                       |
+| **Track P / P-cost Thinking freeze DONE**                         | `docs/PHASE-TRACK-P-P-COST-AWARENESS.md` reviewed → `pass` (P-cost-r2), stamp `sha256:9f26678…`.                                                                                                                                                                                                                                                                                                                               |
+| **Track P / P-route Auto build DONE (build-verified)**            | `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` built → `/build-verification-review` `**pass` (P-route-BV-r1)**. **529** tests green (+43 §PR.8).                                                                                                                                                                                                                                                                                |
 
-Build **`overseer app`** mechanically against frozen `docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md`.
-No redesign. Do not mark DONE until `/build-verification-review` → `pass`.
 
-| | |
-| --- | --- |
-| **ID** | **Track Q / Q1** (Auto) |
-| **Branch** | `feat/track-q-q1-overseer-app` (suggested slug) |
-| **Read first** | `docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md` (frozen); `docs/ROADMAP.md` (Q1 row); `AGENTS.md` |
-| **Deliver** | `overseer app` stdlib loopback server + static UI; handlers call existing engine; seven-tier §Q0.12 green |
-| **Hard stops** | No engine rewrite; no non-loopback default bind; no Tier-3 merge without authorization |
 
-<!-- overseer:anchor:paste-ready-prompt -->
-### Paste-ready prompt — Track Q / Q1 Local web UI build
+
+### THE ONE NEXT STEP — **Model: Auto (Track Q / Q2b OK CLI entrypoint build)**
+
+Ship `cli/ok` + compat `cli/overseer` deprecation against the frozen Q2a contract.
+
+
+|                |                                                                                                                                     |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| **ID**         | **Track Q / Q2b** (Auto)                                                                                                            |
+| **Branch**     | `feat/track-q-q2b-ok-cli-build` (suggested slug)                                                                                    |
+| **Read first** | `docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md` (frozen); `docs/ROADMAP.md` (Q2b row); `docs/OVERSEER-HANDOVER.md`                     |
+| **Deliver**    | `cli/ok`; `cli/overseer` one-line stderr deprecation; `prog="ok"`; docs/templates/CI/skills pass; SPEC §5 + K4.1 naming; §Q2A.10 seven-tier tests; **no** footprint row for shims |
+| **Hard stops** | No redesign; no silent removal of `overseer` shim; no DONE without `/build-verification-review` → `pass`; no Tier-3 merge without authorization |
+
+
+
+### Paste-ready prompt — Track Q / Q2b OK CLI entrypoint build
 
 ```
-Phase Track Q / Q1 — Local web UI build (overseer-kit).
+Phase Track Q / Q2b — OK CLI entrypoint build (overseer-kit).
 
-Model: Auto (mechanical build against frozen Q0; no redesign).
+Model: Auto (build mechanically against frozen Q2a; no redesign).
 
-Read first: docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md (frozen ground truth);
-  docs/ROADMAP.md (Q1 row); AGENTS.md; docs/OVERSEER-HANDOVER.md (verified snapshot).
+Read first: docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md (frozen ground truth);
+  docs/ROADMAP.md (Q2b row); docs/OVERSEER-HANDOVER.md.
 
-Task: implement overseer app per §§Q0.4–Q0.10 — stdlib 127.0.0.1 server + static UI;
-  thin handlers calling existing cli/tools engine (no re-implementation); closed api/*
-  surface; Bearer + CSRF auth; inert-first writes; seven-tier §Q0.12 tests.
+Task: implement frozen Q2a exactly:
+  - Add cli/ok POSIX shim → python -m cli.main (executable; no deprecation line)
+  - Update cli/overseer: print exact one-line stderr deprecation once, then same exec
+  - argparse prog="ok"; migrate operator-facing remediation/banner strings to ok
+  - Update operator docs, templates, twin .cursor/ + cursor/ skills, CI examples to ok
+  - Amend SPEC §5 + K4.1 entrypoint naming only (command table → ok …)
+  - Migrate existing tests that assume empty stderr from ./cli/overseer
+  - Do NOT add cli/ok or cli/overseer to footprint / version.lock manifest
+  - Do NOT remove cli/overseer; do NOT change subcommands, exit codes, or .overseer/ paths
+  - Seven-tier tests per §Q2A.10; /build-verification-review → pass before DONE
 
-Before DONE: /build-verification-review → pass.
-Hard stops: no engine rewrite; no Tier-3 merge without authorization.
+Hard stops: no silent breaking removal of overseer shim; no Tier-3 merge without authorization.
 
-Governance gates (mandatory — remind only; silence is not pass):
-- Build verification: /build-verification-review before Auto → DONE
+Governance gates:
+- Build verification before DONE
 - Update docs/ROADMAP.md + docs/OVERSEER-HANDOVER.md together on completion (SD-17).
 ```
-<!-- /overseer:anchor:paste-ready-prompt -->
+
+
+
 
 ---
 
@@ -104,14 +114,16 @@ Governance gates (mandatory — remind only; silence is not pass):
 | **Track P / P-route** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` reviewed → `pass`, P-route-r2) + Auto build (build-verified → `pass`, P-route-BV-r1). Declarative model-routing policy shipped: `policy/model-routing.yaml`, `model_tiers`, `model_routing:` config, `overseer route`, exit `30`/`31`. **529** tests green (+43 §PR.8). Kit = rule-holder, runtime = executor |
 | **Track P / P-cost** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-P-P-COST-AWARENESS.md` reviewed → `pass`, P-cost-r2) + Auto build (build-verified → `pass`, P-cost-BV-r1). Cost-awareness surface shipped: `cost_class` on `model_tiers`, `tools/cost_awareness/`, `cost_awareness:` config, additive `overseer route` cost fields, exit `32`, status + governance-sync reminders. **569** tests green (+40 §PC.9). Kit = cost-awareness rule-holder, runtime = spender |
 | **Track P / P-evidence** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-P-P-EVIDENCE.md` reviewed → `pass`, P-evidence-r3) + Auto build (build-verified → `pass`, P-evidence-BV-r1). Verification-evidence capture shipped: `verification_evidence` kind, artifact types, `require_verification_evidence`, honesty-status Mode B, exit `33`, twin build-verification V8 delta. **612** tests green (+43 §PE.10). Kit records/gates; never deploys |
-| **Track Q / Q0** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md` reviewed → `pass`, Q0-r2), stamp `sha256:3c3f6229…`. Freezes `overseer app` local-only UI contract: loopback bind, Bearer+CSRF auth, stdlib server, CLI-parity API, §Q0.12 matrix. Spec-only — no app code |
-| **Track Q / Q1–Q2** | **TODO** — Q1 Auto build local web UI against Q0; Q2 Tauri packaging later |
+| **Track Q / Q0** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md` reviewed → `pass`, Q0-r2), stamp `sha256:3c3f6229…`. Freezes `overseer app` local-only UI contract |
+| **Track Q / Q1** | **DONE** — Auto build (build-verified → `pass`, Q1-BV-r1). `overseer app` stdlib loopback server + static UI; `tools/app/` + `cli/commands/app.py`; closed `api/*`; Bearer + CSRF; seven-tier §Q0.12. **654** tests green (+42) |
+| **Track Q / Q2a**         | **DONE** — Thinking freeze (`docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md` reviewed → `pass`, Q2a-r2), stamp `sha256:dbfbf9ad…`. Freezes canonical `ok` CLI entrypoint + `overseer` compat shim; seven-tier §Q2A.10. Spec-only. Cleared for Q2b |
+| **Track Q / Q2b–Q3**     | **TODO** — **Q2b** ship `cli/ok` + compat shim (Auto, **NEXT**); **Q3** Tauri packaging (invokes `ok app`) |
 | **Muse dogfood** | **D2 repaired** + substrate health + gate reminders + **muse-sync hard gate (KH2)** + **footprint self-integrity hard gate (KH3)** live; `muse rev-parse` reads plain-text SHA (0.2.x returns bare SHA on success; JSON only on failure/non-zero); `governance-sync --dry-run` exits 0; muse canonical HEAD `sha256:3e14450f…` (catch-up commit; genesis `sha256:4671b7f…`) |
 | **KH1b** | **DONE** — substrate §1 + gate reminders §2 |
 | **KH2** | **DONE** — Muse-sync hard gate (freeze `pass` KH2-r2 + Auto build); `tools/muse_sync/`; fail-closed on `status --exit-code` / `review --freeze` / `governance-sync` |
 | **KH3** | **DONE** — Footprint self-integrity hard gate (freeze `pass` KH3-r2 + Auto build); `tools/footprint_integrity/`; fail-closed on `status --exit-code` / `review --freeze` / `governance-sync` when a declared kit-owned file is absent from disk |
 | **Public brand** | **🆗 Overseer Kit** (locked in template + landing) |
-| **CLI** | `init` \| `sync` \| `status` \| `review --freeze` \| `governance-sync` \| `verify-step` \| `honesty-status` \| `ledger` \| `route` |
+| **CLI** | `init` \| `sync` \| `status` \| `review --freeze` \| `governance-sync` \| `verify-step` \| `honesty-status` \| `ledger` \| `route` \| `app` |
 | **Public landing** | `docs/landing/index.html` · scenario gallery `docs/landing/scenarios/index.html` |
 <!-- /overseer:anchor:verified-snapshot -->
 
@@ -120,11 +132,11 @@ Governance gates (mandatory — remind only; silence is not pass):
 
 | Item | Value |
 | --- | --- |
-| Branch | `feat/track-q-q0-overseer-app-freeze` |
-| HEAD (pre closing-commit) | uncommitted (Q0 freeze + governance; P-evidence build still dirty in tree from prior session) |
+| Branch                    | `feat/track-q-q2a-ok-cli-freeze`                                                                         |
+| HEAD (pre closing-commit) | uncommitted (Q2a freeze + governance; prior Q1/P-evidence build files still dirty in tree)               |
 | Muse HEAD | `sha256:4543518e…` (branch `main`; genesis `sha256:4671b7f…`) — catch-up may be needed after this commit |
 | GitHub bridge | no bridge PR currently open |
-| Dirty | yes (Q0 freeze docs + prior P-evidence build files — commit Q0 freeze separately) |
+| Dirty                     | yes (Q2a freeze docs + prior Q1/P-evidence build files — commit Q2a freeze separately)                   |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -137,6 +149,17 @@ Governance gates (mandatory — remind only; silence is not pass):
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-13** — **Track Q / Q2a Freeze OK CLI entrypoint DONE (reviewed → `pass`, Q2a-r2).**
+  Drafted and froze `docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md`: canonical CLI name `ok`
+  (`cli/ok` → `python -m cli.main`; `argparse` prog `ok`); `cli/overseer` remains compatibility
+  shim with exact one-line stderr deprecation per process; no subcommand/exit-code/`.overseer/`
+  path changes; engine shims explicitly **not** footprint members (supersedes earlier Q2b
+  “footprint + version.lock entry” wording); SPEC §5 command table must rewrite to `ok …` in Q2b;
+  existing-test stderr migration rule; twin `.cursor/` + `cursor/` skill doc pass; seven-tier
+  §Q2A.10. Freeze-review loop: r1 findings (C4 path placeholder; existing-test migration; SPEC
+  rewrite mandate; DoD shim spelling; twin skills) → fixed; **Q2a-r2 → `pass`**; stamp
+  `sha256:dbfbf9ad…`. **Spec-only — no code landed.** ROADMAP: Track Q / Q2a → **DONE (Thinking)**;
+  NEXT → **Track Q / Q2b**.
 - **2026-07-13** — **Track Q / Q0 Freeze Overseer App DONE (reviewed → `pass`, Q0-r2).**
   Drafted and froze `docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md`: local-only `overseer app` web UI over
   the existing Python engine (zero rewrite). Frozen surface — CLI `overseer app`; bind default
