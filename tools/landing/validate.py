@@ -246,10 +246,16 @@ def validate_landing(kit_root: Path) -> ValidationResult:
         result.add("license", "LICENSE missing")
     else:
         license_text = _read(license_path)
-        if "Apache-2.0" not in license_text and "Apache License" not in license_text:
-            result.add("license", "LICENSE must reference Apache-2.0")
-        if manifest.license not in license_text and "Apache License" not in license_text:
+        spdx = (manifest.license or "").strip()
+        if spdx == "MIT":
+            if "MIT License" not in license_text and "MIT" not in license_text:
+                result.add("license", "LICENSE must reference MIT")
+            if "Copyright 2026 Overseer Kit contributors" not in license_text:
+                result.add("license", "LICENSE missing frozen copyright holder line")
+        elif spdx and spdx not in license_text:
             result.add("license", f"manifest expects {manifest.license}")
+        elif not spdx:
+            result.add("license", "manifest.license missing")
 
     if not security_path.is_file():
         result.add("security", "SECURITY.md missing")

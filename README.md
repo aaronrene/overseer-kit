@@ -318,7 +318,7 @@ This writes: governance docs, `policy/`, `.cursor/` fragments, `.overseer/versio
 
 ## Status
 
-**K12 DONE** — Track N public landing, scenario gallery, Apache-2.0 LICENSE, SECURITY.md,
+**K12 DONE** — Track N public landing, scenario gallery, MIT LICENSE, SECURITY.md,
 GitHub→MuseHub funnel. **380** seven-tier tests green. See `docs/ROADMAP.md`.
 
 **Public landing:** open [`docs/landing/index.html`](docs/landing/index.html) locally or enable

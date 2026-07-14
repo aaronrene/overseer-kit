@@ -97,9 +97,9 @@ That is the **marketing site**. The governance UI is a different process:
    the landing hero (GitHub Releases `v0.1.0`), set `OVERSEER_REPO_ROOT`, launch.
 2. **Developers:** Clone GitHub + `ok app` (Path 2) or build desktop from source (Path 3).
 
-## License note (already open source)
+## License note
 
-This repo is **already open source** under **Apache-2.0** (K12). “Make it open source” does not
-require a license change. MIT is an optional shorter flavor; switching needs a Thinking freeze
-that amends K12 §K12.4. Default recommendation remains **keep Apache** unless you specifically
-want MIT branding.
+This repo is **open source** under **MIT** (K12 as amended by
+`docs/PHASE-K12-LICENSE-MIT-AMENDMENT.md`). The original K12 freeze shipped Apache-2.0; the
+operator flipped to MIT for house-brand consistency. SPDX identity lives in root `LICENSE`,
+`pyproject.toml`, and `docs/landing/manifest.yaml` — keep those three aligned.

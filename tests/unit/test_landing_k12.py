@@ -23,7 +23,7 @@ INDEX = KIT_ROOT / "docs" / "landing" / "index.html"
 def test_manifest_loads_version_one() -> None:
     manifest = load_manifest(MANIFEST)
     assert manifest.version == 1
-    assert manifest.license == "Apache-2.0"
+    assert manifest.license == "MIT"
 
 
 def test_manifest_section_ids_match_lac_contract() -> None:
@@ -91,15 +91,23 @@ def test_manifest_status_badges_frozen_enum() -> None:
 
 def test_manifest_rejects_bad_version(tmp_path: Path) -> None:
     bad = tmp_path / "manifest.yaml"
-    bad.write_text(yaml.dump({"version": 99, "license": "Apache-2.0"}), encoding="utf-8")
+    bad.write_text(yaml.dump({"version": 99, "license": "MIT"}), encoding="utf-8")
     with pytest.raises(ValueError, match="unsupported manifest version"):
         load_manifest(bad)
 
 
-def test_license_file_references_apache() -> None:
+def test_license_file_references_mit() -> None:
     text = (KIT_ROOT / "LICENSE").read_text(encoding="utf-8")
-    assert "Apache License" in text
-    assert "Version 2.0" in text
+    assert "MIT License" in text
+    assert "Copyright 2026 Overseer Kit contributors" in text
+    assert "Apache License" not in text
+
+
+def test_pyproject_license_matches_manifest() -> None:
+    pyproject = (KIT_ROOT / "pyproject.toml").read_text(encoding="utf-8")
+    manifest = load_manifest(MANIFEST)
+    assert 'license = { text = "MIT" }' in pyproject
+    assert manifest.license == "MIT"
 
 
 def test_validate_missing_manifest_fails(tmp_path: Path) -> None:
@@ -150,3 +158,52 @@ def test_theme_defaults_dark_not_os_preference() -> None:
     js = (KIT_ROOT / "docs" / "landing" / "assets" / "theme.js").read_text(encoding="utf-8")
     assert "matchMedia" not in js
     assert 'return "dark"' in js
+
+
+def test_landing_and_console_footers_say_mit() -> None:
+    landing = INDEX.read_text(encoding="utf-8")
+    scenarios = (
+        KIT_ROOT / "docs" / "landing" / "scenarios" / "index.html"
+    ).read_text(encoding="utf-8")
+    console = (KIT_ROOT / "tools" / "app" / "static" / "index.html").read_text(
+        encoding="utf-8"
+    )
+    assert ">MIT</a>" in landing
+    assert ">MIT</a>" in scenarios
+    assert "Open source — MIT" in console
+    assert "Apache-2.0" not in landing
+    assert "Apache-2.0" not in scenarios
+    assert "Apache-2.0" not in console
+
+
+def test_validate_rejects_apache_license_when_manifest_is_mit(tmp_path: Path) -> None:
+    """Fail-closed: SPDX flip must keep LICENSE and manifest aligned (§MIT.4)."""
+    landing = tmp_path / "docs" / "landing"
+    landing.mkdir(parents=True)
+    manifest_src = (KIT_ROOT / "docs" / "landing" / "manifest.yaml").read_text(
+        encoding="utf-8"
+    )
+    (landing / "manifest.yaml").write_text(manifest_src, encoding="utf-8")
+    (landing / "index.html").write_text(
+        (KIT_ROOT / "docs" / "landing" / "index.html").read_text(encoding="utf-8"),
+        encoding="utf-8",
+    )
+    scenarios = landing / "scenarios"
+    scenarios.mkdir()
+    (scenarios / "index.html").write_text(
+        (KIT_ROOT / "docs" / "landing" / "scenarios" / "index.html").read_text(
+            encoding="utf-8"
+        ),
+        encoding="utf-8",
+    )
+    (landing / "assets").mkdir()
+    (landing / "assets" / "style.css").write_text("body{}", encoding="utf-8")
+    (tmp_path / "LICENSE").write_text(
+        "Apache License Version 2.0\nApache-2.0\n", encoding="utf-8"
+    )
+    (tmp_path / "SECURITY.md").write_text(
+        "Reporting a vulnerability\n", encoding="utf-8"
+    )
+    result = validate_landing(tmp_path)
+    assert not result.ok
+    assert any(e.startswith("license:") for e in result.errors)
