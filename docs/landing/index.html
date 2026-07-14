@@ -16,7 +16,7 @@
         <a href="#living-docs">Living docs</a>
         <a href="#structure">Structure</a>
         <a href="#console-access">Local console</a>
-        <a href="#scenarios">Scenarios</a>
+        <a href="scenarios/index.html">Scenarios</a>
         <a href="https://github.com/aaronrene/overseer-kit#readme">Docs</a>
         <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to light mode" title="Light / dark">
           <span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span>
@@ -27,21 +27,32 @@
   </header>
 
   <main>
-    <section id="hero">
-      <h1>🆗 Overseer Kit</h1>
-      <p class="lead">Governance + honesty for phased AI work — without amnesia, fake DONE, or silent drift.</p>
-      <p class="sublead">Portable patterns for any repo. Product task runtimes stay in your apps — this kit ships the shared honesty machinery.</p>
-      <div class="cta-row">
-        <a class="btn btn-primary" id="cta-download-mac"
-           href="https://github.com/aaronrene/overseer-kit/releases/download/v0.1.0/Overseer.Kit_0.1.0_aarch64.dmg">Download Mac console (Apple Silicon)</a>
-        <a class="btn btn-secondary" href="https://github.com/aaronrene/overseer-kit">Clone / init on GitHub</a>
+    <section id="hero" class="hero">
+      <div class="hero-plane" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <h1>🆗 Overseer Kit</h1>
+          <p class="lead">Governance + honesty for phased AI work — without amnesia, fake DONE, or silent drift.</p>
+          <p class="sublead">Portable patterns for any repo. Product task runtimes stay in your apps — this kit ships the shared honesty machinery.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" id="cta-download-mac"
+               href="https://github.com/aaronrene/overseer-kit/releases/download/v0.1.0/Overseer.Kit_0.1.0_aarch64.dmg">Download Mac console (Apple Silicon)</a>
+            <a class="btn btn-secondary" href="https://github.com/aaronrene/overseer-kit">Clone / init on GitHub</a>
+          </div>
+          <p class="cta-honesty">Apple Silicon (<code>aarch64</code>) Mac · signed+notarized · requires Python 3.11+. Set <code>OVERSEER_REPO_ROOT</code> to your governed repo. Windows/Linux signed installers are not published yet. No in-app folder picker in Auto v1.</p>
+          <p class="tertiary-links">
+            <a href="scenarios/index.html">Scenarios</a>
+            · <a href="https://github.com/aaronrene/overseer-kit#readme">Docs on GitHub</a>
+            · <a href="https://github.com/aaronrene/overseer-kit/releases/tag/v0.1.0">Releases</a>
+          </p>
+        </div>
+        <figure class="hero-visual">
+          <img src="assets/hero-pipeline.jpg"
+               width="1024"
+               height="558"
+               alt="Isometric pipeline of monitored cubes with verification checkmarks — oversight, security, and sync along a governed track">
+        </figure>
       </div>
-      <p class="cta-honesty">Apple Silicon (<code>aarch64</code>) Mac · signed+notarized · requires Python 3.11+. Set <code>OVERSEER_REPO_ROOT</code> to your governed repo. Windows/Linux signed installers are not published yet. No in-app folder picker in Auto v1.</p>
-      <p class="tertiary-links">
-        <a href="#scenarios">Scenarios</a>
-        · <a href="https://github.com/aaronrene/overseer-kit#readme">Docs on GitHub</a>
-        · <a href="https://github.com/aaronrene/overseer-kit/releases/tag/v0.1.0">Releases</a>
-      </p>
     </section>
 
     <section id="problem">
