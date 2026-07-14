@@ -142,7 +142,7 @@ html[data-theme="dark"] .theme-icon-sun {
 
 .site-header .brand-name {
   font-weight: 750;
-  font-size: 1.45rem;
+  font-size: 1.85rem;
   letter-spacing: -0.02em;
   line-height: 1.1;
   white-space: nowrap;
@@ -152,14 +152,14 @@ html[data-theme="dark"] .theme-icon-sun {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 3.25rem;
-  height: 3.25rem;
-  padding: 0 0.6rem;
-  border-radius: 0.65rem;
+  min-width: 2.85rem;
+  height: 2.85rem;
+  padding: 0 0.55rem;
+  border-radius: 0.6rem;
   background: #1d4f91;
   color: #ffffff;
   font-weight: 800;
-  font-size: 1.55rem;
+  font-size: 1.35rem;
   letter-spacing: 0.02em;
   line-height: 1;
 }
@@ -334,7 +334,7 @@ h3 {
 }
 
 .hero-copy h1 {
-  color: #f4f8fc;
+  color: #7ec8ff;
   font-size: clamp(2.25rem, 4.2vw, 3.15rem);
   font-weight: 750;
   letter-spacing: -0.03em;
