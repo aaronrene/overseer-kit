@@ -133,7 +133,7 @@ Hard stops: no Track Q rewrite; no git/muse/GitHub write path; no kit-owned prod
 | --- | --- |
 | Branch                    | `feat/hosted-governance-dashboard-freeze`                                                              |
 | HEAD                      | Hosted governance dashboard Thinking freeze (HGD-r3 `pass`) + ROADMAP/HANDOVER close-out               |
-| Muse HEAD | `sha256:2e165064c38ad33aca82703287598c1eacf1c2f375f0165e75c286e12b9ba581` |
+| Muse HEAD | feature-branch tip synced (`muse_sync.ok`; tip after Thinking close-out) |
 | GitHub bridge | Feature branch (no merge) |
 | Dirty                     | clean after Hosted governance dashboard Thinking close-out                                             |
 <!-- /overseer:anchor:vcs-table -->
