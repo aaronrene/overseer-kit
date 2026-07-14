@@ -30,8 +30,9 @@ def test_manifest_section_ids_match_lac_contract() -> None:
     """§LAC.3.1 section order is the public IA contract."""
     manifest = load_manifest(MANIFEST)
     assert manifest.section_ids == LAC_SECTION_IDS
-    assert len(manifest.section_ids) == 10
+    assert len(manifest.section_ids) == 11
     assert "living-docs" in manifest.section_ids
+    assert "musehub" in manifest.section_ids
 
 
 def test_primary_download_href_equals_frozen_dmg() -> None:
@@ -152,6 +153,25 @@ def test_main_landing_has_no_personal_product_doors() -> None:
     assert "ok hosted-dashboard" in html
     assert "../../README.md" not in html
     assert "../CONSUMER-ADAPTER-PATTERN.md" not in html
+
+
+def test_musehub_band_under_hero() -> None:
+    html = INDEX.read_text(encoding="utf-8")
+    assert 'id="musehub"' in html
+    assert "Same CLI. Deeper history with MuseHub." in html
+    assert "assets/musehub-logo.svg" in html
+    assert "musehub.ai" not in html
+    assert "K7-DOGFOOD-OPERATOR-RUNBOOK" not in html
+    assert "ok init --regime muse+git-mirror" in html
+    assert "already connects to MuseHub" in html
+    logo = (KIT_ROOT / "docs" / "landing" / "assets" / "musehub-logo.svg").read_text(
+        encoding="utf-8"
+    )
+    assert "#6EA0F3" in logo
+    hero_end = html.index('id="hero"')
+    muse = html.index('id="musehub"')
+    problem = html.index('id="problem"')
+    assert hero_end < muse < problem
 
 
 def test_theme_defaults_dark_not_os_preference() -> None:

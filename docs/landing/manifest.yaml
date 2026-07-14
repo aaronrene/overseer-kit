@@ -6,6 +6,7 @@ license: MIT
 
 sections:
   - id: hero
+  - id: musehub
   - id: problem
   - id: living-docs
   - id: structure
