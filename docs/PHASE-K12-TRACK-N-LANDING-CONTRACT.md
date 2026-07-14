@@ -13,7 +13,8 @@ L1/L2 module changes.
 
 ## Technical summary
 
-K12 delivers static assets under `docs/landing/`, root `LICENSE` (Apache-2.0), root `SECURITY.md`,
+K12 delivers static assets under `docs/landing/`, root `LICENSE` (MIT; amended from Apache-2.0
+via `docs/PHASE-K12-LICENSE-MIT-AMENDMENT.md`), root `SECURITY.md`,
 and `tools/landing/validate.py` — a fail-closed validator the seven-tier test matrix runs against
 a frozen `docs/landing/manifest.yaml` contract. Scenario personas A–E match vision §6; each card
 carries a **status badge** (`dogfood` | `reference` | `aspirational`) to prevent overclaim.
@@ -38,7 +39,7 @@ GitHub Pages can serve `/docs/landing/index.html` from the repo default branch.
 
 | Path | Purpose |
 | --- | --- |
-| `LICENSE` | Apache-2.0 (OSI-approved) |
+| `LICENSE` | MIT (OSI-approved; K12-LICENSE-MIT amendment) |
 | `SECURITY.md` | Coordinated disclosure policy |
 | `docs/landing/index.html` | Main landing (§8 sections) |
 | `docs/landing/scenarios/index.html` | Scenario gallery A–E |
@@ -91,14 +92,16 @@ Each scenario page entry MUST include: title, pain summary, L0/L1/L2/L3 usage, M
 
 ---
 
-## §K12.4 — LICENSE (frozen)
+## §K12.4 — LICENSE (frozen; amended)
 
-- **Identifier:** `Apache-2.0`
+> **Amendment:** `docs/PHASE-K12-LICENSE-MIT-AMENDMENT.md` supersedes the original Apache-2.0
+> identifier. Original K12 rationale (patent grant) is preserved as historical rationale only.
+
+- **Identifier:** `MIT`
 - **Copyright holder line:** `Copyright 2026 Overseer Kit contributors`
-- **Rationale:** OSI-approved; patent grant; common for governance/tooling repos; K9a deferred
-  license choice to K12.
+- **Rationale:** OSI-approved; short SPDX; matches operator house brand across open-source projects.
 
-`pyproject.toml` `[project]` MUST include `license = { text = "Apache-2.0" }`.
+`pyproject.toml` `[project]` MUST include `license = { text = "MIT" }`.
 
 ---
 
@@ -148,7 +151,7 @@ Checks (fail-closed):
 | All §K12.2 section ids present in `index.html` | `missing_section` |
 | All §K12.3 persona ids present in `scenarios/index.html` | `missing_persona` |
 | Each persona has a status badge class | `missing_badge` |
-| `LICENSE` contains `Apache-2.0` | `license` |
+| `LICENSE` contains `MIT` (matches `manifest.license`) | `license` |
 | `SECURITY.md` contains `Reporting a vulnerability` | `security` |
 | No `http://` script/src in landing HTML (HTTPS relative OK) | `external_script` |
 | No patterns matching secret leak heuristics (same as kit security tests) | `secret_leak` |

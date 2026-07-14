@@ -35,14 +35,28 @@ def test_validator_large_padded_html_bounded(tmp_path: Path) -> None:
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text("# stub\n", encoding="utf-8")
 
-    for rel in ("manifest.yaml", "index.html", "assets/style.css"):
+    for rel in (
+        "manifest.yaml",
+        "index.html",
+        "assets/style.css",
+        "assets/favicon.ico",
+        "assets/favicon-32.png",
+        "assets/apple-touch-icon.png",
+        "assets/theme.js",
+    ):
         src = landing_src / rel
+        if not src.is_file():
+            continue
         dst = landing_dst / rel
         dst.parent.mkdir(parents=True, exist_ok=True)
-        content = src.read_text(encoding="utf-8")
         if rel.endswith(".html"):
+            content = src.read_text(encoding="utf-8")
             content = content.replace("</body>", "<!-- " + ("x" * 500_000) + " --></body>")
-        dst.write_text(content, encoding="utf-8")
+            dst.write_text(content, encoding="utf-8")
+        elif rel.endswith((".css", ".js", ".yaml")):
+            dst.write_text(src.read_text(encoding="utf-8"), encoding="utf-8")
+        else:
+            dst.write_bytes(src.read_bytes())
 
     diagrams_src = landing_src / "assets" / "diagrams"
     diagrams_dst = landing_dst / "assets" / "diagrams"

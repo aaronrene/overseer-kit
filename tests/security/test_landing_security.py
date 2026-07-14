@@ -47,7 +47,10 @@ def test_validate_rejects_injected_secret(tmp_path: Path) -> None:
     )
     (landing / "assets").mkdir()
     (landing / "assets" / "style.css").write_text("body{}", encoding="utf-8")
-    (tmp_path / "LICENSE").write_text("Apache License Version 2.0\nApache-2.0", encoding="utf-8")
+    (tmp_path / "LICENSE").write_text(
+        "MIT License\nCopyright 2026 Overseer Kit contributors\n",
+        encoding="utf-8",
+    )
     (tmp_path / "SECURITY.md").write_text("Reporting a vulnerability\n", encoding="utf-8")
 
     result = validate_landing(tmp_path)

@@ -2,7 +2,7 @@
 # Validated by tools/landing/validate.py — §LAC.3.1 section ids
 
 version: 1
-license: Apache-2.0
+license: MIT
 
 sections:
   - id: hero

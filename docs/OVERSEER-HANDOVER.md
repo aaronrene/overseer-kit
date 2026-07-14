@@ -9,13 +9,13 @@
 ## NEXT SESSION — Pre-public DNS / dogfood (▶ NEXT)
 
 **Date:** 2026-07-14  
-**Current position:** Landing + access clarity Auto **DONE** (build-verified → `pass`,
-LAC-BV-r1). Public landing + Paths 1–3 playbook + Path B chrome + health `repo_root` shipped.
-§LAC.9 items 1–6 ready. Next: operator Tier-3 DNS for `overseerkit.com` and/or live consumer
-dogfood — **not** another landing redesign.  
+**Current position:** **K12 LICENSE → MIT** Thinking+Auto **DONE** (freeze `pass` MIT-r1;
+BV `pass` MIT-BV-r1). Kit SPDX is **MIT** everywhere operators look. Landing + access clarity
+remains DONE. Next: operator Tier-3 DNS for `overseerkit.com` and/or live consumer dogfood —
+**not** another landing redesign.  
 **Model:** **Operator + Auto**  
 **Operator note:** DNS cutover and merge to `main` remain Tier 3. Win/Linux signed installers still
-unavailable.
+unavailable. Merge this license PR before or with DNS cutover so the public site footer matches.
 
 
 ### What just landed
@@ -23,6 +23,7 @@ unavailable.
 
 | Slice | Deliverable |
 | --- | --- |
+| **K12 LICENSE → MIT** | BV `pass` (MIT-BV-r1) — MIT `LICENSE`, pyproject, landing/console SPDX, validator, K12 §K12.4 amended |
 | **Landing + access clarity Auto** | BV `pass` (LAC-BV-r1) — site IA + Download CTA + Paths 1–3 + Path B chrome + health `repo_root` |
 | **Landing + access clarity Thinking** | `docs/PHASE-LANDING-ACCESS-CLARITY.md` → `pass` (LAC-r2) |
 | **Path C Mac Release** | `v0.1.0` → `Overseer.Kit_0.1.0_aarch64.dmg` (signed+notarized) |
@@ -54,15 +55,15 @@ Read first:
   docs/OVERSEER-HANDOVER.md; docs/ROADMAP.md.
 
 Baseline (already shipped — do not redesign):
-  Landing + access clarity Auto DONE (LAC-BV-r1); Mac v0.1.0 signed .dmg CTA;
-  Paths 1–3 playbook; Path B chrome; api/health repo_root additive.
+  K12 LICENSE → MIT DONE (MIT-BV-r1); Landing + access clarity Auto DONE (LAC-BV-r1);
+  Mac v0.1.0 signed .dmg CTA; Paths 1–3 playbook; Path B chrome; api/health repo_root additive.
 
 Task:
 1) Operator Tier 3: point overseerkit.com (apex) at static docs/landing/ host; TLS.
 2) Confirm §LAC.9 checklist still true after cutover (no live ok app on apex;
-   Download CTA still signed Mac; no CSRF/session mint claims).
+   Download CTA still signed Mac; no CSRF/session mint claims; footer says MIT).
 3) Optional parallel: live VF/Scooling dogfood against published installer / ok app.
-4) Update ROADMAP + HANDOVER after cutover; merge landing branch only with Tier 3.
+4) Update ROADMAP + HANDOVER after cutover; merge feature branches only with Tier 3.
 
 Hard stops: no app.*/console.* Path B subdomain; no public session mint; no unsigned-as-primary.
 ```
@@ -117,6 +118,7 @@ Hard stops: no app.*/console.* Path B subdomain; no public session mint; no unsi
 | **Track Q / Q4a**         | **DONE** — Thinking freeze (`docs/PHASE-TRACK-Q-Q4A-UI-REDESIGN.md` reviewed → `pass`, Q4a-r2), stamp `sha256:ea118134…`. Path B developer UI redesign contract: Overview/Structure IA, four offline diagrams, suite CTAs, closed Q0 surface, §Q4A.15. **Spec-only — no UI code.** Cleared for Q4b |
 | **Track Q / Q4b**         | **DONE** — Auto build (build-verified → `pass`, Q4b-BV-r1). Overview + Structure IA; four offline SVGs; suite CTAs; status humanization; closed Q0 unchanged; §Q4A.15 **17** green; full suite **905**. No LICENSE/`desktop/`/engine edits |
 | **Landing + access clarity** | **DONE** — Thinking `pass` (LAC-r2) + Auto build-verified → `pass` (LAC-BV-r1). Public IA + offline SVGs + Mac `v0.1.0` Download CTA; Paths 1–3 playbook; Path B chrome + health `repo_root`; seven-tier §LAC.12; full suite **931**. DNS cutover still Tier 3 (§LAC.9). |
+| **K12 LICENSE → MIT** | **DONE** — Thinking freeze `pass` (MIT-r1) + Auto BV `pass` (MIT-BV-r1). SPDX MIT across `LICENSE` / pyproject / landing / Path B; K12 §K12.4 amended; **936** green. |
 | **K6-Scooling runbook**   | **DONE** — `docs/consumers/scooling/OVERSEER-SETUP.md` (kit-side; live init still operator-gated; Track O cross-link in O1) |
 | **Track O / O0**          | **DONE** — Normie custody funnel Thinking freeze (`docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md` reviewed → `pass`, O0-r3), stamp `sha256:642076c9…` |
 | **Track O / O1**          | **DONE** — Product contracts build-verified → `pass` (O1-BV-r1). Contract + Scooling/Knowtation stubs + `tools/track_o/` + §O0.8. **728** tests green (+32) |
@@ -154,6 +156,11 @@ Hard stops: no app.*/console.* Path B subdomain; no public session mint; no unsi
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-14** — **K12 LICENSE → MIT DONE (freeze `pass` MIT-r1 + BV `pass` MIT-BV-r1).**
+  Operator SPDX flip: root MIT `LICENSE`, `pyproject.toml`, landing/scenarios footers, Path B
+  console copy, `tools/landing/validate.py` fail-closed MIT, K12 §K12.4/§K12.7 amended via
+  `docs/PHASE-K12-LICENSE-MIT-AMENDMENT.md`. Stress fixture copies favicon assets. Full suite
+  **936** green (1 deselected: localhost:8765 already bound). NEXT → DNS / dogfood.
 - **2026-07-14** — **Landing + access clarity Auto DONE (build-verified → `pass`, LAC-BV-r1).**
   Implemented frozen `docs/PHASE-LANDING-ACCESS-CLARITY.md`: `docs/landing/` IA §LAC.3 + four
   offline SVGs; primary Download CTA → signed Mac `v0.1.0` `.dmg`; Paths 1–3 on README + landing
