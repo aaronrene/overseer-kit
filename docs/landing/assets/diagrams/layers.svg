@@ -1,15 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 280" role="img" aria-labelledby="layersTitle layersDesc">
   <title id="layersTitle">L0 to L2 module stack</title>
-  <desc id="layersDesc">L0 governance always on, then optional L1 domain checkpoints, then optional L2 honesty ledger.</desc>
+  <desc id="layersDesc">L0 governance with freeze review always on, then L1 domain checkpoints when scripts are bound, then L2 honesty ledger when dual-control is bound.</desc>
   <rect width="420" height="280" fill="#fbfcfd"/>
-  <rect x="60" y="24" width="300" height="48" rx="3" fill="#fff" stroke="#1d4f91" stroke-width="1.5"/>
-  <text x="84" y="53" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="13" fill="#1a1f26">L0 Governance - always on</text>
+  <rect x="40" y="24" width="340" height="48" rx="3" fill="#fff" stroke="#1d4f91" stroke-width="1.5"/>
+  <text x="56" y="53" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="12" fill="#1a1f26">L0 Governance + freeze review - always on</text>
 
-  <rect x="60" y="116" width="300" height="48" rx="3" fill="#fff" stroke="#1d4f91" stroke-width="1.5"/>
-  <text x="78" y="145" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="13" fill="#1a1f26">L1 Domain checkpoints - opt-in</text>
+  <rect x="40" y="116" width="340" height="48" rx="3" fill="#fff" stroke="#1d4f91" stroke-width="1.5"/>
+  <text x="56" y="145" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="12" fill="#1a1f26">L1 Domain checkpoints - bind with scripts</text>
 
-  <rect x="60" y="208" width="300" height="48" rx="3" fill="#fff" stroke="#1d4f91" stroke-width="1.5"/>
-  <text x="84" y="237" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="13" fill="#1a1f26">L2 Honesty ledger - opt-in</text>
+  <rect x="40" y="208" width="340" height="48" rx="3" fill="#fff" stroke="#1d4f91" stroke-width="1.5"/>
+  <text x="56" y="237" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="12" fill="#1a1f26">L2 Honesty ledger - bind for dual-control</text>
 
   <path d="M210 72 V116" stroke="#5c6570" stroke-width="1.5" marker-end="url(#lArrow)"/>
   <path d="M210 164 V208" stroke="#5c6570" stroke-width="1.5" marker-end="url(#lArrow)"/>

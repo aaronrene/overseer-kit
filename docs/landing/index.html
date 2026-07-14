@@ -32,8 +32,8 @@
       <div class="hero-inner">
         <div class="hero-copy">
           <h1>🆗 Overseer Kit</h1>
-          <p class="lead">Governance + honesty for phased AI work — without amnesia, fake DONE, or silent drift.</p>
-          <p class="sublead">Portable patterns for any repo. Product task runtimes stay in your apps — this kit ships the shared honesty machinery.</p>
+          <p class="lead">Freeze the plan. Review it independently. Then build — so AI work cannot fake DONE.</p>
+          <p class="sublead">Living ROADMAP + Handover, freeze review, and the right model for each stage. Product runtimes stay in your apps; this kit ships the governance + honesty machinery.</p>
           <div class="cta-row">
             <a class="btn btn-primary" id="cta-download-mac"
                href="https://github.com/aaronrene/overseer-kit/releases/download/v0.1.0/Overseer.Kit_0.1.0_aarch64.dmg">Download Mac console (Apple Silicon)</a>
@@ -68,24 +68,24 @@
     </section>
 
     <section id="living-docs">
-      <h2>What you get at a glance</h2>
-      <p>Two living documents plus a short close-out habit. That is the core product.</p>
+      <h2>Core safety — always on</h2>
+      <p>This is the center of the system — not an add-on. A phase freezes its contract, an independent review must pass, then Auto builds only against that freeze. Living docs and model-tier labels keep every session honest.</p>
       <div class="card-grid">
         <div class="card">
-          <h3>ROADMAP</h3>
-          <p>The phase board: what work exists, what is DONE / WIP / TODO, and which model tier each phase uses.</p>
+          <h3>Frozen spec + freeze review</h3>
+          <p>Thinking freezes WHAT/HOW. <code>ok review --freeze</code> (and the review loop) cites findings by file+line. No build claims DONE without a <code>pass</code> — that is how self-approval dies.</p>
         </div>
         <div class="card">
-          <h3>Overseer Handover</h3>
-          <p>The session baton: what is true now, and the <strong>one</strong> next step — so a fresh chat does not guess.</p>
+          <h3>ROADMAP + Handover</h3>
+          <p><strong>ROADMAP</strong> is the phase board (status + model tier per phase). <strong>Handover</strong> is the session baton: what is true now and the <strong>one</strong> next paste-ready prompt.</p>
         </div>
         <div class="card">
-          <h3>Paste-ready prompt</h3>
-          <p>Copy the NEXT fence into any AI tool. No special IDE required.</p>
+          <h3>Right model for the stage</h3>
+          <p>ROADMAP labels phases Thinking / Auto / Operator. The kit holds the routing rulebook (<code>ok route</code> + <code>policy/model-routing.yaml</code>) — it names the tier; your IDE/runtime makes the call. No more “use Opus for everything.”</p>
         </div>
         <div class="card">
-          <h3>Hygiene</h3>
-          <p>Before you stop: <code>ok governance-sync --dry-run</code> keeps ROADMAP and Handover honest together.</p>
+          <h3>Hygiene before you stop</h3>
+          <p><code>ok governance-sync --dry-run</code> keeps ROADMAP and Handover aligned. Build-verification review gates Auto DONE the same way freeze review gates the spec.</p>
         </div>
       </div>
     </section>
@@ -114,12 +114,12 @@
       </figure>
 
       <figure class="diagram-figure" id="diagram-layers">
-        <figcaption>Enable modules when stakes rise. Honesty expects checkpoint evidence. Optional Muse deepen is never required for the layers above.</figcaption>
+        <figcaption>L0 (including freeze review) is the always-on safety loop. L1/L2 add mechanical domain evidence and the honesty ledger when your repo binds those modules — they are not “skip freeze review.”</figcaption>
         <img src="assets/diagrams/layers.svg" alt="Layer stack from L0 governance to L1 domain checkpoints to L2 honesty ledger" width="420" height="280">
         <ul class="diagram-fallback">
-          <li>L0 — living docs and phases (always on)</li>
-          <li>L1 — domain checkpoints (opt-in)</li>
-          <li>L2 — honesty ledger (opt-in)</li>
+          <li>L0 — living docs, phases, freeze review (always on)</li>
+          <li>L1 — domain checkpoint orchestrator (bind when you have verify scripts)</li>
+          <li>L2 — honesty ledger / producer≠verifier (bind when dual-control matters)</li>
         </ul>
       </figure>
 
@@ -135,26 +135,26 @@
 
     <section id="layers">
       <h2>Layers in plain language</h2>
-      <p>Add capability as stakes rise. Start with living docs; add checkpoints and independent review when remakes or money are on the line.</p>
+      <p><strong>L0 is not optional.</strong> Freeze review, living docs, and model-tier discipline ship as the baseline. L1 and L2 are extra mechanical sockets you bind when your domain has verify scripts or needs a hash-chained ledger — they do not replace freeze review, and they are not “the review step.”</p>
       <div class="layer-stack">
         <div class="layer layer-l0">
-          <strong>Living docs + phases</strong>
-          ROADMAP phase board · HANDOVER next-session relay · independent freeze review before build
+          <strong>L0 — Governance (always on)</strong>
+          ROADMAP · Handover · Thinking → freeze → review → Auto · model-tier labels · governance-sync · build verification
         </div>
         <div class="layer layer-l1">
-          <strong>Checkpoints</strong>
-          Consumer-owned verify scripts · mechanical gates before “complete” sticks
+          <strong>L1 — Domain checkpoints (bind when ready)</strong>
+          Consumer-owned verify scripts + manifests · <code>ok verify-step</code> orchestrator — why the flag exists: the kit cannot invent your video/export/research checks until you write them
         </div>
         <div class="layer layer-l2">
-          <strong>Independent review + ledger</strong>
-          Producer cannot self-certify · append-only hash chain · verifier sessions
+          <strong>L2 — Honesty ledger (bind when ready)</strong>
+          Producer ≠ verifier · append-only hash chain · co-requirement hooks — dual-control when money/publish stakes require it
         </div>
         <div class="layer layer-l3">
-          <strong>Optional deeper history</strong>
-          Muse substrate when provenance pays for itself — never required for the layers above
+          <strong>L3 — Optional deeper history</strong>
+          Muse substrate when provenance pays for itself — never required for L0–L2
         </div>
       </div>
-      <p class="footnote">Developers: CLI name is <code>ok</code> (<code>overseer</code> remains a compat shim). Full write-ups live on GitHub.</p>
+      <p class="footnote">Defaults today: freeze review and living docs are the day-one path. <code>checkpoints.enabled</code> / <code>honesty.enabled</code> start off so a fresh <code>ok init</code> does not fail-closed waiting for scripts you have not written yet — turn them on when bound. Flipping those defaults kit-wide needs a dedicated Thinking freeze. CLI name is <code>ok</code>.</p>
     </section>
 
     <section id="console-access">

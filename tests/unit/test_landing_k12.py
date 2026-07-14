@@ -125,7 +125,9 @@ def test_main_landing_has_no_personal_product_doors() -> None:
         assert phrase not in html
     assert 'id="theme-toggle"' in html
     assert 'id="living-docs"' in html
-    assert "ROADMAP" in html and "Overseer Handover" in html
+    assert "ROADMAP" in html and "Handover" in html
+    assert "freeze review" in html.lower() or "ok review --freeze" in html
+    assert "ok route" in html or "model-routing" in html
     assert "https://github.com/aaronrene/overseer-kit#readme" in html
     assert "../../README.md" not in html
     assert "../CONSUMER-ADAPTER-PATTERN.md" not in html
