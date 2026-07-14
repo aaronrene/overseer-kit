@@ -1,0 +1,534 @@
+# Overseer Kit — signed desktop installer release (§QR.4–§QR.8).
+# Kit dogfood workflow. Secrets live only in GitHub Actions repository secrets
+# (§QR.6) — never commit private keys, .p12, .pfx, or passwords.
+#
+# Triggers: tag push matching v* (VERSION must equal tag without leading v),
+# or workflow_dispatch with frozen inputs.
+# Forbidden: pull_request / schedule / feature-branch push publish.
+
+name: desktop-release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Kit VERSION (must equal VERSION file)
+        required: true
+        type: string
+      publish:
+        description: Upload assets to GitHub Release when true
+        required: false
+        type: boolean
+        default: true
+      allow_partial:
+        description: Allow incomplete platform set (honest unavailable rows)
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: desktop-release-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  version-check:
+    runs-on: ubuntu-22.04
+    outputs:
+      version: ${{ steps.align.outputs.version }}
+      publish: ${{ steps.flags.outputs.publish }}
+      allow_partial: ${{ steps.flags.outputs.allow_partial }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Resolve publish flags
+        id: flags
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "publish=${{ inputs.publish }}" >> "$GITHUB_OUTPUT"
+            echo "allow_partial=${{ inputs.allow_partial }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+            echo "allow_partial=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Version alignment (§QR.8)
+        id: align
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            TAG_ARG=""
+            DISPATCH_ARG="--dispatch-version ${{ inputs.version }}"
+          else
+            TAG_ARG="--tag ${{ github.ref_name }}"
+            DISPATCH_ARG=""
+          fi
+          python - <<'PY'
+          import os
+          import sys
+          from pathlib import Path
+          from tools.desktop_release.version_align import VersionAlignError, check_version_alignment
+
+          kit = Path(".").resolve()
+          tag = os.environ.get("TAG_NAME") or None
+          dispatch = os.environ.get("DISPATCH_VERSION") or None
+          try:
+              version = check_version_alignment(kit, tag=tag, dispatch_version=dispatch)
+          except VersionAlignError as exc:
+              print(f"version alignment failed: {exc}", file=sys.stderr)
+              sys.exit(1)
+          print(f"version={version}")
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as fh:
+              fh.write(f"version={version}\n")
+          PY
+        env:
+          TAG_NAME: ${{ github.event_name != 'workflow_dispatch' && github.ref_name || '' }}
+          DISPATCH_VERSION: ${{ github.event_name == 'workflow_dispatch' && inputs.version || '' }}
+
+  build:
+    needs: version-check
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-14
+            platform: macos
+            artifact_glob: "*.dmg"
+          - os: windows-latest
+            platform: windows
+            artifact_glob: "*.msi"
+          - os: ubuntu-22.04
+            platform: linux
+            artifact_glob: "*.AppImage"
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: desktop/package-lock.json
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: "1.88.0"
+
+      - name: Linux AppImage deps
+        if: matrix.platform == 'linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+
+      - name: Require signing secrets when publishing (§QR.5 fail-closed)
+        shell: bash
+        env:
+          PUBLISH: ${{ needs.version-check.outputs.publish }}
+          PLATFORM: ${{ matrix.platform }}
+          APPLE_CERTIFICATE: ${{ secrets.APPLE_CERTIFICATE }}
+          APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
+          APPLE_SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
+          APPLE_API_KEY: ${{ secrets.APPLE_API_KEY }}
+          APPLE_API_KEY_ID: ${{ secrets.APPLE_API_KEY_ID }}
+          APPLE_API_ISSUER: ${{ secrets.APPLE_API_ISSUER }}
+          WINDOWS_CERTIFICATE: ${{ secrets.WINDOWS_CERTIFICATE }}
+          WINDOWS_CERTIFICATE_PASSWORD: ${{ secrets.WINDOWS_CERTIFICATE_PASSWORD }}
+          LINUX_SIGNING_KEY: ${{ secrets.LINUX_SIGNING_KEY }}
+          LINUX_SIGNING_KEY_PASSWORD: ${{ secrets.LINUX_SIGNING_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import os
+          import sys
+          from tools.desktop_release.finalize import FinalizeError, require_signing_secrets
+
+          publish = os.environ.get("PUBLISH", "true").lower() == "true"
+          platform = os.environ["PLATFORM"]
+          secrets_present = {
+              name: bool(os.environ.get(name))
+              for name in (
+                  "APPLE_CERTIFICATE",
+                  "APPLE_CERTIFICATE_PASSWORD",
+                  "APPLE_ID",
+                  "APPLE_TEAM_ID",
+                  "APPLE_APP_SPECIFIC_PASSWORD",
+                  "APPLE_SIGNING_IDENTITY",
+                  "APPLE_API_KEY",
+                  "APPLE_API_KEY_ID",
+                  "APPLE_API_ISSUER",
+                  "WINDOWS_CERTIFICATE",
+                  "WINDOWS_CERTIFICATE_PASSWORD",
+                  "LINUX_SIGNING_KEY",
+                  "LINUX_SIGNING_KEY_PASSWORD",
+              )
+          }
+          try:
+              require_signing_secrets(
+                  publish=publish,
+                  platform=platform,
+                  secrets_present=secrets_present,
+              )
+          except FinalizeError as exc:
+              print(str(exc), file=sys.stderr)
+              sys.exit(1)
+          print(f"signing secret check ok for {platform} (publish={publish})")
+          PY
+
+      - name: Bundle kit into Tauri resources
+        run: ./scripts/bundle-desktop-kit.sh
+        shell: bash
+
+      - name: Install desktop npm deps
+        working-directory: desktop
+        run: npm ci
+
+      - name: Import Apple certificate
+        if: matrix.platform == 'macos' && needs.version-check.outputs.publish == 'true'
+        shell: bash
+        env:
+          APPLE_CERTIFICATE: ${{ secrets.APPLE_CERTIFICATE }}
+          APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+        run: |
+          set -euo pipefail
+          CERT_PATH="$RUNNER_TEMP/apple-cert.p12"
+          KEYCHAIN="$RUNNER_TEMP/overseer-signing.keychain-db"
+          echo "$APPLE_CERTIFICATE" | base64 --decode > "$CERT_PATH"
+          security create-keychain -p "" "$KEYCHAIN"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN"
+          security unlock-keychain -p "" "$KEYCHAIN"
+          security import "$CERT_PATH" -P "$APPLE_CERTIFICATE_PASSWORD" -A -t cert -f pkcs12 -k "$KEYCHAIN"
+          security list-keychains -d user -s "$KEYCHAIN" $(security list-keychains -d user | sed s/\"//g)
+          security set-key-partition-list -S apple-tool:,apple: -s -k "" "$KEYCHAIN"
+          rm -f "$CERT_PATH"
+
+      - name: Import Windows certificate
+        if: matrix.platform == 'windows' && needs.version-check.outputs.publish == 'true'
+        shell: pwsh
+        env:
+          WINDOWS_CERTIFICATE: ${{ secrets.WINDOWS_CERTIFICATE }}
+          WINDOWS_CERTIFICATE_PASSWORD: ${{ secrets.WINDOWS_CERTIFICATE_PASSWORD }}
+        run: |
+          $pfxPath = Join-Path $env:RUNNER_TEMP "windows-cert.pfx"
+          [IO.File]::WriteAllBytes($pfxPath, [Convert]::FromBase64String($env:WINDOWS_CERTIFICATE))
+          echo "WINDOWS_PFX_PATH=$pfxPath" >> $env:GITHUB_ENV
+
+      - name: Tauri build
+        working-directory: desktop
+        shell: bash
+        env:
+          APPLE_SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          APPLE_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
+          APPLE_API_KEY: ${{ secrets.APPLE_API_KEY }}
+          APPLE_API_KEY_ID: ${{ secrets.APPLE_API_KEY_ID }}
+          APPLE_API_ISSUER: ${{ secrets.APPLE_API_ISSUER }}
+          WINDOWS_CERTIFICATE_PASSWORD: ${{ secrets.WINDOWS_CERTIFICATE_PASSWORD }}
+        run: |
+          set -euo pipefail
+          npx tauri build
+
+      - name: Locate bundle + enforce allowlist
+        id: locate
+        shell: bash
+        env:
+          PLATFORM: ${{ matrix.platform }}
+          VERSION: ${{ needs.version-check.outputs.version }}
+          ARTIFACT_GLOB: ${{ matrix.artifact_glob }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import glob
+          import os
+          import shutil
+          import sys
+          from pathlib import Path
+          from tools.desktop_release.allowlist import AllowlistError, refuse_disallowed_asset
+
+          version = os.environ["VERSION"]
+          pattern = os.environ["ARTIFACT_GLOB"]
+          root = Path("desktop/src-tauri/target/release/bundle")
+          matches = sorted(
+              Path(p)
+              for p in glob.glob(str(root / "**" / pattern), recursive=True)
+              if Path(p).is_file()
+          )
+          if not matches:
+              print(f"no artifacts matching {pattern} under {root}", file=sys.stderr)
+              sys.exit(1)
+          chosen = matches[0]
+          try:
+              refuse_disallowed_asset(chosen.name, version=version)
+          except AllowlistError as exc:
+              print(exc, file=sys.stderr)
+              sys.exit(1)
+          out = Path("release-artifacts")
+          out.mkdir(parents=True, exist_ok=True)
+          dest = out / chosen.name
+          shutil.copy2(chosen, dest)
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as fh:
+              fh.write(f"path={dest.as_posix()}\n")
+              fh.write(f"filename={dest.name}\n")
+          PY
+
+      - name: Authenticode-sign Windows MSI
+        if: matrix.platform == 'windows' && needs.version-check.outputs.publish == 'true'
+        shell: pwsh
+        env:
+          WINDOWS_CERTIFICATE_PASSWORD: ${{ secrets.WINDOWS_CERTIFICATE_PASSWORD }}
+          ARTIFACT_PATH: ${{ steps.locate.outputs.path }}
+        run: |
+          if (-not $env:WINDOWS_PFX_PATH) { throw "WINDOWS_PFX_PATH missing" }
+          & signtool sign /f $env:WINDOWS_PFX_PATH /p $env:WINDOWS_CERTIFICATE_PASSWORD /tr http://timestamp.digicert.com /td sha256 /fd sha256 $env:ARTIFACT_PATH
+          if ($LASTEXITCODE -ne 0) { throw "signtool failed" }
+
+      - name: Sign Linux AppImage (minisign detached)
+        if: matrix.platform == 'linux' && needs.version-check.outputs.publish == 'true'
+        shell: bash
+        env:
+          LINUX_SIGNING_KEY: ${{ secrets.LINUX_SIGNING_KEY }}
+          LINUX_SIGNING_KEY_PASSWORD: ${{ secrets.LINUX_SIGNING_KEY_PASSWORD }}
+          ARTIFACT_PATH: ${{ steps.locate.outputs.path }}
+        run: |
+          set -euo pipefail
+          curl -fsSL -o "$RUNNER_TEMP/minisign.tar.gz" \
+            https://github.com/jedisct1/minisign/releases/download/0.11/minisign-0.11-linux.tar.gz
+          tar -xzf "$RUNNER_TEMP/minisign.tar.gz" -C "$RUNNER_TEMP"
+          MINISIGN="$(find "$RUNNER_TEMP" -type f -name minisign | head -n 1)"
+          test -x "$MINISIGN"
+          KEY_PATH="$RUNNER_TEMP/linux-signing.key"
+          printf '%s' "$LINUX_SIGNING_KEY" > "$KEY_PATH"
+          if [ -n "${LINUX_SIGNING_KEY_PASSWORD:-}" ]; then
+            "$MINISIGN" -S -s "$KEY_PATH" -m "$ARTIFACT_PATH" -x "${ARTIFACT_PATH}.minisig" <<< "$LINUX_SIGNING_KEY_PASSWORD"
+          else
+            "$MINISIGN" -S -s "$KEY_PATH" -m "$ARTIFACT_PATH" -x "${ARTIFACT_PATH}.minisig"
+          fi
+          SIG="${ARTIFACT_PATH}.minisig"
+          test -f "$SIG"
+          cp "$SIG" "release-artifacts/$(basename "$SIG")"
+          rm -f "$KEY_PATH"
+
+      - name: Hash artifact after signing
+        id: hash
+        shell: bash
+        env:
+          ARTIFACT_PATH: ${{ steps.locate.outputs.path }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          from tools.desktop_release.checksums import sha256_file
+
+          path = Path(os.environ["ARTIFACT_PATH"])
+          digest = sha256_file(path)
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as fh:
+              fh.write(f"sha256={digest}\n")
+          print(f"sha256={digest}")
+          PY
+
+      - name: Write platform manifest fragment
+        shell: bash
+        env:
+          PLATFORM: ${{ matrix.platform }}
+          VERSION: ${{ needs.version-check.outputs.version }}
+          FILENAME: ${{ steps.locate.outputs.filename }}
+          SHA256: ${{ steps.hash.outputs.sha256 }}
+          PUBLISH: ${{ needs.version-check.outputs.publish }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          platform = os.environ["PLATFORM"]
+          method = {
+              "macos": "developer_id_notarized",
+              "windows": "authenticode",
+              "linux": "minisign_detached",
+          }[platform]
+          status = "signed" if os.environ.get("PUBLISH", "true").lower() == "true" else "unsigned"
+          arch = {"macos": "aarch64", "windows": "x86_64", "linux": "x86_64"}[platform]
+          frag = {
+              "platform": platform,
+              "filename": os.environ["FILENAME"],
+              "sha256": os.environ["SHA256"],
+              "arch": arch,
+              "signing": {"status": status, "method": method if status == "signed" else "none"},
+          }
+          out = Path("release-artifacts") / f"fragment-{platform}.json"
+          out.write_text(json.dumps(frag, indent=2) + "\n", encoding="utf-8")
+          PY
+
+      - name: Upload platform workflow artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: desktop-${{ matrix.platform }}-${{ needs.version-check.outputs.version }}
+          path: release-artifacts/
+          if-no-files-found: error
+          retention-days: 14
+
+  finalize:
+    needs: [version-check, build]
+    runs-on: ubuntu-22.04
+    if: always() && needs.version-check.result == 'success'
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Download platform artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: gathered
+          pattern: desktop-*-${{ needs.version-check.outputs.version }}
+          merge-multiple: false
+
+      - name: Assemble manifest + SHA256SUMS + allowlist gate
+        id: assemble
+        shell: bash
+        env:
+          VERSION: ${{ needs.version-check.outputs.version }}
+          PUBLISH: ${{ needs.version-check.outputs.publish }}
+          ALLOW_PARTIAL: ${{ needs.version-check.outputs.allow_partial }}
+          GIT_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          import os
+          import sys
+          from pathlib import Path
+          from tools.desktop_release.allowlist import AllowlistError, refuse_disallowed_asset
+          from tools.desktop_release.checksums import write_sha256sums
+          from tools.desktop_release.constants import MANIFEST_FILENAME_TEMPLATE, SHA256SUMS_FILENAME
+          from tools.desktop_release.manifest import ManifestError, build_manifest, canonical_manifest_bytes
+
+          version = os.environ["VERSION"]
+          publish = os.environ.get("PUBLISH", "true").lower() == "true"
+          allow_partial = os.environ.get("ALLOW_PARTIAL", "false").lower() == "true"
+          git_sha = os.environ["GIT_SHA"]
+          root = Path("gathered")
+          fragments = sorted(root.rglob("fragment-*.json"))
+          if not fragments and publish and not allow_partial:
+              print("no platform fragments found", file=sys.stderr)
+              sys.exit(1)
+
+          artifacts = []
+          for frag_path in fragments:
+              data = json.loads(frag_path.read_text(encoding="utf-8"))
+              artifacts.append(data)
+
+          platforms_present = {a["platform"] for a in artifacts}
+          required = {"macos", "windows", "linux"}
+          missing = sorted(required - platforms_present)
+          if missing and publish and not allow_partial:
+              print(f"missing platforms: {missing}", file=sys.stderr)
+              sys.exit(1)
+          for plat in missing:
+              artifacts.append(
+                  {
+                      "platform": plat,
+                      "filename": f"UNAVAILABLE-{plat}",
+                      "sha256": "0" * 64,
+                      "signing": {"status": "unavailable", "method": "none"},
+                  }
+              )
+
+          out = Path("release-dist")
+          out.mkdir(parents=True, exist_ok=True)
+
+          # Copy allowlisted installer + sidecar files into release-dist
+          for path in root.rglob("*"):
+              if not path.is_file():
+                  continue
+              if path.name.startswith("fragment-"):
+                  continue
+              try:
+                  refuse_disallowed_asset(path.name, version=version)
+              except AllowlistError:
+                  print(f"skipping non-allowlisted file: {path.name}", file=sys.stderr)
+                  continue
+              dest = out / path.name
+              dest.write_bytes(path.read_bytes())
+
+          # Drop unavailable placeholder rows that are not real files
+          real_artifacts = [a for a in artifacts if a["signing"]["status"] != "unavailable"]
+          unavailable = [a for a in artifacts if a["signing"]["status"] == "unavailable"]
+
+          if publish and not allow_partial:
+              for a in real_artifacts:
+                  if a["signing"]["status"] != "signed":
+                      print(f"unsigned artifact on publish: {a['filename']}", file=sys.stderr)
+                      sys.exit(1)
+
+          try:
+              manifest = build_manifest(
+                  version=version,
+                  git_sha=git_sha,
+                  artifacts=real_artifacts + unavailable,
+              )
+          except ManifestError as exc:
+              print(exc, file=sys.stderr)
+              sys.exit(1)
+
+          # Manifest must not claim signed for unavailable placeholders with fake hashes
+          # when allow_partial — already status unavailable.
+
+          manifest_name = MANIFEST_FILENAME_TEMPLATE.format(version=version)
+          (out / manifest_name).write_bytes(canonical_manifest_bytes(manifest))
+          sums = [(a["sha256"], a["filename"]) for a in real_artifacts]
+          write_sha256sums(out / SHA256SUMS_FILENAME, sums)
+
+          notes = [
+              f"Overseer Kit desktop {version}",
+              f"Commit: {git_sha}",
+              "",
+              "Verify checksums with SHA256SUMS.txt and the release manifest.",
+              "Operator runbook: docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md",
+              "Installers still require Python 3.11+ on the host.",
+          ]
+          if unavailable:
+              notes.append("")
+              notes.append("Unavailable platforms (not signed): " + ", ".join(a["platform"] for a in unavailable))
+              notes.append("Do not call this a complete signed release.")
+          Path("release-notes.md").write_text("\n".join(notes) + "\n", encoding="utf-8")
+          print(f"assembled {len(real_artifacts)} artifacts")
+          PY
+
+      - name: Publish GitHub Release assets
+        if: needs.version-check.outputs.publish == 'true'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ needs.version-check.outputs.version }}
+          name: Overseer Kit desktop v${{ needs.version-check.outputs.version }}
+          body_path: release-notes.md
+          files: release-dist/*
+          fail_on_unmatched_files: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

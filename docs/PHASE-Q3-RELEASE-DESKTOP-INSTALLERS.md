@@ -650,10 +650,10 @@ Escalation categories for freeze review remain: `security`, `irreversible`, `rea
 
 ### §QR.15.2 — Auto build (later)
 
-- [ ] Mechanical implementation matches §§QR.4–QR.12 and §QR.11
-- [ ] Seven-tier matrix §QR.13 green
-- [ ] `/build-verification-review` → `pass` before ROADMAP Auto → DONE
-- [ ] Governance sync (ROADMAP + HANDOVER) in the closing commit
-- [ ] Feature-branch push / PR only; merge remains Tier 3
-- [ ] Track Q engine/API surfaces unchanged
-- [ ] Live Apple/Windows notarization **not** required for Auto DONE (secrets are operator Tier 3)
+- [x] Mechanical implementation matches §§QR.4–QR.12 and §QR.11
+- [x] Seven-tier matrix §QR.13 green
+- [x] `/build-verification-review` → `pass` before ROADMAP Auto → DONE
+- [x] Governance sync (ROADMAP + HANDOVER) in the closing commit
+- [x] Feature-branch push / PR only; merge remains Tier 3
+- [x] Track Q engine/API surfaces unchanged
+- [x] Live Apple/Windows notarization **not** required for Auto DONE (secrets are operator Tier 3)

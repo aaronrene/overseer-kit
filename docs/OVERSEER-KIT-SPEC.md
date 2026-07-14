@@ -313,6 +313,14 @@ extended (spec-compatible, additive) `version.lock` shape with a per-file manife
 deterministic `footprint_digest` algorithm are frozen in `docs/PHASE-K4-VENDORING-CLI-CONTRACT.md`.
 K4b builds against that document.
 
+**Desktop installers (additive distribution channel):** signed platform installers (`.dmg` /
+`.msi` / `.AppImage`) are an **optional** distribution path for the existing `ok app` loopback UI
+and Tauri shell (`desktop/`). They do **not** add a required CLI subcommand: Path A (HANDOVER) and
+Path B (`ok app`) remain complete without installers. Auto v1 installers still require **host
+Python 3.11+**. Release CI + helpers live under `.github/workflows/desktop-release.yml` and
+`tools/desktop_release/`; operator runbook: `docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md`. Frozen
+detail: `docs/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md`.
+
 ---
 
 ## §6 — Freeze-Contract review policy (frozen)
