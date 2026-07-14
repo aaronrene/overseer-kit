@@ -18,11 +18,16 @@ def test_validate_landing_on_kit_root_passes() -> None:
 
 def test_relative_doc_links_exist() -> None:
     index = (KIT_ROOT / "docs" / "landing" / "index.html").read_text(encoding="utf-8")
-    assert "../GIT-ONLY-QUICKSTART.md" in index
-    assert (KIT_ROOT / "docs" / "GIT-ONLY-QUICKSTART.md").is_file()
-    assert (KIT_ROOT / "docs" / "CONSUMER-ADAPTER-PATTERN.md").is_file()
+    assert "https://github.com/aaronrene/overseer-kit/blob/main/docs/GIT-ONLY-QUICKSTART.md" in index
+    assert "https://github.com/aaronrene/overseer-kit/blob/main/docs/CONSUMER-ADAPTER-PATTERN.md" in index
+    assert "https://github.com/aaronrene/overseer-kit/blob/main/docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md" in index
+    assert "https://github.com/aaronrene/overseer-kit/blob/main/docs/K7-DOGFOOD-OPERATOR-RUNBOOK.md" in index
     assert (KIT_ROOT / "docs" / "TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md").is_file()
-    assert (KIT_ROOT / "docs" / "K7-DOGFOOD-OPERATOR-RUNBOOK.md").is_file()
+    assert "../GIT-ONLY-QUICKSTART.md" not in index
+    assert "musehub.ai" not in index
+    assert "Knowtation" not in index
+    assert "Scooling" not in index
+    assert "VideoFactory" not in index
 
 
 def test_api_health_returns_repo_root_with_bearer(tmp_path: Path) -> None:

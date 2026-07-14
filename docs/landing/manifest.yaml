@@ -7,6 +7,7 @@ license: Apache-2.0
 sections:
   - id: hero
   - id: problem
+  - id: living-docs
   - id: structure
   - id: layers
   - id: console-access
@@ -30,7 +31,7 @@ personas:
     status: aspirational
   - id: D
     slug: classroom
-    title: Classroom / Scooling
+    title: Classroom
     status: reference
   - id: E
     slug: multi-org-oss

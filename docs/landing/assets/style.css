@@ -1,6 +1,7 @@
-/* 🆗 Overseer Kit Track N landing — static, no external dependencies */
+/* 🆗 Overseer Kit landing — static, no external CDN */
 
-:root {
+:root,
+html[data-theme="dark"] {
   --bg: #0f1419;
   --surface: #1a2332;
   --text: #e7ecf3;
@@ -15,9 +16,28 @@
   --layer-l1: #34d399;
   --layer-l2: #fbbf24;
   --layer-l3: #a78bfa;
+  --header-bg: #1a2332;
   --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, "Cascadia Code", "SF Mono", monospace;
   --max-width: 52rem;
+}
+
+html[data-theme="light"] {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --text: #15202b;
+  --muted: #5a6b7d;
+  --accent: #1f7a4d;
+  --accent-dim: #165c3a;
+  --border: #d5dde8;
+  --badge-dogfood: #1d4ed8;
+  --badge-reference: #6d28d9;
+  --badge-aspirational: #475569;
+  --layer-l0: #2563eb;
+  --layer-l1: #059669;
+  --layer-l2: #b45309;
+  --layer-l3: #7c3aed;
+  --header-bg: #ffffff;
 }
 
 *,
@@ -51,11 +71,53 @@ a:hover {
 
 header.site-header {
   border-bottom: 1px solid var(--border);
-  background: var(--surface);
+  background: var(--header-bg);
   padding: 0.75rem 1.5rem;
   position: sticky;
   top: 0;
   z-index: 10;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.theme-icon-sun {
+  display: none;
+}
+
+html[data-theme="light"] .theme-icon-moon {
+  display: none;
+}
+
+html[data-theme="light"] .theme-icon-sun {
+  display: inline;
+}
+
+html[data-theme="dark"] .theme-icon-moon {
+  display: inline;
+}
+
+html[data-theme="dark"] .theme-icon-sun {
+  display: none;
 }
 
 .site-header nav {

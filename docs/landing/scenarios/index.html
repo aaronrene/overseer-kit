@@ -1,28 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="🆗 Overseer Kit scenario gallery — video studio, research, accounting, classroom, and OSS personas.">
   <title>Scenario gallery — 🆗 Overseer Kit</title>
   <link rel="stylesheet" href="../assets/style.css">
+  <script src="../assets/theme.js" defer></script>
 </head>
 <body>
   <header class="site-header">
     <nav>
       <a class="brand" href="../index.html">🆗 Overseer Kit</a>
       <div class="nav-links">
-        <a href="../index.html">Landing</a>
+        <a href="../index.html#living-docs">Living docs</a>
         <a href="../index.html#structure">Structure</a>
         <a href="../index.html#console-access">Local console</a>
-        <a href="../index.html#funnel">Funnel</a>
+        <a href="../index.html#scenarios" aria-current="page">Scenarios</a>
+        <a href="https://github.com/aaronrene/overseer-kit#readme">Docs</a>
+        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to light mode" title="Light / dark">
+          <span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span>
+          <span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span>
+        </button>
       </div>
     </nav>
   </header>
 
   <main>
     <h1>Scenario gallery</h1>
-    <p class="lead">Five personas showing how L0→L3 layers compose. Badges indicate maturity — not every scenario is production-validated in the kit repo.</p>
+    <p class="lead">Five personas showing how living docs and layers compose in practice. Structure diagrams explain the machinery; these stories show the jobs-to-be-done.</p>
 
     <p><strong>Badge key:</strong>
       <span class="badge badge-dogfood">dogfood</span> in active use ·
@@ -44,7 +50,6 @@
       <div class="diagram">Human → Producer → L1 verify scripts → Verifier → Status board
                                       ↓ fail = no advance
                               optional Muse custody pin</div>
-      <p>Reference consumer: <a href="../../consumers/videofactory/OVERSEER-SETUP.md">VideoFactory setup</a></p>
     </article>
 
     <article class="scenario-detail" id="persona-B">
@@ -75,7 +80,7 @@
 
     <article class="scenario-detail" id="persona-D">
       <span class="badge badge-reference">reference</span>
-      <h2>D — Classroom / Scooling</h2>
+      <h2>D — Classroom</h2>
       <p><strong>Pain:</strong> Students skip tests and self-mark assignments complete.</p>
       <h3>Layer usage</h3>
       <ul class="compact">
@@ -84,7 +89,7 @@
         <li><strong>L2:</strong> Optional TA verifier session before grade publish.</li>
         <li><strong>L3:</strong> Optional student Muse identity for portfolio provenance.</li>
       </ul>
-      <p><strong>Traffic story:</strong> Teacher installs on GitHub; later lesson offers MuseHub upgrade for signed portfolio history.</p>
+      <p><strong>Traffic story:</strong> Teacher installs on GitHub; later lesson offers optional Muse deepen for signed portfolio history.</p>
     </article>
 
     <article class="scenario-detail" id="persona-E">
@@ -98,15 +103,16 @@
         <li><strong>L2:</strong> Freeze review API provider in GitHub Actions (<code>provider: api</code>).</li>
         <li><strong>L3:</strong> Optional mirror to Muse for provenance badge (mirror branch SHA).</li>
       </ul>
-      <p>This repo ships the pattern as a template for consumer repos: <a href="../../../templates/ci/freeze-review-github-actions.yml">freeze-review workflow template</a> · <a href="../index.html#roadmap-public">K9–K12 roadmap</a></p>
+      <p>This repo ships the pattern as a template:
+        <a href="https://github.com/aaronrene/overseer-kit/blob/main/templates/ci/freeze-review-github-actions.yml">freeze-review workflow template</a></p>
     </article>
   </main>
 
   <footer class="site-footer">
-    <p><a href="../index.html">← Back to landing</a></p>
     <p>
-      <a href="../../../LICENSE">Apache-2.0</a>
-      · <a href="../../../SECURITY.md">Security</a>
+      <a href="https://github.com/aaronrene/overseer-kit/blob/main/LICENSE">Apache-2.0</a>
+      · <a href="https://github.com/aaronrene/overseer-kit/blob/main/SECURITY.md">Security</a>
+      · <a href="../index.html">Home</a>
     </p>
   </footer>
 </body>

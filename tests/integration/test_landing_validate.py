@@ -16,14 +16,23 @@ def test_validate_landing_on_kit_root_passes() -> None:
 
 def test_relative_doc_links_exist() -> None:
     index = (KIT_ROOT / "docs" / "landing" / "index.html").read_text(encoding="utf-8")
-    assert "../GIT-ONLY-QUICKSTART.md" in index
+    # Docs open as GitHub-rendered pages — not raw relative .md (file:// / Pages).
+    assert "https://github.com/aaronrene/overseer-kit/blob/main/docs/GIT-ONLY-QUICKSTART.md" in index
+    assert "https://github.com/aaronrene/overseer-kit/blob/main/docs/CONSUMER-ADAPTER-PATTERN.md" in index
+    assert "https://github.com/aaronrene/overseer-kit/blob/main/docs/K7-DOGFOOD-OPERATOR-RUNBOOK.md" in index
     assert (KIT_ROOT / "docs" / "GIT-ONLY-QUICKSTART.md").is_file()
     assert (KIT_ROOT / "docs" / "CONSUMER-ADAPTER-PATTERN.md").is_file()
     assert (KIT_ROOT / "docs" / "K7-DOGFOOD-OPERATOR-RUNBOOK.md").is_file()
 
 
-def test_scenarios_link_back_to_landing() -> None:
+def test_scenarios_share_main_nav_shape() -> None:
     scenarios = (KIT_ROOT / "docs" / "landing" / "scenarios" / "index.html").read_text(
         encoding="utf-8"
     )
     assert 'href="../index.html"' in scenarios
+    assert 'href="../index.html#structure"' in scenarios
+    assert 'href="../index.html#console-access"' in scenarios
+    assert 'href="../index.html#scenarios"' in scenarios
+    assert "https://github.com/aaronrene/overseer-kit#readme" in scenarios
+    assert 'id="theme-toggle"' in scenarios
+    assert ">Landing<" not in scenarios  # no alternate "Landing" chrome swap

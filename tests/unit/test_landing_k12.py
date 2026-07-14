@@ -30,7 +30,8 @@ def test_manifest_section_ids_match_lac_contract() -> None:
     """§LAC.3.1 section order is the public IA contract."""
     manifest = load_manifest(MANIFEST)
     assert manifest.section_ids == LAC_SECTION_IDS
-    assert len(manifest.section_ids) == 9
+    assert len(manifest.section_ids) == 10
+    assert "living-docs" in manifest.section_ids
 
 
 def test_primary_download_href_equals_frozen_dmg() -> None:
@@ -116,3 +117,15 @@ def test_readme_and_runbook_carry_open_local_console_playbook() -> None:
     assert "Open the local console" in runbook
     assert "OVERSEER_REPO_ROOT" in readme
     assert FROZEN_PRIMARY_DOWNLOAD_HREF in readme
+
+
+def test_main_landing_has_no_personal_product_doors() -> None:
+    html = INDEX.read_text(encoding="utf-8")
+    for phrase in ("Knowtation", "Scooling", "VideoFactory", "musehub.ai"):
+        assert phrase not in html
+    assert 'id="theme-toggle"' in html
+    assert 'id="living-docs"' in html
+    assert "ROADMAP" in html and "Overseer Handover" in html
+    assert "https://github.com/aaronrene/overseer-kit#readme" in html
+    assert "../../README.md" not in html
+    assert "../CONSUMER-ADAPTER-PATTERN.md" not in html

@@ -19,6 +19,7 @@ FROZEN_PRIMARY_DOWNLOAD_HREF = (
 LAC_SECTION_IDS: tuple[str, ...] = (
     "hero",
     "problem",
+    "living-docs",
     "structure",
     "layers",
     "console-access",
@@ -26,6 +27,14 @@ LAC_SECTION_IDS: tuple[str, ...] = (
     "quickstart",
     "funnel",
     "scenarios",
+)
+
+# Public main page must not advertise private/personal product doors or broken MuseHub TLS origin.
+MAIN_PAGE_FORBIDDEN_PRODUCTS: tuple[str, ...] = (
+    "Knowtation",
+    "Scooling",
+    "VideoFactory",
+    "musehub.ai",
 )
 
 DIAGRAM_REL_PATHS: tuple[str, ...] = (
@@ -163,8 +172,16 @@ def _check_lac_index_contract(html: str, landing: Path, result: ValidationResult
         if phrase in html:
             result.add("forbidden_copy", phrase)
 
+    for phrase in MAIN_PAGE_FORBIDDEN_PRODUCTS:
+        if phrase in html:
+            result.add("forbidden_product", phrase)
+
     if MINT_CSRF_OR_SESSION_RE.search(html):
         result.add("forbidden_copy", "mint+csrf/session_credential marketing")
+
+    # Prefer GitHub-rendered docs over raw relative .md (file:// / Pages raw).
+    for match in re.finditer(r"""href=["'](\.\./[^"']+\.md)["']""", html):
+        result.add("raw_md_link", match.group(1))
 
     if 'id="roadmap-public"' in html or "id='roadmap-public'" in html:
         result.add("residue", "roadmap-public section present on main landing")

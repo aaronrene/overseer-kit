@@ -24,11 +24,10 @@ Developer-centric door into related projects:
 | Door | Why |
 | --- | --- |
 | **Download Mac console** | Signed Apple Silicon (`.dmg`) from GitHub Release — Path 1; requires Python 3.11+ and `OVERSEER_REPO_ROOT` for consumer repos |
-| **GitHub `overseer-kit`** | Clone / `ok init` — Paths 2–3 and secondary quickstart |
-| **MuseHub** | Optional deeper substrate (L3) |
-| **Knowtation / Scooling / VideoFactory** | Sister products / consumers that *use* the kit for governance while they handle tasks |
+| **GitHub `overseer-kit`** | Clone / `ok init`, rendered docs, releases — Paths 2–3 and secondary quickstart |
+| **Optional Muse deepen** | Same CLI; optional L3 substrate — do **not** link a broken public MuseHub TLS origin from this site |
 
-Day-to-day runtime UX for tasks stays in those products. This site only explains and routes.
+Day-to-day product UX stays in the operator’s own apps. This site only explains Overseer Kit.
 
 ## What to host
 
@@ -53,7 +52,7 @@ Map **overseerkit.com** (DNS CNAME / A records) to that host. TLS via the host.
 
 | Claim | Status |
 | --- | --- |
-| End-user frontend product / task runner | **No** — Scooling (and peers) own product runtime |
+| End-user frontend product / task runner | **No** — your apps own product runtime |
 | Live Path B/C console on the apex | **No** — local loopback only (`ok app` / desktop) |
 | Website mints `session_credential` / CSRF | **Never** |
 | Zero-install “create my project” in the browser | **Not shipped** |
