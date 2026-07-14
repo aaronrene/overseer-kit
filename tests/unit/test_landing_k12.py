@@ -125,8 +125,11 @@ def test_main_landing_has_no_personal_product_doors() -> None:
         assert phrase not in html
     assert 'id="theme-toggle"' in html
     assert 'id="living-docs"' in html
-    assert 'class="logo-mark"' in html or "logo-mark" in html
-    assert 'logo-mark-hero' in html
+    assert "logo-mark" in html
+    assert "brand-name" in html
+    assert "Overseer Kit" in html
+    assert "Honesty for your agents" in html
+    assert "logo-mark-hero" not in html
     assert "ROADMAP" in html and "Handover" in html
     assert "freeze review" in html.lower() or "ok review --freeze" in html
     assert "ok route" in html or "model-routing" in html

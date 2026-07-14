@@ -134,33 +134,34 @@ html[data-theme="dark"] .theme-icon-sun {
 .site-header .brand {
   display: inline-flex;
   align-items: center;
+  gap: 0.7rem;
   color: var(--text);
   text-decoration: none;
   flex-shrink: 0;
+}
+
+.site-header .brand-name {
+  font-weight: 750;
+  font-size: 1.45rem;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  white-space: nowrap;
 }
 
 .logo-mark {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 2.75rem;
-  height: 2.75rem;
-  padding: 0 0.55rem;
-  border-radius: 0.55rem;
+  min-width: 3.25rem;
+  height: 3.25rem;
+  padding: 0 0.6rem;
+  border-radius: 0.65rem;
   background: #1d4f91;
   color: #ffffff;
   font-weight: 800;
-  font-size: 1.35rem;
+  font-size: 1.55rem;
   letter-spacing: 0.02em;
   line-height: 1;
-}
-
-.logo-mark-hero {
-  min-width: 5.5rem;
-  height: 5.5rem;
-  padding: 0 0.85rem;
-  border-radius: 0.85rem;
-  font-size: 2.75rem;
 }
 
 .site-header .nav-links {
@@ -332,16 +333,21 @@ h3 {
   align-items: center;
 }
 
-.hero-mark {
-  margin: 0 0 1rem;
+.hero-copy h1 {
+  color: #f4f8fc;
+  font-size: clamp(2.25rem, 4.2vw, 3.15rem);
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+  margin: 0 0 0.9rem;
   animation: hero-fade 0.55s ease-out;
 }
 
 .hero-copy .lead {
-  color: #f4f8fc;
-  font-size: 1.65rem;
-  font-weight: 650;
-  line-height: 1.25;
+  color: #d5dee9;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.4;
   margin: 0 0 0.85rem;
   animation: hero-fade 0.7s ease-out 0.05s both;
 }
