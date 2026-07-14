@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "identifier": "com.overseer.kit.desktop",
   "build": {
-    "beforeBuildCommand": "cd ../.. && ./scripts/bundle-desktop-kit.sh",
+    "beforeBuildCommand": "../scripts/bundle-desktop-kit.sh",
     "frontendDist": "../src"
   },
   "app": {

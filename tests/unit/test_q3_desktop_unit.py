@@ -91,3 +91,21 @@ def test_desktop_manifest_validates(tmp_path: Path) -> None:
     manifest = DesktopManifest.from_kit_root(KIT_ROOT)
     errors = validate_desktop_manifest(manifest)
     assert errors == []
+
+
+def test_before_build_command_resolves_from_desktop_cwd() -> None:
+    """Tauri runs beforeBuildCommand with cwd=desktop/; path must not escape the kit."""
+    conf = json.loads(
+        (KIT_ROOT / "desktop" / "src-tauri" / "tauri.conf.json").read_text(encoding="utf-8")
+    )
+    cmd = conf["build"]["beforeBuildCommand"]
+    assert "cd ../.." not in cmd
+    # Resolve like a shell would from desktop/
+    desktop = KIT_ROOT / "desktop"
+    script = (desktop / Path(cmd)).resolve() if not cmd.startswith("cd ") else None
+    if script is None:
+        # Allow `cd .. && ./scripts/...` form
+        assert "scripts/bundle-desktop-kit.sh" in cmd
+        script = (KIT_ROOT / "scripts" / "bundle-desktop-kit.sh").resolve()
+    assert script.is_file(), f"beforeBuildCommand does not resolve to an existing script: {cmd}"
+    assert script == (KIT_ROOT / "scripts" / "bundle-desktop-kit.sh").resolve()

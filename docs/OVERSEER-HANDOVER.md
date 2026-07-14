@@ -6,14 +6,14 @@
 
 ---
 
-## NEXT SESSION — Q3-release desktop installers Thinking (▶ NEXT)
+## NEXT SESSION — Operator first signed Release (or next Thinking) (▶ NEXT)
 
 **Date:** 2026-07-13  
-**Current position:** **Hosted governance dashboard Auto DONE** (build-verified → `pass`,
-HGD-BV-r1). Active build-queue row clear. Recommend promoting **Q3-release** (signed desktop
-installers) from the exploration backlog.  
-**Model:** **Thinking**  
-**Operator note:** Spec-only Thinking freeze — no CI/signer secrets, no Tier-3 merge.
+**Current position:** **Q3-release Auto build DONE** (build-verified → `pass`, Q3R-BV-r1). Pipeline
+shipped; no live signed GitHub Release yet (operator Tier-3 secrets required).  
+**Model:** **Operator + Auto**  
+**Operator note:** Configuring Actions secrets / cutting `v{VERSION}` is Tier 3. Auto may help verify
+a Release after secrets exist; Auto must never write secret values.
 
 
 ### What just landed
@@ -21,44 +21,45 @@ installers) from the exploration backlog.
 
 | Slice                                                             | Deliverable                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Hosted governance dashboard build DONE (Auto)**                 | Built against `docs/PHASE-HOSTED-GOVERNANCE-DASHBOARD.md` → BV **`pass` (HGD-BV-r1)**. `tools/hosted_dashboard/` + GET-only `api/*` + Bearer auth + `ok hosted-dashboard` (8766) + UI honesty banner + runbook + SPEC §5. Seven-tier §HGD.12 (**50** green). Track Q untouched.                                                                                                                                                  |
-| **Hosted governance dashboard freeze DONE (Thinking)**            | `docs/PHASE-HOSTED-GOVERNANCE-DASHBOARD.md` reviewed → **`pass` (HGD-r3)**, stamp `sha256:af8419e1…`. Spec-only.                                                                                                                                                                                                                                                  |
-| **Track P / P-deploy build DONE (Auto)**                          | Built against `docs/PHASE-TRACK-P-P-DEPLOY.md` → BV **`pass` (P-deploy-BV-r1)**. **798** tests green (+37 §PD.9).                                                                                                                                                                                                                                               |
+| **Q3-release Auto DONE (BV `pass`, Q3R-BV-r1)**                    | Built against frozen `docs/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md`: `desktop-release.yml` + smoke; `templates/ci/desktop-release-github-actions.yml`; `tools/desktop_release/`; `desktop/keys/` public-only; runbook honesty (Python 3.11+); SPEC §5 note; §QR.13 **39** green; full suite **887**. Track Q untouched.                                                                                                          |
+| **Q3-release freeze DONE (Thinking)**                             | `docs/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md` reviewed → **`pass` (QR-r3)**, stamp `sha256:91d39951…`. Spec-only.                                                                                                                                                                                                                                               |
+| **Hosted governance dashboard build DONE (Auto)**                 | Built against `docs/PHASE-HOSTED-GOVERNANCE-DASHBOARD.md` → BV **`pass` (HGD-BV-r1)**. Seven-tier §HGD.12 (**50** green).                                                                                                                                                                                                                                        |
 
 
 
-### THE ONE NEXT STEP — **Model: Thinking**
+### THE ONE NEXT STEP — **Model: Operator + Auto**
 
 
 |                |                                                                                                                                     |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID**         | **Q3-release — desktop installers** (Thinking freeze)                                                                               |
-| **Branch**     | `feat/q3-release-desktop-installers-freeze` (suggested)                                                                             |
-| **Read first** | Exploration backlog row in `docs/ROADMAP.md`; Track Q Q3 (`desktop/`); `docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md` (distribution only)  |
-| **Deliver**    | Freeze CI publish of signed Tauri artifacts (`.dmg` / `.msi` / `.AppImage`); rejection table; seven-tier matrix — **spec-only**     |
-| **Hard stops** | No unsigned secret commit; no engine/API rewrite; no Tier-3 merge; packaging/distribution only                                       |
+| **ID**         | **First signed desktop Release** (operator Tier-3) *or* promote next exploration Thinking                                           |
+| **Branch** | Feature branch for any doc/Auto follow-up; secrets live only in GitHub Actions settings |
+| **Read first** | `docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md` §Signed installers; `docs/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md` §QR.6 |
+| **Deliver** | Operator: store §QR.6.2 secrets; align Muse+Git tips; cut `v{VERSION}`; confirm Release assets + manifest. Optional: pick next Thinking from exploration backlog |
+| **Hard stops** | No secrets in repo; no Tier-3 merge without human; no false “download now” claim before a signed Release exists |
 
 
 
-### Paste-ready prompt — Q3-release Thinking
+### Paste-ready prompt — first signed Release (operator)
 
 ```
-Phase Q3-release — desktop installers Thinking freeze (overseer-kit).
+Overseer Kit — first signed desktop Release (operator Tier-3) + optional Auto verify.
 
-Model: Thinking
+Model: Operator + Auto
 
-Read first: docs/ROADMAP.md (exploration backlog Q3-release row);
-  docs/OVERSEER-HANDOVER.md (shared context);
-  desktop/ + tools/desktop/ (Q3 shipped packaging);
-  docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md (distribution boundary);
-  .cursor/skills/freeze-review-loop/SKILL.md.
+Read first: docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md (§Signed installers);
+  docs/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md (§QR.6 / §QR.11.1);
+  .github/workflows/desktop-release.yml.
 
-Task: Freeze how CI publishes signed Tauri installers (.dmg / .msi / .AppImage)
-so Path C is not build-from-source only. Packaging/distribution only — no engine redesign.
-Include rejection table, credential/signing boundary, seven-tier matrix for the Auto build.
-Run /freeze-review-loop → pass before clearing Auto.
+Task: Operator configures GitHub Actions secrets under exact §QR.6.2 names
+  (Apple password mode OR API-key mode — kit dogfood prefers API key),
+  Windows Authenticode, Linux minisign private key (public key already under desktop/keys/).
+  Align VERSION fields; cut tag v{VERSION} from Muse-aligned SHA; confirm Release
+  allowlist assets + manifest signing.status=signed. Auto may verify checksums/manifest
+  after publish — must never write secret values or claim installers available before
+  the Release exists.
 
-Hard stops: no secrets in repo; no Track Q engine rewrite; no Tier-3 merge; spec-only.
+Hard stops: no secrets in git; no Tier-3 merge automation; Path C still needs host Python 3.11+.
 ```
 
 
@@ -101,6 +102,8 @@ Hard stops: no secrets in repo; no Track Q engine rewrite; no Tier-3 merge; spec
 | **Track P / P-evidence** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-P-P-EVIDENCE.md` reviewed → `pass`, P-evidence-r3) + Auto build (build-verified → `pass`, P-evidence-BV-r1). Verification-evidence capture shipped: `verification_evidence` kind, artifact types, `require_verification_evidence`, honesty-status Mode B, exit `33`, twin build-verification V8 delta. **612** tests green (+43 §PE.10). Kit records/gates; never deploys |
 | **Track P / P-deploy** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-P-P-DEPLOY.md` reviewed → `pass`, P-deploy-r3) + Auto build (build-verified → `pass`, P-deploy-BV-r1). Mode C + `require_deploy_health` + twin `/deploy-verification-review` + exit `34`. **798** tests green (+37 §PD.9). Kit records/gates; never deploys/probes |
 | **Hosted governance dashboard** | **DONE** — Thinking freeze (`pass`, HGD-r3) + Auto build (BV `pass`, HGD-BV-r1). `tools/hosted_dashboard/` + `ok hosted-dashboard`; §HGD.12 **50** green. Read-only remote glance; not Track Q |
+| **Q3-release desktop installers** | **DONE** — Thinking freeze (`pass`, QR-r3) + Auto build (BV `pass`, Q3R-BV-r1). Pipeline + `tools/desktop_release/` + §QR.13 **39** green; full suite **887**. Host Python 3.11+ still required; live Release needs operator secrets |
+
 | **Track Q / Q0** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md` reviewed → `pass`, Q0-r2), stamp `sha256:3c3f6229…`. Freezes `overseer app` local-only UI contract |
 | **Track Q / Q1** | **DONE** — Auto build (build-verified → `pass`, Q1-BV-r1). `overseer app` stdlib loopback server + static UI; `tools/app/` + `cli/commands/app.py`; closed `api/*`; Bearer + CSRF; seven-tier §Q0.12. **654** tests green (+42) |
 | **Track Q / Q2a**         | **DONE** — Thinking freeze (`docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md` reviewed → `pass`, Q2a-r2), stamp `sha256:dbfbf9ad…`. Freezes canonical `ok` CLI entrypoint + `overseer` compat shim; seven-tier §Q2A.10. Spec-only. Cleared for Q2b |
@@ -126,11 +129,11 @@ Hard stops: no secrets in repo; no Track Q engine rewrite; no Tier-3 merge; spec
 
 | Item | Value |
 | --- | --- |
-| Branch                    | `feat/hosted-governance-dashboard-build`                                                               |
-| HEAD                      | Hosted governance dashboard Auto build (HGD-BV-r1 `pass`) + ROADMAP/HANDOVER close-out                 |
+| Branch                    | `feat/q3-release-desktop-installers-build`                                                             |
+| HEAD                      | Q3-release Auto build (Q3R-BV-r1 `pass`) + ROADMAP/HANDOVER close-out                                  |
 | Muse HEAD | feature-branch tip (sync after close-out commit) |
 | GitHub bridge | Feature branch (no merge) |
-| Dirty                     | clean after Hosted governance dashboard Auto close-out                                                 |
+| Dirty                     | clean after Q3-release Auto close-out                                                                  |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -143,6 +146,29 @@ Hard stops: no secrets in repo; no Track Q engine rewrite; no Tier-3 merge; spec
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-13** — **Q3-release Auto build DONE (build-verified → `pass`, Q3R-BV-r1).**
+  Shipped mechanical §QR.4–§QR.13 against frozen `docs/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md`:
+  `.github/workflows/desktop-release.yml` (tag/`workflow_dispatch`; macOS-14/Windows/ubuntu-22.04;
+  fail-closed signing; `softprops/action-gh-release`; least-privilege `contents: write`); optional
+  unsigned Linux smoke; `templates/ci/desktop-release-github-actions.yml`; `tools/desktop_release/`
+  (version-align, manifest, allowlist, refuse, checksums, finalize, workflow lint); `desktop/keys/`
+  public minisign placeholder + README; runbook §Signed installers + Python 3.11+ honesty; SPEC §5
+  additive distribution note; `.gitignore`/`.museignore` signing patterns. Seven-tier §QR.13 (**39**
+  green); full suite **887**. Track Q `tools/app` / launcher untouched. Live Apple/Windows
+  notarization and GitHub Release upload **not** claimed (operator Tier-3 secrets). ROADMAP Auto →
+  **DONE**. Handover NEXT → operator first signed Release (or next Thinking).
+- **2026-07-13** — **Q3-release Thinking freeze DONE (reviewed → `pass`, QR-r3).**
+  Froze CI publish of signed Tauri installers in `docs/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md`:
+  runner matrix + arches; publish allowlist (`.dmg`/`.msi`/`.AppImage` + manifest + sums);
+  Apple Developer ID + notarization (hardened runtime/timestamp), Windows Authenticode, Linux
+  minisign/GPG detached sig; GitHub Actions secret-name boundary (no in-repo secrets); release
+  manifest schema; rejection table; Auto deliverables (`.github/workflows/`, `tools/desktop_release/`,
+  template, runbook); seven-tier §QR.13. Honesty: Auto v1 still requires host Python 3.11+ (no
+  embedded interpreter). Freeze-review loop: r1 (arches/allowlist/permissions/fail-closed) → fixed;
+  r2 (Python honesty, hardened runtime, runner pin, Apple API-key names, dispatch inputs) → fixed;
+  **QR-r3 → `pass`**; stamp `sha256:91d39951…`. **Spec-only — no workflow/secrets landed.** Hard
+  stops held (no Track Q rewrite; no Tier-3 merge). ROADMAP: Thinking → **DONE**; Auto → **TODO**.
+  Handover NEXT → **Q3-release Auto**.
 - **2026-07-13** — **Hosted governance dashboard Auto build DONE (build-verified → `pass`, HGD-BV-r1).**
   Built mechanically against frozen `docs/PHASE-HOSTED-GOVERNANCE-DASHBOARD.md`: `tools/hosted_dashboard/`
   adapters (`github_contents`/`github_meta`; optional `github_checks_advisory`/`musehub_read`); closed

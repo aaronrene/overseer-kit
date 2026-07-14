@@ -15,7 +15,7 @@ CI — see §Release vs dev below.
 | --- | --- | --- |
 | **Docs-first (any AI tool)** | Everyone — the primary, IDE-neutral path | `docs/OVERSEER-HANDOVER.md` paste block + `ok` CLI in terminal |
 | **`ok app` (browser)** | Developers / operators comfortable with a terminal | Python 3.11+, initialized repo (`.overseer/`) |
-| **Tauri desktop (`desktop/`)** | Same UI in a native window | Rust 1.88+, Node, Python; build from source today |
+| **Tauri desktop (`desktop/`)** | Same UI in a native window | Build-from-source: Rust 1.88+, Node, Python 3.11+. Signed installers (when published): Python 3.11+ only — no Rust/Node build toolchain |
 | **Cursor rules/skills** | Cursor users only (optional boost) | Installed automatically via `ok init` / `ok sync` footprint |
 
 The kit is **not Cursor-only**. Cursor rules and Agent Skills are an **optional layer** on top of
@@ -96,18 +96,81 @@ npm run tauri build                      # produces platform installer under des
 | Item | Dev tree (this repo) | Non-dev end user |
 | --- | --- | --- |
 | Source + tests | ✓ shipped | N/A |
-| `ok app` via terminal | ✓ | Needs Python + kit path (technical) |
-| Tauri **build** instructions | ✓ `desktop/README.md` | Requires dev toolchain |
-| **Signed installers** (`.dmg`, `.msi`, `.AppImage`) | Not automated in CI yet | **Not available** until a release pipeline phase |
-| Governance without desktop | ✓ HANDOVER + CLI | ✓ **recommended today** |
+| `ok app` via terminal | ✓ | Needs Python 3.11+ + kit path (technical) |
+| Tauri **build** instructions | ✓ `desktop/README.md` | Requires Rust/Node/Python toolchain |
+| **Release CI pipeline** | ✓ `.github/workflows/desktop-release.yml` (+ smoke) | Operator secrets + tag required |
+| **Signed installers** (`.dmg`, `.msi`, `.AppImage`) | Pipeline shipped; **assets only exist after** secrets are configured **and** a `v{VERSION}` tag/release is cut | **Not available** until a GitHub Release publishes artifacts with `signing.status: signed` |
+| Host Python for installers | Still required | **Python 3.11+** on `PATH` (Auto v1 does **not** embed an interpreter) |
+| Governance without desktop | ✓ HANDOVER + CLI | ✓ **recommended** where installers are not yet published |
 
-**Follow-up slice (not queued):** “Q3-release” or K12-style CI publish — build + attach desktop
-artifacts per platform. Requires its own Thinking freeze before Auto build.
+**Honesty:** do not treat smoke-workflow AppImages (names include `unsigned`) as official installers.
+
+---
+
+## Signed installers (Path C download — when a Release exists)
+
+Frozen contract: `docs/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md`.
+
+### Prerequisites on the end host
+
+- **Python 3.11+** available so the bundled `cli/ok` shim can `exec` the local web UI engine.
+- The signed installer removes the need to install **Rust/Node** to compile Path C; it does **not** provide a zero-dependency / embedded-Python install.
+
+### Download + verify
+
+1. Open the kit GitHub Releases page; choose tag `v{VERSION}` matching the root `VERSION` file.
+2. Download the platform asset (`.dmg` / `.msi` / `.AppImage`) plus `SHA256SUMS.txt` and
+   `overseer-kit-desktop-{VERSION}-manifest.json`.
+3. Verify SHA-256:
+   ```bash
+   shasum -a 256 -c SHA256SUMS.txt
+   # or: sha256sum -c SHA256SUMS.txt
+   ```
+4. Confirm the manifest `artifacts[].sha256` matches `SHA256SUMS.txt` and
+   `signing.status` is `signed` for your platform.
+5. **Linux AppImage only:** verify the **detached** cryptographic signature (minisign default):
+   ```bash
+   minisign -Vm Overseer\ Kit_*_amd64.AppImage -p desktop/keys/release.minisign.pub
+   ```
+   AppImage signing is **not** OS-vendor notarization (no Gatekeeper/Authenticode equivalent in
+   Auto v1). Public key: `desktop/keys/release.minisign.pub` (public material only).
+
+### Operator secret setup checklist (Tier 3 — humans only)
+
+Configure GitHub Actions repository secrets before the first live signed Release. Auto never writes
+secret values. Exact names (§QR.6.2):
+
+| Secret | Platform |
+| --- | --- |
+| `APPLE_CERTIFICATE`, `APPLE_CERTIFICATE_PASSWORD`, `APPLE_SIGNING_IDENTITY` | macOS |
+| `APPLE_ID`, `APPLE_TEAM_ID`, `APPLE_APP_SPECIFIC_PASSWORD` | macOS notarization (password mode) |
+| **or** `APPLE_API_KEY`, `APPLE_API_KEY_ID`, `APPLE_API_ISSUER`, `APPLE_TEAM_ID` | macOS notarization (API key — preferred for kit dogfood CI) |
+| `WINDOWS_CERTIFICATE`, `WINDOWS_CERTIFICATE_PASSWORD` | Windows Authenticode |
+| `LINUX_SIGNING_KEY`, optional `LINUX_SIGNING_KEY_PASSWORD` | Linux minisign private key |
+
+Also:
+
+1. Align Muse tip + GitHub mirror tip; ensure `VERSION` matches `desktop/package.json`,
+   `desktop/src-tauri/Cargo.toml`, and `desktop/src-tauri/tauri.conf.json`.
+2. Cut tag `v{VERSION}` (tag-push triggers publish with `publish: true`, `allow_partial: false`).
+3. Confirm Release assets are only the §QR.4.5 allowlist (`.dmg` / `.msi` / `.AppImage` +
+   sidecar + manifest + `SHA256SUMS.txt`).
+
+Optional: `workflow_dispatch` with inputs `version`, `publish`, `allow_partial` (see workflow).
+
+Workflows:
+
+| File | Role |
+| --- | --- |
+| `.github/workflows/desktop-release.yml` | Build + sign + publish (fail-closed without secrets when `publish: true`) |
+| `.github/workflows/desktop-build-smoke.yml` | Unsigned Linux smoke only — no GitHub Release publish |
+| `templates/ci/desktop-release-github-actions.yml` | Vendored example |
+
+Helpers: `tools/desktop_release/` (version-align, manifest, refuse, allowlist, checksums).
 
 ---
 
 ## Consumer repos (e.g. Scooling)
-
 The desktop app is **not** copied into consumer repos. Consumers get:
 
 | On `ok init` / `ok sync` | Stays in overseer-kit only |
@@ -147,10 +210,13 @@ Comfortable in terminal + want UI?
   → ok app (Path B)
 
 Want native window + can build Rust?
-  → Tauri dev/build (Path C)
+  → Tauri dev/build (Path C source)
+
+Want native window + signed installer published for this VERSION?
+  → Download from GitHub Releases; verify SHA-256 (+ Linux minisig); need Python 3.11+
 
 Non-technical user + no terminal?
-  → Path A only (HANDOVER paste into any chatbot) — desktop installers later
+  → Path A only (HANDOVER paste into any chatbot) — installers additive when a signed Release exists
 
 Scooling / Knowtation / VideoFactory?
   → Consumer adapter pattern (§Consumer repos above); see docs/CONSUMER-ADAPTER-PATTERN.md

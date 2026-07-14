@@ -12,3 +12,15 @@ desktop/src-tauri/resources/
 .overseer/scratch/
 .muse/
 .overseer/.muse-bridge-sentinel
+
+# Local signing material (§QR.6.3) — public keys under desktop/keys/ are OK
+*.p12
+*.pfx
+*.key
+!desktop/keys/*.pub
+!desktop/keys/*.asc
+!desktop/keys/*.minisign.pub
+apple-api-key.json
+**/AuthKey_*.p8
+desktop/keys/*private*
+desktop/keys/*.pem
