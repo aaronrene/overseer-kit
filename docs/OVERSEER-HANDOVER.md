@@ -6,16 +6,14 @@
 
 ---
 
-## NEXT SESSION — Live consumer dogfood + optional public hosting (▶ NEXT)
+## NEXT SESSION — Landing + access clarity Auto build (▶ NEXT)
 
-**Date:** 2026-07-13  
-**Current position:** Track Q / Q4b Path B UI redesign **build-verified → `pass` (Q4b-BV-r1)**.
-`ok app` ships Overview + Structure, four offline diagrams, suite CTAs, status humanization.
-Track Q presentation chain complete. Closed Q0 surface unchanged; LICENSE Apache-2.0.  
-**Model:** **Operator + Auto**  
-**Operator note:** Prefer live VideoFactory / Scooling dogfood (consumer repos; Tier-3 live
-init). Optional: DNS → `docs/landing/` for `overseerkit.com` per `docs/landing/HOSTING.md`.
-Kit feature-branch PR / Muse mirror merge remains Tier 3.
+**Date:** 2026-07-14  
+**Current position:** Thinking freeze `docs/PHASE-LANDING-ACCESS-CLARITY.md` **reviewed → `pass`
+(LAC-r2)**, stamp `sha256:c0ac8162…`. Mac Release `v0.1.0` signed `.dmg` live. Next: mechanical
+Auto against the freeze (landing + README playbook + Path B chrome + health `repo_root`).  
+**Model:** **Auto**  
+**Operator note:** Spec frozen — no redesign. Win/Linux still unavailable. DNS remains Tier 3.
 
 
 ### What just landed
@@ -23,43 +21,56 @@ Kit feature-branch PR / Muse mirror merge remains Tier 3.
 
 | Slice | Deliverable |
 | --- | --- |
-| **Track Q / Q4b** | Path B UI redesign BV `pass` (Q4b-BV-r1) — Overview/Structure, four SVGs, CTAs, §Q4A.15 |
-| **Track Q / Q4a** | Freeze `pass` (Q4a-r2) — contract held |
-| **Q3-release pipeline DONE** | Signed Release still optional/later; not primary adopt path |
+| **Landing + access clarity Thinking** | `docs/PHASE-LANDING-ACCESS-CLARITY.md` → `pass` (LAC-r2) |
+| **Path C Mac Release** | `v0.1.0` → `Overseer.Kit_0.1.0_aarch64.dmg` (signed+notarized) |
+| **Track Q / Q4b** | Local console UI + diagrams (browser paste auth) |
 
 
 
-### THE ONE NEXT STEP — **Model: Operator + Auto**
+### THE ONE NEXT STEP — **Model: Auto**
 
 
 |                |                                                                                                                                     |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID**         | **Live VF/Scooling dogfood** (consumer) and/or **overseerkit.com hosting** (operator DNS → static landing) |
-| **Branch** | Consumer repos for dogfood; kit feature branch already carries Q4b (PR/merge = Tier 3) |
-| **Read first** | `docs/consumers/videofactory/OVERSEER-SETUP.md`; `docs/consumers/scooling/OVERSEER-SETUP.md`; `docs/landing/HOSTING.md`; paste fence below |
-| **Deliver** | Live consumer init/status green; or public site front door live — no kit engine redesign |
-| **Hard stops** | No unsigned-installer primary adopt claims; no kit signup/runtime UX; no Tier-3 merge without auth |
+| **ID**         | **Landing + access clarity** — Auto build (site + README + Path B chrome; wire Download CTA) |
+| **Branch** | `build/landing-access-clarity` (from freeze branch or main after merge) |
+| **Read first** | `docs/PHASE-LANDING-ACCESS-CLARITY.md` (frozen); paste fence below; Q0 §Q0.6 closed except §LAC.6.3 health additive |
+| **Deliver** | Implement §§LAC.3–LAC.8 + §LAC.11; seven-tier §LAC.12 green; `/build-verification-review` → `pass`; governance sync |
+| **Hard stops** | No public CSRF mint; no unsigned-as-primary; no GUI repo picker; no Tier-3 DNS/merge |
 
 
 
-### Paste-ready prompt — Live consumer dogfood / public hosting (Operator + Auto)
+### Paste-ready prompt — Landing + access clarity (Auto)
 
 ```
-Overseer Kit — next after Track Q / Q4b UI redesign.
+Overseer Kit — Landing + access clarity Auto build (pre-public).
 
-Model: Operator + Auto
+Model: Auto
 
-Read first: docs/OVERSEER-HANDOVER.md (verified snapshot); docs/consumers/videofactory/OVERSEER-SETUP.md;
-  docs/consumers/scooling/OVERSEER-SETUP.md; docs/landing/HOSTING.md.
+Read first:
+  docs/PHASE-LANDING-ACCESS-CLARITY.md (frozen: true, reviewed → pass LAC-r2);
+  docs/landing/; docs/PHASE-K12-TRACK-N-LANDING-CONTRACT.md (historical);
+  docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md;
+  docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md (§Q0.6 closed except §LAC.6.3 health additive);
+  tools/app/static/assets/diagrams/;
+  README.md; docs/OVERSEER-HANDOVER.md; docs/ROADMAP.md.
 
-Task (pick one primary path — operator-gated):
-  A) Live VideoFactory and/or Scooling dogfood: ok init / status / verify-step in the consumer
-     repo using kit-side setup docs; record results in handover; no kit core redesign.
-  B) overseerkit.com: follow docs/landing/HOSTING.md (static docs/landing/ only); keep
-     developer-centric honesty (site does not run tasks).
+Frozen Download CTA (primary):
+  https://github.com/aaronrene/overseer-kit/releases/download/v0.1.0/Overseer.Kit_0.1.0_aarch64.dmg
+  (Apple Silicon aarch64; signing.status=signed; host needs Python 3.11+)
 
-Hard stops: no Tier-3 merge without authorization; no secrets; no claiming Path C unsigned
-  installers as primary adopt; no signup / task-runtime in the kit.
+Task (Auto ONLY — implement frozen spec; no redesign):
+
+1) docs/landing/ — IA §LAC.3; visual §LAC.4; embed four SVGs §LAC.5; suite doors + CTAs;
+   #console-access Paths 1–3; strip DONE/TODO/WIP public residue; update manifest.yaml + HOSTING.md.
+2) README.md + desktop runbook — same “Open the local console” playbook; OVERSEER_REPO_ROOT honesty.
+3) Path B chrome — collapse Session bootstrap after Connect; show bound repo from api/health
+   result.repo_root (narrow additive only); Overview tab explainers; Status auto-refresh once on enter.
+4) tools/landing/validate.py + seven-tier §LAC.12; full suite green.
+5) /build-verification-review → pass before ROADMAP Auto DONE; update ROADMAP + HANDOVER together.
+
+Hard stops: no secrets; no bind/auth reopen beyond health repo_root; no signup/runtime;
+  no unsigned-as-primary; no Tier-3 DNS/merge.
 ```
 
 
@@ -111,6 +122,7 @@ Hard stops: no Tier-3 merge without authorization; no secrets; no claiming Path 
 | **Track Q / Q3**          | **DONE** — Auto build (build-verified → `pass`, Q3-BV-r1). Tauri desktop shell (`desktop/`) invokes `ok app`; `tools/desktop/` + bundle script; seven-tier §Q3. **696** tests green (+28) |
 | **Track Q / Q4a**         | **DONE** — Thinking freeze (`docs/PHASE-TRACK-Q-Q4A-UI-REDESIGN.md` reviewed → `pass`, Q4a-r2), stamp `sha256:ea118134…`. Path B developer UI redesign contract: Overview/Structure IA, four offline diagrams, suite CTAs, closed Q0 surface, §Q4A.15. **Spec-only — no UI code.** Cleared for Q4b |
 | **Track Q / Q4b**         | **DONE** — Auto build (build-verified → `pass`, Q4b-BV-r1). Overview + Structure IA; four offline SVGs; suite CTAs; status humanization; closed Q0 unchanged; §Q4A.15 **17** green; full suite **905**. No LICENSE/`desktop/`/engine edits |
+| **Landing + access clarity** | **DONE (Thinking)** — `docs/PHASE-LANDING-ACCESS-CLARITY.md` reviewed → `pass` (LAC-r2), stamp `sha256:c0ac8162…`. Pre-public IA + Paths 1–3 + Path B chrome + Download CTA freeze. **Auto TODO.** Spec-only this slice. |
 | **K6-Scooling runbook**   | **DONE** — `docs/consumers/scooling/OVERSEER-SETUP.md` (kit-side; live init still operator-gated; Track O cross-link in O1) |
 | **Track O / O0**          | **DONE** — Normie custody funnel Thinking freeze (`docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md` reviewed → `pass`, O0-r3), stamp `sha256:642076c9…` |
 | **Track O / O1**          | **DONE** — Product contracts build-verified → `pass` (O1-BV-r1). Contract + Scooling/Knowtation stubs + `tools/track_o/` + §O0.8. **728** tests green (+32) |
@@ -131,8 +143,8 @@ Hard stops: no Tier-3 merge without authorization; no secrets; no claiming Path 
 
 | Item | Value |
 | --- | --- |
-| Branch | `build/track-q-q4b-ui-redesign` |
-| HEAD | Q4b Path B UI redesign build (BV `pass`, Q4b-BV-r1) |
+| Branch | `thinking/landing-access-clarity` |
+| HEAD | Landing + access clarity Thinking freeze (LAC-r2 `pass`) |
 | Muse HEAD | Sync after close-out commit on this branch |
 | GitHub bridge | Feature branch (no merge) |
 | Dirty | Expect clean after close-out commit |
@@ -148,6 +160,21 @@ Hard stops: no Tier-3 merge without authorization; no secrets; no claiming Path 
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-14** — **Landing + access clarity Thinking freeze DONE (reviewed → `pass`, LAC-r2).**
+  Froze `docs/PHASE-LANDING-ACCESS-CLARITY.md`: public IA (strip DONE residue; four offline SVGs
+  on main page); Download CTA → signed Mac `v0.1.0` `.dmg` + Python 3.11+; Paths 1–3 playbook;
+  Path B chrome (collapse bootstrap, health `repo_root` additive, Status auto-refresh once);
+  `OVERSEER_REPO_ROOT` honesty (no folder picker); `overseerkit.com` apex static-only; pre-public
+  DNS gate §LAC.9; seven-tier §LAC.12. Stamp `sha256:c0ac8162…`. **Spec-only — no UI rewrite.**
+  ROADMAP Thinking → **DONE**; Auto → **TODO**. NEXT → Landing + access clarity Auto.
+- **2026-07-14** — **Operator steer: expand NEXT to landing + access clarity + optional Path C finish.**
+  Confirmed browser Path B works after terminal paste; obscurity remains. Regenerated Thinking
+  prompt: professional `docs/landing/` with flowcharts; README/site/console access story;
+  overseerkit.com apex = static only; prefer finishing signed desktop download over half-wired UX.
+- **2026-07-14** — **Operator steer: public landing redesign is NEXT (Thinking).** Path B console
+  stays local/auth-gated (Q0); convenient access path = desktop auto-fill (already shipped) or
+  paste-from-terminal in browser. Regenerated NEXT for professional `docs/landing/` redesign
+  freeze (strip WIP/dev residue; no public CSRF mint). Dogfood/hosting remain parallel options.
 - **2026-07-13** — **Track Q / Q4b Path B UI redesign DONE (build-verified → `pass`, Q4b-BV-r1).**
   Built mechanically against frozen `docs/PHASE-TRACK-Q-Q4A-UI-REDESIGN.md`: rewrote
   `tools/app/static/` (Overview default after auth + Structure gallery; honesty strip; `ok app`
