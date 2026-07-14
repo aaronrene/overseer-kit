@@ -6,16 +6,14 @@
 
 ---
 
-## NEXT SESSION — Public site + console access UX (Thinking freeze) (▶ NEXT)
+## NEXT SESSION — Landing + access clarity Auto build (▶ NEXT)
 
 **Date:** 2026-07-14  
-**Current position:** Path C Mac **signed+notarized** `.dmg` published at GitHub Release
-`v0.1.0` (`Overseer.Kit_0.1.0_aarch64.dmg`, `signing.status=signed`). Browser Path B still
-requires paste-from-terminal. Next: professional public explainer + non-obscure access story
-(README / site / console chrome) before publicizing overseerkit.com.  
-**Model:** **Thinking**  
-**Operator note:** Spec-only this session. Mac Release already live — do not invent fake signed-
-installer claims for Win/Linux. Win/Linux remain unavailable until their secrets exist.
+**Current position:** Thinking freeze `docs/PHASE-LANDING-ACCESS-CLARITY.md` **reviewed → `pass`
+(LAC-r2)**, stamp `sha256:c0ac8162…`. Mac Release `v0.1.0` signed `.dmg` live. Next: mechanical
+Auto against the freeze (landing + README playbook + Path B chrome + health `repo_root`).  
+**Model:** **Auto**  
+**Operator note:** Spec frozen — no redesign. Win/Linux still unavailable. DNS remains Tier 3.
 
 
 ### What just landed
@@ -23,82 +21,56 @@ installer claims for Win/Linux. Win/Linux remain unavailable until their secrets
 
 | Slice | Deliverable |
 | --- | --- |
+| **Landing + access clarity Thinking** | `docs/PHASE-LANDING-ACCESS-CLARITY.md` → `pass` (LAC-r2) |
+| **Path C Mac Release** | `v0.1.0` → `Overseer.Kit_0.1.0_aarch64.dmg` (signed+notarized) |
 | **Track Q / Q4b** | Local console UI + diagrams (browser paste auth) |
-| **Path C Mac Release** | `v0.1.0` → `Overseer.Kit_0.1.0_aarch64.dmg` (`developer_id_notarized` / signed); Win/Linux unavailable |
-| **Domain** | `overseerkit.com` → static `docs/landing/` (hosting not yet operator-wired) |
 
 
 
-### THE ONE NEXT STEP — **Model: Thinking**
+### THE ONE NEXT STEP — **Model: Auto**
 
 
 |                |                                                                                                                                     |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID**         | **Public landing + console access UX** — Thinking freeze (site + README + Path B chrome; wire Download CTA to live `.dmg`) |
-| **Branch** | `thinking/landing-access-clarity` (or continue feature branch) |
-| **Read first** | `docs/landing/`; `HOSTING.md`; K12 contract; desktop runbook; Q0/Q4a; Release `v0.1.0`; paste fence below |
-| **Deliver** | Freeze WHAT/HOW for landing + access docs + console chrome; seven-tier; freeze-review → `pass` |
-| **Hard stops** | No public CSRF mint; no non-loopback; no signup/runtime; no unsigned-as-primary; Tier-3 for DNS/merge |
+| **ID**         | **Landing + access clarity** — Auto build (site + README + Path B chrome; wire Download CTA) |
+| **Branch** | `build/landing-access-clarity` (from freeze branch or main after merge) |
+| **Read first** | `docs/PHASE-LANDING-ACCESS-CLARITY.md` (frozen); paste fence below; Q0 §Q0.6 closed except §LAC.6.3 health additive |
+| **Deliver** | Implement §§LAC.3–LAC.8 + §LAC.11; seven-tier §LAC.12 green; `/build-verification-review` → `pass`; governance sync |
+| **Hard stops** | No public CSRF mint; no unsigned-as-primary; no GUI repo picker; no Tier-3 DNS/merge |
 
 
 
-### Paste-ready prompt — Public landing + access clarity (Thinking)
+### Paste-ready prompt — Landing + access clarity (Auto)
 
 ```
-Overseer Kit — Public landing + console access UX Thinking freeze (pre-public).
+Overseer Kit — Landing + access clarity Auto build (pre-public).
 
-Model: Thinking
+Model: Auto
 
 Read first:
-  docs/landing/ (index, scenarios, assets, HOSTING.md);
-  docs/PHASE-K12-TRACK-N-LANDING-CONTRACT.md;
+  docs/PHASE-LANDING-ACCESS-CLARITY.md (frozen: true, reviewed → pass LAC-r2);
+  docs/landing/; docs/PHASE-K12-TRACK-N-LANDING-CONTRACT.md (historical);
   docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md;
-  docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md (§Q0.6 — do not reopen bind/auth casually);
-  docs/PHASE-TRACK-Q-Q4A-UI-REDESIGN.md (diagram SVGs under tools/app/static/assets/diagrams/);
-  docs/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md;
-  README.md;
-  docs/OVERSEER-HANDOVER.md; docs/ROADMAP.md.
+  docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md (§Q0.6 closed except §LAC.6.3 health additive);
+  tools/app/static/assets/diagrams/;
+  README.md; docs/OVERSEER-HANDOVER.md; docs/ROADMAP.md.
 
-Verified now:
-  - GitHub Release v0.1.0 published: Overseer.Kit_0.1.0_aarch64.dmg
-    (manifest signing.method=developer_id_notarized, status=signed).
-  - Windows/Linux Release rows unavailable until their secrets exist (honest).
-  - Host still needs Python 3.11+ for Path C Auto v1.
+Frozen Download CTA (primary):
+  https://github.com/aaronrene/overseer-kit/releases/download/v0.1.0/Overseer.Kit_0.1.0_aarch64.dmg
+  (Apple Silicon aarch64; signing.status=signed; host needs Python 3.11+)
 
-Operator intent:
-  - Make overseerkit.com a professional explainer (flowcharts at a glance).
-  - Make governance console access non-obscure (README + site + console chrome).
-  - Wire Download CTA to the live signed Mac .dmg (and document Python 3.11+).
-  - Do NOT claim website executes tasks or mints session/CSRF.
+Task (Auto ONLY — implement frozen spec; no redesign):
 
-Task (Thinking freeze ONLY — no Auto UI rewrite this session):
+1) docs/landing/ — IA §LAC.3; visual §LAC.4; embed four SVGs §LAC.5; suite doors + CTAs;
+   #console-access Paths 1–3; strip DONE/TODO/WIP public residue; update manifest.yaml + HOSTING.md.
+2) README.md + desktop runbook — same “Open the local console” playbook; OVERSEER_REPO_ROOT honesty.
+3) Path B chrome — collapse Session bootstrap after Connect; show bound repo from api/health
+   result.repo_root (narrow additive only); Overview tab explainers; Status auto-refresh once on enter.
+4) tools/landing/validate.py + seven-tier §LAC.12; full suite green.
+5) /build-verification-review → pass before ROADMAP Auto DONE; update ROADMAP + HANDOVER together.
 
-A) PUBLIC SITE (docs/landing/)
-  1. Freeze IA + visual direction (professional; visitor language; strip DONE/TODO/WIP/dev residue).
-  2. Embed structure flowcharts on the main page (offline SVG from Q4b diagrams or regenerations).
-  3. Suite doors + primary CTA: Download Mac console (Release v0.1.0 .dmg) + secondary: clone/ok init.
-  4. Seven-tier matrix + DoD for landing Auto.
-
-B) ACCESS CLARITY
-  5. Single “Open the local console” playbook for README + landing + ok-app Overview chrome:
-       Path 1 — Download Mac .dmg (Release v0.1.0 / latest signed) — preferred for operators
-       Path 2 — Browser: ok app --open → paste session_credential + csrf_token from THAT terminal
-       Path 3 — Dev: npm run tauri dev (same auto-fill as Path 1 install)
-  6. Freeze Path B chrome UX: after Connect collapse/hide Session bootstrap; show bound repo path;
-     Overview explains what each tab does in plain language; Status auto-refresh once on enter.
-  7. Bound-repo honesty: cwd / --repo / OVERSEER_REPO_ROOT; actions mutate that checkout only.
-
-C) DOMAIN
-  8. overseerkit.com apex = static landing ONLY. No subdomain that pretends to be live ok app.
-     Optional docs subdomain still static. Hosted-dashboard remains a different command.
-
-D) Pre-public gate
-  9. Definition of Done for “ready to point DNS”: landing Auto green + access copy on README/site
-     + Mac Download CTA href to latest signed Release asset; no unsigned-as-primary claims.
- 10. Rejection table + freeze-review → pass; no Tier-3 DNS/merge in this Thinking session.
-
-Hard stops: no secrets in docs; no Q0 bind/auth reopen without dedicated Thinking; no signup/
-  task-runtime; no unsigned-installer-as-primary marketing.
+Hard stops: no secrets; no bind/auth reopen beyond health repo_root; no signup/runtime;
+  no unsigned-as-primary; no Tier-3 DNS/merge.
 ```
 
 
@@ -150,6 +122,7 @@ Hard stops: no secrets in docs; no Q0 bind/auth reopen without dedicated Thinkin
 | **Track Q / Q3**          | **DONE** — Auto build (build-verified → `pass`, Q3-BV-r1). Tauri desktop shell (`desktop/`) invokes `ok app`; `tools/desktop/` + bundle script; seven-tier §Q3. **696** tests green (+28) |
 | **Track Q / Q4a**         | **DONE** — Thinking freeze (`docs/PHASE-TRACK-Q-Q4A-UI-REDESIGN.md` reviewed → `pass`, Q4a-r2), stamp `sha256:ea118134…`. Path B developer UI redesign contract: Overview/Structure IA, four offline diagrams, suite CTAs, closed Q0 surface, §Q4A.15. **Spec-only — no UI code.** Cleared for Q4b |
 | **Track Q / Q4b**         | **DONE** — Auto build (build-verified → `pass`, Q4b-BV-r1). Overview + Structure IA; four offline SVGs; suite CTAs; status humanization; closed Q0 unchanged; §Q4A.15 **17** green; full suite **905**. No LICENSE/`desktop/`/engine edits |
+| **Landing + access clarity** | **DONE (Thinking)** — `docs/PHASE-LANDING-ACCESS-CLARITY.md` reviewed → `pass` (LAC-r2), stamp `sha256:c0ac8162…`. Pre-public IA + Paths 1–3 + Path B chrome + Download CTA freeze. **Auto TODO.** Spec-only this slice. |
 | **K6-Scooling runbook**   | **DONE** — `docs/consumers/scooling/OVERSEER-SETUP.md` (kit-side; live init still operator-gated; Track O cross-link in O1) |
 | **Track O / O0**          | **DONE** — Normie custody funnel Thinking freeze (`docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md` reviewed → `pass`, O0-r3), stamp `sha256:642076c9…` |
 | **Track O / O1**          | **DONE** — Product contracts build-verified → `pass` (O1-BV-r1). Contract + Scooling/Knowtation stubs + `tools/track_o/` + §O0.8. **728** tests green (+32) |
@@ -170,8 +143,8 @@ Hard stops: no secrets in docs; no Q0 bind/auth reopen without dedicated Thinkin
 
 | Item | Value |
 | --- | --- |
-| Branch | `build/track-q-q4b-ui-redesign` |
-| HEAD | Q4b Path B UI redesign build (BV `pass`, Q4b-BV-r1) |
+| Branch | `thinking/landing-access-clarity` |
+| HEAD | Landing + access clarity Thinking freeze (LAC-r2 `pass`) |
 | Muse HEAD | Sync after close-out commit on this branch |
 | GitHub bridge | Feature branch (no merge) |
 | Dirty | Expect clean after close-out commit |
@@ -187,6 +160,13 @@ Hard stops: no secrets in docs; no Q0 bind/auth reopen without dedicated Thinkin
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-14** — **Landing + access clarity Thinking freeze DONE (reviewed → `pass`, LAC-r2).**
+  Froze `docs/PHASE-LANDING-ACCESS-CLARITY.md`: public IA (strip DONE residue; four offline SVGs
+  on main page); Download CTA → signed Mac `v0.1.0` `.dmg` + Python 3.11+; Paths 1–3 playbook;
+  Path B chrome (collapse bootstrap, health `repo_root` additive, Status auto-refresh once);
+  `OVERSEER_REPO_ROOT` honesty (no folder picker); `overseerkit.com` apex static-only; pre-public
+  DNS gate §LAC.9; seven-tier §LAC.12. Stamp `sha256:c0ac8162…`. **Spec-only — no UI rewrite.**
+  ROADMAP Thinking → **DONE**; Auto → **TODO**. NEXT → Landing + access clarity Auto.
 - **2026-07-14** — **Operator steer: expand NEXT to landing + access clarity + optional Path C finish.**
   Confirmed browser Path B works after terminal paste; obscurity remains. Regenerated Thinking
   prompt: professional `docs/landing/` with flowcharts; README/site/console access story;
