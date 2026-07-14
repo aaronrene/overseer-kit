@@ -6,16 +6,16 @@
 
 ---
 
-## NEXT SESSION — Track Q UI redesign (developer-centric + structure charts) (▶ NEXT)
+## NEXT SESSION — Track Q / Q4b Path B UI redesign build (▶ NEXT)
 
 **Date:** 2026-07-13  
-**Current position:** Positioning locked **developer-centric** (site = explain + suite doors;
-kit = portable open-source governance tool). Operator wants **Path B/C UI redesign** with
-structure flowcharts under that slant. Signed desktop Release remains optional/later. License
-is already **open source (Apache-2.0)** — MIT switch optional, not required for “open source.”  
-**Model:** **Thinking**  
-**Operator note:** Freeze UI contract first (Outline + Plan); Auto build only after freeze
-`pass`. Live VF/Scooling dogfood can proceed in parallel; not blocked on UI.
+**Current position:** Q4a Path B UI redesign freeze **reviewed → `pass` (Q4a-r2)**. Cleared for
+Q4b Auto: rewrite `tools/app/static/` against the frozen contract (developer console + structure
+diagrams + suite CTAs). Closed Q0 `api/*` / bind / auth stay frozen. LICENSE unchanged
+(Apache-2.0). Path C desktop rides along (no `desktop/` edits by default).  
+**Model:** **Auto**  
+**Operator note:** Mechanical presentation build only. `/build-verification-review` → `pass`
+before ROADMAP Q4b → DONE. Live VF/Scooling dogfood can proceed in parallel.
 
 
 ### What just landed
@@ -23,53 +23,48 @@ is already **open source (Apache-2.0)** — MIT switch optional, not required fo
 
 | Slice | Deliverable |
 | --- | --- |
-| **Developer-centric way forward (docs)** | Site explains + links GitHub/MuseHub/Knowtation/consumers; Scooling = product runtime; kit = governance tool |
-| **Consumer / public-path honesty** | VF K8 lanes shipped; Path A secondary |
-| **Q3-release pipeline DONE** | CI on `main`; live signed Release not required for kit value |
+| **Track Q / Q4a** | `docs/PHASE-TRACK-Q-Q4A-UI-REDESIGN.md` freeze `pass` (Q4a-r2) — IA, copy, four diagrams, CTAs, §Q4A.15 |
+| **Developer-centric positioning** | Site + consumer docs already explain suite doors; kit = governance tool |
+| **Q3-release pipeline DONE** | Signed Release still optional/later; not primary adopt path |
 
 
 
-### THE ONE NEXT STEP — **Model: Thinking**
+### THE ONE NEXT STEP — **Model: Auto**
 
 
 |                |                                                                                                                                     |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID**         | **Track Q UI redesign freeze** — developer tool slant + structure flowcharts (then Auto build) |
-| **Branch** | Feature branch from `main` (or continue docs branch after merge) |
-| **Read first** | `docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md` (closed `api/*`); `tools/app/static/`; `docs/CONSUMER-ADAPTER-PATTERN.md`; paste fence below |
-| **Deliver** | Frozen UI redesign contract: screens/copy, flowchart inventory, suite-door CTAs; no engine redesign; no silent license flip |
-| **Hard stops** | No reopen of closed Track Q API contracts; no secrets; website/UI not a task SaaS; license change only via K12 amendment if desired |
+| **ID**         | **Track Q / Q4b** — Path B `ok app` UI redesign build (against Q4a freeze) |
+| **Branch** | Feature branch (continue current or open `build/track-q-q4b-ui-redesign`) |
+| **Read first** | `docs/PHASE-TRACK-Q-Q4A-UI-REDESIGN.md` (frozen); `docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md` (closed `api/*`); `tools/app/static/`; paste fence below |
+| **Deliver** | Overview + Structure UI; four offline SVGs; suite CTAs; status humanization; seven-tier §Q4A.15 green; BV `pass`; gov sync |
+| **Hard stops** | No engine/API/bind/auth reopen; no secrets; no signup/runtime claims; no LICENSE flip; no CDN Mermaid |
 
 
 
-### Paste-ready prompt — Track Q UI redesign (Thinking)
+### Paste-ready prompt — Track Q / Q4b (Auto)
 
 ```
-Overseer Kit — Track Q UI redesign freeze (developer-centric + structure flowcharts).
+Overseer Kit — Track Q / Q4b Path B UI redesign build.
 
-Model: Thinking
+Model: Auto
 
-Read first: docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md (do not reopen closed api/* contracts);
-  tools/app/static/index.html + app.js + app.css; desktop/ shell only if Path C packaging
-  presentation changes; docs/CONSUMER-ADAPTER-PATTERN.md (developer-centric positioning);
-  docs/landing/HOSTING.md; docs/OVERSEER-KIT-LAYERED-HONESTY-VISION.md (§layers / modularity).
+Read first: docs/PHASE-TRACK-Q-Q4A-UI-REDESIGN.md (frozen WHAT/HOW — do not re-derive);
+  docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md (closed api/*, bind, auth — do not reopen);
+  tools/app/static/index.html + assets/app.js + assets/app.css.
 
-Task: Outline + Plan a Path B (`ok app`) UI redesign for developers/operators — not normie
-  signup. Include:
-  1) Clear L0→L3 / kit-vs-consumer copy (kit = open-source governance tool; Scooling/Knowtation/
-     MuseHub/VideoFactory = sister doors / product runtimes where relevant).
-  2) Flowcharts (mermaid or static SVG in the UI) showing structure options:
-     - single-lane vs docs.lanes multi-lane
-     - git-only vs muse-only vs muse+git-mirror
-     - L0 only vs L0+L1 vs L0+L1+L2
-     - kit install → consumer domain pack (VF / Scooling) boundary
-  3) CTAs/links to GitHub kit repo + MuseHub + Knowtation docs (no fake in-app runtime).
-  Freeze WHAT/HOW in a new phase doc under docs/; keep closed api/*; closed bind/auth.
-  Do not change LICENSE in this phase unless operator explicitly adds a K12 license-amendment
-  freeze (Apache-2.0 already = open source).
+Task: Mechanically implement the Q4a freeze in tools/app/static/ only:
+  1) IA: Overview (default after auth) + Structure + existing Status/Roadmap/Handover/Gates/
+     Actions/Ledger tabs; honesty strip; ok app copy; Apache-2.0 footer.
+  2) Four committed SVGs under assets/diagrams/ from frozen mermaid (lanes, regimes, layers,
+     kit-consumer); offline only — no CDN Mermaid.
+  3) Suite CTAs per §Q4A.7 (GitHub, MuseHub, Knowtation, Consumer pattern, Scooling, VF).
+  4) Status humanization from existing JSON (no new API fields); keep raw JSON expandable.
+  5) Seven-tier tests §Q4A.15 green; /build-verification-review → pass before DONE.
+  6) Update ROADMAP + OVERSEER-HANDOVER together; no LICENSE change; no desktop/ edits.
 
-Hard stops: no Track Q engine rewrite; no secrets; no “website runs tasks”; no unsigned
-  installer claims; no MIT flip without separate license Thinking.
+Hard stops: no Track Q engine rewrite; no new api/*; no secrets; no signup/task-runtime UX;
+  no unsigned-installer primary-path claims.
 ```
 
 
@@ -118,7 +113,9 @@ Hard stops: no Track Q engine rewrite; no secrets; no “website runs tasks”; 
 | **Track Q / Q1** | **DONE** — Auto build (build-verified → `pass`, Q1-BV-r1). `overseer app` stdlib loopback server + static UI; `tools/app/` + `cli/commands/app.py`; closed `api/*`; Bearer + CSRF; seven-tier §Q0.12. **654** tests green (+42) |
 | **Track Q / Q2a**         | **DONE** — Thinking freeze (`docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md` reviewed → `pass`, Q2a-r2), stamp `sha256:dbfbf9ad…`. Freezes canonical `ok` CLI entrypoint + `overseer` compat shim; seven-tier §Q2A.10. Spec-only. Cleared for Q2b |
 | **Track Q / Q2b**         | **DONE** — Auto build (build-verified → `pass`, Q2b-BV-r1). `cli/ok` canonical + `cli/overseer` deprecation; `prog="ok"`; operator docs/templates/skills/CI pass; SPEC §5 + K4.1 naming; shims not footprint members. **668** tests green (+14 §Q2A.10). Cleared for Q3 |
-| **Track Q / Q3**          | **DONE** — Auto build (build-verified → `pass`, Q3-BV-r1). Tauri desktop shell (`desktop/`) invokes `ok app`; `tools/desktop/` + bundle script; seven-tier §Q3. **696** tests green (+28). Track Q chain complete |
+| **Track Q / Q3**          | **DONE** — Auto build (build-verified → `pass`, Q3-BV-r1). Tauri desktop shell (`desktop/`) invokes `ok app`; `tools/desktop/` + bundle script; seven-tier §Q3. **696** tests green (+28) |
+| **Track Q / Q4a**         | **DONE** — Thinking freeze (`docs/PHASE-TRACK-Q-Q4A-UI-REDESIGN.md` reviewed → `pass`, Q4a-r2), stamp `sha256:ea118134…`. Path B developer UI redesign contract: Overview/Structure IA, four offline diagrams, suite CTAs, closed Q0 surface, §Q4A.15. **Spec-only — no UI code.** Cleared for Q4b |
+| **Track Q / Q4b**         | **TODO** — Auto build against Q4a freeze (`tools/app/static/` presentation only) |
 | **K6-Scooling runbook**   | **DONE** — `docs/consumers/scooling/OVERSEER-SETUP.md` (kit-side; live init still operator-gated; Track O cross-link in O1) |
 | **Track O / O0**          | **DONE** — Normie custody funnel Thinking freeze (`docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md` reviewed → `pass`, O0-r3), stamp `sha256:642076c9…` |
 | **Track O / O1**          | **DONE** — Product contracts build-verified → `pass` (O1-BV-r1). Contract + Scooling/Knowtation stubs + `tools/track_o/` + §O0.8. **728** tests green (+32) |
@@ -140,7 +137,7 @@ Hard stops: no Track Q engine rewrite; no secrets; no “website runs tasks”; 
 | Item | Value |
 | --- | --- |
 | Branch | `docs/consumer-public-path-honesty` |
-| HEAD | Consumer + public-path honesty docs (K8 lanes, Path A, HOSTING.md) + gov sync |
+| HEAD | Q4a UI redesign freeze + prior consumer/public-path honesty docs |
 | Muse HEAD | Sync after close-out commit on this branch |
 | GitHub bridge | Feature branch (no merge) |
 | Dirty | Expect clean after close-out commit |
@@ -156,8 +153,15 @@ Hard stops: no Track Q engine rewrite; no secrets; no “website runs tasks”; 
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-13** — **Track Q / Q4a Freeze Path B UI redesign DONE (reviewed → `pass`, Q4a-r2).**
+  Drafted and froze `docs/PHASE-TRACK-Q-Q4A-UI-REDESIGN.md`: developer/operator `ok app`
+  presentation (Overview + Structure), L0→L3 / kit-vs-sister-door copy, four offline SVG
+  structure diagrams (lanes / regimes / layers / kit→consumer), suite CTAs, closed Q0
+  `api/*`+bind/auth non-reopen, no LICENSE flip, seven-tier §Q4A.15. Freeze-review: r1 semantic
+  findings → fixed; **Q4a-r2 → `pass`**. **Spec-only — no UI code landed.** ROADMAP: Q4a →
+  **DONE (Thinking)**; NEXT → **Track Q / Q4b** Auto.
 - **2026-07-13** — **Way forward: UI redesign reinstated + license honesty.** Apache-2.0 already
-  is open source; MIT optional via K12 amendment. Handover NEXT → Track Q UI redesign Thinking
+  is open source; MIT optional via K12 amendment. Handover NEXT was Track Q UI redesign Thinking
   (developer tool + structure flowcharts); VF/Scooling dogfood parallel/optional.
 - **2026-07-13** — **Developer-centric way forward (docs).** Public site = explain + suite doors
   (GitHub / MuseHub / Knowtation / consumers); Scooling clarified as product runtime that
