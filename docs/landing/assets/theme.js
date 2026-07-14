@@ -1,17 +1,16 @@
-/** Landing theme toggle — preference only (not auth). */
+/** Landing theme toggle — preference only (not auth). Default is always dark. */
 (function () {
-  var KEY = "overseer-landing-theme";
+  // v2: ignore legacy stored preference so first paint stays dark by default.
+  var KEY = "overseer-landing-theme-v2";
   var root = document.documentElement;
 
   function preferred() {
     try {
       var stored = localStorage.getItem(KEY);
+      // Only honor an explicit user choice; ignore OS prefers-color-scheme.
       if (stored === "light" || stored === "dark") return stored;
     } catch (_e) {
       /* file:// or blocked storage — fall through */
-    }
-    if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
-      return "light";
     }
     return "dark";
   }
@@ -25,6 +24,7 @@
     btn.setAttribute("title", next === "light" ? "Light mode" : "Dark mode");
   }
 
+  // Apply immediately so first paint is not light on light-preferring OSes.
   apply(preferred());
 
   document.addEventListener("DOMContentLoaded", function () {

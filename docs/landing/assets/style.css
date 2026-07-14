@@ -121,20 +121,46 @@ html[data-theme="dark"] .theme-icon-sun {
 }
 
 .site-header nav {
-  max-width: var(--max-width);
+  /* Match hero inner width so the mark sits on the left edge of the composition. */
+  max-width: 68rem;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.25rem;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .site-header .brand {
-  font-weight: 700;
-  font-size: 1.125rem;
+  display: inline-flex;
+  align-items: center;
   color: var(--text);
   text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logo-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.75rem;
+  height: 2.75rem;
+  padding: 0 0.55rem;
+  border-radius: 0.55rem;
+  background: #1d4f91;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.35rem;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.logo-mark-hero {
+  min-width: 5.5rem;
+  height: 5.5rem;
+  padding: 0 0.85rem;
+  border-radius: 0.85rem;
+  font-size: 2.75rem;
 }
 
 .site-header .nav-links {
@@ -142,6 +168,8 @@ html[data-theme="dark"] .theme-icon-sun {
   flex-wrap: wrap;
   gap: 1rem;
   font-size: 0.9375rem;
+  margin-left: auto;
+  align-items: center;
 }
 
 main {
@@ -304,20 +332,24 @@ h3 {
   align-items: center;
 }
 
-.hero-copy h1 {
-  color: #f4f8fc;
+.hero-mark {
+  margin: 0 0 1rem;
   animation: hero-fade 0.55s ease-out;
 }
 
-.hero-copy .lead,
+.hero-copy .lead {
+  color: #f4f8fc;
+  font-size: 1.65rem;
+  font-weight: 650;
+  line-height: 1.25;
+  margin: 0 0 0.85rem;
+  animation: hero-fade 0.7s ease-out 0.05s both;
+}
+
 .hero-copy .sublead,
 .hero-copy .cta-honesty,
 .hero-copy .tertiary-links {
   color: #a8b6c9;
-}
-
-.hero-copy .lead {
-  animation: hero-fade 0.7s ease-out 0.05s both;
 }
 
 .hero-copy .cta-row {
