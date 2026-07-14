@@ -82,8 +82,8 @@ freeze (and clear the "governance, not runtime" boundary) before entering the bu
 | **Q3-release — desktop installers** | Promoted → Thinking freeze **DONE** (`pass`, QR-r3) + Auto build **DONE** (BV `pass`, Q3R-BV-r1). | Packaging/distribution; no engine redesign. |
 | **P-route runtime reference** | An *example* runtime adapter (in a consumer repo, e.g. Scooling) that consumes `P-route` policy + OpenRouter — to prove the policy end-to-end. | Lives in a consumer, not the kit (per `AGENTS.md` — Scooling 9A router is reference-only). |
 | **overseerkit.com public hosting** | Operator DNS → static K12 `docs/landing/` (`docs/landing/HOSTING.md`). Developer-centric door: explain patterns + links to GitHub / MuseHub / Knowtation / consumers. | Not a product runtime; Scooling (etc.) own end-user task UX. |
-| **Track Q UI / signed desktop installers** | **Deprioritized** for end-user frontend. Optional later for operators who want `ok app` in a window; not the adopt path. Developers use GitHub + CLI. | Packaging pipeline DONE; do not block kit value on installer/UI polish. |
-| **License change Apache → MIT** | Operator asked. **Recommendation: keep Apache-2.0** (K12 freeze: patent grant). Reopen only via Thinking that amends K12 §K12.4. | MIT is simpler prose; Apache’s patent clause fits multi-org governance tooling. |
+| **Track Q UI redesign (developer tool)** | **Promoted for next Thinking** — Path B `ok app` redesign: developer-centric copy + structure flowcharts (lanes / regimes / L0–L2 / kit-vs-consumer). Signed installers still optional later. | Presentation only; closed `api/*` stay frozen (Q0). |
+| **License change Apache → MIT** | Kit is **already open source (Apache-2.0)**. MIT is a flavor swap, not “becoming open source.” Default: keep Apache (patent grant). Reopen only via Thinking that amends K12 §K12.4. | Dual-license / MIT: optional if operator wants shorter SPDX text; patents become quieter. |
 
 ## Dogfood integrity gate (mandatory — not optional)
 

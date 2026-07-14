@@ -43,9 +43,10 @@ Map **overseerkit.com** (DNS CNAME / A records) to that host. TLS via the host.
 | Hosted write dashboard for merge/deploy | **Rejected** for kit |
 | Signed desktop installers as primary adopt path | Optional later; developers clone GitHub |
 
-## License note (Apache-2.0 — keep unless a freeze changes it)
+## License note (already open source)
 
-K12 froze **Apache-2.0** (patent grant + OSI). Prefer keeping Apache over switching to MIT unless
-a later Thinking phase reopens license choice — see ROADMAP exploration / operator decision.
-MIT is simpler to read; Apache adds an express patent license/termination useful for multi-org
-tooling. Do not silently rewrite `LICENSE` without amending the K12 contract.
+This repo is **already open source** under **Apache-2.0** (K12). “Make it open source” does not
+require a license change. MIT is an optional shorter flavor; switching needs a Thinking freeze
+that amends K12 §K12.4. Apache’s main extra is an **express patent grant/termination** — useful
+when many orgs reuse the tooling. For a plain dev CLI used across your repos, either OSI license
+works; default recommendation remains **keep Apache** unless you specifically want MIT branding.
