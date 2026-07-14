@@ -48,15 +48,34 @@ Example GitHub Pages path if publishing the whole `docs/` folder:
 
 Map **overseerkit.com** (DNS CNAME / A records) to that host. TLS via the host.
 
-### Operator cutover checklist (Tier 3)
+### Preview the landing locally (not the Path B console)
 
-1. Merge the landing branch to `main` (or publish from the branch host you choose) — Tier 3 merge.
-2. Enable static hosting of `docs/landing/` (GitHub Pages from `/docs` then path `/landing/`, or
-   Cloudflare/Netlify with publish directory = `docs/landing`).
-3. At your DNS registrar for **overseerkit.com**: point apex (and optional `www`) at that host per
-   the host’s instructions (Cloudflare Proxied CNAME / Pages custom domain is usually simplest).
-4. Wait for TLS to go live; open `https://overseerkit.com/` and confirm hero + favicon (OK mark) +
-   Download CTA still target the signed Mac `.dmg`.
+From the kit checkout:
+
+```bash
+open docs/landing/index.html
+# or, if you prefer an http:// origin:
+cd docs/landing && python3 -m http.server 8080
+# then open http://127.0.0.1:8080/
+```
+
+That is the **marketing site**. The governance UI is a different process:
+
+| Local URL | Command | What it is |
+| --- | --- | --- |
+| `http://127.0.0.1:8765/` | `ok app --open` (from a governed repo) | Track Q Path B console |
+| `http://127.0.0.1:8766/` | `ok hosted-dashboard --open` | Read-only remote glance (not Path B) |
+
+### Operator cutover checklist (Tier 3) — make `overseerkit.com` live
+
+1. Merge the landing branch to `main` (Muse → GitHub mirror PR) — Tier 3 merge.
+2. Enable static hosting of `docs/landing/` as site root (recommended: Cloudflare Pages publish
+   directory = `docs/landing`; or GitHub Pages from `/docs` then serve `/landing/`).
+3. At your DNS registrar for **overseerkit.com**: attach apex + optional `www` to that host
+   (Cloudflare “Custom domains” on the Pages project is usually simplest).
+4. Wait for TLS; open `https://overseerkit.com/` and confirm hero + OK favicon + Download CTA still
+   target the signed Mac `.dmg`. Loopback links (`127.0.0.1:8765`) on the page only work for
+   visitors who already started `ok app` on their own machine.
 5. Do **not** create `app.` / `console.` subdomains that host live Path B.
 
 ## What this domain is *not*

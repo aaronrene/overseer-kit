@@ -139,6 +139,9 @@ def test_main_landing_has_no_personal_product_doors() -> None:
     assert 'href="assets/favicon.ico"' in html
     assert (KIT_ROOT / "docs" / "landing" / "assets" / "favicon.ico").is_file()
     assert (KIT_ROOT / "docs" / "landing" / "assets" / "ok-mark-1024.png").is_file()
+    assert 'href="http://127.0.0.1:8765/"' in html
+    assert "id=\"local-console-loopback\"" in html or 'id="local-console-loopback"' in html
+    assert "ok hosted-dashboard" in html
     assert "../../README.md" not in html
     assert "../CONSUMER-ADAPTER-PATTERN.md" not in html
 

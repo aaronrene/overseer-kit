@@ -183,10 +183,12 @@
         <h3>Path 2 — Browser (<code>ok app</code>)</h3>
         <ol>
           <li>From a governed repo (<code>.overseer/</code> present): <code>ok app --open</code> (or <code>ok app</code>, then open the printed URL).</li>
+          <li>Default local URL: <a href="http://127.0.0.1:8765/" id="local-console-loopback">http://127.0.0.1:8765/</a> — works only on <em>this</em> machine after <code>ok app</code> is running (this public page is static and does not host the console).</li>
           <li>In the <strong>same</strong> terminal that started the server, copy <code>session_credential</code> and <code>csrf_token</code>.</li>
           <li>Paste into Session bootstrap → Connect.</li>
           <li>Credentials are process-lifetime only; never commit them; this website never mints them.</li>
         </ol>
+        <p class="cta-honesty">Separate tool: read-only remote glance is <code>ok hosted-dashboard</code> (default <code>http://127.0.0.1:8766/</code>) — not the Path B console and not what overseerkit.com serves.</p>
       </article>
 
       <article class="path-card" id="path-3">
@@ -210,6 +212,13 @@
         <div class="card">
           <h3>GitHub</h3>
           <p><a href="https://github.com/aaronrene/overseer-kit">overseer-kit</a> — clone, <code>ok init</code>, living docs, issues.</p>
+        </div>
+        <div class="card">
+          <h3>Local console</h3>
+          <p>After <code>ok app</code> is running on your machine:
+            <a href="http://127.0.0.1:8765/">Open loopback console</a>
+            (<code>127.0.0.1:8765</code>). Start it with <code>ok app --open</code> — see
+            <a href="#console-access">Open the local console</a>.</p>
         </div>
         <div class="card">
           <h3>Docs</h3>
