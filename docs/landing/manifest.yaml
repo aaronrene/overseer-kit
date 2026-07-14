@@ -1,5 +1,5 @@
-# K12 Track N landing contract (machine-readable)
-# Validated by tools/landing/validate.py
+# Landing + access clarity contract (amends K12 Track N IA)
+# Validated by tools/landing/validate.py — §LAC.3.1 section ids
 
 version: 1
 license: Apache-2.0
@@ -7,16 +7,14 @@ license: Apache-2.0
 sections:
   - id: hero
   - id: problem
-  - id: l0
-  - id: l1
-  - id: l2
-  - id: l3
-  - id: modularity
-  - id: personas
+  - id: living-docs
+  - id: structure
+  - id: layers
+  - id: console-access
+  - id: suite-doors
   - id: quickstart
-  - id: musehub-upgrade
-  - id: roadmap-public
   - id: funnel
+  - id: scenarios
 
 personas:
   - id: A
@@ -33,7 +31,7 @@ personas:
     status: aspirational
   - id: D
     slug: classroom
-    title: Classroom / Scooling
+    title: Classroom
     status: reference
   - id: E
     slug: multi-org-oss
@@ -49,3 +47,6 @@ funnel_steps:
   - github
   - kit
   - musehub
+
+# Frozen Auto v1 primary Download CTA (§LAC.2) — Apple Silicon aarch64 only
+primary_download_href: https://github.com/aaronrene/overseer-kit/releases/download/v0.1.0/Overseer.Kit_0.1.0_aarch64.dmg

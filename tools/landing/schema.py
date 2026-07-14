@@ -19,6 +19,7 @@ class LandingManifest:
     persona_ids: tuple[str, ...]
     status_badges: frozenset[str]
     funnel_steps: tuple[str, ...]
+    primary_download_href: str | None = None
 
 
 def load_manifest(manifest_path: Path) -> LandingManifest:
@@ -64,6 +65,10 @@ def load_manifest(manifest_path: Path) -> LandingManifest:
     if not isinstance(funnel, list) or not funnel:
         raise ValueError("manifest.funnel_steps must be a non-empty list")
 
+    primary = raw.get("primary_download_href")
+    if primary is not None and (not isinstance(primary, str) or not primary.strip()):
+        raise ValueError("manifest.primary_download_href must be a non-empty string when set")
+
     return LandingManifest(
         version=int(version),
         license=license_id.strip(),
@@ -71,4 +76,5 @@ def load_manifest(manifest_path: Path) -> LandingManifest:
         persona_ids=tuple(persona_ids),
         status_badges=frozenset(str(b) for b in badges),
         funnel_steps=tuple(str(s) for s in funnel),
+        primary_download_href=primary.strip() if isinstance(primary, str) else None,
     )

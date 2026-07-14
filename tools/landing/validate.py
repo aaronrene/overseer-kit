@@ -1,4 +1,4 @@
-"""Fail-closed validator for Track N landing assets (K12)."""
+"""Fail-closed validator for landing assets (K12 + Landing + access clarity)."""
 
 from __future__ import annotations
 
@@ -9,6 +9,46 @@ from pathlib import Path
 import yaml
 
 from tools.landing.schema import LandingManifest, load_manifest
+
+# Frozen Auto v1 primary Download CTA (§LAC.2 / §LAC.12).
+FROZEN_PRIMARY_DOWNLOAD_HREF = (
+    "https://github.com/aaronrene/overseer-kit/releases/download/"
+    "v0.1.0/Overseer.Kit_0.1.0_aarch64.dmg"
+)
+
+LAC_SECTION_IDS: tuple[str, ...] = (
+    "hero",
+    "problem",
+    "living-docs",
+    "structure",
+    "layers",
+    "console-access",
+    "suite-doors",
+    "quickstart",
+    "funnel",
+    "scenarios",
+)
+
+# Public main page must not advertise private/personal product doors or broken MuseHub TLS origin.
+MAIN_PAGE_FORBIDDEN_PRODUCTS: tuple[str, ...] = (
+    "Knowtation",
+    "Scooling",
+    "VideoFactory",
+    "musehub.ai",
+)
+
+DIAGRAM_REL_PATHS: tuple[str, ...] = (
+    "assets/diagrams/lanes.svg",
+    "assets/diagrams/regimes.svg",
+    "assets/diagrams/layers.svg",
+    "assets/diagrams/kit-consumer.svg",
+)
+
+FORBIDDEN_LANDING_PHRASES: tuple[str, ...] = (
+    "Sign up",
+    "Create account",
+    "executes tasks",
+)
 
 # Heuristic patterns — aligned with kit security tests; not exhaustive secret scanning.
 SECRET_PATTERNS: tuple[re.Pattern[str], ...] = (
@@ -24,6 +64,30 @@ EXTERNAL_SCRIPT_RE = re.compile(
 )
 
 INLINE_EVAL_RE = re.compile(r"\beval\s*\(", re.IGNORECASE)
+
+# Public status-table residue (DONE/TODO/WIP boards on main landing).
+STATUS_TABLE_RESIDUE_RE = re.compile(
+    r"<table[^>]*>.*?roadmap-public.*?</table>"
+    r"|<th[^>]*>\s*Status\s*</th>.*?\b(?:DONE|TODO|WIP)\b",
+    re.IGNORECASE | re.DOTALL,
+)
+
+MINT_CSRF_OR_SESSION_RE = re.compile(
+    r"\bmint\w*.{0,40}\b(?:csrf|session_credential)\b"
+    r"|\b(?:csrf|session_credential)\b.{0,40}\bmint\w*",
+    re.IGNORECASE,
+)
+
+PRIMARY_CTA_HREF_RE = re.compile(
+    r"""id=["']cta-download-mac["'][^>]*href=["']([^"']+)["']"""
+    r"""|href=["']([^"']+)["'][^>]*id=["']cta-download-mac["']""",
+    re.IGNORECASE,
+)
+
+GITHUB_RELEASE_DOWNLOAD_RE = re.compile(
+    r"^https://github\.com/aaronrene/overseer-kit/releases/download/"
+    r"v[0-9][^/]+/[^/]+\.dmg$"
+)
 
 
 @dataclass
@@ -46,6 +110,11 @@ def _check_html_sections(html: str, manifest: LandingManifest, result: Validatio
     for section_id in manifest.section_ids:
         if f'id="{section_id}"' not in html and f"id='{section_id}'" not in html:
             result.add("missing_section", section_id)
+    if tuple(manifest.section_ids) != LAC_SECTION_IDS:
+        result.add(
+            "section_order",
+            f"expected {list(LAC_SECTION_IDS)}, got {list(manifest.section_ids)}",
+        )
 
 
 def _check_personas(html: str, manifest: LandingManifest, result: ValidationResult) -> None:
@@ -87,8 +156,56 @@ def _check_relative_doc_links(html: str, kit_root: Path, html_path: Path, result
             result.add("broken_link", f"{html_path.name} -> {match.group(1)}")
 
 
+def _check_lac_index_contract(html: str, landing: Path, result: ValidationResult) -> None:
+    """Enforce Download href, diagrams, forbidden copy, and residue strip (§LAC.12)."""
+    match = PRIMARY_CTA_HREF_RE.search(html)
+    if not match:
+        result.add("download_cta", "missing #cta-download-mac primary Download href")
+    else:
+        href = match.group(1) or match.group(2)
+        if href != FROZEN_PRIMARY_DOWNLOAD_HREF:
+            result.add("download_cta", f"href {href!r} != frozen {FROZEN_PRIMARY_DOWNLOAD_HREF!r}")
+        if not GITHUB_RELEASE_DOWNLOAD_RE.match(href):
+            result.add("download_cta", f"href host/path not GitHub releases .dmg: {href}")
+
+    for phrase in FORBIDDEN_LANDING_PHRASES:
+        if phrase in html:
+            result.add("forbidden_copy", phrase)
+
+    for phrase in MAIN_PAGE_FORBIDDEN_PRODUCTS:
+        if phrase in html:
+            result.add("forbidden_product", phrase)
+
+    if MINT_CSRF_OR_SESSION_RE.search(html):
+        result.add("forbidden_copy", "mint+csrf/session_credential marketing")
+
+    # Prefer GitHub-rendered docs over raw relative .md (file:// / Pages raw).
+    for match in re.finditer(r"""href=["'](\.\./[^"']+\.md)["']""", html):
+        result.add("raw_md_link", match.group(1))
+
+    if 'id="roadmap-public"' in html or "id='roadmap-public'" in html:
+        result.add("residue", "roadmap-public section present on main landing")
+    if STATUS_TABLE_RESIDUE_RE.search(html):
+        result.add("residue", "DONE/TODO/WIP status table residue on main landing")
+
+    for rel in DIAGRAM_REL_PATHS:
+        if rel not in html:
+            result.add("missing_diagram_ref", rel)
+        diagram_path = landing / rel
+        if not diagram_path.is_file():
+            result.add("missing_file", f"docs/landing/{rel}")
+        else:
+            text = _read(diagram_path)
+            if "<svg" not in text.lower() or len(text.strip()) < 32:
+                result.add("diagram_malformed", rel)
+
+    for path_id in ("path-1", "path-2", "path-3", "console-access"):
+        if f'id="{path_id}"' not in html and f"id='{path_id}'" not in html:
+            result.add("missing_playbook", path_id)
+
+
 def validate_landing(kit_root: Path) -> ValidationResult:
-    """Validate Track N landing assets under ``kit_root`` (fail-closed)."""
+    """Validate landing assets under ``kit_root`` (fail-closed)."""
     result = ValidationResult(ok=True)
     landing = kit_root / "docs" / "landing"
     manifest_path = landing / "manifest.yaml"
@@ -118,7 +235,9 @@ def validate_landing(kit_root: Path) -> ValidationResult:
         _check_relative_doc_links(html, kit_root, path, result)
 
     if index_path.is_file():
-        _check_html_sections(_read(index_path), manifest, result)
+        index_html = _read(index_path)
+        _check_html_sections(index_html, manifest, result)
+        _check_lac_index_contract(index_html, landing, result)
 
     if scenarios_path.is_file():
         _check_personas(_read(scenarios_path), manifest, result)

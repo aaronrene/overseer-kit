@@ -3,9 +3,10 @@
 **Audience:** operators, contributors, and non-developer users who want the Overseer governance UI
 without living in a terminal.
 
-**Status (2026-07-13):** Track Q is **DONE** (Q0 freeze → Q1 web UI → Q2b `ok` CLI → Q3 Tauri
-packaging). Source and tests ship in this repo; **pre-built installers are not yet published** from
-CI — see §Release vs dev below.
+**Status (2026-07-14):** Track Q is **DONE** (Q0 → Q4b). Mac signed installer is published on
+GitHub Release **`v0.1.0`** (Apple Silicon `aarch64` `.dmg`, `signing.status: signed`). 
+Windows/Linux signed installers are **not** published yet. Host still needs **Python 3.11+**.
+Canonical playbook title: **Open the local console** (Paths 1–3 below; maps to Path C / B / C-dev).
 
 ---
 
@@ -14,8 +15,9 @@ CI — see §Release vs dev below.
 | Surface | Who it is for | What you need |
 | --- | --- | --- |
 | **Docs-first (any AI tool)** | Everyone — the primary, IDE-neutral path | `docs/OVERSEER-HANDOVER.md` paste block + `ok` CLI in terminal |
-| **`ok app` (browser)** | Developers / operators comfortable with a terminal | Python 3.11+, initialized repo (`.overseer/`) |
-| **Tauri desktop (`desktop/`)** | Same UI in a native window | Build-from-source: Rust 1.88+, Node, Python 3.11+. Signed installers (when published): Python 3.11+ only — no Rust/Node build toolchain |
+| **`ok app` (browser)** — Path 2 | Developers / operators comfortable with a terminal | Python 3.11+, initialized repo (`.overseer/`) |
+| **Mac desktop installer** — Path 1 | Operators on Apple Silicon | Python 3.11+; set `OVERSEER_REPO_ROOT` for consumer repos |
+| **Tauri desktop from source** — Path 3 | Contributors | Build-from-source: Rust 1.88+, Node, Python 3.11+ |
 | **Cursor rules/skills** | Cursor users only (optional boost) | Installed automatically via `ok init` / `ok sync` footprint |
 
 The kit is **not Cursor-only**. Cursor rules and Agent Skills are an **optional layer** on top of
@@ -50,16 +52,36 @@ has the kit installed (one-time setup). The public website alone does not replac
 label, one paste fence. No separate GUI wizard ships in kit core yet.
 
 **Website visitors:** use the public landing (`docs/landing/` / custom domain) to understand
-L0→L3 and open GitHub. Day-to-day work still goes through Path A (paste) or a future product
-shell that wraps kit commands (Track O — consumer UX, not kit core).
+structure, download the Mac console (Path 1), or clone GitHub. The site does **not** mint CSRF /
+session credentials and does **not** run the live console. Day-to-day product UX stays in sister
+projects (Track O — consumer UX, not kit core).
 
 ---
 
-## Path B — Developer: local web UI (`ok app`)
+## Open the local console (Paths 1–3)
+
+### Path 1 — Download Mac console (preferred · Apple Silicon)
+
+1. Confirm **Python 3.11+** (`python3 --version`).
+2. Download the signed Apple Silicon (`aarch64`) asset:
+   `https://github.com/aaronrene/overseer-kit/releases/download/v0.1.0/Overseer.Kit_0.1.0_aarch64.dmg`
+3. Optionally verify `SHA256SUMS.txt` + manifest `signing.status: signed` (§Signed installers below).
+4. **Bind a governed checkout before launch:** set `OVERSEER_REPO_ROOT` to the absolute path of
+   the consumer (or kit) repo that already has `.overseer/` from `ok init`.  
+   **Default without that env var:** the desktop launcher binds `repo_root` to the **bundled kit
+   root** inside the app resources — useful for dogfooding the kit, **not** a folder picker.
+5. Open the app; desktop shell auto-fills session bootstrap.
+6. Confirm the chrome shows the expected bound path before any write action.
+
+*Apple Silicon (`aarch64`) Mac · signed+notarized · requires Python 3.11+. Set
+`OVERSEER_REPO_ROOT` to your governed repo. Windows/Linux signed installers are not published yet.
+No in-app folder picker in Auto v1.*
+
+### Path 2 — Browser (`ok app`) — legacy “Path B”
 
 ```bash
 cd /path/to/your-governed-repo   # must have .overseer/ from init
-/path/to/overseer-kit/cli/ok app
+/path/to/overseer-kit/cli/ok app --open
 ```
 
 The terminal prints **once**:
@@ -67,13 +89,13 @@ The terminal prints **once**:
 - `url:` loopback address (default port `8765`)
 - `session_credential:` and `csrf_token:`
 
-Paste those into the browser UI auth panel (or use the desktop app’s auto-bootstrap — §Path C).
+Paste those into Session bootstrap → Connect. After Connect, the UI collapses bootstrap and shows
+the bound checkout from `api/health` → `result.repo_root`.
 
-**Guardrails:** loopback only; Bearer + CSRF on `api/*`; no engine routes added beyond Q0 freeze.
+**Guardrails:** loopback only; Bearer + CSRF on `api/*`; closed Q0 surface except additive
+`repo_root` on health (§LAC.6.3).
 
----
-
-## Path C — Developer: Tauri desktop shell
+### Path 3 — Dev desktop (legacy “Path C” build-from-source)
 
 **Prerequisites:** Python 3.11+, Node/npm, **Rust 1.88+** via [rustup](https://rustup.rs/) (Homebrew
 Rust 1.87 is too old for current Tauri deps).
@@ -96,7 +118,7 @@ npm run tauri build                      # produces platform installer under des
 | Variable | Purpose |
 | --- | --- |
 | `OVERSEER_KIT_ROOT` | Kit checkout (auto-detected in dev) |
-| `OVERSEER_REPO_ROOT` | Which repo `ok app` binds (defaults to kit root in dev) |
+| `OVERSEER_REPO_ROOT` | Which repo `ok app` binds (**required** for consumer repos; default = bundled kit root) |
 
 ---
 
@@ -105,31 +127,35 @@ npm run tauri build                      # produces platform installer under des
 | Item | Dev tree (this repo) | Non-dev end user |
 | --- | --- | --- |
 | Source + tests | ✓ shipped | N/A |
-| `ok app` via terminal | ✓ | Needs Python 3.11+ + kit path (technical) |
-| Tauri **build** instructions | ✓ `desktop/README.md` | Requires Rust/Node/Python toolchain |
-| **Release CI pipeline** | ✓ `.github/workflows/desktop-release.yml` (+ smoke) | Operator secrets + tag required |
-| **Signed installers** (`.dmg`, `.msi`, `.AppImage`) | Pipeline shipped; **assets only exist after** secrets are configured **and** a `v{VERSION}` tag/release is cut | **Not available** until a GitHub Release publishes artifacts with `signing.status: signed` |
+| `ok app` via terminal | ✓ Path 2 | Needs Python 3.11+ + kit path |
+| Tauri **build** instructions | ✓ Path 3 / `desktop/README.md` | Requires Rust/Node/Python toolchain |
+| **Release CI pipeline** | ✓ `.github/workflows/desktop-release.yml` (+ smoke) | Operator secrets + tag |
+| **Mac signed `.dmg` (Apple Silicon)** | ✓ GitHub Release `v0.1.0` · `signing.status: signed` | Path 1 primary CTA |
+| **Windows / Linux signed installers** | Pipeline ready; **no** signed Release assets yet | **Unavailable** as primary CTAs |
 | Host Python for installers | Still required | **Python 3.11+** on `PATH` (Auto v1 does **not** embed an interpreter) |
-| Governance without desktop | ✓ HANDOVER + CLI | ✓ **recommended** where installers are not yet published |
+| Governance without desktop | ✓ HANDOVER + CLI | ✓ still fully supported |
 
 **Honesty:** do not treat smoke-workflow AppImages (names include `unsigned`) as official installers.
+Do not market Windows/Linux downloads until a signed Release row ships.
 
 ---
 
-## Signed installers (Path C download — when a Release exists)
+## Signed installers (Path 1 download)
 
-Frozen contract: `docs/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md`.
+Frozen contracts: `docs/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md`,
+`docs/PHASE-LANDING-ACCESS-CLARITY.md` (§LAC.2 frozen `.dmg` href).
 
 ### Prerequisites on the end host
 
 - **Python 3.11+** available so the bundled `cli/ok` shim can `exec` the local web UI engine.
-- The signed installer removes the need to install **Rust/Node** to compile Path C; it does **not** provide a zero-dependency / embedded-Python install.
+- The signed installer removes the need to install **Rust/Node** to compile Path 3; it does **not** provide a zero-dependency / embedded-Python install.
+- Set `OVERSEER_REPO_ROOT` for consumer repos (default without it = bundled kit root).
 
 ### Download + verify
 
-1. Open the kit GitHub Releases page; choose tag `v{VERSION}` matching the root `VERSION` file.
-2. Download the platform asset (`.dmg` / `.msi` / `.AppImage`) plus `SHA256SUMS.txt` and
-   `overseer-kit-desktop-{VERSION}-manifest.json`.
+1. Open the kit GitHub Releases page; choose tag `v0.1.0` (or later signed tag matching `VERSION`).
+2. Download the **Apple Silicon** asset `Overseer.Kit_0.1.0_aarch64.dmg` plus `SHA256SUMS.txt` and
+   `overseer-kit-desktop-{VERSION}-manifest.json`. Win/Linux assets are not primary until signed.
 3. Verify SHA-256:
    ```bash
    shasum -a 256 -c SHA256SUMS.txt
@@ -137,7 +163,8 @@ Frozen contract: `docs/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md`.
    ```
 4. Confirm the manifest `artifacts[].sha256` matches `SHA256SUMS.txt` and
    `signing.status` is `signed` for your platform.
-5. **Linux AppImage only:** verify the **detached** cryptographic signature (minisign default):
+5. **Linux AppImage only (when a signed Release exists):** verify the **detached** cryptographic
+   signature (minisign default):
    ```bash
    minisign -Vm Overseer\ Kit_*_amd64.AppImage -p desktop/keys/release.minisign.pub
    ```

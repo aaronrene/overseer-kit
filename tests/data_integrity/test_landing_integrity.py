@@ -16,7 +16,7 @@ def test_manifest_section_order_stable() -> None:
     second = load_manifest(path).section_ids
     assert first == second
     assert first[0] == "hero"
-    assert first[-1] == "funnel"
+    assert first[-1] == "scenarios"
 
 
 def test_validate_idempotent_on_kit_root() -> None:

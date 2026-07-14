@@ -164,10 +164,46 @@ and `ok review --freeze` are the portable fallback — no Cursor-only gate on co
 | Surface | Command / path | Notes |
 | --- | --- | --- |
 | **Web UI** | `ok app` | Loopback server + browser; session credentials printed once on stderr |
-| **Desktop shell** | `desktop/` (Tauri) | Spawns `ok app`; same UI in a native window — build from source today |
-| **Operator guide** | `docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md` | Normie path (any chatbot), dev path, Scooling consumer notes, release honesty |
+| **Desktop shell** | `desktop/` (Tauri) | Spawns `ok app`; same UI in a native window |
+| **Operator guide** | `docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md` | Paths 1–3, Mac Release honesty, Scooling notes |
 
-Pre-built desktop installers are **not** published from CI yet — see the runbook §Release vs dev.
+### Open the local console
+
+The public site never mints session credentials and does not run the console. Use one of:
+
+**Path 1 — Download Mac console** (preferred on Apple Silicon)
+
+1. Confirm **Python 3.11+** (`python3 --version`).
+2. Download the signed Apple Silicon (`aarch64`) `.dmg`:
+   [Overseer.Kit_0.1.0_aarch64.dmg](https://github.com/aaronrene/overseer-kit/releases/download/v0.1.0/Overseer.Kit_0.1.0_aarch64.dmg)
+   (Release [v0.1.0](https://github.com/aaronrene/overseer-kit/releases/tag/v0.1.0); `signing.status: signed`).
+3. Optionally verify `SHA256SUMS.txt` + manifest (see the desktop runbook).
+4. **Bind a governed checkout before launch:** set `OVERSEER_REPO_ROOT` to the absolute path of
+   the repo that already has `.overseer/` from `ok init`. Without that env var, the app binds the
+   **bundled kit root** inside the app resources — useful for dogfooding the kit, not a project
+   folder picker.
+5. Open the app; desktop shell auto-fills session bootstrap.
+6. Confirm the chrome shows the expected bound path before any write action.
+
+*Apple Silicon (`aarch64`) Mac · signed+notarized · requires Python 3.11+. Set
+`OVERSEER_REPO_ROOT` to your governed repo. Windows/Linux signed installers are not published yet.
+No in-app folder picker in Auto v1.*
+
+**Path 2 — Browser (`ok app`)**
+
+1. From a governed repo: `ok app --open` (or `ok app`, then open the printed URL).
+2. Copy `session_credential` and `csrf_token` from **that** terminal.
+3. Paste into Session bootstrap → Connect.
+4. Credentials are process-lifetime only; never commit them.
+
+**Path 3 — Dev desktop**
+
+1. From kit root: `./scripts/bundle-desktop-kit.sh` then `cd desktop && npm install && npm run tauri dev`.
+2. Same auto-fill as Path 1; needs Python 3.11+ + Rust/Node for **dev builds**.
+
+*This console is bound to one local checkout. Reads and writes (when confirmed) apply only to that
+tree — not to overseerkit.com and not to arbitrary remote repos. Desktop Path 1/3: set
+`OVERSEER_REPO_ROOT` to your governed repo; otherwise the shell binds the bundled kit.*
 
 ## Two review gates (honesty discipline)
 

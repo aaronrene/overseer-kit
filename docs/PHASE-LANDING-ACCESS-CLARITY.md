@@ -432,12 +432,12 @@ Escalate to human (`security` / `gates_tier3`) if Auto attempts any of the above
 
 ## §LAC.14 — Definition of Done (Auto build)
 
-- [ ] Mechanical implementation matches §§LAC.3–LAC.8 and §LAC.11
-- [ ] Seven-tier matrix §LAC.12 green
-- [ ] `/build-verification-review` → `pass` before ROADMAP Auto → DONE
-- [ ] Closed Q0 bind/auth unchanged except §LAC.6.3 health additive (diff proof in BV)
-- [ ] Pre-public checklist §LAC.9 items 1–6 ready for operator DNS (DNS itself still Tier 3)
-- [ ] Governance sync (ROADMAP + HANDOVER) in the closing commit
+- [x] Mechanical implementation matches §§LAC.3–LAC.8 and §LAC.11
+- [x] Seven-tier matrix §LAC.12 green
+- [x] `/build-verification-review` → `pass` before ROADMAP Auto → DONE (**LAC-BV-r1**)
+- [x] Closed Q0 bind/auth unchanged except §LAC.6.3 health additive (diff proof in BV)
+- [x] Pre-public checklist §LAC.9 items 1–6 ready for operator DNS (DNS itself still Tier 3)
+- [x] Governance sync (ROADMAP + HANDOVER) in the closing commit
 - [ ] Feature-branch push / PR only; merge remains Tier 3
 
 ---

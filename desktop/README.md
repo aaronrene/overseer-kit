@@ -29,6 +29,23 @@ Environment overrides:
 | `OVERSEER_KIT_ROOT` | Kit checkout (auto-detected when run from repo) |
 | `OVERSEER_REPO_ROOT` | Governance repo to bind (defaults to kit root in dev) |
 
+## App icon (OK mark)
+
+Source master: `desktop/app-icon.png` (same brand as `docs/landing/assets/ok-mark-1024.png` —
+blue `#1d4f91` rounded square + white **OK**). Tauri reads
+`desktop/src-tauri/icons/*` via `tauri.conf.json` → `bundle.icon`.
+
+Regenerate after changing the master:
+
+```bash
+cd desktop
+npx @tauri-apps/cli icon app-icon.png -o src-tauri/icons
+rm -rf src-tauri/icons/ios src-tauri/icons/android   # not used by current targets
+```
+
+A new GitHub Release (signed + notarized `.dmg`) is required before Path 1 downloads show the
+updated Dock/Finder icon. Editing icons in the repo alone does not change an already-installed app.
+
 ## Release build
 
 ```bash

@@ -6,14 +6,16 @@
 
 ---
 
-## NEXT SESSION — Landing + access clarity Auto build (▶ NEXT)
+## NEXT SESSION — Pre-public DNS / dogfood (▶ NEXT)
 
 **Date:** 2026-07-14  
-**Current position:** Thinking freeze `docs/PHASE-LANDING-ACCESS-CLARITY.md` **reviewed → `pass`
-(LAC-r2)**, stamp `sha256:c0ac8162…`. Mac Release `v0.1.0` signed `.dmg` live. Next: mechanical
-Auto against the freeze (landing + README playbook + Path B chrome + health `repo_root`).  
-**Model:** **Auto**  
-**Operator note:** Spec frozen — no redesign. Win/Linux still unavailable. DNS remains Tier 3.
+**Current position:** Landing + access clarity Auto **DONE** (build-verified → `pass`,
+LAC-BV-r1). Public landing + Paths 1–3 playbook + Path B chrome + health `repo_root` shipped.
+§LAC.9 items 1–6 ready. Next: operator Tier-3 DNS for `overseerkit.com` and/or live consumer
+dogfood — **not** another landing redesign.  
+**Model:** **Operator + Auto**  
+**Operator note:** DNS cutover and merge to `main` remain Tier 3. Win/Linux signed installers still
+unavailable.
 
 
 ### What just landed
@@ -21,56 +23,48 @@ Auto against the freeze (landing + README playbook + Path B chrome + health `rep
 
 | Slice | Deliverable |
 | --- | --- |
+| **Landing + access clarity Auto** | BV `pass` (LAC-BV-r1) — site IA + Download CTA + Paths 1–3 + Path B chrome + health `repo_root` |
 | **Landing + access clarity Thinking** | `docs/PHASE-LANDING-ACCESS-CLARITY.md` → `pass` (LAC-r2) |
 | **Path C Mac Release** | `v0.1.0` → `Overseer.Kit_0.1.0_aarch64.dmg` (signed+notarized) |
-| **Track Q / Q4b** | Local console UI + diagrams (browser paste auth) |
 
 
 
-### THE ONE NEXT STEP — **Model: Auto**
+### THE ONE NEXT STEP — **Model: Operator + Auto**
 
 
 |                |                                                                                                                                     |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID**         | **Landing + access clarity** — Auto build (site + README + Path B chrome; wire Download CTA) |
-| **Branch** | `build/landing-access-clarity` (from freeze branch or main after merge) |
-| **Read first** | `docs/PHASE-LANDING-ACCESS-CLARITY.md` (frozen); paste fence below; Q0 §Q0.6 closed except §LAC.6.3 health additive |
-| **Deliver** | Implement §§LAC.3–LAC.8 + §LAC.11; seven-tier §LAC.12 green; `/build-verification-review` → `pass`; governance sync |
-| **Hard stops** | No public CSRF mint; no unsigned-as-primary; no GUI repo picker; no Tier-3 DNS/merge |
+| **ID**         | **overseerkit.com DNS + optional dogfood** — point apex at static `docs/landing/` (§LAC.9) and/or live VF/Scooling dogfood |
+| **Branch** | Feature branch only until Tier-3 merge; DNS is operator-owned |
+| **Read first** | `docs/landing/HOSTING.md`; `docs/PHASE-LANDING-ACCESS-CLARITY.md` §LAC.8–§LAC.9; paste fence below |
+| **Deliver** | Operator: DNS/TLS to static host of `docs/landing/`. Optional Auto: Pages/hosting config docs only if needed — no live `ok app` on apex |
+| **Hard stops** | No `app.*` / `console.*` live Path B; no CSRF mint; no merge/DNS automation without Tier 3 |
 
 
 
-### Paste-ready prompt — Landing + access clarity (Auto)
+### Paste-ready prompt — Pre-public DNS / dogfood (Operator + Auto)
 
 ```
-Overseer Kit — Landing + access clarity Auto build (pre-public).
+Overseer Kit — pre-public DNS cutover + optional consumer dogfood.
 
-Model: Auto
+Model: Operator + Auto
 
 Read first:
-  docs/PHASE-LANDING-ACCESS-CLARITY.md (frozen: true, reviewed → pass LAC-r2);
-  docs/landing/; docs/PHASE-K12-TRACK-N-LANDING-CONTRACT.md (historical);
-  docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md;
-  docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md (§Q0.6 closed except §LAC.6.3 health additive);
-  tools/app/static/assets/diagrams/;
-  README.md; docs/OVERSEER-HANDOVER.md; docs/ROADMAP.md.
+  docs/landing/HOSTING.md; docs/PHASE-LANDING-ACCESS-CLARITY.md §LAC.8–§LAC.9;
+  docs/OVERSEER-HANDOVER.md; docs/ROADMAP.md.
 
-Frozen Download CTA (primary):
-  https://github.com/aaronrene/overseer-kit/releases/download/v0.1.0/Overseer.Kit_0.1.0_aarch64.dmg
-  (Apple Silicon aarch64; signing.status=signed; host needs Python 3.11+)
+Baseline (already shipped — do not redesign):
+  Landing + access clarity Auto DONE (LAC-BV-r1); Mac v0.1.0 signed .dmg CTA;
+  Paths 1–3 playbook; Path B chrome; api/health repo_root additive.
 
-Task (Auto ONLY — implement frozen spec; no redesign):
+Task:
+1) Operator Tier 3: point overseerkit.com (apex) at static docs/landing/ host; TLS.
+2) Confirm §LAC.9 checklist still true after cutover (no live ok app on apex;
+   Download CTA still signed Mac; no CSRF/session mint claims).
+3) Optional parallel: live VF/Scooling dogfood against published installer / ok app.
+4) Update ROADMAP + HANDOVER after cutover; merge landing branch only with Tier 3.
 
-1) docs/landing/ — IA §LAC.3; visual §LAC.4; embed four SVGs §LAC.5; suite doors + CTAs;
-   #console-access Paths 1–3; strip DONE/TODO/WIP public residue; update manifest.yaml + HOSTING.md.
-2) README.md + desktop runbook — same “Open the local console” playbook; OVERSEER_REPO_ROOT honesty.
-3) Path B chrome — collapse Session bootstrap after Connect; show bound repo from api/health
-   result.repo_root (narrow additive only); Overview tab explainers; Status auto-refresh once on enter.
-4) tools/landing/validate.py + seven-tier §LAC.12; full suite green.
-5) /build-verification-review → pass before ROADMAP Auto DONE; update ROADMAP + HANDOVER together.
-
-Hard stops: no secrets; no bind/auth reopen beyond health repo_root; no signup/runtime;
-  no unsigned-as-primary; no Tier-3 DNS/merge.
+Hard stops: no app.*/console.* Path B subdomain; no public session mint; no unsigned-as-primary.
 ```
 
 
@@ -122,7 +116,7 @@ Hard stops: no secrets; no bind/auth reopen beyond health repo_root; no signup/r
 | **Track Q / Q3**          | **DONE** — Auto build (build-verified → `pass`, Q3-BV-r1). Tauri desktop shell (`desktop/`) invokes `ok app`; `tools/desktop/` + bundle script; seven-tier §Q3. **696** tests green (+28) |
 | **Track Q / Q4a**         | **DONE** — Thinking freeze (`docs/PHASE-TRACK-Q-Q4A-UI-REDESIGN.md` reviewed → `pass`, Q4a-r2), stamp `sha256:ea118134…`. Path B developer UI redesign contract: Overview/Structure IA, four offline diagrams, suite CTAs, closed Q0 surface, §Q4A.15. **Spec-only — no UI code.** Cleared for Q4b |
 | **Track Q / Q4b**         | **DONE** — Auto build (build-verified → `pass`, Q4b-BV-r1). Overview + Structure IA; four offline SVGs; suite CTAs; status humanization; closed Q0 unchanged; §Q4A.15 **17** green; full suite **905**. No LICENSE/`desktop/`/engine edits |
-| **Landing + access clarity** | **DONE (Thinking)** — `docs/PHASE-LANDING-ACCESS-CLARITY.md` reviewed → `pass` (LAC-r2), stamp `sha256:c0ac8162…`. Pre-public IA + Paths 1–3 + Path B chrome + Download CTA freeze. **Auto TODO.** Spec-only this slice. |
+| **Landing + access clarity** | **DONE** — Thinking `pass` (LAC-r2) + Auto build-verified → `pass` (LAC-BV-r1). Public IA + offline SVGs + Mac `v0.1.0` Download CTA; Paths 1–3 playbook; Path B chrome + health `repo_root`; seven-tier §LAC.12; full suite **931**. DNS cutover still Tier 3 (§LAC.9). |
 | **K6-Scooling runbook**   | **DONE** — `docs/consumers/scooling/OVERSEER-SETUP.md` (kit-side; live init still operator-gated; Track O cross-link in O1) |
 | **Track O / O0**          | **DONE** — Normie custody funnel Thinking freeze (`docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md` reviewed → `pass`, O0-r3), stamp `sha256:642076c9…` |
 | **Track O / O1**          | **DONE** — Product contracts build-verified → `pass` (O1-BV-r1). Contract + Scooling/Knowtation stubs + `tools/track_o/` + §O0.8. **728** tests green (+32) |
@@ -135,16 +129,16 @@ Hard stops: no secrets; no bind/auth reopen beyond health repo_root; no signup/r
 | **KH2** | **DONE** — Muse-sync hard gate (freeze `pass` KH2-r2 + Auto build); `tools/muse_sync/`; fail-closed on `status --exit-code` / `review --freeze` / `governance-sync` |
 | **KH3** | **DONE** — Footprint self-integrity hard gate (freeze `pass` KH3-r2 + Auto build); `tools/footprint_integrity/`; fail-closed on `status --exit-code` / `review --freeze` / `governance-sync` when a declared kit-owned file is absent from disk |
 | **Public brand** | **🆗 Overseer Kit** (locked in template + landing) |
-| **Public landing** | `docs/landing/index.html` · scenario gallery `docs/landing/scenarios/index.html` |
+| **Public landing** | `docs/landing/index.html` (LAC IA) · offline SVGs under `assets/diagrams/` · scenarios gallery |
 <!-- /overseer:anchor:verified-snapshot -->
 
 <!-- overseer:anchor:vcs-table -->
-## VCS (verified 2026-07-13)
+## VCS (verified 2026-07-14)
 
 | Item | Value |
 | --- | --- |
-| Branch | `thinking/landing-access-clarity` |
-| HEAD | Landing + access clarity Thinking freeze (LAC-r2 `pass`) |
+| Branch | `build/landing-access-clarity` |
+| HEAD | Landing + access clarity Auto (LAC-BV-r1 `pass`) |
 | Muse HEAD | Sync after close-out commit on this branch |
 | GitHub bridge | Feature branch (no merge) |
 | Dirty | Expect clean after close-out commit |
@@ -160,6 +154,13 @@ Hard stops: no secrets; no bind/auth reopen beyond health repo_root; no signup/r
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-14** — **Landing + access clarity Auto DONE (build-verified → `pass`, LAC-BV-r1).**
+  Implemented frozen `docs/PHASE-LANDING-ACCESS-CLARITY.md`: `docs/landing/` IA §LAC.3 + four
+  offline SVGs; primary Download CTA → signed Mac `v0.1.0` `.dmg`; Paths 1–3 on README + landing
+  + Path B Overview; HOSTING §LAC.8; Path B chrome (collapse Session bootstrap, bound repo from
+  `api/health` → `result.repo_root`, tab explainers, Status auto-refresh once); validator enforce
+  + seven-tier §LAC.12; full suite **931** green. Q0 bind/auth closed except health additive.
+  ROADMAP Auto → **DONE**. NEXT → Operator DNS (§LAC.9) / dogfood (**Model: Operator + Auto**).
 - **2026-07-14** — **Landing + access clarity Thinking freeze DONE (reviewed → `pass`, LAC-r2).**
   Froze `docs/PHASE-LANDING-ACCESS-CLARITY.md`: public IA (strip DONE residue; four offline SVGs
   on main page); Download CTA → signed Mac `v0.1.0` `.dmg` + Python 3.11+; Paths 1–3 playbook;

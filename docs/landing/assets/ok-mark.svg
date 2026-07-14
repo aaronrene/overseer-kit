@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="OK">
+  <!-- Max-fill OK mark (🆗 proportions) — darker blue #1d4f91. Raster truth: ok-mark-1024.png -->
+  <rect width="512" height="512" rx="84" ry="84" fill="#1d4f91"/>
+  <text
+    x="256"
+    y="348"
+    text-anchor="middle"
+    fill="#ffffff"
+    font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
+    font-size="292"
+    font-weight="800"
+    letter-spacing="-0.06em">OK</text>
+</svg>

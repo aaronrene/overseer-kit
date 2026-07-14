@@ -23,9 +23,21 @@ def _unknown_keys(body: dict[str, Any], allowed: frozenset[str]) -> list[str]:
     return sorted(key for key in body if key not in allowed)
 
 
-def handle_health(*, port: int, bind: str) -> ApiEnvelope:
-    """Process liveness endpoint with no repo secrets."""
-    return engine_success({"status": "ok", "port": port, "bind": bind})
+def handle_health(*, port: int, bind: str, repo_root: Path | str) -> ApiEnvelope:
+    """Process liveness endpoint with bound checkout path (§LAC.6.3).
+
+    ``repo_root`` is the absolute filesystem path this process mutates — not a
+    credential and not living-doc contents. Auth remains Bearer-gated (Q0 §Q0.6).
+    """
+    root = Path(repo_root).resolve()
+    return engine_success(
+        {
+            "status": "ok",
+            "port": port,
+            "bind": bind,
+            "repo_root": str(root),
+        }
+    )
 
 
 def handle_status(ctx: CliContext, *, repo_arg: str | None = None) -> ApiEnvelope:
