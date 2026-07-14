@@ -98,7 +98,13 @@ def test_runbook_honesty_and_python_prerequisite() -> None:
     assert "Signed installers" in text or "signed installers" in text.lower()
     assert "detached" in text.lower()
     assert "AppImage" in text
-    assert "Not available" in text or "not available" in text.lower() or "until a GitHub Release" in text
+    # Win/Linux still unavailable as primary CTAs; Mac signed .dmg may already be live.
+    assert (
+        "Not available" in text
+        or "not available" in text.lower()
+        or "unavailable" in text.lower()
+        or "until a GitHub Release" in text
+    )
     assert PUBLIC_KEY.is_file()
 
 

@@ -125,7 +125,11 @@ class AppRequestHandler(BaseHTTPRequestHandler):
         repo_arg = str(config.repo_root)
 
         routes: dict[tuple[str, str], RouteHandler] = {
-            ("GET", "/api/health"): lambda _h, _b: handle_health(port=config.port, bind=config.bind),
+            ("GET", "/api/health"): lambda _h, _b: handle_health(
+                port=config.port,
+                bind=config.bind,
+                repo_root=config.repo_root,
+            ),
             ("GET", "/api/status"): lambda _h, _b: handle_status(ctx, repo_arg=repo_arg),
             ("GET", "/api/gates"): lambda _h, _b: handle_gates(ctx, repo_arg=repo_arg),
             ("GET", "/api/docs/roadmap"): lambda _h, _b: handle_docs_roadmap(ctx, repo_arg=repo_arg),

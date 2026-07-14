@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 280" role="img" aria-labelledby="layersTitle layersDesc">
+  <title id="layersTitle">L0 to L2 module stack</title>
+  <desc id="layersDesc">L0 governance always on, then optional L1 domain checkpoints, then optional L2 honesty ledger.</desc>
+  <rect width="420" height="280" fill="#fbfcfd"/>
+  <rect x="60" y="24" width="300" height="48" rx="3" fill="#fff" stroke="#1d4f91" stroke-width="1.5"/>
+  <text x="84" y="53" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="13" fill="#1a1f26">L0 Governance - always on</text>
+
+  <rect x="60" y="116" width="300" height="48" rx="3" fill="#fff" stroke="#1d4f91" stroke-width="1.5"/>
+  <text x="78" y="145" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="13" fill="#1a1f26">L1 Domain checkpoints - opt-in</text>
+
+  <rect x="60" y="208" width="300" height="48" rx="3" fill="#fff" stroke="#1d4f91" stroke-width="1.5"/>
+  <text x="84" y="237" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="13" fill="#1a1f26">L2 Honesty ledger - opt-in</text>
+
+  <path d="M210 72 V116" stroke="#5c6570" stroke-width="1.5" marker-end="url(#lArrow)"/>
+  <path d="M210 164 V208" stroke="#5c6570" stroke-width="1.5" marker-end="url(#lArrow)"/>
+
+  <defs>
+    <marker id="lArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#5c6570"/>
+    </marker>
+  </defs>
+</svg>

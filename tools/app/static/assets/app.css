@@ -52,6 +52,43 @@ body {
   margin-top: 0;
 }
 
+.bound-repo {
+  margin: 0.35rem 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+  word-break: break-all;
+}
+
+.bound-repo code {
+  color: var(--ink);
+  font-size: 0.85rem;
+}
+
+.session-collapsed {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.tab-explainer {
+  margin: -0.5rem 0 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.playbook {
+  padding-left: 1.2rem;
+}
+
+.playbook li {
+  margin: 0.45rem 0;
+}
+
+.bound-honesty {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
 .honesty-strip {
   border: 1px solid var(--line);
   background: var(--honesty-bg);

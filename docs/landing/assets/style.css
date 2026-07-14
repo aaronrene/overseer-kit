@@ -122,6 +122,102 @@ h3 {
   margin: 0 0 1.5rem;
 }
 
+.cta-honesty {
+  color: var(--muted);
+  font-size: 0.875rem;
+  margin: 0.75rem 0 1rem;
+  max-width: 40rem;
+}
+
+.tertiary-links {
+  color: var(--muted);
+  font-size: 0.9375rem;
+  margin: 0 0 0.5rem;
+}
+
+.bound-honesty {
+  color: var(--muted);
+  font-size: 0.9375rem;
+  margin: 1.25rem 0;
+}
+
+.footnote {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.path-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  margin: 1rem 0;
+}
+
+.path-card.path-preferred {
+  border-color: var(--accent-dim);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+.path-card h3 {
+  margin-top: 0;
+}
+
+.path-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: none;
+  letter-spacing: 0;
+  margin-left: 0.35rem;
+}
+
+.diagram-figure {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1.25rem 0;
+}
+
+.diagram-figure img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0.75rem 0;
+}
+
+.diagram-figure figcaption {
+  color: var(--muted);
+  font-size: 0.9375rem;
+  margin: 0 0 0.5rem;
+}
+
+.diagram-fallback {
+  color: var(--muted);
+  font-size: 0.875rem;
+  padding-left: 1.25rem;
+  margin: 0.5rem 0 0;
+}
+
+@keyframes hero-fade {
+  from { opacity: 0; transform: translateY(0.4rem); }
+  to { opacity: 1; transform: none; }
+}
+
+#hero h1 {
+  animation: hero-fade 0.55s ease-out;
+}
+
+#hero .lead {
+  animation: hero-fade 0.7s ease-out 0.05s both;
+}
+
+#hero .cta-row {
+  animation: hero-fade 0.75s ease-out 0.1s both;
+}
+
 .cta-row {
   display: flex;
   flex-wrap: wrap;

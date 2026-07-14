@@ -1,7 +1,19 @@
-/** Overseer Kit ok app static UI — in-memory auth only (§Q0.6.2 / §Q4A). */
+/** Overseer Kit ok app static UI — in-memory auth only (§Q0.6.2 / §Q4A / §LAC.6.3). */
 
 let sessionCredential = null;
 let csrfToken = null;
+let statusAutoFetched = false;
+
+const TAB_EXPLAINERS = {
+  overview: "What this console is; suite doors; how to open it; bound repo",
+  status: "Health of governance for the bound repo",
+  roadmap: "Living phase board",
+  handover: "Next-session relay / paste prompt",
+  gates: "Pending honesty/governance reminders",
+  actions: "Dry-run-first freeze review + governance-sync + honesty-status",
+  ledger: "Append-only honesty ledger view/verify",
+  structure: "Full flowchart gallery",
+};
 
 function setAuthStatus(message, ok) {
   const el = document.getElementById("auth-status");
@@ -38,6 +50,47 @@ function requireConfirm(message) {
   return window.confirm(message);
 }
 
+function setBoundRepo(repoRoot) {
+  const wrap = document.getElementById("bound-repo");
+  const pathEl = document.getElementById("bound-repo-path");
+  if (!repoRoot) {
+    wrap.hidden = true;
+    pathEl.textContent = "";
+    return;
+  }
+  pathEl.textContent = String(repoRoot);
+  wrap.hidden = false;
+}
+
+function collapseAuthPanel() {
+  document.getElementById("auth-panel").hidden = true;
+  document.getElementById("session-collapsed").hidden = false;
+}
+
+function expandAuthPanel() {
+  document.getElementById("auth-panel").hidden = false;
+  document.getElementById("session-collapsed").hidden = true;
+  statusAutoFetched = false;
+}
+
+function setTabExplainer(tabId) {
+  const el = document.getElementById("tab-explainer");
+  const text = TAB_EXPLAINERS[tabId];
+  if (!text) {
+    el.hidden = true;
+    el.textContent = "";
+    return;
+  }
+  el.textContent = text;
+  el.hidden = false;
+}
+
+async function refreshStatusOnce() {
+  const { payload } = await apiFetch("/api/status");
+  humanizeStatus(payload);
+  showJson("status-output", payload);
+}
+
 function activateTab(tabId) {
   document.querySelectorAll(".tabs button").forEach((b) => b.classList.remove("active"));
   document.querySelectorAll(".tab-panel").forEach((p) => p.classList.remove("active"));
@@ -45,6 +98,13 @@ function activateTab(tabId) {
   const panel = document.getElementById(`tab-${tabId}`);
   if (button) button.classList.add("active");
   if (panel) panel.classList.add("active");
+  setTabExplainer(tabId);
+  if (tabId === "status" && !statusAutoFetched) {
+    statusAutoFetched = true;
+    refreshStatusOnce().catch((err) => {
+      showJson("status-output", { ok: false, error: String(err) });
+    });
+  }
 }
 
 function flagLabel(value) {
@@ -113,13 +173,21 @@ document.getElementById("auth-save").addEventListener("click", async () => {
       setAuthStatus("Authentication failed.", false);
       return;
     }
+    const repoRoot = nested(payload, ["result", "repo_root"]);
+    setBoundRepo(repoRoot);
     setAuthStatus("Connected.", true);
+    collapseAuthPanel();
     document.getElementById("tabs").hidden = false;
     document.getElementById("content").hidden = false;
     activateTab("overview");
   } catch (err) {
     setAuthStatus(`Connection error: ${err}`, false);
   }
+});
+
+document.getElementById("auth-reconnect").addEventListener("click", () => {
+  expandAuthPanel();
+  setAuthStatus("Paste credentials for a new session.", false);
 });
 
 document.querySelectorAll(".tabs button").forEach((button) => {
@@ -133,9 +201,7 @@ document.getElementById("open-structure").addEventListener("click", () => {
 });
 
 document.getElementById("refresh-status").addEventListener("click", async () => {
-  const { payload } = await apiFetch("/api/status");
-  humanizeStatus(payload);
-  showJson("status-output", payload);
+  await refreshStatusOnce();
 });
 
 document.getElementById("load-roadmap").addEventListener("click", async () => {

@@ -1,4 +1,4 @@
-"""Unit tests for K12 landing manifest and validator helpers."""
+"""Unit tests for landing manifest and Landing + access clarity contract (§LAC.12)."""
 
 from __future__ import annotations
 
@@ -7,11 +7,17 @@ from pathlib import Path
 import pytest
 import yaml
 
+from tools.app.engine import handle_health
 from tools.landing.schema import load_manifest
-from tools.landing.validate import validate_landing
+from tools.landing.validate import (
+    FROZEN_PRIMARY_DOWNLOAD_HREF,
+    LAC_SECTION_IDS,
+    validate_landing,
+)
 
 KIT_ROOT = Path(__file__).resolve().parents[2]
 MANIFEST = KIT_ROOT / "docs" / "landing" / "manifest.yaml"
+INDEX = KIT_ROOT / "docs" / "landing" / "index.html"
 
 
 def test_manifest_loads_version_one() -> None:
@@ -20,11 +26,56 @@ def test_manifest_loads_version_one() -> None:
     assert manifest.license == "Apache-2.0"
 
 
-def test_manifest_section_ids_match_contract() -> None:
+def test_manifest_section_ids_match_lac_contract() -> None:
+    """§LAC.3.1 section order is the public IA contract."""
     manifest = load_manifest(MANIFEST)
-    assert manifest.section_ids[0] == "hero"
-    assert "funnel" in manifest.section_ids
-    assert len(manifest.section_ids) == 12
+    assert manifest.section_ids == LAC_SECTION_IDS
+    assert len(manifest.section_ids) == 9
+
+
+def test_primary_download_href_equals_frozen_dmg() -> None:
+    manifest = load_manifest(MANIFEST)
+    html = INDEX.read_text(encoding="utf-8")
+    assert manifest.primary_download_href == FROZEN_PRIMARY_DOWNLOAD_HREF
+    assert FROZEN_PRIMARY_DOWNLOAD_HREF in html
+    assert 'id="cta-download-mac"' in html
+
+
+def test_forbidden_strings_absent_on_landing() -> None:
+    html = INDEX.read_text(encoding="utf-8")
+    for phrase in ("Sign up", "Create account", "executes tasks"):
+        assert phrase not in html
+    assert "mint session_credential" not in html.lower()
+    assert "mint csrf" not in html.lower()
+    assert "mints session_credential" not in html.lower()
+
+
+def test_no_done_todo_wip_status_table_on_main_landing() -> None:
+    html = INDEX.read_text(encoding="utf-8")
+    assert 'id="roadmap-public"' not in html
+    assert "K9b DONE" not in html
+    assert ">DONE<" not in html
+    assert ">TODO<" not in html
+    assert ">WIP<" not in html
+
+
+def test_four_diagram_paths_referenced() -> None:
+    html = INDEX.read_text(encoding="utf-8")
+    for name in ("lanes.svg", "regimes.svg", "layers.svg", "kit-consumer.svg"):
+        assert f"assets/diagrams/{name}" in html
+        assert (KIT_ROOT / "docs" / "landing" / "assets" / "diagrams" / name).is_file()
+
+
+def test_health_result_schema_documents_repo_root() -> None:
+    """Narrow Q0 additive: health success result includes absolute repo_root (§LAC.6.3)."""
+    envelope = handle_health(port=8765, bind="127.0.0.1", repo_root=KIT_ROOT)
+    assert envelope.ok is True
+    assert envelope.result is not None
+    assert set(envelope.result) >= {"status", "port", "bind", "repo_root"}
+    assert envelope.result["repo_root"] == str(KIT_ROOT.resolve())
+    assert envelope.result["status"] == "ok"
+    assert envelope.result["port"] == 8765
+    assert envelope.result["bind"] == "127.0.0.1"
 
 
 def test_manifest_persona_ids_a_through_e() -> None:
@@ -54,3 +105,14 @@ def test_validate_missing_manifest_fails(tmp_path: Path) -> None:
     result = validate_landing(tmp_path)
     assert not result.ok
     assert any(e.startswith("manifest_parse:") for e in result.errors)
+
+
+def test_readme_and_runbook_carry_open_local_console_playbook() -> None:
+    readme = (KIT_ROOT / "README.md").read_text(encoding="utf-8")
+    runbook = (KIT_ROOT / "docs" / "TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md").read_text(
+        encoding="utf-8"
+    )
+    assert "Open the local console" in readme
+    assert "Open the local console" in runbook
+    assert "OVERSEER_REPO_ROOT" in readme
+    assert FROZEN_PRIMARY_DOWNLOAD_HREF in readme
