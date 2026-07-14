@@ -6,16 +6,16 @@
 
 ---
 
-## NEXT SESSION — Track Q / Q4b Path B UI redesign build (▶ NEXT)
+## NEXT SESSION — Live consumer dogfood + optional public hosting (▶ NEXT)
 
 **Date:** 2026-07-13  
-**Current position:** Q4a Path B UI redesign freeze **reviewed → `pass` (Q4a-r2)**. Cleared for
-Q4b Auto: rewrite `tools/app/static/` against the frozen contract (developer console + structure
-diagrams + suite CTAs). Closed Q0 `api/*` / bind / auth stay frozen. LICENSE unchanged
-(Apache-2.0). Path C desktop rides along (no `desktop/` edits by default).  
-**Model:** **Auto**  
-**Operator note:** Mechanical presentation build only. `/build-verification-review` → `pass`
-before ROADMAP Q4b → DONE. Live VF/Scooling dogfood can proceed in parallel.
+**Current position:** Track Q / Q4b Path B UI redesign **build-verified → `pass` (Q4b-BV-r1)**.
+`ok app` ships Overview + Structure, four offline diagrams, suite CTAs, status humanization.
+Track Q presentation chain complete. Closed Q0 surface unchanged; LICENSE Apache-2.0.  
+**Model:** **Operator + Auto**  
+**Operator note:** Prefer live VideoFactory / Scooling dogfood (consumer repos; Tier-3 live
+init). Optional: DNS → `docs/landing/` for `overseerkit.com` per `docs/landing/HOSTING.md`.
+Kit feature-branch PR / Muse mirror merge remains Tier 3.
 
 
 ### What just landed
@@ -23,48 +23,43 @@ before ROADMAP Q4b → DONE. Live VF/Scooling dogfood can proceed in parallel.
 
 | Slice | Deliverable |
 | --- | --- |
-| **Track Q / Q4a** | `docs/PHASE-TRACK-Q-Q4A-UI-REDESIGN.md` freeze `pass` (Q4a-r2) — IA, copy, four diagrams, CTAs, §Q4A.15 |
-| **Developer-centric positioning** | Site + consumer docs already explain suite doors; kit = governance tool |
+| **Track Q / Q4b** | Path B UI redesign BV `pass` (Q4b-BV-r1) — Overview/Structure, four SVGs, CTAs, §Q4A.15 |
+| **Track Q / Q4a** | Freeze `pass` (Q4a-r2) — contract held |
 | **Q3-release pipeline DONE** | Signed Release still optional/later; not primary adopt path |
 
 
 
-### THE ONE NEXT STEP — **Model: Auto**
+### THE ONE NEXT STEP — **Model: Operator + Auto**
 
 
 |                |                                                                                                                                     |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID**         | **Track Q / Q4b** — Path B `ok app` UI redesign build (against Q4a freeze) |
-| **Branch** | Feature branch (continue current or open `build/track-q-q4b-ui-redesign`) |
-| **Read first** | `docs/PHASE-TRACK-Q-Q4A-UI-REDESIGN.md` (frozen); `docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md` (closed `api/*`); `tools/app/static/`; paste fence below |
-| **Deliver** | Overview + Structure UI; four offline SVGs; suite CTAs; status humanization; seven-tier §Q4A.15 green; BV `pass`; gov sync |
-| **Hard stops** | No engine/API/bind/auth reopen; no secrets; no signup/runtime claims; no LICENSE flip; no CDN Mermaid |
+| **ID**         | **Live VF/Scooling dogfood** (consumer) and/or **overseerkit.com hosting** (operator DNS → static landing) |
+| **Branch** | Consumer repos for dogfood; kit feature branch already carries Q4b (PR/merge = Tier 3) |
+| **Read first** | `docs/consumers/videofactory/OVERSEER-SETUP.md`; `docs/consumers/scooling/OVERSEER-SETUP.md`; `docs/landing/HOSTING.md`; paste fence below |
+| **Deliver** | Live consumer init/status green; or public site front door live — no kit engine redesign |
+| **Hard stops** | No unsigned-installer primary adopt claims; no kit signup/runtime UX; no Tier-3 merge without auth |
 
 
 
-### Paste-ready prompt — Track Q / Q4b (Auto)
+### Paste-ready prompt — Live consumer dogfood / public hosting (Operator + Auto)
 
 ```
-Overseer Kit — Track Q / Q4b Path B UI redesign build.
+Overseer Kit — next after Track Q / Q4b UI redesign.
 
-Model: Auto
+Model: Operator + Auto
 
-Read first: docs/PHASE-TRACK-Q-Q4A-UI-REDESIGN.md (frozen WHAT/HOW — do not re-derive);
-  docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md (closed api/*, bind, auth — do not reopen);
-  tools/app/static/index.html + assets/app.js + assets/app.css.
+Read first: docs/OVERSEER-HANDOVER.md (verified snapshot); docs/consumers/videofactory/OVERSEER-SETUP.md;
+  docs/consumers/scooling/OVERSEER-SETUP.md; docs/landing/HOSTING.md.
 
-Task: Mechanically implement the Q4a freeze in tools/app/static/ only:
-  1) IA: Overview (default after auth) + Structure + existing Status/Roadmap/Handover/Gates/
-     Actions/Ledger tabs; honesty strip; ok app copy; Apache-2.0 footer.
-  2) Four committed SVGs under assets/diagrams/ from frozen mermaid (lanes, regimes, layers,
-     kit-consumer); offline only — no CDN Mermaid.
-  3) Suite CTAs per §Q4A.7 (GitHub, MuseHub, Knowtation, Consumer pattern, Scooling, VF).
-  4) Status humanization from existing JSON (no new API fields); keep raw JSON expandable.
-  5) Seven-tier tests §Q4A.15 green; /build-verification-review → pass before DONE.
-  6) Update ROADMAP + OVERSEER-HANDOVER together; no LICENSE change; no desktop/ edits.
+Task (pick one primary path — operator-gated):
+  A) Live VideoFactory and/or Scooling dogfood: ok init / status / verify-step in the consumer
+     repo using kit-side setup docs; record results in handover; no kit core redesign.
+  B) overseerkit.com: follow docs/landing/HOSTING.md (static docs/landing/ only); keep
+     developer-centric honesty (site does not run tasks).
 
-Hard stops: no Track Q engine rewrite; no new api/*; no secrets; no signup/task-runtime UX;
-  no unsigned-installer primary-path claims.
+Hard stops: no Tier-3 merge without authorization; no secrets; no claiming Path C unsigned
+  installers as primary adopt; no signup / task-runtime in the kit.
 ```
 
 
@@ -115,7 +110,7 @@ Hard stops: no Track Q engine rewrite; no new api/*; no secrets; no signup/task-
 | **Track Q / Q2b**         | **DONE** — Auto build (build-verified → `pass`, Q2b-BV-r1). `cli/ok` canonical + `cli/overseer` deprecation; `prog="ok"`; operator docs/templates/skills/CI pass; SPEC §5 + K4.1 naming; shims not footprint members. **668** tests green (+14 §Q2A.10). Cleared for Q3 |
 | **Track Q / Q3**          | **DONE** — Auto build (build-verified → `pass`, Q3-BV-r1). Tauri desktop shell (`desktop/`) invokes `ok app`; `tools/desktop/` + bundle script; seven-tier §Q3. **696** tests green (+28) |
 | **Track Q / Q4a**         | **DONE** — Thinking freeze (`docs/PHASE-TRACK-Q-Q4A-UI-REDESIGN.md` reviewed → `pass`, Q4a-r2), stamp `sha256:ea118134…`. Path B developer UI redesign contract: Overview/Structure IA, four offline diagrams, suite CTAs, closed Q0 surface, §Q4A.15. **Spec-only — no UI code.** Cleared for Q4b |
-| **Track Q / Q4b**         | **TODO** — Auto build against Q4a freeze (`tools/app/static/` presentation only) |
+| **Track Q / Q4b**         | **DONE** — Auto build (build-verified → `pass`, Q4b-BV-r1). Overview + Structure IA; four offline SVGs; suite CTAs; status humanization; closed Q0 unchanged; §Q4A.15 **17** green; full suite **905**. No LICENSE/`desktop/`/engine edits |
 | **K6-Scooling runbook**   | **DONE** — `docs/consumers/scooling/OVERSEER-SETUP.md` (kit-side; live init still operator-gated; Track O cross-link in O1) |
 | **Track O / O0**          | **DONE** — Normie custody funnel Thinking freeze (`docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md` reviewed → `pass`, O0-r3), stamp `sha256:642076c9…` |
 | **Track O / O1**          | **DONE** — Product contracts build-verified → `pass` (O1-BV-r1). Contract + Scooling/Knowtation stubs + `tools/track_o/` + §O0.8. **728** tests green (+32) |
@@ -136,8 +131,8 @@ Hard stops: no Track Q engine rewrite; no new api/*; no secrets; no signup/task-
 
 | Item | Value |
 | --- | --- |
-| Branch | `docs/consumer-public-path-honesty` |
-| HEAD | Q4a UI redesign freeze + prior consumer/public-path honesty docs |
+| Branch | `build/track-q-q4b-ui-redesign` |
+| HEAD | Q4b Path B UI redesign build (BV `pass`, Q4b-BV-r1) |
 | Muse HEAD | Sync after close-out commit on this branch |
 | GitHub bridge | Feature branch (no merge) |
 | Dirty | Expect clean after close-out commit |
@@ -153,6 +148,15 @@ Hard stops: no Track Q engine rewrite; no new api/*; no secrets; no signup/task-
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-13** — **Track Q / Q4b Path B UI redesign DONE (build-verified → `pass`, Q4b-BV-r1).**
+  Built mechanically against frozen `docs/PHASE-TRACK-Q-Q4A-UI-REDESIGN.md`: rewrote
+  `tools/app/static/` (Overview default after auth + Structure gallery; honesty strip; `ok app`
+  auth copy; Apache-2.0 footer; suite CTAs §Q4A.7; status humanization + expandable raw JSON);
+  committed four offline SVGs under `assets/diagrams/` (lanes / regimes / layers / kit-consumer);
+  seven-tier §Q4A.15 (**17** green); full suite **905**. Downstream brand assertion updates in Q1/Q3
+  app tests; landing stress stubs for Knowtation/Scooling links. Closed Q0 `api/*/bind/auth`
+  untouched; no `LICENSE` / `desktop/` / engine Python edits. ROADMAP: Q4b → **DONE**. Handover
+  NEXT → live VF/Scooling dogfood and/or overseerkit.com hosting (**Model: Operator + Auto**).
 - **2026-07-13** — **Track Q / Q4a Freeze Path B UI redesign DONE (reviewed → `pass`, Q4a-r2).**
   Drafted and froze `docs/PHASE-TRACK-Q-Q4A-UI-REDESIGN.md`: developer/operator `ok app`
   presentation (Overview + Structure), L0→L3 / kit-vs-sister-door copy, four offline SVG
