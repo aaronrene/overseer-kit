@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="OK">
-  <!-- Canonical OK mark — matches landing .logo-mark (#1d4f91). Raster source of truth: ok-mark-1024.png -->
-  <rect width="512" height="512" rx="96" ry="96" fill="#1d4f91"/>
+  <!-- Max-fill OK mark (🆗 proportions) — darker blue #1d4f91. Raster truth: ok-mark-1024.png -->
+  <rect width="512" height="512" rx="84" ry="84" fill="#1d4f91"/>
   <text
     x="256"
-    y="336"
+    y="348"
     text-anchor="middle"
     fill="#ffffff"
     font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
-    font-size="220"
+    font-size="292"
     font-weight="800"
-    letter-spacing="0.04em">OK</text>
+    letter-spacing="-0.06em">OK</text>
 </svg>

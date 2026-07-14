@@ -152,15 +152,15 @@ html[data-theme="dark"] .theme-icon-sun {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 2.85rem;
+  width: 2.85rem;
   height: 2.85rem;
-  padding: 0 0.55rem;
-  border-radius: 0.6rem;
+  padding: 0;
+  border-radius: 0.55rem;
   background: #1d4f91;
   color: #ffffff;
   font-weight: 800;
-  font-size: 1.35rem;
-  letter-spacing: 0.02em;
+  font-size: 1.55rem;
+  letter-spacing: -0.04em;
   line-height: 1;
 }
 
