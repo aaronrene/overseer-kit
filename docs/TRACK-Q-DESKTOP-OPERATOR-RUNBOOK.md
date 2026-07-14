@@ -24,11 +24,14 @@ paste prompts** and terminal commands — see `README.md` §AI tool compatibilit
 
 ---
 
-## Path A — Non-developer / any chatbot (no desktop required)
+## Path A — Handover paste (any chatbot; no desktop required)
 
-This is the **intended normie work path** today and does not require Cursor or the desktop app.
-It **does** require a project that already has the kit installed (one-time setup — often by a
-teammate or product wrapper). The public website alone does not replace that install step.
+**Way forward:** Overseer Kit is **developer-centric**. Day-to-day task/product UX belongs in
+consumers such as **Scooling**; this kit stays portable governance. Path A remains valid for
+anyone with a checkout, but the public site is not an end-user product — it explains and links.
+
+Path A does **not** require Cursor or the desktop app. It **does** require a project that already
+has the kit installed (one-time setup). The public website alone does not replace that install step.
 
 1. **Install the kit once** on the machine that holds the project (or use a teammate’s checkout path).
 2. In **your project repo**, run once:

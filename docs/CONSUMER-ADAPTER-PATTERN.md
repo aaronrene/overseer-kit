@@ -85,26 +85,30 @@ Fixture configs: `tests/fixtures/pilot/`.
 
 ---
 
-## Public website, browser UI, and non-developers (honesty)
+## Positioning (developer-centric — way forward)
 
-| Surface | Role today | Who it is for |
+**Overseer Kit is governance machinery for developers**, not an end-user frontend product.
+The public site and optional local UI explain patterns and point into the suite — they are not
+where people “run Overseer” day to day.
+
+| Surface | Role | Audience |
 | --- | --- | --- |
-| **Public site** (e.g. `overseerkit.com` → static `docs/landing/`) | Explain L0→L3, scenarios, link to GitHub | Everyone — marketing + clarity (K12) |
-| **Path A — handover paste** | After a governed repo exists, open the handover and paste the NEXT prompt into **any** chatbot | Non-devs and configs; **no Cursor required** |
-| **`ok app` / desktop** | Same local governance UI (loopback) | Operators/devs with a checkout; signed installers not required for developers (build-from-source or `ok app`) |
-| **`ok hosted-dashboard`** | Read-only glance of remote ROADMAP/HANDOVER | Operators; **not** a signup product or write console |
-| **Zero-install cloud app on the website** | **Not shipped** | Track O contracts exist; signup / Stage 1 product UX lives in consumer products (e.g. Scooling), not in kit core |
+| **Public site** (`overseerkit.com` → static `docs/landing/`) | Explain L0→L3 / scenarios; door into the suite | Devs & operators (marketing clarity) |
+| **GitHub `overseer-kit`** | Clone, `ok init` / migrate, dogfood, contribute | Primary adopt path |
+| **MuseHub** | Optional L3 substrate (signed identity, content-addressed history) | When provenance depth pays |
+| **Knowtation** | Sister product — personal knowledge / vault; optional Track O Stage 4 bind | Separate product, not kit core |
+| **Scooling** | Sister **product runtime** (task/agent orchestration under `src/phase9a/`) that **consumes** the kit for governance | Product owns runtime; kit never vendors Scooling code |
+| **VideoFactory / other repos** | Peer consumers — same kit pattern, domain packs stay in-repo | Same L0–L2 sockets |
+| **`ok app` / desktop / hosted-dashboard** | Optional operator tools in the kit checkout | Devs/operators — not a public SaaS |
 
-**Plain process for a non-developer today (no Cursor):**
+**Kit vs Scooling (do not conflate):**
 
-1. Someone technical (or a product wrapper) installs the kit into the project once (`ok init` / migrate).
-2. The living **HANDOVER** file gets a paste-ready NEXT prompt.
-3. The non-developer copies that prompt into ChatGPT / Claude / etc., works the step, then asks the
-   agent (or a teammate) to update roadmap + handover honestly before the next session.
-4. Merge to `main` stays a human Tier-3 decision.
+- **Kit** = portable governance (`ok`, roadmap/handover, freeze/BV, verify-step, honesty ledger, VCS adapters).
+- **Scooling** = the product that can *run* multi-agent task work and wrap kit discipline for its users.
+- Other products (Knowtation, VideoFactory, MuseHub) plug in the **same** kit; they are not forks of kit core.
 
-The website alone does **not** create a governed project yet. It educates and points to GitHub
-(and later to product wrappers that call kit CLI under the hood).
+**Public site CTAs (frozen intent):** explain patterns → GitHub (kit) → also MuseHub / Knowtation /
+product docs as sibling doors. No browser signup, no chatbot-hosted runtime on `overseerkit.com`.
 
 ---
 
@@ -113,4 +117,6 @@ The website alone does **not** create a governed project yet. It educates and po
 - Never hardcode another product’s paths into kit core.
 - Never require MuseHub for L0–L2 baseline.
 - Never use an LLM as the pass/fail authority for measurable artifacts.
-- Never claim a browser-only signup or zero-install Path A until a product surface ships it.
+- Never claim the kit website or Track Q UI is an end-user product runtime (that lives in consumers
+  such as Scooling).
+- Never claim a browser-only signup or zero-install Path A until a **product** surface ships it.

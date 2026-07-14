@@ -6,15 +6,16 @@
 
 ---
 
-## NEXT SESSION — Track Q UI redesign (then dogfood; Release later) (▶ NEXT)
+## NEXT SESSION — Developer-centric dogfood (VideoFactory / Scooling) (▶ NEXT)
 
 **Date:** 2026-07-13  
-**Current position:** Q3-release **pipeline DONE** on `main`; **signed Release paused** until UI
-redesign + testing. Public-path / consumer-doc honesty refreshed (`docs.lanes` K8 reality,
-`overseerkit.com` hosting note, non-dev Path A clarity).  
-**Model:** **Thinking** (UI redesign Outline/Plan) **or Auto** (mechanical UI build after freeze)  
-**Operator note:** First signed desktop Release stays Tier 3 and deferred. Do not cut `v{VERSION}`
-until the UI you want is on `main`.
+**Current position:** Kit positioning → **developer-centric**. Public site + Track Q UI are
+explain/route-only (not an end-user frontend). Product task runtime stays in **Scooling** (and
+peers); kit remains portable governance. Signed desktop Release **deprioritized**. Apache-2.0
+**kept** (patent grant) unless a later freeze reopens license.  
+**Model:** **Operator** (live consumer install) **or Thinking** (next freeze only if needed)  
+**Operator note:** Plug kit into VideoFactory and/or Scooling for real use; website stays a door
+into GitHub + MuseHub + Knowtation + consumers.
 
 
 ### What just landed
@@ -22,46 +23,45 @@ until the UI you want is on `main`.
 
 | Slice | Deliverable |
 | --- | --- |
-| **Consumer / public-path honesty (docs)** | VF setup: K8 `docs.lanes` shipped (not “future”); Path A + website honesty in runbook + `CONSUMER-ADAPTER-PATTERN.md`; landing `ok` CLI naming; `docs/landing/HOSTING.md` for `overseerkit.com` |
-| **Q3-release Auto DONE (BV `pass`, Q3R-BV-r1)** | Signed-installer CI pipeline on `main`; no live GitHub Release yet |
-| **Hosted governance dashboard DONE** | Read-only `ok hosted-dashboard` — not a public signup product |
+| **Developer-centric way forward (docs)** | `CONSUMER-ADAPTER-PATTERN` + landing + `HOSTING.md`: site explains + suite links; Scooling = product runtime, kit = governance; Track Q UI/installers deprioritized; Apache stay recommendation |
+| **Consumer / public-path honesty** | VF K8 lanes shipped; Path A honesty retained as secondary |
+| **Q3-release pipeline DONE** | CI on `main`; live signed Release not required for kit value |
 
 
 
-### THE ONE NEXT STEP — **Model: Thinking** (UI) *or* keep Release parked
+### THE ONE NEXT STEP — **Model: Operator**
 
 
 |                |                                                                                                                                     |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID**         | **Track Q UI redesign** (Outline + Plan → freeze) *then* build/test; signed Release remains later Tier 3 |
-| **Branch** | Feature branch from `main` for UI + any follow-on |
-| **Read first** | `docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md`; `tools/app/` UI; `docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md`; paste fence below for layer story |
-| **Deliver** | Frozen UI redesign contract (Thinking) **or** mechanical UI build against freeze (Auto); keep installers claim honest |
-| **Hard stops** | No secrets; no Tier-3 merge automation; no “download installers now”; no claiming website creates governed projects |
+| **ID**         | **Live consumer dogfood** — VideoFactory and/or Scooling `ok init --migrate` + day-to-day governance |
+| **Branch** | Consumer repos (Tier-3 consent on those trees); kit docs already on `docs/consumer-public-path-honesty` |
+| **Read first** | `docs/CONSUMER-ADAPTER-PATTERN.md`; `docs/consumers/videofactory/OVERSEER-SETUP.md`; `docs/consumers/scooling/OVERSEER-SETUP.md` |
+| **Deliver** | Working kit install in VF and/or Scooling; site remains explain + GitHub/MuseHub/Knowtation doors |
+| **Hard stops** | No kit-as-Scooling-runtime rewrite; no secrets; no false “website runs tasks”; no silent MIT license flip |
 
 
 
-### Paste-ready prompt — UI redesign + simple layer story
+### Paste-ready prompt — consumer dogfood (VideoFactory or Scooling)
 
 ```
-Overseer Kit — Track Q UI redesign + simple L0–L3 explanation for the surface.
+Overseer Kit — developer-centric consumer dogfood (VideoFactory and/or Scooling).
 
-Model: Thinking
+Model: Operator
 
-Read first: docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md (do not reopen closed api/*);
-  tools/app/ static UI; docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md;
-  docs/CONSUMER-ADAPTER-PATTERN.md (§Public website…);
+Read first: docs/CONSUMER-ADAPTER-PATTERN.md (developer-centric positioning);
+  docs/consumers/videofactory/OVERSEER-SETUP.md;
+  docs/consumers/scooling/OVERSEER-SETUP.md;
   docs/landing/HOSTING.md.
 
-Task: Outline + Plan a clearer Path B/C UI that helps operators understand layers simply:
-  L0 = living roadmap + handover paste (any chatbot); L1 = mechanical verify-step checks
-  (consumer scripts); L2 = producer/verifier honesty ledger; L3 = optional Muse depth.
-  Honest non-dev story: website explains; after one-time install, work = paste handover;
-  no zero-install cloud signup in kit core yet. Freeze the UI contract (what screens/copy
-  change); do not cut a signed Release in this phase.
+Task: Install/migrate the kit into VideoFactory and/or Scooling using the prepared pilot
+  configs. Confirm kit owns governance only; Scooling keeps product runtime (phase9a).
+  Do not redesign Track Q UI or cut signed desktop Releases unless still desired later.
+  Public site stays explain + links (GitHub, MuseHub, Knowtation). Keep Apache-2.0 unless
+  a separate Thinking freeze amends K12 license.
 
-Hard stops: no Track Q engine/api rewrite beyond presentation; no secrets; no false
-  “installers available” or “sign up on overseerkit.com creates a repo” claims.
+Hard stops: no live init without named-repo consent; no vendoring Scooling runtime into kit;
+  no secrets; website is not a task product.
 ```
 
 
@@ -148,12 +148,16 @@ Hard stops: no Track Q engine/api rewrite beyond presentation; no secrets; no fa
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-13** — **Developer-centric way forward (docs).** Public site + Track Q UI = explain
+  + suite doors (GitHub / MuseHub / Knowtation / consumers); Scooling clarified as product
+  runtime that *consumes* kit governance; signed installers + end-user frontend deprioritized;
+  Apache-2.0 stay recommended vs MIT. Handover NEXT → VF/Scooling dogfood (Operator).
 - **2026-07-13** — **Consumer + public-path honesty (docs).** Revised
   `docs/consumers/videofactory/OVERSEER-SETUP.md` so K8 `docs.lanes` is documented as **shipped**
   (not future); Path A / website honesty in `docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md` +
   `docs/CONSUMER-ADAPTER-PATTERN.md`; landing uses canonical `ok` CLI; added
-  `docs/landing/HOSTING.md` for `overseerkit.com` static front door. Signed Release remains
-  paused for UI redesign. Handover NEXT → Track Q UI Thinking (or parked Release).
+  `docs/landing/HOSTING.md` for `overseerkit.com` static front door.
+
 - **2026-07-13** — **Q3-release Auto build DONE (build-verified → `pass`, Q3R-BV-r1).**
   Shipped mechanical §QR.4–§QR.13 against frozen `docs/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md`:
   `.github/workflows/desktop-release.yml` (tag/`workflow_dispatch`; macOS-14/Windows/ubuntu-22.04;

@@ -1,7 +1,20 @@
 # Public site hosting (overseerkit.com)
 
-**Purpose:** Point a custom domain at the static K12 landing already in this repo.
-**Not a product runtime.** No signup, no governed-repo creation, no write APIs.
+**Purpose:** Static front door — explain Overseer Kit layers/patterns and link into the suite.
+**Not a product runtime.** No signup, no chatbot embedding, no governed-repo creation, no write APIs.
+
+## Positioning
+
+Developer-centric door into related projects:
+
+| Door | Why |
+| --- | --- |
+| **GitHub `overseer-kit`** | Install and use the governance CLI (`ok`) |
+| **MuseHub** | Optional deeper substrate (L3) |
+| **Knowtation** | Sister knowledge/vault product |
+| **Scooling** (and other consumers) | Product runtimes that *use* the kit for governance while they handle tasks |
+
+Day-to-day runtime UX for tasks stays in those products. This site only explains and routes.
 
 ## What to host
 
@@ -21,23 +34,18 @@ Example GitHub Pages path if publishing the whole `docs/` folder:
 
 Map **overseerkit.com** (DNS CNAME / A records) to that host. TLS via the host.
 
-## What visitors can do today
-
-1. Read what Overseer Kit is (layers, personas, funnel).
-2. Open GitHub and follow the git-only quickstart **or** use a product that wraps kit CLI.
-3. After a project is installed, day-to-day non-dev work is **Path A** (paste the handover prompt into any chatbot) — not a magic button on this site.
-
-## What this domain is *not* (yet)
+## What this domain is *not*
 
 | Claim | Status |
 | --- | --- |
-| Zero-install “create my project” in the browser | **Not shipped** — Track O Stage 1 UX is product-owned (e.g. Scooling), not kit core |
-| Hosted write dashboard for merge/deploy | **Rejected** for kit — `ok hosted-dashboard` is read-only glance operators run themselves |
-| Download signed desktop installers from the marketing site | Only after a GitHub Release publishes signed assets (operator Tier 3); link to Releases when that exists |
-| Cursor or Muse required to understand the product | **No** — landing is static HTML |
+| End-user frontend product / task runner | **No** — Scooling (and peers) own product runtime |
+| Zero-install “create my project” in the browser | **Not shipped** |
+| Hosted write dashboard for merge/deploy | **Rejected** for kit |
+| Signed desktop installers as primary adopt path | Optional later; developers clone GitHub |
 
-## Recommendation
+## License note (Apache-2.0 — keep unless a freeze changes it)
 
-Use **overseerkit.com** as the public front door: brand, layer story, scenarios, GitHub CTA.
-Keep the kit itself installable from the repo. Promote product shells separately when they ship
-signup without asking users to touch a terminal.
+K12 froze **Apache-2.0** (patent grant + OSI). Prefer keeping Apache over switching to MIT unless
+a later Thinking phase reopens license choice — see ROADMAP exploration / operator decision.
+MIT is simpler to read; Apache adds an express patent license/termination useful for multi-org
+tooling. Do not silently rewrite `LICENSE` without amending the K12 contract.

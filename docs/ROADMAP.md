@@ -81,8 +81,9 @@ freeze (and clear the "governance, not runtime" boundary) before entering the bu
 | **Hosted governance dashboard** | Promoted → Thinking freeze **DONE** + Auto build **DONE** (BV `pass`, HGD-BV-r1). | Read-only remote glance; authoritative workflow stays local; not Track Q; no product data store. |
 | **Q3-release — desktop installers** | Promoted → Thinking freeze **DONE** (`pass`, QR-r3) + Auto build **DONE** (BV `pass`, Q3R-BV-r1). | Packaging/distribution; no engine redesign. |
 | **P-route runtime reference** | An *example* runtime adapter (in a consumer repo, e.g. Scooling) that consumes `P-route` policy + OpenRouter — to prove the policy end-to-end. | Lives in a consumer, not the kit (per `AGENTS.md` — Scooling 9A router is reference-only). |
-| **overseerkit.com public hosting** | Operator DNS → static K12 `docs/landing/` (see `docs/landing/HOSTING.md`). Marketing + GitHub CTA; not a signup SaaS. | No kit core change required unless a later freeze adds hosted write/signup (Track O product owns Stage 1 UX). |
-| **Track Q UI redesign** | Operator pause before first signed desktop Release — redesign Path B/C UI, then dogfood/test, then tag/Release. | Packaging pipeline already DONE; UI changes are Track Q surface, not Q3-release re-freeze. |
+| **overseerkit.com public hosting** | Operator DNS → static K12 `docs/landing/` (`docs/landing/HOSTING.md`). Developer-centric door: explain patterns + links to GitHub / MuseHub / Knowtation / consumers. | Not a product runtime; Scooling (etc.) own end-user task UX. |
+| **Track Q UI / signed desktop installers** | **Deprioritized** for end-user frontend. Optional later for operators who want `ok app` in a window; not the adopt path. Developers use GitHub + CLI. | Packaging pipeline DONE; do not block kit value on installer/UI polish. |
+| **License change Apache → MIT** | Operator asked. **Recommendation: keep Apache-2.0** (K12 freeze: patent grant). Reopen only via Thinking that amends K12 §K12.4. | MIT is simpler prose; Apache’s patent clause fits multi-org governance tooling. |
 
 ## Dogfood integrity gate (mandatory — not optional)
 
