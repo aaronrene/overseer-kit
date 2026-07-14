@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 48" role="img" aria-labelledby="musehubTitle">
+  <title id="musehubTitle">MuseHub</title>
+  <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+    <line x1="18" y1="14" x2="8" y2="31"/>
+    <line x1="18" y1="14" x2="28" y2="31"/>
+  </g>
+  <g fill="currentColor">
+    <circle cx="18" cy="10" r="5"/>
+    <circle cx="6" cy="34" r="5"/>
+    <circle cx="30" cy="34" r="5"/>
+    <text x="44" y="32" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="700" letter-spacing="-0.02em">MuseHub</text>
+  </g>
+</svg>

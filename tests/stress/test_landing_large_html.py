@@ -43,6 +43,7 @@ def test_validator_large_padded_html_bounded(tmp_path: Path) -> None:
         "assets/favicon-32.png",
         "assets/apple-touch-icon.png",
         "assets/theme.js",
+        "assets/musehub-logo.svg",
     ):
         src = landing_src / rel
         if not src.is_file():
