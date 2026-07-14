@@ -41,8 +41,15 @@ def test_track_o_does_not_claim_scooling_mandatory() -> None:
     assert "mandatory" not in contract.lower() or "not" in contract.lower()
 
 
-def test_stage3_shipping_remains_deferred() -> None:
+def test_stage3_points_at_o2_and_upgrade_regime() -> None:
     contract = (KIT_ROOT / CONTRACT_REL).read_text(encoding="utf-8")
     scooling = (KIT_ROOT / SCOOLING_REL).read_text(encoding="utf-8")
-    assert "deferred to Thinking O2" in contract or "deferred to O2" in contract
-    assert "deferred to O2" in scooling
+    assert "ok upgrade-regime" in contract
+    assert "PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY" in contract
+    assert "deferred to Thinking O2" not in contract
+    assert "deferred to O2" not in contract
+    assert "deferred to O2" not in scooling
+    assert "ok upgrade-regime" in scooling or "PHASE-TRACK-O-O2" in scooling
+    assert "one-click" in contract.lower()
+    # One-click still blocked until §O2.6
+    assert "§O2.6" in contract or "O2.6" in contract

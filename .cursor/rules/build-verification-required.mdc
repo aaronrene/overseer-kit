@@ -20,3 +20,8 @@ Before any **Auto** phase **starts**, the frozen spec must have **`pass`** freez
 (`/freeze-review-loop` when needed).
 
 Tests green alone is **not** sufficient for DONE.
+
+**Sibling (shipped / live-health claims only):** when the session claims a live deploy, production
+health, or "shipped" outside the local repo, also run **`/deploy-verification-review`**
+(`.cursor/skills/deploy-verification-review/SKILL.md`). Do **not** run it for ordinary kit-only
+Auto builds — that would false-close non-ship phases. Build verification is never waived.

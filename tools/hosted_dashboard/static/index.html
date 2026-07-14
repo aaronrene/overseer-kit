@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hosted Governance Dashboard</title>
+  <link rel="stylesheet" href="/assets/dashboard.css">
+</head>
+<body>
+  <header>
+    <h1>Hosted Governance Dashboard</h1>
+    <p class="subtitle">Read-only remote glance — not Track Q</p>
+  </header>
+
+  <aside id="honesty-banner" class="honesty" role="note">
+    Authoritative workflow remains <strong>local</strong> (<code>ok</code> CLI / Track Q).
+    This page is a glance surface only.
+  </aside>
+
+  <section id="auth-panel" class="panel">
+    <h2>Viewer bootstrap</h2>
+    <p>Paste the viewer Bearer token printed once on stderr at preview startup (or from your operator secret store). Held in memory only — never stored in localStorage.</p>
+    <label>Viewer token <input id="viewer-input" type="password" autocomplete="off"></label>
+    <button id="auth-save" type="button">Connect</button>
+    <p id="auth-status" class="status"></p>
+  </section>
+
+  <nav class="tabs" id="tabs" hidden>
+    <button type="button" data-tab="org" class="active">Org summary</button>
+    <button type="button" data-tab="repo">Repo detail</button>
+  </nav>
+
+  <main id="content" hidden>
+    <section id="tab-org" class="tab-panel active">
+      <button id="refresh-org" type="button">Refresh org summary</button>
+      <pre id="org-output"></pre>
+      <ul id="org-list"></ul>
+    </section>
+
+    <section id="tab-repo" class="tab-panel">
+      <div class="honesty" role="note">
+        Authoritative workflow remains <strong>local</strong> (<code>ok</code> CLI / Track Q).
+        This page is a glance surface only.
+      </div>
+      <label>Owner <input id="repo-owner" type="text" autocomplete="off"></label>
+      <label>Repo <input id="repo-name" type="text" autocomplete="off"></label>
+      <button id="load-roadmap" type="button">Load roadmap</button>
+      <button id="load-handover" type="button">Load handover</button>
+      <button id="load-gates" type="button">Load gates</button>
+      <button id="load-marker" type="button">Load config marker</button>
+      <pre id="repo-output"></pre>
+    </section>
+  </main>
+
+  <script src="/assets/dashboard.js"></script>
+</body>
+</html>

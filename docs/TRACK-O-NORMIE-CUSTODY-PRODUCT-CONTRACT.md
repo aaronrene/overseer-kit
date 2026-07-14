@@ -37,14 +37,17 @@ Cursor rules/skills are optional boosters, never required.
 
 Allowed regime transition: `muse-only` → `muse+git-mirror` (existing adapters + SD-14 bridge).
 
-**Kit automated upgrade ceremony: deferred to Thinking O2.** Products must **not** ship
-one-click backup yet. Never required to start; never invent a push-to-`main` shortcut.
+**Kit ceremony:** frozen in `docs/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md` and shipped as
+`ok upgrade-regime` (`--from muse-only --to muse+git-mirror`; `--dry-run` / `--apply` /
+`--live-bridge` / `--force` per §O2.7). Operator runbook:
+`docs/TRACK-O-STAGE3-UPGRADE-OPERATOR-RUNBOOK.md`.
 
-Silent config edit of only `vcs.regime` without footprint re-seed is **forbidden**.
-No new CLI (`ok upgrade-regime`) in O0/O1.
+Products must **not** ship one-click backup until §O2.6 unlock criteria hold (O2 freeze `pass`
+**and** Track O / O3 build-verification `pass`; wrap **only** `ok upgrade-regime`; C6 consent;
+never auto C8). Silent config edit of only `vcs.regime` without footprint re-seed is
+**forbidden**.
 
-Until O2 freezes the kit upgrade ceremony, products may only **describe** Stage 3 as coming
-soon / operator-assisted.
+Never required to start; never invent a push-to-`main` shortcut.
 
 ### Stage 4 — Optional Knowtation bind
 
@@ -81,7 +84,7 @@ Products must not invent a kit-side identity registry, SSO, or cross-product acc
 | `ok init` / regimes / adapters | **Owns** | Consumes | Consumes | `muse-only` dogfood substrate |
 | Normie signup / Stage 1–4 wizard | Declares **contract only** | May host entry UX (optional) | Vault bind UX (optional) | Substrate only |
 | Personal vault bytes | **Never** | **Never** | **Owns** vault store | History substrate |
-| GitHub create-repo / backup button | No UI; ships bridge scripts + regimes | Wrap **only after O2** ceremony freeze | Wrap **only after O2** | N/A |
+| GitHub create-repo / backup button | No UI; ships bridge scripts + `ok upgrade-regime` | Wrap **only after** §O2.6 (O3 BV `pass`) | Wrap **only after** §O2.6 | N/A |
 | Operator bridge (SD-14) | Ships K7 scripts + dogfood docs | May wrap later | May wrap later | — |
 | Multi-agent runtime | Reference only (`AGENTS.md`) | **Owns** product runtime | — | — |
 | Local governance UI | Track Q `ok app` / Tauri (operator) | May point at consumer tree | May point at consumer tree | — |
@@ -111,6 +114,7 @@ an optional entry product, not a kit dependency.
 | O1 performs live Scooling/Knowtation `ok init` | **Reject** (operator-gated) |
 | Silent `vcs.regime` edit for Stage 3 without footprint re-seed | **Reject** |
 | Product ships Stage 3 one-click backup before O2 kit ceremony freeze | **Reject** |
+| Product ships Stage 3 one-click before O3 build-verification `pass` (§O2.6) | **Reject** |
 
 ---
 
@@ -121,7 +125,7 @@ an optional entry product, not a kit dependency.
 | *(none)* | `muse-only` | Product wizard or operator `ok init` |
 | *(none)* | `git-only` | Product wizard or operator `ok init` |
 | *(none)* | `muse+git-mirror` | Product wizard or operator `ok init` (both substrates ready) |
-| `muse-only` | `muse+git-mirror` | Operator today; product UX only after O2 ceremony freeze |
+| `muse-only` | `muse+git-mirror` | Operator via `ok upgrade-regime`; product UX only after §O2.6 |
 | `git-only` | `muse+git-mirror` | Operator / later product (explicit Muse init) |
 | Any other pair | — | **Forbidden** without a later Thinking freeze |
 
@@ -131,14 +135,16 @@ an optional entry product, not a kit dependency.
 
 - No inventing kit regimes, CLI semantics, or MuseHub-only baseline features.
 - No live consumer `ok init` without named-repo operator consent.
-- No Stage 3 one-click until O2 freezes the kit upgrade ceremony.
-- No silent `vcs.regime` edit without footprint re-seed.
+- No Stage 3 one-click until §O2.6 (O2 freeze `pass` **and** O3 build-verification `pass`).
+- Wrap Stage 3 **only** via `ok upgrade-regime` — no silent `vcs.regime` edit without footprint re-seed.
 - Never `git push` canonical `main` for mirror regimes — use isolated mirror → `muse-mirror` PR
   (SD-14).
 
 ## Cross-references
 
 - Freeze: `docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md`
+- Stage 3 ceremony freeze: `docs/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md`
+- Stage 3 operator runbook: `docs/TRACK-O-STAGE3-UPGRADE-OPERATOR-RUNBOOK.md`
 - Spec regimes/CLI: `docs/OVERSEER-KIT-SPEC.md` §4–§5
 - Scooling runbook: `docs/consumers/scooling/OVERSEER-SETUP.md`
 - Knowtation stub: `docs/consumers/knowtation/OVERSEER-SETUP.md`

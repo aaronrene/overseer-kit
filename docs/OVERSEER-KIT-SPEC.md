@@ -285,6 +285,8 @@ One entrypoint, **`ok`** (compatibility synonym **`overseer`**), runnable with *
 | `ok ledger append --kind KIND [--file JSON_PATH \| --stdin]` | L2 verdict ledger append (K10): hash-chained JSONL entry with role gates. Auto-genesis on first append. Exit extensions: `21`–`24`, `22` on verify. | Yes (ledger) | Append-only |
 | `ok ledger verify` | L2 ledger chain verification (K10). Missing/empty ledger → `0`. Break → `22`. | No | Yes |
 | `ok ledger show [--last N]` | L2 ledger read (K10): print last N JSONL records. Missing/empty → `0` with no lines. Default N=20. | No | Yes |
+| `ok upgrade-regime --from muse-only --to muse+git-mirror [--dry-run \| --apply] [--live-bridge] [--force] [-y]` | Stage 3 kit ceremony (Track O / O3): ordered `muse-only` → `muse+git-mirror` upgrade composing `init`/`sync`/`status` + K7 bridge gates (C0–C5 / G1–G8). `--dry-run` default when `--apply` absent. `--live-bridge` requires gate success + `-y` (C6); never performs C8 merge. Frozen detail: `docs/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md`. | Yes (config + footprint when `--apply`; optional C7 via deploy script) | Yes (complete upgrade → exit 0) |
+| `ok hosted-dashboard [--port PORT] [--bind ADDRESS] [--config PATH] [--open]` | Read-only remote governance dashboard preview (Hosted governance dashboard): GitHub/MuseHub **read** glance of ROADMAP/HANDOVER/gates; Bearer viewer auth; default `127.0.0.1:8766`. Never mutates git/muse/GitHub. Operator runbook: `docs/HOSTED-GOVERNANCE-DASHBOARD-OPERATOR-RUNBOOK.md`. Frozen: `docs/PHASE-HOSTED-GOVERNANCE-DASHBOARD.md`. | No | Yes |
 
 **Vendored footprint (frozen — what `init`/`sync` copy into a consumer):** the contents of
 `templates/` (token-substituted with `.overseer/config.yaml` values), `policy/`, and `cursor/`,
