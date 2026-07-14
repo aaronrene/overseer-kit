@@ -347,9 +347,10 @@ h3 {
   display: block;
   width: 100%;
   height: auto;
-  max-height: min(28rem, 52vh);
+  max-height: min(30rem, 56vh);
   object-fit: contain;
-  filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.45));
+  /* Soft lift only — art is already transparent RGBA over the dark hero plane. */
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.35));
 }
 
 @media (max-width: 52rem) {

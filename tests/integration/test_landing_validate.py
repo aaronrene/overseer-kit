@@ -46,5 +46,5 @@ def test_main_nav_scenarios_goes_to_gallery() -> None:
     assert 'href="scenarios/index.html">Scenarios</a>' in index
     # Nav must not use the mid-page teaser anchor as the Scenarios destination.
     assert re.search(r'nav-links[\s\S]*?href="#scenarios">Scenarios', index) is None
-    assert 'src="assets/hero-pipeline.jpg"' in index
-    assert (KIT_ROOT / "docs" / "landing" / "assets" / "hero-pipeline.jpg").is_file()
+    assert 'src="assets/hero-oversight.png"' in index
+    assert (KIT_ROOT / "docs" / "landing" / "assets" / "hero-oversight.png").is_file()
