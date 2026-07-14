@@ -6,18 +6,18 @@
 
 ---
 
-## NEXT SESSION — Public landing redesign Thinking freeze (▶ NEXT)
+## NEXT SESSION — Public site + access clarity Thinking freeze (▶ NEXT)
 
 **Date:** 2026-07-14  
-**Current position:** Q4b Path B console **DONE** (BV `pass`). Operator wants the **public
-explainer site** (`docs/landing/`) remodeled: professional, friendly, no scaffolding/dev residue.
-Site remains static; it links *to* the suite (GitHub / MuseHub / Knowtation) and honestly
-explains how to open the **local** governance console (`ok app` / desktop) — it cannot inject
-loopback session secrets from the public web. Path B auth stays Q0 (Bearer + CSRF; no cookie
-save) unless a later auth Thinking reopens it.  
+**Current position:** Operator confirmed Path B works after paste, but **access discovery is
+obscure**. Wants: (1) professional public explainer on **overseerkit.com** with the structure
+flowcharts, no WIP/dev residue; (2) crystal-clear launch paths for browser vs Tauri desktop vs
+CLI; (3) option to **finish signed desktop downloads** so open-dashboard is not tribal knowledge;
+(4) honest domain plan (public site ≠ live local console). Path B stays loopback + ephemeral
+auth unless a separate auth Thinking reopens Q0.  
 **Model:** **Thinking**  
-**Operator note:** This phase is **spec-only**. Visual/copy redesign of `docs/landing/` —
-not another `ok app` rewrite.
+**Operator note:** Spec-only this session. Prefer one freeze artifact that scopes landing +
+access docs + optional Path C release polish; Auto slices after `pass`.
 
 
 ### What just landed
@@ -25,9 +25,9 @@ not another `ok app` rewrite.
 
 | Slice | Deliverable |
 | --- | --- |
-| **Track Q / Q4b** | Path B UI redesign BV `pass` (Q4b-BV-r1) |
-| **Access reality** | Desktop Path C already auto-fills session + CSRF; browser path still paste-from-terminal (Q0) |
-| **Public site** | Still `docs/landing/` (K12) — next target |
+| **Track Q / Q4b** | Local console UI + diagrams (browser; paste tokens from terminal) |
+| **Path C desktop** | Tauri auto-fill exists in source (`npm run tauri dev`); signed `.dmg` not yet a one-click public download |
+| **Domain** | `overseerkit.com` → static `docs/landing/` only (`docs/landing/HOSTING.md`) |
 
 
 
@@ -36,42 +36,73 @@ not another `ok app` rewrite.
 
 |                |                                                                                                                                     |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID**         | **Public landing redesign** — Thinking freeze for `docs/landing/` (professional explainer; strip WIP/dev residue) |
-| **Branch** | Feature branch from current (e.g. `thinking/landing-redesign`) |
-| **Read first** | `docs/landing/`; `docs/landing/HOSTING.md`; `docs/PHASE-K12-TRACK-N-LANDING-CONTRACT.md`; paste fence below |
-| **Deliver** | Freeze artifact: visual direction, IA, copy inventory (no DONE/TODO/WIP), suite-door links, how-we-access-local-console honesty, seven-tier matrix for Auto |
-| **Hard stops** | No signup/runtime; no secreting local CSRF into the public site; no Track Q engine reopen; no LICENSE flip |
+| **ID**         | **Public landing + access clarity** Thinking freeze (flowcharts on main site; finish obscure launch story) |
+| **Branch** | `thinking/landing-access-clarity` (or continue feature branch) |
+| **Read first** | `docs/landing/`; `HOSTING.md`; K12 landing contract; `docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md`; Q0/Q4a freezes; paste fence below |
+| **Deliver** | Freeze artifact(s): site redesign WHAT/HOW; access/onboarding copy; domain map; optional signed-installer finish scope; seven-tier; freeze-review → `pass` |
+| **Hard stops** | No public website minting/storing CSRF; no non-loopback `ok app`; no signup/runtime; Tier-3 for merge/DNS/Release secrets |
 
 
 
-### Paste-ready prompt — Public landing redesign (Thinking)
+### Paste-ready prompt — Public landing + access clarity (Thinking)
 
 ```
-Overseer Kit — Public landing redesign Thinking freeze.
+Overseer Kit — Public landing redesign + dashboard access clarity Thinking freeze.
 
 Model: Thinking
 
-Read first: docs/landing/index.html + assets/style.css + scenarios/; docs/landing/HOSTING.md;
-  docs/PHASE-K12-TRACK-N-LANDING-CONTRACT.md (prior contract — amend, do not silently ignore);
+Read first:
+  docs/landing/ (index, scenarios, assets, HOSTING.md);
+  docs/PHASE-K12-TRACK-N-LANDING-CONTRACT.md;
+  docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md;
+  docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md (§Q0.6 auth — do not reopen casually);
+  docs/PHASE-TRACK-Q-Q4A-UI-REDESIGN.md (diagrams already exist under tools/app/static/assets/diagrams/);
+  docs/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md;
   docs/OVERSEER-HANDOVER.md; docs/ROADMAP.md.
 
-Context: Track Q / Q4b polished the local ok app console (loopback + session/CSRF). That is NOT
-  the public site. Operator wants docs/landing/ remodeled into a professional explainer front
-  door. Strip development scaffolding language (DONE/TODO/WIP/phase IDs, engineer jargon) from
-  visitor-facing copy. Keep developer-honest positioning: site explains; it does not run tasks.
+Operator intent:
+  - The LOCAL governance console (ok app / Tauri) is valuable but launch/tokens are obscure.
+  - The PUBLIC site (overseerkit.com → docs/landing/) must be a professional explainer with the
+    structure flowcharts at a glance — not WIP/DONE/phase jargon.
+  - Domain is purchased; hook up after redesign. Dashboard must be discoverable without tribal
+    knowledge. Prefer finishing signed desktop download path over leaving Path C half-wired.
+  - Browser ok app remains paste-from-terminal unless a separate auth Thinking explicitly
+    changes Q0 (cookies deferred). Do NOT claim the website can auto-login to a local console.
 
-Task (Thinking freeze only — no Auto UI rewrite in this session):
-  1) Freeze WHAT: IA, sections, audience, visual direction (palette/type/layout), motion budget.
-  2) Freeze HOW: static HTML/CSS only under docs/landing/ (no SPA/Node build for DONE).
-  3) Copy inventory: hero, layers, suite doors, scenarios — visitor language; no residual
-     governance status language on the marketing surface.
-  4) Cross-link honesty: how visitors open the local governance console (ok app / desktop)
-     without claiming the public site can mint or save session/CSRF secrets.
-  5) Rejection table: no signup, no embedded task runtime, no remote CSRF bootstrap from CDN.
-  6) Seven-tier matrix for a later Auto build; Definition of Done; freeze-review → pass.
+Task (Thinking freeze ONLY — write freeze artifact(s); no Auto visual rewrite this session):
 
-Hard stops: no secrets; no rewriting tools/app/ engine or Q0 auth; no LICENSE change;
-  no Tier-3 merge; spec artifact only this session.
+A) PUBLIC SITE (docs/landing/)
+  1. Freeze IA + visual direction (professional; visitor language; strip DONE/TODO/WIP/dev residue).
+  2. Put the Q4b structure story on the main page (reuse or adapt lanes/regimes/layers/kit-consumer
+     diagrams as offline SVG — no CDN Mermaid).
+  3. Suite doors: GitHub, MuseHub, Knowtation, consumers — clear CTAs.
+  4. Seven-tier matrix + DoD for landing Auto build.
+
+B) ACCESS CLARITY (how anyone opens the dashboard)
+  5. Freeze a single “Open the local console” story for README + landing + ok-app Overview:
+       Path 1 — Browser: `ok app --open` → copy session_credential + csrf_token from THAT terminal → Connect
+       Path 2 — Desktop (dev): `npm run tauri dev` (auto-fills)
+       Path 3 — Desktop (install): signed download when Release exists (Python 3.11+ still required)
+  6. Freeze UI copy improvements for ok app auth panel (collapse after Connect; show bound repo
+     path from status once connected) — presentation only; Q0 contracts stay closed.
+  7. Honesty: which repo does ok app bind? Default = cwd / `--repo` / OVERSEER_REPO_ROOT (desktop).
+     Status/Roadmap/Actions operate on THAT checkout.
+
+C) DOMAIN + HOSTING
+  8. Freeze overseerkit.com map: apex = static landing ONLY.
+     Forbid: subdomain pretending to be live local ok app with secrets.
+     Allowed optional: docs.overseerkit.com or /docs alias if useful — still static.
+     Optional note: hosted-dashboard (ok hosted-dashboard) is a DIFFERENT read-only remote glance.
+
+D) PATH C FINISH (optional but preferred in same freeze or linked slice)
+  9. Scope what “finish the app download” means: operator secrets + first signed GitHub Release
+     of .dmg/.msi/.AppImage; landing “Download console” CTA only when manifest signing.status
+     is signed; else show Build-from-source / ok app instructions (no fake primary-path claim).
+
+E) Rejection table + freeze-review → pass; queue Auto slices; no Tier-3 merge this session.
+
+Hard stops: no secrets in docs; no Q0 bind/auth reopen without dedicated Thinking; no signup/
+  task-runtime on the site; no unsigned-installer-as-primary marketing.
 ```
 
 
@@ -160,6 +191,10 @@ Hard stops: no secrets; no rewriting tools/app/ engine or Q0 auth; no LICENSE ch
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-14** — **Operator steer: expand NEXT to landing + access clarity + optional Path C finish.**
+  Confirmed browser Path B works after terminal paste; obscurity remains. Regenerated Thinking
+  prompt: professional `docs/landing/` with flowcharts; README/site/console access story;
+  overseerkit.com apex = static only; prefer finishing signed desktop download over half-wired UX.
 - **2026-07-14** — **Operator steer: public landing redesign is NEXT (Thinking).** Path B console
   stays local/auth-gated (Q0); convenient access path = desktop auto-fill (already shipped) or
   paste-from-terminal in browser. Regenerated NEXT for professional `docs/landing/` redesign
