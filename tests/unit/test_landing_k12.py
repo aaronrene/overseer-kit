@@ -136,6 +136,9 @@ def test_main_landing_has_no_personal_product_doors() -> None:
     assert "cost" in html.lower() or "cheaper" in html.lower() or "spend" in html.lower()
     assert "cta-honesty" not in html.split('id="hero"')[1].split('id="problem"')[0]
     assert "https://github.com/aaronrene/overseer-kit#readme" in html
+    assert 'href="assets/favicon.ico"' in html
+    assert (KIT_ROOT / "docs" / "landing" / "assets" / "favicon.ico").is_file()
+    assert (KIT_ROOT / "docs" / "landing" / "assets" / "ok-mark-1024.png").is_file()
     assert "../../README.md" not in html
     assert "../CONSUMER-ADAPTER-PATTERN.md" not in html
 

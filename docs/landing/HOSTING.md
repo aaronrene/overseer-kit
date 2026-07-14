@@ -48,6 +48,17 @@ Example GitHub Pages path if publishing the whole `docs/` folder:
 
 Map **overseerkit.com** (DNS CNAME / A records) to that host. TLS via the host.
 
+### Operator cutover checklist (Tier 3)
+
+1. Merge the landing branch to `main` (or publish from the branch host you choose) — Tier 3 merge.
+2. Enable static hosting of `docs/landing/` (GitHub Pages from `/docs` then path `/landing/`, or
+   Cloudflare/Netlify with publish directory = `docs/landing`).
+3. At your DNS registrar for **overseerkit.com**: point apex (and optional `www`) at that host per
+   the host’s instructions (Cloudflare Proxied CNAME / Pages custom domain is usually simplest).
+4. Wait for TLS to go live; open `https://overseerkit.com/` and confirm hero + favicon (OK mark) +
+   Download CTA still target the signed Mac `.dmg`.
+5. Do **not** create `app.` / `console.` subdomains that host live Path B.
+
 ## What this domain is *not*
 
 | Claim | Status |
