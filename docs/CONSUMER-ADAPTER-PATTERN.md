@@ -85,8 +85,32 @@ Fixture configs: `tests/fixtures/pilot/`.
 
 ---
 
+## Public website, browser UI, and non-developers (honesty)
+
+| Surface | Role today | Who it is for |
+| --- | --- | --- |
+| **Public site** (e.g. `overseerkit.com` → static `docs/landing/`) | Explain L0→L3, scenarios, link to GitHub | Everyone — marketing + clarity (K12) |
+| **Path A — handover paste** | After a governed repo exists, open the handover and paste the NEXT prompt into **any** chatbot | Non-devs and configs; **no Cursor required** |
+| **`ok app` / desktop** | Same local governance UI (loopback) | Operators/devs with a checkout; signed installers not required for developers (build-from-source or `ok app`) |
+| **`ok hosted-dashboard`** | Read-only glance of remote ROADMAP/HANDOVER | Operators; **not** a signup product or write console |
+| **Zero-install cloud app on the website** | **Not shipped** | Track O contracts exist; signup / Stage 1 product UX lives in consumer products (e.g. Scooling), not in kit core |
+
+**Plain process for a non-developer today (no Cursor):**
+
+1. Someone technical (or a product wrapper) installs the kit into the project once (`ok init` / migrate).
+2. The living **HANDOVER** file gets a paste-ready NEXT prompt.
+3. The non-developer copies that prompt into ChatGPT / Claude / etc., works the step, then asks the
+   agent (or a teammate) to update roadmap + handover honestly before the next session.
+4. Merge to `main` stays a human Tier-3 decision.
+
+The website alone does **not** create a governed project yet. It educates and points to GitHub
+(and later to product wrappers that call kit CLI under the hood).
+
+---
+
 ## Hard rules
 
 - Never hardcode another product’s paths into kit core.
 - Never require MuseHub for L0–L2 baseline.
 - Never use an LLM as the pass/fail authority for measurable artifacts.
+- Never claim a browser-only signup or zero-install Path A until a product surface ships it.

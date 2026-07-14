@@ -81,6 +81,8 @@ freeze (and clear the "governance, not runtime" boundary) before entering the bu
 | **Hosted governance dashboard** | Promoted → Thinking freeze **DONE** + Auto build **DONE** (BV `pass`, HGD-BV-r1). | Read-only remote glance; authoritative workflow stays local; not Track Q; no product data store. |
 | **Q3-release — desktop installers** | Promoted → Thinking freeze **DONE** (`pass`, QR-r3) + Auto build **DONE** (BV `pass`, Q3R-BV-r1). | Packaging/distribution; no engine redesign. |
 | **P-route runtime reference** | An *example* runtime adapter (in a consumer repo, e.g. Scooling) that consumes `P-route` policy + OpenRouter — to prove the policy end-to-end. | Lives in a consumer, not the kit (per `AGENTS.md` — Scooling 9A router is reference-only). |
+| **overseerkit.com public hosting** | Operator DNS → static K12 `docs/landing/` (see `docs/landing/HOSTING.md`). Marketing + GitHub CTA; not a signup SaaS. | No kit core change required unless a later freeze adds hosted write/signup (Track O product owns Stage 1 UX). |
+| **Track Q UI redesign** | Operator pause before first signed desktop Release — redesign Path B/C UI, then dogfood/test, then tag/Release. | Packaging pipeline already DONE; UI changes are Track Q surface, not Q3-release re-freeze. |
 
 ## Dogfood integrity gate (mandatory — not optional)
 
@@ -137,6 +139,7 @@ same method names in both regimes.
 - `docs/PHASE-K8-MULTI-LANE-DOCS-CONTRACT.md` — frozen K8 multi-lane docs (K8a); K8b builds against it
 - `docs/PHASE-K9A-L1-L2-MODULE-FREEZE.md` — K9a L1+L2 module freeze (**K9a-r9 → `pass`**); K9b/K10 build against it
 - `docs/PHASE-K12-TRACK-N-LANDING-CONTRACT.md` — K12 Track N landing freeze (K12 build against it)
+- `docs/landing/HOSTING.md` — custom domain / static hosting honesty (`overseerkit.com`)
 - `docs/PHASE-KH1-HANDOVER-RELAY-STANDARD.md` — KH1 handover relay standard (Thinking freeze; D4 shape checklist)
 - `docs/PHASE-TRACK-P-P0-AGENT-PROVENANCE.md` — Track P / P0 agent-provenance freeze (reviewed → `pass`); P1 built against it
 - `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` — Track P / P-route model-routing policy freeze (**reviewed → `pass`, P-route-r2**); the P-route Auto build builds against it

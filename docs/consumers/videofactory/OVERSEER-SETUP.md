@@ -81,40 +81,37 @@ Agents must not mark a phase **DONE** on the status board until build verificati
 
 ## Multiple roadmaps? Video queue + software work in one tree
 
-**Today (K7):** `.overseer/config.yaml` wires **one** living-doc pair into `governance-sync`:
+**K8 shipped:** `.overseer/config.yaml` may declare **`docs.lanes`** — named handover/roadmap
+pairs — with `docs.default_lane` and `ok governance-sync --lane <name>` / `--all-lanes`.
+Contract: `docs/PHASE-K8-MULTI-LANE-DOCS-CONTRACT.md`. Fixture shape:
+`tests/fixtures/config-two-lane.yaml`.
 
-- `docs.handover` → one relay doc (Video Overseer Handover)
-- `docs.roadmap` → one queue doc (Video Production Status Board)
+**Default VF install** still uses the **single-pair** tokens (`docs.handover` / `docs.roadmap`)
+via `config-videofactory.yaml`. That is enough for production. Add a second lane only when
+engineering needs its own auto-synced board + handover.
 
-There is no second auto-synced roadmap/handover pair in the same repo yet. Optional
-`docs.coordination` (e.g. `CROSS-REPO-COORDINATION.md`) is **preserved on migrate** but is **not**
-patched by `governance-sync`.
+Optional `docs.coordination` (e.g. `CROSS-REPO-COORDINATION.md`) is **preserved on migrate** but
+is **not** patched by `governance-sync`.
 
 ### Recommended VideoFactory layout (works now)
 
 | Concern | Where it lives | Synced by kit? |
 | --- | --- | --- |
-| Video production queue (always on) | `VIDEO_PRODUCTION_STATUS_BOARD.md` | Yes — primary roadmap |
-| Session relay for video work | `VIDEO_OVERSEER_HANDOVER.md` | Yes — primary handover |
-| Major software/tooling build | **Section** on the same status board (`## Engineering`) **or** a separate `ENGINEERING_ROADMAP.md` you maintain manually | Manual only if separate file |
+| Video production queue (always on) | `VIDEO_PRODUCTION_STATUS_BOARD.md` | Yes — default / `production` roadmap |
+| Session relay for video work | `VIDEO_OVERSEER_HANDOVER.md` | Yes — default / `production` handover |
+| Major software/tooling build | **Section** on the status board (`## Engineering`), **or** a second K8 lane (`engineering` handover + roadmap), **or** a manual file you maintain | Sections / second lane = kit-synced; manual file = you |
 | Per-video work | `feat/video/<slug>` branch + **one row** on the status board | Row updated on phase close; branch is the isolation unit |
 
 You do **not** need a full second roadmap + handover pair for every video. You need:
 
-1. **One repo-level status board** — master grid of videos and engineering lanes.
-2. **One repo-level handover** — current session relay (whichever lane you are in).
-3. **One branch per video** (your existing habit) — isolates assets, edits, and agent context.
+1. **One repo-level status board** — master grid of videos (and optional engineering summary).
+2. **One repo-level handover** — current session relay for the active lane.
+3. **One branch per video** — isolates assets, edits, and agent context.
 4. **One row per video** on the status board — honest status vs merged reality.
 
-When you switch from “shipping Threads ep. 42” to “building a new export pipeline,” you change the
-**NEXT prompt** in the handover and the **active row** on the status board. You do not spin up a
-second synced doc pair unless we add multi-lane config (future K8+).
-
-### Future extension (not required for VF install)
-
-A natural kit evolution is `docs.lanes[]` — named pairs, e.g. `production` + `engineering`, each
-with its own handover/roadmap paths and optional `governance-sync --lane`. Until then, **one synced
-pair + sections** (or a manual second file) is the supported pattern.
+When you switch from “shipping Threads ep. 42” to “building a new export pipeline,” either change
+the **NEXT prompt** + active row on the production board, or `governance-sync --lane engineering`
+if you configured a second lane.
 
 ---
 
@@ -179,8 +176,10 @@ policy live in VideoFactory. Other repos (MuseHub, Knowtation) use the same kit 
 names and policy files.
 
 **Stub / add-on pattern:** Core CLI and adapters expose fixed contracts (`init`, `sync`, `status`,
-`review`, `governance-sync`). Domain-specific behavior is added via consumer **policy**, **preserved
-docs**, and **Cursor skills/rules** — not by editing kit source unless you are contributing upstream.
+`review`, `governance-sync`, `verify-step`, `honesty-status`, `ledger`, …). Domain-specific
+behavior is added via consumer **policy**, **preserved docs**, and optional **Cursor
+skills/rules** — not by editing kit source unless you are contributing upstream. Cursor is an
+optional boost; Path A works with any chatbot via the handover paste block.
 
 ---
 
@@ -188,8 +187,8 @@ docs**, and **Cursor skills/rules** — not by editing kit source unless you are
 
 | Question | Answer |
 | --- | --- |
-| Can I use Video Status Board and a software roadmap at once? | Yes — **one** pair is auto-synced; use sections on the status board or a manual second roadmap file for engineering. |
+| Can I use Video Status Board and a software roadmap at once? | Yes — sections on one board, **or** a second K8 lane (`docs.lanes`), **or** a manual engineering file. |
 | One roadmap per video? | No — one **row** per video on the repo status board; one **branch** per video. |
 | Thinking model every video? | No — freeze **templates** once; per-video **build verification** only. |
 | Is the kit ready for VF? | Yes — install with `config-videofactory.yaml`, add template library in VF, branch-per-video + status rows. |
-| Multi-lane auto-sync later? | Optional K8+ `docs.lanes[]`; not blocking VF install. |
+| Multi-lane auto-sync? | **Shipped (K8)** — `docs.lanes` + `ok governance-sync --lane` / `--all-lanes`. Default VF config stays single-pair until you need a second lane. |

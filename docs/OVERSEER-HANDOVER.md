@@ -6,60 +6,62 @@
 
 ---
 
-## NEXT SESSION — Operator first signed Release (or next Thinking) (▶ NEXT)
+## NEXT SESSION — Track Q UI redesign (then dogfood; Release later) (▶ NEXT)
 
 **Date:** 2026-07-13  
-**Current position:** **Q3-release Auto build DONE** (build-verified → `pass`, Q3R-BV-r1). Pipeline
-shipped; no live signed GitHub Release yet (operator Tier-3 secrets required).  
-**Model:** **Operator + Auto**  
-**Operator note:** Configuring Actions secrets / cutting `v{VERSION}` is Tier 3. Auto may help verify
-a Release after secrets exist; Auto must never write secret values.
+**Current position:** Q3-release **pipeline DONE** on `main`; **signed Release paused** until UI
+redesign + testing. Public-path / consumer-doc honesty refreshed (`docs.lanes` K8 reality,
+`overseerkit.com` hosting note, non-dev Path A clarity).  
+**Model:** **Thinking** (UI redesign Outline/Plan) **or Auto** (mechanical UI build after freeze)  
+**Operator note:** First signed desktop Release stays Tier 3 and deferred. Do not cut `v{VERSION}`
+until the UI you want is on `main`.
 
 
 ### What just landed
 
 
-| Slice                                                             | Deliverable                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Q3-release Auto DONE (BV `pass`, Q3R-BV-r1)**                    | Built against frozen `docs/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md`: `desktop-release.yml` + smoke; `templates/ci/desktop-release-github-actions.yml`; `tools/desktop_release/`; `desktop/keys/` public-only; runbook honesty (Python 3.11+); SPEC §5 note; §QR.13 **39** green; full suite **887**. Track Q untouched.                                                                                                          |
-| **Q3-release freeze DONE (Thinking)**                             | `docs/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md` reviewed → **`pass` (QR-r3)**, stamp `sha256:91d39951…`. Spec-only.                                                                                                                                                                                                                                               |
-| **Hosted governance dashboard build DONE (Auto)**                 | Built against `docs/PHASE-HOSTED-GOVERNANCE-DASHBOARD.md` → BV **`pass` (HGD-BV-r1)**. Seven-tier §HGD.12 (**50** green).                                                                                                                                                                                                                                        |
+| Slice | Deliverable |
+| --- | --- |
+| **Consumer / public-path honesty (docs)** | VF setup: K8 `docs.lanes` shipped (not “future”); Path A + website honesty in runbook + `CONSUMER-ADAPTER-PATTERN.md`; landing `ok` CLI naming; `docs/landing/HOSTING.md` for `overseerkit.com` |
+| **Q3-release Auto DONE (BV `pass`, Q3R-BV-r1)** | Signed-installer CI pipeline on `main`; no live GitHub Release yet |
+| **Hosted governance dashboard DONE** | Read-only `ok hosted-dashboard` — not a public signup product |
 
 
 
-### THE ONE NEXT STEP — **Model: Operator + Auto**
+### THE ONE NEXT STEP — **Model: Thinking** (UI) *or* keep Release parked
 
 
 |                |                                                                                                                                     |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID**         | **First signed desktop Release** (operator Tier-3) *or* promote next exploration Thinking                                           |
-| **Branch** | Feature branch for any doc/Auto follow-up; secrets live only in GitHub Actions settings |
-| **Read first** | `docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md` §Signed installers; `docs/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md` §QR.6 |
-| **Deliver** | Operator: store §QR.6.2 secrets; align Muse+Git tips; cut `v{VERSION}`; confirm Release assets + manifest. Optional: pick next Thinking from exploration backlog |
-| **Hard stops** | No secrets in repo; no Tier-3 merge without human; no false “download now” claim before a signed Release exists |
+| **ID**         | **Track Q UI redesign** (Outline + Plan → freeze) *then* build/test; signed Release remains later Tier 3 |
+| **Branch** | Feature branch from `main` for UI + any follow-on |
+| **Read first** | `docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md`; `tools/app/` UI; `docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md`; paste fence below for layer story |
+| **Deliver** | Frozen UI redesign contract (Thinking) **or** mechanical UI build against freeze (Auto); keep installers claim honest |
+| **Hard stops** | No secrets; no Tier-3 merge automation; no “download installers now”; no claiming website creates governed projects |
 
 
 
-### Paste-ready prompt — first signed Release (operator)
+### Paste-ready prompt — UI redesign + simple layer story
 
 ```
-Overseer Kit — first signed desktop Release (operator Tier-3) + optional Auto verify.
+Overseer Kit — Track Q UI redesign + simple L0–L3 explanation for the surface.
 
-Model: Operator + Auto
+Model: Thinking
 
-Read first: docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md (§Signed installers);
-  docs/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md (§QR.6 / §QR.11.1);
-  .github/workflows/desktop-release.yml.
+Read first: docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md (do not reopen closed api/*);
+  tools/app/ static UI; docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md;
+  docs/CONSUMER-ADAPTER-PATTERN.md (§Public website…);
+  docs/landing/HOSTING.md.
 
-Task: Operator configures GitHub Actions secrets under exact §QR.6.2 names
-  (Apple password mode OR API-key mode — kit dogfood prefers API key),
-  Windows Authenticode, Linux minisign private key (public key already under desktop/keys/).
-  Align VERSION fields; cut tag v{VERSION} from Muse-aligned SHA; confirm Release
-  allowlist assets + manifest signing.status=signed. Auto may verify checksums/manifest
-  after publish — must never write secret values or claim installers available before
-  the Release exists.
+Task: Outline + Plan a clearer Path B/C UI that helps operators understand layers simply:
+  L0 = living roadmap + handover paste (any chatbot); L1 = mechanical verify-step checks
+  (consumer scripts); L2 = producer/verifier honesty ledger; L3 = optional Muse depth.
+  Honest non-dev story: website explains; after one-time install, work = paste handover;
+  no zero-install cloud signup in kit core yet. Freeze the UI contract (what screens/copy
+  change); do not cut a signed Release in this phase.
 
-Hard stops: no secrets in git; no Tier-3 merge automation; Path C still needs host Python 3.11+.
+Hard stops: no Track Q engine/api rewrite beyond presentation; no secrets; no false
+  “installers available” or “sign up on overseerkit.com creates a repo” claims.
 ```
 
 
@@ -129,11 +131,11 @@ Hard stops: no secrets in git; no Tier-3 merge automation; Path C still needs ho
 
 | Item | Value |
 | --- | --- |
-| Branch                    | `feat/q3-release-desktop-installers-build`                                                             |
-| HEAD                      | Q3-release Auto build (Q3R-BV-r1 `pass`) + ROADMAP/HANDOVER close-out                                  |
-| Muse HEAD | feature-branch tip (sync after close-out commit) |
+| Branch | `docs/consumer-public-path-honesty` |
+| HEAD | Consumer + public-path honesty docs (K8 lanes, Path A, HOSTING.md) + gov sync |
+| Muse HEAD | Sync after close-out commit on this branch |
 | GitHub bridge | Feature branch (no merge) |
-| Dirty                     | clean after Q3-release Auto close-out                                                                  |
+| Dirty | Expect clean after close-out commit |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -146,6 +148,12 @@ Hard stops: no secrets in git; no Tier-3 merge automation; Path C still needs ho
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-13** — **Consumer + public-path honesty (docs).** Revised
+  `docs/consumers/videofactory/OVERSEER-SETUP.md` so K8 `docs.lanes` is documented as **shipped**
+  (not future); Path A / website honesty in `docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md` +
+  `docs/CONSUMER-ADAPTER-PATTERN.md`; landing uses canonical `ok` CLI; added
+  `docs/landing/HOSTING.md` for `overseerkit.com` static front door. Signed Release remains
+  paused for UI redesign. Handover NEXT → Track Q UI Thinking (or parked Release).
 - **2026-07-13** — **Q3-release Auto build DONE (build-verified → `pass`, Q3R-BV-r1).**
   Shipped mechanical §QR.4–§QR.13 against frozen `docs/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md`:
   `.github/workflows/desktop-release.yml` (tag/`workflow_dispatch`; macOS-14/Windows/ubuntu-22.04;

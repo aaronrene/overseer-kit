@@ -54,10 +54,10 @@
           ROADMAP phases · HANDOVER relay · tier authority · model labels · freeze review
         </div>
       </div>
-      <pre>./cli/overseer init --regime git-only
-./cli/overseer governance-sync --dry-run
-./cli/overseer status</pre>
-      <p>L0 alone is useful on any GitHub repo. No Muse install required.</p>
+      <pre>./cli/ok init --regime git-only
+./cli/ok governance-sync --dry-run
+./cli/ok status</pre>
+      <p>L0 alone is useful on any GitHub repo. No Muse install required. Canonical CLI name is <code>ok</code> (<code>overseer</code> remains a compat shim).</p>
     </section>
 
     <section id="l1">
@@ -145,10 +145,11 @@
       <h2>Quickstart — git-only in 5 minutes</h2>
       <ol>
         <li>Clone <a href="https://github.com/aaronrene/overseer-kit">overseer-kit</a>.</li>
-        <li>From your consumer repo: <code>./cli/overseer -C . init --regime git-only --non-interactive</code></li>
-        <li>Open <code>docs/OVERSEER-HANDOVER.md</code> → copy the paste-ready prompt.</li>
-        <li>Run <code>./cli/overseer governance-sync --dry-run</code> before ending each session.</li>
+        <li>From your consumer repo: <code>./cli/ok -C . init --regime git-only --non-interactive</code></li>
+        <li>Open <code>docs/OVERSEER-HANDOVER.md</code> → copy the paste-ready prompt into any chatbot.</li>
+        <li>Run <code>./cli/ok governance-sync --dry-run</code> before ending each session.</li>
       </ol>
+      <p>Non-developers: after that one-time install, day-to-day work is the handover paste — Cursor is optional. The public site explains layers; it does not (yet) create a project in the browser.</p>
       <p>Full guide: <a href="../GIT-ONLY-QUICKSTART.md">Git-only quickstart</a> · Consumer pattern: <a href="../CONSUMER-ADAPTER-PATTERN.md">CONSUMER-ADAPTER-PATTERN.md</a></p>
     </section>
 
@@ -158,7 +159,7 @@
       <ol>
         <li>Install <a href="https://musehub.ai">Muse</a> and run <code>muse init</code> in your repo.</li>
         <li>Set <code>regime: muse+git-mirror</code> in <code>.overseer/config.yaml</code>.</li>
-        <li><code>./cli/overseer sync</code> — seeds bridge workflow + safe deploy script.</li>
+        <li><code>./cli/ok sync</code> — seeds bridge workflow + safe deploy script.</li>
         <li>Day-to-day: <code>muse commit</code> on feature branches. Publish via <code>scripts/muse-bridge-deploy.sh</code> only.</li>
       </ol>
       <p>Operator runbook: <a href="../K7-DOGFOOD-OPERATOR-RUNBOOK.md">K7 dogfood runbook</a></p>
@@ -202,7 +203,7 @@ L0 governance ──► L1 checkpoints ──► L2 honesty ledger
     │  optional regime flip                │
     ▼                                      ▼
 muse+git-mirror ──► realign / mirror / provenance badge</div>
-      <p>Not another agent framework. <strong>Governance + honesty</strong> for people who already use Cursor and GitHub.</p>
+      <p>Not another agent framework. <strong>Governance + honesty</strong> for AI-assisted work on GitHub — Cursor optional; any chatbot works via the handover paste.</p>
     </section>
   </main>
 
@@ -211,6 +212,7 @@ muse+git-mirror ──► realign / mirror / provenance badge</div>
       <a href="../../LICENSE">Apache-2.0</a>
       · <a href="../../SECURITY.md">Security</a>
       · <a href="../PHASE-K12-TRACK-N-LANDING-CONTRACT.md">K12 contract</a>
+      · <a href="HOSTING.md">Hosting / custom domain</a>
     </p>
     <p>🆗 Overseer Kit — portable governance for AI-assisted development</p>
   </footer>
