@@ -133,6 +133,8 @@ def test_main_landing_has_no_personal_product_doors() -> None:
     assert "ROADMAP" in html and "Handover" in html
     assert "freeze review" in html.lower() or "ok review --freeze" in html
     assert "ok route" in html or "model-routing" in html
+    assert "cost" in html.lower() or "cheaper" in html.lower() or "spend" in html.lower()
+    assert "cta-honesty" not in html.split('id="hero"')[1].split('id="problem"')[0]
     assert "https://github.com/aaronrene/overseer-kit#readme" in html
     assert "../../README.md" not in html
     assert "../CONSUMER-ADAPTER-PATTERN.md" not in html

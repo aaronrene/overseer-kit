@@ -167,10 +167,21 @@ html[data-theme="dark"] .theme-icon-sun {
 .site-header .nav-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  font-size: 0.9375rem;
+  gap: 1.15rem;
+  font-size: 1.05rem;
   margin-left: auto;
   align-items: center;
+}
+
+.site-header .nav-links a {
+  text-decoration: none;
+  font-weight: 550;
+  color: var(--accent);
+}
+
+.site-header .nav-links a:hover {
+  color: #5cb88a;
+  text-decoration: none;
 }
 
 main {
@@ -353,7 +364,6 @@ h3 {
 }
 
 .hero-copy .sublead,
-.hero-copy .cta-honesty,
 .hero-copy .tertiary-links {
   color: #a8b6c9;
 }
