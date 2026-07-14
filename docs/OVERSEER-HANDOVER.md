@@ -6,24 +6,26 @@
 
 ---
 
-## NEXT SESSION — Operator first signed Release (or next Thinking) (▶ NEXT)
+## NEXT SESSION — Live consumer dogfood + optional public hosting (▶ NEXT)
 
 **Date:** 2026-07-13  
-**Current position:** **Q3-release Auto build DONE** (build-verified → `pass`, Q3R-BV-r1). Pipeline
-shipped; no live signed GitHub Release yet (operator Tier-3 secrets required).  
+**Current position:** Track Q / Q4b Path B UI redesign **build-verified → `pass` (Q4b-BV-r1)**.
+`ok app` ships Overview + Structure, four offline diagrams, suite CTAs, status humanization.
+Track Q presentation chain complete. Closed Q0 surface unchanged; LICENSE Apache-2.0.  
 **Model:** **Operator + Auto**  
-**Operator note:** Configuring Actions secrets / cutting `v{VERSION}` is Tier 3. Auto may help verify
-a Release after secrets exist; Auto must never write secret values.
+**Operator note:** Prefer live VideoFactory / Scooling dogfood (consumer repos; Tier-3 live
+init). Optional: DNS → `docs/landing/` for `overseerkit.com` per `docs/landing/HOSTING.md`.
+Kit feature-branch PR / Muse mirror merge remains Tier 3.
 
 
 ### What just landed
 
 
-| Slice                                                             | Deliverable                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Q3-release Auto DONE (BV `pass`, Q3R-BV-r1)**                    | Built against frozen `docs/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md`: `desktop-release.yml` + smoke; `templates/ci/desktop-release-github-actions.yml`; `tools/desktop_release/`; `desktop/keys/` public-only; runbook honesty (Python 3.11+); SPEC §5 note; §QR.13 **39** green; full suite **887**. Track Q untouched.                                                                                                          |
-| **Q3-release freeze DONE (Thinking)**                             | `docs/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md` reviewed → **`pass` (QR-r3)**, stamp `sha256:91d39951…`. Spec-only.                                                                                                                                                                                                                                               |
-| **Hosted governance dashboard build DONE (Auto)**                 | Built against `docs/PHASE-HOSTED-GOVERNANCE-DASHBOARD.md` → BV **`pass` (HGD-BV-r1)**. Seven-tier §HGD.12 (**50** green).                                                                                                                                                                                                                                        |
+| Slice | Deliverable |
+| --- | --- |
+| **Track Q / Q4b** | Path B UI redesign BV `pass` (Q4b-BV-r1) — Overview/Structure, four SVGs, CTAs, §Q4A.15 |
+| **Track Q / Q4a** | Freeze `pass` (Q4a-r2) — contract held |
+| **Q3-release pipeline DONE** | Signed Release still optional/later; not primary adopt path |
 
 
 
@@ -32,34 +34,32 @@ a Release after secrets exist; Auto must never write secret values.
 
 |                |                                                                                                                                     |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID**         | **First signed desktop Release** (operator Tier-3) *or* promote next exploration Thinking                                           |
-| **Branch** | Feature branch for any doc/Auto follow-up; secrets live only in GitHub Actions settings |
-| **Read first** | `docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md` §Signed installers; `docs/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md` §QR.6 |
-| **Deliver** | Operator: store §QR.6.2 secrets; align Muse+Git tips; cut `v{VERSION}`; confirm Release assets + manifest. Optional: pick next Thinking from exploration backlog |
-| **Hard stops** | No secrets in repo; no Tier-3 merge without human; no false “download now” claim before a signed Release exists |
+| **ID**         | **Live VF/Scooling dogfood** (consumer) and/or **overseerkit.com hosting** (operator DNS → static landing) |
+| **Branch** | Consumer repos for dogfood; kit feature branch already carries Q4b (PR/merge = Tier 3) |
+| **Read first** | `docs/consumers/videofactory/OVERSEER-SETUP.md`; `docs/consumers/scooling/OVERSEER-SETUP.md`; `docs/landing/HOSTING.md`; paste fence below |
+| **Deliver** | Live consumer init/status green; or public site front door live — no kit engine redesign |
+| **Hard stops** | No unsigned-installer primary adopt claims; no kit signup/runtime UX; no Tier-3 merge without auth |
 
 
 
-### Paste-ready prompt — first signed Release (operator)
+### Paste-ready prompt — Live consumer dogfood / public hosting (Operator + Auto)
 
 ```
-Overseer Kit — first signed desktop Release (operator Tier-3) + optional Auto verify.
+Overseer Kit — next after Track Q / Q4b UI redesign.
 
 Model: Operator + Auto
 
-Read first: docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md (§Signed installers);
-  docs/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md (§QR.6 / §QR.11.1);
-  .github/workflows/desktop-release.yml.
+Read first: docs/OVERSEER-HANDOVER.md (verified snapshot); docs/consumers/videofactory/OVERSEER-SETUP.md;
+  docs/consumers/scooling/OVERSEER-SETUP.md; docs/landing/HOSTING.md.
 
-Task: Operator configures GitHub Actions secrets under exact §QR.6.2 names
-  (Apple password mode OR API-key mode — kit dogfood prefers API key),
-  Windows Authenticode, Linux minisign private key (public key already under desktop/keys/).
-  Align VERSION fields; cut tag v{VERSION} from Muse-aligned SHA; confirm Release
-  allowlist assets + manifest signing.status=signed. Auto may verify checksums/manifest
-  after publish — must never write secret values or claim installers available before
-  the Release exists.
+Task (pick one primary path — operator-gated):
+  A) Live VideoFactory and/or Scooling dogfood: ok init / status / verify-step in the consumer
+     repo using kit-side setup docs; record results in handover; no kit core redesign.
+  B) overseerkit.com: follow docs/landing/HOSTING.md (static docs/landing/ only); keep
+     developer-centric honesty (site does not run tasks).
 
-Hard stops: no secrets in git; no Tier-3 merge automation; Path C still needs host Python 3.11+.
+Hard stops: no Tier-3 merge without authorization; no secrets; no claiming Path C unsigned
+  installers as primary adopt; no signup / task-runtime in the kit.
 ```
 
 
@@ -108,7 +108,9 @@ Hard stops: no secrets in git; no Tier-3 merge automation; Path C still needs ho
 | **Track Q / Q1** | **DONE** — Auto build (build-verified → `pass`, Q1-BV-r1). `overseer app` stdlib loopback server + static UI; `tools/app/` + `cli/commands/app.py`; closed `api/*`; Bearer + CSRF; seven-tier §Q0.12. **654** tests green (+42) |
 | **Track Q / Q2a**         | **DONE** — Thinking freeze (`docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md` reviewed → `pass`, Q2a-r2), stamp `sha256:dbfbf9ad…`. Freezes canonical `ok` CLI entrypoint + `overseer` compat shim; seven-tier §Q2A.10. Spec-only. Cleared for Q2b |
 | **Track Q / Q2b**         | **DONE** — Auto build (build-verified → `pass`, Q2b-BV-r1). `cli/ok` canonical + `cli/overseer` deprecation; `prog="ok"`; operator docs/templates/skills/CI pass; SPEC §5 + K4.1 naming; shims not footprint members. **668** tests green (+14 §Q2A.10). Cleared for Q3 |
-| **Track Q / Q3**          | **DONE** — Auto build (build-verified → `pass`, Q3-BV-r1). Tauri desktop shell (`desktop/`) invokes `ok app`; `tools/desktop/` + bundle script; seven-tier §Q3. **696** tests green (+28). Track Q chain complete |
+| **Track Q / Q3**          | **DONE** — Auto build (build-verified → `pass`, Q3-BV-r1). Tauri desktop shell (`desktop/`) invokes `ok app`; `tools/desktop/` + bundle script; seven-tier §Q3. **696** tests green (+28) |
+| **Track Q / Q4a**         | **DONE** — Thinking freeze (`docs/PHASE-TRACK-Q-Q4A-UI-REDESIGN.md` reviewed → `pass`, Q4a-r2), stamp `sha256:ea118134…`. Path B developer UI redesign contract: Overview/Structure IA, four offline diagrams, suite CTAs, closed Q0 surface, §Q4A.15. **Spec-only — no UI code.** Cleared for Q4b |
+| **Track Q / Q4b**         | **DONE** — Auto build (build-verified → `pass`, Q4b-BV-r1). Overview + Structure IA; four offline SVGs; suite CTAs; status humanization; closed Q0 unchanged; §Q4A.15 **17** green; full suite **905**. No LICENSE/`desktop/`/engine edits |
 | **K6-Scooling runbook**   | **DONE** — `docs/consumers/scooling/OVERSEER-SETUP.md` (kit-side; live init still operator-gated; Track O cross-link in O1) |
 | **Track O / O0**          | **DONE** — Normie custody funnel Thinking freeze (`docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md` reviewed → `pass`, O0-r3), stamp `sha256:642076c9…` |
 | **Track O / O1**          | **DONE** — Product contracts build-verified → `pass` (O1-BV-r1). Contract + Scooling/Knowtation stubs + `tools/track_o/` + §O0.8. **728** tests green (+32) |
@@ -129,11 +131,11 @@ Hard stops: no secrets in git; no Tier-3 merge automation; Path C still needs ho
 
 | Item | Value |
 | --- | --- |
-| Branch                    | `feat/q3-release-desktop-installers-build`                                                             |
-| HEAD                      | Q3-release Auto build (Q3R-BV-r1 `pass`) + ROADMAP/HANDOVER close-out                                  |
-| Muse HEAD | feature-branch tip (sync after close-out commit) |
+| Branch | `build/track-q-q4b-ui-redesign` |
+| HEAD | Q4b Path B UI redesign build (BV `pass`, Q4b-BV-r1) |
+| Muse HEAD | Sync after close-out commit on this branch |
 | GitHub bridge | Feature branch (no merge) |
-| Dirty                     | clean after Q3-release Auto close-out                                                                  |
+| Dirty | Expect clean after close-out commit |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -145,6 +147,34 @@ Hard stops: no secrets in git; no Tier-3 merge automation; Path C still needs ho
 
 <!-- overseer:anchor:change-log -->
 ## Change log
+
+- **2026-07-13** — **Track Q / Q4b Path B UI redesign DONE (build-verified → `pass`, Q4b-BV-r1).**
+  Built mechanically against frozen `docs/PHASE-TRACK-Q-Q4A-UI-REDESIGN.md`: rewrote
+  `tools/app/static/` (Overview default after auth + Structure gallery; honesty strip; `ok app`
+  auth copy; Apache-2.0 footer; suite CTAs §Q4A.7; status humanization + expandable raw JSON);
+  committed four offline SVGs under `assets/diagrams/` (lanes / regimes / layers / kit-consumer);
+  seven-tier §Q4A.15 (**17** green); full suite **905**. Downstream brand assertion updates in Q1/Q3
+  app tests; landing stress stubs for Knowtation/Scooling links. Closed Q0 `api/*/bind/auth`
+  untouched; no `LICENSE` / `desktop/` / engine Python edits. ROADMAP: Q4b → **DONE**. Handover
+  NEXT → live VF/Scooling dogfood and/or overseerkit.com hosting (**Model: Operator + Auto**).
+- **2026-07-13** — **Track Q / Q4a Freeze Path B UI redesign DONE (reviewed → `pass`, Q4a-r2).**
+  Drafted and froze `docs/PHASE-TRACK-Q-Q4A-UI-REDESIGN.md`: developer/operator `ok app`
+  presentation (Overview + Structure), L0→L3 / kit-vs-sister-door copy, four offline SVG
+  structure diagrams (lanes / regimes / layers / kit→consumer), suite CTAs, closed Q0
+  `api/*`+bind/auth non-reopen, no LICENSE flip, seven-tier §Q4A.15. Freeze-review: r1 semantic
+  findings → fixed; **Q4a-r2 → `pass`**. **Spec-only — no UI code landed.** ROADMAP: Q4a →
+  **DONE (Thinking)**; NEXT → **Track Q / Q4b** Auto.
+- **2026-07-13** — **Way forward: UI redesign reinstated + license honesty.** Apache-2.0 already
+  is open source; MIT optional via K12 amendment. Handover NEXT was Track Q UI redesign Thinking
+  (developer tool + structure flowcharts); VF/Scooling dogfood parallel/optional.
+- **2026-07-13** — **Developer-centric way forward (docs).** Public site = explain + suite doors
+  (GitHub / MuseHub / Knowtation / consumers); Scooling clarified as product runtime that
+  *consumes* kit governance.
+- **2026-07-13** — **Consumer + public-path honesty (docs).** Revised
+  `docs/consumers/videofactory/OVERSEER-SETUP.md` so K8 `docs.lanes` is documented as **shipped**
+  (not future); Path A / website honesty in `docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md` +
+  `docs/CONSUMER-ADAPTER-PATTERN.md`; landing uses canonical `ok` CLI; added
+  `docs/landing/HOSTING.md` for `overseerkit.com` static front door.
 
 - **2026-07-13** — **Q3-release Auto build DONE (build-verified → `pass`, Q3R-BV-r1).**
   Shipped mechanical §QR.4–§QR.13 against frozen `docs/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md`:

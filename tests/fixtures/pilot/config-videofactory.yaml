@@ -1,7 +1,7 @@
 # VideoFactory — overseer kit consumer config (prepared pilot fixture)
 #
 # Install (migrate preserves your existing status board + handover):
-#   <kit>/cli/overseer -C <videofactory-root> init --migrate \
+#   <kit>/cli/ok -C <videofactory-root> init --migrate \
 #     --from-config <kit>/tests/fixtures/pilot/config-videofactory.yaml --non-interactive
 #
 # Greenfield (empty repo):

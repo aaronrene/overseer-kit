@@ -36,7 +36,7 @@ def test_static_ui_served(tmp_path: Path) -> None:
         )
         with __import__("urllib.request").request.urlopen(request, timeout=5) as response:
             html = response.read().decode("utf-8")
-        assert "Overseer App" in html
+        assert "Overseer Kit" in html
         assert "/assets/app.js" in html
     finally:
         handle.shutdown()

@@ -1,29 +1,70 @@
 :root {
   color-scheme: light dark;
-  font-family: system-ui, -apple-system, sans-serif;
+  --ink: #1a1f26;
+  --muted: #5c6570;
+  --line: #c5ccd4;
+  --panel: #f4f6f8;
+  --accent: #1d4f91;
+  --accent-ink: #fff;
+  --ok: #1b7a3d;
+  --err: #a11d1d;
+  --pre-bg: #12161c;
+  --pre-ink: #e8ecf0;
+  --honesty-bg: #eef2f6;
+  font-family: "IBM Plex Sans", "Source Sans 3", "Segoe UI", sans-serif;
   line-height: 1.5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #e8ecf0;
+    --muted: #9aa3ad;
+    --line: #3a4450;
+    --panel: #1a222c;
+    --accent: #5b8fd4;
+    --accent-ink: #0b1220;
+    --ok: #5dce85;
+    --err: #f07178;
+    --pre-bg: #0b0f14;
+    --pre-ink: #e8ecf0;
+    --honesty-bg: #151c26;
+  }
 }
 
 body {
   margin: 0 auto;
   max-width: 960px;
   padding: 1.5rem;
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 400px at 10% -10%, color-mix(in srgb, var(--accent) 12%, transparent), transparent),
+    radial-gradient(900px 320px at 100% 0%, color-mix(in srgb, var(--line) 35%, transparent), transparent);
 }
 
-header h1 {
+.chrome-header h1 {
   margin-bottom: 0.25rem;
+  font-size: 1.75rem;
+  letter-spacing: -0.02em;
 }
 
 .subtitle {
-  color: #666;
+  color: var(--muted);
   margin-top: 0;
 }
 
+.honesty-strip {
+  border: 1px solid var(--line);
+  background: var(--honesty-bg);
+  padding: 0.65rem 0.85rem;
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+}
+
 .panel {
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  border: 1px solid var(--line);
   padding: 1rem;
   margin-bottom: 1rem;
+  background: var(--panel);
 }
 
 label {
@@ -44,17 +85,17 @@ input[type="password"] {
 }
 
 .tabs button {
-  border: 1px solid #888;
+  border: 1px solid var(--line);
   background: transparent;
+  color: var(--ink);
   padding: 0.4rem 0.8rem;
-  border-radius: 6px;
   cursor: pointer;
 }
 
 .tabs button.active {
-  background: #2563eb;
-  color: #fff;
-  border-color: #2563eb;
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
 }
 
 .tab-panel {
@@ -65,24 +106,114 @@ input[type="password"] {
   display: block;
 }
 
+.one-liner {
+  font-weight: 600;
+  margin-top: 0;
+}
+
+.layer-stack,
+.cta-list,
+.diagram-fallback {
+  padding-left: 1.2rem;
+}
+
+.cta-list li {
+  margin: 0.35rem 0;
+}
+
+.suite-cta {
+  color: var(--accent);
+}
+
+.site-note,
+.hint,
+.compat-note {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.status-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 0.65rem;
+  margin: 0.75rem 0;
+}
+
+.status-card {
+  border: 1px solid var(--line);
+  padding: 0.55rem 0.7rem;
+  background: var(--panel);
+}
+
+.status-card .label {
+  display: block;
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.status-card .value {
+  font-weight: 600;
+}
+
+.diagram {
+  border-top: 1px solid var(--line);
+  padding: 1rem 0;
+  margin: 0;
+}
+
+.diagram img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  background: #fbfcfd;
+  border: 1px solid var(--line);
+}
+
+.structure-ctas {
+  margin-top: 0.5rem;
+}
+
+.linkish {
+  background: none;
+  border: none;
+  color: var(--accent);
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+}
+
 pre {
-  background: #111;
-  color: #eee;
+  background: var(--pre-bg);
+  color: var(--pre-ink);
   padding: 1rem;
-  border-radius: 8px;
   overflow: auto;
   max-height: 28rem;
   white-space: pre-wrap;
 }
 
 .status.ok {
-  color: #15803d;
+  color: var(--ok);
 }
 
 .status.error {
-  color: #b91c1c;
+  color: var(--err);
 }
 
 button {
   margin: 0.25rem 0.5rem 0.25rem 0;
+}
+
+.chrome-footer {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.footer-links a {
+  color: var(--accent);
 }

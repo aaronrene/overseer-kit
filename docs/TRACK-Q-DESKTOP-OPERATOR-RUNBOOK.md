@@ -24,16 +24,21 @@ paste prompts** and terminal commands — see `README.md` §AI tool compatibilit
 
 ---
 
-## Path A — Non-developer / any chatbot (no desktop required)
+## Path A — Handover paste (any chatbot; no desktop required)
 
-This is the **intended normie path** today and does not require Cursor or the desktop app.
+**Way forward:** Overseer Kit is **developer-centric**. Day-to-day task/product UX belongs in
+consumers such as **Scooling**; this kit stays portable governance. Path A remains valid for
+anyone with a checkout, but the public site is not an end-user product — it explains and links.
 
-1. **Install the kit once** on your machine (or use a teammate’s checkout path).
+Path A does **not** require Cursor or the desktop app. It **does** require a project that already
+has the kit installed (one-time setup). The public website alone does not replace that install step.
+
+1. **Install the kit once** on the machine that holds the project (or use a teammate’s checkout path).
 2. In **your project repo**, run once:
    ```bash
    /path/to/overseer-kit/cli/ok -C /path/to/your-repo init --regime git-only --non-interactive
    ```
-3. Open `docs/OVERSEER-HANDOVER.md` in your repo.
+3. Open `docs/OVERSEER-HANDOVER.md` in your repo (filenames may differ per consumer config).
 4. Copy the **Paste-ready prompt** block into **any** AI session (Cursor, Claude, ChatGPT, etc.).
 5. When the session ends, run (or ask the agent to run):
    ```bash
@@ -42,7 +47,11 @@ This is the **intended normie path** today and does not require Cursor or the de
 6. Commit on a feature branch; merge to `main` only when a human approves (Tier 3).
 
 **Wizard equivalent:** the HANDOVER **NEXT SESSION** block *is* the wizard — one step, one model
-label, one paste fence. No separate GUI wizard ships yet.
+label, one paste fence. No separate GUI wizard ships in kit core yet.
+
+**Website visitors:** use the public landing (`docs/landing/` / custom domain) to understand
+L0→L3 and open GitHub. Day-to-day work still goes through Path A (paste) or a future product
+shell that wraps kit commands (Track O — consumer UX, not kit core).
 
 ---
 

@@ -1,4 +1,4 @@
-/** Overseer App static UI — in-memory auth only (§Q0.6.2). */
+/** Overseer Kit ok app static UI — in-memory auth only (§Q0.6.2 / §Q4A). */
 
 let sessionCredential = null;
 let csrfToken = null;
@@ -38,6 +38,68 @@ function requireConfirm(message) {
   return window.confirm(message);
 }
 
+function activateTab(tabId) {
+  document.querySelectorAll(".tabs button").forEach((b) => b.classList.remove("active"));
+  document.querySelectorAll(".tab-panel").forEach((p) => p.classList.remove("active"));
+  const button = document.querySelector(`.tabs button[data-tab="${tabId}"]`);
+  const panel = document.getElementById(`tab-${tabId}`);
+  if (button) button.classList.add("active");
+  if (panel) panel.classList.add("active");
+}
+
+function flagLabel(value) {
+  if (value === true) return "ok";
+  if (value === false) return "fail";
+  return "n/a";
+}
+
+function nested(obj, path) {
+  let cur = obj;
+  for (const key of path) {
+    if (cur === null || cur === undefined || typeof cur !== "object") return undefined;
+    cur = cur[key];
+  }
+  return cur;
+}
+
+function humanizeStatus(payload) {
+  const result = payload && typeof payload.result === "object" && payload.result !== null
+    ? payload.result
+    : {};
+  const pending = nested(result, ["governance_gates", "pending"]);
+  const pendingCount = Array.isArray(pending) ? String(pending.length) : "n/a";
+  const rows = [
+    { label: "Regime", value: nested(result, ["vcs", "regime"]) ?? "n/a" },
+    { label: "Substrate", value: flagLabel(nested(result, ["substrate", "ok"])) },
+    { label: "Muse sync", value: flagLabel(nested(result, ["muse_sync", "ok"])) },
+    {
+      label: "Footprint",
+      value: flagLabel(nested(result, ["footprint_self_integrity", "ok"])),
+    },
+    {
+      label: "Exit code",
+      value: payload && payload.exit_code !== undefined && payload.exit_code !== null
+        ? String(payload.exit_code)
+        : "n/a",
+    },
+    { label: "Pending gates", value: pendingCount },
+  ];
+  const root = document.getElementById("status-summary");
+  root.replaceChildren();
+  for (const row of rows) {
+    const card = document.createElement("div");
+    card.className = "status-card";
+    const label = document.createElement("span");
+    label.className = "label";
+    label.textContent = row.label;
+    const value = document.createElement("span");
+    value.className = "value";
+    value.textContent = String(row.value);
+    card.append(label, value);
+    root.append(card);
+  }
+}
+
 document.getElementById("auth-save").addEventListener("click", async () => {
   sessionCredential = document.getElementById("session-input").value.trim();
   csrfToken = document.getElementById("csrf-input").value.trim();
@@ -54,6 +116,7 @@ document.getElementById("auth-save").addEventListener("click", async () => {
     setAuthStatus("Connected.", true);
     document.getElementById("tabs").hidden = false;
     document.getElementById("content").hidden = false;
+    activateTab("overview");
   } catch (err) {
     setAuthStatus(`Connection error: ${err}`, false);
   }
@@ -61,15 +124,17 @@ document.getElementById("auth-save").addEventListener("click", async () => {
 
 document.querySelectorAll(".tabs button").forEach((button) => {
   button.addEventListener("click", () => {
-    document.querySelectorAll(".tabs button").forEach((b) => b.classList.remove("active"));
-    document.querySelectorAll(".tab-panel").forEach((p) => p.classList.remove("active"));
-    button.classList.add("active");
-    document.getElementById(`tab-${button.dataset.tab}`).classList.add("active");
+    activateTab(button.dataset.tab);
   });
+});
+
+document.getElementById("open-structure").addEventListener("click", () => {
+  activateTab("structure");
 });
 
 document.getElementById("refresh-status").addEventListener("click", async () => {
   const { payload } = await apiFetch("/api/status");
+  humanizeStatus(payload);
   showJson("status-output", payload);
 });
 

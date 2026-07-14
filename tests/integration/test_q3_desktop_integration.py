@@ -30,7 +30,7 @@ def test_desktop_launcher_starts_ok_app_and_serves_ui(tmp_path: Path) -> None:
         )
         with urllib.request.urlopen(request, timeout=5) as response:
             html = response.read().decode("utf-8")
-        assert "Overseer App" in html
+        assert "Overseer Kit" in html
         assert "/assets/app.js" in html
     finally:
         launcher.stop()
