@@ -437,19 +437,14 @@ h3 {
 
 .musehub-brand {
   display: inline-flex;
-  text-decoration: none;
   color: #6ea0f3;
-}
-
-.musehub-brand:hover {
-  color: #8bb6f7;
 }
 
 .musehub-logo {
   display: block;
-  height: 2.25rem;
+  height: 4.25rem;
   width: auto;
-  color: inherit;
+  max-width: min(22rem, 100%);
 }
 
 .musehub-copy h2 {
@@ -469,14 +464,19 @@ h3 {
   font-size: 0.9375rem;
 }
 
+.musehub-links code {
+  font-size: 0.8125rem;
+}
+
 @media (min-width: 720px) {
   .musehub-band-inner {
-    grid-template-columns: minmax(9rem, 11rem) 1fr;
-    gap: 2rem;
+    grid-template-columns: minmax(14rem, 18rem) 1fr;
+    gap: 2.25rem;
   }
 
   .musehub-logo {
-    height: 2.5rem;
+    height: 5.5rem;
+    max-width: none;
   }
 }
 

@@ -63,15 +63,16 @@
 
     <section id="musehub" class="musehub-band" aria-labelledby="musehub-heading">
       <div class="musehub-band-inner">
-        <a class="musehub-brand" href="https://github.com/aaronrene/overseer-kit/blob/main/docs/K7-DOGFOOD-OPERATOR-RUNBOOK.md" aria-label="MuseHub deepen — operator runbook">
-          <img class="musehub-logo" src="assets/musehub-logo.svg" width="200" height="48" alt="MuseHub">
-        </a>
+        <div class="musehub-brand" aria-hidden="false">
+          <img class="musehub-logo" src="assets/musehub-logo.svg" width="360" height="80" alt="MuseHub">
+        </div>
         <div class="musehub-copy">
           <h2 id="musehub-heading">Same CLI. Deeper history with MuseHub.</h2>
-          <p>Overseer Kit is complete on GitHub alone. When provenance matters, MuseHub is the optional substrate underneath — content-addressed history, stronger continuity across sessions, Muse as canonical memory (GitHub can stay the mirror). Same <code>ok</code> commands; not a second agent product.</p>
+          <p>Overseer Kit already connects to MuseHub. You can run fully on GitHub alone; when you want Muse as the memory layer — content-addressed history, stronger continuity, GitHub as the mirror — flip the regime. Same <code>ok</code> commands. Not a second agent product.</p>
           <p class="musehub-links">
-            <a href="#diagram-regimes">See VCS regimes</a>
-            · <a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/K7-DOGFOOD-OPERATOR-RUNBOOK.md">Muse dogfood runbook</a>
+            <a href="#diagram-regimes">See the three regimes</a>
+            · Start Muse-backed:
+            <code>ok init --regime muse+git-mirror</code>
           </p>
         </div>
       </div>
@@ -247,8 +248,9 @@
           <p><a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/CONSUMER-ADAPTER-PATTERN.md">Adapter pattern</a> — kit sockets vs what your repo owns.</p>
         </div>
         <div class="card">
-          <h3>Optional Muse deepen</h3>
-          <p>Same CLI; optional content-addressed history when you need it. Install Muse separately — the public MuseHub web origin is not linked here while its TLS is broken.</p>
+          <h3>Optional MuseHub</h3>
+          <p>Same CLI; optional content-addressed history when you need it. See
+            <a href="#musehub">MuseHub deepen</a> and <a href="#diagram-regimes">VCS regimes</a>.</p>
         </div>
       </div>
     </section>
@@ -265,8 +267,9 @@
       <p>Full guide:
         <a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/GIT-ONLY-QUICKSTART.md">Git-only quickstart</a>
         · <a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/CONSUMER-ADAPTER-PATTERN.md">Consumer adapter pattern</a>
-        · Muse deepen notes:
-        <a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/K7-DOGFOOD-OPERATOR-RUNBOOK.md">K7 dogfood runbook</a></p>
+        · Muse-backed:
+        <a href="#musehub">MuseHub deepen</a>
+        / <code>ok init --regime muse+git-mirror</code></p>
     </section>
 
     <section id="funnel">

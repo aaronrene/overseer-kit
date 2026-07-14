@@ -161,11 +161,17 @@ def test_musehub_band_under_hero() -> None:
     assert "Same CLI. Deeper history with MuseHub." in html
     assert "assets/musehub-logo.svg" in html
     assert "musehub.ai" not in html
+    assert "K7-DOGFOOD-OPERATOR-RUNBOOK" not in html
+    assert "ok init --regime muse+git-mirror" in html
+    assert "already connects to MuseHub" in html
+    logo = (KIT_ROOT / "docs" / "landing" / "assets" / "musehub-logo.svg").read_text(
+        encoding="utf-8"
+    )
+    assert "#6EA0F3" in logo
     hero_end = html.index('id="hero"')
     muse = html.index('id="musehub"')
     problem = html.index('id="problem"')
     assert hero_end < muse < problem
-    assert (KIT_ROOT / "docs" / "landing" / "assets" / "musehub-logo.svg").is_file()
 
 
 def test_theme_defaults_dark_not_os_preference() -> None:
