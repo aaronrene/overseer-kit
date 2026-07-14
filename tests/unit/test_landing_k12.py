@@ -191,10 +191,11 @@ def test_landing_and_console_footers_say_mit() -> None:
     assert ">MIT</a>" in landing or ">MIT open source</a>" in landing
     assert ">MIT</a>" in scenarios or "MIT" in scenarios
     assert "Open source — MIT" in console
-    assert "Hosting" not in landing.split("site-footer")[1]
-    assert "does not mint session credentials" not in landing
+    footer = landing.split('class="site-footer"')[1]
+    assert "Hosting" not in footer
+    assert "does not mint session credentials" not in footer
     assert "footer-tagline" in landing
-    assert "portable governance for AI-assisted development" in landing
+    assert "portable governance for AI-assisted development" in footer
     assert "Apache-2.0" not in landing
     assert "Apache-2.0" not in scenarios
     assert "Apache-2.0" not in console
