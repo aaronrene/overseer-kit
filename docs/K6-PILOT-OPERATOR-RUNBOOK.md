@@ -14,10 +14,10 @@ Do not run these steps against a production tree without explicit consent for a
 
 ## Install order (one repo at a time)
 
-1. Scooling (`muse+git-mirror`)
-2. Knowtation (`muse+git-mirror`)
+1. Scooling (`muse+git-mirror`) — setup: `docs/consumers/scooling/OVERSEER-SETUP.md`
+2. Knowtation (`muse+git-mirror`) — setup: add `docs/consumers/knowtation/` when piloted
 3. MuseHub (`muse-only`) — requires `vcs.muse.working_dir` seam + `adapter.status()` OK
-4. VideoFactory (`git-only`)
+4. VideoFactory (`git-only`) — setup: `docs/consumers/videofactory/OVERSEER-SETUP.md`
 
 Do not start the next consumer until the previous step’s kit-side fixture tests
 are green **and** (for live runs) the previous parity gate is PASS or explicitly
