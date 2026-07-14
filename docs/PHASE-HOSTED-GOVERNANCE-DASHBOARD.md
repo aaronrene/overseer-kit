@@ -604,9 +604,9 @@ Escalation categories for freeze review remain: `security`, `irreversible`, `rea
 
 ### §HGD.14.2 — Auto build (later)
 
-- [ ] Mechanical implementation matches §§HGD.4–HGD.11 and §HGD.10
-- [ ] Seven-tier matrix §HGD.12 green
-- [ ] `/build-verification-review` → `pass` before ROADMAP Auto → DONE
-- [ ] Governance sync (ROADMAP + HANDOVER) in the closing commit
-- [ ] Feature-branch push / PR only; merge remains Tier 3
-- [ ] Track Q surfaces unchanged (no scope merge)
+- [x] Mechanical implementation matches §§HGD.4–HGD.11 and §HGD.10
+- [x] Seven-tier matrix §HGD.12 green
+- [x] `/build-verification-review` → `pass` before ROADMAP Auto → DONE
+- [x] Governance sync (ROADMAP + HANDOVER) in the closing commit
+- [x] Feature-branch push / PR only; merge remains Tier 3
+- [x] Track Q surfaces unchanged (no scope merge)

@@ -20,12 +20,14 @@ COMMANDS = frozenset(
         "ledger",
         "route",
         "app",
+        "hosted-dashboard",
         "upgrade-regime",
     }
 )
 from cli.commands.app import run_app
 from cli.commands.governance_sync import run_governance_sync_command
 from cli.commands.honesty_status import run_honesty_status_command
+from cli.commands.hosted_dashboard import run_hosted_dashboard
 from cli.commands.init import run_init
 from cli.commands.ledger import run_ledger_command
 from cli.commands.review import run_review
@@ -170,6 +172,15 @@ def build_parser() -> argparse.ArgumentParser:
     app_parser.add_argument("--bind", default="127.0.0.1", metavar="ADDRESS")
     app_parser.add_argument("--open", action="store_true", help="Open default browser after listen")
 
+    hd_parser = subparsers.add_parser(
+        "hosted-dashboard",
+        help="Read-only remote governance dashboard preview (§HGD)",
+    )
+    hd_parser.add_argument("--port", type=int, default=8766, metavar="PORT")
+    hd_parser.add_argument("--bind", default="127.0.0.1", metavar="ADDRESS")
+    hd_parser.add_argument("--config", metavar="PATH", help="Config file with hosted_dashboard block")
+    hd_parser.add_argument("--open", action="store_true", help="Open default browser after listen")
+
     ur_parser = subparsers.add_parser(
         "upgrade-regime",
         help="Stage 3 ceremony: muse-only → muse+git-mirror (Track O / O3)",
@@ -279,6 +290,8 @@ def main(argv: list[str] | None = None, *, ctx: CliContext | None = None) -> int
         return run_route_command(args, runtime)
     if args.command == "app":
         return run_app(args, runtime)
+    if args.command == "hosted-dashboard":
+        return run_hosted_dashboard(args, runtime)
     if args.command == "upgrade-regime":
         return run_upgrade_regime_command(args, runtime)
 

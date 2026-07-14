@@ -65,6 +65,8 @@ DEFAULT_MODEL_ROUTING_POLICY = "policy/model-routing.yaml"
 COST_AWARENESS_SURFACES = frozenset({"status", "governance-sync"})
 COST_AWARENESS_KEYS = frozenset({"enabled", "surfaces"})
 
+# Hosted dashboard keys live in tools.hosted_dashboard.config (import deferred to avoid cycles).
+
 
 @dataclass(frozen=True)
 class GitConfig:
@@ -202,6 +204,21 @@ class CostAwarenessConfig:
 
 
 @dataclass(frozen=True)
+class HostedDashboardSection:
+    """Optional hosted_dashboard settings (§HGD.10.2) — opaque validated mapping holder."""
+
+    # Parsed by tools.hosted_dashboard.config; stored as validated object.
+    enabled: bool = False
+    allow_non_loopback: bool = False
+    cors_origins: tuple[str, ...] = ()
+    org_allowlist: tuple[str, ...] = ()
+    github_contents: bool = True
+    github_meta: bool = True
+    github_checks_advisory: bool = False
+    musehub_read: bool = False
+
+
+@dataclass(frozen=True)
 class ExtensionEntry:
     """One extensions[] escape-hatch entry (§K9.2)."""
 
@@ -226,6 +243,7 @@ class OverseerConfig:
     governance_gates: GovernanceGatesConfig = GovernanceGatesConfig()
     model_routing: ModelRoutingConfig = ModelRoutingConfig()
     cost_awareness: CostAwarenessConfig = CostAwarenessConfig()
+    hosted_dashboard: HostedDashboardSection = HostedDashboardSection()
 
 
 def load_config(path: Path) -> OverseerConfig:
@@ -378,6 +396,7 @@ def _validate_config(raw: dict[str, Any], path: str) -> OverseerConfig:
     governance_gates = _parse_governance_gates(raw.get("governance_gates"), path)
     model_routing = _parse_model_routing(raw.get("model_routing"), path)
     cost_awareness = _parse_cost_awareness(raw.get("cost_awareness"), path)
+    hosted_dashboard = _parse_hosted_dashboard(raw.get("hosted_dashboard"), path)
 
     return OverseerConfig(
         overseer_config_version=version,
@@ -398,6 +417,7 @@ def _validate_config(raw: dict[str, Any], path: str) -> OverseerConfig:
         governance_gates=governance_gates,
         model_routing=model_routing,
         cost_awareness=cost_awareness,
+        hosted_dashboard=hosted_dashboard,
     )
 
 
@@ -908,6 +928,28 @@ def _parse_model_routing(raw_routing: Any, path: str) -> ModelRoutingConfig:
     _validate_repo_relative_path(policy, "model_routing.policy", path)
 
     return ModelRoutingConfig(enabled=enabled, policy=policy.strip())
+
+
+def _parse_hosted_dashboard(raw_block: Any, path: str) -> HostedDashboardSection:
+    """Parse optional ``hosted_dashboard`` section (§HGD.10.2); unknown keys fail closed."""
+    if raw_block is None:
+        return HostedDashboardSection()
+    try:
+        from tools.hosted_dashboard.config import parse_hosted_dashboard_config
+
+        parsed = parse_hosted_dashboard_config(raw_block, path=path)
+    except Exception as exc:
+        raise ConfigError(str(exc), path) from exc
+    return HostedDashboardSection(
+        enabled=parsed.enabled,
+        allow_non_loopback=parsed.allow_non_loopback,
+        cors_origins=parsed.cors_origins,
+        org_allowlist=parsed.org_allowlist,
+        github_contents=parsed.sources.github_contents,
+        github_meta=parsed.sources.github_meta,
+        github_checks_advisory=parsed.sources.github_checks_advisory,
+        musehub_read=parsed.sources.musehub_read,
+    )
 
 
 def _parse_cost_awareness(raw_cost: Any, path: str) -> CostAwarenessConfig:

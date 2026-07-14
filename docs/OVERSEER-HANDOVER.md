@@ -6,15 +6,14 @@
 
 ---
 
-## NEXT SESSION — Hosted governance dashboard Auto (▶ NEXT)
+## NEXT SESSION — Q3-release desktop installers Thinking (▶ NEXT)
 
 **Date:** 2026-07-13  
-**Current position:** **Hosted governance dashboard Thinking DONE** (freeze-reviewed → `pass`,
-HGD-r3). Contract at `docs/PHASE-HOSTED-GOVERNANCE-DASHBOARD.md` (stamp `sha256:af8419e1…`).
-Track P / Track O / Track Q kit chains remain complete.  
-**Model:** **Auto**  
-**Operator note:** Build read-only remote glance only — no Track Q rewrite, no git/muse mutation,
-no product data store, no Tier-3 merge.
+**Current position:** **Hosted governance dashboard Auto DONE** (build-verified → `pass`,
+HGD-BV-r1). Active build-queue row clear. Recommend promoting **Q3-release** (signed desktop
+installers) from the exploration backlog.  
+**Model:** **Thinking**  
+**Operator note:** Spec-only Thinking freeze — no CI/signer secrets, no Tier-3 merge.
 
 
 ### What just landed
@@ -22,48 +21,44 @@ no product data store, no Tier-3 merge.
 
 | Slice                                                             | Deliverable                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Hosted governance dashboard freeze DONE (Thinking)**            | `docs/PHASE-HOSTED-GOVERNANCE-DASHBOARD.md` reviewed → **`pass` (HGD-r3)**, stamp `sha256:af8419e1…`. Closed GET-only remote surface; Track Q contrast; rejection + capability tiers; §HGD.12 seven-tier matrix. **Spec-only.**                                                                                                                                                                                                   |
-| **Track P / P-deploy build DONE (Auto)**                          | Built against `docs/PHASE-TRACK-P-P-DEPLOY.md` → BV **`pass` (P-deploy-BV-r1)**. Mode C + `require_deploy_health` + twin `/deploy-verification-review`. **798** tests green (+37 §PD.9).                                                                                                                                                                          |
-| **Track O / O3 Stage 3 upgrade-regime build DONE (Auto)**         | `ok upgrade-regime` (§O2.7); runbook; BV **`pass` (O3-BV-r2)**.                                                                                                                                                                                                                                                                                                                                                                |
+| **Hosted governance dashboard build DONE (Auto)**                 | Built against `docs/PHASE-HOSTED-GOVERNANCE-DASHBOARD.md` → BV **`pass` (HGD-BV-r1)**. `tools/hosted_dashboard/` + GET-only `api/*` + Bearer auth + `ok hosted-dashboard` (8766) + UI honesty banner + runbook + SPEC §5. Seven-tier §HGD.12 (**50** green). Track Q untouched.                                                                                                                                                  |
+| **Hosted governance dashboard freeze DONE (Thinking)**            | `docs/PHASE-HOSTED-GOVERNANCE-DASHBOARD.md` reviewed → **`pass` (HGD-r3)**, stamp `sha256:af8419e1…`. Spec-only.                                                                                                                                                                                                                                                  |
+| **Track P / P-deploy build DONE (Auto)**                          | Built against `docs/PHASE-TRACK-P-P-DEPLOY.md` → BV **`pass` (P-deploy-BV-r1)**. **798** tests green (+37 §PD.9).                                                                                                                                                                                                                                               |
 
 
 
-### THE ONE NEXT STEP — **Model: Auto**
+### THE ONE NEXT STEP — **Model: Thinking**
 
 
 |                |                                                                                                                                     |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID**         | **Hosted governance dashboard** (Auto build)                                                                                        |
-| **Branch**     | `feat/hosted-governance-dashboard-build` (suggested)                                                                                |
-| **Read first** | Frozen `docs/PHASE-HOSTED-GOVERNANCE-DASHBOARD.md`; Track Q Q0 (do not merge scopes)                                                 |
-| **Deliver**    | `tools/hosted_dashboard/` + GET-only server + static UI + `ok hosted-dashboard` + runbook + §HGD.12 seven tiers; BV → `pass`        |
-| **Hard stops** | No remote write; no Track Q redesign; no product data store; no Tier-3 merge; `/build-verification-review` before DONE               |
+| **ID**         | **Q3-release — desktop installers** (Thinking freeze)                                                                               |
+| **Branch**     | `feat/q3-release-desktop-installers-freeze` (suggested)                                                                             |
+| **Read first** | Exploration backlog row in `docs/ROADMAP.md`; Track Q Q3 (`desktop/`); `docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md` (distribution only)  |
+| **Deliver**    | Freeze CI publish of signed Tauri artifacts (`.dmg` / `.msi` / `.AppImage`); rejection table; seven-tier matrix — **spec-only**     |
+| **Hard stops** | No unsigned secret commit; no engine/API rewrite; no Tier-3 merge; packaging/distribution only                                       |
 
 
 
-### Paste-ready prompt — Hosted governance dashboard Auto
+### Paste-ready prompt — Q3-release Thinking
 
 ```
-Phase Hosted governance dashboard — Auto build (overseer-kit).
+Phase Q3-release — desktop installers Thinking freeze (overseer-kit).
 
-Model: Auto
+Model: Thinking
 
-Read first: docs/PHASE-HOSTED-GOVERNANCE-DASHBOARD.md (frozen — do not re-derive);
-  docs/ROADMAP.md (Hosted governance dashboard build row);
+Read first: docs/ROADMAP.md (exploration backlog Q3-release row);
   docs/OVERSEER-HANDOVER.md (shared context);
-  docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md (local UI contrast — do not merge scopes);
-  .cursor/skills/build-verification-review/SKILL.md.
+  desktop/ + tools/desktop/ (Q3 shipped packaging);
+  docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md (distribution boundary);
+  .cursor/skills/freeze-review-loop/SKILL.md.
 
-Task: Build mechanically against the frozen hosted read-only governance dashboard contract:
-  - tools/hosted_dashboard/ adapters (github_contents/meta; optional checks/musehub_read)
-  - Closed GET-only api/* (§HGD.5); Bearer viewer auth (§HGD.6); document-derived + advisory gates
-  - ok hosted-dashboard CLI preview (port 8766); static UI + honesty banner
-  - Operator runbook docs/HOSTED-GOVERNANCE-DASHBOARD-OPERATOR-RUNBOOK.md
-  - Seven-tier §HGD.12 green; /build-verification-review → pass before DONE
-  - Governance sync ROADMAP + HANDOVER
+Task: Freeze how CI publishes signed Tauri installers (.dmg / .msi / .AppImage)
+so Path C is not build-from-source only. Packaging/distribution only — no engine redesign.
+Include rejection table, credential/signing boundary, seven-tier matrix for the Auto build.
+Run /freeze-review-loop → pass before clearing Auto.
 
-Hard stops: no Track Q rewrite; no git/muse/GitHub write path; no kit-owned product data store;
-  no CD/deploy/probes; no Tier-3 merge.
+Hard stops: no secrets in repo; no Track Q engine rewrite; no Tier-3 merge; spec-only.
 ```
 
 
@@ -105,7 +100,7 @@ Hard stops: no Track Q rewrite; no git/muse/GitHub write path; no kit-owned prod
 | **Track P / P-cost** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-P-P-COST-AWARENESS.md` reviewed → `pass`, P-cost-r2) + Auto build (build-verified → `pass`, P-cost-BV-r1). Cost-awareness surface shipped: `cost_class` on `model_tiers`, `tools/cost_awareness/`, `cost_awareness:` config, additive `overseer route` cost fields, exit `32`, status + governance-sync reminders. **569** tests green (+40 §PC.9). Kit = cost-awareness rule-holder, runtime = spender |
 | **Track P / P-evidence** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-P-P-EVIDENCE.md` reviewed → `pass`, P-evidence-r3) + Auto build (build-verified → `pass`, P-evidence-BV-r1). Verification-evidence capture shipped: `verification_evidence` kind, artifact types, `require_verification_evidence`, honesty-status Mode B, exit `33`, twin build-verification V8 delta. **612** tests green (+43 §PE.10). Kit records/gates; never deploys |
 | **Track P / P-deploy** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-P-P-DEPLOY.md` reviewed → `pass`, P-deploy-r3) + Auto build (build-verified → `pass`, P-deploy-BV-r1). Mode C + `require_deploy_health` + twin `/deploy-verification-review` + exit `34`. **798** tests green (+37 §PD.9). Kit records/gates; never deploys/probes |
-| **Hosted governance dashboard** | **Thinking DONE** — `docs/PHASE-HOSTED-GOVERNANCE-DASHBOARD.md` reviewed → `pass` (HGD-r3), stamp `sha256:af8419e1…`. Auto build **TODO**. Read-only remote glance; not Track Q |
+| **Hosted governance dashboard** | **DONE** — Thinking freeze (`pass`, HGD-r3) + Auto build (BV `pass`, HGD-BV-r1). `tools/hosted_dashboard/` + `ok hosted-dashboard`; §HGD.12 **50** green. Read-only remote glance; not Track Q |
 | **Track Q / Q0** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md` reviewed → `pass`, Q0-r2), stamp `sha256:3c3f6229…`. Freezes `overseer app` local-only UI contract |
 | **Track Q / Q1** | **DONE** — Auto build (build-verified → `pass`, Q1-BV-r1). `overseer app` stdlib loopback server + static UI; `tools/app/` + `cli/commands/app.py`; closed `api/*`; Bearer + CSRF; seven-tier §Q0.12. **654** tests green (+42) |
 | **Track Q / Q2a**         | **DONE** — Thinking freeze (`docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md` reviewed → `pass`, Q2a-r2), stamp `sha256:dbfbf9ad…`. Freezes canonical `ok` CLI entrypoint + `overseer` compat shim; seven-tier §Q2A.10. Spec-only. Cleared for Q2b |
@@ -117,7 +112,7 @@ Hard stops: no Track Q rewrite; no git/muse/GitHub write path; no kit-owned prod
 | **Track O / O2**          | **DONE** — Stage 3 kit upgrade ceremony Thinking freeze (`docs/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md` reviewed → `pass`, O2-r3), stamp `sha256:ac970077…` |
 | **Track O / O3**          | **DONE** — `ok upgrade-regime` build-verified → `pass` (O3-BV-r2). Runbook + contract/harness retarget; **761** tests green (+33 §O2.9). Track O kit chain complete |
 | **CLI entrypoint**        | **`ok`** (canonical `./cli/ok`); **`overseer`** compat shim (`./cli/overseer`, one-line stderr deprecation) |
-| **CLI subcommands**       | `init` \| `sync` \| `status` \| `review --freeze` \| `governance-sync` \| `verify-step` \| `honesty-status` \| `ledger` \| `route` \| `app` \| `upgrade-regime` |
+| **CLI subcommands**       | `init` \| `sync` \| `status` \| `review --freeze` \| `governance-sync` \| `verify-step` \| `honesty-status` \| `ledger` \| `route` \| `app` \| `hosted-dashboard` \| `upgrade-regime` |
 | **Muse dogfood** | **D2 repaired** + substrate health + gate reminders + **muse-sync hard gate (KH2)** + **footprint self-integrity hard gate (KH3)** live; `muse rev-parse` reads plain-text SHA (0.2.x returns bare SHA on success; JSON only on failure/non-zero); `governance-sync --dry-run` exits 0; muse canonical HEAD `sha256:3e14450f…` (catch-up commit; genesis `sha256:4671b7f…`) |
 | **KH1b** | **DONE** — substrate §1 + gate reminders §2 |
 | **KH2** | **DONE** — Muse-sync hard gate (freeze `pass` KH2-r2 + Auto build); `tools/muse_sync/`; fail-closed on `status --exit-code` / `review --freeze` / `governance-sync` |
@@ -131,11 +126,11 @@ Hard stops: no Track Q rewrite; no git/muse/GitHub write path; no kit-owned prod
 
 | Item | Value |
 | --- | --- |
-| Branch                    | `feat/hosted-governance-dashboard-freeze`                                                              |
-| HEAD                      | Hosted governance dashboard Thinking freeze (HGD-r3 `pass`) + ROADMAP/HANDOVER close-out               |
-| Muse HEAD | feature-branch tip synced (`muse_sync.ok`; tip after Thinking close-out) |
+| Branch                    | `feat/hosted-governance-dashboard-build`                                                               |
+| HEAD                      | Hosted governance dashboard Auto build (HGD-BV-r1 `pass`) + ROADMAP/HANDOVER close-out                 |
+| Muse HEAD | feature-branch tip (sync after close-out commit) |
 | GitHub bridge | Feature branch (no merge) |
-| Dirty                     | clean after Hosted governance dashboard Thinking close-out                                             |
+| Dirty                     | clean after Hosted governance dashboard Auto close-out                                                 |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -148,6 +143,14 @@ Hard stops: no Track Q rewrite; no git/muse/GitHub write path; no kit-owned prod
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-13** — **Hosted governance dashboard Auto build DONE (build-verified → `pass`, HGD-BV-r1).**
+  Built mechanically against frozen `docs/PHASE-HOSTED-GOVERNANCE-DASHBOARD.md`: `tools/hosted_dashboard/`
+  adapters (`github_contents`/`github_meta`; optional `github_checks_advisory`/`musehub_read`); closed
+  GET-only `api/*` (§HGD.5); Bearer viewer auth (§HGD.6); document-derived + advisory gates; ephemeral
+  cache; `ok hosted-dashboard` (default `127.0.0.1:8766`); static UI + honesty banner; operator runbook;
+  SPEC §5 additive row; `hosted_dashboard` config block. Seven-tier §HGD.12 (**50** green). Track Q
+  surfaces unchanged. Hard stops held (no remote write; no product data store; no CD/probes; no Tier-3
+  merge). ROADMAP Auto → **DONE**. Handover NEXT → **Q3-release** Thinking (exploration backlog).
 - **2026-07-13** — **Hosted governance dashboard Thinking freeze DONE (reviewed → `pass`, HGD-r3).**
   Froze read-only remote org/repo governance glance in `docs/PHASE-HOSTED-GOVERNANCE-DASHBOARD.md`:
   GitHub/MuseHub read APIs; closed GET-only `api/*`; Bearer viewer auth; document-derived vs
