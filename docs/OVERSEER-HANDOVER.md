@@ -6,16 +6,18 @@
 
 ---
 
-## NEXT SESSION — Live consumer dogfood + optional public hosting (▶ NEXT)
+## NEXT SESSION — Public landing redesign Thinking freeze (▶ NEXT)
 
-**Date:** 2026-07-13  
-**Current position:** Track Q / Q4b Path B UI redesign **build-verified → `pass` (Q4b-BV-r1)**.
-`ok app` ships Overview + Structure, four offline diagrams, suite CTAs, status humanization.
-Track Q presentation chain complete. Closed Q0 surface unchanged; LICENSE Apache-2.0.  
-**Model:** **Operator + Auto**  
-**Operator note:** Prefer live VideoFactory / Scooling dogfood (consumer repos; Tier-3 live
-init). Optional: DNS → `docs/landing/` for `overseerkit.com` per `docs/landing/HOSTING.md`.
-Kit feature-branch PR / Muse mirror merge remains Tier 3.
+**Date:** 2026-07-14  
+**Current position:** Q4b Path B console **DONE** (BV `pass`). Operator wants the **public
+explainer site** (`docs/landing/`) remodeled: professional, friendly, no scaffolding/dev residue.
+Site remains static; it links *to* the suite (GitHub / MuseHub / Knowtation) and honestly
+explains how to open the **local** governance console (`ok app` / desktop) — it cannot inject
+loopback session secrets from the public web. Path B auth stays Q0 (Bearer + CSRF; no cookie
+save) unless a later auth Thinking reopens it.  
+**Model:** **Thinking**  
+**Operator note:** This phase is **spec-only**. Visual/copy redesign of `docs/landing/` —
+not another `ok app` rewrite.
 
 
 ### What just landed
@@ -23,43 +25,53 @@ Kit feature-branch PR / Muse mirror merge remains Tier 3.
 
 | Slice | Deliverable |
 | --- | --- |
-| **Track Q / Q4b** | Path B UI redesign BV `pass` (Q4b-BV-r1) — Overview/Structure, four SVGs, CTAs, §Q4A.15 |
-| **Track Q / Q4a** | Freeze `pass` (Q4a-r2) — contract held |
-| **Q3-release pipeline DONE** | Signed Release still optional/later; not primary adopt path |
+| **Track Q / Q4b** | Path B UI redesign BV `pass` (Q4b-BV-r1) |
+| **Access reality** | Desktop Path C already auto-fills session + CSRF; browser path still paste-from-terminal (Q0) |
+| **Public site** | Still `docs/landing/` (K12) — next target |
 
 
 
-### THE ONE NEXT STEP — **Model: Operator + Auto**
+### THE ONE NEXT STEP — **Model: Thinking**
 
 
 |                |                                                                                                                                     |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID**         | **Live VF/Scooling dogfood** (consumer) and/or **overseerkit.com hosting** (operator DNS → static landing) |
-| **Branch** | Consumer repos for dogfood; kit feature branch already carries Q4b (PR/merge = Tier 3) |
-| **Read first** | `docs/consumers/videofactory/OVERSEER-SETUP.md`; `docs/consumers/scooling/OVERSEER-SETUP.md`; `docs/landing/HOSTING.md`; paste fence below |
-| **Deliver** | Live consumer init/status green; or public site front door live — no kit engine redesign |
-| **Hard stops** | No unsigned-installer primary adopt claims; no kit signup/runtime UX; no Tier-3 merge without auth |
+| **ID**         | **Public landing redesign** — Thinking freeze for `docs/landing/` (professional explainer; strip WIP/dev residue) |
+| **Branch** | Feature branch from current (e.g. `thinking/landing-redesign`) |
+| **Read first** | `docs/landing/`; `docs/landing/HOSTING.md`; `docs/PHASE-K12-TRACK-N-LANDING-CONTRACT.md`; paste fence below |
+| **Deliver** | Freeze artifact: visual direction, IA, copy inventory (no DONE/TODO/WIP), suite-door links, how-we-access-local-console honesty, seven-tier matrix for Auto |
+| **Hard stops** | No signup/runtime; no secreting local CSRF into the public site; no Track Q engine reopen; no LICENSE flip |
 
 
 
-### Paste-ready prompt — Live consumer dogfood / public hosting (Operator + Auto)
+### Paste-ready prompt — Public landing redesign (Thinking)
 
 ```
-Overseer Kit — next after Track Q / Q4b UI redesign.
+Overseer Kit — Public landing redesign Thinking freeze.
 
-Model: Operator + Auto
+Model: Thinking
 
-Read first: docs/OVERSEER-HANDOVER.md (verified snapshot); docs/consumers/videofactory/OVERSEER-SETUP.md;
-  docs/consumers/scooling/OVERSEER-SETUP.md; docs/landing/HOSTING.md.
+Read first: docs/landing/index.html + assets/style.css + scenarios/; docs/landing/HOSTING.md;
+  docs/PHASE-K12-TRACK-N-LANDING-CONTRACT.md (prior contract — amend, do not silently ignore);
+  docs/OVERSEER-HANDOVER.md; docs/ROADMAP.md.
 
-Task (pick one primary path — operator-gated):
-  A) Live VideoFactory and/or Scooling dogfood: ok init / status / verify-step in the consumer
-     repo using kit-side setup docs; record results in handover; no kit core redesign.
-  B) overseerkit.com: follow docs/landing/HOSTING.md (static docs/landing/ only); keep
-     developer-centric honesty (site does not run tasks).
+Context: Track Q / Q4b polished the local ok app console (loopback + session/CSRF). That is NOT
+  the public site. Operator wants docs/landing/ remodeled into a professional explainer front
+  door. Strip development scaffolding language (DONE/TODO/WIP/phase IDs, engineer jargon) from
+  visitor-facing copy. Keep developer-honest positioning: site explains; it does not run tasks.
 
-Hard stops: no Tier-3 merge without authorization; no secrets; no claiming Path C unsigned
-  installers as primary adopt; no signup / task-runtime in the kit.
+Task (Thinking freeze only — no Auto UI rewrite in this session):
+  1) Freeze WHAT: IA, sections, audience, visual direction (palette/type/layout), motion budget.
+  2) Freeze HOW: static HTML/CSS only under docs/landing/ (no SPA/Node build for DONE).
+  3) Copy inventory: hero, layers, suite doors, scenarios — visitor language; no residual
+     governance status language on the marketing surface.
+  4) Cross-link honesty: how visitors open the local governance console (ok app / desktop)
+     without claiming the public site can mint or save session/CSRF secrets.
+  5) Rejection table: no signup, no embedded task runtime, no remote CSRF bootstrap from CDN.
+  6) Seven-tier matrix for a later Auto build; Definition of Done; freeze-review → pass.
+
+Hard stops: no secrets; no rewriting tools/app/ engine or Q0 auth; no LICENSE change;
+  no Tier-3 merge; spec artifact only this session.
 ```
 
 
@@ -148,6 +160,10 @@ Hard stops: no Tier-3 merge without authorization; no secrets; no claiming Path 
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-14** — **Operator steer: public landing redesign is NEXT (Thinking).** Path B console
+  stays local/auth-gated (Q0); convenient access path = desktop auto-fill (already shipped) or
+  paste-from-terminal in browser. Regenerated NEXT for professional `docs/landing/` redesign
+  freeze (strip WIP/dev residue; no public CSRF mint). Dogfood/hosting remain parallel options.
 - **2026-07-13** — **Track Q / Q4b Path B UI redesign DONE (build-verified → `pass`, Q4b-BV-r1).**
   Built mechanically against frozen `docs/PHASE-TRACK-Q-Q4A-UI-REDESIGN.md`: rewrote
   `tools/app/static/` (Overview default after auth + Structure gallery; honesty strip; `ok app`
