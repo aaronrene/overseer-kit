@@ -32,15 +32,16 @@
     </nav>
   </header>
 
-  <main>
-    <h1>Scenario gallery</h1>
-    <p class="lead">Five personas showing how living docs and safety layers compose in practice. Structure diagrams explain the machinery; these stories show the jobs.</p>
-
-    <p><strong>Badge key:</strong>
-      <span class="badge badge-dogfood">dogfood</span> in active use ·
-      <span class="badge badge-reference">reference</span> documented pattern ·
-      <span class="badge badge-aspirational">aspirational</span> illustrative only
-    </p>
+  <main class="gallery-main">
+    <header class="gallery-intro">
+      <h1>Scenario gallery</h1>
+      <p class="lead">Five personas showing how living docs and safety layers compose in practice. Each flow below is different — matching that job’s real path.</p>
+      <div class="badge-key" aria-label="Badge key">
+        <span class="badge-key-item"><span class="badge badge-dogfood">dogfood</span> in active use</span>
+        <span class="badge-key-item"><span class="badge badge-reference">reference</span> documented pattern</span>
+        <span class="badge-key-item"><span class="badge badge-aspirational">aspirational</span> illustrative only</span>
+      </div>
+    </header>
 
     <article class="scenario-detail" id="persona-A">
       <span class="badge badge-dogfood">dogfood</span>
@@ -53,9 +54,17 @@
         <li><strong>Dual control:</strong> Independent freeze review (local or API provider in GitHub Actions).</li>
         <li><strong>Optional deepen:</strong> Muse mirror for provenance when history stakes rise.</li>
       </ul>
-      <div class="diagram">Developer → Freeze plan → Review → Auto build → CI gates → Merge
-                                      ↓ fail = no advance
-                              optional Muse provenance</div>
+      <figure class="flow-diagram flow-linear diagram" aria-label="Software engineering flow">
+        <figcaption>Ship path — freeze before build; CI blocks merge</figcaption>
+        <ol class="flow-track">
+          <li>Spec freeze</li>
+          <li>Independent review</li>
+          <li>Auto build</li>
+          <li>CI gates</li>
+          <li class="flow-end">Merge</li>
+        </ol>
+        <p class="flow-aside">Review or CI red → no merge</p>
+      </figure>
       <p>This repo ships a CI pattern as a template:
         <a href="https://github.com/aaronrene/overseer-kit/blob/main/templates/ci/freeze-review-github-actions.yml">freeze-review workflow template</a></p>
     </article>
@@ -71,9 +80,22 @@
         <li><strong>Dual control:</strong> Independent verifier re-runs gates; human listen-approve on the ledger.</li>
         <li><strong>Optional deepen:</strong> Signed approvals + custody pin on Muse when provenance pays for itself.</li>
       </ul>
-      <div class="diagram">Human → Producer → verify scripts → Verifier → Status board
-                                      ↓ fail = no advance
-                              optional Muse custody pin</div>
+      <figure class="flow-diagram flow-converge diagram" aria-label="Video studio flow">
+        <figcaption>Production lane — scripts verify; human listens before advance</figcaption>
+        <div class="flow-split">
+          <ol class="flow-track">
+            <li>Narration</li>
+            <li>Export</li>
+            <li>QC scripts</li>
+          </ol>
+          <span class="flow-join" aria-hidden="true">↘</span>
+          <ol class="flow-track flow-track-short">
+            <li>Independent listen</li>
+            <li class="flow-end">Status board advance</li>
+          </ol>
+        </div>
+        <p class="flow-aside">Any verify fail → remake, no board advance</p>
+      </figure>
     </article>
 
     <article class="scenario-detail" id="persona-C">
@@ -86,9 +108,19 @@
         <li><strong>Dual control:</strong> Verifier re-fetches sample sources; verdict binds output SHA.</li>
         <li><strong>Optional deepen:</strong> Evidence pack as content-addressed tree for peer review snapshot.</li>
       </ul>
-      <div class="diagram">Author → Retrieve sources → Check quotes/tables → Verifier → Publish draft
-                                      ↓ fail = no advance
-                              optional evidence pack on Muse</div>
+      <figure class="flow-diagram flow-loop diagram" aria-label="Research pipeline flow">
+        <figcaption>Evidence loop — re-fetch until quotes and tables match sources</figcaption>
+        <ol class="flow-track">
+          <li>Retrieve + hash</li>
+          <li>Quote / table checks</li>
+          <li>Verifier re-fetch</li>
+        </ol>
+        <p class="flow-loop-label" aria-hidden="true">↻ mismatch → rewrite from sources</p>
+        <ol class="flow-track flow-track-short">
+          <li class="flow-end">Bind output SHA → draft</li>
+        </ol>
+        <p class="flow-aside">Optional: pin evidence pack for peer review</p>
+      </figure>
       <p><em>Domain pack stub — not shipped in kit core.</em></p>
     </article>
 
@@ -102,9 +134,26 @@
         <li><strong>Dual control:</strong> Separate prep vs review roles; verifier + human authorization on export.</li>
         <li><strong>Optional deepen:</strong> Muse capabilities map to propose vs execute transfers.</li>
       </ul>
-      <div class="diagram">Prep → Reconcile checks → Reviewer → Human authorize → Export
-                                      ↓ fail = no advance
-                              optional Muse propose/execute</div>
+      <figure class="flow-diagram flow-dual diagram" aria-label="Accounting close flow">
+        <figcaption>Dual control — prep and review stay separate until authorize</figcaption>
+        <div class="flow-dual-cols">
+          <ol class="flow-track">
+            <li class="flow-role">Prep</li>
+            <li>CSV + checksum</li>
+            <li>Reconcile diffs</li>
+          </ol>
+          <ol class="flow-track">
+            <li class="flow-role">Review</li>
+            <li>Re-run checks</li>
+            <li>Human authorize</li>
+          </ol>
+        </div>
+        <p class="flow-join-line" aria-hidden="true">↓ both green</p>
+        <ol class="flow-track flow-track-short">
+          <li class="flow-end">Export / payout file</li>
+        </ol>
+        <p class="flow-aside">Propose ≠ execute on Muse when transfers are live</p>
+      </figure>
       <p><em>Illustrative — aspirational domain pack; no kit claim of a production close workflow.</em></p>
     </article>
 
@@ -119,9 +168,23 @@
         <li><strong>Dual control:</strong> Optional TA verifier session before grade publish.</li>
         <li><strong>Optional deepen:</strong> Student Muse identity for portfolio provenance.</li>
       </ul>
-      <div class="diagram">Student → Freeze assignment → Build → Tests → TA verify → Grade
-                                      ↓ fail = no advance
-                              optional Muse portfolio pin</div>
+      <figure class="flow-diagram flow-handoff diagram" aria-label="Classroom flow">
+        <figcaption>Teacher sets the rails; student work cannot self-grade</figcaption>
+        <ol class="flow-track">
+          <li class="flow-role">Teacher</li>
+          <li>Install kit</li>
+          <li>Freeze assignment</li>
+        </ol>
+        <p class="flow-join-line" aria-hidden="true">→ handoff</p>
+        <ol class="flow-track">
+          <li class="flow-role">Student</li>
+          <li>Build</li>
+          <li>Tests green</li>
+          <li>TA verify</li>
+          <li class="flow-end">Grade publish</li>
+        </ol>
+        <p class="flow-aside">Later lesson: optional Muse pin for portfolio history</p>
+      </figure>
       <p><strong>Traffic story:</strong> Teacher installs on GitHub; later lesson offers optional Muse deepen for signed portfolio history.</p>
     </article>
   </main>

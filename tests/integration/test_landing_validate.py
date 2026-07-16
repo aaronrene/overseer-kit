@@ -41,9 +41,16 @@ def test_scenarios_share_main_nav_shape() -> None:
     assert "https://github.com/aaronrene/overseer-kit#readme" not in scenarios
     assert 'id="theme-toggle"' in scenarios
     assert ">Landing<" not in scenarios  # no alternate "Landing" chrome swap
-    assert scenarios.count('class="diagram"') == 5
+    assert scenarios.count("flow-diagram") == 5
+    assert "flow-linear" in scenarios
+    assert "flow-converge" in scenarios
+    assert "flow-loop" in scenarios
+    assert "flow-dual" in scenarios
+    assert "flow-handoff" in scenarios
+    assert "fail = no advance" not in scenarios
     assert "Software engineering" in scenarios
     assert scenarios.index("Software engineering") < scenarios.index("Video studio")
+    assert "gallery-intro" in scenarios
 
 
 def test_main_nav_scenarios_goes_to_gallery() -> None:
