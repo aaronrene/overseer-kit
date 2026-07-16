@@ -150,7 +150,9 @@ def test_main_landing_has_no_personal_product_doors() -> None:
     assert "model-routing.yaml" not in html
     assert "governance-sync" not in html
     assert "cta-honesty" not in html.split('id="hero"')[1].split('id="problem"')[0]
-    assert "https://github.com/aaronrene/overseer-kit#readme" in html
+    assert 'href="docs.html">Docs</a>' in html
+    assert (KIT_ROOT / "docs" / "landing" / "docs.html").is_file()
+    assert "https://github.com/aaronrene/overseer-kit#readme" not in html
     assert 'href="assets/favicon.ico"' in html
     assert (KIT_ROOT / "docs" / "landing" / "assets" / "favicon.ico").is_file()
     assert (KIT_ROOT / "docs" / "landing" / "assets" / "ok-mark-1024.png").is_file()
@@ -201,7 +203,8 @@ def test_landing_and_console_footers_say_mit() -> None:
     footer = landing.split('class="site-footer"')[1]
     assert "Hosting" not in footer
     assert "footer-tagline" in landing
-    assert "portable governance for AI-assisted development" in footer
+    assert "🆗 Overseer Kit — portable governance for AI-assisted development." in footer
+    assert "🆗 Overseer Kit — portable governance for AI-assisted development." in scenarios
     assert "Apache-2.0" not in landing
     assert "Apache-2.0" not in scenarios
     assert "Apache-2.0" not in console

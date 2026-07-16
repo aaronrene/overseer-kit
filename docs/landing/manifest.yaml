@@ -16,25 +16,25 @@ sections:
 
 personas:
   - id: A
+    slug: software-engineering
+    title: Software engineering
+    status: dogfood
+  - id: B
     slug: video-studio
     title: Video studio
     status: dogfood
-  - id: B
+  - id: C
     slug: research-pipeline
     title: Research paper pipeline
     status: reference
-  - id: C
+  - id: D
     slug: accounting-close
     title: Accounting close
     status: aspirational
-  - id: D
+  - id: E
     slug: classroom
     title: Classroom
     status: reference
-  - id: E
-    slug: multi-org-oss
-    title: Multi-org open source
-    status: dogfood
 
 status_badges:
   - dogfood

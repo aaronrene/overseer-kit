@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Overseer Kit scenario gallery — video studio, research, accounting, classroom, and OSS personas.">
+  <meta name="description" content="Overseer Kit scenario gallery — software engineering, video studio, research, accounting, and classroom personas.">
   <title>Scenario gallery — Overseer Kit</title>
   <link rel="icon" href="../assets/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="../assets/favicon-32.png" sizes="32x32">
@@ -23,7 +23,7 @@
         <a href="../index.html#structure">Structure</a>
         <a href="../index.html#console-access">Get started</a>
         <a href="index.html" aria-current="page">Scenarios</a>
-        <a href="https://github.com/aaronrene/overseer-kit#readme">Docs</a>
+        <a href="../docs.html">Docs</a>
         <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to light mode" title="Light / dark">
           <span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span>
           <span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span>
@@ -44,7 +44,25 @@
 
     <article class="scenario-detail" id="persona-A">
       <span class="badge badge-dogfood">dogfood</span>
-      <h2>A — Video studio</h2>
+      <h2>A — Software engineering</h2>
+      <p><strong>Pain:</strong> Agents mark features DONE without freeze review; contributors lack honest phase boundaries; merges skip gates.</p>
+      <h3>How the kit helps</h3>
+      <ul class="compact">
+        <li><strong>Baseline:</strong> Public phase board + handover; design → build gates on every slice.</li>
+        <li><strong>Checkpoints:</strong> CI and domain tests as gate equivalents before merge.</li>
+        <li><strong>Dual control:</strong> Independent freeze review (local or API provider in GitHub Actions).</li>
+        <li><strong>Optional deepen:</strong> Muse mirror for provenance when history stakes rise.</li>
+      </ul>
+      <div class="diagram">Developer → Freeze plan → Review → Auto build → CI gates → Merge
+                                      ↓ fail = no advance
+                              optional Muse provenance</div>
+      <p>This repo ships a CI pattern as a template:
+        <a href="https://github.com/aaronrene/overseer-kit/blob/main/templates/ci/freeze-review-github-actions.yml">freeze-review workflow template</a></p>
+    </article>
+
+    <article class="scenario-detail" id="persona-B">
+      <span class="badge badge-dogfood">dogfood</span>
+      <h2>B — Video studio</h2>
       <p><strong>Pain:</strong> Remakes, fake approvals, and “done” narration before export gates pass.</p>
       <h3>How the kit helps</h3>
       <ul class="compact">
@@ -58,9 +76,9 @@
                               optional Muse custody pin</div>
     </article>
 
-    <article class="scenario-detail" id="persona-B">
+    <article class="scenario-detail" id="persona-C">
       <span class="badge badge-reference">reference</span>
-      <h2>B — Research paper pipeline</h2>
+      <h2>C — Research paper pipeline</h2>
       <p><strong>Pain:</strong> Fabricated citations and tables that do not match source data.</p>
       <h3>How the kit helps</h3>
       <ul class="compact">
@@ -68,12 +86,15 @@
         <li><strong>Dual control:</strong> Verifier re-fetches sample sources; verdict binds output SHA.</li>
         <li><strong>Optional deepen:</strong> Evidence pack as content-addressed tree for peer review snapshot.</li>
       </ul>
+      <div class="diagram">Author → Retrieve sources → Check quotes/tables → Verifier → Publish draft
+                                      ↓ fail = no advance
+                              optional evidence pack on Muse</div>
       <p><em>Domain pack stub — not shipped in kit core.</em></p>
     </article>
 
-    <article class="scenario-detail" id="persona-C">
+    <article class="scenario-detail" id="persona-D">
       <span class="badge badge-aspirational">aspirational</span>
-      <h2>C — Accounting close</h2>
+      <h2>D — Accounting close</h2>
       <p><strong>Pain:</strong> Disputed payouts and reconciliations without dual control.</p>
       <h3>How the kit helps</h3>
       <ul class="compact">
@@ -81,12 +102,15 @@
         <li><strong>Dual control:</strong> Separate prep vs review roles; verifier + human authorization on export.</li>
         <li><strong>Optional deepen:</strong> Muse capabilities map to propose vs execute transfers.</li>
       </ul>
+      <div class="diagram">Prep → Reconcile checks → Reviewer → Human authorize → Export
+                                      ↓ fail = no advance
+                              optional Muse propose/execute</div>
       <p><em>Illustrative — aspirational domain pack; no kit claim of a production close workflow.</em></p>
     </article>
 
-    <article class="scenario-detail" id="persona-D">
+    <article class="scenario-detail" id="persona-E">
       <span class="badge badge-reference">reference</span>
-      <h2>D — Classroom</h2>
+      <h2>E — Classroom</h2>
       <p><strong>Pain:</strong> Students skip tests and self-mark assignments complete.</p>
       <h3>How the kit helps</h3>
       <ul class="compact">
@@ -95,22 +119,10 @@
         <li><strong>Dual control:</strong> Optional TA verifier session before grade publish.</li>
         <li><strong>Optional deepen:</strong> Student Muse identity for portfolio provenance.</li>
       </ul>
+      <div class="diagram">Student → Freeze assignment → Build → Tests → TA verify → Grade
+                                      ↓ fail = no advance
+                              optional Muse portfolio pin</div>
       <p><strong>Traffic story:</strong> Teacher installs on GitHub; later lesson offers optional Muse deepen for signed portfolio history.</p>
-    </article>
-
-    <article class="scenario-detail" id="persona-E">
-      <span class="badge badge-dogfood">dogfood</span>
-      <h2>E — Multi-org open source</h2>
-      <p><strong>Pain:</strong> Maintainer merges without freeze review; contributors lack honest phase boundaries.</p>
-      <h3>How the kit helps</h3>
-      <ul class="compact">
-        <li><strong>Baseline:</strong> Public phase board + handover; design → build gates.</li>
-        <li><strong>Checkpoints:</strong> CI runs domain tests as gate equivalents.</li>
-        <li><strong>Dual control:</strong> Freeze review API provider in GitHub Actions.</li>
-        <li><strong>Optional deepen:</strong> Optional mirror to Muse for a provenance badge.</li>
-      </ul>
-      <p>This repo ships the pattern as a template:
-        <a href="https://github.com/aaronrene/overseer-kit/blob/main/templates/ci/freeze-review-github-actions.yml">freeze-review workflow template</a></p>
     </article>
   </main>
 
@@ -120,6 +132,7 @@
       · <a href="https://github.com/aaronrene/overseer-kit/blob/main/SECURITY.md">Security</a>
       · <a href="../index.html">Home</a>
     </p>
+    <p class="footer-tagline">🆗 Overseer Kit — portable governance for AI-assisted development.</p>
   </footer>
 </body>
 </html>

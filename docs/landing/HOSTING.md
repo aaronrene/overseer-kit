@@ -36,6 +36,7 @@ Serve the static tree under `docs/landing/` (GitHub Pages, Cloudflare Pages, Net
 | Path | Role |
 | --- | --- |
 | `/` or `/index.html` | Main landing — structure diagrams + console access playbook |
+| `/docs.html` | Public docs index (works when GitHub repo is private) |
 | `/scenarios/` | Scenario gallery |
 | `/assets/style.css` | Styles (no CDN) |
 | `/assets/diagrams/*.svg` | Offline structure flowcharts |

@@ -37,9 +37,13 @@ def test_scenarios_share_main_nav_shape() -> None:
     assert 'href="index.html"' in scenarios or 'href="./index.html"' in scenarios
     assert 'aria-current="page"' in scenarios
     assert "../index.html#scenarios" not in scenarios
-    assert "https://github.com/aaronrene/overseer-kit#readme" in scenarios
+    assert 'href="../docs.html">Docs</a>' in scenarios
+    assert "https://github.com/aaronrene/overseer-kit#readme" not in scenarios
     assert 'id="theme-toggle"' in scenarios
     assert ">Landing<" not in scenarios  # no alternate "Landing" chrome swap
+    assert scenarios.count('class="diagram"') == 5
+    assert "Software engineering" in scenarios
+    assert scenarios.index("Software engineering") < scenarios.index("Video studio")
 
 
 def test_main_nav_scenarios_goes_to_gallery() -> None:
