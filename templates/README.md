@@ -1,6 +1,6 @@
 # Templates — token-parameterized governance doc skeletons
 
-Copied into consumer repos by `overseer init` / `overseer sync` (K4) with substitution from
+Copied into consumer repos by `ok init` / `ok sync` (K4) with substitution from
 `.overseer/config.yaml`.
 
 | Template | Becomes (typical) |

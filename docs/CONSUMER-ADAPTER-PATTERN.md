@@ -28,11 +28,11 @@ your domain.
 KIT=/path/to/overseer-kit
 REPO=/path/to/consumer
 
-$KIT/cli/overseer -C $REPO init --migrate \
+$KIT/cli/ok -C $REPO init --migrate \
   --from-config $KIT/tests/fixtures/pilot/config-<consumer>.yaml \
   --non-interactive --dry-run
 # then apply without --dry-run
-$KIT/cli/overseer -C $REPO status --check-footprint
+$KIT/cli/ok -C $REPO status --check-footprint
 ```
 
 Customize only `.overseer/config.yaml` (regime, doc paths, future `checkpoints:` / `honesty:`).
@@ -78,9 +78,37 @@ See `docs/PHASE-K8-MULTI-LANE-DOCS-CONTRACT.md` and vision §5.2.
 | Consumer | Kit docs |
 | --- | --- |
 | VideoFactory | `docs/consumers/videofactory/OVERSEER-SETUP.md`, `CHECKPOINT-BUILD-PROMPT.md` |
-| MuseHub / Knowtation / Scooling | Add under `docs/consumers/<name>/` when piloted |
+| Scooling | `docs/consumers/scooling/OVERSEER-SETUP.md` |
+| MuseHub / Knowtation | Add under `docs/consumers/<name>/` when piloted |
 
 Fixture configs: `tests/fixtures/pilot/`.
+
+---
+
+## Positioning (developer-centric — way forward)
+
+**Overseer Kit is governance machinery for developers**, not an end-user frontend product.
+The public site and optional local UI explain patterns and point into the suite — they are not
+where people “run Overseer” day to day.
+
+| Surface | Role | Audience |
+| --- | --- | --- |
+| **Public site** (`overseerkit.com` → static `docs/landing/`) | Explain L0→L3 / scenarios; door into the suite | Devs & operators (marketing clarity) |
+| **GitHub `overseer-kit`** | Clone, `ok init` / migrate, dogfood, contribute | Primary adopt path |
+| **MuseHub** | Optional L3 substrate (signed identity, content-addressed history) | When provenance depth pays |
+| **Knowtation** | Sister product — personal knowledge / vault; optional Track O Stage 4 bind | Separate product, not kit core |
+| **Scooling** | Sister **product runtime** (task/agent orchestration under `src/phase9a/`) that **consumes** the kit for governance | Product owns runtime; kit never vendors Scooling code |
+| **VideoFactory / other repos** | Peer consumers — same kit pattern, domain packs stay in-repo | Same L0–L2 sockets |
+| **`ok app` / desktop / hosted-dashboard** | Optional operator tools in the kit checkout | Devs/operators — not a public SaaS |
+
+**Kit vs Scooling (do not conflate):**
+
+- **Kit** = portable governance (`ok`, roadmap/handover, freeze/BV, verify-step, honesty ledger, VCS adapters).
+- **Scooling** = the product that can *run* multi-agent task work and wrap kit discipline for its users.
+- Other products (Knowtation, VideoFactory, MuseHub) plug in the **same** kit; they are not forks of kit core.
+
+**Public site CTAs (frozen intent):** explain patterns → GitHub (kit) → also MuseHub / Knowtation /
+product docs as sibling doors. No browser signup, no chatbot-hosted runtime on `overseerkit.com`.
 
 ---
 
@@ -89,3 +117,6 @@ Fixture configs: `tests/fixtures/pilot/`.
 - Never hardcode another product’s paths into kit core.
 - Never require MuseHub for L0–L2 baseline.
 - Never use an LLM as the pass/fail authority for measurable artifacts.
+- Never claim the kit website or Track Q UI is an end-user product runtime (that lives in consumers
+  such as Scooling).
+- Never claim a browser-only signup or zero-install Path A until a **product** surface ships it.

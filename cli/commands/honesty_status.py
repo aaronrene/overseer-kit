@@ -19,7 +19,7 @@ def run_honesty_status_command(args: Namespace, ctx: CliContext) -> int:
     repo_root = resolve_repo_root(cwd=ctx.cwd, repo_arg=args.repo, command="honesty-status")
     overseer_dir = repo_root / ".overseer"
     if not overseer_dir.is_dir():
-        ctx.output.error("not initialized — run overseer init first")
+        ctx.output.error("not initialized — run ok init first")
         if args.json:
             ctx.output.emit_json(
                 HonestyStatusJson(
@@ -59,6 +59,9 @@ def run_honesty_status_command(args: Namespace, ctx: CliContext) -> int:
         hook=args.hook,
         artifact=args.artifact,
         producer_session=args.producer_session,
+        verification_evidence=getattr(args, "verification_evidence", None),
+        frozen_spec=getattr(args, "frozen_spec", None),
+        deploy_health=getattr(args, "deploy_health", None),
         emit_json=bool(args.json),
     )
     result = run_honesty_status(config=config, repo_root=repo_root, options=options)
@@ -80,6 +83,10 @@ def run_honesty_status_command(args: Namespace, ctx: CliContext) -> int:
         ctx.output.error("provenance signature verification failed")
     elif result.exit_code == 26:
         ctx.output.error("signature required but absent")
+    elif result.exit_code == 33:
+        ctx.output.error("missing verification evidence")
+    elif result.exit_code == 34:
+        ctx.output.error("missing deploy health")
     elif result.exit_code == 1:
         ctx.output.error("usage")
 

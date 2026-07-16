@@ -1,0 +1,22 @@
+{
+  "kind": "verification_evidence",
+  "actor_role": "verifier",
+  "actor_session_id": "bv-session-2",
+  "phase_id": "Track P / P-deploy",
+  "frozen_spec": "docs/PHASE-TRACK-P-P-DEPLOY.md",
+  "round": 2,
+  "bv_verdict": "pass",
+  "artifacts": [
+    {
+      "type": "test_output",
+      "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "ref": "pytest -q"
+    },
+    {
+      "type": "deploy_health",
+      "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "ref": "https://example.com/health",
+      "notes": "operator-supplied CI health record"
+    }
+  ]
+}

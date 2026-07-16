@@ -1,17 +1,119 @@
-"""Ledger entry validation (§K9.7 / §K9.8)."""
+"""Ledger entry validation (§K9.7 / §K9.8 / §PE.3–§PE.4)."""
 
 from __future__ import annotations
 
+import re
 from typing import Any
 
 from tools.honesty.provenance import validate_provenance
-from tools.honesty.types import ACTOR_ROLES, ENTRY_KINDS, EntryValidationError
+from tools.honesty.types import (
+    ACTOR_ROLES,
+    BV_VERDICTS,
+    ENTRY_KINDS,
+    VERIFICATION_ARTIFACT_TYPES,
+    EntryValidationError,
+)
+
+_SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 
 
 def _require_mapping(value: Any, field: str) -> dict[str, Any]:
     if not isinstance(value, dict):
         raise EntryValidationError(2, f"{field} must be an object")
     return value
+
+
+def _validate_sha256(value: Any, field: str) -> str:
+    if not isinstance(value, str) or not _SHA256_RE.match(value):
+        raise EntryValidationError(2, f"{field} must be lowercase 64-char hex sha256")
+    return value
+
+
+def validate_verification_artifacts(artifacts: Any) -> list[dict[str, Any]]:
+    """Validate ``verification_evidence.artifacts`` per §PE.4."""
+    if not isinstance(artifacts, list) or not artifacts:
+        raise EntryValidationError(24, "artifacts must be a non-empty list")
+    normalized: list[dict[str, Any]] = []
+    for index, item in enumerate(artifacts):
+        obj = _require_mapping(item, f"artifacts[{index}]")
+        art_type = obj.get("type")
+        if art_type not in VERIFICATION_ARTIFACT_TYPES:
+            raise EntryValidationError(
+                2,
+                f"artifacts[{index}].type must be test_output|deploy_health|screenshot",
+            )
+        sha256 = _validate_sha256(obj.get("sha256"), f"artifacts[{index}].sha256")
+        ref = obj.get("ref")
+        if art_type in {"deploy_health", "screenshot"}:
+            _require_non_empty_str(ref, f"artifacts[{index}].ref")
+        elif ref is not None and not isinstance(ref, str):
+            raise EntryValidationError(2, f"artifacts[{index}].ref must be a string when present")
+        notes = obj.get("notes")
+        if notes is not None and not isinstance(notes, str):
+            raise EntryValidationError(2, f"artifacts[{index}].notes must be a string when present")
+        entry: dict[str, Any] = {"type": art_type, "sha256": sha256}
+        if ref is not None:
+            entry["ref"] = ref
+        if notes is not None:
+            entry["notes"] = notes
+        normalized.append(entry)
+    return normalized
+
+
+def find_matching_verification_evidence(
+    entries: list[dict[str, Any]],
+    *,
+    phase_id: str,
+    frozen_spec: str | None,
+) -> dict[str, Any] | None:
+    """Return the last matching pass entry for Mode B (§PE.6.1)."""
+    matches: list[dict[str, Any]] = []
+    for entry in entries:
+        if entry.get("kind") != "verification_evidence":
+            continue
+        if entry.get("actor_role") != "verifier":
+            continue
+        if entry.get("bv_verdict") != "pass":
+            continue
+        if entry.get("phase_id") != phase_id:
+            continue
+        if frozen_spec is not None and entry.get("frozen_spec") != frozen_spec:
+            continue
+        matches.append(entry)
+    return matches[-1] if matches else None
+
+
+def find_matching_deploy_health(
+    entries: list[dict[str, Any]],
+    *,
+    phase_id: str,
+    frozen_spec: str | None,
+) -> dict[str, Any] | None:
+    """Return the last Mode C match: pass + ≥1 ``deploy_health`` artifact (§PD.3).
+
+    Does not open network or treat ``ref`` as a URL.
+    """
+    matches: list[dict[str, Any]] = []
+    for entry in entries:
+        if entry.get("kind") != "verification_evidence":
+            continue
+        if entry.get("actor_role") != "verifier":
+            continue
+        if entry.get("bv_verdict") != "pass":
+            continue
+        if entry.get("phase_id") != phase_id:
+            continue
+        if frozen_spec is not None and entry.get("frozen_spec") != frozen_spec:
+            continue
+        artifacts = entry.get("artifacts")
+        if not isinstance(artifacts, list):
+            continue
+        if not any(
+            isinstance(item, dict) and item.get("type") == "deploy_health" for item in artifacts
+        ):
+            continue
+        matches.append(entry)
+    return matches[-1] if matches else None
 
 
 def _require_non_empty_str(value: Any, field: str) -> str:
@@ -44,14 +146,35 @@ def validate_append_body(*, kind: str, body: dict[str, Any]) -> dict[str, Any]:
     if kind == "genesis":
         if "actor_role" in merged or "actor_session_id" in merged:
             raise EntryValidationError(2, "genesis must not carry actor fields")
-        for key in ("assignment", "artifact_sha256", "passed", "evidence", "subject", "ruling", "bound_verdict_hash", "hook", "ok", "reason", "provenance"):
+        for key in (
+            "assignment",
+            "artifact_sha256",
+            "passed",
+            "evidence",
+            "subject",
+            "ruling",
+            "bound_verdict_hash",
+            "hook",
+            "ok",
+            "reason",
+            "provenance",
+            "phase_id",
+            "frozen_spec",
+            "round",
+            "bv_verdict",
+            "artifacts",
+            "subject_sha256",
+        ):
             if key in merged:
                 raise EntryValidationError(2, f"genesis must not carry {key}")
         return merged
 
     actor_role = merged.get("actor_role")
     if actor_role not in ACTOR_ROLES:
-        raise EntryValidationError(23 if kind == "verdict" else 2, "invalid or missing actor_role")
+        raise EntryValidationError(
+            23 if kind in {"verdict", "verification_evidence"} else 2,
+            "invalid or missing actor_role",
+        )
 
     actor_session = merged.get("actor_session_id")
     _require_non_empty_str(actor_session, "actor_session_id")
@@ -97,6 +220,24 @@ def validate_append_body(*, kind: str, body: dict[str, Any]) -> dict[str, Any]:
         reason = merged.get("reason")
         if reason is not None and not isinstance(reason, str):
             raise EntryValidationError(2, "reason must be a string when present")
+    elif kind == "verification_evidence":
+        if actor_role != "verifier":
+            raise EntryValidationError(23, "verification_evidence requires actor_role=verifier")
+        _require_non_empty_str(merged.get("phase_id"), "phase_id")
+        _require_non_empty_str(merged.get("frozen_spec"), "frozen_spec")
+        round_val = merged.get("round")
+        if not isinstance(round_val, int) or round_val < 1:
+            raise EntryValidationError(2, "round must be an integer >= 1")
+        bv_verdict = merged.get("bv_verdict")
+        if bv_verdict not in BV_VERDICTS:
+            raise EntryValidationError(2, "bv_verdict must be pass|findings|blocked")
+        merged["artifacts"] = validate_verification_artifacts(merged.get("artifacts"))
+        subject_sha256 = merged.get("subject_sha256")
+        if subject_sha256 is not None:
+            _validate_sha256(subject_sha256, "subject_sha256")
+        notes = merged.get("notes")
+        if notes is not None and not isinstance(notes, str):
+            raise EntryValidationError(2, "notes must be a string when present")
 
     if "provenance" in merged:
         merged["provenance"] = validate_provenance(merged["provenance"])

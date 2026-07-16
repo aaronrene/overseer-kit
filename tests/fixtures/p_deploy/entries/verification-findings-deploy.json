@@ -1,0 +1,16 @@
+{
+  "kind": "verification_evidence",
+  "actor_role": "verifier",
+  "actor_session_id": "bv-findings",
+  "phase_id": "Track P / P-deploy",
+  "frozen_spec": "docs/PHASE-TRACK-P-P-DEPLOY.md",
+  "round": 1,
+  "bv_verdict": "findings",
+  "artifacts": [
+    {
+      "type": "deploy_health",
+      "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "ref": "ci-job-42"
+    }
+  ]
+}

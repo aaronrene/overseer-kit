@@ -25,11 +25,14 @@ class GitOnlyAdapter(BaseAdapter):
         dirty_result = self._git("status", "--porcelain")
         if isinstance(dirty_result, ReadError):
             return dirty_result
+        git_is_dirty = bool(dirty_result.stdout.strip())
         return StatusResult(
             regime=self.regime,
-            dirty=bool(dirty_result.stdout.strip()),
+            dirty=git_is_dirty,
             branch=branch_result.stdout,
             notes=["canonical=git", "single-history"],
+            muse_dirty=None,
+            git_dirty=git_is_dirty,
         )
 
     def read_head(self, ref: str) -> HeadResult | ReadError:

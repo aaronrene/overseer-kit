@@ -1,0 +1,13 @@
+{
+  "name": "overseer-kit-desktop",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "bundle-kit": "../scripts/bundle-desktop-kit.sh",
+    "tauri": "tauri"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2"
+  }
+}

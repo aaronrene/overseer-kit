@@ -4,7 +4,7 @@ from __future__ import annotations
 
 FREEZE_REVIEW_INVOKE = (
     "/freeze-review-loop before Thinking freeze → DONE; "
-    "overseer review --freeze when CLI green"
+    "ok review --freeze when CLI green"
 )
 BUILD_VERIFICATION_INVOKE = (
     "/build-verification-review after every Auto {step}b before ROADMAP DONE"

@@ -61,7 +61,7 @@ primitives** (`.cursor/rules/*`, `.cursor/skills/*`, Automation templates); (3) 
 interface** (`read_head`, `read_canonical_anchor`, `realign`, `commit_feature`, `mirror`, plus
 `status`) with three fail-closed backends — `muse+git-mirror`, `muse-only`, `git-only`; (4) the
 **agent tools** (Governance Hygiene Agent = Phase 9A-5, and the Freeze-Step Reviewer); and (5) a
-**language-agnostic vendoring CLI** (`overseer init|sync|status|governance-sync|review`) that
+**language-agnostic vendoring CLI** (`ok init|sync|status|governance-sync|review`; compatibility synonym `overseer`) that
 writes `.overseer/version.lock` and warns on drift. The kit is **VCS-agnostic by construction**:
 everything that is identical everywhere lives in the kit; the only per-repo variance
 (VCS regime, remote names, doc paths, thresholds, SD-log location) lives in `.overseer/config.yaml`.
@@ -271,23 +271,22 @@ one repo's state into another.
 
 ## §5 — Vendoring CLI contract (frozen)
 
-One entrypoint, `overseer`, runnable with **no global install** (a POSIX shell shim in the kit that
-locates its portable runtime; an optional published package is a convenience wrapper only, never
-the sole path). All commands are **read-first and idempotent**; running any command twice with no
-external change produces the same result.
+One entrypoint, **`ok`** (compatibility synonym **`overseer`**), runnable with **no global install** (POSIX shell shims `cli/ok` and `cli/overseer` in the kit engine tree that locate the portable runtime; `cli/overseer` prints a one-line stderr deprecation per process and runs the same runtime as `cli/ok`; an optional published package is a convenience wrapper only, never the sole path). All commands are **read-first and idempotent**; running any command twice with no external change produces the same result.
 
 | Command | Purpose | Writes? | Idempotent |
 | --- | --- | --- | --- |
-| `overseer init` | First install into a repo: create `.overseer/config.yaml` (interactive/regime-detected), vendor the footprint, write `version.lock`. Refuses to overwrite an existing config without `--force`. | Yes (footprint + config) | Yes (re-run = no-op if lock matches) |
-| `overseer sync` | Update the vendored footprint to the kit version the CLI carries; rewrite `version.lock`; show a diff of changed template/policy/cursor files. | Yes (footprint) | Yes |
-| `overseer status` | Report: kit version, `version.lock` version, drift (behind/ahead), VCS regime, dirty tree, last governance-sync. Read-only. | No | Yes |
-| `overseer governance-sync` | Run the Governance Hygiene Agent (Phase 9A-5) against this repo's `.overseer/config.yaml`: detect drift between docs and true VCS state, patch handover/roadmap, guard-realign, commit to a feature branch. `--dry-run` = report only. | Yes (docs, feature branch) | Yes |
-| `overseer review --freeze <path>` | Run the Freeze-Step Reviewer (§6) on a freeze artifact; emit findings with **file+line citations**; set exit status by verdict; escalate to human per config. `--dry-run` prints the review only. | No (review output only) | Yes |
-| `overseer verify-step [--manifest PATH] [--step ID \| --through current \| --all] [--policy PATH] [--dry-run] [--json]` | L1 checkpoint orchestrator (K9b): run domain verify scripts in template order; update active manifest per step; optional `--dry-run` plan-only. Module gate: `checkpoints.enabled` must be true. Exit extensions: `10` verify fail, `11` step order. | Yes (manifest + optional progress) | Yes (re-verify overwrites) |
-| `overseer honesty-status --hook HOOK --artifact PATH [--producer-session ID] [--json]` | L2 co-requirement check (K10): require a passing independent `verdict` for artifact SHA before board/handoff/register hooks. Module gate: `honesty.enabled` must be true. Exit extensions: `20` missing verdict, `4` hook not enabled / module off. | No | Yes |
-| `overseer ledger append --kind KIND [--file JSON_PATH \| --stdin]` | L2 verdict ledger append (K10): hash-chained JSONL entry with role gates. Auto-genesis on first append. Exit extensions: `21`–`24`, `22` on verify. | Yes (ledger) | Append-only |
-| `overseer ledger verify` | L2 ledger chain verification (K10). Missing/empty ledger → `0`. Break → `22`. | No | Yes |
-| `overseer ledger show [--last N]` | L2 ledger read (K10): print last N JSONL records. Missing/empty → `0` with no lines. Default N=20. | No | Yes |
+| `ok init` | First install into a repo: create `.overseer/config.yaml` (interactive/regime-detected), vendor the footprint, write `version.lock`. Refuses to overwrite an existing config without `--force`. | Yes (footprint + config) | Yes (re-run = no-op if lock matches) |
+| `ok sync` | Update the vendored footprint to the kit version the CLI carries; rewrite `version.lock`; show a diff of changed template/policy/cursor files. | Yes (footprint) | Yes |
+| `ok status` | Report: kit version, `version.lock` version, drift (behind/ahead), VCS regime, dirty tree, last governance-sync. Read-only. | No | Yes |
+| `ok governance-sync` | Run the Governance Hygiene Agent (Phase 9A-5) against this repo's `.overseer/config.yaml`: detect drift between docs and true VCS state, patch handover/roadmap, guard-realign, commit to a feature branch. `--dry-run` = report only. | Yes (docs, feature branch) | Yes |
+| `ok review --freeze <path>` | Run the Freeze-Step Reviewer (§6) on a freeze artifact; emit findings with **file+line citations**; set exit status by verdict; escalate to human per config. `--dry-run` prints the review only. | No (review output only) | Yes |
+| `ok verify-step [--manifest PATH] [--step ID \| --through current \| --all] [--policy PATH] [--dry-run] [--json]` | L1 checkpoint orchestrator (K9b): run domain verify scripts in template order; update active manifest per step; optional `--dry-run` plan-only. Module gate: `checkpoints.enabled` must be true. Exit extensions: `10` verify fail, `11` step order. | Yes (manifest + optional progress) | Yes (re-verify overwrites) |
+| `ok honesty-status --hook HOOK --artifact PATH [--producer-session ID] [--json]` | L2 co-requirement check (K10): require a passing independent `verdict` for artifact SHA before board/handoff/register hooks. Module gate: `honesty.enabled` must be true. Exit extensions: `20` missing verdict, `4` hook not enabled / module off. | No | Yes |
+| `ok ledger append --kind KIND [--file JSON_PATH \| --stdin]` | L2 verdict ledger append (K10): hash-chained JSONL entry with role gates. Auto-genesis on first append. Exit extensions: `21`–`24`, `22` on verify. | Yes (ledger) | Append-only |
+| `ok ledger verify` | L2 ledger chain verification (K10). Missing/empty ledger → `0`. Break → `22`. | No | Yes |
+| `ok ledger show [--last N]` | L2 ledger read (K10): print last N JSONL records. Missing/empty → `0` with no lines. Default N=20. | No | Yes |
+| `ok upgrade-regime --from muse-only --to muse+git-mirror [--dry-run \| --apply] [--live-bridge] [--force] [-y]` | Stage 3 kit ceremony (Track O / O3): ordered `muse-only` → `muse+git-mirror` upgrade composing `init`/`sync`/`status` + K7 bridge gates (C0–C5 / G1–G8). `--dry-run` default when `--apply` absent. `--live-bridge` requires gate success + `-y` (C6); never performs C8 merge. Frozen detail: `docs/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md`. | Yes (config + footprint when `--apply`; optional C7 via deploy script) | Yes (complete upgrade → exit 0) |
+| `ok hosted-dashboard [--port PORT] [--bind ADDRESS] [--config PATH] [--open]` | Read-only remote governance dashboard preview (Hosted governance dashboard): GitHub/MuseHub **read** glance of ROADMAP/HANDOVER/gates; Bearer viewer auth; default `127.0.0.1:8766`. Never mutates git/muse/GitHub. Operator runbook: `docs/HOSTED-GOVERNANCE-DASHBOARD-OPERATOR-RUNBOOK.md`. Frozen: `docs/PHASE-HOSTED-GOVERNANCE-DASHBOARD.md`. | No | Yes |
 
 **Vendored footprint (frozen — what `init`/`sync` copy into a consumer):** the contents of
 `templates/` (token-substituted with `.overseer/config.yaml` values), `policy/`, and `cursor/`,
@@ -304,15 +303,23 @@ footprint_digest: "sha256:<hex>"    # digest of the vendored files, for drift de
 config_version: 1
 ```
 
-**Drift check (frozen):** `overseer status` compares the local `footprint_digest` + `kit_version`
+**Drift check (frozen):** `ok status` compares the local `footprint_digest` + `kit_version`
 against the kit the CLI carries. If behind, it **warns** with the version delta and the changed
 files; per `thresholds.drift_warn_only` it **never** auto-updates or blocks. Updating is always the
-explicit `overseer sync` step (review-before-write).
+explicit `ok sync` step (review-before-write).
 
 **K4a refinement (frozen detail):** the per-command argument contract, exit-code taxonomy, the
 extended (spec-compatible, additive) `version.lock` shape with a per-file manifest, and the
 deterministic `footprint_digest` algorithm are frozen in `docs/PHASE-K4-VENDORING-CLI-CONTRACT.md`.
 K4b builds against that document.
+
+**Desktop installers (additive distribution channel):** signed platform installers (`.dmg` /
+`.msi` / `.AppImage`) are an **optional** distribution path for the existing `ok app` loopback UI
+and Tauri shell (`desktop/`). They do **not** add a required CLI subcommand: Path A (HANDOVER) and
+Path B (`ok app`) remain complete without installers. Auto v1 installers still require **host
+Python 3.11+**. Release CI + helpers live under `.github/workflows/desktop-release.yml` and
+`tools/desktop_release/`; operator runbook: `docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md`. Frozen
+detail: `docs/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md`.
 
 ---
 

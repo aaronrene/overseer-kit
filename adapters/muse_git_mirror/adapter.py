@@ -36,12 +36,15 @@ class MuseGitMirrorAdapter(BaseAdapter):
             f"git-branch={git_branch.stdout}",
             "sd-14: never git push origin main",
         ]
-        dirty = muse_dirty or bool(git_dirty.stdout.strip())
+        git_is_dirty = bool(git_dirty.stdout.strip())
+        dirty = muse_dirty or git_is_dirty
         return StatusResult(
             regime=self.regime,
             dirty=dirty,
             branch=muse_branch.stdout,
             notes=notes,
+            muse_dirty=muse_dirty,
+            git_dirty=git_is_dirty,
         )
 
     def read_head(self, ref: str) -> HeadResult | ReadError:

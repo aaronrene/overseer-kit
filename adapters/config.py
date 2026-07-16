@@ -38,6 +38,8 @@ HONESTY_KEYS = frozenset(
         "roles_file",
         "require_verdict_on",
         "require_l1_evidence",
+        "require_verification_evidence",
+        "require_deploy_health",
         "allow_signed_approval",
         "ci_reexecutor",
         "require_agent_signature",
@@ -58,6 +60,12 @@ GOVERNANCE_GATES_KEYS = frozenset(
     }
 )
 L1_EVIDENCE_MODES = frozenset({"off", "warn", "require"})
+MODEL_ROUTING_KEYS = frozenset({"enabled", "policy"})
+DEFAULT_MODEL_ROUTING_POLICY = "policy/model-routing.yaml"
+COST_AWARENESS_SURFACES = frozenset({"status", "governance-sync"})
+COST_AWARENESS_KEYS = frozenset({"enabled", "surfaces"})
+
+# Hosted dashboard keys live in tools.hosted_dashboard.config (import deferred to avoid cycles).
 
 
 @dataclass(frozen=True)
@@ -153,6 +161,8 @@ class HonestyConfig:
     roles_file: str | None = None
     require_verdict_on: frozenset[str] = frozenset({"board_done", "handoff", "register"})
     require_l1_evidence: str = "warn"
+    require_verification_evidence: str = "off"
+    require_deploy_health: str = "off"
     allow_signed_approval: bool = False
     ci_reexecutor: str | None = None
     require_agent_signature: bool = False
@@ -178,6 +188,37 @@ class GovernanceGatesConfig:
 
 
 @dataclass(frozen=True)
+class ModelRoutingConfig:
+    """Optional model-routing policy settings (§PR.5)."""
+
+    enabled: bool = False
+    policy: str = DEFAULT_MODEL_ROUTING_POLICY
+
+
+@dataclass(frozen=True)
+class CostAwarenessConfig:
+    """Optional cost-awareness surface settings (§PC.6)."""
+
+    enabled: bool = False
+    surfaces: frozenset[str] = frozenset(COST_AWARENESS_SURFACES)
+
+
+@dataclass(frozen=True)
+class HostedDashboardSection:
+    """Optional hosted_dashboard settings (§HGD.10.2) — opaque validated mapping holder."""
+
+    # Parsed by tools.hosted_dashboard.config; stored as validated object.
+    enabled: bool = False
+    allow_non_loopback: bool = False
+    cors_origins: tuple[str, ...] = ()
+    org_allowlist: tuple[str, ...] = ()
+    github_contents: bool = True
+    github_meta: bool = True
+    github_checks_advisory: bool = False
+    musehub_read: bool = False
+
+
+@dataclass(frozen=True)
 class ExtensionEntry:
     """One extensions[] escape-hatch entry (§K9.2)."""
 
@@ -200,6 +241,9 @@ class OverseerConfig:
     extensions: tuple[ExtensionEntry, ...] = ()
     extension_warnings: tuple[str, ...] = ()
     governance_gates: GovernanceGatesConfig = GovernanceGatesConfig()
+    model_routing: ModelRoutingConfig = ModelRoutingConfig()
+    cost_awareness: CostAwarenessConfig = CostAwarenessConfig()
+    hosted_dashboard: HostedDashboardSection = HostedDashboardSection()
 
 
 def load_config(path: Path) -> OverseerConfig:
@@ -350,6 +394,9 @@ def _validate_config(raw: dict[str, Any], path: str) -> OverseerConfig:
             exit_code=26,
         )
     governance_gates = _parse_governance_gates(raw.get("governance_gates"), path)
+    model_routing = _parse_model_routing(raw.get("model_routing"), path)
+    cost_awareness = _parse_cost_awareness(raw.get("cost_awareness"), path)
+    hosted_dashboard = _parse_hosted_dashboard(raw.get("hosted_dashboard"), path)
 
     return OverseerConfig(
         overseer_config_version=version,
@@ -368,6 +415,9 @@ def _validate_config(raw: dict[str, Any], path: str) -> OverseerConfig:
         extensions=extensions,
         extension_warnings=extension_warnings,
         governance_gates=governance_gates,
+        model_routing=model_routing,
+        cost_awareness=cost_awareness,
+        hosted_dashboard=hosted_dashboard,
     )
 
 
@@ -683,6 +733,14 @@ def _parse_honesty(raw_honesty: Any, path: str) -> HonestyConfig:
     if not isinstance(require_l1, str) or require_l1 not in L1_EVIDENCE_MODES:
         raise ConfigError("honesty.require_l1_evidence must be off|warn|require", path)
 
+    require_verification = h_raw.get("require_verification_evidence", "off")
+    if not isinstance(require_verification, str) or require_verification not in L1_EVIDENCE_MODES:
+        raise ConfigError("honesty.require_verification_evidence must be off|warn|require", path)
+
+    require_deploy_health = h_raw.get("require_deploy_health", "off")
+    if not isinstance(require_deploy_health, str) or require_deploy_health not in L1_EVIDENCE_MODES:
+        raise ConfigError("honesty.require_deploy_health must be off|warn|require", path)
+
     allow_signed = h_raw.get("allow_signed_approval", False)
     if not isinstance(allow_signed, bool):
         raise ConfigError("honesty.allow_signed_approval must be a boolean", path)
@@ -702,6 +760,8 @@ def _parse_honesty(raw_honesty: Any, path: str) -> HonestyConfig:
         roles_file=roles_file,
         require_verdict_on=require_verdict_on,
         require_l1_evidence=require_l1,
+        require_verification_evidence=require_verification,
+        require_deploy_health=require_deploy_health,
         allow_signed_approval=allow_signed,
         ci_reexecutor=ci_reexecutor,
         require_agent_signature=require_agent_signature,
@@ -847,6 +907,80 @@ def _parse_governance_gates(raw_gates: Any, path: str) -> GovernanceGatesConfig:
         build_verification_required=build_required,
         surfaces=surfaces,
     )
+
+
+def _parse_model_routing(raw_routing: Any, path: str) -> ModelRoutingConfig:
+    """Parse optional ``model_routing`` section (§PR.5)."""
+    if raw_routing is None:
+        return ModelRoutingConfig()
+    routing_raw = _require_mapping(raw_routing, "model_routing", path)
+    extra = set(routing_raw) - MODEL_ROUTING_KEYS
+    if extra:
+        raise ConfigError(f"unknown model_routing keys: {sorted(extra)}", path)
+
+    enabled = routing_raw.get("enabled", False)
+    if not isinstance(enabled, bool):
+        raise ConfigError("model_routing.enabled must be a boolean", path)
+
+    policy = routing_raw.get("policy", DEFAULT_MODEL_ROUTING_POLICY)
+    if not isinstance(policy, str) or not policy.strip():
+        raise ConfigError("model_routing.policy must be a non-empty string", path)
+    _validate_repo_relative_path(policy, "model_routing.policy", path)
+
+    return ModelRoutingConfig(enabled=enabled, policy=policy.strip())
+
+
+def _parse_hosted_dashboard(raw_block: Any, path: str) -> HostedDashboardSection:
+    """Parse optional ``hosted_dashboard`` section (§HGD.10.2); unknown keys fail closed."""
+    if raw_block is None:
+        return HostedDashboardSection()
+    try:
+        from tools.hosted_dashboard.config import parse_hosted_dashboard_config
+
+        parsed = parse_hosted_dashboard_config(raw_block, path=path)
+    except Exception as exc:
+        raise ConfigError(str(exc), path) from exc
+    return HostedDashboardSection(
+        enabled=parsed.enabled,
+        allow_non_loopback=parsed.allow_non_loopback,
+        cors_origins=parsed.cors_origins,
+        org_allowlist=parsed.org_allowlist,
+        github_contents=parsed.sources.github_contents,
+        github_meta=parsed.sources.github_meta,
+        github_checks_advisory=parsed.sources.github_checks_advisory,
+        musehub_read=parsed.sources.musehub_read,
+    )
+
+
+def _parse_cost_awareness(raw_cost: Any, path: str) -> CostAwarenessConfig:
+    """Parse optional ``cost_awareness`` section (§PC.6)."""
+    if raw_cost is None:
+        return CostAwarenessConfig()
+    cost_raw = _require_mapping(raw_cost, "cost_awareness", path)
+    extra = set(cost_raw) - COST_AWARENESS_KEYS
+    if extra:
+        raise ConfigError(f"unknown cost_awareness keys: {sorted(extra)}", path)
+
+    enabled = cost_raw.get("enabled", False)
+    if not isinstance(enabled, bool):
+        raise ConfigError("cost_awareness.enabled must be a boolean", path)
+
+    surfaces: frozenset[str] = frozenset(COST_AWARENESS_SURFACES)
+    if "surfaces" in cost_raw:
+        raw_surfaces = cost_raw["surfaces"]
+        if not isinstance(raw_surfaces, list) or not raw_surfaces:
+            raise ConfigError("cost_awareness.surfaces must be a non-empty list", path)
+        parsed: set[str] = set()
+        for item in raw_surfaces:
+            if not isinstance(item, str) or item not in COST_AWARENESS_SURFACES:
+                raise ConfigError(
+                    "cost_awareness.surfaces entries must be status|governance-sync",
+                    path,
+                )
+            parsed.add(item)
+        surfaces = frozenset(parsed)
+
+    return CostAwarenessConfig(enabled=enabled, surfaces=surfaces)
 
 
 def _parse_extensions(

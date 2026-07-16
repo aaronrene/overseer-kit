@@ -37,6 +37,16 @@ patterns = [
     ".tox/",
     "*.egg-info/",
 
+    # Tauri build outputs (gitignored mirrors — rebuild via bundle-desktop-kit.sh)
+    "desktop/src-tauri/target/",
+    "desktop/src-tauri/resources/",
+
+    # Local signing material (public keys under desktop/keys/ may be tracked)
+    "*.p12",
+    "*.pfx",
+    "apple-api-key.json",
+    "**/AuthKey_*.p8",
+
     # ── Rust ─────────────────────────────────────────────────────────
     # "target/",
 

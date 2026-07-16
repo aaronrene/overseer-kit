@@ -1,0 +1,16 @@
+{
+  "actor_role": "verifier",
+  "actor_session_id": "bv-session-1",
+  "phase_id": "Track P / P-evidence",
+  "frozen_spec": "docs/PHASE-TRACK-P-P-EVIDENCE.md",
+  "round": 1,
+  "bv_verdict": "pass",
+  "artifacts": [
+    {
+      "type": "test_output",
+      "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "ref": "pytest -q",
+      "notes": "seven-tier suite"
+    }
+  ]
+}

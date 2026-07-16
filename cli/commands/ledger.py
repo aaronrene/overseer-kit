@@ -31,7 +31,7 @@ def _load_config_or_exit(args: Namespace, ctx: CliContext):
     repo_root = resolve_repo_root(cwd=ctx.cwd, repo_arg=args.repo, command="ledger")
     overseer_dir = repo_root / ".overseer"
     if not overseer_dir.is_dir():
-        ctx.output.error("not initialized — run overseer init first")
+        ctx.output.error("not initialized — run ok init first")
         return None, None, 2
 
     config_path = resolve_config_path(repo_root, args.config)

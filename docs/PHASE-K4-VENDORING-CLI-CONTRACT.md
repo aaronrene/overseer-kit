@@ -95,9 +95,11 @@ the vendored footprint is the operator's normal feature-branch step, not the CLI
 
 ## §K4.1 — Global conventions (frozen)
 
-**Invocation:** `overseer <command> [options]`. The published entrypoint is the POSIX shim
-`cli/overseer`, which locates and execs the portable Python runtime. No global install is required;
-an optional packaged wrapper is a convenience only (§5 of the spec), never the sole path.
+**Invocation:** `ok <command> [options]`. The canonical published entrypoint is the POSIX shim
+`cli/ok`, which locates and execs the portable Python runtime. `cli/overseer` is the compatibility
+shim per `docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md` §Q2A.4 (same runtime; one-line stderr
+deprecation per process). No global install is required; an optional packaged wrapper is a
+convenience only (§5 of the spec), never the sole path.
 
 **Repo/config resolution (frozen order):**
 

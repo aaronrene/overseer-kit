@@ -103,26 +103,20 @@ class BaseAdapter:
         return result
 
     def _muse_rev_parse_sha(self, ref: str) -> "HeadResult | ReadError":
-        """Resolve a muse ref to its commit id via ``muse rev-parse`` (Muse 0.2+ JSON).
+        """Resolve a muse ref to its commit id via ``muse rev-parse`` (Muse 0.2+).
 
-        Muse 0.2.x emits ``{"commit_id": "<sha>", ...}`` on stdout (exit 0) and sets
-        exit_code=1 when the ref is unknown, so ``_muse`` already fail-closes on
-        unknown refs before we even reach the JSON parser.
+        Muse 0.2.x prints the commit id as a bare string on stdout (exit 0).
+        On failure (unknown ref / empty repo) it exits non-zero with JSON on
+        stdout — ``_muse`` already converts non-zero exits to ``ReadError``,
+        so by the time we read ``result.stdout`` the value is always a plain SHA.
         """
         result = self._muse("rev-parse", ref)
         if isinstance(result, ReadError):
             return result
-        try:
-            payload = json.loads(result.stdout)
-        except json.JSONDecodeError:
-            return ReadError(f"muse rev-parse {ref}", "invalid JSON in rev-parse output")
-        if not isinstance(payload, dict):
-            return ReadError(f"muse rev-parse {ref}", "unexpected JSON shape from rev-parse")
-        commit_id = payload.get("commit_id")
-        if not isinstance(commit_id, str) or not commit_id.strip():
-            reason = payload.get("error") or "empty commit_id"
-            return ReadError(f"muse rev-parse {ref}", str(reason))
-        return HeadResult(sha=commit_id.strip(), kind="muse")
+        sha = result.stdout.strip()
+        if not sha:
+            return ReadError(f"muse rev-parse {ref}", "empty sha")
+        return HeadResult(sha=sha, kind="muse")
 
     def _muse_dirty(self) -> bool | ReadError:
         """Return Muse working-tree dirty flag (Muse 0.2+ ``status --json``; legacy ``--porcelain``)."""

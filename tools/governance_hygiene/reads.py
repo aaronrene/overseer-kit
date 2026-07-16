@@ -10,7 +10,9 @@ from adapters.base import VcsAdapter
 from adapters.config import OverseerConfig
 from adapters.errors import ReadError
 from adapters.runner import CommandRunner
+from tools.footprint_integrity import check_footprint_integrity
 from tools.governance_hygiene.types import MergedPullRequest, VerifiedReads
+from tools.muse_sync import check_muse_sync
 from tools.substrate_health import check_substrate
 
 GH_MERGED_LIMIT = 5
@@ -47,6 +49,19 @@ def perform_verified_reads(
     status = adapter.status()
     if isinstance(status, ReadError):
         return ReadFailure(status.command, str(status), regime)
+
+    muse_sync = check_muse_sync(config, status)
+    if not muse_sync.ok:
+        return ReadFailure("muse-sync", muse_sync.message, regime)
+
+    if repo_root is not None:
+        footprint_self_integrity = check_footprint_integrity(repo_root)
+        if not footprint_self_integrity.ok:
+            return ReadFailure(
+                "footprint-self-integrity",
+                footprint_self_integrity.message,
+                regime,
+            )
 
     r1_sha: str | None = None
     r1_cmd: str | None = None

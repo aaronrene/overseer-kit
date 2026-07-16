@@ -2,45 +2,74 @@ lock_version: 1
 kit_version: 0.1.0
 config_version: 1
 installed_at: '2026-07-10T00:00:00Z'
-synced_at: '2026-07-11T14:25:23Z'
-footprint_digest: sha256:18d0e52f7df20f94c2dbed78ef7610c5a154bf1c4d89a102019922791e5c1917
+synced_at: '2026-07-13T07:26:49Z'
+footprint_digest: sha256:b4958fdf85e77a3065037465493b5fa9ce77a489fd77e6d508b6639817121dfa
 footprint:
+- path: .cursor/rules/build-verification-required.mdc
+  source: cursor/rules/build-verification-required.mdc
+  sha256: 4cc488bd2be9c223cdda48d8dadcfa7b4237d185026364569ce7dc8416b53d49
+  origin: kit
 - path: .cursor/rules/governance-sync.mdc
   source: cursor/rules/governance-sync.mdc
   sha256: d0b5c4111ed84c455aa1063b55cfa41dc328fda4a85afa2ff2702c63a0e85cd5
+  origin: kit
+- path: .cursor/rules/l1-checkpoints-consumer-owned.mdc
+  source: cursor/rules/l1-checkpoints-consumer-owned.mdc
+  sha256: 6eebc8126cee6c7ee1d2de1180faec15e2822448b2bfeffb56495991fd21a037
+  origin: kit
 - path: .cursor/rules/no-docs-only-pr-to-main.mdc
   source: cursor/rules/no-docs-only-pr-to-main.mdc
   sha256: 90b87da8ec1f6dfac079bab72ba5621161410f45999e0510d47bfe26ec0a09da
+  origin: kit
 - path: .cursor/rules/tier-authority.mdc
   source: cursor/rules/tier-authority.mdc
   sha256: 2877429b54c36593f1dcd835375e2c7c21d38673fca4430f9e63d3bebca3b08e
+  origin: kit
+- path: .cursor/skills/build-verification-review/SKILL.md
+  source: cursor/skills/build-verification-review/SKILL.md
+  sha256: 773de9724c348ea50ab4018bd9d6e6fa9be3b11f37329e8ab13abb7e536e4fd3
+  origin: kit
+- path: .cursor/skills/freeze-review-loop/SKILL.md
+  source: cursor/skills/freeze-review-loop/SKILL.md
+  sha256: 9a97f56395808c854828d644cd8ab7f25012235743f982425365e2e54f99c547
+  origin: kit
 - path: .cursor/skills/freeze-review/SKILL.md
   source: cursor/skills/freeze-review/SKILL.md
-  sha256: 3fb3946c62fd770ade353cd75b99f4ddf03453f4545c4c86eefc6dfe6e5b1269
+  sha256: ed12784e331125877ca3de790cd4f19e981471197b3284fc2eb7cb79f38ac631
+  origin: kit
 - path: .cursor/skills/governance-sync/SKILL.md
   source: cursor/skills/governance-sync/SKILL.md
   sha256: 63d2b377e4fdfa09298e9ff5a02cd74a8466ab44916cff4a08b11a859bcfd7cc
+  origin: kit
 - path: .overseer/STANDING-DECISIONS.reference.md
   source: templates/STANDING-DECISIONS.template.md
   sha256: 7ddd1efc56e893aaf14d758e0c715f37b27b6afb0bf87ef062a4877cdbfb2670
+  origin: kit
 - path: .overseer/policy/model-labels.yaml
   source: policy/model-labels.yaml
-  sha256: a239e211085efa3f77671a627b9dc0fba2717fb23466f3454f67f96f65a71241
+  sha256: b722b8490eadaca7ab9a601358901bde6e52432f7a69f3a0985c42d94c37934c
+  origin: kit
 - path: .overseer/policy/test-tiers.yaml
   source: policy/test-tiers.yaml
   sha256: 55b337e9399ccd26f4c70dba9f6f57c1359fab930a522e605cbe52d3533238d8
+  origin: kit
 - path: .overseer/policy/tiers.yaml
   source: policy/tiers.yaml
   sha256: 4b2cb197554cb63f3e05b7553acd2f417ef37f4a993c1ff3b2247869e2a5db64
+  origin: kit
 - path: MUSE-BRIDGE-WORKFLOW.md
   source: templates/MUSE-BRIDGE-WORKFLOW.template.md
   sha256: 08f1f73e8cb579210f05aea944928a0e7b2a6ae4ced3a4d42df7bab21543dcc2
+  origin: kit
 - path: docs/OVERSEER-HANDOVER.md
   source: templates/OVERSEER-HANDOVER.template.md
-  sha256: 2f0def59002654640db32e134935cfe10708dd9037cef994e26f2e42d998a65b
+  sha256: 06131f788df4442910e489cf53d7c67b303aad7efd550b82ff6abb352755f0be
+  origin: preserved
 - path: docs/ROADMAP.md
   source: templates/ROADMAP.template.md
-  sha256: 4e341a5af4d143806de0fc3d13717167554ef166a9fdf45a4508ba5fbba31677
+  sha256: 93f9484b26276d9641f9790a12ea62322b2f3b938979791e5d5d6a93557fcbdf
+  origin: preserved
 - path: scripts/muse-bridge-deploy.sh
   source: templates/scripts/muse-bridge-deploy.sh.template
-  sha256: f3f8fa895a5dba95af5b4fa1f212fe441c6a8746a6916fb49fc81dcaae0c00dd
+  sha256: 7b1cda63aff0903d914459c84326efe6bef614b774e1a13fe8b29d5d474a6c97
+  origin: kit

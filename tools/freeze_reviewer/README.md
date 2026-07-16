@@ -5,7 +5,7 @@ Implements the Freeze-Step Reviewer per `docs/PHASE-K5-FREEZE-REVIEWER-CONTRACT.
 ## CLI
 
 ```bash
-overseer review --freeze <path> [--dry-run] [--mode agent|human] [--provider local|api] [--model LABEL] [--no-stamp] [--checklist PATH]
+ok review --freeze <path> [--dry-run] [--mode agent|human] [--provider local|api] [--model LABEL] [--no-stamp] [--checklist PATH]
 ```
 
 - Human/report output → stdout; diagnostics → stderr.
@@ -89,10 +89,9 @@ Invalid JSON, non-2xx status, or transport errors during `review()` → `provide
 
 Kit ships:
 
-- `.github/workflows/freeze-review.yml` — dogfood example in this repo
-- `templates/ci/freeze-review-github-actions.yml` — vendored copy for consumer repos via `overseer sync`
+- `templates/ci/freeze-review-github-actions.yml` — vendored copy for consumer repos via `ok sync`. Copy it to `.github/workflows/freeze-review.yml` **in the consumer repo** once `OVERSEER_REVIEW_API_KEY`/`OVERSEER_REVIEW_API_URL` are configured there — this kit's own repo intentionally does not run it live, since it dogfoods `ok review --freeze` via the local CLI (`provider: local`) for every phase instead of a hosted API.
 
-Configure repository secret `OVERSEER_REVIEW_API_KEY` and variable `OVERSEER_REVIEW_API_URL`. The example workflow uses `--dry-run` (safe CI default per `policy/test-tiers.yaml`).
+Configure repository secret `OVERSEER_REVIEW_API_KEY` and variable `OVERSEER_REVIEW_API_URL` in the consumer repo before enabling this workflow there. The template uses `--dry-run` (safe CI default per `policy/test-tiers.yaml`).
 
 ## Automation degrade (§K5.10)
 
@@ -100,8 +99,8 @@ Templates ship under `cursor/automations/` — **not auto-enabled**. When Cursor
 
 | Intent | Preferred | Degrade |
 | --- | --- | --- |
-| Session-end freeze check | Automation → `overseer review --freeze <path> --dry-run` | Operator runs CLI or `/freeze-review` skill |
-| Pre-build gate | Automation/CI → `overseer review --freeze <path>` | Same CLI; **no silent skip** |
+| Session-end freeze check | Automation → `ok review --freeze <path> --dry-run` | Operator runs CLI or `/freeze-review` skill |
+| Pre-build gate | Automation/CI → `ok review --freeze <path>` | Same CLI; **no silent skip** |
 
 Unavailability is never treated as `pass`.
 

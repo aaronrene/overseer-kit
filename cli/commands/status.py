@@ -17,8 +17,13 @@ from cli.paths import is_within_repo, resolve_config_path, resolve_repo_root
 from cli.sanitize import format_config_error, sanitize_text
 from cli.vcs_status import read_vcs_status, vcs_report
 from cli.version_lock import LockError, lock_path, read_version_lock
+from cli.commands.route import routing_policy_status
+from tools.cost_awareness.format import format_cost_awareness_lines
+from tools.cost_awareness.surface import build_cost_awareness_report, cost_awareness_payload
+from tools.footprint_integrity import check_footprint_integrity
 from tools.governance_gates import scan_governance_gates
 from tools.governance_gates.format import format_pending_gate_lines, pending_gates_payload
+from tools.muse_sync import check_muse_sync
 from tools.substrate_health import check_substrate
 
 
@@ -89,11 +94,18 @@ def _exit_code_from_conditions(
     drift_status: str | None,
     use_exit_code: bool,
     substrate_ok: bool = True,
+    muse_sync_ok: bool = True,
+    footprint_self_integrity_ok: bool = True,
 ) -> int:
-    """Apply frozen precedence: 2 > 6 > 3 > 0."""
+    """Apply frozen precedence: 2 > 6 > 3 > 0.
+
+    §KH2.5: ``muse_sync_ok`` folds into the 2 tier. §KH3.5: ``footprint_self_integrity_ok``
+    (declared-but-absent kit-owned files) also folds into the same 2 tier, distinct from and
+    independent of the opt-in ``--check-footprint`` content-digest ``integrity`` tier (6).
+    """
     if not use_exit_code:
         return 0
-    if config_error or not substrate_ok:
+    if config_error or not substrate_ok or not muse_sync_ok or not footprint_self_integrity_ok:
         return 2
     if integrity == "mismatch":
         return 6
@@ -180,6 +192,17 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
             for path in preserved_living:
                 report.add_warning(f"preserved-living: {path}")
 
+    footprint_self_integrity = check_footprint_integrity(repo_root, lock=lock)
+    if not footprint_self_integrity.ok:
+        report.add_warning(
+            f"footprint_self_integrity: {footprint_self_integrity.state} — "
+            f"{footprint_self_integrity.message}"
+        )
+        if footprint_self_integrity.remediation:
+            report.add_warning(
+                f"footprint_self_integrity-remediation: {footprint_self_integrity.remediation}"
+            )
+
     drift = compute_drift(
         cli_version=kit_version(),
         lock=lock,
@@ -205,10 +228,43 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
             ctx.output.emit_json(payload)
         return 2
 
+    muse_sync = check_muse_sync(config, vcs_result)
+    if not muse_sync.ok:
+        report.add_warning(f"muse_sync: {muse_sync.state} — {muse_sync.message}")
+        if muse_sync.remediation:
+            report.add_warning(f"muse_sync-remediation: {muse_sync.remediation}")
+
+    model_routing_status = routing_policy_status(config, repo_root, kit_root=ctx.kit)
+    if model_routing_status.get("enabled") and not model_routing_status.get("valid"):
+        violation = model_routing_status.get("violation") or "invalid"
+        report.add_warning(f"model_routing: invalid — {violation}")
+
+    cost_report = None
+    if config.cost_awareness.enabled and "status" in config.cost_awareness.surfaces:
+        cost_report = build_cost_awareness_report(config, repo_root, kit_root=ctx.kit)
+        if cost_report.invalid:
+            violation = cost_report.violation or "invalid"
+            report.add_warning(f"cost_awareness: invalid — {violation}")
+        elif cost_report.exit_code == 31:
+            ctx.output.error(cost_report.violation or "routing policy file missing or unreadable")
+            payload = {
+                "initialized": True,
+                "cost_awareness": cost_awareness_payload(cost_report),
+                "warnings": report.warnings,
+            }
+            if ctx.output.json_mode:
+                ctx.output.emit_json(payload)
+            return 31
+        else:
+            for line in format_cost_awareness_lines(cost_report):
+                report.add_warning(line)
+
     payload = {
         "initialized": True,
         "kit_version": kit_version(),
         "substrate": _substrate_payload(substrate),
+        "muse_sync": _muse_sync_payload(muse_sync),
+        "footprint_self_integrity": _footprint_self_integrity_payload(footprint_self_integrity),
         "lock": _lock_summary(lock) if lock else None,
         "drift": drift,
         "footprint_integrity": integrity,
@@ -218,8 +274,11 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
         "governance_gates": pending_gates_payload(gate_scan)
         if gate_scan is not None
         else {"enabled": False, "suppressed": False, "active_phases": [], "pending": []},
+        "model_routing": model_routing_status,
         "warnings": report.warnings,
     }
+    if cost_report is not None:
+        payload["cost_awareness"] = cost_awareness_payload(cost_report)
     if lock_error:
         payload["lock_error"] = True
 
@@ -229,6 +288,8 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
         drift_status=drift["status"],
         use_exit_code=args.exit_code,
         substrate_ok=substrate.ok,
+        muse_sync_ok=muse_sync.ok,
+        footprint_self_integrity_ok=footprint_self_integrity.ok,
     )
     if lock_error and args.exit_code:
         exit_code = 6 if exit_code == 0 else max(exit_code, 6)
@@ -241,15 +302,32 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
             ctx.output.emit(f"substrate: {substrate.state} — {substrate.message}")
             if substrate.remediation:
                 ctx.output.emit(f"substrate-remediation: {substrate.remediation}")
+        if not muse_sync.ok:
+            ctx.output.emit(f"muse_sync: {muse_sync.state} — {muse_sync.message}")
+            if muse_sync.remediation:
+                ctx.output.emit(f"muse_sync-remediation: {muse_sync.remediation}")
         if lock:
             ctx.output.emit(f"lock kit_version: {lock.kit_version}")
         ctx.output.emit(f"drift: {drift['status']}")
         if integrity:
             ctx.output.emit(f"footprint_integrity: {integrity}")
+        if model_routing_status.get("enabled"):
+            if model_routing_status.get("valid"):
+                ctx.output.emit("model_routing: valid")
+            else:
+                violation = model_routing_status.get("violation") or "invalid"
+                ctx.output.emit(f"model_routing: invalid — {violation}")
         if gate_scan is not None and gate_scan.pending:
             ctx.output.emit("")
             for line in format_pending_gate_lines(gate_scan):
                 ctx.output.emit(line)
+        if cost_report is not None and config.cost_awareness.enabled:
+            if cost_report.invalid:
+                violation = cost_report.violation or "invalid"
+                ctx.output.emit(f"cost_awareness: invalid — {violation}")
+            else:
+                for line in format_cost_awareness_lines(cost_report):
+                    ctx.output.emit(line)
         ctx.output.emit(f"vcs.regime: {vcs_result.regime}")
         ctx.output.emit(f"vcs.branch: {vcs_result.branch}")
         ctx.output.emit(f"vcs.dirty: {vcs_result.dirty}")
@@ -264,4 +342,23 @@ def _substrate_payload(substrate) -> dict:
         "missing": list(substrate.missing),
         "remediation": substrate.remediation,
         "message": substrate.message,
+    }
+
+
+def _muse_sync_payload(muse_sync) -> dict:
+    return {
+        "state": muse_sync.state,
+        "ok": muse_sync.ok,
+        "remediation": muse_sync.remediation,
+        "message": muse_sync.message,
+    }
+
+
+def _footprint_self_integrity_payload(report) -> dict:
+    return {
+        "state": report.state,
+        "ok": report.ok,
+        "missing": list(report.missing),
+        "remediation": report.remediation,
+        "message": report.message,
     }

@@ -47,6 +47,7 @@ def run_governance_sync_command(args: Namespace, ctx: CliContext) -> int:
         lane=getattr(args, "lane", None),
         all_lanes=getattr(args, "all_lanes", False),
         emit=emit,
+        kit_root=ctx.kit,
     )
 
     if ctx.output.json_mode:

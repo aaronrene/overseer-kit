@@ -16,7 +16,9 @@ from cli.sanitize import format_config_error
 from tools.freeze_reviewer.checklist import builtin_checklist, load_checklist_file
 from tools.freeze_reviewer.engine import ReviewOptions, resolve_exit_code, resolve_reviewer_settings, run_freeze_review
 from tools.freeze_reviewer.labels import validate_reviewer_model
+from tools.footprint_integrity import check_footprint_integrity
 from tools.freeze_reviewer.report import build_report, render_human_report
+from tools.muse_sync import check_muse_sync
 from tools.substrate_health import check_substrate
 
 DISALLOWED_FLAGS = frozenset(
@@ -85,7 +87,7 @@ def run_review(args: Namespace, ctx: CliContext, *, raw_argv: list[str] | None =
     repo_root = resolve_repo_root(cwd=ctx.cwd, repo_arg=args.repo, command="review")
     overseer_dir = repo_root / ".overseer"
     if not overseer_dir.is_dir():
-        ctx.output.error("not initialized — run overseer init first")
+        ctx.output.error("not initialized — run ok init first")
         return 2
 
     config_path = resolve_config_path(repo_root, args.config)
@@ -138,6 +140,23 @@ def run_review(args: Namespace, ctx: CliContext, *, raw_argv: list[str] | None =
     status = adapter.status()
     if isinstance(status, ReadError):
         ctx.output.error(str(status))
+        return 2
+
+    muse_sync = check_muse_sync(config, status)
+    if not muse_sync.ok:
+        ctx.output.error(f"muse_sync: {muse_sync.state} — {muse_sync.message}")
+        if muse_sync.remediation:
+            ctx.output.error(f"remediation: {muse_sync.remediation}")
+        return 2
+
+    footprint_self_integrity = check_footprint_integrity(repo_root)
+    if not footprint_self_integrity.ok:
+        ctx.output.error(
+            f"footprint_self_integrity: {footprint_self_integrity.state} — "
+            f"{footprint_self_integrity.message}"
+        )
+        if footprint_self_integrity.remediation:
+            ctx.output.error(f"remediation: {footprint_self_integrity.remediation}")
         return 2
 
     injected_provider = None

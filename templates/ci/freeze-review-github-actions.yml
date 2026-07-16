@@ -42,7 +42,7 @@ jobs:
           OVERSEER_REVIEW_API_URL: ${{ vars.OVERSEER_REVIEW_API_URL }}
         run: |
           FREEZE_PATH="${{ github.event.inputs.freeze_path || 'docs/OVERSEER-HANDOVER.md' }}"
-          ./cli/overseer review --freeze "$FREEZE_PATH" \
+          ./cli/ok review --freeze "$FREEZE_PATH" \
             --provider api \
             --dry-run \
             --json
