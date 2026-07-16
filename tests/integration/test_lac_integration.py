@@ -21,7 +21,7 @@ def test_relative_doc_links_exist() -> None:
     assert "https://github.com/aaronrene/overseer-kit/blob/main/docs/GIT-ONLY-QUICKSTART.md" in index
     assert "https://github.com/aaronrene/overseer-kit/blob/main/docs/CONSUMER-ADAPTER-PATTERN.md" in index
     assert "https://github.com/aaronrene/overseer-kit/blob/main/docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md" in index
-    assert "https://github.com/aaronrene/overseer-kit/blob/main/docs/K7-DOGFOOD-OPERATOR-RUNBOOK.md" in index
+    assert "K7-DOGFOOD-OPERATOR-RUNBOOK" not in index
     assert (KIT_ROOT / "docs" / "TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md").is_file()
     assert "../GIT-ONLY-QUICKSTART.md" not in index
     assert "musehub.ai" not in index

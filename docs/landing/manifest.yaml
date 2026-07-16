@@ -1,20 +1,17 @@
-# Landing + access clarity contract (amends K12 Track N IA)
-# Validated by tools/landing/validate.py — §LAC.3.1 section ids
+# Landing clarity pass — visitor IA (amends LAC §LAC.3.1)
+# Validated by tools/landing/validate.py
 
 version: 1
 license: MIT
 
 sections:
   - id: hero
-  - id: musehub
   - id: problem
-  - id: living-docs
+  - id: how-it-works
   - id: structure
-  - id: layers
   - id: console-access
-  - id: suite-doors
-  - id: quickstart
-  - id: funnel
+  - id: musehub
+  - id: next-steps
   - id: scenarios
 
 personas:

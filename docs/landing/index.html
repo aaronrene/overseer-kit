@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="🆗 Overseer Kit — governance + honesty for phased AI work. Download the Mac console or clone on GitHub.">
-  <title>🆗 Overseer Kit — Governance + honesty for AI-assisted work</title>
+  <meta name="description" content="Overseer Kit — governance and honesty for AI-assisted work. Download the Mac console or clone on GitHub.">
+  <title>Overseer Kit — Governance and honesty for AI-assisted work</title>
   <link rel="icon" href="assets/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -19,10 +19,8 @@
         <span class="brand-name">Overseer Kit</span>
       </a>
       <div class="nav-links">
-        <a href="#musehub">MuseHub</a>
-        <a href="#living-docs">Living docs</a>
-        <a href="#structure">Structure</a>
-        <a href="#console-access">Local console</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#console-access">Get started</a>
         <a href="scenarios/index.html">Scenarios</a>
         <a href="https://github.com/aaronrene/overseer-kit#readme">Docs</a>
         <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to light mode" title="Light / dark">
@@ -38,9 +36,13 @@
       <div class="hero-plane" aria-hidden="true"></div>
       <div class="hero-inner">
         <div class="hero-copy">
+          <p class="hero-brand">
+            <span class="logo-mark logo-mark-hero" aria-hidden="true">OK</span>
+            <span class="hero-brand-name">Overseer Kit</span>
+          </p>
           <h1>Honesty for your agents</h1>
           <p class="lead">Freeze the plan. Review it independently. Then build — so AI work cannot fake DONE.</p>
-          <p class="sublead">Freeze review, living docs, and the right model for each stage — Thinking where judgment is needed, cheaper Auto for mechanical build — so you do not burn a frontier model on every step. Product runtimes stay in your apps; this kit ships the governance + honesty machinery.</p>
+          <p class="sublead">Portable governance for any repo. Your apps keep the product runtime; this kit keeps the plan honest between sessions.</p>
           <div class="cta-row">
             <a class="btn btn-primary" id="cta-download-mac"
                href="https://github.com/aaronrene/overseer-kit/releases/download/v0.1.0/Overseer.Kit_0.1.0_aarch64.dmg">Download Mac console (Apple Silicon)</a>
@@ -61,23 +63,6 @@
       </div>
     </section>
 
-    <section id="musehub" class="musehub-band" aria-labelledby="musehub-heading">
-      <div class="musehub-band-inner">
-        <div class="musehub-brand" aria-hidden="false">
-          <img class="musehub-logo" src="assets/musehub-logo.svg" width="360" height="80" alt="MuseHub">
-        </div>
-        <div class="musehub-copy">
-          <h2 id="musehub-heading">Same CLI. Deeper history with MuseHub.</h2>
-          <p>Overseer Kit already connects to MuseHub. You can run fully on GitHub alone; when you want Muse as the memory layer — content-addressed history, stronger continuity, GitHub as the mirror — flip the regime. Same <code>ok</code> commands. Not a second agent product.</p>
-          <p class="musehub-links">
-            <a href="#diagram-regimes">See the three regimes</a>
-            · Start Muse-backed:
-            <code>ok init --regime muse+git-mirror</code>
-          </p>
-        </div>
-      </div>
-    </section>
-
     <section id="problem">
       <h2>Why governance honesty matters</h2>
       <p>AI-assisted development breaks down at the boundaries between sessions:</p>
@@ -87,48 +72,48 @@
         <li><strong>Silent drift</strong> — living docs fall out of sync with reality.</li>
         <li><strong>Skipped checkpoints</strong> — expensive remakes when mechanical gates are bypassed.</li>
       </ul>
-      <p>🆗 Overseer Kit makes skipping honesty expensive — not by running your product, but by governing how phased work proceeds.</p>
+      <p>Overseer Kit makes skipping honesty expensive — not by running your product, but by governing how phased work proceeds.</p>
     </section>
 
-    <section id="living-docs">
-      <h2>Core safety — always on</h2>
-      <p>This is the center of the system — not an add-on. A phase freezes its contract, an independent review must pass, then Auto builds only against that freeze. Living docs and model-tier labels keep every session honest.</p>
-      <div class="card-grid">
+    <section id="how-it-works">
+      <h2>How it works</h2>
+      <p>Lock the plan, check it independently, then build only against that freeze. Living docs carry the baton between chats.</p>
+      <div class="card-grid outcome-grid">
         <div class="card">
-          <h3>Frozen spec + freeze review</h3>
-          <p>Thinking freezes WHAT/HOW. <code>ok review --freeze</code> (and the review loop) cites findings by file+line. No build claims DONE without a <code>pass</code> — that is how self-approval dies.</p>
+          <h3>Lock the plan</h3>
+          <p>Design freezes what to build and how. No build claims DONE until an independent freeze review passes.</p>
         </div>
         <div class="card">
-          <h3>ROADMAP + Handover</h3>
-          <p><strong>ROADMAP</strong> is the phase board (status + model tier per phase). <strong>Handover</strong> is the session baton: what is true now and the <strong>one</strong> next paste-ready prompt.</p>
+          <h3>Keep docs truthful</h3>
+          <p>A phase board and a session handover stay aligned with real work — so the next chat starts from facts, not memory.</p>
         </div>
         <div class="card">
-          <h3>Right model · lower spend</h3>
-          <p>The kit is the <strong>rulebook</strong>, not the runtime: ROADMAP + <code>ok route</code> + <code>policy/model-routing.yaml</code> recommend Thinking vs Auto (and when to escalate). Your IDE/runtime actually dials the model. Spend the expensive thinking tier on freeze/design; mechanical build stays on cheaper Auto — that is deliberate cost control, not a slogan.</p>
+          <h3>Spend models wisely</h3>
+          <p>Use deeper judgment for design and review; keep mechanical build on a cheaper tier. The kit is the rulebook; your IDE dials the model.</p>
         </div>
         <div class="card">
-          <h3>Hygiene before you stop</h3>
-          <p><code>ok governance-sync --dry-run</code> keeps ROADMAP and Handover aligned. Build-verification review gates Auto DONE the same way freeze review gates the spec.</p>
+          <h3>Close clean</h3>
+          <p>Before you stop, sync living docs to real VCS state and verify the build claim. Green tests alone cannot fake completion.</p>
         </div>
       </div>
     </section>
 
     <section id="structure">
       <h2>Structure at a glance</h2>
-      <p>How the kit is built — lanes, regimes, layers, and kit→consumer boundaries. (Scenarios below show <em>who</em> uses those pieces.)</p>
+      <p>How the kit is built — work lanes, version-control options, safety layers, and the kit vs your apps.</p>
 
       <figure class="diagram-figure" id="diagram-lanes">
-        <figcaption>Lanes are few durable ROADMAP/HANDOVER pairs. Rows and manifests are many work units — do not invent a lane per ticket.</figcaption>
-        <img src="assets/diagrams/lanes.svg" alt="Single-lane ROADMAP paired with HANDOVER versus optional multi-lane kit and product paths" width="720" height="280">
+        <figcaption>Work lanes pair a phase board with a session handover. Keep lanes few — not one per ticket.</figcaption>
+        <img src="assets/diagrams/lanes.svg" alt="Single-lane phase board paired with handover versus optional multi-lane kit and product paths" width="720" height="280">
         <ul class="diagram-fallback">
-          <li>Single-lane default: ROADMAP ↔ HANDOVER</li>
+          <li>Single-lane default: phase board ↔ handover</li>
           <li>Optional multi-lane: each lane maps to its own living-doc pair</li>
         </ul>
       </figure>
 
       <figure class="diagram-figure" id="diagram-regimes">
-        <figcaption>git-only is a first-class baseline. Muse regimes deepen substrate; they do not unlock exclusive core features.</figcaption>
-        <img src="assets/diagrams/regimes.svg" alt="VCS regimes from git-only to muse-plus-git-mirror to muse-only" width="640" height="320">
+        <figcaption>GitHub-only is a full baseline. MuseHub deepens history when you want it — it does not unlock exclusive core features.</figcaption>
+        <img src="assets/diagrams/regimes.svg" alt="Version-control options from git-only to Muse with GitHub mirror to Muse-only" width="640" height="320">
         <ul class="diagram-fallback">
           <li>git-only — GitHub canonical</li>
           <li>muse+git-mirror — Muse canonical + GitHub mirror</li>
@@ -137,17 +122,17 @@
       </figure>
 
       <figure class="diagram-figure" id="diagram-layers">
-        <figcaption>L0 (including freeze review) is the always-on safety loop. L1/L2 add mechanical domain evidence and the honesty ledger when your repo binds those modules — they are not “skip freeze review.”</figcaption>
-        <img src="assets/diagrams/layers.svg" alt="Layer stack from L0 governance to L1 domain checkpoints to L2 honesty ledger" width="420" height="280">
+        <figcaption>Baseline safety is always on. Extra checkpoints and dual-control bind when your domain needs them — they never replace freeze review.</figcaption>
+        <img src="assets/diagrams/layers.svg" alt="Layer stack from baseline governance to domain checkpoints to honesty ledger" width="420" height="280">
         <ul class="diagram-fallback">
-          <li>L0 — living docs, phases, freeze review (always on)</li>
-          <li>L1 — domain checkpoint orchestrator (bind when you have verify scripts)</li>
-          <li>L2 — honesty ledger / producer≠verifier (bind when dual-control matters)</li>
+          <li>Baseline — living docs, phases, freeze review (always on)</li>
+          <li>Checkpoints — bind when you have verify scripts</li>
+          <li>Dual-control ledger — bind when money or publish stakes require it</li>
         </ul>
       </figure>
 
       <figure class="diagram-figure" id="diagram-kit-consumer">
-        <figcaption>The kit ships sockets. Your apps own domain packs and product runtime UX.</figcaption>
+        <figcaption>The kit ships sockets. Your apps own domain checks and product UX.</figcaption>
         <img src="assets/diagrams/kit-consumer.svg" alt="Overseer Kit clone through ok init to config and living docs, then consumer domain packs" width="760" height="260">
         <ul class="diagram-fallback">
           <li>Kit clone → ok init → config + living docs</li>
@@ -156,149 +141,111 @@
       </figure>
     </section>
 
-    <section id="layers">
-      <h2>Layers in plain language</h2>
-      <p><strong>L0 is not optional.</strong> Freeze review, living docs, and model-tier discipline ship as the baseline. L1 and L2 are extra mechanical sockets you bind when your domain has verify scripts or needs a hash-chained ledger — they do not replace freeze review, and they are not “the review step.”</p>
-      <div class="layer-stack">
-        <div class="layer layer-l0">
-          <strong>L0 — Governance (always on)</strong>
-          ROADMAP · Handover · Thinking → freeze → review → Auto · model-tier labels · governance-sync · build verification
-        </div>
-        <div class="layer layer-l1">
-          <strong>L1 — Domain checkpoints (bind when ready)</strong>
-          Consumer-owned verify scripts + manifests · <code>ok verify-step</code> orchestrator — why the flag exists: the kit cannot invent your video/export/research checks until you write them
-        </div>
-        <div class="layer layer-l2">
-          <strong>L2 — Honesty ledger (bind when ready)</strong>
-          Producer ≠ verifier · append-only hash chain · co-requirement hooks — dual-control when money/publish stakes require it
-        </div>
-        <div class="layer layer-l3">
-          <strong>L3 — Optional deeper history</strong>
-          Muse substrate when provenance pays for itself — never required for L0–L2
-        </div>
-      </div>
-      <p class="footnote">Defaults today: freeze review and living docs are the day-one path. <code>checkpoints.enabled</code> / <code>honesty.enabled</code> start off so a fresh <code>ok init</code> does not fail-closed waiting for scripts you have not written yet — turn them on when bound. Flipping those defaults kit-wide needs a dedicated Thinking freeze. CLI name is <code>ok</code>.</p>
-    </section>
-
     <section id="console-access">
-      <h2>Open the local console</h2>
-      <p>The public site does <strong>not</strong> run the console and does not mint session credentials. Open a local process, then use the UI in the browser or desktop shell.</p>
+      <h2>Get started</h2>
+      <p>This site does <strong>not</strong> run the console and does not mint session credentials. Open a local process, then use the UI in the browser or desktop shell.</p>
 
       <article class="path-card path-preferred" id="path-1">
         <h3>Path 1 — Download Mac console <span class="path-badge">preferred · Apple Silicon</span></h3>
         <ol>
-          <li>Confirm <strong>Python 3.11+</strong> on the host (<code>python3 --version</code>).</li>
-          <li>Download the signed Apple Silicon (<code>aarch64</code>) <code>.dmg</code> via the primary Download button above (Release <code>v0.1.0</code>).</li>
-          <li>Optionally verify <code>SHA256SUMS.txt</code> and manifest <code>signing.status: signed</code> (see the desktop runbook).</li>
-          <li><strong>Bind a governed checkout before launch:</strong> set <code>OVERSEER_REPO_ROOT</code> to the absolute path of the repo that already has <code>.overseer/</code> from <code>ok init</code>. Without that env var, the app binds the <em>bundled kit root</em> inside the app — useful for dogfooding the kit, not an automatic project picker.</li>
-          <li>Open the app; the desktop shell auto-fills session bootstrap.</li>
-          <li>Confirm the chrome shows the expected bound path before any write action.</li>
+          <li>Confirm <strong>Python 3.11+</strong> (<code>python3 --version</code>).</li>
+          <li>Download the signed Apple Silicon <code>.dmg</code> via the button above (Release <code>v0.1.0</code>).</li>
+          <li>Set <code>OVERSEER_REPO_ROOT</code> to a repo that already has <code>.overseer/</code> from <code>ok init</code>. Without it, the app binds the bundled kit inside the app.</li>
+          <li>Open the app and confirm the bound path before any write action.</li>
         </ol>
-        <p class="cta-honesty">Apple Silicon (<code>aarch64</code>) Mac · signed+notarized · requires Python 3.11+. Set <code>OVERSEER_REPO_ROOT</code> to your governed repo. Windows/Linux signed installers are not published yet. No in-app folder picker in Auto v1.</p>
+        <p class="cta-honesty">Apple Silicon Mac · signed and notarized · Python 3.11+ required. Windows/Linux signed installers are not published yet.</p>
       </article>
 
       <article class="path-card" id="path-2">
         <h3>Path 2 — Browser (<code>ok app</code>)</h3>
         <ol>
-          <li>From a governed repo (<code>.overseer/</code> present): <code>ok app --open</code> (or <code>ok app</code>, then open the printed URL).</li>
-          <li>Default local URL: <a href="http://127.0.0.1:8765/" id="local-console-loopback">http://127.0.0.1:8765/</a> — works only on <em>this</em> machine after <code>ok app</code> is running (this public page is static and does not host the console).</li>
-          <li>In the <strong>same</strong> terminal that started the server, copy <code>session_credential</code> and <code>csrf_token</code>.</li>
-          <li>Paste into Session bootstrap → Connect.</li>
-          <li>Credentials are process-lifetime only; never commit them; this website never mints them.</li>
+          <li>From a governed repo: <code>ok app --open</code>.</li>
+          <li>Open <a href="http://127.0.0.1:8765/" id="local-console-loopback">http://127.0.0.1:8765/</a> on this machine only (this public page is static).</li>
+          <li>From that same terminal, paste <code>session_credential</code> and <code>csrf_token</code> into Session bootstrap → Connect.</li>
+          <li>Credentials last for the process only; never commit them; this website never mints them.</li>
         </ol>
-        <p class="cta-honesty">Separate tool: read-only remote glance is <code>ok hosted-dashboard</code> (default <code>http://127.0.0.1:8766/</code>) — not the Path B console and not what overseerkit.com serves.</p>
       </article>
 
       <article class="path-card" id="path-3">
         <h3>Path 3 — Dev desktop</h3>
         <ol>
-          <li>From kit root: <code>./scripts/bundle-desktop-kit.sh</code> then <code>cd desktop && npm install && npm run tauri dev</code>.</li>
-          <li>Same auto-fill behavior as Path 1; still needs Python 3.11+ plus Rust/Node for <strong>dev builds</strong>.</li>
+          <li>From kit root: <code>./scripts/bundle-desktop-kit.sh</code>, then <code>cd desktop && npm install && npm run tauri dev</code>.</li>
+          <li>Same bind rules as Path 1; needs Python 3.11+ plus Rust/Node for dev builds.</li>
         </ol>
       </article>
 
-      <p class="bound-honesty"><em>This console is bound to one local checkout. Reads and writes (when confirmed) apply only to that tree — not to overseerkit.com and not to arbitrary remote repos. Desktop Path 1/3: set <code>OVERSEER_REPO_ROOT</code> to your governed repo; otherwise the shell binds the bundled kit.</em></p>
+      <p class="bound-honesty"><em>The console is bound to one local checkout — not to this website and not to arbitrary remote repos.</em></p>
       <p>Operator detail:
         <a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md">Desktop operator runbook</a>
-        · Release index: <a href="https://github.com/aaronrene/overseer-kit/releases/tag/v0.1.0">v0.1.0</a></p>
+        · Release index: <a href="https://github.com/aaronrene/overseer-kit/releases/tag/v0.1.0">v0.1.0</a>
+        · Clone guide:
+        <a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/GIT-ONLY-QUICKSTART.md">Git-only quickstart</a></p>
     </section>
 
-    <section id="suite-doors">
+    <section id="musehub" class="musehub-band" aria-labelledby="musehub-heading">
+      <div class="musehub-band-inner">
+        <div class="musehub-brand">
+          <img class="musehub-logo" src="assets/musehub-logo.svg" width="360" height="80" alt="MuseHub">
+        </div>
+        <div class="musehub-copy">
+          <h2 id="musehub-heading">Optional deepen with MuseHub</h2>
+          <p>Run fully on GitHub alone. When you want stronger continuity — Muse as the memory layer, GitHub as the mirror — flip the regime. Same <code>ok</code> commands. Not a second agent product.</p>
+          <p class="musehub-links">
+            <a href="#diagram-regimes">See version-control options</a>
+            · Start Muse-backed:
+            <code>ok init --regime muse+git-mirror</code>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="next-steps">
       <h2>Where to go next</h2>
-      <p>This site explains Overseer Kit. Day-to-day product UX stays in <em>your</em> apps.</p>
-      <div class="card-grid">
+      <p>This site explains Overseer Kit. Day-to-day product UX stays in your apps.</p>
+      <div class="card-grid suite-grid">
         <div class="card">
           <h3>GitHub</h3>
-          <p><a href="https://github.com/aaronrene/overseer-kit">overseer-kit</a> — clone, <code>ok init</code>, living docs, issues.</p>
-        </div>
-        <div class="card">
-          <h3>Local console</h3>
-          <p>After <code>ok app</code> is running on your machine:
-            <a href="http://127.0.0.1:8765/">Open loopback console</a>
-            (<code>127.0.0.1:8765</code>). Start it with <code>ok app --open</code> — see
-            <a href="#console-access">Open the local console</a>.</p>
+          <p><a href="https://github.com/aaronrene/overseer-kit">overseer-kit</a> — clone, <code>ok init</code>, issues.</p>
         </div>
         <div class="card">
           <h3>Docs</h3>
-          <p><a href="https://github.com/aaronrene/overseer-kit#readme">README</a> and the
-            <a href="https://github.com/aaronrene/overseer-kit/tree/main/docs">docs tree</a> — rendered on GitHub, not raw downloads.</p>
+          <p><a href="https://github.com/aaronrene/overseer-kit#readme">README</a>
+            · <a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/CONSUMER-ADAPTER-PATTERN.md">Adapter pattern</a>
+            · <a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/GIT-ONLY-QUICKSTART.md">Quickstart</a></p>
         </div>
         <div class="card">
-          <h3>Consumer pattern</h3>
-          <p><a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/CONSUMER-ADAPTER-PATTERN.md">Adapter pattern</a> — kit sockets vs what your repo owns.</p>
+          <h3>Local console</h3>
+          <p>After <code>ok app</code> is running:
+            <a href="http://127.0.0.1:8765/">Open loopback console</a>
+            — see <a href="#console-access">Get started</a>.</p>
         </div>
         <div class="card">
-          <h3>Optional MuseHub</h3>
-          <p>Same CLI; optional content-addressed history when you need it. See
-            <a href="#musehub">MuseHub deepen</a> and <a href="#diagram-regimes">VCS regimes</a>.</p>
+          <h3>Scenarios</h3>
+          <p><a href="scenarios/index.html">Scenario gallery</a> — video, research, classroom, and more.</p>
         </div>
       </div>
-    </section>
-
-    <section id="quickstart">
-      <h2>Clone / init (secondary path)</h2>
-      <ol>
-        <li>Clone <a href="https://github.com/aaronrene/overseer-kit">overseer-kit</a>.</li>
-        <li>From your consumer repo: <code>./cli/ok -C . init --regime git-only --non-interactive</code></li>
-        <li>Open the handover living doc → copy the paste-ready prompt into any chatbot.</li>
-        <li>Run <code>./cli/ok governance-sync --dry-run</code> before ending each session.</li>
-      </ol>
-      <p>Audience: developers and operators. This site explains and routes — it is not an end-user task app.</p>
-      <p>Full guide:
-        <a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/GIT-ONLY-QUICKSTART.md">Git-only quickstart</a>
-        · <a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/CONSUMER-ADAPTER-PATTERN.md">Consumer adapter pattern</a>
-        · Muse-backed:
-        <a href="#musehub">MuseHub deepen</a>
-        / <code>ok init --regime muse+git-mirror</code></p>
-    </section>
-
-    <section id="funnel">
-      <h2>GitHub → Kit → optional Muse</h2>
-      <p>Start where you are. Add layers when stakes rise. Upgrade substrate only when provenance pays for itself.</p>
-      <div class="funnel">
-        <span class="funnel-step" id="funnel-github">① GitHub today</span>
+      <div class="funnel" id="funnel" aria-label="Adoption path">
+        <span class="funnel-step" id="funnel-github">GitHub today</span>
         <span class="funnel-arrow">→</span>
-        <span class="funnel-step" id="funnel-kit">② 🆗 Overseer Kit layers</span>
+        <span class="funnel-step" id="funnel-kit">Overseer Kit</span>
         <span class="funnel-arrow">→</span>
-        <span class="funnel-step" id="funnel-musehub">③ Muse when ready</span>
+        <span class="funnel-step" id="funnel-musehub">Muse when ready</span>
       </div>
-      <p>Not another agent framework. <strong>Governance + honesty</strong> for developers — clone the kit or download the Mac console.</p>
     </section>
 
     <section id="scenarios">
       <h2>Scenarios</h2>
-      <p>Persona stories with more detail than the structure diagrams — video studio, research, accounting, classroom, multi-org OSS — with maturity badges. Same site chrome as this page.</p>
+      <p>Short persona stories — who uses the kit and for what jobs.</p>
       <p><a class="btn btn-secondary" href="scenarios/index.html">Open the scenario gallery →</a></p>
     </section>
   </main>
 
   <footer class="site-footer">
     <p>
-      <a href="https://github.com/aaronrene/overseer-kit/blob/main/LICENSE">MIT</a>
+      <a href="https://github.com/aaronrene/overseer-kit/blob/main/LICENSE">MIT open source</a>
       · <a href="https://github.com/aaronrene/overseer-kit/blob/main/SECURITY.md">Security</a>
-      · <a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/landing/HOSTING.md">Hosting</a>
     </p>
-    <p>🆗 Overseer Kit — portable governance for AI-assisted development. This site does not mint session credentials and does not run the local console.</p>
+    <p class="footer-tagline">Overseer Kit — portable governance for AI-assisted development.</p>
   </footer>
 </body>
 </html>

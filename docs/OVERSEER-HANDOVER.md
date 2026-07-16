@@ -6,16 +6,16 @@
 
 ---
 
-## NEXT SESSION — Pre-public DNS / dogfood (▶ NEXT)
+## NEXT SESSION — Merge landing clarity + DNS (▶ NEXT)
 
-**Date:** 2026-07-14  
-**Current position:** **K12 LICENSE → MIT** Thinking+Auto **DONE** (freeze `pass` MIT-r1;
-BV `pass` MIT-BV-r1). Kit SPDX is **MIT** everywhere operators look. Landing + access clarity
-remains DONE. Next: operator Tier-3 DNS for `overseerkit.com` and/or live consumer dogfood —
-**not** another landing redesign.  
+**Date:** 2026-07-16  
+**Current position:** **Landing clarity pass** on `feat/landing-clarity-pass` (visitor copy + IA
+trim + CSS polish; amends LAC section ids). Landing + access clarity Auto and MIT LICENSE remain
+**DONE**. Next: Tier-3 review/merge of the clarity PR, then operator DNS for `overseerkit.com`
+and/or live consumer dogfood.  
 **Model:** **Operator + Auto**  
-**Operator note:** DNS cutover and merge to `main` remain Tier 3. Win/Linux signed installers still
-unavailable. Merge this license PR before or with DNS cutover so the public site footer matches.
+**Operator note:** Merge to `main` and DNS cutover remain Tier 3. Win/Linux signed installers still
+unavailable.
 
 
 ### What just landed
@@ -23,11 +23,10 @@ unavailable. Merge this license PR before or with DNS cutover so the public site
 
 | Slice | Deliverable |
 | --- | --- |
+| **Landing clarity pass** | Visitor IA (`how-it-works` / `next-steps`); jargon demoted; MuseHub after Get started; hero brand; quieter nav; diagram chrome; scenarios softened; validator + landing seven-tier green |
 | **K12 LICENSE → MIT** | BV `pass` (MIT-BV-r1) — MIT `LICENSE`, pyproject, landing/console SPDX, validator, K12 §K12.4 amended |
 | **Landing + access clarity Auto** | BV `pass` (LAC-BV-r1) — site IA + Download CTA + Paths 1–3 + Path B chrome + health `repo_root` |
-| **Landing + access clarity Thinking** | `docs/PHASE-LANDING-ACCESS-CLARITY.md` → `pass` (LAC-r2) |
 | **Path C Mac Release** | `v0.1.0` → `Overseer.Kit_0.1.0_aarch64.dmg` (signed+notarized) |
-
 
 
 ### THE ONE NEXT STEP — **Model: Operator + Auto**
@@ -35,35 +34,35 @@ unavailable. Merge this license PR before or with DNS cutover so the public site
 
 |                |                                                                                                                                     |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID**         | **overseerkit.com DNS + optional dogfood** — point apex at static `docs/landing/` (§LAC.9) and/or live VF/Scooling dogfood |
-| **Branch** | Feature branch only until Tier-3 merge; DNS is operator-owned |
-| **Read first** | `docs/landing/HOSTING.md`; `docs/PHASE-LANDING-ACCESS-CLARITY.md` §LAC.8–§LAC.9; paste fence below |
-| **Deliver** | Operator: DNS/TLS to static host of `docs/landing/`. Optional Auto: Pages/hosting config docs only if needed — no live `ok app` on apex |
+| **ID**         | **Merge landing clarity PR → overseerkit.com DNS** — Tier-3 merge `feat/landing-clarity-pass`, then point apex at static `docs/landing/` (§LAC.9) |
+| **Branch** | `feat/landing-clarity-pass` until Tier-3 merge; DNS is operator-owned |
+| **Read first** | `docs/landing/HOSTING.md`; PR for clarity pass; `docs/PHASE-LANDING-ACCESS-CLARITY.md` §LAC.8–§LAC.9 |
+| **Deliver** | Operator: merge PR; DNS/TLS to static host of `docs/landing/`. Mark Landing clarity pass **DONE** in ROADMAP after merge |
 | **Hard stops** | No `app.*` / `console.*` live Path B; no CSRF mint; no merge/DNS automation without Tier 3 |
 
 
 
-### Paste-ready prompt — Pre-public DNS / dogfood (Operator + Auto)
+### Paste-ready prompt — Merge landing clarity + DNS (Operator + Auto)
 
 ```
-Overseer Kit — pre-public DNS cutover + optional consumer dogfood.
+Overseer Kit — merge landing clarity pass + optional DNS cutover.
 
 Model: Operator + Auto
 
 Read first:
   docs/landing/HOSTING.md; docs/PHASE-LANDING-ACCESS-CLARITY.md §LAC.8–§LAC.9;
-  docs/OVERSEER-HANDOVER.md; docs/ROADMAP.md.
+  docs/OVERSEER-HANDOVER.md; docs/ROADMAP.md; open PR for feat/landing-clarity-pass.
 
-Baseline (already shipped — do not redesign):
-  K12 LICENSE → MIT DONE (MIT-BV-r1); Landing + access clarity Auto DONE (LAC-BV-r1);
-  Mac v0.1.0 signed .dmg CTA; Paths 1–3 playbook; Path B chrome; api/health repo_root additive.
+Baseline (already on the feature branch — do not redesign again):
+  Visitor IA (how-it-works, next-steps); Mac v0.1.0 .dmg CTA; Paths 1–3;
+  four offline SVGs; MIT footer; no CSRF/session mint; no personal product doors.
 
 Task:
-1) Operator Tier 3: point overseerkit.com (apex) at static docs/landing/ host; TLS.
-2) Confirm §LAC.9 checklist still true after cutover (no live ok app on apex;
-   Download CTA still signed Mac; no CSRF/session mint claims; footer says MIT).
-3) Optional parallel: live VF/Scooling dogfood against published installer / ok app.
-4) Update ROADMAP + HANDOVER after cutover; merge feature branches only with Tier 3.
+1) Tier 3: review + merge feat/landing-clarity-pass to main (Muse→mirror path).
+2) Optional Tier 3: point overseerkit.com (apex) at static docs/landing/ host; TLS.
+3) Confirm §LAC.9 checklist still true (no live ok app on apex; Download CTA signed Mac;
+   no CSRF/session mint claims; footer says MIT).
+4) Mark Landing clarity pass DONE in ROADMAP + regenerate this handover NEXT block.
 
 Hard stops: no app.*/console.* Path B subdomain; no public session mint; no unsigned-as-primary.
 ```
