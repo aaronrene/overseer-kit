@@ -1,7 +1,7 @@
 # Public site hosting (overseerkit.com)
 
-**Purpose:** Static front door — explain Overseer Kit structure, link suite doors, and document how to
-**Open the local console** (Paths 1–3).
+**Purpose:** Static front door — explain Overseer Kit in visitor language, show structure at a glance,
+and document **Get started** (Paths 1–3: Mac download, `ok app`, dev desktop).
 **Not a product runtime.** No signup, no chatbot embedding, no session/CSRF mint, no governed-repo
 creation, no write APIs, no live `ok app` on this domain.
 
@@ -36,6 +36,7 @@ Serve the static tree under `docs/landing/` (GitHub Pages, Cloudflare Pages, Net
 | Path | Role |
 | --- | --- |
 | `/` or `/index.html` | Main landing — structure diagrams + console access playbook |
+| `/docs.html` | Public docs index (works when GitHub repo is private) |
 | `/scenarios/` | Scenario gallery |
 | `/assets/style.css` | Styles (no CDN) |
 | `/assets/diagrams/*.svg` | Offline structure flowcharts |

@@ -1,43 +1,40 @@
-# Landing + access clarity contract (amends K12 Track N IA)
-# Validated by tools/landing/validate.py — §LAC.3.1 section ids
+# Landing clarity pass — visitor IA (amends LAC §LAC.3.1)
+# Validated by tools/landing/validate.py
 
 version: 1
 license: MIT
 
 sections:
   - id: hero
-  - id: musehub
   - id: problem
-  - id: living-docs
+  - id: how-it-works
   - id: structure
-  - id: layers
   - id: console-access
-  - id: suite-doors
-  - id: quickstart
-  - id: funnel
+  - id: musehub
+  - id: next-steps
   - id: scenarios
 
 personas:
   - id: A
+    slug: software-engineering
+    title: Software engineering
+    status: dogfood
+  - id: B
     slug: video-studio
     title: Video studio
     status: dogfood
-  - id: B
+  - id: C
     slug: research-pipeline
     title: Research paper pipeline
     status: reference
-  - id: C
+  - id: D
     slug: accounting-close
     title: Accounting close
     status: aspirational
-  - id: D
+  - id: E
     slug: classroom
     title: Classroom
     status: reference
-  - id: E
-    slug: multi-org-oss
-    title: Multi-org open source
-    status: dogfood
 
 status_badges:
   - dogfood

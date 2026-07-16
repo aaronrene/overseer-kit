@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Overseer Kit docs — get started, living docs, and where to read more.">
+  <title>Docs — Overseer Kit</title>
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/theme.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav>
+      <a class="brand" href="index.html" aria-label="Overseer Kit home">
+        <span class="logo-mark" aria-hidden="true">OK</span>
+        <span class="brand-name">Overseer Kit</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html#how-it-works">How it works</a>
+        <a href="index.html#console-access">Get started</a>
+        <a href="scenarios/index.html">Scenarios</a>
+        <a href="docs.html" aria-current="page">Docs</a>
+        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to light mode" title="Light / dark">
+          <span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span>
+          <span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Docs</h1>
+    <p class="lead">Start here on this site. Full operator manuals live in the GitHub repo once you have access.</p>
+
+    <section>
+      <h2>On this site</h2>
+      <ul class="compact">
+        <li><a href="index.html#how-it-works">How it works</a> — the honesty loop in plain language</li>
+        <li><a href="index.html#structure">Structure</a> — lanes, version-control options, layers</li>
+        <li><a href="index.html#console-access">Get started</a> — Mac download, <code>ok app</code>, and dev desktop</li>
+        <li><a href="scenarios/index.html">Scenario gallery</a> — software engineering, video, research, and more</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Clone / init (short path)</h2>
+      <ol>
+        <li>Clone the kit when you have repo access.</li>
+        <li>From your project: <code>./cli/ok -C . init --regime git-only --non-interactive</code></li>
+        <li>Open the handover living doc and paste the next prompt into your chat.</li>
+        <li>Run <code>./cli/ok governance-sync --dry-run</code> before you end a session.</li>
+      </ol>
+      <p>Primary install for operators: <a href="index.html#path-1">Download Mac console</a> (Apple Silicon).</p>
+    </section>
+
+    <section>
+      <h2>GitHub (when the repo is open to you)</h2>
+      <p>Deep runbooks and the full docs tree live in the repository. If a GitHub link returns 404 in a private browser session, the repo is not public yet — use the pages above, or sign in with an account that has access.</p>
+      <ul class="compact">
+        <li><a href="https://github.com/aaronrene/overseer-kit">Repository home</a></li>
+        <li><a href="https://github.com/aaronrene/overseer-kit/blob/main/README.md">README</a></li>
+        <li><a href="https://github.com/aaronrene/overseer-kit/tree/main/docs">Docs tree</a></li>
+        <li><a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/GIT-ONLY-QUICKSTART.md">Git-only quickstart</a></li>
+        <li><a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md">Desktop operator runbook</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      <a href="https://github.com/aaronrene/overseer-kit/blob/main/LICENSE">MIT open source</a>
+      · <a href="https://github.com/aaronrene/overseer-kit/blob/main/SECURITY.md">Security</a>
+      · <a href="index.html">Home</a>
+    </p>
+    <p class="footer-tagline">🆗 Overseer Kit — portable governance for AI-assisted development.</p>
+  </footer>
+</body>
+</html>

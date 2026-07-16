@@ -27,12 +27,14 @@ def test_manifest_loads_version_one() -> None:
 
 
 def test_manifest_section_ids_match_lac_contract() -> None:
-    """§LAC.3.1 section order is the public IA contract."""
+    """Public IA contract — visitor clarity pass (amends LAC §LAC.3.1)."""
     manifest = load_manifest(MANIFEST)
     assert manifest.section_ids == LAC_SECTION_IDS
-    assert len(manifest.section_ids) == 11
-    assert "living-docs" in manifest.section_ids
+    assert len(manifest.section_ids) == 8
+    assert "how-it-works" in manifest.section_ids
     assert "musehub" in manifest.section_ids
+    assert "living-docs" not in manifest.section_ids
+    assert "funnel" not in manifest.section_ids
 
 
 def test_primary_download_href_equals_frozen_dmg() -> None:
@@ -133,45 +135,52 @@ def test_main_landing_has_no_personal_product_doors() -> None:
     for phrase in ("Knowtation", "Scooling", "VideoFactory", "musehub.ai"):
         assert phrase not in html
     assert 'id="theme-toggle"' in html
-    assert 'id="living-docs"' in html
+    assert 'id="how-it-works"' in html
     assert "logo-mark" in html
     assert "brand-name" in html
     assert "Overseer Kit" in html
     assert "Honesty for your agents" in html
     assert "logo-mark-hero" not in html
-    assert "ROADMAP" in html and "Handover" in html
-    assert "freeze review" in html.lower() or "ok review --freeze" in html
-    assert "ok route" in html or "model-routing" in html
-    assert "cost" in html.lower() or "cheaper" in html.lower() or "spend" in html.lower()
+    assert "hero-brand" not in html
+    assert "Lock the plan" in html
+    assert "Keep docs truthful" in html
+    assert "Spend models wisely" in html
+    assert "Close clean" in html
+    assert "paste-ready prompt" not in html.lower()
+    assert "model-routing.yaml" not in html
+    assert "governance-sync" not in html
     assert "cta-honesty" not in html.split('id="hero"')[1].split('id="problem"')[0]
-    assert "https://github.com/aaronrene/overseer-kit#readme" in html
+    assert 'href="docs.html">Docs</a>' in html
+    assert (KIT_ROOT / "docs" / "landing" / "docs.html").is_file()
+    assert "https://github.com/aaronrene/overseer-kit#readme" not in html
     assert 'href="assets/favicon.ico"' in html
     assert (KIT_ROOT / "docs" / "landing" / "assets" / "favicon.ico").is_file()
     assert (KIT_ROOT / "docs" / "landing" / "assets" / "ok-mark-1024.png").is_file()
     assert 'href="http://127.0.0.1:8765/"' in html
     assert "id=\"local-console-loopback\"" in html or 'id="local-console-loopback"' in html
-    assert "ok hosted-dashboard" in html
+    assert "ok hosted-dashboard" not in html
     assert "../../README.md" not in html
     assert "../CONSUMER-ADAPTER-PATTERN.md" not in html
 
 
-def test_musehub_band_under_hero() -> None:
+def test_musehub_band_after_console_access() -> None:
     html = INDEX.read_text(encoding="utf-8")
     assert 'id="musehub"' in html
-    assert "Same CLI. Deeper history with MuseHub." in html
+    assert "Optional deepen with MuseHub" in html
     assert "assets/musehub-logo.svg" in html
     assert "musehub.ai" not in html
     assert "K7-DOGFOOD-OPERATOR-RUNBOOK" not in html
     assert "ok init --regime muse+git-mirror" in html
-    assert "already connects to MuseHub" in html
     logo = (KIT_ROOT / "docs" / "landing" / "assets" / "musehub-logo.svg").read_text(
         encoding="utf-8"
     )
     assert "#6EA0F3" in logo
-    hero_end = html.index('id="hero"')
-    muse = html.index('id="musehub"')
+    hero = html.index('id="hero"')
     problem = html.index('id="problem"')
-    assert hero_end < muse < problem
+    console = html.index('id="console-access"')
+    muse = html.index('id="musehub"')
+    next_steps = html.index('id="next-steps"')
+    assert hero < problem < console < muse < next_steps
 
 
 def test_theme_defaults_dark_not_os_preference() -> None:
@@ -188,12 +197,29 @@ def test_landing_and_console_footers_say_mit() -> None:
     console = (KIT_ROOT / "tools" / "app" / "static" / "index.html").read_text(
         encoding="utf-8"
     )
-    assert ">MIT</a>" in landing
-    assert ">MIT</a>" in scenarios
+    assert ">MIT</a>" in landing or ">MIT open source</a>" in landing
+    assert ">MIT</a>" in scenarios or "MIT" in scenarios
     assert "Open source — MIT" in console
+    footer = landing.split('class="site-footer"')[1]
+    assert "Hosting" not in footer
+    assert "footer-tagline" in landing
+    assert "🆗 Overseer Kit — portable governance for AI-assisted development." in footer
+    assert "🆗 Overseer Kit — portable governance for AI-assisted development." in scenarios
     assert "Apache-2.0" not in landing
     assert "Apache-2.0" not in scenarios
     assert "Apache-2.0" not in console
+
+
+def test_landing_funnel_steps_live_inside_next_steps() -> None:
+    html = INDEX.read_text(encoding="utf-8")
+    assert 'id="funnel"' in html
+    assert 'id="funnel-github"' in html
+    assert 'id="funnel-kit"' in html
+    assert 'id="funnel-musehub"' in html
+    next_start = html.index('id="next-steps"')
+    scenarios = html.index('id="scenarios"')
+    funnel = html.index('id="funnel"')
+    assert next_start < funnel < scenarios
 
 
 def test_validate_rejects_apache_license_when_manifest_is_mit(tmp_path: Path) -> None:

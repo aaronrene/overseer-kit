@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="🆗 Overseer Kit scenario gallery — video studio, research, accounting, classroom, and OSS personas.">
-  <title>Scenario gallery — 🆗 Overseer Kit</title>
+  <meta name="description" content="Overseer Kit scenario gallery — software engineering, video studio, research, accounting, and classroom personas.">
+  <title>Scenario gallery — Overseer Kit</title>
   <link rel="icon" href="../assets/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="../assets/favicon-32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
@@ -19,11 +19,11 @@
         <span class="brand-name">Overseer Kit</span>
       </a>
       <div class="nav-links">
-        <a href="../index.html#living-docs">Living docs</a>
+        <a href="../index.html#how-it-works">How it works</a>
         <a href="../index.html#structure">Structure</a>
-        <a href="../index.html#console-access">Local console</a>
+        <a href="../index.html#console-access">Get started</a>
         <a href="index.html" aria-current="page">Scenarios</a>
-        <a href="https://github.com/aaronrene/overseer-kit#readme">Docs</a>
+        <a href="../docs.html">Docs</a>
         <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to light mode" title="Light / dark">
           <span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span>
           <span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span>
@@ -32,85 +32,160 @@
     </nav>
   </header>
 
-  <main>
-    <h1>Scenario gallery</h1>
-    <p class="lead">Five personas showing how living docs and layers compose in practice. Structure diagrams explain the machinery; these stories show the jobs-to-be-done.</p>
-
-    <p><strong>Badge key:</strong>
-      <span class="badge badge-dogfood">dogfood</span> in active use ·
-      <span class="badge badge-reference">reference</span> documented pattern ·
-      <span class="badge badge-aspirational">aspirational</span> illustrative only
-    </p>
+  <main class="gallery-main">
+    <header class="gallery-intro">
+      <h1>Scenario gallery</h1>
+      <p class="lead">Five personas showing how living docs and safety layers compose in practice. Each flow below is different — matching that job’s real path.</p>
+      <div class="badge-key" aria-label="Badge key">
+        <span class="badge-key-item"><span class="badge badge-dogfood">dogfood</span> in active use</span>
+        <span class="badge-key-item"><span class="badge badge-reference">reference</span> documented pattern</span>
+        <span class="badge-key-item"><span class="badge badge-aspirational">aspirational</span> illustrative only</span>
+      </div>
+    </header>
 
     <article class="scenario-detail" id="persona-A">
       <span class="badge badge-dogfood">dogfood</span>
-      <h2>A — Video studio</h2>
-      <p><strong>Pain:</strong> Remakes, fake approvals, and “done” narration before export gates pass.</p>
-      <h3>Layer usage</h3>
+      <h2>A — Software engineering</h2>
+      <p><strong>Pain:</strong> Agents mark features DONE without freeze review; contributors lack honest phase boundaries; merges skip gates.</p>
+      <h3>How the kit helps</h3>
       <ul class="compact">
-        <li><strong>L0:</strong> Production status board + overseer handover per video lane.</li>
-        <li><strong>L1:</strong> Verify scripts for narration, export, QC — <code>verify-step</code> orchestrator.</li>
-        <li><strong>L2:</strong> Independent verifier re-runs gates; human listen-approve on ledger.</li>
-        <li><strong>L3:</strong> Optional signed approvals + custody pin on Muse.</li>
+        <li><strong>Baseline:</strong> Public phase board + handover; design → build gates on every slice.</li>
+        <li><strong>Checkpoints:</strong> CI and domain tests as gate equivalents before merge.</li>
+        <li><strong>Dual control:</strong> Independent freeze review (local or API provider in GitHub Actions).</li>
+        <li><strong>Optional deepen:</strong> Muse mirror for provenance when history stakes rise.</li>
       </ul>
-      <div class="diagram">Human → Producer → L1 verify scripts → Verifier → Status board
-                                      ↓ fail = no advance
-                              optional Muse custody pin</div>
+      <figure class="flow-diagram flow-linear diagram" aria-label="Software engineering flow">
+        <figcaption>Ship path — freeze before build; CI blocks merge</figcaption>
+        <ol class="flow-track">
+          <li>Spec freeze</li>
+          <li>Independent review</li>
+          <li>Auto build</li>
+          <li>CI gates</li>
+          <li class="flow-end">Merge</li>
+        </ol>
+        <p class="flow-aside">Review or CI red → no merge</p>
+      </figure>
+      <p>This repo ships a CI pattern as a template:
+        <a href="https://github.com/aaronrene/overseer-kit/blob/main/templates/ci/freeze-review-github-actions.yml">freeze-review workflow template</a></p>
     </article>
 
     <article class="scenario-detail" id="persona-B">
-      <span class="badge badge-reference">reference</span>
-      <h2>B — Research paper pipeline</h2>
-      <p><strong>Pain:</strong> Fabricated citations and tables that do not match source data.</p>
-      <h3>Layer usage</h3>
+      <span class="badge badge-dogfood">dogfood</span>
+      <h2>B — Video studio</h2>
+      <p><strong>Pain:</strong> Remakes, fake approvals, and “done” narration before export gates pass.</p>
+      <h3>How the kit helps</h3>
       <ul class="compact">
-        <li><strong>L1:</strong> Source URL + retrieved hash; quote span checks; table regeneration from CSV.</li>
-        <li><strong>L2:</strong> Verifier re-fetches sample sources; verdict binds output SHA.</li>
-        <li><strong>L3:</strong> Evidence pack as content-addressed tree for peer review snapshot.</li>
+        <li><strong>Baseline:</strong> Production status board + handover per video lane.</li>
+        <li><strong>Checkpoints:</strong> Verify scripts for narration, export, QC.</li>
+        <li><strong>Dual control:</strong> Independent verifier re-runs gates; human listen-approve on the ledger.</li>
+        <li><strong>Optional deepen:</strong> Signed approvals + custody pin on Muse when provenance pays for itself.</li>
       </ul>
-      <p><em>Domain pack stub — not shipped in kit core.</em></p>
+      <figure class="flow-diagram flow-converge diagram" aria-label="Video studio flow">
+        <figcaption>Production lane — scripts verify; human listens before advance</figcaption>
+        <div class="flow-split">
+          <ol class="flow-track">
+            <li>Narration</li>
+            <li>Export</li>
+            <li>QC scripts</li>
+          </ol>
+          <span class="flow-join" aria-hidden="true">↘</span>
+          <ol class="flow-track flow-track-short">
+            <li>Independent listen</li>
+            <li class="flow-end">Status board advance</li>
+          </ol>
+        </div>
+        <p class="flow-aside">Any verify fail → remake, no board advance</p>
+      </figure>
     </article>
 
     <article class="scenario-detail" id="persona-C">
-      <span class="badge badge-aspirational">aspirational</span>
-      <h2>C — Accounting close</h2>
-      <p><strong>Pain:</strong> Disputed payouts and reconciliations without dual control.</p>
-      <h3>Layer usage</h3>
+      <span class="badge badge-reference">reference</span>
+      <h2>C — Research paper pipeline</h2>
+      <p><strong>Pain:</strong> Fabricated citations and tables that do not match source data.</p>
+      <h3>How the kit helps</h3>
       <ul class="compact">
-        <li><strong>L1:</strong> CSV schema + checksum; reconcile diff thresholds.</li>
-        <li><strong>L2:</strong> Separate prep vs review producer roles; verifier + human Tier-3 on export.</li>
-        <li><strong>L3:</strong> Muse capabilities map to propose vs execute transfers.</li>
+        <li><strong>Checkpoints:</strong> Source URL + retrieved hash; quote span checks; table regeneration from CSV.</li>
+        <li><strong>Dual control:</strong> Verifier re-fetches sample sources; verdict binds output SHA.</li>
+        <li><strong>Optional deepen:</strong> Evidence pack as content-addressed tree for peer review snapshot.</li>
       </ul>
-      <p><em>Illustrative — aspirational domain pack; no kit claim of production close workflow.</em></p>
+      <figure class="flow-diagram flow-loop diagram" aria-label="Research pipeline flow">
+        <figcaption>Evidence loop — re-fetch until quotes and tables match sources</figcaption>
+        <ol class="flow-track">
+          <li>Retrieve + hash</li>
+          <li>Quote / table checks</li>
+          <li>Verifier re-fetch</li>
+        </ol>
+        <p class="flow-loop-label" aria-hidden="true">↻ mismatch → rewrite from sources</p>
+        <ol class="flow-track flow-track-short">
+          <li class="flow-end">Bind output SHA → draft</li>
+        </ol>
+        <p class="flow-aside">Optional: pin evidence pack for peer review</p>
+      </figure>
+      <p><em>Domain pack stub — not shipped in kit core.</em></p>
     </article>
 
     <article class="scenario-detail" id="persona-D">
-      <span class="badge badge-reference">reference</span>
-      <h2>D — Classroom</h2>
-      <p><strong>Pain:</strong> Students skip tests and self-mark assignments complete.</p>
-      <h3>Layer usage</h3>
+      <span class="badge badge-aspirational">aspirational</span>
+      <h2>D — Accounting close</h2>
+      <p><strong>Pain:</strong> Disputed payouts and reconciliations without dual control.</p>
+      <h3>How the kit helps</h3>
       <ul class="compact">
-        <li><strong>L0:</strong> Freeze → Auto → build-verification discipline on every assignment.</li>
-        <li><strong>L1:</strong> Optional assignment checkpoints (tests green, no secrets in repo).</li>
-        <li><strong>L2:</strong> Optional TA verifier session before grade publish.</li>
-        <li><strong>L3:</strong> Optional student Muse identity for portfolio provenance.</li>
+        <li><strong>Checkpoints:</strong> CSV schema + checksum; reconcile diff thresholds.</li>
+        <li><strong>Dual control:</strong> Separate prep vs review roles; verifier + human authorization on export.</li>
+        <li><strong>Optional deepen:</strong> Muse capabilities map to propose vs execute transfers.</li>
       </ul>
-      <p><strong>Traffic story:</strong> Teacher installs on GitHub; later lesson offers optional Muse deepen for signed portfolio history.</p>
+      <figure class="flow-diagram flow-dual diagram" aria-label="Accounting close flow">
+        <figcaption>Dual control — prep and review stay separate until authorize</figcaption>
+        <div class="flow-dual-cols">
+          <ol class="flow-track">
+            <li class="flow-role">Prep</li>
+            <li>CSV + checksum</li>
+            <li>Reconcile diffs</li>
+          </ol>
+          <ol class="flow-track">
+            <li class="flow-role">Review</li>
+            <li>Re-run checks</li>
+            <li>Human authorize</li>
+          </ol>
+        </div>
+        <p class="flow-join-line" aria-hidden="true">↓ both green</p>
+        <ol class="flow-track flow-track-short">
+          <li class="flow-end">Export / payout file</li>
+        </ol>
+        <p class="flow-aside">Propose ≠ execute on Muse when transfers are live</p>
+      </figure>
+      <p><em>Illustrative — aspirational domain pack; no kit claim of a production close workflow.</em></p>
     </article>
 
     <article class="scenario-detail" id="persona-E">
-      <span class="badge badge-dogfood">dogfood</span>
-      <h2>E — Multi-org open source</h2>
-      <p><strong>Pain:</strong> Maintainer merges without freeze review; contributors lack honest phase boundaries.</p>
-      <h3>Layer usage</h3>
+      <span class="badge badge-reference">reference</span>
+      <h2>E — Classroom</h2>
+      <p><strong>Pain:</strong> Students skip tests and self-mark assignments complete.</p>
+      <h3>How the kit helps</h3>
       <ul class="compact">
-        <li><strong>L0:</strong> Public ROADMAP + HANDOVER; Thinking → Auto gates.</li>
-        <li><strong>L1:</strong> CI runs domain tests as checkpoint equivalents.</li>
-        <li><strong>L2:</strong> Freeze review API provider in GitHub Actions (<code>provider: api</code>).</li>
-        <li><strong>L3:</strong> Optional mirror to Muse for provenance badge (mirror branch SHA).</li>
+        <li><strong>Baseline:</strong> Freeze → build → verification discipline on every assignment.</li>
+        <li><strong>Checkpoints:</strong> Optional assignment gates (tests green, no secrets in repo).</li>
+        <li><strong>Dual control:</strong> Optional TA verifier session before grade publish.</li>
+        <li><strong>Optional deepen:</strong> Student Muse identity for portfolio provenance.</li>
       </ul>
-      <p>This repo ships the pattern as a template:
-        <a href="https://github.com/aaronrene/overseer-kit/blob/main/templates/ci/freeze-review-github-actions.yml">freeze-review workflow template</a></p>
+      <figure class="flow-diagram flow-handoff diagram" aria-label="Classroom flow">
+        <figcaption>Teacher sets the rails; student work cannot self-grade</figcaption>
+        <ol class="flow-track">
+          <li class="flow-role">Teacher</li>
+          <li>Install kit</li>
+          <li>Freeze assignment</li>
+        </ol>
+        <p class="flow-join-line" aria-hidden="true">→ handoff</p>
+        <ol class="flow-track">
+          <li class="flow-role">Student</li>
+          <li>Build</li>
+          <li>Tests green</li>
+          <li>TA verify</li>
+          <li class="flow-end">Grade publish</li>
+        </ol>
+        <p class="flow-aside">Later lesson: optional Muse pin for portfolio history</p>
+      </figure>
+      <p><strong>Traffic story:</strong> Teacher installs on GitHub; later lesson offers optional Muse deepen for signed portfolio history.</p>
     </article>
   </main>
 
@@ -120,6 +195,7 @@
       · <a href="https://github.com/aaronrene/overseer-kit/blob/main/SECURITY.md">Security</a>
       · <a href="../index.html">Home</a>
     </p>
+    <p class="footer-tagline">🆗 Overseer Kit — portable governance for AI-assisted development.</p>
   </footer>
 </body>
 </html>

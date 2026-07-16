@@ -18,15 +18,12 @@ FROZEN_PRIMARY_DOWNLOAD_HREF = (
 
 LAC_SECTION_IDS: tuple[str, ...] = (
     "hero",
-    "musehub",
     "problem",
-    "living-docs",
+    "how-it-works",
     "structure",
-    "layers",
     "console-access",
-    "suite-doors",
-    "quickstart",
-    "funnel",
+    "musehub",
+    "next-steps",
     "scenarios",
 )
 

@@ -20,10 +20,11 @@ def test_relative_doc_links_exist() -> None:
     # Docs open as GitHub-rendered pages — not raw relative .md (file:// / Pages).
     assert "https://github.com/aaronrene/overseer-kit/blob/main/docs/GIT-ONLY-QUICKSTART.md" in index
     assert "https://github.com/aaronrene/overseer-kit/blob/main/docs/CONSUMER-ADAPTER-PATTERN.md" in index
-    assert "https://github.com/aaronrene/overseer-kit/blob/main/docs/K7-DOGFOOD-OPERATOR-RUNBOOK.md" in index
+    assert "https://github.com/aaronrene/overseer-kit/blob/main/docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md" in index
+    assert "K7-DOGFOOD-OPERATOR-RUNBOOK" not in index
     assert (KIT_ROOT / "docs" / "GIT-ONLY-QUICKSTART.md").is_file()
     assert (KIT_ROOT / "docs" / "CONSUMER-ADAPTER-PATTERN.md").is_file()
-    assert (KIT_ROOT / "docs" / "K7-DOGFOOD-OPERATOR-RUNBOOK.md").is_file()
+    assert (KIT_ROOT / "docs" / "TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md").is_file()
 
 
 def test_scenarios_share_main_nav_shape() -> None:
@@ -36,9 +37,20 @@ def test_scenarios_share_main_nav_shape() -> None:
     assert 'href="index.html"' in scenarios or 'href="./index.html"' in scenarios
     assert 'aria-current="page"' in scenarios
     assert "../index.html#scenarios" not in scenarios
-    assert "https://github.com/aaronrene/overseer-kit#readme" in scenarios
+    assert 'href="../docs.html">Docs</a>' in scenarios
+    assert "https://github.com/aaronrene/overseer-kit#readme" not in scenarios
     assert 'id="theme-toggle"' in scenarios
     assert ">Landing<" not in scenarios  # no alternate "Landing" chrome swap
+    assert scenarios.count("flow-diagram") == 5
+    assert "flow-linear" in scenarios
+    assert "flow-converge" in scenarios
+    assert "flow-loop" in scenarios
+    assert "flow-dual" in scenarios
+    assert "flow-handoff" in scenarios
+    assert "fail = no advance" not in scenarios
+    assert "Software engineering" in scenarios
+    assert scenarios.index("Software engineering") < scenarios.index("Video studio")
+    assert "gallery-intro" in scenarios
 
 
 def test_main_nav_scenarios_goes_to_gallery() -> None:
