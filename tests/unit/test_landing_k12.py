@@ -140,8 +140,8 @@ def test_main_landing_has_no_personal_product_doors() -> None:
     assert "brand-name" in html
     assert "Overseer Kit" in html
     assert "Honesty for your agents" in html
-    assert "logo-mark-hero" in html
-    assert "hero-brand" in html
+    assert "logo-mark-hero" not in html
+    assert "hero-brand" not in html
     assert "Lock the plan" in html
     assert "Keep docs truthful" in html
     assert "Spend models wisely" in html

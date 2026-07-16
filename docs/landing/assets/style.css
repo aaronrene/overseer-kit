@@ -357,28 +357,6 @@ html[data-theme="dark"] .diagram-figure img {
   align-items: center;
 }
 
-.hero-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.65rem;
-  margin: 0 0 1rem;
-  animation: hero-fade 0.45s ease-out;
-}
-
-.logo-mark-hero {
-  width: 2.5rem;
-  height: 2.5rem;
-  font-size: 1.35rem;
-  border-radius: 0.5rem;
-}
-
-.hero-brand-name {
-  font-weight: 750;
-  font-size: 1.35rem;
-  letter-spacing: -0.02em;
-  color: #e7ecf3;
-}
-
 .hero-copy h1 {
   color: #7ec8ff;
   font-size: clamp(2.25rem, 4.2vw, 3.15rem);
