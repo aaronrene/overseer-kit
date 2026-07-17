@@ -22,6 +22,7 @@ COMMANDS = frozenset(
         "app",
         "hosted-dashboard",
         "upgrade-regime",
+        "land-check",
     }
 )
 from cli.commands.app import run_app
@@ -29,6 +30,7 @@ from cli.commands.governance_sync import run_governance_sync_command
 from cli.commands.honesty_status import run_honesty_status_command
 from cli.commands.hosted_dashboard import run_hosted_dashboard
 from cli.commands.init import run_init
+from cli.commands.land_check import run_land_check_command
 from cli.commands.ledger import run_ledger_command
 from cli.commands.review import run_review
 from cli.commands.status import run_status
@@ -122,6 +124,16 @@ def build_parser() -> argparse.ArgumentParser:
         "--all-lanes",
         action="store_true",
         help="Sync every configured lane; skip lanes with missing doc files",
+    )
+
+    lc_parser = subparsers.add_parser(
+        "land-check",
+        help="Close-ritual land-to-main check (never auto-merges)",
+    )
+    lc_parser.add_argument(
+        "--mode",
+        choices=("verify_landed", "prepare_pr"),
+        help="Override close_ritual.mode from config",
     )
 
     vs_parser = subparsers.add_parser("verify-step", help="L1 checkpoint orchestrator (K9b)")
@@ -280,6 +292,8 @@ def main(argv: list[str] | None = None, *, ctx: CliContext | None = None) -> int
         return run_review(args, runtime, raw_argv=rest_argv)
     if args.command == "governance-sync":
         return run_governance_sync_command(args, runtime)
+    if args.command == "land-check":
+        return run_land_check_command(args, runtime)
     if args.command == "verify-step":
         return run_verify_step_command(args, runtime)
     if args.command == "honesty-status":

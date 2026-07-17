@@ -175,11 +175,31 @@ You do **not** fork overseer-kit. You **install** it into VideoFactory; domain t
 policy live in VideoFactory. Other repos (MuseHub, Knowtation) use the same kit with different doc
 names and policy files.
 
+**Honesty / L1 (VideoFactory 2026-07-16 lesson):** consumer `scripts/verify/*` must **re-measure**
+domain invariants (e.g. panel pixel coverage SIN-P5), not accept self-certified JSON booleans alone.
+The kit orchestrator only runs those scripts — if VF verify scripts lie, Overseer “passes.” Fix lives
+in the consumer verify script + compose gate (`docs/THREADS-AVATAR-PANEL-COVERAGE-RULE.md`), not by
+forking kit core unless contributing a shared honesty helper upstream.
+
 **Stub / add-on pattern:** Core CLI and adapters expose fixed contracts (`init`, `sync`, `status`,
-`review`, `governance-sync`, `verify-step`, `honesty-status`, `ledger`, …). Domain-specific
+`review`, `governance-sync`, `land-check`, `verify-step`, `honesty-status`, `ledger`, …). Domain-specific
 behavior is added via consumer **policy**, **preserved docs**, and optional **Cursor
 skills/rules** — not by editing kit source unless you are contributing upstream. Cursor is an
 optional boost; Path A works with any chatbot via the handover paste block.
+
+### Close ritual / land-to-main (`ok land-check`)
+
+Configurable in `.overseer/config.yaml` under `close_ritual`:
+
+| Knob | Purpose |
+| --- | --- |
+| `enabled` | Turn land-check on/off |
+| `mode` | `verify_landed` (paths must match `origin/main`) or `prepare_pr` (commit hygiene) |
+| `require_paths` | Repo-relative files that must land on main |
+| `consumer_verify_script` | Optional VF/other script (e.g. `scripts/verify/vf_verify_board_landed.py`) |
+
+**Never auto-merges** (Tier 3). VideoFactory also sets `boardLandPending` on wrap gate closes and
+blocks `session-start` until `jobs/board_land_check.py --verify-landed --clear-pending` passes.
 
 ---
 
