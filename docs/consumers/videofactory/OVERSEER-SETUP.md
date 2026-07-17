@@ -187,7 +187,7 @@ behavior is added via consumer **policy**, **preserved docs**, and optional **Cu
 skills/rules** — not by editing kit source unless you are contributing upstream. Cursor is an
 optional boost; Path A works with any chatbot via the handover paste block.
 
-### Close ritual / land-to-main (`ok land-check`)
+### Close ritual / land-to-main (`ok land-check` + `ok pr-land`)
 
 Configurable in `.overseer/config.yaml` under `close_ritual`:
 
@@ -198,7 +198,11 @@ Configurable in `.overseer/config.yaml` under `close_ritual`:
 | `require_paths` | Repo-relative files that must land on main |
 | `consumer_verify_script` | Optional VF/other script (e.g. `scripts/verify/vf_verify_board_landed.py`) |
 
-**Never auto-merges** (Tier 3). VideoFactory also sets `boardLandPending` on wrap gate closes and
+**`ok land-check` never merges** — it only verifies.  
+**`ok pr-land`** is the authorized wait-for-green merge (Tier-3 delegated via `--authorized`).  
+VideoFactory mirror: `jobs/pr_land_after_checks.py`. Spec: kit `docs/PHASE-PR-LAND-AFTER-CHECKS.md`.
+
+VideoFactory also sets `boardLandPending` on wrap gate closes and
 blocks `session-start` until `jobs/board_land_check.py --verify-landed --clear-pending` passes.
 
 ---
