@@ -57,8 +57,18 @@ tiers:
       - secrets and credential changes
       - cross-repo merges
       - mirror push without Muse main alignment
+      - authorized wait-for-green PR land (ok pr-land / consumer pr_land_after_checks)
     behavior: stop_for_operator_authorization
     requires_authorization: true
+    # Operator may delegate a single land by requiring --authorized "<reason>".
+    # Agents must poll checks locally and merge only when green; they must not
+    # blind-merge via gh --auto when the base branch has no required checks.
+    # On check failure (exit 2): stop, fix in-scope CI, re-run — do not waive gates.
+    delegated_merge_when_green:
+      command: ok pr-land
+      requires_flag: --authorized
+      refuse_blind_auto_merge: true
+      on_check_failure: babysit_fix_then_retry
     standing_decisions:
       - SD-14
       - SD-16

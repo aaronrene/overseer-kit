@@ -23,6 +23,7 @@ COMMANDS = frozenset(
         "hosted-dashboard",
         "upgrade-regime",
         "land-check",
+        "pr-land",
     }
 )
 from cli.commands.app import run_app
@@ -32,6 +33,7 @@ from cli.commands.hosted_dashboard import run_hosted_dashboard
 from cli.commands.init import run_init
 from cli.commands.land_check import run_land_check_command
 from cli.commands.ledger import run_ledger_command
+from cli.commands.pr_land import run_pr_land_command
 from cli.commands.review import run_review
 from cli.commands.status import run_status
 from cli.commands.sync import run_sync
@@ -134,6 +136,35 @@ def build_parser() -> argparse.ArgumentParser:
         "--mode",
         choices=("verify_landed", "prepare_pr"),
         help="Override close_ritual.mode from config",
+    )
+
+    pl_parser = subparsers.add_parser(
+        "pr-land",
+        help="Authorized wait-for-green PR merge (Tier-3 delegated; requires --authorized)",
+    )
+    pl_parser.add_argument("--pr", required=True, help="PR number or URL")
+    pl_parser.add_argument(
+        "--authorized",
+        default="",
+        help='Operator authorization reason (required). Example: "Aaron: land after green"',
+    )
+    pl_parser.add_argument(
+        "--method",
+        choices=("squash", "merge", "rebase"),
+        default="squash",
+        help="Merge method (default: squash)",
+    )
+    pl_parser.add_argument("--poll-seconds", type=float, default=20.0)
+    pl_parser.add_argument("--timeout-seconds", type=float, default=1800.0)
+    pl_parser.add_argument(
+        "--allow-empty-checks",
+        action="store_true",
+        help="Treat zero reported checks as pass",
+    )
+    pl_parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Wait/verify only; do not merge",
     )
 
     vs_parser = subparsers.add_parser("verify-step", help="L1 checkpoint orchestrator (K9b)")
@@ -294,6 +325,8 @@ def main(argv: list[str] | None = None, *, ctx: CliContext | None = None) -> int
         return run_governance_sync_command(args, runtime)
     if args.command == "land-check":
         return run_land_check_command(args, runtime)
+    if args.command == "pr-land":
+        return run_pr_land_command(args, runtime)
     if args.command == "verify-step":
         return run_verify_step_command(args, runtime)
     if args.command == "honesty-status":

@@ -136,7 +136,7 @@ def run_land_check(
         out = (completed.stdout or completed.stderr or "").strip()
         if out:
             _emit(out)
-        _emit("note: ok land-check never auto-merges (Tier 3)")
+        _emit("note: ok land-check never merges; use ok pr-land --authorized for wait-for-green land")
         return LandCheckResult(
             exit_code=completed.returncode,
             landed=completed.returncode == 0,
@@ -175,7 +175,7 @@ def run_land_check(
             _emit("prepare_pr: dirty require_paths — commit before opening PR")
             for d in dirty_paths:
                 _emit(f"  dirty: {d}")
-            _emit("Tier 3: human merges to main; agents must not auto-merge")
+            _emit("Tier 3: use ok pr-land --authorized \"…\" to wait-for-green merge (never blind --auto)")
             return LandCheckResult(
                 exit_code=1,
                 landed=False,
@@ -186,7 +186,7 @@ def run_land_check(
                 messages=tuple(messages),
             )
         _emit("prepare_pr: require_paths clean — push feature branch and open PR")
-        _emit("Tier 3: human merges to main; agents must not auto-merge")
+        _emit("Tier 3: use ok pr-land --authorized \"…\" to wait-for-green merge (never blind --auto)")
         return LandCheckResult(
             exit_code=0,
             landed=False,
@@ -205,7 +205,7 @@ def run_land_check(
                 _emit(f"  mismatch: {r['path']}")
         for d in dirty_paths:
             _emit(f"  dirty: {d}")
-        _emit("Tier 3: human merges to main; agents must not auto-merge")
+        _emit("Tier 3: use ok pr-land --authorized \"…\" to wait-for-green merge (never blind --auto)")
         return LandCheckResult(
             exit_code=1,
             landed=False,
@@ -217,7 +217,7 @@ def run_land_check(
         )
 
     _emit(f"verify_landed: PASS — require_paths match {ref}")
-    _emit("Tier 3: human merges to main; agents must not auto-merge")
+    _emit("Tier 3 land complete once paths match; further merges use ok pr-land --authorized")
     return LandCheckResult(
         exit_code=0,
         landed=True,
