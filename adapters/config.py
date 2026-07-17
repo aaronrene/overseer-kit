@@ -219,6 +219,20 @@ class HostedDashboardSection:
 
 
 @dataclass(frozen=True)
+class CloseRitualConfig:
+    """Fail-closed land-to-main hygiene (never auto-merges — Tier 3).
+
+    ``verify_landed`` compares ``require_paths`` working-tree content to
+    ``origin/<main_branch>``. ``prepare_pr`` only reports dirty/uncommitted state.
+    """
+
+    enabled: bool = False
+    mode: str = "verify_landed"  # verify_landed | prepare_pr
+    require_paths: tuple[str, ...] = ()
+    consumer_verify_script: str | None = None  # optional repo-relative script
+
+
+@dataclass(frozen=True)
 class ExtensionEntry:
     """One extensions[] escape-hatch entry (§K9.2)."""
 
@@ -244,6 +258,7 @@ class OverseerConfig:
     model_routing: ModelRoutingConfig = ModelRoutingConfig()
     cost_awareness: CostAwarenessConfig = CostAwarenessConfig()
     hosted_dashboard: HostedDashboardSection = HostedDashboardSection()
+    close_ritual: CloseRitualConfig = CloseRitualConfig()
 
 
 def load_config(path: Path) -> OverseerConfig:
@@ -397,6 +412,7 @@ def _validate_config(raw: dict[str, Any], path: str) -> OverseerConfig:
     model_routing = _parse_model_routing(raw.get("model_routing"), path)
     cost_awareness = _parse_cost_awareness(raw.get("cost_awareness"), path)
     hosted_dashboard = _parse_hosted_dashboard(raw.get("hosted_dashboard"), path)
+    close_ritual = _parse_close_ritual(raw.get("close_ritual"), path)
 
     return OverseerConfig(
         overseer_config_version=version,
@@ -418,6 +434,7 @@ def _validate_config(raw: dict[str, Any], path: str) -> OverseerConfig:
         model_routing=model_routing,
         cost_awareness=cost_awareness,
         hosted_dashboard=hosted_dashboard,
+        close_ritual=close_ritual,
     )
 
 
@@ -832,6 +849,55 @@ def _parse_modules(raw_modules: Any, path: str) -> ModulesConfig | None:
         governance_enabled=governance_enabled,
         checkpoints_enabled=checkpoints_enabled,
         honesty_enabled=honesty_enabled,
+    )
+
+
+def _parse_close_ritual(raw_ritual: Any, path: str) -> CloseRitualConfig:
+    """Parse optional ``close_ritual`` section (land-to-main; never auto-merge)."""
+    if raw_ritual is None:
+        return CloseRitualConfig()
+    ritual_raw = _require_mapping(raw_ritual, "close_ritual", path)
+    allowed = {"enabled", "mode", "require_paths", "consumer_verify_script"}
+    extra = set(ritual_raw) - allowed
+    if extra:
+        raise ConfigError(f"unknown close_ritual keys: {sorted(extra)}", path)
+
+    enabled = ritual_raw.get("enabled", False)
+    if not isinstance(enabled, bool):
+        raise ConfigError("close_ritual.enabled must be a boolean", path)
+
+    mode = ritual_raw.get("mode", "verify_landed")
+    if mode not in {"verify_landed", "prepare_pr"}:
+        raise ConfigError(
+            "close_ritual.mode must be verify_landed|prepare_pr",
+            path,
+        )
+
+    paths_raw = ritual_raw.get("require_paths", [])
+    if not isinstance(paths_raw, list) or not all(isinstance(p, str) and p.strip() for p in paths_raw):
+        raise ConfigError("close_ritual.require_paths must be a list of non-empty strings", path)
+    for p in paths_raw:
+        candidate = Path(p)
+        if candidate.is_absolute() or ".." in candidate.parts:
+            raise ConfigError(
+                "close_ritual.require_paths entries must be relative without '..'",
+                path,
+            )
+
+    script = _optional_str(ritual_raw, "consumer_verify_script")
+    if script is not None:
+        script_path = Path(script)
+        if script_path.is_absolute() or ".." in script_path.parts:
+            raise ConfigError(
+                "close_ritual.consumer_verify_script must be relative without '..'",
+                path,
+            )
+
+    return CloseRitualConfig(
+        enabled=enabled,
+        mode=str(mode),
+        require_paths=tuple(str(p).strip() for p in paths_raw),
+        consumer_verify_script=script,
     )
 
 
