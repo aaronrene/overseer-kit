@@ -795,21 +795,23 @@ html[data-theme="light"] .pain-label {
 }
 
 .problem-close {
-  margin: 0;
-  padding: 1rem 1.15rem;
-  border-radius: 10px;
-  background:
-    linear-gradient(135deg, rgba(61, 154, 106, 0.14), rgba(61, 154, 106, 0.04));
-  border: 1px solid rgba(61, 154, 106, 0.35);
-  color: var(--text);
-  font-size: 1rem;
-  line-height: 1.5;
-  max-width: 42rem;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  max-width: 40rem;
+  border: none;
+  background: none;
+  border-radius: 0;
+  color: #7ec8ff;
+  font-size: clamp(1.45rem, 2.6vw, 2rem);
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
 }
 
 html[data-theme="light"] .problem-close {
-  background: linear-gradient(135deg, rgba(31, 122, 77, 0.1), rgba(31, 122, 77, 0.03));
-  border-color: rgba(31, 122, 77, 0.3);
+  color: #2a6fad;
+  background: none;
+  border: none;
 }
 
 /* How it works — numbered loop draws a path through the four steps */
