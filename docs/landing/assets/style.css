@@ -744,6 +744,87 @@ ul.compact {
   letter-spacing: -0.03em;
 }
 
+/* Kit basics — Check OK + living docs bar under the hero */
+.band-kit-basics {
+  margin: 0 0 var(--content-gap);
+  padding: 0;
+}
+
+.kit-basics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.kit-basics-panel {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem 1.15rem;
+  align-items: start;
+  margin: 0;
+  padding: 1.25rem 1.35rem 1.35rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.kit-basics-icon {
+  margin-top: 0.15rem;
+}
+
+.kit-basics-icon img {
+  display: block;
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.kit-basics-copy h2 {
+  margin: 0 0 0.45rem;
+  padding: 0;
+  border: none;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #7ec8ff;
+}
+
+html[data-theme="light"] .kit-basics-copy h2 {
+  color: #2a6fad;
+}
+
+.kit-basics-copy p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.kit-basics-copy strong {
+  color: var(--text);
+  font-weight: 650;
+}
+
+.kit-basics-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.kit-basics-list li {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 52rem) {
+  .kit-basics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Problem — 2×2 pain grid pulls eye to failure modes */
 .band-problem {
   position: relative;
