@@ -744,45 +744,54 @@ ul.compact {
   letter-spacing: -0.03em;
 }
 
-/* Kit basics — Check OK + living docs bar under the hero */
+/* Kit basics — Check OK + living docs bar under the hero (hero-width full bleed) */
 .band-kit-basics {
-  margin: 0 0 var(--content-gap);
-  padding: 0;
+  width: 100vw;
+  max-width: 100vw;
+  margin: -0.5rem calc(50% - 50vw) var(--content-gap);
+  padding: 0.25rem 1.5rem 0.5rem;
+}
+
+.kit-basics-inner {
+  max-width: 68rem;
+  margin: 0 auto;
 }
 
 .kit-basics-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 1.35rem 1.75rem;
 }
 
 .kit-basics-panel {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 1rem 1.15rem;
+  gap: 1.15rem 1.35rem;
   align-items: start;
   margin: 0;
-  padding: 1.25rem 1.35rem 1.35rem;
+  min-height: 100%;
+  padding: 1.5rem 1.6rem 1.65rem;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 14px;
 }
 
 .kit-basics-icon {
-  margin-top: 0.15rem;
+  margin-top: 0.1rem;
 }
 
-.kit-basics-icon img {
+.kit-basics-icon img,
+.kit-basics-icon svg {
   display: block;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 4rem;
+  height: 4rem;
 }
 
 .kit-basics-copy h2 {
-  margin: 0 0 0.45rem;
+  margin: 0 0 0.55rem;
   padding: 0;
   border: none;
-  font-size: 1.15rem;
+  font-size: clamp(1.15rem, 1.8vw, 1.35rem);
   font-weight: 700;
   letter-spacing: -0.02em;
   color: #7ec8ff;
@@ -795,8 +804,9 @@ html[data-theme="light"] .kit-basics-copy h2 {
 .kit-basics-copy p {
   margin: 0;
   color: var(--muted);
-  font-size: 0.95rem;
-  line-height: 1.5;
+  font-size: 1rem;
+  line-height: 1.55;
+  max-width: 28rem;
 }
 
 .kit-basics-copy strong {
@@ -809,19 +819,24 @@ html[data-theme="light"] .kit-basics-copy h2 {
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 0.55rem;
+  gap: 0.7rem;
 }
 
 .kit-basics-list li {
   margin: 0;
   color: var(--muted);
-  font-size: 0.92rem;
-  line-height: 1.45;
+  font-size: 0.98rem;
+  line-height: 1.5;
 }
 
 @media (max-width: 52rem) {
   .kit-basics-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .kit-basics-copy p {
+    max-width: none;
   }
 }
 
