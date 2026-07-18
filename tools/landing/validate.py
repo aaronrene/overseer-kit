@@ -18,6 +18,7 @@ FROZEN_PRIMARY_DOWNLOAD_HREF = (
 
 LAC_SECTION_IDS: tuple[str, ...] = (
     "hero",
+    "kit-basics",
     "problem",
     "how-it-works",
     "structure",
