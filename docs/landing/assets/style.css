@@ -787,6 +787,12 @@ ul.compact {
   height: 4rem;
 }
 
+/* Docs cycle mark has more viewBox padding than the filled OK mark — enlarge to match. */
+.kit-basics-icon-docs svg {
+  width: 4.85rem;
+  height: 4.85rem;
+}
+
 .kit-basics-copy h2 {
   margin: 0 0 0.55rem;
   padding: 0;
