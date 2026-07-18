@@ -123,17 +123,21 @@ def resolve_footprint(config: OverseerConfig, *, kit: Path | None = None) -> lis
             if not src.is_file():
                 continue
             rel = src.relative_to(skills_dir)
-            dest = f".cursor/skills/{rel.as_posix()}"
-            if dest in destinations:
-                raise ConfigError(f"duplicate footprint destination {dest!r}", None)
-            destinations.add(dest)
-            files.append(
-                FootprintFile(
-                    destination=dest,
-                    source=f"cursor/skills/{rel.as_posix()}",
-                    content=src.read_bytes(),
+            content = src.read_bytes()
+            source = f"cursor/skills/{rel.as_posix()}"
+            # Cursor Agent Skills + Claude Code project skills (same bytes).
+            for dest_prefix in (".cursor/skills", ".claude/skills"):
+                dest = f"{dest_prefix}/{rel.as_posix()}"
+                if dest in destinations:
+                    raise ConfigError(f"duplicate footprint destination {dest!r}", None)
+                destinations.add(dest)
+                files.append(
+                    FootprintFile(
+                        destination=dest,
+                        source=source,
+                        content=content,
+                    )
                 )
-            )
 
     files.sort(key=lambda item: item.destination)
     return files

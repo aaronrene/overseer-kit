@@ -6,16 +6,14 @@
 
 ---
 
-## NEXT SESSION — Merge landing clarity + DNS (▶ NEXT)
+## NEXT SESSION — Merge Check OK + landing clarity / DNS (▶ NEXT)
 
-**Date:** 2026-07-16  
-**Current position:** **Landing clarity pass** on `feat/landing-clarity-pass` (visitor copy + IA
-trim + CSS polish; amends LAC section ids). Landing + access clarity Auto and MIT LICENSE remain
-**DONE**. Next: Tier-3 review/merge of the clarity PR, then operator DNS for `overseerkit.com`
-and/or live consumer dogfood.  
+**Date:** 2026-07-17  
+**Current position:** **Check OK** Auto **DONE** (BV `pass`, CIO-BV-r1 + CIO-r2 rename /
+multi-runtime) on `feat/check-if-ok` ([PR #35](https://github.com/aaronrene/overseer-kit/pull/35)).
+Next: Tier-3 PR merge, then consumers run `ok sync`. Parallel: landing clarity + optional DNS.  
 **Model:** **Operator + Auto**  
-**Operator note:** Merge to `main` and DNS cutover remain Tier 3. Win/Linux signed installers still
-unavailable.
+**Operator note:** Merge to `main` and DNS remain Tier 3.
 
 
 ### What just landed
@@ -23,10 +21,10 @@ unavailable.
 
 | Slice | Deliverable |
 | --- | --- |
-| **Landing clarity pass** | Visitor IA (`how-it-works` / `next-steps`); jargon demoted; MuseHub after Get started; hero brand; quieter nav; diagram chrome; scenarios softened; validator + landing seven-tier green |
-| **K12 LICENSE → MIT** | BV `pass` (MIT-BV-r1) — MIT `LICENSE`, pyproject, landing/console SPDX, validator, K12 §K12.4 amended |
-| **Landing + access clarity Auto** | BV `pass` (LAC-BV-r1) — site IA + Download CTA + Paths 1–3 + Path B chrome + health `repo_root` |
-| **Path C Mac Release** | `v0.1.0` → `Overseer.Kit_0.1.0_aarch64.dmg` (signed+notarized) |
+| **Check OK** | BV `pass` (CIO-r2) — `/check-ok` in Cursor **and** Claude Code (`.claude/skills/`); `ok check-ok`; paste `docs/CHECK-OK.md` for Copilot/any; same K5 engine |
+| **Landing clarity pass** | Still **WIP** on `feat/landing-clarity-pass` (Tier-3 merge pending) |
+| **K12 LICENSE → MIT** | BV `pass` (MIT-BV-r1) |
+| **Landing + access clarity Auto** | BV `pass` (LAC-BV-r1) |
 
 
 ### THE ONE NEXT STEP — **Model: Operator + Auto**
@@ -34,37 +32,32 @@ unavailable.
 
 |                |                                                                                                                                     |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID**         | **Merge landing clarity PR → overseerkit.com DNS** — Tier-3 merge `feat/landing-clarity-pass`, then point apex at static `docs/landing/` (§LAC.9) |
-| **Branch** | `feat/landing-clarity-pass` until Tier-3 merge; DNS is operator-owned |
-| **Read first** | `docs/landing/HOSTING.md`; PR for clarity pass; `docs/PHASE-LANDING-ACCESS-CLARITY.md` §LAC.8–§LAC.9 |
-| **Deliver** | Operator: merge PR; DNS/TLS to static host of `docs/landing/`. Mark Landing clarity pass **DONE** in ROADMAP after merge |
-| **Hard stops** | No `app.*` / `console.*` live Path B; no CSRF mint; no merge/DNS automation without Tier 3 |
+| **ID**         | **Tier-3 merge `feat/check-if-ok` (PR #35)** (then consumer `ok sync`); optional parallel landing clarity + DNS |
+| **Branch** | `feat/check-if-ok` (PR #35); landing on `feat/landing-clarity-pass` |
+| **Read first** | PR #35; `docs/PHASE-CHECK-OK.md`; `docs/CHECK-OK.md`; `docs/landing/HOSTING.md` |
+| **Deliver** | Merged kit main; each consumer `ok sync` → `.cursor/skills/check-ok` **and** `.claude/skills/check-ok`; optional DNS |
+| **Hard stops** | No merge without Tier 3; no live Path B on apex |
 
 
 
-### Paste-ready prompt — Merge landing clarity + DNS (Operator + Auto)
+### Paste-ready prompt — Merge Check OK + optional landing/DNS (Operator + Auto)
 
 ```
-Overseer Kit — merge landing clarity pass + optional DNS cutover.
+Overseer Kit — Tier-3 merge Check OK (+ optional landing clarity / DNS).
 
 Model: Operator + Auto
 
 Read first:
-  docs/landing/HOSTING.md; docs/PHASE-LANDING-ACCESS-CLARITY.md §LAC.8–§LAC.9;
-  docs/OVERSEER-HANDOVER.md; docs/ROADMAP.md; open PR for feat/landing-clarity-pass.
-
-Baseline (already on the feature branch — do not redesign again):
-  Visitor IA (how-it-works, next-steps); Mac v0.1.0 .dmg CTA; Paths 1–3;
-  four offline SVGs; MIT footer; no CSRF/session mint; no personal product doors.
+  https://github.com/aaronrene/overseer-kit/pull/35; docs/PHASE-CHECK-OK.md;
+  docs/CHECK-OK.md; docs/OVERSEER-HANDOVER.md; docs/landing/HOSTING.md (if DNS).
 
 Task:
-1) Tier 3: review + merge feat/landing-clarity-pass to main (Muse→mirror path).
-2) Optional Tier 3: point overseerkit.com (apex) at static docs/landing/ host; TLS.
-3) Confirm §LAC.9 checklist still true (no live ok app on apex; Download CTA signed Mac;
-   no CSRF/session mint claims; footer says MIT).
-4) Mark Landing clarity pass DONE in ROADMAP + regenerate this handover NEXT block.
+1) Tier 3: review + merge feat/check-if-ok / PR #35 (Muse→mirror path).
+2) In each consumer: ok sync — confirm .cursor/skills/check-ok AND .claude/skills/check-ok.
+3) Optional: merge feat/landing-clarity-pass + DNS per §LAC.9.
+4) Regenerate this NEXT block after merges.
 
-Hard stops: no app.*/console.* Path B subdomain; no public session mint; no unsigned-as-primary.
+Hard stops: no main merge without Tier 3; no public CSRF mint; no unsigned-as-primary.
 ```
 
 
@@ -124,7 +117,8 @@ Hard stops: no app.*/console.* Path B subdomain; no public session mint; no unsi
 | **Track O / O2**          | **DONE** — Stage 3 kit upgrade ceremony Thinking freeze (`docs/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md` reviewed → `pass`, O2-r3), stamp `sha256:ac970077…` |
 | **Track O / O3**          | **DONE** — `ok upgrade-regime` build-verified → `pass` (O3-BV-r2). Runbook + contract/harness retarget; **761** tests green (+33 §O2.9). Track O kit chain complete |
 | **CLI entrypoint**        | **`ok`** (canonical `./cli/ok`); **`overseer`** compat shim (`./cli/overseer`, one-line stderr deprecation) |
-| **CLI subcommands**       | `init` \| `sync` \| `status` \| `review --freeze` \| `governance-sync` \| `verify-step` \| `honesty-status` \| `ledger` \| `route` \| `app` \| `hosted-dashboard` \| `upgrade-regime` |
+| **CLI subcommands**       | `init` \| `sync` \| `status` \| `review --freeze` \| `check-ok` \| `governance-sync` \| `verify-step` \| `honesty-status` \| `ledger` \| `route` \| `app` \| `hosted-dashboard` \| `upgrade-regime` |
+| **Check OK** | **DONE** (CIO-r2) — `/check-ok` → `.cursor` + `.claude` skills; `ok check-ok`; `docs/CHECK-OK.md` for Copilot/any; consumer `ok sync` after merge |
 | **Muse dogfood** | **D2 repaired** + substrate health + gate reminders + **muse-sync hard gate (KH2)** + **footprint self-integrity hard gate (KH3)** live; `muse rev-parse` reads plain-text SHA (0.2.x returns bare SHA on success; JSON only on failure/non-zero); `governance-sync --dry-run` exits 0; muse canonical HEAD `sha256:3e14450f…` (catch-up commit; genesis `sha256:4671b7f…`) |
 | **KH1b** | **DONE** — substrate §1 + gate reminders §2 |
 | **KH2** | **DONE** — Muse-sync hard gate (freeze `pass` KH2-r2 + Auto build); `tools/muse_sync/`; fail-closed on `status --exit-code` / `review --freeze` / `governance-sync` |
@@ -155,6 +149,15 @@ Hard stops: no app.*/console.* Path B subdomain; no public session mint; no unsi
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-17** — **Landing hero: Check OK terminal + honesty-loop art.** Hero CTAs demoted to
+  quiet Download / Clone links; scenarios/docs/releases quieter; CLI mock shows `ok check-ok`;
+  pyramid PNG replaced by `assets/diagrams/honesty-loop.svg` (freeze / re-review / build /
+  re-verify loop). Landing tests green. On `feat/check-if-ok` (PR #35).
+- **2026-07-17** — **Check OK (ad-hoc honesty) DONE (CIO-BV-r1 + CIO-r2).**
+  Renamed to **Check OK** (`/check-ok`, `ok check-ok`); skills vendor to `.cursor/skills/`
+  **and** `.claude/skills/`; paste `docs/CHECK-OK.md` for Copilot/any assistant; always-on
+  `check-ok-thinking.mdc`; same K5 `review --freeze` engine; no new lanes. Branch
+  `feat/check-if-ok` (PR #35). NEXT → Tier-3 merge + consumer `ok sync`.
 - **2026-07-14** — **K12 LICENSE → MIT DONE (freeze `pass` MIT-r1 + BV `pass` MIT-BV-r1).**
   Operator SPDX flip: root MIT `LICENSE`, `pyproject.toml`, landing/scenarios footers, Path B
   console copy, `tools/landing/validate.py` fail-closed MIT, K12 §K12.4/§K12.7 amended via

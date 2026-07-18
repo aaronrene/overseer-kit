@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="520" viewBox="0 0 640 520" role="img" aria-labelledby="hlTitle hlDesc">
+  <title id="hlTitle">Overseer honesty loop</title>
+  <desc id="hlDesc">Circular governance loop: Think and freeze, freeze review with re-review on findings, Auto build, build verification with re-check on findings, then pass. Check OK enters the same loop for ad-hoc work.</desc>
+  <defs>
+    <linearGradient id="hlGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3d9a6a" stop-opacity="0.35"/>
+      <stop offset="50%" stop-color="#3880c8" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#e85d4c" stop-opacity="0.25"/>
+    </linearGradient>
+    <filter id="hlSoft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.2" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <marker id="hlArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#e8a35c"/>
+    </marker>
+    <marker id="hlArrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#5cb88a"/>
+    </marker>
+    <marker id="hlArrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#e85d4c"/>
+    </marker>
+  </defs>
+
+  <!-- ambient -->
+  <circle cx="320" cy="255" r="210" fill="url(#hlGlow)" opacity="0.55"/>
+  <circle cx="320" cy="255" r="168" fill="none" stroke="rgba(232,163,92,0.35)" stroke-width="1.5" stroke-dasharray="6 8"/>
+
+  <!-- main cycle path (clockwise) -->
+  <path d="M320 70
+           A185 185 0 0 1 505 255
+           A185 185 0 0 1 320 440
+           A185 185 0 0 1 135 255
+           A185 185 0 0 1 320 70"
+        fill="none" stroke="#e8a35c" stroke-width="2.25" opacity="0.85"
+        marker-mid="url(#hlArrow)"/>
+
+  <!-- Node: Think / Freeze (top) -->
+  <g transform="translate(320 70)">
+    <circle r="52" fill="#0d1520" stroke="#3d9a6a" stroke-width="3.5"/>
+    <circle r="44" fill="none" stroke="#5cb88a" stroke-width="1.5" opacity="0.5"/>
+    <text text-anchor="middle" y="-6" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#7ec8ff">Think</text>
+    <text text-anchor="middle" y="14" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="12" fill="#d5dee9">Freeze</text>
+  </g>
+
+  <!-- Node: Freeze review (right) -->
+  <g transform="translate(505 255)">
+    <circle r="52" fill="#0d1520" stroke="#e85d4c" stroke-width="3.5"/>
+    <circle r="44" fill="none" stroke="#ff8a7a" stroke-width="1.5" opacity="0.55"/>
+    <text text-anchor="middle" y="-8" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#ffb4a8">Freeze</text>
+    <text text-anchor="middle" y="10" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#ffb4a8">review</text>
+  </g>
+
+  <!-- Node: Auto build (bottom) -->
+  <g transform="translate(320 440)">
+    <circle r="52" fill="#0d1520" stroke="#3880c8" stroke-width="3.5"/>
+    <circle r="44" fill="none" stroke="#7ec8ff" stroke-width="1.5" opacity="0.5"/>
+    <text text-anchor="middle" y="-6" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="13" font-weight="700" fill="#7ec8ff">Auto</text>
+    <text text-anchor="middle" y="14" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="12" fill="#d5dee9">build</text>
+  </g>
+
+  <!-- Node: Build verification (left) -->
+  <g transform="translate(135 255)">
+    <circle r="52" fill="#0d1520" stroke="#e8a35c" stroke-width="3.5"/>
+    <circle r="44" fill="none" stroke="#f0c48a" stroke-width="1.5" opacity="0.55"/>
+    <text text-anchor="middle" y="-8" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#f0c48a">Build</text>
+    <text text-anchor="middle" y="10" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="12" font-weight="700" fill="#f0c48a">verify</text>
+  </g>
+
+  <!-- Re-review inner loop (findings - fix - review again) -->
+  <path d="M455 210 Q400 160 355 120" fill="none" stroke="#e85d4c" stroke-width="2"
+        stroke-dasharray="5 4" marker-end="url(#hlArrowRed)" opacity="0.95"/>
+  <text x="390" y="148" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#e85d4c">findings</text>
+  <text x="392" y="162" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="10" fill="#ffb4a8">re-review</text>
+
+  <!-- Re-verify inner loop -->
+  <path d="M185 300 Q240 350 285 400" fill="none" stroke="#e8a35c" stroke-width="2"
+        stroke-dasharray="5 4" marker-end="url(#hlArrow)" opacity="0.95"/>
+  <text x="198" y="368" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="11" font-weight="600" fill="#e8a35c">findings</text>
+  <text x="200" y="382" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="10" fill="#f0c48a">re-check</text>
+
+  <!-- Pass arc into center -->
+  <path d="M175 220 Q220 200 255 230" fill="none" stroke="#5cb88a" stroke-width="2.25"
+        marker-end="url(#hlArrowGreen)"/>
+
+  <!-- Center: Check OK / pass -->
+  <g filter="url(#hlSoft)">
+    <circle cx="320" cy="255" r="68" fill="#121a26" stroke="#5cb88a" stroke-width="3"/>
+    <circle cx="320" cy="255" r="58" fill="none" stroke="#7ec8ff" stroke-width="1.25" opacity="0.45"/>
+    <text x="320" y="242" text-anchor="middle" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#7ec8ff">Check OK</text>
+    <text x="320" y="264" text-anchor="middle" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="12" fill="#5cb88a">pass - ship</text>
+    <text x="320" y="284" text-anchor="middle" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="10" fill="#a8b6c9">roadmap or side work</text>
+  </g>
+
+  <!-- Legend chips -->
+  <g font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="10">
+    <rect x="24" y="488" width="10" height="10" rx="2" fill="#e85d4c"/>
+    <text x="40" y="497" fill="#d5dee9">re-review until pass</text>
+    <rect x="170" y="488" width="10" height="10" rx="2" fill="#e8a35c"/>
+    <text x="186" y="497" fill="#d5dee9">re-verify until pass</text>
+    <rect x="330" y="488" width="10" height="10" rx="2" fill="#5cb88a"/>
+    <text x="346" y="497" fill="#d5dee9">honesty gates clear</text>
+  </g>
+</svg>

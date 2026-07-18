@@ -31,3 +31,16 @@ Seven-tier tests (unit, integration, e2e, stress, data-integrity, performance, s
 ## Governance sync
 
 On phase completion, update **both** `docs/ROADMAP.md` and `docs/OVERSEER-HANDOVER.md` in the closing commit.
+
+## Check OK (any AI tool)
+
+Ad-hoc honesty check — same freeze-review + build-verification path as roadmap loops.
+
+| How | Command |
+| --- | --- |
+| Cursor / Claude Code | Type **Check OK** or `/check-ok` |
+| Terminal (Copilot / any) | `ok check-ok --topic "<slug>"` |
+| Paste prompt | `docs/CHECK-OK.md` |
+
+Skills install to **both** `.cursor/skills/` and `.claude/skills/` on `ok sync`. Do not open a
+new `docs.lanes` entry for one-offs.

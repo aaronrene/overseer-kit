@@ -39,11 +39,26 @@
           <h1>Honesty for your agents</h1>
           <p class="lead">Freeze the plan. Review it independently. Then build — so AI work cannot fake DONE.</p>
           <p class="sublead">Portable governance for any repo. Your apps keep the product runtime; this kit keeps the plan honest between sessions.</p>
-          <div class="cta-row">
-            <a class="btn btn-primary" id="cta-download-mac"
-               href="https://github.com/aaronrene/overseer-kit/releases/download/v0.1.0/Overseer.Kit_0.1.0_aarch64.dmg">Download Mac console (Apple Silicon)</a>
-            <a class="btn btn-secondary" href="https://github.com/aaronrene/overseer-kit">Clone / init on GitHub</a>
+
+          <div class="hero-terminal" role="region" aria-label="Check OK command example">
+            <div class="hero-terminal-chrome" aria-hidden="true">
+              <span class="hero-terminal-dot"></span>
+              <span class="hero-terminal-dot"></span>
+              <span class="hero-terminal-dot"></span>
+              <span class="hero-terminal-title">ok — Check OK</span>
+            </div>
+            <pre class="hero-terminal-body"><code><span class="term-prompt">$</span> <span class="term-cmd">ok check-ok</span> <span class="term-flag">--topic</span> <span class="term-str">"side-research"</span>
+<span class="term-out">check-ok: scaffolded docs/reviews/…</span>
+<span class="term-prompt">$</span> <span class="term-cmd">ok check-ok</span> <span class="term-flag">--path</span> <span class="term-str">docs/reviews/…</span>
+<span class="term-ok">verdict: pass</span> <span class="term-cursor" aria-hidden="true"></span></code></pre>
           </div>
+
+          <p class="hero-foot-links">
+            <a id="cta-download-mac"
+               href="https://github.com/aaronrene/overseer-kit/releases/download/v0.1.0/Overseer.Kit_0.1.0_aarch64.dmg">Download Mac console</a>
+            <span class="hero-foot-sep" aria-hidden="true">·</span>
+            <a href="https://github.com/aaronrene/overseer-kit">Clone on GitHub</a>
+          </p>
           <p class="tertiary-links">
             <a href="scenarios/index.html">Scenarios</a>
             · <a href="docs.html">Docs</a>
@@ -51,10 +66,10 @@
           </p>
         </div>
         <figure class="hero-visual">
-          <img src="assets/hero-oversight.png"
-               width="1024"
-               height="682"
-               alt="Hierarchy of operators at consoles — oversight branching from one lead through review tiers to the work floor">
+          <img src="assets/diagrams/honesty-loop.svg"
+               width="640"
+               height="520"
+               alt="Overseer honesty loop: Think and freeze, freeze review with re-review on findings, Auto build, build verification with re-check, Check OK pass in the center">
         </figure>
       </div>
     </section>
