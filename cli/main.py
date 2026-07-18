@@ -14,6 +14,7 @@ COMMANDS = frozenset(
         "sync",
         "status",
         "review",
+        "check-if-ok",
         "governance-sync",
         "verify-step",
         "honesty-status",
@@ -25,6 +26,7 @@ COMMANDS = frozenset(
     }
 )
 from cli.commands.app import run_app
+from cli.commands.check_if_ok import run_check_if_ok
 from cli.commands.governance_sync import run_governance_sync_command
 from cli.commands.honesty_status import run_honesty_status_command
 from cli.commands.hosted_dashboard import run_hosted_dashboard
@@ -98,6 +100,42 @@ def build_parser() -> argparse.ArgumentParser:
     review_parser.add_argument("--model", metavar="LABEL")
     review_parser.add_argument("--no-stamp", action="store_true")
     review_parser.add_argument("--checklist", metavar="PATH")
+
+    cio_parser = subparsers.add_parser(
+        "check-if-ok",
+        help="Ad-hoc honesty check: scaffold side-check freeze + review --freeze",
+    )
+    cio_parser.add_argument(
+        "--path",
+        metavar="PATH",
+        help="Existing or new freeze artifact (default: docs/reviews/<date>-<topic>.md)",
+    )
+    cio_parser.add_argument(
+        "--topic",
+        metavar="SLUG",
+        help="Topic label used when scaffolding a new side-check doc",
+    )
+    cio_parser.add_argument(
+        "--scope",
+        metavar="TEXT",
+        help="Optional scope paragraph written into a new scaffold",
+    )
+    cio_parser.add_argument(
+        "--scaffold-only",
+        action="store_true",
+        help="Create/reuse the artifact only; do not run freeze review",
+    )
+    cio_parser.add_argument(
+        "--force-scaffold",
+        action="store_true",
+        help="Overwrite an existing side-check file when scaffolding",
+    )
+    cio_parser.add_argument("--dry-run", action="store_true", help="Passed through to review --freeze")
+    cio_parser.add_argument("--mode", choices=["agent", "human"])
+    cio_parser.add_argument("--provider", choices=["local", "api"])
+    cio_parser.add_argument("--model", metavar="LABEL")
+    cio_parser.add_argument("--no-stamp", action="store_true")
+    cio_parser.add_argument("--checklist", metavar="PATH")
 
     gs_parser = subparsers.add_parser(
         "governance-sync",
@@ -278,6 +316,8 @@ def main(argv: list[str] | None = None, *, ctx: CliContext | None = None) -> int
         return run_status(args, runtime)
     if args.command == "review":
         return run_review(args, runtime, raw_argv=rest_argv)
+    if args.command == "check-if-ok":
+        return run_check_if_ok(args, runtime, raw_argv=rest_argv)
     if args.command == "governance-sync":
         return run_governance_sync_command(args, runtime)
     if args.command == "verify-step":

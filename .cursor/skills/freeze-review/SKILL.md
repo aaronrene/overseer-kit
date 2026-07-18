@@ -20,6 +20,7 @@ security, irreversibility, real money, or Tier-3 gates.
 - Roadmap step marked **Thinking → Auto** and `{step}a` contract artifacts are Muse/Git committed
 - Any artifact listed as `frozen: true` in a phase freeze block
 - Before Tier 3 action consumes a frozen artifact (merge, staging push, live flip)
+- Ad-hoc / side research via **`/check-if-ok`** (scaffolds `docs/reviews/` then this gate)
 
 ## Review checklist
 
