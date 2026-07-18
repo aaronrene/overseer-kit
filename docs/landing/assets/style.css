@@ -808,10 +808,18 @@ html[data-theme="light"] .pain-label {
   line-height: 1.2;
 }
 
+.problem-close-lead {
+  color: #c8d0db;
+}
+
 html[data-theme="light"] .problem-close {
   color: #2a6fad;
   background: none;
   border: none;
+}
+
+html[data-theme="light"] .problem-close-lead {
+  color: #8a96a6;
 }
 
 /* How it works — numbered loop draws a path through the four steps */
