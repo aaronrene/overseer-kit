@@ -30,8 +30,9 @@ def test_manifest_section_ids_match_lac_contract() -> None:
     """Public IA contract — visitor clarity pass (amends LAC §LAC.3.1)."""
     manifest = load_manifest(MANIFEST)
     assert manifest.section_ids == LAC_SECTION_IDS
-    assert len(manifest.section_ids) == 8
+    assert len(manifest.section_ids) == 9
     assert "how-it-works" in manifest.section_ids
+    assert "kit-basics" in manifest.section_ids
     assert "musehub" in manifest.section_ids
     assert "living-docs" not in manifest.section_ids
     assert "funnel" not in manifest.section_ids
@@ -180,11 +181,18 @@ def test_musehub_band_after_console_access() -> None:
     )
     assert "#6EA0F3" in logo
     hero = html.index('id="hero"')
+    kit_basics = html.index('id="kit-basics"')
     problem = html.index('id="problem"')
     console = html.index('id="console-access"')
     muse = html.index('id="musehub"')
     next_steps = html.index('id="next-steps"')
-    assert hero < problem < console < muse < next_steps
+    assert hero < kit_basics < problem < console < muse < next_steps
+    kit_block = html.split('id="kit-basics"')[1].split('id="problem"')[0]
+    assert "Check OK" in kit_block
+    assert "Any work" in kit_block
+    assert "Same honesty loop" in kit_block
+    assert "Anywhere you work" in kit_block
+    assert "Lanes" in kit_block
 
 
 def test_theme_defaults_dark_not_os_preference() -> None:

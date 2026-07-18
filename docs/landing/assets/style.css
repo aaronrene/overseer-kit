@@ -744,6 +744,106 @@ ul.compact {
   letter-spacing: -0.03em;
 }
 
+/* Kit basics — Check OK + living docs bar under the hero (hero-width full bleed) */
+.band-kit-basics {
+  width: 100vw;
+  max-width: 100vw;
+  margin: -0.5rem calc(50% - 50vw) var(--content-gap);
+  padding: 0.25rem 1.5rem 0.5rem;
+}
+
+.kit-basics-inner {
+  max-width: 68rem;
+  margin: 0 auto;
+}
+
+.kit-basics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.35rem 1.75rem;
+}
+
+.kit-basics-panel {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.15rem 1.35rem;
+  align-items: start;
+  margin: 0;
+  min-height: 100%;
+  padding: 1.5rem 1.6rem 1.65rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.kit-basics-icon {
+  margin-top: 0.1rem;
+}
+
+.kit-basics-icon img,
+.kit-basics-icon svg {
+  display: block;
+  width: 4rem;
+  height: 4rem;
+}
+
+/* Docs cycle mark has more viewBox padding than the filled OK mark — enlarge to match. */
+.kit-basics-icon-docs svg {
+  width: 4.85rem;
+  height: 4.85rem;
+}
+
+.kit-basics-copy h2 {
+  margin: 0 0 0.55rem;
+  padding: 0;
+  border: none;
+  font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #7ec8ff;
+}
+
+html[data-theme="light"] .kit-basics-copy h2 {
+  color: #2a6fad;
+}
+
+.kit-basics-copy strong {
+  color: var(--text);
+  font-weight: 650;
+}
+
+.kit-basics-copy code {
+  font-family: var(--mono);
+  font-size: 0.88em;
+  color: #7ec8ff;
+}
+
+html[data-theme="light"] .kit-basics-copy code {
+  color: #2a6fad;
+}
+
+.kit-basics-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.kit-basics-list li {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 52rem) {
+  .kit-basics-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
 /* Problem — 2×2 pain grid pulls eye to failure modes */
 .band-problem {
   position: relative;
@@ -795,21 +895,31 @@ html[data-theme="light"] .pain-label {
 }
 
 .problem-close {
-  margin: 0;
-  padding: 1rem 1.15rem;
-  border-radius: 10px;
-  background:
-    linear-gradient(135deg, rgba(61, 154, 106, 0.14), rgba(61, 154, 106, 0.04));
-  border: 1px solid rgba(61, 154, 106, 0.35);
-  color: var(--text);
-  font-size: 1rem;
-  line-height: 1.5;
-  max-width: 42rem;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  max-width: 40rem;
+  border: none;
+  background: none;
+  border-radius: 0;
+  color: #7ec8ff;
+  font-size: clamp(1.45rem, 2.6vw, 2rem);
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.problem-close-lead {
+  color: #c8d0db;
 }
 
 html[data-theme="light"] .problem-close {
-  background: linear-gradient(135deg, rgba(31, 122, 77, 0.1), rgba(31, 122, 77, 0.03));
-  border-color: rgba(31, 122, 77, 0.3);
+  color: #2a6fad;
+  background: none;
+  border: none;
+}
+
+html[data-theme="light"] .problem-close-lead {
+  color: #8a96a6;
 }
 
 /* How it works — numbered loop draws a path through the four steps */
