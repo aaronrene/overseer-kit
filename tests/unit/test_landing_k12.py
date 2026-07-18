@@ -150,6 +150,10 @@ def test_main_landing_has_no_personal_product_doors() -> None:
     assert "model-routing.yaml" not in html
     assert "governance-sync" not in html
     assert "cta-honesty" not in html.split('id="hero"')[1].split('id="problem"')[0]
+    assert "hero-terminal" in html
+    assert "ok check-ok" in html
+    assert 'src="assets/diagrams/honesty-loop.svg"' in html
+    assert "btn-primary" not in html.split('id="hero"')[1].split('id="problem"')[0]
     assert 'href="docs.html">Docs</a>' in html
     assert (KIT_ROOT / "docs" / "landing" / "docs.html").is_file()
     assert "https://github.com/aaronrene/overseer-kit#readme" not in html

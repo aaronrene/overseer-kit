@@ -149,6 +149,10 @@ Hard stops: no main merge without Tier 3; no public CSRF mint; no unsigned-as-pr
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-17** — **Landing hero: Check OK terminal + honesty-loop art.** Hero CTAs demoted to
+  quiet Download / Clone links; scenarios/docs/releases quieter; CLI mock shows `ok check-ok`;
+  pyramid PNG replaced by `assets/diagrams/honesty-loop.svg` (freeze / re-review / build /
+  re-verify loop). Landing tests green. On `feat/check-if-ok` (PR #35).
 - **2026-07-17** — **Check OK (ad-hoc honesty) DONE (CIO-BV-r1 + CIO-r2).**
   Renamed to **Check OK** (`/check-ok`, `ok check-ok`); skills vendor to `.cursor/skills/`
   **and** `.claude/skills/`; paste `docs/CHECK-OK.md` for Copilot/any assistant; always-on
