@@ -6,7 +6,7 @@ import time
 from datetime import date
 from pathlib import Path
 
-from tools.check_if_ok.scaffold import scaffold_side_check
+from tools.check_ok.scaffold import scaffold_side_check
 
 
 def test_scaffold_under_budget(tmp_path: Path) -> None:

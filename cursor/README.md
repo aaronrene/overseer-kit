@@ -3,8 +3,13 @@
 Portable rules and skills for the overseer governance method. Token placeholders
 (`{{repo.name}}`, etc.) are substituted from `.overseer/config.yaml` at vendoring time.
 
-These files are **Cursor-first conveniences**. The same policy lives in `policy/*.yaml` and works
-with any AI assistant — see root `README.md` § AI tool compatibility.
+Source under `cursor/` is **tool-neutral markdown**. On `ok sync` / `ok init`:
+
+- `rules/*` → `.cursor/rules/`
+- `skills/**` → **`.cursor/skills/**` (Cursor) and `.claude/skills/**` (Claude Code)** — same bytes
+
+Policy still lives in `policy/*.yaml` for every assistant — see root `README.md` § AI tool
+compatibility. Copilot and paste-only tools use `ok` CLI + `docs/CHECK-OK.md`.
 
 | Path | Purpose |
 | --- | --- |
@@ -13,10 +18,12 @@ with any AI assistant — see root `README.md` § AI tool compatibility.
 | `rules/no-docs-only-pr-to-main.mdc` | Docs-only PR guard (configurable per consumer) |
 | `skills/governance-sync/SKILL.md` | Session-end hygiene agent workflow |
 | `skills/freeze-review/SKILL.md` | Single-pass frozen spec review before Auto build (§6) |
-| `skills/freeze-review-loop/SKILL.md` | **Optional** bounded loop until freeze `pass` (`/freeze-review-loop`) |
-| `skills/build-verification-review/SKILL.md` | **Mandatory** post-build honesty review (`.cursor/rules/build-verification-required.mdc`) |
-| `rules/build-verification-required.mdc` | Always-on: no DONE without `/build-verification-review` pass |
+| `skills/freeze-review-loop/SKILL.md` | **Optional** bounded loop until freeze `pass` |
+| `skills/build-verification-review/SKILL.md` | **Mandatory** post-build honesty review |
+| `skills/check-ok/SKILL.md` | **Check OK** — ad-hoc honesty (`/check-ok`, `ok check-ok`) |
+| `rules/build-verification-required.mdc` | Always-on: no DONE without build-verification `pass` |
+| `rules/check-ok-thinking.mdc` | Always-on: Thinking sessions get freeze + BV gates |
 | `automations/*.json` | Optional Automation templates (not auto-enabled; Tier-3 to enable) |
 
-**Degrade path:** when Automations are unavailable, use `./cli/ok governance-sync` and
-`./cli/ok review --freeze` from the terminal instead.
+**Degrade path:** when IDE skills are unavailable, use `./cli/ok check-ok`,
+`./cli/ok governance-sync`, and `./cli/ok review --freeze` from the terminal instead.

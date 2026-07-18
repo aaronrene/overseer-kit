@@ -75,19 +75,19 @@ Full order and parity criteria: `docs/K6-PILOT-OPERATOR-RUNBOOK.md` and
 ## Mandatory review gates (kit-wide)
 
 Shipped via templates + `.cursor/rules/build-verification-required.mdc` +
-`.cursor/rules/check-if-ok-thinking.mdc`:
+`.cursor/rules/check-ok-thinking.mdc` (skills also under `.claude/skills/` for Claude Code):
 
 | Gate | When | Skill / command |
 | --- | --- | --- |
-| Freeze review | Before Auto build (roadmap **or** side work) | `/freeze-review-loop` · `ok review --freeze` · **`/check-if-ok`** · `ok check-if-ok` |
+| Freeze review | Before Auto build (roadmap **or** side work) | `/freeze-review-loop` · `ok review --freeze` · **`/check-ok`** · `ok check-ok` |
 | Build verification | After Auto / implementation, before DONE | `/build-verification-review` |
 | Tests | During/after build | `policy/test-tiers.yaml` |
 | Governance sync | Session end | `/governance-sync` · `ok governance-sync` |
 
-**Check if OK (ad-hoc):** type `Check if OK` or `/check-if-ok` in any Cursor chat, or run
-`ok check-if-ok --topic "<slug>"` in the terminal. Uses the **same** freeze-reviewer engine as
-roadmap phases; scaffolds under `docs/reviews/` — does **not** open a new `docs.lanes` entry.
-After `ok sync` from a kit that includes this skill, every consumer (not only Scooling) gets it.
+**Check OK (ad-hoc):** type `Check OK` or `/check-ok` in Cursor **or** Claude Code; Copilot /
+any chat → paste `docs/CHECK-OK.md` or run `ok check-ok --topic "<slug>"`. Same freeze-reviewer
+engine as roadmap phases; scaffolds under `docs/reviews/` — no new `docs.lanes` entry. After
+`ok sync`, every consumer gets `.cursor/skills/check-ok/` **and** `.claude/skills/check-ok/`.
 
 ## Day-to-day (Scooling)
 

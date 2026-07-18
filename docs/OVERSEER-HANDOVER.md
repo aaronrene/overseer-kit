@@ -6,12 +6,12 @@
 
 ---
 
-## NEXT SESSION — Merge Check if OK + landing clarity / DNS (▶ NEXT)
+## NEXT SESSION — Merge Check OK + landing clarity / DNS (▶ NEXT)
 
 **Date:** 2026-07-17  
-**Current position:** **Check if OK** Auto **DONE** (BV `pass`, CIO-BV-r1) on
-`feat/check-if-ok`. Next: Tier-3 PR merge (Muse→mirror path), then consumers run
-`ok sync`. Parallel: landing clarity merge + optional `overseerkit.com` DNS.  
+**Current position:** **Check OK** Auto **DONE** (BV `pass`, CIO-BV-r1 + CIO-r2 rename /
+multi-runtime) on `feat/check-if-ok` ([PR #35](https://github.com/aaronrene/overseer-kit/pull/35)).
+Next: Tier-3 PR merge, then consumers run `ok sync`. Parallel: landing clarity + optional DNS.  
 **Model:** **Operator + Auto**  
 **Operator note:** Merge to `main` and DNS remain Tier 3.
 
@@ -21,7 +21,7 @@
 
 | Slice | Deliverable |
 | --- | --- |
-| **Check if OK** | BV `pass` (CIO-BV-r1) — `/check-if-ok` + Thinking rule + `ok check-if-ok` (same K5 engine); §CIO **17** green |
+| **Check OK** | BV `pass` (CIO-r2) — `/check-ok` in Cursor **and** Claude Code (`.claude/skills/`); `ok check-ok`; paste `docs/CHECK-OK.md` for Copilot/any; same K5 engine |
 | **Landing clarity pass** | Still **WIP** on `feat/landing-clarity-pass` (Tier-3 merge pending) |
 | **K12 LICENSE → MIT** | BV `pass` (MIT-BV-r1) |
 | **Landing + access clarity Auto** | BV `pass` (LAC-BV-r1) |
@@ -32,28 +32,28 @@
 
 |                |                                                                                                                                     |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID**         | **Tier-3 merge `feat/check-if-ok`** (then consumer `ok sync`); optional parallel merge landing clarity + DNS |
-| **Branch** | `feat/check-if-ok` (PR); landing on `feat/landing-clarity-pass` |
-| **Read first** | PR for check-if-ok; `docs/PHASE-CHECK-IF-OK.md`; `docs/landing/HOSTING.md` |
-| **Deliver** | Merged kit main; each consumer `ok sync` so `/check-if-ok` appears; optional DNS |
+| **ID**         | **Tier-3 merge `feat/check-if-ok` (PR #35)** (then consumer `ok sync`); optional parallel landing clarity + DNS |
+| **Branch** | `feat/check-if-ok` (PR #35); landing on `feat/landing-clarity-pass` |
+| **Read first** | PR #35; `docs/PHASE-CHECK-OK.md`; `docs/CHECK-OK.md`; `docs/landing/HOSTING.md` |
+| **Deliver** | Merged kit main; each consumer `ok sync` → `.cursor/skills/check-ok` **and** `.claude/skills/check-ok`; optional DNS |
 | **Hard stops** | No merge without Tier 3; no live Path B on apex |
 
 
 
-### Paste-ready prompt — Merge Check if OK + optional landing/DNS (Operator + Auto)
+### Paste-ready prompt — Merge Check OK + optional landing/DNS (Operator + Auto)
 
 ```
-Overseer Kit — Tier-3 merge Check if OK (+ optional landing clarity / DNS).
+Overseer Kit — Tier-3 merge Check OK (+ optional landing clarity / DNS).
 
 Model: Operator + Auto
 
 Read first:
-  open PR for feat/check-if-ok; docs/PHASE-CHECK-IF-OK.md;
-  docs/OVERSEER-HANDOVER.md; docs/landing/HOSTING.md (if doing DNS).
+  https://github.com/aaronrene/overseer-kit/pull/35; docs/PHASE-CHECK-OK.md;
+  docs/CHECK-OK.md; docs/OVERSEER-HANDOVER.md; docs/landing/HOSTING.md (if DNS).
 
 Task:
-1) Tier 3: review + merge feat/check-if-ok (Muse→mirror path).
-2) In each consumer (Scooling, etc.): ok sync — confirm .cursor/skills/check-if-ok exists.
+1) Tier 3: review + merge feat/check-if-ok / PR #35 (Muse→mirror path).
+2) In each consumer: ok sync — confirm .cursor/skills/check-ok AND .claude/skills/check-ok.
 3) Optional: merge feat/landing-clarity-pass + DNS per §LAC.9.
 4) Regenerate this NEXT block after merges.
 
@@ -117,8 +117,8 @@ Hard stops: no main merge without Tier 3; no public CSRF mint; no unsigned-as-pr
 | **Track O / O2**          | **DONE** — Stage 3 kit upgrade ceremony Thinking freeze (`docs/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md` reviewed → `pass`, O2-r3), stamp `sha256:ac970077…` |
 | **Track O / O3**          | **DONE** — `ok upgrade-regime` build-verified → `pass` (O3-BV-r2). Runbook + contract/harness retarget; **761** tests green (+33 §O2.9). Track O kit chain complete |
 | **CLI entrypoint**        | **`ok`** (canonical `./cli/ok`); **`overseer`** compat shim (`./cli/overseer`, one-line stderr deprecation) |
-| **CLI subcommands**       | `init` \| `sync` \| `status` \| `review --freeze` \| `check-if-ok` \| `governance-sync` \| `verify-step` \| `honesty-status` \| `ledger` \| `route` \| `app` \| `hosted-dashboard` \| `upgrade-regime` |
-| **Check if OK** | **DONE** (CIO-BV-r1 `pass`) — skill `/check-if-ok` + rule + `ok check-if-ok` (same freeze engine); consumer install via `ok sync` after merge |
+| **CLI subcommands**       | `init` \| `sync` \| `status` \| `review --freeze` \| `check-ok` \| `governance-sync` \| `verify-step` \| `honesty-status` \| `ledger` \| `route` \| `app` \| `hosted-dashboard` \| `upgrade-regime` |
+| **Check OK** | **DONE** (CIO-r2) — `/check-ok` → `.cursor` + `.claude` skills; `ok check-ok`; `docs/CHECK-OK.md` for Copilot/any; consumer `ok sync` after merge |
 | **Muse dogfood** | **D2 repaired** + substrate health + gate reminders + **muse-sync hard gate (KH2)** + **footprint self-integrity hard gate (KH3)** live; `muse rev-parse` reads plain-text SHA (0.2.x returns bare SHA on success; JSON only on failure/non-zero); `governance-sync --dry-run` exits 0; muse canonical HEAD `sha256:3e14450f…` (catch-up commit; genesis `sha256:4671b7f…`) |
 | **KH1b** | **DONE** — substrate §1 + gate reminders §2 |
 | **KH2** | **DONE** — Muse-sync hard gate (freeze `pass` KH2-r2 + Auto build); `tools/muse_sync/`; fail-closed on `status --exit-code` / `review --freeze` / `governance-sync` |
@@ -149,12 +149,11 @@ Hard stops: no main merge without Tier 3; no public CSRF mint; no unsigned-as-pr
 <!-- overseer:anchor:change-log -->
 ## Change log
 
-- **2026-07-17** — **Check if OK (ad-hoc honesty) DONE (BV `pass`, CIO-BV-r1).**
-  Added `/check-if-ok` skill + always-on `check-if-ok-thinking.mdc` + `ok check-if-ok` CLI
-  wrapping the existing K5 `review --freeze` engine; `tools/check_if_ok/` scaffolds
-  `docs/reviews/` (no new lanes). SPEC §5 row; Scooling OVERSEER-SETUP note; seven-tier
-  `test_check_if_ok*` **17** green. Branch `feat/check-if-ok`. NEXT → Tier-3 merge +
-  consumer `ok sync`.
+- **2026-07-17** — **Check OK (ad-hoc honesty) DONE (CIO-BV-r1 + CIO-r2).**
+  Renamed to **Check OK** (`/check-ok`, `ok check-ok`); skills vendor to `.cursor/skills/`
+  **and** `.claude/skills/`; paste `docs/CHECK-OK.md` for Copilot/any assistant; always-on
+  `check-ok-thinking.mdc`; same K5 `review --freeze` engine; no new lanes. Branch
+  `feat/check-if-ok` (PR #35). NEXT → Tier-3 merge + consumer `ok sync`.
 - **2026-07-14** — **K12 LICENSE → MIT DONE (freeze `pass` MIT-r1 + BV `pass` MIT-BV-r1).**
   Operator SPDX flip: root MIT `LICENSE`, `pyproject.toml`, landing/scenarios footers, Path B
   console copy, `tools/landing/validate.py` fail-closed MIT, K12 §K12.4/§K12.7 amended via

@@ -141,20 +141,21 @@ the `overseer` CLI work the same regardless of which assistant you use.
 | Layer | Cursor | Claude Code | GitHub Copilot | Any assistant (paste-only) |
 | --- | --- | --- | --- | --- |
 | **ROADMAP + HANDOVER docs** | ✓ | ✓ | ✓ | ✓ — primary interface |
-| **`overseer` CLI** | ✓ terminal | ✓ terminal | ✓ terminal | ✓ terminal |
+| **`ok` CLI** (incl. **`ok check-ok`**) | ✓ terminal | ✓ terminal | ✓ terminal | ✓ terminal |
 | **`policy/*.yaml`** | ✓ | ✓ | ✓ | ✓ — read for tier/model rules |
-| **`.cursor/rules/*.mdc`** | Auto on `init`/`sync` | Manual / if your tool reads project rules | Partial — no native skills | N/A — use `policy/tiers.yaml` instead |
-| **`.cursor/skills/*/SKILL.md`** | Native Agent Skills | Copy workflow into prompts | Not supported | Follow SKILL steps manually |
-| **Cursor Automations** | Optional templates in `cursor/automations/` | N/A | N/A | Use CLI (`governance-sync`, `review --freeze`) instead |
+| **`.cursor/rules/*.mdc`** | Auto on `init`/`sync` | Optional if tool reads them | Partial | N/A — use `policy/tiers.yaml` / `AGENTS.md` |
+| **Skills (`SKILL.md`)** | `.cursor/skills/**` (native) | `.claude/skills/**` (native; same bytes via `ok sync`) | Not native — paste `docs/CHECK-OK.md` | Paste `docs/CHECK-OK.md` or follow skill steps |
+| **Check OK** | Type `Check OK` / `/check-ok` | Type `Check OK` / `/check-ok` | `ok check-ok` + paste prompt | `ok check-ok` + paste prompt |
+| **Cursor Automations** | Optional templates in `cursor/automations/` | N/A | N/A | Use CLI (`governance-sync`, `review --freeze`, `check-ok`) instead |
 
 ### What changes per tool
 
 | Tool | Typical usage pattern |
 | --- | --- |
 | **Cursor** | Richest integration: rules always apply, skills invocable, optional session-end Automations. Paste handover prompt when starting a phase chat. |
-| **Claude Code** | Use terminal for `overseer` CLI; read `AGENTS.md` + handover/roadmap; paste NEXT block into Claude. Project rules may need manual setup if your environment supports them. |
-| **GitHub Copilot** | Same docs + CLI; no skills/automations. Rely on handover paste blocks and `policy/tiers.yaml` for authority boundaries. |
-| **Any other assistant** | Fully supported via **docs-first**: open HANDOVER, paste the prompt, follow ROADMAP phase, run CLI commands yourself, commit on a feature branch. |
+| **Claude Code** | After `ok sync`, skills live in `.claude/skills/` (incl. `/check-ok`). Also: terminal `ok` CLI, `AGENTS.md`, handover paste. |
+| **GitHub Copilot** | Same docs + CLI; no native skills. Use `ok check-ok` and paste `docs/CHECK-OK.md`; rely on handover + `policy/tiers.yaml`. |
+| **Any other assistant** | Fully supported via **docs-first**: open HANDOVER or `docs/CHECK-OK.md`, paste the prompt, run `ok check-ok` / other CLI commands, commit on a feature branch. |
 
 **Degrade path (by design):** if Cursor Automations are unavailable, `ok governance-sync`
 and `ok review --freeze` are the portable fallback — no Cursor-only gate on core governance.

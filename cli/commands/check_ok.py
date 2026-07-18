@@ -1,4 +1,7 @@
-"""``ok check-if-ok`` — scaffold (optional) + same ``review --freeze`` engine."""
+"""``ok check-ok`` — scaffold (optional) + same ``review --freeze`` engine.
+
+``check-if-ok`` remains a CLI synonym for one release.
+"""
 
 from __future__ import annotations
 
@@ -10,19 +13,19 @@ from cli.commands.review import run_review
 from cli.context import CliContext
 from cli.paths import PathEscapeError, confine_path, resolve_config_path, resolve_repo_root
 from cli.sanitize import format_config_error
-from tools.check_if_ok.scaffold import scaffold_side_check
+from tools.check_ok.scaffold import scaffold_side_check
 
 
-def run_check_if_ok(args: Namespace, ctx: CliContext, *, raw_argv: list[str] | None = None) -> int:
+def run_check_ok(args: Namespace, ctx: CliContext, *, raw_argv: list[str] | None = None) -> int:
     """Scaffold a side-check artifact when needed, then run freeze review.
 
-    Semantic review / build-verification loops stay in Cursor skills
-    (``/check-if-ok``, ``/freeze-review-loop``, ``/build-verification-review``).
-    This CLI path is the portable mechanical gate — identical engine to
-    ``ok review --freeze``.
+    Semantic review / build-verification loops stay in portable skills
+    (``/check-ok``, ``/freeze-review-loop``, ``/build-verification-review``) under
+    ``.cursor/skills/`` and ``.claude/skills/``. This CLI path is the tool-agnostic
+    mechanical gate — identical engine to ``ok review --freeze``.
     """
     del raw_argv  # reserved for parity with review; no extra flag bans yet
-    repo_root = resolve_repo_root(cwd=ctx.cwd, repo_arg=args.repo, command="check-if-ok")
+    repo_root = resolve_repo_root(cwd=ctx.cwd, repo_arg=args.repo, command="check-ok")
     overseer_dir = repo_root / ".overseer"
     if not overseer_dir.is_dir():
         ctx.output.error("not initialized — run ok init first")
@@ -59,15 +62,15 @@ def run_check_if_ok(args: Namespace, ctx: CliContext, *, raw_argv: list[str] | N
         raise
 
     if result.created:
-        ctx.output.emit(f"check-if-ok: scaffolded {result.rel_path}")
+        ctx.output.emit(f"check-ok: scaffolded {result.rel_path}")
     else:
-        ctx.output.emit(f"check-if-ok: reusing {result.rel_path}")
+        ctx.output.emit(f"check-ok: reusing {result.rel_path}")
 
     if args.scaffold_only:
         if ctx.output.json_mode:
             ctx.output.emit_json(
                 {
-                    "command": "check-if-ok",
+                    "command": "check-ok",
                     "rel_path": result.rel_path,
                     "created": result.created,
                     "scaffold_only": True,
@@ -88,3 +91,7 @@ def run_check_if_ok(args: Namespace, ctx: CliContext, *, raw_argv: list[str] | N
         checklist=args.checklist,
     )
     return run_review(review_args, ctx, raw_argv=["review", "--freeze", result.rel_path])
+
+
+# Back-compat import name used by older call sites / docs mid-rename.
+run_check_if_ok = run_check_ok

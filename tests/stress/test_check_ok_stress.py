@@ -5,7 +5,7 @@ from __future__ import annotations
 from datetime import date
 from pathlib import Path
 
-from tools.check_if_ok.scaffold import scaffold_side_check
+from tools.check_ok.scaffold import scaffold_side_check
 
 
 def test_many_topics_do_not_collide(tmp_path: Path) -> None:

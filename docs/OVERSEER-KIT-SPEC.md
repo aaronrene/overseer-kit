@@ -280,7 +280,7 @@ One entrypoint, **`ok`** (compatibility synonym **`overseer`**), runnable with *
 | `ok status` | Report: kit version, `version.lock` version, drift (behind/ahead), VCS regime, dirty tree, last governance-sync. Read-only. | No | Yes |
 | `ok governance-sync` | Run the Governance Hygiene Agent (Phase 9A-5) against this repo's `.overseer/config.yaml`: detect drift between docs and true VCS state, patch handover/roadmap, guard-realign, commit to a feature branch. `--dry-run` = report only. | Yes (docs, feature branch) | Yes |
 | `ok review --freeze <path>` | Run the Freeze-Step Reviewer (§6) on a freeze artifact; emit findings with **file+line citations**; set exit status by verdict; escalate to human per config. `--dry-run` prints the review only. | No (review output only) | Yes |
-| `ok check-if-ok [--path PATH] [--topic SLUG] [--scaffold-only] [--dry-run] …` | Ad-hoc honesty check: scaffold a side-check freeze under `docs/reviews/` when needed, then run the **same** Freeze-Step Reviewer as `ok review --freeze` (no new `docs.lanes` entry). Cursor skill `/check-if-ok` adds thinking-model freeze + build-verification loops. | Yes (scaffold file only when created) | Yes (re-run reuses existing artifact) |
+| `ok check-ok [--path PATH] [--topic SLUG] [--scaffold-only] [--dry-run] …` | **Check OK** ad-hoc honesty check: scaffold a side-check freeze under `docs/reviews/` when needed, then run the **same** Freeze-Step Reviewer as `ok review --freeze` (no new `docs.lanes` entry). Portable skill `/check-ok` ships to `.cursor/skills/` **and** `.claude/skills/`; Copilot/others use CLI + `docs/CHECK-OK.md`. Synonym: `ok check-if-ok`. | Yes (scaffold file only when created) | Yes (re-run reuses existing artifact) |
 | `ok verify-step [--manifest PATH] [--step ID \| --through current \| --all] [--policy PATH] [--dry-run] [--json]` | L1 checkpoint orchestrator (K9b): run domain verify scripts in template order; update active manifest per step; optional `--dry-run` plan-only. Module gate: `checkpoints.enabled` must be true. Exit extensions: `10` verify fail, `11` step order. | Yes (manifest + optional progress) | Yes (re-verify overwrites) |
 | `ok honesty-status --hook HOOK --artifact PATH [--producer-session ID] [--json]` | L2 co-requirement check (K10): require a passing independent `verdict` for artifact SHA before board/handoff/register hooks. Module gate: `honesty.enabled` must be true. Exit extensions: `20` missing verdict, `4` hook not enabled / module off. | No | Yes |
 | `ok ledger append --kind KIND [--file JSON_PATH \| --stdin]` | L2 verdict ledger append (K10): hash-chained JSONL entry with role gates. Auto-genesis on first append. Exit extensions: `21`–`24`, `22` on verify. | Yes (ledger) | Append-only |
@@ -290,10 +290,12 @@ One entrypoint, **`ok`** (compatibility synonym **`overseer`**), runnable with *
 | `ok hosted-dashboard [--port PORT] [--bind ADDRESS] [--config PATH] [--open]` | Read-only remote governance dashboard preview (Hosted governance dashboard): GitHub/MuseHub **read** glance of ROADMAP/HANDOVER/gates; Bearer viewer auth; default `127.0.0.1:8766`. Never mutates git/muse/GitHub. Operator runbook: `docs/HOSTED-GOVERNANCE-DASHBOARD-OPERATOR-RUNBOOK.md`. Frozen: `docs/PHASE-HOSTED-GOVERNANCE-DASHBOARD.md`. | No | Yes |
 
 **Vendored footprint (frozen — what `init`/`sync` copy into a consumer):** the contents of
-`templates/` (token-substituted with `.overseer/config.yaml` values), `policy/`, and `cursor/`,
-plus a thin pointer to the kit engine version. The **engine** (`adapters/`, `tools/`, `cli/`) is
-carried by the CLI itself and pinned by `version.lock` — it is not copied file-by-file into every
-repo, keeping the footprint small and diffable.
+`templates/` (token-substituted with `.overseer/config.yaml` values), `policy/`, and `cursor/`
+(rules → `.cursor/rules/`; skills → **both** `.cursor/skills/**` and `.claude/skills/**` so Cursor
+and Claude Code share the same skill bytes), plus a thin pointer to the kit engine version. The
+**engine** (`adapters/`, `tools/`, `cli/`) is carried by the CLI itself and pinned by
+`version.lock` — it is not copied file-by-file into every repo, keeping the footprint small and
+diffable.
 
 **`version.lock` (frozen shape):**
 

@@ -9,6 +9,8 @@ def test_footprint_includes_review_loop_skills(git_only_config) -> None:
     dests = {f.destination for f in resolve_footprint(git_only_config)}
     assert ".cursor/skills/freeze-review-loop/SKILL.md" in dests
     assert ".cursor/skills/build-verification-review/SKILL.md" in dests
+    assert ".claude/skills/freeze-review-loop/SKILL.md" in dests
+    assert ".claude/skills/build-verification-review/SKILL.md" in dests
 
 
 def test_review_loop_skill_documents_bounded_loop(git_only_config) -> None:

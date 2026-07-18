@@ -1,4 +1,4 @@
-"""Integration — ``ok check-if-ok`` scaffolds then delegates to review --freeze."""
+"""Integration — ``ok check-ok`` scaffolds then delegates to review --freeze."""
 
 from __future__ import annotations
 
@@ -7,13 +7,13 @@ from pathlib import Path
 
 from cli.kit_root import kit_root
 from tests.support import git_status_runner, pass_provider_factory, run_cli, write_config
-from tools.check_if_ok.scaffold import scaffold_side_check
+from tools.check_ok.scaffold import scaffold_side_check
 
 
 def test_scaffold_only_creates_artifact(tmp_path: Path) -> None:
     write_config(tmp_path, "config-git-only.yaml")
     code = run_cli(
-        ["check-if-ok", "--topic", "integration-spike", "--scaffold-only"],
+        ["check-ok", "--topic", "integration-spike", "--scaffold-only"],
         cwd=tmp_path,
         runner=git_status_runner(),
         kit=kit_root(),
@@ -24,7 +24,7 @@ def test_scaffold_only_creates_artifact(tmp_path: Path) -> None:
     assert "frozen: true" in reviews[0].read_text(encoding="utf-8")
 
 
-def test_check_if_ok_runs_same_review_engine(tmp_path: Path) -> None:
+def test_check_ok_runs_same_review_engine(tmp_path: Path) -> None:
     write_config(tmp_path, "config-git-only.yaml")
     result = scaffold_side_check(
         tmp_path,
@@ -33,7 +33,7 @@ def test_check_if_ok_runs_same_review_engine(tmp_path: Path) -> None:
         today=date(2026, 7, 17),
     )
     code = run_cli(
-        ["check-if-ok", "--path", result.rel_path, "--dry-run", "--json"],
+        ["check-ok", "--path", result.rel_path, "--dry-run", "--json"],
         cwd=tmp_path,
         runner=git_status_runner(),
         kit=kit_root(),
@@ -47,7 +47,7 @@ def test_check_if_ok_runs_same_review_engine(tmp_path: Path) -> None:
 def test_path_escape_refused(tmp_path: Path) -> None:
     write_config(tmp_path, "config-git-only.yaml")
     code = run_cli(
-        ["check-if-ok", "--path", "../outside.md", "--scaffold-only"],
+        ["check-ok", "--path", "../outside.md", "--scaffold-only"],
         cwd=tmp_path,
         runner=git_status_runner(),
         kit=kit_root(),

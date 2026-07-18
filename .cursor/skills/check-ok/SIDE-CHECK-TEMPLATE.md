@@ -1,13 +1,13 @@
 # Side check — {{TOPIC}}
 
 **Date:** {{DATE}}  
-**Kind:** ad-hoc Check-if-OK (not a roadmap lane)  
+**Kind:** ad-hoc Check OK (not a roadmap lane)  
 **Honesty:** same Freeze-Contract + build-verification path as roadmap phases
 
 ## Freeze-contract declaration
 
 ```yaml
-phase: check-if-ok-{{SLUG}}
+phase: check-ok-{{SLUG}}
 outputs:
   - id: side-check
     path: docs/reviews/{{DATE}}-{{SLUG}}.md

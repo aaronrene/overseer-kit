@@ -1,4 +1,4 @@
-"""E2E — scaffold → check-if-ok → equivalent review --freeze on same artifact."""
+"""E2E — scaffold → check-ok → equivalent review --freeze on same artifact."""
 
 from __future__ import annotations
 
@@ -12,7 +12,7 @@ def test_scaffold_then_check_and_review_agree(tmp_path: Path) -> None:
     write_config(tmp_path, "config-git-only.yaml")
     assert (
         run_cli(
-            ["check-if-ok", "--topic", "e2e-cycle", "--scaffold-only"],
+            ["check-ok", "--topic", "e2e-cycle", "--scaffold-only"],
             cwd=tmp_path,
             runner=git_status_runner(),
             kit=kit_root(),
@@ -23,7 +23,7 @@ def test_scaffold_then_check_and_review_agree(tmp_path: Path) -> None:
     rel = artifact.relative_to(tmp_path).as_posix()
 
     code_cio = run_cli(
-        ["check-if-ok", "--path", rel, "--dry-run"],
+        ["check-ok", "--path", rel, "--dry-run"],
         cwd=tmp_path,
         runner=git_status_runner(),
         kit=kit_root(),

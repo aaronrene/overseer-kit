@@ -1,8 +1,8 @@
-"""Ad-hoc Check-if-OK scaffold — same freeze-review engine as roadmap phases."""
+"""Ad-hoc Check OK scaffold — same freeze-review engine as roadmap phases."""
 
 from __future__ import annotations
 
-from tools.check_if_ok.scaffold import (
+from tools.check_ok.scaffold import (
     DEFAULT_REVIEWS_DIR,
     ScaffoldResult,
     render_side_check_markdown,

@@ -51,7 +51,7 @@ def render_side_check_markdown(
         f"# Side check — {topic}\n"
         f"\n"
         f"**Date:** {day}  \n"
-        f"**Kind:** ad-hoc Check-if-OK (not a roadmap lane)  \n"
+        f"**Kind:** ad-hoc Check OK (not a roadmap lane)  \n"
         f"**Honesty:** same Freeze-Contract + build-verification path as roadmap phases\n"
         f"\n"
         f"## Freeze-contract declaration\n"
@@ -152,7 +152,7 @@ def scaffold_side_check(
         return ScaffoldResult(path=target, rel_path=rel, created=False)
 
     topic_label = (topic or target.stem).strip() or "side-check"
-    phase_id = f"check-if-ok-{slugify_topic(topic_label)}"
+    phase_id = f"check-ok-{slugify_topic(topic_label)}"
     body = render_side_check_markdown(
         topic=topic_label,
         phase_id=phase_id,
