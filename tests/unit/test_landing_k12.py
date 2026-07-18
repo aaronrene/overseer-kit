@@ -187,8 +187,12 @@ def test_musehub_band_after_console_access() -> None:
     muse = html.index('id="musehub"')
     next_steps = html.index('id="next-steps"')
     assert hero < kit_basics < problem < console < muse < next_steps
-    assert "Check OK" in html.split('id="kit-basics"')[1].split('id="problem"')[0]
-    assert "Lanes" in html.split('id="kit-basics"')[1].split('id="problem"')[0]
+    kit_block = html.split('id="kit-basics"')[1].split('id="problem"')[0]
+    assert "Check OK" in kit_block
+    assert "Any work" in kit_block
+    assert "Same honesty loop" in kit_block
+    assert "Anywhere you work" in kit_block
+    assert "Lanes" in kit_block
 
 
 def test_theme_defaults_dark_not_os_preference() -> None:

@@ -801,17 +801,19 @@ html[data-theme="light"] .kit-basics-copy h2 {
   color: #2a6fad;
 }
 
-.kit-basics-copy p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 1rem;
-  line-height: 1.55;
-  max-width: 28rem;
-}
-
 .kit-basics-copy strong {
   color: var(--text);
   font-weight: 650;
+}
+
+.kit-basics-copy code {
+  font-family: var(--mono);
+  font-size: 0.88em;
+  color: #7ec8ff;
+}
+
+html[data-theme="light"] .kit-basics-copy code {
+  color: #2a6fad;
 }
 
 .kit-basics-list {
@@ -833,10 +835,6 @@ html[data-theme="light"] .kit-basics-copy h2 {
   .kit-basics-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
-  }
-
-  .kit-basics-copy p {
-    max-width: none;
   }
 }
 
