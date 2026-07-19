@@ -326,8 +326,8 @@ html[data-theme="dark"] .diagram-figure img {
   position: relative;
   width: 100vw;
   max-width: 100vw;
-  margin: -2rem calc(50% - 50vw) 3rem;
-  padding: 2.5rem 1.5rem 3rem;
+  margin: -2rem calc(50% - 50vw) 2.25rem;
+  padding: 2.5rem 1.5rem 2.5rem;
   overflow: hidden;
   color: #e7ecf3;
   background:
@@ -748,7 +748,7 @@ ul.compact {
 .band-kit-basics {
   width: 100vw;
   max-width: 100vw;
-  margin: -0.5rem calc(50% - 50vw) var(--content-gap);
+  margin: -0.75rem calc(50% - 50vw) var(--content-gap);
   padding: 0.25rem 1.5rem 0.5rem;
 }
 
