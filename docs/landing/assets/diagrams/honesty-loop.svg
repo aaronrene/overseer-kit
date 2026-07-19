@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="640" height="520" viewBox="0 0 640 520" role="img" aria-labelledby="hlTitle hlDesc">
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="560" viewBox="0 0 640 560" role="img" aria-labelledby="hlTitle hlDesc">
   <title id="hlTitle">Overseer honesty loop</title>
   <desc id="hlDesc">Circular governance loop: Think and freeze, freeze review with re-review on findings, Auto build, build verification with re-check on findings, then pass. Check OK enters the same loop for ad-hoc work.</desc>
   <defs>
@@ -97,11 +97,11 @@
 
   <!-- Legend chips -->
   <g font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="10">
-    <rect x="24" y="488" width="10" height="10" rx="2" fill="#e85d4c"/>
-    <text x="40" y="497" fill="#d5dee9">re-review until pass</text>
-    <rect x="170" y="488" width="10" height="10" rx="2" fill="#e8a35c"/>
-    <text x="186" y="497" fill="#d5dee9">re-verify until pass</text>
-    <rect x="330" y="488" width="10" height="10" rx="2" fill="#5cb88a"/>
-    <text x="346" y="497" fill="#d5dee9">honesty gates clear</text>
+    <rect x="24" y="528" width="10" height="10" rx="2" fill="#e85d4c"/>
+    <text x="40" y="537" fill="#d5dee9">re-review until pass</text>
+    <rect x="170" y="528" width="10" height="10" rx="2" fill="#e8a35c"/>
+    <text x="186" y="537" fill="#d5dee9">re-verify until pass</text>
+    <rect x="330" y="528" width="10" height="10" rx="2" fill="#5cb88a"/>
+    <text x="346" y="537" fill="#d5dee9">honesty gates clear</text>
   </g>
 </svg>
