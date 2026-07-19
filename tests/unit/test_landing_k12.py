@@ -188,6 +188,18 @@ def test_musehub_band_after_console_access() -> None:
     next_steps = html.index('id="next-steps"')
     assert hero < kit_basics < problem < console < muse < next_steps
     kit_block = html.split('id="kit-basics"')[1].split('id="problem"')[0]
+    assert 'id="mechanical-check"' in kit_block
+    assert "Mechanical check" in kit_block
+    assert "your bar, on-disk evidence" in kit_block
+    assert "against that bar" in kit_block
+    assert "Customize the checks" in kit_block
+    assert "assets/diagrams/mechanical-check.svg" in kit_block
+    assert kit_block.index("mechanical-check") < kit_block.index("Roadmap · Handover")
+    assert "mech-check-details" in kit_block
+    assert "Technical detail" in kit_block
+    assert "ok verify-step --through current" in kit_block
+    assert "checkpoints.enabled: true" in kit_block
+    assert "ok review --freeze" in kit_block
     assert "Check OK" in kit_block
     assert "Any work" in kit_block
     assert "Same honesty loop" in kit_block

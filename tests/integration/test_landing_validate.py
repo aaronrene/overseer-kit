@@ -60,5 +60,9 @@ def test_main_nav_scenarios_goes_to_gallery() -> None:
     assert re.search(r'nav-links[\s\S]*?href="#scenarios">Scenarios', index) is None
     assert 'src="assets/diagrams/honesty-loop.svg"' in index
     assert (KIT_ROOT / "docs" / "landing" / "assets" / "diagrams" / "honesty-loop.svg").is_file()
+    assert 'src="assets/diagrams/mechanical-check.svg"' in index
+    assert (
+        KIT_ROOT / "docs" / "landing" / "assets" / "diagrams" / "mechanical-check.svg"
+    ).is_file()
     assert "ok check-ok" in index
     assert "hero-terminal" in index

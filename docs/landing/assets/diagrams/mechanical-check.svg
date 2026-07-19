@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="448" height="148" viewBox="0 0 448 148" role="img" aria-labelledby="mcTitle mcDesc">
+  <title id="mcTitle">Mechanical check</title>
+  <desc id="mcDesc">Agent claim enters a mechanical gate that compares bytes, diffs, and results against your bar; only a real match may pass.</desc>
+  <defs>
+    <marker id="mcArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#e8a35c"/>
+    </marker>
+    <marker id="mcArrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#5cb88a"/>
+    </marker>
+    <marker id="mcArrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#e85d4c"/>
+    </marker>
+  </defs>
+
+  <!-- ambient hint of honesty-loop orbit -->
+  <path d="M28 74 A54 54 0 0 1 136 74" fill="none" stroke="rgba(232,163,92,0.35)" stroke-width="2" stroke-dasharray="5 6"/>
+
+  <!-- Claim node -->
+  <g transform="translate(82 74)">
+    <circle r="44" fill="#0d1520" stroke="#3880c8" stroke-width="3.5"/>
+    <text text-anchor="middle" y="-6" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="18" font-weight="700" fill="#7ec8ff">Claim</text>
+    <text text-anchor="middle" y="16" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="15" fill="#a8b6c9">DONE?</text>
+  </g>
+
+  <path d="M130 74 H186" fill="none" stroke="#e8a35c" stroke-width="3" marker-end="url(#mcArrow)"/>
+
+  <!-- Mechanical gate -->
+  <g transform="translate(250 74)">
+    <rect x="-56" y="-48" width="112" height="96" rx="14" fill="#121a26" stroke="#e8a35c" stroke-width="3.5"/>
+    <rect x="-34" y="-22" width="12" height="28" rx="2" fill="#7ec8ff" opacity="0.85"/>
+    <rect x="-16" y="-12" width="12" height="18" rx="2" fill="#5cb88a" opacity="0.9"/>
+    <rect x="2" y="-26" width="12" height="32" rx="2" fill="#f0c48a" opacity="0.9"/>
+    <rect x="20" y="-8" width="12" height="14" rx="2" fill="#7ec8ff" opacity="0.7"/>
+    <text text-anchor="middle" y="40" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#f0c48a">bytes · diffs</text>
+  </g>
+
+  <!-- Pass / fail forks -->
+  <path d="M308 52 H352" fill="none" stroke="#5cb88a" stroke-width="3" marker-end="url(#mcArrowGreen)"/>
+  <path d="M308 96 H352" fill="none" stroke="#e85d4c" stroke-width="3" stroke-dasharray="5 4" marker-end="url(#mcArrowRed)"/>
+
+  <g transform="translate(390 40)">
+    <circle r="22" fill="#0d1520" stroke="#5cb88a" stroke-width="3"/>
+    <text text-anchor="middle" y="6" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#5cb88a">pass</text>
+  </g>
+  <g transform="translate(390 108)">
+    <circle r="22" fill="#0d1520" stroke="#e85d4c" stroke-width="3"/>
+    <text text-anchor="middle" y="6" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#e85d4c">fail</text>
+  </g>
+</svg>

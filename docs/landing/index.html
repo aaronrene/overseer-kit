@@ -74,8 +74,34 @@
       </div>
     </section>
 
-    <section id="kit-basics" class="band-kit-basics" aria-label="Check OK and living docs">
+    <section id="kit-basics" class="band-kit-basics" aria-label="Mechanical check, Check OK, and living docs">
       <div class="kit-basics-inner">
+        <aside class="mech-check-strip" id="mechanical-check" aria-label="Mechanical check">
+          <figure class="mech-check-visual">
+            <img src="assets/diagrams/mechanical-check.svg"
+                 width="448"
+                 height="148"
+                 alt="Agent claim enters a mechanical gate that compares bytes and diffs against your bar; only a real match may pass">
+          </figure>
+          <div class="mech-check-copy">
+            <div class="mech-check-kicker-row">
+              <p class="mech-check-kicker">The power feature</p>
+              <details class="mech-check-details">
+                <summary>Technical detail</summary>
+                <div class="mech-details-body">
+                  <p><strong>Default after <code>ok init</code>:</strong> L0 honesty gates are on — freeze review before Auto, build verification before DONE (diffs vs freeze, not the agent’s word). Domain L1 byte-check scripts are off until you set <code>checkpoints.enabled: true</code> and ship consumer verify scripts (what video pipelines add at many steps).</p>
+                  <p class="mech-details-cmd-label">L0 (on by default)</p>
+                  <pre class="mech-details-cmd"><code>ok review --freeze docs/PHASE-….md
+ok check-ok --path docs/reviews/….md</code></pre>
+                  <p class="mech-details-cmd-label">L1 (opt-in)</p>
+                  <pre class="mech-details-cmd"><code>ok verify-step --through current</code></pre>
+                </div>
+              </details>
+            </div>
+            <h2>Mechanical check — your bar, on-disk evidence</h2>
+            <p>You define what “done” means: a frozen plan, required files, hashes, diffs, test exits, or your own scripts. Independent review and verify steps compare the work on disk against that bar — not the agent’s summary. Customize the checks for research, finance, academics, classrooms, or code; pass only when the evidence matches.</p>
+          </div>
+        </aside>
         <div class="kit-basics-grid">
           <article class="kit-basics-panel">
             <div class="kit-basics-icon" aria-hidden="true">
