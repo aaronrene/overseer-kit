@@ -17,6 +17,7 @@ COMMANDS = frozenset(
         "check-ok",
         "check-if-ok",  # synonym → check-ok
         "governance-sync",
+        "workspace",
         "verify-step",
         "honesty-status",
         "ledger",
@@ -43,6 +44,7 @@ from cli.commands.sync import run_sync
 from cli.commands.route import run_route_command
 from cli.commands.upgrade_regime import run_upgrade_regime_command
 from cli.commands.verify_step import run_verify_step_command
+from cli.commands.workspace import run_workspace
 from cli.context import CliContext
 from cli.kit_root import kit_version
 from cli.output import OutputContext
@@ -96,6 +98,11 @@ def build_parser() -> argparse.ArgumentParser:
     status_parser = subparsers.add_parser("status", help="Read-only status report")
     status_parser.add_argument("--exit-code", action="store_true")
     status_parser.add_argument("--check-footprint", action="store_true")
+    status_parser.add_argument(
+        "--workspace",
+        action="store_true",
+        help="Attach constellation workspace report when configured (§MR.7)",
+    )
 
     review_parser = subparsers.add_parser("review", help="Freeze-contract review")
     review_parser.add_argument("--freeze", required=True, dest="freeze_path", metavar="PATH")
@@ -174,6 +181,28 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Sync every configured lane; skip lanes with missing doc files",
     )
+
+    ws_parser = subparsers.add_parser(
+        "workspace",
+        help="Multi-repo constellation status / relay freshness (§MR.7)",
+    )
+    ws_sub = ws_parser.add_subparsers(dest="workspace_action", required=True)
+    ws_status = ws_sub.add_parser("status", help="Constellation map + relay freshness")
+    ws_status.add_argument(
+        "--strict-all",
+        action="store_true",
+        help="Treat optional member absences as failures",
+    )
+    ws_check = ws_sub.add_parser(
+        "check-next",
+        help="Fail closed on stale/ambiguous/missing relay tips (exit 35)",
+    )
+    ws_check.add_argument(
+        "--lane",
+        metavar="ID",
+        help="Constellation lane id (default: primary/product lane)",
+    )
+    ws_sub.add_parser("doctor", help="Diagnostics including board_name_violation")
 
     lc_parser = subparsers.add_parser(
         "land-check",
@@ -372,6 +401,8 @@ def main(argv: list[str] | None = None, *, ctx: CliContext | None = None) -> int
         return run_check_ok(args, runtime, raw_argv=rest_argv)
     if args.command == "governance-sync":
         return run_governance_sync_command(args, runtime)
+    if args.command == "workspace":
+        return run_workspace(args, runtime)
     if args.command == "land-check":
         return run_land_check_command(args, runtime)
     if args.command == "pr-land":

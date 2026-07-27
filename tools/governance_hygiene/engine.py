@@ -21,6 +21,7 @@ from tools.governance_gates.format import format_pending_gate_lines
 from tools.cost_awareness.format import format_cost_awareness_lines
 from tools.cost_awareness.surface import build_cost_awareness_report
 from tools.governance_hygiene.types import DriftReport, GovernanceSyncResult, PatchPlan, VerifiedReads
+from tools.workspace import workspace_relay_footer_state
 
 GOVERNANCE_SYNC_MARKER = "last_governance_sync"
 
@@ -33,11 +34,10 @@ def _emit_governance_gate_footer(
     roadmap_text: str,
     emit,
     kit_root: Path | None = None,
-) -> int | None:
-    """Append §KH1.9 gate reminders and §PC.7 spend-awareness when enabled.
+) -> tuple[int | None, str]:
+    """Append §KH1.9 gate reminders, §PC.7 spend-awareness, and §MR.8 workspace_relay.
 
-    Returns an exit code when cost-awareness fails closed (e.g. missing policy);
-    otherwise ``None``.
+    Returns ``(exit_code_or_None, workspace_relay_state)``.
     """
     if config.governance_gates.remind:
         if "governance-sync" in config.governance_gates.surfaces:
@@ -66,11 +66,23 @@ def _emit_governance_gate_footer(
         if cost_report.exit_code == 31:
             emit("")
             emit(cost_report.violation or "routing policy file missing or unreadable")
-            return 31
+            relay_state = workspace_relay_footer_state(config, repo_root)
+            emit("")
+            emit(f"workspace_relay: {relay_state}")
+            return 31, relay_state
         emit("")
         for line in format_cost_awareness_lines(cost_report):
             emit(line)
-    return None
+
+    relay_state = workspace_relay_footer_state(config, repo_root)
+    emit("")
+    emit(f"workspace_relay: {relay_state}")
+    if relay_state not in {"not_configured", "ok"}:
+        emit(
+            "multi-repo SD-17 incomplete until ok workspace check-next exits 0 "
+            "(refresh relay tips; no peer writes from this command)"
+        )
+    return None, relay_state
 
 
 def run_governance_sync(
@@ -272,7 +284,7 @@ def _run_single_lane(
 
     if drift.fully_aligned:
         emit("governance-sync: aligned (D1–D3)")
-        footer_code = _emit_governance_gate_footer(
+        footer_code, workspace_relay = _emit_governance_gate_footer(
             config,
             repo_root,
             handover_text=handover_text,
@@ -289,6 +301,7 @@ def _run_single_lane(
             committed=False,
             commit_sha=None,
             messages=("aligned",),
+            workspace_relay=workspace_relay,
         )
 
     realign_planned, _ = plan_realign(config, adapter, reads, drift)
@@ -350,7 +363,7 @@ def _run_single_lane(
         emit("dry-run: no writes, commits, or realign apply")
         if pr_url:
             emit(f"docs-only PR URL (operator-gated): {pr_url}")
-        footer_code = _emit_governance_gate_footer(
+        footer_code, workspace_relay = _emit_governance_gate_footer(
             config,
             repo_root,
             handover_text=handover_text,
@@ -367,6 +380,7 @@ def _run_single_lane(
             committed=False,
             commit_sha=None,
             messages=("dry-run plan",),
+            workspace_relay=workspace_relay,
         )
 
     return _apply_plan(
@@ -380,6 +394,9 @@ def _run_single_lane(
         handover_path=handover_path,
         roadmap_path=roadmap_path,
         emit=emit,
+        kit_root=kit_root,
+        handover_text=handover_text,
+        roadmap_text=roadmap_text,
     )
 
 
@@ -395,6 +412,9 @@ def _apply_plan(
     handover_path: Path,
     roadmap_path: Path,
     emit,
+    kit_root: Path | None = None,
+    handover_text: str = "",
+    roadmap_text: str = "",
 ) -> GovernanceSyncResult:
     """Apply patches, optional realign, commit, and push on a feature branch."""
     original_handover = handover_path.read_text(encoding="utf-8")
@@ -491,6 +511,14 @@ def _apply_plan(
     if plan.pr_url:
         emit(f"docs-only PR URL (operator-gated — do not auto-open): {plan.pr_url}")
 
+    _, workspace_relay = _emit_governance_gate_footer(
+        config,
+        repo_root,
+        handover_text=handover_text or plan.handover_text,
+        roadmap_text=roadmap_text or plan.roadmap_text,
+        emit=emit,
+        kit_root=kit_root,
+    )
     return GovernanceSyncResult(
         exit_code=0,
         dry_run=False,
@@ -500,6 +528,7 @@ def _apply_plan(
         committed=commit.committed,
         commit_sha=commit.sha,
         messages=("applied",),
+        workspace_relay=workspace_relay,
     )
 
 

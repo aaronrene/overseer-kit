@@ -10,12 +10,12 @@ from tests.support import git_status_runner, run_cli
 
 def test_full_install_cycle(tmp_path: Path) -> None:
     assert run_cli(
-        ["init", "--regime", "git-only", "--non-interactive"],
+        ["init", "--regime", "git-only", "--repo-name", "demo", "--non-interactive"],
         cwd=tmp_path,
         runner=git_status_runner(),
     ) == 0
 
-    handover = tmp_path / "docs" / "OVERSEER-HANDOVER.md"
+    handover = tmp_path / "docs" / "DEMO-OVERSEER-HANDOVER.md"
     handover.write_text(handover.read_text(encoding="utf-8") + "\n# local edit\n", encoding="utf-8")
 
     assert run_cli(

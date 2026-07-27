@@ -64,6 +64,7 @@ MODEL_ROUTING_KEYS = frozenset({"enabled", "policy"})
 DEFAULT_MODEL_ROUTING_POLICY = "policy/model-routing.yaml"
 COST_AWARENESS_SURFACES = frozenset({"status", "governance-sync"})
 COST_AWARENESS_KEYS = frozenset({"enabled", "surfaces"})
+WORKSPACE_KEYS = frozenset({"constellation_id", "product_order_root", "manifest"})
 
 # Hosted dashboard keys live in tools.hosted_dashboard.config (import deferred to avoid cycles).
 
@@ -204,6 +205,15 @@ class CostAwarenessConfig:
 
 
 @dataclass(frozen=True)
+class WorkspacePointerConfig:
+    """Additive constellation pointer (§MR.4.2). Omitted = single-repo only."""
+
+    constellation_id: str
+    product_order_root: str | None = None
+    manifest: str | None = None
+
+
+@dataclass(frozen=True)
 class HostedDashboardSection:
     """Optional hosted_dashboard settings (§HGD.10.2) — opaque validated mapping holder."""
 
@@ -259,6 +269,7 @@ class OverseerConfig:
     cost_awareness: CostAwarenessConfig = CostAwarenessConfig()
     hosted_dashboard: HostedDashboardSection = HostedDashboardSection()
     close_ritual: CloseRitualConfig = CloseRitualConfig()
+    workspace: WorkspacePointerConfig | None = None
 
 
 def load_config(path: Path) -> OverseerConfig:
@@ -413,6 +424,7 @@ def _validate_config(raw: dict[str, Any], path: str) -> OverseerConfig:
     cost_awareness = _parse_cost_awareness(raw.get("cost_awareness"), path)
     hosted_dashboard = _parse_hosted_dashboard(raw.get("hosted_dashboard"), path)
     close_ritual = _parse_close_ritual(raw.get("close_ritual"), path)
+    workspace = _parse_workspace(raw.get("workspace"), path)
 
     return OverseerConfig(
         overseer_config_version=version,
@@ -435,6 +447,7 @@ def _validate_config(raw: dict[str, Any], path: str) -> OverseerConfig:
         cost_awareness=cost_awareness,
         hosted_dashboard=hosted_dashboard,
         close_ritual=close_ritual,
+        workspace=workspace,
     )
 
 
@@ -1047,6 +1060,24 @@ def _parse_cost_awareness(raw_cost: Any, path: str) -> CostAwarenessConfig:
         surfaces = frozenset(parsed)
 
     return CostAwarenessConfig(enabled=enabled, surfaces=surfaces)
+
+
+def _parse_workspace(raw_workspace: Any, path: str) -> WorkspacePointerConfig | None:
+    """Parse optional additive ``workspace:`` pointer (§MR.4.2)."""
+    if raw_workspace is None:
+        return None
+    ws_raw = _require_mapping(raw_workspace, "workspace", path)
+    extra = set(ws_raw) - WORKSPACE_KEYS
+    if extra:
+        raise ConfigError(f"unknown workspace keys: {sorted(extra)}", path)
+    constellation_id = _require_str(ws_raw, "constellation_id", path)
+    product_order_root = _optional_str(ws_raw, "product_order_root")
+    manifest = _optional_str(ws_raw, "manifest")
+    return WorkspacePointerConfig(
+        constellation_id=constellation_id,
+        product_order_root=product_order_root,
+        manifest=manifest,
+    )
 
 
 def _parse_extensions(

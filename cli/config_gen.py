@@ -31,7 +31,18 @@ def default_config_dict(
     docs_dir: str,
 ) -> dict:
     """Build a default config mapping for the given regime."""
+    from tools.workspace.board_names import (
+        expected_handover_basename,
+        expected_handover_title,
+        expected_roadmap_basename,
+        expected_roadmap_title,
+    )
+
     docs_dir = docs_dir.strip("/") or "docs"
+    handover = expected_handover_basename(repo_name)
+    roadmap = expected_roadmap_basename(repo_name)
+    handover_title = expected_handover_title(repo_name)
+    roadmap_title = expected_roadmap_title(repo_name)
     base = {
         "overseer_config_version": SUPPORTED_CONFIG_VERSION,
         "repo": {
@@ -70,10 +81,12 @@ def default_config_dict(
             },
         }
         base["docs"] = {
-            "handover": "OVERSEER-HANDOVER.md",
-            "roadmap": "ROADMAP.md",
+            "handover": handover,
+            "roadmap": roadmap,
             "coordination": None,
-            "standing_decisions": "ROADMAP.md",
+            "standing_decisions": roadmap,
+            "handover_title": handover_title,
+            "roadmap_title": roadmap_title,
         }
         return base
 
@@ -93,10 +106,12 @@ def default_config_dict(
             },
         }
         base["docs"] = {
-            "handover": "MUSEHUB-OVERSEER-HANDOVER.md",
-            "roadmap": "MUSEHUB-ROADMAP.md",
+            "handover": handover,
+            "roadmap": roadmap,
             "coordination": None,
-            "standing_decisions": "MUSEHUB-ROADMAP.md",
+            "standing_decisions": roadmap,
+            "handover_title": handover_title,
+            "roadmap_title": roadmap_title,
         }
         return base
 
@@ -116,10 +131,12 @@ def default_config_dict(
             },
         }
         base["docs"] = {
-            "handover": "OVERSEER-HANDOVER.md",
-            "roadmap": "ROADMAP.md",
+            "handover": handover,
+            "roadmap": roadmap,
             "coordination": "CROSS-REPO-COORDINATION.md",
             "standing_decisions": "CROSS-REPO-COORDINATION.md",
+            "handover_title": handover_title,
+            "roadmap_title": roadmap_title,
         }
         return base
 

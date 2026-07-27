@@ -129,16 +129,18 @@ Machine-readable copy: `policy/tiers.yaml`.
 
 ## Recommended Flow: Overseer handover
 
-Scope: session end, chat switch, or multi-repo state in flight. **Docs-first.**
+Scope: session end, chat switch, or multi-repo state in flight. **Docs-first.** Use the installed
+kit (`ok status`, `ok governance-sync`) — do not maintain a parallel hand-rolled handover script.
 
 | # | Step | Verification |
 | --- | --- | --- |
-| 1 | **Snapshot truth** — VCS status per touched repo (explicit `-C` for Muse) | Branch + sha captured |
-| 2 | **Record step + next action + blockers** | Next action unambiguous |
+| 1 | **Snapshot truth** — `ok status` (and VCS status per touched repo; explicit `-C` for Muse) | Branch + sha + gates captured |
+| 2 | **Record step + next action + blockers** | Next action unambiguous; **Model:** set |
 | 3 | **List boundaries + cross-repo wiring touched** | Boundaries explicit |
-| 4 | **Update durable docs FIRST** — roadmap, standing decisions if needed | Docs match reality |
-| 5 | **Regenerate `{{docs.handover_path}}`** from current docs; SD-3 split if Thinking → Auto | Living file matches docs |
-| 6 | **Emit/paste** NEXT block into the next chat | New overseer needs no prior history |
+| 4 | **Update durable docs FIRST** — `{{docs.roadmap_path}}`, standing decisions if needed | Docs match reality |
+| 5 | **Regenerate `{{docs.handover_path}}`** from current docs; SD-3 split if Thinking → Auto | Living file matches docs (KH1 shape) |
+| 6 | **`ok governance-sync --dry-run`** then apply when correct | Drift report clean / intentional |
+| 7 | **Emit/paste** NEXT **Paste-ready prompt** into the next chat | New session needs no prior history |
 
 ---
 

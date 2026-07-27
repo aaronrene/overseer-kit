@@ -221,6 +221,19 @@ D4 state `drifted`. Parse errors → `unreadable` (fail-closed).
 | **H11** | `## Hard stops` and `## Change log` headings present. |
 | **H12** | `## Handover regeneration rules` present (template tail). |
 
+### Additive multi-repo checks (K13 — H13–H17)
+
+These do **not** weaken H1–H12. Workspace tools / doctor enforce them when
+`workspace:` is configured (see `docs/MULTI-REPO-WORKSPACE-LANES-FREEZE.md` §MR.6).
+
+| ID | Check |
+| --- | --- |
+| **H13** | Exactly one `## NEXT SESSION —`; paired marker is `role=primary` or `role=relay` (not both); PRIMARY headings end with `(PRIMARY)`; RELAY headings match `(RELAY → …)`. |
+| **H14** | No heading matching `^## NEXT SESSION —` with case-insensitive `archived` in the title; archived uses `## ARCHIVED SESSION —` only. |
+| **H15** | If member `relay: true`: exactly one of `role=relay` (NEXT) or `role=product_relay` (`## PRODUCT RELAY —`) with `tip_hash=sha256:`; `role=lane_tip` uses `## LANE TIP —` only. |
+| **H16** | Paste fence of the live NEXT block contains `Model:`, `Repo:`, `Step:`, `Authority:` substrings. |
+| **H17** | When `workspace:` is configured and `strict_board_names` is true (default): handover basename matches `{REPO_SLUG}-OVERSEER-HANDOVER.md` or `{REPO_SLUG}-{LANE}-…` pattern; roadmap basename matches `{REPO_SLUG}-ROADMAP.md` (or lane variant); `handover_title` contains a non-empty repo/lane label distinct from the generic string `Overseer Handover` alone. |
+
 ### D4 integration (governance-sync)
 
 | Field | Value |

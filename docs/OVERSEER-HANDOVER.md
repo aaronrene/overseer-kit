@@ -7,80 +7,64 @@
 ---
 
 <!-- overseer:next role=primary lane=product status=live -->
-## NEXT SESSION — K13b Multi-repo workspace lanes Auto (PRIMARY)
+## NEXT SESSION — K13 dogfood Scooling + Knowtation constellation (PRIMARY)
 
 **Date:** 2026-07-27  
-**Current position:** **K13a Thinking freeze DONE** — reviewed → `pass` (K13a-r3), stamp
-`sha256:df3d2754…` (`docs/MULTI-REPO-WORKSPACE-LANES-FREEZE.md`). Next: **K13b Auto** build.
-Parallel (not PRIMARY): Check OK PR #35 Tier-3 merge; landing clarity WIP.  
-**Model:** **Auto**
+**Current position:** **K13b Auto DONE** — build-verified → `pass` (K13b-BV-r1). Kit ships
+`ok workspace *` + §MR.6.5 init/doctor/fixtures. Next: **operator-gated dogfood** on Scooling +
+Knowtation (§MR.12.3) — rename boards, add `workspace.yaml` + `workspace:` pointers. Parallel:
+Check OK PR #35 Tier-3 merge; landing clarity WIP.  
+**Model:** **Operator + Auto**
 
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **K13a** | Multi-repo workspace / constellation lanes freeze — `pass` (K13a-r3). Option B manifest, markers, **§MR.6.5 `{REPO_SLUG}-OVERSEER-HANDOVER.md` tab identity**, `ok workspace *`, exit `35`, S1–S12 + §MR.10 |
-| **Incident context** | 2026-07-27 multi-root NEXT confusion (Knowtation relay stale vs Scooling PRIMARY) — kit had no constellation gate; freeze addresses it |
-| **Check OK** | BV `pass` (CIO-r2) on `feat/check-if-ok` (PR #35) — Tier-3 merge still pending (not this Auto) |
+| **K13b** | Multi-repo workspace lanes build — BV `pass` (K13b-BV-r1). `tools/workspace/` + `ok workspace status|check-next|doctor`, exit `35`, markers + tip_hash, §MR.6.5 prefixed init defaults, governance-sync `workspace_relay`, S1–S12 + §MR.10 |
+| **K13a** | Freeze reviewed → `pass` (K13a-r3), stamp `sha256:df3d2754…` |
+| **Check OK** | BV `pass` (CIO-r2) on `feat/check-if-ok` (PR #35) — Tier-3 merge still pending |
 | **Landing clarity pass** | Still **WIP** on `feat/landing-clarity-pass` |
 
 
-### THE ONE NEXT STEP — **Model: Auto**
+### THE ONE NEXT STEP — **Model: Operator + Auto**
 
 | | |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID** | **K13b** |
-| **Branch** | `feat/k13-multi-repo-workspace-lanes` |
-| **Repo** | **overseer-kit** (kit source — not a consumer) |
-| **Read first** | `docs/MULTI-REPO-WORKSPACE-LANES-FREEZE.md` (`frozen: true`, review `pass`); `docs/ROADMAP.md` K13b row; this handover |
-| **Hard stops** | No redesign of freeze; no consumer migrations (Scooling/Knowtation/MuseHub/Brain); no main merge; no staging push; no live flips |
+| **ID** | **K13-DOGFOOD** |
+| **Branch** | feature branches per consumer (`scooling`, `knowtation`) — not kit main |
+| **Repo** | **Scooling** (product_order) + **Knowtation** (ownership relay) — kit already shipped |
+| **Read first** | `docs/MULTI-REPO-WORKSPACE-LANES-FREEZE.md` §MR.6.5 / §MR.12.3; this handover |
+| **Hard stops** | No main merge without Tier 3; no staging push; no live posture flips; refresh PRODUCT RELAY when ownership PRIMARY is busy |
 
 
-### Paste-ready prompt — K13b Auto
+### Paste-ready prompt — K13-DOGFOOD Operator + Auto
 
 ```
-Phase K13b — Multi-repo workspace lanes build (overseer-kit).
+Phase K13-DOGFOOD — Scooling + Knowtation constellation adoption.
 
-Model: Auto
-Repo: overseer-kit (kit checkout — NOT scoaling/knowtation/MUSE_HUB/Brain)
-Branch: feat/k13-multi-repo-workspace-lanes
-Step: K13b
-Authority: authoritative
+Model: Operator + Auto
+Repo: scoaling (product_order) + knowtation (ownership relay)
+Step: K13-DOGFOOD
+Authority: authoritative (product sequencing on scoaling)
 
 Read first:
-  docs/MULTI-REPO-WORKSPACE-LANES-FREEZE.md (frozen: true, review pass K13a-r3, stamp sha256:df3d2754…; incl. §MR.6.5)
-  docs/ROADMAP.md (K13b row)
-  docs/OVERSEER-HANDOVER.md (this NEXT)
-  docs/PHASE-KH1-HANDOVER-RELAY-STANDARD.md (H13–H17 additive)
-  docs/PHASE-9A-5-GOVERNANCE-HYGIENE-AGENT-OUTLINE.md (single-repo sync stays required)
-  docs/PHASE-K8-MULTI-LANE-DOCS-CONTRACT.md (compose, do not redesign)
+  overseer-kit docs/MULTI-REPO-WORKSPACE-LANES-FREEZE.md §MR.6.5 + §MR.12.3
+  overseer-kit docs/OVERSEER-HANDOVER.md (K13b DONE; this NEXT)
 
-Task — implement exactly §MR.4–§MR.8 (incl. §MR.6.5) + §MR.10 (no redesign):
-1) tools/workspace/ + cli/commands/workspace.py → ok workspace status|check-next|doctor
-2) Exit 35 WORKSPACE_RELAY; status --workspace precedence 2 > 6 > 35 > 3 > 0
-3) Additive workspace: config parse + .overseer/workspace.yaml loader (Option B + overrides;
-   strict_markers + strict_board_names)
-4) PRIMARY / RELAY / PRODUCT RELAY / ARCHIVED / LANE TIP markers; tip_hash freshness
-5) §MR.6.5 board filename identity:
-   - init defaults → {REPO_SLUG}-OVERSEER-HANDOVER.md + {REPO_SLUG}-ROADMAP.md (+ titles)
-   - status JSON: handover_basename, roadmap_basename, handover_title, authoritative_handover
-   - doctor: board_name_violation when bare OVERSEER-HANDOVER.md under strict_board_names
-   - fixtures use distinct prefixed names (S4/S12); do NOT rename live scoaling/knowtation here
-6) Vendored handover template + workspace-authority rule + skills (.cursor + .claude)
-7) governance-sync footer workspace_relay (read-only peer check; no peer writes)
-8) tests/fixtures/workspace/* covering S1–S12; seven-tier §MR.10 all green
-9) /build-verification-review → pass before ROADMAP K13b → DONE
-10) Update ROADMAP + HANDOVER together; feature-branch commit only
+Task (operator-gated migration — feature branches per repo):
+1) Scooling: rename docs/OVERSEER-HANDOVER.md → SCOOLING-OVERSEER-HANDOVER.md;
+   ROADMAP.md → SCOOLING-ROADMAP.md; update .overseer/config.yaml docs.* + titles
+2) Knowtation: → KNOWTATION-OVERSEER-HANDOVER.md / KNOWTATION-ROADMAP.md + config
+3) Add scoaling/.overseer/workspace.yaml (product_order) + workspace: pointers on both
+4) Markers: PRIMARY on scoaling; RELAY or PRODUCT RELAY on knowtation with tip_hash
+5) ok workspace check-next → 0; ok workspace doctor clean of board_name_violation
+6) Feature-branch commits per repo; merge remains Tier 3
 
 Hard stops:
-- No live consumer board renames this phase (dogfood after K13b)
-- No main merge; no muse push staging; no live posture flips
-- No secrets in manifests; no cross-repo identity invention
-- Single-repo ok status green must NOT imply workspace.ok (S9)
-- Do not claim feature shipped until build-verification pass
-
-Governance sync: update docs/ROADMAP.md + docs/OVERSEER-HANDOVER.md on completion.
+- No kit redesign; no Brain required yet (edge optional)
+- No main merge / staging push / live flips without Tier 3
+- Single-repo ok status green still does not imply workspace.ok
 ```
 
 
@@ -139,9 +123,9 @@ Governance sync: update docs/ROADMAP.md + docs/OVERSEER-HANDOVER.md on completio
 | **Track O / O2**          | **DONE** — Stage 3 kit upgrade ceremony Thinking freeze (`docs/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md` reviewed → `pass`, O2-r3), stamp `sha256:ac970077…` |
 | **Track O / O3**          | **DONE** — `ok upgrade-regime` build-verified → `pass` (O3-BV-r2). Runbook + contract/harness retarget; **761** tests green (+33 §O2.9). Track O kit chain complete |
 | **CLI entrypoint**        | **`ok`** (canonical `./cli/ok`); **`overseer`** compat shim (`./cli/overseer`, one-line stderr deprecation) |
-| **CLI subcommands**       | `init` \| `sync` \| `status` \| `review --freeze` \| `check-ok` \| `governance-sync` \| `verify-step` \| `honesty-status` \| `ledger` \| `route` \| `app` \| `hosted-dashboard` \| `upgrade-regime` |
-| **K13a Multi-repo workspace lanes** | **DONE** — Thinking freeze reviewed → `pass` (K13a-r3), stamp `sha256:df3d2754…` (incl. §MR.6.5 board filenames). Cleared for K13b Auto |
-| **K13b Multi-repo workspace lanes** | **TODO** — Auto build against K13a freeze; no consumer migrations |
+| **CLI subcommands**       | `init` \| `sync` \| `status` \| `review --freeze` \| `check-ok` \| `governance-sync` \| `workspace status|check-next|doctor` \| `verify-step` \| `honesty-status` \| `ledger` \| `route` \| `app` \| `hosted-dashboard` \| `upgrade-regime` |
+| **K13a Multi-repo workspace lanes** | **DONE** — Thinking freeze reviewed → `pass` (K13a-r3), stamp `sha256:df3d2754…` (incl. §MR.6.5 board filenames) |
+| **K13b Multi-repo workspace lanes** | **DONE** — Auto build-verified → `pass` (K13b-BV-r1). `ok workspace *` + exit `35` + §MR.6.5 init/doctor; no live consumer renames |
 | **Check OK** | **DONE** (CIO-r2) — `/check-ok` → `.cursor` + `.claude` skills; `ok check-ok`; `docs/CHECK-OK.md` for Copilot/any; consumer `ok sync` after merge |
 | **Muse dogfood** | **D2 repaired** + substrate health + gate reminders + **muse-sync hard gate (KH2)** + **footprint self-integrity hard gate (KH3)** live; `muse rev-parse` reads plain-text SHA (0.2.x returns bare SHA on success; JSON only on failure/non-zero); `governance-sync --dry-run` exits 0; muse canonical HEAD `sha256:3e14450f…` (catch-up commit; genesis `sha256:4671b7f…`) |
 | **KH1b** | **DONE** — substrate §1 + gate reminders §2 |
@@ -173,6 +157,14 @@ Governance sync: update docs/ROADMAP.md + docs/OVERSEER-HANDOVER.md on completio
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-27** — **K13b Multi-repo workspace lanes DONE (build-verified → `pass`, K13b-BV-r1).**
+  Shipped `tools/workspace/` + `ok workspace status|check-next|doctor`, exit `35`
+  (`2 > 6 > 35 > 3 > 0`), additive `workspace:` + Option B manifest loader, PRIMARY/RELAY/
+  PRODUCT RELAY/ARCHIVED/LANE TIP + tip_hash freshness, §MR.6.5 prefixed init defaults +
+  doctor `board_name_violation`, handover template + workspace-authority rule/skills,
+  governance-sync `workspace_relay` footer (read-only), fixtures S1–S12, seven-tier §MR.10
+  green (evidence `sha256:e06a5e9a…`). No live consumer renames. ROADMAP K13b → DONE.
+  NEXT → K13-DOGFOOD Operator + Auto (Scooling + Knowtation).
 - **2026-07-27** — **K13a-r3 amendment: §MR.6.5 board filename identity.**
   Freeze requires `{REPO_SLUG}-OVERSEER-HANDOVER.md` / `{REPO_SLUG}-ROADMAP.md` (and lane
   variants) when `workspace:` is configured; rejects bare duplicate tab names. Stamp
