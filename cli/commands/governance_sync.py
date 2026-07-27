@@ -58,6 +58,7 @@ def run_governance_sync_command(args: Namespace, ctx: CliContext) -> int:
             "commit_sha": result.commit_sha,
             "error_command": result.error_command,
             "messages": list(result.messages) + messages,
+            "workspace_relay": result.workspace_relay,
         }
         if result.drift is not None:
             payload["drift"] = {

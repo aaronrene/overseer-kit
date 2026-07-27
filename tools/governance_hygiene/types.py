@@ -101,3 +101,4 @@ class GovernanceSyncResult:
     commit_sha: str | None
     messages: tuple[str, ...]
     error_command: str | None = None
+    workspace_relay: str = "not_configured"

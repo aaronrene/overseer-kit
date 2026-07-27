@@ -17,6 +17,19 @@ See root `MUSE-BRIDGE-WORKFLOW.md` and `scripts/muse-bridge-deploy.sh` for SD-14
 - `docs/OVERSEER-KIT-SPEC.md` — frozen architecture; do not redesign during Build phases.
 - `docs/ROADMAP.md` — phase control + Build status table.
 - `docs/OVERSEER-HANDOVER.md` — living relay; update with ROADMAP on phase completion.
+- `.cursor/rules/orchestrator.mdc` — RULE #8 day-to-day (install → paste NEXT → freeze/build gates → sync).
+
+## Orchestrator (RULE #8)
+
+Phased work runs through this kit — not a hand-rolled root `ROADMAP.md` / `OVERSEER_HANDOVER.md` script.
+
+1. Start from the handover **Paste-ready prompt** (Model label required).
+2. **Thinking** freezes a `frozen: true` artifact → `/freeze-review-loop` / `ok review --freeze` → `pass`.
+3. **Auto** builds to that freeze → seven-tier tests → `/build-verification-review` → `pass` before DONE.
+4. Close with ROADMAP + HANDOVER updated together; `ok governance-sync --dry-run` then apply; feature-branch commit.
+5. Merge to `main` is Tier 3 only.
+
+Consumers: `ok init` / `ok sync` / `ok status`; doc paths come from `.overseer/config.yaml`.
 
 ## Boundaries
 
@@ -26,7 +39,7 @@ See root `MUSE-BRIDGE-WORKFLOW.md` and `scripts/muse-bridge-deploy.sh` for SD-14
 
 ## Tests
 
-Seven-tier tests (unit, integration, e2e, stress, data-integrity, performance, security) for every Build phase that adds code.
+Seven-tier tests (unit, integration, e2e, stress, data-integrity, performance, security) for every Build phase that adds code. Machine-readable: `policy/test-tiers.yaml` (RULE #0).
 
 ## Governance sync
 

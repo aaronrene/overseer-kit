@@ -25,6 +25,7 @@ from tools.governance_gates import scan_governance_gates
 from tools.governance_gates.format import format_pending_gate_lines, pending_gates_payload
 from tools.muse_sync import check_muse_sync
 from tools.substrate_health import check_substrate
+from tools.workspace import build_status_report
 
 
 GOVERNANCE_SYNC_MARKER = "last_governance_sync"
@@ -96,12 +97,15 @@ def _exit_code_from_conditions(
     substrate_ok: bool = True,
     muse_sync_ok: bool = True,
     footprint_self_integrity_ok: bool = True,
+    workspace_ok: bool = True,
 ) -> int:
-    """Apply frozen precedence: 2 > 6 > 3 > 0.
+    """Apply frozen precedence: 2 > 6 > 35 > 3 > 0 (§MR.7.2).
 
     §KH2.5: ``muse_sync_ok`` folds into the 2 tier. §KH3.5: ``footprint_self_integrity_ok``
     (declared-but-absent kit-owned files) also folds into the same 2 tier, distinct from and
     independent of the opt-in ``--check-footprint`` content-digest ``integrity`` tier (6).
+    §MR.7.2: workspace relay failure is ``35`` and overrides drift ``3`` / clean ``0`` without
+    overriding config/substrate/muse_sync/footprint-self-integrity (``2``) or lock integrity (``6``).
     """
     if not use_exit_code:
         return 0
@@ -109,6 +113,8 @@ def _exit_code_from_conditions(
         return 2
     if integrity == "mismatch":
         return 6
+    if not workspace_ok:
+        return 35
     if drift_status in {"behind", "ahead"}:
         return 3
     return 0
@@ -282,6 +288,17 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
     if lock_error:
         payload["lock_error"] = True
 
+    workspace_report = None
+    workspace_ok = True
+    if getattr(args, "workspace", False):
+        workspace_report = build_status_report(config, repo_root)
+        payload["workspace"] = workspace_report.to_json()
+        # S9: single-repo green must not imply workspace.ok; workspace failure
+        # contributes exit 35 only when --exit-code is set.
+        if workspace_report.configured and not workspace_report.ok:
+            workspace_ok = False
+            report.add_warning(f"workspace: {workspace_report.state}")
+
     exit_code = _exit_code_from_conditions(
         config_error=config_error,
         integrity=integrity if args.check_footprint else None,
@@ -290,9 +307,10 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
         substrate_ok=substrate.ok,
         muse_sync_ok=muse_sync.ok,
         footprint_self_integrity_ok=footprint_self_integrity.ok,
+        workspace_ok=workspace_ok,
     )
     if lock_error and args.exit_code:
-        exit_code = 6 if exit_code == 0 else max(exit_code, 6)
+        exit_code = 6 if exit_code in {0, 3, 35} else max(exit_code, 6)
 
     if ctx.output.json_mode:
         ctx.output.emit_json(payload)
@@ -331,6 +349,17 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
         ctx.output.emit(f"vcs.regime: {vcs_result.regime}")
         ctx.output.emit(f"vcs.branch: {vcs_result.branch}")
         ctx.output.emit(f"vcs.dirty: {vcs_result.dirty}")
+        if workspace_report is not None:
+            ctx.output.emit(f"workspace.configured: {str(workspace_report.configured).lower()}")
+            ctx.output.emit(f"workspace.ok: {str(workspace_report.ok).lower()}")
+            ctx.output.emit(f"workspace.state: {workspace_report.state}")
+            if workspace_report.authoritative_handover:
+                ctx.output.emit(
+                    f"authoritative_handover: {workspace_report.authoritative_handover}"
+                )
+            for member in workspace_report.members:
+                base = member.get("handover_basename") or "?"
+                ctx.output.emit(f"workspace.member {member['id']}: handover={base}")
 
     return exit_code
 

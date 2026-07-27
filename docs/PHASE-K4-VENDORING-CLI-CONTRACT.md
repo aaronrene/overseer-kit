@@ -144,6 +144,7 @@ ISO-8601 UTC with a trailing `Z`.
 | `4` | REFUSED | A write was refused to protect existing state: existing config without `--force` (`init`), consumer-modified vendored file without `--force` (`sync`), or a would-be write to a protected/ambiguous path. |
 | `5` | IO | A filesystem write failed. Per §K4.8, writes are atomic per file and `version.lock` is written last, so **no half-written file exists and the lock is never advanced on a failed run**; a partial set of footprint files may have been updated and is fully recoverable by re-running `init`/`sync` (idempotent). |
 | `6` | INTEGRITY | `footprint_digest` mismatch on `--check-footprint` (with `--exit-code`), unknown `lock_version`, or `version.lock` unreadable/corrupt when required. |
+| `35` | WORKSPACE_RELAY | Constellation relay integrity failure (`ok workspace check-next`, or `ok status --workspace --exit-code` when workspace is configured and stale). Precedence with status: **`2 > 6 > 35 > 3 > 0`** (§MR.7.2). Does not reuse `30`–`34`. |
 
 **Exit-code precedence (frozen):** when more than one condition holds under `--exit-code`, the
 highest-priority code wins: **`2` (fail-closed) > `6` (integrity) > `3` (drift) > `0`**. The report

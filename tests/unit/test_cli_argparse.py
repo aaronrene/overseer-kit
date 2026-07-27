@@ -91,6 +91,22 @@ def test_governance_sync_argparse() -> None:
     assert args_write.write is True
 
 
+def test_workspace_argparse() -> None:
+    parser = build_parser()
+    status = parser.parse_args(["workspace", "status", "--strict-all"])
+    assert status.command == "workspace"
+    assert status.workspace_action == "status"
+    assert status.strict_all is True
+    check = parser.parse_args(["workspace", "check-next", "--lane", "security"])
+    assert check.workspace_action == "check-next"
+    assert check.lane == "security"
+    doctor = parser.parse_args(["workspace", "doctor"])
+    assert doctor.workspace_action == "doctor"
+    composed = parser.parse_args(["status", "--workspace", "--exit-code"])
+    assert composed.workspace is True
+    assert composed.exit_code is True
+
+
 def test_verify_step_argparse() -> None:
     from cli.args import extract_global_args
 

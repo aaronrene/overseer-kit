@@ -7,59 +7,57 @@
 ---
 
 <!-- overseer:next role=primary lane=product status=live -->
-## NEXT SESSION — Tier-3 merge Landing clarity + optional DNS (PRIMARY)
+## NEXT SESSION — Tier-3 merge K13 multi-repo workspace lanes (PRIMARY)
 
 **Date:** 2026-07-27  
-**Current position:** **Landing clarity pass DONE** — BV `pass` (LC-BV-r1) on
-`feat/landing-clarity-pass`. Check OK PR [#35](https://github.com/aaronrene/overseer-kit/pull/35)
-already on `main` (`b8b51c1`). Visitor landing IA + close-out polish ready for Tier-3 merge;
-optional `overseerkit.com` DNS per §LAC.9.  
+**Current position:** **K13a/b + dogfood DONE** on `feat/k13-multi-repo-workspace-lanes` (rebased onto
+`origin/main` including Landing clarity PR [#39](https://github.com/aaronrene/overseer-kit/pull/39)
+`f5cde68`). Consumers (Scooling / Knowtation / MuseHub) already synced from this branch.
 **Model:** **Operator + Auto**  
-**Operator note:** Merge to `main` and DNS remain Tier 3.
-
+**Operator note:** Merge to kit `main` is Tier 3. Do **not** auto-merge.
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **Landing clarity pass** | **DONE** — BV `pass` (LC-BV-r1); amended §LAC.3.1 ids; Download CTA + Paths 1–3 + four SVGs + MIT; seven-tier landing+LAC **53** green |
+| **Landing clarity pass** | **Merged** — PR [#39](https://github.com/aaronrene/overseer-kit/pull/39) → `main` (`f5cde68`); BV `pass` (LC-BV-r1) |
 | **Check OK** | **Merged** — PR [#35](https://github.com/aaronrene/overseer-kit/pull/35) → `main` (`b8b51c1`); consumers: `ok sync` |
-| **Landing + access clarity Auto** | BV `pass` (LAC-BV-r1) |
-| **K12 LICENSE → MIT** | BV `pass` (MIT-BV-r1) |
-
+| **K13a / K13b** | Freeze `pass` (K13a-r3) + build-verified `pass` (K13b-BV-r1): `ok workspace status|check-next|doctor`, exit `35`, §MR.6.5 board names |
+| **K13-DOGFOOD / MUSEHUB / BRAIN** | Live constellation `scooling-stack` on feature branches; check-next `0`; member merges remain Tier 3 |
 
 ### THE ONE NEXT STEP — **Model: Operator + Auto**
 
 | | |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID** | **Tier-3 merge `feat/landing-clarity-pass`** (+ optional DNS §LAC.9) |
-| **Branch** | `feat/landing-clarity-pass` |
+| **ID** | **Tier-3 merge `feat/k13-multi-repo-workspace-lanes`** |
+| **Branch** | `feat/k13-multi-repo-workspace-lanes` |
 | **Repo** | **overseer-kit** |
-| **Read first** | Open PR for this branch; `docs/ROADMAP.md` (Landing clarity DONE); `docs/landing/HOSTING.md` |
-| **Deliver** | Merged kit `main` with landing close-out; optional DNS cutover checklist §LAC.9 / HOSTING.md |
-| **Hard stops** | No merge without Tier 3; no live Path B on apex; no public CSRF mint |
+| **Read first** | Open PR for this branch; `docs/MULTI-REPO-WORKSPACE-LANES-FREEZE.md`; `docs/ROADMAP.md` (K13 rows DONE) |
+| **Deliver** | Merged kit `main` with K13 workspace CLI + templates; consumers keep current `ok sync` footprint |
+| **Hard stops** | No merge without Tier 3; no live consumer Muse/`main` merges in this PR; no DNS/posture flips |
 
 
-### Paste-ready prompt — Tier-3 merge Landing clarity + optional DNS
+### Paste-ready prompt — Tier-3 merge K13
 
 ```
-Overseer Kit — Tier-3 merge Landing clarity pass (+ optional DNS).
+Overseer Kit — Tier-3 merge K13 multi-repo workspace lanes.
 
 Model: Operator + Auto
 Repo: overseer-kit
-Branch: feat/landing-clarity-pass
+Branch: feat/k13-multi-repo-workspace-lanes
+Step: K13-MERGE
+Authority: authoritative
 
 Read first:
-  docs/OVERSEER-HANDOVER.md; docs/ROADMAP.md (Landing clarity DONE);
-  docs/landing/HOSTING.md; docs/PHASE-LANDING-ACCESS-CLARITY.md §LAC.9
+  docs/OVERSEER-HANDOVER.md; docs/ROADMAP.md (K13a/b + dogfood DONE);
+  docs/MULTI-REPO-WORKSPACE-LANES-FREEZE.md
 
 Task:
-1) Tier 3: review + merge feat/landing-clarity-pass (Muse→mirror path / GitHub PR).
-2) Optional: DNS cutover for overseerkit.com per HOSTING.md + §LAC.9.
-3) Regenerate this NEXT block after merge (and DNS if done).
+1) Tier 3: review + merge feat/k13-multi-repo-workspace-lanes → main (GitHub PR).
+2) After merge: consumers may `ok sync` from main checkout (already dogfooded).
+3) Regenerate this NEXT block after merge (optional DNS §LAC.9 remains separate).
 
-Hard stops: no main merge without Tier 3; no public CSRF mint; no unsigned-as-primary;
-no live ok app on apex.
+Hard stops: no main merge without Tier 3; no auto consumer main merges; no public CSRF mint.
 ```
 
 
@@ -119,7 +117,12 @@ no live ok app on apex.
 | **Track O / O2**          | **DONE** — Stage 3 kit upgrade ceremony Thinking freeze (`docs/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md` reviewed → `pass`, O2-r3), stamp `sha256:ac970077…` |
 | **Track O / O3**          | **DONE** — `ok upgrade-regime` build-verified → `pass` (O3-BV-r2). Runbook + contract/harness retarget; **761** tests green (+33 §O2.9). Track O kit chain complete |
 | **CLI entrypoint**        | **`ok`** (canonical `./cli/ok`); **`overseer`** compat shim (`./cli/overseer`, one-line stderr deprecation) |
-| **CLI subcommands**       | `init` \| `sync` \| `status` \| `review --freeze` \| `check-ok` \| `governance-sync` \| `verify-step` \| `honesty-status` \| `ledger` \| `route` \| `app` \| `hosted-dashboard` \| `upgrade-regime` |
+| **CLI subcommands**       | `init` \| `sync` \| `status` \| `review --freeze` \| `check-ok` \| `governance-sync` \| `workspace status|check-next|doctor` \| `verify-step` \| `honesty-status` \| `ledger` \| `route` \| `app` \| `hosted-dashboard` \| `upgrade-regime` |
+| **K13a Multi-repo workspace lanes** | **DONE** — Thinking freeze reviewed → `pass` (K13a-r3), stamp `sha256:df3d2754…` (incl. §MR.6.5 board filenames) |
+| **K13b Multi-repo workspace lanes** | **DONE** — Auto build-verified → `pass` (K13b-BV-r1). `ok workspace *` + exit `35` + §MR.6.5 init/doctor; no live consumer renames |
+| **K13-DOGFOOD** | **DONE** — live `scooling-stack` on `feat/k13-dogfood-workspace` (Scooling + Knowtation); check-next `0`; doctor clean of `board_name_violation`; merge Tier 3 |
+| **K13-MUSEHUB** | **DONE** — optional enrichment member on `feat/k13-musehub-enrichment`; Scooling musehub root → `~/MUSE_HUB/musehub`; constellation `scooling-stack`; check-next `0`; doctor clean of `board_name_violation`; muse-only; merge Tier 3 |
+| **K13-BRAIN** | **DONE** — optional edge member on `feat/k13-brain-edge-member` (`bc0c0e6`); `THE-BRAIN-*` boards; Scooling brain root `~/theBRAIN/the-brain`; §MR.12.3 dogfood complete; kit-generic confirmed |
 | **Check OK** | **DONE + merged** (CIO-r2) — PR [#35](https://github.com/aaronrene/overseer-kit/pull/35) → `main` (`b8b51c1`, 2026-07-18); `/check-ok` → `.cursor` + `.claude`; `ok check-ok`; `docs/CHECK-OK.md`; consumer `ok sync` |
 | **Muse dogfood** | **D2 repaired** + substrate health + gate reminders + **muse-sync hard gate (KH2)** + **footprint self-integrity hard gate (KH3)** live; `muse rev-parse` reads plain-text SHA (0.2.x returns bare SHA on success; JSON only on failure/non-zero); `governance-sync --dry-run` exits 0; muse canonical HEAD `sha256:3e14450f…` (catch-up commit; genesis `sha256:4671b7f…`) |
 | **KH1b** | **DONE** — substrate §1 + gate reminders §2 |
@@ -134,8 +137,8 @@ no live ok app on apex.
 
 | Item | Value |
 | --- | --- |
-| Branch | `feat/landing-clarity-pass` |
-| HEAD | Landing clarity pass Auto (LC-BV-r1 `pass`) |
+| Branch | `feat/k13-multi-repo-workspace-lanes` |
+| HEAD | K13b + dogfood DONE; merged `origin/main` (landing clarity #39) |
 | Muse HEAD | Sync after close-out commit on this branch |
 | GitHub bridge | Feature branch PR (no merge) |
 | Dirty | Expect clean after close-out commit |
@@ -151,6 +154,9 @@ no live ok app on apex.
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-27** — **K13 → `main` PR prepared.** Merged `origin/main` (Landing clarity #39
+  `f5cde68`) into `feat/k13-multi-repo-workspace-lanes`; resolved ROADMAP/HANDOVER conflicts;
+  NEXT → Tier-3 merge K13 (this PR). No merge performed (hard stop).
 - **2026-07-27** — **Landing clarity pass DONE (build-verified → `pass`, LC-BV-r1).**
   Rebased branch onto `main` (clarity IA already live via #32/#36/#37/#38). Close-out:
   Download CTA restores Apple Silicon label; Path 1 says “Download link above” (CTA is no
@@ -158,6 +164,56 @@ no live ok app on apex.
   `docs.html`. Seven-tier landing+LAC **53** green
   (`sha256:e970720253d49a5a19cd791a6f8d1b89a28301b4a9ba93139f7bd1de20e82ed1`). ROADMAP → DONE.
   NEXT → Tier-3 merge + optional DNS §LAC.9.
+- **2026-07-27** — **Check OK PR #35 Tier-3 merge confirmed already complete.**
+  State `MERGED` (2026-07-18, operator `aaronrene`); merge commit `b8b51c1` on
+  `origin/main`; Cloudflare Pages green; BV `pass` (CIO-BV-r1 + CIO-r2) in
+  `docs/PHASE-CHECK-OK.md`. No second merge performed (hard stop held). Handover NEXT
+  advanced → Landing clarity pass (`feat/landing-clarity-pass`).
+- **2026-07-27** — **K13-BRAIN DONE (Operator + Auto).** Optional Brain edge member:
+  `BRAIN_ROOT=~/theBRAIN/the-brain`; boards `THE-BRAIN-OVERSEER-HANDOVER.md` /
+  `THE-BRAIN-ROADMAP.md` + titles; `workspace:` → `scooling-stack`; Scooling `workspace.yaml`
+  brain root + `regime: git-only` (`required: false`). Verified member `status=ok`;
+  `ok workspace check-next` → `0`; doctor clean of `board_name_violation`. Commits: Brain
+  `feat/k13-brain-edge-member` `bc0c0e6`; Scooling `95519638…`. §MR.12.3 dogfood order complete.
+  **Confirmed:** multi-repo workspace is kit-generic (any constellation); scooling-stack was
+  first live proof, not a kit special case. ROADMAP K13-BRAIN → DONE.
+  NEXT was Check OK PR #35 Tier-3 merge (later confirmed already merged 2026-07-18).
+- **2026-07-27** — **K13-MUSEHUB DONE (Operator + Auto).** Optional MuseHub enrichment member:
+  checkout `~/MUSE_HUB/musehub` (`MUSEHUB_ROOT`); boards `MUSEHUB-OVERSEER-HANDOVER.md` /
+  `MUSEHUB-ROADMAP.md` + titles; `.overseer/config.yaml` muse-only + `workspace:` →
+  `scooling-stack` / `product_order_root` Scooling; Scooling `workspace.yaml` musehub root
+  default `~/MUSE_HUB/musehub`. Verified member `status=ok`; `ok workspace check-next` → `0`;
+  doctor clean of `board_name_violation`; `muse_only_skip_git` (no git/gh). Muse commits:
+  MuseHub `feat/k13-musehub-enrichment` `ae779f3e…`; Scooling `feat/k13-dogfood-workspace`
+  `1ba29c19…`. Does **not** claim product PRIMARY. ROADMAP K13-MUSEHUB → DONE.
+  Spelling correction: constellation/member id `scoaling`→`scooling`.
+  NEXT → K13-BRAIN (optional edge; skip if path unknown).
+- **2026-07-27** — **K13-DOGFOOD DONE (Operator + Auto).** Live constellation `scooling-stack`:
+  Scooling boards → `SCOOLING-OVERSEER-HANDOVER.md` / `SCOOLING-ROADMAP.md` +
+  `.overseer/workspace.yaml` (product_order); Knowtation → `KNOWTATION-*` + `workspace:` +
+  ownership PRIMARY + PRODUCT RELAY `tip_hash` matching scooling; archived NEXT headings →
+  `## ARCHIVED SESSION —`. Verified `ok workspace check-next` → `0`; doctor clean of
+  `board_name_violation`. Muse commits on `feat/k13-dogfood-workspace` (merge Tier 3).
+  ROADMAP K13-DOGFOOD → DONE. NEXT → K13-MUSEHUB (optional enrichment).
+- **2026-07-27** — **K13b Multi-repo workspace lanes DONE (build-verified → `pass`, K13b-BV-r1).**
+  Shipped `tools/workspace/` + `ok workspace status|check-next|doctor`, exit `35`
+  (`2 > 6 > 35 > 3 > 0`), additive `workspace:` + Option B manifest loader, PRIMARY/RELAY/
+  PRODUCT RELAY/ARCHIVED/LANE TIP + tip_hash freshness, §MR.6.5 prefixed init defaults +
+  doctor `board_name_violation`, handover template + workspace-authority rule/skills,
+  governance-sync `workspace_relay` footer (read-only), fixtures S1–S12, seven-tier §MR.10
+  green (evidence `sha256:e06a5e9a…`). No live consumer renames. ROADMAP K13b → DONE.
+  NEXT → K13-DOGFOOD Operator + Auto (Scooling + Knowtation).
+- **2026-07-27** — **K13a-r3 amendment: §MR.6.5 board filename identity.**
+  Freeze requires `{REPO_SLUG}-OVERSEER-HANDOVER.md` / `{REPO_SLUG}-ROADMAP.md` (and lane
+  variants) when `workspace:` is configured; rejects bare duplicate tab names. Stamp
+  refreshed `sha256:df3d2754…`. K13b prompt updated (init defaults + doctor warnings + S12;
+  no live consumer renames in Auto).
+- **2026-07-27** — **K13a Freeze multi-repo workspace lanes DONE (reviewed → `pass`, K13a-r2).**
+  Froze `docs/MULTI-REPO-WORKSPACE-LANES-FREEZE.md` (stamp `sha256:086d79ef…`): constellation
+  manifest Option B (product_order `.overseer/workspace.yaml`), PRIMARY/RELAY/PRODUCT RELAY/
+  ARCHIVED/LANE TIP markers, `ok workspace status|check-next|doctor`, exit `35`, SD-17 sibling
+  gate, S1–S11 + seven-tier §MR.10. Response to 2026-07-27 multi-root stale-relay incident.
+  **Spec-only.** ROADMAP K13a → DONE; K13b → TODO. NEXT → K13b Auto.
 - **2026-07-17** — **Landing hero: Check OK terminal + honesty-loop art.** Hero CTAs demoted to
   quiet Download / Clone links; scenarios/docs/releases quieter; CLI mock shows `ok check-ok`;
   pyramid PNG replaced by `assets/diagrams/honesty-loop.svg` (freeze / re-review / build /

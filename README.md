@@ -45,6 +45,11 @@ substrate that deepens version control — it never gates core governance featur
 Think of **ROADMAP** as the plan (what phases exist, their status, which model tier each uses) and
 **HANDOVER** as the baton (what to do right now, copy-pasted into the next session).
 
+**RULE #8 (Orchestrator):** after `ok init` / `ok sync`, day-to-day phased work follows the vendored
+always-on rule `.cursor/rules/orchestrator.mdc` — paste the handover prompt, freeze-review before
+Auto, build-verify before DONE, keep roadmap + handover in sync via `ok governance-sync`. Do not
+keep a separate hand-rolled “update ROADMAP.md / OVERSEER_HANDOVER.md” protocol beside the kit.
+
 ### ROADMAP
 
 `docs/ROADMAP.md` (from template) is the **phase control board**:

@@ -31,26 +31,31 @@ def test_init_missing_regime_non_interactive_fails_closed(tmp_path: Path) -> Non
 
 def test_init_refuse_without_force(tmp_path: Path) -> None:
     run_cli(
-        ["init", "--regime", "git-only", "--non-interactive"],
+        ["init", "--regime", "git-only", "--repo-name", "demo", "--non-interactive"],
         cwd=tmp_path,
     )
-    (tmp_path / "docs" / "OVERSEER-HANDOVER.md").write_text("hand edit\n", encoding="utf-8")
-    code = run_cli(["init", "--regime", "git-only", "--non-interactive"], cwd=tmp_path)
+    (tmp_path / "docs" / "DEMO-OVERSEER-HANDOVER.md").write_text("hand edit\n", encoding="utf-8")
+    code = run_cli(
+        ["init", "--regime", "git-only", "--repo-name", "demo", "--non-interactive"],
+        cwd=tmp_path,
+    )
     assert code == 4
 
 
 def test_init_force_reinits(tmp_path: Path) -> None:
     run_cli(
-        ["init", "--regime", "git-only", "--non-interactive"],
+        ["init", "--regime", "git-only", "--repo-name", "demo", "--non-interactive"],
         cwd=tmp_path,
     )
-    (tmp_path / "docs" / "OVERSEER-HANDOVER.md").write_text("hand edit\n", encoding="utf-8")
+    (tmp_path / "docs" / "DEMO-OVERSEER-HANDOVER.md").write_text("hand edit\n", encoding="utf-8")
     code = run_cli(
-        ["init", "--regime", "git-only", "--non-interactive", "--force"],
+        ["init", "--regime", "git-only", "--repo-name", "demo", "--non-interactive", "--force"],
         cwd=tmp_path,
     )
     assert code == 0
-    assert "hand edit" not in (tmp_path / "docs" / "OVERSEER-HANDOVER.md").read_text(encoding="utf-8")
+    assert "hand edit" not in (tmp_path / "docs" / "DEMO-OVERSEER-HANDOVER.md").read_text(
+        encoding="utf-8"
+    )
 
 
 def test_init_noop_when_current(tmp_path: Path) -> None:
