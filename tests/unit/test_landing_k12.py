@@ -44,6 +44,9 @@ def test_primary_download_href_equals_frozen_dmg() -> None:
     assert manifest.primary_download_href == FROZEN_PRIMARY_DOWNLOAD_HREF
     assert FROZEN_PRIMARY_DOWNLOAD_HREF in html
     assert 'id="cta-download-mac"' in html
+    assert "Download Mac console (Apple Silicon)" in html
+    assert "via the Download link above" in html
+    assert "via the button above" not in html
 
 
 def test_forbidden_strings_absent_on_landing() -> None:

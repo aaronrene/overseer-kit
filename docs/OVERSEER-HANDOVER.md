@@ -6,60 +6,61 @@
 
 ---
 
-## NEXT SESSION — Merge Check OK + landing clarity / DNS (▶ NEXT)
+<!-- overseer:next role=primary lane=product status=live -->
+## NEXT SESSION — Tier-3 merge Landing clarity + optional DNS (PRIMARY)
 
-**Date:** 2026-07-17  
-**Current position:** **Check OK** Auto **DONE** (BV `pass`, CIO-BV-r1 + CIO-r2 rename /
-multi-runtime) on `feat/check-if-ok` ([PR #35](https://github.com/aaronrene/overseer-kit/pull/35)).
-Next: Tier-3 PR merge, then consumers run `ok sync`. Parallel: landing clarity + optional DNS.  
+**Date:** 2026-07-27  
+**Current position:** **Landing clarity pass DONE** — BV `pass` (LC-BV-r1) on
+`feat/landing-clarity-pass`. Check OK PR [#35](https://github.com/aaronrene/overseer-kit/pull/35)
+already on `main` (`b8b51c1`). Visitor landing IA + close-out polish ready for Tier-3 merge;
+optional `overseerkit.com` DNS per §LAC.9.  
 **Model:** **Operator + Auto**  
 **Operator note:** Merge to `main` and DNS remain Tier 3.
 
 
 ### What just landed
 
-
 | Slice | Deliverable |
 | --- | --- |
-| **Check OK** | BV `pass` (CIO-r2) — `/check-ok` in Cursor **and** Claude Code (`.claude/skills/`); `ok check-ok`; paste `docs/CHECK-OK.md` for Copilot/any; same K5 engine |
-| **Landing clarity pass** | Still **WIP** on `feat/landing-clarity-pass` (Tier-3 merge pending) |
-| **K12 LICENSE → MIT** | BV `pass` (MIT-BV-r1) |
+| **Landing clarity pass** | **DONE** — BV `pass` (LC-BV-r1); amended §LAC.3.1 ids; Download CTA + Paths 1–3 + four SVGs + MIT; seven-tier landing+LAC **53** green |
+| **Check OK** | **Merged** — PR [#35](https://github.com/aaronrene/overseer-kit/pull/35) → `main` (`b8b51c1`); consumers: `ok sync` |
 | **Landing + access clarity Auto** | BV `pass` (LAC-BV-r1) |
+| **K12 LICENSE → MIT** | BV `pass` (MIT-BV-r1) |
 
 
 ### THE ONE NEXT STEP — **Model: Operator + Auto**
 
-
-|                |                                                                                                                                     |
+| | |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID**         | **Tier-3 merge `feat/check-if-ok` (PR #35)** (then consumer `ok sync`); optional parallel landing clarity + DNS |
-| **Branch** | `feat/check-if-ok` (PR #35); landing on `feat/landing-clarity-pass` |
-| **Read first** | PR #35; `docs/PHASE-CHECK-OK.md`; `docs/CHECK-OK.md`; `docs/landing/HOSTING.md` |
-| **Deliver** | Merged kit main; each consumer `ok sync` → `.cursor/skills/check-ok` **and** `.claude/skills/check-ok`; optional DNS |
-| **Hard stops** | No merge without Tier 3; no live Path B on apex |
+| **ID** | **Tier-3 merge `feat/landing-clarity-pass`** (+ optional DNS §LAC.9) |
+| **Branch** | `feat/landing-clarity-pass` |
+| **Repo** | **overseer-kit** |
+| **Read first** | Open PR for this branch; `docs/ROADMAP.md` (Landing clarity DONE); `docs/landing/HOSTING.md` |
+| **Deliver** | Merged kit `main` with landing close-out; optional DNS cutover checklist §LAC.9 / HOSTING.md |
+| **Hard stops** | No merge without Tier 3; no live Path B on apex; no public CSRF mint |
 
 
-
-### Paste-ready prompt — Merge Check OK + optional landing/DNS (Operator + Auto)
+### Paste-ready prompt — Tier-3 merge Landing clarity + optional DNS
 
 ```
-Overseer Kit — Tier-3 merge Check OK (+ optional landing clarity / DNS).
+Overseer Kit — Tier-3 merge Landing clarity pass (+ optional DNS).
 
 Model: Operator + Auto
+Repo: overseer-kit
+Branch: feat/landing-clarity-pass
 
 Read first:
-  https://github.com/aaronrene/overseer-kit/pull/35; docs/PHASE-CHECK-OK.md;
-  docs/CHECK-OK.md; docs/OVERSEER-HANDOVER.md; docs/landing/HOSTING.md (if DNS).
+  docs/OVERSEER-HANDOVER.md; docs/ROADMAP.md (Landing clarity DONE);
+  docs/landing/HOSTING.md; docs/PHASE-LANDING-ACCESS-CLARITY.md §LAC.9
 
 Task:
-1) Tier 3: review + merge feat/check-if-ok / PR #35 (Muse→mirror path).
-2) In each consumer: ok sync — confirm .cursor/skills/check-ok AND .claude/skills/check-ok.
-3) Optional: merge feat/landing-clarity-pass + DNS per §LAC.9.
-4) Regenerate this NEXT block after merges.
+1) Tier 3: review + merge feat/landing-clarity-pass (Muse→mirror path / GitHub PR).
+2) Optional: DNS cutover for overseerkit.com per HOSTING.md + §LAC.9.
+3) Regenerate this NEXT block after merge (and DNS if done).
 
-Hard stops: no main merge without Tier 3; no public CSRF mint; no unsigned-as-primary.
+Hard stops: no main merge without Tier 3; no public CSRF mint; no unsigned-as-primary;
+no live ok app on apex.
 ```
-
 
 
 ---
@@ -110,6 +111,7 @@ Hard stops: no main merge without Tier 3; no public CSRF mint; no unsigned-as-pr
 | **Track Q / Q4a**         | **DONE** — Thinking freeze (`docs/PHASE-TRACK-Q-Q4A-UI-REDESIGN.md` reviewed → `pass`, Q4a-r2), stamp `sha256:ea118134…`. Path B developer UI redesign contract: Overview/Structure IA, four offline diagrams, suite CTAs, closed Q0 surface, §Q4A.15. **Spec-only — no UI code.** Cleared for Q4b |
 | **Track Q / Q4b**         | **DONE** — Auto build (build-verified → `pass`, Q4b-BV-r1). Overview + Structure IA; four offline SVGs; suite CTAs; status humanization; closed Q0 unchanged; §Q4A.15 **17** green; full suite **905**. No LICENSE/`desktop/`/engine edits |
 | **Landing + access clarity** | **DONE** — Thinking `pass` (LAC-r2) + Auto build-verified → `pass` (LAC-BV-r1). Public IA + offline SVGs + Mac `v0.1.0` Download CTA; Paths 1–3 playbook; Path B chrome + health `repo_root`; seven-tier §LAC.12; full suite **931**. DNS cutover still Tier 3 (§LAC.9). |
+| **Landing clarity pass** | **DONE** — BV `pass` (LC-BV-r1). Amended §LAC.3.1 visitor IA (`kit-basics` / `how-it-works` / `musehub` / `next-steps`); Download CTA + Paths 1–3 + four SVGs + MIT; seven-tier landing+LAC **53** green. Merge Tier 3. |
 | **K12 LICENSE → MIT** | **DONE** — Thinking freeze `pass` (MIT-r1) + Auto BV `pass` (MIT-BV-r1). SPDX MIT across `LICENSE` / pyproject / landing / Path B; K12 §K12.4 amended; **936** green. |
 | **K6-Scooling runbook**   | **DONE** — `docs/consumers/scooling/OVERSEER-SETUP.md` (kit-side; live init still operator-gated; Track O cross-link in O1) |
 | **Track O / O0**          | **DONE** — Normie custody funnel Thinking freeze (`docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md` reviewed → `pass`, O0-r3), stamp `sha256:642076c9…` |
@@ -118,24 +120,24 @@ Hard stops: no main merge without Tier 3; no public CSRF mint; no unsigned-as-pr
 | **Track O / O3**          | **DONE** — `ok upgrade-regime` build-verified → `pass` (O3-BV-r2). Runbook + contract/harness retarget; **761** tests green (+33 §O2.9). Track O kit chain complete |
 | **CLI entrypoint**        | **`ok`** (canonical `./cli/ok`); **`overseer`** compat shim (`./cli/overseer`, one-line stderr deprecation) |
 | **CLI subcommands**       | `init` \| `sync` \| `status` \| `review --freeze` \| `check-ok` \| `governance-sync` \| `verify-step` \| `honesty-status` \| `ledger` \| `route` \| `app` \| `hosted-dashboard` \| `upgrade-regime` |
-| **Check OK** | **DONE** (CIO-r2) — `/check-ok` → `.cursor` + `.claude` skills; `ok check-ok`; `docs/CHECK-OK.md` for Copilot/any; consumer `ok sync` after merge |
+| **Check OK** | **DONE + merged** (CIO-r2) — PR [#35](https://github.com/aaronrene/overseer-kit/pull/35) → `main` (`b8b51c1`, 2026-07-18); `/check-ok` → `.cursor` + `.claude`; `ok check-ok`; `docs/CHECK-OK.md`; consumer `ok sync` |
 | **Muse dogfood** | **D2 repaired** + substrate health + gate reminders + **muse-sync hard gate (KH2)** + **footprint self-integrity hard gate (KH3)** live; `muse rev-parse` reads plain-text SHA (0.2.x returns bare SHA on success; JSON only on failure/non-zero); `governance-sync --dry-run` exits 0; muse canonical HEAD `sha256:3e14450f…` (catch-up commit; genesis `sha256:4671b7f…`) |
 | **KH1b** | **DONE** — substrate §1 + gate reminders §2 |
 | **KH2** | **DONE** — Muse-sync hard gate (freeze `pass` KH2-r2 + Auto build); `tools/muse_sync/`; fail-closed on `status --exit-code` / `review --freeze` / `governance-sync` |
 | **KH3** | **DONE** — Footprint self-integrity hard gate (freeze `pass` KH3-r2 + Auto build); `tools/footprint_integrity/`; fail-closed on `status --exit-code` / `review --freeze` / `governance-sync` when a declared kit-owned file is absent from disk |
 | **Public brand** | **🆗 Overseer Kit** (locked in template + landing) |
-| **Public landing** | `docs/landing/index.html` (LAC IA) · offline SVGs under `assets/diagrams/` · scenarios gallery |
+| **Public landing** | `docs/landing/index.html` (clarity IA) · offline SVGs under `assets/diagrams/` · scenarios gallery |
 <!-- /overseer:anchor:verified-snapshot -->
 
 <!-- overseer:anchor:vcs-table -->
-## VCS (verified 2026-07-14)
+## VCS (verified 2026-07-27)
 
 | Item | Value |
 | --- | --- |
-| Branch | `build/landing-access-clarity` |
-| HEAD | Landing + access clarity Auto (LAC-BV-r1 `pass`) |
+| Branch | `feat/landing-clarity-pass` |
+| HEAD | Landing clarity pass Auto (LC-BV-r1 `pass`) |
 | Muse HEAD | Sync after close-out commit on this branch |
-| GitHub bridge | Feature branch (no merge) |
+| GitHub bridge | Feature branch PR (no merge) |
 | Dirty | Expect clean after close-out commit |
 <!-- /overseer:anchor:vcs-table -->
 
@@ -149,6 +151,13 @@ Hard stops: no main merge without Tier 3; no public CSRF mint; no unsigned-as-pr
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-27** — **Landing clarity pass DONE (build-verified → `pass`, LC-BV-r1).**
+  Rebased branch onto `main` (clarity IA already live via #32/#36/#37/#38). Close-out:
+  Download CTA restores Apple Silicon label; Path 1 says “Download link above” (CTA is no
+  longer a button); foot-link CSS weight for `#cta-download-mac`; stress fixture copies
+  `docs.html`. Seven-tier landing+LAC **53** green
+  (`sha256:e970720253d49a5a19cd791a6f8d1b89a28301b4a9ba93139f7bd1de20e82ed1`). ROADMAP → DONE.
+  NEXT → Tier-3 merge + optional DNS §LAC.9.
 - **2026-07-17** — **Landing hero: Check OK terminal + honesty-loop art.** Hero CTAs demoted to
   quiet Download / Clone links; scenarios/docs/releases quieter; CLI mock shows `ok check-ok`;
   pyramid PNG replaced by `assets/diagrams/honesty-loop.svg` (freeze / re-review / build /

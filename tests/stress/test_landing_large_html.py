@@ -38,12 +38,15 @@ def test_validator_large_padded_html_bounded(tmp_path: Path) -> None:
     for rel in (
         "manifest.yaml",
         "index.html",
+        "docs.html",
         "assets/style.css",
         "assets/favicon.ico",
         "assets/favicon-32.png",
         "assets/apple-touch-icon.png",
         "assets/theme.js",
         "assets/musehub-logo.svg",
+        "assets/ok-mark.svg",
+        "assets/ok-mark-1024.png",
     ):
         src = landing_src / rel
         if not src.is_file():
