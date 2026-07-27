@@ -459,7 +459,7 @@ html[data-theme="dark"] .diagram-figure img {
 
 .hero-foot-links {
   margin: 0 0 0.65rem;
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   animation: hero-fade 0.8s ease-out 0.12s both;
 }
 
@@ -470,6 +470,18 @@ html[data-theme="dark"] .diagram-figure img {
 }
 
 .hero-foot-links a:hover {
+  color: #5cb88a;
+  text-decoration-color: #5cb88a;
+}
+
+/* Primary install path stays a quiet text link (no hero button), but readable. */
+.hero-foot-links #cta-download-mac {
+  color: #e7ecf3;
+  font-weight: 600;
+  text-decoration-color: rgba(92, 184, 138, 0.55);
+}
+
+.hero-foot-links #cta-download-mac:hover {
   color: #5cb88a;
   text-decoration-color: #5cb88a;
 }
