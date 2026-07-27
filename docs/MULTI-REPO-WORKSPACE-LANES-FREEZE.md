@@ -1,8 +1,9 @@
 # Phase K13a — Multi-repo workspace / constellation lanes (Thinking freeze)
 
-Status: **Reviewed → `pass` (K13a-r2).** K13a is **spec-only** and frozen; no CLI/consumer code
-lands in this phase. K13b (Auto) builds mechanically against this contract. Do **not** claim the
-feature exists until K13b + `/build-verification-review` → **`pass`**.
+Status: **Reviewed → `pass` (K13a-r3).** K13a is **spec-only** and frozen (includes §MR.6.5 board
+filename identity amendment); no CLI/consumer code lands in this phase. K13b (Auto) builds
+mechanically against this contract. Do **not** claim the feature exists until K13b +
+`/build-verification-review` → **`pass`**.
 
 ```yaml
 phase: K13a
@@ -38,13 +39,13 @@ frozen_inputs:
 - id: agents-boundary
   path: AGENTS.md
 review_stamp:
-  reviewed_at: '2026-07-27T15:46:06Z'
+  reviewed_at: '2026-07-27T16:07:52Z'
   verdict: pass
   reviewer_mode: agent
   reviewer_model: thinking-high
   reviewer_provider: local
   kit_version: 0.1.0
-  artifact_digest: sha256:086d79ef2c4b7b956b302e9ec9671a816232f46538e628b60eacd1410587af16
+  artifact_digest: sha256:df3d2754d346b4be25fbe2cd973c1e9f4560a5c6898e58d99f2360718562238e
 ```
 
 **Downstream edge:** K13b Auto treats this document as ground truth without re-deriving it
@@ -79,6 +80,7 @@ part of this loop.
 | --- | --- | --- | --- |
 | K13a-r1 | Freeze-review loop (thinking-high); file+line citations | findings | **R1-M1–M4** fixed in-tree (see ledger). CLI checklist `--dry-run` clean. Not cleared until r2. |
 | K13a-r2 | Freeze-review loop (thinking-high); independent re-read | **pass** | R1-M1–M4 confirmed RESOLVED; full §MR.0–§MR.16 regress clean; no `security`/`irreversible`/`real_money`/`gates_tier3` escalation. Stamp via `ok review --freeze`. Cleared for K13b. |
+| K13a-r3 | Freeze-review loop (thinking-high); amendment review | **pass** | Operator amendment: **§MR.6.5 board filename identity** (repo-slug prefix for tab UX). Additive only — no redesign of §MR.2–§MR.5 authority model. S12 + template/init defaults + status filename fields + dogfood rename note. Stamp refreshed. Cleared for K13b. |
 
 ### Freeze-review findings ledger (K13a-r1)
 
@@ -113,14 +115,16 @@ governance (SPEC §3, 9A-5, KH1, K8, SD-17):
    `.overseer/config.yaml` for discovery.
 3. **Handover UX markers** — machine-distinct LIVE PRIMARY / RELAY / ARCHIVED / LANE TIP blocks
    (amends KH1 heading discipline without replacing single-repo H1–H12).
-4. **CLI** — `ok workspace status`, `ok workspace check-next` (fail on stale relay), optional
+4. **Board filename identity** — repo-slug (and lane) prefixes on handover/roadmap filenames and
+   titles so multi-root editor tabs are distinguishable without hovering the path (§MR.6.5).
+5. **CLI** — `ok workspace status`, `ok workspace check-next` (fail on stale relay), optional
    `ok workspace doctor`; single-repo `ok status` green **must not** imply workspace OK (S9).
-5. **Session-end** — advancing product_order PRIMARY without refreshing declared relays =
+6. **Session-end** — advancing product_order PRIMARY without refreshing declared relays =
    incomplete multi-repo SD-17 (sibling gate to single-repo `governance-sync`).
-6. **Lanes** — compose with K8 intra-repo `docs.lanes`; add cross-member lane ids so parallel
+7. **Lanes** — compose with K8 intra-repo `docs.lanes`; add cross-member lane ids so parallel
    workstreams cannot steal product PRIMARY.
-7. **Regime-aware** — per-member `vcs.regime`; never issue git/gh for `muse-only` members.
-8. **Seven-tier** test matrix for K13b, including honesty fail if tools claim workspace OK while
+8. **Regime-aware** — per-member `vcs.regime`; never issue git/gh for `muse-only` members.
+9. **Seven-tier** test matrix for K13b, including honesty fail if tools claim workspace OK while
    a relay disagrees with product_order PRIMARY.
 
 ---
@@ -134,10 +138,10 @@ governance doc updates):**
 - Manifest location decision + schema (§MR.3)
 - Member `.overseer/config.yaml` additive `workspace:` pointer (§MR.4)
 - Authority + conflict rules (§MR.5)
-- Handover UX contract + KH1 amendments (§MR.6)
+- Handover UX contract + KH1 amendments + board filename identity (§MR.6, §MR.6.5)
 - CLI / skill / rule surface (§MR.7)
 - Relationship to 9A-5 / SD-17 (§MR.8)
-- Acceptance stories S1–S11 (§MR.9)
+- Acceptance stories S1–S12 (§MR.9)
 - Seven-tier test matrix (§MR.10)
 - Tier-3 hard stops (§MR.11)
 - Migration / rollout (§MR.12)
@@ -257,6 +261,7 @@ overseer_workspace_version: 1
 id: scoaling-stack                    # constellation id (stable string)
 product_order_member: scoaling        # must match exactly one member.id with role product_order
 strict_markers: true                  # default true when omitted (§MR.12.2)
+strict_board_names: true              # default true when omitted (§MR.6.5); doctor warns on bare names
 
 members:
   - id: scoaling
@@ -498,6 +503,103 @@ Skill text for `/governance-sync` and orchestrator rule: when `workspace:` is co
 session advanced product_order PRIMARY, SD-17 multi-repo close-out requires relay refresh or an
 explicit incomplete warning (§MR.8).
 
+### §MR.6.5 — Board filename identity (tab UX — frozen)
+
+**Problem:** K13 markers stop *paste* confusion; they do not stop *tab* confusion. Multi-root
+editors show the basename only. Many consumers still use identical `OVERSEER-HANDOVER.md` /
+`ROADMAP.md`, so tabs look identical until the operator hovers the path (2026-07-27 class of UX
+failure, complementary to stale relays).
+
+**Precedent (already in kit / consumers):** MuseHub `MUSEHUB-OVERSEER-HANDOVER.md`; VideoFactory
+`VIDEO_OVERSEER_HANDOVER.md` + K8 lane-specific names (`tests/fixtures/config-two-lane.yaml`,
+`docs/PHASE-K8-MULTI-LANE-DOCS-CONTRACT.md`). Config already supports arbitrary
+`docs.handover` / `docs.roadmap` paths — this section freezes the **naming convention** when a
+constellation is in play.
+
+#### Frozen filename pattern
+
+| Doc | Pattern | Examples |
+| --- | --- | --- |
+| Default-lane handover | `{REPO_SLUG}-OVERSEER-HANDOVER.md` | `SCOOLING-OVERSEER-HANDOVER.md`, `KNOWTATION-OVERSEER-HANDOVER.md`, `MUSEHUB-OVERSEER-HANDOVER.md` |
+| Default-lane roadmap | `{REPO_SLUG}-ROADMAP.md` | `SCOOLING-ROADMAP.md`, `KNOWTATION-ROADMAP.md` |
+| K8 / constellation non-default lane | `{REPO_SLUG}-{LANE}-OVERSEER-HANDOVER.md` (+ matching roadmap) | `VIDEO-QUEUE-OVERSEER-HANDOVER.md`, `VIDEO-ACTIVE-HANDOVER.md` (VF-style) |
+
+`REPO_SLUG` = uppercase of `repo.name` from `.overseer/config.yaml` with non-alphanumeric
+characters mapped to `-` and collapsed (e.g. `overseer-kit` → `OVERSEER-KIT`; `scooling` →
+`SCOOLING`). `LANE` = uppercase lane id from K8 `docs.lanes` or constellation `lanes[].id`.
+
+#### Title fields (required with filenames)
+
+- `docs.handover_title` MUST include the human repo (or lane) name — e.g. `Scooling Overseer
+  Handover`, `Knowtation Overseer Handover`, `Video Queue Overseer Handover`.
+- `docs.roadmap_title` likewise — e.g. `Scooling Roadmap`.
+- KH1 H1 shape remains `# <handover_title> — <repo.name>`.
+
+#### Rejected naming options
+
+| Option | Verdict | Why |
+| --- | --- | --- |
+| Bare `OVERSEER-HANDOVER.md` for constellation members | **REJECTED** when `workspace:` configured | Identical tabs |
+| 4-letter codes (`KNOW-`, `SCOO-`) as primary | **REJECTED** | Collisions; opaque to external developers |
+| Spaced letter brands (`K-N-O-W Overseer…`) | **REJECTED** | Noisy; worse truncation |
+| Suffix form (`OVERSEER-HANDOVER-SCOOLING.md`) | **REJECTED** | Editor tabs often truncate the **end** → still look identical |
+| Full prose titles only (no filename change) | **REJECTED** | Tabs show basename, not H1 |
+
+#### When the rule applies
+
+| Context | Rule |
+| --- | --- |
+| Member has `workspace:` configured (or is listed in a constellation manifest) | Prefixed filenames **required** for default-lane handover + roadmap (`strict_board_names`, default **true** when `workspace:` present) |
+| Single-repo, no `workspace:` | Prefixed names **recommended**; bare `OVERSEER-HANDOVER.md` remains allowed for backward compat |
+| `ok init` after K13b | Default generated config uses `{REPO_SLUG}-OVERSEER-HANDOVER.md` + `{REPO_SLUG}-ROADMAP.md` (and matching titles) |
+| Template files in kit tree | Keep template basename `OVERSEER-HANDOVER.template.md` (engine input); rendered/init **destination** uses the prefixed name |
+| Kit dogfood (`overseer-kit`) | May keep bare names while `workspace:` absent; if kit joins a constellation or operator prefers tab clarity, rename to `OVERSEER-KIT-OVERSEER-HANDOVER.md` / `OVERSEER-KIT-ROADMAP.md` |
+
+Schema (additive on `workspace.yaml` or implied by member config):
+
+```yaml
+strict_board_names: true   # default true when omitted and workspace: is configured
+```
+
+When `strict_board_names: true`, `ok workspace doctor` / `status` emit `board_name_violation` if a
+member’s configured handover/roadmap basename is the bare legacy pair
+(`OVERSEER-HANDOVER.md` / `ROADMAP.md` or case variants) **or** does not start with the expected
+`{REPO_SLUG}-` prefix. `check-next` does **not** fail solely on board names (authority ≠ tabs);
+doctor surfaces the UX debt. Optional future hard-fail may flip via a follow-on freeze — not K13b.
+
+#### CLI / status fields (Auto)
+
+`ok workspace status --json` each member object MUST include:
+
+```text
+handover_basename: "<filename>"
+roadmap_basename: "<filename>"
+handover_title: "<docs.handover_title>"
+authoritative_handover: "<repo-relative or absolute path>"   # product_order only / overall
+```
+
+Human text MUST print basenames (not only absolute paths) so operators can match editor tabs.
+
+#### KH1 additive check
+
+| ID | Check |
+| --- | --- |
+| **H17** | When `workspace:` is configured and `strict_board_names` is true (default): handover basename matches `{REPO_SLUG}-OVERSEER-HANDOVER.md` or `{REPO_SLUG}-{LANE}-…` pattern; roadmap basename matches `{REPO_SLUG}-ROADMAP.md` (or lane variant); `handover_title` contains a non-empty repo/lane label distinct from the generic string `Overseer Handover` alone. |
+
+#### Consumer rename (dogfood — not K13b code)
+
+Post-K13b operator migration (feature branches per repo):
+
+1. Scooling: `docs/OVERSEER-HANDOVER.md` → `docs/SCOOLING-OVERSEER-HANDOVER.md`; `ROADMAP.md` →
+   `SCOOLING-ROADMAP.md`; update `.overseer/config.yaml` `docs.*` + titles.
+2. Knowtation: → `KNOWTATION-OVERSEER-HANDOVER.md` / `KNOWTATION-ROADMAP.md`.
+3. MuseHub: already close (`MUSEHUB-OVERSEER-HANDOVER.md`); align roadmap prefix if needed.
+4. Update constellation `workspace.yaml` path overrides if any; refresh PRODUCT RELAY pointers.
+5. Brain / external: use the same pattern from first `ok init`.
+
+K13b **does not** rename live consumer files; it ships templates, init defaults, doctor warnings,
+fixture proof (S12), and rule text.
+
 ---
 
 ## §MR.7 — CLI / skill surface (frozen)
@@ -506,9 +608,9 @@ explicit incomplete warning (§MR.8).
 
 | Command | Writes? | Behavior |
 | --- | --- | --- |
-| `ok workspace status [--json] [--strict-all]` | No | Constellation map: members, roles, regimes, LIVE PRIMARY per member/lane, relay freshness, lane matrix, `manifest_source`. |
-| `ok workspace check-next [--lane ID] [--json]` | No | Exit `0` if product-lane (or `--lane`) relay freshness passes; exit `35` on `stale_relay` / `ambiguous_primary` / `missing_primary`; exit `2` on config/manifest errors; exit `1` on usage. Cite paths. |
-| `ok workspace doctor [--json]` | No | Optional diagnostics: per-member Muse≠Git (`muse_sync`) summary, missing optional members, unmarked NEXT warnings, regime mismatch (manifest vs member config). Never merges; never pushes. |
+| `ok workspace status [--json] [--strict-all]` | No | Constellation map: members, roles, regimes, LIVE PRIMARY per member/lane, relay freshness, lane matrix, `manifest_source`, per-member `handover_basename` / `roadmap_basename` / titles (§MR.6.5). |
+| `ok workspace check-next [--lane ID] [--json]` | No | Exit `0` if product-lane (or `--lane`) relay freshness passes; exit `35` on `stale_relay` / `ambiguous_primary` / `missing_primary`; exit `2` on config/manifest errors; exit `1` on usage. Cite paths. Does not fail solely on bare board filenames. |
+| `ok workspace doctor [--json]` | No | Diagnostics: Muse≠Git (`muse_sync`), missing optional members, unmarked NEXT, regime mismatch, **`board_name_violation`** when `strict_board_names` and bare/unprefixed handover/roadmap (§MR.6.5). Never merges; never pushes. |
 | `ok status --workspace` | No | Alias: run single-repo status **and** attach `workspace` report when configured; **must not** set overall success to imply `workspace.ok` (S9). If `--exit-code`, workspace failure contributes exit `35` without collapsing into “repo healthy”. |
 
 Default for mutating workspace helpers: none in v1 (relays are refreshed by humans/agents editing
@@ -600,7 +702,7 @@ Idempotency: `workspace status` / `check-next` / `doctor` are read-only and idem
 | **S1** | product_order advances Thinking→Auto (`{step}a` done → `{step}b` PRIMARY); relay still on Thinking | `ok workspace check-next` **FAIL** exit `35`, cites both handover paths |
 | **S2** | Relays refreshed to match step/Model/`tip_hash` | `check-next` **PASS** exit `0` |
 | **S3** | Archived headings (`## ARCHIVED SESSION —` or forbidden legacy `## NEXT SESSION — archived`) cannot be selected as PRIMARY | status/check ignore archived; legacy archived form → fail/ambiguous per §MR.6 |
-| **S4** | Multi-root: `workspace status` names product_order handover path as authoritative product NEXT | Operator-visible `authoritative_handover` field |
+| **S4** | Multi-root: `workspace status` names product_order handover path as authoritative product NEXT | Operator-visible `authoritative_handover` field **and** distinct `handover_basename` per member |
 | **S5** | MuseHub `muse-only` member: workspace tools issue no git/gh | Asserted in tests (adapter/regime guard) |
 | **S6** | Parallel `## LANE TIP — … (LANE: security)` exists; product PRIMARY unchanged | `check-next` (product) PASS; lane tip listed as non-PRIMARY |
 | **S7** | Add `brain` member (`required: false`) without schema redesign | Manifest validates; absent brain → `member_absent`, not error |
@@ -608,6 +710,7 @@ Idempotency: `workspace status` / `check-next` / `doctor` are read-only and idem
 | **S9** | Single-repo `ok status` green while relay stale | Must **not** imply workspace OK; `--workspace` / `check-next` still fail |
 | **S10** | Ownership board LIVE NEXT is PRIMARY (its own work) + fresh `## PRODUCT RELAY —` matching product_order | `check-next` PASS; status shows ownership PRIMARY ≠ product authoritative path |
 | **S11** | Ownership PRIMARY + stale/missing `PRODUCT RELAY` after product_order advanced | `check-next` FAIL exit `35` (same class as S1) |
+| **S12** | Fixture members use distinct prefixed basenames (`SCOOLING-OVERSEER-HANDOVER.md` vs `KNOWTATION-OVERSEER-HANDOVER.md`); a bare `OVERSEER-HANDOVER.md` under `strict_board_names: true` | `status` lists distinct basenames; `doctor` reports `board_name_violation` for the bare name; `check-next` still governed only by tip freshness |
 
 ---
 
@@ -615,9 +718,9 @@ Idempotency: `workspace status` / `check-next` / `doctor` are read-only and idem
 
 | Tier | Proves |
 | --- | --- |
-| **unit** | Manifest schema validate/reject; root `${ENV}`/`~` expansion; marker parse (PRIMARY/RELAY/ARCHIVED/LANE TIP); forbidden legacy archived heading detection; `tip_hash` (LF-normalize); freshness predicate true/false; role/lane cardinality rules; regime null only when optional |
-| **integration** | Fixture constellation (2–3 temp repos + manifests + handovers): `ok workspace status --json` shape; `check-next` exit `0`/`35`/`2`; `status --workspace` does not claim workspace OK on single-repo green (S9); muse-only member path skips git |
-| **e2e** | S1→S2 full cycle on fixtures; S3 archived; S6 lane tip; S7 optional brain absent; S8 two-repo external shape; governance-sync footer key `workspace_relay` when configured |
+| **unit** | Manifest schema validate/reject; root `${ENV}`/`~` expansion; marker parse (PRIMARY/RELAY/ARCHIVED/LANE TIP); forbidden legacy archived heading detection; `tip_hash` (LF-normalize); freshness predicate true/false; role/lane cardinality rules; regime null only when optional; `REPO_SLUG` normalization; `strict_board_names` default; bare vs prefixed basename classifier |
+| **integration** | Fixture constellation (2–3 temp repos + manifests + handovers): `ok workspace status --json` shape incl. basenames/titles; `check-next` exit `0`/`35`/`2`; `status --workspace` does not claim workspace OK on single-repo green (S9); muse-only member path skips git; doctor `board_name_violation` (S12) |
+| **e2e** | S1→S2 full cycle on fixtures; S3 archived; S4/S12 distinct basenames; S6 lane tip; S7 optional brain absent; S8 two-repo external shape; governance-sync footer key `workspace_relay` when configured; `ok init` defaults emit prefixed handover/roadmap destinations |
 | **stress** | ≥20 members / ≥10 lanes manifest + large handovers: bounded runtime; stable JSON key order for status; no unbounded recursive workspace walk |
 | **data-integrity** | Read-only commands never mutate repos; twice-run identical outputs; tip_hash stable; missing required member fails closed (no guessed paths); override manifest id mismatch → CONFIG `2` |
 | **performance** | `check-next` on 5-member fixture completes within documented bound (Auto sets numeric budget, e.g. &lt; 2s wall on fixture SSD); no network calls |
@@ -662,11 +765,12 @@ K13 **never**:
 
 ### §MR.12.3 — Dogfood order
 
-1. **overseer-kit** — ship K13b + templates/rules/skills; kit’s own `workspace:` remains
-   **absent** (kit is not a product constellation member by default).
-2. **Scooling + Knowtation** — first live constellation (product_order + ownership relay).
-3. **MuseHub** — optional enrichment member (`muse-only`).
-4. **Brain** — add as `edge`, `required: false`, when path known.
+1. **overseer-kit** — ship K13b + templates/rules/skills + init prefixed-name defaults; kit’s own
+   `workspace:` remains **absent** by default (optional rename to `OVERSEER-KIT-*` for tab clarity).
+2. **Scooling + Knowtation** — first live constellation: rename boards per §MR.6.5, then add
+   `workspace.yaml` + `workspace:` pointers (product_order + ownership relay).
+3. **MuseHub** — optional enrichment member (`muse-only`); confirm prefixed handover/roadmap.
+4. **Brain** — add as `edge`, `required: false`, when path known; init with prefixed names.
 
 `ok sync` in consumers pulls template/rule/skill updates; creating `workspace.yaml` is
 **operator-gated** (not auto-written by sync).
@@ -690,6 +794,7 @@ on feature branches per member regime.
 - Silent redesign of 9A-5 single-repo governance-sync
 - `ok workspace refresh-relays` write path in K13b (follow-on freeze if needed)
 - Cursor-only features unavailable via CLI
+- Renaming live Scooling / Knowtation / MuseHub / Brain handover files inside K13b (dogfood after)
 
 ---
 
@@ -700,7 +805,7 @@ on feature branches per member regime.
 | Phase | Model | Status after this Thinking | Deliverable |
 | --- | --- | --- | --- |
 | **K13a Freeze multi-repo workspace lanes** | Thinking | **DONE** after freeze-review `pass` | This contract |
-| **K13b Multi-repo workspace lanes build** | Auto | **TODO** until K13a `pass` | Implement §MR.4–§MR.8 + §MR.10 |
+| **K13b Multi-repo workspace lanes build** | Auto | **TODO** until K13a `pass` | Implement §MR.4–§MR.8 (§MR.6.5 naming) + §MR.10 |
 
 SD-3 split: never one combined Thinking→Auto prompt.
 
@@ -708,15 +813,15 @@ SD-3 split: never one combined Thinking→Auto prompt.
 
 1. `tools/workspace/` + `cli/commands/workspace.py` + argparse wiring on `ok workspace …`
 2. Exit `35` + SPEC §5 row + help text
-3. Additive config parse for `workspace:` + manifest loader
-4. Template handover markers + KH1 H13–H16 doc amendment note in this freeze (Auto updates KH1
-   dogfood checklist implementation if D4 wired; else status/check-next enforce H13–H16)
-5. Vendored rule + skills (cursor + claude)
+3. Additive config parse for `workspace:` + manifest loader (`strict_markers`, `strict_board_names`)
+4. Template handover markers + KH1 H13–H17 notes (status/check-next/doctor enforce as specified)
+5. Vendored rule + skills (cursor + claude), including board-filename identity guidance
 6. `governance-sync` footer additive `workspace_relay` (no peer writes)
-7. Fixture pack under `tests/fixtures/workspace/*` covering S1–S9
-8. Seven-tier tests §MR.10 all green
-9. `/build-verification-review` → `pass` before ROADMAP DONE
-10. ROADMAP + HANDOVER updated together; no main merge
+7. `ok init` default destinations: `{REPO_SLUG}-OVERSEER-HANDOVER.md` + `{REPO_SLUG}-ROADMAP.md`
+8. Fixture pack under `tests/fixtures/workspace/*` covering S1–S12 (prefixed basenames)
+9. Seven-tier tests §MR.10 all green
+10. `/build-verification-review` → `pass` before ROADMAP DONE
+11. ROADMAP + HANDOVER updated together; no main merge; **no live consumer renames in K13b**
 
 ---
 
