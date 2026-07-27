@@ -258,13 +258,13 @@ Frozen rules:
 
 ```yaml
 overseer_workspace_version: 1
-id: scoaling-stack                    # constellation id (stable string)
-product_order_member: scoaling        # must match exactly one member.id with role product_order
+id: scooling-stack                    # constellation id (stable string)
+product_order_member: scooling        # must match exactly one member.id with role product_order
 strict_markers: true                  # default true when omitted (§MR.12.2)
 strict_board_names: true              # default true when omitted (§MR.6.5); doctor warns on bare names
 
 members:
-  - id: scoaling
+  - id: scooling
     role: product_order               # closed vocabulary §MR.2.2
     root: "${SCOOLING_ROOT}"          # see §MR.4.3 root resolution
     regime: muse+git-mirror           # advisory; must match member config when readable
@@ -305,13 +305,13 @@ members:
 lanes:
   - id: product
     primary: true
-    owner_member: scoaling            # defaults to product_order_member when omitted
+    owner_member: scooling            # defaults to product_order_member when omitted
   - id: security
     primary: false
     owner_member: knowtation
   - id: truth-harden
     primary: false
-    owner_member: scoaling
+    owner_member: scooling
 ```
 
 **Validation (fail closed → exit `2` CONFIG):**
@@ -330,7 +330,7 @@ lanes:
 ```yaml
 # Additive; omitted = single-repo only (today). When present, workspace gates apply.
 workspace:
-  constellation_id: scoaling-stack
+  constellation_id: scooling-stack
   # Discovery (first match wins):
   # 1) manifest: <path>                         # explicit
   # 2) product_order_root: <path>               # load <root>/.overseer/workspace.yaml

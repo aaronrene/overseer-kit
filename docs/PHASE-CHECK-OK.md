@@ -1,7 +1,8 @@
 # Phase — Check OK (ad-hoc honesty)
 
 Status: **DONE** — build-verified → `pass` (CIO-BV-r1); rename + multi-runtime skill twin
-(CIO-r2) on `feat/check-if-ok`.
+(CIO-r2); merged to `main` via PR [#35](https://github.com/aaronrene/overseer-kit/pull/35)
+(`b8b51c1`, 2026-07-18).
 
 ## Freeze-contract declaration
 
