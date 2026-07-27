@@ -6,60 +6,76 @@
 
 ---
 
-## NEXT SESSION — Merge Check OK + landing clarity / DNS (▶ NEXT)
+<!-- overseer:next role=primary lane=product status=live -->
+## NEXT SESSION — K13b Multi-repo workspace lanes Auto (PRIMARY)
 
-**Date:** 2026-07-17  
-**Current position:** **Check OK** Auto **DONE** (BV `pass`, CIO-BV-r1 + CIO-r2 rename /
-multi-runtime) on `feat/check-if-ok` ([PR #35](https://github.com/aaronrene/overseer-kit/pull/35)).
-Next: Tier-3 PR merge, then consumers run `ok sync`. Parallel: landing clarity + optional DNS.  
-**Model:** **Operator + Auto**  
-**Operator note:** Merge to `main` and DNS remain Tier 3.
+**Date:** 2026-07-27  
+**Current position:** **K13a Thinking freeze DONE** — reviewed → `pass` (K13a-r2), stamp
+`sha256:086d79ef…` (`docs/MULTI-REPO-WORKSPACE-LANES-FREEZE.md`). Next: **K13b Auto** build.
+Parallel (not PRIMARY): Check OK PR #35 Tier-3 merge; landing clarity WIP.  
+**Model:** **Auto**
 
 
 ### What just landed
 
-
 | Slice | Deliverable |
 | --- | --- |
-| **Check OK** | BV `pass` (CIO-r2) — `/check-ok` in Cursor **and** Claude Code (`.claude/skills/`); `ok check-ok`; paste `docs/CHECK-OK.md` for Copilot/any; same K5 engine |
-| **Landing clarity pass** | Still **WIP** on `feat/landing-clarity-pass` (Tier-3 merge pending) |
-| **K12 LICENSE → MIT** | BV `pass` (MIT-BV-r1) |
-| **Landing + access clarity Auto** | BV `pass` (LAC-BV-r1) |
+| **K13a** | Multi-repo workspace / constellation lanes freeze — `pass` (K13a-r2). Option B manifest, PRIMARY/RELAY/PRODUCT RELAY/ARCHIVED/LANE TIP markers, `ok workspace *`, exit `35`, S1–S11 + §MR.10 |
+| **Incident context** | 2026-07-27 multi-root NEXT confusion (Knowtation relay stale vs Scooling PRIMARY) — kit had no constellation gate; freeze addresses it |
+| **Check OK** | BV `pass` (CIO-r2) on `feat/check-if-ok` (PR #35) — Tier-3 merge still pending (not this Auto) |
+| **Landing clarity pass** | Still **WIP** on `feat/landing-clarity-pass` |
 
 
-### THE ONE NEXT STEP — **Model: Operator + Auto**
+### THE ONE NEXT STEP — **Model: Auto**
 
-
-|                |                                                                                                                                     |
+| | |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID**         | **Tier-3 merge `feat/check-if-ok` (PR #35)** (then consumer `ok sync`); optional parallel landing clarity + DNS |
-| **Branch** | `feat/check-if-ok` (PR #35); landing on `feat/landing-clarity-pass` |
-| **Read first** | PR #35; `docs/PHASE-CHECK-OK.md`; `docs/CHECK-OK.md`; `docs/landing/HOSTING.md` |
-| **Deliver** | Merged kit main; each consumer `ok sync` → `.cursor/skills/check-ok` **and** `.claude/skills/check-ok`; optional DNS |
-| **Hard stops** | No merge without Tier 3; no live Path B on apex |
+| **ID** | **K13b** |
+| **Branch** | `feat/k13-multi-repo-workspace-lanes` |
+| **Repo** | **overseer-kit** (kit source — not a consumer) |
+| **Read first** | `docs/MULTI-REPO-WORKSPACE-LANES-FREEZE.md` (`frozen: true`, review `pass`); `docs/ROADMAP.md` K13b row; this handover |
+| **Hard stops** | No redesign of freeze; no consumer migrations (Scooling/Knowtation/MuseHub/Brain); no main merge; no staging push; no live flips |
 
 
-
-### Paste-ready prompt — Merge Check OK + optional landing/DNS (Operator + Auto)
+### Paste-ready prompt — K13b Auto
 
 ```
-Overseer Kit — Tier-3 merge Check OK (+ optional landing clarity / DNS).
+Phase K13b — Multi-repo workspace lanes build (overseer-kit).
 
-Model: Operator + Auto
+Model: Auto
+Repo: overseer-kit (kit checkout — NOT scoaling/knowtation/MUSE_HUB/Brain)
+Branch: feat/k13-multi-repo-workspace-lanes
+Step: K13b
+Authority: authoritative
 
 Read first:
-  https://github.com/aaronrene/overseer-kit/pull/35; docs/PHASE-CHECK-OK.md;
-  docs/CHECK-OK.md; docs/OVERSEER-HANDOVER.md; docs/landing/HOSTING.md (if DNS).
+  docs/MULTI-REPO-WORKSPACE-LANES-FREEZE.md (frozen: true, review pass K13a-r2, stamp sha256:086d79ef…)
+  docs/ROADMAP.md (K13b row)
+  docs/OVERSEER-HANDOVER.md (this NEXT)
+  docs/PHASE-KH1-HANDOVER-RELAY-STANDARD.md (H13–H16 additive)
+  docs/PHASE-9A-5-GOVERNANCE-HYGIENE-AGENT-OUTLINE.md (single-repo sync stays required)
+  docs/PHASE-K8-MULTI-LANE-DOCS-CONTRACT.md (compose, do not redesign)
 
-Task:
-1) Tier 3: review + merge feat/check-if-ok / PR #35 (Muse→mirror path).
-2) In each consumer: ok sync — confirm .cursor/skills/check-ok AND .claude/skills/check-ok.
-3) Optional: merge feat/landing-clarity-pass + DNS per §LAC.9.
-4) Regenerate this NEXT block after merges.
+Task — implement exactly §MR.4–§MR.8 + §MR.10 (no redesign):
+1) tools/workspace/ + cli/commands/workspace.py → ok workspace status|check-next|doctor
+2) Exit 35 WORKSPACE_RELAY; status --workspace precedence 2 > 6 > 35 > 3 > 0
+3) Additive workspace: config parse + .overseer/workspace.yaml loader (Option B + overrides)
+4) PRIMARY / RELAY / PRODUCT RELAY / ARCHIVED / LANE TIP markers; tip_hash freshness
+5) Vendored handover template + workspace-authority rule + skills (.cursor + .claude)
+6) governance-sync footer workspace_relay (read-only peer check; no peer writes)
+7) tests/fixtures/workspace/* covering S1–S11; seven-tier §MR.10 all green
+8) /build-verification-review → pass before ROADMAP K13b → DONE
+9) Update ROADMAP + HANDOVER together; feature-branch commit only
 
-Hard stops: no main merge without Tier 3; no public CSRF mint; no unsigned-as-primary.
+Hard stops:
+- No consumer repo migrations this phase
+- No main merge; no muse push staging; no live posture flips
+- No secrets in manifests; no cross-repo identity invention
+- Single-repo ok status green must NOT imply workspace.ok (S9)
+- Do not claim feature shipped until build-verification pass
+
+Governance sync: update docs/ROADMAP.md + docs/OVERSEER-HANDOVER.md on completion.
 ```
-
 
 
 ---
@@ -118,6 +134,8 @@ Hard stops: no main merge without Tier 3; no public CSRF mint; no unsigned-as-pr
 | **Track O / O3**          | **DONE** — `ok upgrade-regime` build-verified → `pass` (O3-BV-r2). Runbook + contract/harness retarget; **761** tests green (+33 §O2.9). Track O kit chain complete |
 | **CLI entrypoint**        | **`ok`** (canonical `./cli/ok`); **`overseer`** compat shim (`./cli/overseer`, one-line stderr deprecation) |
 | **CLI subcommands**       | `init` \| `sync` \| `status` \| `review --freeze` \| `check-ok` \| `governance-sync` \| `verify-step` \| `honesty-status` \| `ledger` \| `route` \| `app` \| `hosted-dashboard` \| `upgrade-regime` |
+| **K13a Multi-repo workspace lanes** | **DONE** — Thinking freeze reviewed → `pass` (K13a-r2), stamp `sha256:086d79ef…` (`docs/MULTI-REPO-WORKSPACE-LANES-FREEZE.md`). Cleared for K13b Auto |
+| **K13b Multi-repo workspace lanes** | **TODO** — Auto build against K13a freeze; no consumer migrations |
 | **Check OK** | **DONE** (CIO-r2) — `/check-ok` → `.cursor` + `.claude` skills; `ok check-ok`; `docs/CHECK-OK.md` for Copilot/any; consumer `ok sync` after merge |
 | **Muse dogfood** | **D2 repaired** + substrate health + gate reminders + **muse-sync hard gate (KH2)** + **footprint self-integrity hard gate (KH3)** live; `muse rev-parse` reads plain-text SHA (0.2.x returns bare SHA on success; JSON only on failure/non-zero); `governance-sync --dry-run` exits 0; muse canonical HEAD `sha256:3e14450f…` (catch-up commit; genesis `sha256:4671b7f…`) |
 | **KH1b** | **DONE** — substrate §1 + gate reminders §2 |
@@ -132,7 +150,7 @@ Hard stops: no main merge without Tier 3; no public CSRF mint; no unsigned-as-pr
 
 | Item | Value |
 | --- | --- |
-| Branch | `build/landing-access-clarity` |
+| Branch | `feat/k13-multi-repo-workspace-lanes` |
 | HEAD | Landing + access clarity Auto (LAC-BV-r1 `pass`) |
 | Muse HEAD | Sync after close-out commit on this branch |
 | GitHub bridge | Feature branch (no merge) |
@@ -149,6 +167,12 @@ Hard stops: no main merge without Tier 3; no public CSRF mint; no unsigned-as-pr
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-27** — **K13a Freeze multi-repo workspace lanes DONE (reviewed → `pass`, K13a-r2).**
+  Froze `docs/MULTI-REPO-WORKSPACE-LANES-FREEZE.md` (stamp `sha256:086d79ef…`): constellation
+  manifest Option B (product_order `.overseer/workspace.yaml`), PRIMARY/RELAY/PRODUCT RELAY/
+  ARCHIVED/LANE TIP markers, `ok workspace status|check-next|doctor`, exit `35`, SD-17 sibling
+  gate, S1–S11 + seven-tier §MR.10. Response to 2026-07-27 multi-root stale-relay incident.
+  **Spec-only.** ROADMAP K13a → DONE; K13b → TODO. NEXT → K13b Auto.
 - **2026-07-17** — **Landing hero: Check OK terminal + honesty-loop art.** Hero CTAs demoted to
   quiet Download / Clone links; scenarios/docs/releases quieter; CLI mock shows `ok check-ok`;
   pyramid PNG replaced by `assets/diagrams/honesty-loop.svg` (freeze / re-review / build /
