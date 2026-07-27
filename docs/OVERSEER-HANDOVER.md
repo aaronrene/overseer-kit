@@ -7,61 +7,57 @@
 ---
 
 <!-- overseer:next role=primary lane=product status=live -->
-## NEXT SESSION — Landing clarity pass (PRIMARY)
+## NEXT SESSION — Tier-3 merge K13 multi-repo workspace lanes (PRIMARY)
 
 **Date:** 2026-07-27  
-**Current position:** **Check OK PR #35 already on `main`** — merged 2026-07-18
-(`b8b51c1`, operator `aaronrene`); BV `pass` (CIO-BV-r1 + CIO-r2) recorded in
-`docs/PHASE-CHECK-OK.md`. Cloudflare Pages check was green. No further Tier-3 merge for #35.
-
-**K13 dogfood complete** — constellation `scooling-stack` has scooling + knowtation + musehub +
-brain (`required: false` where optional). `ok workspace check-next` → `0`; doctor clean of
-`board_name_violation`. Kit-generic confirmed (not a scooling-only special case).
-
-Parallel product PRIMARY (Scooling board): FINISH-COMPLETE-APPLY-KN-b BV.  
-**Model:** **Auto**
-
+**Current position:** **K13a/b + dogfood DONE** on `feat/k13-multi-repo-workspace-lanes` (rebased onto
+`origin/main` including Landing clarity PR [#39](https://github.com/aaronrene/overseer-kit/pull/39)
+`f5cde68`). Consumers (Scooling / Knowtation / MuseHub) already synced from this branch.
+**Model:** **Operator + Auto**  
+**Operator note:** Merge to kit `main` is Tier 3. Do **not** auto-merge.
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **Check OK** | **Merged** — PR [#35](https://github.com/aaronrene/overseer-kit/pull/35) → `main` (`b8b51c1`); CIO-r2 `pass`; consumers: `ok sync` |
-| **K13-BRAIN** | Brain edge live; member merges remain Tier 3 |
-| **K13-MUSEHUB** | MuseHub enrichment live; merge Tier 3 |
-| **K13-DOGFOOD** | Scooling + Knowtation constellation live; merge Tier 3 |
-| **K13b / K13a** | Kit CLI + freeze `pass` — repo-agnostic workspace tools |
-| **Landing clarity pass** | Still **WIP** on `feat/landing-clarity-pass` |
+| **Landing clarity pass** | **Merged** — PR [#39](https://github.com/aaronrene/overseer-kit/pull/39) → `main` (`f5cde68`); BV `pass` (LC-BV-r1) |
+| **Check OK** | **Merged** — PR [#35](https://github.com/aaronrene/overseer-kit/pull/35) → `main` (`b8b51c1`); consumers: `ok sync` |
+| **K13a / K13b** | Freeze `pass` (K13a-r3) + build-verified `pass` (K13b-BV-r1): `ok workspace status|check-next|doctor`, exit `35`, §MR.6.5 board names |
+| **K13-DOGFOOD / MUSEHUB / BRAIN** | Live constellation `scooling-stack` on feature branches; check-next `0`; member merges remain Tier 3 |
 
-
-### THE ONE NEXT STEP — **Model: Auto**
+### THE ONE NEXT STEP — **Model: Operator + Auto**
 
 | | |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID** | **Landing clarity pass** |
-| **Branch** | `feat/landing-clarity-pass` |
+| **ID** | **Tier-3 merge `feat/k13-multi-repo-workspace-lanes`** |
+| **Branch** | `feat/k13-multi-repo-workspace-lanes` |
 | **Repo** | **overseer-kit** |
-| **Read first** | `docs/ROADMAP.md` (Landing clarity WIP); `docs/landing/`; LAC freeze / prior landing PRs |
-| **Hard stops** | No merge to `main` without Tier 3; no secrets; finish → `/build-verification-review` before DONE |
+| **Read first** | Open PR for this branch; `docs/MULTI-REPO-WORKSPACE-LANES-FREEZE.md`; `docs/ROADMAP.md` (K13 rows DONE) |
+| **Deliver** | Merged kit `main` with K13 workspace CLI + templates; consumers keep current `ok sync` footprint |
+| **Hard stops** | No merge without Tier 3; no live consumer Muse/`main` merges in this PR; no DNS/posture flips |
 
 
-### Paste-ready prompt — Landing clarity pass Auto
+### Paste-ready prompt — Tier-3 merge K13
 
 ```
-Phase Landing clarity pass — finish visitor copy / IA trim / CSS polish.
+Overseer Kit — Tier-3 merge K13 multi-repo workspace lanes.
 
-Model: Auto
+Model: Operator + Auto
 Repo: overseer-kit
-Branch: feat/landing-clarity-pass
-Authority: build exactly against ROADMAP Landing clarity WIP + existing LAC contracts
+Branch: feat/k13-multi-repo-workspace-lanes
+Step: K13-MERGE
+Authority: authoritative
+
+Read first:
+  docs/OVERSEER-HANDOVER.md; docs/ROADMAP.md (K13a/b + dogfood DONE);
+  docs/MULTI-REPO-WORKSPACE-LANES-FREEZE.md
 
 Task:
-1) Continue/finish landing clarity on docs/landing/ (section ids per LAC §LAC.3.1)
-2) Keep Download CTA, Paths 1–3, four SVGs, MIT footer; no CSRF mint
-3) Seven-tier landing tests green; /build-verification-review → pass before DONE
-4) Close: ROADMAP + HANDOVER together; feature-branch commit; PR (merge remains Tier 3)
+1) Tier 3: review + merge feat/k13-multi-repo-workspace-lanes → main (GitHub PR).
+2) After merge: consumers may `ok sync` from main checkout (already dogfooded).
+3) Regenerate this NEXT block after merge (optional DNS §LAC.9 remains separate).
 
-Hard stops: no main merge; no live DNS/posture flips; no redesign of Check OK / K13.
+Hard stops: no main merge without Tier 3; no auto consumer main merges; no public CSRF mint.
 ```
 
 
@@ -113,6 +109,7 @@ Hard stops: no main merge; no live DNS/posture flips; no redesign of Check OK / 
 | **Track Q / Q4a**         | **DONE** — Thinking freeze (`docs/PHASE-TRACK-Q-Q4A-UI-REDESIGN.md` reviewed → `pass`, Q4a-r2), stamp `sha256:ea118134…`. Path B developer UI redesign contract: Overview/Structure IA, four offline diagrams, suite CTAs, closed Q0 surface, §Q4A.15. **Spec-only — no UI code.** Cleared for Q4b |
 | **Track Q / Q4b**         | **DONE** — Auto build (build-verified → `pass`, Q4b-BV-r1). Overview + Structure IA; four offline SVGs; suite CTAs; status humanization; closed Q0 unchanged; §Q4A.15 **17** green; full suite **905**. No LICENSE/`desktop/`/engine edits |
 | **Landing + access clarity** | **DONE** — Thinking `pass` (LAC-r2) + Auto build-verified → `pass` (LAC-BV-r1). Public IA + offline SVGs + Mac `v0.1.0` Download CTA; Paths 1–3 playbook; Path B chrome + health `repo_root`; seven-tier §LAC.12; full suite **931**. DNS cutover still Tier 3 (§LAC.9). |
+| **Landing clarity pass** | **DONE** — BV `pass` (LC-BV-r1). Amended §LAC.3.1 visitor IA (`kit-basics` / `how-it-works` / `musehub` / `next-steps`); Download CTA + Paths 1–3 + four SVGs + MIT; seven-tier landing+LAC **53** green. Merge Tier 3. |
 | **K12 LICENSE → MIT** | **DONE** — Thinking freeze `pass` (MIT-r1) + Auto BV `pass` (MIT-BV-r1). SPDX MIT across `LICENSE` / pyproject / landing / Path B; K12 §K12.4 amended; **936** green. |
 | **K6-Scooling runbook**   | **DONE** — `docs/consumers/scooling/OVERSEER-SETUP.md` (kit-side; live init still operator-gated; Track O cross-link in O1) |
 | **Track O / O0**          | **DONE** — Normie custody funnel Thinking freeze (`docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md` reviewed → `pass`, O0-r3), stamp `sha256:642076c9…` |
@@ -132,18 +129,18 @@ Hard stops: no main merge; no live DNS/posture flips; no redesign of Check OK / 
 | **KH2** | **DONE** — Muse-sync hard gate (freeze `pass` KH2-r2 + Auto build); `tools/muse_sync/`; fail-closed on `status --exit-code` / `review --freeze` / `governance-sync` |
 | **KH3** | **DONE** — Footprint self-integrity hard gate (freeze `pass` KH3-r2 + Auto build); `tools/footprint_integrity/`; fail-closed on `status --exit-code` / `review --freeze` / `governance-sync` when a declared kit-owned file is absent from disk |
 | **Public brand** | **🆗 Overseer Kit** (locked in template + landing) |
-| **Public landing** | `docs/landing/index.html` (LAC IA) · offline SVGs under `assets/diagrams/` · scenarios gallery |
+| **Public landing** | `docs/landing/index.html` (clarity IA) · offline SVGs under `assets/diagrams/` · scenarios gallery |
 <!-- /overseer:anchor:verified-snapshot -->
 
 <!-- overseer:anchor:vcs-table -->
-## VCS (verified 2026-07-14)
+## VCS (verified 2026-07-27)
 
 | Item | Value |
 | --- | --- |
 | Branch | `feat/k13-multi-repo-workspace-lanes` |
-| HEAD | Landing + access clarity Auto (LAC-BV-r1 `pass`) |
+| HEAD | K13b + dogfood DONE; merged `origin/main` (landing clarity #39) |
 | Muse HEAD | Sync after close-out commit on this branch |
-| GitHub bridge | Feature branch (no merge) |
+| GitHub bridge | Feature branch PR (no merge) |
 | Dirty | Expect clean after close-out commit |
 <!-- /overseer:anchor:vcs-table -->
 
@@ -157,6 +154,16 @@ Hard stops: no main merge; no live DNS/posture flips; no redesign of Check OK / 
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-27** — **K13 → `main` PR prepared.** Merged `origin/main` (Landing clarity #39
+  `f5cde68`) into `feat/k13-multi-repo-workspace-lanes`; resolved ROADMAP/HANDOVER conflicts;
+  NEXT → Tier-3 merge K13 (this PR). No merge performed (hard stop).
+- **2026-07-27** — **Landing clarity pass DONE (build-verified → `pass`, LC-BV-r1).**
+  Rebased branch onto `main` (clarity IA already live via #32/#36/#37/#38). Close-out:
+  Download CTA restores Apple Silicon label; Path 1 says “Download link above” (CTA is no
+  longer a button); foot-link CSS weight for `#cta-download-mac`; stress fixture copies
+  `docs.html`. Seven-tier landing+LAC **53** green
+  (`sha256:e970720253d49a5a19cd791a6f8d1b89a28301b4a9ba93139f7bd1de20e82ed1`). ROADMAP → DONE.
+  NEXT → Tier-3 merge + optional DNS §LAC.9.
 - **2026-07-27** — **Check OK PR #35 Tier-3 merge confirmed already complete.**
   State `MERGED` (2026-07-18, operator `aaronrene`); merge commit `b8b51c1` on
   `origin/main`; Cloudflare Pages green; BV `pass` (CIO-BV-r1 + CIO-r2) in
