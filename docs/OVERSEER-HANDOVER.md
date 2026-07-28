@@ -7,63 +7,53 @@
 ---
 
 <!-- overseer:next role=primary lane=product status=live -->
-## NEXT SESSION — Consumer GFG-D2 freshness re-stamp (PRIMARY)
+## NEXT SESSION — Optional Knowtation GFG re-stamp / kit idle (PRIMARY)
 
 **Date:** 2026-07-28  
-**Current position:** **GFG-D2-FIX → Muse `main` DONE** (`sha256:4aebfa75…`). Freeze
-`pass` (D2F-r2) + BV `pass` (D2F-BV-r1). Kit checkout
-`~/OVERSEER_KIT/overseer-kit` only — stub `~/overseer-kit` is K1-era (still shows
-stale K2); do not use it.
-**Model:** **Operator + Auto**  
-**Operator note:** After `ok sync` from live kit tip, consumers re-stamp with
-`ok governance-sync --dry-run`. With D2 fixed, healthy bridges
-(`muse_commit_id == muse tip`) + D1 aligned → `governance_freshness.ok`.
+**Current position:** **GFG-D2-FIX → main DONE** + **Scooling consumer re-stamp DONE**.
+Kit Muse `main` @ `sha256:1f9e46b3…`; GitHub PR [#43](https://github.com/aaronrene/overseer-kit/pull/43)
+@ `972507c` + docs [#44](https://github.com/aaronrene/overseer-kit/pull/44).
+Scooling: `governance_freshness.ok`, `ok status --exit-code` → **0**.
+**Open this tree only:** `~/OVERSEER_KIT/overseer-kit` — stub `~/overseer-kit` is
+K1-era (stale **K2** paste); do not use it.
+**Model:** **Operator + Auto**
 
 ### What just landed / verified
 
 | Slice | Deliverable |
 | --- | --- |
-| **GFG-D2-FIX → main** | **Merged** — Muse `835bdd28…` + PR [#43](https://github.com/aaronrene/overseer-kit/pull/43) @ `972507c` |
-| **GFG-D2-FIX-b** | **DONE** — BV `pass` (D2F-BV-r1) |
-| **GFG-D2-FIX-a** | **DONE** — stamp `sha256:3148c577…` (D2F-r2) |
+| **GFG-D2-FIX → main** | **Merged** — Muse `1f9e46b3…` + PR [#43](https://github.com/aaronrene/overseer-kit/pull/43) / [#44](https://github.com/aaronrene/overseer-kit/pull/44) |
+| **Scooling GFG re-stamp** | **DONE** — `d1/d2=aligned`, `governance_freshness.ok`, exit `0` |
+| **GFG-D2-FIX-b / a** | **DONE** — BV `pass` (D2F-BV-r1); freeze `pass` (D2F-r2) |
 
 ### THE ONE NEXT STEP — **Model: Operator + Auto**
 
 | | |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID** | **GFG-consumer-sync** — `ok sync` + freshness re-stamp on live consumers (post D2 fix) |
-| **Branch** | consumer feature branches (Scooling first) |
-| **Repo** | **consumers**; kit checkout **`~/OVERSEER_KIT/overseer-kit`** @ Muse `main` |
-| **Read first** | This handover; `docs/PHASE-GFG-D2-MUSE-ID-SPACE.md` §D2F.11; §GFG.8.1 |
-| **Deliver** | Per consumer: `ok sync` → `ok governance-sync --dry-run` → `ok status --exit-code` → `0` with `governance_freshness.ok` |
-| **Hard stops** | No consumer posture/env flips; no secrets; no unauthorized consumer `main` merge; no git-import on healthy bridges |
+| **ID** | **Optional:** Knowtation GFG re-stamp (same path as Scooling) — or return to Scooling FINISH land (product PRIMARY) |
+| **Branch** | Knowtation feature branch if doing re-stamp |
+| **Repo** | Knowtation consumer; kit stays `~/OVERSEER_KIT/overseer-kit` |
+| **Read first** | This handover; §D2F.11; Knowtation OVERSEER-HANDOVER |
+| **Deliver** | If Knowtation: `ok sync` → `ok governance-sync --dry-run` → `ok status --exit-code` → `0`. Else kit idle. |
+| **Hard stops** | No consumer posture flips; no feature→GitHub-main; stub kit unused |
 
 
-### Paste-ready prompt — GFG-consumer-sync (post D2 fix)
+### Paste-ready prompt — optional Knowtation GFG re-stamp
 
 ```text
-Consumer dogfood — GFG freshness after GFG-D2-FIX kit land.
+Optional Knowtation dogfood — GFG freshness after GFG-D2-FIX.
 
 Model: Operator + Auto
-Kit: ~/OVERSEER_KIT/overseer-kit @ Muse main (sha256:4aebfa75…) — NOT ~/overseer-kit stub
-Step: GFG-consumer-sync
-Authority: consumer feature-branch only; Tier 3 for any consumer main merge
+Kit: ~/OVERSEER_KIT/overseer-kit @ Muse main — NOT ~/overseer-kit stub
+Authority: consumer feature-branch only
 
-Read first:
-  kit docs/OVERSEER-HANDOVER.md
-  docs/PHASE-GFG-D2-MUSE-ID-SPACE.md §D2F.11
-  docs/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md §GFG.8.1
-  target consumer handover + .overseer/config.yaml
-
-Deliver (per consumer, start with Scooling):
-1) ok sync from live kit checkout ~/OVERSEER_KIT/overseer-kit
-2) ok governance-sync --dry-run (apply only if plan is correct / D1 drifted)
+Deliver:
+1) ok sync from ~/OVERSEER_KIT/overseer-kit
+2) ok governance-sync --dry-run
 3) ok status --exit-code → 0 with governance_freshness.ok
-   Acceptance: last_export.muse_commit_id == muse tip and D1 aligned → d2=aligned
-4) Update consumer ROADMAP/HANDOVER together; feature-branch commit (no main merge)
+4) Update Knowtation ROADMAP/HANDOVER; feature-branch commit
 
-Hard stops: no consumer posture flips; no secrets; no unauthorized main merge;
-no git-import into Muse main on healthy bridges.
+Hard stops: no posture flips; no unauthorized main merge.
 ```
 
 
