@@ -73,7 +73,9 @@ def test_governance_sync_refuses_then_proceeds_across_a_simulated_muse_commit(tm
     )
     seed_muse_substrate(tmp_path)
     (tmp_path / ".muse" / "git-bridge.toml").write_text(
-        '[last_export]\ngit_sha = "' + ("d" * 40) + '"\n'
+        '[last_export]\n'
+        'muse_commit_id = "' + ("a" * 40) + '"\n'
+        'git_sha = "' + ("d" * 40) + '"\n'
         '[last_import]\ngit_sha = "' + ("d" * 40) + '"\n',
         encoding="utf-8",
     )

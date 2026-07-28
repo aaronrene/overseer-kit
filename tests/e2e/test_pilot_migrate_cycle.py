@@ -37,7 +37,9 @@ def test_pilot_migrate_cycle_preserves_and_seeds(tmp_path: Path) -> None:
     )
     seed_muse_substrate(tmp_path)
     (tmp_path / ".muse" / "git-bridge.toml").write_text(
-        '[last_export]\ngit_sha = "' + ("c" * 40) + '"\n'
+        '[last_export]\n'
+        'muse_commit_id = "' + ("a" * 40) + '"\n'
+        'git_sha = "' + ("c" * 40) + '"\n'
         '[last_import]\ngit_sha = "' + ("c" * 40) + '"\n',
         encoding="utf-8",
     )

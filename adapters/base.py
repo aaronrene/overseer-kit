@@ -166,9 +166,14 @@ BRIDGE_SHA_RE = re.compile(
     re.MULTILINE,
 )
 
+BRIDGE_MUSE_COMMIT_RE = re.compile(
+    r'^\s*muse_commit_id\s*=\s*"([^"]+)"\s*$',
+    re.MULTILINE,
+)
 
-def read_bridge_git_sha(repo_root: Path, section: str) -> str | None:
-    """Read ``git_sha`` from ``.muse/git-bridge.toml`` for ``last_export`` or ``last_import``."""
+
+def _bridge_section_body(repo_root: Path, section: str) -> str | None:
+    """Return the body of ``[section]`` from ``.muse/git-bridge.toml``, or ``None``."""
     bridge_path = repo_root / ".muse" / "git-bridge.toml"
     if not bridge_path.is_file():
         return None
@@ -179,5 +184,34 @@ def read_bridge_git_sha(repo_root: Path, section: str) -> str | None:
     section_text = text.split(marker, 1)[1]
     if "\n[" in section_text:
         section_text = section_text.split("\n[", 1)[0]
+    return section_text
+
+
+def bridge_section_present(repo_root: Path, section: str) -> bool:
+    """True when ``.muse/git-bridge.toml`` contains a ``[section]`` header."""
+    return _bridge_section_body(repo_root, section) is not None
+
+
+def read_bridge_git_sha(repo_root: Path, section: str) -> str | None:
+    """Read ``git_sha`` from ``.muse/git-bridge.toml`` for ``last_export`` or ``last_import``."""
+    section_text = _bridge_section_body(repo_root, section)
+    if section_text is None:
+        return None
     match = BRIDGE_SHA_RE.search(section_text)
     return match.group(1) if match else None
+
+
+def read_bridge_muse_commit_id(repo_root: Path, section: str) -> str | None:
+    """Read ``muse_commit_id`` from ``.muse/git-bridge.toml`` (Muse ID space).
+
+    Used for D2 / canonical-anchor equality under Muse 0.2.x content-hash tips.
+    ``git_sha`` remains for realign ``from_ref`` / Git ancestry only.
+    """
+    section_text = _bridge_section_body(repo_root, section)
+    if section_text is None:
+        return None
+    match = BRIDGE_MUSE_COMMIT_RE.search(section_text)
+    if not match:
+        return None
+    value = match.group(1).strip()
+    return value or None
