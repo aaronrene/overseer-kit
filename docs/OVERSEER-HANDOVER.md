@@ -23,7 +23,7 @@ stale K2); do not use it.
 
 | Slice | Deliverable |
 | --- | --- |
-| **GFG-D2-FIX → main** | **Merged** — Muse `4aebfa75…` + GitHub `muse-mirror` → `main` (this session) |
+| **GFG-D2-FIX → main** | **Merged** — Muse `835bdd28…` + PR [#43](https://github.com/aaronrene/overseer-kit/pull/43) @ `972507c` |
 | **GFG-D2-FIX-b** | **DONE** — BV `pass` (D2F-BV-r1) |
 | **GFG-D2-FIX-a** | **DONE** — stamp `sha256:3148c577…` (D2F-r2) |
 
@@ -143,9 +143,9 @@ no git-import into Muse main on healthy bridges.
 
 | Item | Value |
 | --- | --- |
-| Branch | Muse `main` @ `sha256:4aebfa75…` (GFG-D2-FIX); GitHub via `muse-mirror` PR this session |
+| Branch | Muse `main` @ `sha256:835bdd28…`; GitHub `main` @ `972507c` (PR [#43](https://github.com/aaronrene/overseer-kit/pull/43)) |
 | Kit checkout | **`~/OVERSEER_KIT/overseer-kit`** (live). Stub `~/overseer-kit` is K1-era (stale K2 NEXT) — **do not use** |
-| Dirty | Close-out ROADMAP/HANDOVER after GFG-D2-FIX merge (this session) |
+| Dirty | Post-land SHA polish in close-out (this session) |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -159,8 +159,9 @@ no git-import into Muse main on healthy bridges.
 ## Change log
 
 - **2026-07-28** — **GFG-D2-FIX → Muse `main` DONE (Tier-3).** Fast-forward
-  `feat/gfg-d2-muse-id-space` → Muse `main` (`sha256:4aebfa75…`). GitHub via
-  `muse-bridge-deploy` + `muse-mirror` → `main` PR. ROADMAP GFG-D2-FIX → main DONE.
+  `feat/gfg-d2-muse-id-space` → Muse `main` (`sha256:4aebfa75…` + close-out
+  `835bdd28…`). GitHub PR [#43](https://github.com/aaronrene/overseer-kit/pull/43)
+  `muse-mirror` → `main` merged @ `972507c`. ROADMAP GFG-D2-FIX → main DONE.
   NEXT → consumer `ok sync` + re-stamp (Scooling first). Stub `~/overseer-kit` remains
   K1-era — operators must open `~/OVERSEER_KIT/overseer-kit`.
 - **2026-07-28** — **GFG-D2-FIX DONE (Thinking + Auto).** Freeze
