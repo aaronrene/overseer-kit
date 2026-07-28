@@ -7,57 +7,72 @@
 ---
 
 <!-- overseer:next role=primary lane=product status=live -->
-## NEXT SESSION — Tier-3 merge K13 multi-repo workspace lanes (PRIMARY)
+## NEXT SESSION — GFG-b governance freshness gate build (PRIMARY)
 
-**Date:** 2026-07-27  
-**Current position:** **K13a/b + dogfood DONE** on `feat/k13-multi-repo-workspace-lanes` (rebased onto
-`origin/main` including Landing clarity PR [#39](https://github.com/aaronrene/overseer-kit/pull/39)
-`f5cde68`). Consumers (Scooling / Knowtation / MuseHub) already synced from this branch.
-**Model:** **Operator + Auto**  
-**Operator note:** Merge to kit `main` is Tier 3. Do **not** auto-merge.
+**Date:** 2026-07-28  
+**Current position:** **GFG-a DONE** — freeze `docs/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md`
+reviewed → `pass` (GFG-r3), stamp `sha256:fe8a3a15711bb92dfe44cc95c444e5fc70710a9c0f4018d07e3100279c6b8f66`.
+K13 remains on kit `main` (PR [#40](https://github.com/aaronrene/overseer-kit/pull/40) @ `6efef50`).
+**Model:** **Auto**  
+**Operator note:** Build exactly to the frozen GFG contract. No kit `main` merge. No consumer
+hand-edits as the fix.
 
-### What just landed
+### What just landed / verified
 
 | Slice | Deliverable |
 | --- | --- |
-| **Landing clarity pass** | **Merged** — PR [#39](https://github.com/aaronrene/overseer-kit/pull/39) → `main` (`f5cde68`); BV `pass` (LC-BV-r1) |
-| **Check OK** | **Merged** — PR [#35](https://github.com/aaronrene/overseer-kit/pull/35) → `main` (`b8b51c1`); consumers: `ok sync` |
-| **K13a / K13b** | Freeze `pass` (K13a-r3) + build-verified `pass` (K13b-BV-r1): `ok workspace status|check-next|doctor`, exit `35`, §MR.6.5 board names |
-| **K13-DOGFOOD / MUSEHUB / BRAIN** | Live constellation `scooling-stack` on feature branches; check-next `0`; member merges remain Tier 3 |
+| **K13 → main** | **Merged** — PR [#40](https://github.com/aaronrene/overseer-kit/pull/40) @ `6efef50` |
+| **GFG-a freeze** | **DONE** — `docs/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md` → `pass` (GFG-r3), stamp `sha256:fe8a3a15…` |
+| **Gap diagnosis (2026-07-28)** | Sync CLI works; session-end Automation for `governance-sync` was missing; marker never stamped on aligned/dry-run; `status --exit-code` ignored D1/D2 + marker |
 
-### THE ONE NEXT STEP — **Model: Operator + Auto**
+### THE ONE NEXT STEP — **Model: Auto**
 
 | | |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID** | **Tier-3 merge `feat/k13-multi-repo-workspace-lanes`** |
-| **Branch** | `feat/k13-multi-repo-workspace-lanes` |
-| **Repo** | **overseer-kit** |
-| **Read first** | Open PR for this branch; `docs/MULTI-REPO-WORKSPACE-LANES-FREEZE.md`; `docs/ROADMAP.md` (K13 rows DONE) |
-| **Deliver** | Merged kit `main` with K13 workspace CLI + templates; consumers keep current `ok sync` footprint |
-| **Hard stops** | No merge without Tier 3; no live consumer Muse/`main` merges in this PR; no DNS/posture flips |
+| **ID** | **GFG-b** — Governance freshness gate build |
+| **Branch** | `feat/governance-freshness-gate` |
+| **Repo** | **overseer-kit** (`~/OVERSEER_KIT/overseer-kit` — not the K1 stub at `~/overseer-kit`) |
+| **Read first** | This handover; `docs/ROADMAP.md`; frozen `docs/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md` (ground truth); `tools/governance_hygiene/`; `cli/commands/status.py`; `tools/close_ritual/land_check.py`; `cursor/automations/` |
+| **Deliver** | Exact §GFG.10 deliverables; seven-tier §GFG.9; `/build-verification-review` → `pass`; ROADMAP GFG-b → DONE; regenerate this NEXT |
+| **Hard stops** | No kit `main` merge; no GitHub post-merge hook; no silent writes on `main`; no one-off consumer handover rewrite as the fix |
 
 
-### Paste-ready prompt — Tier-3 merge K13
+### Paste-ready prompt — GFG-b
 
-```
-Overseer Kit — Tier-3 merge K13 multi-repo workspace lanes.
+```text
+Overseer Kit — build session-end + fail-closed governance freshness (GFG-b).
 
-Model: Operator + Auto
-Repo: overseer-kit
-Branch: feat/k13-multi-repo-workspace-lanes
-Step: K13-MERGE
-Authority: authoritative
+Model: Auto
+Repo: ~/OVERSEER_KIT/overseer-kit
+Branch: feat/governance-freshness-gate
+Step: GFG-b
+Authority: authoritative for kit code/docs; no consumer main merges
+
+Frozen ground truth (do not redesign):
+  docs/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md
+  (freeze-review pass GFG-r3; stamp sha256:fe8a3a15711bb92dfe44cc95c444e5fc70710a9c0f4018d07e3100279c6b8f66)
 
 Read first:
-  docs/OVERSEER-HANDOVER.md; docs/ROADMAP.md (K13a/b + dogfood DONE);
-  docs/MULTI-REPO-WORKSPACE-LANES-FREEZE.md
+  docs/OVERSEER-HANDOVER.md; docs/ROADMAP.md;
+  docs/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md (§GFG.3–§GFG.10);
+  tools/governance_hygiene/engine.py; cli/commands/status.py;
+  tools/close_ritual/land_check.py; cursor/automations/
 
-Task:
-1) Tier 3: review + merge feat/k13-multi-repo-workspace-lanes → main (GitHub PR).
-2) After merge: consumers may `ok sync` from main checkout (already dogfooded).
-3) Regenerate this NEXT block after merge (optional DNS §LAC.9 remains separate).
+Build exactly (§GFG.10):
+1) cursor/automations/governance-sync-session-end.json (ok governance-sync --dry-run)
+2) tools/governance_freshness/ (check_governance_freshness; D1/D2 + marker; skip R4/gh)
+3) Marker enrich + stamp on fully_aligned early-return, dry-run plan path when D1/D2 aligned,
+   and _apply_plan; amend dry-run emit + governance-sync skill write sentence
+4) Wire ok status --exit-code (exit 2) + JSON governance_freshness; land-check when enabled
+5) .gitignore/.museignore last_governance_sync; cursor/README Tier-2 enable wording
+6) Keep test_mid_apply_failure_leaves_no_commit no-marker assertion
+7) Seven-tier §GFG.9; /build-verification-review → pass before DONE
+8) Update ROADMAP + OVERSEER-HANDOVER together; feature-branch commit (no main merge)
 
-Hard stops: no main merge without Tier 3; no auto consumer main merges; no public CSRF mint.
+Non-goals: no post-merge hook; no silent main writes; no consumer handover hand-edit fix;
+no wiring into governance-sync/review --freeze fail-closed; no new exit-code tier.
+
+Hard stops: no kit main merge without Tier 3; no consumer posture/env flips; no secrets.
 ```
 
 
@@ -133,15 +148,14 @@ Hard stops: no main merge without Tier 3; no auto consumer main merges; no publi
 <!-- /overseer:anchor:verified-snapshot -->
 
 <!-- overseer:anchor:vcs-table -->
-## VCS (verified 2026-07-27)
+## VCS (verified 2026-07-28)
 
 | Item | Value |
 | --- | --- |
-| Branch | `feat/k13-multi-repo-workspace-lanes` |
-| HEAD | K13b + dogfood DONE; merged `origin/main` (landing clarity #39) |
-| Muse HEAD | Sync after close-out commit on this branch |
-| GitHub bridge | Feature branch PR (no merge) |
-| Dirty | Expect clean after close-out commit |
+| Branch | `feat/governance-freshness-gate` |
+| GitHub `main` | `6efef50` — K13 merge PR [#40](https://github.com/aaronrene/overseer-kit/pull/40) |
+| Kit checkout | **`~/OVERSEER_KIT/overseer-kit`** (live). Stub `~/overseer-kit` is K1-era — do not use |
+| Dirty | GFG-a freeze + ROADMAP/HANDOVER close-out on feature branch |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -154,6 +168,16 @@ Hard stops: no main merge without Tier 3; no auto consumer main merges; no publi
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-28** — **GFG-a DONE (freeze-review → `pass`, GFG-r3).** Froze
+  `docs/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md` (stamp `sha256:fe8a3a15…`): session-end
+  Automation for `ok governance-sync --dry-run` + fail-closed status/land-check on D1/D2 or
+  stale marker; marker enrich + dry-run carve-out; non-goals locked. ROADMAP GFG-a → DONE;
+  NEXT → **GFG-b Auto**. No kit code build this session.
+- **2026-07-28** — **NEXT → GFG-a (governance freshness gate freeze).** K13 already on `main`
+  (`6efef50`, PR #40). Consumer Scooling handover stale after finish land #219 despite live
+  Overseer install — root cause: session-end Automation for `governance-sync` never shipped;
+  agents sometimes skip SD-17 close. ROADMAP adds GFG-a / GFG-b. No kit code; no consumer
+  hand-edit. Paste fence is THE ONE NEXT STEP (Thinking).
 - **2026-07-27** — **K13 → `main` PR prepared.** Merged `origin/main` (Landing clarity #39
   `f5cde68`) into `feat/k13-multi-repo-workspace-lanes`; resolved ROADMAP/HANDOVER conflicts;
   NEXT → Tier-3 merge K13 (this PR). No merge performed (hard stop).
