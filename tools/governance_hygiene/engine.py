@@ -284,6 +284,7 @@ def _run_single_lane(
 
     if drift.fully_aligned:
         emit("governance-sync: aligned (D1–D3)")
+        _write_sync_marker(repo_root, reads)
         footer_code, workspace_relay = _emit_governance_gate_footer(
             config,
             repo_root,
@@ -360,7 +361,18 @@ def _run_single_lane(
     if realign_summary:
         emit(realign_summary)
     if dry_run:
-        emit("dry-run: no writes, commits, or realign apply")
+        d1_d2_aligned = (
+            drift.d1_handover_vs_git == "aligned"
+            and drift.d2_anchor_vs_canonical == "aligned"
+        )
+        if d1_d2_aligned:
+            _write_sync_marker(repo_root, reads)
+            emit(
+                "dry-run: no governance-doc writes, commits, or realign apply "
+                "(may stamp local .overseer/last_governance_sync when D1/D2 aligned)"
+            )
+        else:
+            emit("dry-run: no writes, commits, or realign apply")
         if pr_url:
             emit(f"docs-only PR URL (operator-gated): {pr_url}")
         footer_code, workspace_relay = _emit_governance_gate_footer(
@@ -461,7 +473,11 @@ def _apply_plan(
             error_command=realign_error,
         )
 
-    _write_sync_marker(repo_root)
+    if (
+        drift.d1_handover_vs_git == "aligned"
+        and drift.d2_anchor_vs_canonical == "aligned"
+    ):
+        _write_sync_marker(repo_root, reads)
 
     rel_handover = _repo_relative(repo_root, handover_path)
     rel_roadmap = _repo_relative(repo_root, roadmap_path)
@@ -587,10 +603,17 @@ def _parse_github_remote(url: str) -> tuple[str, str] | None:
     return None
 
 
-def _write_sync_marker(repo_root: Path) -> None:
+def _write_sync_marker(repo_root: Path, reads: VerifiedReads | None = None) -> None:
+    """Write enriched ``last_governance_sync`` marker (§GFG.5.2)."""
     marker = repo_root / ".overseer" / GOVERNANCE_SYNC_MARKER
     stamp = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
-    atomic_write_text(marker, stamp + "\n")
+    r1 = ""
+    r3 = ""
+    if reads is not None:
+        r1 = reads.r1_github_main_sha or ""
+        r3 = reads.r3_canonical_main_sha or ""
+    body = f"{stamp}\nr1={r1}\nr3={r3}\n"
+    atomic_write_text(marker, body)
 
 
 def _repo_relative(repo_root: Path, path: Path) -> str:

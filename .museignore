@@ -18,6 +18,9 @@ patterns = [
 # Secrets (.env, *.key, *.pem, *.p12) are blocked by the Muse engine
 # automatically — no need to list them here.
 patterns = [
+    # Clone-local governance freshness stamp (§GFG.5.4)
+    ".overseer/last_governance_sync",
+
     # ── Universal build / output directories ─────────────────────────
     "dist/",
     "build/",

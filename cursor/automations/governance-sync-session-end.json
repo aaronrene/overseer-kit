@@ -1,0 +1,11 @@
+{
+  "name": "overseer-governance-sync-session-end",
+  "description": "Session-end governance freshness check (dry-run) — degrade to CLI when Automations unavailable",
+  "trigger": "session_end",
+  "command": "ok governance-sync --dry-run",
+  "degrade": {
+    "manual_cli": "ok governance-sync --dry-run",
+    "skill": "/governance-sync"
+  },
+  "note": "Template only — operator must enable in Cursor (Tier 2 confirm-once). Default dry-run: no governance-doc writes, no commits, no main merge/push. Aligned runs may stamp local .overseer/last_governance_sync only (§GFG.5). Never treat Automation unavailability as pass."
+}
