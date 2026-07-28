@@ -7,58 +7,58 @@
 ---
 
 <!-- overseer:next role=primary lane=product status=live -->
-## NEXT SESSION — Tier-3 merge GFG-b (PRIMARY)
+## NEXT SESSION — Consumer GFG sync + freshness re-stamp (PRIMARY)
 
 **Date:** 2026-07-28  
-**Current position:** **GFG-b DONE** — build-verified → `pass` (GFG-BV-r1). Session-end
-Automation + fail-closed `status`/`land-check` freshness gate shipped on
-`feat/governance-freshness-gate`. §GFG.9 **26** green (incl. mid-apply no-marker retained).
+**Current position:** **GFG → main DONE** — Muse `sha256:1e9ce2ae…` + GitHub PR
+[#41](https://github.com/aaronrene/overseer-kit/pull/41) `muse-mirror` → `main` @ `ccf44b4`.
+GFG-b BV `pass` (GFG-BV-r1); §GFG.9 **26** green reconfirmed this session.
 **Model:** **Operator + Auto**  
-**Operator note:** Merge to kit `main` is Tier 3 only. After merge, consumers `ok sync` then
-one-time `ok governance-sync --dry-run` to clear `stale_marker` (§GFG.8.1).
+**Operator note:** After `ok sync` from live kit, each consumer clone will fail
+`ok status --exit-code` with `stale_marker` until one-time
+`ok governance-sync --dry-run` (§GFG.8.1). That is the intended floor.
 
 ### What just landed / verified
 
 | Slice | Deliverable |
 | --- | --- |
+| **GFG → main** | **Merged** — Muse `1e9ce2ae…` + PR [#41](https://github.com/aaronrene/overseer-kit/pull/41) @ `ccf44b4` |
 | **GFG-b Auto** | **DONE** — BV `pass` (GFG-BV-r1). Exact §GFG.10 deliverables |
 | **GFG-a freeze** | **DONE** — stamp `sha256:fe8a3a15…` (GFG-r3) |
-| **K13 → main** | **Merged** — PR [#40](https://github.com/aaronrene/overseer-kit/pull/40) @ `6efef50` |
 
 ### THE ONE NEXT STEP — **Model: Operator + Auto**
 
 | | |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID** | **GFG-merge** — Tier-3 merge governance freshness gate to kit `main` |
-| **Branch** | `feat/governance-freshness-gate` |
-| **Repo** | **overseer-kit** (`~/OVERSEER_KIT/overseer-kit`) |
-| **Read first** | This handover; `docs/ROADMAP.md`; frozen `docs/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md` |
-| **Deliver** | Operator-authorized merge (Muse `main` first if muse+git-mirror ritual applies, then `muse-mirror` → GitHub `main`); no feature→main PR |
-| **Hard stops** | No unauthorized main merge; no consumer posture flips; no secrets |
+| **ID** | **GFG-consumer-sync** — `ok sync` + one-time freshness re-stamp on live consumers |
+| **Branch** | consumer feature branches (Scooling / Knowtation as needed) |
+| **Repo** | **consumers** first (kit already on `main`); kit checkout `~/OVERSEER_KIT/overseer-kit` |
+| **Read first** | This handover; `docs/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md` §GFG.8.1; consumer OVERSEER-SETUP |
+| **Deliver** | Per consumer: `ok sync` from live kit → `ok governance-sync --dry-run` (apply if D1/D2 drifted) → `ok status --exit-code` → `0` |
+| **Hard stops** | No consumer posture/env flips; no secrets; no unauthorized consumer `main` merge |
 
 
-### Paste-ready prompt — GFG-merge
+### Paste-ready prompt — GFG-consumer-sync
 
 ```text
-Overseer Kit — Tier-3 merge GFG-b governance freshness gate.
+Consumer dogfood — GFG freshness after kit main land.
 
 Model: Operator + Auto
-Repo: ~/OVERSEER_KIT/overseer-kit
-Branch: feat/governance-freshness-gate
-Step: GFG-merge
-Authority: Tier 3 merge only when operator authorizes
+Kit: ~/OVERSEER_KIT/overseer-kit @ main (PR #41 / ccf44b4)
+Step: GFG-consumer-sync
+Authority: consumer feature-branch only; Tier 3 for any consumer main merge
 
 Read first:
-  docs/OVERSEER-HANDOVER.md; docs/ROADMAP.md;
-  docs/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md
+  kit docs/OVERSEER-HANDOVER.md; docs/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md §GFG.8.1;
+  target consumer handover + .overseer/config.yaml
 
-Deliver:
-1) Confirm GFG-b BV pass + §GFG.9 green on the feature branch
-2) Operator-authorized merge to Muse/kit main (never feature→GitHub main)
-3) If muse+git-mirror: muse-bridge-deploy → muse-mirror → main PR only
-4) Update ROADMAP/HANDOVER together on close
+Deliver (per consumer, start with Scooling):
+1) ok sync from live kit checkout
+2) ok governance-sync --dry-run (apply only if plan is correct / D1/D2 drifted)
+3) ok status --exit-code → 0 with governance_freshness.ok
+4) Update consumer ROADMAP/HANDOVER together; feature-branch commit (no main merge)
 
-Hard stops: no unauthorized main merge; no consumer env flips; no secrets.
+Hard stops: no consumer posture flips; no secrets; no unauthorized main merge.
 ```
 
 
@@ -138,10 +138,10 @@ Hard stops: no unauthorized main merge; no consumer env flips; no secrets.
 
 | Item | Value |
 | --- | --- |
-| Branch | `feat/governance-freshness-gate` |
-| GitHub `main` | `6efef50` — K13 merge PR [#40](https://github.com/aaronrene/overseer-kit/pull/40) |
+| Branch | Muse `main` @ `sha256:1e9ce2ae…` (post GFG merge); GitHub `main` @ `ccf44b4` |
+| GitHub `main` | `ccf44b4` — GFG mirror PR [#41](https://github.com/aaronrene/overseer-kit/pull/41) |
 | Kit checkout | **`~/OVERSEER_KIT/overseer-kit`** (live). Stub `~/overseer-kit` is K1-era — do not use |
-| Dirty | GFG-b build + ROADMAP/HANDOVER close-out on feature branch |
+| Dirty | Close-out ROADMAP/HANDOVER after GFG-merge (this session) |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -154,6 +154,13 @@ Hard stops: no unauthorized main merge; no consumer env flips; no secrets.
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-28** — **GFG → main DONE (Tier-3).** Confirmed BV `pass` (GFG-BV-r1) + §GFG.9
+  **26** green on feature tip. Muse merge `feat/governance-freshness-gate` → Muse `main`
+  (`sha256:1e9ce2ae…`, `--strategy/--on-conflict theirs` — Muse `main` had been behind
+  GitHub-only K13 lineage). Bridge: rebased `muse-mirror` onto `origin/main` + GFG commits
+  (raw Muse export would have deleted GitHub-only files). PR [#41](https://github.com/aaronrene/overseer-kit/pull/41)
+  `muse-mirror` → `main` merged @ `ccf44b4`. ROADMAP GFG → main DONE. NEXT → consumer
+  `ok sync` + one-time `ok governance-sync --dry-run` (§GFG.8.1).
 - **2026-07-28** — **GFG-b DONE (build-verified → `pass`, GFG-BV-r1).** Built frozen
   `docs/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md`: session-end Automation
   `cursor/automations/governance-sync-session-end.json`; `tools/governance_freshness/`
