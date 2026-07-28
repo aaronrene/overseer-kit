@@ -197,8 +197,13 @@ def seed_governance_freshness(
         muse_dir = repo_root / ".muse"
         muse_dir.mkdir(parents=True, exist_ok=True)
         bridge = muse_dir / "git-bridge.toml"
+        # muse_commit_id = tip (R2 Muse space); git_sha uses a distinct 40-hex so
+        # fixtures prove git_sha≠tip alone is not D2 drift (§D2F.3).
+        git_export = "1" * 40 if tip.startswith("sha256:") else tip
         bridge.write_text(
-            f'[last_export]\ngit_sha = "{tip}"\n',
+            f'[last_export]\n'
+            f'muse_commit_id = "{tip}"\n'
+            f'git_sha = "{git_export}"\n',
             encoding="utf-8",
         )
 

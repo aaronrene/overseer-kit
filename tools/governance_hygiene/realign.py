@@ -1,8 +1,8 @@
-"""Muse realignment guard (§5)."""
+"""Muse realignment guard (§5 / §D2F.5)."""
 
 from __future__ import annotations
 
-from adapters.base import VcsAdapter
+from adapters.base import VcsAdapter, read_bridge_git_sha
 from adapters.config import OverseerConfig
 from adapters.errors import ReadError
 from adapters.runner import CommandRunner, quote_arg
@@ -22,9 +22,15 @@ def plan_realign(
         return False, f"{config.vcs.regime}: realign no-op"
     if reads.r1_github_main_sha is None:
         return False, "missing R1 github main sha"
+    # Ancestry uses Git ID space (git_sha), never muse_commit_id / R2 Muse tip (§D2F.5).
+    git_anchor = read_bridge_git_sha(adapter.repo_root, "last_export")
+    if not git_anchor:
+        git_anchor = read_bridge_git_sha(adapter.repo_root, "last_import")
+    if not git_anchor:
+        return False, "missing bridge git_sha for realign ancestry — operator required"
     if not _github_superset_of_anchor(
         adapter,
-        reads.r2_anchor_sha,
+        git_anchor,
         reads.r1_github_main_sha,
     ):
         return False, "R1 is not a content superset of anchor — operator required"
@@ -82,8 +88,9 @@ def execute_realign_guard(
     if isinstance(head, ReadError):
         return None, head.command
 
+    # Verify in Muse ID space (muse_commit_id vs muse tip) — never git_sha == tip (§D2F.5).
     if anchor.anchor_sha.lower() != head.sha.lower():
-        return None, "realign verification failed: anchor != muse main"
+        return None, "realign verification failed: muse_commit_id != muse main"
 
     return (
         f"realign applied: imported {applied.would_import} "

@@ -7,58 +7,57 @@
 ---
 
 <!-- overseer:next role=primary lane=product status=live -->
-## NEXT SESSION — Consumer GFG sync + freshness re-stamp (PRIMARY)
+## NEXT SESSION — GFG-D2-FIX → main then consumer re-stamp (PRIMARY)
 
 **Date:** 2026-07-28  
-**Current position:** **GFG → main DONE** — Muse `sha256:1e9ce2ae…` + GitHub PR
-[#41](https://github.com/aaronrene/overseer-kit/pull/41) `muse-mirror` → `main` @ `ccf44b4`.
-GFG-b BV `pass` (GFG-BV-r1); §GFG.9 **26** green reconfirmed this session.
-**Model:** **Operator + Auto**  
-**Operator note:** After `ok sync` from live kit, each consumer clone will fail
-`ok status --exit-code` with `stale_marker` until one-time
-`ok governance-sync --dry-run` (§GFG.8.1). That is the intended floor.
+**Current position:** **GFG-D2-FIX-b DONE** on `feat/gfg-d2-muse-id-space` — freeze
+`pass` (D2F-r2, `sha256:3148c577…`) + BV `pass` (D2F-BV-r1). §D2F.9 **22** green
+(`sha256:398f82d3…`). Awaits Tier-3 Muse `main` merge + muse-mirror PR, then consumer
+re-stamp (Scooling first). Consumer dogfood after GFG #41 hit permanent D2 drift
+(`git_sha` vs Muse `sha256:` tip) — fixed here.
+**Model:** **Operator + Auto**
 
 ### What just landed / verified
 
 | Slice | Deliverable |
 | --- | --- |
-| **GFG → main** | **Merged** — Muse `1e9ce2ae…` + PR [#41](https://github.com/aaronrene/overseer-kit/pull/41) @ `ccf44b4` |
-| **GFG-b Auto** | **DONE** — BV `pass` (GFG-BV-r1). Exact §GFG.10 deliverables |
-| **GFG-a freeze** | **DONE** — stamp `sha256:fe8a3a15…` (GFG-r3) |
+| **GFG-D2-FIX-a** | **DONE** — freeze `pass` (D2F-r2), stamp `sha256:3148c577…` |
+| **GFG-D2-FIX-b** | **DONE** — BV `pass` (D2F-BV-r1). Muse ID-space D2 + realign ancestry/verify |
+| **GFG → main** | Already on kit `main` (PR [#41](https://github.com/aaronrene/overseer-kit/pull/41)) |
 
 ### THE ONE NEXT STEP — **Model: Operator + Auto**
 
 | | |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID** | **GFG-consumer-sync** — `ok sync` + one-time freshness re-stamp on live consumers |
-| **Branch** | consumer feature branches (Scooling / Knowtation as needed) |
-| **Repo** | **consumers** first (kit already on `main`); kit checkout `~/OVERSEER_KIT/overseer-kit` |
-| **Read first** | This handover; `docs/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md` §GFG.8.1; consumer OVERSEER-SETUP |
-| **Deliver** | Per consumer: `ok sync` from live kit → `ok governance-sync --dry-run` (apply if D1/D2 drifted) → `ok status --exit-code` → `0` |
-| **Hard stops** | No consumer posture/env flips; no secrets; no unauthorized consumer `main` merge |
+| **ID** | **GFG-D2-FIX → main + consumer re-stamp** |
+| **Branch** | kit: merge `feat/gfg-d2-muse-id-space` → Muse `main` (Tier 3); then `muse-mirror` → GitHub `main`; consumers: feature branches |
+| **Repo** | `~/OVERSEER_KIT/overseer-kit` then **Scooling** first |
+| **Read first** | This handover; `docs/PHASE-GFG-D2-MUSE-ID-SPACE.md` §D2F.11; §GFG.8.1 |
+| **Deliver** | (1) Tier-3 kit land via Muse → muse-mirror PR only. (2) Per consumer: `ok sync` → `ok governance-sync --dry-run` → `ok status --exit-code` → `0` with `governance_freshness.ok` |
+| **Hard stops** | No feature→GitHub-main PR; no consumer posture flips; no git-import into Muse main on healthy bridges |
 
 
-### Paste-ready prompt — GFG-consumer-sync
+### Paste-ready prompt — GFG-D2 land + consumer re-stamp
 
 ```text
-Consumer dogfood — GFG freshness after kit main land.
+GFG-D2-FIX land + consumer freshness re-stamp.
 
 Model: Operator + Auto
-Kit: ~/OVERSEER_KIT/overseer-kit @ main (PR #41 / ccf44b4)
-Step: GFG-consumer-sync
-Authority: consumer feature-branch only; Tier 3 for any consumer main merge
+Kit: ~/OVERSEER_KIT/overseer-kit branch feat/gfg-d2-muse-id-space (BV pass D2F-BV-r1)
+Authority: Tier 3 for kit main merge; consumer feature-branch only after land
 
 Read first:
-  kit docs/OVERSEER-HANDOVER.md; docs/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md §GFG.8.1;
-  target consumer handover + .overseer/config.yaml
+  kit docs/OVERSEER-HANDOVER.md
+  docs/PHASE-GFG-D2-MUSE-ID-SPACE.md §D2F.11
+  docs/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md §GFG.8.1
 
-Deliver (per consumer, start with Scooling):
-1) ok sync from live kit checkout
-2) ok governance-sync --dry-run (apply only if plan is correct / D1/D2 drifted)
-3) ok status --exit-code → 0 with governance_freshness.ok
-4) Update consumer ROADMAP/HANDOVER together; feature-branch commit (no main merge)
+Deliver:
+1) Tier-3: merge feat/gfg-d2-muse-id-space → Muse main; muse-bridge-deploy; GitHub PR muse-mirror → main only
+2) Scooling first: ok sync from live kit → ok governance-sync --dry-run → ok status --exit-code → 0
+   Acceptance: last_export.muse_commit_id == muse tip, D1 aligned → governance_freshness.ok
+3) Update consumer ROADMAP/HANDOVER; feature-branch commit (no main merge)
 
-Hard stops: no consumer posture flips; no secrets; no unauthorized main merge.
+Hard stops: no feature→main GitHub PR; no git-import into Muse main on healthy bridges; no posture flips.
 ```
 
 
@@ -138,10 +137,10 @@ Hard stops: no consumer posture flips; no secrets; no unauthorized main merge.
 
 | Item | Value |
 | --- | --- |
-| Branch | Muse `main` @ `sha256:1e9ce2ae…` (post GFG merge); GitHub `main` @ `ccf44b4` |
-| GitHub `main` | `ccf44b4` — GFG mirror PR [#41](https://github.com/aaronrene/overseer-kit/pull/41) |
+| Branch | Muse + Git `feat/gfg-d2-muse-id-space` (GFG-D2-FIX; awaiting Tier-3 land) |
+| GitHub `main` | `ccf44b4` / later close-out — still **pre–D2-FIX** until muse-mirror land |
 | Kit checkout | **`~/OVERSEER_KIT/overseer-kit`** (live). Stub `~/overseer-kit` is K1-era — do not use |
-| Dirty | Close-out ROADMAP/HANDOVER after GFG-merge (this session) |
+| Dirty | Closing commit bundles D2-FIX code/tests + ROADMAP + this handover |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -154,13 +153,20 @@ Hard stops: no consumer posture flips; no secrets; no unauthorized main merge.
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-28** — **GFG-D2-FIX DONE (Thinking + Auto).** Freeze
+  `docs/PHASE-GFG-D2-MUSE-ID-SPACE.md` → `pass` (D2F-r2, `sha256:3148c577…`). Auto: under
+  `muse+git-mirror`, R2 is `last_export.muse_commit_id` (same ID space as Muse tips);
+  `git_sha` retained for realign `from_ref`/Git ancestry only; realign verify compares Muse
+  IDs. §D2F.9 **22** green (`sha256:398f82d3…`). BV `pass` (D2F-BV-r1). Branch
+  `feat/gfg-d2-muse-id-space`. NEXT → Tier-3 land + consumer re-stamp (Scooling first).
+  No kit `main` merge this session. Hard stop held: no default git-import on healthy bridges.
 - **2026-07-28** — **GFG → main DONE (Tier-3).** Confirmed BV `pass` (GFG-BV-r1) + §GFG.9
   **26** green on feature tip. Muse merge `feat/governance-freshness-gate` → Muse `main`
   (`sha256:1e9ce2ae…`, `--strategy/--on-conflict theirs` — Muse `main` had been behind
   GitHub-only K13 lineage). Bridge: rebased `muse-mirror` onto `origin/main` + GFG commits
   (raw Muse export would have deleted GitHub-only files). PR [#41](https://github.com/aaronrene/overseer-kit/pull/41)
-  `muse-mirror` → `main` merged @ `ccf44b4`. ROADMAP GFG → main DONE. NEXT → consumer
-  `ok sync` + one-time `ok governance-sync --dry-run` (§GFG.8.1).
+  `muse-mirror` → `main` merged @ `ccf44b4`. ROADMAP GFG → main DONE. NEXT was consumer
+  `ok sync` + re-stamp — blocked by D2 ID-space bug until GFG-D2-FIX.
 - **2026-07-28** — **GFG-b DONE (build-verified → `pass`, GFG-BV-r1).** Built frozen
   `docs/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md`: session-end Automation
   `cursor/automations/governance-sync-session-end.json`; `tools/governance_freshness/`

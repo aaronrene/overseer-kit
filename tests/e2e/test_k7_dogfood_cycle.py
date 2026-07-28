@@ -24,7 +24,9 @@ def test_k7_fixture_dogfood_cycle_no_live_muse(tmp_path: Path) -> None:
     )
     seed_muse_substrate(tmp_path)
     (tmp_path / ".muse" / "git-bridge.toml").write_text(
-        '[last_export]\ngit_sha = "' + ("d" * 40) + '"\n'
+        '[last_export]\n'
+        'muse_commit_id = "' + ("a" * 40) + '"\n'
+        'git_sha = "' + ("d" * 40) + '"\n'
         '[last_import]\ngit_sha = "' + ("d" * 40) + '"\n',
         encoding="utf-8",
     )

@@ -8,12 +8,20 @@ from adapters.errors import ReadError
 from tests.support import adapter_for, fail, make_runner, ok
 
 
-def _bridge_toml(from_sha: str = "aaa111", export_sha: str = "bbb222") -> str:
+def _bridge_toml(
+    from_sha: str = "aaa111",
+    export_sha: str = "bbb222",
+    *,
+    muse_commit_id: str | None = "sha256:exportmuse",
+) -> str:
+    export_muse = ""
+    if muse_commit_id is not None:
+        export_muse = f'muse_commit_id = "{muse_commit_id}"\n'
     return f"""[last_import]
 git_sha = "{from_sha}"
 
 [last_export]
-git_sha = "{export_sha}"
+{export_muse}git_sha = "{export_sha}"
 """
 
 
@@ -40,8 +48,21 @@ def test_read_canonical_anchor_from_bridge(muse_git_mirror_config, repo_root) ->
     (bridge / "git-bridge.toml").write_text(_bridge_toml(), encoding="utf-8")
     adapter = adapter_for(muse_git_mirror_config, repo_root, make_runner({}))
     result = adapter.read_canonical_anchor()
-    assert result.anchor_sha == "bbb222"
-    assert "last_export" in result.source
+    assert result.anchor_sha == "sha256:exportmuse"
+    assert result.source.endswith("muse_commit_id")
+    assert result.anchor_sha != "bbb222"
+
+
+def test_read_canonical_anchor_missing_muse_commit_id(muse_git_mirror_config, repo_root) -> None:
+    bridge = repo_root / ".muse"
+    bridge.mkdir(parents=True)
+    (bridge / "git-bridge.toml").write_text(
+        _bridge_toml(muse_commit_id=None), encoding="utf-8"
+    )
+    adapter = adapter_for(muse_git_mirror_config, repo_root, make_runner({}))
+    result = adapter.read_canonical_anchor()
+    assert isinstance(result, ReadError)
+    assert "muse_commit_id" in str(result)
 
 
 def test_read_canonical_anchor_fails_without_bridge(muse_git_mirror_config, repo_root) -> None:
