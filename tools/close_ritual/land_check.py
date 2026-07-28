@@ -9,6 +9,9 @@ from pathlib import Path
 from typing import Any, Callable
 
 from adapters.config import CloseRitualConfig, OverseerConfig
+from adapters.factory import create_adapter
+from adapters.runner import CommandRunner, SubprocessRunner
+from tools.governance_freshness import check_governance_freshness
 
 
 @dataclass(frozen=True)
@@ -79,6 +82,7 @@ def run_land_check(
     *,
     mode: str | None = None,
     emit: Callable[[str], None] | None = None,
+    runner: CommandRunner | None = None,
 ) -> LandCheckResult:
     """Run close_ritual land check. Never merges to main."""
     ritual: CloseRitualConfig = config.close_ritual
@@ -136,10 +140,33 @@ def run_land_check(
         out = (completed.stdout or completed.stderr or "").strip()
         if out:
             _emit(out)
+        if completed.returncode != 0:
+            _emit(
+                "note: ok land-check never merges; use ok pr-land --authorized for wait-for-green land"
+            )
+            return LandCheckResult(
+                exit_code=completed.returncode,
+                landed=False,
+                mode=effective_mode,
+                ref="consumer_script",
+                paths=(),
+                dirty_paths=(),
+                messages=tuple(messages),
+            )
+        freshness_fail = _freshness_gate(
+            config,
+            repo_root,
+            mode=effective_mode,
+            runner=runner,
+            emit=_emit,
+            messages=messages,
+        )
+        if freshness_fail is not None:
+            return freshness_fail
         _emit("note: ok land-check never merges; use ok pr-land --authorized for wait-for-green land")
         return LandCheckResult(
-            exit_code=completed.returncode,
-            landed=completed.returncode == 0,
+            exit_code=0,
+            landed=True,
             mode=effective_mode,
             ref="consumer_script",
             paths=(),
@@ -175,7 +202,9 @@ def run_land_check(
             _emit("prepare_pr: dirty require_paths — commit before opening PR")
             for d in dirty_paths:
                 _emit(f"  dirty: {d}")
-            _emit("Tier 3: use ok pr-land --authorized \"…\" to wait-for-green merge (never blind --auto)")
+            _emit(
+                'Tier 3: use ok pr-land --authorized "…" to wait-for-green merge (never blind --auto)'
+            )
             return LandCheckResult(
                 exit_code=1,
                 landed=False,
@@ -185,8 +214,20 @@ def run_land_check(
                 dirty_paths=tuple(dirty_paths),
                 messages=tuple(messages),
             )
+        freshness_fail = _freshness_gate(
+            config,
+            repo_root,
+            mode=effective_mode,
+            runner=runner,
+            emit=_emit,
+            messages=messages,
+        )
+        if freshness_fail is not None:
+            return freshness_fail
         _emit("prepare_pr: require_paths clean — push feature branch and open PR")
-        _emit("Tier 3: use ok pr-land --authorized \"…\" to wait-for-green merge (never blind --auto)")
+        _emit(
+            'Tier 3: use ok pr-land --authorized "…" to wait-for-green merge (never blind --auto)'
+        )
         return LandCheckResult(
             exit_code=0,
             landed=False,
@@ -205,7 +246,9 @@ def run_land_check(
                 _emit(f"  mismatch: {r['path']}")
         for d in dirty_paths:
             _emit(f"  dirty: {d}")
-        _emit("Tier 3: use ok pr-land --authorized \"…\" to wait-for-green merge (never blind --auto)")
+        _emit(
+            'Tier 3: use ok pr-land --authorized "…" to wait-for-green merge (never blind --auto)'
+        )
         return LandCheckResult(
             exit_code=1,
             landed=False,
@@ -216,6 +259,17 @@ def run_land_check(
             messages=tuple(messages),
         )
 
+    freshness_fail = _freshness_gate(
+        config,
+        repo_root,
+        mode=effective_mode,
+        runner=runner,
+        emit=_emit,
+        messages=messages,
+    )
+    if freshness_fail is not None:
+        return freshness_fail
+
     _emit(f"verify_landed: PASS — require_paths match {ref}")
     _emit("Tier 3 land complete once paths match; further merges use ok pr-land --authorized")
     return LandCheckResult(
@@ -224,6 +278,41 @@ def run_land_check(
         mode=effective_mode,
         ref=ref,
         paths=tuple(reports),
+        dirty_paths=(),
+        messages=tuple(messages),
+    )
+
+
+def _freshness_gate(
+    config: OverseerConfig,
+    repo_root: Path,
+    *,
+    mode: str,
+    runner: CommandRunner | None,
+    emit: Callable[[str], None],
+    messages: list[str],
+) -> LandCheckResult | None:
+    """§GFG.6: when close_ritual is enabled, fail land-check on stale freshness (exit 2)."""
+    active_runner = runner or SubprocessRunner()
+    adapter = create_adapter(config, repo_root, runner=active_runner)
+    report = check_governance_freshness(
+        config,
+        repo_root,
+        adapter=adapter,
+        runner=active_runner,
+    )
+    if report.ok:
+        return None
+    emit(f"governance_freshness: {report.state} — {report.message}")
+    if report.remediation:
+        emit(f"governance_freshness-remediation: {report.remediation}")
+    emit("land-check refused — freshness gate (never merges)")
+    return LandCheckResult(
+        exit_code=2,
+        landed=False,
+        mode=mode,
+        ref="",
+        paths=(),
         dirty_paths=(),
         messages=tuple(messages),
     )

@@ -7,72 +7,58 @@
 ---
 
 <!-- overseer:next role=primary lane=product status=live -->
-## NEXT SESSION — GFG-b governance freshness gate build (PRIMARY)
+## NEXT SESSION — Tier-3 merge GFG-b (PRIMARY)
 
 **Date:** 2026-07-28  
-**Current position:** **GFG-a DONE** — freeze `docs/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md`
-reviewed → `pass` (GFG-r3), stamp `sha256:fe8a3a15711bb92dfe44cc95c444e5fc70710a9c0f4018d07e3100279c6b8f66`.
-K13 remains on kit `main` (PR [#40](https://github.com/aaronrene/overseer-kit/pull/40) @ `6efef50`).
-**Model:** **Auto**  
-**Operator note:** Build exactly to the frozen GFG contract. No kit `main` merge. No consumer
-hand-edits as the fix.
+**Current position:** **GFG-b DONE** — build-verified → `pass` (GFG-BV-r1). Session-end
+Automation + fail-closed `status`/`land-check` freshness gate shipped on
+`feat/governance-freshness-gate`. §GFG.9 **26** green (incl. mid-apply no-marker retained).
+**Model:** **Operator + Auto**  
+**Operator note:** Merge to kit `main` is Tier 3 only. After merge, consumers `ok sync` then
+one-time `ok governance-sync --dry-run` to clear `stale_marker` (§GFG.8.1).
 
 ### What just landed / verified
 
 | Slice | Deliverable |
 | --- | --- |
+| **GFG-b Auto** | **DONE** — BV `pass` (GFG-BV-r1). Exact §GFG.10 deliverables |
+| **GFG-a freeze** | **DONE** — stamp `sha256:fe8a3a15…` (GFG-r3) |
 | **K13 → main** | **Merged** — PR [#40](https://github.com/aaronrene/overseer-kit/pull/40) @ `6efef50` |
-| **GFG-a freeze** | **DONE** — `docs/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md` → `pass` (GFG-r3), stamp `sha256:fe8a3a15…` |
-| **Gap diagnosis (2026-07-28)** | Sync CLI works; session-end Automation for `governance-sync` was missing; marker never stamped on aligned/dry-run; `status --exit-code` ignored D1/D2 + marker |
 
-### THE ONE NEXT STEP — **Model: Auto**
+### THE ONE NEXT STEP — **Model: Operator + Auto**
 
 | | |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID** | **GFG-b** — Governance freshness gate build |
+| **ID** | **GFG-merge** — Tier-3 merge governance freshness gate to kit `main` |
 | **Branch** | `feat/governance-freshness-gate` |
-| **Repo** | **overseer-kit** (`~/OVERSEER_KIT/overseer-kit` — not the K1 stub at `~/overseer-kit`) |
-| **Read first** | This handover; `docs/ROADMAP.md`; frozen `docs/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md` (ground truth); `tools/governance_hygiene/`; `cli/commands/status.py`; `tools/close_ritual/land_check.py`; `cursor/automations/` |
-| **Deliver** | Exact §GFG.10 deliverables; seven-tier §GFG.9; `/build-verification-review` → `pass`; ROADMAP GFG-b → DONE; regenerate this NEXT |
-| **Hard stops** | No kit `main` merge; no GitHub post-merge hook; no silent writes on `main`; no one-off consumer handover rewrite as the fix |
+| **Repo** | **overseer-kit** (`~/OVERSEER_KIT/overseer-kit`) |
+| **Read first** | This handover; `docs/ROADMAP.md`; frozen `docs/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md` |
+| **Deliver** | Operator-authorized merge (Muse `main` first if muse+git-mirror ritual applies, then `muse-mirror` → GitHub `main`); no feature→main PR |
+| **Hard stops** | No unauthorized main merge; no consumer posture flips; no secrets |
 
 
-### Paste-ready prompt — GFG-b
+### Paste-ready prompt — GFG-merge
 
 ```text
-Overseer Kit — build session-end + fail-closed governance freshness (GFG-b).
+Overseer Kit — Tier-3 merge GFG-b governance freshness gate.
 
-Model: Auto
+Model: Operator + Auto
 Repo: ~/OVERSEER_KIT/overseer-kit
 Branch: feat/governance-freshness-gate
-Step: GFG-b
-Authority: authoritative for kit code/docs; no consumer main merges
-
-Frozen ground truth (do not redesign):
-  docs/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md
-  (freeze-review pass GFG-r3; stamp sha256:fe8a3a15711bb92dfe44cc95c444e5fc70710a9c0f4018d07e3100279c6b8f66)
+Step: GFG-merge
+Authority: Tier 3 merge only when operator authorizes
 
 Read first:
   docs/OVERSEER-HANDOVER.md; docs/ROADMAP.md;
-  docs/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md (§GFG.3–§GFG.10);
-  tools/governance_hygiene/engine.py; cli/commands/status.py;
-  tools/close_ritual/land_check.py; cursor/automations/
+  docs/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md
 
-Build exactly (§GFG.10):
-1) cursor/automations/governance-sync-session-end.json (ok governance-sync --dry-run)
-2) tools/governance_freshness/ (check_governance_freshness; D1/D2 + marker; skip R4/gh)
-3) Marker enrich + stamp on fully_aligned early-return, dry-run plan path when D1/D2 aligned,
-   and _apply_plan; amend dry-run emit + governance-sync skill write sentence
-4) Wire ok status --exit-code (exit 2) + JSON governance_freshness; land-check when enabled
-5) .gitignore/.museignore last_governance_sync; cursor/README Tier-2 enable wording
-6) Keep test_mid_apply_failure_leaves_no_commit no-marker assertion
-7) Seven-tier §GFG.9; /build-verification-review → pass before DONE
-8) Update ROADMAP + OVERSEER-HANDOVER together; feature-branch commit (no main merge)
+Deliver:
+1) Confirm GFG-b BV pass + §GFG.9 green on the feature branch
+2) Operator-authorized merge to Muse/kit main (never feature→GitHub main)
+3) If muse+git-mirror: muse-bridge-deploy → muse-mirror → main PR only
+4) Update ROADMAP/HANDOVER together on close
 
-Non-goals: no post-merge hook; no silent main writes; no consumer handover hand-edit fix;
-no wiring into governance-sync/review --freeze fail-closed; no new exit-code tier.
-
-Hard stops: no kit main merge without Tier 3; no consumer posture/env flips; no secrets.
+Hard stops: no unauthorized main merge; no consumer env flips; no secrets.
 ```
 
 
@@ -155,7 +141,7 @@ Hard stops: no kit main merge without Tier 3; no consumer posture/env flips; no 
 | Branch | `feat/governance-freshness-gate` |
 | GitHub `main` | `6efef50` — K13 merge PR [#40](https://github.com/aaronrene/overseer-kit/pull/40) |
 | Kit checkout | **`~/OVERSEER_KIT/overseer-kit`** (live). Stub `~/overseer-kit` is K1-era — do not use |
-| Dirty | GFG-a freeze + ROADMAP/HANDOVER close-out on feature branch |
+| Dirty | GFG-b build + ROADMAP/HANDOVER close-out on feature branch |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -168,6 +154,15 @@ Hard stops: no kit main merge without Tier 3; no consumer posture/env flips; no 
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-28** — **GFG-b DONE (build-verified → `pass`, GFG-BV-r1).** Built frozen
+  `docs/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md`: session-end Automation
+  `cursor/automations/governance-sync-session-end.json`; `tools/governance_freshness/`
+  (`check_governance_freshness`, D1/D2 + marker, skip R4/gh); enriched marker stamp on
+  fully_aligned / dry-run D1–D2 aligned / `_apply_plan`; `ok status --exit-code` exit `2` +
+  JSON `governance_freshness`; land-check when enabled; gitignore/museignore; Tier-2 Automation
+  enable wording; skill dry-run carve-out. Seven-tier §GFG.9 **26** green (evidence
+  `sha256:cf9b536b…`); mid-apply no-marker retained. ROADMAP GFG-b → DONE. NEXT → Tier-3 merge.
+  No kit `main` merge this session.
 - **2026-07-28** — **GFG-a DONE (freeze-review → `pass`, GFG-r3).** Froze
   `docs/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md` (stamp `sha256:fe8a3a15…`): session-end
   Automation for `ok governance-sync --dry-run` + fail-closed status/land-check on D1/D2 or

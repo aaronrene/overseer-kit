@@ -20,7 +20,9 @@ from cli.version_lock import LockError, lock_path, read_version_lock
 from cli.commands.route import routing_policy_status
 from tools.cost_awareness.format import format_cost_awareness_lines
 from tools.cost_awareness.surface import build_cost_awareness_report, cost_awareness_payload
+from adapters.factory import create_adapter
 from tools.footprint_integrity import check_footprint_integrity
+from tools.governance_freshness import check_governance_freshness
 from tools.governance_gates import scan_governance_gates
 from tools.governance_gates.format import format_pending_gate_lines, pending_gates_payload
 from tools.muse_sync import check_muse_sync
@@ -32,11 +34,27 @@ GOVERNANCE_SYNC_MARKER = "last_governance_sync"
 
 
 def _read_governance_sync_marker(repo_root: Path) -> str | None:
+    """Return timestamp line only (backward-compatible; tip fields live under governance_freshness)."""
     marker = repo_root / ".overseer" / GOVERNANCE_SYNC_MARKER
     if not marker.is_file():
         return None
-    text = marker.read_text(encoding="utf-8").strip()
-    return text or None
+    text = marker.read_text(encoding="utf-8")
+    line = text.splitlines()[0].strip() if text.strip() else ""
+    return line or None
+
+
+def _governance_freshness_payload(report) -> dict:
+    return {
+        "state": report.state,
+        "ok": report.ok,
+        "message": report.message,
+        "remediation": report.remediation,
+        "d1": report.d1,
+        "d2": report.d2,
+        "marker_present": report.marker_present,
+        "marker_r1": report.marker_r1,
+        "actual_r1": report.actual_r1,
+    }
 
 
 def _compute_footprint_integrity(
@@ -97,6 +115,7 @@ def _exit_code_from_conditions(
     substrate_ok: bool = True,
     muse_sync_ok: bool = True,
     footprint_self_integrity_ok: bool = True,
+    governance_freshness_ok: bool = True,
     workspace_ok: bool = True,
 ) -> int:
     """Apply frozen precedence: 2 > 6 > 35 > 3 > 0 (§MR.7.2).
@@ -104,12 +123,20 @@ def _exit_code_from_conditions(
     §KH2.5: ``muse_sync_ok`` folds into the 2 tier. §KH3.5: ``footprint_self_integrity_ok``
     (declared-but-absent kit-owned files) also folds into the same 2 tier, distinct from and
     independent of the opt-in ``--check-footprint`` content-digest ``integrity`` tier (6).
+    §GFG.6: ``governance_freshness_ok`` (D1/D2 drift or stale marker) folds into the same 2 tier.
     §MR.7.2: workspace relay failure is ``35`` and overrides drift ``3`` / clean ``0`` without
-    overriding config/substrate/muse_sync/footprint-self-integrity (``2``) or lock integrity (``6``).
+    overriding config/substrate/muse_sync/footprint-self-integrity/governance-freshness (``2``)
+    or lock integrity (``6``).
     """
     if not use_exit_code:
         return 0
-    if config_error or not substrate_ok or not muse_sync_ok or not footprint_self_integrity_ok:
+    if (
+        config_error
+        or not substrate_ok
+        or not muse_sync_ok
+        or not footprint_self_integrity_ok
+        or not governance_freshness_ok
+    ):
         return 2
     if integrity == "mismatch":
         return 6
@@ -240,6 +267,21 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
         if muse_sync.remediation:
             report.add_warning(f"muse_sync-remediation: {muse_sync.remediation}")
 
+    governance_freshness = check_governance_freshness(
+        config,
+        repo_root,
+        adapter=create_adapter(config, repo_root, runner=ctx.runner),
+        runner=ctx.runner,
+    )
+    if not governance_freshness.ok:
+        report.add_warning(
+            f"governance_freshness: {governance_freshness.state} — {governance_freshness.message}"
+        )
+        if governance_freshness.remediation:
+            report.add_warning(
+                f"governance_freshness-remediation: {governance_freshness.remediation}"
+            )
+
     model_routing_status = routing_policy_status(config, repo_root, kit_root=ctx.kit)
     if model_routing_status.get("enabled") and not model_routing_status.get("valid"):
         violation = model_routing_status.get("violation") or "invalid"
@@ -271,6 +313,7 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
         "substrate": _substrate_payload(substrate),
         "muse_sync": _muse_sync_payload(muse_sync),
         "footprint_self_integrity": _footprint_self_integrity_payload(footprint_self_integrity),
+        "governance_freshness": _governance_freshness_payload(governance_freshness),
         "lock": _lock_summary(lock) if lock else None,
         "drift": drift,
         "footprint_integrity": integrity,
@@ -307,6 +350,7 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
         substrate_ok=substrate.ok,
         muse_sync_ok=muse_sync.ok,
         footprint_self_integrity_ok=footprint_self_integrity.ok,
+        governance_freshness_ok=governance_freshness.ok,
         workspace_ok=workspace_ok,
     )
     if lock_error and args.exit_code:
@@ -324,6 +368,15 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
             ctx.output.emit(f"muse_sync: {muse_sync.state} — {muse_sync.message}")
             if muse_sync.remediation:
                 ctx.output.emit(f"muse_sync-remediation: {muse_sync.remediation}")
+        if not governance_freshness.ok:
+            ctx.output.emit(
+                f"governance_freshness: {governance_freshness.state} — "
+                f"{governance_freshness.message}"
+            )
+            if governance_freshness.remediation:
+                ctx.output.emit(
+                    f"governance_freshness-remediation: {governance_freshness.remediation}"
+                )
         if lock:
             ctx.output.emit(f"lock kit_version: {lock.kit_version}")
         ctx.output.emit(f"drift: {drift['status']}")
