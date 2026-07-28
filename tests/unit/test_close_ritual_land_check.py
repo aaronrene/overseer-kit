@@ -70,7 +70,9 @@ class CloseRitualLandCheckTests(unittest.TestCase):
     def test_verify_landed_pass_when_matching(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             tmp_path = Path(tmp)
-            init = subprocess.run(["git", "init"], cwd=tmp_path, capture_output=True, text=True)
+            init = subprocess.run(
+                ["git", "init", "-b", "main"], cwd=tmp_path, capture_output=True, text=True
+            )
             if init.returncode != 0:
                 self.skipTest(f"git init unavailable: {init.stderr}")
             subprocess.run(
@@ -106,15 +108,28 @@ class CloseRitualLandCheckTests(unittest.TestCase):
                 ),
             )
             config = load_config(cfg_path)
-            result = run_land_check(config, tmp_path)
-            self.assertEqual(result.exit_code, 0)
+            from unittest.mock import patch
+
+            from tools.governance_freshness import GovernanceFreshnessReport
+
+            ok_fresh = GovernanceFreshnessReport(
+                state="not_applicable", message="patched", remediation=None
+            )
+            with patch(
+                "tools.close_ritual.land_check.check_governance_freshness",
+                return_value=ok_fresh,
+            ):
+                result = run_land_check(config, tmp_path)
+            self.assertEqual(result.exit_code, 0, msg=result.messages)
             self.assertTrue(result.landed)
             self.assertFalse(result.auto_merge)
 
     def test_verify_landed_fail_on_mismatch(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             tmp_path = Path(tmp)
-            init = subprocess.run(["git", "init"], cwd=tmp_path, capture_output=True, text=True)
+            init = subprocess.run(
+                ["git", "init", "-b", "main"], cwd=tmp_path, capture_output=True, text=True
+            )
             if init.returncode != 0:
                 self.skipTest(f"git init unavailable: {init.stderr}")
             subprocess.run(

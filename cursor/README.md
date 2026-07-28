@@ -23,7 +23,9 @@ compatibility. Copilot and paste-only tools use `ok` CLI + `docs/CHECK-OK.md`.
 | `skills/check-ok/SKILL.md` | **Check OK** — ad-hoc honesty (`/check-ok`, `ok check-ok`) |
 | `rules/build-verification-required.mdc` | Always-on: no DONE without build-verification `pass` |
 | `rules/check-ok-thinking.mdc` | Always-on: Thinking sessions get freeze + BV gates |
-| `automations/*.json` | Optional Automation templates (not auto-enabled; Tier-3 to enable) |
+| `automations/*.json` | Optional Automation templates (not auto-enabled; **Tier 2** confirm-once to enable) |
+| `automations/governance-sync-session-end.json` | Session-end `ok governance-sync --dry-run` (GFG; degrade to CLI/skill) |
+| `automations/freeze-review-session-end.json` | Session-end freeze-review dry-run template |
 
 **Degrade path:** when IDE skills are unavailable, use `./cli/ok check-ok`,
 `./cli/ok governance-sync`, and `./cli/ok review --freeze` from the terminal instead.

@@ -96,13 +96,18 @@ def adapter_for(config: OverseerConfig, repo_root: Path, runner: RecordingRunner
     return create_adapter(config, repo_root, runner=runner)
 
 
-def git_status_runner(branch: str = "main", dirty: bool = False) -> RecordingRunner:
-    """Recording runner with git-only ``status()`` responses."""
+def git_status_runner(
+    branch: str = "main",
+    dirty: bool = False,
+    tip: str = "cafebabe",
+) -> RecordingRunner:
+    """Recording runner with git-only ``status()`` + origin/main tip responses."""
     dirty_out = " M file" if dirty else ""
     return make_runner(
         {
             "git rev-parse --abbrev-ref HEAD": ok(branch),
             "git status --porcelain": ok(dirty_out),
+            "git rev-parse origin/main": ok(tip),
         }
     )
 
@@ -111,6 +116,7 @@ def muse_status_runner(
     repo_root: Path,
     branch: str = "main",
     dirty: bool = False,
+    tip: str = "cafebabe",
 ) -> RecordingRunner:
     """Recording runner with muse-only ``status()`` responses."""
     root = str(repo_root.resolve())
@@ -119,6 +125,8 @@ def muse_status_runner(
         {
             f"muse -C {root} branch --show-current": ok(branch),
             f"muse -C {root} status --porcelain": ok(dirty_out),
+            f"muse -C {root} rev-parse {branch}": ok(tip),
+            f"muse -C {root} rev-parse main": ok(tip),
         }
     )
 
@@ -127,6 +135,7 @@ def muse_mirror_status_runner(
     repo_root: Path,
     branch: str = "main",
     dirty: bool = False,
+    tip: str = "cafebabe",
 ) -> RecordingRunner:
     """Recording runner with muse+git-mirror ``status()`` responses."""
     root = str(repo_root.resolve())
@@ -135,10 +144,63 @@ def muse_mirror_status_runner(
         {
             f"muse -C {root} rev-parse --abbrev-ref HEAD": ok(branch),
             f"muse -C {root} status --porcelain": ok(dirty_out),
+            f"muse -C {root} status --json": ok(
+                '{"dirty": true}' if dirty else '{"dirty": false}'
+            ),
             "git rev-parse --abbrev-ref HEAD": ok(branch),
             "git status --porcelain": ok(dirty_out),
+            "git rev-parse origin/main": ok(tip),
+            f"muse -C {root} rev-parse main": ok(tip),
+            f"muse -C {root} rev-parse {branch}": ok(tip),
         }
     )
+
+
+def seed_governance_freshness(
+    repo_root: Path,
+    tip: str = "cafebabe",
+    *,
+    handover_path: Path | None = None,
+) -> None:
+    """Align default-lane handover GitHub-main claim + write enriched marker (§GFG).
+
+    Call after ``ok init`` so ``status --exit-code`` is not fail-closed solely on freshness.
+    """
+    from datetime import datetime, timezone
+
+    from adapters.config import load_config, resolve_lane_docs
+    from cli.docs_paths import lane_living_doc_abs
+    from cli.paths import resolve_config_path
+
+    config_path = resolve_config_path(repo_root, None)
+    config = load_config(config_path)
+    lane = config.docs.default_lane if config.docs.lanes is not None else None
+    lane_docs = resolve_lane_docs(config, lane)
+    path = handover_path or lane_living_doc_abs(
+        repo_root, config, lane_docs, lane_docs.handover
+    )
+    if path.is_file():
+        text = path.read_text(encoding="utf-8")
+        claim = f"| GitHub `main` | `{tip}` |"
+        if f"`{tip}`" not in text or "GitHub `main`" not in text:
+            text = text.rstrip() + f"\n\n| Item | Value |\n| --- | --- |\n{claim}\n"
+            path.write_text(text, encoding="utf-8")
+
+    stamp = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    marker = repo_root / ".overseer" / "last_governance_sync"
+    marker.parent.mkdir(parents=True, exist_ok=True)
+    r1 = "" if config.vcs.regime == "muse-only" else tip
+    r3 = tip
+    marker.write_text(f"{stamp}\nr1={r1}\nr3={r3}\n", encoding="utf-8")
+
+    if config.vcs.regime == "muse+git-mirror":
+        muse_dir = repo_root / ".muse"
+        muse_dir.mkdir(parents=True, exist_ok=True)
+        bridge = muse_dir / "git-bridge.toml"
+        bridge.write_text(
+            f'[last_export]\ngit_sha = "{tip}"\n',
+            encoding="utf-8",
+        )
 
 
 def run_cli(

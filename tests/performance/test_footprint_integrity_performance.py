@@ -8,6 +8,14 @@ from unittest.mock import patch
 from cli.version_lock import ORIGIN_KIT, FootprintEntry, build_version_lock_from_entries
 from tests.support import FIXTURES, git_status_runner, run_cli
 from tools.footprint_integrity import check_footprint_integrity
+from tools.governance_freshness import GovernanceFreshnessReport
+
+
+_OK_FRESHNESS = GovernanceFreshnessReport(
+    state="ok",
+    message="patched for footprint perf",
+    remediation=None,
+)
 
 
 def test_passing_precomputed_lock_avoids_a_second_disk_read(tmp_path: Path) -> None:
@@ -39,13 +47,14 @@ def test_status_exit_code_adds_no_additional_shell_calls(tmp_path: Path) -> None
         == 0
     )
 
-    calls_before_reset = len(runner.calls)
-    run_cli(["status", "--json", "--exit-code"], cwd=tmp_path, runner=runner, json_mode=True)
-    ok_call_count = len(runner.calls) - calls_before_reset
+    with patch("cli.commands.status.check_governance_freshness", return_value=_OK_FRESHNESS):
+        calls_before_reset = len(runner.calls)
+        run_cli(["status", "--json", "--exit-code"], cwd=tmp_path, runner=runner, json_mode=True)
+        ok_call_count = len(runner.calls) - calls_before_reset
 
-    (tmp_path / ".cursor" / "rules" / "governance-sync.mdc").unlink()
-    calls_before_missing = len(runner.calls)
-    run_cli(["status", "--json", "--exit-code"], cwd=tmp_path, runner=runner, json_mode=True)
-    missing_call_count = len(runner.calls) - calls_before_missing
+        (tmp_path / ".cursor" / "rules" / "governance-sync.mdc").unlink()
+        calls_before_missing = len(runner.calls)
+        run_cli(["status", "--json", "--exit-code"], cwd=tmp_path, runner=runner, json_mode=True)
+        missing_call_count = len(runner.calls) - calls_before_missing
 
     assert ok_call_count == missing_call_count

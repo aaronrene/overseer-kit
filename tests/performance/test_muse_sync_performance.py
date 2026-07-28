@@ -3,8 +3,15 @@
 from __future__ import annotations
 
 from pathlib import Path
+from unittest.mock import patch
 
 from tests.support import FIXTURES, make_runner, ok, run_cli, seed_muse_substrate
+from tools.governance_freshness import GovernanceFreshnessReport
+
+
+_OK_FRESHNESS = GovernanceFreshnessReport(
+    state="ok", message="patched for muse-sync perf", remediation=None
+)
 
 
 def _runner(root: str) -> object:
@@ -33,10 +40,12 @@ def test_status_call_count_unchanged_by_muse_sync_gate(tmp_path: Path) -> None:
     seed_muse_substrate(tmp_path)
 
     runner.calls.clear()
-    run_cli(["status", "--exit-code"], cwd=tmp_path, runner=runner)
+    with patch("cli.commands.status.check_governance_freshness", return_value=_OK_FRESHNESS):
+        run_cli(["status", "--exit-code"], cwd=tmp_path, runner=runner)
 
     # Exactly the four calls adapter.status() already made pre-KH2: two muse, two git.
     # (muse status --json succeeds so the --porcelain fallback is never invoked.)
+    # GFG freshness is patched out so this test isolates the muse-sync gate only.
     assert len(runner.calls) == 4
     commands = [c[0] for c in runner.calls]
     assert sum(1 for c in commands if "status --json" in c) == 1

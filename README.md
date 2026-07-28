@@ -151,7 +151,7 @@ the `overseer` CLI work the same regardless of which assistant you use.
 | **`.cursor/rules/*.mdc`** | Auto on `init`/`sync` | Optional if tool reads them | Partial | N/A — use `policy/tiers.yaml` / `AGENTS.md` |
 | **Skills (`SKILL.md`)** | `.cursor/skills/**` (native) | `.claude/skills/**` (native; same bytes via `ok sync`) | Not native — paste `docs/CHECK-OK.md` | Paste `docs/CHECK-OK.md` or follow skill steps |
 | **Check OK** | Type `Check OK` / `/check-ok` | Type `Check OK` / `/check-ok` | `ok check-ok` + paste prompt | `ok check-ok` + paste prompt |
-| **Cursor Automations** | Optional templates in `cursor/automations/` | N/A | N/A | Use CLI (`governance-sync`, `review --freeze`, `check-ok`) instead |
+| **Cursor Automations** | Optional templates in `cursor/automations/` (incl. `governance-sync-session-end.json`; Tier 2 enable) | N/A | N/A | Use CLI (`governance-sync`, `review --freeze`, `check-ok`) instead |
 
 ### What changes per tool
 

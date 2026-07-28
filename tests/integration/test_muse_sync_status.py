@@ -12,6 +12,7 @@ from tests.support import (
     make_runner,
     ok,
     run_cli,
+    seed_governance_freshness,
     seed_muse_substrate,
 )
 
@@ -25,6 +26,7 @@ def _init(tmp_path: Path, runner, config_name: str) -> None:
         )
         == 0
     )
+    seed_governance_freshness(tmp_path)
 
 
 def test_mirror_adapter_populates_both_dirty_fields(muse_git_mirror_config, repo_root: Path) -> None:
@@ -76,12 +78,15 @@ def test_git_only_adapter_leaves_muse_dirty_none(git_only_config, repo_root: Pat
 
 def test_status_exit_code_2_when_muse_pending(tmp_path: Path) -> None:
     root = str(tmp_path.resolve())
+    tip = "cafebabe"
     runner = make_runner(
         {
             f"muse -C {root} rev-parse --abbrev-ref HEAD": ok("main"),
             f"muse -C {root} status --json": ok('{"dirty": true}'),
             "git rev-parse --abbrev-ref HEAD": ok("main"),
             "git status --porcelain": ok(""),
+            "git rev-parse origin/main": ok(tip),
+            f"muse -C {root} rev-parse main": ok(tip),
         }
     )
     _init(tmp_path, runner, "config-muse-git-mirror.yaml")
@@ -92,12 +97,15 @@ def test_status_exit_code_2_when_muse_pending(tmp_path: Path) -> None:
 
 def test_status_exit_code_0_when_muse_synced(tmp_path: Path) -> None:
     root = str(tmp_path.resolve())
+    tip = "cafebabe"
     runner = make_runner(
         {
             f"muse -C {root} rev-parse --abbrev-ref HEAD": ok("main"),
             f"muse -C {root} status --json": ok('{"dirty": false}'),
             "git rev-parse --abbrev-ref HEAD": ok("main"),
             "git status --porcelain": ok(""),
+            "git rev-parse origin/main": ok(tip),
+            f"muse -C {root} rev-parse main": ok(tip),
         }
     )
     _init(tmp_path, runner, "config-muse-git-mirror.yaml")
@@ -108,12 +116,15 @@ def test_status_exit_code_0_when_muse_synced(tmp_path: Path) -> None:
 
 def test_status_json_payload_reports_muse_sync_state(tmp_path: Path, capsys) -> None:
     root = str(tmp_path.resolve())
+    tip = "cafebabe"
     runner = make_runner(
         {
             f"muse -C {root} rev-parse --abbrev-ref HEAD": ok("main"),
             f"muse -C {root} status --json": ok('{"dirty": true}'),
             "git rev-parse --abbrev-ref HEAD": ok("main"),
             "git status --porcelain": ok(""),
+            "git rev-parse origin/main": ok(tip),
+            f"muse -C {root} rev-parse main": ok(tip),
         }
     )
     _init(tmp_path, runner, "config-muse-git-mirror.yaml")
