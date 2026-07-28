@@ -2,7 +2,12 @@
 
 from __future__ import annotations
 
-from adapters.base import BaseAdapter, read_bridge_git_sha
+from adapters.base import (
+    BaseAdapter,
+    bridge_section_present,
+    read_bridge_git_sha,
+    read_bridge_muse_commit_id,
+)
 from adapters.errors import ReadError, WriteError
 from adapters.types import (
     AnchorResult,
@@ -61,9 +66,23 @@ class MuseGitMirrorAdapter(BaseAdapter):
         return HeadResult(sha=sha, kind="git")
 
     def read_canonical_anchor(self) -> AnchorResult | ReadError:
-        export_sha = read_bridge_git_sha(self.repo_root, "last_export")
-        if export_sha:
-            return AnchorResult(anchor_sha=export_sha, source=".muse/git-bridge.toml:last_export")
+        """Return the Muse-space bridge tip for D2 (§D2F.4.2).
+
+        When ``[last_export]`` exists, R2 is ``muse_commit_id`` (same ID space as Muse
+        tips). ``git_sha`` is intentionally not returned here — realign uses
+        ``read_bridge_git_sha`` for ``from_ref`` / ancestry only.
+        """
+        if bridge_section_present(self.repo_root, "last_export"):
+            muse_id = read_bridge_muse_commit_id(self.repo_root, "last_export")
+            if muse_id:
+                return AnchorResult(
+                    anchor_sha=muse_id,
+                    source=".muse/git-bridge.toml:last_export.muse_commit_id",
+                )
+            return ReadError(
+                "read_canonical_anchor",
+                "missing last_export.muse_commit_id",
+            )
 
         mirror = self.config.vcs.git.mirror_branch
         remote = self.config.vcs.git.remote
