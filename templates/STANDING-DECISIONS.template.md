@@ -34,9 +34,10 @@ Full table: `policy/tiers.yaml` and `{{docs.coordination_path}}` (when present).
 
 | ID | Date | Decision | Rationale | Scope of effect |
 | --- | --- | --- | --- | --- |
-| **SD-1** | <YYYY-MM-DD> | **Feature-branch commits (docs or code) are pre-authorized (Tier 1).** Push-to-staging and merge-to-`{{vcs.git.main_branch}}` remain Tier 3. | Commits on a branch are reversible and make work durable; uncommitted dirty trees are the riskier state. | {{repo.name}}; all feature-branch work |
+| **SD-1** | <YYYY-MM-DD> | **Feature-branch commits (docs or code) are pre-authorized (Tier 1).** Push-to-staging remains Tier 3. Merge-to-`{{vcs.git.main_branch}}` is Tier 3 by default; **SD-21** carves finish-mode land hygiene after BV `pass`. | Commits on a branch are reversible and make work durable; uncommitted dirty trees are the riskier state. | {{repo.name}}; all feature-branch work |
 | **SD-3** | <YYYY-MM-DD> | **Model-split handover prompts:** steps marked **Thinking → Auto** emit **`{step}a` (Thinking)** then **`{step}b` (Auto)** in `{{docs.handover_path}}`. Single-model steps stay one prompt. | Opus on boilerplate wastes cost; Auto on security boundaries risks mistakes. | `{{docs.handover_path}}`; `{{docs.roadmap_path}}` |
 | **SD-17** | <YYYY-MM-DD> | **Governance sync is a hard prerequisite for session complete.** Closing commit bundles code/tests + `{{docs.roadmap_path}}` + `{{docs.handover_path}}`. Routine VCS hygiene (feature-branch commit/push/PR-open) is Tier 1. | Prevents stale handover/roadmap drift and over-cautious "ask before commit" friction. | {{repo.name}}; see `policy/tiers.yaml` |
+| **SD-21** | 2026-07-29 | **Finish-mode land hygiene after BV `pass` is Tier 1.** When build-verification is `pass`, the feature is complete, and the diff has no live posture/env flip, secrets, real money, or Delegation write env: agents just do Muse merge/cherry-pick → `main` → muse-bridge → green `muse-mirror`→GitHub `main` (SD-14 only). Still forbidden: `git push origin main`, feature→GitHub-`main`, staging push, blind `--auto` merge. | Removes false land-ask friction; keeps SD-14 + live/security gates. | `policy/tiers.yaml`; muse+git-mirror consumers |
 
 <!-- Append new SD-N rows above this line. Kit ships format only — contents are repo-specific. -->
 
