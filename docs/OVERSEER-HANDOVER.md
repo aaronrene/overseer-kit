@@ -7,52 +7,66 @@
 ---
 
 <!-- overseer:next role=primary lane=product status=live -->
-## NEXT SESSION — Land KIT-PRESERVE-SHARED-ASSETS (0.7b) → main
+## NEXT SESSION — GS-PASTE-b Auto (paste-ready / NEXT regen build)
 
 **Date:** 2026-07-30  
-**Current position:** **KIT-PRESERVE-SHARED-ASSETS DONE** on `feat/preserve-shared-assets`
-(freeze PSA-r1 `pass`, BV PSA-BV-r1 `pass`, §PSA.8 **28** green).
+**Current position:** **GS-PASTE-a DONE** — freeze `docs/PHASE-GS-PASTE-READY-REGEN.md`
+reviewed → `pass` (GSP-r3), stamp `sha256:123c2e68…`. Prior: KIT-PRESERVE landed (OK #47).
 **Open this tree only:** `~/OVERSEER_KIT/overseer-kit` — stub `~/overseer-kit` is
 K1-era; do not use it.
-**Model:** **Operator + Auto**
+**Model:** **Auto**
 
-### What just landed / verified
+### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **KIT-PRESERVE-SHARED-ASSETS** | `ok init --preserve-shared-assets`; migrate/greenfield preserve differing shared assets; lock `origin:preserved`; seven-tier §PSA.8 **28** green; freeze+BV `pass` |
-| **Spec** | `docs/PHASE-PRESERVE-SHARED-ASSETS.md` stamp `sha256:c8f1eacc…` |
+| **GS-PASTE-a** | Frozen `docs/PHASE-GS-PASTE-READY-REGEN.md` — GSP-r3 `pass` (`sha256:123c2e68…`); sole surface `ok governance-sync`; fail-closed ambiguous NEXT; git-only/no-Muse; §GSP.10 matrix |
+| **KIT-PRESERVE → main** | Muse `sha256:746fa8e3…` + GitHub PR [#47](https://github.com/aaronrene/overseer-kit/pull/47) @ `302549e` |
 
-### THE ONE NEXT STEP — **Model: Operator + Auto**
+### THE ONE NEXT STEP — **Model: Auto**
+
+Build GS-PASTE-b mechanically against the frozen contract — no redesign.
 
 | | |
-| -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID** | **Land PSA → Muse `main` + muse-mirror GitHub PR** (then Scooling board marks 0.7b DONE) |
-| **Branch** | `feat/preserve-shared-assets` |
+| --- | --- |
+| **ID** | **GS-PASTE-b** |
+| **Branch** | `feat/gs-paste-ready-regen` |
 | **Repo** | **overseer-kit** @ `~/OVERSEER_KIT/overseer-kit` |
-| **Read first** | This handover; `docs/PHASE-PRESERVE-SHARED-ASSETS.md`; SD-14 / SD-21 |
-| **Deliver** | Muse merge → `muse-bridge-deploy` → green `muse-mirror`→`main` PR. Consumers may then `ok sync` / re-init with `--preserve-shared-assets` (operator-gated). |
-| **Hard stops** | No live consumer re-init without operator; no feature→GitHub-main; stub kit unused |
+| **Read first** | `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md`; `docs/PHASE-GS-PASTE-READY-REGEN.md` |
+| **Hard stops** | No redesign of freeze; no consumer re-init; no feature→GitHub-main; no DONE without `/build-verification-review` → `pass` |
 
-
-### Paste-ready prompt — land PSA 0.7b
+### Paste-ready prompt — GS-PASTE-b
 
 ```text
-Land KIT-PRESERVE-SHARED-ASSETS (0.7b) — Overseer Kit.
+GS-PASTE-b — Build paste-ready / NEXT regeneration for governance-sync.
 
-Model: Operator + Auto
+Model: Auto
 Repo: ~/OVERSEER_KIT/overseer-kit
-Branch: feat/preserve-shared-assets
-Prior: freeze PSA-r1 pass; BV PSA-BV-r1 pass; §PSA.8 28 green
+Branch: feat/gs-paste-ready-regen
+Step: GS-PASTE-b
+Authority: authoritative
+Prior: GS-PASTE-a freeze pass (GSP-r3, sha256:123c2e68…); KIT-PRESERVE landed (OK #47)
 
-1) Muse merge feat/preserve-shared-assets → Muse main (SD-21 if no live flips)
-2) ./scripts/muse-bridge-deploy.sh "mirror: preserve-shared-assets"
-3) Open/merge GitHub PR muse-mirror → main only
-4) Update Scooling board: 0.7b → DONE; NEXT = next finish-queue item (F7 still AWS-blocked)
+Read first:
+- docs/PHASE-GS-PASTE-READY-REGEN.md (frozen: true — ground truth)
+- tools/governance_hygiene/{patch,engine,anchors,parse}.py
+- docs/PHASE-9A-5-GOVERNANCE-HYGIENE-AGENT-OUTLINE.md §4/§7
+- docs/PHASE-KH1-HANDOVER-RELAY-STANDARD.md (NEXT + paste anchors)
+- docs/ROADMAP.md; docs/OVERSEER-HANDOVER.md
 
-Hard stops: no live consumer re-init without operator; no feature→GitHub-main.
+Deliver (mechanical build only — no redesign):
+1. Regenerate next-session + paste-ready-prompt via ok governance-sync / --write only (§GSP.3–§GSP.6)
+2. Fail-closed ambiguous NEXT (next_regen: human_authorship_required); glance aligned
+3. git-only fixture green; zero Muse invocations for the feature
+4. Seven-tier §GSP.10 green; /build-verification-review → pass before ROADMAP DONE
+5. Close: ROADMAP + HANDOVER together on feat/gs-paste-ready-regen
+
+Hard stops: no freeze redesign; no consumer re-init; no feature→GitHub-main; no DONE on green tests alone.
+
+Governance gates (mandatory — remind only; silence is not pass):
+- Freeze review: already pass (GSP-r3) — do not re-open contract
+- Build verification: /build-verification-review after Auto before ROADMAP DONE
 ```
-
 
 ---
 
@@ -78,6 +92,8 @@ Hard stops: no live consumer re-init without operator; no feature→GitHub-main.
 | --- | --- |
 | **Repo** | overseer-kit |
 | **VCS regime** | `muse+git-mirror` (canonical: muse) |
+| **GS-PASTE-a** | **DONE** — `docs/PHASE-GS-PASTE-READY-REGEN.md` reviewed → `pass` (GSP-r3), stamp `sha256:123c2e68…`. Cleared for GS-PASTE-b Auto |
+| **GS-PASTE-b** | **NEXT** — Auto build on `feat/gs-paste-ready-regen`; BV required before DONE |
 | **Governance docs** | `docs/OVERSEER-HANDOVER.md`, `docs/ROADMAP.md` |
 | **KH1 contract** | `docs/PHASE-KH1-HANDOVER-RELAY-STANDARD.md` — **reviewed → `pass` (KH1-r2)** |
 | **KH2 contract** | `docs/PHASE-KH2-MUSE-SYNC-HARD-GATE.md` — **reviewed → `pass` (KH2-r2)**; Auto build **DONE** |
@@ -126,13 +142,13 @@ Hard stops: no live consumer re-init without operator; no feature→GitHub-main.
 <!-- /overseer:anchor:verified-snapshot -->
 
 <!-- overseer:anchor:vcs-table -->
-## VCS (verified 2026-07-28)
+## VCS (verified 2026-07-30)
 
 | Item | Value |
 | --- | --- |
-| Branch | Muse `main` @ `sha256:835bdd28…`; GitHub `main` @ `972507c` (PR [#43](https://github.com/aaronrene/overseer-kit/pull/43)) |
-| Kit checkout | **`~/OVERSEER_KIT/overseer-kit`** (live). Stub `~/overseer-kit` is K1-era (stale K2 NEXT) — **do not use** |
-| Dirty | Post-land SHA polish in close-out (this session) |
+| Branch | `feat/gs-paste-ready-regen` (GS-PASTE-a freeze); Muse `main` @ `sha256:746fa8e3…` (PSA); GitHub `main` @ `302549e` (PR [#47](https://github.com/aaronrene/overseer-kit/pull/47)) |
+| Kit checkout | **`~/OVERSEER_KIT/overseer-kit`** (live). Stub `~/overseer-kit` is K1-era — **do not use** |
+| Dirty | GS-PASTE-a freeze + governance flip (this session) |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -145,13 +161,26 @@ Hard stops: no live consumer re-init without operator; no feature→GitHub-main.
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+| Date | Note |
+| --- | --- |
+| 2026-07-30 | **GS-PASTE-a DONE** — freeze `docs/PHASE-GS-PASTE-READY-REGEN.md` → `pass` (GSP-r3, `sha256:123c2e68…`). NEXT → **GS-PASTE-b Auto**. |
+
+- **2026-07-30** — **GS-PASTE-a DONE (Thinking freeze).** Authored + freeze-reviewed
+  `docs/PHASE-GS-PASTE-READY-REGEN.md` → `pass` (GSP-r3). Contract: regenerate
+  `next-session` + `paste-ready-prompt` via `ok governance-sync` only; fail-closed
+  ambiguous NEXT; git-only/no-Muse; §GSP.10 matrix. **No GS-PASTE-b Auto code this
+  session.** NEXT → GS-PASTE-b Auto on `feat/gs-paste-ready-regen`.
+- **2026-07-30** — **KIT-PRESERVE → main DONE (SD-21).** Muse FF
+  `feat/preserve-shared-assets` → `main` (`sha256:746fa8e3…`) → muse-bridge →
+  GitHub PR [#47](https://github.com/aaronrene/overseer-kit/pull/47) `muse-mirror` →
+  `main` @ `302549e`. Cloudflare Pages **pass**. No live consumer re-init. NEXT =
+  optional operator-gated consumer `ok sync` with `--preserve-shared-assets`.
 - **2026-07-30** — **KIT-PRESERVE-SHARED-ASSETS (0.7b) DONE** on
   `feat/preserve-shared-assets`. Freeze `docs/PHASE-PRESERVE-SHARED-ASSETS.md` → `pass`
   (PSA-r1, `sha256:c8f1eacc…`). Auto: `ok init --preserve-shared-assets` preserves differing
   non-living footprint under migrate/greenfield (including `--force`); promote only with
   `--force --include-preserved`. Seven-tier §PSA.8 **28** green; BV `pass` (PSA-BV-r1).
-  NEXT → Tier-3/SD-21 land → Muse `main` + muse-mirror PR; Scooling marks 0.7b DONE when
-  merged. No live consumer re-init.
+  Land followed same day (see above).
 - **2026-07-28** — **GFG-D2-FIX → Muse `main` DONE (Tier-3).** Fast-forward
   `feat/gfg-d2-muse-id-space` → Muse `main` (`sha256:4aebfa75…` + close-out
   `835bdd28…`). GitHub PR [#43](https://github.com/aaronrene/overseer-kit/pull/43)
