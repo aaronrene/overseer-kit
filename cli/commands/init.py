@@ -19,7 +19,7 @@ from cli.config_gen import (
 from cli.context import CliContext
 from cli.digest import sha256_hex
 from cli.docs_paths import living_doc_destinations, validate_muse_working_dir
-from cli.footprint import FootprintFile, footprint_tuples, resolve_footprint
+from cli.footprint import FootprintFile, resolve_footprint
 from cli.footprint_writes import write_footprint_bytes
 from cli.kn_r2 import KN_R2_DEST, evaluate_kn_r2
 from cli.output import CommandReport
@@ -117,8 +117,9 @@ def _classify_migrate(
     promote: bool,
     kn_r2_pass: bool,
     force: bool,
+    preserve_shared: bool = False,
 ) -> MigrateClass:
-    """Classify one footprint destination under ``--migrate`` (§K6.4 table)."""
+    """Classify one footprint destination under ``--migrate`` (§K6.4 + §PSA.3)."""
     if existing is None:
         return MigrateClass.SEED
 
@@ -135,6 +136,9 @@ def _classify_migrate(
         return MigrateClass.UNCHANGED
     if item.destination == KN_R2_DEST and kn_r2_pass:
         return MigrateClass.UPDATED
+    # §PSA.3: consumer-owned shared assets stay on disk unless explicitly promoted
+    if preserve_shared and not promote:
+        return MigrateClass.PRESERVED
     if force:
         return MigrateClass.UPDATED
     return MigrateClass.CONFLICT
@@ -145,6 +149,7 @@ def run_init(args: Namespace, ctx: CliContext) -> int:
     report = CommandReport()
     migrate = bool(getattr(args, "migrate", False))
     include_preserved = bool(getattr(args, "include_preserved", False))
+    preserve_shared = bool(getattr(args, "preserve_shared_assets", False))
     promote = _promote(args)
 
     if migrate and not args.non_interactive and not args.from_config and not args.regime:
@@ -255,6 +260,8 @@ def run_init(args: Namespace, ctx: CliContext) -> int:
             rendered=rendered,
             existing_lock_path=existing_lock_path,
             has_lock=has_lock,
+            preserve_shared=preserve_shared,
+            promote=promote,
         )
 
     return _run_migrate_init(
@@ -270,6 +277,7 @@ def run_init(args: Namespace, ctx: CliContext) -> int:
         has_lock=has_lock,
         promote=promote,
         include_preserved=include_preserved,
+        preserve_shared=preserve_shared,
     )
 
 
@@ -285,15 +293,28 @@ def _run_greenfield_init(
     rendered: list[FootprintFile],
     existing_lock_path: Path,
     has_lock: bool,
+    preserve_shared: bool = False,
+    promote: bool = False,
 ) -> int:
-    """§K4.2 greenfield init (unchanged by K6)."""
+    """§K4.2 greenfield init + §PSA.4 shared-asset preserve."""
+    living = living_doc_destinations(config)
     conflicts: list[str] = []
+    preserved_shared: list[str] = []
+    preserved_bytes: dict[str, bytes] = {}
+
     for item in rendered:
         dest = repo_root / item.destination
-        if dest.is_file():
-            existing = dest.read_bytes()
-            if existing != item.content:
-                conflicts.append(item.destination)
+        if not dest.is_file():
+            continue
+        existing = dest.read_bytes()
+        if existing == item.content:
+            continue
+        is_living = item.destination in living
+        if preserve_shared and not is_living and not promote:
+            preserved_shared.append(item.destination)
+            preserved_bytes[item.destination] = existing
+            continue
+        conflicts.append(item.destination)
 
     if conflicts and not args.force:
         report.data["conflicts"] = conflicts
@@ -312,6 +333,7 @@ def _run_greenfield_init(
         ),
         "files": [item.destination for item in rendered],
         "conflicts": conflicts,
+        "preserved_shared": preserved_shared,
     }
     report.data["plan"] = plan
 
@@ -322,7 +344,10 @@ def _run_greenfield_init(
         else:
             ctx.output.emit("dry-run: no files written")
             for item in rendered:
-                ctx.output.emit(f"  would write: {item.destination}")
+                if item.destination in preserved_bytes:
+                    ctx.output.emit(f"  would preserve: {item.destination}")
+                else:
+                    ctx.output.emit(f"  would write: {item.destination}")
         return 0
 
     prior_installed_at = None
@@ -333,18 +358,36 @@ def _run_greenfield_init(
             prior_installed_at = None
 
     from cli.kit_root import kit_version
-    from cli.version_lock import build_version_lock
 
     try:
         config_path.parent.mkdir(parents=True, exist_ok=True)
         atomic_write_text(config_path, config_text)
-        for item in rendered:
-            write_footprint_bytes(repo_root / item.destination, item.content, destination=item.destination)
-        lock = build_version_lock(
+        entries: list[FootprintEntry] = []
+        for item in sorted(rendered, key=lambda row: row.destination):
+            if item.destination in preserved_bytes:
+                content = preserved_bytes[item.destination]
+                origin = ORIGIN_PRESERVED
+            else:
+                write_footprint_bytes(
+                    repo_root / item.destination, item.content, destination=item.destination
+                )
+                content = item.content
+                origin = ORIGIN_KIT
+            entries.append(
+                FootprintEntry(
+                    path=item.destination,
+                    source=item.source,
+                    sha256=sha256_hex(content),
+                    origin=origin,
+                )
+            )
+        from cli.version_lock import utc_now_iso
+
+        lock = build_version_lock_from_entries(
             kit_version=kit_version(),
             config_version=config.overseer_config_version,
-            footprint=footprint_tuples(rendered),
-            prior_installed_at=prior_installed_at,
+            entries=entries,
+            installed_at=prior_installed_at or utc_now_iso(),
         )
         write_version_lock(existing_lock_path, lock)
     except WriteFailure as exc:
@@ -352,13 +395,17 @@ def _run_greenfield_init(
         return 5
 
     report.data["status"] = "initialized"
+    report.data["preserved"] = preserved_shared
     report.data["lock"] = lock.to_dict()
     if ctx.output.json_mode:
         ctx.output.emit_json(report.to_payload())
     else:
         ctx.output.emit("init complete")
         for item in rendered:
-            ctx.output.emit(f"  wrote: {item.destination}")
+            if item.destination in preserved_bytes:
+                ctx.output.emit(f"  preserved: {item.destination}")
+            else:
+                ctx.output.emit(f"  wrote: {item.destination}")
     return 0
 
 
@@ -376,8 +423,9 @@ def _run_migrate_init(
     has_lock: bool,
     promote: bool,
     include_preserved: bool,
+    preserve_shared: bool = False,
 ) -> int:
-    """§K6.4 ``init --migrate`` living-doc preserve + origin rules."""
+    """§K6.4 ``init --migrate`` living-doc preserve + §PSA.3 shared-asset preserve."""
     living = living_doc_destinations(config)
     kn_r2_pass = False
     kn_r2_rendered: bytes | None = None
@@ -421,6 +469,7 @@ def _run_migrate_init(
             promote=promote,
             kn_r2_pass=kn_r2_pass and item.destination == KN_R2_DEST,
             force=bool(args.force),
+            preserve_shared=preserve_shared,
         )
         classifications[item.destination] = klass
 
