@@ -7,50 +7,51 @@
 ---
 
 <!-- overseer:next role=primary lane=product status=live -->
-## NEXT SESSION — Land KIT-PRESERVE-SHARED-ASSETS (0.7b) → main
+## NEXT SESSION — Optional consumer sync (preserve-shared-assets)
 
 **Date:** 2026-07-30  
-**Current position:** **KIT-PRESERVE-SHARED-ASSETS DONE** on `feat/preserve-shared-assets`
-(freeze PSA-r1 `pass`, BV PSA-BV-r1 `pass`, §PSA.8 **28** green).
+**Current position:** **KIT-PRESERVE-SHARED-ASSETS landed** — Muse `main`
+`sha256:746fa8e3…` + GitHub PR [#47](https://github.com/aaronrene/overseer-kit/pull/47)
+`muse-mirror` → `main` @ `302549e`. Freeze PSA-r1 + BV PSA-BV-r1 `pass`.
 **Open this tree only:** `~/OVERSEER_KIT/overseer-kit` — stub `~/overseer-kit` is
 K1-era; do not use it.
-**Model:** **Operator + Auto**
+**Model:** **Operator**
 
 ### What just landed / verified
 
 | Slice | Deliverable |
 | --- | --- |
-| **KIT-PRESERVE-SHARED-ASSETS** | `ok init --preserve-shared-assets`; migrate/greenfield preserve differing shared assets; lock `origin:preserved`; seven-tier §PSA.8 **28** green; freeze+BV `pass` |
+| **KIT-PRESERVE-SHARED-ASSETS** | `ok init --preserve-shared-assets`; lock `origin:preserved`; §PSA.8 **28**; freeze+BV `pass` |
+| **Land** | Muse FF → `main` (`sha256:746fa8e3…`) → [OK #47](https://github.com/aaronrene/overseer-kit/pull/47) @ `302549e` |
 | **Spec** | `docs/PHASE-PRESERVE-SHARED-ASSETS.md` stamp `sha256:c8f1eacc…` |
 
-### THE ONE NEXT STEP — **Model: Operator + Auto**
+### THE ONE NEXT STEP — **Model: Operator**
 
 | | |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **ID** | **Land PSA → Muse `main` + muse-mirror GitHub PR** (then Scooling board marks 0.7b DONE) |
-| **Branch** | `feat/preserve-shared-assets` |
-| **Repo** | **overseer-kit** @ `~/OVERSEER_KIT/overseer-kit` |
-| **Read first** | This handover; `docs/PHASE-PRESERVE-SHARED-ASSETS.md`; SD-14 / SD-21 |
-| **Deliver** | Muse merge → `muse-bridge-deploy` → green `muse-mirror`→`main` PR. Consumers may then `ok sync` / re-init with `--preserve-shared-assets` (operator-gated). |
+| **ID** | **Optional consumer `ok sync` / re-init with `--preserve-shared-assets`** (Knowtation footprint first) |
+| **Repo** | Consumers (`~/knowtation`, `~/scooling`) — **operator-gated**; not automatic |
+| **Read first** | This handover; `docs/PHASE-PRESERVE-SHARED-ASSETS.md`; consumer `kit.notes` |
+| **Deliver** | When operator authorizes: `ok sync` from live kit; migrate/re-init **with** `--preserve-shared-assets` so bridge scripts stay. Clear intentional Knowtation footprint mismatch only if operator wants. |
 | **Hard stops** | No live consumer re-init without operator; no feature→GitHub-main; stub kit unused |
 
 
-### Paste-ready prompt — land PSA 0.7b
+### Paste-ready prompt — optional consumer preserve sync
 
 ```text
-Land KIT-PRESERVE-SHARED-ASSETS (0.7b) — Overseer Kit.
+Optional: consumer ok sync after KIT-PRESERVE land (operator-gated).
 
-Model: Operator + Auto
-Repo: ~/OVERSEER_KIT/overseer-kit
-Branch: feat/preserve-shared-assets
-Prior: freeze PSA-r1 pass; BV PSA-BV-r1 pass; §PSA.8 28 green
+Model: Operator
+Kit: ~/OVERSEER_KIT/overseer-kit (main @ sha256:746fa8e3… / GitHub #47 @ 302549e)
+Prior: --preserve-shared-assets shipped; Scooling board 0.7b DONE
 
-1) Muse merge feat/preserve-shared-assets → Muse main (SD-21 if no live flips)
-2) ./scripts/muse-bridge-deploy.sh "mirror: preserve-shared-assets"
-3) Open/merge GitHub PR muse-mirror → main only
-4) Update Scooling board: 0.7b → DONE; NEXT = next finish-queue item (F7 still AWS-blocked)
+Only if operator authorizes live consumer touch:
+1) Prefer Knowtation first (intentional footprint mismatch on bridge assets)
+2) ok sync from live kit checkout
+3) Any migrate/re-init MUST pass --preserve-shared-assets
+4) ok status --json → initialized, kit_version, footprint self-integrity
 
-Hard stops: no live consumer re-init without operator; no feature→GitHub-main.
+Hard stops: no re-init without explicit operator; no stub ~/overseer-kit; no feature→GitHub-main.
 ```
 
 
@@ -126,13 +127,13 @@ Hard stops: no live consumer re-init without operator; no feature→GitHub-main.
 <!-- /overseer:anchor:verified-snapshot -->
 
 <!-- overseer:anchor:vcs-table -->
-## VCS (verified 2026-07-28)
+## VCS (verified 2026-07-30)
 
 | Item | Value |
 | --- | --- |
-| Branch | Muse `main` @ `sha256:835bdd28…`; GitHub `main` @ `972507c` (PR [#43](https://github.com/aaronrene/overseer-kit/pull/43)) |
-| Kit checkout | **`~/OVERSEER_KIT/overseer-kit`** (live). Stub `~/overseer-kit` is K1-era (stale K2 NEXT) — **do not use** |
-| Dirty | Post-land SHA polish in close-out (this session) |
+| Branch | Muse `main` @ `sha256:746fa8e3…` (PSA) + close-out this session; GitHub `main` @ `302549e` (PR [#47](https://github.com/aaronrene/overseer-kit/pull/47)) |
+| Kit checkout | **`~/OVERSEER_KIT/overseer-kit`** (live). Stub `~/overseer-kit` is K1-era — **do not use** |
+| Dirty | Close-out governance only (this session) |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -145,13 +146,17 @@ Hard stops: no live consumer re-init without operator; no feature→GitHub-main.
 <!-- overseer:anchor:change-log -->
 ## Change log
 
+- **2026-07-30** — **KIT-PRESERVE → main DONE (SD-21).** Muse FF
+  `feat/preserve-shared-assets` → `main` (`sha256:746fa8e3…`) → muse-bridge →
+  GitHub PR [#47](https://github.com/aaronrene/overseer-kit/pull/47) `muse-mirror` →
+  `main` @ `302549e`. Cloudflare Pages **pass**. No live consumer re-init. NEXT =
+  optional operator-gated consumer `ok sync` with `--preserve-shared-assets`.
 - **2026-07-30** — **KIT-PRESERVE-SHARED-ASSETS (0.7b) DONE** on
   `feat/preserve-shared-assets`. Freeze `docs/PHASE-PRESERVE-SHARED-ASSETS.md` → `pass`
   (PSA-r1, `sha256:c8f1eacc…`). Auto: `ok init --preserve-shared-assets` preserves differing
   non-living footprint under migrate/greenfield (including `--force`); promote only with
   `--force --include-preserved`. Seven-tier §PSA.8 **28** green; BV `pass` (PSA-BV-r1).
-  NEXT → Tier-3/SD-21 land → Muse `main` + muse-mirror PR; Scooling marks 0.7b DONE when
-  merged. No live consumer re-init.
+  Land followed same day (see above).
 - **2026-07-28** — **GFG-D2-FIX → Muse `main` DONE (Tier-3).** Fast-forward
   `feat/gfg-d2-muse-id-space` → Muse `main` (`sha256:4aebfa75…` + close-out
   `835bdd28…`). GitHub PR [#43](https://github.com/aaronrene/overseer-kit/pull/43)
