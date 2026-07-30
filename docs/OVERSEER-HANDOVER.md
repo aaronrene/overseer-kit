@@ -7,62 +7,72 @@
 ---
 
 <!-- overseer:next role=primary lane=product status=live -->
-## NEXT SESSION — GS-PASTE → main (SD-21 land)
+## NEXT SESSION — Kit queue idle after GS-PASTE land (pick track)
 
 **Date:** 2026-07-30  
-**Current position:** **GS-PASTE-b DONE** — BV `pass` (GSP-BV-r1); `next_regen` shipped in
-`ok governance-sync`. Queue has no further open rows.
+**Current position:** **GS-PASTE landed** — Muse `main` `sha256:e7831636…` + GitHub PR
+[#49](https://github.com/aaronrene/overseer-kit/pull/49) `muse-mirror` → `main` @ `5a85ef2`.
+Freeze GSP-r3 + BV GSP-BV-r1 `pass`. Build queue has **no open rows**.
 **Open this tree only:** `~/OVERSEER_KIT/overseer-kit` — stub `~/overseer-kit` is
 K1-era; do not use it.
-**Model:** **Operator + Auto**
+**Model:** **Operator**
+
+### Authority split (read this — three different handovers)
+
+| Board | File | What it controls | Live NEXT (2026-07-30) |
+| --- | --- | --- | --- |
+| **Product order (PRIMARY)** | `~/scooling/docs/OVERSEER-HANDOVER.md` | Cross-repo product sequencing | Trust Scooling PRIMARY — do not invent kit product NEXT |
+| **Kit (this board)** | `docs/OVERSEER-HANDOVER.md` | Kit vendor phases only | **Idle** — operator picks next kit track |
+| **Knowtation RELAY** | Knowtation handover | Consumer relay | Follow Scooling PRIMARY |
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **GS-PASTE-b** | `tools/governance_hygiene/next_regen.py` + patch/engine/anchors; fail-closed NEXT; §GSP.10 **19** green; BV `pass` (GSP-BV-r1) |
+| **GS-PASTE → main** | SD-21: Muse FF → `sha256:e7831636…` → PR [#49](https://github.com/aaronrene/overseer-kit/pull/49) → GitHub `main` @ `5a85ef2` |
+| **GS-PASTE-b** | `next_regen` via `ok governance-sync`; §GSP.10 **19** green; BV `pass` (GSP-BV-r1) |
 | **GS-PASTE-a** | Frozen `docs/PHASE-GS-PASTE-READY-REGEN.md` — GSP-r3 `pass` (`sha256:123c2e68…`) |
 
-### THE ONE NEXT STEP — **Model: Operator + Auto**
+### THE ONE NEXT STEP — **Model: Operator**
 
-SD-21 land hygiene: Muse FF `feat/gs-paste-ready-regen` → Muse `main` → muse-bridge → green
-`muse-mirror` PR → GitHub `main`. No live posture/env flip; no consumer re-init.
+Kit build queue is idle. Operator picks the next kit track from
+`docs/ROADMAP.md` exploration backlog (or product work on Scooling PRIMARY).
+Zero open roadmap rows → `ok governance-sync` NEXT regen stays fail-closed until a
+new **NEXT** row is queued.
 
 | | |
 | --- | --- |
-| **ID** | **GS-PASTE → main** |
-| **Branch** | `feat/gs-paste-ready-regen` |
+| **ID** | **Kit queue idle (pick track)** |
+| **Branch** | `main` (landed) / new `feat/…` when a track is chosen |
 | **Repo** | **overseer-kit** @ `~/OVERSEER_KIT/overseer-kit` |
-| **Read first** | `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md`; `docs/PHASE-GS-PASTE-READY-REGEN.md` |
-| **Hard stops** | No feature→GitHub-`main` direct push; no secrets; no live consumer re-init; no staging push |
+| **Read first** | `docs/ROADMAP.md` (exploration backlog); this handover; Scooling PRIMARY if product |
+| **Hard stops** | No live consumer re-init without operator gate; no secrets; no staging push |
 
-### Paste-ready prompt — GS-PASTE → main
+### Paste-ready prompt — Kit queue idle (operator pick)
 
 ```text
-GS-PASTE → main — SD-21 land paste-ready / NEXT regen.
+Kit queue idle after GS-PASTE land — operator picks next track.
 
-Model: Operator + Auto
+Model: Operator
 Repo: ~/OVERSEER_KIT/overseer-kit
-Branch: feat/gs-paste-ready-regen
-Step: GS-PASTE → main
 Authority: authoritative
-Prior: GS-PASTE-b BV pass (GSP-BV-r1); freeze GSP-r3 (sha256:123c2e68…)
+Prior: GS-PASTE → main DONE (Muse sha256:e7831636…; GitHub PR #49 @ 5a85ef2)
 
 Read first:
-- docs/ROADMAP.md; docs/OVERSEER-HANDOVER.md
-- docs/PHASE-GS-PASTE-READY-REGEN.md (§GSP.11 DoD checked)
-- MUSE-BRIDGE-WORKFLOW.md / scripts/muse-bridge-deploy.sh (SD-14)
+- docs/ROADMAP.md (exploration backlog — NOT queued until Thinking freeze)
+- docs/OVERSEER-HANDOVER.md (this idle NEXT)
+- ~/scooling/docs/OVERSEER-HANDOVER.md if continuing product order
 
 Deliver:
-1. Muse fast-forward feat/gs-paste-ready-regen → Muse main
-2. muse-bridge-deploy → permanent muse-mirror → green PR → GitHub main
-3. Update ROADMAP GS-PASTE → main DONE + HANDOVER together; feature-branch hygiene commit if needed
+1. Operator chooses next kit idea OR continues product work on Scooling PRIMARY
+2. If kit track: add roadmap NEXT row + Thinking freeze before Auto
+3. Do not invent a kit product NEXT that overrides Scooling PRIMARY
 
-Hard stops: no direct git push origin main; no consumer re-init; no secrets; no live posture flips.
+Hard stops: no consumer re-init; no secrets; no live posture flips; no GitHub main direct push.
 
 Governance gates (mandatory — remind only; silence is not pass):
-- Build verification: already pass (GSP-BV-r1) — do not re-open without new code
-- Workspace (when configured): ok workspace check-next before claiming multi-repo SD-17 complete
+- Build verification: N/A until a new Auto build is queued
+- Workspace: not configured on this kit checkout — skip check-next
 ```
 
 ---
@@ -90,8 +100,8 @@ Governance gates (mandatory — remind only; silence is not pass):
 | **Repo** | overseer-kit |
 | **VCS regime** | `muse+git-mirror` (canonical: muse) |
 | **GS-PASTE-a** | **DONE** — `docs/PHASE-GS-PASTE-READY-REGEN.md` reviewed → `pass` (GSP-r3), stamp `sha256:123c2e68…` |
-| **GS-PASTE-b** | **DONE** — BV `pass` (GSP-BV-r1); `next_regen` via `ok governance-sync`; §GSP.10 **19** green on `feat/gs-paste-ready-regen` |
-| **GS-PASTE → main** | **NEXT** — SD-21 land (Operator + Auto); no live consumer re-init |
+| **GS-PASTE-b** | **DONE** — BV `pass` (GSP-BV-r1); `next_regen` via `ok governance-sync`; §GSP.10 **19** green |
+| **GS-PASTE → main** | **DONE** — SD-21 land 2026-07-30: Muse `main` `sha256:e7831636…` + GitHub PR [#49](https://github.com/aaronrene/overseer-kit/pull/49) → `main` @ `5a85ef2` |
 | **Governance docs** | `docs/OVERSEER-HANDOVER.md`, `docs/ROADMAP.md` |
 | **KH1 contract** | `docs/PHASE-KH1-HANDOVER-RELAY-STANDARD.md` — **reviewed → `pass` (KH1-r2)** |
 | **KH2 contract** | `docs/PHASE-KH2-MUSE-SYNC-HARD-GATE.md` — **reviewed → `pass` (KH2-r2)**; Auto build **DONE** |
@@ -144,9 +154,9 @@ Governance gates (mandatory — remind only; silence is not pass):
 
 | Item | Value |
 | --- | --- |
-| Branch | `feat/gs-paste-ready-regen` (GS-PASTE-b build); Muse `main` @ `sha256:746fa8e3…` (PSA); GitHub `main` @ `302549e` (PR [#47](https://github.com/aaronrene/overseer-kit/pull/47)) |
+| Branch | Muse `main` @ `sha256:e7831636…` (GS-PASTE); GitHub `main` @ `5a85ef2` (PR [#49](https://github.com/aaronrene/overseer-kit/pull/49)); close-out on `feat/gs-paste-ready-regen` |
 | Kit checkout | **`~/OVERSEER_KIT/overseer-kit`** (live). Stub `~/overseer-kit` is K1-era — **do not use** |
-| Dirty | GS-PASTE-b Auto + governance close (this session) |
+| Dirty | Clean after land close-out |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -161,9 +171,16 @@ Governance gates (mandatory — remind only; silence is not pass):
 
 | Date | Note |
 | --- | --- |
+| 2026-07-30 | **GS-PASTE → main DONE (SD-21)** — Muse `sha256:e7831636…` + PR [#49](https://github.com/aaronrene/overseer-kit/pull/49) @ `5a85ef2`. |
 | 2026-07-30 | **GS-PASTE-b DONE** — BV `pass` (GSP-BV-r1); §GSP.10 **19** green. NEXT → SD-21 land. |
 | 2026-07-30 | **GS-PASTE-a DONE** — freeze `docs/PHASE-GS-PASTE-READY-REGEN.md` → `pass` (GSP-r3, `sha256:123c2e68…`). |
 
+- **2026-07-30** — **GS-PASTE → main DONE (SD-21).** Muse FF
+  `feat/gs-paste-ready-regen` → `main` (`sha256:e7831636…`, incl. Muse-only
+  untrack of museignored `desktop/src-tauri/resources/`) → muse-bridge → GitHub PR
+  [#49](https://github.com/aaronrene/overseer-kit/pull/49) `muse-mirror` → `main` @
+  `5a85ef2`. Cloudflare Pages **pass**. No live consumer re-init. NEXT = kit queue
+  idle (Operator pick from exploration backlog / Scooling PRIMARY).
 - **2026-07-30** — **GS-PASTE-b DONE (Auto build + BV `pass`, GSP-BV-r1).** Built
   mechanically against frozen `docs/PHASE-GS-PASTE-READY-REGEN.md`: new
   `tools/governance_hygiene/next_regen.py`; `build_handover_patches` regenerates
