@@ -154,9 +154,13 @@ Governance gates (mandatory — remind only; silence is not pass):
 
 | Item | Value |
 | --- | --- |
-| Branch | Muse `main` @ `sha256:e7831636…` (GS-PASTE); GitHub `main` @ `5a85ef2` (PR [#49](https://github.com/aaronrene/overseer-kit/pull/49)); close-out on `feat/gs-paste-ready-regen` |
+| Branch | `feat/gs-paste-ready-regen` |
+| GitHub `main` | `4979387885ffc8f652e634b91e931509b052999d` |
+| Canonical anchor | `sha256:887e10d45d5d0e19e1c0c4b3bff944f83cc9e3acbf9bdf77c83fbd28177a614a` (muse) |
+| Muse `main` | `sha256:887e10d45d5d0e19e1c0c4b3bff944f83cc9e3acbf9bdf77c83fbd28177a614a` |
+| Dirty | no |
 | Kit checkout | **`~/OVERSEER_KIT/overseer-kit`** (live). Stub `~/overseer-kit` is K1-era — **do not use** |
-| Dirty | Clean after land close-out |
+| Feature land | PR [#49](https://github.com/aaronrene/overseer-kit/pull/49) @ `5a85ef2`; close-out PR [#50](https://github.com/aaronrene/overseer-kit/pull/50) @ `4979387` |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
