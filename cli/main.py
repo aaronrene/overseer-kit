@@ -81,6 +81,15 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="With --force: promote living docs to origin:kit (pilot-forbidden)",
     )
+    init_parser.add_argument(
+        "--preserve-shared-assets",
+        action="store_true",
+        help=(
+            "Preserve existing differing shared assets (non-living footprint); "
+            "lock origin:preserved. With --force still does not overwrite them "
+            "unless --include-preserved"
+        ),
+    )
 
     sync_parser = subparsers.add_parser("sync", help="Update vendored footprint")
     sync_parser.add_argument("--dry-run", action="store_true")

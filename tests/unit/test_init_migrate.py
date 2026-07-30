@@ -273,6 +273,122 @@ def test_hand_edit_seeded_roadmap_check_and_sync(tmp_path: Path) -> None:
     assert (tmp_path / "docs/ROADMAP.md").read_text(encoding="utf-8") == "# seeded then edited\n"
 
 
+def test_migrate_force_overwrites_shared_asset_without_preserve_flag(tmp_path: Path) -> None:
+    seed_pilot_tree(
+        tmp_path,
+        handover_rel="docs/OVERSEER-HANDOVER.md",
+        handover_text="# H\n",
+        roadmap_rel="docs/ROADMAP.md",
+        roadmap_text="# R\n",
+    )
+    policy = tmp_path / ".overseer" / "policy"
+    policy.mkdir(parents=True, exist_ok=True)
+    (policy / "tiers.yaml").write_text("altered: true\n", encoding="utf-8")
+    code = _migrate(tmp_path, "config-scooling.yaml", "--force")
+    assert code == 0
+    assert (policy / "tiers.yaml").read_text(encoding="utf-8") != "altered: true\n"
+    assert lock_origins(tmp_path)[".overseer/policy/tiers.yaml"] == ORIGIN_KIT
+
+
+def test_migrate_preserve_shared_assets_keeps_differing_shared(tmp_path: Path) -> None:
+    seed_pilot_tree(
+        tmp_path,
+        handover_rel="docs/OVERSEER-HANDOVER.md",
+        handover_text="# H\n",
+        roadmap_rel="docs/ROADMAP.md",
+        roadmap_text="# R\n",
+    )
+    policy = tmp_path / ".overseer" / "policy"
+    policy.mkdir(parents=True, exist_ok=True)
+    hand = "altered: true\n# consumer-owned\n"
+    (policy / "tiers.yaml").write_text(hand, encoding="utf-8")
+    code = _migrate(tmp_path, "config-scooling.yaml", "--preserve-shared-assets")
+    assert code == 0
+    assert (policy / "tiers.yaml").read_text(encoding="utf-8") == hand
+    assert lock_origins(tmp_path)[".overseer/policy/tiers.yaml"] == ORIGIN_PRESERVED
+
+
+def test_migrate_force_preserve_shared_assets_still_keeps_shared(tmp_path: Path) -> None:
+    seed_pilot_tree(
+        tmp_path,
+        handover_rel="docs/OVERSEER-HANDOVER.md",
+        handover_text="# KEEP\n",
+        roadmap_rel="docs/ROADMAP.md",
+        roadmap_text="# KEEP R\n",
+    )
+    policy = tmp_path / ".overseer" / "policy"
+    policy.mkdir(parents=True, exist_ok=True)
+    hand = "consumer-owned-policy: true\n"
+    (policy / "tiers.yaml").write_text(hand, encoding="utf-8")
+    code = _migrate(tmp_path, "config-scooling.yaml", "--force", "--preserve-shared-assets")
+    assert code == 0
+    assert (policy / "tiers.yaml").read_text(encoding="utf-8") == hand
+    assert (tmp_path / "docs/OVERSEER-HANDOVER.md").read_text(encoding="utf-8") == "# KEEP\n"
+    assert lock_origins(tmp_path)[".overseer/policy/tiers.yaml"] == ORIGIN_PRESERVED
+    assert lock_origins(tmp_path)["docs/OVERSEER-HANDOVER.md"] == ORIGIN_PRESERVED
+
+
+def test_migrate_promote_overwrites_preserved_shared(tmp_path: Path) -> None:
+    seed_pilot_tree(
+        tmp_path,
+        handover_rel="docs/OVERSEER-HANDOVER.md",
+        handover_text="# H\n",
+        roadmap_rel="docs/ROADMAP.md",
+        roadmap_text="# R\n",
+    )
+    policy = tmp_path / ".overseer" / "policy"
+    policy.mkdir(parents=True, exist_ok=True)
+    (policy / "tiers.yaml").write_text("altered: true\n", encoding="utf-8")
+    code = _migrate(
+        tmp_path,
+        "config-scooling.yaml",
+        "--force",
+        "--include-preserved",
+        "--preserve-shared-assets",
+    )
+    assert code == 0
+    assert (policy / "tiers.yaml").read_text(encoding="utf-8") != "altered: true\n"
+    assert lock_origins(tmp_path)[".overseer/policy/tiers.yaml"] == ORIGIN_KIT
+
+
+def test_classify_preserve_shared_unit() -> None:
+    from cli.commands.init import MigrateClass, _classify_migrate
+    from cli.footprint import FootprintFile
+
+    item = FootprintFile(destination=".overseer/policy/tiers.yaml", source="x", content=b"kit\n")
+    assert (
+        _classify_migrate(
+            item=item,
+            existing=b"hand\n",
+            is_living=False,
+            promote=False,
+            kn_r2_pass=False,
+            force=True,
+            preserve_shared=True,
+        )
+        == MigrateClass.PRESERVED
+    )
+    assert (
+        _classify_migrate(
+            item=item,
+            existing=b"hand\n",
+            is_living=False,
+            promote=True,
+            kn_r2_pass=False,
+            force=True,
+            preserve_shared=True,
+        )
+        == MigrateClass.UPDATED
+    )
+
+
+def test_preserve_shared_assets_argparse_accepted() -> None:
+    from cli.main import build_parser
+
+    ns = build_parser().parse_args(["init", "--preserve-shared-assets", "--non-interactive"])
+    assert ns.preserve_shared_assets is True
+
+
 def test_migrate_argparse_unknown_flag() -> None:
     from cli.main import main
 
