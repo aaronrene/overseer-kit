@@ -378,14 +378,14 @@ Frozen guardrail echo: **no MuseHub-only baseline feature.**
 
 ## §GSP.11 — Definition of Done (GS-PASTE-b)
 
-- [ ] `build_handover_patches` regenerates `next-session` + `paste-ready-prompt` per §GSP.4–§GSP.5
-- [ ] Ambiguous NEXT fail-closed with `next_regen: human_authorship_required` (§GSP.4.3)
-- [ ] Glance fail-closed aligned (§GSP.4.2)
-- [ ] Dry-run plans regen without writing docs; apply writes via anchors only
-- [ ] Seven-tier §GSP.10 green locally; **git-only fixture proves no Muse**
-- [ ] `/build-verification-review` → `pass` before ROADMAP **DONE**
-- [ ] `docs/ROADMAP.md` + `docs/OVERSEER-HANDOVER.md` updated together (SD-17)
-- [ ] No consumer re-init; no feature→GitHub-`main`; no secrets
+- [x] `build_handover_patches` regenerates `next-session` + `paste-ready-prompt` per §GSP.4–§GSP.5
+- [x] Ambiguous NEXT fail-closed with `next_regen: human_authorship_required` (§GSP.4.3)
+- [x] Glance fail-closed aligned (§GSP.4.2)
+- [x] Dry-run plans regen without writing docs; apply writes via anchors only
+- [x] Seven-tier §GSP.10 green locally; **git-only fixture proves no Muse**
+- [x] `/build-verification-review` → `pass` before ROADMAP **DONE**
+- [x] `docs/ROADMAP.md` + `docs/OVERSEER-HANDOVER.md` updated together (SD-17)
+- [x] No consumer re-init; no feature→GitHub-`main`; no secrets
 
 ---
 

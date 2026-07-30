@@ -7,65 +7,62 @@
 ---
 
 <!-- overseer:next role=primary lane=product status=live -->
-## NEXT SESSION — GS-PASTE-b Auto (paste-ready / NEXT regen build)
+## NEXT SESSION — GS-PASTE → main (SD-21 land)
 
 **Date:** 2026-07-30  
-**Current position:** **GS-PASTE-a DONE** — freeze `docs/PHASE-GS-PASTE-READY-REGEN.md`
-reviewed → `pass` (GSP-r3), stamp `sha256:123c2e68…`. Prior: KIT-PRESERVE landed (OK #47).
+**Current position:** **GS-PASTE-b DONE** — BV `pass` (GSP-BV-r1); `next_regen` shipped in
+`ok governance-sync`. Queue has no further open rows.
 **Open this tree only:** `~/OVERSEER_KIT/overseer-kit` — stub `~/overseer-kit` is
 K1-era; do not use it.
-**Model:** **Auto**
+**Model:** **Operator + Auto**
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **GS-PASTE-a** | Frozen `docs/PHASE-GS-PASTE-READY-REGEN.md` — GSP-r3 `pass` (`sha256:123c2e68…`); sole surface `ok governance-sync`; fail-closed ambiguous NEXT; git-only/no-Muse; §GSP.10 matrix |
-| **KIT-PRESERVE → main** | Muse `sha256:746fa8e3…` + GitHub PR [#47](https://github.com/aaronrene/overseer-kit/pull/47) @ `302549e` |
+| **GS-PASTE-b** | `tools/governance_hygiene/next_regen.py` + patch/engine/anchors; fail-closed NEXT; §GSP.10 **19** green; BV `pass` (GSP-BV-r1) |
+| **GS-PASTE-a** | Frozen `docs/PHASE-GS-PASTE-READY-REGEN.md` — GSP-r3 `pass` (`sha256:123c2e68…`) |
 
-### THE ONE NEXT STEP — **Model: Auto**
+### THE ONE NEXT STEP — **Model: Operator + Auto**
 
-Build GS-PASTE-b mechanically against the frozen contract — no redesign.
+SD-21 land hygiene: Muse FF `feat/gs-paste-ready-regen` → Muse `main` → muse-bridge → green
+`muse-mirror` PR → GitHub `main`. No live posture/env flip; no consumer re-init.
 
 | | |
 | --- | --- |
-| **ID** | **GS-PASTE-b** |
+| **ID** | **GS-PASTE → main** |
 | **Branch** | `feat/gs-paste-ready-regen` |
 | **Repo** | **overseer-kit** @ `~/OVERSEER_KIT/overseer-kit` |
 | **Read first** | `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md`; `docs/PHASE-GS-PASTE-READY-REGEN.md` |
-| **Hard stops** | No redesign of freeze; no consumer re-init; no feature→GitHub-main; no DONE without `/build-verification-review` → `pass` |
+| **Hard stops** | No feature→GitHub-`main` direct push; no secrets; no live consumer re-init; no staging push |
 
-### Paste-ready prompt — GS-PASTE-b
+### Paste-ready prompt — GS-PASTE → main
 
 ```text
-GS-PASTE-b — Build paste-ready / NEXT regeneration for governance-sync.
+GS-PASTE → main — SD-21 land paste-ready / NEXT regen.
 
-Model: Auto
+Model: Operator + Auto
 Repo: ~/OVERSEER_KIT/overseer-kit
 Branch: feat/gs-paste-ready-regen
-Step: GS-PASTE-b
+Step: GS-PASTE → main
 Authority: authoritative
-Prior: GS-PASTE-a freeze pass (GSP-r3, sha256:123c2e68…); KIT-PRESERVE landed (OK #47)
+Prior: GS-PASTE-b BV pass (GSP-BV-r1); freeze GSP-r3 (sha256:123c2e68…)
 
 Read first:
-- docs/PHASE-GS-PASTE-READY-REGEN.md (frozen: true — ground truth)
-- tools/governance_hygiene/{patch,engine,anchors,parse}.py
-- docs/PHASE-9A-5-GOVERNANCE-HYGIENE-AGENT-OUTLINE.md §4/§7
-- docs/PHASE-KH1-HANDOVER-RELAY-STANDARD.md (NEXT + paste anchors)
 - docs/ROADMAP.md; docs/OVERSEER-HANDOVER.md
+- docs/PHASE-GS-PASTE-READY-REGEN.md (§GSP.11 DoD checked)
+- MUSE-BRIDGE-WORKFLOW.md / scripts/muse-bridge-deploy.sh (SD-14)
 
-Deliver (mechanical build only — no redesign):
-1. Regenerate next-session + paste-ready-prompt via ok governance-sync / --write only (§GSP.3–§GSP.6)
-2. Fail-closed ambiguous NEXT (next_regen: human_authorship_required); glance aligned
-3. git-only fixture green; zero Muse invocations for the feature
-4. Seven-tier §GSP.10 green; /build-verification-review → pass before ROADMAP DONE
-5. Close: ROADMAP + HANDOVER together on feat/gs-paste-ready-regen
+Deliver:
+1. Muse fast-forward feat/gs-paste-ready-regen → Muse main
+2. muse-bridge-deploy → permanent muse-mirror → green PR → GitHub main
+3. Update ROADMAP GS-PASTE → main DONE + HANDOVER together; feature-branch hygiene commit if needed
 
-Hard stops: no freeze redesign; no consumer re-init; no feature→GitHub-main; no DONE on green tests alone.
+Hard stops: no direct git push origin main; no consumer re-init; no secrets; no live posture flips.
 
 Governance gates (mandatory — remind only; silence is not pass):
-- Freeze review: already pass (GSP-r3) — do not re-open contract
-- Build verification: /build-verification-review after Auto before ROADMAP DONE
+- Build verification: already pass (GSP-BV-r1) — do not re-open without new code
+- Workspace (when configured): ok workspace check-next before claiming multi-repo SD-17 complete
 ```
 
 ---
@@ -92,8 +89,9 @@ Governance gates (mandatory — remind only; silence is not pass):
 | --- | --- |
 | **Repo** | overseer-kit |
 | **VCS regime** | `muse+git-mirror` (canonical: muse) |
-| **GS-PASTE-a** | **DONE** — `docs/PHASE-GS-PASTE-READY-REGEN.md` reviewed → `pass` (GSP-r3), stamp `sha256:123c2e68…`. Cleared for GS-PASTE-b Auto |
-| **GS-PASTE-b** | **NEXT** — Auto build on `feat/gs-paste-ready-regen`; BV required before DONE |
+| **GS-PASTE-a** | **DONE** — `docs/PHASE-GS-PASTE-READY-REGEN.md` reviewed → `pass` (GSP-r3), stamp `sha256:123c2e68…` |
+| **GS-PASTE-b** | **DONE** — BV `pass` (GSP-BV-r1); `next_regen` via `ok governance-sync`; §GSP.10 **19** green on `feat/gs-paste-ready-regen` |
+| **GS-PASTE → main** | **NEXT** — SD-21 land (Operator + Auto); no live consumer re-init |
 | **Governance docs** | `docs/OVERSEER-HANDOVER.md`, `docs/ROADMAP.md` |
 | **KH1 contract** | `docs/PHASE-KH1-HANDOVER-RELAY-STANDARD.md` — **reviewed → `pass` (KH1-r2)** |
 | **KH2 contract** | `docs/PHASE-KH2-MUSE-SYNC-HARD-GATE.md` — **reviewed → `pass` (KH2-r2)**; Auto build **DONE** |
@@ -146,9 +144,9 @@ Governance gates (mandatory — remind only; silence is not pass):
 
 | Item | Value |
 | --- | --- |
-| Branch | `feat/gs-paste-ready-regen` (GS-PASTE-a freeze); Muse `main` @ `sha256:746fa8e3…` (PSA); GitHub `main` @ `302549e` (PR [#47](https://github.com/aaronrene/overseer-kit/pull/47)) |
+| Branch | `feat/gs-paste-ready-regen` (GS-PASTE-b build); Muse `main` @ `sha256:746fa8e3…` (PSA); GitHub `main` @ `302549e` (PR [#47](https://github.com/aaronrene/overseer-kit/pull/47)) |
 | Kit checkout | **`~/OVERSEER_KIT/overseer-kit`** (live). Stub `~/overseer-kit` is K1-era — **do not use** |
-| Dirty | GS-PASTE-a freeze + governance flip (this session) |
+| Dirty | GS-PASTE-b Auto + governance close (this session) |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -163,8 +161,18 @@ Governance gates (mandatory — remind only; silence is not pass):
 
 | Date | Note |
 | --- | --- |
-| 2026-07-30 | **GS-PASTE-a DONE** — freeze `docs/PHASE-GS-PASTE-READY-REGEN.md` → `pass` (GSP-r3, `sha256:123c2e68…`). NEXT → **GS-PASTE-b Auto**. |
+| 2026-07-30 | **GS-PASTE-b DONE** — BV `pass` (GSP-BV-r1); §GSP.10 **19** green. NEXT → SD-21 land. |
+| 2026-07-30 | **GS-PASTE-a DONE** — freeze `docs/PHASE-GS-PASTE-READY-REGEN.md` → `pass` (GSP-r3, `sha256:123c2e68…`). |
 
+- **2026-07-30** — **GS-PASTE-b DONE (Auto build + BV `pass`, GSP-BV-r1).** Built
+  mechanically against frozen `docs/PHASE-GS-PASTE-READY-REGEN.md`: new
+  `tools/governance_hygiene/next_regen.py`; `build_handover_patches` regenerates
+  `next-session` + `paste-ready-prompt`; engine patches roadmap before handover;
+  glance fail-closed when open-row count ≠ 1; ambiguity emits
+  `next_regen: human_authorship_required`; git-only fixtures assert zero Muse argv;
+  §GSP.5.3 region-bounded missing-anchor insert. Seven-tier §GSP.10 **19** green
+  (evidence `sha256:00a42b4d…`). ROADMAP GS-PASTE-b → DONE. NEXT → SD-21 land
+  (Operator + Auto). No kit `main` merge this session; no consumer re-init.
 - **2026-07-30** — **GS-PASTE-a DONE (Thinking freeze).** Authored + freeze-reviewed
   `docs/PHASE-GS-PASTE-READY-REGEN.md` → `pass` (GSP-r3). Contract: regenerate
   `next-session` + `paste-ready-prompt` via `ok governance-sync` only; fail-closed

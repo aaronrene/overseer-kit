@@ -327,16 +327,20 @@ def _run_single_lane(
             error_command=realign_error,
         )
 
-    patched_handover, handover_sections = build_handover_patches(
-        handover_text,
-        reads,
-        drift,
-        realign_summary=realign_summary,
-    )
+    # §GSP.6.1: roadmap patches first so handover NEXT regen sees D3-reconciled queue.
     patched_roadmap, roadmap_sections = build_roadmap_patches(
         roadmap_text,
         reads,
         drift,
+    )
+    patched_handover, handover_sections, next_regen_token = build_handover_patches(
+        handover_text,
+        reads,
+        drift,
+        realign_summary=realign_summary,
+        config=config,
+        roadmap_text=patched_roadmap,
+        repo_root=repo_root,
     )
     sections = handover_sections + roadmap_sections
 
@@ -358,6 +362,7 @@ def _run_single_lane(
 
     emit(f"drift: D1={drift.d1_handover_vs_git} D2={drift.d2_anchor_vs_canonical} D3={drift.d3_queue_vs_merged}")
     emit(f"planned sections: {', '.join(sections)}")
+    emit(next_regen_token)
     if realign_summary:
         emit(realign_summary)
     if dry_run:
