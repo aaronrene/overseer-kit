@@ -1,13 +1,22 @@
-"""Templated section replacement for handover + roadmap (§4)."""
+"""Templated section replacement for handover + roadmap (§4 / §GSP)."""
 
 from __future__ import annotations
 
 import re
 from datetime import date
+from pathlib import Path
 
 from adapters.config import OverseerConfig
 from tools.governance_hygiene.anchors import replace_anchor_block
 from tools.governance_hygiene.drift import merged_prs_missing_from_done
+from tools.governance_hygiene.next_regen import (
+    ensure_primary_next_marker,
+    format_change_log_fragment,
+    format_next_regen_token,
+    plan_next_regen,
+    render_next_session,
+    render_paste_ready,
+)
 from tools.governance_hygiene.parse import normalize_status, parse_queue_rows, phase_tokens, pr_matches_row
 from tools.governance_hygiene.types import QueueRow
 from tools.governance_hygiene.types import DriftReport, MergedPullRequest, VerifiedReads
@@ -20,8 +29,14 @@ def build_handover_patches(
     *,
     realign_summary: str | None,
     sync_date: str | None = None,
-) -> tuple[str, tuple[str, ...]]:
-    """Return patched handover text and the list of touched section names."""
+    config: OverseerConfig,
+    roadmap_text: str,
+    repo_root: Path,
+) -> tuple[str, tuple[str, ...], str]:
+    """Return patched handover text, touched sections, and ``next_regen`` token.
+
+    ``roadmap_text`` must be the D3-reconciled roadmap (§GSP.6.1).
+    """
     today = sync_date or date.today().isoformat()
     sections: list[str] = []
     text = handover_text
@@ -40,11 +55,38 @@ def build_handover_patches(
     text = replace_anchor_block(text, "verified-snapshot", snapshot_body)
     sections.append("verified-snapshot")
 
-    change_line = _render_change_log_line(drift, reads, realign_summary, today)
+    decision = plan_next_regen(
+        roadmap_text=roadmap_text,
+        handover_text=text,
+        config=config,
+        repo_root=repo_root,
+    )
+    if decision.row is not None and decision.reason is None:
+        text = ensure_primary_next_marker(text, config)
+        next_body = render_next_session(
+            decision=decision,
+            roadmap_text=roadmap_text,
+            config=config,
+            sync_date=today,
+        )
+        paste_body = render_paste_ready(decision=decision, config=config)
+        text = replace_anchor_block(text, "next-session", next_body)
+        text = replace_anchor_block(text, "paste-ready-prompt", paste_body)
+        sections.append("next-session")
+        sections.append("paste-ready-prompt")
+
+    next_regen_token = format_next_regen_token(decision)
+    change_line = _render_change_log_line(
+        drift,
+        reads,
+        realign_summary,
+        today,
+        next_regen_fragment=format_change_log_fragment(decision),
+    )
     text = _append_change_log(text, change_line)
     sections.append("change-log")
 
-    return text, tuple(sections)
+    return text, tuple(sections), next_regen_token
 
 
 def build_roadmap_patches(
@@ -139,6 +181,8 @@ def _render_change_log_line(
     reads: VerifiedReads,
     realign_summary: str | None,
     today: str,
+    *,
+    next_regen_fragment: str | None = None,
 ) -> str:
     parts = [
         f"D1={drift.d1_handover_vs_git}",
@@ -150,6 +194,8 @@ def _render_change_log_line(
         summary += f" @ `{reads.r1_github_main_sha[:7]}`"
     if realign_summary:
         summary += f"; realign: {realign_summary}"
+    if next_regen_fragment:
+        summary += f"; {next_regen_fragment}"
     return f"- **{today}** — {summary}"
 
 
@@ -204,9 +250,10 @@ def _maybe_merge_row(line: str, merged_prs: tuple[MergedPullRequest, ...]) -> st
 
 
 def _render_next_step_glance(roadmap_text: str) -> str:
+    """Fail-closed glance: only emit a NEXT when open-row count is exactly one (§GSP.4.2)."""
     rows = parse_queue_rows(roadmap_text)
     next_rows = [row for row in rows if normalize_status(row.status) in {"TODO", "NEXT", "WIP"}]
-    if not next_rows:
+    if len(next_rows) != 1:
         return "\n".join(
             [
                 "## Next step at a glance",
