@@ -6,42 +6,53 @@
 
 ---
 
-<!-- overseer:next role=primary lane=product status=live land-phase=land-b -->
+<!-- overseer:next role=primary lane=product status=live -->
 <!-- overseer:anchor:next-session -->
-## NEXT SESSION — GSW-FIX land-b (post-merge sync)
+## NEXT SESSION — PLS-a Post-land main sync freeze
 
 **Date:** 2026-07-31  
-**Current position:** GSW-FIX land-a → land-b  
-**Model:** Auto
+**Current position:** K12 → PLS-a  
+**Model:** Thinking
 
-### THE ONE NEXT STEP — **Model: Auto**
+### What just landed
 
-Post-merge governance closeout for **GSW-FIX**: sync ROADMAP + HANDOVER to merged `main` so NEXT and paste no longer point at the pre-merge posture.
+| Slice | Deliverable |
+| --- | --- |
+| **K12** | Public landing, scenario gallery, GitHub→MuseHub funnel, **MIT** LICENSE (amended from Apache-2.0), SECURITY.md; `tools/landing/` validator; seven-tier K12 tests (**380** total green) |
+
+### THE ONE NEXT STEP — **Model: Thinking**
+
+Freeze `docs/PHASE-PLS-POST-LAND-MAIN-SYNC.md` (close-ritual post-land sync). After an authorized PR land succeeds (`ok pr-land` / `tools/close_ritual/pr_land.py`), optionally sync the local checkout to `origin/<main_branch>` so handover/roadmap bytes match GitHub without a separate manual pull. Scope IN (kit-generic): `close_ritual.post_land_sync` config (`enabled`, `strategy: ff_only`, `require_clean_worktree: true`, fetch remote from `vcs.git.remote`); after MERGED: fetch, dirty tree → report/warn per policy (never clobber), clean tree → `git pull --ff-only`; operator note that editor buffers may be stale (reload from disk, never overwrite disk with old tab content). Freeze must name config keys, exit codes, dirty-tree behavior, interaction with `close_ritual.mode: verify_landed`, consumer opt-in/out, seven-tier matrix. Scope OUT: multi-worktree/portal merges (VideoFactory-specific), editor/Cursor automation, blind dirty-tree merges, force push, changing `refuse_blind_auto_merge`, replacing `verify_landed` (additive post-step only). Hard stops: kit `main` merge stays Tier-3; no secrets; no land-authorization redesign. **Spec-only.**
 
 | | |
 | --- | --- |
-| **ID** | **GSW-FIX land-b (post-merge sync)** |
+| **ID** | **PLS-a** |
+| **Branch** | `feat/pls-a` |
 | **Repo** | **overseer-kit** |
 | **Read first** | `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md` |
-| **Hard stops** | no silent commits to `main`; no Cursor-only dependency; no freeze/BV redesign |
+| **Hard stops** | No merge to `main` without Tier 3 · no secrets · no live posture flips · no inventing NEXT when ambiguous |
 <!-- /overseer:anchor:next-session -->
 
 <!-- overseer:anchor:paste-ready-prompt -->
-### Paste-ready prompt — GSW-FIX land-b
+### Paste-ready prompt — PLS-a
 
 ```text
-Model: Auto
-ID: GSW-FIX land-b (post-merge sync)
-land-phase: land-b
+PLS-a — PLS-a Post-land main sync freeze (overseer-kit).
 
-Deliver:
-1. Fetch/pull latest main (regime-appropriate)
-2. ok governance-sync --dry-run then apply when the plan is correct
-3. Regenerate NEXT + paste so they no longer say wait-for-merge / land-a
-4. Feature-branch commit bundling ROADMAP + HANDOVER (SD-17); open docs PR if needed
-5. ok status --exit-code → 0 and ok land-closeout → 0 before claiming land complete
+Model: Thinking
+Repo: overseer-kit
+Branch: feat/pls-a
+Step: PLS-a
+Authority: authoritative
 
-Hard stops: no silent commits to main; no Cursor-only dependency; no freeze/BV redesign.
+Read first: `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md`.
+
+Deliverables:
+- Freeze `docs/PHASE-PLS-POST-LAND-MAIN-SYNC.md` (close-ritual post-land sync). After an authorized PR land succeeds (`ok pr-land` / `tools/close_ritual/pr_land.py`), optionally sync the local checkout to `origin/<main_branch>` so handover/roadmap bytes match GitHub without a separate manual pull. Scope IN (kit-generic): `close_ritual.post_land_sync` config (`enabled`, `strategy: ff_only`, `require_clean_worktree: true`, fetch remote from `vcs.git.remote`); after MERGED: fetch, dirty tree → report/warn per policy (never clobber), clean tree → `git pull --ff-only`; operator note that editor buffers may be stale (reload from disk, never overwrite disk with old tab content). Freeze must name config keys, exit codes, dirty-tree behavior, interaction with `close_ritual.mode: verify_landed`, consumer opt-in/out, seven-tier matrix. Scope OUT: multi-worktree/portal merges (VideoFactory-specific), editor/Cursor automation, blind dirty-tree merges, force push, changing `refuse_blind_auto_merge`, replacing `verify_landed` (additive post-step only). Hard stops: kit `main` merge stays Tier-3; no secrets; no land-authorization redesign. **Spec-only.**
+
+Hard stops: No merge to `main` without Tier 3 · no secrets · no live posture flips · no inventing NEXT when ambiguous
+
+Governance sync: update roadmap + handover on completion.
 ```
 <!-- /overseer:anchor:paste-ready-prompt -->
 
@@ -68,9 +79,9 @@ Hard stops: no silent commits to main; no Cursor-only dependency; no freeze/BV r
 | Area | State |
 | --- | --- |
 | **VCS regime** | `muse+git-mirror` |
-| **GitHub main** | `98615a860b64ecf87566b8fbee2bb606d573aba1` |
-| **Canonical anchor** | `sha256:fd2a66b58bd62497cccd412dd112d79a12048f4cec614e220d8f916b9ba42467` |
-| **Canonical main** | `sha256:fd2a66b58bd62497cccd412dd112d79a12048f4cec614e220d8f916b9ba42467` |
+| **GitHub main** | `e895a352150559c63d4c3eec5e33415259392a8c` |
+| **Canonical anchor** | `sha256:f7e850061e1279a0c487575a22b22e1e4b3ba1f2a2f6cf46da55d8dd27ecda79` |
+| **Canonical main** | `sha256:f7e850061e1279a0c487575a22b22e1e4b3ba1f2a2f6cf46da55d8dd27ecda79` |
 | **Branch** | `main` |
 | **Dirty** | `yes` |
 | **Drift** | D1=drifted, D2=aligned, D3=aligned |
@@ -82,9 +93,9 @@ Hard stops: no silent commits to main; no Cursor-only dependency; no freeze/BV r
 | Item | Value |
 | --- | --- |
 | Branch | `main` |
-| GitHub `main` | `98615a860b64ecf87566b8fbee2bb606d573aba1` |
-| Canonical anchor | `sha256:fd2a66b58bd62497cccd412dd112d79a12048f4cec614e220d8f916b9ba42467` (.muse/git-bridge.toml:last_export.muse_commit_id) |
-| Muse `main` | `sha256:fd2a66b58bd62497cccd412dd112d79a12048f4cec614e220d8f916b9ba42467` |
+| GitHub `main` | `e895a352150559c63d4c3eec5e33415259392a8c` |
+| Canonical anchor | `sha256:f7e850061e1279a0c487575a22b22e1e4b3ba1f2a2f6cf46da55d8dd27ecda79` (.muse/git-bridge.toml:last_export.muse_commit_id) |
+| Muse `main` | `sha256:f7e850061e1279a0c487575a22b22e1e4b3ba1f2a2f6cf46da55d8dd27ecda79` |
 | Dirty | yes |
 <!-- /overseer:anchor:vcs-table -->
 
@@ -97,6 +108,8 @@ Hard stops: no silent commits to main; no Cursor-only dependency; no freeze/BV r
 
 <!-- overseer:anchor:change-log -->
 ## Change log
+
+- **2026-07-31** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `e895a35`; realign: D2 aligned — skip realign; next_regen=regenerated
 
 - **2026-07-31** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `98615a8`; realign: D2 aligned — skip realign; next_regen=regenerated:land-b
 
@@ -844,3 +857,12 @@ Hard stops: no silent commits to main; no Cursor-only dependency; no freeze/BV r
 5. **Closing commit:** the session-ending commit bundles code/tests + `docs/ROADMAP.md` + `docs/OVERSEER-HANDOVER.md`.
 
 See `docs/ROADMAP.md` → Model-split handover protocol (SD-3) and governance sync (SD-17).
+
+<!-- overseer:anchor:done-recently -->
+### What just landed
+
+| Slice | Deliverable |
+| --- | --- |
+| PR #51 | Mirror: mirror: GS-PASTE D1 VCS table align (merged 2026-07-30) |
+| PR #50 | Mirror: mirror: GS-PASTE land close-out docs (merged 2026-07-30) |
+<!-- /overseer:anchor:done-recently -->
