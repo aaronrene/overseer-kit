@@ -79,11 +79,11 @@ Governance sync: update roadmap + handover on completion.
 | Area | State |
 | --- | --- |
 | **VCS regime** | `muse+git-mirror` |
-| **GitHub main** | `4650171f179a7613a4ccd78bbb7196ea0cbd40c5` |
-| **Canonical anchor** | `sha256:73f19df17422c6f84441ee9ff3b3185bab4596a59d943d47963370bf8b24c57e` |
-| **Canonical main** | `sha256:73f19df17422c6f84441ee9ff3b3185bab4596a59d943d47963370bf8b24c57e` |
+| **GitHub main** | `dcab965aeb3af8fdc8fcff51ee1b21ae185992b4` |
+| **Canonical anchor** | `sha256:ec8b33d011d4fcd0ca97b627555809c1226a0f5b80c6060cf1fee30a6face9de` |
+| **Canonical main** | `sha256:ec8b33d011d4fcd0ca97b627555809c1226a0f5b80c6060cf1fee30a6face9de` |
 | **Branch** | `feat/governance-sync-2026-07-31` |
-| **Dirty** | `yes` |
+| **Dirty** | `no` |
 | **Drift** | D1=drifted, D2=aligned, D3=aligned |
 <!-- /overseer:anchor:verified-snapshot -->
 
@@ -93,10 +93,10 @@ Governance sync: update roadmap + handover on completion.
 | Item | Value |
 | --- | --- |
 | Branch | `feat/governance-sync-2026-07-31` |
-| GitHub `main` | `4650171f179a7613a4ccd78bbb7196ea0cbd40c5` |
-| Canonical anchor | `sha256:73f19df17422c6f84441ee9ff3b3185bab4596a59d943d47963370bf8b24c57e` (.muse/git-bridge.toml:last_export.muse_commit_id) |
-| Muse `main` | `sha256:73f19df17422c6f84441ee9ff3b3185bab4596a59d943d47963370bf8b24c57e` |
-| Dirty | yes |
+| GitHub `main` | `dcab965aeb3af8fdc8fcff51ee1b21ae185992b4` |
+| Canonical anchor | `sha256:ec8b33d011d4fcd0ca97b627555809c1226a0f5b80c6060cf1fee30a6face9de` (.muse/git-bridge.toml:last_export.muse_commit_id) |
+| Muse `main` | `sha256:ec8b33d011d4fcd0ca97b627555809c1226a0f5b80c6060cf1fee30a6face9de` |
+| Dirty | no |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -108,6 +108,8 @@ Governance sync: update roadmap + handover on completion.
 
 <!-- overseer:anchor:change-log -->
 ## Change log
+
+- **2026-07-31** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `dcab965`; realign: D2 aligned — skip realign; next_regen=regenerated
 
 - **2026-07-31** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `4650171`; realign: D2 aligned — skip realign; next_regen=regenerated
 
