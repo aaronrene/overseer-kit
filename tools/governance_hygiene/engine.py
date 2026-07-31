@@ -13,7 +13,11 @@ from adapters.errors import ReadError, WriteError
 from adapters.runner import CommandRunner, quote_arg
 from cli.atomic import WriteFailure, atomic_write_text
 from tools.governance_hygiene.drift import detect_drift
-from tools.governance_hygiene.patch import build_handover_patches, build_roadmap_patches
+from tools.governance_hygiene.patch import (
+    build_handover_patches,
+    build_roadmap_patches,
+    extract_paste_ready_block,
+)
 from tools.governance_hygiene.reads import ReadFailure, perform_verified_reads
 from tools.governance_hygiene.realign import execute_realign_guard, plan_realign
 from tools.governance_gates import scan_governance_gates
@@ -365,6 +369,11 @@ def _run_single_lane(
     emit(next_regen_token)
     if realign_summary:
         emit(realign_summary)
+    if dry_run and "land-b" in next_regen_token:
+        # §PMHF.3.4 rule 4: dry-run shows the planned land-b body.
+        land_b_block = extract_paste_ready_block(patched_handover)
+        if land_b_block:
+            emit(land_b_block)
     if dry_run:
         d1_d2_aligned = (
             drift.d1_handover_vs_git == "aligned"

@@ -6,78 +6,71 @@
 
 ---
 
-<!-- overseer:next role=primary lane=product status=live -->
-## NEXT SESSION — PMHF-b Auto build (post-merge handover freshness)
+<!-- overseer:next role=primary lane=product status=live land-phase=land-a -->
+## NEXT SESSION — PMHF → main (land-a)
 
 **Date:** 2026-07-31  
-**Current position:** **PMHF-a freeze DONE** — `docs/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md`
-reviewed → `pass` (PMHF-r4). Cleared for PMHF-b Auto on
-`feat/post-merge-handover-freshness`. No redesign of freeze/BV; no Cursor-only primary.
+**Current position:** **PMHF-b build DONE** — built exactly to frozen
+`docs/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md`; seven-tier §PMHF.10 **46** green;
+`/build-verification-review` → `pass` (PMHF-BV-r1). Next is landing the slice: **land-a**
+(open/update PR; stop for Tier 3 merge). Land is incomplete until land-b clears
+(`ok status --exit-code` → `0` **and** `ok land-closeout` → `0`).
 **Open this tree only:** `~/OVERSEER_KIT/overseer-kit` — stub `~/overseer-kit` is
 K1-era; do not use it.
-**Model:** **Auto**
+**Model:** **Operator + Auto**
 
 ### Authority split (read this — three different handovers)
 
 | Board | File | What it controls | Live NEXT (2026-07-31) |
 | --- | --- | --- | --- |
 | **Product order (PRIMARY)** | `~/scooling/docs/OVERSEER-HANDOVER.md` | Cross-repo product sequencing | Trust Scooling PRIMARY — do not invent kit product NEXT |
-| **Kit (this board)** | `docs/OVERSEER-HANDOVER.md` | Kit vendor phases only | **PMHF-b** Auto build |
+| **Kit (this board)** | `docs/OVERSEER-HANDOVER.md` | Kit vendor phases only | **PMHF → main (land-a)** |
 | **Knowtation RELAY** | Knowtation handover | Consumer relay | Follow Scooling PRIMARY |
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
+| **PMHF-b** | `tools/land_closeout/` + `ok land-closeout`; status/land-check wiring; `next_regen` land-b; CI closeout template; §PMHF.10 **46** green; BV `pass` (PMHF-BV-r1) |
 | **PMHF-a** | Frozen `docs/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md` — PMHF-r4 `pass` |
 | **GS-PASTE → main** | SD-21: Muse FF → `sha256:e7831636…` → PR [#49](https://github.com/aaronrene/overseer-kit/pull/49) → GitHub `main` @ `5a85ef2` |
-| **GS-PASTE-b** | `next_regen` via `ok governance-sync`; §GSP.10 **19** green; BV `pass` (GSP-BV-r1) |
 
-### THE ONE NEXT STEP — **Model: Auto**
+### THE ONE NEXT STEP — **Model: Operator + Auto**
 
-Build PMHF-b exactly against the frozen PMHF-a contract. Seven-tier §PMHF.10 →
-`/build-verification-review` → `pass` before ROADMAP DONE.
+Land PMHF per its own frozen protocol (§PMHF.3): **land-a** — open/update the PR (or SD-21
+Muse→mirror→GitHub `main` path when criteria hold), then **stop** for Tier 3 merge. Do NOT
+claim land complete; land-b follows only after merge is confirmed.
 
 | | |
 | --- | --- |
-| **ID** | **PMHF-b** |
+| **ID** | **PMHF → main (land-a)** |
 | **Branch** | `feat/post-merge-handover-freshness` |
 | **Repo** | **overseer-kit** @ `~/OVERSEER_KIT/overseer-kit` |
-| **Read first** | `docs/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md` (frozen); `docs/ROADMAP.md`; this handover |
-| **Hard stops** | No redesign; no Cursor-only primary; no silent main writes; no secrets; no main merge without Tier 3/SD-21 |
+| **Read first** | `docs/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md` §PMHF.3 (frozen); `docs/ROADMAP.md`; this handover |
+| **Hard stops** | No silent main writes; no land-complete claim in land-a; no main merge without Tier 3/SD-21; no secrets |
 
-### Paste-ready prompt — PMHF-b
+### Paste-ready prompt — PMHF → main (land-a)
 
 ```text
-YOU ARE HERE: Overseer Kit — PMHF-b Auto build (post-merge handover freshness).
+YOU ARE HERE: Overseer Kit — PMHF → main (land-a).
 
-Build exactly to frozen docs/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md (PMHF-r4 pass).
-No redesign of freeze/BV. No Cursor-only primary. No silent writes to main.
-
-Model: Auto
+Model: Operator + Auto
+ID: PMHF → main (land-a)
+land-phase: land-a
 Repo: ~/OVERSEER_KIT/overseer-kit
 Branch: feat/post-merge-handover-freshness
 
-Read first:
-- docs/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md (§PMHF.11 deliverables, §PMHF.10 tests)
-- docs/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md (compose only)
-- docs/PHASE-GS-PASTE-READY-REGEN.md (next_regen land-b emission)
+Deliver:
+1. Open/update PR (or SD-21 Muse→mirror→GitHub main path when criteria hold)
+2. Stop for Tier 3 merge authorization when required
+3. Do NOT claim land complete
+4. Do NOT regenerate post-merge NEXT in this paste
 
-Deliver (§PMHF.11):
-1. tools/land_closeout/ + ok land-closeout
-2. status --exit-code + land-check wiring
-3. next_regen land-phase= + land-b emission
-4. templates/ci/governance-closeout-github-actions.yml
-5. template/skill/rule touchpoints named in §PMHF.11
-6. Seven-tier §PMHF.10 green
-7. /build-verification-review → pass before ROADMAP PMHF-b DONE
-8. ROADMAP + HANDOVER sync; feature-branch commit
-
-Hard stops: no freeze/BV redesign; no Cursor-only primary; no silent main writes; no secrets.
+After merge is confirmed on main: paste land-b (same slice). Land is incomplete until land-b.
 
 Governance gates (mandatory — remind only; silence is not pass):
-- Build verification: /build-verification-review → pass before DONE
-- Freeze review: already pass (PMHF-r4) — do not reopen
+- Build verification: already pass (PMHF-BV-r1) — do not reopen
+- Land closeout: after merge, land-b must clear ok status --exit-code → 0 and ok land-closeout → 0
 ```
 
 ---
@@ -105,7 +98,8 @@ Governance gates (mandatory — remind only; silence is not pass):
 | **Repo** | overseer-kit |
 | **VCS regime** | `muse+git-mirror` (canonical: muse) |
 | **PMHF-a** | **DONE** — `docs/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md` reviewed → `pass` (PMHF-r4), stamp `sha256:7d02bb23…` |
-| **PMHF-b** | **NEXT** — Auto build against frozen PMHF-a; §PMHF.10 + BV before DONE |
+| **PMHF-b** | **DONE** — BV `pass` (PMHF-BV-r1); `tools/land_closeout/` + `ok land-closeout` + status/land-check wiring + `next_regen` land-b + CI template; §PMHF.10 **46** green |
+| **PMHF → main** | **NEXT** — land-a (PR + Tier 3 stop) then land-b (post-merge sync); incomplete until `ok land-closeout` → `0` |
 | **GS-PASTE-a** | **DONE** — `docs/PHASE-GS-PASTE-READY-REGEN.md` reviewed → `pass` (GSP-r3), stamp `sha256:123c2e68…` |
 | **GS-PASTE-b** | **DONE** — BV `pass` (GSP-BV-r1); `next_regen` via `ok governance-sync`; §GSP.10 **19** green |
 | **GS-PASTE → main** | **DONE** — SD-21 land 2026-07-30: Muse `main` `sha256:e7831636…` + GitHub PR [#49](https://github.com/aaronrene/overseer-kit/pull/49) → `main` @ `5a85ef2` |
@@ -141,7 +135,7 @@ Governance gates (mandatory — remind only; silence is not pass):
 | **Track O / O2**          | **DONE** — Stage 3 kit upgrade ceremony Thinking freeze (`docs/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md` reviewed → `pass`, O2-r3), stamp `sha256:ac970077…` |
 | **Track O / O3**          | **DONE** — `ok upgrade-regime` build-verified → `pass` (O3-BV-r2). Runbook + contract/harness retarget; **761** tests green (+33 §O2.9). Track O kit chain complete |
 | **CLI entrypoint**        | **`ok`** (canonical `./cli/ok`); **`overseer`** compat shim (`./cli/overseer`, one-line stderr deprecation) |
-| **CLI subcommands**       | `init` \| `sync` \| `status` \| `review --freeze` \| `check-ok` \| `governance-sync` \| `workspace status|check-next|doctor` \| `verify-step` \| `honesty-status` \| `ledger` \| `route` \| `app` \| `hosted-dashboard` \| `upgrade-regime` |
+| **CLI subcommands**       | `init` \| `sync` \| `status` \| `review --freeze` \| `check-ok` \| `governance-sync` \| `workspace status|check-next|doctor` \| `verify-step` \| `honesty-status` \| `ledger` \| `route` \| `app` \| `hosted-dashboard` \| `upgrade-regime` \| `land-closeout` |
 | **K13a Multi-repo workspace lanes** | **DONE** — Thinking freeze reviewed → `pass` (K13a-r3), stamp `sha256:df3d2754…` (incl. §MR.6.5 board filenames) |
 | **K13b Multi-repo workspace lanes** | **DONE** — Auto build-verified → `pass` (K13b-BV-r1). `ok workspace *` + exit `35` + §MR.6.5 init/doctor; no live consumer renames |
 | **K13-DOGFOOD** | **DONE** — live `scooling-stack` on `feat/k13-dogfood-workspace` (Scooling + Knowtation); check-next `0`; doctor clean of `board_name_violation`; merge Tier 3 |
@@ -165,7 +159,7 @@ Governance gates (mandatory — remind only; silence is not pass):
 | GitHub `main` | `0834ae77e05d77b8a8d33b0bbec4a3deb0860cf6` |
 | Canonical anchor | `sha256:8f5b87b745729e706067ec6f3f75a84ee86f6d398ff87c9cc449e98537c7d8a6` (muse) |
 | Muse `main` | `sha256:8f5b87b745729e706067ec6f3f75a84ee86f6d398ff87c9cc449e98537c7d8a6` |
-| Dirty | yes (PMHF-a freeze pass + governance docs; commit pending) |
+| Dirty | yes (PMHF-b build + governance docs; feature-branch commit this close) |
 | Kit checkout | **`~/OVERSEER_KIT/overseer-kit`** (live). Stub `~/overseer-kit` is K1-era — **do not use** |
 | Feature land | Prior: PR [#49](https://github.com/aaronrene/overseer-kit/pull/49) @ `5a85ef2`; mirror tip `0834ae7` |
 <!-- /overseer:anchor:vcs-table -->
@@ -182,11 +176,29 @@ Governance gates (mandatory — remind only; silence is not pass):
 
 | Date | Note |
 | --- | --- |
+| 2026-07-31 | **PMHF-b DONE** — BV `pass` (PMHF-BV-r1); §PMHF.10 **46** green. NEXT → PMHF → main (land-a). |
 | 2026-07-31 | **PMHF-a DONE** — freeze `docs/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md` → `pass` (PMHF-r4, `sha256:7d02bb23…`). NEXT → PMHF-b Auto. |
 | 2026-07-30 | **GS-PASTE → main DONE (SD-21)** — Muse `sha256:e7831636…` + PR [#49](https://github.com/aaronrene/overseer-kit/pull/49) @ `5a85ef2`. |
 | 2026-07-30 | **GS-PASTE-b DONE** — BV `pass` (GSP-BV-r1); §GSP.10 **19** green. NEXT → SD-21 land. |
 | 2026-07-30 | **GS-PASTE-a DONE** — freeze `docs/PHASE-GS-PASTE-READY-REGEN.md` → `pass` (GSP-r3, `sha256:123c2e68…`). |
 
+- **2026-07-31** — **PMHF-b DONE (Auto build + BV `pass`, PMHF-BV-r1).** Built
+  exactly to frozen `docs/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md`:
+  `tools/land_closeout/` (`LandCloseoutReport` + `check_land_closeout`, §PMHF.5
+  resolution order incl. `land_phase_conflicts_queue_done` via `phase_tokens`
+  intersection); `ok land-closeout` (exit `0`/`2`; probe default on for git regimes,
+  off `muse-only`; never merges/writes docs); `ok status --exit-code` folds
+  `land_closeout.ok` into exit `2` (`land_a_in_progress` stays ok); enabled
+  `land-check` refuses non-complete closeout with frozen §PMHF.6.5 tokens;
+  `next_regen` `land-phase=` marker attribute + land-b emission (frozen §PMHF.3.2
+  paste; dry-run shows planned body; mid-wait land-a paste preserved);
+  `templates/ci/governance-closeout-github-actions.yml` (comment-only,
+  `GITHUB_TOKEN`, never pushes/applies on `main`); handover template rule 8 +
+  governance-sync skill + tier-authority rule touchpoints; SPEC §5 additive rows.
+  Seven-tier §PMHF.10 **46** green (BV re-run evidence `sha256:929fb54d…`).
+  ROADMAP PMHF-b → DONE; queue adds **PMHF → main** (land-a/land-b). NEXT →
+  **PMHF → main (land-a)**, marker `land-phase=land-a` (dogfoods the new protocol).
+  No kit `main` merge this session.
 - **2026-07-31** — **PMHF-a DONE (Thinking freeze).** Authored + freeze-reviewed
   `docs/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md` → `pass` (PMHF-r4), stamp
   `sha256:7d02bb23…`. Contract: land-a/land-b paste protocol; fail-closed

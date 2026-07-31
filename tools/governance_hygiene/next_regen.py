@@ -29,6 +29,8 @@ REASON_MULTIPLE = "multiple_open_rows"
 REASON_INVALID_MODEL = "invalid_model_label"
 REASON_SPLIT = "split_undetermined"
 REASON_WORKSPACE_MARKER = "workspace_marker_absent"
+REASON_LAND_A_WAIT = "land_a_in_progress"
+REASON_LAND_PHASE_UNREADABLE = "land_phase_unreadable"
 
 OPEN_STATUSES = frozenset({"TODO", "NEXT", "WIP"})
 DONE_STATUSES = frozenset({"DONE", "MERGED"})
@@ -37,6 +39,257 @@ NEXT_MARKER_RE = re.compile(
     r"<!--\s*overseer:next\s+role=[^>]+-->",
     re.IGNORECASE,
 )
+
+# --- PMHF land protocol (§PMHF.3 / §PMHF.4) ---
+
+LAND_PHASE_A = "land-a"
+LAND_PHASE_B = "land-b"
+LAND_PHASE_UNREADABLE = "unreadable"
+
+# §PMHF.4.2 closed vocabulary — legacy handovers without the marker attribute.
+# Frozen: bare "open PR" / "Tier 3" alone must NOT count as land-a.
+LAND_A_VOCABULARY = (
+    "land-phase: land-a",
+    "wait for merge",
+    "awaiting merge",
+    "stop for tier 3 merge",
+    "→ main (land-a)",
+    "(land-a)",
+)
+LAND_B_VOCABULARY = (
+    "land-phase: land-b",
+    "land-b (post-merge sync)",
+)
+
+# §PMHF.5.2 step 7 frozen remediation string (prefix).
+LAND_B_REMEDIATION = (
+    "land-b required: ok governance-sync --dry-run then apply; "
+    "paste land-b; do not re-paste land-a"
+)
+
+_LAND_PHASE_ATTR_RE = re.compile(r"\bland-phase=([^\s>]+)", re.IGNORECASE)
+_PASTE_FENCE_RE = re.compile(
+    r"### Paste-ready prompt[^\n]*\n+```[a-zA-Z]*\n([\s\S]*?)```",
+)
+_LAND_ID_LINE_RE = re.compile(r"^\s*ID:\s*(.+?)\s*$", re.MULTILINE | re.IGNORECASE)
+_NEXT_ID_CELL_RE = re.compile(r"\|\s*\*\*ID\*\*\s*\|\s*(.+?)\s*\|", re.IGNORECASE)
+_LAND_PARENTHETICAL_RE = re.compile(r"\s*\((?:land-[ab])\)\s*$", re.IGNORECASE)
+_PASTE_PR_RE = re.compile(r"\bPR #(\d+)\b")
+
+# Tokens too generic to identify a land slice (§PMHF.3.3 rejected match rule).
+_GENERIC_LAND_TOKENS = frozenset({"", "→", "->"})
+
+
+def extract_paste_fence_body(handover_text: str) -> str | None:
+    """Return the paste-ready fence body, or None when no fence exists (§PMHF.4.2)."""
+    match = _PASTE_FENCE_RE.search(handover_text)
+    return match.group(1) if match else None
+
+
+def resolve_land_phase(handover_text: str) -> str | None:
+    """Resolve land posture per §PMHF.4.
+
+    Returns ``"land-a"`` | ``"land-b"`` | ``None`` (no land posture) |
+    ``"unreadable"`` (unknown attribute value or conflicting vocabulary).
+    The marker HTML attribute beats vocabulary fallback when present.
+    """
+    marker_match = NEXT_MARKER_RE.search(handover_text)
+    if marker_match:
+        attr = _LAND_PHASE_ATTR_RE.search(marker_match.group(0))
+        if attr:
+            value = attr.group(1).strip().lower()
+            if value in {LAND_PHASE_A, LAND_PHASE_B}:
+                return value
+            return LAND_PHASE_UNREADABLE
+
+    body = extract_paste_fence_body(handover_text)
+    if body is None:
+        return None
+    lowered = body.lower()
+    is_land_a = any(token in lowered for token in LAND_A_VOCABULARY)
+    is_land_b = any(token in lowered for token in LAND_B_VOCABULARY)
+    if is_land_a and is_land_b:
+        return LAND_PHASE_UNREADABLE
+    if is_land_a:
+        return LAND_PHASE_A
+    if is_land_b:
+        return LAND_PHASE_B
+    return None
+
+
+def extract_land_id(handover_text: str) -> str | None:
+    """Land ID from paste ``ID:`` line, falling back to the NEXT ``| **ID** |`` cell."""
+    body = extract_paste_fence_body(handover_text)
+    if body is not None:
+        match = _LAND_ID_LINE_RE.search(body)
+        if match:
+            return match.group(1).strip()
+    cell = _NEXT_ID_CELL_RE.search(handover_text)
+    if cell:
+        return cell.group(1).strip().strip("*").strip()
+    return None
+
+
+def strip_land_parenthetical(land_id: str) -> str:
+    """Strip a trailing ``(land-a)`` / ``(land-b)`` so tokens align with queue rows (§PMHF.3.3)."""
+    return _LAND_PARENTHETICAL_RE.sub("", land_id).strip()
+
+
+def _meaningful_land_tokens(label: str, main_branch: str) -> set[str]:
+    generic = set(_GENERIC_LAND_TOKENS) | {main_branch.lower()}
+    return {token.lower() for token in phase_tokens(label)} - generic
+
+
+def land_queue_conflict(
+    roadmap_text: str,
+    land_id: str,
+    *,
+    main_branch: str = "main",
+) -> bool:
+    """§PMHF.3.3: DONE/MERGED **land** queue row matching the current land-a ID.
+
+    A candidate row must be land-shaped (``{slice} → main``) and share a
+    slice-identifying token with the land-a ID (never just ``→ main`` — the
+    frozen rejected match rule protects historical other-slice land rows).
+    """
+    id_tokens = _meaningful_land_tokens(strip_land_parenthetical(land_id), main_branch)
+    if not id_tokens:
+        return False
+    land_row_re = re.compile(r"(?:→|->)\s*" + re.escape(main_branch), re.IGNORECASE)
+    for row in parse_queue_rows(roadmap_text):
+        if normalize_status(row.status) not in DONE_STATUSES:
+            continue
+        if not land_row_re.search(row.phase_label):
+            continue
+        if id_tokens & _meaningful_land_tokens(row.phase_label, main_branch):
+            return True
+    return False
+
+
+def extract_paste_pr_number(handover_text: str) -> int | None:
+    """First ``PR #<digits>`` named in the paste-ready fence (§PMHF.5.3)."""
+    body = extract_paste_fence_body(handover_text)
+    if body is None:
+        return None
+    match = _PASTE_PR_RE.search(body)
+    return int(match.group(1)) if match else None
+
+
+def set_marker_land_phase(handover_text: str, land_phase: str | None) -> str:
+    """Set or clear the ``land-phase=`` attribute on the existing NEXT marker (§PMHF.4.1)."""
+    match = NEXT_MARKER_RE.search(handover_text)
+    if not match:
+        return handover_text
+    marker = match.group(0)
+    updated = re.sub(r"\s+land-phase=[^\s>]+", "", marker, flags=re.IGNORECASE)
+    if land_phase:
+        updated = re.sub(r"\s*-->$", f" land-phase={land_phase} -->", updated)
+    return handover_text.replace(marker, updated, 1)
+
+
+@dataclass(frozen=True)
+class LandBPlan:
+    """Planned land-b emission for the slice currently mid-land (§PMHF.3.4)."""
+
+    slice_id: str
+    land_a_id: str
+
+
+def _slice_from_land_id(land_id: str, main_branch: str) -> str:
+    base = strip_land_parenthetical(land_id)
+    base = re.sub(
+        r"\s*(?:→|->)\s*" + re.escape(main_branch) + r"\s*$",
+        "",
+        base,
+        flags=re.IGNORECASE,
+    )
+    return base.strip()
+
+
+def plan_land_b(
+    handover_text: str,
+    *,
+    d1: str | None,
+    freshness_state: str | None = None,
+    merged_pr_signal: bool = False,
+    main_branch: str = "main",
+) -> LandBPlan | None:
+    """Return a land-b plan when NEXT is land-a and closeout is post-merge incomplete.
+
+    §PMHF.3.4 rule 1: emit land-b for the same slice — never re-emit land-a.
+    """
+    if resolve_land_phase(handover_text) != LAND_PHASE_A:
+        return None
+    post_merge_incomplete = (
+        d1 == "drifted"
+        or freshness_state in {"drifted", "stale_marker"}
+        or merged_pr_signal
+    )
+    if not post_merge_incomplete:
+        return None
+    land_id = extract_land_id(handover_text) or ""
+    slice_id = _slice_from_land_id(land_id, main_branch) if land_id else ""
+    return LandBPlan(slice_id=slice_id or "land", land_a_id=land_id)
+
+
+def render_land_b_next_session(
+    plan: LandBPlan,
+    *,
+    config: OverseerConfig,
+    sync_date: str,
+) -> str:
+    """Render the land-b NEXT SESSION body (frozen shape §PMHF.3.2)."""
+    main = config.vcs.git.main_branch or "main"
+    lines = [
+        f"## NEXT SESSION — {plan.slice_id} land-b (post-merge sync)",
+        "",
+        f"**Date:** {sync_date}  ",
+        f"**Current position:** {plan.slice_id} land-a → land-b  ",
+        "**Model:** Auto",
+        "",
+        "### THE ONE NEXT STEP — **Model: Auto**",
+        "",
+        f"Post-merge governance closeout for **{plan.slice_id}**: sync ROADMAP + HANDOVER to "
+        f"merged `{main}` so NEXT and paste no longer point at the pre-merge posture.",
+        "",
+        "| | |",
+        "| --- | --- |",
+        f"| **ID** | **{plan.slice_id} land-b (post-merge sync)** |",
+        f"| **Repo** | **{config.repo.name}** |",
+        f"| **Read first** | {_docs_read_first(config)} |",
+        f"| **Hard stops** | no silent commits to `{main}`; no Cursor-only dependency; "
+        "no freeze/BV redesign |",
+    ]
+    return "\n".join(lines)
+
+
+def render_land_b_paste(plan: LandBPlan, *, config: OverseerConfig) -> str:
+    """Render the frozen land-b paste (§PMHF.3.2) inside the paste-ready anchor."""
+    main = config.vcs.git.main_branch or "main"
+    fence_lines = [
+        "Model: Auto",
+        f"ID: {plan.slice_id} land-b (post-merge sync)",
+        "land-phase: land-b",
+        "",
+        "Deliver:",
+        f"1. Fetch/pull latest {main} (regime-appropriate)",
+        "2. ok governance-sync --dry-run then apply when the plan is correct",
+        "3. Regenerate NEXT + paste so they no longer say wait-for-merge / land-a",
+        "4. Feature-branch commit bundling ROADMAP + HANDOVER (SD-17); open docs PR if needed",
+        "5. ok status --exit-code → 0 and ok land-closeout → 0 before claiming land complete",
+        "",
+        f"Hard stops: no silent commits to {main}; no Cursor-only dependency; "
+        "no freeze/BV redesign.",
+    ]
+    return "\n".join(
+        [
+            f"### Paste-ready prompt — {plan.slice_id} land-b",
+            "",
+            "```text",
+            "\n".join(fence_lines),
+            "```",
+        ]
+    )
 
 HARD_STOPS = (
     "No merge to `main` without Tier 3 · no secrets · no live posture flips · "

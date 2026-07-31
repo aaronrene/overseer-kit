@@ -25,6 +25,7 @@ from tools.footprint_integrity import check_footprint_integrity
 from tools.governance_freshness import check_governance_freshness
 from tools.governance_gates import scan_governance_gates
 from tools.governance_gates.format import format_pending_gate_lines, pending_gates_payload
+from tools.land_closeout import check_land_closeout, land_closeout_payload
 from tools.muse_sync import check_muse_sync
 from tools.substrate_health import check_substrate
 from tools.workspace import build_status_report
@@ -116,6 +117,7 @@ def _exit_code_from_conditions(
     muse_sync_ok: bool = True,
     footprint_self_integrity_ok: bool = True,
     governance_freshness_ok: bool = True,
+    land_closeout_ok: bool = True,
     workspace_ok: bool = True,
 ) -> int:
     """Apply frozen precedence: 2 > 6 > 35 > 3 > 0 (§MR.7.2).
@@ -124,6 +126,8 @@ def _exit_code_from_conditions(
     (declared-but-absent kit-owned files) also folds into the same 2 tier, distinct from and
     independent of the opt-in ``--check-footprint`` content-digest ``integrity`` tier (6).
     §GFG.6: ``governance_freshness_ok`` (D1/D2 drift or stale marker) folds into the same 2 tier.
+    §PMHF.6.1: ``land_closeout_ok`` folds into the same 2 tier; ``land_a_in_progress``
+    has ``ok=True`` so waiting for merge never false-fails status.
     §MR.7.2: workspace relay failure is ``35`` and overrides drift ``3`` / clean ``0`` without
     overriding config/substrate/muse_sync/footprint-self-integrity/governance-freshness (``2``)
     or lock integrity (``6``).
@@ -136,6 +140,7 @@ def _exit_code_from_conditions(
         or not muse_sync_ok
         or not footprint_self_integrity_ok
         or not governance_freshness_ok
+        or not land_closeout_ok
     ):
         return 2
     if integrity == "mismatch":
@@ -282,6 +287,19 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
                 f"governance_freshness-remediation: {governance_freshness.remediation}"
             )
 
+    # §PMHF.6.1: always-on land closeout probe; never invokes gh from status.
+    land_closeout = check_land_closeout(
+        config,
+        repo_root,
+        runner=ctx.runner,
+        probe_merged_pr=False,
+        freshness=governance_freshness,
+    )
+    if not land_closeout.ok:
+        report.add_warning(f"land_closeout: {land_closeout.state} — {land_closeout.message}")
+        if land_closeout.remediation:
+            report.add_warning(f"land_closeout-remediation: {land_closeout.remediation}")
+
     model_routing_status = routing_policy_status(config, repo_root, kit_root=ctx.kit)
     if model_routing_status.get("enabled") and not model_routing_status.get("valid"):
         violation = model_routing_status.get("violation") or "invalid"
@@ -314,6 +332,7 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
         "muse_sync": _muse_sync_payload(muse_sync),
         "footprint_self_integrity": _footprint_self_integrity_payload(footprint_self_integrity),
         "governance_freshness": _governance_freshness_payload(governance_freshness),
+        "land_closeout": land_closeout_payload(land_closeout),
         "lock": _lock_summary(lock) if lock else None,
         "drift": drift,
         "footprint_integrity": integrity,
@@ -351,6 +370,7 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
         muse_sync_ok=muse_sync.ok,
         footprint_self_integrity_ok=footprint_self_integrity.ok,
         governance_freshness_ok=governance_freshness.ok,
+        land_closeout_ok=land_closeout.ok,
         workspace_ok=workspace_ok,
     )
     if lock_error and args.exit_code:
@@ -377,6 +397,12 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
                 ctx.output.emit(
                     f"governance_freshness-remediation: {governance_freshness.remediation}"
                 )
+        if not land_closeout.ok:
+            ctx.output.emit(
+                f"land_closeout: {land_closeout.state} — {land_closeout.message}"
+            )
+            if land_closeout.remediation:
+                ctx.output.emit(f"land_closeout-remediation: {land_closeout.remediation}")
         if lock:
             ctx.output.emit(f"lock kit_version: {lock.kit_version}")
         ctx.output.emit(f"drift: {drift['status']}")

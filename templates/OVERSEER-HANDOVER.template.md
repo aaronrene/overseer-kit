@@ -124,5 +124,6 @@ Archived prompts MUST NOT use `## NEXT SESSION —` (including “archived” in
 5. **Closing commit:** the session-ending commit bundles code/tests + `{{docs.roadmap_path}}` + `{{docs.handover_path}}`.
 6. **Spend awareness:** when `cost_awareness.enabled: true`, `ok status` and `governance-sync` surface the active slice's cost band and paid-step flag (reminder-only; silence is not pass).
 7. **Workspace markers (KH1 H13–H17):** exactly one `## NEXT SESSION —` with PRIMARY or RELAY marker; archived uses `## ARCHIVED SESSION —` only; lane tips use `## LANE TIP —`; when `workspace:` + `strict_board_names`, prefer `{REPO_SLUG}-OVERSEER-HANDOVER.md` filenames.
+8. **Land = two pastes (PMHF):** landing a slice is `land-a` (open/update PR; stop for Tier 3 merge; marker `land-phase=land-a`; ID `<slice> → {{vcs.git.main_branch}} (land-a)`) then, after merge is confirmed, `land-b` (post-merge sync; marker `land-phase=land-b`; ID `<slice> land-b (post-merge sync)`). Land is incomplete until land-b clears: `ok status --exit-code` → 0 **and** `ok land-closeout` → 0. Never re-paste land-a after merge; never mark the `<slice> → {{vcs.git.main_branch}}` queue row DONE while the handover `land-phase` is still `land-a`.
 
 See `{{docs.standing_decisions_path}}` → Model-split handover protocol (SD-3) and governance sync (SD-17).
