@@ -79,9 +79,9 @@ Governance sync: update roadmap + handover on completion.
 | Area | State |
 | --- | --- |
 | **VCS regime** | `muse+git-mirror` |
-| **GitHub main** | `dcab965aeb3af8fdc8fcff51ee1b21ae185992b4` |
-| **Canonical anchor** | `sha256:ec8b33d011d4fcd0ca97b627555809c1226a0f5b80c6060cf1fee30a6face9de` |
-| **Canonical main** | `sha256:ec8b33d011d4fcd0ca97b627555809c1226a0f5b80c6060cf1fee30a6face9de` |
+| **GitHub main** | `c57a7b29a5318041c319166216f19d729b350c8d` |
+| **Canonical anchor** | `sha256:49d12e51fbf467750411005ed81a1460b63b9a78ecd2b0673066de27572849ab` |
+| **Canonical main** | `sha256:49d12e51fbf467750411005ed81a1460b63b9a78ecd2b0673066de27572849ab` |
 | **Branch** | `feat/governance-sync-2026-07-31` |
 | **Dirty** | `no` |
 | **Drift** | D1=drifted, D2=aligned, D3=aligned |
@@ -93,9 +93,9 @@ Governance sync: update roadmap + handover on completion.
 | Item | Value |
 | --- | --- |
 | Branch | `feat/governance-sync-2026-07-31` |
-| GitHub `main` | `dcab965aeb3af8fdc8fcff51ee1b21ae185992b4` |
-| Canonical anchor | `sha256:ec8b33d011d4fcd0ca97b627555809c1226a0f5b80c6060cf1fee30a6face9de` (.muse/git-bridge.toml:last_export.muse_commit_id) |
-| Muse `main` | `sha256:ec8b33d011d4fcd0ca97b627555809c1226a0f5b80c6060cf1fee30a6face9de` |
+| GitHub `main` | `c57a7b29a5318041c319166216f19d729b350c8d` |
+| Canonical anchor | `sha256:49d12e51fbf467750411005ed81a1460b63b9a78ecd2b0673066de27572849ab` (.muse/git-bridge.toml:last_export.muse_commit_id) |
+| Muse `main` | `sha256:49d12e51fbf467750411005ed81a1460b63b9a78ecd2b0673066de27572849ab` |
 | Dirty | no |
 <!-- /overseer:anchor:vcs-table -->
 
@@ -108,6 +108,8 @@ Governance sync: update roadmap + handover on completion.
 
 <!-- overseer:anchor:change-log -->
 ## Change log
+
+- **2026-07-31** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `c57a7b2`; realign: D2 aligned — skip realign; next_regen=regenerated
 
 - **2026-07-31** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `dcab965`; realign: D2 aligned — skip realign; next_regen=regenerated
 
