@@ -8,45 +8,45 @@
 
 <!-- overseer:next role=primary lane=product status=live -->
 <!-- overseer:anchor:next-session -->
-## NEXT SESSION — GSB → main (SD-21 land)
+## NEXT SESSION — Backlog triage (build queue empty)
 
 **Date:** 2026-07-31  
-**Current position:** GSB-b build verified `pass` (GSB-BV-r1) → GSB → main  
-**Model:** Operator + Auto
+**Current position:** GSB → main DONE (PR [#59](https://github.com/aaronrene/overseer-kit/pull/59), `de9013f`) — zero open rows in the build queue  
+**Model:** Thinking
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **GSB-b** | **DONE** — build verified → `pass` (GSB-BV-r1, 0 findings). C0 reconcile-before-ensure in `tools/governance_hygiene/engine.py`: per-history classify vs §GSB.3.2.1 `T_target`; ancestor/equal → tip FF without checkout-as-FF; diverged → deterministic `-N` uniquify + frozen `PatchPlan` replace + rebuilt `pr_url`; Muse never dirties Git; C1 ensure unchanged. Seven-tier §GSB.8 **25** green incl. same-day-collision `--write` on all three regimes; full suite **1213** green (15 pre-existing env failures unchanged). **No merge to `main` this session.** |
+| **GSB → main** | **DONE** (SD-21 land, PR [#59](https://github.com/aaronrene/overseer-kit/pull/59), GitHub `main` @ `de9013f`; Muse `main` @ `sha256:d869591f…`). land-b post-merge sync ran `ok governance-sync --write` — **first live run of the GSB C0 reconcile path**: same-day collision with stale `feat/governance-sync-2026-07-31` detected on both histories, deterministically uniquified to `feat/governance-sync-2026-07-31-2`, exit `0`, zero checkout refusals. The 2026-07-31 live defect chain (PMHF → GSW-FIX → PLS → GSB) is closed. `ok land-closeout` → `0`. |
 
-### THE ONE NEXT STEP — **Model: Operator + Auto**
+### THE ONE NEXT STEP — **Model: Thinking**
 
-Land GSB per SD-21 land hygiene (merge authority Tier 3): Muse merge the feature branch to `main`, bridge-deploy, merge the green `muse-mirror` PR to GitHub `main`, then land-b post-merge sync — the first live run of the C0 reconcile path — and closeout gates to `0`.
+The build queue has zero open rows. Triage the exploration backlog (`docs/ROADMAP.md` § Exploration backlog), recommend the next phase with a boundary check (governance kit, not product runtime), confirm the pick with the operator (Tier 2), then author + freeze-review its `{phase}-a` Thinking spec before any Auto build.
 
 | | |
 | --- | --- |
-| **ID** | **GSB → main (SD-21 land)** |
-| **Branch** | `feat/gsb-branch-collision` |
+| **ID** | **NEXT-PHASE backlog triage + `{phase}-a` freeze** |
+| **Branch** | new `feat/<phase-slug>` from `main` |
 | **Repo** | **overseer-kit** |
-| **Read first** | `docs/ROADMAP.md` (GSB → main row); `MUSE-BRIDGE-WORKFLOW.md` + `scripts/muse-bridge-deploy.sh` (SD-14 mirror rules); `docs/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md` (land-a/land-b protocol) |
-| **Hard stops** | Merge to `main` is Tier 3 (operator approves) · no `git push origin main` · no checkout `--force` · land incomplete until `ok land-closeout` → `0` |
+| **Read first** | `docs/ROADMAP.md` (Exploration backlog table + Definition of Done); this handover (verified snapshot); `docs/OVERSEER-KIT-SPEC.md` (boundaries) |
+| **Hard stops** | No Auto build before freeze `pass` · no merge to `main` (Tier 3) · no product-runtime scope in the kit |
 <!-- /overseer:anchor:next-session -->
 
 <!-- overseer:anchor:paste-ready-prompt -->
-### Paste-ready prompt — GSB → main
+### Paste-ready prompt — NEXT-PHASE backlog triage
 
 ```text
-Model: Operator + Auto
-ID: GSB → main (SD-21 land)
+Model: Thinking
+ID: NEXT-PHASE backlog triage + {phase}-a freeze
 
-GSB-b is DONE (BV pass GSB-BV-r1; seven-tier §GSB.8 25 green; full suite 1213 green). Land GSB:
+The build queue has zero open rows (GSB → main DONE, PR #59, GitHub main @ de9013f; live defect chain PMHF → GSW-FIX → PLS → GSB closed).
 
-1. land-a: Muse merge feat/gsb-branch-collision → main → scripts/muse-bridge-deploy.sh → green muse-mirror PR → GitHub main (merge authority Tier 3 — operator approves).
-2. land-b: post-merge sync via ok governance-sync --write (first live run of the GSB C0 reconcile path — a same-day feat/governance-sync-2026-07-31 collision is expected and must FF or uniquify, never exit 2 on checkout); then ok status --exit-code → 0 and ok land-closeout → 0 before claiming land complete.
-3. Update ROADMAP (GSB → main DONE) + handover together in the closeout (SD-17).
+1. Read docs/ROADMAP.md (Exploration backlog + Definition of Done) and docs/OVERSEER-HANDOVER.md (verified snapshot).
+2. Recommend the next phase with a boundary check (repo-agnostic governance kit — not a product runtime); operator confirms the selection (Tier 2, record in standing decisions if it sets policy).
+3. On a new feat/<phase-slug> branch from main: author docs/PHASE-<PHASE>-….md, run /freeze-review-loop → pass, queue {phase}-a DONE + {phase}-b NEXT rows in ROADMAP, regenerate this handover NEXT (SD-17 closing commit bundles both docs).
 
-Hard stops: no git push origin main; no checkout --force; secrets/live posture unchanged; never claim "land complete" while ok land-closeout fails.
+Hard stops: no Auto build before freeze pass; no merge to main (Tier 3); no product-runtime scope; no secrets.
 ```
 <!-- /overseer:anchor:paste-ready-prompt -->
 
@@ -73,13 +73,12 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
 | Area | State |
 | --- | --- |
 | **VCS regime** | `muse+git-mirror` |
-| **GitHub main** | `433c5a37a737d4b657ad7959d9091b91b429cf3c` |
-| **Canonical anchor** | `sha256:6e320c222667b7e17f8b355b8a64050af10a6e2e09656e5053e339c870bcdbe0` |
-| **Canonical main** | `sha256:6e320c222667b7e17f8b355b8a64050af10a6e2e09656e5053e339c870bcdbe0` |
-| **Branch** | `feat/gsb-branch-collision` (git + muse) |
+| **GitHub main** | `de9013f5a30930ec31733c81232600abe639f791` |
+| **Canonical anchor** | `sha256:d869591fee91dd2dcfdc951b654ee5c7574b0714ba0b36eba7c4ed2ccd8e90ff` |
+| **Canonical main** | `sha256:d869591fee91dd2dcfdc951b654ee5c7574b0714ba0b36eba7c4ed2ccd8e90ff` |
+| **Branch** | `feat/governance-sync-2026-07-31-2` (git + muse — C0 uniquified sync branch) |
 | **Dirty** | `no` (after closing commit) |
-| **Freeze** | `docs/PHASE-GSB-GOVERNANCE-SYNC-BRANCH-COLLISION.md` → `pass` (GSB-r3), stamp `sha256:30cfb999…` |
-| **Build** | GSB-b BV → `pass` (GSB-BV-r1, 0 findings); §GSB.8 **25** green; full suite **1213** green (15 pre-existing env failures unchanged) |
+| **Land** | GSB → main DONE (PR [#59](https://github.com/aaronrene/overseer-kit/pull/59), `de9013f`); land-b sync + closeout complete |
 <!-- /overseer:anchor:verified-snapshot -->
 
 <!-- overseer:anchor:vcs-table -->
@@ -87,11 +86,11 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
 
 | Item | Value |
 | --- | --- |
-| Branch | `feat/gsb-branch-collision` (git + muse) |
-| GitHub `main` | `433c5a37a737d4b657ad7959d9091b91b429cf3c` |
-| Canonical anchor | `sha256:6e320c222667b7e17f8b355b8a64050af10a6e2e09656e5053e339c870bcdbe0` (.muse/git-bridge.toml:last_export.muse_commit_id) |
-| Muse `main` | `sha256:6e320c222667b7e17f8b355b8a64050af10a6e2e09656e5053e339c870bcdbe0` |
-| Dirty | no (after closing commit) |
+| Branch | `feat/governance-sync-2026-07-31-2` (git + muse) |
+| GitHub `main` | `de9013f5a30930ec31733c81232600abe639f791` |
+| Canonical anchor | `sha256:d869591fee91dd2dcfdc951b654ee5c7574b0714ba0b36eba7c4ed2ccd8e90ff` (.muse/git-bridge.toml:last_export.muse_commit_id) |
+| Muse `main` | `sha256:d869591fee91dd2dcfdc951b654ee5c7574b0714ba0b36eba7c4ed2ccd8e90ff` |
+| Dirty | no |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -103,6 +102,8 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
 
 <!-- overseer:anchor:change-log -->
 ## Change log
+
+- **2026-07-31** — governance-sync: drift (D1=drifted, D2=aligned, D3=drifted) @ `de9013f`; realign: D2 aligned — skip realign; next_regen=human_authorship_required:zero_open_rows
 
 - **2026-07-31** — governance-sync: drift (D1=drifted, D2=aligned, D3=drifted) @ `433c5a3`; realign: D2 aligned — skip realign; next_regen=regenerated:land-b
 
@@ -118,6 +119,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
 
 | Date | Note |
 | --- | --- |
+| 2026-07-31 | **GSB → main DONE (SD-21, PR [#59](https://github.com/aaronrene/overseer-kit/pull/59) @ `de9013f`).** land-b sync via `ok governance-sync --write` — **first live C0 run**: same-day `feat/governance-sync-2026-07-31` collision uniquified to `-2`, exit `0`, no checkout refusal (live defect closed). `ok land-closeout` → `0`. Build queue empty; NEXT → backlog triage (Thinking). |
 | 2026-07-31 | **GSB-b DONE (Auto build + BV `pass`, GSB-BV-r1, 0 findings).** C0 reconcile-before-ensure in `tools/governance_hygiene/engine.py`; seven-tier §GSB.8 **25** green incl. same-day-collision `--write` on all three regimes; full suite **1213** green. NEXT → GSB → main (land-a). |
 | 2026-07-31 | **GSB-a DONE (Thinking freeze).** Authored + freeze-reviewed `docs/PHASE-GSB-GOVERNANCE-SYNC-BRANCH-COLLISION.md` → `pass` (GSB-r3), stamp `sha256:30cfb999…`. Contract: C0 reconcile-before-ensure; ancestor/equal → FF tip without checkout-as-FF; else deterministic `-N` uniquify; Muse never dirties Git; §GSB.8 three-regime same-day-collision matrix. **No GSB-b Auto code this session.** NEXT → GSB-b Auto on `feat/gsb-branch-collision`. |
 | 2026-07-31 | **PLS → main DONE (SD-21, PR [#58](https://github.com/aaronrene/overseer-kit/pull/58) @ `433c5a3`).** land-b post-merge sync via `ok governance-sync --write`; `ok status --exit-code` → `0`; `ok land-closeout` → `0`. GSB dated-branch collision defect found live (stale same-day `feat/governance-sync-<date>` + Muse-first checkout dirties git tree) and queued. NEXT → GSB-a Thinking freeze. |
