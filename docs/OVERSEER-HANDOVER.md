@@ -6,42 +6,47 @@
 
 ---
 
-<!-- overseer:next role=primary lane=product status=live land-phase=land-b -->
+<!-- overseer:next role=primary lane=product status=live -->
 <!-- overseer:anchor:next-session -->
-## NEXT SESSION — PLS land-b (post-merge sync)
+## NEXT SESSION — GSB-a Governance-sync dated-branch collision freeze
 
 **Date:** 2026-07-31  
-**Current position:** PLS land-a → land-b  
-**Model:** Auto
+**Current position:** PLS land complete (`ok land-closeout` → `0`) → GSB-a  
+**Model:** Thinking
 
-### THE ONE NEXT STEP — **Model: Auto**
+### What just landed
 
-Post-merge governance closeout for **PLS**: sync ROADMAP + HANDOVER to merged `main` so NEXT and paste no longer point at the pre-merge posture.
+| Slice | Deliverable |
+| --- | --- |
+| **PLS → main** | **DONE** (SD-21 land, PR [#58](https://github.com/aaronrene/overseer-kit/pull/58), `main` @ `433c5a3`). land-b post-merge sync via `ok governance-sync --write`; `ok status --exit-code` → `0`; `ok land-closeout` → `0` (complete). Live dogfood caught the GSB defect: second same-day closeout reuses stale `feat/governance-sync-<date>`, Muse-first checkout dirties the git tree, git checkout refuses (engine exit `2`); unblocked via git ancestor FF + `muse branch -C main`. |
+
+### THE ONE NEXT STEP — **Model: Thinking**
+
+Author + freeze-review the GSB fix contract: reconcile an already-existing dated sync branch (fast-forward when ancestor, else deterministic uniquified name) **before** the dual-HEAD feature-branch ensure, so the Muse-first checkout can never dirty the git tree.
 
 | | |
 | --- | --- |
-| **ID** | **PLS land-b (post-merge sync)** |
+| **ID** | **GSB-a Governance-sync dated-branch collision freeze** |
+| **Branch** | `feat/gsb-branch-collision` (new, from `main`) |
 | **Repo** | **overseer-kit** |
-| **Read first** | `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md` |
-| **Hard stops** | no silent commits to `main`; no Cursor-only dependency; no freeze/BV redesign |
+| **Read first** | `docs/ROADMAP.md` (GSB-a row); `tools/governance_hygiene/engine.py` (`_ensure_feature_branch`, `_ensure_git_branch`, `_ensure_muse_branch`); `docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md` (§GSW.5 apply order — do not redesign) |
+| **Hard stops** | Spec-only (no GSB-b Auto code) · no rollback / `commit_feature` redesign · `--force` stays forbidden · no merge to `main` (Tier 3) |
 <!-- /overseer:anchor:next-session -->
 
 <!-- overseer:anchor:paste-ready-prompt -->
-### Paste-ready prompt — PLS land-b
+### Paste-ready prompt — GSB-a
 
 ```text
-Model: Auto
-ID: PLS land-b (post-merge sync)
-land-phase: land-b
+Model: Thinking
+ID: GSB-a Governance-sync dated-branch collision freeze
 
 Deliver:
-1. Fetch/pull latest main (regime-appropriate)
-2. ok governance-sync --dry-run then apply when the plan is correct
-3. Regenerate NEXT + paste so they no longer say wait-for-merge / land-a
-4. Feature-branch commit bundling ROADMAP + HANDOVER (SD-17); open docs PR if needed
-5. ok status --exit-code → 0 and ok land-closeout → 0 before claiming land complete
+1. Author docs/PHASE-GSB-GOVERNANCE-SYNC-BRANCH-COLLISION.md (frozen: true): when feat/governance-sync-<date> already exists on either history (same-day second closeout), the --write engine reconciles it BEFORE the dual-HEAD ensure — fast-forward the stale branch to the current tip when it is an ancestor, else uniquify with a deterministic suffix; the Muse-first checkout must never dirty the git tree. Include the live defect evidence (PLS land-b 2026-07-31, engine exit 2 on git checkout) and a seven-tier §GSB matrix incl. same-day-collision --write on all three regimes.
+2. /freeze-review-loop (or ok review --freeze) → verdict pass
+3. Update ROADMAP (GSB-a DONE; author GSB-b Auto row as the sole NEXT) + this handover together
+4. Feature-branch commit bundling both docs (SD-17)
 
-Hard stops: no silent commits to main; no Cursor-only dependency; no freeze/BV redesign.
+Hard stops: spec-only — no GSB-b Auto code; no rollback/commit_feature redesign; --force stays forbidden; no merge to main (Tier 3).
 ```
 <!-- /overseer:anchor:paste-ready-prompt -->
 
@@ -71,9 +76,9 @@ Hard stops: no silent commits to main; no Cursor-only dependency; no freeze/BV r
 | **GitHub main** | `433c5a37a737d4b657ad7959d9091b91b429cf3c` |
 | **Canonical anchor** | `sha256:6e320c222667b7e17f8b355b8a64050af10a6e2e09656e5053e339c870bcdbe0` |
 | **Canonical main** | `sha256:6e320c222667b7e17f8b355b8a64050af10a6e2e09656e5053e339c870bcdbe0` |
-| **Branch** | `main` |
-| **Dirty** | `no` |
-| **Drift** | D1=drifted, D2=aligned, D3=drifted |
+| **Branch** | `feat/governance-sync-2026-07-31` (git + muse) |
+| **Dirty** | `no` (after closing commit) |
+| **Drift** | D1–D3 aligned (`ok governance-sync --dry-run` 2026-07-31 post-land-b) |
 <!-- /overseer:anchor:verified-snapshot -->
 
 <!-- overseer:anchor:vcs-table -->
@@ -81,11 +86,11 @@ Hard stops: no silent commits to main; no Cursor-only dependency; no freeze/BV r
 
 | Item | Value |
 | --- | --- |
-| Branch | `main` |
+| Branch | `feat/governance-sync-2026-07-31` (git + muse) |
 | GitHub `main` | `433c5a37a737d4b657ad7959d9091b91b429cf3c` |
 | Canonical anchor | `sha256:6e320c222667b7e17f8b355b8a64050af10a6e2e09656e5053e339c870bcdbe0` (.muse/git-bridge.toml:last_export.muse_commit_id) |
 | Muse `main` | `sha256:6e320c222667b7e17f8b355b8a64050af10a6e2e09656e5053e339c870bcdbe0` |
-| Dirty | no |
+| Dirty | no (after closing commit) |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -112,6 +117,7 @@ Hard stops: no silent commits to main; no Cursor-only dependency; no freeze/BV r
 
 | Date | Note |
 | --- | --- |
+| 2026-07-31 | **PLS → main DONE (SD-21, PR [#58](https://github.com/aaronrene/overseer-kit/pull/58) @ `433c5a3`).** land-b post-merge sync via `ok governance-sync --write`; `ok status --exit-code` → `0`; `ok land-closeout` → `0`. GSB dated-branch collision defect found live (stale same-day `feat/governance-sync-<date>` + Muse-first checkout dirties git tree) and queued. NEXT → GSB-a Thinking freeze. |
 | 2026-07-31 | **PLS-b DONE (Auto build + BV `pass`, PLS-BV-r1).** Built exactly to frozen `docs/PHASE-PLS-POST-LAND-MAIN-SYNC.md`; seven-tier §PLS.10 **46** green; exit `36` (never `6`); default off. NEXT → PLS → main (land-a). |
 | 2026-07-31 | **PLS-a DONE (Thinking freeze).** Authored + freeze-reviewed `docs/PHASE-PLS-POST-LAND-MAIN-SYNC.md` → `pass` (PLS-r4), stamp `sha256:7a31fb2b…`. Contract: `close_ritual.post_land_sync` default-off; after MERGED ff-only sync; dirty skip never clobber; exit `36`; `verify_landed` additive-only. **No PLS-b Auto code this session.** NEXT → PLS-b Auto on `feat/pls-a`. |
 | 2026-07-31 | **GSW-FIX-b DONE** — BV `pass` (GSW-BV-r1); §GSW.10 **29** green (dirty-tree `--write` all three regimes). NEXT → GSW-FIX → main (land-a). |
