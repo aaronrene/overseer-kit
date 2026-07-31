@@ -80,6 +80,87 @@ def load_fixture_config(repo_root: Path, name: str) -> OverseerConfig:
     return load_config(write_config(repo_root, name))
 
 
+def pls_config(
+    repo_root: Path,
+    fixture: str = "config-git-only.yaml",
+    *,
+    enabled: bool = True,
+) -> OverseerConfig:
+    """Fixture config with ``close_ritual.post_land_sync.enabled`` overridden (§PLS tests)."""
+    from dataclasses import replace
+
+    from adapters.config import PostLandSyncConfig
+
+    config = load_fixture_config(repo_root, fixture)
+    return replace(
+        config,
+        close_ritual=replace(
+            config.close_ritual,
+            post_land_sync=PostLandSyncConfig(enabled=enabled),
+        ),
+    )
+
+
+def gh_merged_runner(*, pr_state: str = "OPEN", check_state: str = "pass"):
+    """Fake ``gh`` runner driving ``run_pr_land`` to a merge outcome (§PLS tests)."""
+    import json as _json
+    import subprocess as _sp
+
+    def _runner(cmd: list[str]) -> "_sp.CompletedProcess[str]":
+        if cmd[:3] == ["gh", "pr", "view"]:
+            return _sp.CompletedProcess(
+                cmd, 0, stdout=_json.dumps({"number": 1, "state": pr_state}), stderr=""
+            )
+        if cmd[:3] == ["gh", "pr", "checks"]:
+            rc = 0 if check_state == "pass" else 1
+            return _sp.CompletedProcess(
+                cmd, rc, stdout=f"verify\t{check_state}\t0s\thttps://example.test/v\n", stderr=""
+            )
+        if cmd[:3] == ["gh", "pr", "merge"]:
+            return _sp.CompletedProcess(cmd, 0, stdout="", stderr="")
+        raise AssertionError(f"unexpected gh argv: {cmd}")
+
+    return _runner
+
+
+class FakeGitRunner:
+    """Recording git fake for §PLS post-land sync argv assertions.
+
+    ``fail`` is a set of git subcommands ({"fetch", "status", "rev-parse",
+    "checkout", "pull"}) that return exit 1.
+    """
+
+    def __init__(
+        self,
+        *,
+        porcelain: str = "",
+        branch: str = "main",
+        fail: set[str] | tuple[str, ...] = (),
+    ) -> None:
+        self.porcelain = porcelain
+        self.branch = branch
+        self.fail = set(fail)
+        self.calls: list[list[str]] = []
+
+    def __call__(self, cmd: list[str]):
+        import subprocess as _sp
+
+        self.calls.append(list(cmd))
+        op = cmd[1] if len(cmd) > 1 else ""
+        rc = 1 if op in self.fail else 0
+        stdout = ""
+        if rc == 0:
+            if op == "status":
+                stdout = self.porcelain
+            elif op == "rev-parse":
+                stdout = self.branch + "\n"
+            elif op == "checkout":
+                self.branch = cmd[2]
+        return _sp.CompletedProcess(
+            list(cmd), rc, stdout=stdout, stderr="induced failure" if rc else ""
+        )
+
+
 def ok(stdout: str = "") -> CommandResult:
     return CommandResult(stdout=stdout, stderr="", exit_code=0)
 

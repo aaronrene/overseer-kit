@@ -197,6 +197,12 @@ Configurable in `.overseer/config.yaml` under `close_ritual`:
 | `mode` | `verify_landed` (paths must match `origin/main`) or `prepare_pr` (commit hygiene) |
 | `require_paths` | Repo-relative files that must land on main |
 | `consumer_verify_script` | Optional VF/other script (e.g. `scripts/verify/vf_verify_board_landed.py`) |
+| `post_land_sync.enabled` | Opt-in (default **off**): after a successful `ok pr-land` merge, ff-only sync the local main checkout from `vcs.git.remote` (kit `docs/PHASE-PLS-POST-LAND-MAIN-SYNC.md`) |
+| `post_land_sync.strategy` | `ff_only` only (v1 closed vocabulary) |
+| `post_land_sync.require_clean_worktree` | Must be `true` (v1) — dirty tree always warn/skip, never clobber |
+
+VideoFactory may keep its own portal/multi-worktree jobs — kit `post_land_sync` does **not**
+replace them; optionally enable kit sync for the primary checkout only (§PLS.8).
 
 **`ok land-check` never merges** — it only verifies.  
 **`ok pr-land`** is the authorized wait-for-green merge (Tier-3 delegated via `--authorized`).  

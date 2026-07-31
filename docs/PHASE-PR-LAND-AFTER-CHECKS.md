@@ -32,6 +32,16 @@ branch protection (including VideoFactory `main` as of 2026-07-17) merge
 | 3 | Missing `--authorized` |
 | 4 | Timeout waiting for checks |
 | 5 | `gh` error |
+| 36 | Merge succeeded but the optional post-land sync hard-failed (fetch / checkout / non-ff pull) — see `docs/PHASE-PLS-POST-LAND-MAIN-SYNC.md` §PLS.6. Never reuses exit `6` (K4 INTEGRITY). |
+
+## Optional post-land sync (PLS)
+
+When `close_ritual.post_land_sync.enabled: true` (default **off**), a successful
+merged outcome runs an additive ff-only local sync: `git fetch` → dirty tree
+warn/skip (never clobber) → clean tree checkout `main` + `git pull --ff-only`.
+Every `PrLandResult` carries an always-present `post_land_sync` object
+(`disabled | regime_skipped | skipped_dirty | synced | failed | not_applicable`).
+Frozen contract: `docs/PHASE-PLS-POST-LAND-MAIN-SYNC.md`.
 
 ## Agent loop (babysit)
 
