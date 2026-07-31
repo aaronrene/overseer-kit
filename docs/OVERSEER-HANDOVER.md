@@ -202,6 +202,10 @@ Hard stops: no secrets; no staging push; no live posture flips; no silent main w
   **muse-only**, and **muse+git-mirror** (coverage-gap close for the live
   2026-07-31 incident). Independent BV round 1 → `pass` (reviewer re-run evidence
   `sha256:c506394a…`). ROADMAP GSW-FIX-b → DONE; queue adds **GSW-FIX → main**.
+  Closeout also tightens `land_queue_conflict` so hyphen-split fragments alone
+  (e.g. shared `FIX` between `GSW-FIX → main` and historical `GFG-D2-FIX → main`)
+  are not slice-identifying — required for land-a dogfood to report
+  `land_a_in_progress` rather than a false `land_phase_conflicts_queue_done`.
   NEXT → **GSW-FIX → main (land-a)**, marker `land-phase=land-a`. No kit `main`
   merge this session.
 - **2026-07-31** — **GSW-FIX-a DONE (Thinking freeze).** Authored + freeze-reviewed

@@ -258,6 +258,23 @@ def test_historical_other_slice_land_row_does_not_conflict(tmp_path: Path) -> No
     assert report.state == "land_a_in_progress"
 
 
+def test_hyphen_fragment_alone_does_not_conflict_with_other_slice() -> None:
+    """``GSW-FIX → main`` land-a must not conflict with historical ``GFG-D2-FIX → main``.
+
+    ``phase_tokens`` splits hyphens, so a naive set intersection shares ``FIX``.
+    Slice-identifying match requires a compound token, not a bare fragment.
+    """
+    roadmap = land_roadmap_text(
+        "| **GFG-D2-FIX → main** | Operator + Auto | **DONE** | Landed earlier |",
+        "| **GSW-FIX → main** | Operator + Auto | **TODO** | Land GSW-FIX |",
+    )
+    assert not land_queue_conflict(roadmap, "GSW-FIX → main (land-a)")
+    assert land_queue_conflict(
+        land_roadmap_text("| **GSW-FIX → main** | Operator + Auto | **DONE** | landed |"),
+        "GSW-FIX → main (land-a)",
+    )
+
+
 def test_queue_conflict_requires_land_shaped_row() -> None:
     # A DONE build row sharing the slice token is not a land row — no conflict.
     roadmap = land_roadmap_text(
