@@ -20,7 +20,18 @@ import time
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Callable
+from typing import TYPE_CHECKING, Any, Callable
+
+from tools.close_ritual.post_land_sync import (
+    STATUS_FAILED,
+    GitRunner,
+    disabled_report,
+    not_applicable_report,
+    run_post_land_sync,
+)
+
+if TYPE_CHECKING:
+    from adapters.config import OverseerConfig
 
 EXIT_OK = 0
 EXIT_USAGE = 1
@@ -28,6 +39,9 @@ EXIT_CHECKS_FAILED = 2
 EXIT_UNAUTHORIZED = 3
 EXIT_TIMEOUT = 4
 EXIT_GH_ERROR = 5
+# §PLS.6.2 — merge succeeded but post-land sync hard-failed. Confined to
+# ``ok pr-land``. Never reuse exit 6 (K4 INTEGRITY on status/sync).
+EXIT_POST_LAND_SYNC = 36
 
 _FAIL_STATES = frozenset(
     {"fail", "failure", "cancelled", "timed_out", "action_required", "stale", "error"}
@@ -86,6 +100,9 @@ class PrLandResult:
     merge_method: str = "squash"
     recorded_at: str = field(default_factory=_iso_now)
     auto_merge: bool = False  # always False — we poll then merge; never blind auto
+    # §PLS.6.3 — always present; never omit / never bare null. Without config
+    # (unit helpers) sync is treated as disabled.
+    post_land_sync: dict[str, Any] = field(default_factory=lambda: disabled_report().to_dict())
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -261,7 +278,7 @@ def wait_for_checks(
         sleep_fn(poll_seconds)
 
 
-def run_pr_land(
+def _run_pr_land_inner(
     pr: str,
     *,
     authorization: str,
@@ -274,10 +291,8 @@ def run_pr_land(
     sleep_fn: Callable[[float], None] = time.sleep,
     now_fn: Callable[[], float] = time.monotonic,
     emit: Callable[[str], None] | None = None,
-    repo_root: Path | None = None,  # reserved for future cwd-bound gh
 ) -> PrLandResult:
     """Authorize → wait for green → merge. Fail closed without authorization."""
-    del repo_root  # reserved
     reason = (authorization or "").strip()
     if not reason:
         msg = (
@@ -439,3 +454,68 @@ def run_pr_land(
         messages=messages,
         merge_method=merge_method,
     )
+
+
+def run_pr_land(
+    pr: str,
+    *,
+    authorization: str,
+    merge_method: str = "squash",
+    poll_seconds: float = 20.0,
+    timeout_seconds: float = 1800.0,
+    allow_empty_checks: bool = False,
+    dry_run: bool = False,
+    runner: Runner = _default_runner,
+    sleep_fn: Callable[[float], None] = time.sleep,
+    now_fn: Callable[[], float] = time.monotonic,
+    emit: Callable[[str], None] | None = None,
+    repo_root: Path | None = None,  # required for the sync path when enabled (§PLS.4.3)
+    config: "OverseerConfig | None" = None,
+    git_runner: GitRunner | None = None,
+) -> PrLandResult:
+    """Authorized wait-for-green land plus optional §PLS post-land sync.
+
+    The additive sync post-step (§PLS.4.1) runs if and only if
+    ``close_ritual.post_land_sync.enabled`` is true, the merge outcome is
+    successful (``merged: true`` with pre-sync exit ``0``), and ``dry_run`` is
+    false. Every result carries an always-present ``post_land_sync`` object;
+    hard sync failure after a real merge maps to exit ``36`` (never ``6``).
+    """
+    result = _run_pr_land_inner(
+        pr,
+        authorization=authorization,
+        merge_method=merge_method,
+        poll_seconds=poll_seconds,
+        timeout_seconds=timeout_seconds,
+        allow_empty_checks=allow_empty_checks,
+        dry_run=dry_run,
+        runner=runner,
+        sleep_fn=sleep_fn,
+        now_fn=now_fn,
+        emit=emit,
+    )
+
+    sync_cfg = config.close_ritual.post_land_sync if config is not None else None
+    if sync_cfg is None or not sync_cfg.enabled:
+        result.post_land_sync = disabled_report().to_dict()
+        return result
+
+    triggered = result.merged and result.exit_code == EXIT_OK and not dry_run
+    if not triggered:
+        result.post_land_sync = not_applicable_report().to_dict()
+        return result
+
+    report = run_post_land_sync(
+        repo_root=repo_root,
+        regime=config.vcs.regime,
+        remote=config.vcs.git.remote,
+        main_branch=config.vcs.git.main_branch,
+        require_clean_worktree=sync_cfg.require_clean_worktree,
+        git_runner=git_runner,
+        emit=emit,
+    )
+    result.post_land_sync = report.to_dict()
+    result.messages.extend(report.messages)
+    if report.status == STATUS_FAILED:
+        result.exit_code = EXIT_POST_LAND_SYNC
+    return result

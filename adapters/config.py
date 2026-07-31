@@ -229,17 +229,33 @@ class HostedDashboardSection:
 
 
 @dataclass(frozen=True)
+class PostLandSyncConfig:
+    """Optional ff-only local-main sync after a successful ``ok pr-land`` (§PLS.3).
+
+    v1 closed vocabulary: ``strategy`` must be ``ff_only`` and
+    ``require_clean_worktree`` must be ``true`` — dirty-tree clobber is a non-goal.
+    Remote/branch identity comes from ``vcs.git.*`` (never duplicated here).
+    """
+
+    enabled: bool = False
+    strategy: str = "ff_only"
+    require_clean_worktree: bool = True
+
+
+@dataclass(frozen=True)
 class CloseRitualConfig:
     """Fail-closed land-to-main hygiene (never auto-merges — Tier 3).
 
     ``verify_landed`` compares ``require_paths`` working-tree content to
     ``origin/<main_branch>``. ``prepare_pr`` only reports dirty/uncommitted state.
+    ``post_land_sync`` is the additive PLS post-step on ``ok pr-land`` only.
     """
 
     enabled: bool = False
     mode: str = "verify_landed"  # verify_landed | prepare_pr
     require_paths: tuple[str, ...] = ()
     consumer_verify_script: str | None = None  # optional repo-relative script
+    post_land_sync: PostLandSyncConfig = PostLandSyncConfig()
 
 
 @dataclass(frozen=True)
@@ -865,12 +881,48 @@ def _parse_modules(raw_modules: Any, path: str) -> ModulesConfig | None:
     )
 
 
+def _parse_post_land_sync(raw_sync: Any, path: str) -> PostLandSyncConfig:
+    """Parse optional ``close_ritual.post_land_sync`` (§PLS.3.2 — fail-closed)."""
+    if raw_sync is None:
+        return PostLandSyncConfig()
+    sync_raw = _require_mapping(raw_sync, "close_ritual.post_land_sync", path)
+    allowed = {"enabled", "strategy", "require_clean_worktree"}
+    extra = set(sync_raw) - allowed
+    if extra:
+        raise ConfigError(f"unknown close_ritual.post_land_sync keys: {sorted(extra)}", path)
+
+    enabled = sync_raw.get("enabled", False)
+    if not isinstance(enabled, bool):
+        raise ConfigError("close_ritual.post_land_sync.enabled must be a boolean", path)
+
+    strategy = sync_raw.get("strategy", "ff_only")
+    if strategy != "ff_only":
+        raise ConfigError(
+            "close_ritual.post_land_sync.strategy must be ff_only (v1 closed vocabulary)",
+            path,
+        )
+
+    require_clean = sync_raw.get("require_clean_worktree", True)
+    if not isinstance(require_clean, bool) or require_clean is not True:
+        raise ConfigError(
+            "close_ritual.post_land_sync.require_clean_worktree must be true in v1 "
+            "(dirty-tree merges are a non-goal)",
+            path,
+        )
+
+    return PostLandSyncConfig(
+        enabled=enabled,
+        strategy="ff_only",
+        require_clean_worktree=True,
+    )
+
+
 def _parse_close_ritual(raw_ritual: Any, path: str) -> CloseRitualConfig:
     """Parse optional ``close_ritual`` section (land-to-main; never auto-merge)."""
     if raw_ritual is None:
         return CloseRitualConfig()
     ritual_raw = _require_mapping(raw_ritual, "close_ritual", path)
-    allowed = {"enabled", "mode", "require_paths", "consumer_verify_script"}
+    allowed = {"enabled", "mode", "require_paths", "consumer_verify_script", "post_land_sync"}
     extra = set(ritual_raw) - allowed
     if extra:
         raise ConfigError(f"unknown close_ritual keys: {sorted(extra)}", path)
@@ -911,6 +963,7 @@ def _parse_close_ritual(raw_ritual: Any, path: str) -> CloseRitualConfig:
         mode=str(mode),
         require_paths=tuple(str(p).strip() for p in paths_raw),
         consumer_verify_script=script,
+        post_land_sync=_parse_post_land_sync(ritual_raw.get("post_land_sync"), path),
     )
 
 
