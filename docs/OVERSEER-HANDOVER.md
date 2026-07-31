@@ -79,10 +79,10 @@ Governance sync: update roadmap + handover on completion.
 | Area | State |
 | --- | --- |
 | **VCS regime** | `muse+git-mirror` |
-| **GitHub main** | `e895a352150559c63d4c3eec5e33415259392a8c` |
-| **Canonical anchor** | `sha256:f7e850061e1279a0c487575a22b22e1e4b3ba1f2a2f6cf46da55d8dd27ecda79` |
-| **Canonical main** | `sha256:f7e850061e1279a0c487575a22b22e1e4b3ba1f2a2f6cf46da55d8dd27ecda79` |
-| **Branch** | `main` |
+| **GitHub main** | `4650171f179a7613a4ccd78bbb7196ea0cbd40c5` |
+| **Canonical anchor** | `sha256:73f19df17422c6f84441ee9ff3b3185bab4596a59d943d47963370bf8b24c57e` |
+| **Canonical main** | `sha256:73f19df17422c6f84441ee9ff3b3185bab4596a59d943d47963370bf8b24c57e` |
+| **Branch** | `feat/governance-sync-2026-07-31` |
 | **Dirty** | `yes` |
 | **Drift** | D1=drifted, D2=aligned, D3=aligned |
 <!-- /overseer:anchor:verified-snapshot -->
@@ -92,10 +92,10 @@ Governance sync: update roadmap + handover on completion.
 
 | Item | Value |
 | --- | --- |
-| Branch | `main` |
-| GitHub `main` | `e895a352150559c63d4c3eec5e33415259392a8c` |
-| Canonical anchor | `sha256:f7e850061e1279a0c487575a22b22e1e4b3ba1f2a2f6cf46da55d8dd27ecda79` (.muse/git-bridge.toml:last_export.muse_commit_id) |
-| Muse `main` | `sha256:f7e850061e1279a0c487575a22b22e1e4b3ba1f2a2f6cf46da55d8dd27ecda79` |
+| Branch | `feat/governance-sync-2026-07-31` |
+| GitHub `main` | `4650171f179a7613a4ccd78bbb7196ea0cbd40c5` |
+| Canonical anchor | `sha256:73f19df17422c6f84441ee9ff3b3185bab4596a59d943d47963370bf8b24c57e` (.muse/git-bridge.toml:last_export.muse_commit_id) |
+| Muse `main` | `sha256:73f19df17422c6f84441ee9ff3b3185bab4596a59d943d47963370bf8b24c57e` |
 | Dirty | yes |
 <!-- /overseer:anchor:vcs-table -->
 
@@ -108,6 +108,8 @@ Governance sync: update roadmap + handover on completion.
 
 <!-- overseer:anchor:change-log -->
 ## Change log
+
+- **2026-07-31** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `4650171`; realign: D2 aligned — skip realign; next_regen=regenerated
 
 - **2026-07-31** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `e895a35`; realign: D2 aligned — skip realign; next_regen=regenerated
 

@@ -46,6 +46,9 @@ def _row(label: str, status: str = "**NEXT**") -> QueueRow:
 
 
 _GSW_LAND_B_TITLE = "Mirror: mirror: GSW land-b docs sync + muse code add staging fix"
+_GSW_CLOSEOUT_TITLE = (
+    "Mirror: mirror: GSW closeout — queue PLS post-land sync + pr_matches_row slice-token fix"
+)
 
 
 def test_pr_match_rejects_generic_fragment_overlap() -> None:
@@ -55,8 +58,28 @@ def test_pr_match_rejects_generic_fragment_overlap() -> None:
     assert pr_matches_row(_GSW_LAND_B_TITLE, _row("**PLS-b Post-land main sync build**")) is False
 
 
-def test_pr_match_accepts_slice_identifying_token() -> None:
-    assert pr_matches_row(_GSW_LAND_B_TITLE, _row("**GSW-FIX → main**")) is True
+def test_pr_match_rejects_bare_prefix_when_compound_id_exists() -> None:
+    """Live PR #55 closeout: title 'queue PLS …' must not stamp open PLS-a/PLS-b.
+    Compound slice IDs (PLS-a) are required; bare PLS is not enough."""
+    assert pr_matches_row(_GSW_CLOSEOUT_TITLE, _row("**PLS-a Post-land main sync freeze**")) is False
+    assert pr_matches_row(_GSW_CLOSEOUT_TITLE, _row("**PLS-b Post-land main sync build**")) is False
+    assert pr_matches_row(
+        "feat(PLS-a): freeze post-land main sync",
+        _row("**PLS-a Post-land main sync freeze**"),
+    ) is True
+
+
+def test_pr_match_accepts_compound_slice_id() -> None:
+    assert pr_matches_row(
+        "mirror: GSW-FIX governance-sync write-path",
+        _row("**GSW-FIX → main**"),
+    ) is True
+    # Bare GSW without the compound GSW-FIX is not enough when the label has one.
+    assert pr_matches_row(_GSW_LAND_B_TITLE, _row("**GSW-FIX → main**")) is False
+
+
+def test_pr_match_accepts_non_compound_slice_token() -> None:
+    """Labels without hyphenated IDs still match on a distinctive token (PMHF)."""
     assert pr_matches_row(
         "Mirror: PMHF post-merge handover freshness land closeout",
         _row("**PMHF → main**"),
@@ -75,13 +98,23 @@ def test_pr_match_full_label_substring_still_matches() -> None:
     ) is True
 
 
-def test_detect_drift_d3_ignores_generic_overlap_with_open_row() -> None:
-    """D3 stays aligned when the only 'match' against an open row is boilerplate."""
+def test_detect_drift_d3_ignores_mention_of_queued_slice() -> None:
+    """D3 stays aligned when a merged PR only *mentions* a still-open slice."""
     handover = "| **main HEAD** | `cafebabe` |"
-    roadmap = "| **PLS-a Post-land main sync freeze** | Thinking | **NEXT** | x |"
-    reads = _reads()
-    reads = replace(reads, r4_merged_prs=(
-        MergedPullRequest(number=54, title=_GSW_LAND_B_TITLE, merge_commit_sha="e895a35" + "0" * 33, merged_at="2026-07-31T16:00:00Z"),
-    ))
+    roadmap = (
+        "| **PLS-a Post-land main sync freeze** | Thinking | **NEXT** | x |\n"
+        "| **PLS-b Post-land main sync build** | Auto | **QUEUED** | x |"
+    )
+    reads = replace(
+        _reads(),
+        r4_merged_prs=(
+            MergedPullRequest(
+                number=55,
+                title=_GSW_CLOSEOUT_TITLE,
+                merge_commit_sha="4650171" + "0" * 33,
+                merged_at="2026-07-31T16:45:00Z",
+            ),
+        ),
+    )
     drift = detect_drift(reads, handover, roadmap)
     assert drift.d3_queue_vs_merged == "aligned"
