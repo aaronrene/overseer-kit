@@ -21,7 +21,9 @@ def run_pr_land_command(args: Namespace, ctx: CliContext) -> int:
         return 4
 
     try:
-        load_config(config_path)  # validate install; pr-land does not need close_ritual.enabled
+        # Validate install; pr-land does not need close_ritual.enabled. The loaded
+        # config also carries close_ritual.post_land_sync + vcs.git for §PLS sync.
+        config = load_config(config_path)
     except ConfigError as exc:
         ctx.output.error(format_config_error(exc, repo_root))
         return 2
@@ -40,6 +42,7 @@ def run_pr_land_command(args: Namespace, ctx: CliContext) -> int:
         dry_run=bool(args.dry_run),
         emit=emit,
         repo_root=repo_root,
+        config=config,
     )
 
     if ctx.output.json_mode:
