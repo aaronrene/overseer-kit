@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import os
 import subprocess
 from dataclasses import dataclass
@@ -174,13 +175,22 @@ def make_runner(responses: dict[str, CommandResult]) -> RecordingRunner:
 
 
 class BranchStateRunner:
-    """Stateful fake VCS host for §GSW write-path tests.
+    """Stateful fake VCS host for §GSW write-path and §GSB reconcile tests.
 
     Tracks the current branch of both histories, refuses a bare Muse checkout
     of an existing branch while the Muse tree is dirty (Muse 0.2.x live
     behavior — the GSW incident), honors ``--autoshelf`` dirty-carry, and
     records every command for order assertions. ``--force`` always fails so
     any forbidden use surfaces in tests (§GSW.8).
+
+    §GSB additions — per-branch tips (``git_tips`` / ``muse_tips``, Git SHAs
+    and Muse ``sha256:`` ids in separate spaces), ancestry maps
+    (``git_ancestors`` / ``muse_ancestors``: descendant → set of ancestors),
+    and a shared-worktree content token. ``content_map`` maps a tip id to a
+    content token (default: everything is ``content:base``); a Muse checkout
+    of a branch rewrites ``worktree`` to that branch tip's content token —
+    modeling the live defect where a stale Muse checkout dirties the shared
+    tree so a Git checkout of the same name refuses.
     """
 
     def __init__(
@@ -199,6 +209,12 @@ class BranchStateRunner:
         muse_commit_fails: bool = False,
         existing_git_branches: set[str] | None = None,
         existing_muse_branches: set[str] | None = None,
+        git_tips: dict[str, str] | None = None,
+        muse_tips: dict[str, str] | None = None,
+        git_ancestors: dict[str, set[str]] | None = None,
+        muse_ancestors: dict[str, set[str]] | None = None,
+        content_map: dict[str, str] | None = None,
+        worktree: str | None = None,
     ) -> None:
         self.root = root
         self.git_branch = git_branch
@@ -213,7 +229,46 @@ class BranchStateRunner:
         self.muse_commit_fails = muse_commit_fails
         self.git_branches = {git_branch} | (existing_git_branches or set())
         self.muse_branches = {muse_branch} | (existing_muse_branches or set())
+        self.git_tips: dict[str, str] = dict(git_tips or {})
+        for name in self.git_branches:
+            self.git_tips.setdefault(name, "feedface")
+        self.muse_tips: dict[str, str] = dict(muse_tips or {})
+        for name in self.muse_branches:
+            self.muse_tips.setdefault(name, muse_main_tip)
+        self.git_ancestors: dict[str, set[str]] = {
+            sha: set(parents) for sha, parents in (git_ancestors or {}).items()
+        }
+        self.muse_ancestors: dict[str, set[str]] = {
+            sha: set(parents) for sha, parents in (muse_ancestors or {}).items()
+        }
+        self.content_map: dict[str, str] = dict(content_map or {})
+        self.worktree = (
+            worktree
+            if worktree is not None
+            else self._content(self.git_tips[self.git_branch])
+        )
+        self.git_commit_count = 0
+        self.muse_commit_count = 0
         self.calls: list[tuple[str, str | None]] = []
+
+    def _content(self, tip: str | None) -> str:
+        return self.content_map.get(tip or "", "content:base")
+
+    def _git_worktree_dirty(self) -> bool:
+        return self.git_dirty or self.worktree != self._content(
+            self.git_tips.get(self.git_branch)
+        )
+
+    def _muse_worktree_dirty(self) -> bool:
+        return self.muse_dirty or self.worktree != self._content(
+            self.muse_tips.get(self.muse_branch)
+        )
+
+    def _git_known_commits(self) -> set[str]:
+        known = set(self.git_tips.values()) | set(self.git_ancestors)
+        for parents in self.git_ancestors.values():
+            known |= parents
+        return known
 
     def run(self, command: str, *, cwd: str | None = None) -> CommandResult:
         import shlex
@@ -235,13 +290,24 @@ class BranchStateRunner:
         if args == ["rev-parse", "origin/main"]:
             return _ok_result(self.origin_main_tip)
         if args == ["rev-parse", "HEAD"]:
-            return _ok_result("feedface")
+            return _ok_result(self.git_tips.get(self.git_branch, "feedface"))
+        if args[:2] == ["rev-parse", "--verify"] and len(args) == 3:
+            name = args[2].removeprefix("refs/heads/")
+            if name in self.git_branches:
+                return _ok_result(self.git_tips[name])
+            return _fail_result(f"unknown ref {name!r}")
+        if args[0] == "rev-parse" and len(args) == 2:
+            name = args[1]
+            if name in self.git_branches:
+                return _ok_result(self.git_tips[name])
+            return _fail_result(f"unknown ref {name!r}")
         if args[:2] == ["status", "--porcelain"]:
-            return _ok_result(" M tracked.md" if self.git_dirty else "")
+            return _ok_result(" M tracked.md" if self._git_worktree_dirty() else "")
         if args[:2] == ["checkout", "-b"]:
             branch = args[2]
             if branch in self.git_branches:
                 return _fail_result(f"branch {branch!r} already exists")
+            self.git_tips[branch] = self.git_tips.get(self.git_branch, "feedface")
             self.git_branches.add(branch)
             self.git_branch = branch
             return _ok_result("")
@@ -251,19 +317,72 @@ class BranchStateRunner:
             branch = args[-1]
             if branch not in self.git_branches:
                 return _fail_result(f"unknown branch {branch!r}")
+            target_content = self._content(self.git_tips.get(branch))
+            current_content = self._content(self.git_tips.get(self.git_branch))
+            if (
+                not self.git_dirty
+                and self.worktree != current_content
+                and self.worktree != target_content
+            ):
+                # Live git two-tree rule: foreign worktree bytes that match
+                # neither HEAD nor the target refuse the switch (the GSB
+                # incident after a stale Muse checkout).
+                return _fail_result(
+                    "error: Your local changes to the following files would be "
+                    "overwritten by checkout"
+                )
             self.git_branch = branch  # git carries dirty changes across checkout
+            self.worktree = target_content
+            return _ok_result("")
+        if args[:2] == ["branch", "-f"] and len(args) == 4:
+            name, tip = args[2], args[3]
+            if name == self.git_branch:
+                return _fail_result(
+                    f"cannot force update the currently checked out branch {name!r}"
+                )
+            self.git_branches.add(name)
+            self.git_tips[name] = tip
+            return _ok_result("")
+        if args[0] == "update-ref" and len(args) == 3:
+            name = args[1].removeprefix("refs/heads/")
+            self.git_branches.add(name)
+            self.git_tips[name] = args[2]
+            return _ok_result("")
+        if args[:2] == ["reset", "--hard"] and len(args) == 3:
+            tip = args[2]
+            self.git_tips[self.git_branch] = tip
+            self.worktree = self._content(tip)
+            self.git_dirty = False
             return _ok_result("")
         if args[0] == "add":
             return _ok_result("")
         if args[0] == "commit":
             if self.git_commit_fails:
                 return _fail_result("induced git commit failure")
+            self.git_commit_count += 1
+            parent = self.git_tips.get(self.git_branch, "feedface")
+            new_sha = f"gitc{self.git_commit_count:04d}"
+            self.git_ancestors[new_sha] = {parent} | self.git_ancestors.get(parent, set())
+            self.git_tips[self.git_branch] = new_sha
+            self.content_map[new_sha] = self.worktree
             self.git_dirty = False
             return _ok_result("")
         if args[0] == "push":
             return _ok_result("")
         if args[:2] == ["remote", "get-url"]:
             return _ok_result("git@github.com:owner/repo.git")
+        if args[:2] == ["merge-base", "--is-ancestor"] and len(args) == 4:
+            ancestor, descendant = args[2], args[3]
+            if ancestor == descendant or ancestor in self.git_ancestors.get(
+                descendant, set()
+            ):
+                return _ok_result("")
+            known = self._git_known_commits()
+            if ancestor in known and descendant in known:
+                return CommandResult(stdout="", stderr="", exit_code=1)
+            # Legacy permissive default for ids outside the modeled graph
+            # (e.g. realign superset probes against bridge anchors).
+            return _ok_result("")
         if args[0] == "merge-base":
             return _ok_result("")
         if args[0] == "rev-list":
@@ -276,20 +395,30 @@ class BranchStateRunner:
         if args == ["rev-parse", "main"]:
             if self.muse_rev_parse_main_values:
                 return _ok_result(self.muse_rev_parse_main_values.pop(0))
-            return _ok_result(self.muse_main_tip)
+            return _ok_result(self.muse_tips.get("main", self.muse_main_tip))
         if args == ["rev-parse", "HEAD"]:
-            return _ok_result("sha256:feedface")
+            return _ok_result(self.muse_tips.get(self.muse_branch, self.muse_main_tip))
+        if args[0] == "rev-parse" and len(args) == 2:
+            name = args[1]
+            if name in self.muse_branches:
+                return _ok_result(self.muse_tips[name])
+            return _fail_result(f"'{name}' not found")
         if args[:2] == ["status", "--json"]:
-            dirty = "true" if self.muse_dirty else "false"
-            return _ok_result('{"dirty": ' + dirty + "}")
+            dirty = self._muse_worktree_dirty()
+            return _ok_result(
+                json.dumps({"dirty": dirty, "total_changes": 1 if dirty else 0})
+            )
         if args[:2] == ["status", "--porcelain"]:
-            return _ok_result(" M tracked.md" if self.muse_dirty else "")
+            return _ok_result(" M tracked.md" if self._muse_worktree_dirty() else "")
         if args[:2] == ["branch", "--show-current"]:
             return _ok_result(self.muse_branch)
         if args[:2] == ["checkout", "-b"]:
             branch = args[2]
             if branch in self.muse_branches:
                 return _fail_result(f"branch {branch!r} already exists")
+            self.muse_tips[branch] = self.muse_tips.get(
+                self.muse_branch, self.muse_main_tip
+            )
             self.muse_branches.add(branch)
             self.muse_branch = branch
             return _ok_result("")
@@ -298,6 +427,7 @@ class BranchStateRunner:
             if branch not in self.muse_branches:
                 return _fail_result(f"unknown branch {branch!r}")
             self.muse_branch = branch  # dirty changes shelved + reapplied
+            self.worktree = self._content(self.muse_tips.get(branch))
             return _ok_result("")
         if args[0] == "checkout":
             if "--force" in args:
@@ -305,11 +435,54 @@ class BranchStateRunner:
             branch = args[-1]
             if branch not in self.muse_branches:
                 return _fail_result(f"unknown branch {branch!r}")
-            if self.muse_dirty:
+            if self._muse_worktree_dirty():
                 # Muse 0.2.x live behavior: refuse dirty tracked checkout.
                 return _fail_result("dirty tracked files present; use --autoshelf or --merge")
             self.muse_branch = branch
+            # Muse rewrites the shared worktree to the branch tip's content —
+            # the live §GSB defect when that tip is stale.
+            self.worktree = self._content(self.muse_tips.get(branch))
             return _ok_result("")
+        if args[0] == "update-ref" and len(args) == 3:
+            name = args[1]
+            self.muse_branches.add(name)
+            self.muse_tips[name] = args[2]
+            return _ok_result("")
+        if args[0] == "reset" and "--hard" in args:
+            if "--force" in args:
+                return _fail_result("--force forbidden in GSW tests")
+            target = next(a for a in args[1:] if not a.startswith("-"))
+            if self._muse_worktree_dirty():
+                # Live Muse 0.2.x refuses reset --hard on tracked changes.
+                return _fail_result(
+                    "error: Your local changes would be overwritten by reset --hard"
+                )
+            self.muse_tips[self.muse_branch] = target
+            self.worktree = self._content(target)
+            return _ok_result("")
+        if args[0] == "merge-base":
+            operands = [a for a in args[1:] if not a.startswith("-")]
+            if len(operands) != 2:
+                return _fail_result("merge-base needs two commits")
+            commit_a, commit_b = operands
+            if commit_a == commit_b or commit_a in self.muse_ancestors.get(
+                commit_b, set()
+            ):
+                base: str | None = commit_a
+            elif commit_b in self.muse_ancestors.get(commit_a, set()):
+                base = commit_b
+            else:
+                base = None
+            return _ok_result(
+                json.dumps(
+                    {
+                        "commit_a": commit_a,
+                        "commit_b": commit_b,
+                        "merge_base": base,
+                        "exit_code": 0,
+                    }
+                )
+            )
         if args[:2] == ["code", "add"]:
             return _ok_result("")
         if args[0] == "add":
@@ -322,6 +495,14 @@ class BranchStateRunner:
         if args[0] == "commit":
             if self.muse_commit_fails:
                 return _fail_result("induced muse commit failure")
+            self.muse_commit_count += 1
+            parent = self.muse_tips.get(self.muse_branch, self.muse_main_tip)
+            new_sha = f"sha256:musec{self.muse_commit_count:04d}"
+            self.muse_ancestors[new_sha] = {parent} | self.muse_ancestors.get(
+                parent, set()
+            )
+            self.muse_tips[self.muse_branch] = new_sha
+            self.content_map[new_sha] = self.worktree
             self.muse_dirty = False
             return _ok_result("")
         if args[0] == "bridge":
