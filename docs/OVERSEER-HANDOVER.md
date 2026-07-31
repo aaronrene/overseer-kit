@@ -119,6 +119,7 @@ Hard stops: no Auto build before freeze pass; no merge to main (Tier 3); no prod
 
 | Date | Note |
 | --- | --- |
+| 2026-07-31 | **overseerkit.com LIVE.** Operator confirmed the Tier-3 DNS flip; static landing (§LAC.9) serving on the apex. Backlog row updated. P-route runtime reference will be built in Scooling (consumer repo) when picked up — remaining open backlog is that single item. |
 | 2026-07-31 | **GSB → main DONE (SD-21, PR [#59](https://github.com/aaronrene/overseer-kit/pull/59) @ `de9013f`).** land-b sync via `ok governance-sync --write` — **first live C0 run**: same-day `feat/governance-sync-2026-07-31` collision uniquified to `-2`, exit `0`, no checkout refusal (live defect closed). `ok land-closeout` → `0`. Build queue empty; NEXT → backlog triage (Thinking). |
 | 2026-07-31 | **GSB-b DONE (Auto build + BV `pass`, GSB-BV-r1, 0 findings).** C0 reconcile-before-ensure in `tools/governance_hygiene/engine.py`; seven-tier §GSB.8 **25** green incl. same-day-collision `--write` on all three regimes; full suite **1213** green. NEXT → GSB → main (land-a). |
 | 2026-07-31 | **GSB-a DONE (Thinking freeze).** Authored + freeze-reviewed `docs/PHASE-GSB-GOVERNANCE-SYNC-BRANCH-COLLISION.md` → `pass` (GSB-r3), stamp `sha256:30cfb999…`. Contract: C0 reconcile-before-ensure; ancestor/equal → FF tip without checkout-as-FF; else deterministic `-N` uniquify; Muse never dirties Git; §GSB.8 three-regime same-day-collision matrix. **No GSB-b Auto code this session.** NEXT → GSB-b Auto on `feat/gsb-branch-collision`. |
