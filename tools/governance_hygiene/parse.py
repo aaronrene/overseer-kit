@@ -85,10 +85,52 @@ def phase_tokens(phase_label: str) -> list[str]:
     return tokens
 
 
+# Land/PR boilerplate words — never slice-identifying on their own
+# (live GSW land-b false-positive: PR "GSW land-b docs sync + …" stamped the
+# unrelated open row "PLS-a Post-land main sync freeze" DONE via bare "land"/"sync").
+_GENERIC_PHASE_TOKENS = frozenset(
+    {
+        "main",
+        "land",
+        "sync",
+        "post",
+        "docs",
+        "doc",
+        "fix",
+        "freeze",
+        "build",
+        "mirror",
+        "merge",
+        "gate",
+        "kit",
+        "the",
+        "and",
+        "for",
+        "with",
+        "review",
+    }
+)
+
+
 def pr_matches_row(pr_title: str, row: QueueRow) -> bool:
-    """Return whether a merged PR title plausibly belongs to a queue row."""
+    """Return whether a merged PR title plausibly belongs to a queue row.
+
+    Only slice-identifying evidence may match: the full phase label as a
+    substring, or a word-bounded label token of length >= 3 that is not
+    generic land/PR boilerplate (``_GENERIC_PHASE_TOKENS``). Bare fragments
+    like ``land`` / ``sync`` / ``a`` must never stamp a queue row.
+    """
     title_lower = pr_title.lower()
-    for token in phase_tokens(row.phase_label):
-        if token.lower() in title_lower:
+    tokens = phase_tokens(row.phase_label)
+    if not tokens:
+        return False
+    full_label = tokens[0].lower()
+    if full_label and full_label in title_lower:
+        return True
+    for token in tokens[1:]:
+        cleaned = token.lower()
+        if len(cleaned) < 3 or cleaned in _GENERIC_PHASE_TOKENS:
+            continue
+        if re.search(rf"(?<![0-9a-z]){re.escape(cleaned)}(?![0-9a-z])", title_lower):
             return True
     return False
