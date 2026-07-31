@@ -208,6 +208,167 @@ def seed_governance_freshness(
         )
 
 
+LAND_A_MARKER = (
+    "<!-- overseer:next role=primary lane=product status=live land-phase=land-a -->"
+)
+LAND_B_MARKER = (
+    "<!-- overseer:next role=primary lane=product status=live land-phase=land-b -->"
+)
+
+
+def land_a_fence_body(slice_id: str = "PMHF", *, paste_extra: str = "") -> str:
+    """Frozen land-a paste body (§PMHF.3.1) for fixtures."""
+    return (
+        "Model: Operator + Auto\n"
+        f"ID: {slice_id} → main (land-a)\n"
+        "land-phase: land-a\n"
+        "\n"
+        "Deliver:\n"
+        "1. Open/update PR (or SD-21 authorized land path)\n"
+        "2. Stop for Tier 3 merge authorization when required\n"
+        "3. Do NOT claim land complete\n"
+        "4. Do NOT regenerate post-merge NEXT in this paste\n"
+        f"{paste_extra}"
+        "\n"
+        "After merge is confirmed on main: paste land-b (same slice). "
+        "Land is incomplete until land-b.\n"
+    )
+
+
+def land_b_fence_body(slice_id: str = "PMHF") -> str:
+    """Frozen land-b paste body (§PMHF.3.2) for fixtures."""
+    return (
+        "Model: Auto\n"
+        f"ID: {slice_id} land-b (post-merge sync)\n"
+        "land-phase: land-b\n"
+        "\n"
+        "Deliver:\n"
+        "1. Fetch/pull latest main (regime-appropriate)\n"
+        "2. ok governance-sync --dry-run then apply when the plan is correct\n"
+        "3. Regenerate NEXT + paste so they no longer say wait-for-merge / land-a\n"
+        "4. Feature-branch commit bundling ROADMAP + HANDOVER (SD-17)\n"
+        "5. ok status --exit-code → 0 and ok land-closeout → 0 before claiming land complete\n"
+    )
+
+
+def land_handover_text(
+    claim: str = "cafebabe",
+    *,
+    marker: str | None = LAND_A_MARKER,
+    slice_id: str = "PMHF",
+    heading: str | None = None,
+    fence_body: str | None = None,
+) -> str:
+    """Handover fixture with NEXT marker, paste fence, and GitHub-main claim (§PMHF)."""
+    if fence_body is None:
+        fence_body = land_a_fence_body(slice_id)
+    if heading is None:
+        heading = f"{slice_id} → main (land-a)"
+    marker_line = f"{marker}\n" if marker else ""
+    return (
+        "# Overseer Handover — fixture\n"
+        "\n"
+        f"{marker_line}## NEXT SESSION — {heading}\n"
+        "\n"
+        "**Model:** Operator + Auto\n"
+        "\n"
+        "### What just landed\n"
+        "\n"
+        "| Slice | Deliverable |\n"
+        "| --- | --- |\n"
+        "| prior | prior slice |\n"
+        "\n"
+        "### THE ONE NEXT STEP — **Model: Operator + Auto**\n"
+        "\n"
+        "| | |\n"
+        "| --- | --- |\n"
+        f"| **ID** | **{heading}** |\n"
+        "\n"
+        f"### Paste-ready prompt — {slice_id}\n"
+        "\n"
+        "```text\n"
+        f"{fence_body}"
+        "```\n"
+        "\n"
+        "---\n"
+        "\n"
+        "## Verified snapshot\n"
+        "\n"
+        "| Area | State |\n"
+        "| --- | --- |\n"
+        "| **VCS regime** | `git-only` |\n"
+        "\n"
+        "<!-- overseer:anchor:vcs-table -->\n"
+        "## VCS (verified 2026-07-30)\n"
+        "\n"
+        "| Item | Value |\n"
+        "| --- | --- |\n"
+        "| Branch | `main` |\n"
+        f"| GitHub `main` | `{claim}` |\n"
+        "<!-- /overseer:anchor:vcs-table -->\n"
+        "\n"
+        "## Change log\n"
+        "\n"
+        "- **2026-07-30** — land-a opened\n"
+    )
+
+
+def land_roadmap_text(*rows: str) -> str:
+    """Roadmap fixture with a build queue; pass full ``| … |`` rows."""
+    default_rows = (
+        "| **PMHF-b Build** | Auto | **DONE** | land closeout build |",
+        "| **PMHF → main** | Operator + Auto | **TODO** | Land PMHF (Tier 3 merge) |",
+    )
+    body = "\n".join(rows or default_rows)
+    return (
+        "# Roadmap — fixture\n"
+        "\n"
+        "## Build queue\n"
+        "\n"
+        "| Phase | Model | Status | Deliverable |\n"
+        "| --- | --- | --- | --- |\n"
+        f"{body}\n"
+        "\n"
+        "## Definition of Done (every phase)\n"
+        "\n"
+        "- Tests green\n"
+    )
+
+
+def seed_land_repo(
+    repo_root: Path,
+    *,
+    claim: str = "cafebabe",
+    handover_text: str | None = None,
+    roadmap_text: str | None = None,
+    marker_tip: str | None = "cafebabe",
+) -> None:
+    """Seed config, lock, docs, and enriched sync marker for land-closeout tests."""
+    write_config(repo_root, "config-git-only.yaml")
+    (repo_root / ".overseer" / "version.lock").write_text(
+        "lock_version: 1\nkit_version: 0.1.0\nconfig_version: 1\n"
+        "footprint_digest: sha256:" + ("0" * 64) + "\n"
+        'installed_at: "2026-01-01T00:00:00Z"\nsynced_at: "2026-01-01T00:00:00Z"\n'
+        "footprint: []\n",
+        encoding="utf-8",
+    )
+    docs = repo_root / "docs"
+    docs.mkdir(parents=True, exist_ok=True)
+    (docs / "OVERSEER-HANDOVER.md").write_text(
+        handover_text if handover_text is not None else land_handover_text(claim),
+        encoding="utf-8",
+    )
+    (docs / "ROADMAP.md").write_text(
+        roadmap_text if roadmap_text is not None else land_roadmap_text(),
+        encoding="utf-8",
+    )
+    if marker_tip is not None:
+        (repo_root / ".overseer" / "last_governance_sync").write_text(
+            f"2026-07-30T00:00:00Z\nr1={marker_tip}\nr3={marker_tip}\n",
+            encoding="utf-8",
+        )
+
+
 def run_cli(
     argv: list[str],
     *,

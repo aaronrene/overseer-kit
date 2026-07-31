@@ -10,12 +10,24 @@ from adapters.config import OverseerConfig
 from tools.governance_hygiene.anchors import replace_anchor_block
 from tools.governance_hygiene.drift import merged_prs_missing_from_done
 from tools.governance_hygiene.next_regen import (
+    LAND_PHASE_A,
+    LAND_PHASE_B,
+    LAND_PHASE_UNREADABLE,
+    NextRegenDecision,
+    REASON_LAND_A_WAIT,
+    REASON_LAND_PHASE_UNREADABLE,
     ensure_primary_next_marker,
+    extract_paste_pr_number,
     format_change_log_fragment,
     format_next_regen_token,
+    plan_land_b,
     plan_next_regen,
+    render_land_b_next_session,
+    render_land_b_paste,
     render_next_session,
     render_paste_ready,
+    resolve_land_phase,
+    set_marker_land_phase,
 )
 from tools.governance_hygiene.parse import normalize_status, parse_queue_rows, phase_tokens, pr_matches_row
 from tools.governance_hygiene.types import QueueRow
@@ -55,33 +67,69 @@ def build_handover_patches(
     text = replace_anchor_block(text, "verified-snapshot", snapshot_body)
     sections.append("verified-snapshot")
 
-    decision = plan_next_regen(
-        roadmap_text=roadmap_text,
-        handover_text=text,
-        config=config,
-        repo_root=repo_root,
+    # §PMHF.3.4: land-a NEXT + post-merge-incomplete signals → emit land-b for the
+    # same slice; never re-emit land-a and never clobber a mid-wait land-a paste.
+    main_branch = config.vcs.git.main_branch or "main"
+    merged_pr_numbers = {pr.number for pr in reads.r4_merged_prs}
+    paste_pr = extract_paste_pr_number(text)
+    land_b = plan_land_b(
+        text,
+        d1=drift.d1_handover_vs_git,
+        merged_pr_signal=paste_pr is not None and paste_pr in merged_pr_numbers,
+        main_branch=main_branch,
     )
-    if decision.row is not None and decision.reason is None:
+    current_land_phase = resolve_land_phase(text)
+
+    if land_b is not None:
         text = ensure_primary_next_marker(text, config)
-        next_body = render_next_session(
-            decision=decision,
-            roadmap_text=roadmap_text,
-            config=config,
-            sync_date=today,
-        )
-        paste_body = render_paste_ready(decision=decision, config=config)
+        next_body = render_land_b_next_session(land_b, config=config, sync_date=today)
+        paste_body = render_land_b_paste(land_b, config=config)
         text = replace_anchor_block(text, "next-session", next_body)
         text = replace_anchor_block(text, "paste-ready-prompt", paste_body)
+        text = set_marker_land_phase(text, LAND_PHASE_B)
         sections.append("next-session")
         sections.append("paste-ready-prompt")
-
-    next_regen_token = format_next_regen_token(decision)
+        next_regen_token = "next_regen: regenerated (land-b)"
+        next_regen_fragment = "next_regen=regenerated:land-b"
+    elif current_land_phase == LAND_PHASE_A:
+        # Mid-land wait: preserve the land-a NEXT/paste; fail closed on regen.
+        decision = NextRegenDecision(None, REASON_LAND_A_WAIT, None, None, False)
+        next_regen_token = format_next_regen_token(decision)
+        next_regen_fragment = format_change_log_fragment(decision)
+    elif current_land_phase == LAND_PHASE_UNREADABLE:
+        decision = NextRegenDecision(None, REASON_LAND_PHASE_UNREADABLE, None, None, False)
+        next_regen_token = format_next_regen_token(decision)
+        next_regen_fragment = format_change_log_fragment(decision)
+    else:
+        decision = plan_next_regen(
+            roadmap_text=roadmap_text,
+            handover_text=text,
+            config=config,
+            repo_root=repo_root,
+        )
+        if decision.row is not None and decision.reason is None:
+            text = ensure_primary_next_marker(text, config)
+            next_body = render_next_session(
+                decision=decision,
+                roadmap_text=roadmap_text,
+                config=config,
+                sync_date=today,
+            )
+            paste_body = render_paste_ready(decision=decision, config=config)
+            text = replace_anchor_block(text, "next-session", next_body)
+            text = replace_anchor_block(text, "paste-ready-prompt", paste_body)
+            # §PMHF.3.4 rule 2: a regenerated non-land NEXT clears land-phase.
+            text = set_marker_land_phase(text, None)
+            sections.append("next-session")
+            sections.append("paste-ready-prompt")
+        next_regen_token = format_next_regen_token(decision)
+        next_regen_fragment = format_change_log_fragment(decision)
     change_line = _render_change_log_line(
         drift,
         reads,
         realign_summary,
         today,
-        next_regen_fragment=format_change_log_fragment(decision),
+        next_regen_fragment=next_regen_fragment,
     )
     text = _append_change_log(text, change_line)
     sections.append("change-log")

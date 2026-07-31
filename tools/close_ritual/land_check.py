@@ -12,6 +12,7 @@ from adapters.config import CloseRitualConfig, OverseerConfig
 from adapters.factory import create_adapter
 from adapters.runner import CommandRunner, SubprocessRunner
 from tools.governance_freshness import check_governance_freshness
+from tools.land_closeout import check_land_closeout
 
 
 @dataclass(frozen=True)
@@ -163,6 +164,16 @@ def run_land_check(
         )
         if freshness_fail is not None:
             return freshness_fail
+        closeout_fail = _closeout_gate(
+            config,
+            repo_root,
+            mode=effective_mode,
+            runner=runner,
+            emit=_emit,
+            messages=messages,
+        )
+        if closeout_fail is not None:
+            return closeout_fail
         _emit("note: ok land-check never merges; use ok pr-land --authorized for wait-for-green land")
         return LandCheckResult(
             exit_code=0,
@@ -270,6 +281,17 @@ def run_land_check(
     if freshness_fail is not None:
         return freshness_fail
 
+    closeout_fail = _closeout_gate(
+        config,
+        repo_root,
+        mode=effective_mode,
+        runner=runner,
+        emit=_emit,
+        messages=messages,
+    )
+    if closeout_fail is not None:
+        return closeout_fail
+
     _emit(f"verify_landed: PASS — require_paths match {ref}")
     _emit("Tier 3 land complete once paths match; further merges use ok pr-land --authorized")
     return LandCheckResult(
@@ -307,6 +329,44 @@ def _freshness_gate(
     if report.remediation:
         emit(f"governance_freshness-remediation: {report.remediation}")
     emit("land-check refused — freshness gate (never merges)")
+    return LandCheckResult(
+        exit_code=2,
+        landed=False,
+        mode=mode,
+        ref="",
+        paths=(),
+        dirty_paths=(),
+        messages=tuple(messages),
+    )
+
+
+def _closeout_gate(
+    config: OverseerConfig,
+    repo_root: Path,
+    *,
+    mode: str,
+    runner: CommandRunner | None,
+    emit: Callable[[str], None],
+    messages: list[str],
+) -> LandCheckResult | None:
+    """§PMHF.6.2: ``landed=True`` only when closeout is ``complete``/``not_applicable``.
+
+    ``land_a_in_progress``, ``post_merge_incomplete``, ``land_b_in_progress``, and
+    ``unreadable`` all refuse landed (exit 2) with remediation — never merges.
+    """
+    active_runner = runner or SubprocessRunner()
+    report = check_land_closeout(
+        config,
+        repo_root,
+        runner=active_runner,
+        probe_merged_pr=config.vcs.regime != "muse-only",
+    )
+    if report.state in {"complete", "not_applicable"}:
+        return None
+    emit(f"land_closeout: {report.state} — {report.message}")
+    if report.remediation:
+        emit(f"land_closeout-remediation: {report.remediation}")
+    emit("land-check refused — land closeout incomplete (never merges)")
     return LandCheckResult(
         exit_code=2,
         landed=False,
