@@ -6,48 +6,42 @@
 
 ---
 
-<!-- overseer:next role=primary lane=product status=live land-phase=land-a -->
+<!-- overseer:next role=primary lane=product status=live land-phase=land-b -->
 <!-- overseer:anchor:next-session -->
-## NEXT SESSION — PLS → main (land-a)
+## NEXT SESSION — PLS land-b (post-merge sync)
 
 **Date:** 2026-07-31  
-**Current position:** PLS-b DONE → PLS → main (land-a)  
-**Model:** Operator + Auto
+**Current position:** PLS land-a → land-b  
+**Model:** Auto
 
-### What just landed
+### THE ONE NEXT STEP — **Model: Auto**
 
-| Slice | Deliverable |
-| --- | --- |
-| **PLS-b** | Build verified → `pass` (PLS-BV-r1, 0 findings). `PostLandSyncConfig` fail-closed parse; `tools/close_ritual/post_land_sync.py` (fetch → dirty skip never-clobber → clean checkout main + `git pull --ff-only` → editor-buffer note); wired into `run_pr_land`/`ok pr-land` with always-present `PrLandResult.post_land_sync`; exit `36` on hard sync fail (never `6`); `verify_landed` untouched; default off. Seven-tier §PLS.10 **46** green. Doc touchpoints: SPEC §5 `ok pr-land` row, PHASE-PR-LAND exit-36, VF OVERSEER-SETUP knobs. |
-
-### THE ONE NEXT STEP — **Model: Operator + Auto**
-
-Land PLS to `main` (SD-21 land hygiene; merge authority Tier 3). Diff = kit close-ritual code + tests + docs only — no posture/env flip, no secrets, no real money. After merge is confirmed on main: paste land-b (same slice); land is incomplete until land-b + `ok land-closeout` → `0`.
+Post-merge governance closeout for **PLS**: sync ROADMAP + HANDOVER to merged `main` so NEXT and paste no longer point at the pre-merge posture.
 
 | | |
 | --- | --- |
-| **ID** | **PLS → main (land-a)** |
-| **Branch** | `feat/pls-a` |
+| **ID** | **PLS land-b (post-merge sync)** |
 | **Repo** | **overseer-kit** |
-| **Read first** | `docs/PHASE-PLS-POST-LAND-MAIN-SYNC.md`; `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md` |
-| **Hard stops** | No merge to `main` without Tier 3 · no secrets · no live posture flips · no inventing NEXT when ambiguous |
+| **Read first** | `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md` |
+| **Hard stops** | no silent commits to `main`; no Cursor-only dependency; no freeze/BV redesign |
 <!-- /overseer:anchor:next-session -->
 
 <!-- overseer:anchor:paste-ready-prompt -->
-### Paste-ready prompt — PLS
+### Paste-ready prompt — PLS land-b
 
 ```text
-Model: Operator + Auto
-ID: PLS → main (land-a)
-land-phase: land-a
+Model: Auto
+ID: PLS land-b (post-merge sync)
+land-phase: land-b
 
 Deliver:
-1. Open/update PR (or SD-21 authorized land path)
-2. Stop for Tier 3 merge authorization when required
-3. Do NOT claim land complete
-4. Do NOT regenerate post-merge NEXT in this paste
+1. Fetch/pull latest main (regime-appropriate)
+2. ok governance-sync --dry-run then apply when the plan is correct
+3. Regenerate NEXT + paste so they no longer say wait-for-merge / land-a
+4. Feature-branch commit bundling ROADMAP + HANDOVER (SD-17); open docs PR if needed
+5. ok status --exit-code → 0 and ok land-closeout → 0 before claiming land complete
 
-After merge is confirmed on main: paste land-b (same slice). Land is incomplete until land-b.
+Hard stops: no silent commits to main; no Cursor-only dependency; no freeze/BV redesign.
 ```
 <!-- /overseer:anchor:paste-ready-prompt -->
 
@@ -74,12 +68,12 @@ After merge is confirmed on main: paste land-b (same slice). Land is incomplete 
 | Area | State |
 | --- | --- |
 | **VCS regime** | `muse+git-mirror` |
-| **GitHub main** | `c57a7b29a5318041c319166216f19d729b350c8d` |
-| **Canonical anchor** | `sha256:49d12e51fbf467750411005ed81a1460b63b9a78ecd2b0673066de27572849ab` |
-| **Canonical main** | `sha256:49d12e51fbf467750411005ed81a1460b63b9a78ecd2b0673066de27572849ab` |
-| **Branch** | `feat/pls-a` |
-| **Dirty** | `no` (after closing commit) |
-| **Drift** | D1=drifted (feature branch ahead of main), D2=aligned, D3=aligned |
+| **GitHub main** | `433c5a37a737d4b657ad7959d9091b91b429cf3c` |
+| **Canonical anchor** | `sha256:6e320c222667b7e17f8b355b8a64050af10a6e2e09656e5053e339c870bcdbe0` |
+| **Canonical main** | `sha256:6e320c222667b7e17f8b355b8a64050af10a6e2e09656e5053e339c870bcdbe0` |
+| **Branch** | `main` |
+| **Dirty** | `no` |
+| **Drift** | D1=drifted, D2=aligned, D3=drifted |
 <!-- /overseer:anchor:verified-snapshot -->
 
 <!-- overseer:anchor:vcs-table -->
@@ -87,11 +81,11 @@ After merge is confirmed on main: paste land-b (same slice). Land is incomplete 
 
 | Item | Value |
 | --- | --- |
-| Branch | `feat/pls-a` (git + muse) |
-| GitHub `main` | `c57a7b29a5318041c319166216f19d729b350c8d` |
-| Canonical anchor | `sha256:49d12e51fbf467750411005ed81a1460b63b9a78ecd2b0673066de27572849ab` (.muse/git-bridge.toml:last_export.muse_commit_id) |
-| Muse `main` | `sha256:49d12e51fbf467750411005ed81a1460b63b9a78ecd2b0673066de27572849ab` |
-| Dirty | no (after closing commit) |
+| Branch | `main` |
+| GitHub `main` | `433c5a37a737d4b657ad7959d9091b91b429cf3c` |
+| Canonical anchor | `sha256:6e320c222667b7e17f8b355b8a64050af10a6e2e09656e5053e339c870bcdbe0` (.muse/git-bridge.toml:last_export.muse_commit_id) |
+| Muse `main` | `sha256:6e320c222667b7e17f8b355b8a64050af10a6e2e09656e5053e339c870bcdbe0` |
+| Dirty | no |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -103,6 +97,8 @@ After merge is confirmed on main: paste land-b (same slice). Land is incomplete 
 
 <!-- overseer:anchor:change-log -->
 ## Change log
+
+- **2026-07-31** — governance-sync: drift (D1=drifted, D2=aligned, D3=drifted) @ `433c5a3`; realign: D2 aligned — skip realign; next_regen=regenerated:land-b
 
 - **2026-07-31** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `c57a7b2`; realign: D2 aligned — skip realign; next_regen=regenerated
 
