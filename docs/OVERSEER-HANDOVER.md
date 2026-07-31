@@ -7,83 +7,75 @@
 ---
 
 <!-- overseer:next role=primary lane=product status=live -->
-## NEXT SESSION — GSW-FIX-a (governance-sync write-path freeze)
+## NEXT SESSION — GSW-FIX-b (governance-sync write-path build)
 
 **Date:** 2026-07-31  
-**Current position:** **PMHF → main DONE** — SD-21 land 2026-07-31: Muse FF →
-`sha256:72efabb7…` → muse-bridge → GitHub PR
-[#52](https://github.com/aaronrene/overseer-kit/pull/52) → `main` @ `edbc3eb`
-(operator-approved merge); post-merge sync completed per §PMHF.3.2; `ok land-closeout` → `0`.
-Dogfooding PMHF exposed a live defect: `ok governance-sync --write` always fails on
-`muse+git-mirror` (doc patches written before branch setup; Muse refuses the dirty
-checkout; rollback strands git on the sync branch). Next is freezing that fix.
+**Current position:** **GSW-FIX-a DONE** — freeze
+`docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md` reviewed → `pass` (GSW-r3), stamp
+`sha256:63cfd176…`. Cleared for Auto build of the write-path order-of-operations fix.
 **Open this tree only:** `~/OVERSEER_KIT/overseer-kit` — stub `~/overseer-kit` is
 K1-era; do not use it.
-**Model:** **Thinking**
+**Model:** **Auto**
 
 ### Authority split (read this — three different handovers)
 
 | Board | File | What it controls | Live NEXT (2026-07-31) |
 | --- | --- | --- | --- |
 | **Product order (PRIMARY)** | `~/scooling/docs/OVERSEER-HANDOVER.md` | Cross-repo product sequencing | Trust Scooling PRIMARY — do not invent kit product NEXT |
-| **Kit (this board)** | `docs/OVERSEER-HANDOVER.md` | Kit vendor phases only | **GSW-FIX-a (governance-sync write-path freeze)** |
+| **Kit (this board)** | `docs/OVERSEER-HANDOVER.md` | Kit vendor phases only | **GSW-FIX-b (governance-sync write-path build)** |
 | **Knowtation RELAY** | Knowtation handover | Consumer relay | Follow Scooling PRIMARY |
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
+| **GSW-FIX-a** | Frozen `docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md` — GSW-r3 `pass`, stamp `sha256:63cfd176…` |
 | **PMHF → main** | SD-21: Muse FF → `sha256:72efabb7…` → PR [#52](https://github.com/aaronrene/overseer-kit/pull/52) → GitHub `main` @ `edbc3eb`; post-merge sync + closeout gates cleared same day |
 | **PMHF-b** | `tools/land_closeout/` + `ok land-closeout`; status/land-check wiring; `next_regen` land-b; CI closeout template; §PMHF.10 **46** green; BV `pass` (PMHF-BV-r1) |
-| **PMHF-a** | Frozen `docs/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md` — PMHF-r4 `pass` |
 
-### THE ONE NEXT STEP — **Model: Thinking**
+### THE ONE NEXT STEP — **Model: Auto**
 
-Freeze the governance-sync write-path fix (`docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md`).
-Live defect found dogfooding PMHF: `ok governance-sync --write` on `muse+git-mirror` writes doc
-patches **before** branch setup, `commit_feature`'s `muse checkout` refuses the dirty tree, and
-the fail-closed rollback restores docs but strands git on the just-created sync branch.
-Spec-only — no build in the freeze session.
+Build exactly to frozen `docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md` (no redesign).
+Reorder `_apply_plan`, dual-HEAD ensure, rollback branch+marker restore, Muse dirty-carry /
+already-on-branch short-circuit; seven-tier §GSW.10 including dirty-tree `--write` on all
+regimes; `/build-verification-review` → `pass` before DONE.
 
 | | |
 | --- | --- |
-| **ID** | **GSW-FIX-a** |
-| **Branch** | `feat/gsw-fix-governance-sync-write-path` (create from `main`) |
+| **ID** | **GSW-FIX-b** |
+| **Branch** | `feat/gsw-fix-governance-sync-write-path` |
 | **Repo** | **overseer-kit** @ `~/OVERSEER_KIT/overseer-kit` |
-| **Read first** | `tools/governance_hygiene/engine.py` (`_apply_plan`, `_ensure_feature_branch`); `adapters/muse_git_mirror/adapter.py` (`commit_feature`); `docs/ROADMAP.md` GSW-FIX rows; this handover |
-| **Hard stops** | Spec-only (no code build); no freeze/BV redesign; no main merge; no secrets |
+| **Read first** | Frozen `docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md`; `tools/governance_hygiene/engine.py`; `adapters/*/adapter.py` `commit_feature`; this handover |
+| **Hard stops** | Build exactly to freeze (no redesign); no main merge; no secrets; BV `pass` before DONE |
 
-### Paste-ready prompt — GSW-FIX-a
+### Paste-ready prompt — GSW-FIX-b
 
 ```text
-YOU ARE HERE: Overseer Kit — GSW-FIX-a governance-sync write-path freeze.
+YOU ARE HERE: Overseer Kit — GSW-FIX-b governance-sync write-path build.
 
-Model: Thinking
-ID: GSW-FIX-a
+Model: Auto
+ID: GSW-FIX-b
 Repo: ~/OVERSEER_KIT/overseer-kit
-Branch: feat/gsw-fix-governance-sync-write-path (create from main)
+Branch: feat/gsw-fix-governance-sync-write-path
 
-Context (verified live 2026-07-31): ok governance-sync --write on muse+git-mirror
-always fails exit 2. Order-of-operations defect: tools/governance_hygiene/engine.py
-_apply_plan writes ROADMAP/HANDOVER patches to the working tree, then
-adapters/muse_git_mirror/adapter.py commit_feature runs muse checkout <sync-branch>,
-which Muse refuses with dirty tracked files (no git-style carry-across). Rollback
-restores the docs but does not undo _ensure_feature_branch's git switch — git is
-stranded on the sync branch (observed: feat/governance-sync-2026-07-31).
+Frozen ground truth (do not re-derive):
+  docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md
+  freeze review pass GSW-r3, stamp sha256:63cfd176…
 
-Deliver (spec-only):
-1. Author docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md (frozen: true) covering:
-   - branch setup BEFORE doc writes (or muse shelf / checkout --merge carry semantics)
-   - rollback restores the original branch on every failure path
-   - regime matrix: muse+git-mirror, muse-only, git-only
-   - seven-tier regression tests incl. dirty-tree --write on all regimes
-2. /freeze-review-loop (ok review --freeze) until pass
-3. Close: ROADMAP + HANDOVER together; feature-branch commit (SD-17)
+Deliver:
+1. Build exactly to frozen §GSW.3–§GSW.6:
+   - _apply_plan order: capture → realign (original branch) → ensure feature branch
+     (dual-HEAD on muse+git-mirror) → write docs → commit → marker (D1+D2) → push
+   - rollback restores docs + marker + original branch on every post-switch failure
+   - commit_feature already-on-branch short-circuit; Muse dirty-carry (--autoshelf or --merge)
+2. Seven-tier tests per §GSW.10 — dirty-tree --write on ALL three regimes (mandatory)
+3. /build-verification-review → pass before ROADMAP DONE
+4. Close: ROADMAP + HANDOVER together; feature-branch commit (SD-17)
 
-Hard stops: no code build this session; no freeze/BV redesign; no main merge; no secrets.
+Hard stops: no freeze/BV redesign; no main merge; no secrets; no --force default checkout.
 
 Governance gates (mandatory — remind only; silence is not pass):
-- Freeze review must be pass before GSW-FIX-b Auto starts
+- Build verification must be pass before marking GSW-FIX-b DONE
 ```
 
 ---
@@ -113,7 +105,8 @@ Governance gates (mandatory — remind only; silence is not pass):
 | **PMHF-a** | **DONE** — `docs/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md` reviewed → `pass` (PMHF-r4), stamp `sha256:7d02bb23…` |
 | **PMHF-b** | **DONE** — BV `pass` (PMHF-BV-r1); `tools/land_closeout/` + `ok land-closeout` + status/land-check wiring + `next_regen` land-b + CI template; §PMHF.10 **46** green |
 | **PMHF → main** | **DONE** — SD-21 land 2026-07-31: Muse FF → `sha256:72efabb7…` + GitHub PR [#52](https://github.com/aaronrene/overseer-kit/pull/52) → `main` @ `edbc3eb` (operator-approved); §PMHF.3.2 post-merge sync done; `ok land-closeout` → `0` |
-| **GSW-FIX** | **NEXT** — Thinking freeze for the `ok governance-sync --write` order-of-operations defect on `muse+git-mirror` (doc writes before branch setup; Muse refuses dirty checkout; rollback strands git on sync branch). Found live dogfooding PMHF; GSW-FIX-b Auto build QUEUED |
+| **GSW-FIX-a** | **DONE** — `docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md` reviewed → `pass` (GSW-r3), stamp `sha256:63cfd176…` |
+| **GSW-FIX-b** | **NEXT** — Auto build exactly to frozen GSW-FIX spec; §GSW.10 dirty-tree `--write` all regimes; BV `pass` before DONE |
 | **GS-PASTE-a** | **DONE** — `docs/PHASE-GS-PASTE-READY-REGEN.md` reviewed → `pass` (GSP-r3), stamp `sha256:123c2e68…` |
 | **GS-PASTE-b** | **DONE** — BV `pass` (GSP-BV-r1); `next_regen` via `ok governance-sync`; §GSP.10 **19** green |
 | **GS-PASTE → main** | **DONE** — SD-21 land 2026-07-30: Muse `main` `sha256:e7831636…` + GitHub PR [#49](https://github.com/aaronrene/overseer-kit/pull/49) → `main` @ `5a85ef2` |
@@ -169,13 +162,13 @@ Governance gates (mandatory — remind only; silence is not pass):
 
 | Item | Value |
 | --- | --- |
-| Branch | `feat/post-merge-handover-freshness` |
+| Branch | `feat/gsw-fix-governance-sync-write-path` |
 | GitHub `main` | `edbc3eb056c94b194f7408a14c7c01da894f10e3` |
 | Canonical anchor | `sha256:72efabb7bebf54347c1e4ac4368f3c01c89074a555c4eb0fcfbe9680c3d457c3` (muse) |
 | Muse `main` | `sha256:72efabb7bebf54347c1e4ac4368f3c01c89074a555c4eb0fcfbe9680c3d457c3` |
-| Dirty | no after close (governance docs sync committed on feature branch this close) |
+| Dirty | no after close (GSW-FIX-a freeze + governance docs on feature branch) |
 | Kit checkout | **`~/OVERSEER_KIT/overseer-kit`** (live). Stub `~/overseer-kit` is K1-era — **do not use** |
-| Feature land | PR [#52](https://github.com/aaronrene/overseer-kit/pull/52) @ `edbc3eb`; mirror tip `159a210` |
+| Feature land | Prior PMHF land PR [#52](https://github.com/aaronrene/overseer-kit/pull/52) @ `edbc3eb` |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -190,6 +183,7 @@ Governance gates (mandatory — remind only; silence is not pass):
 
 | Date | Note |
 | --- | --- |
+| 2026-07-31 | **GSW-FIX-a DONE** — freeze `docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md` → `pass` (GSW-r3, `sha256:63cfd176…`). NEXT → GSW-FIX-b Auto. |
 | 2026-07-31 | **PMHF → main DONE (SD-21)** — Muse `sha256:72efabb7…` + PR [#52](https://github.com/aaronrene/overseer-kit/pull/52) @ `edbc3eb`; §PMHF.3.2 sync done; `ok land-closeout` → `0`. GSW-FIX defect queued. NEXT → GSW-FIX-a. |
 | 2026-07-31 | **PMHF-b DONE** — BV `pass` (PMHF-BV-r1); §PMHF.10 **46** green. NEXT → PMHF → main (land-a). |
 | 2026-07-31 | **PMHF-a DONE** — freeze `docs/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md` → `pass` (PMHF-r4, `sha256:7d02bb23…`). NEXT → PMHF-b Auto. |
@@ -197,6 +191,13 @@ Governance gates (mandatory — remind only; silence is not pass):
 | 2026-07-30 | **GS-PASTE-b DONE** — BV `pass` (GSP-BV-r1); §GSP.10 **19** green. NEXT → SD-21 land. |
 | 2026-07-30 | **GS-PASTE-a DONE** — freeze `docs/PHASE-GS-PASTE-READY-REGEN.md` → `pass` (GSP-r3, `sha256:123c2e68…`). |
 
+- **2026-07-31** — **GSW-FIX-a DONE (Thinking freeze).** Authored + freeze-reviewed
+  `docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md` → `pass` (GSW-r3), stamp
+  `sha256:63cfd176…`. Contract: `_apply_plan` order capture → realign (original
+  branch) → dual-HEAD feature-branch ensure → write docs → commit → marker;
+  rollback restores docs + marker + original branch; Muse already-on-branch +
+  dirty-carry; seven-tier dirty-tree `--write` on all regimes. **No GSW-FIX-b Auto
+  code this session.** NEXT → GSW-FIX-b Auto on `feat/gsw-fix-governance-sync-write-path`.
 - **2026-07-31** — **PMHF → main DONE (SD-21 land + post-merge sync).** Two paste
   steps per frozen §PMHF.3, dogfooded live on the protocol's own slice. First step:
   SD-21 criteria verified (BV `pass` PMHF-BV-r1; diff = kit CLI/tools/tests/docs +
