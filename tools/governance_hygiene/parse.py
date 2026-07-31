@@ -112,13 +112,39 @@ _GENERIC_PHASE_TOKENS = frozenset(
 )
 
 
+# Slice IDs only: leading run of UPPERCASE/digits, then one or more hyphen
+# segments (PLS-a, GSW-FIX, GFG-D2-FIX, K13-DOGFOOD). Rejects English
+# hyphenations like Post-land that appear in titles as "post-land".
+_COMPOUND_SLICE_RE = re.compile(r"[A-Z][A-Z0-9]{1,}(?:-[A-Za-z0-9]+)+")
+
+
+def _compound_slice_ids(phase_label: str) -> list[str]:
+    """Hyphenated slice IDs from a phase label (``PLS-a``, ``GSW-FIX``).
+
+    ``phase_tokens`` splits on hyphens, so these must be recovered from the
+    full label. Live closeout dogfood: PR #55 title ``queue PLS post-land``
+    must not stamp open row ``PLS-a`` via the bare prefix ``PLS``, and must
+    not match via the English hyphenation ``Post-land`` / ``post-land``.
+    """
+    bold = re.search(r"\*\*([^*]+)\*\*", phase_label)
+    label = bold.group(1) if bold else phase_label
+    return _COMPOUND_SLICE_RE.findall(label)
+
+
+def _word_bounded(needle: str, haystack: str) -> bool:
+    return bool(re.search(rf"(?<![0-9a-z]){re.escape(needle)}(?![0-9a-z])", haystack))
+
+
 def pr_matches_row(pr_title: str, row: QueueRow) -> bool:
     """Return whether a merged PR title plausibly belongs to a queue row.
 
-    Only slice-identifying evidence may match: the full phase label as a
-    substring, or a word-bounded label token of length >= 3 that is not
-    generic land/PR boilerplate (``_GENERIC_PHASE_TOKENS``). Bare fragments
-    like ``land`` / ``sync`` / ``a`` must never stamp a queue row.
+    Match evidence, in order:
+    1. Full phase label as a substring.
+    2. When the label has hyphenated slice IDs (``PLS-a``, ``GSW-FIX``), only
+       those compounds may match (word-bounded). Bare prefixes (``PLS``,
+       ``GSW``) are not enough — PR titles that merely *mention* a future
+       slice must not stamp its open queue row DONE.
+    3. Otherwise: word-bounded non-generic tokens of length >= 3.
     """
     title_lower = pr_title.lower()
     tokens = phase_tokens(row.phase_label)
@@ -127,10 +153,13 @@ def pr_matches_row(pr_title: str, row: QueueRow) -> bool:
     full_label = tokens[0].lower()
     if full_label and full_label in title_lower:
         return True
+    compounds = _compound_slice_ids(row.phase_label)
+    if compounds:
+        return any(_word_bounded(compound.lower(), title_lower) for compound in compounds)
     for token in tokens[1:]:
         cleaned = token.lower()
         if len(cleaned) < 3 or cleaned in _GENERIC_PHASE_TOKENS:
             continue
-        if re.search(rf"(?<![0-9a-z]){re.escape(cleaned)}(?![0-9a-z])", title_lower):
+        if _word_bounded(cleaned, title_lower):
             return True
     return False
