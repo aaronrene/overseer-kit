@@ -6,75 +6,44 @@
 
 ---
 
-<!-- overseer:next role=primary lane=product status=live land-phase=land-a -->
-## NEXT SESSION — GSW-FIX → main (land-a)
+<!-- overseer:next role=primary lane=product status=live land-phase=land-b -->
+<!-- overseer:anchor:next-session -->
+## NEXT SESSION — GSW-FIX land-b (post-merge sync)
 
 **Date:** 2026-07-31  
-**Current position:** **GSW-FIX-b DONE** — build verified → `pass` (GSW-BV-r1) against
-frozen `docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md` (GSW-r3). Write-path
-order-of-operations fix is on `feat/gsw-fix-governance-sync-write-path`; land via
-SD-21 finish-mode when criteria are met.
-**Open this tree only:** `~/OVERSEER_KIT/overseer-kit` — stub `~/overseer-kit` is
-K1-era; do not use it.
-**Model:** **Operator + Auto**
+**Current position:** GSW-FIX land-a → land-b  
+**Model:** Auto
 
-### Authority split (read this — three different handovers)
+### THE ONE NEXT STEP — **Model: Auto**
 
-| Board | File | What it controls | Live NEXT (2026-07-31) |
-| --- | --- | --- | --- |
-| **Product order (PRIMARY)** | `~/scooling/docs/OVERSEER-HANDOVER.md` | Cross-repo product sequencing | Trust Scooling PRIMARY — do not invent kit product NEXT |
-| **Kit (this board)** | `docs/OVERSEER-HANDOVER.md` | Kit vendor phases only | **GSW-FIX → main (land-a)** |
-| **Knowtation RELAY** | Knowtation handover | Consumer relay | Follow Scooling PRIMARY |
-
-### What just landed
-
-| Slice | Deliverable |
-| --- | --- |
-| **GSW-FIX-b** | BV `pass` (GSW-BV-r1); `_apply_plan` reorder + dual-HEAD ensure + rollback + Muse `--autoshelf`; §GSW.10 **29** green (dirty-tree `--write` all three regimes) |
-| **GSW-FIX-a** | Frozen `docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md` — GSW-r3 `pass`, stamp `sha256:63cfd176…` |
-| **PMHF → main** | SD-21: Muse FF → `sha256:72efabb7…` → PR [#52](https://github.com/aaronrene/overseer-kit/pull/52) → GitHub `main` @ `edbc3eb`; post-merge sync + closeout gates cleared same day |
-
-### THE ONE NEXT STEP — **Model: Operator + Auto**
-
-Land GSW-FIX to `main` via SD-21 finish-mode (land-a). Stop for Tier 3 merge
-authorization when required. Do **not** claim land complete — land-b follows after
-merge is confirmed on `main`.
+Post-merge governance closeout for **GSW-FIX**: sync ROADMAP + HANDOVER to merged `main` so NEXT and paste no longer point at the pre-merge posture.
 
 | | |
 | --- | --- |
-| **ID** | **GSW-FIX → main (land-a)** |
-| **Branch** | `feat/gsw-fix-governance-sync-write-path` |
-| **Repo** | **overseer-kit** @ `~/OVERSEER_KIT/overseer-kit` |
-| **Read first** | This handover; `docs/ROADMAP.md` GSW-FIX rows; frozen `docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md`; BV `pass` GSW-BV-r1 |
-| **Hard stops** | No silent main merge outside SD-21; no secrets; land incomplete until land-b |
+| **ID** | **GSW-FIX land-b (post-merge sync)** |
+| **Repo** | **overseer-kit** |
+| **Read first** | `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md` |
+| **Hard stops** | no silent commits to `main`; no Cursor-only dependency; no freeze/BV redesign |
+<!-- /overseer:anchor:next-session -->
 
-### Paste-ready prompt — GSW-FIX → main (land-a)
+<!-- overseer:anchor:paste-ready-prompt -->
+### Paste-ready prompt — GSW-FIX land-b
 
 ```text
-YOU ARE HERE: Overseer Kit — GSW-FIX → main (land-a).
-
-Model: Operator + Auto
-ID: GSW-FIX → main (land-a)
-land-phase: land-a
-Repo: ~/OVERSEER_KIT/overseer-kit
-Branch: feat/gsw-fix-governance-sync-write-path
-
-Frozen ground truth:
-  docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md (GSW-r3 pass)
-  Build verification: pass (GSW-BV-r1)
+Model: Auto
+ID: GSW-FIX land-b (post-merge sync)
+land-phase: land-b
 
 Deliver:
-1. Open/update PR (or SD-21 authorized land path): Muse FF feature → main →
-   muse-bridge → green muse-mirror PR → GitHub main
-2. Stop for Tier 3 merge authorization when required
-3. Do NOT claim land complete
-4. Do NOT regenerate post-merge NEXT in this paste
+1. Fetch/pull latest main (regime-appropriate)
+2. ok governance-sync --dry-run then apply when the plan is correct
+3. Regenerate NEXT + paste so they no longer say wait-for-merge / land-a
+4. Feature-branch commit bundling ROADMAP + HANDOVER (SD-17); open docs PR if needed
+5. ok status --exit-code → 0 and ok land-closeout → 0 before claiming land complete
 
-After merge is confirmed on main: paste land-b (same slice).
-Land is incomplete until land-b.
-
-Hard stops: no secrets; no staging push; no live posture flips; no silent main writes.
+Hard stops: no silent commits to main; no Cursor-only dependency; no freeze/BV redesign.
 ```
+<!-- /overseer:anchor:paste-ready-prompt -->
 
 ---
 
@@ -98,62 +67,13 @@ Hard stops: no secrets; no staging push; no live posture flips; no silent main w
 
 | Area | State |
 | --- | --- |
-| **Repo** | overseer-kit |
-| **VCS regime** | `muse+git-mirror` (canonical: muse) |
-| **PMHF-a** | **DONE** — `docs/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md` reviewed → `pass` (PMHF-r4), stamp `sha256:7d02bb23…` |
-| **PMHF-b** | **DONE** — BV `pass` (PMHF-BV-r1); `tools/land_closeout/` + `ok land-closeout` + status/land-check wiring + `next_regen` land-b + CI template; §PMHF.10 **46** green |
-| **PMHF → main** | **DONE** — SD-21 land 2026-07-31: Muse FF → `sha256:72efabb7…` + GitHub PR [#52](https://github.com/aaronrene/overseer-kit/pull/52) → `main` @ `edbc3eb` (operator-approved); §PMHF.3.2 post-merge sync done; `ok land-closeout` → `0` |
-| **GSW-FIX-a** | **DONE** — `docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md` reviewed → `pass` (GSW-r3), stamp `sha256:63cfd176…` |
-| **GSW-FIX-b** | **DONE** — BV `pass` (GSW-BV-r1); `_apply_plan` reorder + dual-HEAD + rollback + Muse `--autoshelf`; §GSW.10 **29** green (dirty-tree `--write` all three regimes) |
-| **GSW-FIX → main** | **NEXT** — land-a (Operator + Auto); SD-21 finish-mode when criteria met; land incomplete until land-b |
-| **GS-PASTE-a** | **DONE** — `docs/PHASE-GS-PASTE-READY-REGEN.md` reviewed → `pass` (GSP-r3), stamp `sha256:123c2e68…` |
-| **GS-PASTE-b** | **DONE** — BV `pass` (GSP-BV-r1); `next_regen` via `ok governance-sync`; §GSP.10 **19** green |
-| **GS-PASTE → main** | **DONE** — SD-21 land 2026-07-30: Muse `main` `sha256:e7831636…` + GitHub PR [#49](https://github.com/aaronrene/overseer-kit/pull/49) → `main` @ `5a85ef2` |
-| **Governance docs** | `docs/OVERSEER-HANDOVER.md`, `docs/ROADMAP.md` |
-| **KH1 contract** | `docs/PHASE-KH1-HANDOVER-RELAY-STANDARD.md` — **reviewed → `pass` (KH1-r2)** |
-| **KH2 contract** | `docs/PHASE-KH2-MUSE-SYNC-HARD-GATE.md` — **reviewed → `pass` (KH2-r2)**; Auto build **DONE** |
-| **KH3 contract** | `docs/PHASE-KH3-FOOTPRINT-INTEGRITY-HARD-GATE.md` — **reviewed → `pass` (KH3-r2)**; Auto build **DONE** |
-| **Kit version** | `0.1.0` (`VERSION`) |
-| **K12 / Track N** | **DONE** — landing + scenario gallery + LICENSE + funnel |
-| **KH1 Handover relay** | **DONE** — contract `pass` (KH1-r2); §KH1.6 close-out complete |
-| **Track P / P0** | **DONE** — agent identity & signed provenance; contract reviewed → `pass` (P0-r2), stamp `sha256:7db8681…` |
-| **Track P / P1** | **DONE** — agent provenance build-verified → `pass` (P1-BV-r2); BV1 (§P0.6 verify-surface parity) fixed; **429** tests green (+30 §P0.8) |
-| **Track P / P-route** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` reviewed → `pass`, P-route-r2) + Auto build (build-verified → `pass`, P-route-BV-r1). Declarative model-routing policy shipped: `policy/model-routing.yaml`, `model_tiers`, `model_routing:` config, `overseer route`, exit `30`/`31`. **529** tests green (+43 §PR.8). Kit = rule-holder, runtime = executor |
-| **Track P / P-cost** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-P-P-COST-AWARENESS.md` reviewed → `pass`, P-cost-r2) + Auto build (build-verified → `pass`, P-cost-BV-r1). Cost-awareness surface shipped: `cost_class` on `model_tiers`, `tools/cost_awareness/`, `cost_awareness:` config, additive `overseer route` cost fields, exit `32`, status + governance-sync reminders. **569** tests green (+40 §PC.9). Kit = cost-awareness rule-holder, runtime = spender |
-| **Track P / P-evidence** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-P-P-EVIDENCE.md` reviewed → `pass`, P-evidence-r3) + Auto build (build-verified → `pass`, P-evidence-BV-r1). Verification-evidence capture shipped: `verification_evidence` kind, artifact types, `require_verification_evidence`, honesty-status Mode B, exit `33`, twin build-verification V8 delta. **612** tests green (+43 §PE.10). Kit records/gates; never deploys |
-| **Track P / P-deploy** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-P-P-DEPLOY.md` reviewed → `pass`, P-deploy-r3) + Auto build (build-verified → `pass`, P-deploy-BV-r1). Mode C + `require_deploy_health` + twin `/deploy-verification-review` + exit `34`. **798** tests green (+37 §PD.9). Kit records/gates; never deploys/probes |
-| **Hosted governance dashboard** | **DONE** — Thinking freeze (`pass`, HGD-r3) + Auto build (BV `pass`, HGD-BV-r1). `tools/hosted_dashboard/` + `ok hosted-dashboard`; §HGD.12 **50** green. Read-only remote glance; not Track Q |
-| **Q3-release desktop installers** | **DONE** — Thinking freeze (`pass`, QR-r3) + Auto build (BV `pass`, Q3R-BV-r1). Pipeline + `tools/desktop_release/` + §QR.13 **39** green; full suite **887**. Host Python 3.11+ still required; live Release needs operator secrets |
-
-| **Track Q / Q0** | **DONE** — Thinking freeze (`docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md` reviewed → `pass`, Q0-r2), stamp `sha256:3c3f6229…`. Freezes `overseer app` local-only UI contract |
-| **Track Q / Q1** | **DONE** — Auto build (build-verified → `pass`, Q1-BV-r1). `overseer app` stdlib loopback server + static UI; `tools/app/` + `cli/commands/app.py`; closed `api/*`; Bearer + CSRF; seven-tier §Q0.12. **654** tests green (+42) |
-| **Track Q / Q2a**         | **DONE** — Thinking freeze (`docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md` reviewed → `pass`, Q2a-r2), stamp `sha256:dbfbf9ad…`. Freezes canonical `ok` CLI entrypoint + `overseer` compat shim; seven-tier §Q2A.10. Spec-only. Cleared for Q2b |
-| **Track Q / Q2b**         | **DONE** — Auto build (build-verified → `pass`, Q2b-BV-r1). `cli/ok` canonical + `cli/overseer` deprecation; `prog="ok"`; operator docs/templates/skills/CI pass; SPEC §5 + K4.1 naming; shims not footprint members. **668** tests green (+14 §Q2A.10). Cleared for Q3 |
-| **Track Q / Q3**          | **DONE** — Auto build (build-verified → `pass`, Q3-BV-r1). Tauri desktop shell (`desktop/`) invokes `ok app`; `tools/desktop/` + bundle script; seven-tier §Q3. **696** tests green (+28) |
-| **Track Q / Q4a**         | **DONE** — Thinking freeze (`docs/PHASE-TRACK-Q-Q4A-UI-REDESIGN.md` reviewed → `pass`, Q4a-r2), stamp `sha256:ea118134…`. Path B developer UI redesign contract: Overview/Structure IA, four offline diagrams, suite CTAs, closed Q0 surface, §Q4A.15. **Spec-only — no UI code.** Cleared for Q4b |
-| **Track Q / Q4b**         | **DONE** — Auto build (build-verified → `pass`, Q4b-BV-r1). Overview + Structure IA; four offline SVGs; suite CTAs; status humanization; closed Q0 unchanged; §Q4A.15 **17** green; full suite **905**. No LICENSE/`desktop/`/engine edits |
-| **Landing + access clarity** | **DONE** — Thinking `pass` (LAC-r2) + Auto build-verified → `pass` (LAC-BV-r1). Public IA + offline SVGs + Mac `v0.1.0` Download CTA; Paths 1–3 playbook; Path B chrome + health `repo_root`; seven-tier §LAC.12; full suite **931**. DNS cutover still Tier 3 (§LAC.9). |
-| **Landing clarity pass** | **DONE** — BV `pass` (LC-BV-r1). Amended §LAC.3.1 visitor IA (`kit-basics` / `how-it-works` / `musehub` / `next-steps`); Download CTA + Paths 1–3 + four SVGs + MIT; seven-tier landing+LAC **53** green. Merge Tier 3. |
-| **K12 LICENSE → MIT** | **DONE** — Thinking freeze `pass` (MIT-r1) + Auto BV `pass` (MIT-BV-r1). SPDX MIT across `LICENSE` / pyproject / landing / Path B; K12 §K12.4 amended; **936** green. |
-| **K6-Scooling runbook**   | **DONE** — `docs/consumers/scooling/OVERSEER-SETUP.md` (kit-side; live init still operator-gated; Track O cross-link in O1) |
-| **Track O / O0**          | **DONE** — Normie custody funnel Thinking freeze (`docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md` reviewed → `pass`, O0-r3), stamp `sha256:642076c9…` |
-| **Track O / O1**          | **DONE** — Product contracts build-verified → `pass` (O1-BV-r1). Contract + Scooling/Knowtation stubs + `tools/track_o/` + §O0.8. **728** tests green (+32) |
-| **Track O / O2**          | **DONE** — Stage 3 kit upgrade ceremony Thinking freeze (`docs/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md` reviewed → `pass`, O2-r3), stamp `sha256:ac970077…` |
-| **Track O / O3**          | **DONE** — `ok upgrade-regime` build-verified → `pass` (O3-BV-r2). Runbook + contract/harness retarget; **761** tests green (+33 §O2.9). Track O kit chain complete |
-| **CLI entrypoint**        | **`ok`** (canonical `./cli/ok`); **`overseer`** compat shim (`./cli/overseer`, one-line stderr deprecation) |
-| **CLI subcommands**       | `init` \| `sync` \| `status` \| `review --freeze` \| `check-ok` \| `governance-sync` \| `workspace status|check-next|doctor` \| `verify-step` \| `honesty-status` \| `ledger` \| `route` \| `app` \| `hosted-dashboard` \| `upgrade-regime` \| `land-closeout` |
-| **K13a Multi-repo workspace lanes** | **DONE** — Thinking freeze reviewed → `pass` (K13a-r3), stamp `sha256:df3d2754…` (incl. §MR.6.5 board filenames) |
-| **K13b Multi-repo workspace lanes** | **DONE** — Auto build-verified → `pass` (K13b-BV-r1). `ok workspace *` + exit `35` + §MR.6.5 init/doctor; no live consumer renames |
-| **K13-DOGFOOD** | **DONE** — live `scooling-stack` on `feat/k13-dogfood-workspace` (Scooling + Knowtation); check-next `0`; doctor clean of `board_name_violation`; merge Tier 3 |
-| **K13-MUSEHUB** | **DONE** — optional enrichment member on `feat/k13-musehub-enrichment`; Scooling musehub root → `~/MUSE_HUB/musehub`; constellation `scooling-stack`; check-next `0`; doctor clean of `board_name_violation`; muse-only; merge Tier 3 |
-| **K13-BRAIN** | **DONE** — optional edge member on `feat/k13-brain-edge-member` (`bc0c0e6`); `THE-BRAIN-*` boards; Scooling brain root `~/theBRAIN/the-brain`; §MR.12.3 dogfood complete; kit-generic confirmed |
-| **Check OK** | **DONE + merged** (CIO-r2) — PR [#35](https://github.com/aaronrene/overseer-kit/pull/35) → `main` (`b8b51c1`, 2026-07-18); `/check-ok` → `.cursor` + `.claude`; `ok check-ok`; `docs/CHECK-OK.md`; consumer `ok sync` |
-| **Muse dogfood** | **D2 repaired** + substrate health + gate reminders + **muse-sync hard gate (KH2)** + **footprint self-integrity hard gate (KH3)** live; `muse rev-parse` reads plain-text SHA (0.2.x returns bare SHA on success; JSON only on failure/non-zero); `governance-sync --dry-run` exits 0; muse canonical HEAD `sha256:3e14450f…` (catch-up commit; genesis `sha256:4671b7f…`) |
-| **KH1b** | **DONE** — substrate §1 + gate reminders §2 |
-| **KH2** | **DONE** — Muse-sync hard gate (freeze `pass` KH2-r2 + Auto build); `tools/muse_sync/`; fail-closed on `status --exit-code` / `review --freeze` / `governance-sync` |
-| **KH3** | **DONE** — Footprint self-integrity hard gate (freeze `pass` KH3-r2 + Auto build); `tools/footprint_integrity/`; fail-closed on `status --exit-code` / `review --freeze` / `governance-sync` when a declared kit-owned file is absent from disk |
-| **Public brand** | **🆗 Overseer Kit** (locked in template + landing) |
-| **Public landing** | `docs/landing/index.html` (clarity IA) · offline SVGs under `assets/diagrams/` · scenarios gallery |
+| **VCS regime** | `muse+git-mirror` |
+| **GitHub main** | `98615a860b64ecf87566b8fbee2bb606d573aba1` |
+| **Canonical anchor** | `sha256:fd2a66b58bd62497cccd412dd112d79a12048f4cec614e220d8f916b9ba42467` |
+| **Canonical main** | `sha256:fd2a66b58bd62497cccd412dd112d79a12048f4cec614e220d8f916b9ba42467` |
+| **Branch** | `main` |
+| **Dirty** | `yes` |
+| **Drift** | D1=drifted, D2=aligned, D3=aligned |
 <!-- /overseer:anchor:verified-snapshot -->
 
 <!-- overseer:anchor:vcs-table -->
@@ -161,13 +81,11 @@ Hard stops: no secrets; no staging push; no live posture flips; no silent main w
 
 | Item | Value |
 | --- | --- |
-| Branch | `feat/gsw-fix-governance-sync-write-path` |
-| GitHub `main` | `edbc3eb056c94b194f7408a14c7c01da894f10e3` |
-| Canonical anchor | `sha256:72efabb7bebf54347c1e4ac4368f3c01c89074a555c4eb0fcfbe9680c3d457c3` (muse) |
-| Muse `main` | `sha256:72efabb7bebf54347c1e4ac4368f3c01c89074a555c4eb0fcfbe9680c3d457c3` |
-| Dirty | no after close (GSW-FIX-b build + governance docs on feature branch) |
-| Kit checkout | **`~/OVERSEER_KIT/overseer-kit`** (live). Stub `~/overseer-kit` is K1-era — **do not use** |
-| Feature land | GSW-FIX on `feat/gsw-fix-governance-sync-write-path` (awaiting land-a); prior PMHF land PR [#52](https://github.com/aaronrene/overseer-kit/pull/52) @ `edbc3eb` |
+| Branch | `main` |
+| GitHub `main` | `98615a860b64ecf87566b8fbee2bb606d573aba1` |
+| Canonical anchor | `sha256:fd2a66b58bd62497cccd412dd112d79a12048f4cec614e220d8f916b9ba42467` (.muse/git-bridge.toml:last_export.muse_commit_id) |
+| Muse `main` | `sha256:fd2a66b58bd62497cccd412dd112d79a12048f4cec614e220d8f916b9ba42467` |
+| Dirty | yes |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -179,6 +97,8 @@ Hard stops: no secrets; no staging push; no live posture flips; no silent main w
 
 <!-- overseer:anchor:change-log -->
 ## Change log
+
+- **2026-07-31** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `98615a8`; realign: D2 aligned — skip realign; next_regen=regenerated:land-b
 
 | Date | Note |
 | --- | --- |

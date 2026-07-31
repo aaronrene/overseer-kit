@@ -105,7 +105,7 @@ def test_commit_feature_short_circuit_muse_only(muse_only_config, repo_root) -> 
     runner = make_runner(
         {
             f"muse -C {root} rev-parse --abbrev-ref HEAD": ok("feat/gsw"),
-            f"muse -C {root} add": ok(""),
+            f"muse -C {root} code add": ok(""),
             f"muse -C {root} commit": ok(""),
             f"muse -C {root} rev-parse HEAD": ok("sha256:abc"),
         }
@@ -114,6 +114,7 @@ def test_commit_feature_short_circuit_muse_only(muse_only_config, repo_root) -> 
     result = adapter.commit_feature(branch="feat/gsw", message="m", paths=["docs/R.md"])
     assert result.committed is True
     assert not any("checkout" in call[0] for call in runner.calls)
+    _assert_muse_stage_uses_code_add(runner.calls)
 
 
 def test_commit_feature_short_circuit_muse_git_mirror(muse_git_mirror_config, repo_root) -> None:
@@ -121,7 +122,7 @@ def test_commit_feature_short_circuit_muse_git_mirror(muse_git_mirror_config, re
     runner = make_runner(
         {
             f"muse -C {root} rev-parse --abbrev-ref HEAD": ok("feat/gsw"),
-            f"muse -C {root} add": ok(""),
+            f"muse -C {root} code add": ok(""),
             f"muse -C {root} commit": ok(""),
             f"muse -C {root} rev-parse HEAD": ok("sha256:abc"),
         }
@@ -130,6 +131,16 @@ def test_commit_feature_short_circuit_muse_git_mirror(muse_git_mirror_config, re
     result = adapter.commit_feature(branch="feat/gsw", message="m", paths=["docs/R.md"])
     assert result.committed is True
     assert not any("checkout" in call[0] for call in runner.calls)
+    _assert_muse_stage_uses_code_add(runner.calls)
+
+
+def _assert_muse_stage_uses_code_add(calls) -> None:
+    """Live Muse 0.2.x has no top-level `add` — staging must be `muse code add`
+    (GSW land-b live regression)."""
+    stage_calls = [call[0] for call in calls if " add " in call[0] or call[0].endswith(" add")]
+    assert stage_calls, "expected a staging command"
+    for command in stage_calls:
+        assert " code add" in command, f"bare `muse add` is not a live subcommand: {command}"
 
 
 def test_muse_only_dirty_off_branch_uses_autoshelf(muse_only_config, repo_root) -> None:
