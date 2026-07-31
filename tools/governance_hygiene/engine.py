@@ -1,4 +1,4 @@
-"""Governance Hygiene Agent orchestration (§9A-5)."""
+"""Governance Hygiene Agent orchestration (§9A-5, §GSW write-path order)."""
 
 from __future__ import annotations
 
@@ -442,28 +442,43 @@ def _apply_plan(
     handover_text: str = "",
     roadmap_text: str = "",
 ) -> GovernanceSyncResult:
-    """Apply patches, optional realign, commit, and push on a feature branch."""
+    """Apply patches, commit, and push on a feature branch.
+
+    Frozen §GSW.3.1 order: capture original branch state → realign on the
+    original branch → ensure feature branch (dual-HEAD under
+    ``muse+git-mirror``, §GSW.5.1) → write doc patches → commit → sync
+    marker (only after successful commit, §GSW.3.4) → push. Any failure
+    after the feature-branch switch restores docs + marker + original
+    branch (§GSW.4.2).
+    """
     original_handover = handover_path.read_text(encoding="utf-8")
     original_roadmap = roadmap_path.read_text(encoding="utf-8")
+    marker_path = repo_root / ".overseer" / GOVERNANCE_SYNC_MARKER
+    prior_marker = (
+        marker_path.read_text(encoding="utf-8") if marker_path.is_file() else None
+    )
 
-    try:
-        atomic_write_text(handover_path, plan.handover_text)
-        atomic_write_text(roadmap_path, plan.roadmap_text)
-    except WriteFailure as exc:
-        atomic_write_text(handover_path, original_handover)
-        atomic_write_text(roadmap_path, original_roadmap)
-        emit(f"write failed: {exc}")
+    def _failure(exit_code: int, message: str, error_command: str | None) -> GovernanceSyncResult:
         return GovernanceSyncResult(
-            exit_code=5,
+            exit_code=exit_code,
             dry_run=False,
             reads=reads,
             drift=drift,
             plan=plan,
             committed=False,
             commit_sha=None,
-            messages=(str(exc),),
+            messages=(message,),
+            error_command=error_command,
         )
 
+    # Step A (§GSW.4.1): capture branch identity before any mutation.
+    branch_state, capture_command = _capture_branch_state(config, adapter, runner, repo_root)
+    if branch_state is None:
+        emit(f"branch capture failed: {capture_command}")
+        return _failure(2, f"branch capture failed: {capture_command}", capture_command)
+
+    # Step B (§GSW.3.1): realign guard on the original branch — before any
+    # feature-branch switch and before any doc write.
     realign_summary, realign_error = execute_realign_guard(
         config,
         adapter,
@@ -472,68 +487,67 @@ def _apply_plan(
         dry_run=False,
     )
     if realign_error:
-        atomic_write_text(handover_path, original_handover)
-        atomic_write_text(roadmap_path, original_roadmap)
         emit(f"realign failed: {realign_error}")
-        return GovernanceSyncResult(
-            exit_code=2,
-            dry_run=False,
-            reads=reads,
-            drift=drift,
-            plan=plan,
-            committed=False,
-            commit_sha=None,
-            messages=(realign_error,),
-            error_command=realign_error,
+        return _failure(2, realign_error, realign_error)
+
+    def _rollback(*, restore_docs: bool) -> None:
+        _rollback_apply(
+            config=config,
+            repo_root=repo_root,
+            adapter=adapter,
+            runner=runner,
+            handover_path=handover_path,
+            roadmap_path=roadmap_path,
+            original_handover=original_handover,
+            original_roadmap=original_roadmap,
+            marker_path=marker_path,
+            prior_marker=prior_marker,
+            branch_state=branch_state,
+            restore_docs=restore_docs,
+            emit=emit,
         )
 
-    if (
-        drift.d1_handover_vs_git == "aligned"
-        and drift.d2_anchor_vs_canonical == "aligned"
-    ):
-        _write_sync_marker(repo_root, reads)
+    # Step C (§GSW.5): feature branch must exist and hold current HEAD(s)
+    # before any handover/roadmap patch write.
+    checkout = _ensure_feature_branch(
+        adapter, runner, repo_root, config, plan.feature_branch, branch_state
+    )
+    if checkout is not None:
+        _rollback(restore_docs=False)
+        emit(checkout)
+        return _failure(2, checkout, checkout)
 
+    # Step D: write doc patch bytes (tree now dirty on the feature branch).
+    try:
+        atomic_write_text(handover_path, plan.handover_text)
+        atomic_write_text(roadmap_path, plan.roadmap_text)
+    except WriteFailure as exc:
+        _rollback(restore_docs=True)
+        emit(f"write failed: {exc}")
+        return _failure(5, str(exc), None)
+
+    # Step E: commit dirty docs already on the feature branch (§GSW.6).
     rel_handover = _repo_relative(repo_root, handover_path)
     rel_roadmap = _repo_relative(repo_root, roadmap_path)
-    checkout = _ensure_feature_branch(adapter, runner, repo_root, config, plan.feature_branch)
-    if checkout is not None:
-        atomic_write_text(handover_path, original_handover)
-        atomic_write_text(roadmap_path, original_roadmap)
-        emit(checkout)
-        return GovernanceSyncResult(
-            exit_code=2,
-            dry_run=False,
-            reads=reads,
-            drift=drift,
-            plan=plan,
-            committed=False,
-            commit_sha=None,
-            messages=(checkout,),
-            error_command=checkout,
-        )
-
     commit = adapter.commit_feature(
         branch=plan.feature_branch,
         message=plan.commit_message,
         paths=[rel_handover, rel_roadmap],
     )
     if isinstance(commit, (ReadError, WriteError)):
-        atomic_write_text(handover_path, original_handover)
-        atomic_write_text(roadmap_path, original_roadmap)
+        _rollback(restore_docs=True)
         cmd = commit.command if hasattr(commit, "command") else "commit_feature"
         emit(str(commit))
-        return GovernanceSyncResult(
-            exit_code=2,
-            dry_run=False,
-            reads=reads,
-            drift=drift,
-            plan=plan,
-            committed=False,
-            commit_sha=None,
-            messages=(str(commit),),
-            error_command=cmd,
-        )
+        return _failure(2, str(commit), cmd)
 
+    # Step F (§GSW.3.4): stamp the sync marker only after commit success.
+    if (
+        drift.d1_handover_vs_git == "aligned"
+        and drift.d2_anchor_vs_canonical == "aligned"
+    ):
+        _write_sync_marker(repo_root, reads)
+
+    # Step G: feature-branch push (Tier 1, regime-appropriate).
     push_error = _push_feature_branch(runner, repo_root, config, plan.feature_branch)
     if push_error:
         emit(push_error)
@@ -634,38 +648,205 @@ def _repo_relative(repo_root: Path, path: Path) -> str:
     return path.resolve().relative_to(repo_root.resolve()).as_posix()
 
 
+@dataclass(frozen=True)
+class BranchState:
+    """Regime-specific ``original_branch_state`` captured at step A (§GSW.4.1)."""
+
+    git_branch: str | None
+    muse_branch: str | None
+
+
+def _muse_command_prefix(adapter: VcsAdapter, repo_root: Path) -> str:
+    muse_cwd = str(getattr(adapter, "muse_cwd", repo_root))
+    return f"muse -C {quote_arg(muse_cwd)}"
+
+
+def _capture_branch_state(
+    config: OverseerConfig,
+    adapter: VcsAdapter,
+    runner: CommandRunner,
+    repo_root: Path,
+) -> tuple[BranchState | None, str | None]:
+    """Capture current branch identity per regime; fail closed on unreadable HEAD.
+
+    Returns ``(state, None)`` on success or ``(None, failing_command)``.
+    """
+    root = str(repo_root)
+    regime = config.vcs.regime
+    git_branch: str | None = None
+    muse_branch: str | None = None
+
+    if regime in {"git-only", "muse+git-mirror"}:
+        command = "git rev-parse --abbrev-ref HEAD"
+        result = runner.run(command, cwd=root)
+        if not result.ok or not result.stdout.strip():
+            return None, command
+        git_branch = result.stdout.strip()
+
+    if regime in {"muse-only", "muse+git-mirror"}:
+        command = f"{_muse_command_prefix(adapter, repo_root)} rev-parse --abbrev-ref HEAD"
+        result = runner.run(command, cwd=root)
+        if not result.ok or not result.stdout.strip():
+            return None, command
+        muse_branch = result.stdout.strip()
+
+    return BranchState(git_branch=git_branch, muse_branch=muse_branch), None
+
+
 def _ensure_feature_branch(
     adapter: VcsAdapter,
     runner: CommandRunner,
     repo_root: Path,
     config: OverseerConfig,
     branch: str,
+    state: BranchState,
 ) -> str | None:
-    root = str(repo_root)
-    if config.vcs.regime == "muse-only":
-        create_cmd = f"muse -C {quote_arg(root)} checkout -b {quote_arg(branch)}"
-        create = runner.run(create_cmd, cwd=root)
-        if create.ok:
-            return None
-        switch_cmd = f"muse -C {quote_arg(root)} checkout {quote_arg(branch)}"
-        switch = runner.run(switch_cmd, cwd=root)
-        if not switch.ok:
-            return switch_cmd
-        return None
+    """Place current HEAD(s) on ``branch`` before any doc write (§GSW.5).
 
-    create = runner.run(
-        f"git checkout -b {quote_arg(branch)}",
-        cwd=root,
-    )
+    Under ``muse+git-mirror`` both the Muse HEAD and the Git HEAD must be on
+    ``branch`` (§GSW.5.1 dual-HEAD rule). Returns the failing command, or
+    ``None`` on success.
+    """
+    regime = config.vcs.regime
+    if regime in {"muse-only", "muse+git-mirror"}:
+        muse_error = _ensure_muse_branch(adapter, runner, repo_root, branch, state.muse_branch)
+        if muse_error is not None:
+            return muse_error
+    if regime in {"git-only", "muse+git-mirror"}:
+        git_error = _ensure_git_branch(runner, repo_root, branch, state.git_branch)
+        if git_error is not None:
+            return git_error
+    return None
+
+
+def _ensure_muse_branch(
+    adapter: VcsAdapter,
+    runner: CommandRunner,
+    repo_root: Path,
+    branch: str,
+    current: str | None,
+) -> str | None:
+    """Create/switch the Muse HEAD to ``branch`` (§GSW.5.2).
+
+    Switch to an existing branch retries with ``--autoshelf`` so uncommitted
+    tracked changes carry across the checkout (§GSW.6.2 allowed secondary
+    guard; bare-checkout-only is the live defect, ``--force`` is forbidden).
+    """
+    if current == branch:
+        return None
+    root = str(repo_root)
+    prefix = _muse_command_prefix(adapter, repo_root)
+    create = runner.run(f"{prefix} checkout -b {quote_arg(branch)}", cwd=root)
     if create.ok:
         return None
-    switch = runner.run(
-        f"git checkout {quote_arg(branch)}",
-        cwd=root,
-    )
-    if not switch.ok:
-        return f"git checkout {branch}"
-    return None
+    switch_cmd = f"{prefix} checkout {quote_arg(branch)}"
+    if runner.run(switch_cmd, cwd=root).ok:
+        return None
+    carry_cmd = f"{prefix} checkout --autoshelf {quote_arg(branch)}"
+    if runner.run(carry_cmd, cwd=root).ok:
+        return None
+    return carry_cmd
+
+
+def _ensure_git_branch(
+    runner: CommandRunner,
+    repo_root: Path,
+    branch: str,
+    current: str | None,
+) -> str | None:
+    """Create/switch the Git HEAD to ``branch`` (git carries dirty changes)."""
+    if current == branch:
+        return None
+    root = str(repo_root)
+    create = runner.run(f"git checkout -b {quote_arg(branch)}", cwd=root)
+    if create.ok:
+        return None
+    switch_cmd = f"git checkout {quote_arg(branch)}"
+    if runner.run(switch_cmd, cwd=root).ok:
+        return None
+    return switch_cmd
+
+
+def _rollback_apply(
+    *,
+    config: OverseerConfig,
+    repo_root: Path,
+    adapter: VcsAdapter,
+    runner: CommandRunner,
+    handover_path: Path,
+    roadmap_path: Path,
+    original_handover: str,
+    original_roadmap: str,
+    marker_path: Path,
+    prior_marker: str | None,
+    branch_state: BranchState,
+    restore_docs: bool,
+    emit,
+) -> None:
+    """Restore docs → marker → original branch on mid-apply failure (§GSW.4.2).
+
+    Doc bytes are restored first so the tree is clean before the restore
+    checkout (§GSW.4.3); branch restore is best-effort on both histories and
+    never uses ``--force``.
+    """
+    if restore_docs:
+        atomic_write_text(handover_path, original_handover)
+        atomic_write_text(roadmap_path, original_roadmap)
+
+    _restore_marker(marker_path, prior_marker)
+
+    for failed_command in _restore_branch_state(
+        config, adapter, runner, repo_root, branch_state
+    ):
+        emit(f"branch restore failed: {failed_command}")
+
+
+def _restore_marker(marker_path: Path, prior_marker: str | None) -> None:
+    """Leave no new stamp behind on mid-apply failure (§GSW.3.4)."""
+    if prior_marker is None:
+        if marker_path.is_file():
+            marker_path.unlink()
+        return
+    if not marker_path.is_file() or marker_path.read_text(encoding="utf-8") != prior_marker:
+        atomic_write_text(marker_path, prior_marker)
+
+
+def _restore_branch_state(
+    config: OverseerConfig,
+    adapter: VcsAdapter,
+    runner: CommandRunner,
+    repo_root: Path,
+    state: BranchState,
+) -> tuple[str, ...]:
+    """Best-effort restore of captured branch identity on both histories.
+
+    Returns the failing commands (empty on success). If one side fails the
+    other is still attempted (§GSW.4.2 dual restore).
+    """
+    root = str(repo_root)
+    regime = config.vcs.regime
+    errors: list[str] = []
+
+    if regime in {"muse-only", "muse+git-mirror"} and state.muse_branch:
+        prefix = _muse_command_prefix(adapter, repo_root)
+        probe = runner.run(f"{prefix} rev-parse --abbrev-ref HEAD", cwd=root)
+        current = probe.stdout.strip() if probe.ok else None
+        if current != state.muse_branch:
+            restore_cmd = f"{prefix} checkout {quote_arg(state.muse_branch)}"
+            if not runner.run(restore_cmd, cwd=root).ok:
+                carry_cmd = f"{prefix} checkout --autoshelf {quote_arg(state.muse_branch)}"
+                if not runner.run(carry_cmd, cwd=root).ok:
+                    errors.append(carry_cmd)
+
+    if regime in {"git-only", "muse+git-mirror"} and state.git_branch:
+        probe = runner.run("git rev-parse --abbrev-ref HEAD", cwd=root)
+        current = probe.stdout.strip() if probe.ok else None
+        if current != state.git_branch:
+            restore_cmd = f"git checkout {quote_arg(state.git_branch)}"
+            if not runner.run(restore_cmd, cwd=root).ok:
+                errors.append(restore_cmd)
+
+    return tuple(errors)
 
 
 def _push_feature_branch(

@@ -151,6 +151,10 @@ def land_queue_conflict(
     A candidate row must be land-shaped (``{slice} → main``) and share a
     slice-identifying token with the land-a ID (never just ``→ main`` — the
     frozen rejected match rule protects historical other-slice land rows).
+
+    Hyphen-split fragments alone are not slice-identifying: land-a
+    ``GSW-FIX → main`` must not conflict with historical ``GFG-D2-FIX → main``
+    solely on the fragment ``FIX``.
     """
     id_tokens = _meaningful_land_tokens(strip_land_parenthetical(land_id), main_branch)
     if not id_tokens:
@@ -161,9 +165,33 @@ def land_queue_conflict(
             continue
         if not land_row_re.search(row.phase_label):
             continue
-        if id_tokens & _meaningful_land_tokens(row.phase_label, main_branch):
+        shared = id_tokens & _meaningful_land_tokens(row.phase_label, main_branch)
+        if shared and not _only_hyphen_fragments(shared, id_tokens):
             return True
     return False
+
+
+def _only_hyphen_fragments(shared: set[str], id_tokens: set[str]) -> bool:
+    """True when every shared token is only a hyphen/space fragment of a longer id token.
+
+    Compound id tokens (containing ``-`` or an arrow) supply the fragment set.
+    A shared token that is itself compound is never treated as a bare fragment.
+    """
+    compounds = {token for token in id_tokens if "-" in token or "→" in token or "->" in token}
+    if not compounds:
+        return False
+    fragment_parts: set[str] = set()
+    for compound in compounds:
+        for part in re.split(r"[\s/—\-→>]+", compound):
+            cleaned = part.strip().lower()
+            if cleaned and cleaned not in _GENERIC_LAND_TOKENS:
+                fragment_parts.add(cleaned)
+    for token in shared:
+        if token in compounds or "-" in token or "→" in token or "->" in token:
+            return False
+        if token not in fragment_parts:
+            return False
+    return True
 
 
 def extract_paste_pr_number(handover_text: str) -> int | None:
