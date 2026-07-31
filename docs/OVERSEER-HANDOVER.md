@@ -8,49 +8,54 @@
 
 <!-- overseer:next role=primary lane=product status=live -->
 <!-- overseer:anchor:next-session -->
-## NEXT SESSION — PLS-a Post-land main sync freeze
+## NEXT SESSION — PLS-b Post-land main sync build
 
 **Date:** 2026-07-31  
-**Current position:** K12 → PLS-a  
-**Model:** Thinking
+**Current position:** PLS-a DONE → PLS-b  
+**Model:** Auto
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **K12** | Public landing, scenario gallery, GitHub→MuseHub funnel, **MIT** LICENSE (amended from Apache-2.0), SECURITY.md; `tools/landing/` validator; seven-tier K12 tests (**380** total green) |
+| **PLS-a** | Freeze `docs/PHASE-PLS-POST-LAND-MAIN-SYNC.md` → `pass` (PLS-r4), stamp `sha256:7a31fb2b…`. Nested `close_ritual.post_land_sync`; additive `ok pr-land` ff-only post-step; exit `36`; dirty never clobber; `verify_landed` unchanged. **Spec-only.** |
 
-### THE ONE NEXT STEP — **Model: Thinking**
+### THE ONE NEXT STEP — **Model: Auto**
 
-Freeze `docs/PHASE-PLS-POST-LAND-MAIN-SYNC.md` (close-ritual post-land sync). After an authorized PR land succeeds (`ok pr-land` / `tools/close_ritual/pr_land.py`), optionally sync the local checkout to `origin/<main_branch>` so handover/roadmap bytes match GitHub without a separate manual pull. Scope IN (kit-generic): `close_ritual.post_land_sync` config (`enabled`, `strategy: ff_only`, `require_clean_worktree: true`, fetch remote from `vcs.git.remote`); after MERGED: fetch, dirty tree → report/warn per policy (never clobber), clean tree → `git pull --ff-only`; operator note that editor buffers may be stale (reload from disk, never overwrite disk with old tab content). Freeze must name config keys, exit codes, dirty-tree behavior, interaction with `close_ritual.mode: verify_landed`, consumer opt-in/out, seven-tier matrix. Scope OUT: multi-worktree/portal merges (VideoFactory-specific), editor/Cursor automation, blind dirty-tree merges, force push, changing `refuse_blind_auto_merge`, replacing `verify_landed` (additive post-step only). Hard stops: kit `main` merge stays Tier-3; no secrets; no land-authorization redesign. **Spec-only.**
+Build exactly to frozen `docs/PHASE-PLS-POST-LAND-MAIN-SYNC.md`: `PostLandSyncConfig` + parse; `tools/close_ritual/post_land_sync.py`; wire into `run_pr_land` / `ok pr-land`; always-present `PrLandResult.post_land_sync`; exit `36` on hard sync fail; seven-tier §PLS.10; doc touchpoints (PR-LAND, VF setup, SPEC §5 `ok pr-land` row); `/build-verification-review` → `pass` before DONE. No redesign; no land-authorization changes; no force/clobber; default `post_land_sync.enabled: false`.
 
 | | |
 | --- | --- |
-| **ID** | **PLS-a** |
+| **ID** | **PLS-b** |
 | **Branch** | `feat/pls-a` |
 | **Repo** | **overseer-kit** |
-| **Read first** | `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md` |
+| **Read first** | `docs/PHASE-PLS-POST-LAND-MAIN-SYNC.md`; `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md` |
 | **Hard stops** | No merge to `main` without Tier 3 · no secrets · no live posture flips · no inventing NEXT when ambiguous |
 <!-- /overseer:anchor:next-session -->
 
 <!-- overseer:anchor:paste-ready-prompt -->
-### Paste-ready prompt — PLS-a
+### Paste-ready prompt — PLS-b
 
 ```text
-PLS-a — PLS-a Post-land main sync freeze (overseer-kit).
+PLS-b — PLS-b Post-land main sync build (overseer-kit).
 
-Model: Thinking
+Model: Auto
 Repo: overseer-kit
 Branch: feat/pls-a
-Step: PLS-a
+Step: PLS-b
 Authority: authoritative
 
-Read first: `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md`.
+Read first: `docs/PHASE-PLS-POST-LAND-MAIN-SYNC.md` (frozen: true, PLS-r4 pass); `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md`.
 
 Deliverables:
-- Freeze `docs/PHASE-PLS-POST-LAND-MAIN-SYNC.md` (close-ritual post-land sync). After an authorized PR land succeeds (`ok pr-land` / `tools/close_ritual/pr_land.py`), optionally sync the local checkout to `origin/<main_branch>` so handover/roadmap bytes match GitHub without a separate manual pull. Scope IN (kit-generic): `close_ritual.post_land_sync` config (`enabled`, `strategy: ff_only`, `require_clean_worktree: true`, fetch remote from `vcs.git.remote`); after MERGED: fetch, dirty tree → report/warn per policy (never clobber), clean tree → `git pull --ff-only`; operator note that editor buffers may be stale (reload from disk, never overwrite disk with old tab content). Freeze must name config keys, exit codes, dirty-tree behavior, interaction with `close_ritual.mode: verify_landed`, consumer opt-in/out, seven-tier matrix. Scope OUT: multi-worktree/portal merges (VideoFactory-specific), editor/Cursor automation, blind dirty-tree merges, force push, changing `refuse_blind_auto_merge`, replacing `verify_landed` (additive post-step only). Hard stops: kit `main` merge stays Tier-3; no secrets; no land-authorization redesign. **Spec-only.**
+- Build exactly to frozen `docs/PHASE-PLS-POST-LAND-MAIN-SYNC.md` (§PLS.3–§PLS.11).
+- `close_ritual.post_land_sync` config parse (`enabled` default false, `strategy: ff_only`, `require_clean_worktree: true` only).
+- `tools/close_ritual/post_land_sync.py` + wire into `ok pr-land` after MERGED: fetch → dirty skip warn → clean checkout main + `git pull --ff-only`; editor-buffer note; exit `36` on hard fail; always-present `post_land_sync` on `PrLandResult`.
+- Seven-tier §PLS.10 green; `/build-verification-review` → `pass` before DONE.
+- Doc touchpoints: PHASE-PR-LAND-AFTER-CHECKS, VF OVERSEER-SETUP, SPEC §5 `ok pr-land` row.
+- Update ROADMAP + HANDOVER together.
 
-Hard stops: No merge to `main` without Tier 3 · no secrets · no live posture flips · no inventing NEXT when ambiguous
+Hard stops: No merge to `main` without Tier 3 · no secrets · no live posture flips · no inventing NEXT when ambiguous · no redesign beyond freeze · no force/clobber · do not reuse exit `6`
 
 Governance sync: update roadmap + handover on completion.
 ```
@@ -82,9 +87,9 @@ Governance sync: update roadmap + handover on completion.
 | **GitHub main** | `c57a7b29a5318041c319166216f19d729b350c8d` |
 | **Canonical anchor** | `sha256:49d12e51fbf467750411005ed81a1460b63b9a78ecd2b0673066de27572849ab` |
 | **Canonical main** | `sha256:49d12e51fbf467750411005ed81a1460b63b9a78ecd2b0673066de27572849ab` |
-| **Branch** | `feat/governance-sync-2026-07-31` |
-| **Dirty** | `no` |
-| **Drift** | D1=drifted, D2=aligned, D3=aligned |
+| **Branch** | `feat/pls-a` |
+| **Dirty** | `no` (after closing commit) |
+| **Drift** | D1=drifted (feature branch ahead of main), D2=aligned, D3=aligned |
 <!-- /overseer:anchor:verified-snapshot -->
 
 <!-- overseer:anchor:vcs-table -->
@@ -92,11 +97,11 @@ Governance sync: update roadmap + handover on completion.
 
 | Item | Value |
 | --- | --- |
-| Branch | `feat/governance-sync-2026-07-31` |
+| Branch | `feat/pls-a` (git + muse) |
 | GitHub `main` | `c57a7b29a5318041c319166216f19d729b350c8d` |
 | Canonical anchor | `sha256:49d12e51fbf467750411005ed81a1460b63b9a78ecd2b0673066de27572849ab` (.muse/git-bridge.toml:last_export.muse_commit_id) |
 | Muse `main` | `sha256:49d12e51fbf467750411005ed81a1460b63b9a78ecd2b0673066de27572849ab` |
-| Dirty | no |
+| Dirty | no (after closing commit) |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -121,6 +126,7 @@ Governance sync: update roadmap + handover on completion.
 
 | Date | Note |
 | --- | --- |
+| 2026-07-31 | **PLS-a DONE (Thinking freeze).** Authored + freeze-reviewed `docs/PHASE-PLS-POST-LAND-MAIN-SYNC.md` → `pass` (PLS-r4), stamp `sha256:7a31fb2b…`. Contract: `close_ritual.post_land_sync` default-off; after MERGED ff-only sync; dirty skip never clobber; exit `36`; `verify_landed` additive-only. **No PLS-b Auto code this session.** NEXT → PLS-b Auto on `feat/pls-a`. |
 | 2026-07-31 | **GSW-FIX-b DONE** — BV `pass` (GSW-BV-r1); §GSW.10 **29** green (dirty-tree `--write` all three regimes). NEXT → GSW-FIX → main (land-a). |
 | 2026-07-31 | **GSW-FIX-a DONE** — freeze `docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md` → `pass` (GSW-r3, `sha256:63cfd176…`). NEXT → GSW-FIX-b Auto. |
 | 2026-07-31 | **PMHF → main DONE (SD-21)** — Muse `sha256:72efabb7…` + PR [#52](https://github.com/aaronrene/overseer-kit/pull/52) @ `edbc3eb`; §PMHF.3.2 sync done; `ok land-closeout` → `0`. GSW-FIX defect queued. NEXT → GSW-FIX-a. |
@@ -130,6 +136,14 @@ Governance sync: update roadmap + handover on completion.
 | 2026-07-30 | **GS-PASTE-b DONE** — BV `pass` (GSP-BV-r1); §GSP.10 **19** green. NEXT → SD-21 land. |
 | 2026-07-30 | **GS-PASTE-a DONE** — freeze `docs/PHASE-GS-PASTE-READY-REGEN.md` → `pass` (GSP-r3, `sha256:123c2e68…`). |
 
+- **2026-07-31** — **PLS-a DONE (Thinking freeze).** Authored + freeze-reviewed
+  `docs/PHASE-PLS-POST-LAND-MAIN-SYNC.md` → `pass` (PLS-r4), stamp
+  `sha256:7a31fb2b…`. Contract: nested `close_ritual.post_land_sync` (default off,
+  `strategy: ff_only`, `require_clean_worktree: true`); additive `ok pr-land`
+  post-step after MERGED — fetch, dirty → `skipped_dirty` (never clobber), clean →
+  checkout main + `git pull --ff-only`; exit `36` (not K4 integrity `6`);
+  always-present `PrLandResult.post_land_sync`; `verify_landed` unchanged; seven-tier
+  §PLS.10. **No PLS-b Auto code this session.** NEXT → PLS-b Auto on `feat/pls-a`.
 - **2026-07-31** — **GSW-FIX-b DONE (Auto build + BV `pass`, GSW-BV-r1).** Built
   exactly to frozen `docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md`:
   `_apply_plan` order capture → realign (original branch) → dual-HEAD feature-branch
