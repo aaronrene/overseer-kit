@@ -26,6 +26,7 @@ COMMANDS = frozenset(
         "hosted-dashboard",
         "upgrade-regime",
         "land-check",
+        "land-closeout",
         "pr-land",
     }
 )
@@ -36,6 +37,7 @@ from cli.commands.honesty_status import run_honesty_status_command
 from cli.commands.hosted_dashboard import run_hosted_dashboard
 from cli.commands.init import run_init
 from cli.commands.land_check import run_land_check_command
+from cli.commands.land_closeout import run_land_closeout_command
 from cli.commands.ledger import run_ledger_command
 from cli.commands.pr_land import run_pr_land_command
 from cli.commands.review import run_review
@@ -221,6 +223,24 @@ def build_parser() -> argparse.ArgumentParser:
         "--mode",
         choices=("verify_landed", "prepare_pr"),
         help="Override close_ritual.mode from config",
+    )
+
+    lco_parser = subparsers.add_parser(
+        "land-closeout",
+        help="Post-merge land closeout probe (§PMHF; never merges, never writes docs)",
+    )
+    lco_parser.add_argument(
+        "--probe-merged-pr",
+        action="store_true",
+        dest="probe_merged_pr",
+        default=None,
+        help="Force gh merged-PR enrichment on (default: on for git regimes)",
+    )
+    lco_parser.add_argument(
+        "--no-probe-merged-pr",
+        action="store_false",
+        dest="probe_merged_pr",
+        help="Disable gh merged-PR enrichment",
     )
 
     pl_parser = subparsers.add_parser(
@@ -414,6 +434,8 @@ def main(argv: list[str] | None = None, *, ctx: CliContext | None = None) -> int
         return run_workspace(args, runtime)
     if args.command == "land-check":
         return run_land_check_command(args, runtime)
+    if args.command == "land-closeout":
+        return run_land_closeout_command(args, runtime)
     if args.command == "pr-land":
         return run_pr_land_command(args, runtime)
     if args.command == "verify-step":

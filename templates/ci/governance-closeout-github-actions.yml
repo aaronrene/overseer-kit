@@ -1,0 +1,108 @@
+# Example: post-merge governance closeout nudge (§PMHF.7). OPT-IN template only.
+# Vendored by ok sync — copy to .github/workflows/governance-closeout.yml in consumer
+# repos when wanted (Tier 2 confirm-once). Not required for the CLI floor:
+# `ok status --exit-code` and `ok land-closeout` remain the always-on primary.
+#
+# Frozen bans (§PMHF.7):
+#   - No `git push` to main from this workflow.
+#   - No applying governance-sync patches directly onto main in CI (dry-run only here;
+#     a docs PR, if ever used, must commit to a feature branch and open PR → main).
+#   - No Cursor-only steps.
+#   - No secrets beyond the standard GITHUB_TOKEN for comment/PR.
+#
+# Preferred v1 is comment-only: when the dry-run plan shows D1/D2 drift or
+# `ok land-closeout` is not ok, the workflow fails (visible check) and comments the
+# plan summary + frozen land-b remediation on the merged PR when detectable.
+#
+# Degrade path: when CI is unavailable, run `ok land-closeout` locally — never treat
+# CI unavailability as pass; agents still run land-b / ok governance-sync.
+
+name: governance-closeout
+
+on:
+  push:
+    branches: [main]   # adjust to your vcs.git.main_branch when different
+  workflow_dispatch:
+
+permissions:
+  contents: read       # read-only checkout — structurally cannot push to main
+  pull-requests: read
+  issues: write        # PR conversation comment (nudge) only
+
+jobs:
+  closeout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Overseer Kit CLI dependencies
+        run: pip install PyYAML
+
+      - name: Governance-sync dry-run plan (read-only; never applies on main)
+        run: |
+          set -o pipefail
+          ./cli/ok governance-sync --dry-run | tee governance-closeout-plan.txt
+
+      - name: Land closeout probe (exit 2 keeps the check red until land-b)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -o pipefail
+          status=0
+          ./cli/ok land-closeout --probe-merged-pr --json \
+            | tee land-closeout.json || status=$?
+          if grep -Eq "D1=drifted|D2=drifted" governance-closeout-plan.txt; then
+            status=2
+          fi
+          {
+            echo "## Governance closeout"
+            echo '```'
+            cat governance-closeout-plan.txt
+            cat land-closeout.json
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit $status
+
+      - name: Comment land-b remediation on the merged PR (nudge only)
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const plan = fs.existsSync('governance-closeout-plan.txt')
+              ? fs.readFileSync('governance-closeout-plan.txt', 'utf8').slice(0, 4000)
+              : '(no plan output)';
+            const body = [
+              '**Governance closeout incomplete after merge to main.**',
+              '',
+              'land_closeout-remediation: land-b required: ok governance-sync --dry-run',
+              'then apply; paste land-b; do not re-paste land-a',
+              '',
+              '<details><summary>governance-sync dry-run plan</summary>',
+              '',
+              '```',
+              plan,
+              '```',
+              '</details>',
+            ].join('\n');
+            const prs = await github.rest.repos.listPullRequestsAssociatedWithCommit({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              commit_sha: context.sha,
+            });
+            const merged = prs.data.find((pr) => pr.merged_at);
+            if (merged) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: merged.number,
+                body,
+              });
+            } else {
+              core.info('No associated merged PR found — remediation stays in the job summary.');
+            }
