@@ -229,8 +229,15 @@ class BranchStateRunner:
                 return _fail_result("dirty tracked files present; use --autoshelf or --merge")
             self.muse_branch = branch
             return _ok_result("")
-        if args[0] == "add":
+        if args[:2] == ["code", "add"]:
             return _ok_result("")
+        if args[0] == "add":
+            # Muse 0.2.x live behavior: no top-level `add` subcommand.
+            return CommandResult(
+                stdout="",
+                stderr="muse: error: argument COMMAND: invalid choice: 'add'",
+                exit_code=2,
+            )
         if args[0] == "commit":
             if self.muse_commit_fails:
                 return _fail_result("induced muse commit failure")
