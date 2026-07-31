@@ -92,7 +92,9 @@ class MuseOnlyAdapter(BaseAdapter):
 
         if paths:
             for path in paths:
-                add = self._muse("add", path)
+                # Muse 0.2.x has no top-level `add`; staging is `muse code add`
+                # (matches the KH2 remediation string). Found live in GSW land-b.
+                add = self._muse("code", "add", path)
                 if isinstance(add, ReadError):
                     return add
 
