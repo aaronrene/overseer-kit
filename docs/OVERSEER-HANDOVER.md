@@ -7,72 +7,77 @@
 ---
 
 <!-- overseer:next role=primary lane=product status=live -->
-## NEXT SESSION — Kit queue idle after GS-PASTE land (pick track)
+## NEXT SESSION — PMHF-b Auto build (post-merge handover freshness)
 
-**Date:** 2026-07-30  
-**Current position:** **GS-PASTE landed** — Muse `main` `sha256:e7831636…` + GitHub PR
-[#49](https://github.com/aaronrene/overseer-kit/pull/49) `muse-mirror` → `main` @ `5a85ef2`.
-Freeze GSP-r3 + BV GSP-BV-r1 `pass`. Build queue has **no open rows**.
+**Date:** 2026-07-31  
+**Current position:** **PMHF-a freeze DONE** — `docs/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md`
+reviewed → `pass` (PMHF-r4). Cleared for PMHF-b Auto on
+`feat/post-merge-handover-freshness`. No redesign of freeze/BV; no Cursor-only primary.
 **Open this tree only:** `~/OVERSEER_KIT/overseer-kit` — stub `~/overseer-kit` is
 K1-era; do not use it.
-**Model:** **Operator**
+**Model:** **Auto**
 
 ### Authority split (read this — three different handovers)
 
-| Board | File | What it controls | Live NEXT (2026-07-30) |
+| Board | File | What it controls | Live NEXT (2026-07-31) |
 | --- | --- | --- | --- |
 | **Product order (PRIMARY)** | `~/scooling/docs/OVERSEER-HANDOVER.md` | Cross-repo product sequencing | Trust Scooling PRIMARY — do not invent kit product NEXT |
-| **Kit (this board)** | `docs/OVERSEER-HANDOVER.md` | Kit vendor phases only | **Idle** — operator picks next kit track |
+| **Kit (this board)** | `docs/OVERSEER-HANDOVER.md` | Kit vendor phases only | **PMHF-b** Auto build |
 | **Knowtation RELAY** | Knowtation handover | Consumer relay | Follow Scooling PRIMARY |
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
+| **PMHF-a** | Frozen `docs/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md` — PMHF-r4 `pass` |
 | **GS-PASTE → main** | SD-21: Muse FF → `sha256:e7831636…` → PR [#49](https://github.com/aaronrene/overseer-kit/pull/49) → GitHub `main` @ `5a85ef2` |
 | **GS-PASTE-b** | `next_regen` via `ok governance-sync`; §GSP.10 **19** green; BV `pass` (GSP-BV-r1) |
-| **GS-PASTE-a** | Frozen `docs/PHASE-GS-PASTE-READY-REGEN.md` — GSP-r3 `pass` (`sha256:123c2e68…`) |
 
-### THE ONE NEXT STEP — **Model: Operator**
+### THE ONE NEXT STEP — **Model: Auto**
 
-Kit build queue is idle. Operator picks the next kit track from
-`docs/ROADMAP.md` exploration backlog (or product work on Scooling PRIMARY).
-Zero open roadmap rows → `ok governance-sync` NEXT regen stays fail-closed until a
-new **NEXT** row is queued.
+Build PMHF-b exactly against the frozen PMHF-a contract. Seven-tier §PMHF.10 →
+`/build-verification-review` → `pass` before ROADMAP DONE.
 
 | | |
 | --- | --- |
-| **ID** | **Kit queue idle (pick track)** |
-| **Branch** | `main` (landed) / new `feat/…` when a track is chosen |
+| **ID** | **PMHF-b** |
+| **Branch** | `feat/post-merge-handover-freshness` |
 | **Repo** | **overseer-kit** @ `~/OVERSEER_KIT/overseer-kit` |
-| **Read first** | `docs/ROADMAP.md` (exploration backlog); this handover; Scooling PRIMARY if product |
-| **Hard stops** | No live consumer re-init without operator gate; no secrets; no staging push |
+| **Read first** | `docs/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md` (frozen); `docs/ROADMAP.md`; this handover |
+| **Hard stops** | No redesign; no Cursor-only primary; no silent main writes; no secrets; no main merge without Tier 3/SD-21 |
 
-### Paste-ready prompt — Kit queue idle (operator pick)
+### Paste-ready prompt — PMHF-b
 
 ```text
-Kit queue idle after GS-PASTE land — operator picks next track.
+YOU ARE HERE: Overseer Kit — PMHF-b Auto build (post-merge handover freshness).
 
-Model: Operator
+Build exactly to frozen docs/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md (PMHF-r4 pass).
+No redesign of freeze/BV. No Cursor-only primary. No silent writes to main.
+
+Model: Auto
 Repo: ~/OVERSEER_KIT/overseer-kit
-Authority: authoritative
-Prior: GS-PASTE → main DONE (Muse sha256:e7831636…; GitHub PR #49 @ 5a85ef2)
+Branch: feat/post-merge-handover-freshness
 
 Read first:
-- docs/ROADMAP.md (exploration backlog — NOT queued until Thinking freeze)
-- docs/OVERSEER-HANDOVER.md (this idle NEXT)
-- ~/scooling/docs/OVERSEER-HANDOVER.md if continuing product order
+- docs/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md (§PMHF.11 deliverables, §PMHF.10 tests)
+- docs/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md (compose only)
+- docs/PHASE-GS-PASTE-READY-REGEN.md (next_regen land-b emission)
 
-Deliver:
-1. Operator chooses next kit idea OR continues product work on Scooling PRIMARY
-2. If kit track: add roadmap NEXT row + Thinking freeze before Auto
-3. Do not invent a kit product NEXT that overrides Scooling PRIMARY
+Deliver (§PMHF.11):
+1. tools/land_closeout/ + ok land-closeout
+2. status --exit-code + land-check wiring
+3. next_regen land-phase= + land-b emission
+4. templates/ci/governance-closeout-github-actions.yml
+5. template/skill/rule touchpoints named in §PMHF.11
+6. Seven-tier §PMHF.10 green
+7. /build-verification-review → pass before ROADMAP PMHF-b DONE
+8. ROADMAP + HANDOVER sync; feature-branch commit
 
-Hard stops: no consumer re-init; no secrets; no live posture flips; no GitHub main direct push.
+Hard stops: no freeze/BV redesign; no Cursor-only primary; no silent main writes; no secrets.
 
 Governance gates (mandatory — remind only; silence is not pass):
-- Build verification: N/A until a new Auto build is queued
-- Workspace: not configured on this kit checkout — skip check-next
+- Build verification: /build-verification-review → pass before DONE
+- Freeze review: already pass (PMHF-r4) — do not reopen
 ```
 
 ---
@@ -99,6 +104,8 @@ Governance gates (mandatory — remind only; silence is not pass):
 | --- | --- |
 | **Repo** | overseer-kit |
 | **VCS regime** | `muse+git-mirror` (canonical: muse) |
+| **PMHF-a** | **DONE** — `docs/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md` reviewed → `pass` (PMHF-r4), stamp `sha256:7d02bb23…` |
+| **PMHF-b** | **NEXT** — Auto build against frozen PMHF-a; §PMHF.10 + BV before DONE |
 | **GS-PASTE-a** | **DONE** — `docs/PHASE-GS-PASTE-READY-REGEN.md` reviewed → `pass` (GSP-r3), stamp `sha256:123c2e68…` |
 | **GS-PASTE-b** | **DONE** — BV `pass` (GSP-BV-r1); `next_regen` via `ok governance-sync`; §GSP.10 **19** green |
 | **GS-PASTE → main** | **DONE** — SD-21 land 2026-07-30: Muse `main` `sha256:e7831636…` + GitHub PR [#49](https://github.com/aaronrene/overseer-kit/pull/49) → `main` @ `5a85ef2` |
@@ -150,17 +157,17 @@ Governance gates (mandatory — remind only; silence is not pass):
 <!-- /overseer:anchor:verified-snapshot -->
 
 <!-- overseer:anchor:vcs-table -->
-## VCS (verified 2026-07-30)
+## VCS (verified 2026-07-31)
 
 | Item | Value |
 | --- | --- |
-| Branch | `feat/gs-paste-ready-regen` |
-| GitHub `main` | `4979387885ffc8f652e634b91e931509b052999d` |
-| Canonical anchor | `sha256:887e10d45d5d0e19e1c0c4b3bff944f83cc9e3acbf9bdf77c83fbd28177a614a` (muse) |
-| Muse `main` | `sha256:887e10d45d5d0e19e1c0c4b3bff944f83cc9e3acbf9bdf77c83fbd28177a614a` |
-| Dirty | no |
+| Branch | `feat/post-merge-handover-freshness` |
+| GitHub `main` | `0834ae77e05d77b8a8d33b0bbec4a3deb0860cf6` |
+| Canonical anchor | `sha256:8f5b87b745729e706067ec6f3f75a84ee86f6d398ff87c9cc449e98537c7d8a6` (muse) |
+| Muse `main` | `sha256:8f5b87b745729e706067ec6f3f75a84ee86f6d398ff87c9cc449e98537c7d8a6` |
+| Dirty | yes (PMHF-a freeze pass + governance docs; commit pending) |
 | Kit checkout | **`~/OVERSEER_KIT/overseer-kit`** (live). Stub `~/overseer-kit` is K1-era — **do not use** |
-| Feature land | PR [#49](https://github.com/aaronrene/overseer-kit/pull/49) @ `5a85ef2`; close-out PR [#50](https://github.com/aaronrene/overseer-kit/pull/50) @ `4979387` |
+| Feature land | Prior: PR [#49](https://github.com/aaronrene/overseer-kit/pull/49) @ `5a85ef2`; mirror tip `0834ae7` |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -175,10 +182,18 @@ Governance gates (mandatory — remind only; silence is not pass):
 
 | Date | Note |
 | --- | --- |
+| 2026-07-31 | **PMHF-a DONE** — freeze `docs/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md` → `pass` (PMHF-r4, `sha256:7d02bb23…`). NEXT → PMHF-b Auto. |
 | 2026-07-30 | **GS-PASTE → main DONE (SD-21)** — Muse `sha256:e7831636…` + PR [#49](https://github.com/aaronrene/overseer-kit/pull/49) @ `5a85ef2`. |
 | 2026-07-30 | **GS-PASTE-b DONE** — BV `pass` (GSP-BV-r1); §GSP.10 **19** green. NEXT → SD-21 land. |
 | 2026-07-30 | **GS-PASTE-a DONE** — freeze `docs/PHASE-GS-PASTE-READY-REGEN.md` → `pass` (GSP-r3, `sha256:123c2e68…`). |
 
+- **2026-07-31** — **PMHF-a DONE (Thinking freeze).** Authored + freeze-reviewed
+  `docs/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md` → `pass` (PMHF-r4), stamp
+  `sha256:7d02bb23…`. Contract: land-a/land-b paste protocol; fail-closed
+  `land_closeout` on status/land-check/`ok land-closeout`; optional GitHub Actions
+  closeout nudge (comment or feature-branch docs PR); never Cursor-only primary;
+  never silent main writes; no freeze/BV redesign. **No PMHF-b Auto code this
+  session.** NEXT → PMHF-b Auto on `feat/post-merge-handover-freshness`.
 - **2026-07-30** — **GS-PASTE → main DONE (SD-21).** Muse FF
   `feat/gs-paste-ready-regen` → `main` (`sha256:e7831636…`, incl. Muse-only
   untrack of museignored `desktop/src-tauri/resources/`) → muse-bridge → GitHub PR
