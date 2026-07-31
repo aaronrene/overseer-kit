@@ -83,9 +83,15 @@ class GitOnlyAdapter(BaseAdapter):
                 f"refused protected branch {branch!r}",
             )
 
-        checkout = self._git("checkout", branch)
-        if isinstance(checkout, ReadError):
-            return checkout
+        # §GSW.6.1: skip checkout when HEAD is already on the branch — the
+        # engine switches before writing docs, so a dirty tree here is normal.
+        current = self._git("rev-parse", "--abbrev-ref", "HEAD")
+        if isinstance(current, ReadError):
+            return current
+        if current.stdout.strip() != branch:
+            checkout = self._git("checkout", branch)
+            if isinstance(checkout, ReadError):
+                return checkout
 
         if paths:
             add = self._git("add", "--", *paths)

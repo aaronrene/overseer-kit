@@ -32,6 +32,9 @@ def _runner(tmp_path: Path):
             "git rev-parse origin/main": ok("cafebabe"),
             "gh pr list": ok("[]"),
             "git remote get-url origin": ok("git@github.com:owner/repo.git"),
+            # §GSW.3.1: branch ensure precedes doc writes on the apply path.
+            "git checkout -b": ok(""),
+            "git checkout main": ok(""),
         }
     )
 

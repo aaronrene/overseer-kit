@@ -92,6 +92,236 @@ def make_runner(responses: dict[str, CommandResult]) -> RecordingRunner:
     return RecordingRunner(responses=responses, calls=[])
 
 
+class BranchStateRunner:
+    """Stateful fake VCS host for §GSW write-path tests.
+
+    Tracks the current branch of both histories, refuses a bare Muse checkout
+    of an existing branch while the Muse tree is dirty (Muse 0.2.x live
+    behavior — the GSW incident), honors ``--autoshelf`` dirty-carry, and
+    records every command for order assertions. ``--force`` always fails so
+    any forbidden use surfaces in tests (§GSW.8).
+    """
+
+    def __init__(
+        self,
+        root: str,
+        *,
+        git_branch: str = "main",
+        muse_branch: str = "main",
+        git_dirty: bool = False,
+        muse_dirty: bool = False,
+        origin_main_tip: str = "cafebabe",
+        muse_main_tip: str = "sha256:musetip",
+        merged_prs_json: str = "[]",
+        muse_rev_parse_main_values: list[str] | None = None,
+        git_commit_fails: bool = False,
+        muse_commit_fails: bool = False,
+        existing_git_branches: set[str] | None = None,
+        existing_muse_branches: set[str] | None = None,
+    ) -> None:
+        self.root = root
+        self.git_branch = git_branch
+        self.muse_branch = muse_branch
+        self.git_dirty = git_dirty
+        self.muse_dirty = muse_dirty
+        self.origin_main_tip = origin_main_tip
+        self.muse_main_tip = muse_main_tip
+        self.merged_prs_json = merged_prs_json
+        self.muse_rev_parse_main_values = list(muse_rev_parse_main_values or [])
+        self.git_commit_fails = git_commit_fails
+        self.muse_commit_fails = muse_commit_fails
+        self.git_branches = {git_branch} | (existing_git_branches or set())
+        self.muse_branches = {muse_branch} | (existing_muse_branches or set())
+        self.calls: list[tuple[str, str | None]] = []
+
+    def run(self, command: str, *, cwd: str | None = None) -> CommandResult:
+        import shlex
+
+        self.calls.append((command, cwd))
+        tokens = shlex.split(command)
+        if tokens[0] == "git":
+            return self._git(tokens[1:])
+        if tokens[0] == "muse":
+            # muse -C <root> <args...>
+            return self._muse(tokens[3:])
+        if tokens[0] == "gh":
+            return CommandResult(stdout=self.merged_prs_json, stderr="", exit_code=0)
+        return CommandResult(stdout="", stderr="unmocked command", exit_code=127)
+
+    def _git(self, args: list[str]) -> CommandResult:
+        if args[:3] == ["rev-parse", "--abbrev-ref", "HEAD"]:
+            return _ok_result(self.git_branch)
+        if args == ["rev-parse", "origin/main"]:
+            return _ok_result(self.origin_main_tip)
+        if args == ["rev-parse", "HEAD"]:
+            return _ok_result("feedface")
+        if args[:2] == ["status", "--porcelain"]:
+            return _ok_result(" M tracked.md" if self.git_dirty else "")
+        if args[:2] == ["checkout", "-b"]:
+            branch = args[2]
+            if branch in self.git_branches:
+                return _fail_result(f"branch {branch!r} already exists")
+            self.git_branches.add(branch)
+            self.git_branch = branch
+            return _ok_result("")
+        if args[0] == "checkout":
+            if "--force" in args:
+                return _fail_result("--force forbidden in GSW tests")
+            branch = args[-1]
+            if branch not in self.git_branches:
+                return _fail_result(f"unknown branch {branch!r}")
+            self.git_branch = branch  # git carries dirty changes across checkout
+            return _ok_result("")
+        if args[0] == "add":
+            return _ok_result("")
+        if args[0] == "commit":
+            if self.git_commit_fails:
+                return _fail_result("induced git commit failure")
+            self.git_dirty = False
+            return _ok_result("")
+        if args[0] == "push":
+            return _ok_result("")
+        if args[:2] == ["remote", "get-url"]:
+            return _ok_result("git@github.com:owner/repo.git")
+        if args[0] == "merge-base":
+            return _ok_result("")
+        if args[0] == "rev-list":
+            return _ok_result("0")
+        return CommandResult(stdout="", stderr="unmocked git command", exit_code=127)
+
+    def _muse(self, args: list[str]) -> CommandResult:
+        if args[:3] == ["rev-parse", "--abbrev-ref", "HEAD"]:
+            return _ok_result(self.muse_branch)
+        if args == ["rev-parse", "main"]:
+            if self.muse_rev_parse_main_values:
+                return _ok_result(self.muse_rev_parse_main_values.pop(0))
+            return _ok_result(self.muse_main_tip)
+        if args == ["rev-parse", "HEAD"]:
+            return _ok_result("sha256:feedface")
+        if args[:2] == ["status", "--json"]:
+            dirty = "true" if self.muse_dirty else "false"
+            return _ok_result('{"dirty": ' + dirty + "}")
+        if args[:2] == ["status", "--porcelain"]:
+            return _ok_result(" M tracked.md" if self.muse_dirty else "")
+        if args[:2] == ["branch", "--show-current"]:
+            return _ok_result(self.muse_branch)
+        if args[:2] == ["checkout", "-b"]:
+            branch = args[2]
+            if branch in self.muse_branches:
+                return _fail_result(f"branch {branch!r} already exists")
+            self.muse_branches.add(branch)
+            self.muse_branch = branch
+            return _ok_result("")
+        if args[:2] == ["checkout", "--autoshelf"]:
+            branch = args[2]
+            if branch not in self.muse_branches:
+                return _fail_result(f"unknown branch {branch!r}")
+            self.muse_branch = branch  # dirty changes shelved + reapplied
+            return _ok_result("")
+        if args[0] == "checkout":
+            if "--force" in args:
+                return _fail_result("--force forbidden in GSW tests")
+            branch = args[-1]
+            if branch not in self.muse_branches:
+                return _fail_result(f"unknown branch {branch!r}")
+            if self.muse_dirty:
+                # Muse 0.2.x live behavior: refuse dirty tracked checkout.
+                return _fail_result("dirty tracked files present; use --autoshelf or --merge")
+            self.muse_branch = branch
+            return _ok_result("")
+        if args[0] == "add":
+            return _ok_result("")
+        if args[0] == "commit":
+            if self.muse_commit_fails:
+                return _fail_result("induced muse commit failure")
+            self.muse_dirty = False
+            return _ok_result("")
+        if args[0] == "bridge":
+            return _ok_result("")
+        return CommandResult(stdout="", stderr="unmocked muse command", exit_code=127)
+
+
+def _ok_result(stdout: str) -> CommandResult:
+    return CommandResult(stdout=stdout, stderr="", exit_code=0)
+
+
+def _fail_result(stderr: str) -> CommandResult:
+    return CommandResult(stdout="", stderr=stderr, exit_code=1)
+
+
+GSW_CONFIG_BY_REGIME = {
+    "git-only": "config-git-only.yaml",
+    "muse-only": "config-muse-only.yaml",
+    "muse+git-mirror": "config-muse-git-mirror.yaml",
+}
+
+GSW_DOC_NAMES = {
+    "git-only": ("OVERSEER-HANDOVER.md", "ROADMAP.md"),
+    "muse-only": ("MUSEHUB-OVERSEER-HANDOVER.md", "MUSEHUB-ROADMAP.md"),
+    "muse+git-mirror": ("OVERSEER-HANDOVER.md", "ROADMAP.md"),
+}
+
+_GSW_MUSE_ONLY_HANDOVER = "# Handover — muse-only\n\n## Change log\n\n- **2026-07-01** — initial\n"
+_GSW_MUSE_ONLY_ROADMAP = (
+    "# Roadmap — muse-only\n\n## Build queue\n\n"
+    "| Phase | Model | Status | Deliverable |\n| --- | --- | --- | --- |\n"
+    "| **X1** | Auto | **TODO** | thing |\n"
+)
+
+
+def seed_gsw_repo(
+    repo_root: Path,
+    regime: str,
+    *,
+    handover_text: str | None = None,
+    roadmap_text: str | None = None,
+    muse_main_tip: str = "sha256:musetip",
+) -> tuple[Path, Path]:
+    """Seed config, docs, and Muse substrate/bridge for §GSW write-path tests.
+
+    Returns ``(handover_path, roadmap_path)``. Default docs produce D1 drift
+    for git regimes (claim ``deadbeef`` vs actual ``cafebabe``); muse-only
+    docs are minimal (its drift is driven by sequenced R2/R3 reads).
+    """
+    write_config(repo_root, GSW_CONFIG_BY_REGIME[regime])
+    if regime != "git-only":
+        seed_muse_substrate(repo_root)
+    if regime == "muse+git-mirror":
+        (repo_root / ".muse" / "git-bridge.toml").write_text(
+            f'[last_export]\nmuse_commit_id = "{muse_main_tip}"\ngit_sha = "{"1" * 40}"\n',
+            encoding="utf-8",
+        )
+    docs = repo_root / "docs"
+    docs.mkdir(parents=True, exist_ok=True)
+    handover_name, roadmap_name = GSW_DOC_NAMES[regime]
+    if handover_text is None:
+        if regime == "muse-only":
+            handover_text = _GSW_MUSE_ONLY_HANDOVER
+        else:
+            handover_text = (FIXTURES / "governance-handover-drift.md").read_text(encoding="utf-8")
+    if roadmap_text is None:
+        if regime == "muse-only":
+            roadmap_text = _GSW_MUSE_ONLY_ROADMAP
+        else:
+            roadmap_text = (FIXTURES / "governance-roadmap-drift.md").read_text(encoding="utf-8")
+    handover_path = docs / handover_name
+    roadmap_path = docs / roadmap_name
+    handover_path.write_text(handover_text, encoding="utf-8")
+    roadmap_path.write_text(roadmap_text, encoding="utf-8")
+    return handover_path, roadmap_path
+
+
+def gsw_runner(repo_root: Path, regime: str, **kwargs) -> BranchStateRunner:
+    """``BranchStateRunner`` pre-configured per regime for §GSW tests.
+
+    muse-only drives its only possible drift dimension (D2) via sequenced
+    ``muse rev-parse main`` values (R2 anchor read, then R3 canonical read).
+    """
+    if regime == "muse-only" and "muse_rev_parse_main_values" not in kwargs:
+        kwargs["muse_rev_parse_main_values"] = ["sha256:anchor", "sha256:moved"]
+    return BranchStateRunner(str(repo_root.resolve()), **kwargs)
+
+
 def adapter_for(config: OverseerConfig, repo_root: Path, runner: RecordingRunner):
     return create_adapter(config, repo_root, runner=runner)
 

@@ -6,76 +6,74 @@
 
 ---
 
-<!-- overseer:next role=primary lane=product status=live -->
-## NEXT SESSION — GSW-FIX-b (governance-sync write-path build)
+<!-- overseer:next role=primary lane=product status=live land-phase=land-a -->
+## NEXT SESSION — GSW-FIX → main (land-a)
 
 **Date:** 2026-07-31  
-**Current position:** **GSW-FIX-a DONE** — freeze
-`docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md` reviewed → `pass` (GSW-r3), stamp
-`sha256:63cfd176…`. Cleared for Auto build of the write-path order-of-operations fix.
+**Current position:** **GSW-FIX-b DONE** — build verified → `pass` (GSW-BV-r1) against
+frozen `docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md` (GSW-r3). Write-path
+order-of-operations fix is on `feat/gsw-fix-governance-sync-write-path`; land via
+SD-21 finish-mode when criteria are met.
 **Open this tree only:** `~/OVERSEER_KIT/overseer-kit` — stub `~/overseer-kit` is
 K1-era; do not use it.
-**Model:** **Auto**
+**Model:** **Operator + Auto**
 
 ### Authority split (read this — three different handovers)
 
 | Board | File | What it controls | Live NEXT (2026-07-31) |
 | --- | --- | --- | --- |
 | **Product order (PRIMARY)** | `~/scooling/docs/OVERSEER-HANDOVER.md` | Cross-repo product sequencing | Trust Scooling PRIMARY — do not invent kit product NEXT |
-| **Kit (this board)** | `docs/OVERSEER-HANDOVER.md` | Kit vendor phases only | **GSW-FIX-b (governance-sync write-path build)** |
+| **Kit (this board)** | `docs/OVERSEER-HANDOVER.md` | Kit vendor phases only | **GSW-FIX → main (land-a)** |
 | **Knowtation RELAY** | Knowtation handover | Consumer relay | Follow Scooling PRIMARY |
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
+| **GSW-FIX-b** | BV `pass` (GSW-BV-r1); `_apply_plan` reorder + dual-HEAD ensure + rollback + Muse `--autoshelf`; §GSW.10 **29** green (dirty-tree `--write` all three regimes) |
 | **GSW-FIX-a** | Frozen `docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md` — GSW-r3 `pass`, stamp `sha256:63cfd176…` |
 | **PMHF → main** | SD-21: Muse FF → `sha256:72efabb7…` → PR [#52](https://github.com/aaronrene/overseer-kit/pull/52) → GitHub `main` @ `edbc3eb`; post-merge sync + closeout gates cleared same day |
-| **PMHF-b** | `tools/land_closeout/` + `ok land-closeout`; status/land-check wiring; `next_regen` land-b; CI closeout template; §PMHF.10 **46** green; BV `pass` (PMHF-BV-r1) |
 
-### THE ONE NEXT STEP — **Model: Auto**
+### THE ONE NEXT STEP — **Model: Operator + Auto**
 
-Build exactly to frozen `docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md` (no redesign).
-Reorder `_apply_plan`, dual-HEAD ensure, rollback branch+marker restore, Muse dirty-carry /
-already-on-branch short-circuit; seven-tier §GSW.10 including dirty-tree `--write` on all
-regimes; `/build-verification-review` → `pass` before DONE.
+Land GSW-FIX to `main` via SD-21 finish-mode (land-a). Stop for Tier 3 merge
+authorization when required. Do **not** claim land complete — land-b follows after
+merge is confirmed on `main`.
 
 | | |
 | --- | --- |
-| **ID** | **GSW-FIX-b** |
+| **ID** | **GSW-FIX → main (land-a)** |
 | **Branch** | `feat/gsw-fix-governance-sync-write-path` |
 | **Repo** | **overseer-kit** @ `~/OVERSEER_KIT/overseer-kit` |
-| **Read first** | Frozen `docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md`; `tools/governance_hygiene/engine.py`; `adapters/*/adapter.py` `commit_feature`; this handover |
-| **Hard stops** | Build exactly to freeze (no redesign); no main merge; no secrets; BV `pass` before DONE |
+| **Read first** | This handover; `docs/ROADMAP.md` GSW-FIX rows; frozen `docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md`; BV `pass` GSW-BV-r1 |
+| **Hard stops** | No silent main merge outside SD-21; no secrets; land incomplete until land-b |
 
-### Paste-ready prompt — GSW-FIX-b
+### Paste-ready prompt — GSW-FIX → main (land-a)
 
 ```text
-YOU ARE HERE: Overseer Kit — GSW-FIX-b governance-sync write-path build.
+YOU ARE HERE: Overseer Kit — GSW-FIX → main (land-a).
 
-Model: Auto
-ID: GSW-FIX-b
+Model: Operator + Auto
+ID: GSW-FIX → main (land-a)
+land-phase: land-a
 Repo: ~/OVERSEER_KIT/overseer-kit
 Branch: feat/gsw-fix-governance-sync-write-path
 
-Frozen ground truth (do not re-derive):
-  docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md
-  freeze review pass GSW-r3, stamp sha256:63cfd176…
+Frozen ground truth:
+  docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md (GSW-r3 pass)
+  Build verification: pass (GSW-BV-r1)
 
 Deliver:
-1. Build exactly to frozen §GSW.3–§GSW.6:
-   - _apply_plan order: capture → realign (original branch) → ensure feature branch
-     (dual-HEAD on muse+git-mirror) → write docs → commit → marker (D1+D2) → push
-   - rollback restores docs + marker + original branch on every post-switch failure
-   - commit_feature already-on-branch short-circuit; Muse dirty-carry (--autoshelf or --merge)
-2. Seven-tier tests per §GSW.10 — dirty-tree --write on ALL three regimes (mandatory)
-3. /build-verification-review → pass before ROADMAP DONE
-4. Close: ROADMAP + HANDOVER together; feature-branch commit (SD-17)
+1. Open/update PR (or SD-21 authorized land path): Muse FF feature → main →
+   muse-bridge → green muse-mirror PR → GitHub main
+2. Stop for Tier 3 merge authorization when required
+3. Do NOT claim land complete
+4. Do NOT regenerate post-merge NEXT in this paste
 
-Hard stops: no freeze/BV redesign; no main merge; no secrets; no --force default checkout.
+After merge is confirmed on main: paste land-b (same slice).
+Land is incomplete until land-b.
 
-Governance gates (mandatory — remind only; silence is not pass):
-- Build verification must be pass before marking GSW-FIX-b DONE
+Hard stops: no secrets; no staging push; no live posture flips; no silent main writes.
 ```
 
 ---
@@ -106,7 +104,8 @@ Governance gates (mandatory — remind only; silence is not pass):
 | **PMHF-b** | **DONE** — BV `pass` (PMHF-BV-r1); `tools/land_closeout/` + `ok land-closeout` + status/land-check wiring + `next_regen` land-b + CI template; §PMHF.10 **46** green |
 | **PMHF → main** | **DONE** — SD-21 land 2026-07-31: Muse FF → `sha256:72efabb7…` + GitHub PR [#52](https://github.com/aaronrene/overseer-kit/pull/52) → `main` @ `edbc3eb` (operator-approved); §PMHF.3.2 post-merge sync done; `ok land-closeout` → `0` |
 | **GSW-FIX-a** | **DONE** — `docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md` reviewed → `pass` (GSW-r3), stamp `sha256:63cfd176…` |
-| **GSW-FIX-b** | **NEXT** — Auto build exactly to frozen GSW-FIX spec; §GSW.10 dirty-tree `--write` all regimes; BV `pass` before DONE |
+| **GSW-FIX-b** | **DONE** — BV `pass` (GSW-BV-r1); `_apply_plan` reorder + dual-HEAD + rollback + Muse `--autoshelf`; §GSW.10 **29** green (dirty-tree `--write` all three regimes) |
+| **GSW-FIX → main** | **NEXT** — land-a (Operator + Auto); SD-21 finish-mode when criteria met; land incomplete until land-b |
 | **GS-PASTE-a** | **DONE** — `docs/PHASE-GS-PASTE-READY-REGEN.md` reviewed → `pass` (GSP-r3), stamp `sha256:123c2e68…` |
 | **GS-PASTE-b** | **DONE** — BV `pass` (GSP-BV-r1); `next_regen` via `ok governance-sync`; §GSP.10 **19** green |
 | **GS-PASTE → main** | **DONE** — SD-21 land 2026-07-30: Muse `main` `sha256:e7831636…` + GitHub PR [#49](https://github.com/aaronrene/overseer-kit/pull/49) → `main` @ `5a85ef2` |
@@ -166,9 +165,9 @@ Governance gates (mandatory — remind only; silence is not pass):
 | GitHub `main` | `edbc3eb056c94b194f7408a14c7c01da894f10e3` |
 | Canonical anchor | `sha256:72efabb7bebf54347c1e4ac4368f3c01c89074a555c4eb0fcfbe9680c3d457c3` (muse) |
 | Muse `main` | `sha256:72efabb7bebf54347c1e4ac4368f3c01c89074a555c4eb0fcfbe9680c3d457c3` |
-| Dirty | no after close (GSW-FIX-a freeze + governance docs on feature branch) |
+| Dirty | no after close (GSW-FIX-b build + governance docs on feature branch) |
 | Kit checkout | **`~/OVERSEER_KIT/overseer-kit`** (live). Stub `~/overseer-kit` is K1-era — **do not use** |
-| Feature land | Prior PMHF land PR [#52](https://github.com/aaronrene/overseer-kit/pull/52) @ `edbc3eb` |
+| Feature land | GSW-FIX on `feat/gsw-fix-governance-sync-write-path` (awaiting land-a); prior PMHF land PR [#52](https://github.com/aaronrene/overseer-kit/pull/52) @ `edbc3eb` |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -183,6 +182,7 @@ Governance gates (mandatory — remind only; silence is not pass):
 
 | Date | Note |
 | --- | --- |
+| 2026-07-31 | **GSW-FIX-b DONE** — BV `pass` (GSW-BV-r1); §GSW.10 **29** green (dirty-tree `--write` all three regimes). NEXT → GSW-FIX → main (land-a). |
 | 2026-07-31 | **GSW-FIX-a DONE** — freeze `docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md` → `pass` (GSW-r3, `sha256:63cfd176…`). NEXT → GSW-FIX-b Auto. |
 | 2026-07-31 | **PMHF → main DONE (SD-21)** — Muse `sha256:72efabb7…` + PR [#52](https://github.com/aaronrene/overseer-kit/pull/52) @ `edbc3eb`; §PMHF.3.2 sync done; `ok land-closeout` → `0`. GSW-FIX defect queued. NEXT → GSW-FIX-a. |
 | 2026-07-31 | **PMHF-b DONE** — BV `pass` (PMHF-BV-r1); §PMHF.10 **46** green. NEXT → PMHF → main (land-a). |
@@ -191,6 +191,19 @@ Governance gates (mandatory — remind only; silence is not pass):
 | 2026-07-30 | **GS-PASTE-b DONE** — BV `pass` (GSP-BV-r1); §GSP.10 **19** green. NEXT → SD-21 land. |
 | 2026-07-30 | **GS-PASTE-a DONE** — freeze `docs/PHASE-GS-PASTE-READY-REGEN.md` → `pass` (GSP-r3, `sha256:123c2e68…`). |
 
+- **2026-07-31** — **GSW-FIX-b DONE (Auto build + BV `pass`, GSW-BV-r1).** Built
+  exactly to frozen `docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md`:
+  `_apply_plan` order capture → realign (original branch) → dual-HEAD feature-branch
+  ensure (`muse+git-mirror`) → write docs → commit → marker (D1+D2 only after commit
+  success) → push; rollback restores docs + prior marker + original branch(es)
+  (best-effort dual restore; no `--force`); `commit_feature` already-on-branch
+  short-circuit on all three adapters; Muse dirty-carry via `--autoshelf`.
+  Seven-tier §GSW.10 **29** green including dirty-tree `--write` on **git-only**,
+  **muse-only**, and **muse+git-mirror** (coverage-gap close for the live
+  2026-07-31 incident). Independent BV round 1 → `pass` (reviewer re-run evidence
+  `sha256:c506394a…`). ROADMAP GSW-FIX-b → DONE; queue adds **GSW-FIX → main**.
+  NEXT → **GSW-FIX → main (land-a)**, marker `land-phase=land-a`. No kit `main`
+  merge this session.
 - **2026-07-31** — **GSW-FIX-a DONE (Thinking freeze).** Authored + freeze-reviewed
   `docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md` → `pass` (GSW-r3), stamp
   `sha256:63cfd176…`. Contract: `_apply_plan` order capture → realign (original

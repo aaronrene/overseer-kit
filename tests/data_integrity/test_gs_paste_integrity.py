@@ -76,6 +76,9 @@ def test_mid_apply_failure_leaves_no_commit(tmp_path: Path) -> None:
             "git rev-parse origin/main": ok("cafebabe"),
             "gh pr list": ok("[]"),
             "git remote get-url origin": ok("git@github.com:owner/repo.git"),
+            # §GSW.3.1: branch ensure precedes doc writes on the apply path.
+            "git checkout -b": ok(""),
+            "git checkout main": ok(""),
         }
     )
     calls = {"n": 0}
