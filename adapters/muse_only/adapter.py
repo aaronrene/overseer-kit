@@ -76,9 +76,19 @@ class MuseOnlyAdapter(BaseAdapter):
                 f"refused protected branch {branch!r}",
             )
 
-        checkout = self._muse("checkout", branch)
-        if isinstance(checkout, ReadError):
-            return checkout
+        # §GSW.6.1: skip checkout when Muse HEAD is already on the branch —
+        # dirty handover/roadmap paths must never fail the commit here.
+        current = self._muse("rev-parse", "--abbrev-ref", "HEAD")
+        if isinstance(current, ReadError):
+            return current
+        if current.stdout.strip() != branch:
+            # §GSW.6.2: bare checkout refuses dirty tracked files (Muse 0.2.x);
+            # retry with --autoshelf to carry them. --force is forbidden.
+            checkout = self._muse("checkout", branch)
+            if isinstance(checkout, ReadError):
+                checkout = self._muse("checkout", "--autoshelf", branch)
+                if isinstance(checkout, ReadError):
+                    return checkout
 
         if paths:
             for path in paths:
