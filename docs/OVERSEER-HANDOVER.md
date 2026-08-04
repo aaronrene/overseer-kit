@@ -18,7 +18,7 @@
 
 | Slice | Deliverable |
 | --- | --- |
-| **Contributor (prep)** | `CONTRIBUTING.md`; `docs/MIGRATE-EXISTING-REPO.md`; laundry removed (`docs/archive/{personal,operators,consumers}/`); secrets/history pass clean; `docs/PUBLIC-VISIBILITY-CHECKLIST.md` |
+| **Contributor → main** | PR [#63](https://github.com/aaronrene/overseer-kit/pull/63) @ `0e80a42` — `CONTRIBUTING.md`, laundry purge, migrate guide, visibility checklist. Muse `sha256:9c9e489…`. Repo still **private**. |
 
 ### THE ONE NEXT STEP — **Model: Operator + Auto**
 
@@ -27,7 +27,7 @@ Flip GitHub `aaronrene/overseer-kit` private → public when the checklist is gr
 | | |
 | --- | --- |
 | **ID** | **Public-visibility-flip** |
-| **Branch** | `feat/contributor` (land) then operator flip on `main` |
+| **Branch** | `main` (after land) then operator flip |
 | **Repo** | **overseer-kit** |
 | **Read first** | `docs/PUBLIC-VISIBILITY-CHECKLIST.md`; `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md` |
 | **Hard stops** | No merge to `main` without Tier 3 · no secrets · no agent/CI visibility flip · no inventing NEXT when ambiguous |
@@ -41,7 +41,7 @@ Public-visibility-flip — Make overseer-kit public on GitHub (Tier 3).
 
 Model: Operator + Auto
 Repo: overseer-kit
-Branch: main (after Contributor prep lands)
+Branch: main
 Step: Public-visibility-flip
 Authority: authoritative
 
@@ -80,12 +80,12 @@ Governance sync: update roadmap + handover on completion.
 | Area | State |
 | --- | --- |
 | **VCS regime** | `muse+git-mirror` |
-| **GitHub main** | `dfc77b82736877f1743e41dfc1906c003dfdb5c5` |
-| **Canonical anchor** | `sha256:4288acbe8011970d35166e87220f9b06c0c4a7f8478bffab8a85e4e247511432` |
-| **Canonical main** | `sha256:4288acbe8011970d35166e87220f9b06c0c4a7f8478bffab8a85e4e247511432` |
-| **Branch** | `feat/contributor` |
-| **Dirty** | `yes` (Contributor prep session) |
-| **Drift** | D1=drifted, D2=aligned, D3=aligned |
+| **GitHub main** | `0e80a429a663e881c8e57facb85843f1c331e02d` |
+| **Canonical anchor** | `sha256:9c9e48966200afeee3f6dcaef64e29282aae69b257f10a443e1355b737fdfb81` |
+| **Canonical main** | `sha256:9c9e48966200afeee3f6dcaef64e29282aae69b257f10a443e1355b737fdfb81` |
+| **Branch** | `main` |
+| **Dirty** | `no` (land-b sync commit follows) |
+| **Drift** | D1=aligned after land-b, D2=aligned, D3=aligned |
 <!-- /overseer:anchor:verified-snapshot -->
 
 <!-- overseer:anchor:vcs-table -->
@@ -93,11 +93,11 @@ Governance sync: update roadmap + handover on completion.
 
 | Item | Value |
 | --- | --- |
-| Branch | `feat/contributor` |
-| GitHub `main` | `dfc77b82736877f1743e41dfc1906c003dfdb5c5` |
-| Canonical anchor | `sha256:4288acbe8011970d35166e87220f9b06c0c4a7f8478bffab8a85e4e247511432` (.muse/git-bridge.toml:last_export.muse_commit_id) |
-| Muse `main` | `sha256:4288acbe8011970d35166e87220f9b06c0c4a7f8478bffab8a85e4e247511432` |
-| Dirty | yes (Contributor prep) |
+| Branch | `main` |
+| GitHub `main` | `0e80a429a663e881c8e57facb85843f1c331e02d` |
+| Canonical anchor | `sha256:9c9e48966200afeee3f6dcaef64e29282aae69b257f10a443e1355b737fdfb81` (.muse/git-bridge.toml:last_export.muse_commit_id — refresh after this land-b export) |
+| Muse `main` | `sha256:9c9e48966200afeee3f6dcaef64e29282aae69b257f10a443e1355b737fdfb81` |
+| Dirty | yes until land-b commit |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -109,6 +109,8 @@ Governance sync: update roadmap + handover on completion.
 
 <!-- overseer:anchor:change-log -->
 ## Change log
+
+- **2026-08-04** — **Contributor → main DONE (SD-21, PR [#63](https://github.com/aaronrene/overseer-kit/pull/63) @ `0e80a42`).** Muse FF `feat/contributor` → `main` (`sha256:9c9e489…`) → muse-bridge → `ok pr-land`. land-b docs sync manual (auto `governance-sync` refused NEXT regen: D3 false-positive — merged PR title token `visibility` would stamp open row **Public repository visibility flip** DONE). NEXT remains **Public visibility flip**. Repo still **private**.
 
 - **2026-08-04** — **Contributor prep DONE** on `feat/contributor`: authored `CONTRIBUTING.md` + `docs/MIGRATE-EXISTING-REPO.md` + `docs/PUBLIC-VISIBILITY-CHECKLIST.md`; removed non-public laundry (`docs/archive/personal|operators|consumers`); secrets/history pass clean on working tree (`desktop/keys` public-only). NEXT → **Public visibility flip** (Tier 3 operator). Repo still **private** until operator flips.
 
@@ -949,6 +951,7 @@ See `docs/ROADMAP.md` → Model-split handover protocol (SD-3) and governance sy
 
 | Slice | Deliverable |
 | --- | --- |
+| PR #63 | Contributor prep — CONTRIBUTING, laundry purge, visibility checklist (merged 2026-08-04) @ `0e80a42` |
 | PR #59 | Mirror: mirror: GSB dated-branch collision reconcile — C0 FF/uniquify before ensure (BV pass GSB-BV-r1) (merged 2026-07-31) |
 | **Public OSS docs A+B** | **DONE** — phase/consumer/pilot archaeology archived; public docs index + thin stubs; Path B CTAs slimmed; affected tests green. **No public flip.** |
 | **GSB-b** | **DONE** — build verified → `pass` (GSB-BV-r1, 0 findings). C0 reconcile-before-ensure in `tools/governance_hygiene/engine.py`: per-history classify vs §GSB.3.2.1 `T_target`; ancestor/equal → tip FF without checkout-as-FF; diverged → deterministic `-N` uniquify + frozen `PatchPlan` replace + rebuilt `pr_url`; Muse never dirties Git; C1 ensure unchanged. Seven-tier §GSB.8 **25** green incl. same-day-collision `--write` on all three regimes; full suite **1213** green (15 pre-existing env failures unchanged). **No merge to `main` this session.** |
