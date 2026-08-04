@@ -80,12 +80,12 @@ Governance sync: update roadmap + handover on completion.
 | Area | State |
 | --- | --- |
 | **VCS regime** | `muse+git-mirror` |
-| **GitHub main** | `0e80a429a663e881c8e57facb85843f1c331e02d` |
-| **Canonical anchor** | `sha256:9c9e48966200afeee3f6dcaef64e29282aae69b257f10a443e1355b737fdfb81` |
-| **Canonical main** | `sha256:9c9e48966200afeee3f6dcaef64e29282aae69b257f10a443e1355b737fdfb81` |
+| **GitHub main** | `8a37818d8f8668784b38cc55c3cd430e3ad47e64` |
+| **Canonical anchor** | `sha256:15670bee7d41687387a2aef5a0568dcefefdd787b6dc1ed03ab0cab59baf1f5d` |
+| **Canonical main** | `sha256:15670bee7d41687387a2aef5a0568dcefefdd787b6dc1ed03ab0cab59baf1f5d` |
 | **Branch** | `main` |
-| **Dirty** | `no` (land-b sync commit follows) |
-| **Drift** | D1=aligned after land-b, D2=aligned, D3=aligned |
+| **Dirty** | `no` |
+| **Drift** | D1=aligned, D2=aligned, D3=aligned |
 <!-- /overseer:anchor:verified-snapshot -->
 
 <!-- overseer:anchor:vcs-table -->
@@ -94,10 +94,10 @@ Governance sync: update roadmap + handover on completion.
 | Item | Value |
 | --- | --- |
 | Branch | `main` |
-| GitHub `main` | `0e80a429a663e881c8e57facb85843f1c331e02d` |
-| Canonical anchor | `sha256:9c9e48966200afeee3f6dcaef64e29282aae69b257f10a443e1355b737fdfb81` (.muse/git-bridge.toml:last_export.muse_commit_id — refresh after this land-b export) |
-| Muse `main` | `sha256:9c9e48966200afeee3f6dcaef64e29282aae69b257f10a443e1355b737fdfb81` |
-| Dirty | yes until land-b commit |
+| GitHub `main` | `8a37818d8f8668784b38cc55c3cd430e3ad47e64` |
+| Canonical anchor | `sha256:15670bee7d41687387a2aef5a0568dcefefdd787b6dc1ed03ab0cab59baf1f5d` (.muse/git-bridge.toml:last_export.muse_commit_id — refresh on next bridge) |
+| Muse `main` | `sha256:15670bee7d41687387a2aef5a0568dcefefdd787b6dc1ed03ab0cab59baf1f5d` |
+| Dirty | no |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -110,7 +110,7 @@ Governance sync: update roadmap + handover on completion.
 <!-- overseer:anchor:change-log -->
 ## Change log
 
-- **2026-08-04** — **Contributor → main DONE (SD-21, PR [#63](https://github.com/aaronrene/overseer-kit/pull/63) @ `0e80a42`).** Muse FF `feat/contributor` → `main` (`sha256:9c9e489…`) → muse-bridge → `ok pr-land`. land-b docs sync manual (auto `governance-sync` refused NEXT regen: D3 false-positive — merged PR title token `visibility` would stamp open row **Public repository visibility flip** DONE). NEXT remains **Public visibility flip**. Repo still **private**.
+- **2026-08-04** — **Contributor → main DONE (SD-21).** Product PR [#63](https://github.com/aaronrene/overseer-kit/pull/63) @ `0e80a42` (Muse FF `sha256:9c9e489…` → bridge → `ok pr-land`). land-b docs PR [#65](https://github.com/aaronrene/overseer-kit/pull/65) @ `8a37818` (PR #64 closed — squash-history conflict on muse-mirror). NEXT remains **Public visibility flip**. Repo still **private**.
 
 - **2026-08-04** — **Contributor prep DONE** on `feat/contributor`: authored `CONTRIBUTING.md` + `docs/MIGRATE-EXISTING-REPO.md` + `docs/PUBLIC-VISIBILITY-CHECKLIST.md`; removed non-public laundry (`docs/archive/personal|operators|consumers`); secrets/history pass clean on working tree (`desktop/keys` public-only). NEXT → **Public visibility flip** (Tier 3 operator). Repo still **private** until operator flips.
 
@@ -951,6 +951,7 @@ See `docs/ROADMAP.md` → Model-split handover protocol (SD-3) and governance sy
 
 | Slice | Deliverable |
 | --- | --- |
+| PR #65 | land-b governance sync after Contributor PR #63 (merged 2026-08-04) @ `8a37818` |
 | PR #63 | Contributor prep — CONTRIBUTING, laundry purge, visibility checklist (merged 2026-08-04) @ `0e80a42` |
 | PR #59 | Mirror: mirror: GSB dated-branch collision reconcile — C0 FF/uniquify before ensure (BV pass GSB-BV-r1) (merged 2026-07-31) |
 | **Public OSS docs A+B** | **DONE** — phase/consumer/pilot archaeology archived; public docs index + thin stubs; Path B CTAs slimmed; affected tests green. **No public flip.** |
