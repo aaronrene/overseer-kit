@@ -11,16 +11,14 @@
 ## NEXT SESSION — Contributor guide and repository visibility flip
 
 **Date:** 2026-08-04  
-**Current position:** GSB/OSS land → Contributor  
+**Current position:** K12 → Contributor  
 **Model:** Operator + Auto
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **GSB → main** | SD-21 land via Muse→mirror PR [#59](https://github.com/aaronrene/overseer-kit/pull/59) @ `de9013f` (C0 reconcile path) |
-| **Public OSS docs A+B** | Archive archaeology + public docs cut; Muse→mirror PR [#60](https://github.com/aaronrene/overseer-kit/pull/60) @ `bdee603` |
-| **land-b closeout** | `ok governance-sync --write` on `feat/governance-sync-2026-08-04` after PR #60 |
+| **K12** | Public landing, scenario gallery, GitHub→MuseHub funnel, **MIT** LICENSE (amended from Apache-2.0), SECURITY.md; `tools/landing/` validator; seven-tier K12 tests (**380** total green) |
 
 ### THE ONE NEXT STEP — **Model: Operator + Auto**
 
@@ -81,12 +79,12 @@ Governance sync: update roadmap + handover on completion.
 | Area | State |
 | --- | --- |
 | **VCS regime** | `muse+git-mirror` |
-| **GitHub main** | `bdee6032c4c952bce358e3138ba344b4b50c6fb1` |
-| **Canonical anchor** | `sha256:d6e160e4598d74a1e4b524f9dbb438cbc63cc91e089ae17033d4f440e368daaa` |
-| **Canonical main** | `sha256:d6e160e4598d74a1e4b524f9dbb438cbc63cc91e089ae17033d4f440e368daaa` |
-| **Branch** | `feat/governance-sync-2026-08-04` |
-| **Dirty** | `no` (after closeout commit) |
-| **Drift** | D1=aligned, D2=aligned, D3=aligned |
+| **GitHub main** | `dfc77b82736877f1743e41dfc1906c003dfdb5c5` |
+| **Canonical anchor** | `sha256:4288acbe8011970d35166e87220f9b06c0c4a7f8478bffab8a85e4e247511432` |
+| **Canonical main** | `sha256:4288acbe8011970d35166e87220f9b06c0c4a7f8478bffab8a85e4e247511432` |
+| **Branch** | `main` |
+| **Dirty** | `no` |
+| **Drift** | D1=drifted, D2=aligned, D3=aligned |
 <!-- /overseer:anchor:verified-snapshot -->
 
 <!-- overseer:anchor:vcs-table -->
@@ -95,10 +93,10 @@ Governance sync: update roadmap + handover on completion.
 | Item | Value |
 | --- | --- |
 | Branch | `main` |
-| GitHub `main` | `bdee6032c4c952bce358e3138ba344b4b50c6fb1` |
-| Canonical anchor | `sha256:d6e160e4598d74a1e4b524f9dbb438cbc63cc91e089ae17033d4f440e368daaa` (.muse/git-bridge.toml:last_export.muse_commit_id) |
-| Muse `main` | `sha256:d6e160e4598d74a1e4b524f9dbb438cbc63cc91e089ae17033d4f440e368daaa` |
-| Dirty | yes |
+| GitHub `main` | `dfc77b82736877f1743e41dfc1906c003dfdb5c5` |
+| Canonical anchor | `sha256:4288acbe8011970d35166e87220f9b06c0c4a7f8478bffab8a85e4e247511432` (.muse/git-bridge.toml:last_export.muse_commit_id) |
+| Muse `main` | `sha256:4288acbe8011970d35166e87220f9b06c0c4a7f8478bffab8a85e4e247511432` |
+| Dirty | no |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -110,6 +108,8 @@ Governance sync: update roadmap + handover on completion.
 
 <!-- overseer:anchor:change-log -->
 ## Change log
+
+- **2026-08-04** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `dfc77b8`; realign: D2 aligned — skip realign; next_regen=regenerated
 
 - **2026-08-04** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `bdee603`; realign: D2 aligned — skip realign; next_regen=regenerated
 
