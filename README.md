@@ -251,7 +251,7 @@ No MuseHub required. See `docs/GIT-ONLY-QUICKSTART.md`.
 ```
 
 Repos that already have hand-authored handover/roadmap files should use `init --migrate` instead
-(see `docs/K6-PILOT-OPERATOR-RUNBOOK.md`).
+(see `docs/archive/operators/K6-PILOT-OPERATOR-RUNBOOK.md`).
 
 ### MuseHub optional upgrade (`muse+git-mirror`)
 
@@ -344,6 +344,7 @@ codebases — see `docs/OVERSEER-KIT-SPEC.md`. The kit does not ship product ada
 
 | Doc | Purpose |
 | --- | --- |
+| `docs/README.md` | Public docs index (start here) |
 | `docs/OVERSEER-KIT-SPEC.md` | Frozen architecture |
 | `docs/OVERSEER-HANDOVER.md` | Living relay (this repo's handover) |
 | `docs/ROADMAP.md` | Phase control + build status |
@@ -351,11 +352,11 @@ codebases — see `docs/OVERSEER-KIT-SPEC.md`. The kit does not ship product ada
 | `policy/tiers.yaml` | Decision authority Tier 1/2/3 |
 | `policy/test-tiers.yaml` | Seven-tier test contract |
 | `docs/GIT-ONLY-QUICKSTART.md` | Greenfield install without Muse |
-| `docs/consumers/videofactory/OVERSEER-SETUP.md` | VideoFactory install + custom doc names |
 | `docs/CONSUMER-ADAPTER-PATTERN.md` | How any consumer plugs into L0–L2 |
-| `docs/landing/index.html` | Track N public landing (K12) |
+| `docs/consumers/*/OVERSEER-SETUP.md` | Thin consumer boundary stubs |
+| `docs/landing/index.html` | Public landing |
 | `docs/landing/scenarios/index.html` | Scenario gallery A–E |
-| `docs/PHASE-K12-TRACK-N-LANDING-CONTRACT.md` | K12 landing freeze contract |
+| `docs/archive/README.md` | Maintainer archive (phase freezes, pilots) |
 | `docs/K7-DOGFOOD-OPERATOR-RUNBOOK.md` | Flip a repo to `muse+git-mirror` |
 | `MUSE-BRIDGE-WORKFLOW.md` | SD-14 mirror rules (vendored when regime requires) |
 | `cursor/README.md` | What ships into `.cursor/` on init/sync |

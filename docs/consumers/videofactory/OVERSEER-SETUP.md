@@ -1,224 +1,39 @@
-# VideoFactory — overseer kit setup
+# Example consumer — custom living-doc names (public stub)
 
-Use the same overseer discipline as other repos, with **VideoFactory-specific names** for the living
-docs so multi-repo workspaces stay unambiguous.
+This stub shows how a consumer repo can rename roadmap/handover files via
+`.overseer/config.yaml` without forking the kit. VideoFactory was an early
+`git-only` pilot; domain packs and verify scripts stay in the consumer repo.
 
-## Doc mapping (same system, different labels)
+## Doc mapping pattern
 
-| Kit concept | VideoFactory file | Display title |
-| --- | --- | --- |
-| Roadmap / phase queue | `VIDEO_PRODUCTION_STATUS_BOARD.md` | Video Production Status Board |
-| Handover / session relay | `VIDEO_OVERSEER_HANDOVER.md` | Video Overseer Handover |
+| Kit concept | Example consumer filenames |
+| --- | --- |
+| Roadmap / phase queue | `VIDEO_PRODUCTION_STATUS_BOARD.md` (or any path in config) |
+| Handover / session relay | `VIDEO_OVERSEER_HANDOVER.md` |
 
-The status board is your **video queue and grid** — phases, videos in play, build status. The kit
-treats it as the roadmap (SD-17 sync target). `governance-sync` and handover regeneration keep it
-**honest vs git reality**, the same way a software roadmap stays honest.
+Set `docs.handover`, `docs.roadmap`, and optional titles in `.overseer/config.yaml`.
 
-**Renaming is supported.** Each repo's `.overseer/config.yaml` sets `docs.handover`, `docs.roadmap`,
-`docs.handover_title`, and `docs.roadmap_title`. MuseHub can use `MUSEHUB-ROADMAP.md` / `MUSEHUB-OVERSEER-HANDOVER.md`
-in the same workspace — no conflict.
-
-## Prepared config
-
-Copy or reference:
-
-`tests/fixtures/pilot/config-videofactory.yaml`
-
-Every field is commented in that file.
-
-## Install
+## Install (pattern only)
 
 ```bash
 KIT=/path/to/overseer-kit
-VF=/path/to/videofactory
+REPO=/path/to/your-repo
 
-# Dry-run first (migrate preserves existing living docs)
-$KIT/cli/ok -C $VF init --migrate \
+$KIT/cli/ok -C $REPO init --migrate \
   --from-config $KIT/tests/fixtures/pilot/config-videofactory.yaml \
   --non-interactive --dry-run
-
-# Apply
-$KIT/cli/ok -C $VF init --migrate \
-  --from-config $KIT/tests/fixtures/pilot/config-videofactory.yaml \
-  --non-interactive
-
-$KIT/cli/ok -C $VF status --check-footprint
 ```
 
-If you **already** have a Video Production Status Board and handover file with different names,
-either rename them to match the config or edit `docs.handover` / `docs.roadmap` in
-`.overseer/config.yaml` to match your filenames before `init --migrate`.
+Live apply remains **operator-gated**. Never `--force --include-preserved` on a
+production consumer without Tier-3 review.
 
-## Mandatory review gates (kit-wide, not optional)
+## Adapter pattern
 
-Shipped in every consumer install via templates + `.cursor/rules/build-verification-required.mdc`:
+`docs/CONSUMER-ADAPTER-PATTERN.md`
 
-| Gate | When | Skill |
-| --- | --- | --- |
-| Freeze review | Before Auto build (`{step}a` → `{step}b`) | `/freeze-review-loop` |
-| Build verification | After Auto build, **before DONE** | `/build-verification-review` |
-| Tests | During/after build | `policy/test-tiers.yaml` |
-| Governance sync | Session end | `/governance-sync` |
+## Detailed pilot notes (maintainers)
 
-Agents must not mark a phase **DONE** on the status board until build verification **`pass`**.
+`docs/archive/consumers/videofactory/OVERSEER-SETUP.md`
 
-## Day-to-day (VideoFactory)
-
-1. Open `VIDEO_OVERSEER_HANDOVER.md` → paste NEXT prompt.
-2. Work on `feat/<slug>` branch.
-3. Thinking phase: freeze spec → `/freeze-review-loop` until pass.
-4. Auto phase: build → tests → `/build-verification-review` until pass.
-5. Update status board + handover together → `governance-sync --dry-run` → commit.
-6. PR → merge with Tier-3 authorization.
-
-## Hard stops
-
-- No `--force --include-preserved` on live migrate (pilot rule)
-- No merge to `main` without Tier 3
-- No marking videos/phases DONE without build verification pass
-
----
-
-## Multiple roadmaps? Video queue + software work in one tree
-
-**K8 shipped:** `.overseer/config.yaml` may declare **`docs.lanes`** — named handover/roadmap
-pairs — with `docs.default_lane` and `ok governance-sync --lane <name>` / `--all-lanes`.
-Contract: `docs/PHASE-K8-MULTI-LANE-DOCS-CONTRACT.md`. Fixture shape:
-`tests/fixtures/config-two-lane.yaml`.
-
-**Default VF install** still uses the **single-pair** tokens (`docs.handover` / `docs.roadmap`)
-via `config-videofactory.yaml`. That is enough for production. Add a second lane only when
-engineering needs its own auto-synced board + handover.
-
-Optional `docs.coordination` (e.g. `CROSS-REPO-COORDINATION.md`) is **preserved on migrate** but
-is **not** patched by `governance-sync`.
-
-### Recommended VideoFactory layout (works now)
-
-| Concern | Where it lives | Synced by kit? |
-| --- | --- | --- |
-| Video production queue (always on) | `VIDEO_PRODUCTION_STATUS_BOARD.md` | Yes — default / `production` roadmap |
-| Session relay for video work | `VIDEO_OVERSEER_HANDOVER.md` | Yes — default / `production` handover |
-| Major software/tooling build | **Section** on the status board (`## Engineering`), **or** a second K8 lane (`engineering` handover + roadmap), **or** a manual file you maintain | Sections / second lane = kit-synced; manual file = you |
-| Per-video work | `feat/video/<slug>` branch + **one row** on the status board | Row updated on phase close; branch is the isolation unit |
-
-You do **not** need a full second roadmap + handover pair for every video. You need:
-
-1. **One repo-level status board** — master grid of videos (and optional engineering summary).
-2. **One repo-level handover** — current session relay for the active lane.
-3. **One branch per video** — isolates assets, edits, and agent context.
-4. **One row per video** on the status board — honest status vs merged reality.
-
-When you switch from “shipping Threads ep. 42” to “building a new export pipeline,” either change
-the **NEXT prompt** + active row on the production board, or `governance-sync --lane engineering`
-if you configured a second lane.
-
----
-
-## Per-video specs: templates, not a thinking model every time
-
-Repetitive video types (Threads in Time + Reels, Trend + verticals, thumbnails, CTA, music, avatar
-rules, cadence/expression) should be **frozen once**, not re-specified per video.
-
-### Three layers (all live in the VideoFactory repo, not in overseer-kit core)
-
-| Layer | Purpose | Freeze review? |
-| --- | --- | --- |
-| **Template library** | `docs/video-specs/` or `policy/video/` — one frozen spec per format | **Once** per template (thinking model); re-run only when the template changes |
-| **Status board row** | Instance: template ID, topic, due date, branch, status | No full spec — references template |
-| **Instance manifest** (optional) | `videos/<slug>/manifest.yaml` on the video branch — params only | No — Auto reads template + manifest |
-
-**Gate 1 (freeze):** Run `/freeze-review-loop` when you **author or change** a template — not on
-every episode.
-
-**Gate 2 (build verification):** Run `/build-verification-review` **per video** before marking the
-row `DONE` — checks implementation against the **frozen template ID** + instance checklist (export
-settings, CTA present, music bed, avatar rules, etc.). This is the honesty gate you want for
-publish-ready work without paying for a thinking model on identical structure every time.
-
-### Is a frozen spec necessary for every video?
-
-| Situation | Freeze loop? | Build verification? |
-| --- | --- | --- |
-| New video type or template change | Yes | Yes |
-| Same template, new topic/episode | No | Yes |
-| Trivial tweak inside one template | Optional delta note on template | Yes |
-
-### When is a video “reviewed”?
-
-1. **During build** — tests / export checks per `policy/test-tiers.yaml` (you define VF tiers in
-   consumer `policy/`).
-2. **Before DONE** — mandatory `/build-verification-review` (always-on Cursor rule).
-3. **Before publish** — human spot-check or your publish pipeline (outside kit).
-
-There is no separate “freeze spec per video” unless that video is a one-off departure from all
-templates.
-
----
-
-## Modularity: molding the kit for VideoFactory (and any project)
-
-The kit is **repo-agnostic governance**, not a VideoFactory runtime. Customization stays in the
-**consumer repo**:
-
-| Extension point | VideoFactory example |
-| --- | --- |
-| `.overseer/config.yaml` | Custom doc paths and display titles |
-| Preserved living docs | Status board + handover content and sections |
-| `policy/` | Video checklists, test tiers, model labels |
-| `docs/video-specs/` | Frozen format templates (your domain) |
-| `.cursor/rules/` | VF-specific always-on rules (promoted on migrate if under kit paths) |
-| `.cursor/skills/` | Optional VF skills (e.g. “verify export against template X”) |
-| VCS adapter | `git-only`, `muse-only`, or `muse+git-mirror` per repo |
-
-You do **not** fork overseer-kit. You **install** it into VideoFactory; domain templates and video
-policy live in VideoFactory. Other repos (MuseHub, Knowtation) use the same kit with different doc
-names and policy files.
-
-**Honesty / L1 (VideoFactory 2026-07-16 lesson):** consumer `scripts/verify/*` must **re-measure**
-domain invariants (e.g. panel pixel coverage SIN-P5), not accept self-certified JSON booleans alone.
-The kit orchestrator only runs those scripts — if VF verify scripts lie, Overseer “passes.” Fix lives
-in the consumer verify script + compose gate (`docs/THREADS-AVATAR-PANEL-COVERAGE-RULE.md`), not by
-forking kit core unless contributing a shared honesty helper upstream.
-
-**Stub / add-on pattern:** Core CLI and adapters expose fixed contracts (`init`, `sync`, `status`,
-`review`, `governance-sync`, `land-check`, `verify-step`, `honesty-status`, `ledger`, …). Domain-specific
-behavior is added via consumer **policy**, **preserved docs**, and optional **Cursor
-skills/rules** — not by editing kit source unless you are contributing upstream. Cursor is an
-optional boost; Path A works with any chatbot via the handover paste block.
-
-### Close ritual / land-to-main (`ok land-check` + `ok pr-land`)
-
-Configurable in `.overseer/config.yaml` under `close_ritual`:
-
-| Knob | Purpose |
-| --- | --- |
-| `enabled` | Turn land-check on/off |
-| `mode` | `verify_landed` (paths must match `origin/main`) or `prepare_pr` (commit hygiene) |
-| `require_paths` | Repo-relative files that must land on main |
-| `consumer_verify_script` | Optional VF/other script (e.g. `scripts/verify/vf_verify_board_landed.py`) |
-| `post_land_sync.enabled` | Opt-in (default **off**): after a successful `ok pr-land` merge, ff-only sync the local main checkout from `vcs.git.remote` (kit `docs/PHASE-PLS-POST-LAND-MAIN-SYNC.md`) |
-| `post_land_sync.strategy` | `ff_only` only (v1 closed vocabulary) |
-| `post_land_sync.require_clean_worktree` | Must be `true` (v1) — dirty tree always warn/skip, never clobber |
-
-VideoFactory may keep its own portal/multi-worktree jobs — kit `post_land_sync` does **not**
-replace them; optionally enable kit sync for the primary checkout only (§PLS.8).
-
-**`ok land-check` never merges** — it only verifies.  
-**`ok pr-land`** is the authorized wait-for-green merge (Tier-3 delegated via `--authorized`).  
-VideoFactory mirror: `jobs/pr_land_after_checks.py`. Spec: kit `docs/PHASE-PR-LAND-AFTER-CHECKS.md`.
-
-VideoFactory also sets `boardLandPending` on wrap gate closes and
-blocks `session-start` until `jobs/board_land_check.py --verify-landed --clear-pending` passes.
-
----
-
-## Quick decision guide
-
-| Question | Answer |
-| --- | --- |
-| Can I use Video Status Board and a software roadmap at once? | Yes — sections on one board, **or** a second K8 lane (`docs.lanes`), **or** a manual engineering file. |
-| One roadmap per video? | No — one **row** per video on the repo status board; one **branch** per video. |
-| Thinking model every video? | No — freeze **templates** once; per-video **build verification** only. |
-| Is the kit ready for VF? | Yes — install with `config-videofactory.yaml`, add template library in VF, branch-per-video + status rows. |
-| Multi-lane auto-sync? | **Shipped (K8)** — `docs.lanes` + `ok governance-sync --lane` / `--all-lanes`. Default VF config stays single-pair until you need a second lane. |
+Domain checkpoint prompt (archived):  
+`docs/archive/consumers/videofactory/CHECKPOINT-BUILD-PROMPT.md`

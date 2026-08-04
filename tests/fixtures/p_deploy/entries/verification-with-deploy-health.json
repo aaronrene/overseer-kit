@@ -3,7 +3,7 @@
   "actor_role": "verifier",
   "actor_session_id": "bv-session-2",
   "phase_id": "Track P / P-deploy",
-  "frozen_spec": "docs/PHASE-TRACK-P-P-DEPLOY.md",
+  "frozen_spec": "docs/archive/phases/PHASE-TRACK-P-P-DEPLOY.md",
   "round": 2,
   "bv_verdict": "pass",
   "artifacts": [

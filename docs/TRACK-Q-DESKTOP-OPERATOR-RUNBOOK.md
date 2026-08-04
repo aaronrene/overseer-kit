@@ -142,8 +142,8 @@ Do not market Windows/Linux downloads until a signed Release row ships.
 
 ## Signed installers (Path 1 download)
 
-Frozen contracts: `docs/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md`,
-`docs/PHASE-LANDING-ACCESS-CLARITY.md` (§LAC.2 frozen `.dmg` href).
+Frozen contracts: `docs/archive/phases/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md`,
+`docs/archive/phases/PHASE-LANDING-ACCESS-CLARITY.md` (§LAC.2 frozen `.dmg` href).
 
 ### Prerequisites on the end host
 

@@ -1,7 +1,7 @@
 """Track O / O3 Stage 3 kit upgrade ceremony (`muse-only` → `muse+git-mirror`).
 
 Composes existing init/sync/status + K7 bridge invariants per frozen
-``docs/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md`` (§O2.3–§O2.7).
+``docs/archive/phases/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md`` (§O2.3–§O2.7).
 """
 
 from tools.upgrade_regime.ceremony import (

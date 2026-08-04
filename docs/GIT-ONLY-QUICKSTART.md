@@ -3,8 +3,6 @@
 Use this when you have a plain GitHub repo and **no MuseHub**. The kit’s governance
 features work on Git alone; Muse is optional.
 
-VideoFactory is the in-house `git-only` reference after its K6 pilot parity PASS.
-
 ## Prerequisites
 
 - A clone of [overseer-kit](https://github.com/aaronrene/overseer-kit) (or a path to its `cli/ok` shim)
@@ -32,7 +30,7 @@ From your consumer repo (or with `-C <repo>`):
 ```
 
 For repos that **already** have hand-authored handover/roadmap files, use migrate
-(see `docs/K6-PILOT-OPERATOR-RUNBOOK.md`) instead of greenfield `init`.
+(see `docs/archive/operators/K6-PILOT-OPERATOR-RUNBOOK.md`) instead of greenfield `init`.
 
 ## Guardrails
 

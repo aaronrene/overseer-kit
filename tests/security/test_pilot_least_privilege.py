@@ -69,7 +69,7 @@ def test_migrate_outputs_free_of_secrets_and_abs_paths(tmp_path: Path, capsys) -
 
 
 def test_include_preserved_absent_from_default_pilot_docs() -> None:
-    runbook = Path("docs/K6-PILOT-OPERATOR-RUNBOOK.md").read_text(encoding="utf-8")
+    runbook = Path("docs/archive/operators/K6-PILOT-OPERATOR-RUNBOOK.md").read_text(encoding="utf-8")
     assert "--force --include-preserved" in runbook
     assert "Never" in runbook or "never" in runbook
     assert "pilot-forbidden" in runbook.lower() or "never" in runbook.lower()

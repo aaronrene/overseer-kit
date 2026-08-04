@@ -72,7 +72,7 @@ def test_thinking_to_auto_emit_b_when_freeze_pass(tmp_path: Path) -> None:
         phase_label="**GS-PASTE**",
         model="Thinking → Auto",
         status="**NEXT**",
-        deliverable="docs/PHASE-GS-PASTE-READY-REGEN.md",
+        deliverable="docs/archive/phases/PHASE-GS-PASTE-READY-REGEN.md",
         raw_line="",
     )
     emit_model, reason, is_b = decide_split_emission(row, tmp_path)

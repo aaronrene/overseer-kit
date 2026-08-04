@@ -24,7 +24,7 @@ def test_validator_large_padded_html_bounded(tmp_path: Path) -> None:
         "docs/K7-DOGFOOD-OPERATOR-RUNBOOK.md",
         "docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md",
         "docs/ROADMAP.md",
-        "docs/PHASE-K12-TRACK-N-LANDING-CONTRACT.md",
+        "docs/archive/phases/PHASE-K12-TRACK-N-LANDING-CONTRACT.md",
         "docs/consumers/videofactory/OVERSEER-SETUP.md",
         "docs/consumers/knowtation/OVERSEER-SETUP.md",
         "docs/consumers/scooling/OVERSEER-SETUP.md",

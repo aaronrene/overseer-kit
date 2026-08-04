@@ -17,7 +17,7 @@ ROADMAP_ROW_RE = re.compile(
     r"^\|\s*\*\*(?P<phase>[^|*]+)\*\*\s*\|\s*(?P<model>[^|]+)\|\s*\*\*(?P<status>[^|*]+)\*\*\s*\|\s*(?P<deliverable>[^|]+)",
     re.MULTILINE,
 )
-PHASE_DOC_RE = re.compile(r"docs/PHASE-[A-Za-z0-9_.-]+\.md")
+PHASE_DOC_RE = re.compile(r"docs/archive/phases/PHASE-[A-Za-z0-9_.-]+\.md")
 NEXT_ID_RE = re.compile(r"\|\s*\*\*ID\*\*\s*\|\s*\*\*([^*]+)\*\*", re.MULTILINE)
 BUILD_VERIFICATION_PASS_RE = re.compile(
     r"build[- ]verification(?:[- ]review)?[^\n]{0,80}\bpass\b",
