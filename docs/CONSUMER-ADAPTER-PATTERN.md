@@ -1,7 +1,7 @@
 # Consumer adapter pattern
 
 **Purpose:** How any repo adopts Overseer Kit without forking kit core.  
-**Normative freeze:** `docs/PHASE-K9A-L1-L2-MODULE-FREEZE.md` §K9.0 / §K9.12.
+**Normative freeze:** `docs/archive/phases/PHASE-K9A-L1-L2-MODULE-FREEZE.md` §K9.0 / §K9.12.
 
 ---
 
@@ -45,7 +45,7 @@ Customize only `.overseer/config.yaml` (regime, doc paths, future `checkpoints:`
 - **Rows / L1 manifests** — many instances of the same concern (videos, papers, closes).
 - **Repos** — different trust boundaries or VCS regimes.
 
-See `docs/PHASE-K8-MULTI-LANE-DOCS-CONTRACT.md` and vision §5.2.
+See `docs/archive/phases/PHASE-K8-MULTI-LANE-DOCS-CONTRACT.md` and vision §5.2.
 
 ---
 
@@ -75,11 +75,13 @@ See `docs/PHASE-K8-MULTI-LANE-DOCS-CONTRACT.md` and vision §5.2.
 
 ## Reference consumers
 
-| Consumer | Kit docs |
-| --- | --- |
-| VideoFactory | `docs/consumers/videofactory/OVERSEER-SETUP.md`, `CHECKPOINT-BUILD-PROMPT.md` |
-| Scooling | `docs/consumers/scooling/OVERSEER-SETUP.md` |
-| MuseHub / Knowtation | Add under `docs/consumers/<name>/` when piloted |
+Public stubs (boundary only). Detailed pilot notes live under `docs/archive/consumers/`.
+
+| Consumer | Public stub | Archive / fixtures |
+| --- | --- | --- |
+| Example / custom doc names | `docs/consumers/videofactory/OVERSEER-SETUP.md` | `docs/archive/consumers/videofactory/` |
+| Scooling | `docs/consumers/scooling/OVERSEER-SETUP.md` | `docs/archive/consumers/scooling/` |
+| Knowtation | `docs/consumers/knowtation/OVERSEER-SETUP.md` | `docs/archive/consumers/knowtation/` |
 
 Fixture configs: `tests/fixtures/pilot/`.
 

@@ -3,7 +3,7 @@
 Runs only after a **successful** authorized merge outcome (``merged: true``,
 pre-sync exit ``0``) when ``close_ritual.post_land_sync.enabled`` is ``true``.
 
-Frozen sequence (docs/PHASE-PLS-POST-LAND-MAIN-SYNC.md §PLS.4.2):
+Frozen sequence (docs/archive/phases/PHASE-PLS-POST-LAND-MAIN-SYNC.md §PLS.4.2):
 
     S1  git fetch <remote>
     S2  git status --porcelain        (full tree)

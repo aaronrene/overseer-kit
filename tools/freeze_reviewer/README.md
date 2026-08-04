@@ -1,6 +1,6 @@
 # Freeze reviewer engine
 
-Implements the Freeze-Step Reviewer per `docs/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md` and SPEC §6.
+Implements the Freeze-Step Reviewer per `docs/archive/phases/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md` and SPEC §6.
 
 ## CLI
 

@@ -18,6 +18,7 @@
 
 | Slice | Deliverable |
 | --- | --- |
+| **Public OSS docs A+B** | **DONE** — phase/consumer/pilot archaeology archived; public docs index + thin stubs; Path B CTAs slimmed; affected tests green. **No public flip.** |
 | **GSB-b** | **DONE** — build verified → `pass` (GSB-BV-r1, 0 findings). C0 reconcile-before-ensure in `tools/governance_hygiene/engine.py`: per-history classify vs §GSB.3.2.1 `T_target`; ancestor/equal → tip FF without checkout-as-FF; diverged → deterministic `-N` uniquify + frozen `PatchPlan` replace + rebuilt `pr_url`; Muse never dirties Git; C1 ensure unchanged. Seven-tier §GSB.8 **25** green incl. same-day-collision `--write` on all three regimes; full suite **1213** green (15 pre-existing env failures unchanged). **No merge to `main` this session.** |
 
 ### THE ONE NEXT STEP — **Model: Operator + Auto**
@@ -29,7 +30,7 @@ Land GSB per SD-21 land hygiene (merge authority Tier 3): Muse merge the feature
 | **ID** | **GSB → main (SD-21 land)** |
 | **Branch** | `feat/gsb-branch-collision` |
 | **Repo** | **overseer-kit** |
-| **Read first** | `docs/ROADMAP.md` (GSB → main row); `MUSE-BRIDGE-WORKFLOW.md` + `scripts/muse-bridge-deploy.sh` (SD-14 mirror rules); `docs/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md` (land-a/land-b protocol) |
+| **Read first** | `docs/ROADMAP.md` (GSB → main row); `MUSE-BRIDGE-WORKFLOW.md` + `scripts/muse-bridge-deploy.sh` (SD-14 mirror rules); `docs/archive/phases/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md` (land-a/land-b protocol) |
 | **Hard stops** | Merge to `main` is Tier 3 (operator approves) · no `git push origin main` · no checkout `--force` · land incomplete until `ok land-closeout` → `0` |
 <!-- /overseer:anchor:next-session -->
 
@@ -76,9 +77,9 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
 | **GitHub main** | `433c5a37a737d4b657ad7959d9091b91b429cf3c` |
 | **Canonical anchor** | `sha256:6e320c222667b7e17f8b355b8a64050af10a6e2e09656e5053e339c870bcdbe0` |
 | **Canonical main** | `sha256:6e320c222667b7e17f8b355b8a64050af10a6e2e09656e5053e339c870bcdbe0` |
-| **Branch** | `feat/gsb-branch-collision` (git + muse) |
-| **Dirty** | `no` (after closing commit) |
-| **Freeze** | `docs/PHASE-GSB-GOVERNANCE-SYNC-BRANCH-COLLISION.md` → `pass` (GSB-r3), stamp `sha256:30cfb999…` |
+| **Branch** | `feat/public-docs-housekeeping` (git; Muse may lag until closing commit) |
+| **Dirty** | `yes` → closing commit this session |
+| **Freeze** | `docs/archive/phases/PHASE-GSB-GOVERNANCE-SYNC-BRANCH-COLLISION.md` → `pass` (GSB-r3), stamp `sha256:30cfb999…` |
 | **Build** | GSB-b BV → `pass` (GSB-BV-r1, 0 findings); §GSB.8 **25** green; full suite **1213** green (15 pre-existing env failures unchanged) |
 <!-- /overseer:anchor:verified-snapshot -->
 
@@ -87,7 +88,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
 
 | Item | Value |
 | --- | --- |
-| Branch | `feat/gsb-branch-collision` (git + muse) |
+| Branch | `feat/public-docs-housekeeping` (git; Muse lag until closing commit) |
 | GitHub `main` | `433c5a37a737d4b657ad7959d9091b91b429cf3c` |
 | Canonical anchor | `sha256:6e320c222667b7e17f8b355b8a64050af10a6e2e09656e5053e339c870bcdbe0` (.muse/git-bridge.toml:last_export.muse_commit_id) |
 | Muse `main` | `sha256:6e320c222667b7e17f8b355b8a64050af10a6e2e09656e5053e339c870bcdbe0` |
@@ -118,22 +119,23 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
 
 | Date | Note |
 | --- | --- |
+| 2026-08-04 | **Public OSS docs housekeeping A+B DONE** on `feat/public-docs-housekeeping`: moved phase freezes / thinking / personal / K6 pilot / detailed consumer docs under `docs/archive/`; added thin public consumer stubs + `docs/README.md`; slimmed Path B suite doors; tests for Track O / Q4b / checklist / landing green. NEXT remains **GSB → main** (land). Remaining before public flip: CONTRIBUTING + final secrets/history pass + operator visibility flip. |
 | 2026-07-31 | **GSB-b DONE (Auto build + BV `pass`, GSB-BV-r1, 0 findings).** C0 reconcile-before-ensure in `tools/governance_hygiene/engine.py`; seven-tier §GSB.8 **25** green incl. same-day-collision `--write` on all three regimes; full suite **1213** green. NEXT → GSB → main (land-a). |
-| 2026-07-31 | **GSB-a DONE (Thinking freeze).** Authored + freeze-reviewed `docs/PHASE-GSB-GOVERNANCE-SYNC-BRANCH-COLLISION.md` → `pass` (GSB-r3), stamp `sha256:30cfb999…`. Contract: C0 reconcile-before-ensure; ancestor/equal → FF tip without checkout-as-FF; else deterministic `-N` uniquify; Muse never dirties Git; §GSB.8 three-regime same-day-collision matrix. **No GSB-b Auto code this session.** NEXT → GSB-b Auto on `feat/gsb-branch-collision`. |
+| 2026-07-31 | **GSB-a DONE (Thinking freeze).** Authored + freeze-reviewed `docs/archive/phases/PHASE-GSB-GOVERNANCE-SYNC-BRANCH-COLLISION.md` → `pass` (GSB-r3), stamp `sha256:30cfb999…`. Contract: C0 reconcile-before-ensure; ancestor/equal → FF tip without checkout-as-FF; else deterministic `-N` uniquify; Muse never dirties Git; §GSB.8 three-regime same-day-collision matrix. **No GSB-b Auto code this session.** NEXT → GSB-b Auto on `feat/gsb-branch-collision`. |
 | 2026-07-31 | **PLS → main DONE (SD-21, PR [#58](https://github.com/aaronrene/overseer-kit/pull/58) @ `433c5a3`).** land-b post-merge sync via `ok governance-sync --write`; `ok status --exit-code` → `0`; `ok land-closeout` → `0`. GSB dated-branch collision defect found live (stale same-day `feat/governance-sync-<date>` + Muse-first checkout dirties git tree) and queued. NEXT → GSB-a Thinking freeze. |
-| 2026-07-31 | **PLS-b DONE (Auto build + BV `pass`, PLS-BV-r1).** Built exactly to frozen `docs/PHASE-PLS-POST-LAND-MAIN-SYNC.md`; seven-tier §PLS.10 **46** green; exit `36` (never `6`); default off. NEXT → PLS → main (land-a). |
-| 2026-07-31 | **PLS-a DONE (Thinking freeze).** Authored + freeze-reviewed `docs/PHASE-PLS-POST-LAND-MAIN-SYNC.md` → `pass` (PLS-r4), stamp `sha256:7a31fb2b…`. Contract: `close_ritual.post_land_sync` default-off; after MERGED ff-only sync; dirty skip never clobber; exit `36`; `verify_landed` additive-only. **No PLS-b Auto code this session.** NEXT → PLS-b Auto on `feat/pls-a`. |
+| 2026-07-31 | **PLS-b DONE (Auto build + BV `pass`, PLS-BV-r1).** Built exactly to frozen `docs/archive/phases/PHASE-PLS-POST-LAND-MAIN-SYNC.md`; seven-tier §PLS.10 **46** green; exit `36` (never `6`); default off. NEXT → PLS → main (land-a). |
+| 2026-07-31 | **PLS-a DONE (Thinking freeze).** Authored + freeze-reviewed `docs/archive/phases/PHASE-PLS-POST-LAND-MAIN-SYNC.md` → `pass` (PLS-r4), stamp `sha256:7a31fb2b…`. Contract: `close_ritual.post_land_sync` default-off; after MERGED ff-only sync; dirty skip never clobber; exit `36`; `verify_landed` additive-only. **No PLS-b Auto code this session.** NEXT → PLS-b Auto on `feat/pls-a`. |
 | 2026-07-31 | **GSW-FIX-b DONE** — BV `pass` (GSW-BV-r1); §GSW.10 **29** green (dirty-tree `--write` all three regimes). NEXT → GSW-FIX → main (land-a). |
-| 2026-07-31 | **GSW-FIX-a DONE** — freeze `docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md` → `pass` (GSW-r3, `sha256:63cfd176…`). NEXT → GSW-FIX-b Auto. |
+| 2026-07-31 | **GSW-FIX-a DONE** — freeze `docs/archive/phases/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md` → `pass` (GSW-r3, `sha256:63cfd176…`). NEXT → GSW-FIX-b Auto. |
 | 2026-07-31 | **PMHF → main DONE (SD-21)** — Muse `sha256:72efabb7…` + PR [#52](https://github.com/aaronrene/overseer-kit/pull/52) @ `edbc3eb`; §PMHF.3.2 sync done; `ok land-closeout` → `0`. GSW-FIX defect queued. NEXT → GSW-FIX-a. |
 | 2026-07-31 | **PMHF-b DONE** — BV `pass` (PMHF-BV-r1); §PMHF.10 **46** green. NEXT → PMHF → main (land-a). |
-| 2026-07-31 | **PMHF-a DONE** — freeze `docs/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md` → `pass` (PMHF-r4, `sha256:7d02bb23…`). NEXT → PMHF-b Auto. |
+| 2026-07-31 | **PMHF-a DONE** — freeze `docs/archive/phases/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md` → `pass` (PMHF-r4, `sha256:7d02bb23…`). NEXT → PMHF-b Auto. |
 | 2026-07-30 | **GS-PASTE → main DONE (SD-21)** — Muse `sha256:e7831636…` + PR [#49](https://github.com/aaronrene/overseer-kit/pull/49) @ `5a85ef2`. |
 | 2026-07-30 | **GS-PASTE-b DONE** — BV `pass` (GSP-BV-r1); §GSP.10 **19** green. NEXT → SD-21 land. |
-| 2026-07-30 | **GS-PASTE-a DONE** — freeze `docs/PHASE-GS-PASTE-READY-REGEN.md` → `pass` (GSP-r3, `sha256:123c2e68…`). |
+| 2026-07-30 | **GS-PASTE-a DONE** — freeze `docs/archive/phases/PHASE-GS-PASTE-READY-REGEN.md` → `pass` (GSP-r3, `sha256:123c2e68…`). |
 
 - **2026-07-31** — **GSB-b DONE (Auto build + BV `pass`, GSB-BV-r1, 0 findings).**
-  Built exactly to frozen `docs/PHASE-GSB-GOVERNANCE-SYNC-BRANCH-COLLISION.md`:
+  Built exactly to frozen `docs/archive/phases/PHASE-GSB-GOVERNANCE-SYNC-BRANCH-COLLISION.md`:
   C0 reconcile-before-ensure in `tools/governance_hygiene/engine.py` — when
   `feat/governance-sync-<date>` exists on either history, classify per-history
   against §GSB.3.2.1 `T_target` (`O_H == B` → configured main); ancestor/equal →
@@ -155,7 +157,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   (test-output `sha256:438415b3…`). NEXT → **GSB → main (land-a)**, marker
   `land-phase=land-a`. No kit `main` merge this session.
 - **2026-07-31** — **GSB-a DONE (Thinking freeze).** Authored + freeze-reviewed
-  `docs/PHASE-GSB-GOVERNANCE-SYNC-BRANCH-COLLISION.md` → `pass` (GSB-r3), stamp
+  `docs/archive/phases/PHASE-GSB-GOVERNANCE-SYNC-BRANCH-COLLISION.md` → `pass` (GSB-r3), stamp
   `sha256:30cfb999…`. Contract closes the live PLS land-b same-day dated-branch
   collision: C0 reconcile before dual-HEAD ensure; `T_target` via base-ref rules
   (`O_H == B` → configured main); ancestor/equal → tip FF without checkout-as-FF;
@@ -165,7 +167,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   requires same-day-collision `--write` on all three regimes. **No GSB-b Auto
   code this session.** NEXT → GSB-b Auto on `feat/gsb-branch-collision`.
 - **2026-07-31** — **PLS-b DONE (Auto build + BV `pass`, PLS-BV-r1, 0 findings).**
-  Built exactly to frozen `docs/PHASE-PLS-POST-LAND-MAIN-SYNC.md`:
+  Built exactly to frozen `docs/archive/phases/PHASE-PLS-POST-LAND-MAIN-SYNC.md`:
   `PostLandSyncConfig` + fail-closed `_parse_close_ritual` nesting
   (`adapters/config.py` — unknown keys / `strategy` ≠ `ff_only` /
   `require_clean_worktree` ≠ `true` / non-bool `enabled` → `ConfigError`; defaults
@@ -183,14 +185,14 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   Seven-tier §PLS.10 **46** green (63 with adjacent close-ritual/config suites);
   15 pre-existing failures elsewhere (q1/q3/sync families) verified identical on the
   clean tree — zero regressions. Doc touchpoints: SPEC §5 additive `ok pr-land` row,
-  `docs/PHASE-PR-LAND-AFTER-CHECKS.md` exit-36 row + PLS pointer, VF OVERSEER-SETUP
+  `docs/archive/phases/PHASE-PR-LAND-AFTER-CHECKS.md` exit-36 row + PLS pointer, VF OVERSEER-SETUP
   `post_land_sync` knobs + §PLS.8 note. BV note: thinking-high Claude tiers were
   API-limited at review time; the independent verifier ran on grok-4.5-high with the
   full skill checklist + evidence table (test-output `sha256:649d262a…`).
   NEXT → **PLS → main (land-a)**, marker `land-phase=land-a`. No kit `main` merge
   this session.
 - **2026-07-31** — **PLS-a DONE (Thinking freeze).** Authored + freeze-reviewed
-  `docs/PHASE-PLS-POST-LAND-MAIN-SYNC.md` → `pass` (PLS-r4), stamp
+  `docs/archive/phases/PHASE-PLS-POST-LAND-MAIN-SYNC.md` → `pass` (PLS-r4), stamp
   `sha256:7a31fb2b…`. Contract: nested `close_ritual.post_land_sync` (default off,
   `strategy: ff_only`, `require_clean_worktree: true`); additive `ok pr-land`
   post-step after MERGED — fetch, dirty → `skipped_dirty` (never clobber), clean →
@@ -198,7 +200,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   always-present `PrLandResult.post_land_sync`; `verify_landed` unchanged; seven-tier
   §PLS.10. **No PLS-b Auto code this session.** NEXT → PLS-b Auto on `feat/pls-a`.
 - **2026-07-31** — **GSW-FIX-b DONE (Auto build + BV `pass`, GSW-BV-r1).** Built
-  exactly to frozen `docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md`:
+  exactly to frozen `docs/archive/phases/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md`:
   `_apply_plan` order capture → realign (original branch) → dual-HEAD feature-branch
   ensure (`muse+git-mirror`) → write docs → commit → marker (D1+D2 only after commit
   success) → push; rollback restores docs + prior marker + original branch(es)
@@ -215,7 +217,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   NEXT → **GSW-FIX → main (land-a)**, marker `land-phase=land-a`. No kit `main`
   merge this session.
 - **2026-07-31** — **GSW-FIX-a DONE (Thinking freeze).** Authored + freeze-reviewed
-  `docs/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md` → `pass` (GSW-r3), stamp
+  `docs/archive/phases/PHASE-GSW-FIX-GOVERNANCE-SYNC-WRITE-PATH.md` → `pass` (GSW-r3), stamp
   `sha256:63cfd176…`. Contract: `_apply_plan` order capture → realign (original
   branch) → dual-HEAD feature-branch ensure → write docs → commit → marker;
   rollback restores docs + marker + original branch; Muse already-on-branch +
@@ -238,7 +240,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   §PMHF.3.2's own deliverables. NEXT → **GSW-FIX-a** (Thinking freeze). No further
   kit `main` merge this session.
 - **2026-07-31** — **PMHF-b DONE (Auto build + BV `pass`, PMHF-BV-r1).** Built
-  exactly to frozen `docs/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md`:
+  exactly to frozen `docs/archive/phases/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md`:
   `tools/land_closeout/` (`LandCloseoutReport` + `check_land_closeout`, §PMHF.5
   resolution order incl. `land_phase_conflicts_queue_done` via `phase_tokens`
   intersection); `ok land-closeout` (exit `0`/`2`; probe default on for git regimes,
@@ -255,7 +257,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   **PMHF → main (land-a)**, marker `land-phase=land-a` (dogfoods the new protocol).
   No kit `main` merge this session.
 - **2026-07-31** — **PMHF-a DONE (Thinking freeze).** Authored + freeze-reviewed
-  `docs/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md` → `pass` (PMHF-r4), stamp
+  `docs/archive/phases/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md` → `pass` (PMHF-r4), stamp
   `sha256:7d02bb23…`. Contract: land-a/land-b paste protocol; fail-closed
   `land_closeout` on status/land-check/`ok land-closeout`; optional GitHub Actions
   closeout nudge (comment or feature-branch docs PR); never Cursor-only primary;
@@ -268,7 +270,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   `5a85ef2`. Cloudflare Pages **pass**. No live consumer re-init. NEXT = kit queue
   idle (Operator pick from exploration backlog / Scooling PRIMARY).
 - **2026-07-30** — **GS-PASTE-b DONE (Auto build + BV `pass`, GSP-BV-r1).** Built
-  mechanically against frozen `docs/PHASE-GS-PASTE-READY-REGEN.md`: new
+  mechanically against frozen `docs/archive/phases/PHASE-GS-PASTE-READY-REGEN.md`: new
   `tools/governance_hygiene/next_regen.py`; `build_handover_patches` regenerates
   `next-session` + `paste-ready-prompt`; engine patches roadmap before handover;
   glance fail-closed when open-row count ≠ 1; ambiguity emits
@@ -277,7 +279,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   (evidence `sha256:00a42b4d…`). ROADMAP GS-PASTE-b → DONE. NEXT → SD-21 land
   (Operator + Auto). No kit `main` merge this session; no consumer re-init.
 - **2026-07-30** — **GS-PASTE-a DONE (Thinking freeze).** Authored + freeze-reviewed
-  `docs/PHASE-GS-PASTE-READY-REGEN.md` → `pass` (GSP-r3). Contract: regenerate
+  `docs/archive/phases/PHASE-GS-PASTE-READY-REGEN.md` → `pass` (GSP-r3). Contract: regenerate
   `next-session` + `paste-ready-prompt` via `ok governance-sync` only; fail-closed
   ambiguous NEXT; git-only/no-Muse; §GSP.10 matrix. **No GS-PASTE-b Auto code this
   session.** NEXT → GS-PASTE-b Auto on `feat/gs-paste-ready-regen`.
@@ -287,7 +289,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   `main` @ `302549e`. Cloudflare Pages **pass**. No live consumer re-init. NEXT =
   optional operator-gated consumer `ok sync` with `--preserve-shared-assets`.
 - **2026-07-30** — **KIT-PRESERVE-SHARED-ASSETS (0.7b) DONE** on
-  `feat/preserve-shared-assets`. Freeze `docs/PHASE-PRESERVE-SHARED-ASSETS.md` → `pass`
+  `feat/preserve-shared-assets`. Freeze `docs/archive/phases/PHASE-PRESERVE-SHARED-ASSETS.md` → `pass`
   (PSA-r1, `sha256:c8f1eacc…`). Auto: `ok init --preserve-shared-assets` preserves differing
   non-living footprint under migrate/greenfield (including `--force`); promote only with
   `--force --include-preserved`. Seven-tier §PSA.8 **28** green; BV `pass` (PSA-BV-r1).
@@ -299,7 +301,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   NEXT → consumer `ok sync` + re-stamp (Scooling first). Stub `~/overseer-kit` remains
   K1-era — operators must open `~/OVERSEER_KIT/overseer-kit`.
 - **2026-07-28** — **GFG-D2-FIX DONE (Thinking + Auto).** Freeze
-  `docs/PHASE-GFG-D2-MUSE-ID-SPACE.md` → `pass` (D2F-r2, `sha256:3148c577…`). Auto: under
+  `docs/archive/phases/PHASE-GFG-D2-MUSE-ID-SPACE.md` → `pass` (D2F-r2, `sha256:3148c577…`). Auto: under
   `muse+git-mirror`, R2 is `last_export.muse_commit_id` (same ID space as Muse tips);
   `git_sha` retained for realign `from_ref`/Git ancestry only; realign verify compares Muse
   IDs. §D2F.9 **22** green (`sha256:398f82d3…`). BV `pass` (D2F-BV-r1). Branch
@@ -312,7 +314,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   `muse-mirror` → `main` merged @ `ccf44b4`. ROADMAP GFG → main DONE. NEXT was consumer
   `ok sync` + re-stamp — blocked by D2 ID-space bug until GFG-D2-FIX.
 - **2026-07-28** — **GFG-b DONE (build-verified → `pass`, GFG-BV-r1).** Built frozen
-  `docs/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md`: session-end Automation
+  `docs/archive/phases/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md`: session-end Automation
   `cursor/automations/governance-sync-session-end.json`; `tools/governance_freshness/`
   (`check_governance_freshness`, D1/D2 + marker, skip R4/gh); enriched marker stamp on
   fully_aligned / dry-run D1–D2 aligned / `_apply_plan`; `ok status --exit-code` exit `2` +
@@ -321,7 +323,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   `sha256:cf9b536b…`); mid-apply no-marker retained. ROADMAP GFG-b → DONE. NEXT → Tier-3 merge.
   No kit `main` merge this session.
 - **2026-07-28** — **GFG-a DONE (freeze-review → `pass`, GFG-r3).** Froze
-  `docs/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md` (stamp `sha256:fe8a3a15…`): session-end
+  `docs/archive/phases/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md` (stamp `sha256:fe8a3a15…`): session-end
   Automation for `ok governance-sync --dry-run` + fail-closed status/land-check on D1/D2 or
   stale marker; marker enrich + dry-run carve-out; non-goals locked. ROADMAP GFG-a → DONE;
   NEXT → **GFG-b Auto**. No kit code build this session.
@@ -343,7 +345,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
 - **2026-07-27** — **Check OK PR #35 Tier-3 merge confirmed already complete.**
   State `MERGED` (2026-07-18, operator `aaronrene`); merge commit `b8b51c1` on
   `origin/main`; Cloudflare Pages green; BV `pass` (CIO-BV-r1 + CIO-r2) in
-  `docs/PHASE-CHECK-OK.md`. No second merge performed (hard stop held). Handover NEXT
+  `docs/archive/phases/PHASE-CHECK-OK.md`. No second merge performed (hard stop held). Handover NEXT
   advanced → Landing clarity pass (`feat/landing-clarity-pass`).
 - **2026-07-27** — **K13-BRAIN DONE (Operator + Auto).** Optional Brain edge member:
   `BRAIN_ROOT=~/theBRAIN/the-brain`; boards `THE-BRAIN-OVERSEER-HANDOVER.md` /
@@ -385,7 +387,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   refreshed `sha256:df3d2754…`. K13b prompt updated (init defaults + doctor warnings + S12;
   no live consumer renames in Auto).
 - **2026-07-27** — **K13a Freeze multi-repo workspace lanes DONE (reviewed → `pass`, K13a-r2).**
-  Froze `docs/MULTI-REPO-WORKSPACE-LANES-FREEZE.md` (stamp `sha256:086d79ef…`): constellation
+  Froze `docs/archive/phases/MULTI-REPO-WORKSPACE-LANES-FREEZE.md` (stamp `sha256:086d79ef…`): constellation
   manifest Option B (product_order `.overseer/workspace.yaml`), PRIMARY/RELAY/PRODUCT RELAY/
   ARCHIVED/LANE TIP markers, `ok workspace status|check-next|doctor`, exit `35`, SD-17 sibling
   gate, S1–S11 + seven-tier §MR.10. Response to 2026-07-27 multi-root stale-relay incident.
@@ -402,17 +404,17 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
 - **2026-07-14** — **K12 LICENSE → MIT DONE (freeze `pass` MIT-r1 + BV `pass` MIT-BV-r1).**
   Operator SPDX flip: root MIT `LICENSE`, `pyproject.toml`, landing/scenarios footers, Path B
   console copy, `tools/landing/validate.py` fail-closed MIT, K12 §K12.4/§K12.7 amended via
-  `docs/PHASE-K12-LICENSE-MIT-AMENDMENT.md`. Stress fixture copies favicon assets. Full suite
+  `docs/archive/phases/PHASE-K12-LICENSE-MIT-AMENDMENT.md`. Stress fixture copies favicon assets. Full suite
   **936** green (1 deselected: localhost:8765 already bound). NEXT → DNS / dogfood.
 - **2026-07-14** — **Landing + access clarity Auto DONE (build-verified → `pass`, LAC-BV-r1).**
-  Implemented frozen `docs/PHASE-LANDING-ACCESS-CLARITY.md`: `docs/landing/` IA §LAC.3 + four
+  Implemented frozen `docs/archive/phases/PHASE-LANDING-ACCESS-CLARITY.md`: `docs/landing/` IA §LAC.3 + four
   offline SVGs; primary Download CTA → signed Mac `v0.1.0` `.dmg`; Paths 1–3 on README + landing
   + Path B Overview; HOSTING §LAC.8; Path B chrome (collapse Session bootstrap, bound repo from
   `api/health` → `result.repo_root`, tab explainers, Status auto-refresh once); validator enforce
   + seven-tier §LAC.12; full suite **931** green. Q0 bind/auth closed except health additive.
   ROADMAP Auto → **DONE**. NEXT → Operator DNS (§LAC.9) / dogfood (**Model: Operator + Auto**).
 - **2026-07-14** — **Landing + access clarity Thinking freeze DONE (reviewed → `pass`, LAC-r2).**
-  Froze `docs/PHASE-LANDING-ACCESS-CLARITY.md`: public IA (strip DONE residue; four offline SVGs
+  Froze `docs/archive/phases/PHASE-LANDING-ACCESS-CLARITY.md`: public IA (strip DONE residue; four offline SVGs
   on main page); Download CTA → signed Mac `v0.1.0` `.dmg` + Python 3.11+; Paths 1–3 playbook;
   Path B chrome (collapse bootstrap, health `repo_root` additive, Status auto-refresh once);
   `OVERSEER_REPO_ROOT` honesty (no folder picker); `overseerkit.com` apex static-only; pre-public
@@ -427,7 +429,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   paste-from-terminal in browser. Regenerated NEXT for professional `docs/landing/` redesign
   freeze (strip WIP/dev residue; no public CSRF mint). Dogfood/hosting remain parallel options.
 - **2026-07-13** — **Track Q / Q4b Path B UI redesign DONE (build-verified → `pass`, Q4b-BV-r1).**
-  Built mechanically against frozen `docs/PHASE-TRACK-Q-Q4A-UI-REDESIGN.md`: rewrote
+  Built mechanically against frozen `docs/archive/phases/PHASE-TRACK-Q-Q4A-UI-REDESIGN.md`: rewrote
   `tools/app/static/` (Overview default after auth + Structure gallery; honesty strip; `ok app`
   auth copy; Apache-2.0 footer; suite CTAs §Q4A.7; status humanization + expandable raw JSON);
   committed four offline SVGs under `assets/diagrams/` (lanes / regimes / layers / kit-consumer);
@@ -436,7 +438,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   untouched; no `LICENSE` / `desktop/` / engine Python edits. ROADMAP: Q4b → **DONE**. Handover
   NEXT → live VF/Scooling dogfood and/or overseerkit.com hosting (**Model: Operator + Auto**).
 - **2026-07-13** — **Track Q / Q4a Freeze Path B UI redesign DONE (reviewed → `pass`, Q4a-r2).**
-  Drafted and froze `docs/PHASE-TRACK-Q-Q4A-UI-REDESIGN.md`: developer/operator `ok app`
+  Drafted and froze `docs/archive/phases/PHASE-TRACK-Q-Q4A-UI-REDESIGN.md`: developer/operator `ok app`
   presentation (Overview + Structure), L0→L3 / kit-vs-sister-door copy, four offline SVG
   structure diagrams (lanes / regimes / layers / kit→consumer), suite CTAs, closed Q0
   `api/*`+bind/auth non-reopen, no LICENSE flip, seven-tier §Q4A.15. Freeze-review: r1 semantic
@@ -455,7 +457,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   `docs/landing/HOSTING.md` for `overseerkit.com` static front door.
 
 - **2026-07-13** — **Q3-release Auto build DONE (build-verified → `pass`, Q3R-BV-r1).**
-  Shipped mechanical §QR.4–§QR.13 against frozen `docs/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md`:
+  Shipped mechanical §QR.4–§QR.13 against frozen `docs/archive/phases/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md`:
   `.github/workflows/desktop-release.yml` (tag/`workflow_dispatch`; macOS-14/Windows/ubuntu-22.04;
   fail-closed signing; `softprops/action-gh-release`; least-privilege `contents: write`); optional
   unsigned Linux smoke; `templates/ci/desktop-release-github-actions.yml`; `tools/desktop_release/`
@@ -466,7 +468,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   notarization and GitHub Release upload **not** claimed (operator Tier-3 secrets). ROADMAP Auto →
   **DONE**. Handover NEXT → operator first signed Release (or next Thinking).
 - **2026-07-13** — **Q3-release Thinking freeze DONE (reviewed → `pass`, QR-r3).**
-  Froze CI publish of signed Tauri installers in `docs/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md`:
+  Froze CI publish of signed Tauri installers in `docs/archive/phases/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md`:
   runner matrix + arches; publish allowlist (`.dmg`/`.msi`/`.AppImage` + manifest + sums);
   Apple Developer ID + notarization (hardened runtime/timestamp), Windows Authenticode, Linux
   minisign/GPG detached sig; GitHub Actions secret-name boundary (no in-repo secrets); release
@@ -478,7 +480,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   stops held (no Track Q rewrite; no Tier-3 merge). ROADMAP: Thinking → **DONE**; Auto → **TODO**.
   Handover NEXT → **Q3-release Auto**.
 - **2026-07-13** — **Hosted governance dashboard Auto build DONE (build-verified → `pass`, HGD-BV-r1).**
-  Built mechanically against frozen `docs/PHASE-HOSTED-GOVERNANCE-DASHBOARD.md`: `tools/hosted_dashboard/`
+  Built mechanically against frozen `docs/archive/phases/PHASE-HOSTED-GOVERNANCE-DASHBOARD.md`: `tools/hosted_dashboard/`
   adapters (`github_contents`/`github_meta`; optional `github_checks_advisory`/`musehub_read`); closed
   GET-only `api/*` (§HGD.5); Bearer viewer auth (§HGD.6); document-derived + advisory gates; ephemeral
   cache; `ok hosted-dashboard` (default `127.0.0.1:8766`); static UI + honesty banner; operator runbook;
@@ -486,7 +488,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   surfaces unchanged. Hard stops held (no remote write; no product data store; no CD/probes; no Tier-3
   merge). ROADMAP Auto → **DONE**. Handover NEXT → **Q3-release** Thinking (exploration backlog).
 - **2026-07-13** — **Hosted governance dashboard Thinking freeze DONE (reviewed → `pass`, HGD-r3).**
-  Froze read-only remote org/repo governance glance in `docs/PHASE-HOSTED-GOVERNANCE-DASHBOARD.md`:
+  Froze read-only remote org/repo governance glance in `docs/archive/phases/PHASE-HOSTED-GOVERNANCE-DASHBOARD.md`:
   GitHub/MuseHub read APIs; closed GET-only `api/*`; Bearer viewer auth; document-derived vs
   advisory gates; Track Q contrast; rejection + capability tiers; Auto deliverables
   (`tools/hosted_dashboard/`, `ok hosted-dashboard`, runbook); seven-tier §HGD.12. Freeze-review
@@ -496,7 +498,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   remote write; no product data store; no Tier-3 merge). ROADMAP: Thinking → **DONE**; Auto build
   **TODO**. Handover NEXT → **Hosted governance dashboard Auto**.
 - **2026-07-13** — **Track P / P-deploy Auto build DONE (build-verified → `pass`, P-deploy-BV-r1).**
-  Built mechanically against frozen `docs/PHASE-TRACK-P-P-DEPLOY.md`: `honesty.require_deploy_health`
+  Built mechanically against frozen `docs/archive/phases/PHASE-TRACK-P-P-DEPLOY.md`: `honesty.require_deploy_health`
   (`off|warn|require`, default `off`; `HONESTY_KEYS` + `HonestyConfig`); `find_matching_deploy_health`;
   honesty-status Mode C (`--deploy-health`, shared `--frozen-spec`, §PD.5.0); exit `34` +
   `missing_deploy_health` + Mode C JSON block; twin `/deploy-verification-review` (D1–D8); optional
@@ -504,7 +506,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   No kit-side deploy/HTTP probe; no Track O redesign; no Tier-3 merge. ROADMAP: P-deploy build →
   **DONE**. Handover NEXT → **Hosted governance dashboard** Thinking (exploration backlog).
 - **2026-07-13** — **Track P / P-deploy Thinking freeze DONE (reviewed → `pass`, P-deploy-r3).**
-  Froze the live-deploy sibling of build-verification in `docs/PHASE-TRACK-P-P-DEPLOY.md`: reuses
+  Froze the live-deploy sibling of build-verification in `docs/archive/phases/PHASE-TRACK-P-P-DEPLOY.md`: reuses
   P-evidence `verification_evidence` + `deploy_health` (no new ledger kind); `honesty.require_deploy_health`
   (`off|warn|require`, default `off`; `HONESTY_KEYS` + `HonestyConfig`); honesty-status Mode C
   (`--deploy-health`, shared `--frozen-spec`, §PD.5.0 resolution algorithm); exit `34` +
@@ -525,7 +527,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   ([verifier](38527ede-ac3d-4c55-ba9f-6d8e4f4a4ad2)). Hard stops held. ROADMAP: O3 → DONE; Track O
   promoted complete. Handover NEXT → **Track P / P-deploy** Thinking.
 - **2026-07-13** — **Track O / O2 Stage 3 kit upgrade ceremony freeze DONE (reviewed → `pass`, O2-r3).**
-  Closed §O0.3.3 deferral in `docs/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md`: C0–C8 ceremony for
+  Closed §O0.3.3 deferral in `docs/archive/phases/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md`: C0–C8 ceremony for
   `muse-only` → `muse+git-mirror`; complete config write (no silent `vcs.regime` edit); footprint
   re-seed via sync/migrate + `--force` rules; bridge dry-run gates G1–G8 (SD-14); product unlock
   §O2.6 (one-click only after O3 BV `pass`); O3 deliverable `ok upgrade-regime` + runbook +
@@ -544,7 +546,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   ceremony, no live consumer init, no new CLI/adapters. ROADMAP: O1 → DONE; O2 Thinking queued.
   Handover NEXT → **Track O / O2**.
 - **2026-07-13** — **Track O / O0 Normie custody funnel freeze DONE (reviewed → `pass`, O0-r3).**
-  Refined draft seed into freeze contract `docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md`: Track O
+  Refined draft seed into freeze contract `docs/archive/phases/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md`: Track O
   vs K6/Q identity; Stages 1–4; §O0.3.3 Stage 3 kit upgrade ceremony deferred (no silent
   `vcs.regime` edit; product one-click blocked until O2); custody identity; kit vs
   Scooling/Knowtation/MuseHub boundary; rejection table; O1 product-contracts-only deliverables
@@ -555,7 +557,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
 - **2026-07-13** — **K6-Scooling consumer runbook + KH1 handover repair + Track O seed.**
   Added `docs/consumers/scooling/OVERSEER-SETUP.md`; cross-linked K6 operator runbook +
   `CONSUMER-ADAPTER-PATTERN.md`; queued Track O / O0 draft
-  `docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md` (not frozen). Fixed Q3 close-out failure:
+  `docs/archive/phases/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md` (not frozen). Fixed Q3 close-out failure:
   NEXT had used invalid `Model: Operator choice` and omitted the paste-ready fence (KH1 H7/H8).
   ROADMAP: K6-Scooling → **DONE**; Track O / O0 → **TODO (Thinking)**; NEXT → Track O / O0.
 - **2026-07-13** — **Track Q / Q3 Tauri desktop packaging DONE (build-verified → `pass`, Q3-BV-r1).**
@@ -569,7 +571,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   (V1–V8 clean). ROADMAP: Track Q / Q3 → **DONE**; Track Q chain complete; NEXT was briefly
   mis-set to operator-choice without paste fence (repaired same day in K6-Scooling close-out).
 - **2026-07-13** — **Track Q / Q2b OK CLI entrypoint build DONE (build-verified → `pass`, Q2b-BV-r1).**
-  Built mechanically against frozen `docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md`: shipped `cli/ok`
+  Built mechanically against frozen `docs/archive/phases/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md`: shipped `cli/ok`
   canonical POSIX shim + `cli/overseer` compatibility shim (exact one-line stderr deprecation);
   `argparse` prog `ok`; operator-facing remediation/banner strings → `ok`; operator docs/templates/
   twin `.cursor/` + `cursor/` skills/CI examples → `ok`; SPEC §5 command table + K4.1 invocation
@@ -578,7 +580,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   total green). `/build-verification-review` round 1 → **`pass`** (V1–V8 clean). ROADMAP: Track Q /
   Q2b → **DONE**; NEXT → **Track Q / Q3** Tauri (`ok app` launcher).
 - **2026-07-13** — **Track Q / Q2a Freeze OK CLI entrypoint DONE (reviewed → `pass`, Q2a-r2).**
-  Drafted and froze `docs/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md`: canonical CLI name `ok`
+  Drafted and froze `docs/archive/phases/PHASE-TRACK-Q-Q2A-OK-CLI-ENTRYPOINT.md`: canonical CLI name `ok`
   (`cli/ok` → `python -m cli.main`; `argparse` prog `ok`); `cli/overseer` remains compatibility
   shim with exact one-line stderr deprecation per process; no subcommand/exit-code/`.overseer/`
   path changes; engine shims explicitly **not** footprint members (supersedes earlier Q2b
@@ -589,7 +591,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   `sha256:dbfbf9ad…`. **Spec-only — no code landed.** ROADMAP: Track Q / Q2a → **DONE (Thinking)**;
   NEXT → **Track Q / Q2b**.
 - **2026-07-13** — **Track Q / Q0 Freeze Overseer App DONE (reviewed → `pass`, Q0-r2).**
-  Drafted and froze `docs/PHASE-TRACK-Q-Q0-OVERSEER-APP.md`: local-only `overseer app` web UI over
+  Drafted and froze `docs/archive/phases/PHASE-TRACK-Q-Q0-OVERSEER-APP.md`: local-only `overseer app` web UI over
   the existing Python engine (zero rewrite). Frozen surface — CLI `overseer app`; bind default
   `127.0.0.1` (allow `localhost`/`::1`; refuse non-loopback); Bearer + CSRF-header auth (cookies
   deferred); stdlib HTTP server (FastAPI not required); closed `api/*` read/act set (status,
@@ -600,7 +602,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   code landed.** ROADMAP: Track Q / Q0 → **DONE (Thinking)**; NEXT → **Track Q / Q1**.
 
 - **2026-07-13** — **Track P / P-evidence Auto build DONE (build-verified → `pass`, P-evidence-BV-r1).**
-  Built mechanically against frozen `docs/PHASE-TRACK-P-P-EVIDENCE.md` (no redesign): ledger kind
+  Built mechanically against frozen `docs/archive/phases/PHASE-TRACK-P-P-EVIDENCE.md` (no redesign): ledger kind
   `verification_evidence` + `validate_verification_artifacts` (§PE.3–§PE.4); genesis forbid-list
   extended; `honesty.require_verification_evidence: off|warn|require` (default `off`; `HONESTY_KEYS`
   membership); honesty-status Mode B (`--verification-evidence` / `--frozen-spec`) with Mode A/B
@@ -610,7 +612,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   P-evidence build → **DONE**; NEXT was **Track Q / Q0** (now also DONE this session).
 
 - **2026-07-13** — **Track P / P-evidence Thinking freeze DONE (reviewed → `pass`, P-evidence-r3).**
-  Drafted and froze `docs/PHASE-TRACK-P-P-EVIDENCE.md`: verification-evidence capture that closes
+  Drafted and froze `docs/archive/phases/PHASE-TRACK-P-P-EVIDENCE.md`: verification-evidence capture that closes
   build-verification V8's durability gap. Frozen surface — ledger kind `verification_evidence`
   (additive K9a enum amendment; `actor_role=verifier`); closed artifact types
   `test_output`\|`deploy_health`\|`screenshot` (content hashes + opaque refs; no blobs in ledger;
@@ -626,7 +628,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   Handover NEXT flips to the P-evidence Auto build. **569** tests unchanged.
 
 - **2026-07-13** — **Track P / P-cost Auto build DONE (build-verified → `pass`, P-cost-BV-r1).**
-  Built mechanically against frozen `docs/PHASE-TRACK-P-P-COST-AWARENESS.md` (no redesign): optional
+  Built mechanically against frozen `docs/archive/phases/PHASE-TRACK-P-P-COST-AWARENESS.md` (no redesign): optional
   `cost_class` on `model_tiers` (closed vocabulary `free|low|moderate|high`; recognized key); deterministic
   `paid_step_before_spend` derivation; additive `cost_class` + `paid_step_before_spend` on read-only
   `overseer route` (resolution unchanged); optional default-inert `cost_awareness:` config; active-slice
@@ -636,7 +638,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   **40** new tests (**569** total green). `/build-verification-review` round 1 → **`pass`** (V1–V8 clean).
   ROADMAP P-cost build → **DONE**; NEXT → **Track P / P-evidence Thinking freeze**.
 - **2026-07-13** — **Track P / P-cost Thinking freeze DONE (reviewed → `pass`, P-cost-r2).** Drafted
-  and froze `docs/PHASE-TRACK-P-P-COST-AWARENESS.md`: a **cost-*awareness* surface, not a dollar
+  and froze `docs/archive/phases/PHASE-TRACK-P-P-COST-AWARENESS.md`: a **cost-*awareness* surface, not a dollar
   pricer**. Frozen surface — an optional, ordinal, **currency-free** `cost_class`
   (`free < low < moderate < high`) on each `model_tiers[]` entry; a deterministic
   `paid_step_before_spend` derivation (`free` + the reserved `human` terminal are unpaid; any other
@@ -664,7 +666,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   **Spec-only — no code landed.** ROADMAP: Track P / P-cost → **DONE (Thinking)**; added **Track P /
   P-cost build** (Auto, TODO). Handover NEXT flips to the P-cost Auto build. **529** tests unchanged.
 - **2026-07-13** — **Track P / P-route Auto build DONE (build-verified → `pass`, P-route-BV-r1).**
-  Built mechanically against frozen `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` (no redesign):
+  Built mechanically against frozen `docs/archive/phases/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md` (no redesign):
   vendored `policy/model-routing.yaml` (v1; first-match-wins + mandatory `defaults`; `fallback[0] ==
   model_tier` terminating in `human`); extended `policy/model-labels.yaml` with `model_tiers`
   (abstract capability tiers, no vendor slugs); optional default-inert `model_routing:` config block;
@@ -680,7 +682,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   after seeding the 13 missing files, closed *why* they were ever silently missing for three days.
   Root cause: `overseer status --check-footprint` (the only existing check that could see this) is an
   opt-in flag, and is not wired into `review --freeze` or `governance-sync` at all — confirmed by
-  direct search of both modules. **Freeze** (`docs/PHASE-KH3-FOOTPRINT-INTEGRITY-HARD-GATE.md`,
+  direct search of both modules. **Freeze** (`docs/archive/phases/PHASE-KH3-FOOTPRINT-INTEGRITY-HARD-GATE.md`,
   self-reviewed via `overseer review --freeze` checklist + semantic pass; round 1 raised one
   non-escalating MAJOR scope-risk finding — R1-M1: the initial draft trigger was "any kit-owned
   digest mismatch," which would fail-close `review --freeze`/`governance-sync` for *any* consumer
@@ -715,7 +717,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   against this dogfood repo itself, and no later phase closed that gap — `overseer status
   --check-footprint` never caught it because `MISSING` classification only blocks `overseer sync`
   (needs a write), it does not fail `status`'s digest check the way `both-changed` does. Confirmed this
-  is the exact, already-frozen §K7.3 "new destination absent on disk → seed" path (`docs/PHASE-K7-MUSE-GIT-MIRROR-DOGFOOD.md`
+  is the exact, already-frozen §K7.3 "new destination absent on disk → seed" path (`docs/archive/phases/PHASE-K7-MUSE-GIT-MIRROR-DOGFOOD.md`
   line 285), so ran `overseer sync --yes` for real (no `--force` needed — none of the 13 were
   conflicts, only `missing`). Verified: no unsubstituted `{{token}}` leakage bugs — `.mdc`/`SKILL.md`/
   policy `*.yaml` files are copied **verbatim** by design (§K4.5, `cli/footprint.py`); the `{{docs.*}}` /
@@ -757,7 +759,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   tracked **content** was current, so nothing could have caught it. Ran the catch-up
   `muse code add -A && muse commit` first (Tier 1; commit `sha256:3e14450f…`), then froze and built
   the permanent gate in the same session so this cannot recur silently. **Freeze**
-  (`docs/PHASE-KH2-MUSE-SYNC-HARD-GATE.md`, self-reviewed via `/freeze-review-loop`; round 1 raised one
+  (`docs/archive/phases/PHASE-KH2-MUSE-SYNC-HARD-GATE.md`, self-reviewed via `/freeze-review-loop`; round 1 raised one
   non-escalating MAJOR internal-consistency finding — R1-M1, the `governance-sync` wiring row
   described `StatusResult` as available before `adapter.status()` is actually called in
   `tools/governance_hygiene/reads.py`, contradicting the verified call order — fixed; **KH2-r2 →
@@ -780,7 +782,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   the still-open P-route PR #16 to keep both PRs single-concern). NEXT reverts to the **Track P /
   P-route Auto build** (unchanged from before this detour).
 - **2026-07-12** — **Track P / P-route Thinking freeze DONE (reviewed → `pass`).** Drafted and froze
-  `docs/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md`: a **declarative model-routing policy** (not a runtime
+  `docs/archive/phases/PHASE-TRACK-P-P-ROUTE-MODEL-ROUTING.md`: a **declarative model-routing policy** (not a runtime
   dispatcher). Frozen surface — `policy/model-routing.yaml` (`version 1`) mapping the selector triple
   `{position, phase_tier, gate}` → `model_tier` + ordered `fallback`, resolved by first-match-wins
   with a mandatory `defaults` terminal (total resolution); `fallback[0] == model_tier` and every chain
@@ -818,7 +820,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   (accurate: muse substrate has no commits on this dogfood tree) instead of an `--format=%H` syntax
   crash. **429** tests still green.
 - **2026-07-12** — **Track P / P1 DONE — build verified → `pass` (P1-BV-r2).** Ran
-  `/build-verification-review` (V1–V8) against frozen `docs/PHASE-TRACK-P-P0-AGENT-PROVENANCE.md`.
+  `/build-verification-review` (V1–V8) against frozen `docs/archive/phases/PHASE-TRACK-P-P0-AGENT-PROVENANCE.md`.
   V1/V3/V4/V5/V6/V7/V8 clean on first pass; **428** tests confirmed green; §P0.8 seven-tier matrix
   (29 tests) exercises real paths; no social features; no secrets; K7 git-only guardrail intact
   (`config.py:346` forbids `require_agent_signature` under git-only, exit `26`). **Round 1 finding
@@ -852,7 +854,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   reference (consumer-side). All captured as ideas only; boundary held: kit = governance/frontend,
   never runtime/dispatcher/model-host. NEXT unchanged (Track P / P1 build).
 - **2026-07-12** — **Track P / P0 DONE (freeze reviewed → `pass`).** Ran `/freeze-review-loop` on
-  `docs/PHASE-TRACK-P-P0-AGENT-PROVENANCE.md`: round 1 checklist gate raised F1 (C8 citation
+  `docs/archive/phases/PHASE-TRACK-P-P0-AGENT-PROVENANCE.md`: round 1 checklist gate raised F1 (C8 citation
   discipline) + F2 (C4 path-like token `/api/social/...` in §P0.9) — both non-escalating heuristic
   surfaces, fixed minimally; round 2 checklist clean + semantic review clean → `overseer review
   --freeze` wrote a `pass` stamp (digest `sha256:7db8681…`). ROADMAP P0 → DONE, added P1 (Auto)
@@ -860,7 +862,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
 - **2026-07-12** — **Track P / P0 scope LOCKED + contract drafted.** After reviewing the Muse social
   domain (issue #6) and the Abacus/GPT-5.6 orchestration transcript, held the kit boundary:
   **no social features in the kit.** Track P narrowed to **agent identity & signed provenance** —
-  drafted `docs/PHASE-TRACK-P-P0-AGENT-PROVENANCE.md` (optional `provenance` envelope on ledger
+  drafted `docs/archive/phases/PHASE-TRACK-P-P0-AGENT-PROVENANCE.md` (optional `provenance` envelope on ledger
   entries; canonical hash excludes `provenance.sig`; `v` stays 1; soft under git-only, hard under
   Muse; shared schema with Muse social). Social confirmed consumer-only (Muse protocol +
   Schooling UI). Pending freeze-review `pass` before P1 Auto build.
@@ -887,12 +889,12 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   green: `overseer review --freeze` + `status` on default config. §KH1.9 gate reminders
   **operator-approved**; KH1b Auto queued (reminders not automatic yet).
 - **2026-07-12** — **KH1-r2 → `pass`.** Freeze-review loop (rounds 1–2) on
-  `docs/PHASE-KH1-HANDOVER-RELAY-STANDARD.md`: R1-M1–M4 + R1-N1 resolved; §KH1.9 governance gate
+  `docs/archive/phases/PHASE-KH1-HANDOVER-RELAY-STANDARD.md`: R1-M1–M4 + R1-N1 resolved; §KH1.9 governance gate
   reminder spec frozen. CLI checklist `pass` + `review_stamp` via
   `overseer --config tests/fixtures/config-git-only.yaml review --freeze …` (muse+git-mirror dev tree
   still blocked without `muse init`). Handover/contract aligned to K4/K9a ceremony. Next: **KH1 close-out**.
 - **2026-07-12** — **KH1 Thinking freeze (draft).** Frozen handover relay standard
-  (`docs/PHASE-KH1-HANDOVER-RELAY-STANDARD.md`): canonical NEXT SESSION shape, H1–H12 D4
+  (`docs/archive/phases/PHASE-KH1-HANDOVER-RELAY-STANDARD.md`): canonical NEXT SESSION shape, H1–H12 D4
   checklist for `governance-sync`, anchor map, dogfood rules. Aligned `docs/OVERSEER-HANDOVER.md`
   to `templates/OVERSEER-HANDOVER.template.md` (NEXT block, VCS table, hard stops, regeneration
   rules). Close-out deferred per §KH1.6 (branding lock + Track P seed). **380** tests unchanged.
@@ -901,7 +903,7 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
   `docs/landing/index.html` (§8 sections + GitHub→MuseHub funnel),
   `docs/landing/scenarios/index.html` (personas A–E with dogfood/reference/aspirational badges),
   Apache-2.0 `LICENSE`, `SECURITY.md`, `docs/landing/manifest.yaml`,
-  `tools/landing/validate.py`, freeze contract `docs/PHASE-K12-TRACK-N-LANDING-CONTRACT.md`.
+  `tools/landing/validate.py`, freeze contract `docs/archive/phases/PHASE-K12-TRACK-N-LANDING-CONTRACT.md`.
   Seven-tier K12 matrix: **19** new tests; **380** total green. No L1/L2/CLI changes. Next: **KH1**.
 - **2026-07-12** — **K11 DONE (Auto).** Shipped headless API freeze provider:
   `tools/freeze_reviewer/providers/api_client.py` (`GET /health`, `POST /review`),

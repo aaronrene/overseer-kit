@@ -18,7 +18,7 @@ def test_large_roadmap_scan_bounded(tmp_path: Path) -> None:
         rows.append(
             f"| **K{index} slice** | Auto | **DONE** | shipped slice {index} |"
         )
-    rows.append("| **Active Auto** | Auto | **WIP** | `docs/PHASE-ACTIVE.md` pending |")
+    rows.append("| **Active Auto** | Auto | **WIP** | `docs/archive/phases/PHASE-ACTIVE.md` pending |")
     (docs / "ROADMAP.md").write_text("\n".join(rows) + "\n", encoding="utf-8")
     (docs / "OVERSEER-HANDOVER.md").write_text(
         "| **ID** | **Active Auto** |\n",

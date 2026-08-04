@@ -10,7 +10,7 @@ fixtures only. Do not run live `muse bridge git-export` on the overseer-kit **de
 - Merge `muse-mirror` → `main` without Tier-3 authorization
 - Claim K7 **operational DONE** before K7.L1 (and K7.L2 when publishing) evidence is recorded
 
-**Ground truth:** `docs/PHASE-K7-MUSE-GIT-MIRROR-DOGFOOD.md` (§K7.2, §K7.4).
+**Ground truth:** `docs/archive/phases/PHASE-K7-MUSE-GIT-MIRROR-DOGFOOD.md` (§K7.2, §K7.4).
 
 K7b Auto ships footprint assets + tests while this repo stays **`git-only`** until the operator
 flip (footprint-first per §K7.7).
@@ -60,7 +60,7 @@ Work on a **feature branch** unless noted Tier-3.
 ./cli/ok -C <repo-root> governance-sync --dry-run
 ```
 
-Evaluate K7.P1–P10 in `docs/PHASE-K7-MUSE-GIT-MIRROR-DOGFOOD.md` §K7.4.1.
+Evaluate K7.P1–P10 in `docs/archive/phases/PHASE-K7-MUSE-GIT-MIRROR-DOGFOOD.md` §K7.4.1.
 
 ### D7 example (K7.L1 — first live bridge)
 
@@ -110,7 +110,7 @@ Record L1/L2 in `docs/OVERSEER-HANDOVER.md` change log when complete.
 
 ## Cross-references
 
-- `docs/PHASE-K7-MUSE-GIT-MIRROR-DOGFOOD.md`
-- `docs/K6-PILOT-OPERATOR-RUNBOOK.md` — consumer pilots (separate)
+- `docs/archive/phases/PHASE-K7-MUSE-GIT-MIRROR-DOGFOOD.md`
+- `docs/archive/operators/K6-PILOT-OPERATOR-RUNBOOK.md` — consumer pilots (separate)
 - `AGENTS.md` — SD-14
 - `docs/GIT-ONLY-QUICKSTART.md` — baseline promise (unchanged requirement)

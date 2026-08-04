@@ -3,7 +3,7 @@
 **Audience:** product teams wrapping 🆗 Overseer Kit (Scooling, Knowtation, and future
 entry products).
 
-**Authority:** restates frozen `docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md` (§O0.3–§O0.6)
+**Authority:** restates frozen `docs/archive/phases/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md` (§O0.3–§O0.6)
 for implementers. **Do not redesign** stages, regimes, or boundaries here — fix the freeze
 document via Thinking if the contract must change.
 
@@ -37,7 +37,7 @@ Cursor rules/skills are optional boosters, never required.
 
 Allowed regime transition: `muse-only` → `muse+git-mirror` (existing adapters + SD-14 bridge).
 
-**Kit ceremony:** frozen in `docs/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md` and shipped as
+**Kit ceremony:** frozen in `docs/archive/phases/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md` and shipped as
 `ok upgrade-regime` (`--from muse-only --to muse+git-mirror`; `--dry-run` / `--apply` /
 `--live-bridge` / `--force` per §O2.7). Operator runbook:
 `docs/TRACK-O-STAGE3-UPGRADE-OPERATOR-RUNBOOK.md`.
@@ -142,11 +142,11 @@ an optional entry product, not a kit dependency.
 
 ## Cross-references
 
-- Freeze: `docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md`
-- Stage 3 ceremony freeze: `docs/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md`
+- Freeze: `docs/archive/phases/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md`
+- Stage 3 ceremony freeze: `docs/archive/phases/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md`
 - Stage 3 operator runbook: `docs/TRACK-O-STAGE3-UPGRADE-OPERATOR-RUNBOOK.md`
 - Spec regimes/CLI: `docs/OVERSEER-KIT-SPEC.md` §4–§5
 - Scooling runbook: `docs/consumers/scooling/OVERSEER-SETUP.md`
 - Knowtation stub: `docs/consumers/knowtation/OVERSEER-SETUP.md`
-- K6 operator path: `docs/K6-PILOT-OPERATOR-RUNBOOK.md`
-- K7 bridge / MuseHub-optional: `docs/PHASE-K7-MUSE-GIT-MIRROR-DOGFOOD.md`
+- K6 operator path: `docs/archive/operators/K6-PILOT-OPERATOR-RUNBOOK.md`
+- K7 bridge / MuseHub-optional: `docs/archive/phases/PHASE-K7-MUSE-GIT-MIRROR-DOGFOOD.md`

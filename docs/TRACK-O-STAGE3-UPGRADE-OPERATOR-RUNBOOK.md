@@ -2,7 +2,7 @@
 
 Operator path for **`muse-only` → `muse+git-mirror`** using the kit ceremony
 orchestrator. Ground truth: frozen
-`docs/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md` (§O2.3–§O2.7).
+`docs/archive/phases/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md` (§O2.3–§O2.7).
 
 **This is not product unlock.** Product Stage 3 one-click may wrap **only**
 `ok upgrade-regime` after Track O / O3 build-verification → `pass` **and** the
@@ -106,7 +106,7 @@ Day-to-day publish remains: feature work → safe bridge → PR, never push cano
 
 ## Cross-references
 
-- Freeze: `docs/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md`
+- Freeze: `docs/archive/phases/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md`
 - Product contract: `docs/TRACK-O-NORMIE-CUSTODY-PRODUCT-CONTRACT.md`
-- K7 dogfood: `docs/PHASE-K7-MUSE-GIT-MIRROR-DOGFOOD.md` / `docs/K7-DOGFOOD-OPERATOR-RUNBOOK.md`
-- Funnel: `docs/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md` §O0.3.3
+- K7 dogfood: `docs/archive/phases/PHASE-K7-MUSE-GIT-MIRROR-DOGFOOD.md` / `docs/K7-DOGFOOD-OPERATOR-RUNBOOK.md`
+- Funnel: `docs/archive/phases/PHASE-TRACK-O-O0-NORMIE-CUSTODY-FUNNEL.md` §O0.3.3

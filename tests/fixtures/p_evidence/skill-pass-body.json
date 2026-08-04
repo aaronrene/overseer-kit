@@ -2,5 +2,5 @@
   "required_artifact_types_for_pass": ["test_output"],
   "bv_verdict": "pass",
   "phase_id": "Track P / P-evidence",
-  "frozen_spec": "docs/PHASE-TRACK-P-P-EVIDENCE.md"
+  "frozen_spec": "docs/archive/phases/PHASE-TRACK-P-P-EVIDENCE.md"
 }

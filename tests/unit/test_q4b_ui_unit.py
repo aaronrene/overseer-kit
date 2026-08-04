@@ -9,10 +9,8 @@ from tools.app.server import STATIC_ROOT
 CTA_HREFS = [
     "https://github.com/aaronrene/overseer-kit",
     "https://musehub.ai",
-    "https://github.com/aaronrene/overseer-kit/blob/main/docs/consumers/knowtation/OVERSEER-SETUP.md",
     "https://github.com/aaronrene/overseer-kit/blob/main/docs/CONSUMER-ADAPTER-PATTERN.md",
-    "https://github.com/aaronrene/overseer-kit/blob/main/docs/consumers/scooling/OVERSEER-SETUP.md",
-    "https://github.com/aaronrene/overseer-kit/blob/main/docs/consumers/videofactory/OVERSEER-SETUP.md",
+    "https://github.com/aaronrene/overseer-kit/blob/main/docs/README.md",
 ]
 
 DIAGRAM_PATHS = [

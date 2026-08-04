@@ -4,7 +4,7 @@
 phase: DEMO-THINKING
 outputs:
   - id: demo-thinking
-    path: docs/PHASE-DEMO-THINKING.md
+    path: docs/archive/phases/PHASE-DEMO-THINKING.md
     frozen: true
 ```
 

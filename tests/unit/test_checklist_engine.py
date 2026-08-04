@@ -51,10 +51,10 @@ def test_absolute_path_still_emits_c4_security() -> None:
 
 def test_k5_contract_dogfood_has_no_false_escalation() -> None:
     root = Path(__file__).resolve().parents[2]
-    text = (root / "docs" / "PHASE-K5-FREEZE-REVIEWER-CONTRACT.md").read_text(encoding="utf-8")
+    text = (root / "docs" / "archive" / "phases" / "PHASE-K5-FREEZE-REVIEWER-CONTRACT.md").read_text(encoding="utf-8")
     findings = ChecklistEngine().evaluate(
         artifact_text=text,
-        artifact_path="docs/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md",
+        artifact_path="docs/archive/phases/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md",
         checklist=builtin_checklist(),
     )
     escalation_cats = {"security", "irreversible", "real_money", "gates_tier3"}
