@@ -336,7 +336,7 @@ Tier-3 action still requires separate operator authorization (SPEC §6.4).
 - `docs/OVERSEER-KIT-SPEC.md` §4 regimes, §5 CLI, §6 freeze ceremony, §8 migration
 - `docs/archive/phases/PHASE-K6-PILOT-INSTALL-MATRIX.md` — operator (dev) install path
 - `docs/archive/phases/PHASE-K7-MUSE-GIT-MIRROR-DOGFOOD.md` — MuseHub-optional guardrail + bridge
-- `docs/archive/operators/K6-PILOT-OPERATOR-RUNBOOK.md` — operator day-to-day
+- `docs/MIGRATE-EXISTING-REPO.md` — operator day-to-day
 - `docs/consumers/scooling/OVERSEER-SETUP.md` — first consumer; points normies to Track O
 - `docs/CONSUMER-ADAPTER-PATTERN.md` — kit vs consumer ownership
 - `docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md` — operator UI surfaces (not Stage 1 signup)

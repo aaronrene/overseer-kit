@@ -8,49 +8,50 @@
 
 <!-- overseer:next role=primary lane=product status=live -->
 <!-- overseer:anchor:next-session -->
-## NEXT SESSION — Contributor guide and repository visibility flip
+## NEXT SESSION — Public repository visibility flip
 
 **Date:** 2026-08-04  
-**Current position:** K12 → Contributor  
+**Current position:** Contributor (prep DONE) → Public visibility flip  
 **Model:** Operator + Auto
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **K12** | Public landing, scenario gallery, GitHub→MuseHub funnel, **MIT** LICENSE (amended from Apache-2.0), SECURITY.md; `tools/landing/` validator; seven-tier K12 tests (**380** total green) |
+| **Contributor (prep)** | `CONTRIBUTING.md`; `docs/MIGRATE-EXISTING-REPO.md`; laundry removed (`docs/archive/{personal,operators,consumers}/`); secrets/history pass clean; `docs/PUBLIC-VISIBILITY-CHECKLIST.md` |
 
 ### THE ONE NEXT STEP — **Model: Operator + Auto**
 
-Remaining before making the repo public: author `CONTRIBUTING.md` (or equivalent); final secrets/history pass; operator GitHub visibility flip when ready. Operator-led — no invented Auto build phase.
+Flip GitHub `aaronrene/overseer-kit` private → public when the checklist is green. Operator performs Settings → visibility. Auto only updates ROADMAP/HANDOVER after the flip is confirmed. Do not automate the flip.
 
 | | |
 | --- | --- |
-| **ID** | **Contributor** |
-| **Branch** | `feat/contributor` |
+| **ID** | **Public-visibility-flip** |
+| **Branch** | `feat/contributor` (land) then operator flip on `main` |
 | **Repo** | **overseer-kit** |
-| **Read first** | `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md` |
-| **Hard stops** | No merge to `main` without Tier 3 · no secrets · no live posture flips · no inventing NEXT when ambiguous |
+| **Read first** | `docs/PUBLIC-VISIBILITY-CHECKLIST.md`; `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md` |
+| **Hard stops** | No merge to `main` without Tier 3 · no secrets · no agent/CI visibility flip · no inventing NEXT when ambiguous |
 <!-- /overseer:anchor:next-session -->
 
 <!-- overseer:anchor:paste-ready-prompt -->
-### Paste-ready prompt — Contributor
+### Paste-ready prompt — Public visibility flip
 
 ```text
-Contributor — Contributor guide and repository visibility flip (overseer-kit).
+Public-visibility-flip — Make overseer-kit public on GitHub (Tier 3).
 
 Model: Operator + Auto
 Repo: overseer-kit
-Branch: feat/contributor
-Step: Contributor
+Branch: main (after Contributor prep lands)
+Step: Public-visibility-flip
 Authority: authoritative
 
-Read first: `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md`.
+Read first: `docs/PUBLIC-VISIBILITY-CHECKLIST.md`; `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md`.
 
 Deliverables:
-- Remaining before making the repo public: author `CONTRIBUTING.md` (or equivalent); final secrets/history pass; operator GitHub visibility flip when ready. Operator-led — no invented Auto build phase.
+- Operator: confirm checklist green; GitHub Settings → change visibility → Public.
+- Auto: after confirmed public, mark Public visibility flip DONE; sync ROADMAP + HANDOVER; feature-branch commit.
 
-Hard stops: No merge to `main` without Tier 3 · no secrets · no live posture flips · no inventing NEXT when ambiguous
+Hard stops: No agent/CI automation of the visibility flip · no secrets · no DNS cutover unless operator explicitly requests · no inventing NEXT when ambiguous
 
 Governance sync: update roadmap + handover on completion.
 ```
@@ -82,8 +83,8 @@ Governance sync: update roadmap + handover on completion.
 | **GitHub main** | `dfc77b82736877f1743e41dfc1906c003dfdb5c5` |
 | **Canonical anchor** | `sha256:4288acbe8011970d35166e87220f9b06c0c4a7f8478bffab8a85e4e247511432` |
 | **Canonical main** | `sha256:4288acbe8011970d35166e87220f9b06c0c4a7f8478bffab8a85e4e247511432` |
-| **Branch** | `main` |
-| **Dirty** | `no` |
+| **Branch** | `feat/contributor` |
+| **Dirty** | `yes` (Contributor prep session) |
 | **Drift** | D1=drifted, D2=aligned, D3=aligned |
 <!-- /overseer:anchor:verified-snapshot -->
 
@@ -92,11 +93,11 @@ Governance sync: update roadmap + handover on completion.
 
 | Item | Value |
 | --- | --- |
-| Branch | `main` |
+| Branch | `feat/contributor` |
 | GitHub `main` | `dfc77b82736877f1743e41dfc1906c003dfdb5c5` |
 | Canonical anchor | `sha256:4288acbe8011970d35166e87220f9b06c0c4a7f8478bffab8a85e4e247511432` (.muse/git-bridge.toml:last_export.muse_commit_id) |
 | Muse `main` | `sha256:4288acbe8011970d35166e87220f9b06c0c4a7f8478bffab8a85e4e247511432` |
-| Dirty | no |
+| Dirty | yes (Contributor prep) |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -108,6 +109,8 @@ Governance sync: update roadmap + handover on completion.
 
 <!-- overseer:anchor:change-log -->
 ## Change log
+
+- **2026-08-04** — **Contributor prep DONE** on `feat/contributor`: authored `CONTRIBUTING.md` + `docs/MIGRATE-EXISTING-REPO.md` + `docs/PUBLIC-VISIBILITY-CHECKLIST.md`; removed non-public laundry (`docs/archive/personal|operators|consumers`); secrets/history pass clean on working tree (`desktop/keys` public-only). NEXT → **Public visibility flip** (Tier 3 operator). Repo still **private** until operator flips.
 
 - **2026-08-04** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `dfc77b8`; realign: D2 aligned — skip realign; next_regen=regenerated
 

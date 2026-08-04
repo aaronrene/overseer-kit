@@ -148,5 +148,5 @@ an optional entry product, not a kit dependency.
 - Spec regimes/CLI: `docs/OVERSEER-KIT-SPEC.md` §4–§5
 - Scooling runbook: `docs/consumers/scooling/OVERSEER-SETUP.md`
 - Knowtation stub: `docs/consumers/knowtation/OVERSEER-SETUP.md`
-- K6 operator path: `docs/archive/operators/K6-PILOT-OPERATOR-RUNBOOK.md`
+- Migrate path: `docs/MIGRATE-EXISTING-REPO.md`
 - K7 bridge / MuseHub-optional: `docs/archive/phases/PHASE-K7-MUSE-GIT-MIRROR-DOGFOOD.md`

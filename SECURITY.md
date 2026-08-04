@@ -35,7 +35,7 @@ Please do **not** open a public issue for undisclosed vulnerabilities.
 ## Out of scope
 
 - Consumer domain packs and product runtimes outside this kit (report to the owning project);
-  archive notes under `docs/archive/consumers/` are not a support surface
+  thin stubs under `docs/consumers/` are boundary docs only — not a support desk
 - Third-party MuseHub runtime or Muse CLI (report to MuseHub maintainers)
 - Misconfiguration in consumer `.overseer/config.yaml` when the kit behaved per frozen spec
 

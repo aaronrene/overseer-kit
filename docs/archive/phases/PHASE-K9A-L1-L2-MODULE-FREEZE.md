@@ -25,7 +25,7 @@ frozen_inputs:
   - id: k8-multi-lane-contract
     path: docs/archive/phases/PHASE-K8-MULTI-LANE-DOCS-CONTRACT.md
   - id: vf-option-b-prompt
-    path: docs/archive/consumers/videofactory/CHECKPOINT-BUILD-PROMPT.md
+    path: docs/CONSUMER-ADAPTER-PATTERN.md#reference-consumers
   - id: vf-track-h-reference
     path: VideoFactory/docs/thinking/VF-OVERSEER-HONEST-FACTORY-SPEC-20260709.md
     note: reference only — not vendored; L2 source material for portable primitives
@@ -1123,7 +1123,7 @@ in parallel; kit K10 implements portable primitives regardless of VF SIN numberi
 
 1. Add `docs/CONSUMER-ADAPTER-PATTERN.md` — how to wire L0 lanes + L1 pack + L2 hooks.
 2. Move:
-   - `docs/VIDEOFACTORY-CHECKPOINT-BUILD-PROMPT.md` → `docs/archive/consumers/videofactory/CHECKPOINT-BUILD-PROMPT.md`
+   - `docs/VIDEOFACTORY-CHECKPOINT-BUILD-PROMPT.md` → `docs/CONSUMER-ADAPTER-PATTERN.md#reference-consumers`
    - `docs/VIDEOFACTORY-OVERSEER-SETUP.md` → `docs/consumers/videofactory/OVERSEER-SETUP.md`
 3. Future MuseHub / Scooling / Knowtation adapter notes → `docs/consumers/<name>/`.
 4. Kit root `docs/` retains SPEC, ROADMAP, HANDOVER, PHASE-*, vision, Track N marketing only.

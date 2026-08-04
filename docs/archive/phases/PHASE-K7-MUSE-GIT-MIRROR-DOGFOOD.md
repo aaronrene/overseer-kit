@@ -8,7 +8,7 @@ K7b implements mechanically against; it refines — and stays compatible with �
 `docs/OVERSEER-KIT-SPEC.md` §4 / §8, the regime capability tiers in `docs/ROADMAP.md`,
 `AGENTS.md` (planned → active flip notes), and the K4 footprint membership contract
 (`docs/archive/phases/PHASE-K4-VENDORING-CLI-CONTRACT.md` §K4.5). Live K6 consumer pilots remain separate
-operator work (`docs/archive/phases/PHASE-K6-PILOT-INSTALL-MATRIX.md`, `docs/archive/operators/K6-PILOT-OPERATOR-RUNBOOK.md`).
+operator work (`docs/archive/phases/PHASE-K6-PILOT-INSTALL-MATRIX.md`, `docs/MIGRATE-EXISTING-REPO.md`).
 
 ## Freeze-contract declaration (§6.1 schema)
 
@@ -109,7 +109,7 @@ bridge of overseer-kit as a separate operator session against the parity checkli
 | **Operator live dogfood** | Human after K7b green + freeze-review `pass` | Muse init/bind (D2); config flip to §K7.2.3 + `AGENTS.md` active-regime language (D3–D4); first safe bridge via vendored script (L1); PR merge Tier-3 (L2) | Redesign of adapter interface |
 
 K6 live pilots (Scooling → Knowtation → MuseHub → VideoFactory) stay on
-`docs/archive/operators/K6-PILOT-OPERATOR-RUNBOOK.md`. K7 does **not** re-run those inits. When K7b lands bridge
+`docs/MIGRATE-EXISTING-REPO.md`. K7 does **not** re-run those inits. When K7b lands bridge
 assets, later consumer `sync` may pick them up under K4/K6 sync rules (§K7.3.4).
 
 ---

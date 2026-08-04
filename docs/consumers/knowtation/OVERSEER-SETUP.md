@@ -34,6 +34,5 @@ This stub does **not** authorize:
 | Vault bytes / bind UX | **Never** | **Owns** |
 | Account / SSO for vault | **Never** | Product-owned |
 
-## Detailed pilot notes (maintainers)
-
-`docs/archive/consumers/knowtation/OVERSEER-SETUP.md`
+Migrate / fixture path: `docs/MIGRATE-EXISTING-REPO.md` and
+`tests/fixtures/pilot/config-knowtation.yaml`.

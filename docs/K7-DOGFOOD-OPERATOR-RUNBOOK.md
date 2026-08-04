@@ -111,6 +111,6 @@ Record L1/L2 in `docs/OVERSEER-HANDOVER.md` change log when complete.
 ## Cross-references
 
 - `docs/archive/phases/PHASE-K7-MUSE-GIT-MIRROR-DOGFOOD.md`
-- `docs/archive/operators/K6-PILOT-OPERATOR-RUNBOOK.md` — consumer pilots (separate)
+- `docs/MIGRATE-EXISTING-REPO.md` — consumer migrate (separate)
 - `AGENTS.md` — SD-14
 - `docs/GIT-ONLY-QUICKSTART.md` — baseline promise (unchanged requirement)
