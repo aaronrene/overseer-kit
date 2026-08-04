@@ -8,46 +8,53 @@
 
 <!-- overseer:next role=primary lane=product status=live -->
 <!-- overseer:anchor:next-session -->
-## NEXT SESSION — GSB → main (SD-21 land)
+## NEXT SESSION — Contributor guide and repository visibility flip
 
-**Date:** 2026-07-31  
-**Current position:** GSB-b build verified `pass` (GSB-BV-r1) → GSB → main  
+**Date:** 2026-08-04  
+**Current position:** GSB/OSS land → Contributor  
 **Model:** Operator + Auto
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **Public OSS docs A+B** | **DONE** — phase/consumer/pilot archaeology archived; public docs index + thin stubs; Path B CTAs slimmed; affected tests green. **No public flip.** |
-| **GSB-b** | **DONE** — build verified → `pass` (GSB-BV-r1, 0 findings). C0 reconcile-before-ensure in `tools/governance_hygiene/engine.py`: per-history classify vs §GSB.3.2.1 `T_target`; ancestor/equal → tip FF without checkout-as-FF; diverged → deterministic `-N` uniquify + frozen `PatchPlan` replace + rebuilt `pr_url`; Muse never dirties Git; C1 ensure unchanged. Seven-tier §GSB.8 **25** green incl. same-day-collision `--write` on all three regimes; full suite **1213** green (15 pre-existing env failures unchanged). **No merge to `main` this session.** |
+| **GSB → main** | SD-21 land via Muse→mirror PR [#59](https://github.com/aaronrene/overseer-kit/pull/59) @ `de9013f` (C0 reconcile path) |
+| **Public OSS docs A+B** | Archive archaeology + public docs cut; Muse→mirror PR [#60](https://github.com/aaronrene/overseer-kit/pull/60) @ `bdee603` |
+| **land-b closeout** | `ok governance-sync --write` on `feat/governance-sync-2026-08-04` after PR #60 |
 
 ### THE ONE NEXT STEP — **Model: Operator + Auto**
 
-Land GSB per SD-21 land hygiene (merge authority Tier 3): Muse merge the feature branch to `main`, bridge-deploy, merge the green `muse-mirror` PR to GitHub `main`, then land-b post-merge sync — the first live run of the C0 reconcile path — and closeout gates to `0`.
+Remaining before making the repo public: author `CONTRIBUTING.md` (or equivalent); final secrets/history pass; operator GitHub visibility flip when ready. Operator-led — no invented Auto build phase.
 
 | | |
 | --- | --- |
-| **ID** | **GSB → main (SD-21 land)** |
-| **Branch** | `feat/gsb-branch-collision` |
+| **ID** | **Contributor** |
+| **Branch** | `feat/contributor` |
 | **Repo** | **overseer-kit** |
-| **Read first** | `docs/ROADMAP.md` (GSB → main row); `MUSE-BRIDGE-WORKFLOW.md` + `scripts/muse-bridge-deploy.sh` (SD-14 mirror rules); `docs/archive/phases/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md` (land-a/land-b protocol) |
-| **Hard stops** | Merge to `main` is Tier 3 (operator approves) · no `git push origin main` · no checkout `--force` · land incomplete until `ok land-closeout` → `0` |
+| **Read first** | `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md` |
+| **Hard stops** | No merge to `main` without Tier 3 · no secrets · no live posture flips · no inventing NEXT when ambiguous |
 <!-- /overseer:anchor:next-session -->
 
 <!-- overseer:anchor:paste-ready-prompt -->
-### Paste-ready prompt — GSB → main
+### Paste-ready prompt — Contributor
 
 ```text
+Contributor — Contributor guide and repository visibility flip (overseer-kit).
+
 Model: Operator + Auto
-ID: GSB → main (SD-21 land)
+Repo: overseer-kit
+Branch: feat/contributor
+Step: Contributor
+Authority: authoritative
 
-GSB-b is DONE (BV pass GSB-BV-r1; seven-tier §GSB.8 25 green; full suite 1213 green). Land GSB:
+Read first: `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md`.
 
-1. land-a: Muse merge feat/gsb-branch-collision → main → scripts/muse-bridge-deploy.sh → green muse-mirror PR → GitHub main (merge authority Tier 3 — operator approves).
-2. land-b: post-merge sync via ok governance-sync --write (first live run of the GSB C0 reconcile path — a same-day feat/governance-sync-2026-07-31 collision is expected and must FF or uniquify, never exit 2 on checkout); then ok status --exit-code → 0 and ok land-closeout → 0 before claiming land complete.
-3. Update ROADMAP (GSB → main DONE) + handover together in the closeout (SD-17).
+Deliverables:
+- Remaining before making the repo public: author `CONTRIBUTING.md` (or equivalent); final secrets/history pass; operator GitHub visibility flip when ready. Operator-led — no invented Auto build phase.
 
-Hard stops: no git push origin main; no checkout --force; secrets/live posture unchanged; never claim "land complete" while ok land-closeout fails.
+Hard stops: No merge to `main` without Tier 3 · no secrets · no live posture flips · no inventing NEXT when ambiguous
+
+Governance sync: update roadmap + handover on completion.
 ```
 <!-- /overseer:anchor:paste-ready-prompt -->
 
@@ -74,25 +81,24 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
 | Area | State |
 | --- | --- |
 | **VCS regime** | `muse+git-mirror` |
-| **GitHub main** | `433c5a37a737d4b657ad7959d9091b91b429cf3c` |
-| **Canonical anchor** | `sha256:6e320c222667b7e17f8b355b8a64050af10a6e2e09656e5053e339c870bcdbe0` |
-| **Canonical main** | `sha256:6e320c222667b7e17f8b355b8a64050af10a6e2e09656e5053e339c870bcdbe0` |
-| **Branch** | `feat/public-docs-housekeeping` (git; Muse may lag until closing commit) |
-| **Dirty** | `yes` → closing commit this session |
-| **Freeze** | `docs/archive/phases/PHASE-GSB-GOVERNANCE-SYNC-BRANCH-COLLISION.md` → `pass` (GSB-r3), stamp `sha256:30cfb999…` |
-| **Build** | GSB-b BV → `pass` (GSB-BV-r1, 0 findings); §GSB.8 **25** green; full suite **1213** green (15 pre-existing env failures unchanged) |
+| **GitHub main** | `bdee6032c4c952bce358e3138ba344b4b50c6fb1` |
+| **Canonical anchor** | `sha256:d6e160e4598d74a1e4b524f9dbb438cbc63cc91e089ae17033d4f440e368daaa` |
+| **Canonical main** | `sha256:d6e160e4598d74a1e4b524f9dbb438cbc63cc91e089ae17033d4f440e368daaa` |
+| **Branch** | `feat/governance-sync-2026-08-04` |
+| **Dirty** | `no` (after closeout commit) |
+| **Drift** | D1=aligned, D2=aligned, D3=aligned |
 <!-- /overseer:anchor:verified-snapshot -->
 
 <!-- overseer:anchor:vcs-table -->
-## VCS (verified 2026-07-31)
+## VCS (verified 2026-08-04)
 
 | Item | Value |
 | --- | --- |
-| Branch | `feat/public-docs-housekeeping` (git; Muse lag until closing commit) |
-| GitHub `main` | `433c5a37a737d4b657ad7959d9091b91b429cf3c` |
-| Canonical anchor | `sha256:6e320c222667b7e17f8b355b8a64050af10a6e2e09656e5053e339c870bcdbe0` (.muse/git-bridge.toml:last_export.muse_commit_id) |
-| Muse `main` | `sha256:6e320c222667b7e17f8b355b8a64050af10a6e2e09656e5053e339c870bcdbe0` |
-| Dirty | no (after closing commit) |
+| Branch | `main` |
+| GitHub `main` | `bdee6032c4c952bce358e3138ba344b4b50c6fb1` |
+| Canonical anchor | `sha256:d6e160e4598d74a1e4b524f9dbb438cbc63cc91e089ae17033d4f440e368daaa` (.muse/git-bridge.toml:last_export.muse_commit_id) |
+| Muse `main` | `sha256:d6e160e4598d74a1e4b524f9dbb438cbc63cc91e089ae17033d4f440e368daaa` |
+| Dirty | yes |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -104,6 +110,8 @@ Hard stops: no git push origin main; no checkout --force; secrets/live posture u
 
 <!-- overseer:anchor:change-log -->
 ## Change log
+
+- **2026-08-04** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `bdee603`; realign: D2 aligned — skip realign; next_regen=regenerated
 
 - **2026-07-31** — governance-sync: drift (D1=drifted, D2=aligned, D3=drifted) @ `433c5a3`; realign: D2 aligned — skip realign; next_regen=regenerated:land-b
 
@@ -938,6 +946,7 @@ See `docs/ROADMAP.md` → Model-split handover protocol (SD-3) and governance sy
 
 | Slice | Deliverable |
 | --- | --- |
-| PR #51 | Mirror: mirror: GS-PASTE D1 VCS table align (merged 2026-07-30) |
-| PR #50 | Mirror: mirror: GS-PASTE land close-out docs (merged 2026-07-30) |
+| PR #59 | Mirror: mirror: GSB dated-branch collision reconcile — C0 FF/uniquify before ensure (BV pass GSB-BV-r1) (merged 2026-07-31) |
+| **Public OSS docs A+B** | **DONE** — phase/consumer/pilot archaeology archived; public docs index + thin stubs; Path B CTAs slimmed; affected tests green. **No public flip.** |
+| **GSB-b** | **DONE** — build verified → `pass` (GSB-BV-r1, 0 findings). C0 reconcile-before-ensure in `tools/governance_hygiene/engine.py`: per-history classify vs §GSB.3.2.1 `T_target`; ancestor/equal → tip FF without checkout-as-FF; diverged → deterministic `-N` uniquify + frozen `PatchPlan` replace + rebuilt `pr_url`; Muse never dirties Git; C1 ensure unchanged. Seven-tier §GSB.8 **25** green incl. same-day-collision `--write` on all three regimes; full suite **1213** green (15 pre-existing env failures unchanged). **No merge to `main` this session.** |
 <!-- /overseer:anchor:done-recently -->
