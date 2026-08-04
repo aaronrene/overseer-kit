@@ -82,7 +82,7 @@ def test_e2e_mode_b_may_match_mode_c_misses_then_deploy_health_last_wins(
             "--deploy-health",
             "Track P / P-deploy",
             "--frozen-spec",
-            "docs/PHASE-TRACK-P-P-DEPLOY.md",
+            "docs/archive/phases/PHASE-TRACK-P-P-DEPLOY.md",
             "--json",
         ],
         cwd=tmp_path,

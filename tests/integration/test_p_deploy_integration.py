@@ -42,7 +42,7 @@ def test_mode_c_matching_deploy_health_exit_0(repo_root) -> None:
             hook=None,
             artifact=None,
             deploy_health="Track P / P-deploy",
-            frozen_spec="docs/PHASE-TRACK-P-P-DEPLOY.md",
+            frozen_spec="docs/archive/phases/PHASE-TRACK-P-P-DEPLOY.md",
         ),
     )
     assert result.exit_code == 0

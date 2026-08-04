@@ -2,5 +2,5 @@
   "required_artifact_types_for_deploy_pass": ["deploy_health"],
   "bv_verdict": "pass",
   "phase_id": "Track P / P-deploy",
-  "frozen_spec": "docs/PHASE-TRACK-P-P-DEPLOY.md"
+  "frozen_spec": "docs/archive/phases/PHASE-TRACK-P-P-DEPLOY.md"
 }

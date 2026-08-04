@@ -19,4 +19,4 @@ ok governance-sync          # dry-run (default)
 ok governance-sync --write  # apply patches + feature-branch commit + push
 ```
 
-Ground truth: `docs/PHASE-9A-5-GOVERNANCE-HYGIENE-AGENT-OUTLINE.md`
+Ground truth: `docs/archive/phases/PHASE-9A-5-GOVERNANCE-HYGIENE-AGENT-OUTLINE.md`

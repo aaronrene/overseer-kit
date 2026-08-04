@@ -22,7 +22,7 @@ Frozen inputs it composes with (does **not** fork):
   Phase Model Key.
 - `docs/GITHUB-MIRROR-RECONCILIATION-FOLLOWUP.md` — the recurring Muse↔Git inversion failure the
   kit's VCS adapter is designed to detect and prevent centrally.
-- `docs/PHASE-9A-5-GOVERNANCE-HYGIENE-AGENT-OUTLINE.md` — the first agent tool the kit ships;
+- `docs/archive/phases/PHASE-9A-5-GOVERNANCE-HYGIENE-AGENT-OUTLINE.md` — the first agent tool the kit ships;
   rebased onto the kit's VCS adapter interface so it is repo-agnostic from day one.
 - `knowtation/AGENTS.md`, `scooling/AGENTS.md`, `MUSE_HUB/docs/MUSEHUB-OVERSEER-HANDOVER.md` — the
   three concrete VCS regimes the kit's adapter backends must satisfy.
@@ -281,16 +281,16 @@ One entrypoint, **`ok`** (compatibility synonym **`overseer`**), runnable with *
 | `ok governance-sync` | Run the Governance Hygiene Agent (Phase 9A-5) against this repo's `.overseer/config.yaml`: detect drift between docs and true VCS state, patch handover/roadmap, guard-realign, commit to a feature branch. `--dry-run` = report only. | Yes (docs, feature branch) | Yes |
 | `ok review --freeze <path>` | Run the Freeze-Step Reviewer (§6) on a freeze artifact; emit findings with **file+line citations**; set exit status by verdict; escalate to human per config. `--dry-run` prints the review only. | No (review output only) | Yes |
 | `ok check-ok [--path PATH] [--topic SLUG] [--scaffold-only] [--dry-run] …` | **Check OK** ad-hoc honesty check: scaffold a side-check freeze under `docs/reviews/` when needed, then run the **same** Freeze-Step Reviewer as `ok review --freeze` (no new `docs.lanes` entry). Portable skill `/check-ok` ships to `.cursor/skills/` **and** `.claude/skills/`; Copilot/others use CLI + `docs/CHECK-OK.md`. Synonym: `ok check-if-ok`. | Yes (scaffold file only when created) | Yes (re-run reuses existing artifact) |
-| `ok workspace status\|check-next\|doctor` | Multi-repo constellation / workspace lanes (K13): report members/roles/LIVE PRIMARY, fail closed on stale relays (`check-next` exit `35`), doctor `board_name_violation` for bare board filenames. Read-only. `ok status --workspace` attaches report without implying `workspace.ok` from single-repo green. Frozen: `docs/MULTI-REPO-WORKSPACE-LANES-FREEZE.md`. | No | Yes |
-| `ok pr-land --pr <N> --authorized "<reason>"` | Authorized wait-for-green merge (Tier-3 operator-delegated): poll `gh pr checks` until settled, refuse on failure (exit `2`), merge only when green — never blind `--auto`. **PLS additive:** optional `close_ritual.post_land_sync` ff-only post-step after a successful MERGED outcome (default off; dirty tree warn/skip, never clobber); always-present `post_land_sync` result object; exit `36` on hard sync fail after a real merge (never reuses `6`). Frozen: `docs/PHASE-PR-LAND-AFTER-CHECKS.md` + `docs/PHASE-PLS-POST-LAND-MAIN-SYNC.md`. | Yes (GitHub merge; optional local ff-only pull) | Yes (already-MERGED re-run stays exit `0`) |
+| `ok workspace status\|check-next\|doctor` | Multi-repo constellation / workspace lanes (K13): report members/roles/LIVE PRIMARY, fail closed on stale relays (`check-next` exit `35`), doctor `board_name_violation` for bare board filenames. Read-only. `ok status --workspace` attaches report without implying `workspace.ok` from single-repo green. Frozen: `docs/archive/phases/MULTI-REPO-WORKSPACE-LANES-FREEZE.md`. | No | Yes |
+| `ok pr-land --pr <N> --authorized "<reason>"` | Authorized wait-for-green merge (Tier-3 operator-delegated): poll `gh pr checks` until settled, refuse on failure (exit `2`), merge only when green — never blind `--auto`. **PLS additive:** optional `close_ritual.post_land_sync` ff-only post-step after a successful MERGED outcome (default off; dirty tree warn/skip, never clobber); always-present `post_land_sync` result object; exit `36` on hard sync fail after a real merge (never reuses `6`). Frozen: `docs/archive/phases/PHASE-PR-LAND-AFTER-CHECKS.md` + `docs/archive/phases/PHASE-PLS-POST-LAND-MAIN-SYNC.md`. | Yes (GitHub merge; optional local ff-only pull) | Yes (already-MERGED re-run stays exit `0`) |
 | `ok verify-step [--manifest PATH] [--step ID \| --through current \| --all] [--policy PATH] [--dry-run] [--json]` | L1 checkpoint orchestrator (K9b): run domain verify scripts in template order; update active manifest per step; optional `--dry-run` plan-only. Module gate: `checkpoints.enabled` must be true. Exit extensions: `10` verify fail, `11` step order. | Yes (manifest + optional progress) | Yes (re-verify overwrites) |
 | `ok honesty-status --hook HOOK --artifact PATH [--producer-session ID] [--json]` | L2 co-requirement check (K10): require a passing independent `verdict` for artifact SHA before board/handoff/register hooks. Module gate: `honesty.enabled` must be true. Exit extensions: `20` missing verdict, `4` hook not enabled / module off. | No | Yes |
 | `ok ledger append --kind KIND [--file JSON_PATH \| --stdin]` | L2 verdict ledger append (K10): hash-chained JSONL entry with role gates. Auto-genesis on first append. Exit extensions: `21`–`24`, `22` on verify. | Yes (ledger) | Append-only |
 | `ok ledger verify` | L2 ledger chain verification (K10). Missing/empty ledger → `0`. Break → `22`. | No | Yes |
 | `ok ledger show [--last N]` | L2 ledger read (K10): print last N JSONL records. Missing/empty → `0` with no lines. Default N=20. | No | Yes |
-| `ok upgrade-regime --from muse-only --to muse+git-mirror [--dry-run \| --apply] [--live-bridge] [--force] [-y]` | Stage 3 kit ceremony (Track O / O3): ordered `muse-only` → `muse+git-mirror` upgrade composing `init`/`sync`/`status` + K7 bridge gates (C0–C5 / G1–G8). `--dry-run` default when `--apply` absent. `--live-bridge` requires gate success + `-y` (C6); never performs C8 merge. Frozen detail: `docs/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md`. | Yes (config + footprint when `--apply`; optional C7 via deploy script) | Yes (complete upgrade → exit 0) |
-| `ok hosted-dashboard [--port PORT] [--bind ADDRESS] [--config PATH] [--open]` | Read-only remote governance dashboard preview (Hosted governance dashboard): GitHub/MuseHub **read** glance of ROADMAP/HANDOVER/gates; Bearer viewer auth; default `127.0.0.1:8766`. Never mutates git/muse/GitHub. Operator runbook: `docs/HOSTED-GOVERNANCE-DASHBOARD-OPERATOR-RUNBOOK.md`. Frozen: `docs/PHASE-HOSTED-GOVERNANCE-DASHBOARD.md`. | No | Yes |
-| `ok land-closeout [--json] [--probe-merged-pr\|--no-probe-merged-pr]` | Post-merge land closeout probe (PMHF §PMHF.6.3): print `LandCloseoutReport`; exit `0` when `report.ok` else `2`. Never merges; never writes docs. Refuses “land complete” while `post_merge_incomplete` / `land_b_in_progress` / `unreadable`, with frozen land-b remediation. `--probe-merged-pr` default: on for git regimes, off for `muse-only` (no git/gh). Frozen: `docs/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md`. | No | Yes |
+| `ok upgrade-regime --from muse-only --to muse+git-mirror [--dry-run \| --apply] [--live-bridge] [--force] [-y]` | Stage 3 kit ceremony (Track O / O3): ordered `muse-only` → `muse+git-mirror` upgrade composing `init`/`sync`/`status` + K7 bridge gates (C0–C5 / G1–G8). `--dry-run` default when `--apply` absent. `--live-bridge` requires gate success + `-y` (C6); never performs C8 merge. Frozen detail: `docs/archive/phases/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md`. | Yes (config + footprint when `--apply`; optional C7 via deploy script) | Yes (complete upgrade → exit 0) |
+| `ok hosted-dashboard [--port PORT] [--bind ADDRESS] [--config PATH] [--open]` | Read-only remote governance dashboard preview (Hosted governance dashboard): GitHub/MuseHub **read** glance of ROADMAP/HANDOVER/gates; Bearer viewer auth; default `127.0.0.1:8766`. Never mutates git/muse/GitHub. Operator runbook: `docs/HOSTED-GOVERNANCE-DASHBOARD-OPERATOR-RUNBOOK.md`. Frozen: `docs/archive/phases/PHASE-HOSTED-GOVERNANCE-DASHBOARD.md`. | No | Yes |
+| `ok land-closeout [--json] [--probe-merged-pr\|--no-probe-merged-pr]` | Post-merge land closeout probe (PMHF §PMHF.6.3): print `LandCloseoutReport`; exit `0` when `report.ok` else `2`. Never merges; never writes docs. Refuses “land complete” while `post_merge_incomplete` / `land_b_in_progress` / `unreadable`, with frozen land-b remediation. `--probe-merged-pr` default: on for git regimes, off for `muse-only` (no git/gh). Frozen: `docs/archive/phases/PHASE-PMHF-POST-MERGE-HANDOVER-FRESHNESS.md`. | No | Yes |
 
 **Vendored footprint (frozen — what `init`/`sync` copy into a consumer):** the contents of
 `templates/` (token-substituted with `.overseer/config.yaml` values), `policy/`, and `cursor/`
@@ -316,7 +316,7 @@ explicit `ok sync` step (review-before-write).
 
 **K4a refinement (frozen detail):** the per-command argument contract, exit-code taxonomy, the
 extended (spec-compatible, additive) `version.lock` shape with a per-file manifest, and the
-deterministic `footprint_digest` algorithm are frozen in `docs/PHASE-K4-VENDORING-CLI-CONTRACT.md`.
+deterministic `footprint_digest` algorithm are frozen in `docs/archive/phases/PHASE-K4-VENDORING-CLI-CONTRACT.md`.
 K4b builds against that document.
 
 **Desktop installers (additive distribution channel):** signed platform installers (`.dmg` /
@@ -325,7 +325,7 @@ and Tauri shell (`desktop/`). They do **not** add a required CLI subcommand: Pat
 Path B (`ok app`) remain complete without installers. Auto v1 installers still require **host
 Python 3.11+**. Release CI + helpers live under `.github/workflows/desktop-release.yml` and
 `tools/desktop_release/`; operator runbook: `docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md`. Frozen
-detail: `docs/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md`.
+detail: `docs/archive/phases/PHASE-Q3-RELEASE-DESKTOP-INSTALLERS.md`.
 
 ---
 
@@ -344,7 +344,7 @@ Each phase in a roadmap declares, in a small structured block (schema =
 phase: 9A-5
 outputs:                            # artifacts this phase produces
   - id: hygiene-agent-spec
-    path: docs/PHASE-9A-5-GOVERNANCE-HYGIENE-AGENT-OUTLINE.md
+    path: docs/archive/phases/PHASE-9A-5-GOVERNANCE-HYGIENE-AGENT-OUTLINE.md
     frozen: true                    # declared frozen = downstream may treat as ground truth
 frozen_inputs:                      # artifacts this phase consumes without re-deriving
   - id: kit-adapter-interface
@@ -396,7 +396,7 @@ preserve the kit's offline/repo-agnostic promise.
 exit codes (`7` findings / `8` blocked-or-human), extended `freeze_contract.reviewer` schema with
 legacy-string normalization, finding/verdict/stamp/escalation rules, provider reachability + human
 packet, Automation degrade path, and the K5b seven-tier test matrix are frozen in
-`docs/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md`. K5b builds against that document.
+`docs/archive/phases/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md`. K5b builds against that document.
 
 ### §6.3 — Human escalation (only when necessary)
 
@@ -527,8 +527,8 @@ rules). No phase is DONE until its tests pass.
 | **K1 Bootstrap** | Create `overseer-kit` repo skeleton (§2), `VERSION`/`CHANGELOG`, dual-host + self-governance docs, README. | **Thinking → Auto** |
 | **K2 Config + adapters** | `.overseer/config.yaml` schema (§3) + the VCS adapter interface (§4) + three fail-closed backends + their unit/integration/security tests. | **Thinking → Auto** |
 | **K3 Extract shared assets** | Move the existing handover/roadmap/SD-format/tier/model-label/test-tier policy out of the three repos into `templates/` + `policy/` + `cursor/`, token-parameterized. | **Auto** |
-| **K4 Vendoring CLI** | `overseer init|sync|status` + `version.lock` + drift check (§5) + seven-tier tests. Contract frozen in `docs/PHASE-K4-VENDORING-CLI-CONTRACT.md` (K4a); K4b builds against it. | **Thinking → Auto** |
-| **K5 Freeze reviewer + automation routing** | The §6 reviewer (file+line citations, verdicts, escalation) + `overseer review` + session-end/on-merge Automation templates + tests. Contract frozen in `docs/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md` (K5a); K5b builds against it. | **Thinking → Auto** |
+| **K4 Vendoring CLI** | `overseer init|sync|status` + `version.lock` + drift check (§5) + seven-tier tests. Contract frozen in `docs/archive/phases/PHASE-K4-VENDORING-CLI-CONTRACT.md` (K4a); K4b builds against it. | **Thinking → Auto** |
+| **K5 Freeze reviewer + automation routing** | The §6 reviewer (file+line citations, verdicts, escalation) + `overseer review` + session-end/on-merge Automation templates + tests. Contract frozen in `docs/archive/phases/PHASE-K5-FREEZE-REVIEWER-CONTRACT.md` (K5a); K5b builds against it. | **Thinking → Auto** |
 | **9A-5 Governance Hygiene Agent** | The first shipped tool, built against its own frozen spec (`PHASE-9A-5-…-OUTLINE.md`), rebased onto the K2 adapter interface. | **Auto** |
 | **K6 Pilot install + migration** | `overseer init` into Scooling → Knowtation → MuseHub per §8; parity gate; external `git-only` quickstart. | **Thinking → Auto** |
 
@@ -544,7 +544,7 @@ governance docs updated is INCOMPLETE.
 - `docs/CROSS-REPO-COORDINATION.md` — the policy source this kit productizes (tiers, SD log,
   handover protocol, model-split protocol). **A pointer to this outline should be added there** as
   part of the roadmap/handover update in this same session.
-- `docs/PHASE-9A-5-GOVERNANCE-HYGIENE-AGENT-OUTLINE.md` — the first tool, specified against the §4
+- `docs/archive/phases/PHASE-9A-5-GOVERNANCE-HYGIENE-AGENT-OUTLINE.md` — the first tool, specified against the §4
   adapter interface.
 - `docs/GITHUB-MIRROR-RECONCILIATION-FOLLOWUP.md` — the failure pattern §4's backends prevent.
 - `docs/ROADMAP.md` — Phase 9A-5 + the Overseer Kit (K1–K6) track added to the queue.

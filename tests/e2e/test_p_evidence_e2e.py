@@ -48,7 +48,7 @@ def test_e2e_append_show_and_mode_b_match(tmp_path: Path, capsys) -> None:
             "--verification-evidence",
             "Track P / P-evidence",
             "--frozen-spec",
-            "docs/PHASE-TRACK-P-P-EVIDENCE.md",
+            "docs/archive/phases/PHASE-TRACK-P-P-EVIDENCE.md",
             "--json",
         ],
         cwd=tmp_path,

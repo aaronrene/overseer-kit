@@ -60,7 +60,7 @@ def test_mode_b_matching_pass_exit_0(repo_root) -> None:
             hook=None,
             artifact=None,
             verification_evidence="Track P / P-evidence",
-            frozen_spec="docs/PHASE-TRACK-P-P-EVIDENCE.md",
+            frozen_spec="docs/archive/phases/PHASE-TRACK-P-P-EVIDENCE.md",
         ),
     )
     assert result.exit_code == 0

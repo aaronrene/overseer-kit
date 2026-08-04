@@ -15,7 +15,7 @@ creation, no write APIs, no live `ok app` on this domain.
 | Hosted governance dashboard | Different CLI: `ok hosted-dashboard` — must not be branded as the apex product console |
 
 DNS cutover itself is **Tier 3** (human operator). See pre-public gate §LAC.9 in
-`docs/PHASE-LANDING-ACCESS-CLARITY.md`.
+`docs/archive/phases/PHASE-LANDING-ACCESS-CLARITY.md`.
 
 ## Positioning
 
@@ -36,7 +36,7 @@ Serve the static tree under `docs/landing/` (GitHub Pages, Cloudflare Pages, Net
 | Path | Role |
 | --- | --- |
 | `/` or `/index.html` | Main landing — structure diagrams + console access playbook |
-| `/docs.html` | Public docs index (works when GitHub repo is private) |
+| `/docs.html` | Public docs index (static mirror of key entry points) |
 | `/scenarios/` | Scenario gallery |
 | `/assets/style.css` | Styles (no CDN) |
 | `/assets/diagrams/*.svg` | Offline structure flowcharts |
@@ -101,6 +101,6 @@ That is the **marketing site**. The governance UI is a different process:
 ## License note
 
 This repo is **open source** under **MIT** (K12 as amended by
-`docs/PHASE-K12-LICENSE-MIT-AMENDMENT.md`). The original K12 freeze shipped Apache-2.0; the
+`docs/archive/phases/PHASE-K12-LICENSE-MIT-AMENDMENT.md`). The original K12 freeze shipped Apache-2.0; the
 operator flipped to MIT for house-brand consistency. SPDX identity lives in root `LICENSE`,
 `pyproject.toml`, and `docs/landing/manifest.yaml` — keep those three aligned.

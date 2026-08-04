@@ -2,5 +2,5 @@
 
 | Phase | Model | Status | Deliverable |
 | --- | --- | --- | --- |
-| **Demo Auto** | Auto | **WIP** | `docs/PHASE-DEMO-AUTO.md` build slice |
-| **Demo Thinking** | Thinking | **WIP** | `docs/PHASE-DEMO-THINKING.md` freeze slice |
+| **Demo Auto** | Auto | **WIP** | `docs/archive/phases/PHASE-DEMO-AUTO.md` build slice |
+| **Demo Thinking** | Thinking | **WIP** | `docs/archive/phases/PHASE-DEMO-THINKING.md` freeze slice |

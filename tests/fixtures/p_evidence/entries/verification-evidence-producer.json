@@ -2,7 +2,7 @@
   "actor_role": "producer",
   "actor_session_id": "producer-session-1",
   "phase_id": "Track P / P-evidence",
-  "frozen_spec": "docs/PHASE-TRACK-P-P-EVIDENCE.md",
+  "frozen_spec": "docs/archive/phases/PHASE-TRACK-P-P-EVIDENCE.md",
   "round": 1,
   "bv_verdict": "pass",
   "artifacts": [

@@ -4,7 +4,7 @@ Read-only remote glance of ROADMAP / HANDOVER / document-derived gates via GitHu
 (and optional MuseHub) **read** APIs. Authoritative workflow remains the local
 `ok` CLI / Track Q. This surface never mutates git, muse, GitHub, or MuseHub.
 
-Frozen contract: `docs/PHASE-HOSTED-GOVERNANCE-DASHBOARD.md`.
+Frozen contract: `docs/archive/phases/PHASE-HOSTED-GOVERNANCE-DASHBOARD.md`.
 
 ## What this is / is not
 

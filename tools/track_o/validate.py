@@ -17,7 +17,7 @@ CONTRACT_REL = Path("docs/TRACK-O-NORMIE-CUSTODY-PRODUCT-CONTRACT.md")
 SCOOLING_REL = Path("docs/consumers/scooling/OVERSEER-SETUP.md")
 KNOWTATION_REL = Path("docs/consumers/knowtation/OVERSEER-SETUP.md")
 RUNBOOK_REL = Path("docs/TRACK-O-STAGE3-UPGRADE-OPERATOR-RUNBOOK.md")
-O2_FREEZE_REL = Path("docs/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md")
+O2_FREEZE_REL = Path("docs/archive/phases/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md")
 PACK_RELS: tuple[Path, ...] = (CONTRACT_REL, SCOOLING_REL, KNOWTATION_REL)
 
 STAGE_LABELS: tuple[str, ...] = (
@@ -94,7 +94,7 @@ Preferred muse-only.
 Living docs.
 
 ### Stage 3 — Optional GitHub backup
-Kit ceremony: docs/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md and ok upgrade-regime.
+Kit ceremony: docs/archive/phases/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md and ok upgrade-regime.
 Products must not ship one-click until §O2.6.
 Silent config edit of only vcs.regime is forbidden.
 

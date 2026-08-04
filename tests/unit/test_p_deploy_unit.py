@@ -51,7 +51,7 @@ def test_find_matching_deploy_health_last_pass_with_artifact() -> None:
     winner = find_matching_deploy_health(
         entries,
         phase_id="Track P / P-deploy",
-        frozen_spec="docs/PHASE-TRACK-P-P-DEPLOY.md",
+        frozen_spec="docs/archive/phases/PHASE-TRACK-P-P-DEPLOY.md",
     )
     assert winner is not None
     assert winner["round"] == 2
@@ -125,7 +125,7 @@ def test_resolve_mode_deploy_health_plus_frozen_spec_is_mode_c() -> None:
             hook=None,
             artifact=None,
             deploy_health="Track P / P-deploy",
-            frozen_spec="docs/PHASE-TRACK-P-P-DEPLOY.md",
+            frozen_spec="docs/archive/phases/PHASE-TRACK-P-P-DEPLOY.md",
         )
     )
     assert mode == "mode_c"
@@ -151,7 +151,7 @@ def test_resolve_mode_frozen_spec_alone_invalid() -> None:
             HonestyStatusOptions(
                 hook=None,
                 artifact=None,
-                frozen_spec="docs/PHASE-TRACK-P-P-DEPLOY.md",
+                frozen_spec="docs/archive/phases/PHASE-TRACK-P-P-DEPLOY.md",
             )
         )
         is None
