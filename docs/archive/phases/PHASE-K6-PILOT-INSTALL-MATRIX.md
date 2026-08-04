@@ -659,7 +659,7 @@ Per consumer, in order:
    explicitly retires it in a later session.
 6. Open PR / Muse proposal for review; **do not** auto-merge.
 
-K6b ships this runbook as `docs/archive/operators/K6-PILOT-OPERATOR-RUNBOOK.md`.
+K6b ships this runbook as `docs/MIGRATE-EXISTING-REPO.md`.
 
 ---
 

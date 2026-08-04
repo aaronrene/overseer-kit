@@ -8,6 +8,7 @@ under [`archive/`](archive/README.md).
 | Doc | When to read |
 | --- | --- |
 | [Git-only quickstart](GIT-ONLY-QUICKSTART.md) | Adopt with plain GitHub (`ok init`) |
+| [Migrate existing repo](MIGRATE-EXISTING-REPO.md) | `ok init --migrate` when living docs already exist |
 | [Check OK](CHECK-OK.md) | Ad-hoc honesty / freeze + build verification |
 | [Consumer adapter pattern](CONSUMER-ADAPTER-PATTERN.md) | How a product repo plugs into the kit |
 | [Overseer Kit spec](OVERSEER-KIT-SPEC.md) | Frozen architecture (maintainers + serious adopters) |
@@ -33,6 +34,6 @@ under [`archive/`](archive/README.md).
 ## Sister / consumer products
 
 Optional example consumers keep **thin public stubs** under [`consumers/`](consumers/).
-Detailed pilot notes and domain prompts are in [`archive/consumers/`](archive/consumers/).
-
-Domain packs, verify scripts, and product runtime **never** live in this kit.
+Use [`MIGRATE-EXISTING-REPO.md`](MIGRATE-EXISTING-REPO.md) and
+`tests/fixtures/pilot/` for install-shaped examples. Domain packs and verify
+scripts **never** live in this kit.

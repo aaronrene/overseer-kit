@@ -23,10 +23,5 @@ Track O product contract: `docs/TRACK-O-NORMIE-CUSTODY-PRODUCT-CONTRACT.md`.
 Stage 3 kit ceremony (optional GitHub deepen): `ok upgrade-regime` against freeze
 `PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY` (`docs/archive/phases/PHASE-TRACK-O-O2-STAGE3-UPGRADE-CEREMONY.md`).
 
-## Detailed pilot notes (maintainers)
-
-Archived install matrix / operator detail:
-
-`docs/archive/consumers/scooling/OVERSEER-SETUP.md`
-
-Also see `docs/archive/operators/K6-PILOT-OPERATOR-RUNBOOK.md`.
+Migrate / fixture path: `docs/MIGRATE-EXISTING-REPO.md` and
+`tests/fixtures/pilot/config-scooling.yaml`.

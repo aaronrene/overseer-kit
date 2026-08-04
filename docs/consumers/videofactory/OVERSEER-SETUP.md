@@ -31,9 +31,5 @@ production consumer without Tier-3 review.
 
 `docs/CONSUMER-ADAPTER-PATTERN.md`
 
-## Detailed pilot notes (maintainers)
-
-`docs/archive/consumers/videofactory/OVERSEER-SETUP.md`
-
-Domain checkpoint prompt (archived):  
-`docs/archive/consumers/videofactory/CHECKPOINT-BUILD-PROMPT.md`
+Migrate / fixture path: `docs/MIGRATE-EXISTING-REPO.md` and
+`tests/fixtures/pilot/config-videofactory.yaml`.

@@ -658,7 +658,7 @@ Hard stops: no L2 build in K9b; no VF domain scripts in kit core;
 | `docs/archive/phases/PHASE-K8-MULTI-LANE-DOCS-CONTRACT.md` | N-lane docs |
 | `docs/archive/phases/PHASE-K9A-L1-L2-MODULE-FREEZE.md` | K9a normative contract |
 | `docs/CONSUMER-ADAPTER-PATTERN.md` | How consumers plug in |
-| `docs/archive/consumers/videofactory/CHECKPOINT-BUILD-PROMPT.md` | L1 VF build prompt (reference) |
+| `docs/CONSUMER-ADAPTER-PATTERN.md#reference-consumers` | L1 VF build prompt (reference) |
 | `docs/consumers/videofactory/OVERSEER-SETUP.md` | VF consumer setup (reference) |
 | VideoFactory `policy/video-checkpoints.yaml` | L1 machine truth (dogfood) |
 | VideoFactory `docs/thinking/VF-OVERSEER-HONEST-FACTORY-SPEC-20260709.md` | L2 draft (Track H) |

@@ -30,7 +30,7 @@ From your consumer repo (or with `-C <repo>`):
 ```
 
 For repos that **already** have hand-authored handover/roadmap files, use migrate
-(see `docs/archive/operators/K6-PILOT-OPERATOR-RUNBOOK.md`) instead of greenfield `init`.
+(see `docs/MIGRATE-EXISTING-REPO.md`) instead of greenfield `init`.
 
 ## Guardrails
 

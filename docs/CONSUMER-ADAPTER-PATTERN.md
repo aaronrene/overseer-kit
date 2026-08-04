@@ -75,15 +75,16 @@ See `docs/archive/phases/PHASE-K8-MULTI-LANE-DOCS-CONTRACT.md` and vision §5.2.
 
 ## Reference consumers
 
-Public stubs (boundary only). Detailed pilot notes live under `docs/archive/consumers/`.
+Public stubs (boundary only). Sister-product pilot packs are **not** mirrored into
+this repository — use fixtures + the migrate guide.
 
-| Consumer | Public stub | Archive / fixtures |
+| Consumer | Public stub | Fixture |
 | --- | --- | --- |
-| Example / custom doc names | `docs/consumers/videofactory/OVERSEER-SETUP.md` | `docs/archive/consumers/videofactory/` |
-| Scooling | `docs/consumers/scooling/OVERSEER-SETUP.md` | `docs/archive/consumers/scooling/` |
-| Knowtation | `docs/consumers/knowtation/OVERSEER-SETUP.md` | `docs/archive/consumers/knowtation/` |
+| Example / custom doc names | `docs/consumers/videofactory/OVERSEER-SETUP.md` | `tests/fixtures/pilot/config-videofactory.yaml` |
+| Scooling | `docs/consumers/scooling/OVERSEER-SETUP.md` | `tests/fixtures/pilot/config-scooling.yaml` |
+| Knowtation | `docs/consumers/knowtation/OVERSEER-SETUP.md` | `tests/fixtures/pilot/config-knowtation.yaml` |
 
-Fixture configs: `tests/fixtures/pilot/`.
+Migrate steps: `docs/MIGRATE-EXISTING-REPO.md`. Fixture configs: `tests/fixtures/pilot/`.
 
 ---
 

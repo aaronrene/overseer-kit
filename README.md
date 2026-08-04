@@ -251,7 +251,7 @@ No MuseHub required. See `docs/GIT-ONLY-QUICKSTART.md`.
 ```
 
 Repos that already have hand-authored handover/roadmap files should use `init --migrate` instead
-(see `docs/archive/operators/K6-PILOT-OPERATOR-RUNBOOK.md`).
+(see `docs/MIGRATE-EXISTING-REPO.md` and [`CONTRIBUTING.md`](CONTRIBUTING.md)).
 
 ### MuseHub optional upgrade (`muse+git-mirror`)
 
@@ -325,7 +325,7 @@ This writes: governance docs, `policy/`, `.cursor/` fragments, `.overseer/versio
 ## Status
 
 **K12 DONE** — Track N public landing, scenario gallery, MIT LICENSE, SECURITY.md,
-GitHub→MuseHub funnel. **380** seven-tier tests green. See `docs/ROADMAP.md`.
+GitHub→MuseHub funnel. See `docs/ROADMAP.md`. Contributor guide: [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 **Public landing:** open [`docs/landing/index.html`](docs/landing/index.html) locally or enable
 GitHub Pages from the `/docs/landing` path on your default branch.
@@ -344,6 +344,8 @@ codebases — see `docs/OVERSEER-KIT-SPEC.md`. The kit does not ship product ada
 
 | Doc | Purpose |
 | --- | --- |
+| `CONTRIBUTING.md` | How to propose changes |
+| `SECURITY.md` | Vulnerability reporting |
 | `docs/README.md` | Public docs index (start here) |
 | `docs/OVERSEER-KIT-SPEC.md` | Frozen architecture |
 | `docs/OVERSEER-HANDOVER.md` | Living relay (this repo's handover) |
@@ -352,11 +354,13 @@ codebases — see `docs/OVERSEER-KIT-SPEC.md`. The kit does not ship product ada
 | `policy/tiers.yaml` | Decision authority Tier 1/2/3 |
 | `policy/test-tiers.yaml` | Seven-tier test contract |
 | `docs/GIT-ONLY-QUICKSTART.md` | Greenfield install without Muse |
+| `docs/MIGRATE-EXISTING-REPO.md` | `init --migrate` for existing living docs |
 | `docs/CONSUMER-ADAPTER-PATTERN.md` | How any consumer plugs into L0–L2 |
 | `docs/consumers/*/OVERSEER-SETUP.md` | Thin consumer boundary stubs |
 | `docs/landing/index.html` | Public landing |
 | `docs/landing/scenarios/index.html` | Scenario gallery A–E |
-| `docs/archive/README.md` | Maintainer archive (phase freezes, pilots) |
+| `docs/archive/README.md` | Maintainer archive (phase freezes + vision) |
+| `docs/PUBLIC-VISIBILITY-CHECKLIST.md` | Maintainer pre-public gate (Tier 3) |
 | `docs/K7-DOGFOOD-OPERATOR-RUNBOOK.md` | Flip a repo to `muse+git-mirror` |
 | `MUSE-BRIDGE-WORKFLOW.md` | SD-14 mirror rules (vendored when regime requires) |
 | `cursor/README.md` | What ships into `.cursor/` on init/sync |
