@@ -21,11 +21,18 @@ compatibility. Copilot and paste-only tools use `ok` CLI + `docs/CHECK-OK.md`.
 | `skills/freeze-review-loop/SKILL.md` | **Optional** bounded loop until freeze `pass` |
 | `skills/build-verification-review/SKILL.md` | **Mandatory** post-build honesty review |
 | `skills/check-ok/SKILL.md` | **Check OK** — ad-hoc honesty (`/check-ok`, `ok check-ok`) |
+| `skills/print-next/SKILL.md` | **Print NEXT** — closeout CURRENT NEXT from disk (`ok next`) |
 | `rules/build-verification-required.mdc` | Always-on: no DONE without build-verification `pass` |
 | `rules/check-ok-thinking.mdc` | Always-on: Thinking sessions get freeze + BV gates |
+| `rules/print-next-closeout.mdc` | Always-on: final reply includes CURRENT NEXT after living-doc writes |
 | `automations/*.json` | Optional Automation templates (not auto-enabled; **Tier 2** confirm-once to enable) |
 | `automations/governance-sync-session-end.json` | Session-end `ok governance-sync --dry-run` (GFG; degrade to CLI/skill) |
 | `automations/freeze-review-session-end.json` | Session-end freeze-review dry-run template |
+| `hooks/` | Optional Cursor `stop` hook snippet for print-next (**not** in footprint; Tier 2; fail-open) |
 
 **Degrade path:** when IDE skills are unavailable, use `./cli/ok check-ok`,
-`./cli/ok governance-sync`, and `./cli/ok review --freeze` from the terminal instead.
+`./cli/ok governance-sync`, `./cli/ok next`, and `./cli/ok review --freeze` from the
+terminal instead. Copilot fallback for NEXT: `ok next` + `docs/PRINT-NEXT.md`.
+
+Host niceties improve odds of tab refresh; they do **not** guarantee an accurate open
+tab. CLI/Muse/shell rewrites and dirty buffers can still stale a tab.

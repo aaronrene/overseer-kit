@@ -6,54 +6,60 @@
 
 ---
 
-<!-- overseer:next role=primary lane=product status=live -->
+<!-- overseer:next role=primary lane=product status=live land-phase=land-a -->
 <!-- overseer:anchor:next-session -->
-## NEXT SESSION — Public repository visibility flip
+## NEXT SESSION — ONS → main (land-a)
 
-**Date:** 2026-08-04  
-**Current position:** Contributor (prep DONE) → Public visibility flip  
+**Date:** 2026-08-12  
+**Current position:** ONS-b DONE (BV `pass`) → land to main  
 **Model:** Operator + Auto
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **Contributor → main** | PR [#63](https://github.com/aaronrene/overseer-kit/pull/63) @ `0e80a42` — `CONTRIBUTING.md`, laundry purge, migrate guide, visibility checklist. Muse `sha256:9c9e489…`. Repo still **private**. |
+| **ONS-b** | `ok next` + `--print-next`; skill/rule; `docs/PRINT-NEXT.md`; optional fail-open stop-hook template; SPEC §5; §ONS.12 **24** green; BV **`pass`** (ONS-BV-r1). |
 
 ### THE ONE NEXT STEP — **Model: Operator + Auto**
 
-Flip GitHub `aaronrene/overseer-kit` private → public when the checklist is green. Operator performs Settings → visibility. Auto only updates ROADMAP/HANDOVER after the flip is confirmed. Do not automate the flip.
+Land ONS to Muse `main` then mirror (SD-14 / SD-21). Wait for merge — do not re-paste land-a after merge.
 
 | | |
 | --- | --- |
-| **ID** | **Public-visibility-flip** |
-| **Branch** | `main` (after land) then operator flip |
+| **ID** | **ONS → main (land-a)** |
+| **Branch** | `feat/ons-operator-next-surfacing` |
 | **Repo** | **overseer-kit** |
-| **Read first** | `docs/PUBLIC-VISIBILITY-CHECKLIST.md`; `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md` |
-| **Hard stops** | No merge to `main` without Tier 3 · no secrets · no agent/CI visibility flip · no inventing NEXT when ambiguous |
+| **Read first** | `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md`; `MUSE-BRIDGE-WORKFLOW.md` |
+| **Hard stops** | No `git push origin main` · feature→GitHub-`main` forbidden · Tier 3 if live posture/secrets in diff |
 <!-- /overseer:anchor:next-session -->
 
 <!-- overseer:anchor:paste-ready-prompt -->
-### Paste-ready prompt — Public visibility flip
+### Paste-ready prompt — ONS → main (land-a)
 
 ```text
-Public-visibility-flip — Make overseer-kit public on GitHub (Tier 3).
+You are Operator + Auto on overseer-kit — ONS → main (land-a).
 
 Model: Operator + Auto
 Repo: overseer-kit
-Branch: main
-Step: Public-visibility-flip
+Branch: feat/ons-operator-next-surfacing
+Step: ONS → main (land-a)
+land-phase: land-a
 Authority: authoritative
 
-Read first: `docs/PUBLIC-VISIBILITY-CHECKLIST.md`; `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md`.
+Read first:
+- docs/ROADMAP.md (ONS-b DONE; ONS → main NEXT)
+- docs/OVERSEER-HANDOVER.md
+- MUSE-BRIDGE-WORKFLOW.md / scripts/muse-bridge-deploy.sh
 
-Deliverables:
-- Operator: confirm checklist green; GitHub Settings → change visibility → Public.
-- Auto: after confirmed public, mark Public visibility flip DONE; sync ROADMAP + HANDOVER; feature-branch commit.
+Do:
+1. Muse merge feat/ons-operator-next-surfacing → main (operator-authorized / SD-21 if clean)
+2. ./scripts/muse-bridge-deploy.sh "mirror: ONS operator NEXT surfacing"
+3. Open/merge GitHub PR muse-mirror → main only
+4. Stop; wait for merge. Do not start land-b until merge confirmed.
 
-Hard stops: No agent/CI automation of the visibility flip · no secrets · no DNS cutover unless operator explicitly requests · no inventing NEXT when ambiguous
+Do NOT: git push origin main; feature→GitHub-main PR; live consumer sync; public visibility flip.
 
-Governance sync: update roadmap + handover on completion.
+Model: Operator + Auto
 ```
 <!-- /overseer:anchor:paste-ready-prompt -->
 
@@ -83,7 +89,7 @@ Governance sync: update roadmap + handover on completion.
 | **GitHub main** | `8a37818d8f8668784b38cc55c3cd430e3ad47e64` |
 | **Canonical anchor** | `sha256:15670bee7d41687387a2aef5a0568dcefefdd787b6dc1ed03ab0cab59baf1f5d` |
 | **Canonical main** | `sha256:15670bee7d41687387a2aef5a0568dcefefdd787b6dc1ed03ab0cab59baf1f5d` |
-| **Branch** | `main` |
+| **Branch** | `feat/ons-operator-next-surfacing` |
 | **Dirty** | `no` |
 | **Drift** | D1=aligned, D2=aligned, D3=aligned |
 <!-- /overseer:anchor:verified-snapshot -->
@@ -93,7 +99,7 @@ Governance sync: update roadmap + handover on completion.
 
 | Item | Value |
 | --- | --- |
-| Branch | `main` |
+| Branch | `feat/ons-operator-next-surfacing` |
 | GitHub `main` | `8a37818d8f8668784b38cc55c3cd430e3ad47e64` |
 | Canonical anchor | `sha256:15670bee7d41687387a2aef5a0568dcefefdd787b6dc1ed03ab0cab59baf1f5d` (.muse/git-bridge.toml:last_export.muse_commit_id — refresh on next bridge) |
 | Muse `main` | `sha256:15670bee7d41687387a2aef5a0568dcefefdd787b6dc1ed03ab0cab59baf1f5d` |
@@ -109,6 +115,26 @@ Governance sync: update roadmap + handover on completion.
 
 <!-- overseer:anchor:change-log -->
 ## Change log
+
+- **2026-08-12** — **ONS-b DONE (Auto build + BV `pass`, ONS-BV-r1, 0 findings).**
+  Built exactly to frozen `docs/archive/phases/PHASE-ONS-OPERATOR-NEXT-SURFACING.md`:
+  `tools/print_next/` (`extract_current_next` / `format_current_next`, reuses
+  `extract_paste_fence_body`); `cli/commands/next.py` (`EXIT_NEXT_MALFORMED=37`);
+  `ok next` + `ok governance-sync --print-next` short-circuit (mutually exclusive with
+  `--write` / `--all-lanes`); skill + alwaysApply rule; `docs/PRINT-NEXT.md` + AGENTS +
+  consumer stubs; SPEC §5 additive row; optional `cursor/hooks/` fail-open template
+  **not** in footprint. Seven-tier §ONS.12 **24** green
+  (`test_output` sha256:`973cb70ffa10b65de4793fb9ea3599035e60efe5c3f1b5e72ad46ab476d66973`).
+  Host niceties are **not** a DONE gate; no tab-reload claim. NEXT → **ONS → main (land-a)**.
+
+- **2026-08-12** — **ONS-a DONE (Thinking freeze).** Authored + freeze-reviewed
+  `docs/archive/phases/PHASE-ONS-OPERATOR-NEXT-SURFACING.md` → `pass` (ONS-r2), stamp
+  `sha256:242e318f…`. Portable contract: `ok next` / `ok governance-sync --print-next`
+  (read-only extract, fail-closed exit `37`); skill + alwaysApply rule via `ok sync`;
+  Copilot `docs/PRINT-NEXT.md`; host niceties best-effort and **not** a DONE gate.
+  Does not claim IDE tab reload; no per-branch handover names; GS-PASTE regen unchanged.
+  **No ONS-b Auto code this session.** NEXT → ONS-b Auto on `feat/ons-operator-next-surfacing`.
+  Public visibility flip remains queued (operator Tier 3).
 
 - **2026-08-04** — **Contributor → main DONE (SD-21).** Product PR [#63](https://github.com/aaronrene/overseer-kit/pull/63) @ `0e80a42` (Muse FF `sha256:9c9e489…` → bridge → `ok pr-land`). land-b docs PR [#65](https://github.com/aaronrene/overseer-kit/pull/65) @ `8a37818` (PR #64 closed — squash-history conflict on muse-mirror). NEXT remains **Public visibility flip**. Repo still **private**.
 
@@ -951,6 +977,7 @@ See `docs/ROADMAP.md` → Model-split handover protocol (SD-3) and governance sy
 
 | Slice | Deliverable |
 | --- | --- |
+| **ONS-a** | Freeze reviewed → `pass` (ONS-r2), stamp `sha256:242e318f…`. Spec-only. NEXT → ONS-b Auto. |
 | PR #65 | land-b governance sync after Contributor PR #63 (merged 2026-08-04) @ `8a37818` |
 | PR #63 | Contributor prep — CONTRIBUTING, laundry purge, visibility checklist (merged 2026-08-04) @ `0e80a42` |
 | PR #59 | Mirror: mirror: GSB dated-branch collision reconcile — C0 FF/uniquify before ensure (BV pass GSB-BV-r1) (merged 2026-07-31) |
