@@ -60,7 +60,8 @@ Never Outline/Plan on **Auto**. Never start **Auto** until the consumed freeze h
 5. **Auto:** implement mechanically; run seven-tier tests (`policy/test-tiers.yaml`); run
    `/build-verification-review` → `pass` before ROADMAP → **DONE**
 6. Close: update roadmap status + regenerate handover NEXT together; feature-branch commit; PR per
-   `{{vcs.regime}}` — **no** merge to `{{vcs.git.main_branch}}` without Tier 3
+   `{{vcs.regime}}` — **no** merge to `{{vcs.git.main_branch}}` without Tier 3. Final reply
+   includes CURRENT NEXT from disk (`ok next` / `## CURRENT NEXT — paste this`).
 
 ## Definition of Done (every phase)
 

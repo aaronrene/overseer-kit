@@ -17,6 +17,7 @@ COMMANDS = frozenset(
         "check-ok",
         "check-if-ok",  # synonym → check-ok
         "governance-sync",
+        "next",
         "workspace",
         "verify-step",
         "honesty-status",
@@ -33,6 +34,7 @@ COMMANDS = frozenset(
 from cli.commands.app import run_app
 from cli.commands.check_ok import run_check_ok
 from cli.commands.governance_sync import run_governance_sync_command
+from cli.commands.next import run_next_command
 from cli.commands.honesty_status import run_honesty_status_command
 from cli.commands.hosted_dashboard import run_hosted_dashboard
 from cli.commands.init import run_init
@@ -191,6 +193,24 @@ def build_parser() -> argparse.ArgumentParser:
         "--all-lanes",
         action="store_true",
         help="Sync every configured lane; skip lanes with missing doc files",
+    )
+    gs_parser.add_argument(
+        "--print-next",
+        action="store_true",
+        help="Synonym for ok next: print paste-ready fence only (no R1–R5 / patches)",
+    )
+
+    next_parser = subparsers.add_parser(
+        "next",
+        help=(
+            "Print the paste-ready NEXT fence from disk (read-only). "
+            "Not workspace check-next."
+        ),
+    )
+    next_parser.add_argument(
+        "--lane",
+        metavar="NAME",
+        help="Use this docs.lanes handover (requires docs.lanes in config)",
     )
 
     ws_parser = subparsers.add_parser(
@@ -428,7 +448,23 @@ def main(argv: list[str] | None = None, *, ctx: CliContext | None = None) -> int
         return run_review(args, runtime, raw_argv=rest_argv)
     if args.command in {"check-ok", "check-if-ok"}:
         return run_check_ok(args, runtime, raw_argv=rest_argv)
+    if args.command == "next":
+        return run_next_command(args, runtime)
     if args.command == "governance-sync":
+        if getattr(args, "print_next", False):
+            if getattr(args, "write", False):
+                print(
+                    "print-next mutually exclusive with --write",
+                    file=sys.stderr,
+                )
+                return 2
+            if getattr(args, "all_lanes", False):
+                print(
+                    "print-next mutually exclusive with --all-lanes",
+                    file=sys.stderr,
+                )
+                return 2
+            return run_next_command(args, runtime)
         return run_governance_sync_command(args, runtime)
     if args.command == "workspace":
         return run_workspace(args, runtime)

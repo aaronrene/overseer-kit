@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "hooks": {
+    "stop": [
+      {
+        "command": "ok next",
+        "failClosed": false,
+        "loop_limit": 1,
+        "note": "ONS optional stop hook — merge into project .cursor/hooks.json; not auto-enabled. If last reply lacks '## CURRENT NEXT — paste this' after living-doc write, follow up once with ok next output. Never block DONE, never merge, never write docs, never claim tab reload."
+      }
+    ]
+  }
+}
