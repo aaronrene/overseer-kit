@@ -86,6 +86,31 @@ def test_pr_match_accepts_non_compound_slice_token() -> None:
     ) is True
 
 
+def test_pr_match_rejects_visibility_checklist_overlap() -> None:
+    """Live ONS land-b regression: Contributor PR #63 title sharing only
+    English product words (visibility / checklist) must never stamp the
+    open Tier-3 row ``Public repository visibility flip`` DONE."""
+    contributor_title = (
+        "Mirror: mirror: Contributor prep — CONTRIBUTING, laundry purge, "
+        "visibility checklist"
+    )
+    assert (
+        pr_matches_row(
+            contributor_title,
+            _row("**Public repository visibility flip**"),
+        )
+        is False
+    )
+    # Full-label substring still matches when the PR is truly about the flip.
+    assert (
+        pr_matches_row(
+            "Mirror: Public repository visibility flip — Settings private→public",
+            _row("**Public repository visibility flip**"),
+        )
+        is True
+    )
+
+
 def test_pr_match_requires_word_boundary() -> None:
     """Slice IDs must match as whole words — `PLS` inside `pulse` is no match."""
     assert pr_matches_row("chore: pulse metrics cleanup", _row("**PLS-a Post-land main sync freeze**")) is False

@@ -108,6 +108,16 @@ _GENERIC_PHASE_TOKENS = frozenset(
         "for",
         "with",
         "review",
+        # English product words — live ONS land-b false-positive: PR #63
+        # "Contributor prep … visibility checklist" stamped open row
+        # "Public repository visibility flip" DONE via bare "visibility".
+        "public",
+        "repository",
+        "visibility",
+        "flip",
+        "checklist",
+        "guide",
+        "prep",
     }
 )
 
