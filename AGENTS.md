@@ -57,3 +57,10 @@ Ad-hoc honesty check — same freeze-review + build-verification path as roadmap
 
 Skills install to **both** `.cursor/skills/` and `.claude/skills/` on `ok sync`. Do not open a
 new `docs.lanes` entry for one-offs.
+
+## Print NEXT on closeout
+
+After updating the living handover and/or roadmap, the final reply must include the
+paste-ready fence from disk under `## CURRENT NEXT — paste this`. Prefer `ok next`
+(synonym: `ok governance-sync --print-next`). Never trust the open IDE tab. See
+`docs/PRINT-NEXT.md`.

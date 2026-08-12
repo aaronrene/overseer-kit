@@ -6,62 +6,60 @@
 
 ---
 
-<!-- overseer:next role=primary lane=product status=live -->
+<!-- overseer:next role=primary lane=product status=live land-phase=land-a -->
 <!-- overseer:anchor:next-session -->
-## NEXT SESSION — ONS-b Operator NEXT surfacing build
+## NEXT SESSION — ONS → main (land-a)
 
 **Date:** 2026-08-12  
-**Current position:** ONS-a freeze `pass` → ONS-b Auto  
-**Model:** Auto
+**Current position:** ONS-b DONE (BV `pass`) → land to main  
+**Model:** Operator + Auto
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **ONS-a** | Freeze `docs/archive/phases/PHASE-ONS-OPERATOR-NEXT-SURFACING.md` → `pass` (ONS-r2), stamp `sha256:242e318f…`. Portable `ok next` + print-on-closeout; niceties best-effort. **No Auto code this session.** |
+| **ONS-b** | `ok next` + `--print-next`; skill/rule; `docs/PRINT-NEXT.md`; optional fail-open stop-hook template; SPEC §5; §ONS.12 **24** green; BV **`pass`** (ONS-BV-r1). |
 
-### THE ONE NEXT STEP — **Model: Auto**
+### THE ONE NEXT STEP — **Model: Operator + Auto**
 
-Build ONS-b exactly against the frozen spec. Do not redesign. Public visibility flip stays queued (operator Tier 3).
+Land ONS to Muse `main` then mirror (SD-14 / SD-21). Wait for merge — do not re-paste land-a after merge.
 
 | | |
 | --- | --- |
-| **ID** | **ONS-b** |
+| **ID** | **ONS → main (land-a)** |
 | **Branch** | `feat/ons-operator-next-surfacing` |
 | **Repo** | **overseer-kit** |
-| **Read first** | `docs/archive/phases/PHASE-ONS-OPERATOR-NEXT-SURFACING.md`; `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md` |
-| **Hard stops** | No merge to `main` without Tier 3 · no secrets · no tab-reload claim · no per-branch handover names · no inventing NEXT when extraction fails |
+| **Read first** | `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md`; `MUSE-BRIDGE-WORKFLOW.md` |
+| **Hard stops** | No `git push origin main` · feature→GitHub-`main` forbidden · Tier 3 if live posture/secrets in diff |
 <!-- /overseer:anchor:next-session -->
 
 <!-- overseer:anchor:paste-ready-prompt -->
-### Paste-ready prompt — ONS-b
+### Paste-ready prompt — ONS → main (land-a)
 
 ```text
-You are Auto on overseer-kit — ONS-b Operator NEXT surfacing.
+You are Operator + Auto on overseer-kit — ONS → main (land-a).
 
-Model: Auto
+Model: Operator + Auto
 Repo: overseer-kit
 Branch: feat/ons-operator-next-surfacing
-Step: ONS-b
+Step: ONS → main (land-a)
+land-phase: land-a
 Authority: authoritative
 
-Read first (frozen; do not redesign):
-- docs/archive/phases/PHASE-ONS-OPERATOR-NEXT-SURFACING.md
-- docs/ROADMAP.md row ONS-b
+Read first:
+- docs/ROADMAP.md (ONS-b DONE; ONS → main NEXT)
 - docs/OVERSEER-HANDOVER.md
+- MUSE-BRIDGE-WORKFLOW.md / scripts/muse-bridge-deploy.sh
 
-Build ONS-b and ONLY ONS-b:
-- tools/print_next/ + cli/commands/next.py + ok next + governance-sync --print-next
-- cursor/skills/print-next/SKILL.md + cursor/rules/print-next-closeout.mdc
-- docs/PRINT-NEXT.md + AGENTS.md + consumer stub paragraphs + SPEC §5 row
-- optional cursor/hooks/ template (not footprint, failClosed false)
-- seven-tier §ONS.12; /build-verification-review → pass
-- update ROADMAP ONS-b + handover; feature-branch commit
+Do:
+1. Muse merge feat/ons-operator-next-surfacing → main (operator-authorized / SD-21 if clean)
+2. ./scripts/muse-bridge-deploy.sh "mirror: ONS operator NEXT surfacing"
+3. Open/merge GitHub PR muse-mirror → main only
+4. Stop; wait for merge. Do not start land-b until merge confirmed.
 
-Do NOT: regenerate NEXT (GS-PASTE); alias workspace check-next; auto-enable hooks;
-claim tab reload; merge to main; live consumer sync; start other phases.
+Do NOT: git push origin main; feature→GitHub-main PR; live consumer sync; public visibility flip.
 
-Model: Auto
+Model: Operator + Auto
 ```
 <!-- /overseer:anchor:paste-ready-prompt -->
 
@@ -92,7 +90,7 @@ Model: Auto
 | **Canonical anchor** | `sha256:15670bee7d41687387a2aef5a0568dcefefdd787b6dc1ed03ab0cab59baf1f5d` |
 | **Canonical main** | `sha256:15670bee7d41687387a2aef5a0568dcefefdd787b6dc1ed03ab0cab59baf1f5d` |
 | **Branch** | `feat/ons-operator-next-surfacing` |
-| **Dirty** | `no` |
+| **Dirty** | `yes` (pre-commit closeout) |
 | **Drift** | D1=aligned, D2=aligned, D3=aligned |
 <!-- /overseer:anchor:verified-snapshot -->
 
@@ -117,6 +115,17 @@ Model: Auto
 
 <!-- overseer:anchor:change-log -->
 ## Change log
+
+- **2026-08-12** — **ONS-b DONE (Auto build + BV `pass`, ONS-BV-r1, 0 findings).**
+  Built exactly to frozen `docs/archive/phases/PHASE-ONS-OPERATOR-NEXT-SURFACING.md`:
+  `tools/print_next/` (`extract_current_next` / `format_current_next`, reuses
+  `extract_paste_fence_body`); `cli/commands/next.py` (`EXIT_NEXT_MALFORMED=37`);
+  `ok next` + `ok governance-sync --print-next` short-circuit (mutually exclusive with
+  `--write` / `--all-lanes`); skill + alwaysApply rule; `docs/PRINT-NEXT.md` + AGENTS +
+  consumer stubs; SPEC §5 additive row; optional `cursor/hooks/` fail-open template
+  **not** in footprint. Seven-tier §ONS.12 **24** green
+  (`test_output` sha256:`973cb70ffa10b65de4793fb9ea3599035e60efe5c3f1b5e72ad46ab476d66973`).
+  Host niceties are **not** a DONE gate; no tab-reload claim. NEXT → **ONS → main (land-a)**.
 
 - **2026-08-12** — **ONS-a DONE (Thinking freeze).** Authored + freeze-reviewed
   `docs/archive/phases/PHASE-ONS-OPERATOR-NEXT-SURFACING.md` → `pass` (ONS-r2), stamp

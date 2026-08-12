@@ -36,3 +36,9 @@ This stub does **not** authorize:
 
 Migrate / fixture path: `docs/MIGRATE-EXISTING-REPO.md` and
 `tests/fixtures/pilot/config-knowtation.yaml`.
+
+## Print NEXT on closeout
+
+After any update to the living handover and/or roadmap, print the paste-ready fence via
+`ok next` (or `ok governance-sync --print-next`) so the operator’s next chat paste matches
+disk — not an open tab. See `docs/PRINT-NEXT.md`.
