@@ -90,7 +90,7 @@ Model: Operator + Auto
 | **Canonical anchor** | `sha256:15670bee7d41687387a2aef5a0568dcefefdd787b6dc1ed03ab0cab59baf1f5d` |
 | **Canonical main** | `sha256:15670bee7d41687387a2aef5a0568dcefefdd787b6dc1ed03ab0cab59baf1f5d` |
 | **Branch** | `feat/ons-operator-next-surfacing` |
-| **Dirty** | `yes` (pre-commit closeout) |
+| **Dirty** | `no` |
 | **Drift** | D1=aligned, D2=aligned, D3=aligned |
 <!-- /overseer:anchor:verified-snapshot -->
 
