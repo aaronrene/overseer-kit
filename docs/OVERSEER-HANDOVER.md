@@ -11,14 +11,14 @@
 ## NEXT SESSION — Public repository visibility flip
 
 **Date:** 2026-08-12  
-**Current position:** ONS → Public repository visibility flip  
+**Current position:** K12 → Public  
 **Model:** Operator + Auto
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **ONS → main** | SD-21 land: Muse FF `feat/ons-operator-next-surfacing` → `main` (`sha256:3e21a881…`) → muse-bridge → GitHub PR [#68](https://github.com/aaronrene/overseer-kit/pull/68) `muse-mirror` → `main` @ `588da95`. land-b post-merge sync same day. |
+| **K12** | Public landing, scenario gallery, GitHub→MuseHub funnel, **MIT** LICENSE (amended from Apache-2.0), SECURITY.md; `tools/landing/` validator; seven-tier K12 tests (**380** total green) |
 
 ### THE ONE NEXT STEP — **Model: Operator + Auto**
 
@@ -79,12 +79,12 @@ Governance sync: update roadmap + handover on completion.
 | Area | State |
 | --- | --- |
 | **VCS regime** | `muse+git-mirror` |
-| **GitHub main** | `588da95341d3fb7b9bacfc552c4164b9e84de042` |
-| **Canonical anchor** | `sha256:3e21a88112afd989cedf5380820260d8c996e71805c8d23ca83f2d2f90f4a0cd` |
-| **Canonical main** | `sha256:3e21a88112afd989cedf5380820260d8c996e71805c8d23ca83f2d2f90f4a0cd` |
-| **Branch** | `feat/governance-sync-2026-08-12-2` |
-| **Dirty** | `no` |
-| **Drift** | D1=aligned, D2=aligned, D3=aligned |
+| **GitHub main** | `cc63529447fdcce0c131113f2232fc05c4bdfe30` |
+| **Canonical anchor** | `sha256:b08170e3c59ff9f91cb47d091a9008d46069add5c5b1146e2089b623cb26a8d6` |
+| **Canonical main** | `sha256:b08170e3c59ff9f91cb47d091a9008d46069add5c5b1146e2089b623cb26a8d6` |
+| **Branch** | `feat/governance-sync-2026-08-12-3` |
+| **Dirty** | `yes` |
+| **Drift** | D1=drifted, D2=aligned, D3=aligned |
 <!-- /overseer:anchor:verified-snapshot -->
 
 <!-- overseer:anchor:vcs-table -->
@@ -92,11 +92,11 @@ Governance sync: update roadmap + handover on completion.
 
 | Item | Value |
 | --- | --- |
-| Branch | `feat/governance-sync-2026-08-12-2` |
-| GitHub `main` | `588da95341d3fb7b9bacfc552c4164b9e84de042` |
-| Canonical anchor | `sha256:3e21a88112afd989cedf5380820260d8c996e71805c8d23ca83f2d2f90f4a0cd` (.muse/git-bridge.toml:last_export.muse_commit_id) |
-| Muse `main` | `sha256:3e21a88112afd989cedf5380820260d8c996e71805c8d23ca83f2d2f90f4a0cd` |
-| Dirty | no |
+| Branch | `feat/governance-sync-2026-08-12-3` |
+| GitHub `main` | `cc63529447fdcce0c131113f2232fc05c4bdfe30` |
+| Canonical anchor | `sha256:b08170e3c59ff9f91cb47d091a9008d46069add5c5b1146e2089b623cb26a8d6` (.muse/git-bridge.toml:last_export.muse_commit_id) |
+| Muse `main` | `sha256:b08170e3c59ff9f91cb47d091a9008d46069add5c5b1146e2089b623cb26a8d6` |
+| Dirty | yes |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -108,6 +108,8 @@ Governance sync: update roadmap + handover on completion.
 
 <!-- overseer:anchor:change-log -->
 ## Change log
+
+- **2026-08-12** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `cc63529`; realign: D2 aligned — skip realign; next_regen=regenerated
 
 - **2026-08-12** — **ONS → main DONE (land-b).** Muse FF `sha256:3e21a881…` → GitHub PR [#68](https://github.com/aaronrene/overseer-kit/pull/68) @ `588da95`; post-merge sync; D3 `pr_matches_row` generic-token harden (visibility/checklist false-stamp); NEXT → **Public repository visibility flip**. `ok land-closeout` → `0`.
 
