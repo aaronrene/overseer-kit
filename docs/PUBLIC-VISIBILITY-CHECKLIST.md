@@ -27,11 +27,13 @@ Use this once before flipping `aaronrene/overseer-kit` from **private** to
 - [x] Working tree scan: no PEM / private-key / `ghp_` / `sk-` / `.env*` matches
 - [x] `desktop/keys/` holds **public** verifying material only
 - [x] No tracked `.env*` history hits for credential filenames in this pass
-- [ ] Operator spot-check: GitHub Settings → Secrets (Actions) contain only intended
+- [x] Operator spot-check: GitHub Settings → Secrets (Actions) contain only intended
       signing/API names — never commit secret values
-- [ ] Operator spot-check: Issues/PR draft text has no private URLs or tokens
+- [x] Operator spot-check: Issues/PR draft text has no private URLs or tokens
 
 ### Flip (operator only)
+
+**DONE 2026-08-12** — repo is **public** (`gh api … --jq .visibility` → `public`).
 
 When the boxes above are acceptable:
 
