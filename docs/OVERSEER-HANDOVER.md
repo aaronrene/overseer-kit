@@ -8,47 +8,47 @@
 
 <!-- overseer:next role=primary lane=product status=live -->
 <!-- overseer:anchor:next-session -->
-## NEXT SESSION — Public repository visibility flip
+## NEXT SESSION — Build queue idle (operator pick)
 
 **Date:** 2026-08-12  
-**Current position:** K12 → Public  
+**Current position:** Public repository visibility flip → queue idle  
 **Model:** Operator + Auto
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **K12** | Public landing, scenario gallery, GitHub→MuseHub funnel, **MIT** LICENSE (amended from Apache-2.0), SECURITY.md; `tools/landing/` validator; seven-tier K12 tests (**380** total green) |
+| **Public repository visibility flip** | GitHub `aaronrene/overseer-kit` confirmed **public** (`visibility: public`). Checklist + ROADMAP/HANDOVER synced. |
 
 ### THE ONE NEXT STEP — **Model: Operator + Auto**
 
-Tier-3 GitHub Settings flip private → public when `docs/PUBLIC-VISIBILITY-CHECKLIST.md` is green. Operator performs the flip; Auto only syncs ROADMAP/HANDOVER after confirmed public. No agent/CI automation of the flip.
+Build queue has **zero** open rows. Pick the next kit slice from the exploration backlog in `docs/ROADMAP.md` (or a new Thinking freeze), then author NEXT via `ok governance-sync` / hand-edit. Do **not** re-paste the public-visibility flip — that row is **DONE**.
 
 | | |
 | --- | --- |
-| **ID** | **Public** |
-| **Branch** | `feat/public` |
+| **ID** | **queue-idle** |
+| **Branch** | `feat/governance-sync-*` (when docs-only) or `feat/<new-slice>` |
 | **Repo** | **overseer-kit** |
 | **Read first** | `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md` |
 | **Hard stops** | No merge to `main` without Tier 3 · no secrets · no live posture flips · no inventing NEXT when ambiguous |
 <!-- /overseer:anchor:next-session -->
 
 <!-- overseer:anchor:paste-ready-prompt -->
-### Paste-ready prompt — Public
+### Paste-ready prompt — queue-idle
 
 ```text
-Public — Public repository visibility flip (overseer-kit).
+queue-idle — Build queue idle (overseer-kit).
 
 Model: Operator + Auto
 Repo: overseer-kit
-Branch: feat/public
-Step: Public
+Branch: feat/<new-slice-or-governance-sync>
+Step: queue-idle
 Authority: authoritative
 
 Read first: `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md`.
 
 Deliverables:
-- Tier-3 GitHub Settings flip private → public when `docs/PUBLIC-VISIBILITY-CHECKLIST.md` is green. Operator performs the flip; Auto only syncs ROADMAP/HANDOVER after confirmed public. No agent/CI automation of the flip.
+- Build queue has zero open rows. Operator picks next slice from the exploration backlog (or authors a new Thinking freeze), then regenerates NEXT. Do not re-run Public repository visibility flip — already DONE (repo is public).
 
 Hard stops: No merge to `main` without Tier 3 · no secrets · no live posture flips · no inventing NEXT when ambiguous
 
@@ -79,10 +79,10 @@ Governance sync: update roadmap + handover on completion.
 | Area | State |
 | --- | --- |
 | **VCS regime** | `muse+git-mirror` |
-| **GitHub main** | `cc63529447fdcce0c131113f2232fc05c4bdfe30` |
-| **Canonical anchor** | `sha256:b08170e3c59ff9f91cb47d091a9008d46069add5c5b1146e2089b623cb26a8d6` |
-| **Canonical main** | `sha256:b08170e3c59ff9f91cb47d091a9008d46069add5c5b1146e2089b623cb26a8d6` |
-| **Branch** | `feat/governance-sync-2026-08-12-3` |
+| **GitHub main** | `31a4da1a9cd554ab3dac793034c4e9cada55ccb2` |
+| **Canonical anchor** | `sha256:f43c1b2f79c4ff7ccccba79b26ae46df36d449e9215d4d5f4c931e1139288e78` |
+| **Canonical main** | `sha256:f43c1b2f79c4ff7ccccba79b26ae46df36d449e9215d4d5f4c931e1139288e78` |
+| **Branch** | `feat/governance-sync-2026-08-12-public-done` |
 | **Dirty** | `yes` |
 | **Drift** | D1=drifted, D2=aligned, D3=aligned |
 <!-- /overseer:anchor:verified-snapshot -->
@@ -92,10 +92,10 @@ Governance sync: update roadmap + handover on completion.
 
 | Item | Value |
 | --- | --- |
-| Branch | `feat/governance-sync-2026-08-12-3` |
-| GitHub `main` | `cc63529447fdcce0c131113f2232fc05c4bdfe30` |
-| Canonical anchor | `sha256:b08170e3c59ff9f91cb47d091a9008d46069add5c5b1146e2089b623cb26a8d6` (.muse/git-bridge.toml:last_export.muse_commit_id) |
-| Muse `main` | `sha256:b08170e3c59ff9f91cb47d091a9008d46069add5c5b1146e2089b623cb26a8d6` |
+| Branch | `feat/governance-sync-2026-08-12-public-done` |
+| GitHub `main` | `31a4da1a9cd554ab3dac793034c4e9cada55ccb2` |
+| Canonical anchor | `sha256:f43c1b2f79c4ff7ccccba79b26ae46df36d449e9215d4d5f4c931e1139288e78` (.muse/git-bridge.toml:last_export.muse_commit_id) |
+| Muse `main` | `sha256:f43c1b2f79c4ff7ccccba79b26ae46df36d449e9215d4d5f4c931e1139288e78` |
 | Dirty | yes |
 <!-- /overseer:anchor:vcs-table -->
 
@@ -108,6 +108,10 @@ Governance sync: update roadmap + handover on completion.
 
 <!-- overseer:anchor:change-log -->
 ## Change log
+
+- **2026-08-12** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `31a4da1`; realign: D2 aligned — skip realign; next_regen=human_authorship_required:zero_open_rows
+
+- **2026-08-12** — **Public repository visibility flip DONE (docs sync).** GitHub repo already **public**; marked ROADMAP + checklist; NEXT → **queue-idle** (zero open rows). Tip refresh to GitHub `main` @ `31a4da1`.
 
 - **2026-08-12** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `cc63529`; realign: D2 aligned — skip realign; next_regen=regenerated
 
