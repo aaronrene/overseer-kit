@@ -8,51 +8,57 @@
 
 <!-- overseer:next role=primary lane=product status=live -->
 <!-- overseer:anchor:next-session -->
-## NEXT SESSION — Build queue idle (operator pick)
+## NEXT SESSION — LT-b Loop tightening build
 
-**Date:** 2026-08-12  
-**Current position:** Public repository visibility flip → queue idle  
-**Model:** Operator + Auto
+**Date:** 2026-09-01  
+**Current position:** LT-a freeze `pass` (LT-r2) → LT-b Auto  
+**Model:** Auto
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **Public repository visibility flip** | GitHub `aaronrene/overseer-kit` confirmed **public** (`visibility: public`). Checklist + ROADMAP/HANDOVER synced. |
+| **LT-a** | Loop tightening freeze reviewed → `pass` (LT-r2), stamp `sha256:6a5aafb5…`. Spec-only. |
 
-### THE ONE NEXT STEP — **Model: Operator + Auto**
+### THE ONE NEXT STEP — **Model: Auto**
 
-Build queue has **zero** open rows. Pick the next kit slice from the exploration backlog in `docs/ROADMAP.md` (or a new Thinking freeze), then author NEXT via `ok governance-sync` / hand-edit. Do **not** re-paste the public-visibility flip — that row is **DONE**.
+Build exactly against frozen `docs/archive/phases/PHASE-LT-LOOP-TIGHTENING.md`. No redesign. No tab-reload claim. No honesty/hooks default-on for consumers. `/build-verification-review` before ROADMAP LT-b → DONE.
 
 | | |
 | --- | --- |
-| **ID** | **queue-idle** |
-| **Branch** | `feat/governance-sync-*` (when docs-only) or `feat/<new-slice>` |
+| **ID** | **LT-b** |
+| **Branch** | `feat/loop-tightening` |
 | **Repo** | **overseer-kit** |
-| **Read first** | `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md` |
-| **Hard stops** | No merge to `main` without Tier 3 · no secrets · no live posture flips · no inventing NEXT when ambiguous |
+| **Read first** | `docs/archive/phases/PHASE-LT-LOOP-TIGHTENING.md`; `docs/ROADMAP.md`; this handover |
+| **Hard stops** | No merge to `main` without Tier 3 · no secrets · no live posture flips · no consumer honesty/hooks defaults |
 <!-- /overseer:anchor:next-session -->
 
 <!-- overseer:anchor:paste-ready-prompt -->
-### Paste-ready prompt — queue-idle
+### Paste-ready prompt — LT-b
 
 ```text
-queue-idle — Build queue idle (overseer-kit).
+LT-b — Loop tightening build (overseer-kit).
 
-Model: Operator + Auto
+Model: Auto
 Repo: overseer-kit
-Branch: feat/<new-slice-or-governance-sync>
-Step: queue-idle
+Branch: feat/loop-tightening
+Step: LT-b
 Authority: authoritative
 
-Read first: `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md`.
+Read first: `docs/archive/phases/PHASE-LT-LOOP-TIGHTENING.md`; `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md`.
 
 Deliverables:
-- Build queue has zero open rows. Operator picks next slice from the exploration backlog (or authors a new Thinking freeze), then regenerates NEXT. Do not re-run Public repository visibility flip — already DONE (repo is public).
+- Build slices 1–4 exactly against the frozen spec (footprint coverage; session_bookends default off; kit-dogfood honesty warn; handover-compact).
+- Seven-tier tests (`test_lt_`). Dogfood `ok sync --yes`. One compact --write on this handover.
+- /build-verification-review → pass before ROADMAP DONE.
 
-Hard stops: No merge to `main` without Tier 3 · no secrets · no live posture flips · no inventing NEXT when ambiguous
+Hard stops: No merge to `main` without Tier 3 · no secrets · no live posture flips · no tab-reload claim · no honesty/hooks default-on for consumers
 
-Governance sync: update roadmap + handover on completion.
+Governance gates (mandatory — remind only; silence is not pass):
+- Freeze review: already pass (LT-r2) — do not reopen the spec
+- Build verification: /build-verification-review after Auto before ROADMAP DONE
+
+Governance sync: update docs/ROADMAP.md + docs/OVERSEER-HANDOVER.md on completion.
 ```
 <!-- /overseer:anchor:paste-ready-prompt -->
 
@@ -108,6 +114,10 @@ Governance sync: update roadmap + handover on completion.
 
 <!-- overseer:anchor:change-log -->
 ## Change log
+
+- **2026-09-01** — **LT-a DONE (Thinking freeze).** `docs/archive/phases/PHASE-LT-LOOP-TIGHTENING.md` → `pass` (LT-r2), stamp `sha256:6a5aafb5…`. Slices 1–4 frozen. **No LT-b Auto code this session.** NEXT → LT-b Auto on `feat/loop-tightening`.
+
+- **2026-09-01** — **LT-a drafted (Thinking freeze, review pending).** Slices 1–4 in `docs/archive/phases/PHASE-LT-LOOP-TIGHTENING.md` on `feat/loop-tightening`. Backlog captured: independent second reviewer, KH2 remask, session-type bookends, auto-enable hooks, host tab reload. No Auto code.
 
 - **2026-08-12** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `31a4da1`; realign: D2 aligned — skip realign; next_regen=human_authorship_required:zero_open_rows
 

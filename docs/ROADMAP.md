@@ -102,6 +102,8 @@
 | **ONS-a Operator NEXT surfacing freeze** | Thinking | **DONE** | **Reviewed → `pass` (ONS-r2)**, stamp `sha256:242e318f…`. Froze `docs/archive/phases/PHASE-ONS-OPERATOR-NEXT-SURFACING.md`: portable `ok next` / `ok governance-sync --print-next` (read-only extract, exit `37`); skill + alwaysApply rule (Cursor + Claude Code); Copilot `docs/PRINT-NEXT.md`; host niceties best-effort and **not** a DONE gate; no tab-reload claim; no per-branch handover names. **Spec-only.** Cleared for ONS-b. |
 | **ONS-b Operator NEXT surfacing build** | Auto | **DONE** | Built exactly to frozen `docs/archive/phases/PHASE-ONS-OPERATOR-NEXT-SURFACING.md`: `tools/print_next/` + `cli/commands/next.py` + `ok next` / `ok governance-sync --print-next`; skill + alwaysApply rule; `docs/PRINT-NEXT.md` + AGENTS + consumer stubs; SPEC §5 row; optional `cursor/hooks/` (fail-open, not footprint). Seven-tier §ONS.12 **24** green. BV **`pass`** (ONS-BV-r1). Tab sync is **not** a DONE gate. |
 | **ONS → main** | Operator + Auto | **DONE** | SD-21 land: Muse FF `feat/ons-operator-next-surfacing` → `main` (`sha256:3e21a881…`) → muse-bridge → GitHub PR [#68](https://github.com/aaronrene/overseer-kit/pull/68) `muse-mirror` → `main` @ `588da95`. land-b post-merge sync same day. |
+| **LT-a Loop tightening freeze** | Thinking | **DONE** | **Reviewed → `pass` (LT-r2)**, stamp `sha256:6a5aafb5…`. Froze `docs/archive/phases/PHASE-LT-LOOP-TIGHTENING.md`: footprint coverage gate; `session_bookends` default off + Cursor start/end/stop hooks when on; kit-dogfood honesty warn + active-slice Mode B; `ok handover-compact`. **Spec-only.** Cleared for LT-b. |
+| **LT-b Loop tightening build** | Auto | **TODO** | Build exactly against frozen LT-a. No tab-reload claim. No honesty/hooks default-on for consumers. |
 | **K10 Honesty module** | Auto | **DONE** | L2 `honesty-status` + `ledger {append,verify,show}` + role gates + fixture pack + seven-tier tests (**340** green); SPEC §5 updated |
 | **K11 API/CI freeze provider** | Auto | **DONE** | Headless `provider: api` HTTP client (`/health`, `/review`) + `OVERSEER_REVIEW_API_KEY`/`OVERSEER_REVIEW_API_URL` + GitHub Actions example + `templates/ci/` vendored workflow; seven-tier K11 tests (**361** green) |
 | **K12 / Track N** | Thinking → Auto | **DONE** | Public landing, scenario gallery, GitHub→MuseHub funnel, **MIT** LICENSE (amended from Apache-2.0), SECURITY.md; `tools/landing/` validator; seven-tier K12 tests (**380** total green) |
@@ -109,7 +111,7 @@
 **Vision baton:** `docs/archive/thinking/OVERSEER-KIT-LAYERED-HONESTY-VISION.md` (expanded)  
 **K9a contract:** `docs/archive/phases/PHASE-K9A-L1-L2-MODULE-FREEZE.md`  
 **Consumer pattern:** `docs/CONSUMER-ADAPTER-PATTERN.md`  
-**Handover UX debt:** none (KH1 + KH1b **DONE**)
+**Handover UX debt:** living change-log bloat — queued **LT-a / LT-b** (compact; KH1 section remains)
 
 ## Exploration backlog (ideas — NOT queued; each needs its own Thinking freeze before it becomes a phase)
 
@@ -127,6 +129,11 @@ freeze (and clear the "governance, not runtime" boundary) before entering the bu
 | **Public landing + console access UX** | Thinking **DONE** (`pass`, LAC-r2) + Auto **DONE** (BV `pass`, LAC-BV-r1). | Marketing/static ≠ live Path B; no public CSRF mint; no unsigned-as-primary; Path 1 needs `OVERSEER_REPO_ROOT`. |
 | **Track Q UI redesign (developer tool)** | Promoted → Q4a Thinking **DONE** (`pass`, Q4a-r2) + Q4b Auto **DONE** (BV `pass`, Q4b-BV-r1). | Presentation only; closed `api/*` stay frozen (Q0). |
 | **License change Apache → MIT** | Promoted → Thinking + Auto **DONE** (MIT-r1 `pass`, MIT-BV-r1 `pass`). Kit SPDX is **MIT**. | Historical Apache shipping remains on earlier commits; current tree is MIT. |
+| **Independent second reviewer** | Required second chat / separate verifier before DONE (not the same agent that built). Tightens self-graded homework. High friction; easy to skip unless a gate checks a *different* session or role. | Kit records/gates the second verdict; it does not run another model by itself. CLI + docs first so non-Cursor hosts work. |
+| **KH2 remask (later dirty edit hides Muse drift)** | KH2 misses the case where Git committed ahead of Muse, then a later uncommitted edit makes both look dirty. Discuss + optional persisted Git-SHA anchor. Hard VCS problem; not day-to-day until `ok status` lies. | Same three choke points as KH2; no Muse-only baseline; no false block on normal mid-edit work. |
+| **Session-type bookends (idle / Operator+Auto)** | When the queue is idle or the label is Operator+Auto, start+end thinking reviews get skipped. Fix by classifying the session (pick / build / land) and giving each type its own start and end gate. | Portable CLI/status first; Cursor hooks optional. Do not invent a fake phase when the operator has not picked. |
+| **Auto-enable session hooks on `ok sync`** | Today hooks/Automations are recipes you turn on once. Later: default `session_bookends.enabled: true` (or sync-write hooks for everyone) with a documented off switch. Cursor Automations UI may still need a click. | Hooks are Cursor-only niceties. Claude Code / Copilot / paste stay on `ok next` + `ok governance-sync`. Never treat missing hooks as pass. |
+| **Host tab reload (only if Cursor gives us a command)** | Human close/reopen of the handover *does* show disk. We cannot honestly automate close/reopen today (no supported tab API; CLI open often just focuses the stale tab). If Cursor later exposes revert/reload, use it. Until then: print NEXT in chat + remind the human. | No fake UI-clicker. No Cursor-only primary. No tab-reload DONE gate. |
 
 ## Dogfood integrity gate (mandatory — not optional)
 
@@ -215,11 +222,13 @@ same method names in both regimes.
 - `docs/archive/phases/PHASE-GFG-GOVERNANCE-FRESHNESS-GATE.md` — GFG governance freshness gate freeze (**reviewed → `pass`, GFG-r3**, stamp `sha256:fe8a3a15…`); GFG-b builds against it
 - `docs/archive/phases/PHASE-PLS-POST-LAND-MAIN-SYNC.md` — PLS post-land main sync freeze (**reviewed → `pass`, PLS-r4**, stamp `sha256:7a31fb2b…`); PLS-b builds against it
 - `docs/archive/phases/PHASE-ONS-OPERATOR-NEXT-SURFACING.md` — ONS operator NEXT surfacing freeze (**reviewed → `pass`, ONS-r2**, stamp `sha256:242e318f…`); ONS-b builds against it
+- `docs/archive/phases/PHASE-LT-LOOP-TIGHTENING.md` — LT loop tightening freeze (**reviewed → `pass`, LT-r2**, stamp `sha256:6a5aafb5…`); LT-b builds against it
 - `docs/archive/phases/PHASE-GSB-GOVERNANCE-SYNC-BRANCH-COLLISION.md` — GSB dated-branch collision freeze (**reviewed → `pass`, GSB-r3**, stamp `sha256:30cfb999…`); GSB-b builds against it
 - Scooling `docs/archive/phases/PHASE-9A-MULTI-AGENT-OVERSEER-ROUTER-OUTLINE.md` — runtime org-chart reference
 
 <!-- overseer:anchor:next-step-glance -->
 ## Next step at a glance
 
-_No unambiguous NEXT row — operator authorship required._
+**Next:** **LT-b Loop tightening build** — **Model:** Auto — **Status:** **TODO**
+**Phase ID:** LT-b
 <!-- /overseer:anchor:next-step-glance -->
