@@ -54,3 +54,4 @@ honesty:
   enabled: true
   ledger: .overseer/honesty/VERDICT-LEDGER.jsonl
   require_verification_evidence: warn
+  require_independent_second_reviewer: warn

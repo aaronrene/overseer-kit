@@ -6,56 +6,58 @@
 
 ---
 
-<!-- overseer:next role=primary lane=product status=live -->
+<!-- overseer:next role=primary lane=product status=live land-phase=land-a -->
 <!-- overseer:anchor:next-session -->
-## NEXT SESSION — Consumer LT rollout (Operator)
+## NEXT SESSION — ISR → main (land-a)
 
 **Date:** 2026-09-02  
-**Current position:** LT → main DONE (PR #72 @ `ff737cc`) → consumer rollout  
-**Model:** Operator
+**Current position:** ISR-b BV `pass` → Muse FF + muse-bridge PR → **stop for Tier 3 merge**  
+**Model:** Operator + Auto  
+**land-phase:** land-a
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **LT → main (land-b)** | PR [#72](https://github.com/aaronrene/overseer-kit/pull/72) merged @ `ff737cc`. Footprint coverage; session bookends; honesty warn; `ok handover-compact`; optional-feature tips. |
-| **LT-b** | Loop tightening build on `main` (BV `pass`, LT-b-BV-r1; §LT.10 **34** green). |
+| **ISR-b (Auto + BV)** | Built exactly to freeze; second-chat `/build-verification-review` **V1–V8 `pass`** (ISR-b-BV-r1). Ledger `independent_second_review` + Mode B `verification_evidence` appended. `actor_session_id` `c72e9414-24f0-4446-9a1b-d9ff5d60bd99` ≠ producer `62762b24-69e5-4c95-b38e-cadbf261f9af`. `test_isr_` **48** green. ROADMAP ISR-b **DONE**. |
+| **ISR-a** | Freeze → `pass` (ISR-r4), stamp `sha256:e6284150…`. |
 
-### THE ONE NEXT STEP — **Model: Operator**
+### THE ONE NEXT STEP — **Model: Operator + Auto**
 
-Roll LT out to consumer repos that already vendor the kit: in each repo run `ok sync` (use `--force` only when sync reports kit-owned conflicts you accept). Optionally enable `session_bookends.enabled: true` and/or honesty warn per repo. Do **not** invent a new kit phase until rollout is done or you consciously defer it.
+SD-21 land-a: Muse FF `feat/isr-independent-second-reviewer` → `main` → muse-bridge → GitHub PR `muse-mirror` → `main`. **Stop for Tier 3 merge authorization.** Do not merge without authorization. Kit does not run another model. Do not enable consumer `require`.
 
 | | |
 | --- | --- |
-| **ID** | **consumer-lt-rollout** |
-| **Branch** | (per consumer repo) |
-| **Repo** | consumer repos using overseer-kit (Knowtation, Scooling, VideoFactory, …) |
-| **Read first** | this handover; `cursor/hooks/README.md`; each consumer `.overseer/config.yaml` |
-| **Hard stops** | No merge to kit `main` without Tier 3 · no secrets · no live posture flips · no `--include-preserved` wipe of living docs |
+| **ID** | **ISR → main (land-a)** |
+| **land-phase** | `land-a` |
+| **Branch** | `feat/isr-independent-second-reviewer` |
+| **Repo** | overseer-kit |
+| **Read first** | this handover; `docs/ROADMAP.md` ISR → main row; SD-21 land ritual |
+| **Hard stops** | No merge to kit `main` without Tier 3 · no secrets · no live posture flips · no model dispatch · no consumer `require` |
 <!-- /overseer:anchor:next-session -->
 
 <!-- overseer:anchor:paste-ready-prompt -->
-### Paste-ready prompt — consumer LT rollout
+### Paste-ready prompt — ISR → main (land-a)
 
 ```text
-Consumer LT rollout — after overseer-kit PR #72 on main.
+ISR → main land-a (SD-21).
 
-Model: Operator
-Repo: each consumer that vendors overseer-kit
-Step: consumer-lt-rollout
+Model: Operator + Auto
+Repo: overseer-kit
+Step: ISR-land-a
+Branch: feat/isr-independent-second-reviewer
 Authority: authoritative
 
-Read first: overseer-kit `docs/OVERSEER-HANDOVER.md` (this NEXT); consumer `.overseer/config.yaml`; `cursor/hooks/README.md`.
+Read first: docs/OVERSEER-HANDOVER.md (this NEXT); docs/ROADMAP.md ISR → main row.
 
-Deliverables:
-- In each consumer repo: `ok sync` (resolve conflicts with `--force` only when intentional; never `--include-preserved` unless wiping living docs on purpose).
-- Optional per repo: set `session_bookends.enabled: true` then re-sync for Cursor start/end nudges; set honesty warn if desired.
-- Confirm `ok status` shows footprint_coverage ok (when hooks expected) and no unexpected tips you already enabled.
-- When rollout is done (or deferred), pick next kit backlog freeze from `docs/ROADMAP.md` exploration backlog.
+ISR-a freeze + ISR-b Auto are DONE. Second-chat BV pass (ISR-b-BV-r1). Land on operator Tier-3 authorization only:
 
-Hard stops: No kit main merge without Tier 3 · no secrets · no live posture flips · do not clobber preserved living docs
+1. Muse FF feat/isr-independent-second-reviewer → main.
+2. muse-bridge → GitHub PR muse-mirror → main.
+3. Do not merge without explicit Tier 3 authorization.
+4. Kit does not run another model. Do not enable consumer require.
 
-Governance sync: update kit handover when rollout completes or is deferred.
+Hard stops: No kit main merge without Tier 3 · no secrets · no live posture flips · no model dispatch
 ```
 <!-- /overseer:anchor:paste-ready-prompt -->
 
@@ -85,7 +87,7 @@ Governance sync: update kit handover when rollout completes or is deferred.
 | **GitHub main** | `ff737ccabdfd165232f0b0173cd912142b9b48b7` |
 | **Canonical anchor** | `sha256:fdd10e9dde18c4e14eec5d9a910dcc9d47b00d26c6cc0a144cc5d58af1237c65` |
 | **Canonical main** | `sha256:fdd10e9dde18c4e14eec5d9a910dcc9d47b00d26c6cc0a144cc5d58af1237c65` |
-| **Branch** | `main` |
+| **Branch** | `feat/isr-independent-second-reviewer` |
 | **Dirty** | `yes` |
 | **Drift** | D1=drifted, D2=aligned, D3=aligned |
 <!-- /overseer:anchor:verified-snapshot -->
@@ -95,7 +97,7 @@ Governance sync: update kit handover when rollout completes or is deferred.
 
 | Item | Value |
 | --- | --- |
-| Branch | `main` |
+| Branch | `feat/isr-independent-second-reviewer` |
 | GitHub `main` | `ff737ccabdfd165232f0b0173cd912142b9b48b7` |
 | Canonical anchor | `sha256:fdd10e9dde18c4e14eec5d9a910dcc9d47b00d26c6cc0a144cc5d58af1237c65` (.muse/git-bridge.toml:last_export.muse_commit_id) |
 | Muse `main` | `sha256:fdd10e9dde18c4e14eec5d9a910dcc9d47b00d26c6cc0a144cc5d58af1237c65` |
@@ -110,6 +112,12 @@ Governance sync: update kit handover when rollout completes or is deferred.
 - Governance sync is mandatory before session end (SD-17)
 
 <!-- overseer:anchor:change-log -->
+- **2026-09-02** — **ISR-b DONE** (Auto + second-chat BV `pass`, ISR-b-BV-r1). V1–V8 against freeze + branch diff; `independent_second_review` pass (actor `c72e9414…` ≠ producer `62762b24…`); Mode B `verification_evidence` (`test_output` sha256:`4a82e963…`). `test_isr_` **48** green. NEXT → **ISR → main (land-a)**. No merge this session.
+
+- **2026-09-02** — **ISR-a DONE (Thinking freeze).** `docs/archive/phases/PHASE-ISR-INDEPENDENT-SECOND-REVIEWER.md` → `pass` (ISR-r4), stamp `sha256:e6284150…`. Second-chat / separate-verifier gate before Auto DONE; kit records/gates only; no model dispatch; portable CLI+docs primary; seven-tier §ISR.11 frozen. **No ISR-b Auto code this session.** NEXT → ISR-b Auto on `feat/isr-independent-second-reviewer`.
+
+- **2026-09-02** — **consumer-lt-rollout DONE.** `ok sync` LT footprint into Knowtation, Scooling, VideoFactory, the-brain, bornfree-hub, ourware, scooling-lab, scooling-sc-brain. Knowtation/Scooling: `session_bookends` + honesty warn + hooks; VF/the-brain: bookends + hooks (honesty tip deferred). Knowtation/VF used `--only` to avoid clobbering living docs / consumer-modified policy. All synced repos `footprint_coverage: ok`. Deferred: MuseHub (no config.yaml), bornfree/ourware/lab bookends, VF full `--force` on customized tiers/rules, Knowtation `origin:kit` living-doc lock hygiene. NEXT → **ISR-a** (Independent second reviewer Thinking freeze).
+
 - **2026-09-02** — **LT → main DONE (land-b).** GitHub PR [#72](https://github.com/aaronrene/overseer-kit/pull/72) merged @ `ff737cc` (LT-a freeze + LT-b build). Local `main` FF; post-merge hygiene; NEXT → **consumer-lt-rollout**.
 
 - **2026-09-01** — **LT-b DONE (Auto build + BV `pass`, LT-b-BV-r1).** Built exactly to frozen `docs/archive/phases/PHASE-LT-LOOP-TIGHTENING.md`: footprint coverage gate; `session_bookends` (default off, dogfood enabled + hooks synced); kit honesty warn + active-slice Mode B; `ok handover-compact` + dogfood compact (**88** archived); optional-feature tips on `ok status`; workspace-root docs; §LT.10 **34** green. `ok sync --force` applied; `footprint_coverage: ok`. No consumer defaults; no tab-reload claim. NEXT → **queue-idle**.
@@ -150,12 +158,6 @@ Governance sync: update kit handover when rollout completes or is deferred.
 
 - **2026-08-04** — **Contributor → main DONE (SD-21).** Product PR [#63](https://github.com/aaronrene/overseer-kit/pull/63) @ `0e80a42` (Muse FF `sha256:9c9e489…` → bridge → `ok pr-land`). land-b docs PR [#65](https://github.com/aaronrene/overseer-kit/pull/65) @ `8a37818` (PR #64 closed — squash-history conflict on muse-mirror). NEXT remains **Public visibility flip**. Repo still **private**.
 
-- **2026-08-04** — **Contributor prep DONE** on `feat/contributor`: authored `CONTRIBUTING.md` + `docs/MIGRATE-EXISTING-REPO.md` + `docs/PUBLIC-VISIBILITY-CHECKLIST.md`; removed non-public laundry (`docs/archive/personal|operators|consumers`); secrets/history pass clean on working tree (`desktop/keys` public-only). NEXT → **Public visibility flip** (Tier 3 operator). Repo still **private** until operator flips.
-
-- **2026-08-04** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `dfc77b8`; realign: D2 aligned — skip realign; next_regen=regenerated
-
-- **2026-08-04** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `bdee603`; realign: D2 aligned — skip realign; next_regen=regenerated
-
 - Older entries: docs/archive/handover/CHANGE-LOG.md
 <!-- /overseer:anchor:change-log -->
 
@@ -177,10 +179,15 @@ See `docs/ROADMAP.md` → Model-split handover protocol (SD-3) and governance sy
 
 | Slice | Deliverable |
 | --- | --- |
+| **ISR-b** | Independent second reviewer Auto + BV `pass` (ISR-b-BV-r1); `test_isr_` 48 green; ISR ledger pass from second chat |
+| **ISR-a** | Independent second reviewer freeze → `pass` (ISR-r4), stamp `sha256:e6284150…`. Spec-only; no Auto code. |
+| **consumer-lt-rollout** | LT sync across live consumers; bookends/honesty opted in on primary Cursor repos; `footprint_coverage: ok` |
 | **LT → main** | PR [#72](https://github.com/aaronrene/overseer-kit/pull/72) @ `ff737cc` (merged 2026-09-02) |
-| **LT-b** | Loop tightening build: footprint coverage; session bookends; honesty warn; `ok handover-compact`; optional-feature tips on `ok status`; §LT.10 **34** green; BV **`pass`** (LT-b-BV-r1). |
 <!-- /overseer:anchor:done-recently -->
 
 ## Change log
 
+- **2026-09-02** — **ISR-b DONE** (Auto + BV `pass`, ISR-b-BV-r1). Second-chat ISR + Mode B evidence; NEXT → **ISR → main (land-a)**.
+- **2026-09-02** — **ISR-a DONE (Thinking freeze).** PHASE-ISR → `pass` (ISR-r4). NEXT → **ISR-b**.
+- **2026-09-02** — **consumer-lt-rollout DONE.** LT synced to live consumers; bookends/honesty on primary repos; NEXT → **ISR-a**.
 - **2026-09-02** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `ff737cc`; realign: D2 aligned — skip realign; next_regen=human_authorship_required:zero_open_rows

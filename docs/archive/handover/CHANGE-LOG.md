@@ -892,3 +892,6 @@
 - **2026-07-31** — governance-sync: drift (D1=drifted, D2=aligned, D3=drifted) @ `433c5a3`; realign: D2 aligned — skip realign; next_regen=regenerated:land-b
 
 - **2026-07-31** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `c57a7b2`; realign: D2 aligned — skip realign; next_regen=regenerated
+## Compacted 2026-09-02
+
+- **2026-08-04** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `bdee603`; realign: D2 aligned — skip realign; next_regen=regenerated

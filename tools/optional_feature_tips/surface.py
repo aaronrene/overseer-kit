@@ -17,7 +17,15 @@ def build_optional_feature_tips(config: OverseerConfig) -> list[str]:
     if not config.honesty.enabled:
         tips.append(
             "tip: honesty off — set honesty.enabled: true in .overseer/config.yaml "
-            "for verification-evidence reminders (require_verification_evidence: warn|require)"
+            "for verification-evidence and independent-second-reviewer reminders "
+            "(require_verification_evidence / require_independent_second_reviewer: warn|require; "
+            "docs/INDEPENDENT-SECOND-REVIEWER.md)"
+        )
+    elif config.honesty.require_independent_second_reviewer == "off":
+        tips.append(
+            "tip: require_independent_second_reviewer off — set "
+            "honesty.require_independent_second_reviewer: warn|require for second-chat "
+            "DONE gating (docs/INDEPENDENT-SECOND-REVIEWER.md)"
         )
     return tips
 

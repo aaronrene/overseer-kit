@@ -40,6 +40,7 @@ HONESTY_KEYS = frozenset(
         "require_l1_evidence",
         "require_verification_evidence",
         "require_deploy_health",
+        "require_independent_second_reviewer",
         "allow_signed_approval",
         "ci_reexecutor",
         "require_agent_signature",
@@ -165,6 +166,7 @@ class HonestyConfig:
     require_l1_evidence: str = "warn"
     require_verification_evidence: str = "off"
     require_deploy_health: str = "off"
+    require_independent_second_reviewer: str = "off"
     allow_signed_approval: bool = False
     ci_reexecutor: str | None = None
     require_agent_signature: bool = False
@@ -798,6 +800,12 @@ def _parse_honesty(raw_honesty: Any, path: str) -> HonestyConfig:
     if not isinstance(require_deploy_health, str) or require_deploy_health not in L1_EVIDENCE_MODES:
         raise ConfigError("honesty.require_deploy_health must be off|warn|require", path)
 
+    require_isr = h_raw.get("require_independent_second_reviewer", "off")
+    if not isinstance(require_isr, str) or require_isr not in L1_EVIDENCE_MODES:
+        raise ConfigError(
+            "honesty.require_independent_second_reviewer must be off|warn|require", path
+        )
+
     allow_signed = h_raw.get("allow_signed_approval", False)
     if not isinstance(allow_signed, bool):
         raise ConfigError("honesty.allow_signed_approval must be a boolean", path)
@@ -819,6 +827,7 @@ def _parse_honesty(raw_honesty: Any, path: str) -> HonestyConfig:
         require_l1_evidence=require_l1,
         require_verification_evidence=require_verification,
         require_deploy_health=require_deploy_health,
+        require_independent_second_reviewer=require_isr,
         allow_signed_approval=allow_signed,
         ci_reexecutor=ci_reexecutor,
         require_agent_signature=require_agent_signature,

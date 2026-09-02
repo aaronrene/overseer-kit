@@ -2,12 +2,12 @@ lock_version: 1
 kit_version: 0.1.0
 config_version: 1
 installed_at: '2026-07-10T00:00:00Z'
-synced_at: '2026-09-02T02:55:01Z'
-footprint_digest: sha256:cc8dd35bd68c65654967a9291f765d3477c4007bf6ccc89fa649432e24b4224b
+synced_at: '2026-09-02T12:34:41Z'
+footprint_digest: sha256:b089c79899056b8e116371e68cdbbffa400f344359cc38fe8ccf59c37ace4ab1
 footprint:
 - path: .claude/skills/build-verification-review/SKILL.md
   source: cursor/skills/build-verification-review/SKILL.md
-  sha256: 48fc716fc04e5a07b0ef2617e127b538338a386b759476690165023cd59a4369
+  sha256: f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c
   origin: kit
 - path: .claude/skills/check-ok/SIDE-CHECK-TEMPLATE.md
   source: cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md
@@ -32,6 +32,10 @@ footprint:
 - path: .claude/skills/governance-sync/SKILL.md
   source: cursor/skills/governance-sync/SKILL.md
   sha256: 60df1ef0f87aea065c39d5bcd38754cc44279e99db447a2777c75d32b434e9b5
+  origin: kit
+- path: .claude/skills/independent-second-reviewer/SKILL.md
+  source: cursor/skills/independent-second-reviewer/SKILL.md
+  sha256: 994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837
   origin: kit
 - path: .claude/skills/print-next/SKILL.md
   source: cursor/skills/print-next/SKILL.md
@@ -59,7 +63,7 @@ footprint:
   origin: kit
 - path: .cursor/rules/build-verification-required.mdc
   source: cursor/rules/build-verification-required.mdc
-  sha256: 413414cbb68b05ceba83e5cf15cf25ece21d1a51eb88b953cd0c7e4f66824626
+  sha256: f6ba660c0fb1b2f006103136887c51bab41c6f633ebee8e57d3d549ef5d62f62
   origin: kit
 - path: .cursor/rules/check-ok-thinking.mdc
   source: cursor/rules/check-ok-thinking.mdc
@@ -95,7 +99,7 @@ footprint:
   origin: kit
 - path: .cursor/skills/build-verification-review/SKILL.md
   source: cursor/skills/build-verification-review/SKILL.md
-  sha256: 48fc716fc04e5a07b0ef2617e127b538338a386b759476690165023cd59a4369
+  sha256: f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c
   origin: kit
 - path: .cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md
   source: cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md
@@ -120,6 +124,10 @@ footprint:
 - path: .cursor/skills/governance-sync/SKILL.md
   source: cursor/skills/governance-sync/SKILL.md
   sha256: 60df1ef0f87aea065c39d5bcd38754cc44279e99db447a2777c75d32b434e9b5
+  origin: kit
+- path: .cursor/skills/independent-second-reviewer/SKILL.md
+  source: cursor/skills/independent-second-reviewer/SKILL.md
+  sha256: 994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837
   origin: kit
 - path: .cursor/skills/print-next/SKILL.md
   source: cursor/skills/print-next/SKILL.md

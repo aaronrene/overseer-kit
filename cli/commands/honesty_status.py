@@ -62,6 +62,7 @@ def run_honesty_status_command(args: Namespace, ctx: CliContext) -> int:
         verification_evidence=getattr(args, "verification_evidence", None),
         frozen_spec=getattr(args, "frozen_spec", None),
         deploy_health=getattr(args, "deploy_health", None),
+        independent_second_review=getattr(args, "independent_second_review", None),
         emit_json=bool(args.json),
     )
     result = run_honesty_status(config=config, repo_root=repo_root, options=options)
@@ -87,6 +88,8 @@ def run_honesty_status_command(args: Namespace, ctx: CliContext) -> int:
         ctx.output.error("missing verification evidence")
     elif result.exit_code == 34:
         ctx.output.error("missing deploy health")
+    elif result.exit_code == 38:
+        ctx.output.error("missing independent second review")
     elif result.exit_code == 1:
         ctx.output.error("usage")
 

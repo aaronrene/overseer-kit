@@ -17,7 +17,13 @@ from tools.honesty.provenance import (
     verify_entry_provenance,
 )
 from tools.honesty.types import HOOK_NAMES, HonestyStatusJson, HonestyStatusResult
-from tools.honesty.validate import find_matching_deploy_health, find_matching_verification_evidence
+from tools.honesty.validate import (
+    find_matching_deploy_health,
+    find_matching_independent_second_review,
+    find_matching_verification_evidence,
+)
+
+EXIT_MISSING_INDEPENDENT_SECOND_REVIEW = 38
 
 
 @dataclass(frozen=True)
@@ -30,6 +36,7 @@ class HonestyStatusOptions:
     verification_evidence: str | None = None
     frozen_spec: str | None = None
     deploy_health: str | None = None
+    independent_second_review: str | None = None
     emit_json: bool = False
 
 
@@ -40,6 +47,7 @@ def _usage_result(
     producer_session: str | None,
     verification_evidence: dict[str, Any] | None = None,
     deploy_health: dict[str, Any] | None = None,
+    independent_second_review: dict[str, Any] | None = None,
 ) -> HonestyStatusResult:
     payload = HonestyStatusJson(
         ok=False,
@@ -50,6 +58,7 @@ def _usage_result(
         error="usage",
         verification_evidence=verification_evidence,
         deploy_health=deploy_health,
+        independent_second_review=independent_second_review,
     )
     return HonestyStatusResult(exit_code=1, json_payload=payload)
 
@@ -79,6 +88,23 @@ def _mode_c_block(
     return {
         "phase_id": phase_id,
         "frozen_spec": frozen_spec,
+        "require": require,
+        "matched_entry_hash": matched_entry_hash,
+    }
+
+
+def _mode_d_block(
+    *,
+    phase_id: str,
+    frozen_spec: str | None,
+    producer_session: str | None,
+    require: str,
+    matched_entry_hash: str | None,
+) -> dict[str, Any]:
+    return {
+        "phase_id": phase_id,
+        "frozen_spec": frozen_spec,
+        "producer_session": producer_session,
         "require": require,
         "matched_entry_hash": matched_entry_hash,
     }
@@ -118,24 +144,30 @@ def _match_verdicts(
 
 
 def _resolve_mode(options: HonestyStatusOptions) -> str | None:
-    """Return ``mode_a``, ``mode_b``, ``mode_c``, or ``None`` when usage is invalid (§PD.5.0)."""
+    """Return ``mode_a``–``mode_d``, or ``None`` when usage is invalid (§ISR.5.2)."""
     hook = options.hook
     artifact = options.artifact
-    producer_session = options.producer_session
-    mode_a_partial = bool(hook or artifact or producer_session)
+    producer = options.producer_session is not None
+    mode_a_core = bool(hook or artifact)
     mode_a_full = bool(hook and artifact)
     mode_b_full = options.verification_evidence is not None
     mode_c_full = options.deploy_health is not None
+    mode_d_full = options.independent_second_review is not None
     frozen = options.frozen_spec is not None
 
-    if mode_b_full and mode_c_full:
+    # --producer-session is shared metadata for Mode A (optional) and Mode D (optional).
+    mode_a_partial = mode_a_core or (producer and not mode_d_full)
+
+    if (int(mode_b_full) + int(mode_c_full) + int(mode_d_full)) > 1:
         return None
-    if mode_a_partial and (mode_b_full or mode_c_full or frozen):
+    if mode_a_partial and (mode_b_full or mode_c_full or mode_d_full or frozen):
         return None
-    if frozen and not mode_b_full and not mode_c_full:
+    if frozen and not mode_b_full and not mode_c_full and not mode_d_full:
         return None
-    if not mode_a_full and not mode_b_full and not mode_c_full:
+    if not mode_a_full and not mode_b_full and not mode_c_full and not mode_d_full:
         return None
+    if mode_d_full:
+        return "mode_d"
     if mode_c_full:
         return "mode_c"
     if mode_b_full:
@@ -425,6 +457,163 @@ def _run_mode_b(
     )
 
 
+def _run_mode_d(
+    *,
+    config: OverseerConfig,
+    repo_root: Path,
+    options: HonestyStatusOptions,
+) -> HonestyStatusResult:
+    phase_id = options.independent_second_review
+    frozen_spec = options.frozen_spec
+    producer_session = options.producer_session
+    require = config.honesty.require_independent_second_reviewer
+    assert phase_id is not None
+
+    block = _mode_d_block(
+        phase_id=phase_id,
+        frozen_spec=frozen_spec,
+        producer_session=producer_session,
+        require=require,
+        matched_entry_hash=None,
+    )
+
+    if honesty_module_disabled(config):
+        payload = HonestyStatusJson(
+            ok=False,
+            exit_code=4,
+            producer_session=producer_session,
+            error="refused",
+            independent_second_review=block,
+        )
+        return HonestyStatusResult(
+            exit_code=4,
+            json_payload=payload,
+            stderr_extra="refused: honesty.enabled is false",
+        )
+
+    roles_exit, roles_warn = check_roles_file(config.honesty, repo_root)
+    if roles_exit is not None:
+        payload = HonestyStatusJson(
+            ok=False,
+            exit_code=4,
+            producer_session=producer_session,
+            error="refused",
+            independent_second_review=block,
+        )
+        return HonestyStatusResult(exit_code=4, json_payload=payload)
+
+    try:
+        ledger_rel = config.honesty.ledger
+        if ledger_rel is None or not ledger_rel.strip():
+            raise ValueError("missing ledger")
+        ledger_path = confine_path(repo_root, ledger_rel)
+    except Exception:
+        payload = HonestyStatusJson(
+            ok=False,
+            exit_code=4,
+            producer_session=producer_session,
+            error="refused",
+            independent_second_review=block,
+        )
+        return HonestyStatusResult(exit_code=4, json_payload=payload)
+
+    if not ledger_path.is_file() or ledger_path.stat().st_size == 0:
+        if require == "require":
+            payload = HonestyStatusJson(
+                ok=False,
+                exit_code=EXIT_MISSING_INDEPENDENT_SECOND_REVIEW,
+                producer_session=producer_session,
+                error="missing_independent_second_review",
+                independent_second_review=block,
+            )
+            return HonestyStatusResult(
+                exit_code=EXIT_MISSING_INDEPENDENT_SECOND_REVIEW,
+                json_payload=payload,
+                stderr_extra=roles_warn or "",
+            )
+        warn_msg = ""
+        if require == "warn":
+            warn_msg = "warning: no matching independent_second_review entry"
+        payload = HonestyStatusJson(
+            ok=True,
+            exit_code=0,
+            producer_session=producer_session,
+            error=None,
+            independent_second_review=block,
+        )
+        stderr_parts = [part for part in (roles_warn, warn_msg) if part]
+        return HonestyStatusResult(
+            exit_code=0,
+            json_payload=payload,
+            stderr_extra="\n".join(stderr_parts),
+        )
+
+    try:
+        entries = read_ledger_entries(ledger_path)
+    except (ValueError, OSError):
+        payload = HonestyStatusJson(
+            ok=False,
+            exit_code=4,
+            producer_session=producer_session,
+            error="refused",
+            independent_second_review=block,
+        )
+        return HonestyStatusResult(exit_code=4, json_payload=payload)
+
+    winner = find_matching_independent_second_review(
+        entries,
+        phase_id=phase_id,
+        frozen_spec=frozen_spec,
+        producer_session=producer_session,
+    )
+
+    if winner is None:
+        if require == "require":
+            payload = HonestyStatusJson(
+                ok=False,
+                exit_code=EXIT_MISSING_INDEPENDENT_SECOND_REVIEW,
+                producer_session=producer_session,
+                error="missing_independent_second_review",
+                independent_second_review=block,
+            )
+            return HonestyStatusResult(
+                exit_code=EXIT_MISSING_INDEPENDENT_SECOND_REVIEW,
+                json_payload=payload,
+                stderr_extra=roles_warn or "",
+            )
+        warn_msg = ""
+        if require == "warn":
+            warn_msg = "warning: no matching independent_second_review entry"
+        payload = HonestyStatusJson(
+            ok=True,
+            exit_code=0,
+            producer_session=producer_session,
+            error=None,
+            independent_second_review=block,
+        )
+        stderr_parts = [part for part in (roles_warn, warn_msg) if part]
+        return HonestyStatusResult(
+            exit_code=0,
+            json_payload=payload,
+            stderr_extra="\n".join(stderr_parts),
+        )
+
+    matched_hash = winner.get("entry_hash")
+    block["matched_entry_hash"] = matched_hash if isinstance(matched_hash, str) else None
+    payload = HonestyStatusJson(
+        ok=True,
+        exit_code=0,
+        producer_session=producer_session,
+        error=None,
+        independent_second_review=block,
+    )
+    return HonestyStatusResult(
+        exit_code=0,
+        json_payload=payload,
+        stderr_extra=roles_warn or "",
+    )
+
+
 def _run_mode_a(
     *,
     config: OverseerConfig,
@@ -682,11 +871,12 @@ def run_honesty_status(
     repo_root: Path,
     options: HonestyStatusOptions,
 ) -> HonestyStatusResult:
-    """Evaluate honesty-status in Mode A, B, or C."""
+    """Evaluate honesty-status in Mode A, B, C, or D."""
     mode = _resolve_mode(options)
     if mode is None:
         verification_block = None
         deploy_block = None
+        isr_block = None
         if options.verification_evidence:
             verification_block = _mode_b_block(
                 phase_id=options.verification_evidence,
@@ -701,14 +891,25 @@ def run_honesty_status(
                 require=config.honesty.require_deploy_health,
                 matched_entry_hash=None,
             )
+        if options.independent_second_review:
+            isr_block = _mode_d_block(
+                phase_id=options.independent_second_review,
+                frozen_spec=options.frozen_spec,
+                producer_session=options.producer_session,
+                require=config.honesty.require_independent_second_reviewer,
+                matched_entry_hash=None,
+            )
         return _usage_result(
             hook=options.hook,
             artifact=options.artifact,
             producer_session=options.producer_session,
             verification_evidence=verification_block,
             deploy_health=deploy_block,
+            independent_second_review=isr_block,
         )
 
+    if mode == "mode_d":
+        return _run_mode_d(config=config, repo_root=repo_root, options=options)
     if mode == "mode_c":
         return _run_mode_c(config=config, repo_root=repo_root, options=options)
     if mode == "mode_b":

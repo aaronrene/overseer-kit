@@ -201,7 +201,8 @@ def test_optional_feature_tips_empty_when_enabled(tmp_path: Path) -> None:
     config_path.write_text(
         text
         + "\nsession_bookends:\n  enabled: true\n"
-        + "honesty:\n  enabled: true\n  ledger: .overseer/honesty/VERDICT-LEDGER.jsonl\n",
+        + "honesty:\n  enabled: true\n  ledger: .overseer/honesty/VERDICT-LEDGER.jsonl\n"
+        + "  require_independent_second_reviewer: warn\n",
         encoding="utf-8",
     )
     config = load_config(config_path)
