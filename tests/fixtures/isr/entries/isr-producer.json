@@ -1,0 +1,11 @@
+{
+  "v": 1,
+  "kind": "independent_second_review",
+  "actor_role": "producer",
+  "actor_session_id": "builder-chat-1",
+  "phase_id": "ISR-b",
+  "frozen_spec": "docs/archive/phases/PHASE-ISR-INDEPENDENT-SECOND-REVIEWER.md",
+  "round": 1,
+  "isr_verdict": "pass",
+  "producer_session_id": "other-builder"
+}

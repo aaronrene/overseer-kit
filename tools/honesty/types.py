@@ -12,6 +12,7 @@ HonestyErrorToken = Literal[
     "missing_verdict",
     "missing_verification_evidence",
     "missing_deploy_health",
+    "missing_independent_second_review",
     "approval_integrity",
     "ledger_broken",
     "role_violation",
@@ -31,11 +32,13 @@ ENTRY_KINDS = frozenset(
         "board_advance",
         "hook_check",
         "verification_evidence",
+        "independent_second_review",
     }
 )
 
 VERIFICATION_ARTIFACT_TYPES = frozenset({"test_output", "deploy_health", "screenshot"})
 BV_VERDICTS = frozenset({"pass", "findings", "blocked"})
+ISR_VERDICTS = frozenset({"pass", "findings", "blocked"})
 
 ACTOR_ROLES = frozenset({"owner", "overseer", "producer", "verifier"})
 
@@ -65,6 +68,7 @@ class HonestyStatusJson:
     error: HonestyErrorToken = None
     verification_evidence: dict[str, Any] | None = None
     deploy_health: dict[str, Any] | None = None
+    independent_second_review: dict[str, Any] | None = None
 
     def to_dict(self) -> dict[str, Any]:
         payload: dict[str, Any] = {
@@ -82,6 +86,8 @@ class HonestyStatusJson:
             payload["verification_evidence"] = self.verification_evidence
         if self.deploy_health is not None:
             payload["deploy_health"] = self.deploy_health
+        if self.independent_second_review is not None:
+            payload["independent_second_review"] = self.independent_second_review
         return payload
 
 

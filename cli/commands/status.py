@@ -34,6 +34,11 @@ from tools.verification_evidence_gate import (
     format_verification_evidence_gate_line,
     verification_evidence_gate_payload,
 )
+from tools.independent_second_reviewer import (
+    build_independent_second_reviewer_gate,
+    format_independent_second_reviewer_gate_line,
+    independent_second_reviewer_gate_payload,
+)
 from tools.optional_feature_tips import (
     build_optional_feature_tips,
     optional_feature_tips_payload,
@@ -131,6 +136,7 @@ def _exit_code_from_conditions(
     footprint_self_integrity_ok: bool = True,
     footprint_coverage_ok: bool = True,
     verification_evidence_gate_ok: bool = True,
+    independent_second_reviewer_gate_ok: bool = True,
     governance_freshness_ok: bool = True,
     land_closeout_ok: bool = True,
     workspace_ok: bool = True,
@@ -156,6 +162,7 @@ def _exit_code_from_conditions(
         or not footprint_self_integrity_ok
         or not footprint_coverage_ok
         or not verification_evidence_gate_ok
+        or not independent_second_reviewer_gate_ok
         or not governance_freshness_ok
         or not land_closeout_ok
     ):
@@ -372,6 +379,16 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
     if ve_line:
         report.add_warning(ve_line)
 
+    independent_second_reviewer_gate = build_independent_second_reviewer_gate(
+        config,
+        repo_root,
+        handover_text=handover_text,
+        roadmap_text=roadmap_text,
+    )
+    isr_line = format_independent_second_reviewer_gate_line(independent_second_reviewer_gate)
+    if isr_line:
+        report.add_warning(isr_line)
+
     optional_feature_tips = build_optional_feature_tips(config)
 
     payload = {
@@ -402,6 +419,9 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
     ve_payload = verification_evidence_gate_payload(verification_evidence_gate)
     if ve_payload is not None:
         payload["verification_evidence_gate"] = ve_payload
+    isr_payload = independent_second_reviewer_gate_payload(independent_second_reviewer_gate)
+    if isr_payload is not None:
+        payload["independent_second_reviewer_gate"] = isr_payload
     if lock_error:
         payload["lock_error"] = True
 
@@ -426,6 +446,7 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
         footprint_self_integrity_ok=footprint_self_integrity.ok,
         footprint_coverage_ok=footprint_coverage.ok,
         verification_evidence_gate_ok=verification_evidence_gate.ok,
+        independent_second_reviewer_gate_ok=independent_second_reviewer_gate.ok,
         governance_freshness_ok=governance_freshness.ok,
         land_closeout_ok=land_closeout.ok,
         workspace_ok=workspace_ok,

@@ -42,3 +42,8 @@ Migrate / fixture path: `docs/MIGRATE-EXISTING-REPO.md` and
 After any update to the living handover and/or roadmap, print the paste-ready fence via
 `ok next` (or `ok governance-sync --print-next`) so the operator’s next chat paste matches
 disk — not an open tab. See `docs/PRINT-NEXT.md`.
+
+## Independent second reviewer
+
+The kit records and gates a second-chat verdict before Auto DONE when ISR is enabled; it does
+not run another model. See `docs/INDEPENDENT-SECOND-REVIEWER.md`.

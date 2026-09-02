@@ -1,0 +1,12 @@
+{
+  "v": 1,
+  "kind": "independent_second_review",
+  "actor_role": "verifier",
+  "actor_session_id": "verifier-chat-2",
+  "phase_id": "ISR-b",
+  "frozen_spec": "docs/archive/phases/PHASE-ISR-INDEPENDENT-SECOND-REVIEWER.md",
+  "round": 1,
+  "isr_verdict": "pass",
+  "producer_session_id": "builder-chat-1",
+  "notes": "second chat re-ran build-verification V1-V8"
+}

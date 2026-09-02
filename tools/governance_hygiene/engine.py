@@ -29,6 +29,10 @@ from tools.verification_evidence_gate import (
     build_verification_evidence_gate,
     format_verification_evidence_gate_line,
 )
+from tools.independent_second_reviewer import (
+    build_independent_second_reviewer_gate,
+    format_independent_second_reviewer_gate_line,
+)
 from tools.governance_hygiene.types import DriftReport, GovernanceSyncResult, PatchPlan, VerifiedReads
 from tools.workspace import workspace_relay_footer_state
 
@@ -97,6 +101,28 @@ def _emit_governance_gate_footer(
             not verification_gate.ok
             and verification_gate.mode == "require"
             and verification_gate.token == "missing_verification_evidence"
+        ):
+            relay_state = workspace_relay_footer_state(config, repo_root)
+            emit("")
+            emit(f"workspace_relay: {relay_state}")
+            return 2, relay_state
+
+    isr_gate = build_independent_second_reviewer_gate(
+        config,
+        repo_root,
+        handover_text=handover_text,
+        roadmap_text=roadmap_text,
+    )
+    isr_line = format_independent_second_reviewer_gate_line(isr_gate)
+    if isr_line:
+        emit("")
+        emit(isr_line)
+        if isr_gate.remediation:
+            emit(isr_gate.remediation)
+        if (
+            not isr_gate.ok
+            and isr_gate.mode == "require"
+            and isr_gate.token == "missing_independent_second_review"
         ):
             relay_state = workspace_relay_footer_state(config, repo_root)
             emit("")

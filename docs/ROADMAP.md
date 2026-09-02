@@ -104,6 +104,11 @@
 | **ONS → main** | Operator + Auto | **DONE** | SD-21 land: Muse FF `feat/ons-operator-next-surfacing` → `main` (`sha256:3e21a881…`) → muse-bridge → GitHub PR [#68](https://github.com/aaronrene/overseer-kit/pull/68) `muse-mirror` → `main` @ `588da95`. land-b post-merge sync same day. |
 | **LT-a Loop tightening freeze** | Thinking | **DONE** | **Reviewed → `pass` (LT-r2)**, stamp `sha256:6a5aafb5…`. Froze `docs/archive/phases/PHASE-LT-LOOP-TIGHTENING.md`: footprint coverage gate; `session_bookends` default off + Cursor start/end/stop hooks when on; kit-dogfood honesty warn + active-slice Mode B; `ok handover-compact`. **Spec-only.** Cleared for LT-b. |
 | **LT-b Loop tightening build** | Auto | **DONE** | Built exactly against frozen `docs/archive/phases/PHASE-LT-LOOP-TIGHTENING.md`: `tools/footprint_coverage/` + status/review/governance wiring; `session_bookends` default off + dogfood hooks; kit honesty warn + active-slice Mode B; `ok handover-compact`; optional-feature tips on `ok status`; workspace-root docs; seven-tier §LT.10 **34** green; dogfood `ok sync --force` + compact; BV **`pass`** (LT-b-BV-r1, hook fail-open fix). No consumer honesty/hooks defaults; no tab-reload claim. |
+| **LT → main** | Operator | **DONE** | PR [#72](https://github.com/aaronrene/overseer-kit/pull/72) @ `ff737cc` (2026-09-02). |
+| **consumer-lt-rollout** | Operator | **DONE** | Synced LT into Knowtation, Scooling, VideoFactory, the-brain, bornfree-hub, ourware, scooling-lab (+ sc-brain). Primary Cursor repos opted into `session_bookends` (+ honesty warn on Knowtation/Scooling). `footprint_coverage: ok`. Deferred: MuseHub config, secondary-repo bookends, VF conflicted policy `--force`. |
+| **ISR-a Independent second reviewer freeze** | Thinking | **DONE** | **Reviewed → `pass` (ISR-r4)**, stamp `sha256:e6284150…`. Froze `docs/archive/phases/PHASE-ISR-INDEPENDENT-SECOND-REVIEWER.md`: ledger kind `independent_second_review`; Mode D on `ok honesty-status`; `require_independent_second_reviewer` default off; exit `38`; active-slice status/governance surface; portable CLI+docs primary. **Governance, not runtime** — kit records/gates only; no model dispatch. **Spec-only.** Cleared for ISR-b. |
+| **ISR-b Independent second reviewer build** | Auto | **DONE** | **Build verified → `pass` (ISR-b-BV-r1).** Built exactly against frozen `docs/archive/phases/PHASE-ISR-INDEPENDENT-SECOND-REVIEWER.md`: ledger kind `independent_second_review`; Mode D + exit `38`; `require_independent_second_reviewer` (default off; kit dogfood **warn**); active-slice status/governance-sync surface; paste doc + twin skill; BV V9 + rule; SPEC/AGENTS/consumer pointers; seven-tier `test_isr_` **48** green. Second-chat ISR pass (`actor_session_id` `c72e9414…` ≠ producer `62762b24…`). No model dispatch; no consumer `require`; no new CLI verb. |
+| **ISR → main** | Operator + Auto | **NEXT** | MuseHub solidify **DONE** (`staging.musehub.ai/aaronrene/overseer-kit` @ `sha256:a78e7e5a…`). GitHub PR [#74](https://github.com/aaronrene/overseer-kit/pull/74) OPEN — **Tier-3 merge** then land-b. |
 | **K10 Honesty module** | Auto | **DONE** | L2 `honesty-status` + `ledger {append,verify,show}` + role gates + fixture pack + seven-tier tests (**340** green); SPEC §5 updated |
 | **K11 API/CI freeze provider** | Auto | **DONE** | Headless `provider: api` HTTP client (`/health`, `/review`) + `OVERSEER_REVIEW_API_KEY`/`OVERSEER_REVIEW_API_URL` + GitHub Actions example + `templates/ci/` vendored workflow; seven-tier K11 tests (**361** green) |
 | **K12 / Track N** | Thinking → Auto | **DONE** | Public landing, scenario gallery, GitHub→MuseHub funnel, **MIT** LICENSE (amended from Apache-2.0), SECURITY.md; `tools/landing/` validator; seven-tier K12 tests (**380** total green) |
@@ -111,7 +116,7 @@
 **Vision baton:** `docs/archive/thinking/OVERSEER-KIT-LAYERED-HONESTY-VISION.md` (expanded)  
 **K9a contract:** `docs/archive/phases/PHASE-K9A-L1-L2-MODULE-FREEZE.md`  
 **Consumer pattern:** `docs/CONSUMER-ADAPTER-PATTERN.md`  
-**Handover UX debt:** living change-log bloat — queued **LT-a / LT-b** (compact; KH1 section remains)
+**Handover UX debt:** LT compact landed; ISR-b Auto + second-chat BV `pass` (ISR-b-BV-r1); remaining backlog ideas below
 
 ## Exploration backlog (ideas — NOT queued; each needs its own Thinking freeze before it becomes a phase)
 
@@ -129,7 +134,7 @@ freeze (and clear the "governance, not runtime" boundary) before entering the bu
 | **Public landing + console access UX** | Thinking **DONE** (`pass`, LAC-r2) + Auto **DONE** (BV `pass`, LAC-BV-r1). | Marketing/static ≠ live Path B; no public CSRF mint; no unsigned-as-primary; Path 1 needs `OVERSEER_REPO_ROOT`. |
 | **Track Q UI redesign (developer tool)** | Promoted → Q4a Thinking **DONE** (`pass`, Q4a-r2) + Q4b Auto **DONE** (BV `pass`, Q4b-BV-r1). | Presentation only; closed `api/*` stay frozen (Q0). |
 | **License change Apache → MIT** | Promoted → Thinking + Auto **DONE** (MIT-r1 `pass`, MIT-BV-r1 `pass`). Kit SPDX is **MIT**. | Historical Apache shipping remains on earlier commits; current tree is MIT. |
-| **Independent second reviewer** | Required second chat / separate verifier before DONE (not the same agent that built). Tightens self-graded homework. High friction; easy to skip unless a gate checks a *different* session or role. | Kit records/gates the second verdict; it does not run another model by itself. CLI + docs first so non-Cursor hosts work. |
+| **Independent second reviewer** | ISR-a/b DONE; PR [#74](https://github.com/aaronrene/overseer-kit/pull/74) held for **MuseHub solidify** then merge. | Kit records/gates the second verdict; it does not run another model by itself. CLI + docs first so non-Cursor hosts work. |
 | **KH2 remask (later dirty edit hides Muse drift)** | KH2 misses the case where Git committed ahead of Muse, then a later uncommitted edit makes both look dirty. Discuss + optional persisted Git-SHA anchor. Hard VCS problem; not day-to-day until `ok status` lies. | Same three choke points as KH2; no Muse-only baseline; no false block on normal mid-edit work. |
 | **Session-type bookends (idle / Operator+Auto)** | When the queue is idle or the label is Operator+Auto, start+end thinking reviews get skipped. Fix by classifying the session (pick / build / land) and giving each type its own start and end gate. | Portable CLI/status first; Cursor hooks optional. Do not invent a fake phase when the operator has not picked. |
 | **Auto-enable session hooks on `ok sync`** | Today hooks/Automations are recipes you turn on once. Later: default `session_bookends.enabled: true` (or sync-write hooks for everyone) with a documented off switch. Cursor Automations UI may still need a click. | Hooks are Cursor-only niceties. Claude Code / Copilot / paste stay on `ok next` + `ok governance-sync`. Never treat missing hooks as pass. |
@@ -223,11 +228,13 @@ same method names in both regimes.
 - `docs/archive/phases/PHASE-PLS-POST-LAND-MAIN-SYNC.md` — PLS post-land main sync freeze (**reviewed → `pass`, PLS-r4**, stamp `sha256:7a31fb2b…`); PLS-b builds against it
 - `docs/archive/phases/PHASE-ONS-OPERATOR-NEXT-SURFACING.md` — ONS operator NEXT surfacing freeze (**reviewed → `pass`, ONS-r2**, stamp `sha256:242e318f…`); ONS-b builds against it
 - `docs/archive/phases/PHASE-LT-LOOP-TIGHTENING.md` — LT loop tightening freeze (**reviewed → `pass`, LT-r2**, stamp `sha256:6a5aafb5…`); LT-b builds against it
+- `docs/archive/phases/PHASE-ISR-INDEPENDENT-SECOND-REVIEWER.md` — Independent second reviewer freeze (**reviewed → `pass`, ISR-r4**, stamp `sha256:e6284150…`); ISR-b builds against it
 - `docs/archive/phases/PHASE-GSB-GOVERNANCE-SYNC-BRANCH-COLLISION.md` — GSB dated-branch collision freeze (**reviewed → `pass`, GSB-r3**, stamp `sha256:30cfb999…`); GSB-b builds against it
 - Scooling `docs/archive/phases/PHASE-9A-MULTI-AGENT-OVERSEER-ROUTER-OUTLINE.md` — runtime org-chart reference
 
 <!-- overseer:anchor:next-step-glance -->
 ## Next step at a glance
 
-_No unambiguous NEXT row — operator authorship required._
+**Merge ISR PR [#74](https://github.com/aaronrene/overseer-kit/pull/74)** then land-b.
+MuseHub staging solidify DONE. Model: Operator + Auto. Tier 3 merge.
 <!-- /overseer:anchor:next-step-glance -->
