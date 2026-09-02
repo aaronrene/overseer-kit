@@ -46,9 +46,12 @@ ok honesty-status --independent-second-review PHASE_ID \
   [--producer-session BUILDER_NONCE] [--frozen-spec PATH] [--json]
 ```
 
+**Default is `require`** (closed loop). Opt out with
+`honesty.require_independent_second_reviewer: off` (or `warn` for remind-only).
+
 Under `require`, a miss exits `38` with token `missing_independent_second_review`.
-Under `warn`, miss warns and exits `0`. Under `off` (default), Mode D may still
-run but never fails the match dimension.
+Under `warn`, miss warns and exits `0`. Under `off`, Mode D may still run but
+never fails the match dimension.
 
 ## Print NEXT for the second chat
 

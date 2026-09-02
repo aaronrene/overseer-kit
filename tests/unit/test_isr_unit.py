@@ -122,7 +122,7 @@ def test_require_isr_config_parse(repo_root: Path) -> None:
     data = yaml.safe_load(cfg_path.read_text(encoding="utf-8"))
     assert "require_independent_second_reviewer" not in data["honesty"]
     config = load_config(cfg_path)
-    assert config.honesty.require_independent_second_reviewer == "off"
+    assert config.honesty.require_independent_second_reviewer == "require"
 
     for mode in ("off", "warn", "require"):
         data["honesty"]["require_independent_second_reviewer"] = mode
@@ -139,8 +139,8 @@ def test_require_isr_in_honesty_keys() -> None:
     assert "require_independent_second_reviewer" in HONESTY_KEYS
 
 
-def test_honesty_config_field_default_off() -> None:
-    assert HonestyConfig().require_independent_second_reviewer == "off"
+def test_honesty_config_field_default_require() -> None:
+    assert HonestyConfig().require_independent_second_reviewer == "require"
 
 
 def test_error_token_includes_missing_isr() -> None:

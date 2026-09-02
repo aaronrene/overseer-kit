@@ -323,6 +323,24 @@ Regime: **regime-agnostic** `git-only` baseline. No Muse dependency. Optional
 Do **not** set `require`. Do **not** enable the key in `ok init` defaults or
 templates. Consumers stay `off` until they opt in.
 
+### Operator amend 2026-09-02 — default `require` (closed loop)
+
+**Authority:** operator Tier-3 posture flip (Aaron). Premise: the independent
+second pass is the closed loop; default opt-out was portability, not
+optionality of the gate.
+
+| Was (ISR-r4) | Now |
+| --- | --- |
+| Absent key → `off` | Absent key → `require` |
+| `HonestyConfig` default `off` | default `require` |
+| Kit dogfood `warn` | Kit dogfood `require` |
+| Tip when `off`: enable warn\|require | Tip when `off`: you opted out; set `require` to re-enable |
+
+Opt out per repo: `honesty.require_independent_second_reviewer: off` (or `warn`).
+Rejection row “Default `require` for all consumers” is **superseded** by this
+amend for shipped defaults; frozen Mode D / ledger / exit `38` mechanics are
+unchanged.
+
 ---
 
 ## §ISR.5 — `honesty-status` Mode D (frozen)

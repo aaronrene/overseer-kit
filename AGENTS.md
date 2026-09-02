@@ -67,9 +67,11 @@ paste-ready fence from disk under `## CURRENT NEXT — paste this`. Prefer `ok n
 
 ## Independent second reviewer
 
-Before Auto ROADMAP **DONE** when ISR is enabled, a second chat records an
-`independent_second_review` ledger pass. The kit records and gates that verdict; it does not
-run another model. See `docs/INDEPENDENT-SECOND-REVIEWER.md`.
+**Default `require`.** Before Auto ROADMAP **DONE**, a second chat (different
+session) must record an `independent_second_review` ledger pass, or honesty /
+status fail closed. Opt out: `honesty.require_independent_second_reviewer: off`
+(or `warn`). The kit records and gates the verdict; it does not run another
+model. See `docs/INDEPENDENT-SECOND-REVIEWER.md`.
 
 Open the repository root (the folder that contains `.overseer/`) as the IDE workspace.
 If you open a parent folder, project rules and skills under `.cursor/` often do not load.

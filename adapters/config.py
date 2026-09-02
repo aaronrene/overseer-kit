@@ -166,7 +166,7 @@ class HonestyConfig:
     require_l1_evidence: str = "warn"
     require_verification_evidence: str = "off"
     require_deploy_health: str = "off"
-    require_independent_second_reviewer: str = "off"
+    require_independent_second_reviewer: str = "require"
     allow_signed_approval: bool = False
     ci_reexecutor: str | None = None
     require_agent_signature: bool = False
@@ -800,7 +800,7 @@ def _parse_honesty(raw_honesty: Any, path: str) -> HonestyConfig:
     if not isinstance(require_deploy_health, str) or require_deploy_health not in L1_EVIDENCE_MODES:
         raise ConfigError("honesty.require_deploy_health must be off|warn|require", path)
 
-    require_isr = h_raw.get("require_independent_second_reviewer", "off")
+    require_isr = h_raw.get("require_independent_second_reviewer", "require")
     if not isinstance(require_isr, str) or require_isr not in L1_EVIDENCE_MODES:
         raise ConfigError(
             "honesty.require_independent_second_reviewer must be off|warn|require", path
