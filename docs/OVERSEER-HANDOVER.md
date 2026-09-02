@@ -76,12 +76,12 @@ Hard stops: No kit main merge without Tier 3 · no secrets · no live posture fl
 | Area | State |
 | --- | --- |
 | **VCS regime** | `muse+git-mirror` |
-| **GitHub main** | `84db8c86a81dafc93a3e05c6b567fc58ebea9bc1` |
-| **Canonical anchor** | `sha256:edf3b5563d2b5bd3a04de80a1885f360eb569890d079b3ab43bc9368ebbb46d2` |
-| **Canonical main** | `sha256:edf3b5563d2b5bd3a04de80a1885f360eb569890d079b3ab43bc9368ebbb46d2` |
+| **GitHub main** | `945d0349aef0406078ce826c6315df22726bfdf4` |
+| **Canonical anchor** | `sha256:8756d36405bca250c627ce0c50c1de42c0cc51dcf0fbe22d03f2ea6d1b27f614` |
+| **Canonical main** | `sha256:8756d36405bca250c627ce0c50c1de42c0cc51dcf0fbe22d03f2ea6d1b27f614` |
 | **Branch** | `main` |
-| **Dirty** | no |
-| **Drift** | D1=aligned (post land-b), D2=aligned, D3=aligned |
+| **Dirty** | `yes` |
+| **Drift** | D1=drifted, D2=aligned, D3=aligned |
 <!-- /overseer:anchor:verified-snapshot -->
 
 <!-- overseer:anchor:vcs-table -->
@@ -89,11 +89,11 @@ Hard stops: No kit main merge without Tier 3 · no secrets · no live posture fl
 
 | Item | Value |
 | --- | --- |
-| Muse branch | `main` (post land-b) |
-| MuseHub staging | `https://staging.musehub.ai/aaronrene/overseer-kit` |
-| GitHub `main` | `84db8c86a81dafc93a3e05c6b567fc58ebea9bc1` (PR #74) |
-| Canonical Muse tip | (land-b closeout commit) |
-| Dirty | no |
+| Branch | `main` |
+| GitHub `main` | `945d0349aef0406078ce826c6315df22726bfdf4` |
+| Canonical anchor | `sha256:8756d36405bca250c627ce0c50c1de42c0cc51dcf0fbe22d03f2ea6d1b27f614` (.muse/git-bridge.toml:last_export.muse_commit_id) |
+| Muse `main` | `sha256:8756d36405bca250c627ce0c50c1de42c0cc51dcf0fbe22d03f2ea6d1b27f614` |
+| Dirty | yes |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -177,13 +177,16 @@ See `docs/ROADMAP.md` → Model-split handover protocol (SD-3) and governance sy
 
 | Slice | Deliverable |
 | --- | --- |
-| **ISR → main** | PR [#74](https://github.com/aaronrene/overseer-kit/pull/74) @ `84db8c8` (ISR-a + ISR-b + MuseHub docs) |
-| **MuseHub solidify** | `staging.musehub.ai/aaronrene/overseer-kit` — first full history push (85 commits) |
-| **ISR-a + ISR-b** | Freeze `pass` (ISR-r4) + BV `pass` (ISR-b-BV-r1) |
-| **LT → main** | PR [#72](https://github.com/aaronrene/overseer-kit/pull/72) @ `ff737cc` |
+| PR #73 | docs: LT land-b closeout + consumer rollout NEXT (merged 2026-09-02) |
+| PR #71 | Mirror: mirror: public visibility flip DONE + queue-idle NEXT (merged 2026-08-13) |
+| **MuseHub solidify** | Hub → `staging.musehub.ai`; public `aaronrene/overseer-kit`; first `muse push -u staging main` (85 commits). Kit dogfood matches Knowtation/Scooling hub posture. |
+| **ISR → main** | PR [#74](https://github.com/aaronrene/overseer-kit/pull/74) merged @ `84db8c8` (ISR-a freeze + ISR-b + MuseHub docs). |
+| **ISR-a + ISR-b** | Freeze `pass` (ISR-r4) + BV `pass` (ISR-b-BV-r1); `require` stays off for consumers (kit dogfood **warn**). |
 <!-- /overseer:anchor:done-recently -->
 
 ## Change log
+
+- **2026-09-02** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `945d034`; realign: D2 aligned — skip realign; next_regen=human_authorship_required:zero_open_rows
 
 - **2026-09-02** — **ISR → main + MuseHub solidify DONE.** PR [#74](https://github.com/aaronrene/overseer-kit/pull/74) @ `84db8c8`; staging hub hosts kit. NEXT → **queue-idle**.
 - **2026-09-02** — **MuseHub solidify DONE** — connected `staging.musehub.ai`; created public `aaronrene/overseer-kit`; first push 85 commits.

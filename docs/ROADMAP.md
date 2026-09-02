@@ -235,6 +235,5 @@ same method names in both regimes.
 <!-- overseer:anchor:next-step-glance -->
 ## Next step at a glance
 
-**Queue idle** — MuseHub solidify + ISR → main DONE (PR #74 @ `84db8c8`).
-Operator pick from exploration backlog (or defer). Model: Operator.
+_No unambiguous NEXT row — operator authorship required._
 <!-- /overseer:anchor:next-step-glance -->
