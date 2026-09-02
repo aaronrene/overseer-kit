@@ -64,3 +64,7 @@ After updating the living handover and/or roadmap, the final reply must include 
 paste-ready fence from disk under `## CURRENT NEXT — paste this`. Prefer `ok next`
 (synonym: `ok governance-sync --print-next`). Never trust the open IDE tab. See
 `docs/PRINT-NEXT.md`.
+
+Open the repository root (the folder that contains `.overseer/`) as the IDE workspace.
+If you open a parent folder, project rules and skills under `.cursor/` often do not load.
+The CLI still works. The open editor tab is not the source of truth — run `ok next`.

@@ -103,7 +103,7 @@
 | **ONS-b Operator NEXT surfacing build** | Auto | **DONE** | Built exactly to frozen `docs/archive/phases/PHASE-ONS-OPERATOR-NEXT-SURFACING.md`: `tools/print_next/` + `cli/commands/next.py` + `ok next` / `ok governance-sync --print-next`; skill + alwaysApply rule; `docs/PRINT-NEXT.md` + AGENTS + consumer stubs; SPEC §5 row; optional `cursor/hooks/` (fail-open, not footprint). Seven-tier §ONS.12 **24** green. BV **`pass`** (ONS-BV-r1). Tab sync is **not** a DONE gate. |
 | **ONS → main** | Operator + Auto | **DONE** | SD-21 land: Muse FF `feat/ons-operator-next-surfacing` → `main` (`sha256:3e21a881…`) → muse-bridge → GitHub PR [#68](https://github.com/aaronrene/overseer-kit/pull/68) `muse-mirror` → `main` @ `588da95`. land-b post-merge sync same day. |
 | **LT-a Loop tightening freeze** | Thinking | **DONE** | **Reviewed → `pass` (LT-r2)**, stamp `sha256:6a5aafb5…`. Froze `docs/archive/phases/PHASE-LT-LOOP-TIGHTENING.md`: footprint coverage gate; `session_bookends` default off + Cursor start/end/stop hooks when on; kit-dogfood honesty warn + active-slice Mode B; `ok handover-compact`. **Spec-only.** Cleared for LT-b. |
-| **LT-b Loop tightening build** | Auto | **TODO** | Build exactly against frozen LT-a. No tab-reload claim. No honesty/hooks default-on for consumers. |
+| **LT-b Loop tightening build** | Auto | **DONE** | Built exactly against frozen `docs/archive/phases/PHASE-LT-LOOP-TIGHTENING.md`: `tools/footprint_coverage/` + status/review/governance wiring; `session_bookends` default off + dogfood hooks; kit honesty warn + active-slice Mode B; `ok handover-compact`; optional-feature tips on `ok status`; workspace-root docs; seven-tier §LT.10 **34** green; dogfood `ok sync --force` + compact; BV **`pass`** (LT-b-BV-r1, hook fail-open fix). No consumer honesty/hooks defaults; no tab-reload claim. |
 | **K10 Honesty module** | Auto | **DONE** | L2 `honesty-status` + `ledger {append,verify,show}` + role gates + fixture pack + seven-tier tests (**340** green); SPEC §5 updated |
 | **K11 API/CI freeze provider** | Auto | **DONE** | Headless `provider: api` HTTP client (`/health`, `/review`) + `OVERSEER_REVIEW_API_KEY`/`OVERSEER_REVIEW_API_URL` + GitHub Actions example + `templates/ci/` vendored workflow; seven-tier K11 tests (**361** green) |
 | **K12 / Track N** | Thinking → Auto | **DONE** | Public landing, scenario gallery, GitHub→MuseHub funnel, **MIT** LICENSE (amended from Apache-2.0), SECURITY.md; `tools/landing/` validator; seven-tier K12 tests (**380** total green) |
@@ -229,6 +229,5 @@ same method names in both regimes.
 <!-- overseer:anchor:next-step-glance -->
 ## Next step at a glance
 
-**Next:** **LT-b Loop tightening build** — **Model:** Auto — **Status:** **TODO**
-**Phase ID:** LT-b
+_No unambiguous NEXT row — operator authorship required._
 <!-- /overseer:anchor:next-step-glance -->

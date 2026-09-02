@@ -46,3 +46,11 @@ governance_gates:
     - status
     - governance-sync
     - handover-paste
+
+session_bookends:
+  enabled: true
+
+honesty:
+  enabled: true
+  ledger: .overseer/honesty/VERDICT-LEDGER.jsonl
+  require_verification_evidence: warn

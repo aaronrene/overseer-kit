@@ -25,6 +25,10 @@ from tools.governance_gates import scan_governance_gates
 from tools.governance_gates.format import format_pending_gate_lines
 from tools.cost_awareness.format import format_cost_awareness_lines
 from tools.cost_awareness.surface import build_cost_awareness_report
+from tools.verification_evidence_gate import (
+    build_verification_evidence_gate,
+    format_verification_evidence_gate_line,
+)
 from tools.governance_hygiene.types import DriftReport, GovernanceSyncResult, PatchPlan, VerifiedReads
 from tools.workspace import workspace_relay_footer_state
 
@@ -78,6 +82,26 @@ def _emit_governance_gate_footer(
         emit("")
         for line in format_cost_awareness_lines(cost_report):
             emit(line)
+
+    verification_gate = build_verification_evidence_gate(
+        config,
+        repo_root,
+        handover_text=handover_text,
+        roadmap_text=roadmap_text,
+    )
+    ve_line = format_verification_evidence_gate_line(verification_gate)
+    if ve_line:
+        emit("")
+        emit(ve_line)
+        if (
+            not verification_gate.ok
+            and verification_gate.mode == "require"
+            and verification_gate.token == "missing_verification_evidence"
+        ):
+            relay_state = workspace_relay_footer_state(config, repo_root)
+            emit("")
+            emit(f"workspace_relay: {relay_state}")
+            return 2, relay_state
 
     relay_state = workspace_relay_footer_state(config, repo_root)
     emit("")
