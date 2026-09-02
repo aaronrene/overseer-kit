@@ -76,9 +76,9 @@ Hard stops: No kit main merge without Tier 3 · no secrets · no live posture fl
 | Area | State |
 | --- | --- |
 | **VCS regime** | `muse+git-mirror` |
-| **GitHub main** | `945d0349aef0406078ce826c6315df22726bfdf4` |
-| **Canonical anchor** | `sha256:8756d36405bca250c627ce0c50c1de42c0cc51dcf0fbe22d03f2ea6d1b27f614` |
-| **Canonical main** | `sha256:8756d36405bca250c627ce0c50c1de42c0cc51dcf0fbe22d03f2ea6d1b27f614` |
+| **GitHub main** | `fc2ecb015523f6b84bae1a9b89c59a7305ec30d1` |
+| **Canonical anchor** | `sha256:28aba67b7cb5bc05bb3c84eb1712effa5afb163b263c88ece1a09257e62ecf44` |
+| **Canonical main** | `sha256:28aba67b7cb5bc05bb3c84eb1712effa5afb163b263c88ece1a09257e62ecf44` |
 | **Branch** | `main` |
 | **Dirty** | `yes` |
 | **Drift** | D1=drifted, D2=aligned, D3=aligned |
@@ -90,9 +90,9 @@ Hard stops: No kit main merge without Tier 3 · no secrets · no live posture fl
 | Item | Value |
 | --- | --- |
 | Branch | `main` |
-| GitHub `main` | `945d0349aef0406078ce826c6315df22726bfdf4` |
-| Canonical anchor | `sha256:8756d36405bca250c627ce0c50c1de42c0cc51dcf0fbe22d03f2ea6d1b27f614` (.muse/git-bridge.toml:last_export.muse_commit_id) |
-| Muse `main` | `sha256:8756d36405bca250c627ce0c50c1de42c0cc51dcf0fbe22d03f2ea6d1b27f614` |
+| GitHub `main` | `fc2ecb015523f6b84bae1a9b89c59a7305ec30d1` |
+| Canonical anchor | `sha256:28aba67b7cb5bc05bb3c84eb1712effa5afb163b263c88ece1a09257e62ecf44` (.muse/git-bridge.toml:last_export.muse_commit_id) |
+| Muse `main` | `sha256:28aba67b7cb5bc05bb3c84eb1712effa5afb163b263c88ece1a09257e62ecf44` |
 | Dirty | yes |
 <!-- /overseer:anchor:vcs-table -->
 
@@ -104,6 +104,8 @@ Hard stops: No kit main merge without Tier 3 · no secrets · no live posture fl
 - Governance sync is mandatory before session end (SD-17)
 
 <!-- overseer:anchor:change-log -->
+- **2026-09-02** — **ISR default → `require`** (operator posture). Absent key / shipped default is now `require` (was `off`); kit dogfood `require` (was `warn`). Opt out: `off` or `warn`. PHASE-ISR operator amend recorded. Closed-loop premise.
+
 - **2026-09-02** — **ISR → main + MuseHub solidify DONE.** Hub → staging; created `aaronrene/overseer-kit`; pushed 85 commits; PR [#74](https://github.com/aaronrene/overseer-kit/pull/74) @ `84db8c8`. NEXT → **queue-idle**.
 
 - **2026-09-02** — **MuseHub-first before ISR merge** — Gap confirmed: hub `localhost:1337` dead; `aaronrene/overseer-kit` 404 on staging/production. Operator: solidify MuseHub staging then merge PR #74. Handover + paste + `MUSE-BRIDGE-WORKFLOW.md` retargeted.
@@ -185,6 +187,8 @@ See `docs/ROADMAP.md` → Model-split handover protocol (SD-3) and governance sy
 <!-- /overseer:anchor:done-recently -->
 
 ## Change log
+
+- **2026-09-02** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `fc2ecb0`; realign: D2 aligned — skip realign; next_regen=human_authorship_required:zero_open_rows
 
 - **2026-09-02** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `945d034`; realign: D2 aligned — skip realign; next_regen=human_authorship_required:zero_open_rows
 

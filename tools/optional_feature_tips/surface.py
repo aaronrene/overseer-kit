@@ -23,9 +23,9 @@ def build_optional_feature_tips(config: OverseerConfig) -> list[str]:
         )
     elif config.honesty.require_independent_second_reviewer == "off":
         tips.append(
-            "tip: require_independent_second_reviewer off — set "
-            "honesty.require_independent_second_reviewer: warn|require for second-chat "
-            "DONE gating (docs/INDEPENDENT-SECOND-REVIEWER.md)"
+            "tip: require_independent_second_reviewer off (opted out) — default is "
+            "require; set honesty.require_independent_second_reviewer: require to "
+            "re-enable second-chat DONE gating (docs/INDEPENDENT-SECOND-REVIEWER.md)"
         )
     return tips
 
