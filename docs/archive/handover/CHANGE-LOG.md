@@ -887,3 +887,8 @@
   allowlist, `roles_file` v1 warn/ignore), neutral fixture pack under `tests/fixtures/honesty/`,
   SPEC §5 command table update. Seven-tier K10 matrix: **38** new tests; **340** total green.
   No L1 orchestrator changes. Next: **K11** API/CI freeze provider.
+## Compacted 2026-09-02
+
+- **2026-07-31** — governance-sync: drift (D1=drifted, D2=aligned, D3=drifted) @ `433c5a3`; realign: D2 aligned — skip realign; next_regen=regenerated:land-b
+
+- **2026-07-31** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `c57a7b2`; realign: D2 aligned — skip realign; next_regen=regenerated

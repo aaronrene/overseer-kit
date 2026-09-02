@@ -8,53 +8,54 @@
 
 <!-- overseer:next role=primary lane=product status=live -->
 <!-- overseer:anchor:next-session -->
-## NEXT SESSION — Queue idle (Operator pick)
+## NEXT SESSION — Consumer LT rollout (Operator)
 
-**Date:** 2026-09-01  
-**Current position:** LT-b DONE (BV `pass`) → queue idle  
+**Date:** 2026-09-02  
+**Current position:** LT → main DONE (PR #72 @ `ff737cc`) → consumer rollout  
 **Model:** Operator
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **LT-b** | Loop tightening build: footprint coverage; session bookends; honesty warn; `ok handover-compact`; optional-feature tips on `ok status`; §LT.10 **34** green; BV **`pass`** (LT-b-BV-r1). |
+| **LT → main (land-b)** | PR [#72](https://github.com/aaronrene/overseer-kit/pull/72) merged @ `ff737cc`. Footprint coverage; session bookends; honesty warn; `ok handover-compact`; optional-feature tips. |
+| **LT-b** | Loop tightening build on `main` (BV `pass`, LT-b-BV-r1; §LT.10 **34** green). |
 
 ### THE ONE NEXT STEP — **Model: Operator**
 
-Pick the next slice from `docs/ROADMAP.md` → Exploration backlog (each needs its own Thinking freeze). No open build-queue rows remain.
+Roll LT out to consumer repos that already vendor the kit: in each repo run `ok sync` (use `--force` only when sync reports kit-owned conflicts you accept). Optionally enable `session_bookends.enabled: true` and/or honesty warn per repo. Do **not** invent a new kit phase until rollout is done or you consciously defer it.
 
 | | |
 | --- | --- |
-| **ID** | **queue-idle** |
-| **Branch** | (operator choice on next slice) |
-| **Repo** | **overseer-kit** |
-| **Read first** | `docs/ROADMAP.md` exploration backlog; this handover |
-| **Hard stops** | No merge to `main` without Tier 3 · no secrets · no live posture flips |
+| **ID** | **consumer-lt-rollout** |
+| **Branch** | (per consumer repo) |
+| **Repo** | consumer repos using overseer-kit (Knowtation, Scooling, VideoFactory, …) |
+| **Read first** | this handover; `cursor/hooks/README.md`; each consumer `.overseer/config.yaml` |
+| **Hard stops** | No merge to kit `main` without Tier 3 · no secrets · no live posture flips · no `--include-preserved` wipe of living docs |
 <!-- /overseer:anchor:next-session -->
 
 <!-- overseer:anchor:paste-ready-prompt -->
-### Paste-ready prompt — queue idle
+### Paste-ready prompt — consumer LT rollout
 
 ```text
-Queue idle — overseer-kit.
+Consumer LT rollout — after overseer-kit PR #72 on main.
 
 Model: Operator
-Repo: overseer-kit
-Step: queue-idle
+Repo: each consumer that vendors overseer-kit
+Step: consumer-lt-rollout
 Authority: authoritative
 
-Read first: `docs/ROADMAP.md` (exploration backlog); `docs/OVERSEER-HANDOVER.md`.
+Read first: overseer-kit `docs/OVERSEER-HANDOVER.md` (this NEXT); consumer `.overseer/config.yaml`; `cursor/hooks/README.md`.
 
 Deliverables:
-- Pick one backlog idea and open a Thinking freeze session for it (or land LT-b via Tier 3 if that is the operator priority).
+- In each consumer repo: `ok sync` (resolve conflicts with `--force` only when intentional; never `--include-preserved` unless wiping living docs on purpose).
+- Optional per repo: set `session_bookends.enabled: true` then re-sync for Cursor start/end nudges; set honesty warn if desired.
+- Confirm `ok status` shows footprint_coverage ok (when hooks expected) and no unexpected tips you already enabled.
+- When rollout is done (or deferred), pick next kit backlog freeze from `docs/ROADMAP.md` exploration backlog.
 
-Hard stops: No merge to `main` without Tier 3 · no secrets · no live posture flips
+Hard stops: No kit main merge without Tier 3 · no secrets · no live posture flips · do not clobber preserved living docs
 
-Governance gates (mandatory — remind only; silence is not pass):
-- Build verification: LT-b → `pass` (LT-b-BV-r1) recorded
-
-Governance sync: update docs/ROADMAP.md + docs/OVERSEER-HANDOVER.md when the next slice is chosen.
+Governance sync: update kit handover when rollout completes or is deferred.
 ```
 <!-- /overseer:anchor:paste-ready-prompt -->
 
@@ -81,21 +82,21 @@ Governance sync: update docs/ROADMAP.md + docs/OVERSEER-HANDOVER.md when the nex
 | Area | State |
 | --- | --- |
 | **VCS regime** | `muse+git-mirror` |
-| **GitHub main** | `73f4b01e5c21f484a8f4d12948dfadfe262ec520` |
+| **GitHub main** | `ff737ccabdfd165232f0b0173cd912142b9b48b7` |
 | **Canonical anchor** | `sha256:fdd10e9dde18c4e14eec5d9a910dcc9d47b00d26c6cc0a144cc5d58af1237c65` |
 | **Canonical main** | `sha256:fdd10e9dde18c4e14eec5d9a910dcc9d47b00d26c6cc0a144cc5d58af1237c65` |
-| **Branch** | `feat/loop-tightening` |
+| **Branch** | `main` |
 | **Dirty** | `yes` |
 | **Drift** | D1=drifted, D2=aligned, D3=aligned |
 <!-- /overseer:anchor:verified-snapshot -->
 
 <!-- overseer:anchor:vcs-table -->
-## VCS (verified 2026-09-01)
+## VCS (verified 2026-09-02)
 
 | Item | Value |
 | --- | --- |
-| Branch | `feat/loop-tightening` |
-| GitHub `main` | `73f4b01e5c21f484a8f4d12948dfadfe262ec520` |
+| Branch | `main` |
+| GitHub `main` | `ff737ccabdfd165232f0b0173cd912142b9b48b7` |
 | Canonical anchor | `sha256:fdd10e9dde18c4e14eec5d9a910dcc9d47b00d26c6cc0a144cc5d58af1237c65` (.muse/git-bridge.toml:last_export.muse_commit_id) |
 | Muse `main` | `sha256:fdd10e9dde18c4e14eec5d9a910dcc9d47b00d26c6cc0a144cc5d58af1237c65` |
 | Dirty | yes |
@@ -109,6 +110,8 @@ Governance sync: update docs/ROADMAP.md + docs/OVERSEER-HANDOVER.md when the nex
 - Governance sync is mandatory before session end (SD-17)
 
 <!-- overseer:anchor:change-log -->
+- **2026-09-02** — **LT → main DONE (land-b).** GitHub PR [#72](https://github.com/aaronrene/overseer-kit/pull/72) merged @ `ff737cc` (LT-a freeze + LT-b build). Local `main` FF; post-merge hygiene; NEXT → **consumer-lt-rollout**.
+
 - **2026-09-01** — **LT-b DONE (Auto build + BV `pass`, LT-b-BV-r1).** Built exactly to frozen `docs/archive/phases/PHASE-LT-LOOP-TIGHTENING.md`: footprint coverage gate; `session_bookends` (default off, dogfood enabled + hooks synced); kit honesty warn + active-slice Mode B; `ok handover-compact` + dogfood compact (**88** archived); optional-feature tips on `ok status`; workspace-root docs; §LT.10 **34** green. `ok sync --force` applied; `footprint_coverage: ok`. No consumer defaults; no tab-reload claim. NEXT → **queue-idle**.
 
 - **2026-09-01** — **LT-a DONE (Thinking freeze).** `docs/archive/phases/PHASE-LT-LOOP-TIGHTENING.md` → `pass` (LT-r2), stamp `sha256:6a5aafb5…`. Slices 1–4 frozen. **No LT-b Auto code this session.** NEXT → LT-b Auto on `feat/loop-tightening`.
@@ -153,10 +156,6 @@ Governance sync: update docs/ROADMAP.md + docs/OVERSEER-HANDOVER.md when the nex
 
 - **2026-08-04** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `bdee603`; realign: D2 aligned — skip realign; next_regen=regenerated
 
-- **2026-07-31** — governance-sync: drift (D1=drifted, D2=aligned, D3=drifted) @ `433c5a3`; realign: D2 aligned — skip realign; next_regen=regenerated:land-b
-
-- **2026-07-31** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `c57a7b2`; realign: D2 aligned — skip realign; next_regen=regenerated
-
 - Older entries: docs/archive/handover/CHANGE-LOG.md
 <!-- /overseer:anchor:change-log -->
 
@@ -178,6 +177,10 @@ See `docs/ROADMAP.md` → Model-split handover protocol (SD-3) and governance sy
 
 | Slice | Deliverable |
 | --- | --- |
-| PR #67 | Mirror: mirror: tip catch-up — last_export after Contributor land (#63/#65/#66) (merged 2026-08-04) |
+| **LT → main** | PR [#72](https://github.com/aaronrene/overseer-kit/pull/72) @ `ff737cc` (merged 2026-09-02) |
 | **LT-b** | Loop tightening build: footprint coverage; session bookends; honesty warn; `ok handover-compact`; optional-feature tips on `ok status`; §LT.10 **34** green; BV **`pass`** (LT-b-BV-r1). |
 <!-- /overseer:anchor:done-recently -->
+
+## Change log
+
+- **2026-09-02** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `ff737cc`; realign: D2 aligned — skip realign; next_regen=human_authorship_required:zero_open_rows
