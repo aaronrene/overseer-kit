@@ -29,11 +29,13 @@ COMMANDS = frozenset(
         "land-check",
         "land-closeout",
         "pr-land",
+        "handover-compact",
     }
 )
 from cli.commands.app import run_app
 from cli.commands.check_ok import run_check_ok
 from cli.commands.governance_sync import run_governance_sync_command
+from cli.commands.handover_compact import run_handover_compact_command
 from cli.commands.next import run_next_command
 from cli.commands.honesty_status import run_honesty_status_command
 from cli.commands.hosted_dashboard import run_hosted_dashboard
@@ -394,6 +396,33 @@ def build_parser() -> argparse.ArgumentParser:
         help="C6 consent for --live-bridge after gates pass (refuse --yes alone without gates)",
     )
 
+    hc_parser = subparsers.add_parser(
+        "handover-compact",
+        help="Archive old handover change-log bullets (§LT.6)",
+    )
+    hc_parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Report compaction plan without writing (default when --write absent)",
+    )
+    hc_parser.add_argument(
+        "--write",
+        action="store_true",
+        help="Apply compaction to handover and archive file",
+    )
+    hc_parser.add_argument(
+        "--keep",
+        type=int,
+        default=15,
+        metavar="N",
+        help="Number of newest dated entries to retain (default 15; minimum 5)",
+    )
+    hc_parser.add_argument(
+        "--lane",
+        metavar="NAME",
+        help="Lane name (same as ok next --lane)",
+    )
+
     return parser
 
 
@@ -474,6 +503,10 @@ def main(argv: list[str] | None = None, *, ctx: CliContext | None = None) -> int
         return run_land_closeout_command(args, runtime)
     if args.command == "pr-land":
         return run_pr_land_command(args, runtime)
+    if args.command == "handover-compact":
+        if not args.write and not args.dry_run:
+            args.dry_run = True
+        return run_handover_compact_command(args, runtime)
     if args.command == "verify-step":
         return run_verify_step_command(args, runtime)
     if args.command == "honesty-status":

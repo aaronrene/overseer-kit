@@ -13,7 +13,22 @@ from cli.kit_root import kit_root
 
 MUSE_BRIDGE_WORKFLOW_DEST = "MUSE-BRIDGE-WORKFLOW.md"
 MUSE_BRIDGE_DEPLOY_DEST = "scripts/muse-bridge-deploy.sh"
-EXECUTABLE_FOOTPRINT_DESTINATIONS = frozenset({MUSE_BRIDGE_DEPLOY_DEST})
+SESSION_START_HOOK_DEST = ".cursor/hooks/session-start-next.sh"
+SESSION_END_HOOK_DEST = ".cursor/hooks/session-end-closeout.sh"
+EXECUTABLE_FOOTPRINT_DESTINATIONS = frozenset(
+    {
+        MUSE_BRIDGE_DEPLOY_DEST,
+        SESSION_START_HOOK_DEST,
+        SESSION_END_HOOK_DEST,
+    }
+)
+
+SESSION_BOOKEND_SPECS: tuple[tuple[str, str], ...] = (
+    ("cursor/hooks/hooks.json", ".cursor/hooks.json"),
+    ("cursor/hooks/session-start-next.sh", SESSION_START_HOOK_DEST),
+    ("cursor/hooks/session-end-closeout.sh", SESSION_END_HOOK_DEST),
+    ("cursor/hooks/README.md", ".cursor/hooks/README.md"),
+)
 
 
 @dataclass(frozen=True)
@@ -138,6 +153,20 @@ def resolve_footprint(config: OverseerConfig, *, kit: Path | None = None) -> lis
                         content=content,
                     )
                 )
+
+    if config.session_bookends.enabled:
+        for source_rel, dest in SESSION_BOOKEND_SPECS:
+            if dest in destinations:
+                raise ConfigError(f"duplicate footprint destination {dest!r}", None)
+            destinations.add(dest)
+            source_path = root / source_rel
+            files.append(
+                FootprintFile(
+                    destination=dest,
+                    source=source_rel,
+                    content=source_path.read_bytes(),
+                )
+            )
 
     files.sort(key=lambda item: item.destination)
     return files

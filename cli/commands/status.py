@@ -21,6 +21,7 @@ from cli.commands.route import routing_policy_status
 from tools.cost_awareness.format import format_cost_awareness_lines
 from tools.cost_awareness.surface import build_cost_awareness_report, cost_awareness_payload
 from adapters.factory import create_adapter
+from tools.footprint_coverage import check_footprint_coverage
 from tools.footprint_integrity import check_footprint_integrity
 from tools.governance_freshness import check_governance_freshness
 from tools.governance_gates import scan_governance_gates
@@ -28,10 +29,22 @@ from tools.governance_gates.format import format_pending_gate_lines, pending_gat
 from tools.land_closeout import check_land_closeout, land_closeout_payload
 from tools.muse_sync import check_muse_sync
 from tools.substrate_health import check_substrate
+from tools.verification_evidence_gate import (
+    build_verification_evidence_gate,
+    format_verification_evidence_gate_line,
+    verification_evidence_gate_payload,
+)
+from tools.optional_feature_tips import (
+    build_optional_feature_tips,
+    optional_feature_tips_payload,
+)
 from tools.workspace import build_status_report
 
 
 GOVERNANCE_SYNC_MARKER = "last_governance_sync"
+IDE_WORKSPACE_HINT = (
+    "ide: open the repo root (folder containing .overseer) so .cursor/rules load"
+)
 
 
 def _read_governance_sync_marker(repo_root: Path) -> str | None:
@@ -116,6 +129,8 @@ def _exit_code_from_conditions(
     substrate_ok: bool = True,
     muse_sync_ok: bool = True,
     footprint_self_integrity_ok: bool = True,
+    footprint_coverage_ok: bool = True,
+    verification_evidence_gate_ok: bool = True,
     governance_freshness_ok: bool = True,
     land_closeout_ok: bool = True,
     workspace_ok: bool = True,
@@ -139,6 +154,8 @@ def _exit_code_from_conditions(
         or not substrate_ok
         or not muse_sync_ok
         or not footprint_self_integrity_ok
+        or not footprint_coverage_ok
+        or not verification_evidence_gate_ok
         or not governance_freshness_ok
         or not land_closeout_ok
     ):
@@ -241,6 +258,22 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
                 f"footprint_self_integrity-remediation: {footprint_self_integrity.remediation}"
             )
 
+    footprint_coverage = check_footprint_coverage(
+        repo_root,
+        config,
+        lock=lock,
+        rendered=rendered if rendered else None,
+        kit=ctx.kit,
+    )
+    if not footprint_coverage.ok:
+        report.add_warning(
+            f"footprint_coverage: {footprint_coverage.state} — {footprint_coverage.message}"
+        )
+        if footprint_coverage.remediation:
+            report.add_warning(
+                f"footprint_coverage-remediation: {footprint_coverage.remediation}"
+            )
+
     drift = compute_drift(
         cli_version=kit_version(),
         lock=lock,
@@ -325,12 +358,31 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
             for line in format_cost_awareness_lines(cost_report):
                 report.add_warning(line)
 
+    handover_path = repo_root / config.repo.root_relative_docs / config.docs.handover
+    roadmap_path = repo_root / config.repo.root_relative_docs / config.docs.roadmap
+    handover_text = handover_path.read_text(encoding="utf-8") if handover_path.is_file() else None
+    roadmap_text = roadmap_path.read_text(encoding="utf-8") if roadmap_path.is_file() else None
+    verification_evidence_gate = build_verification_evidence_gate(
+        config,
+        repo_root,
+        handover_text=handover_text,
+        roadmap_text=roadmap_text,
+    )
+    ve_line = format_verification_evidence_gate_line(verification_evidence_gate)
+    if ve_line:
+        report.add_warning(ve_line)
+
+    optional_feature_tips = build_optional_feature_tips(config)
+
     payload = {
         "initialized": True,
         "kit_version": kit_version(),
         "substrate": _substrate_payload(substrate),
         "muse_sync": _muse_sync_payload(muse_sync),
         "footprint_self_integrity": _footprint_self_integrity_payload(footprint_self_integrity),
+        "footprint_coverage": _footprint_coverage_payload(footprint_coverage),
+        "ide_workspace_hint": IDE_WORKSPACE_HINT,
+        "optional_feature_tips": optional_feature_tips_payload(optional_feature_tips),
         "governance_freshness": _governance_freshness_payload(governance_freshness),
         "land_closeout": land_closeout_payload(land_closeout),
         "lock": _lock_summary(lock) if lock else None,
@@ -347,6 +399,9 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
     }
     if cost_report is not None:
         payload["cost_awareness"] = cost_awareness_payload(cost_report)
+    ve_payload = verification_evidence_gate_payload(verification_evidence_gate)
+    if ve_payload is not None:
+        payload["verification_evidence_gate"] = ve_payload
     if lock_error:
         payload["lock_error"] = True
 
@@ -369,6 +424,8 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
         substrate_ok=substrate.ok,
         muse_sync_ok=muse_sync.ok,
         footprint_self_integrity_ok=footprint_self_integrity.ok,
+        footprint_coverage_ok=footprint_coverage.ok,
+        verification_evidence_gate_ok=verification_evidence_gate.ok,
         governance_freshness_ok=governance_freshness.ok,
         land_closeout_ok=land_closeout.ok,
         workspace_ok=workspace_ok,
@@ -425,6 +482,19 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
             else:
                 for line in format_cost_awareness_lines(cost_report):
                     ctx.output.emit(line)
+        if not footprint_coverage.ok:
+            ctx.output.emit(
+                f"footprint_coverage: {footprint_coverage.state} — {footprint_coverage.message}"
+            )
+            if footprint_coverage.remediation:
+                ctx.output.emit(
+                    f"footprint_coverage-remediation: {footprint_coverage.remediation}"
+                )
+        ctx.output.emit(IDE_WORKSPACE_HINT)
+        for line in optional_feature_tips:
+            ctx.output.emit(line)
+        if ve_line:
+            ctx.output.emit(ve_line)
         ctx.output.emit(f"vcs.regime: {vcs_result.regime}")
         ctx.output.emit(f"vcs.branch: {vcs_result.branch}")
         ctx.output.emit(f"vcs.dirty: {vcs_result.dirty}")
@@ -463,6 +533,16 @@ def _muse_sync_payload(muse_sync) -> dict:
 
 
 def _footprint_self_integrity_payload(report) -> dict:
+    return {
+        "state": report.state,
+        "ok": report.ok,
+        "missing": list(report.missing),
+        "remediation": report.remediation,
+        "message": report.message,
+    }
+
+
+def _footprint_coverage_payload(report) -> dict:
     return {
         "state": report.state,
         "ok": report.ok,

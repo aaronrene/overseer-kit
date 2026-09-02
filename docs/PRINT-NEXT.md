@@ -5,6 +5,10 @@
 Host niceties improve odds of tab refresh; they do **not** guarantee an accurate open
 tab. CLI/Muse/shell rewrites and dirty buffers can still stale a tab.
 
+Open the repository root (the folder that contains `.overseer/`) as the IDE workspace.
+If you open a parent folder, project rules and skills under `.cursor/` often do not load.
+The CLI still works. The open editor tab is not the source of truth — run `ok next`.
+
 ## Fast path
 
 After updating the living handover and/or roadmap:

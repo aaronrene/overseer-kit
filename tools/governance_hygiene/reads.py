@@ -10,6 +10,7 @@ from adapters.base import VcsAdapter
 from adapters.config import OverseerConfig
 from adapters.errors import ReadError
 from adapters.runner import CommandRunner
+from tools.footprint_coverage import check_footprint_coverage
 from tools.footprint_integrity import check_footprint_integrity
 from tools.governance_hygiene.types import MergedPullRequest, VerifiedReads
 from tools.muse_sync import check_muse_sync
@@ -60,6 +61,14 @@ def perform_verified_reads(
             return ReadFailure(
                 "footprint-self-integrity",
                 footprint_self_integrity.message,
+                regime,
+            )
+
+        footprint_coverage = check_footprint_coverage(repo_root, config)
+        if not footprint_coverage.ok:
+            return ReadFailure(
+                "footprint-coverage",
+                footprint_coverage.message,
                 regime,
             )
 

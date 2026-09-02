@@ -16,6 +16,7 @@ from cli.sanitize import format_config_error
 from tools.freeze_reviewer.checklist import builtin_checklist, load_checklist_file
 from tools.freeze_reviewer.engine import ReviewOptions, resolve_exit_code, resolve_reviewer_settings, run_freeze_review
 from tools.freeze_reviewer.labels import validate_reviewer_model
+from tools.footprint_coverage import check_footprint_coverage
 from tools.footprint_integrity import check_footprint_integrity
 from tools.freeze_reviewer.report import build_report, render_human_report
 from tools.muse_sync import check_muse_sync
@@ -157,6 +158,19 @@ def run_review(args: Namespace, ctx: CliContext, *, raw_argv: list[str] | None =
         )
         if footprint_self_integrity.remediation:
             ctx.output.error(f"remediation: {footprint_self_integrity.remediation}")
+        return 2
+
+    footprint_coverage = check_footprint_coverage(
+        repo_root,
+        config,
+        kit=ctx.kit,
+    )
+    if not footprint_coverage.ok:
+        ctx.output.error(
+            f"footprint_coverage: {footprint_coverage.state} — {footprint_coverage.message}"
+        )
+        if footprint_coverage.remediation:
+            ctx.output.error(f"remediation: {footprint_coverage.remediation}")
         return 2
 
     injected_provider = None

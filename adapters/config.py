@@ -64,6 +64,7 @@ MODEL_ROUTING_KEYS = frozenset({"enabled", "policy"})
 DEFAULT_MODEL_ROUTING_POLICY = "policy/model-routing.yaml"
 COST_AWARENESS_SURFACES = frozenset({"status", "governance-sync"})
 COST_AWARENESS_KEYS = frozenset({"enabled", "surfaces"})
+SESSION_BOOKENDS_KEYS = frozenset({"enabled"})
 WORKSPACE_KEYS = frozenset({"constellation_id", "product_order_root", "manifest"})
 
 # Hosted dashboard keys live in tools.hosted_dashboard.config (import deferred to avoid cycles).
@@ -205,6 +206,13 @@ class CostAwarenessConfig:
 
 
 @dataclass(frozen=True)
+class SessionBookendsConfig:
+    """Optional Cursor session bookend hooks (§LT.4.2)."""
+
+    enabled: bool = False
+
+
+@dataclass(frozen=True)
 class WorkspacePointerConfig:
     """Additive constellation pointer (§MR.4.2). Omitted = single-repo only."""
 
@@ -283,6 +291,7 @@ class OverseerConfig:
     governance_gates: GovernanceGatesConfig = GovernanceGatesConfig()
     model_routing: ModelRoutingConfig = ModelRoutingConfig()
     cost_awareness: CostAwarenessConfig = CostAwarenessConfig()
+    session_bookends: SessionBookendsConfig = SessionBookendsConfig()
     hosted_dashboard: HostedDashboardSection = HostedDashboardSection()
     close_ritual: CloseRitualConfig = CloseRitualConfig()
     workspace: WorkspacePointerConfig | None = None
@@ -438,6 +447,7 @@ def _validate_config(raw: dict[str, Any], path: str) -> OverseerConfig:
     governance_gates = _parse_governance_gates(raw.get("governance_gates"), path)
     model_routing = _parse_model_routing(raw.get("model_routing"), path)
     cost_awareness = _parse_cost_awareness(raw.get("cost_awareness"), path)
+    session_bookends = _parse_session_bookends(raw.get("session_bookends"), path)
     hosted_dashboard = _parse_hosted_dashboard(raw.get("hosted_dashboard"), path)
     close_ritual = _parse_close_ritual(raw.get("close_ritual"), path)
     workspace = _parse_workspace(raw.get("workspace"), path)
@@ -461,6 +471,7 @@ def _validate_config(raw: dict[str, Any], path: str) -> OverseerConfig:
         governance_gates=governance_gates,
         model_routing=model_routing,
         cost_awareness=cost_awareness,
+        session_bookends=session_bookends,
         hosted_dashboard=hosted_dashboard,
         close_ritual=close_ritual,
         workspace=workspace,
@@ -1113,6 +1124,22 @@ def _parse_cost_awareness(raw_cost: Any, path: str) -> CostAwarenessConfig:
         surfaces = frozenset(parsed)
 
     return CostAwarenessConfig(enabled=enabled, surfaces=surfaces)
+
+
+def _parse_session_bookends(raw_bookends: Any, path: str) -> SessionBookendsConfig:
+    """Parse optional ``session_bookends`` section (§LT.4.2)."""
+    if raw_bookends is None:
+        return SessionBookendsConfig()
+    bookends_raw = _require_mapping(raw_bookends, "session_bookends", path)
+    extra = set(bookends_raw) - SESSION_BOOKENDS_KEYS
+    if extra:
+        raise ConfigError(f"unknown session_bookends keys: {sorted(extra)}", path)
+
+    enabled = bookends_raw.get("enabled", False)
+    if not isinstance(enabled, bool):
+        raise ConfigError("session_bookends.enabled must be a boolean", path)
+
+    return SessionBookendsConfig(enabled=enabled)
 
 
 def _parse_workspace(raw_workspace: Any, path: str) -> WorkspacePointerConfig | None:
