@@ -8,10 +8,10 @@
 
 <!-- overseer:next role=primary lane=product status=live land-phase=land-a -->
 <!-- overseer:anchor:next-session -->
-## NEXT SESSION — ISR → main (land-a)
+## NEXT SESSION — ISR PR #74 Tier-3 merge → land-b
 
 **Date:** 2026-09-02  
-**Current position:** ISR-b BV `pass` → Muse FF + muse-bridge PR → **stop for Tier 3 merge**  
+**Current position:** MuseHub staging solidify **DONE** → merge GitHub PR [#74](https://github.com/aaronrene/overseer-kit/pull/74) → land-b  
 **Model:** Operator + Auto  
 **land-phase:** land-a
 
@@ -19,45 +19,44 @@
 
 | Slice | Deliverable |
 | --- | --- |
-| **ISR-b (Auto + BV)** | Built exactly to freeze; second-chat `/build-verification-review` **V1–V8 `pass`** (ISR-b-BV-r1). Ledger `independent_second_review` + Mode B `verification_evidence` appended. `actor_session_id` `c72e9414-24f0-4446-9a1b-d9ff5d60bd99` ≠ producer `62762b24-69e5-4c95-b38e-cadbf261f9af`. `test_isr_` **48** green. ROADMAP ISR-b **DONE**. |
-| **ISR-a** | Freeze → `pass` (ISR-r4), stamp `sha256:e6284150…`. |
+| **MuseHub solidify** | `[hub] url` → `https://staging.musehub.ai` (was dead localhost). Created public `aaronrene/overseer-kit`. `muse push -u staging main` — **85** commits / **1312** objects @ `sha256:a78e7e5a…`. Staging remote SHA-pinned (same posture as Knowtation). |
+| **ISR land-a (bridge)** | Muse FF + muse-bridge → PR [#74](https://github.com/aaronrene/overseer-kit/pull/74) OPEN/mergeable. |
+| **ISR-a + ISR-b** | Freeze + build + BV `pass` (ISR-b-BV-r1). |
 
 ### THE ONE NEXT STEP — **Model: Operator + Auto**
 
-SD-21 land-a: Muse FF `feat/isr-independent-second-reviewer` → `main` → muse-bridge → GitHub PR `muse-mirror` → `main`. **Stop for Tier 3 merge authorization.** Do not merge without authorization. Kit does not run another model. Do not enable consumer `require`.
+**Tier-3 merge** PR [#74](https://github.com/aaronrene/overseer-kit/pull/74), then land-b closeout. MuseHub hosting gap is closed; do not re-do create/push unless tip drifts.
 
 | | |
 | --- | --- |
-| **ID** | **ISR → main (land-a)** |
-| **land-phase** | `land-a` |
-| **Branch** | `feat/isr-independent-second-reviewer` |
+| **ID** | **ISR → main (merge + land-b)** |
+| **land-phase** | `land-a` until GitHub MERGED |
+| **PR** | [#74](https://github.com/aaronrene/overseer-kit/pull/74) |
+| **MuseHub** | `https://staging.musehub.ai/aaronrene/overseer-kit` @ `sha256:a78e7e5a…` |
 | **Repo** | overseer-kit |
-| **Read first** | this handover; `docs/ROADMAP.md` ISR → main row; SD-21 land ritual |
-| **Hard stops** | No merge to kit `main` without Tier 3 · no secrets · no live posture flips · no model dispatch · no consumer `require` |
+| **Hard stops** | No `git push origin main` · no consumer `require` · no model dispatch · no secrets · production MuseHub push only if operator asks |
 <!-- /overseer:anchor:next-session -->
 
 <!-- overseer:anchor:paste-ready-prompt -->
-### Paste-ready prompt — ISR → main (land-a)
+### Paste-ready prompt — Merge ISR #74 → land-b
 
 ```text
-ISR → main land-a (SD-21).
+ISR → main — Tier 3 merge PR #74 → land-b (MuseHub already solid).
 
 Model: Operator + Auto
 Repo: overseer-kit
-Step: ISR-land-a
-Branch: feat/isr-independent-second-reviewer
 Authority: authoritative
+PR: https://github.com/aaronrene/overseer-kit/pull/74
+land-phase: land-a
 
-Read first: docs/OVERSEER-HANDOVER.md (this NEXT); docs/ROADMAP.md ISR → main row.
+MuseHub DONE: staging.musehub.ai/aaronrene/overseer-kit; push -u staging main @ sha256:a78e7e5a… (85 commits). Hub matches Knowtation/Scooling posture.
 
-ISR-a freeze + ISR-b Auto are DONE. Second-chat BV pass (ISR-b-BV-r1). Land on operator Tier-3 authorization only:
+1. Re-bridge if Muse tip ahead of muse-mirror: ./scripts/muse-bridge-deploy.sh "mirror: MuseHub solidify + ISR"
+2. Tier-3 merge PR #74 (ok pr-land --pr 74 --authorized "ISR + MuseHub solidify" or gh merge).
+3. land-b: ok governance-sync --write; ok land-closeout → 0; ROADMAP ISR → main DONE.
+4. Optional: muse push staging after land-b docs tip.
 
-1. Muse FF feat/isr-independent-second-reviewer → main.
-2. muse-bridge → GitHub PR muse-mirror → main.
-3. Do not merge without explicit Tier 3 authorization.
-4. Kit does not run another model. Do not enable consumer require.
-
-Hard stops: No kit main merge without Tier 3 · no secrets · no live posture flips · no model dispatch
+Hard stops: No git push origin main · no secrets · no consumer require · no model dispatch · no production hub push unless asked
 ```
 <!-- /overseer:anchor:paste-ready-prompt -->
 
@@ -84,12 +83,13 @@ Hard stops: No kit main merge without Tier 3 · no secrets · no live posture fl
 | Area | State |
 | --- | --- |
 | **VCS regime** | `muse+git-mirror` |
-| **GitHub main** | `ff737ccabdfd165232f0b0173cd912142b9b48b7` |
-| **Canonical anchor** | `sha256:fdd10e9dde18c4e14eec5d9a910dcc9d47b00d26c6cc0a144cc5d58af1237c65` |
-| **Canonical main** | `sha256:fdd10e9dde18c4e14eec5d9a910dcc9d47b00d26c6cc0a144cc5d58af1237c65` |
-| **Branch** | `feat/isr-independent-second-reviewer` |
-| **Dirty** | `yes` |
-| **Drift** | D1=drifted, D2=aligned, D3=aligned |
+| **GitHub main** | `48d35fefca2a7de793caeb936c644f038a478dc0` |
+| **GitHub PR** | [#74](https://github.com/aaronrene/overseer-kit/pull/74) OPEN (`muse-mirror` @ `8f7e897`) |
+| **Canonical anchor** | `sha256:f59d4cc6c3a626def07dbcd99e9d8dbe44801953ca3866e6ee1858c2ab5452e8` |
+| **Canonical main** | `sha256:f59d4cc6c3a626def07dbcd99e9d8dbe44801953ca3866e6ee1858c2ab5452e8` |
+| **Branch** | Muse `main` (land-a wait) |
+| **Dirty** | no (awaiting Tier 3 merge) |
+| **Drift** | D1=aligned (pre-merge), land-phase=`land-a` |
 <!-- /overseer:anchor:verified-snapshot -->
 
 <!-- overseer:anchor:vcs-table -->
@@ -97,11 +97,12 @@ Hard stops: No kit main merge without Tier 3 · no secrets · no live posture fl
 
 | Item | Value |
 | --- | --- |
-| Branch | `feat/isr-independent-second-reviewer` |
-| GitHub `main` | `ff737ccabdfd165232f0b0173cd912142b9b48b7` |
-| Canonical anchor | `sha256:fdd10e9dde18c4e14eec5d9a910dcc9d47b00d26c6cc0a144cc5d58af1237c65` (.muse/git-bridge.toml:last_export.muse_commit_id) |
-| Muse `main` | `sha256:fdd10e9dde18c4e14eec5d9a910dcc9d47b00d26c6cc0a144cc5d58af1237c65` |
-| Dirty | yes |
+| Muse branch | `main` (FF from `feat/isr-independent-second-reviewer`) |
+| Muse `main` | `sha256:f59d4cc6c3a626def07dbcd99e9d8dbe44801953ca3866e6ee1858c2ab5452e8` |
+| GitHub `main` | `48d35fefca2a7de793caeb936c644f038a478dc0` |
+| Land PR | [#74](https://github.com/aaronrene/overseer-kit/pull/74) `muse-mirror` → `main` (OPEN, mergeable) |
+| Mirror SHA | `8f7e897c937bee5e50a6b5476d646e5022e8ba82` |
+| Dirty | no |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -112,6 +113,10 @@ Hard stops: No kit main merge without Tier 3 · no secrets · no live posture fl
 - Governance sync is mandatory before session end (SD-17)
 
 <!-- overseer:anchor:change-log -->
+- **2026-09-02** — **MuseHub-first before ISR merge** — Gap confirmed: hub `localhost:1337` dead; `aaronrene/overseer-kit` 404 on staging/production. Operator: solidify MuseHub staging then merge PR #74. Handover + paste + `MUSE-BRIDGE-WORKFLOW.md` retargeted.
+
+- **2026-09-02** — **ISR → main land-a** — Muse FF `feat/isr-independent-second-reviewer` → `main` (`sha256:f59d4cc6…`) → muse-bridge → GitHub PR [#74](https://github.com/aaronrene/overseer-kit/pull/74) OPEN/mergeable. Rebased stale `muse-mirror` onto `main` before re-export (LT #72/#73 had bypassed mirror). Merge held for MuseHub-first. `require_independent_second_reviewer` remains kit dogfood **warn**.
+
 - **2026-09-02** — **ISR-b DONE** (Auto + second-chat BV `pass`, ISR-b-BV-r1). V1–V8 against freeze + branch diff; `independent_second_review` pass (actor `c72e9414…` ≠ producer `62762b24…`); Mode B `verification_evidence` (`test_output` sha256:`4a82e963…`). `test_isr_` **48** green. NEXT → **ISR → main (land-a)**. No merge this session.
 
 - **2026-09-02** — **ISR-a DONE (Thinking freeze).** `docs/archive/phases/PHASE-ISR-INDEPENDENT-SECOND-REVIEWER.md` → `pass` (ISR-r4), stamp `sha256:e6284150…`. Second-chat / separate-verifier gate before Auto DONE; kit records/gates only; no model dispatch; portable CLI+docs primary; seven-tier §ISR.11 frozen. **No ISR-b Auto code this session.** NEXT → ISR-b Auto on `feat/isr-independent-second-reviewer`.
@@ -187,6 +192,11 @@ See `docs/ROADMAP.md` → Model-split handover protocol (SD-3) and governance sy
 
 ## Change log
 
+- **2026-09-02** — **MuseHub solidify DONE** — connected `staging.musehub.ai`; created public `aaronrene/overseer-kit`; `muse push -u staging main` (85 commits @ `sha256:a78e7e5a…`). NEXT → merge PR #74 → land-b.
+
+- **2026-09-02** — **MuseHub gap** — kit dogfood still on dead `localhost:1337`; `aaronrene/overseer-kit` **404** on staging/production. NEXT held: MuseHub solidify → then merge PR #74 (operator MuseHub-first).
+
+- **2026-09-02** — **ISR → main land-a** — Muse FF `sha256:f59d4cc6…` + PR [#74](https://github.com/aaronrene/overseer-kit/pull/74) OPEN. Merge held for MuseHub-first.
 - **2026-09-02** — **ISR-b DONE** (Auto + BV `pass`, ISR-b-BV-r1). Second-chat ISR + Mode B evidence; NEXT → **ISR → main (land-a)**.
 - **2026-09-02** — **ISR-a DONE (Thinking freeze).** PHASE-ISR → `pass` (ISR-r4). NEXT → **ISR-b**.
 - **2026-09-02** — **consumer-lt-rollout DONE.** LT synced to live consumers; bookends/honesty on primary repos; NEXT → **ISR-a**.

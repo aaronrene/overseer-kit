@@ -2,23 +2,27 @@
 
 ## Plain summary
 
-**overseer-kit** uses **MuseHub** as canonical version history. GitHub receives updates only
-through a **safe, isolated mirror checkout** — never by exporting onto your working tree.
+**overseer-kit** uses **Muse** as canonical version history. **MuseHub staging**
+(`staging.musehub.ai`) is the shared hub remote for that history (same posture as
+Knowtation/Scooling). GitHub receives updates only through a **safe, isolated
+mirror checkout** — never by exporting onto your working tree.
 
 ## Technical summary
 
 Regime: **`muse+git-mirror`** (`canonical: muse`). Muse branch
-**`main`** is authoritative. Publish to GitHub via
+**`main`** is authoritative. Hub: **`https://staging.musehub.ai`** → remote
+**`staging`** (`aaronrene/overseer-kit`). Publish to GitHub via
 `./scripts/muse-bridge-deploy.sh` → isolated `.muse/mirror/` →
 **`origin/muse-mirror`** → PR → **`main`**.
 
 ```text
 Muse main
+    → muse push staging          (hub canonical remote)
     → ./scripts/muse-bridge-deploy.sh
     → .muse/mirror/
     → origin/muse-mirror
     → PR
-    → main
+    → GitHub main
 ```
 
 ## Hard rules (SD-14)
@@ -29,18 +33,21 @@ Muse main
    script → permanent **`muse-mirror`** branch → reviewed PR.
 3. **`muse-mirror`** is permanent — do not delete it or hand-edit it as a
    substitute for Muse.
+4. Do **not** leave `[hub] url` on dead `localhost:1337` for kit dogfood — use staging
+   (or production when operator flips).
 
 ## Day-to-day
 
 - Feature work: `muse commit` on feature branches in Muse.
-- After merges to Muse **`main`**, publish with:
+- After merges to Muse **`main`**, publish hub + GitHub:
 
   ```bash
+  muse push staging
   ./scripts/muse-bridge-deploy.sh "mirror: <summary>"
   ```
 
-- Staging (when used): `muse push staging` — operator-gated; deferral is
-  operational, not a config change.
+- First-time / catch-up hub bind (operator Tier 3): `muse hub connect https://staging.musehub.ai`,
+  ensure remote repo exists, then `muse push -u staging main`.
 
 ## Operator script
 
