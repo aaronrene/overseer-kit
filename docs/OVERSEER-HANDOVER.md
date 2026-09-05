@@ -8,48 +8,74 @@
 
 <!-- overseer:next role=primary lane=product status=live -->
 <!-- overseer:anchor:next-session -->
-## NEXT SESSION — Queue idle (operator pick)
+## NEXT SESSION — NXP-b NEXT provenance build
 
-**Date:** 2026-09-02  
-**Current position:** MuseHub solidify + ISR → main DONE (PR [#74](https://github.com/aaronrene/overseer-kit/pull/74) @ `84db8c8`) → queue idle  
-**Model:** Operator
+**Date:** 2026-09-04  
+**Current position:** NXP-a freeze **`pass` (NXP-r3)**, stamp `sha256:53a5999d…` → NXP-b cleared to build  
+**Model:** Auto
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **MuseHub solidify** | Hub → `staging.musehub.ai`; public `aaronrene/overseer-kit`; first `muse push -u staging main` (85 commits). Kit dogfood matches Knowtation/Scooling hub posture. |
-| **ISR → main** | PR [#74](https://github.com/aaronrene/overseer-kit/pull/74) merged @ `84db8c8` (ISR-a freeze + ISR-b + MuseHub docs). |
-| **ISR-a + ISR-b** | Freeze `pass` (ISR-r4) + BV `pass` (ISR-b-BV-r1); `require` stays off for consumers (kit dogfood **warn**). |
+| **Session-start hook fix** | Multi-lane repos printed only the default lane, hiding queued work in other lanes. Fixed in `cursor/hooks/session-start-next.sh` + `.cursor/hooks/…`; Muse commit `1927dd90` on `fix/session-start-hook-multi-lane` (was stranded in Git only). |
+| **Governance freshness** | D1 drift cleared via `ok governance-sync --write` → `970cbd44`; `governance-sync: aligned (D1–D3)` confirmed. |
+| **NXP-a freeze** | `docs/archive/phases/PHASE-NXP-NEXT-PROVENANCE.md` — `pass` (NXP-r3). N1 provenance line, N2 JSON identity keys, N3 non-silent `check-next`, N4 board-name advisory (warn), N5 hook sequencing. |
 
-### THE ONE NEXT STEP — **Model: Operator**
+### Verified root cause (do not re-derive)
 
-Build queue has **zero open rows**. Pick the next phase from exploration backlog (or elsewhere), author a Thinking freeze paste, or stay idle.
+Two repos injected byte-identical `## CURRENT NEXT — paste this` headings into one chat with no
+attribution. The identity data **already exists** in `CurrentNextResult` (`tools/print_next/extract.py:35-41`)
+and is simply never emitted on the human surface; `--json` already carries it. Separately, K13
+§MR.6.5 repo-prefixed board names are **already built** (K13b DONE) but inert — `ok workspace
+check-next` exits `0` with "workspace not configured", so nothing ever nudges a repo to adopt them.
+
+### THE ONE NEXT STEP — **Model: Auto**
+
+Build NXP-b mechanically against the frozen spec. No redesign.
 
 | | |
 | --- | --- |
-| **ID** | **queue-idle** |
+| **ID** | **NXP-b** |
 | **Repo** | overseer-kit |
-| **Read first** | `docs/ROADMAP.md` exploration backlog; this handover |
-| **Hard stops** | No merge to `main` without Tier 3 · no secrets · no live posture flips · no inventing a phase without Thinking freeze |
+| **Read first** | `docs/archive/phases/PHASE-NXP-NEXT-PROVENANCE.md` §NXP.3–§NXP.8; `docs/ROADMAP.md` NXP rows |
+| **Hard stops** | No merge to `main` without Tier 3 · no secrets · **do not disable hooks** · no consumer renames · no `workspace.yaml` authoring · no fence-body or heading byte changes · no hook auto-enable |
 <!-- /overseer:anchor:next-session -->
 
 <!-- overseer:anchor:paste-ready-prompt -->
-### Paste-ready prompt — queue idle / pick next
+### Paste-ready prompt — NXP-b NEXT provenance build
 
 ```text
-Queue idle after MuseHub solidify + ISR → main (PR #74 @ 84db8c8).
+overseer-kit — NXP-b NEXT provenance build (Auto)
 
-Model: Operator
+Model: Auto
 Repo: overseer-kit
-Step: queue-idle
-Authority: authoritative
+Step: NXP-b
+Authority: ROADMAP row NXP-b
+Consumes: docs/archive/phases/PHASE-NXP-NEXT-PROVENANCE.md (frozen: true, pass NXP-r3)
 
-Build queue is empty. Pick one exploration-backlog idea (or another phase), run a Thinking freeze, or defer.
+Context: `ok next` prints a block whose heading is byte-identical in every repo, so when two
+repos inject blocks into one chat neither the operator nor the agent can tell which authority
+each carries. The identity data already exists in CurrentNextResult and is simply not emitted.
+Separately, K13 repo-prefixed board names are already built but inert because
+`ok workspace check-next` exits 0 when no workspace manifest is configured.
 
-Candidates (not queued until freeze): KH2 remask; session-type bookends; auto-enable hooks; host tab reload (if Cursor API exists).
+Do:
+ 1. Read docs/archive/phases/PHASE-NXP-NEXT-PROVENANCE.md in full — build only what §NXP.3-§NXP.6 freeze
+ 2. N1: provenance line on `ok next` human stdout per §NXP.3.1 twelve-step layout + §NXP.3.2 template
+ 3. N2: additive --json keys repo_name / repo_root / read_at (§NXP.4)
+ 4. N3: `ok workspace check-next` advisory instead of silent exit-0 success (§NXP.5)
+ 5. N4: bare-board-name advisory in `ok status` — warn only, never a gate (§NXP.6)
+ 6. Update the existing ONS §ONS.5.4 layout assertions per §NXP.3.3 — expected, not a regression
+ 7. Add the injectable clock seam per §NXP.3.4
+ 8. Run seven-tier §NXP.8 + full suite; then /build-verification-review until pass
 
-Hard stops: No kit main merge without Tier 3 · no secrets · no live posture flips · no MuseHub-only baseline features
+Do not: disable or remove session hooks · auto-enable hooks anywhere · rename any consumer
+handover · author any workspace.yaml · change fence-body bytes or CURRENT_NEXT_HEADING ·
+make board naming a blocking gate · print a NEXT block without provenance as a degrade path ·
+merge to main without Tier 3
+
+Hard stops: No kit main merge without Tier 3 · no secrets · no live posture flips
 ```
 <!-- /overseer:anchor:paste-ready-prompt -->
 
@@ -76,24 +102,24 @@ Hard stops: No kit main merge without Tier 3 · no secrets · no live posture fl
 | Area | State |
 | --- | --- |
 | **VCS regime** | `muse+git-mirror` |
-| **GitHub main** | `fc2ecb015523f6b84bae1a9b89c59a7305ec30d1` |
-| **Canonical anchor** | `sha256:28aba67b7cb5bc05bb3c84eb1712effa5afb163b263c88ece1a09257e62ecf44` |
-| **Canonical main** | `sha256:28aba67b7cb5bc05bb3c84eb1712effa5afb163b263c88ece1a09257e62ecf44` |
-| **Branch** | `main` |
-| **Dirty** | `yes` |
+| **GitHub main** | `ce16f9bd87765a854b447500ba0b58d24e1b3a4c` |
+| **Canonical anchor** | `sha256:6abcf1fa82a7a621ccbc945f19acdba5bc0db54569599404a1452fb4a096a199` |
+| **Canonical main** | `sha256:6abcf1fa82a7a621ccbc945f19acdba5bc0db54569599404a1452fb4a096a199` |
+| **Branch** | `fix/session-start-hook-multi-lane` |
+| **Dirty** | `no` |
 | **Drift** | D1=drifted, D2=aligned, D3=aligned |
 <!-- /overseer:anchor:verified-snapshot -->
 
 <!-- overseer:anchor:vcs-table -->
-## VCS (verified 2026-09-02)
+## VCS (verified 2026-09-04)
 
 | Item | Value |
 | --- | --- |
-| Branch | `main` |
-| GitHub `main` | `fc2ecb015523f6b84bae1a9b89c59a7305ec30d1` |
-| Canonical anchor | `sha256:28aba67b7cb5bc05bb3c84eb1712effa5afb163b263c88ece1a09257e62ecf44` (.muse/git-bridge.toml:last_export.muse_commit_id) |
-| Muse `main` | `sha256:28aba67b7cb5bc05bb3c84eb1712effa5afb163b263c88ece1a09257e62ecf44` |
-| Dirty | yes |
+| Branch | `fix/session-start-hook-multi-lane` |
+| GitHub `main` | `ce16f9bd87765a854b447500ba0b58d24e1b3a4c` |
+| Canonical anchor | `sha256:6abcf1fa82a7a621ccbc945f19acdba5bc0db54569599404a1452fb4a096a199` (.muse/git-bridge.toml:last_export.muse_commit_id) |
+| Muse `main` | `sha256:6abcf1fa82a7a621ccbc945f19acdba5bc0db54569599404a1452fb4a096a199` |
+| Dirty | no |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -187,6 +213,8 @@ See `docs/ROADMAP.md` → Model-split handover protocol (SD-3) and governance sy
 <!-- /overseer:anchor:done-recently -->
 
 ## Change log
+
+- **2026-09-04** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `ce16f9b`; realign: D2 aligned — skip realign; next_regen=human_authorship_required:zero_open_rows
 
 - **2026-09-02** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `fc2ecb0`; realign: D2 aligned — skip realign; next_regen=human_authorship_required:zero_open_rows
 
