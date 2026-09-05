@@ -8,72 +8,61 @@
 
 <!-- overseer:next role=primary lane=product status=live -->
 <!-- overseer:anchor:next-session -->
-## NEXT SESSION — NXP-b NEXT provenance build
+## NEXT SESSION — NXP-b build verification (second chat)
 
 **Date:** 2026-09-04  
-**Current position:** NXP-a freeze **`pass` (NXP-r3)**, stamp `sha256:53a5999d…` → NXP-b cleared to build  
-**Model:** Auto
+**Current position:** NXP-b code complete on `feat/nxp-next-provenance` — **DONE blocked** until second-chat BV + ISR  
+**Model:** thinking-high
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **Session-start hook fix** | Multi-lane repos printed only the default lane, hiding queued work in other lanes. Fixed in `cursor/hooks/session-start-next.sh` + `.cursor/hooks/…`; Muse commit `1927dd90` on `fix/session-start-hook-multi-lane` (was stranded in Git only). |
-| **Governance freshness** | D1 drift cleared via `ok governance-sync --write` → `970cbd44`; `governance-sync: aligned (D1–D3)` confirmed. |
-| **NXP-a freeze** | `docs/archive/phases/PHASE-NXP-NEXT-PROVENANCE.md` — `pass` (NXP-r3). N1 provenance line, N2 JSON identity keys, N3 non-silent `check-next`, N4 board-name advisory (warn), N5 hook sequencing. |
+| **N1 provenance** | Twelve-step `ok next` layout: heading + blank + `**Source:** …` + blank + fence. `PROVENANCE_LINE_TEMPLATE` + injectable `set_read_at_clock` (§NXP.3.4). |
+| **N2 JSON** | Additive `repo_name` / `repo_root` / `read_at` on success and failure shapes. |
+| **N3 check-next** | Unconfigured → advisory + exit `0` (bare names name basename + `{n}-` target; compliant names say already compliant). |
+| **N4 status** | Bare-board advisory warn only; not in `--exit-code` precedence. |
+| **Tests** | §NXP.8 seven-tier + ONS layout updates; `test_print_next*` / `test_nxp_advisories` **45** green. |
 
-### Verified root cause (do not re-derive)
+### THE ONE NEXT STEP — **Model: thinking-high**
 
-Two repos injected byte-identical `## CURRENT NEXT — paste this` headings into one chat with no
-attribution. The identity data **already exists** in `CurrentNextResult` (`tools/print_next/extract.py:35-41`)
-and is simply never emitted on the human surface; `--json` already carries it. Separately, K13
-§MR.6.5 repo-prefixed board names are **already built** (K13b DONE) but inert — `ok workspace
-check-next` exits `0` with "workspace not configured", so nothing ever nudges a repo to adopt them.
-
-### THE ONE NEXT STEP — **Model: Auto**
-
-Build NXP-b mechanically against the frozen spec. No redesign.
+Second chat: `/build-verification-review` against the frozen NXP spec. Builder session cannot unlock DONE (`require_independent_second_reviewer: require`).
 
 | | |
 | --- | --- |
-| **ID** | **NXP-b** |
+| **ID** | **NXP-b-BV** |
 | **Repo** | overseer-kit |
-| **Read first** | `docs/archive/phases/PHASE-NXP-NEXT-PROVENANCE.md` §NXP.3–§NXP.8; `docs/ROADMAP.md` NXP rows |
-| **Hard stops** | No merge to `main` without Tier 3 · no secrets · **do not disable hooks** · no consumer renames · no `workspace.yaml` authoring · no fence-body or heading byte changes · no hook auto-enable |
+| **Branch** | `feat/nxp-next-provenance` |
+| **Read first** | `docs/archive/phases/PHASE-NXP-NEXT-PROVENANCE.md`; diff vs `feat/governance-sync-2026-09-04` / NXP-a tip |
+| **Hard stops** | No DONE without BV `pass` + ISR · no merge to `main` without Tier 3 · no secrets |
 <!-- /overseer:anchor:next-session -->
 
 <!-- overseer:anchor:paste-ready-prompt -->
-### Paste-ready prompt — NXP-b NEXT provenance build
+### Paste-ready prompt — NXP-b build verification (second chat)
 
 ```text
-overseer-kit — NXP-b NEXT provenance build (Auto)
+overseer-kit — NXP-b build verification (thinking-high)
 
-Model: Auto
+Model: thinking-high
 Repo: overseer-kit
-Step: NXP-b
+Step: NXP-b-BV
 Authority: ROADMAP row NXP-b
 Consumes: docs/archive/phases/PHASE-NXP-NEXT-PROVENANCE.md (frozen: true, pass NXP-r3)
+Branch: feat/nxp-next-provenance
+Producer session: this Auto build chat (do not reuse for ISR)
 
-Context: `ok next` prints a block whose heading is byte-identical in every repo, so when two
-repos inject blocks into one chat neither the operator nor the agent can tell which authority
-each carries. The identity data already exists in CurrentNextResult and is simply not emitted.
-Separately, K13 repo-prefixed board names are already built but inert because
-`ok workspace check-next` exits 0 when no workspace manifest is configured.
+Context: NXP-b code is on the feature branch. N1 provenance line, N2 JSON keys,
+N3 check-next advisory exit 0, N4 status board-name warn. Seven-tier §NXP.8 green.
+Kit honesty has require_independent_second_reviewer: require — builder BV cannot unlock DONE.
 
 Do:
- 1. Read docs/archive/phases/PHASE-NXP-NEXT-PROVENANCE.md in full — build only what §NXP.3-§NXP.6 freeze
- 2. N1: provenance line on `ok next` human stdout per §NXP.3.1 twelve-step layout + §NXP.3.2 template
- 3. N2: additive --json keys repo_name / repo_root / read_at (§NXP.4)
- 4. N3: `ok workspace check-next` advisory instead of silent exit-0 success (§NXP.5)
- 5. N4: bare-board-name advisory in `ok status` — warn only, never a gate (§NXP.6)
- 6. Update the existing ONS §ONS.5.4 layout assertions per §NXP.3.3 — expected, not a regression
- 7. Add the injectable clock seam per §NXP.3.4
- 8. Run seven-tier §NXP.8 + full suite; then /build-verification-review until pass
+ 1. Run /build-verification-review V1–V8 against PHASE-NXP-NEXT-PROVENANCE.md §NXP.3–§NXP.6
+ 2. Confirm fence body + CURRENT_NEXT_HEADING unchanged; ONS layout tests updated to twelve-step
+ 3. Confirm N4 does not fold into --exit-code; N3 stays exit 0 when unconfigured
+ 4. Append verification_evidence (test_output) + independent_second_review with actor_session_id ≠ producer
+ 5. On pass: mark NXP-b DONE; update ROADMAP + handover together (SD-17); do not merge main
 
-Do not: disable or remove session hooks · auto-enable hooks anywhere · rename any consumer
-handover · author any workspace.yaml · change fence-body bytes or CURRENT_NEXT_HEADING ·
-make board naming a blocking gate · print a NEXT block without provenance as a degrade path ·
-merge to main without Tier 3
+Do not: waive ISR · mark DONE from builder chat · merge to main · disable hooks · rename consumer boards
 
 Hard stops: No kit main merge without Tier 3 · no secrets · no live posture flips
 ```
@@ -130,6 +119,8 @@ Hard stops: No kit main merge without Tier 3 · no secrets · no live posture fl
 - Governance sync is mandatory before session end (SD-17)
 
 <!-- overseer:anchor:change-log -->
+- **2026-09-04** — **NXP-b code complete** on `feat/nxp-next-provenance` (not DONE). N1 twelve-step provenance + clock seam; N2 JSON identity keys; N3 `check-next` advisory exit `0`; N4 status board-name warn. §NXP.8 **45** green. Full suite **1340** pass / **16** pre-existing unrelated fails. NEXT → second-chat BV + ISR (`require`).
+
 - **2026-09-02** — **ISR default → `require`** (operator posture). Absent key / shipped default is now `require` (was `off`); kit dogfood `require` (was `warn`). Opt out: `off` or `warn`. PHASE-ISR operator amend recorded. Closed-loop premise.
 
 - **2026-09-02** — **ISR → main + MuseHub solidify DONE.** Hub → staging; created `aaronrene/overseer-kit`; pushed 85 commits; PR [#74](https://github.com/aaronrene/overseer-kit/pull/74) @ `84db8c8`. NEXT → **queue-idle**.

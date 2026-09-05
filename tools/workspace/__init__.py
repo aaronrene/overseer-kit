@@ -1,11 +1,13 @@
 """Multi-repo workspace / constellation lanes engine (§MR.4–§MR.8)."""
 
 from tools.workspace.board_names import (
+    check_next_unconfigured_advisory,
     expected_handover_basename,
     expected_handover_title,
     expected_roadmap_basename,
     expected_roadmap_title,
     repo_slug,
+    status_board_name_advisory,
 )
 from tools.workspace.check_next import (
     build_status_report,
@@ -39,6 +41,7 @@ __all__ = [
     "WorkspaceStatusReport",
     "build_status_report",
     "check_next",
+    "check_next_unconfigured_advisory",
     "discover_manifest",
     "expand_root",
     "extract_next_blocks",
@@ -50,6 +53,7 @@ __all__ = [
     "load_manifest_for_repo",
     "repo_slug",
     "run_doctor",
+    "status_board_name_advisory",
     "tip_hash_hex",
     "validate_manifest_dict",
     "workspace_relay_footer_state",

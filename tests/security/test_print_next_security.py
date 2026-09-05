@@ -112,3 +112,39 @@ def test_fake_secret_printed_as_data_not_executed(tmp_path: Path, capsys) -> Non
     assert token in out
     for cmd, _cwd in runner.calls:
         assert token not in cmd
+
+
+def test_provenance_leaks_no_secrets(tmp_path: Path, capsys) -> None:
+    """§NXP.8 security: provenance emits name/path/lane/timestamp only."""
+    from tools.print_next.extract import set_read_at_clock
+
+    write_config(tmp_path, "config-git-only.yaml")
+    # Inject a fake token into config to ensure it is not echoed in provenance.
+    cfg = tmp_path / ".overseer" / "config.yaml"
+    cfg.write_text(
+        cfg.read_text(encoding="utf-8") + "\n# secret: sk-config-should-not-leak\n",
+        encoding="utf-8",
+    )
+    docs = tmp_path / "docs"
+    docs.mkdir(parents=True, exist_ok=True)
+    (docs / "OVERSEER-HANDOVER.md").write_text(
+        (FIXTURES / "print-next-handover.md").read_text(encoding="utf-8"),
+        encoding="utf-8",
+    )
+    (docs / "ROADMAP.md").write_text("# Roadmap\n", encoding="utf-8")
+    set_read_at_clock(lambda: "2026-09-04T12:00:00Z")
+    try:
+        code = run_cli(["next"], cwd=tmp_path, runner=git_status_runner(), kit=kit_root())
+        out = capsys.readouterr().out
+        assert code == 0
+        # Provenance line only — isolate the Source line.
+        prov = [ln for ln in out.splitlines() if ln.startswith("**Source:**")][0]
+        assert "sk-config-should-not-leak" not in prov
+        assert "token" not in prov.lower()
+        assert "github.com" not in prov
+        assert "remote" not in prov
+        assert "test-git" in prov
+        assert tmp_path.resolve().as_posix() in prov
+        assert "read `" in prov
+    finally:
+        set_read_at_clock(None)

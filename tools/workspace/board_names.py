@@ -112,3 +112,98 @@ def board_name_violation(
     if not matches_prefixed_pattern(roadmap_basename, repo_name, kind="roadmap"):
         return True
     return False
+
+
+def _first_offending_pair(
+    *,
+    repo_name: str,
+    handover_basename: str,
+    roadmap_basename: str,
+    lane: str | None = None,
+) -> tuple[str, str]:
+    """Return ``(offending_basename, compliant_target)`` for the first violation."""
+    if is_bare_legacy_basename(handover_basename, kind="handover") or not matches_prefixed_pattern(
+        handover_basename, repo_name, kind="handover"
+    ):
+        return handover_basename, expected_handover_basename(repo_name, lane=lane)
+    return roadmap_basename, expected_roadmap_basename(repo_name, lane=lane)
+
+
+def check_next_unconfigured_advisory(config) -> str:
+    """Advisory when ``workspace:`` is absent (§NXP.5). Exit stays 0."""
+    repo_name = (config.repo.name or "").strip()
+    handover = Path_basename(config.docs.handover)
+    roadmap = Path_basename(config.docs.roadmap)
+    if board_name_violation(
+        repo_name=repo_name,
+        handover_basename=handover,
+        roadmap_basename=roadmap,
+        strict=True,
+    ):
+        bare, target = _first_offending_pair(
+            repo_name=repo_name,
+            handover_basename=handover,
+            roadmap_basename=roadmap,
+        )
+        return (
+            f"workspace not configured; board name {bare} is bare/legacy — "
+            f"prefer {target}"
+        )
+    return "workspace not configured; board names already compliant"
+
+
+def status_board_name_advisory(config) -> str | None:
+    """Non-blocking bare-board-name advisory for ``ok status`` (§NXP.6).
+
+    Returns ``None`` when ``workspace:`` is configured or boards are compliant.
+    Never contributes to ``--exit-code``.
+    """
+    if config.workspace is not None:
+        return None
+
+    repo_name = (config.repo.name or "").strip()
+
+    if config.docs.lanes is None:
+        handover = Path_basename(config.docs.handover)
+        roadmap = Path_basename(config.docs.roadmap)
+        if not board_name_violation(
+            repo_name=repo_name,
+            handover_basename=handover,
+            roadmap_basename=roadmap,
+            strict=True,
+        ):
+            return None
+        bare, target = _first_offending_pair(
+            repo_name=repo_name,
+            handover_basename=handover,
+            roadmap_basename=roadmap,
+        )
+        return f"board naming: {bare} is bare/legacy — prefer {target}"
+
+    offenders: list[tuple[str, str, str]] = []
+    for lane_name, lane_docs in config.docs.lanes.items():
+        handover = Path_basename(lane_docs.handover)
+        roadmap = Path_basename(lane_docs.roadmap)
+        if board_name_violation(
+            repo_name=repo_name,
+            handover_basename=handover,
+            roadmap_basename=roadmap,
+            strict=True,
+        ):
+            bare, target = _first_offending_pair(
+                repo_name=repo_name,
+                handover_basename=handover,
+                roadmap_basename=roadmap,
+                lane=lane_name,
+            )
+            offenders.append((lane_name, bare, target))
+
+    if not offenders:
+        return None
+
+    _lane, bare, target = offenders[0]
+    count = len(offenders)
+    return (
+        f"board naming: {count} lane{'s' if count != 1 else ''} non-compliant "
+        f"(first: {bare} — prefer {target})"
+    )
