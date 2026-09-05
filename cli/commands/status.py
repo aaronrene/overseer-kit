@@ -44,6 +44,7 @@ from tools.optional_feature_tips import (
     optional_feature_tips_payload,
 )
 from tools.workspace import build_status_report
+from tools.workspace.board_names import status_board_name_advisory
 
 
 GOVERNANCE_SYNC_MARKER = "last_governance_sync"
@@ -391,6 +392,11 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
 
     optional_feature_tips = build_optional_feature_tips(config)
 
+    # §NXP.6 — warn only; must not fold into --exit-code.
+    board_name_advisory = status_board_name_advisory(config)
+    if board_name_advisory is not None:
+        report.add_warning(board_name_advisory)
+
     payload = {
         "initialized": True,
         "kit_version": kit_version(),
@@ -413,6 +419,7 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
         else {"enabled": False, "suppressed": False, "active_phases": [], "pending": []},
         "model_routing": model_routing_status,
         "warnings": report.warnings,
+        "board_name_advisory": board_name_advisory,
     }
     if cost_report is not None:
         payload["cost_awareness"] = cost_awareness_payload(cost_report)
@@ -514,6 +521,8 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
         ctx.output.emit(IDE_WORKSPACE_HINT)
         for line in optional_feature_tips:
             ctx.output.emit(line)
+        if board_name_advisory is not None:
+            ctx.output.emit(board_name_advisory)
         if ve_line:
             ctx.output.emit(ve_line)
         ctx.output.emit(f"vcs.regime: {vcs_result.regime}")

@@ -93,10 +93,12 @@ def test_muse_only_member_skips_git(tmp_path: Path) -> None:
     assert "muse_only_skip_git" in codes
 
 
-def test_check_next_not_configured_is_config_exit(tmp_path: Path) -> None:
+def test_check_next_not_configured_advisory_exit_zero(tmp_path: Path, capsys) -> None:
     from tests.support import run_cli, write_config
 
     write_config(tmp_path, "config-git-only.yaml")
     (tmp_path / "docs").mkdir(exist_ok=True)
     code = run_cli(["workspace", "check-next"], cwd=tmp_path)
-    assert code == 2
+    out = capsys.readouterr().out
+    assert code == 0
+    assert "workspace not configured" in out
