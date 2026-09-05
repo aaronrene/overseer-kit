@@ -18,6 +18,7 @@ from tools.workspace import (
     load_manifest_for_repo,
     run_doctor,
 )
+from tools.workspace.board_names import check_next_unconfigured_advisory
 from tools.workspace.types import EXIT_CONFIG, EXIT_OK, EXIT_USAGE
 
 
@@ -90,12 +91,19 @@ def _run_status(args: Namespace, ctx: CliContext, config, repo_root: Path) -> in
 
 def _run_check_next(args: Namespace, ctx: CliContext, config, repo_root: Path) -> int:
     if config.workspace is None:
-        payload = {"ok": False, "state": "not_configured", "exit_code": EXIT_CONFIG}
+        # §NXP.5 — visibility advisory; exit stays 0 (not a new gate).
+        advisory = check_next_unconfigured_advisory(config)
+        payload = {
+            "ok": True,
+            "state": "not_configured",
+            "exit_code": EXIT_OK,
+            "advisory": advisory,
+        }
         if ctx.output.json_mode:
             ctx.output.emit_json(payload)
         else:
-            ctx.output.error("workspace not configured (check-next requires workspace:)")
-        return EXIT_CONFIG
+            ctx.output.emit(advisory)
+        return EXIT_OK
     try:
         manifest = load_manifest_for_repo(config, repo_root)
     except WorkspaceLoadError as exc:

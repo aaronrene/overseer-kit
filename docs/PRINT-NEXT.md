@@ -25,6 +25,10 @@ Paste the printed block into chat under the heading it already includes:
 ## CURRENT NEXT — paste this
 ```
 
+Between the heading and the fenced body, `ok next` prints one provenance line
+(`**Source:** …`) naming the repo, absolute root, handover path, lane, and read
+timestamp so adjacent blocks from different repos stay attributable (NXP).
+
 ## Source of truth order
 
 When the printed fence, the disk file, and an open tab disagree:
