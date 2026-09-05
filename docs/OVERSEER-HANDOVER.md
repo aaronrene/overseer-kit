@@ -8,90 +8,60 @@
 
 <!-- overseer:next role=primary lane=product status=live -->
 <!-- overseer:anchor:next-session -->
-## NEXT SESSION — NXP → main (land-a, Tier 3)
+## NEXT SESSION — Build queue idle (operator pick)
 
-**Date:** 2026-09-04  
-**Current position:** **NXP-b DONE** — BV-r2 `pass` + ISR `pass` from an independent session on `feat/nxp-next-provenance`; branch is 6 commits ahead of `main` and **unmerged**  
+**Date:** 2026-09-05  
+**Current position:** **NXP → main DONE** (PR [#78](https://github.com/aaronrene/overseer-kit/pull/78) @ `c921bf1`) → queue idle  
 **Model:** Operator + Auto
 
-### Where NXP-b landed
+### What just landed
 
-BV round 2 ran in a session (`2869c11a…`) that is **not** the BV-r1 verifier / NXP-b-FIX
-producer (`3a3eda52…`), so the honesty loop is closed: `require_independent_second_reviewer:
-require` is satisfied by a real second actor, not a waiver.
-
-| Round | Actor | Verdict | Resolution |
-| --- | --- | --- | --- |
-| NXP-b-BV-r1 | verifier `3a3eda52…` (second chat) | **findings** | BV1 e2e exit-code row tautological; BV2 data-integrity golden newline-insensitive; BV3 producer nonce unrecorded; BV4 §NXP.3.6/§NXP.4 branches untested. `verification_evidence` `bv_verdict: findings`, `test_output` sha256:`a1ea596e…`. |
-| NXP-b-FIX | producer `3a3eda52…` @ `6c35b72` | fixed | Tests-only; no N1–N4 behavior change. |
-| NXP-b-BV-r2 | verifier `2869c11a…` (independent) | **pass** | V1–V8 over `940c3b4..HEAD`. BV-r1's findings **re-derived by mutation, not trusted**: 12 targeted mutations, 10 killed. The rewritten e2e row fails (exit `2 ≠ 0`) when N4 is folded into `--exit-code` while the pre-fix `410ddc1` row passes under the identical mutation; the rewritten data-integrity row fails on a **newline-only** fence-body change while the pre-fix row passes (a content-byte change is caught by both). `verification_evidence` `bv_verdict: pass` round 2, `test_output` sha256:`d4c5e0ae…`; `independent_second_review` `isr_verdict: pass`, entry `8e5e49d9…`. |
-
-Verified live on this repo, not merely green: heading byte-exact on line 1, four ` · ` U+00B7
-separators, stdout minus the provenance line + its blank reproduces pre-NXP nine-step bytes
-exactly, `ok workspace check-next` exits `0` naming `OVERSEER-HANDOVER.md` → `OVERSEER-KIT-OVERSEER-HANDOVER.md`,
-and `ok status --exit-code` returns `0` while the board-naming advisory prints. Exit precedence
-`2 > 6 > 35 > 3 > 0`, `CURRENT_NEXT_HEADING`, and `extract_paste_fence_body` are untouched by
-the diff. §NXP.8 seven-tier **54** green; full suite **1343** pass / **16** pre-existing
-failures whose set is identical to parent `940c3b4` in matched worktree environments.
-
-**Two non-blocking observations for a later slice** (outside the frozen §NXP.8 matrix, so they
-do not gate DONE): the `ok workspace check-next --json` unconfigured payload's `ok`/`exit_code`
-fields are unasserted (`cli/commands/workspace.py:94-101`), and the `is_absolute()` guard in
-`absolute_repo_root` (`tools/print_next/extract.py:71-73`) is an unreachable defensive branch —
-its spec-required `OSError` refusal path **is** tested. Separately, frozen §NXP.1 **V6** states
-pre-NXP `check-next` exited `0` when unconfigured; it actually returned `2`
-(`cli/commands/workspace.py:93` @ `940c3b4`). NXP-b correctly implemented the frozen §NXP.5
-table (exit `0`); the mis-stated evidence line belongs to a future freeze amendment, not to
-this build.
+| Slice | Deliverable |
+| --- | --- |
+| **NXP → main (land-b)** | PR [#78](https://github.com/aaronrene/overseer-kit/pull/78) merged @ `c921bf1`. Muse FF `sha256:c07f2f34…` → muse-bridge → squash. NXP-a freeze + NXP-b build on `main`. |
+| **NXP-b** | NEXT provenance + board identity (N1–N4). BV-r2 `pass` + ISR `pass` (verifier `2869c11a…` ≠ producer `3a3eda52…`). |
+| **N5 unblocked** | Backlog *"Auto-enable session hooks on `ok sync`"* may be freshly frozen when picked (§NXP.7 satisfied). |
 
 ### THE ONE NEXT STEP — **Model: Operator + Auto**
 
-Land `feat/nxp-next-provenance` (6 commits) to `main` under Tier 3: operator authorizes, agent
-prepares. Nothing merges without that authorization.
+Build queue has **zero** open rows. Pick the next kit slice from the exploration backlog in
+`docs/ROADMAP.md` (natural candidate: **N5** auto-enable session hooks — now unblocked), or
+author a new Thinking freeze, then regenerate NEXT. Do **not** re-paste NXP land — that row is
+**DONE**.
 
 | | |
 | --- | --- |
-| **ID** | **NXP-land-a** |
-| **Repo** | overseer-kit |
-| **Branch** | `feat/nxp-next-provenance` → `main` |
-| **Read first** | ROADMAP row **NXP-b** (DONE); `docs/archive/phases/PHASE-NXP-NEXT-PROVENANCE.md`; this block |
-| **Also unblocked** | §NXP.7 **N5** is satisfied — N1 now has a build-verification `pass`, so the backlog row *"Auto-enable session hooks on `ok sync`"* may be freshly frozen on its own merits. Sequencing only; hooks were never disabled. |
-| **Hard stops** | No merge to `main` without Tier 3 authorization · no secrets · no live posture flips · do not rename consumer boards |
+| **ID** | **queue-idle** |
+| **Branch** | `feat/governance-sync-*` (when docs-only) or `feat/<new-slice>` |
+| **Repo** | **overseer-kit** |
+| **Read first** | `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md` |
+| **Hard stops** | No merge to `main` without Tier 3 · no secrets · no live posture flips · no inventing NEXT when ambiguous · do not rename consumer boards |
 <!-- /overseer:anchor:next-session -->
 
 <!-- overseer:anchor:paste-ready-prompt -->
-### Paste-ready prompt — NXP → main (land-a, Tier 3)
+### Paste-ready prompt — queue-idle
 
 ```text
-overseer-kit — NXP → main land-a (Operator + Auto)
+queue-idle — Build queue idle (overseer-kit).
 
 Model: Operator + Auto
 Repo: overseer-kit
-Step: NXP-land-a
-Authority: ROADMAP row NXP-b (DONE)
-Consumes: docs/archive/phases/PHASE-NXP-NEXT-PROVENANCE.md (frozen: true, pass NXP-r3)
-Branch: feat/nxp-next-provenance -> main (6 commits, unmerged)
+Branch: feat/<new-slice-or-governance-sync>
+Step: queue-idle
+Authority: authoritative
 
-Context: NXP-b is DONE. BV-r2 passed V1-V8 in an independent session (2869c11a...),
-not the BV-r1 verifier / NXP-b-FIX producer (3a3eda52...), and appended both
-verification_evidence (bv_verdict pass, round 2, test_output sha256 d4c5e0ae...) and
-independent_second_review (isr_verdict pass). ok honesty-status returns 0 for Mode B
-and Mode D on phase_id "NXP-b NEXT provenance build".
+Read first: `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md`.
 
-Do:
- 1. ok status --exit-code and ok land-check; confirm substrate.ok, muse_sync.ok, and
-    footprint_self_integrity.ok before proposing the land.
- 2. Prepare the Tier-3 land of feat/nxp-next-provenance: Muse FF, muse-bridge export,
-    then a GitHub PR. Stop and present the plan; the operator authorizes the merge.
- 3. After the operator merges: post-merge sync, ok land-closeout, then update ROADMAP +
-    handover together (SD-17).
- 4. Optional follow-on, separate slice: freeze the now-unblocked N5 backlog row
-    "Auto-enable session hooks on ok sync" (NXP.7 satisfied — N1 has a BV pass).
+Deliverables:
+- Build queue has zero open rows. Operator picks next slice from the exploration backlog
+  (natural candidate: N5 "Auto-enable session hooks on ok sync" — §NXP.7 unblocked after
+  NXP → main PR #78) or authors a new Thinking freeze, then regenerates NEXT.
+- Do not re-run NXP land — already DONE on main @ c921bf1.
 
-Do not: merge to main without explicit Tier-3 authorization · flip live posture ·
- rename consumer boards · commit secrets · reopen the frozen NXP contract
+Hard stops: No merge to main without Tier 3 · no secrets · no live posture flips ·
+ no inventing NEXT when ambiguous · do not rename consumer boards
 
-Hard stops: No kit main merge without Tier 3 · no secrets · no live posture flips
+Governance sync: update roadmap + handover on completion.
 ```
 <!-- /overseer:anchor:paste-ready-prompt -->
 
@@ -118,24 +88,24 @@ Hard stops: No kit main merge without Tier 3 · no secrets · no live posture fl
 | Area | State |
 | --- | --- |
 | **VCS regime** | `muse+git-mirror` |
-| **GitHub main** | `ce16f9bd87765a854b447500ba0b58d24e1b3a4c` |
-| **Canonical anchor** | `sha256:6abcf1fa82a7a621ccbc945f19acdba5bc0db54569599404a1452fb4a096a199` |
-| **Canonical main** | `sha256:6abcf1fa82a7a621ccbc945f19acdba5bc0db54569599404a1452fb4a096a199` |
-| **Branch** | `fix/session-start-hook-multi-lane` |
-| **Dirty** | `no` |
+| **GitHub main** | `c921bf187d42f0c90514ac0da095d0e5adb5bf21` |
+| **Canonical anchor** | `sha256:c07f2f34a0db9f43fe866f157d1935322008545ff8940c06c7c921eb219c55ab` |
+| **Canonical main** | `sha256:c07f2f34a0db9f43fe866f157d1935322008545ff8940c06c7c921eb219c55ab` |
+| **Branch** | `feat/governance-sync-2026-09-05` |
+| **Dirty** | `yes` |
 | **Drift** | D1=drifted, D2=aligned, D3=aligned |
 <!-- /overseer:anchor:verified-snapshot -->
 
 <!-- overseer:anchor:vcs-table -->
-## VCS (verified 2026-09-04)
+## VCS (verified 2026-09-05)
 
 | Item | Value |
 | --- | --- |
-| Branch | `fix/session-start-hook-multi-lane` |
-| GitHub `main` | `ce16f9bd87765a854b447500ba0b58d24e1b3a4c` |
-| Canonical anchor | `sha256:6abcf1fa82a7a621ccbc945f19acdba5bc0db54569599404a1452fb4a096a199` (.muse/git-bridge.toml:last_export.muse_commit_id) |
-| Muse `main` | `sha256:6abcf1fa82a7a621ccbc945f19acdba5bc0db54569599404a1452fb4a096a199` |
-| Dirty | no |
+| Branch | `feat/governance-sync-2026-09-05` |
+| GitHub `main` | `c921bf187d42f0c90514ac0da095d0e5adb5bf21` |
+| Canonical anchor | `sha256:c07f2f34a0db9f43fe866f157d1935322008545ff8940c06c7c921eb219c55ab` (.muse/git-bridge.toml:last_export.muse_commit_id) |
+| Muse `main` | `sha256:c07f2f34a0db9f43fe866f157d1935322008545ff8940c06c7c921eb219c55ab` |
+| Dirty | yes |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -146,6 +116,8 @@ Hard stops: No kit main merge without Tier 3 · no secrets · no live posture fl
 - Governance sync is mandatory before session end (SD-17)
 
 <!-- overseer:anchor:change-log -->
+- **2026-09-05** — **NXP → main DONE (land-b).** GitHub PR [#78](https://github.com/aaronrene/overseer-kit/pull/78) merged @ `c921bf1` (NXP-a freeze + NXP-b build). Muse FF `sha256:c07f2f34…` → muse-bridge → squash. Post-merge sync; N5 backlog unblocked (§NXP.7). NEXT → **queue-idle**.
+
 - **2026-09-04** — **NXP-b DONE** — **BV-r2 `pass` + ISR `pass`** from independent verifier `2869c11a…` (≠ producer `3a3eda52…`, who was BV-r1 verifier then NXP-b-FIX producer). V1–V8 over `940c3b4..HEAD`, covering both the build commit `410ddc1` and the test fix `6c35b72`. BV-r1's findings were **re-derived by mutation rather than trusted**: 12 targeted mutations run against the NXP tiers, 10 killed. The rewritten §NXP.8 e2e row fails (`2 ≠ 0`) when N4 is folded into `--exit-code` while the pre-fix `410ddc1` row *passes* under the identical mutation; the rewritten data-integrity row fails on a **newline-only** fence-body change while the pre-fix row *passes* (content-byte changes are caught by both) — BV1 and BV2 confirmed real, and confirmed genuinely closed. Verified live: twelve-step layout with heading byte-exact on line 1, four ` · ` U+00B7 separators, stdout minus provenance+blank reproducing pre-NXP nine-step bytes exactly, `check-next` unconfigured at exit `0` naming bare basename **and** compliant target, board-naming advisory printing while `ok status --exit-code` returns `0`. Exit precedence `2 > 6 > 35 > 3 > 0`, `CURRENT_NEXT_HEADING`, and `extract_paste_fence_body` untouched. §NXP.8 **54** green; suite **1343** pass / **16** pre-existing, failure set identical to parent `940c3b4` in matched worktree environments. Ledger: `verification_evidence` `bv_verdict: pass` round 2 (`test_output` sha256:`d4c5e0ae…`) + `independent_second_review` `isr_verdict: pass` (`8e5e49d9…`); `ok ledger verify` → `0`; Mode B and Mode D → `0`. Two non-blocking observations recorded in NEXT (unasserted `check-next --json` payload fields; unreachable `is_absolute()` guard) plus a frozen-spec factual slip in §NXP.1 V6. **No merge to `main`** — NEXT → **NXP-land-a** (Tier 3).
 
 - **2026-09-04** — **NXP-b-FIX applied** @ `6c35b72` (producer `3a3eda52…` — same session as BV-r1, so **it cannot verify this**). Made the two vacuous §NXP.8 rows real: BV1 e2e now uses an initialized fixture that exits `0` on all pre-existing conditions and asserts the N4 advisory fires **and** exit stays `0`; BV2 reconstructs pre-NXP nine-step stdout and asserts byte-for-byte equality after removing exactly the provenance line + blank. BV4 adds §NXP.3.6 refusal (exit `2`, reason token, message, empty stdout), the `absolute_repo_root` failure predicate, and §NXP.4 failure-shape keys; dropped the discarded first `read_at_now()`; restored `tools/workspace/__init__.py` trailing newline. **No N1–N4 behavior change.** All three original mutations now fail the correct tier. Suite **1343** pass / **16** pre-existing. NEXT → **NXP-b-BV-r2** in a fresh chat (ISR `producer_session_id: 3a3eda52…`).
@@ -176,38 +148,6 @@ Hard stops: No kit main merge without Tier 3 · no secrets · no live posture fl
 
 - **2026-09-01** — **LT-a drafted (Thinking freeze, review pending).** Slices 1–4 in `docs/archive/phases/PHASE-LT-LOOP-TIGHTENING.md` on `feat/loop-tightening`. Backlog captured: independent second reviewer, KH2 remask, session-type bookends, auto-enable hooks, host tab reload. No Auto code.
 
-- **2026-08-12** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `31a4da1`; realign: D2 aligned — skip realign; next_regen=human_authorship_required:zero_open_rows
-
-- **2026-08-12** — **Public repository visibility flip DONE (docs sync).** GitHub repo already **public**; marked ROADMAP + checklist; NEXT → **queue-idle** (zero open rows). Tip refresh to GitHub `main` @ `31a4da1`.
-
-- **2026-08-12** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `cc63529`; realign: D2 aligned — skip realign; next_regen=regenerated
-
-- **2026-08-12** — **ONS → main DONE (land-b).** Muse FF `sha256:3e21a881…` → GitHub PR [#68](https://github.com/aaronrene/overseer-kit/pull/68) @ `588da95`; post-merge sync; D3 `pr_matches_row` generic-token harden (visibility/checklist false-stamp); NEXT → **Public repository visibility flip**. `ok land-closeout` → `0`.
-
-- **2026-08-12** — governance-sync: drift (D1=drifted, D2=aligned, D3=drifted) @ `588da95`; realign: D2 aligned — skip realign; next_regen=regenerated:land-b
-
-- **2026-08-12** — **ONS-b DONE (Auto build + BV `pass`, ONS-BV-r1, 0 findings).**
-  Built exactly to frozen `docs/archive/phases/PHASE-ONS-OPERATOR-NEXT-SURFACING.md`:
-  `tools/print_next/` (`extract_current_next` / `format_current_next`, reuses
-  `extract_paste_fence_body`); `cli/commands/next.py` (`EXIT_NEXT_MALFORMED=37`);
-  `ok next` + `ok governance-sync --print-next` short-circuit (mutually exclusive with
-  `--write` / `--all-lanes`); skill + alwaysApply rule; `docs/PRINT-NEXT.md` + AGENTS +
-  consumer stubs; SPEC §5 additive row; optional `cursor/hooks/` fail-open template
-  **not** in footprint. Seven-tier §ONS.12 **24** green
-  (`test_output` sha256:`973cb70ffa10b65de4793fb9ea3599035e60efe5c3f1b5e72ad46ab476d66973`).
-  Host niceties are **not** a DONE gate; no tab-reload claim. NEXT → **ONS → main (land-a)**.
-
-- **2026-08-12** — **ONS-a DONE (Thinking freeze).** Authored + freeze-reviewed
-  `docs/archive/phases/PHASE-ONS-OPERATOR-NEXT-SURFACING.md` → `pass` (ONS-r2), stamp
-  `sha256:242e318f…`. Portable contract: `ok next` / `ok governance-sync --print-next`
-  (read-only extract, fail-closed exit `37`); skill + alwaysApply rule via `ok sync`;
-  Copilot `docs/PRINT-NEXT.md`; host niceties best-effort and **not** a DONE gate.
-  Does not claim IDE tab reload; no per-branch handover names; GS-PASTE regen unchanged.
-  **No ONS-b Auto code this session.** NEXT → ONS-b Auto on `feat/ons-operator-next-surfacing`.
-  Public visibility flip remains queued (operator Tier 3).
-
-- **2026-08-04** — **Contributor → main DONE (SD-21).** Product PR [#63](https://github.com/aaronrene/overseer-kit/pull/63) @ `0e80a42` (Muse FF `sha256:9c9e489…` → bridge → `ok pr-land`). land-b docs PR [#65](https://github.com/aaronrene/overseer-kit/pull/65) @ `8a37818` (PR #64 closed — squash-history conflict on muse-mirror). NEXT remains **Public visibility flip**. Repo still **private**.
-
 - Older entries: docs/archive/handover/CHANGE-LOG.md
 <!-- /overseer:anchor:change-log -->
 
@@ -229,16 +169,16 @@ See `docs/ROADMAP.md` → Model-split handover protocol (SD-3) and governance sy
 
 | Slice | Deliverable |
 | --- | --- |
-| **NXP-b** | NEXT provenance + board identity **DONE** on `feat/nxp-next-provenance` (unmerged): N1 provenance line, N2 JSON identity keys, N3 `check-next` advisory at exit `0`, N4 `ok status` board-name warn. BV-r2 `pass` + ISR `pass` from an independent session. |
-| PR #73 | docs: LT land-b closeout + consumer rollout NEXT (merged 2026-09-02) |
-| PR #71 | Mirror: mirror: public visibility flip DONE + queue-idle NEXT (merged 2026-08-13) |
-| **MuseHub solidify** | Hub → `staging.musehub.ai`; public `aaronrene/overseer-kit`; first `muse push -u staging main` (85 commits). Kit dogfood matches Knowtation/Scooling hub posture. |
+| **NXP → main** | PR [#78](https://github.com/aaronrene/overseer-kit/pull/78) merged @ `c921bf1` (NXP-a + NXP-b). Muse `sha256:c07f2f34…`. |
+| **NXP-b** | NEXT provenance + board identity **DONE** on `main`: N1 provenance line, N2 JSON identity keys, N3 `check-next` advisory at exit `0`, N4 `ok status` board-name warn. BV-r2 `pass` + ISR `pass`. |
 | **ISR → main** | PR [#74](https://github.com/aaronrene/overseer-kit/pull/74) merged @ `84db8c8` (ISR-a freeze + ISR-b + MuseHub docs). |
-| **ISR-a + ISR-b** | Freeze `pass` (ISR-r4) + BV `pass` (ISR-b-BV-r1); `require` stays off for consumers (kit dogfood **warn**). |
+| **MuseHub solidify** | Hub → `staging.musehub.ai`; public `aaronrene/overseer-kit`; kit dogfood matches Knowtation/Scooling hub posture. |
+| PR #73 | docs: LT land-b closeout + consumer rollout NEXT (merged 2026-09-02) |
 <!-- /overseer:anchor:done-recently -->
 
 ## Change log
 
+- **2026-09-05** — **NXP → main DONE (land-b).** PR [#78](https://github.com/aaronrene/overseer-kit/pull/78) @ `c921bf1`. NEXT → **queue-idle** (N5 backlog unblocked).
 - **2026-09-04** — **NXP-b DONE.** BV-r2 `pass` + ISR `pass` (verifier `2869c11a…` ≠ producer `3a3eda52…`). BV-r1's two findings re-derived by mutation and confirmed closed. NEXT → **NXP-land-a** (Tier 3, no merge yet).
 - **2026-09-04** — **NXP-b-BV-r1 → `findings`** (second chat). Implementation matches §NXP.3–§NXP.6; two §NXP.8 matrix rows asserted vacuously (mutation-proven). No ISR, no DONE. NEXT → **NXP-b-FIX**.
 - **2026-09-04** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `ce16f9b`; realign: D2 aligned — skip realign; next_regen=human_authorship_required:zero_open_rows
