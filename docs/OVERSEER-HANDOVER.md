@@ -88,10 +88,10 @@ Governance sync: update roadmap + handover on completion.
 | Area | State |
 | --- | --- |
 | **VCS regime** | `muse+git-mirror` |
-| **GitHub main** | `1e1582ce57d8d71e91e29e01e50207c9b2f88ac3` |
-| **Canonical anchor** | `sha256:c33303b511267bcc90a36f142108d617c3c09f14009e77d459a4ec5e5b6d9e81` |
-| **Canonical main** | `sha256:c33303b511267bcc90a36f142108d617c3c09f14009e77d459a4ec5e5b6d9e81` |
-| **Branch** | `feat/governance-sync-2026-09-05-tip` |
+| **GitHub main** | `bdf1f20dc94b6b30ae83734195a7e634adf251a2` |
+| **Canonical anchor** | `sha256:898a0b2a8eeb3e62606483c96a88405367915c8b1b77e945082fac64d88662fe` |
+| **Canonical main** | `sha256:898a0b2a8eeb3e62606483c96a88405367915c8b1b77e945082fac64d88662fe` |
+| **Branch** | `main` |
 | **Dirty** | `no` |
 | **Drift** | D1=drifted, D2=aligned, D3=aligned |
 <!-- /overseer:anchor:verified-snapshot -->
@@ -101,10 +101,10 @@ Governance sync: update roadmap + handover on completion.
 
 | Item | Value |
 | --- | --- |
-| Branch | `feat/governance-sync-2026-09-05-tip` |
-| GitHub `main` | `1e1582ce57d8d71e91e29e01e50207c9b2f88ac3` |
-| Canonical anchor | `sha256:c33303b511267bcc90a36f142108d617c3c09f14009e77d459a4ec5e5b6d9e81` (.muse/git-bridge.toml:last_export.muse_commit_id) |
-| Muse `main` | `sha256:c33303b511267bcc90a36f142108d617c3c09f14009e77d459a4ec5e5b6d9e81` |
+| Branch | `main` |
+| GitHub `main` | `bdf1f20dc94b6b30ae83734195a7e634adf251a2` |
+| Canonical anchor | `sha256:898a0b2a8eeb3e62606483c96a88405367915c8b1b77e945082fac64d88662fe` (.muse/git-bridge.toml:last_export.muse_commit_id) |
+| Muse `main` | `sha256:898a0b2a8eeb3e62606483c96a88405367915c8b1b77e945082fac64d88662fe` |
 | Dirty | no |
 <!-- /overseer:anchor:vcs-table -->
 
@@ -177,6 +177,8 @@ See `docs/ROADMAP.md` → Model-split handover protocol (SD-3) and governance sy
 <!-- /overseer:anchor:done-recently -->
 
 ## Change log
+
+- **2026-09-05** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `bdf1f20`; realign: D2 aligned — skip realign; next_regen=human_authorship_required:zero_open_rows
 
 - **2026-09-05** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `1e1582c`; realign: D2 aligned — skip realign; next_regen=human_authorship_required:zero_open_rows
 
