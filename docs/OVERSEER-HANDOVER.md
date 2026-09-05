@@ -88,11 +88,11 @@ Governance sync: update roadmap + handover on completion.
 | Area | State |
 | --- | --- |
 | **VCS regime** | `muse+git-mirror` |
-| **GitHub main** | `c921bf187d42f0c90514ac0da095d0e5adb5bf21` |
-| **Canonical anchor** | `sha256:c07f2f34a0db9f43fe866f157d1935322008545ff8940c06c7c921eb219c55ab` |
-| **Canonical main** | `sha256:c07f2f34a0db9f43fe866f157d1935322008545ff8940c06c7c921eb219c55ab` |
-| **Branch** | `feat/governance-sync-2026-09-05` |
-| **Dirty** | `yes` |
+| **GitHub main** | `1e1582ce57d8d71e91e29e01e50207c9b2f88ac3` |
+| **Canonical anchor** | `sha256:c33303b511267bcc90a36f142108d617c3c09f14009e77d459a4ec5e5b6d9e81` |
+| **Canonical main** | `sha256:c33303b511267bcc90a36f142108d617c3c09f14009e77d459a4ec5e5b6d9e81` |
+| **Branch** | `feat/governance-sync-2026-09-05-tip` |
+| **Dirty** | `no` |
 | **Drift** | D1=drifted, D2=aligned, D3=aligned |
 <!-- /overseer:anchor:verified-snapshot -->
 
@@ -101,11 +101,11 @@ Governance sync: update roadmap + handover on completion.
 
 | Item | Value |
 | --- | --- |
-| Branch | `feat/governance-sync-2026-09-05` |
-| GitHub `main` | `c921bf187d42f0c90514ac0da095d0e5adb5bf21` |
-| Canonical anchor | `sha256:c07f2f34a0db9f43fe866f157d1935322008545ff8940c06c7c921eb219c55ab` (.muse/git-bridge.toml:last_export.muse_commit_id) |
-| Muse `main` | `sha256:c07f2f34a0db9f43fe866f157d1935322008545ff8940c06c7c921eb219c55ab` |
-| Dirty | yes |
+| Branch | `feat/governance-sync-2026-09-05-tip` |
+| GitHub `main` | `1e1582ce57d8d71e91e29e01e50207c9b2f88ac3` |
+| Canonical anchor | `sha256:c33303b511267bcc90a36f142108d617c3c09f14009e77d459a4ec5e5b6d9e81` (.muse/git-bridge.toml:last_export.muse_commit_id) |
+| Muse `main` | `sha256:c33303b511267bcc90a36f142108d617c3c09f14009e77d459a4ec5e5b6d9e81` |
+| Dirty | no |
 <!-- /overseer:anchor:vcs-table -->
 
 ## Hard stops (unchanged)
@@ -177,6 +177,8 @@ See `docs/ROADMAP.md` → Model-split handover protocol (SD-3) and governance sy
 <!-- /overseer:anchor:done-recently -->
 
 ## Change log
+
+- **2026-09-05** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `1e1582c`; realign: D2 aligned — skip realign; next_regen=human_authorship_required:zero_open_rows
 
 - **2026-09-05** — **NXP → main DONE (land-b).** PR [#78](https://github.com/aaronrene/overseer-kit/pull/78) @ `c921bf1`. NEXT → **queue-idle** (N5 backlog unblocked).
 - **2026-09-04** — **NXP-b DONE.** BV-r2 `pass` + ISR `pass` (verifier `2869c11a…` ≠ producer `3a3eda52…`). BV-r1's two findings re-derived by mutation and confirmed closed. NEXT → **NXP-land-a** (Tier 3, no merge yet).
