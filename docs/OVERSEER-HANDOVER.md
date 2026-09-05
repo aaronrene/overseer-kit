@@ -25,9 +25,20 @@
 ### THE ONE NEXT STEP — **Model: Operator + Auto**
 
 Build queue has **zero** open rows. Pick the next kit slice from the exploration backlog in
-`docs/ROADMAP.md` (natural candidate: **N5** auto-enable session hooks — now unblocked), or
-author a new Thinking freeze, then regenerate NEXT. Do **not** re-paste NXP land — that row is
-**DONE**.
+`docs/ROADMAP.md`, or author a new Thinking freeze, then regenerate NEXT. Do **not** re-paste
+NXP land — that row is **DONE**.
+
+Candidates, in the order they are ready:
+
+1. **N5 auto-enable session hooks** — unblocked by §NXP.7 now that NXP-b is on `main`.
+2. **Hosted-dashboard handover fallback hardcode** — small and self-contained
+   (`tools/hosted_dashboard/validators.py:12`); do this **before** any board rename.
+3. **Consumer board-identity activation** — renames + `workspace.yaml`. Operator-gated,
+   cross-repo, **3 repos only** (Scooling, Ourware, Knowtation). Full read-only survey is
+   recorded in the ROADMAP backlog row; it is **not** a mass edit (paths are config-driven).
+   **Knowtation carries a trap:** a stale 1.2 KB stub already occupies
+   `docs/KNOWTATION-OVERSEER-HANDOVER.md` and must be deleted before the real 211 KB canonical
+   can take that name. Do Knowtation last.
 
 | | |
 | --- | --- |
@@ -53,9 +64,18 @@ Authority: authoritative
 Read first: `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md`.
 
 Deliverables:
-- Build queue has zero open rows. Operator picks next slice from the exploration backlog
-  (natural candidate: N5 "Auto-enable session hooks on ok sync" — §NXP.7 unblocked after
-  NXP → main PR #78) or authors a new Thinking freeze, then regenerates NEXT.
+- Build queue has zero open rows. Operator picks next slice from the exploration backlog,
+  or authors a new Thinking freeze, then regenerates NEXT.
+- Candidates, in readiness order:
+  1. N5 "Auto-enable session hooks on ok sync" — §NXP.7 unblocked after NXP → main PR #78.
+  2. Hosted-dashboard handover fallback hardcode (tools/hosted_dashboard/validators.py:12) —
+     small; do this BEFORE any board rename or the dashboard silently points at a missing file.
+  3. Consumer board-identity activation (renames + workspace.yaml) — operator-gated, cross-repo.
+     Only 3 repos need work: Scooling, Ourware, Knowtation. Paths are config-driven
+     (docs.handover), so each is one file move + one config line, NOT a mass edit.
+     KNOWTATION TRAP: a stale 1.2 KB stub already occupies docs/KNOWTATION-OVERSEER-HANDOVER.md
+     and must be deleted before the real 211 KB canonical can take that name. Knowtation last.
+     Before starting, confirm why `sync init board prefixes` was reported failing pre-NXP-b.
 - Do not re-run NXP land — already DONE on main @ c921bf1.
 
 Hard stops: No merge to main without Tier 3 · no secrets · no live posture flips ·
@@ -88,9 +108,9 @@ Governance sync: update roadmap + handover on completion.
 | Area | State |
 | --- | --- |
 | **VCS regime** | `muse+git-mirror` |
-| **GitHub main** | `bdf1f20dc94b6b30ae83734195a7e634adf251a2` |
-| **Canonical anchor** | `sha256:898a0b2a8eeb3e62606483c96a88405367915c8b1b77e945082fac64d88662fe` |
-| **Canonical main** | `sha256:898a0b2a8eeb3e62606483c96a88405367915c8b1b77e945082fac64d88662fe` |
+| **GitHub main** | `8358f968155a66b2e45bf68237bb324fb2de7601` |
+| **Canonical anchor** | `sha256:1742cd1969fb4061a1b5b4521b3bca9c6a5aa969a848c496716ad2fe4bfac2e2` |
+| **Canonical main** | `sha256:1742cd1969fb4061a1b5b4521b3bca9c6a5aa969a848c496716ad2fe4bfac2e2` |
 | **Branch** | `main` |
 | **Dirty** | `no` |
 | **Drift** | D1=drifted, D2=aligned, D3=aligned |
@@ -102,9 +122,9 @@ Governance sync: update roadmap + handover on completion.
 | Item | Value |
 | --- | --- |
 | Branch | `main` |
-| GitHub `main` | `bdf1f20dc94b6b30ae83734195a7e634adf251a2` |
-| Canonical anchor | `sha256:898a0b2a8eeb3e62606483c96a88405367915c8b1b77e945082fac64d88662fe` (.muse/git-bridge.toml:last_export.muse_commit_id) |
-| Muse `main` | `sha256:898a0b2a8eeb3e62606483c96a88405367915c8b1b77e945082fac64d88662fe` |
+| GitHub `main` | `8358f968155a66b2e45bf68237bb324fb2de7601` |
+| Canonical anchor | `sha256:1742cd1969fb4061a1b5b4521b3bca9c6a5aa969a848c496716ad2fe4bfac2e2` (.muse/git-bridge.toml:last_export.muse_commit_id) |
+| Muse `main` | `sha256:1742cd1969fb4061a1b5b4521b3bca9c6a5aa969a848c496716ad2fe4bfac2e2` |
 | Dirty | no |
 <!-- /overseer:anchor:vcs-table -->
 
@@ -177,6 +197,8 @@ See `docs/ROADMAP.md` → Model-split handover protocol (SD-3) and governance sy
 <!-- /overseer:anchor:done-recently -->
 
 ## Change log
+
+- **2026-09-05** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `8358f96`; realign: D2 aligned — skip realign; next_regen=human_authorship_required:zero_open_rows
 
 - **2026-09-05** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `bdf1f20`; realign: D2 aligned — skip realign; next_regen=human_authorship_required:zero_open_rows
 
