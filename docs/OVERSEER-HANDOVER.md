@@ -4,61 +4,68 @@
 
 **Living relay for 🆗 Overseer Kit.** Paste the **Paste-ready prompt** fence into a fresh chat.
 
-> **NEXT right now = FRV → main (land-a).**  
-> FRV-b is **DONE** (BV `pass` + ISR `pass`). Do not re-run FRV-b Auto or FRV-b-BV.
+> **NEXT right now = queue-idle.**  
+> **FRV → main DONE** (PR [#83](https://github.com/aaronrene/overseer-kit/pull/83) @ `27f6863`). Do not re-paste land-a or land-b.
+
 
 ---
 
 <!-- overseer:next role=primary lane=product status=live -->
 <!-- overseer:anchor:next-session -->
-## NEXT SESSION — FRV → main (land-a)
+## NEXT SESSION — Build queue idle (operator pick)
 
 **Date:** 2026-09-12  
-**Current position:** **FRV-b DONE** (BV-r1 `pass` + ISR `pass`) → **FRV → main (land-a)**  
-**Model:** Operator + Auto  
-**land-phase:** land-a
+**Current position:** **FRV → main DONE** (PR [#83](https://github.com/aaronrene/overseer-kit/pull/83) @ `27f6863`) → queue idle  
+**Model:** Operator + Auto
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **FRV-b** | F1–F7 **DONE**. BV **`pass` (FRV-b-BV-r1)** + ISR **`pass`**. Verifier `4c695c4f-96ff-487f-ad92-30ec473f1b51` ≠ producer `f98ae0dd-1e92-4dc1-a4f0-285fd4635244`. Fourteen-key stamp; exit `39`; `freeze_review` ledger kind; shared `tools/freeze_authorization/`; plain `Auto` gated; both prose fallbacks gone; digest `sha256:c113efa3…` unchanged. `test_frv_` **35** green; suite **1379** / **15** pre-existing. Ledger: `verification_evidence` `639da5c1…` (`test_output` sha256:`dc9dbb4c…`) + `independent_second_review` `86f49a9c…`. |
+| **FRV → main (land-b)** | PR [#83](https://github.com/aaronrene/overseer-kit/pull/83) merged @ `27f6863`. Muse FF `sha256:80c922b9…` → muse-bridge → squash. FRV-a freeze + FRV-b build on `main`. |
+| **FRV-b** | Freeze-review verdict integrity (F1–F7). BV `pass` (FRV-b-BV-r1) + ISR `pass` (verifier `4c695c4f…` ≠ producer `f98ae0dd…`). |
+| **FRV-a** | Freeze `pass` (FRV-r5), mechanical stamp `sha256:c113efa3…`. |
 
 ### THE ONE NEXT STEP — **Model: Operator + Auto**
 
-Open or update the land PR for `feat/freeze-review-verdict-integrity`, then **stop** for Tier 3 merge. Do not claim land complete. After merge is confirmed on `main`, paste land-b.
+Build queue has **zero** open rows. Pick the next kit slice from the exploration backlog in
+`docs/ROADMAP.md` (natural candidate: **N5** auto-enable session hooks — still unblocked after NXP), or
+author a new Thinking freeze, then regenerate NEXT. Do **not** re-paste FRV land — that row is
+**DONE**.
 
 | | |
 | --- | --- |
-| **ID** | **FRV → main (land-a)** |
-| **Branch** | `feat/freeze-review-verdict-integrity` |
+| **ID** | **queue-idle** |
+| **Branch** | `feat/governance-sync-*` (when docs-only) or `feat/<new-slice>` |
 | **Repo** | **overseer-kit** |
-| **Tip** | Git `c77527e` + this closeout · Muse `sha256:be07c11b…` + this closeout |
-| **Read first** | `docs/ROADMAP.md` FRV → main row; this handover; SD-21 land path |
-| **Hard stops** | No merge to `main` without Tier 3 · no secrets · no live posture flips · do not claim land complete until land-b |
+| **Read first** | `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md` |
+| **Hard stops** | No merge to `main` without Tier 3 · no secrets · no live posture flips · no inventing NEXT when ambiguous · do not rename consumer boards |
 <!-- /overseer:anchor:next-session -->
 
 <!-- overseer:anchor:paste-ready-prompt -->
-### Paste-ready prompt — FRV → main (land-a)
+### Paste-ready prompt — queue-idle
 
 ```text
-Model: Operator + Auto
-ID: FRV → main (land-a)
-land-phase: land-a
+queue-idle — Build queue idle (overseer-kit).
 
+Model: Operator + Auto
 Repo: overseer-kit
-Branch: feat/freeze-review-verdict-integrity
+Branch: feat/<new-slice-or-governance-sync>
+Step: queue-idle
 Authority: authoritative
 
-Deliver:
-1. Open/update PR (or SD-21 Muse→mirror→GitHub main path when criteria hold)
-2. Stop for Tier 3 merge authorization when required
-3. Do NOT claim land complete
-4. Do NOT regenerate post-merge NEXT in this paste
+Read first: `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md`.
 
-After merge is confirmed on main: paste land-b (same slice). Land is incomplete until land-b.
+Deliverables:
+- Build queue has zero open rows. Operator picks next slice from the exploration backlog
+  (natural candidate: N5 "Auto-enable session hooks on ok sync") or authors a new Thinking
+  freeze, then regenerates NEXT.
+- Do not re-run FRV land — already DONE on main @ 27f6863 (PR #83).
 
-Hard stops: No merge to main without Tier 3 · no secrets · no live posture flips.
+Hard stops: No merge to main without Tier 3 · no secrets · no live posture flips ·
+ no inventing NEXT when ambiguous · do not rename consumer boards
+
+Governance sync: update roadmap + handover on completion.
 ```
 <!-- /overseer:anchor:paste-ready-prompt -->
 
@@ -85,13 +92,13 @@ Hard stops: No merge to main without Tier 3 · no secrets · no live posture fli
 | Area | State |
 | --- | --- |
 | **VCS regime** | `muse+git-mirror` |
-| **GitHub main** | `bef115dd6616b261dfe8dd779725ebe845563b25` |
-| **Feature tip (Git)** | `c77527eb4aa911798f6b9a54213281841c433889` + FRV-b-BV closeout |
-| **Feature tip (Muse)** | `sha256:be07c11b0f40af46bf7d36f8858617ff837831cd63d85c9550deec90a674adf1` + FRV-b-BV closeout |
-| **Canonical anchor** | `sha256:8d7f41aafae41deee70035a92f93602ef1722a290153597451e5932af503a42c` (last_export) |
-| **Branch** | `feat/freeze-review-verdict-integrity` |
+| **GitHub main** | `27f6863ee7fa57b66e485541ea130e87d747dacd` |
+| **Feature tip (Git)** | land-b closeout on `feat/governance-sync-2026-09-12-2` |
+| **Feature tip (Muse)** | land-b closeout on `feat/governance-sync-2026-09-12-2` |
+| **Canonical anchor** | `sha256:80c922b95203a49a07d1706db41ac051a91414bff298d83739df87028610cec1` |
+| **Branch** | `feat/governance-sync-2026-09-12-2` |
 | **Dirty** | `no` |
-| **Drift** | D1=drifted (feature ahead of marked main), D2=aligned, D3=aligned |
+| **Drift** | D1=aligned, D2=aligned, D3=aligned |
 <!-- /overseer:anchor:verified-snapshot -->
 
 <!-- overseer:anchor:vcs-table -->
@@ -99,11 +106,11 @@ Hard stops: No merge to main without Tier 3 · no secrets · no live posture fli
 
 | Item | Value |
 | --- | --- |
-| Branch | `feat/freeze-review-verdict-integrity` |
-| Git tip | `c77527e` + FRV-b-BV closeout (BV `pass` + ISR `pass`, FRV-b DONE) |
-| Muse tip | `sha256:be07c11b…` + FRV-b-BV closeout |
-| GitHub `main` | `bef115dd6616b261dfe8dd779725ebe845563b25` |
-| Canonical anchor | `sha256:8d7f41aa…` (.muse/git-bridge.toml:last_export.muse_commit_id) |
+| Branch | `feat/governance-sync-2026-09-12-2` |
+| Git tip | land-b closeout (FRV → main DONE, NEXT queue-idle) |
+| Muse tip | land-b closeout (FRV → main DONE, NEXT queue-idle) |
+| GitHub `main` | `27f6863ee7fa57b66e485541ea130e87d747dacd` |
+| Canonical anchor | `sha256:80c922b9…` (.muse/git-bridge.toml:last_export.muse_commit_id) |
 | Dirty | no |
 <!-- /overseer:anchor:vcs-table -->
 
@@ -115,6 +122,8 @@ Hard stops: No merge to main without Tier 3 · no secrets · no live posture fli
 - Governance sync is mandatory before session end (SD-17)
 
 <!-- overseer:anchor:change-log -->
+- **2026-09-12** — **FRV → main DONE (land-b).** GitHub PR [#83](https://github.com/aaronrene/overseer-kit/pull/83) merged @ `27f6863` (FRV-a freeze + FRV-b build). Muse FF `sha256:80c922b9…` → muse-bridge → squash. Post-merge sync; NEXT → **queue-idle**.
+
 - **2026-09-12** — **FRV-b DONE (BV-r1 `pass` + ISR `pass`).** Second-chat verifier `4c695c4f…` ≠ producer `f98ae0dd…`. V1–V8 against frozen §FRV.3–§FRV.12 + `main...HEAD`. Five targeted mutations killed. Ledger `639da5c1…` / `86f49a9c…`. NEXT → **FRV → main (land-a)** (Tier 3). No merge this session.
 
 - **2026-09-12** — **Handover clarity: FRV-b-BV paste surfaced.** Operator could not find the verifier prompt (looked for FRV-b-BV / “FRB-BPV”). Banner + explicit copy instruction + producer id `f98ae0dd-1e92-4dc1-a4f0-285fd4635244` + refreshed feature-branch snapshot. ROADMAP glance → FRV-b-BV. NEXT unchanged at the time: **FRV-b-BV** (Thinking, second chat).
@@ -186,6 +195,10 @@ See `docs/ROADMAP.md` → Model-split handover protocol (SD-3) and governance sy
 <!-- /overseer:anchor:done-recently -->
 
 ## Change log
+
+- **2026-09-12** — **FRV → main DONE (land-b).** PR [#83](https://github.com/aaronrene/overseer-kit/pull/83) @ `27f6863`. Post-merge sync; NEXT → **queue-idle**. `ok land-closeout` → `0`.
+
+- **2026-09-12** — governance-sync: drift (D1=drifted, D2=aligned, D3=drifted) @ `27f6863`; realign: D2 aligned — skip realign; next_regen=regenerated:land-b
 
 - **2026-09-12** — **FRV-b DONE.** BV-r1 `pass` + ISR `pass` (verifier `4c695c4f…` ≠ producer `f98ae0dd…`). NEXT → **FRV → main (land-a)** (Tier 3). No merge this session.
 
