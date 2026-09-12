@@ -8,80 +8,125 @@
 
 <!-- overseer:next role=primary lane=product status=live -->
 <!-- overseer:anchor:next-session -->
-## NEXT SESSION — Build queue idle (operator pick)
+## NEXT SESSION — FRV-b Freeze-review verdict integrity build
 
-**Date:** 2026-09-05  
-**Current position:** **NXP → main DONE** (PR [#78](https://github.com/aaronrene/overseer-kit/pull/78) @ `c921bf1`) → queue idle  
-**Model:** Operator + Auto
+**Date:** 2026-09-12  
+**Current position:** **FRV-a DONE** (freeze `pass`, FRV-r5) → **FRV-b** (Auto, one build)  
+**Model:** Auto
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **NXP → main (land-b)** | PR [#78](https://github.com/aaronrene/overseer-kit/pull/78) merged @ `c921bf1`. Muse FF `sha256:c07f2f34…` → muse-bridge → squash. NXP-a freeze + NXP-b build on `main`. |
-| **NXP-b** | NEXT provenance + board identity (N1–N4). BV-r2 `pass` + ISR `pass` (verifier `2869c11a…` ≠ producer `3a3eda52…`). |
-| **N5 unblocked** | Backlog *"Auto-enable session hooks on `ok sync`"* may be freshly frozen when picked (§NXP.7 satisfied). |
+| **FRV-a** | `docs/archive/phases/PHASE-FRV-FREEZE-REVIEW-VERDICT-INTEGRITY.md` → `pass` (FRV-r5), mechanical stamp `sha256:c113efa3…`. F1–F7 frozen as **one** Auto build. Spec-only. |
 
-### THE ONE NEXT STEP — **Model: Operator + Auto**
+### THE ONE NEXT STEP — **Model: Auto**
 
-Build queue has **zero** open rows. Pick the next kit slice from the exploration backlog in
-`docs/ROADMAP.md`, or author a new Thinking freeze, then regenerate NEXT. Do **not** re-paste
-NXP land — that row is **DONE**.
+Build FRV-b exactly to the frozen artifact, as **ONE** build. F1–F7 share the same functions
+(`tools/freeze_reviewer/stamp.py:27-101`, `tools/governance_hygiene/next_regen.py:395-524`), so
+splitting them would land a tree where the stamp is relabelled but still authorizing, or where
+authorization moved but a prose fallback still bypasses it.
 
-Candidates, in the order they are ready:
+**What the freeze fixes, in one line:** a verdict record must not live inside the artifact it
+judges. Today a four-regex keyword scan writes a hardcoded `verdict: pass` into the document it
+graded, signs a `reviewer_model` that never ran, erases a human downgrade on the next run, and
+that field authorizes a mechanical build session.
 
-1. **N5 auto-enable session hooks** — unblocked by §NXP.7 now that NXP-b is on `main`.
-2. **Hosted-dashboard handover fallback hardcode** — small and self-contained
-   (`tools/hosted_dashboard/validators.py:12`); do this **before** any board rename.
-3. **Consumer board-identity activation** — renames + `workspace.yaml`. Operator-gated,
-   cross-repo, **3 repos only** (Scooling, Ourware, Knowtation). Full read-only survey is
-   recorded in the ROADMAP backlog row; it is **not** a mass edit (paths are config-driven).
-   **Knowtation carries a trap:** a stale 1.2 KB stub already occupies
-   `docs/KNOWTATION-OVERSEER-HANDOVER.md` and must be deleted before the real 211 KB canonical
-   can take that name. Do Knowtation last.
+Three things in the freeze that are easy to miss and are load-bearing:
+
+1. **§FRV.6.5.1 — the gate must cover plain `Auto`, not just `Thinking → Auto`.** FRV-r4 caught
+   this as BLOCKER-class: only **4** of **103** live roadmap rows carry the split label (all long
+   DONE) against **43** plain `Auto`, so a gate wired to the split label alone is dead code here.
+2. **§FRV.6.4.1 — one `phase_id` derivation for both readers.** `governance_gates/scan.py:121`
+   uses display strings while `next_regen.py:512` uses `compact_step_id`; left alone they would
+   query the ledger under different keys and assert opposite things about one slice.
+3. **§FRV.6.6 — `mechanical_only` is an `advisory`, never a `reason`.** Any non-`None` `reason`
+   short-circuits `plan_next_regen` to ambiguity (`next_regen.py:556-557`), which would suppress
+   NEXT regeneration instead of emitting Thinking.
+
+**Live dogfood irony to preserve, not fix:** the stamp now on the freeze artifact reads
+`verdict: pass`, `reviewer_model: thinking-high`, `reviewer_provider: local` — the exact false
+claim the artifact indicts (P6/P9). Leave it. FRV-b's own first `ok review --freeze` run will
+rewrite it to the fourteen-key shape **once**, and that single rewrite is the per-document
+migration (§FRV.9.3 step 2). It must **not** change `artifact_digest`.
 
 | | |
 | --- | --- |
-| **ID** | **queue-idle** |
-| **Branch** | `feat/governance-sync-*` (when docs-only) or `feat/<new-slice>` |
+| **ID** | **FRV-b** |
+| **Branch** | `feat/freeze-review-verdict-integrity` |
 | **Repo** | **overseer-kit** |
-| **Read first** | `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md` |
-| **Hard stops** | No merge to `main` without Tier 3 · no secrets · no live posture flips · no inventing NEXT when ambiguous · do not rename consumer boards |
+| **Read first** | `docs/archive/phases/PHASE-FRV-FREEZE-REVIEW-VERDICT-INTEGRITY.md`; `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md` |
+| **Hard stops** | No merge to `main` without Tier 3 · no secrets · no live posture flips · do not split F1–F7 · do not rewrite archived phase docs · do not renumber exit codes · do not break the v1 ledger chain · do not change honesty Mode A–D · no config knob for the prose fallback or the legacy window · not DONE on green tests alone |
 <!-- /overseer:anchor:next-session -->
 
 <!-- overseer:anchor:paste-ready-prompt -->
-### Paste-ready prompt — queue-idle
+### Paste-ready prompt — FRV-b
 
 ```text
-queue-idle — Build queue idle (overseer-kit).
+FRV-b — Freeze-review verdict integrity build (overseer-kit).
 
-Model: Operator + Auto
+Model: Auto
 Repo: overseer-kit
-Branch: feat/<new-slice-or-governance-sync>
-Step: queue-idle
+Branch: feat/freeze-review-verdict-integrity
+Step: FRV-b
 Authority: authoritative
 
-Read first: `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md`.
+Read first: docs/archive/phases/PHASE-FRV-FREEZE-REVIEW-VERDICT-INTEGRITY.md (frozen,
+FRV-r5 pass); docs/ROADMAP.md (FRV-a + FRV-b rows); docs/OVERSEER-HANDOVER.md.
+
+Build exactly to the frozen artifact as ONE build. Do not redesign. Do not re-derive
+§FRV.1 — every problem claim is already verified with a file+line citation. Do not split
+F1-F7: they touch the same functions (tools/freeze_reviewer/stamp.py:27-101,
+tools/governance_hygiene/next_regen.py:395-524), so a partial landing leaves the stamp
+relabelled but still authorizing, or authorization moved while a prose fallback bypasses it.
 
 Deliverables:
-- Build queue has zero open rows. Operator picks next slice from the exploration backlog,
-  or authors a new Thinking freeze, then regenerates NEXT.
-- Candidates, in readiness order:
-  1. N5 "Auto-enable session hooks on ok sync" — §NXP.7 unblocked after NXP → main PR #78.
-  2. Hosted-dashboard handover fallback hardcode (tools/hosted_dashboard/validators.py:12) —
-     small; do this BEFORE any board rename or the dashboard silently points at a missing file.
-  3. Consumer board-identity activation (renames + workspace.yaml) — operator-gated, cross-repo.
-     Only 3 repos need work: Scooling, Ourware, Knowtation. Paths are config-driven
-     (docs.handover), so each is one file move + one config line, NOT a mass edit.
-     KNOWTATION TRAP: a stale 1.2 KB stub already occupies docs/KNOWTATION-OVERSEER-HANDOVER.md
-     and must be deleted before the real 211 KB canonical can take that name. Knowtation last.
-     Before starting, confirm why `sync init board prefixes` was reported failing pre-NXP-b.
-- Do not re-run NXP land — already DONE on main @ c921bf1.
+- F1 (§FRV.3) Fourteen-key stamp: `gate: mechanical` + `mechanical_verdict`; `verdict`
+  reserved and never written. §FRV.3.4 legacy resolver (six branches,
+  ACCEPT_LEGACY_VERDICT_STAMP) implemented ONCE in the new shared module and used by all
+  three readers. Serializer key-order contract (serializer.py:10-31) untouched.
+- F2 (§FRV.4) produced_by / provider_kind / checklist_ids / checklist_source /
+  findings_count. New producer_identity() on the ReviewProvider Protocol, called AFTER
+  provider.review() returns; a provider double lacking it resolves ("unknown",
+  "rule_engine"). reviewer_model MUST be null whenever provider_kind is rule_engine.
+- F3 (§FRV.5) Merge unknown keys instead of replacing; refuse to escalate a non-pass
+  record; flag --override-non-pass-stamp; EXIT_STAMP_ESCALATION_REFUSED = 39 in
+  tools/freeze_reviewer/engine.py; reason name stamp_escalation_refused; precedence
+  2 > 4 > 5 > 39 > 8 > 7 > 0; no 39 under --dry-run / --no-stamp; four-condition true
+  no-op. Pass the flag through cli/commands/check_ok.py:82-92.
+- F4 (§FRV.6) Additive ENTRY_KINDS value freeze_review + validate_append_body branch +
+  genesis forbid-list + find_matching_freeze_review beside the existing three. New module
+  tools/freeze_authorization/ as the single reader shared by next_regen and
+  governance_gates/scan. Gate BOTH `Thinking → Auto` and plain `Auto`; exclude
+  `Operator + Auto`; add REASON_FREEZE_NOT_SUBSTANTIVE. mechanical_only travels as an
+  `advisory` field, never as `reason`.
+- F5 (§FRV.7) Delete BOTH prose fallbacks: next_regen.py:415-436 (remove _freeze_pass_state
+  entirely) and governance_gates/scan.py:236-241 (_narrative_freeze_pass). No opt-in knob.
+- F6 (§FRV.8) Honor auto_may_start: false as a real block, including the malformed
+  fail-closed case. The CLI never writes, removes, or normalizes it.
+- F7 (§FRV.9) Reconciliation only. No archived phase doc is rewritten.
+- Seven-tier §FRV.12, test file prefix test_frv_.
+- Update tests/unit/test_gs_paste_next_regen.py:78 and :94 to the new
+  decide_split_emission signature (4-tuple, keyword-only config).
+- Doc touchpoints: docs/CHECK-OK.md, tools/freeze_reviewer/README.md, SPEC §6 pointer.
+
+Three easy-to-miss, load-bearing items:
+1. §FRV.6.5.1 — plain `Auto` must gate. Only 4 of 103 live roadmap rows use
+   `Thinking → Auto` (all DONE) vs 43 plain `Auto`; split-label-only is dead code here.
+2. §FRV.6.4.1 — one phase_id derivation (compact_step_id) for BOTH readers, or the gate
+   scan and the emission path query the ledger under different keys.
+3. §FRV.6.6 — any non-None `reason` suppresses NEXT regeneration (next_regen.py:556-557).
+
+Do NOT: rewrite archived phase docs; renumber any exit code; break the v1 ledger chain;
+change honesty Mode A/B/C/D; add a config knob for the prose fallback or the legacy
+window; dispatch a review model; change consumer defaults; roll out to consumers.
 
 Hard stops: No merge to main without Tier 3 · no secrets · no live posture flips ·
- no inventing NEXT when ambiguous · do not rename consumer boards
+ not DONE on green tests alone — /build-verification-review must pass FROM A SECOND CHAT
+ with an independent_second_review ledger entry appended first (require per
+ .overseer/config.yaml:57).
 
-Governance sync: update roadmap + handover on completion.
+Governance sync: update roadmap + handover together on completion.
 ```
 <!-- /overseer:anchor:paste-ready-prompt -->
 
@@ -136,6 +181,8 @@ Governance sync: update roadmap + handover on completion.
 - Governance sync is mandatory before session end (SD-17)
 
 <!-- overseer:anchor:change-log -->
+- **2026-09-12** — **FRV-a DONE (Thinking freeze).** `docs/archive/phases/PHASE-FRV-FREEZE-REVIEW-VERDICT-INTEGRITY.md` → `pass` (FRV-r5), mechanical stamp `sha256:c113efa3…`. Froze the repair of the freeze gate itself. Verified by source inspection, not assumed: the default reviewer is a four-regex keyword scan (`tools/freeze_reviewer/providers/base.py:15-19`, `:51-125`) that accepts a `reviewer` argument and never reads it (`:145-160`); its result is written as the hardcoded string `pass` (`tools/freeze_reviewer/stamp.py:33-42`) under the **same** key and vocabulary a substantive review uses (`tools/freeze_reviewer/types.py:18`, `:82-91`), asserting a `reviewer_model` with no causal role — **all 31** stamped archive docs carry that identical false claim. Because `pre_stamp_canonical_bytes` excises `review_stamp` before hashing (`tools/freeze_reviewer/artifact.py:119-147`) and the no-op guard requires an existing `pass` (`tools/freeze_reviewer/stamp.py:45-52`), a human downgrade **fails** the guard and the write proceeds as a wholesale replacement (`:55-58`) — sticky when pass, self-healing back to pass when a human objects. That field authorizes a mechanical build session (`tools/governance_hygiene/next_regen.py:517-524`), and with no stamp a bold `**pass**` in a prose table suffices (`:415-436`). Two readers and two prose fallbacks found, not one: `tools/governance_gates/scan.py:133` + `:236-241` were unenumerated in the brief and are now in scope; the reader set is **closed at three modules**. Root cause frozen: *a verdict record must not live inside the artifact it judges* — reusing the ISR ledger machinery rather than inventing a parallel mechanism. F1 vocabulary split (fourteen-key stamp, legacy window, all 31 digests provably stable since the stamp is excised pre-hash); F2 self-describing stamp with `reviewer_model` **null** under a rule engine; F3 merge-not-replace + escalation refusal + `--override-non-pass-stamp` + exit `39`; F4 additive hash-chained `freeze_review` kind matched on `phase_id` + `frozen_spec` + `artifact_digest`; F5 **both** prose fallbacks deleted, no opt-in; F6 `auto_may_start: false` honored, its locus outside `review_stamp` chosen so flipping it invalidates any bound entry; F7 reconciliation over the enumerated archive (40 docs: 31 mechanical, 5 prose-only, 4 already inert) with no bulk rewrite and no retro-failed DONE row. Narrowly revisits the `PHASE-ISR-INDEPENDENT-SECOND-REVIEWER.md:182` rejection for the freeze gate only — ledger record required, session independence **not** imported. Five rounds; **FRV-r4 caught a BLOCKER-class reachability defect**: the gate was wired only to `Thinking → Auto`, which is **4** of **103** live roadmap rows (all long DONE) against **43** plain `Auto`, so it would have been dead code under this repo's own two-row convention → §FRV.6.5.1 extends it via the existing §GSP.4.3 ambiguity channel. FRV-r3 also caught a fourteen-vs-thirteen key-count error and a `phase_id` divergence between the two readers (§FRV.6.4.1). Seven-tier §FRV.12, prefix `test_frv_`. **No FRV-b Auto code, no test file, no CLI edit this session.** NEXT → **FRV-b** (Auto, one build) on `feat/freeze-review-verdict-integrity`.
+
 - **2026-09-05** — **NXP → main DONE (land-b).** GitHub PR [#78](https://github.com/aaronrene/overseer-kit/pull/78) merged @ `c921bf1` (NXP-a freeze + NXP-b build). Muse FF `sha256:c07f2f34…` → muse-bridge → squash. Post-merge sync; N5 backlog unblocked (§NXP.7). NEXT → **queue-idle**.
 
 - **2026-09-04** — **NXP-b DONE** — **BV-r2 `pass` + ISR `pass`** from independent verifier `2869c11a…` (≠ producer `3a3eda52…`, who was BV-r1 verifier then NXP-b-FIX producer). V1–V8 over `940c3b4..HEAD`, covering both the build commit `410ddc1` and the test fix `6c35b72`. BV-r1's findings were **re-derived by mutation rather than trusted**: 12 targeted mutations run against the NXP tiers, 10 killed. The rewritten §NXP.8 e2e row fails (`2 ≠ 0`) when N4 is folded into `--exit-code` while the pre-fix `410ddc1` row *passes* under the identical mutation; the rewritten data-integrity row fails on a **newline-only** fence-body change while the pre-fix row *passes* (content-byte changes are caught by both) — BV1 and BV2 confirmed real, and confirmed genuinely closed. Verified live: twelve-step layout with heading byte-exact on line 1, four ` · ` U+00B7 separators, stdout minus provenance+blank reproducing pre-NXP nine-step bytes exactly, `check-next` unconfigured at exit `0` naming bare basename **and** compliant target, board-naming advisory printing while `ok status --exit-code` returns `0`. Exit precedence `2 > 6 > 35 > 3 > 0`, `CURRENT_NEXT_HEADING`, and `extract_paste_fence_body` untouched. §NXP.8 **54** green; suite **1343** pass / **16** pre-existing, failure set identical to parent `940c3b4` in matched worktree environments. Ledger: `verification_evidence` `bv_verdict: pass` round 2 (`test_output` sha256:`d4c5e0ae…`) + `independent_second_review` `isr_verdict: pass` (`8e5e49d9…`); `ok ledger verify` → `0`; Mode B and Mode D → `0`. Two non-blocking observations recorded in NEXT (unasserted `check-next --json` payload fields; unreachable `is_absolute()` guard) plus a frozen-spec factual slip in §NXP.1 V6. **No merge to `main`** — NEXT → **NXP-land-a** (Tier 3).
@@ -189,6 +236,7 @@ See `docs/ROADMAP.md` → Model-split handover protocol (SD-3) and governance sy
 
 | Slice | Deliverable |
 | --- | --- |
+| **FRV-a** | Freeze-review verdict integrity **freeze `pass`** (FRV-r5), mechanical stamp `sha256:c113efa3…`. F1–F7 frozen as one Auto build: vocabulary split, self-describing stamp, inverted stickiness, ledger-based Auto authorization, both prose fallbacks deleted, operator block honored, archive reconciliation. Spec-only. |
 | **NXP → main** | PR [#78](https://github.com/aaronrene/overseer-kit/pull/78) merged @ `c921bf1` (NXP-a + NXP-b). Muse `sha256:c07f2f34…`. |
 | **NXP-b** | NEXT provenance + board identity **DONE** on `main`: N1 provenance line, N2 JSON identity keys, N3 `check-next` advisory at exit `0`, N4 `ok status` board-name warn. BV-r2 `pass` + ISR `pass`. |
 | **ISR → main** | PR [#74](https://github.com/aaronrene/overseer-kit/pull/74) merged @ `84db8c8` (ISR-a freeze + ISR-b + MuseHub docs). |
@@ -197,6 +245,8 @@ See `docs/ROADMAP.md` → Model-split handover protocol (SD-3) and governance sy
 <!-- /overseer:anchor:done-recently -->
 
 ## Change log
+
+- **2026-09-12** — **FRV-a DONE (Thinking freeze).** `PHASE-FRV-FREEZE-REVIEW-VERDICT-INTEGRITY.md` → `pass` (FRV-r5), stamp `sha256:c113efa3…`. F1–F7 frozen as **one** Auto build; verdict records move off the artifact and onto the hash-chained ledger. FRV-r4 caught a BLOCKER-class reachability defect (split-label-only gating = dead code; 4 of 103 rows). NEXT → **FRV-b**.
 
 - **2026-09-05** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `8358f96`; realign: D2 aligned — skip realign; next_regen=human_authorship_required:zero_open_rows
 
