@@ -1,4 +1,4 @@
-"""Performance: GS-PASTE regen path stays within governance-sync budget (§GSP.10)."""
+"""Performance: GS-PASTE regen path stays within governance-sync budget (§GSP.10 / §FRV.6.5.1)."""
 
 from __future__ import annotations
 
@@ -17,6 +17,8 @@ def test_regen_path_bounded_on_kit_sized_docs(tmp_path: Path) -> None:
     handover = (kit_docs / "OVERSEER-HANDOVER.md").read_text(encoding="utf-8")
     roadmap = (FIXTURES / "gs-paste-roadmap-one-open.md").read_text(encoding="utf-8")
     # Seed freeze candidate so discovery stays basename-capped under docs/.
+    # Under FRV, a plain Auto row with a mechanical-only stamp is held as
+    # freeze_not_substantive — still exercises discovery + authorization.
     docs = tmp_path / "docs"
     docs.mkdir()
     (docs / "PHASE-GS-PASTE-READY-REGEN.md").write_text(
@@ -54,6 +56,6 @@ def test_regen_path_bounded_on_kit_sized_docs(tmp_path: Path) -> None:
     )
     elapsed = time.perf_counter() - start
     assert elapsed < 2.0
-    assert token == "next_regen: regenerated"
-    assert "next-session" in sections
+    assert "freeze_not_substantive" in token
+    assert "next-session" not in sections
     assert "### Paste-ready prompt" in patched

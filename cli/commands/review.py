@@ -187,6 +187,8 @@ def run_review(args: Namespace, ctx: CliContext, *, raw_argv: list[str] | None =
         kit_version=kit_version(),
         kit_root=ctx.kit,
         injected_provider=injected_provider,
+        override_non_pass_stamp=bool(getattr(args, "override_non_pass_stamp", False)),
+        checklist_source=("operator_file" if getattr(args, "checklist", None) else "builtin"),
     )
 
     try:

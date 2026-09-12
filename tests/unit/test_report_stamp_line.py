@@ -11,9 +11,9 @@ def test_idempotent_pass_stamp_line() -> None:
         verdict="pass",
         stamp=ReviewStamp(
             reviewed_at="2026-07-10T00:00:00Z",
-            verdict="pass",
+            mechanical_verdict="pass",
             reviewer_mode="agent",
-            reviewer_model="thinking-high",
+            reviewer_model=None,
             reviewer_provider="local",
             kit_version="0.1.0",
             artifact_digest="sha256:" + ("a" * 64),

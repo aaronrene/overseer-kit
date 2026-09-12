@@ -5,12 +5,19 @@ Implements the Freeze-Step Reviewer per `docs/archive/phases/PHASE-K5-FREEZE-REV
 ## CLI
 
 ```bash
-ok review --freeze <path> [--dry-run] [--mode agent|human] [--provider local|api] [--model LABEL] [--no-stamp] [--checklist PATH]
+ok review --freeze <path> [--dry-run] [--mode agent|human] [--provider local|api] [--model LABEL] [--no-stamp] [--checklist PATH] [--override-non-pass-stamp]
 ```
 
 - Human/report output → stdout; diagnostics → stderr.
-- `--json` emits one §K5.9 report object.
-- On `pass` without `--dry-run` / `--no-stamp`, writes `review_stamp` into the artifact freeze block only (never VCS).
+- `--json` emits one §K5.9 report object with `gate: mechanical`.
+- On mechanical `pass` without `--dry-run` / `--no-stamp`, writes a **fourteen-key**
+  `review_stamp` (`gate: mechanical`, `mechanical_verdict`, producer/checklist
+  provenance). The CLI **never** writes `verdict` and **never** authorizes Auto —
+  that requires a substantive `freeze_review` ledger entry bound to `artifact_digest`.
+- `--override-non-pass-stamp` is required to overwrite an existing non-pass stamp;
+  without it the CLI exits `39` (`stamp_escalation_refused`) and leaves the artifact
+  byte-identical. Under `--dry-run` / `--no-stamp` the refusal is reported but exit
+  stays `0` (no write was attempted).
 
 ## Providers
 

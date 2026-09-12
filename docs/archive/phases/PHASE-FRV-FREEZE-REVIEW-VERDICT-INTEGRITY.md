@@ -70,11 +70,26 @@ frozen_inputs:
 - id: kit-boundary
   path: AGENTS.md
 review_stamp:
-  reviewed_at: '2026-09-12T11:31:24Z'
-  verdict: pass
+  gate: mechanical
+  reviewed_at: '2026-09-12T12:17:04Z'
+  mechanical_verdict: pass
+  produced_by: checklist_engine
+  provider_kind: rule_engine
   reviewer_mode: agent
-  reviewer_model: thinking-high
+  reviewer_model: null
   reviewer_provider: local
+  checklist_ids:
+  - C1
+  - C2
+  - C3
+  - C4
+  - C5
+  - C6
+  - C7
+  - C8
+  checklist_source: builtin
+  findings_count: 0
+  override_applied: false
   kit_version: 0.1.0
   artifact_digest: sha256:c113efa33a12b892d55f9c055dd029830ed36ef48f42384bc8bff071edbb5b86
 ```

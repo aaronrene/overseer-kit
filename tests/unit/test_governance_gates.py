@@ -43,7 +43,9 @@ def test_scan_detects_pending_freeze_review_and_build_verification(tmp_path: Pat
         (FIXTURES / "governance-gates-handover.md").read_text(encoding="utf-8"),
         encoding="utf-8",
     )
-    (docs / "PHASE-DEMO-THINKING.md").write_text(
+    archive = docs / "archive" / "phases"
+    archive.mkdir(parents=True)
+    (archive / "PHASE-DEMO-THINKING.md").write_text(
         (FIXTURES / "governance-gates-phase-thinking.md").read_text(encoding="utf-8"),
         encoding="utf-8",
     )

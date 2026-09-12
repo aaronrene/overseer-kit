@@ -6,12 +6,13 @@ import re
 from pathlib import Path
 
 from adapters.config import GovernanceGatesConfig, OverseerConfig
-from tools.freeze_reviewer.artifact import extract_existing_stamp, parse_artifact
+from tools.freeze_authorization.resolve import freeze_authorization_state
 from tools.governance_gates.checklist import (
     BUILD_VERIFICATION_INVOKE,
     FREEZE_REVIEW_INVOKE,
 )
 from tools.governance_gates.types import GateScanResult, PendingGate
+from tools.governance_hygiene.parse import compact_step_id
 
 ROADMAP_ROW_RE = re.compile(
     r"^\|\s*\*\*(?P<phase>[^|*]+)\*\*\s*\|\s*(?P<model>[^|]+)\|\s*\*\*(?P<status>[^|*]+)\*\*\s*\|\s*(?P<deliverable>[^|]+)",
@@ -122,24 +123,32 @@ def _scan_freeze_review(
         contract = _contract_path_for_phase(repo_root, docs_root, roadmap, phase_id)
         if contract is None or not contract.is_file():
             continue
+        # §FRV.6.4.1 — phase_id for ledger is compact_step_id of the matched row's phase group
+        compact_id = phase_id
+        if roadmap:
+            for row in ROADMAP_ROW_RE.finditer(roadmap):
+                if _normalize_phase_id(row.group("phase")) != phase_id:
+                    continue
+                compact_id = compact_step_id(row.group("phase").strip())
+                break
         rel = contract.relative_to(repo_root).as_posix()
         try:
-            parsed = parse_artifact(contract, rel_path=rel)
-        except (ValueError, OSError):
+            auth = freeze_authorization_state(
+                repo_root, contract, phase_id=compact_id, config=config
+            )
+        except Exception:
             continue
-        if parsed.declaration != "present":
-            continue
-        stamp = extract_existing_stamp(parsed)
-        if stamp and stamp.get("verdict") == "pass":
-            continue
-        if _narrative_freeze_pass(contract.read_text(encoding="utf-8")):
+        if auth.state == "substantive":
             continue
         pending.append(
             PendingGate(
                 gate_id="freeze_review",
                 phase_id=phase_id,
                 artifact=rel,
-                message=f"frozen artifact lacks reviewed → pass ({rel})",
+                message=(
+                    f"frozen artifact lacks substantive freeze_review authorization "
+                    f"({auth.state}; {rel})"
+                ),
                 invoke=FREEZE_REVIEW_INVOKE,
             )
         )
@@ -233,9 +242,3 @@ def _contract_path_for_phase(
     return candidates[0] if candidates else None
 
 
-def _narrative_freeze_pass(text: str) -> bool:
-    return bool(
-        re.search(r"reviewed\s*→\s*`pass`", text, re.IGNORECASE)
-        or re.search(r"Freeze status:.*\bpass\b", text, re.IGNORECASE)
-        or re.search(r"→\s*`pass`.*Cleared", text, re.IGNORECASE)
-    )

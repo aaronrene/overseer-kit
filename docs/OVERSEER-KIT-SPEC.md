@@ -374,6 +374,12 @@ operator's recommendation).
 - Verdict is one of `pass` / `findings` / `blocked`. `findings` returns the cited list; `pass`
   records a review stamp in the artifact's freeze block; `blocked` triggers §6.3.
 
+**FRV amendment (mechanical vs substantive):** the CLI stamp is always `gate: mechanical` and
+uses `mechanical_verdict` (never the reserved key `verdict`). A mechanical stamp **cannot**
+authorize an Auto build. Auto authorization requires a digest-bound `freeze_review` ledger entry
+(`ok ledger append --kind freeze_review`) recorded outside the artifact. See
+`docs/archive/phases/PHASE-FRV-FREEZE-REVIEW-VERDICT-INTEGRITY.md`.
+
 **K5 design requirement (frozen):** the reviewer is **user-configurable per repo** — local model,
 remote API, or human — via an extended `freeze_contract` block in `.overseer/config.yaml`. The K5a
 Thinking phase **must** freeze this config schema before K5b builds the reviewer. Required fields:

@@ -127,6 +127,7 @@ def build_parser() -> argparse.ArgumentParser:
     review_parser.add_argument("--model", metavar="LABEL")
     review_parser.add_argument("--no-stamp", action="store_true")
     review_parser.add_argument("--checklist", metavar="PATH")
+    review_parser.add_argument("--override-non-pass-stamp", action="store_true")
 
     def _add_check_ok_flags(parser: argparse.ArgumentParser) -> None:
         parser.add_argument(
@@ -160,6 +161,7 @@ def build_parser() -> argparse.ArgumentParser:
         parser.add_argument("--model", metavar="LABEL")
         parser.add_argument("--no-stamp", action="store_true")
         parser.add_argument("--checklist", metavar="PATH")
+        parser.add_argument("--override-non-pass-stamp", action="store_true")
 
     cio_parser = subparsers.add_parser(
         "check-ok",

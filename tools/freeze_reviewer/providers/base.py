@@ -34,6 +34,9 @@ class ReviewProvider(Protocol):
     ) -> list[Finding]:
         """Return pre-validation findings."""
 
+    def producer_identity(self) -> tuple[str, str]:
+        """Return (produced_by, provider_kind) per §FRV.4.2."""
+
 
 @dataclass
 class ChecklistEngine:
@@ -159,6 +162,12 @@ class LocalReviewProvider:
             checklist=checklist,
         )
 
+    def producer_identity(self) -> tuple[str, str]:
+        """Return producer identity after review() (§FRV.4.2)."""
+        if self.scripted_findings is not None:
+            return ("scripted_provider", "rule_engine")
+        return ("checklist_engine", "rule_engine")
+
 
 @dataclass
 class ApiReviewProvider:
@@ -203,6 +212,12 @@ class ApiReviewProvider:
             )
         except ProviderReviewError as exc:
             raise ProviderReviewError(str(exc)) from exc
+
+    def producer_identity(self) -> tuple[str, str]:
+        """Return producer identity after review() (§FRV.4.2)."""
+        if self.scripted_findings is not None:
+            return ("scripted_provider", "rule_engine")
+        return ("api_model", "model_api")
 
 
 def provider_for(
