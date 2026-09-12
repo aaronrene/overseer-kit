@@ -62,12 +62,23 @@ def test_select_invalid_model_ambiguous() -> None:
 
 
 def test_thinking_to_auto_emit_b_when_freeze_pass(tmp_path: Path) -> None:
+    """Mechanical stamp alone no longer authorizes Auto (§FRV.6.5)."""
     docs = tmp_path / "docs"
     docs.mkdir()
     (docs / "PHASE-GS-PASTE-READY-REGEN.md").write_text(
-        "# Freeze\n\n```yaml\nphase: GS-PASTE\nreview_stamp:\n  verdict: pass\n```\n",
+        "# Freeze\n\n"
+        "```yaml\n"
+        "phase: GS-PASTE\n"
+        "outputs:\n"
+        "  - id: a\n"
+        "    path: docs/a.md\n"
+        "    frozen: true\n"
+        "review_stamp:\n"
+        "  verdict: pass\n"
+        "```\n",
         encoding="utf-8",
     )
+    config = load_config(Path(__file__).resolve().parents[1] / "fixtures" / "config-git-only.yaml")
     row = QueueRow(
         phase_label="**GS-PASTE**",
         model="Thinking → Auto",
@@ -75,15 +86,17 @@ def test_thinking_to_auto_emit_b_when_freeze_pass(tmp_path: Path) -> None:
         deliverable="docs/archive/phases/PHASE-GS-PASTE-READY-REGEN.md",
         raw_line="",
     )
-    emit_model, reason, is_b = decide_split_emission(row, tmp_path)
+    emit_model, reason, is_b, advisory = decide_split_emission(row, tmp_path, config=config)
     assert reason is None
-    assert emit_model == "Auto"
-    assert is_b is True
+    assert emit_model == "Thinking"
+    assert is_b is False
+    assert advisory == "mechanical_only"
 
 
 def test_thinking_to_auto_emit_a_without_freeze_pass(tmp_path: Path) -> None:
     docs = tmp_path / "docs"
     docs.mkdir()
+    config = load_config(Path(__file__).resolve().parents[1] / "fixtures" / "config-git-only.yaml")
     row = QueueRow(
         phase_label="**GS-PASTE**",
         model="Thinking → Auto",
@@ -91,10 +104,11 @@ def test_thinking_to_auto_emit_a_without_freeze_pass(tmp_path: Path) -> None:
         deliverable="freeze something",
         raw_line="",
     )
-    emit_model, reason, is_b = decide_split_emission(row, tmp_path)
+    emit_model, reason, is_b, advisory = decide_split_emission(row, tmp_path, config=config)
     assert reason is None
     assert emit_model == "Thinking"
     assert is_b is False
+    assert advisory is None
 
 
 def test_rendered_next_contains_h3_h5_h6_substrings(tmp_path: Path) -> None:

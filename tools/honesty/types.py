@@ -33,12 +33,14 @@ ENTRY_KINDS = frozenset(
         "hook_check",
         "verification_evidence",
         "independent_second_review",
+        "freeze_review",
     }
 )
 
 VERIFICATION_ARTIFACT_TYPES = frozenset({"test_output", "deploy_health", "screenshot"})
 BV_VERDICTS = frozenset({"pass", "findings", "blocked"})
 ISR_VERDICTS = frozenset({"pass", "findings", "blocked"})
+FREEZE_VERDICTS = frozenset({"pass", "findings", "blocked"})
 
 ACTOR_ROLES = frozenset({"owner", "overseer", "producer", "verifier"})
 

@@ -21,6 +21,12 @@
    ok check-ok --path docs/reviews/<your-file>.md
    ```
 
+   The CLI line is **mechanical only** — it writes `gate: mechanical` and
+   **cannot authorize Auto**. Auto authorization requires a digest-bound
+   `freeze_review` ledger entry (`ok ledger append --kind freeze_review`).
+   An explicit `auto_may_start: false` at the freeze-block top level blocks
+   Auto regardless of ledger or stamp; the CLI never writes or clears that key.
+
 ## Paste-ready prompt
 
 ```

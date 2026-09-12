@@ -173,3 +173,17 @@ def pr_matches_row(pr_title: str, row: QueueRow) -> bool:
         if _word_bounded(cleaned, title_lower):
             return True
     return False
+
+
+def compact_step_id(phase_label: str) -> str:
+    """Primary phase id token (first whitespace-/ segment of bold label).
+
+    Shared by next_regen emission and governance_gates freeze scan (§FRV.6.4.1).
+    """
+    tokens = phase_tokens(phase_label)
+    if not tokens:
+        return phase_label.strip()
+    primary = tokens[0]
+    first = re.split(r"[\s/]+", primary, maxsplit=1)[0].strip()
+    return first or primary.strip()
+

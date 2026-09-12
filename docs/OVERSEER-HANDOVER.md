@@ -4,84 +4,61 @@
 
 **Living relay for 🆗 Overseer Kit.** Paste the **Paste-ready prompt** fence into a fresh chat.
 
+> **NEXT right now = FRV → main (land-a).**  
+> FRV-b is **DONE** (BV `pass` + ISR `pass`). Do not re-run FRV-b Auto or FRV-b-BV.
+
 ---
 
 <!-- overseer:next role=primary lane=product status=live -->
 <!-- overseer:anchor:next-session -->
-## NEXT SESSION — Build queue idle (operator pick)
+## NEXT SESSION — FRV → main (land-a)
 
-**Date:** 2026-09-05  
-**Current position:** **NXP → main DONE** (PR [#78](https://github.com/aaronrene/overseer-kit/pull/78) @ `c921bf1`) → queue idle  
-**Model:** Operator + Auto
+**Date:** 2026-09-12  
+**Current position:** **FRV-b DONE** (BV-r1 `pass` + ISR `pass`) → **FRV → main (land-a)**  
+**Model:** Operator + Auto  
+**land-phase:** land-a
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **NXP → main (land-b)** | PR [#78](https://github.com/aaronrene/overseer-kit/pull/78) merged @ `c921bf1`. Muse FF `sha256:c07f2f34…` → muse-bridge → squash. NXP-a freeze + NXP-b build on `main`. |
-| **NXP-b** | NEXT provenance + board identity (N1–N4). BV-r2 `pass` + ISR `pass` (verifier `2869c11a…` ≠ producer `3a3eda52…`). |
-| **N5 unblocked** | Backlog *"Auto-enable session hooks on `ok sync`"* may be freshly frozen when picked (§NXP.7 satisfied). |
+| **FRV-b** | F1–F7 **DONE**. BV **`pass` (FRV-b-BV-r1)** + ISR **`pass`**. Verifier `4c695c4f-96ff-487f-ad92-30ec473f1b51` ≠ producer `f98ae0dd-1e92-4dc1-a4f0-285fd4635244`. Fourteen-key stamp; exit `39`; `freeze_review` ledger kind; shared `tools/freeze_authorization/`; plain `Auto` gated; both prose fallbacks gone; digest `sha256:c113efa3…` unchanged. `test_frv_` **35** green; suite **1379** / **15** pre-existing. Ledger: `verification_evidence` `639da5c1…` (`test_output` sha256:`dc9dbb4c…`) + `independent_second_review` `86f49a9c…`. |
 
 ### THE ONE NEXT STEP — **Model: Operator + Auto**
 
-Build queue has **zero** open rows. Pick the next kit slice from the exploration backlog in
-`docs/ROADMAP.md`, or author a new Thinking freeze, then regenerate NEXT. Do **not** re-paste
-NXP land — that row is **DONE**.
-
-Candidates, in the order they are ready:
-
-1. **N5 auto-enable session hooks** — unblocked by §NXP.7 now that NXP-b is on `main`.
-2. **Hosted-dashboard handover fallback hardcode** — small and self-contained
-   (`tools/hosted_dashboard/validators.py:12`); do this **before** any board rename.
-3. **Consumer board-identity activation** — renames + `workspace.yaml`. Operator-gated,
-   cross-repo, **3 repos only** (Scooling, Ourware, Knowtation). Full read-only survey is
-   recorded in the ROADMAP backlog row; it is **not** a mass edit (paths are config-driven).
-   **Knowtation carries a trap:** a stale 1.2 KB stub already occupies
-   `docs/KNOWTATION-OVERSEER-HANDOVER.md` and must be deleted before the real 211 KB canonical
-   can take that name. Do Knowtation last.
+Open or update the land PR for `feat/freeze-review-verdict-integrity`, then **stop** for Tier 3 merge. Do not claim land complete. After merge is confirmed on `main`, paste land-b.
 
 | | |
 | --- | --- |
-| **ID** | **queue-idle** |
-| **Branch** | `feat/governance-sync-*` (when docs-only) or `feat/<new-slice>` |
+| **ID** | **FRV → main (land-a)** |
+| **Branch** | `feat/freeze-review-verdict-integrity` |
 | **Repo** | **overseer-kit** |
-| **Read first** | `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md` |
-| **Hard stops** | No merge to `main` without Tier 3 · no secrets · no live posture flips · no inventing NEXT when ambiguous · do not rename consumer boards |
+| **Tip** | Git `c77527e` + this closeout · Muse `sha256:be07c11b…` + this closeout |
+| **Read first** | `docs/ROADMAP.md` FRV → main row; this handover; SD-21 land path |
+| **Hard stops** | No merge to `main` without Tier 3 · no secrets · no live posture flips · do not claim land complete until land-b |
 <!-- /overseer:anchor:next-session -->
 
 <!-- overseer:anchor:paste-ready-prompt -->
-### Paste-ready prompt — queue-idle
+### Paste-ready prompt — FRV → main (land-a)
 
 ```text
-queue-idle — Build queue idle (overseer-kit).
-
 Model: Operator + Auto
+ID: FRV → main (land-a)
+land-phase: land-a
+
 Repo: overseer-kit
-Branch: feat/<new-slice-or-governance-sync>
-Step: queue-idle
+Branch: feat/freeze-review-verdict-integrity
 Authority: authoritative
 
-Read first: `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md`.
+Deliver:
+1. Open/update PR (or SD-21 Muse→mirror→GitHub main path when criteria hold)
+2. Stop for Tier 3 merge authorization when required
+3. Do NOT claim land complete
+4. Do NOT regenerate post-merge NEXT in this paste
 
-Deliverables:
-- Build queue has zero open rows. Operator picks next slice from the exploration backlog,
-  or authors a new Thinking freeze, then regenerates NEXT.
-- Candidates, in readiness order:
-  1. N5 "Auto-enable session hooks on ok sync" — §NXP.7 unblocked after NXP → main PR #78.
-  2. Hosted-dashboard handover fallback hardcode (tools/hosted_dashboard/validators.py:12) —
-     small; do this BEFORE any board rename or the dashboard silently points at a missing file.
-  3. Consumer board-identity activation (renames + workspace.yaml) — operator-gated, cross-repo.
-     Only 3 repos need work: Scooling, Ourware, Knowtation. Paths are config-driven
-     (docs.handover), so each is one file move + one config line, NOT a mass edit.
-     KNOWTATION TRAP: a stale 1.2 KB stub already occupies docs/KNOWTATION-OVERSEER-HANDOVER.md
-     and must be deleted before the real 211 KB canonical can take that name. Knowtation last.
-     Before starting, confirm why `sync init board prefixes` was reported failing pre-NXP-b.
-- Do not re-run NXP land — already DONE on main @ c921bf1.
+After merge is confirmed on main: paste land-b (same slice). Land is incomplete until land-b.
 
-Hard stops: No merge to main without Tier 3 · no secrets · no live posture flips ·
- no inventing NEXT when ambiguous · do not rename consumer boards
-
-Governance sync: update roadmap + handover on completion.
+Hard stops: No merge to main without Tier 3 · no secrets · no live posture flips.
 ```
 <!-- /overseer:anchor:paste-ready-prompt -->
 
@@ -108,23 +85,25 @@ Governance sync: update roadmap + handover on completion.
 | Area | State |
 | --- | --- |
 | **VCS regime** | `muse+git-mirror` |
-| **GitHub main** | `8358f968155a66b2e45bf68237bb324fb2de7601` |
-| **Canonical anchor** | `sha256:1742cd1969fb4061a1b5b4521b3bca9c6a5aa969a848c496716ad2fe4bfac2e2` |
-| **Canonical main** | `sha256:1742cd1969fb4061a1b5b4521b3bca9c6a5aa969a848c496716ad2fe4bfac2e2` |
-| **Branch** | `main` |
+| **GitHub main** | `bef115dd6616b261dfe8dd779725ebe845563b25` |
+| **Feature tip (Git)** | `c77527eb4aa911798f6b9a54213281841c433889` + FRV-b-BV closeout |
+| **Feature tip (Muse)** | `sha256:be07c11b0f40af46bf7d36f8858617ff837831cd63d85c9550deec90a674adf1` + FRV-b-BV closeout |
+| **Canonical anchor** | `sha256:8d7f41aafae41deee70035a92f93602ef1722a290153597451e5932af503a42c` (last_export) |
+| **Branch** | `feat/freeze-review-verdict-integrity` |
 | **Dirty** | `no` |
-| **Drift** | D1=drifted, D2=aligned, D3=aligned |
+| **Drift** | D1=drifted (feature ahead of marked main), D2=aligned, D3=aligned |
 <!-- /overseer:anchor:verified-snapshot -->
 
 <!-- overseer:anchor:vcs-table -->
-## VCS (verified 2026-09-05)
+## VCS (verified 2026-09-12)
 
 | Item | Value |
 | --- | --- |
-| Branch | `main` |
-| GitHub `main` | `8358f968155a66b2e45bf68237bb324fb2de7601` |
-| Canonical anchor | `sha256:1742cd1969fb4061a1b5b4521b3bca9c6a5aa969a848c496716ad2fe4bfac2e2` (.muse/git-bridge.toml:last_export.muse_commit_id) |
-| Muse `main` | `sha256:1742cd1969fb4061a1b5b4521b3bca9c6a5aa969a848c496716ad2fe4bfac2e2` |
+| Branch | `feat/freeze-review-verdict-integrity` |
+| Git tip | `c77527e` + FRV-b-BV closeout (BV `pass` + ISR `pass`, FRV-b DONE) |
+| Muse tip | `sha256:be07c11b…` + FRV-b-BV closeout |
+| GitHub `main` | `bef115dd6616b261dfe8dd779725ebe845563b25` |
+| Canonical anchor | `sha256:8d7f41aa…` (.muse/git-bridge.toml:last_export.muse_commit_id) |
 | Dirty | no |
 <!-- /overseer:anchor:vcs-table -->
 
@@ -136,6 +115,14 @@ Governance sync: update roadmap + handover on completion.
 - Governance sync is mandatory before session end (SD-17)
 
 <!-- overseer:anchor:change-log -->
+- **2026-09-12** — **FRV-b DONE (BV-r1 `pass` + ISR `pass`).** Second-chat verifier `4c695c4f…` ≠ producer `f98ae0dd…`. V1–V8 against frozen §FRV.3–§FRV.12 + `main...HEAD`. Five targeted mutations killed. Ledger `639da5c1…` / `86f49a9c…`. NEXT → **FRV → main (land-a)** (Tier 3). No merge this session.
+
+- **2026-09-12** — **Handover clarity: FRV-b-BV paste surfaced.** Operator could not find the verifier prompt (looked for FRV-b-BV / “FRB-BPV”). Banner + explicit copy instruction + producer id `f98ae0dd-1e92-4dc1-a4f0-285fd4635244` + refreshed feature-branch snapshot. ROADMAP glance → FRV-b-BV. NEXT unchanged at the time: **FRV-b-BV** (Thinking, second chat).
+
+- **2026-09-12** — **FRV-b code complete (Auto, not DONE).** F1–F7 one build: fourteen-key mechanical stamp, exit 39, `freeze_review` ledger authorization, `tools/freeze_authorization/`, both prose fallbacks deleted, plain `Auto` gated. `test_frv_` **35** green; suite **1379** / **15** pre-existing. Stamp migration dogfood digest unchanged `sha256:c113efa3…`. NEXT was **FRV-b-BV** (second chat).
+
+- **2026-09-12** — **FRV-a DONE (Thinking freeze).** `docs/archive/phases/PHASE-FRV-FREEZE-REVIEW-VERDICT-INTEGRITY.md` → `pass` (FRV-r5), mechanical stamp `sha256:c113efa3…`. Froze the repair of the freeze gate itself. Verified by source inspection, not assumed: the default reviewer is a four-regex keyword scan (`tools/freeze_reviewer/providers/base.py:15-19`, `:51-125`) that accepts a `reviewer` argument and never reads it (`:145-160`); its result is written as the hardcoded string `pass` (`tools/freeze_reviewer/stamp.py:33-42`) under the **same** key and vocabulary a substantive review uses (`tools/freeze_reviewer/types.py:18`, `:82-91`), asserting a `reviewer_model` with no causal role — **all 31** stamped archive docs carry that identical false claim. Because `pre_stamp_canonical_bytes` excises `review_stamp` before hashing (`tools/freeze_reviewer/artifact.py:119-147`) and the no-op guard requires an existing `pass` (`tools/freeze_reviewer/stamp.py:45-52`), a human downgrade **fails** the guard and the write proceeds as a wholesale replacement (`:55-58`) — sticky when pass, self-healing back to pass when a human objects. That field authorizes a mechanical build session (`tools/governance_hygiene/next_regen.py:517-524`), and with no stamp a bold `**pass**` in a prose table suffices (`:415-436`). Two readers and two prose fallbacks found, not one: `tools/governance_gates/scan.py:133` + `:236-241` were unenumerated in the brief and are now in scope; the reader set is **closed at three modules**. Root cause frozen: *a verdict record must not live inside the artifact it judges* — reusing the ISR ledger machinery rather than inventing a parallel mechanism. F1 vocabulary split (fourteen-key stamp, legacy window, all 31 digests provably stable since the stamp is excised pre-hash); F2 self-describing stamp with `reviewer_model` **null** under a rule engine; F3 merge-not-replace + escalation refusal + `--override-non-pass-stamp` + exit `39`; F4 additive hash-chained `freeze_review` kind matched on `phase_id` + `frozen_spec` + `artifact_digest`; F5 **both** prose fallbacks deleted, no opt-in; F6 `auto_may_start: false` honored, its locus outside `review_stamp` chosen so flipping it invalidates any bound entry; F7 reconciliation over the enumerated archive (40 docs: 31 mechanical, 5 prose-only, 4 already inert) with no bulk rewrite and no retro-failed DONE row. Narrowly revisits the `PHASE-ISR-INDEPENDENT-SECOND-REVIEWER.md:182` rejection for the freeze gate only — ledger record required, session independence **not** imported. Five rounds; **FRV-r4 caught a BLOCKER-class reachability defect**: the gate was wired only to `Thinking → Auto`, which is **4** of **103** live roadmap rows (all long DONE) against **43** plain `Auto`, so it would have been dead code under this repo's own two-row convention → §FRV.6.5.1 extends it via the existing §GSP.4.3 ambiguity channel. FRV-r3 also caught a fourteen-vs-thirteen key-count error and a `phase_id` divergence between the two readers (§FRV.6.4.1). Seven-tier §FRV.12, prefix `test_frv_`. **No FRV-b Auto code, no test file, no CLI edit this session.** NEXT → **FRV-b** (Auto, one build) on `feat/freeze-review-verdict-integrity`.
+
 - **2026-09-05** — **NXP → main DONE (land-b).** GitHub PR [#78](https://github.com/aaronrene/overseer-kit/pull/78) merged @ `c921bf1` (NXP-a freeze + NXP-b build). Muse FF `sha256:c07f2f34…` → muse-bridge → squash. Post-merge sync; N5 backlog unblocked (§NXP.7). NEXT → **queue-idle**.
 
 - **2026-09-04** — **NXP-b DONE** — **BV-r2 `pass` + ISR `pass`** from independent verifier `2869c11a…` (≠ producer `3a3eda52…`, who was BV-r1 verifier then NXP-b-FIX producer). V1–V8 over `940c3b4..HEAD`, covering both the build commit `410ddc1` and the test fix `6c35b72`. BV-r1's findings were **re-derived by mutation rather than trusted**: 12 targeted mutations run against the NXP tiers, 10 killed. The rewritten §NXP.8 e2e row fails (`2 ≠ 0`) when N4 is folded into `--exit-code` while the pre-fix `410ddc1` row *passes* under the identical mutation; the rewritten data-integrity row fails on a **newline-only** fence-body change while the pre-fix row *passes* (content-byte changes are caught by both) — BV1 and BV2 confirmed real, and confirmed genuinely closed. Verified live: twelve-step layout with heading byte-exact on line 1, four ` · ` U+00B7 separators, stdout minus provenance+blank reproducing pre-NXP nine-step bytes exactly, `check-next` unconfigured at exit `0` naming bare basename **and** compliant target, board-naming advisory printing while `ok status --exit-code` returns `0`. Exit precedence `2 > 6 > 35 > 3 > 0`, `CURRENT_NEXT_HEADING`, and `extract_paste_fence_body` untouched. §NXP.8 **54** green; suite **1343** pass / **16** pre-existing, failure set identical to parent `940c3b4` in matched worktree environments. Ledger: `verification_evidence` `bv_verdict: pass` round 2 (`test_output` sha256:`d4c5e0ae…`) + `independent_second_review` `isr_verdict: pass` (`8e5e49d9…`); `ok ledger verify` → `0`; Mode B and Mode D → `0`. Two non-blocking observations recorded in NEXT (unasserted `check-next --json` payload fields; unreachable `is_absolute()` guard) plus a frozen-spec factual slip in §NXP.1 V6. **No merge to `main`** — NEXT → **NXP-land-a** (Tier 3).
@@ -189,6 +176,8 @@ See `docs/ROADMAP.md` → Model-split handover protocol (SD-3) and governance sy
 
 | Slice | Deliverable |
 | --- | --- |
+| **FRV-b** | F1–F7 **DONE** — BV `pass` (FRV-b-BV-r1) + ISR `pass` (verifier `4c695c4f…` ≠ producer `f98ae0dd…`) |
+| **FRV-a** | Freeze-review verdict integrity **freeze `pass`** (FRV-r5), mechanical stamp `sha256:c113efa3…`. F1–F7 frozen as one Auto build: vocabulary split, self-describing stamp, inverted stickiness, ledger-based Auto authorization, both prose fallbacks deleted, operator block honored, archive reconciliation. Spec-only. |
 | **NXP → main** | PR [#78](https://github.com/aaronrene/overseer-kit/pull/78) merged @ `c921bf1` (NXP-a + NXP-b). Muse `sha256:c07f2f34…`. |
 | **NXP-b** | NEXT provenance + board identity **DONE** on `main`: N1 provenance line, N2 JSON identity keys, N3 `check-next` advisory at exit `0`, N4 `ok status` board-name warn. BV-r2 `pass` + ISR `pass`. |
 | **ISR → main** | PR [#74](https://github.com/aaronrene/overseer-kit/pull/74) merged @ `84db8c8` (ISR-a freeze + ISR-b + MuseHub docs). |
@@ -197,6 +186,14 @@ See `docs/ROADMAP.md` → Model-split handover protocol (SD-3) and governance sy
 <!-- /overseer:anchor:done-recently -->
 
 ## Change log
+
+- **2026-09-12** — **FRV-b DONE.** BV-r1 `pass` + ISR `pass` (verifier `4c695c4f…` ≠ producer `f98ae0dd…`). NEXT → **FRV → main (land-a)** (Tier 3). No merge this session.
+
+- **2026-09-12** — **FRV-b-BV paste surfaced** in handover (banner + producer id). NEXT was **FRV-b-BV** (Thinking verifier, second chat).
+
+- **2026-09-12** — **FRV-b code complete (Auto, not DONE)** @ `a6c9fb8`. NEXT was **FRV-b-BV**.
+
+- **2026-09-12** — **FRV-a DONE (Thinking freeze).** `PHASE-FRV-FREEZE-REVIEW-VERDICT-INTEGRITY.md` → `pass` (FRV-r5), stamp `sha256:c113efa3…`. F1–F7 frozen as **one** Auto build; verdict records move off the artifact and onto the hash-chained ledger. FRV-r4 caught a BLOCKER-class reachability defect (split-label-only gating = dead code; 4 of 103 rows). Cleared for FRV-b (now code-complete).
 
 - **2026-09-05** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `8358f96`; realign: D2 aligned — skip realign; next_regen=human_authorship_required:zero_open_rows
 

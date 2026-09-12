@@ -89,6 +89,7 @@ def run_check_ok(args: Namespace, ctx: CliContext, *, raw_argv: list[str] | None
         provider=args.provider,
         model=args.model,
         checklist=args.checklist,
+        override_non_pass_stamp=bool(getattr(args, "override_non_pass_stamp", False)),
     )
     return run_review(review_args, ctx, raw_argv=["review", "--freeze", result.rel_path])
 

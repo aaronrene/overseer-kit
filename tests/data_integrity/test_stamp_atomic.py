@@ -23,6 +23,11 @@ def test_oserror_mid_stamp_preserves_original(tmp_path: Path) -> None:
         parsed,
         reviewer=ReviewerSettings("agent", "thinking-high", "local", "human"),
         kit_version="0.1.0",
+        produced_by="checklist_engine",
+        provider_kind="rule_engine",
+        checklist_ids=["C1"],
+        checklist_source="builtin",
+        findings_count=0,
     )
     with patch("tools.freeze_reviewer.stamp.atomic_write_text", side_effect=WriteFailure(path, OSError("fail"))):
         with pytest.raises(WriteFailure):

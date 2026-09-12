@@ -1,4 +1,4 @@
-"""Freeze review orchestration (§K5.2 steps 6–12)."""
+"""Freeze review orchestration (§K5.2 steps 6–12 / §FRV)."""
 
 from __future__ import annotations
 
@@ -6,7 +6,8 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from adapters.config import FreezeContractConfig, OverseerConfig
-from tools.freeze_reviewer.artifact import parse_artifact
+from tools.freeze_authorization.resolve import resolve_stamp_record
+from tools.freeze_reviewer.artifact import extract_existing_stamp, parse_artifact
 from tools.freeze_reviewer.checklist import builtin_checklist
 from tools.freeze_reviewer.findings import (
     derive_verdict,
@@ -23,6 +24,8 @@ HUMAN_INSTRUCTIONS = (
     "record verdict in the artifact review record."
 )
 
+EXIT_STAMP_ESCALATION_REFUSED = 39
+
 
 @dataclass
 class ReviewOptions:
@@ -37,6 +40,8 @@ class ReviewOptions:
     kit_version: str = "0.1.0"
     kit_root: Path | None = None
     injected_provider: ReviewProvider | None = None
+    override_non_pass_stamp: bool = False
+    checklist_source: str = "builtin"
 
 
 def resolve_reviewer_settings(
@@ -51,6 +56,17 @@ def resolve_reviewer_settings(
     provider = options.provider or config.reviewer.provider
     fallback = config.reviewer.fallback
     return ReviewerSettings(mode=mode, model=model, provider=provider, fallback=fallback)
+
+
+def _read_operator_block(parsed) -> bool | None:
+    """Return operator_block report value from freeze mapping (§FRV.8.3)."""
+    mapping = parsed.freeze_mapping
+    if not isinstance(mapping, dict) or "auto_may_start" not in mapping:
+        return None
+    val = mapping.get("auto_may_start")
+    if val is True:
+        return False
+    return True
 
 
 def run_freeze_review(
@@ -85,6 +101,7 @@ def run_freeze_review(
     result.artifact_kind = parsed.kind
     result.dry_run = options.dry_run
     result.no_stamp = options.no_stamp
+    result.operator_block = _read_operator_block(parsed)
     reviewer = resolve_reviewer_settings(config.freeze_contract, options)
 
     if reviewer.mode == "human":
@@ -115,12 +132,64 @@ def run_freeze_review(
         result.reason = "provider_unreachable"
         result.provider_cause = str(exc)
         return result
+
+    # §FRV.4.2 — producer_identity AFTER review()
+    identity_fn = getattr(provider, "producer_identity", None)
+    if callable(identity_fn):
+        produced_by, provider_kind = identity_fn()
+    else:
+        produced_by, provider_kind = ("unknown", "rule_engine")
+
     findings = validate_and_repair_findings(raw_findings, artifact_path=rel_path)
     result.findings = findings
     result.verdict = derive_verdict(findings, human_escalation=config.freeze_contract.human_escalation)
 
     if result.verdict == "pass":
-        stamp = build_stamp(parsed, reviewer=reviewer, kit_version=options.kit_version)
+        existing = extract_existing_stamp(parsed)
+        resolved = resolve_stamp_record(existing) if existing else None
+        existing_verdict = (
+            resolved.verdict if resolved is not None and resolved.kind == "mechanical" else None
+        )
+        refuse_escalation = (
+            existing_verdict is not None
+            and existing_verdict != ""
+            and existing_verdict != "pass"
+            and not options.override_non_pass_stamp
+        )
+        if refuse_escalation:
+            result.escalation_refused = True
+            result.escalation_refuse_cause = "stamp_escalation_refused"
+            result.existing_stamp_verdict = existing_verdict
+            stamp = build_stamp(
+                parsed,
+                reviewer=reviewer,
+                kit_version=options.kit_version,
+                produced_by=produced_by,
+                provider_kind=provider_kind,
+                checklist_ids=checklist_ids,
+                checklist_source=options.checklist_source,
+                findings_count=len(findings),
+                override_applied=False,
+            )
+            result.stamp = stamp
+            return result
+
+        override_applied = bool(
+            options.override_non_pass_stamp
+            and existing_verdict
+            and existing_verdict != "pass"
+        )
+        stamp = build_stamp(
+            parsed,
+            reviewer=reviewer,
+            kit_version=options.kit_version,
+            produced_by=produced_by,
+            provider_kind=provider_kind,
+            checklist_ids=checklist_ids,
+            checklist_source=options.checklist_source,
+            findings_count=len(findings),
+            override_applied=override_applied,
+        )
         result.stamp = stamp
         if not options.dry_run and not options.no_stamp:
             written, io_failed = write_stamp_or_fail(artifact_path, parsed, stamp)
@@ -131,13 +200,15 @@ def run_freeze_review(
 
 
 def resolve_exit_code(result: ReviewResult, *, config_error: bool = False, refused: bool = False) -> int:
-    """Apply frozen precedence 2>4>5>8>7>0."""
+    """Apply frozen precedence 2 > 4 > 5 > 39 > 8 > 7 > 0 (§FRV.5.2 / §FRV.10)."""
     if config_error:
         return 2
     if refused or result.refused:
         return 4
     if result.io_error:
         return 5
+    if result.escalation_refused and not result.dry_run and not result.no_stamp:
+        return EXIT_STAMP_ESCALATION_REFUSED
     if result.escalation == "human" or result.verdict == "blocked":
         return 8
     if result.verdict == "findings":

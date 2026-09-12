@@ -6,11 +6,16 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
-import yaml
 
 from adapters.config import OverseerConfig
 from cli.docs_paths import join_docs_rel
-from tools.governance_hygiene.parse import normalize_status, parse_queue_rows, phase_tokens
+from tools.governance_hygiene.parse import (
+    compact_step_id,
+    normalize_status,
+    parse_queue_rows,
+    phase_tokens,
+)
+from tools.freeze_authorization.resolve import freeze_authorization_state
 from tools.governance_hygiene.types import QueueRow
 
 # Closed vocabulary from policy/model-labels.yaml ``labels[].display`` (frozen for GS-PASTE).
@@ -31,6 +36,14 @@ REASON_SPLIT = "split_undetermined"
 REASON_WORKSPACE_MARKER = "workspace_marker_absent"
 REASON_LAND_A_WAIT = "land_a_in_progress"
 REASON_LAND_PHASE_UNREADABLE = "land_phase_unreadable"
+REASON_FREEZE_NOT_SUBSTANTIVE = "freeze_not_substantive"
+ADVISORY_MECHANICAL_ONLY = "mechanical_only"
+ADVISORY_OPERATOR_BLOCK = "operator_block"
+ADVISORY_OPERATOR_BLOCK_MALFORMED = "operator_block_malformed"
+ADVISORY_LEDGER_CHAIN_BROKEN = "ledger_chain_broken"
+ADVISORY_FORGED_SUBSTANTIVE_GATE = "forged_substantive_gate"
+ADVISORY_UNREADABLE_GATE = "unreadable_gate"
+AUTO_MODEL = "Auto"
 
 OPEN_STATUSES = frozenset({"TODO", "NEXT", "WIP"})
 DONE_STATUSES = frozenset({"DONE", "MERGED"})
@@ -342,6 +355,7 @@ class NextRegenDecision:
     emit_model: str | None
     step_label: str | None
     is_step_b: bool
+    advisory: str | None = None
 
 
 def normalize_model_cell(model: str) -> str:
@@ -352,14 +366,6 @@ def normalize_model_cell(model: str) -> str:
     return text
 
 
-def compact_step_id(phase_label: str) -> str:
-    """Primary phase id token (first whitespace-/ segment of bold label)."""
-    tokens = phase_tokens(phase_label)
-    if not tokens:
-        return phase_label.strip()
-    primary = tokens[0]
-    first = re.split(r"[\s/]+", primary, maxsplit=1)[0].strip()
-    return first or primary.strip()
 
 
 def select_unambiguous_next_row(
@@ -391,49 +397,6 @@ def last_done_row(roadmap_text: str) -> QueueRow | None:
             done = row
     return done
 
-
-def _freeze_pass_state(path: Path) -> str:
-    """Return ``pass``, ``non_pass``, or ``absent`` for a freeze artifact."""
-    try:
-        text = path.read_text(encoding="utf-8")
-    except OSError:
-        return "absent"
-
-    # YAML fence blocks (primary): look for review_stamp.verdict
-    for match in re.finditer(r"```ya?ml\s*\n(.*?)```", text, flags=re.DOTALL | re.IGNORECASE):
-        try:
-            raw = yaml.safe_load(match.group(1))
-        except yaml.YAMLError:
-            continue
-        if not isinstance(raw, dict):
-            continue
-        stamp = raw.get("review_stamp")
-        if isinstance(stamp, dict) and "verdict" in stamp:
-            verdict = str(stamp.get("verdict", "")).strip().lower()
-            return "pass" if verdict == "pass" else "non_pass"
-
-    # Review record prose / table fallback
-    if re.search(r"verdict:\s*pass\b", text, flags=re.IGNORECASE):
-        return "pass"
-    if re.search(
-        r"\*\*`?pass`?\*\*|→\s*\*\*`?pass`?\*\*|reviewed\s*→\s*`?pass`?",
-        text,
-        flags=re.IGNORECASE,
-    ):
-        return "pass"
-    if re.search(r"review_stamp:[\s\S]*?verdict:\s*\S+", text, flags=re.IGNORECASE):
-        stamp_match = re.search(
-            r"review_stamp:[\s\S]*?verdict:\s*(\S+)",
-            text,
-            flags=re.IGNORECASE,
-        )
-        if stamp_match:
-            verdict = stamp_match.group(1).strip().strip("'\"`").lower()
-            if verdict == "pass":
-                return "pass"
-            if verdict:
-                return "non_pass"
-    return "absent"
 
 
 def _path_under_docs(repo_root: Path, candidate: Path) -> Path | None:
@@ -499,30 +462,56 @@ def discover_freeze_candidates(
 def decide_split_emission(
     row: QueueRow,
     repo_root: Path,
-) -> tuple[str | None, str | None, bool]:
-    """Return ``(emit_model, reason_or_None, is_step_b)`` for the open row.
+    *,
+    config: OverseerConfig,
+) -> tuple[str | None, str | None, bool, str | None]:
+    """Return ``(emit_model, reason_or_None, is_step_b, advisory)`` (§FRV.6.5 / §FRV.6.5.1).
 
-    For non-split labels, emit the queue model as a single prompt.
-    For ``Thinking → Auto``, emit a or b per freeze-pass detector.
+    Gates both ``Thinking → Auto`` and plain ``Auto``. Excludes ``Operator + Auto``.
+    ``mechanical_only`` travels as advisory, never as reason (§FRV.6.6).
     """
     model = normalize_model_cell(row.model)
-    if model != SPLIT_MODEL:
-        return model, None, False
+
+    if model not in {SPLIT_MODEL, AUTO_MODEL}:
+        return model, None, False, None
 
     step_id = compact_step_id(row.phase_label)
     candidates = discover_freeze_candidates(repo_root, step_id, row.deliverable)
+
+    if model == AUTO_MODEL:
+        if not candidates:
+            return "Auto", None, False, None
+        auths = [
+            freeze_authorization_state(repo_root, path, phase_id=step_id, config=config)
+            for path in candidates
+        ]
+        if any(a.state == "blocked_by_operator" for a in auths):
+            blocked = next(a for a in auths if a.state == "blocked_by_operator")
+            return None, REASON_FREEZE_NOT_SUBSTANTIVE, False, blocked.advisory
+        if any(a.state == "substantive" for a in auths):
+            return "Auto", None, False, None
+        return None, REASON_FREEZE_NOT_SUBSTANTIVE, False, None
+
+    # Thinking → Auto
     if not candidates:
-        return "Thinking", None, False
+        return "Thinking", None, False, None
 
-    states = [_freeze_pass_state(path) for path in candidates]
-    has_pass = any(state == "pass" for state in states)
-    has_non_pass = any(state == "non_pass" for state in states)
-    if has_pass and has_non_pass:
-        return None, REASON_SPLIT, False
-    if has_pass and normalize_status(row.status) in OPEN_STATUSES:
-        return "Auto", None, True
-    return "Thinking", None, False
-
+    auths = [
+        freeze_authorization_state(repo_root, path, phase_id=step_id, config=config)
+        for path in candidates
+    ]
+    if any(a.state == "blocked_by_operator" for a in auths):
+        blocked = next(a for a in auths if a.state == "blocked_by_operator")
+        return "Thinking", None, False, blocked.advisory or ADVISORY_OPERATOR_BLOCK
+    has_substantive = any(a.state == "substantive" for a in auths)
+    has_non_pass = any(a.state == "non_pass" for a in auths)
+    if has_substantive and has_non_pass:
+        return None, REASON_SPLIT, False, None
+    if has_substantive and normalize_status(row.status) in OPEN_STATUSES:
+        return "Auto", None, True, None
+    if any(a.state == "mechanical_only" for a in auths) and not has_substantive:
+        return "Thinking", None, False, ADVISORY_MECHANICAL_ONLY
+    return "Thinking", None, False, None
 
 def check_workspace_next_marker(
     handover_text: str,
@@ -552,7 +541,9 @@ def plan_next_regen(
     if marker_reason:
         return NextRegenDecision(None, marker_reason, None, None, False)
 
-    emit_model, split_reason, is_step_b = decide_split_emission(row, repo_root)
+    emit_model, split_reason, is_step_b, advisory = decide_split_emission(
+        row, repo_root, config=config
+    )
     if split_reason:
         return NextRegenDecision(None, split_reason, None, None, False)
 
@@ -562,7 +553,7 @@ def plan_next_regen(
     else:
         step_label = step_id
 
-    return NextRegenDecision(row, None, emit_model, step_label, is_step_b)
+    return NextRegenDecision(row, None, emit_model, step_label, is_step_b, advisory=advisory)
 
 
 def _branch_value(config: OverseerConfig, phase_id: str) -> str:
@@ -710,16 +701,20 @@ def render_paste_ready(
 
 
 def format_next_regen_token(decision: NextRegenDecision) -> str:
-    """Plan/result token for dry-run and change-log (§GSP.4.3 / §GSP.6.2)."""
+    """Plan/result token for dry-run and change-log (§GSP.4.3 / §GSP.6.2 / §FRV.6.6)."""
     if decision.row is not None and decision.reason is None:
+        if decision.advisory:
+            return f"next_regen: regenerated (advisory={decision.advisory})"
         return "next_regen: regenerated"
     reason = decision.reason or "unknown"
     return f"next_regen: human_authorship_required ({reason})"
 
 
 def format_change_log_fragment(decision: NextRegenDecision) -> str:
-    """Additive change-log fragment (§GSP.6.2)."""
+    """Additive change-log fragment (§GSP.6.2 / §FRV.6.6)."""
     if decision.row is not None and decision.reason is None:
+        if decision.advisory:
+            return f"next_regen=regenerated:advisory={decision.advisory}"
         return "next_regen=regenerated"
     reason = decision.reason or "unknown"
     return f"next_regen=human_authorship_required:{reason}"

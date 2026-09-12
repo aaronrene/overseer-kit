@@ -1,11 +1,11 @@
-"""§K5.9 report payload and stdout rendering."""
+"""§K5.9 / §FRV report payload and stdout rendering."""
 
 from __future__ import annotations
 
 from typing import Any
 
 from adapters.config import FreezeContractConfig
-from tools.freeze_reviewer.engine import HUMAN_INSTRUCTIONS
+from tools.freeze_reviewer.engine import HUMAN_INSTRUCTIONS, resolve_exit_code
 from tools.freeze_reviewer.types import Finding, ReviewResult, ReviewerSettings
 
 HUMAN_INSTRUCTIONS_TEXT = HUMAN_INSTRUCTIONS
@@ -49,18 +49,23 @@ def build_report(
     config: FreezeContractConfig,
     enabled: bool,
 ) -> dict[str, Any]:
-    """Build the unified §K5.9 report object."""
-    exit_code = 8 if result.escalation == "human" else (
-        7 if result.verdict == "findings" else (0 if result.verdict == "pass" else 8)
-    )
+    """Build the unified §K5.9 / §FRV report object."""
+    exit_code = resolve_exit_code(result, refused=result.refused)
     stamp_payload = result.stamp.to_mapping() if result.stamp else None
-    return {
+    reason: str | None
+    if result.escalation_refused:
+        reason = result.escalation_refuse_cause or "stamp_escalation_refused"
+    else:
+        reason = result.reason
+    payload: dict[str, Any] = {
         "command": "review",
         "freeze": freeze_path,
+        "gate": "mechanical",
         "verdict": result.verdict,
+        "mechanical_verdict": result.verdict if result.stamp else result.verdict,
         "exit_code": exit_code,
         "escalation": result.escalation,
-        "reason": result.reason,
+        "reason": reason,
         "provider_cause": result.provider_cause,
         "checklist": list(result.checklist_ids),
         "instructions": HUMAN_INSTRUCTIONS_TEXT if result.escalation == "human" else None,
@@ -70,12 +75,23 @@ def build_report(
         "findings": [finding_to_dict(item) for item in result.findings],
         "stamp": stamp_payload,
         "dry_run": result.dry_run,
+        "operator_block": result.operator_block,
+        "escalation_refused": result.escalation_refused,
     }
+    if result.escalation_refused:
+        payload["existing_verdict"] = result.existing_stamp_verdict
+    return payload
 
 
 def render_human_report(*, freeze_path: str, result: ReviewResult) -> str:
-    """Render human stdout per §K5.9."""
-    lines = [f"Freeze review: {freeze_path}", f"Verdict: {result.verdict}"]
+    """Render human stdout per §K5.9 / §FRV.3.5."""
+    lines = [f"Freeze review: {freeze_path}"]
+    # Mechanical pass runs: Gate + Mechanical verdict (never bare "Verdict:")
+    if result.stamp is not None or (result.verdict == "pass" and not result.escalation):
+        lines.append("Gate: mechanical")
+        lines.append(f"Mechanical verdict: {result.verdict}")
+    else:
+        lines.append(f"Verdict: {result.verdict}")
     lines.append(f"Findings ({len(result.findings)}):")
     for finding in result.findings:
         lines.append(
@@ -91,7 +107,16 @@ def render_human_report(*, freeze_path: str, result: ReviewResult) -> str:
         lines.append(f"Instructions: {HUMAN_INSTRUCTIONS_TEXT}")
     else:
         lines.append("Escalation: none")
-    if result.verdict == "pass" and result.stamp and not result.dry_run and result.stamp_written:
+    if result.escalation_refused:
+        existing = result.existing_stamp_verdict or "(unknown)"
+        lines.append(
+            f"Notice: stamp_escalation_refused — existing mechanical verdict is {existing}"
+        )
+    if result.operator_block is True:
+        lines.append("Operator block: auto_may_start is not true (Auto authorization blocked)")
+    if result.verdict == "pass" and result.stamp and result.escalation_refused:
+        lines.append("Stamp: (not written — stamp_escalation_refused)")
+    elif result.verdict == "pass" and result.stamp and not result.dry_run and result.stamp_written:
         lines.append("Stamp: written")
     elif result.verdict == "pass" and result.stamp and result.dry_run:
         lines.append("Stamp: (dry-run — would write)")

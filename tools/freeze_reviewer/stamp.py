@@ -1,22 +1,28 @@
-"""Review stamp write path (§K5.7)."""
+"""Review stamp write path (§K5.7 / §FRV.3–§FRV.5)."""
 
 from __future__ import annotations
 
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Any
 
 from cli.atomic import WriteFailure, atomic_write_text
+from tools.freeze_authorization.resolve import resolve_stamp_record
 from tools.freeze_reviewer.artifact import (
     STAMP_MARKER,
-    FENCE_RE,
     ParsedArtifact,
     _operator_forced_md_prefix,
     artifact_digest,
     extract_existing_stamp,
     pre_stamp_canonical_bytes,
 )
-from tools.freeze_reviewer.serializer import dump_freeze_mapping, parse_freeze_mapping
-from tools.freeze_reviewer.types import ReviewStamp, ReviewerSettings
+from tools.freeze_reviewer.serializer import dump_freeze_mapping
+from tools.freeze_reviewer.types import (
+    CLI_OWNED_STAMP_KEYS,
+    STAMP_KEY_ORDER,
+    ReviewStamp,
+    ReviewerSettings,
+)
 
 
 def utc_now_z() -> str:
@@ -29,32 +35,89 @@ def build_stamp(
     *,
     reviewer: ReviewerSettings,
     kit_version: str,
+    produced_by: str,
+    provider_kind: str,
+    checklist_ids: list[str],
+    checklist_source: str,
+    findings_count: int,
+    override_applied: bool = False,
 ) -> ReviewStamp:
-    """Build a review stamp payload for the current artifact."""
+    """Build a fourteen-key mechanical stamp; never emit ``verdict`` (§FRV.3–§FRV.4)."""
+    model = None if provider_kind == "rule_engine" else reviewer.model
     return ReviewStamp(
         reviewed_at=utc_now_z(),
-        verdict="pass",
+        mechanical_verdict="pass",
         reviewer_mode=reviewer.mode,
-        reviewer_model=reviewer.model,
+        reviewer_model=model,
         reviewer_provider=reviewer.provider,
         kit_version=kit_version,
         artifact_digest=artifact_digest(parsed),
+        gate="mechanical",
+        produced_by=produced_by,
+        provider_kind=provider_kind,
+        checklist_ids=list(checklist_ids),
+        checklist_source=checklist_source,
+        findings_count=findings_count,
+        override_applied=override_applied,
     )
 
 
+def merge_stamp_mapping(existing: dict[str, Any] | None, new: dict[str, Any]) -> dict[str, Any]:
+    """Merge per §FRV.5.1: fourteen CLI keys from N, then unknown keys from E; drop legacy verdict."""
+    e = existing if isinstance(existing, dict) else {}
+    merged: dict[str, Any] = {}
+    for key in STAMP_KEY_ORDER:
+        if key in new:
+            merged[key] = new[key]
+    for key, value in e.items():
+        if key in CLI_OWNED_STAMP_KEYS:
+            continue
+        if key not in merged:
+            merged[key] = value
+    return merged
+
+
 def stamp_is_idempotent_noop(parsed: ParsedArtifact, new_stamp: ReviewStamp) -> bool:
-    """Return True when an existing pass stamp matches the recomputed digest."""
+    """True when re-run is a no-op per §FRV.5.3 four conditions."""
     existing = extract_existing_stamp(parsed)
     if not existing:
         return False
-    if existing.get("verdict") != "pass":
+    resolved = resolve_stamp_record(existing)
+    if resolved.kind != "mechanical":
         return False
-    return existing.get("artifact_digest") == new_stamp.artifact_digest
+    if resolved.verdict != new_stamp.mechanical_verdict:
+        return False
+    if existing.get("artifact_digest") != new_stamp.artifact_digest:
+        return False
+    # Condition 4: preserve existing reviewed_at so a true no-op does not refresh it.
+    candidate = new_stamp.to_mapping()
+    if "reviewed_at" in existing and existing["reviewed_at"] is not None:
+        candidate["reviewed_at"] = existing["reviewed_at"]
+    from dataclasses import replace
+
+    compare_stamp = replace(
+        new_stamp,
+        reviewed_at=str(candidate["reviewed_at"]),
+        override_applied=bool(candidate.get("override_applied", False)),
+    )
+    # Align compare_stamp fields with candidate for merge fidelity
+    compare_stamp = replace(
+        compare_stamp,
+        gate=str(candidate.get("gate", "mechanical")),
+        produced_by=str(candidate.get("produced_by", compare_stamp.produced_by)),
+        provider_kind=str(candidate.get("provider_kind", compare_stamp.provider_kind)),
+        checklist_ids=list(candidate.get("checklist_ids") or []),
+        checklist_source=str(candidate.get("checklist_source", compare_stamp.checklist_source)),
+        findings_count=int(candidate.get("findings_count") or 0),
+    )
+    rendered = render_stamped_text(parsed, compare_stamp)
+    return rendered == parsed.text
 
 
 def _insert_review_stamp(mapping: dict, stamp: ReviewStamp) -> dict:
     updated = dict(mapping)
-    updated["review_stamp"] = stamp.to_mapping()
+    existing = mapping.get("review_stamp") if isinstance(mapping.get("review_stamp"), dict) else {}
+    updated["review_stamp"] = merge_stamp_mapping(existing, stamp.to_mapping())
     return updated
 
 
@@ -72,7 +135,9 @@ def render_stamped_text(parsed: ParsedArtifact, stamp: ReviewStamp) -> str:
         return dump_freeze_mapping(updated)
 
     if parsed.kind == "operator_forced_md":
-        stamp_yaml = dump_freeze_mapping({"review_stamp": stamp.to_mapping()})
+        existing = extract_existing_stamp(parsed) or {}
+        merged = merge_stamp_mapping(existing, stamp.to_mapping())
+        stamp_yaml = dump_freeze_mapping({"review_stamp": merged})
         marker_index = parsed.text.rfind(STAMP_MARKER)
         if marker_index == -1:
             base = parsed.text if parsed.text.endswith("\n") else parsed.text + "\n"
