@@ -243,5 +243,6 @@ same method names in both regimes.
 <!-- overseer:anchor:next-step-glance -->
 ## Next step at a glance
 
-_No unambiguous NEXT row — operator authorship required._
+**Next:** **FRV-b Freeze-review verdict integrity build** — **Model:** Auto — **Status:** **TODO**
+**Phase ID:** FRV-b Freeze-review verdict integrity build
 <!-- /overseer:anchor:next-step-glance -->

@@ -18,21 +18,21 @@
 
 | Slice | Deliverable |
 | --- | --- |
-| **FRV-a** | `docs/archive/phases/PHASE-FRV-FREEZE-REVIEW-VERDICT-INTEGRITY.md` → `pass` (FRV-r5), mechanical stamp `sha256:c113efa3…`. F1–F7 frozen as **one** Auto build. Spec-only. |
+| **FRV-a** | **Reviewed → `pass` (FRV-r5)**, mechanical stamp `sha256:c113efa3…`. Froze `docs/archive/phases/PHASE-FRV-FREEZE-REVIEW-VERDICT-INTEGRITY.md`. Closes the hole where the freeze gate grades its own artifact: the default reviewer is a four-regex keyword scan (`tools/freeze_reviewer/providers/base.py:15-19`, `:51-125`) that ignores its `reviewer` argument (`:145-160`), yet its result is written as the hardcoded string `pass` (`tools/freeze_reviewer/stamp.py:33-42`) under the same field name and vocabulary a substantive review uses, asserting a `reviewer_model` that had no causal role — **all 31** stamped archive docs carry that false claim. Because `pre_stamp_canonical_bytes` excises `review_stamp` before hashing (`tools/freeze_reviewer/artifact.py:119-147`) and the no-op guard demands an existing `pass` (`tools/freeze_reviewer/stamp.py:45-52`), a **human downgrade is erased and restamped `pass`** — sticky when pass, self-healing back to pass when a human objects. That field then authorizes a mechanical build session (`tools/governance_hygiene/next_regen.py:517-524`), with a bold `**pass**` in a prose table sufficing when no stamp exists (`:415-436`). Freezes **F1** `mechanical_verdict` + required `gate` with `verdict` reserved (fourteen-key stamp, legacy window, serializer contract untouched, all 31 digests provably stable); **F2** `produced_by` / `provider_kind` / `checklist_ids` / `checklist_source` / `findings_count` with `reviewer_model` **null** whenever a rule engine produced the result; **F3** merge-not-replace, refusal to escalate a non-pass record, flag `--override-non-pass-stamp`, exit `39`, reason `stamp_escalation_refused`, true four-condition no-op; **F4** additive hash-chained ledger kind `freeze_review` (same discipline as `independent_second_review`) matched on `phase_id` + `frozen_spec` + `artifact_digest`, the **only** authorizer of `Auto`; **F5** deletion of **both** prose fallbacks (`next_regen.py:415-436` and `governance_gates/scan.py:236-241`) with no opt-in; **F6** `auto_may_start: false` honored, its locus outside `review_stamp` chosen so flipping it invalidates any bound entry; **F7** reconciliation over the enumerated archive (40 docs: 31 mechanical, 5 prose-only, 4 already inert) with **no** bulk rewrite and **no** retro-failed DONE row. Deliberately and narrowly revisits the `PHASE-ISR-INDEPENDENT-SECOND-REVIEWER.md:182` rejection for the freeze gate only — ledger record required, session independence **not** imported. Five review rounds; **FRV-r4 caught a BLOCKER-class reachability defect** (the gate was wired only to `Thinking → Auto`, which is **4** of **103** live rows against **43** plain `Auto`, so it would have been dead code under this repo's own two-row convention) → §FRV.6.5.1. Seven-tier §FRV.12, prefix `test_frv_`. Dogfood note: the CLI stamp this artifact now carries reads `verdict: pass`, `reviewer_model: thinking-high`, `reviewer_provider: local` — a live specimen of P6/P9 written onto the document that indicts it; the authoritative verdict is the FRV-r1…r5 rounds, per the artifact's authority note. **Spec-only — no code, no tests, no CLI edit.** Cleared for FRV-b. |
 
 ### THE ONE NEXT STEP — **Model: Auto**
 
-Build FRV-b exactly to the frozen artifact, as **ONE** build. F1–F7 share the same functions
-(`tools/freeze_reviewer/stamp.py:27-101`, `tools/governance_hygiene/next_regen.py:395-524`), so
-splitting them would land a tree where the stamp is relabelled but still authorizing, or where
-authorization moved but a prose fallback still bypasses it.
+Build exactly to frozen `docs/archive/phases/PHASE-FRV-FREEZE-REVIEW-VERDICT-INTEGRITY.md` as **ONE** build — F1–F7 touch the same functions (`tools/freeze_reviewer/stamp.py:27-101`, `tools/governance_hygiene/next_regen.py:395-524`), so splitting would land a tree where a stamp is relabelled but still authorizing. Ship: fourteen-key self-describing stamp (§FRV.3.2) + §FRV.3.4 legacy resolver; `producer_identity()` on the provider Protocol (§FRV.4.2); merge + escalation refusal + `EXIT_STAMP_ESCALATION_REFUSED = 39` (§FRV.5); `freeze_review` in `ENTRY_KINDS` + `validate_append_body` branch + `find_matching_freeze_review` (§FRV.6.1–§FRV.6.3); new `tools/freeze_authorization/` as the single reader shared by `next_regen` and `governance_gates/scan` (§FRV.6.4) with one `phase_id` derivation (§FRV.6.4.1); gating for **both** `Thinking → Auto` and plain `Auto`, excluding `Operator + Auto`, plus `REASON_FREEZE_NOT_SUBSTANTIVE` (§FRV.6.5.1); both prose fallbacks deleted (§FRV.7); `auto_may_start` honored (§FRV.8); seven-tier §FRV.12 prefix `test_frv_`. Update `tests/unit/test_gs_paste_next_regen.py:78` + `:94` to the new signature. Do **not** rewrite archived phase docs, renumber exit codes, break the v1 chain, change honesty Mode A–D, or add a config knob for the prose fallback or the legacy window. `/build-verification-review` → `pass` **from a second chat** + `independent_second_review` entry before DONE (`require` per `.overseer/config.yaml:57`).
 
-**What the freeze fixes, in one line:** a verdict record must not live inside the artifact it
-judges. Today a four-regex keyword scan writes a hardcoded `verdict: pass` into the document it
-graded, signs a `reviewer_model` that never ran, erases a human downgrade on the next run, and
-that field authorizes a mechanical build session.
+| | |
+| --- | --- |
+| **ID** | **FRV-b** |
+| **Branch** | `feat/freeze-review-verdict-integrity` (the freeze doc lives here — do **not** start a fresh branch off `main`) |
+| **Repo** | **overseer-kit** |
+| **Read first** | `docs/archive/phases/PHASE-FRV-FREEZE-REVIEW-VERDICT-INTEGRITY.md`; `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md` |
+| **Hard stops** | No merge to `main` without Tier 3 · no secrets · no live posture flips · do not split F1–F7 · do not rewrite archived phase docs · do not renumber exit codes · do not break the v1 ledger chain · do not change honesty Mode A–D · no config knob for the prose fallback or the legacy window · **not DONE on green tests alone** |
 
-Three things in the freeze that are easy to miss and are load-bearing:
+Three items in the freeze that are easy to miss and are load-bearing:
 
 1. **§FRV.6.5.1 — the gate must cover plain `Auto`, not just `Thinking → Auto`.** FRV-r4 caught
    this as BLOCKER-class: only **4** of **103** live roadmap rows carry the split label (all long
@@ -44,19 +44,12 @@ Three things in the freeze that are easy to miss and are load-bearing:
    short-circuits `plan_next_regen` to ambiguity (`next_regen.py:556-557`), which would suppress
    NEXT regeneration instead of emitting Thinking.
 
-**Live dogfood irony to preserve, not fix:** the stamp now on the freeze artifact reads
+**Live dogfood specimen to preserve, not fix:** the stamp now on the freeze artifact reads
 `verdict: pass`, `reviewer_model: thinking-high`, `reviewer_provider: local` — the exact false
 claim the artifact indicts (P6/P9). Leave it. FRV-b's own first `ok review --freeze` run will
 rewrite it to the fourteen-key shape **once**, and that single rewrite is the per-document
-migration (§FRV.9.3 step 2). It must **not** change `artifact_digest`.
-
-| | |
-| --- | --- |
-| **ID** | **FRV-b** |
-| **Branch** | `feat/freeze-review-verdict-integrity` |
-| **Repo** | **overseer-kit** |
-| **Read first** | `docs/archive/phases/PHASE-FRV-FREEZE-REVIEW-VERDICT-INTEGRITY.md`; `docs/ROADMAP.md`; `docs/OVERSEER-HANDOVER.md` |
-| **Hard stops** | No merge to `main` without Tier 3 · no secrets · no live posture flips · do not split F1–F7 · do not rewrite archived phase docs · do not renumber exit codes · do not break the v1 ledger chain · do not change honesty Mode A–D · no config knob for the prose fallback or the legacy window · not DONE on green tests alone |
+migration (§FRV.9.3 step 2). It must **not** change `artifact_digest`
+(`sha256:c113efa33a12b892d55f9c055dd029830ed36ef48f42384bc8bff071edbb5b86`).
 <!-- /overseer:anchor:next-session -->
 
 <!-- overseer:anchor:paste-ready-prompt -->
@@ -74,48 +67,25 @@ Authority: authoritative
 Read first: docs/archive/phases/PHASE-FRV-FREEZE-REVIEW-VERDICT-INTEGRITY.md (frozen,
 FRV-r5 pass); docs/ROADMAP.md (FRV-a + FRV-b rows); docs/OVERSEER-HANDOVER.md.
 
-Build exactly to the frozen artifact as ONE build. Do not redesign. Do not re-derive
-§FRV.1 — every problem claim is already verified with a file+line citation. Do not split
-F1-F7: they touch the same functions (tools/freeze_reviewer/stamp.py:27-101,
-tools/governance_hygiene/next_regen.py:395-524), so a partial landing leaves the stamp
-relabelled but still authorizing, or authorization moved while a prose fallback bypasses it.
+Stay on feat/freeze-review-verdict-integrity — the frozen doc lives there. Do not branch
+off main. Do not redesign, and do not re-derive §FRV.1: every problem claim is already
+verified with a file+line citation.
 
 Deliverables:
-- F1 (§FRV.3) Fourteen-key stamp: `gate: mechanical` + `mechanical_verdict`; `verdict`
-  reserved and never written. §FRV.3.4 legacy resolver (six branches,
-  ACCEPT_LEGACY_VERDICT_STAMP) implemented ONCE in the new shared module and used by all
-  three readers. Serializer key-order contract (serializer.py:10-31) untouched.
-- F2 (§FRV.4) produced_by / provider_kind / checklist_ids / checklist_source /
-  findings_count. New producer_identity() on the ReviewProvider Protocol, called AFTER
-  provider.review() returns; a provider double lacking it resolves ("unknown",
-  "rule_engine"). reviewer_model MUST be null whenever provider_kind is rule_engine.
-- F3 (§FRV.5) Merge unknown keys instead of replacing; refuse to escalate a non-pass
-  record; flag --override-non-pass-stamp; EXIT_STAMP_ESCALATION_REFUSED = 39 in
-  tools/freeze_reviewer/engine.py; reason name stamp_escalation_refused; precedence
-  2 > 4 > 5 > 39 > 8 > 7 > 0; no 39 under --dry-run / --no-stamp; four-condition true
-  no-op. Pass the flag through cli/commands/check_ok.py:82-92.
-- F4 (§FRV.6) Additive ENTRY_KINDS value freeze_review + validate_append_body branch +
-  genesis forbid-list + find_matching_freeze_review beside the existing three. New module
-  tools/freeze_authorization/ as the single reader shared by next_regen and
-  governance_gates/scan. Gate BOTH `Thinking → Auto` and plain `Auto`; exclude
-  `Operator + Auto`; add REASON_FREEZE_NOT_SUBSTANTIVE. mechanical_only travels as an
-  `advisory` field, never as `reason`.
-- F5 (§FRV.7) Delete BOTH prose fallbacks: next_regen.py:415-436 (remove _freeze_pass_state
-  entirely) and governance_gates/scan.py:236-241 (_narrative_freeze_pass). No opt-in knob.
-- F6 (§FRV.8) Honor auto_may_start: false as a real block, including the malformed
-  fail-closed case. The CLI never writes, removes, or normalizes it.
-- F7 (§FRV.9) Reconciliation only. No archived phase doc is rewritten.
-- Seven-tier §FRV.12, test file prefix test_frv_.
-- Update tests/unit/test_gs_paste_next_regen.py:78 and :94 to the new
-  decide_split_emission signature (4-tuple, keyword-only config).
-- Doc touchpoints: docs/CHECK-OK.md, tools/freeze_reviewer/README.md, SPEC §6 pointer.
+- Build exactly to frozen `docs/archive/phases/PHASE-FRV-FREEZE-REVIEW-VERDICT-INTEGRITY.md` as **ONE** build — F1–F7 touch the same functions (`tools/freeze_reviewer/stamp.py:27-101`, `tools/governance_hygiene/next_regen.py:395-524`), so splitting would land a tree where a stamp is relabelled but still authorizing. Ship: fourteen-key self-describing stamp (§FRV.3.2) + §FRV.3.4 legacy resolver; `producer_identity()` on the provider Protocol (§FRV.4.2); merge + escalation refusal + `EXIT_STAMP_ESCALATION_REFUSED = 39` (§FRV.5); `freeze_review` in `ENTRY_KINDS` + `validate_append_body` branch + `find_matching_freeze_review` (§FRV.6.1–§FRV.6.3); new `tools/freeze_authorization/` as the single reader shared by `next_regen` and `governance_gates/scan` (§FRV.6.4) with one `phase_id` derivation (§FRV.6.4.1); gating for **both** `Thinking → Auto` and plain `Auto`, excluding `Operator + Auto`, plus `REASON_FREEZE_NOT_SUBSTANTIVE` (§FRV.6.5.1); both prose fallbacks deleted (§FRV.7); `auto_may_start` honored (§FRV.8); seven-tier §FRV.12 prefix `test_frv_`. Update `tests/unit/test_gs_paste_next_regen.py:78` + `:94` to the new signature. Do **not** rewrite archived phase docs, renumber exit codes, break the v1 chain, change honesty Mode A–D, or add a config knob for the prose fallback or the legacy window. `/build-verification-review` → `pass` **from a second chat** + `independent_second_review` entry before DONE (`require` per `.overseer/config.yaml:57`).
 
 Three easy-to-miss, load-bearing items:
 1. §FRV.6.5.1 — plain `Auto` must gate. Only 4 of 103 live roadmap rows use
    `Thinking → Auto` (all DONE) vs 43 plain `Auto`; split-label-only is dead code here.
 2. §FRV.6.4.1 — one phase_id derivation (compact_step_id) for BOTH readers, or the gate
    scan and the emission path query the ledger under different keys.
-3. §FRV.6.6 — any non-None `reason` suppresses NEXT regeneration (next_regen.py:556-557).
+3. §FRV.6.6 — any non-None `reason` suppresses NEXT regeneration (next_regen.py:556-557),
+   so mechanical_only must travel as `advisory`.
+
+Preserve, do not fix: the stamp on the freeze artifact reads `verdict: pass` with
+`reviewer_model: thinking-high` — a live specimen of the defect it indicts. FRV-b's first
+`ok review --freeze` rewrites it to the fourteen-key shape once (§FRV.9.3 step 2) and must
+NOT change artifact_digest sha256:c113efa33a12b892d55f9c055dd029830ed36ef48f42384bc8bff071edbb5b86.
 
 Do NOT: rewrite archived phase docs; renumber any exit code; break the v1 ledger chain;
 change honesty Mode A/B/C/D; add a config knob for the prose fallback or the legacy
@@ -127,6 +97,10 @@ Hard stops: No merge to main without Tier 3 · no secrets · no live posture fli
  .overseer/config.yaml:57).
 
 Governance sync: update roadmap + handover together on completion.
+
+Governance gates (mandatory — remind only; silence is not pass):
+- Freeze review: /freeze-review-loop before Thinking freeze → DONE; ok review --freeze when CLI green
+- Build verification: /build-verification-review after every Auto {step}b before ROADMAP DONE
 ```
 <!-- /overseer:anchor:paste-ready-prompt -->
 
@@ -153,23 +127,23 @@ Governance sync: update roadmap + handover together on completion.
 | Area | State |
 | --- | --- |
 | **VCS regime** | `muse+git-mirror` |
-| **GitHub main** | `8358f968155a66b2e45bf68237bb324fb2de7601` |
-| **Canonical anchor** | `sha256:1742cd1969fb4061a1b5b4521b3bca9c6a5aa969a848c496716ad2fe4bfac2e2` |
-| **Canonical main** | `sha256:1742cd1969fb4061a1b5b4521b3bca9c6a5aa969a848c496716ad2fe4bfac2e2` |
-| **Branch** | `main` |
+| **GitHub main** | `bef115dd6616b261dfe8dd779725ebe845563b25` |
+| **Canonical anchor** | `sha256:8d7f41aafae41deee70035a92f93602ef1722a290153597451e5932af503a42c` |
+| **Canonical main** | `sha256:8d7f41aafae41deee70035a92f93602ef1722a290153597451e5932af503a42c` |
+| **Branch** | `feat/freeze-review-verdict-integrity` |
 | **Dirty** | `no` |
 | **Drift** | D1=drifted, D2=aligned, D3=aligned |
 <!-- /overseer:anchor:verified-snapshot -->
 
 <!-- overseer:anchor:vcs-table -->
-## VCS (verified 2026-09-05)
+## VCS (verified 2026-09-12)
 
 | Item | Value |
 | --- | --- |
-| Branch | `main` |
-| GitHub `main` | `8358f968155a66b2e45bf68237bb324fb2de7601` |
-| Canonical anchor | `sha256:1742cd1969fb4061a1b5b4521b3bca9c6a5aa969a848c496716ad2fe4bfac2e2` (.muse/git-bridge.toml:last_export.muse_commit_id) |
-| Muse `main` | `sha256:1742cd1969fb4061a1b5b4521b3bca9c6a5aa969a848c496716ad2fe4bfac2e2` |
+| Branch | `feat/freeze-review-verdict-integrity` |
+| GitHub `main` | `bef115dd6616b261dfe8dd779725ebe845563b25` |
+| Canonical anchor | `sha256:8d7f41aafae41deee70035a92f93602ef1722a290153597451e5932af503a42c` (.muse/git-bridge.toml:last_export.muse_commit_id) |
+| Muse `main` | `sha256:8d7f41aafae41deee70035a92f93602ef1722a290153597451e5932af503a42c` |
 | Dirty | no |
 <!-- /overseer:anchor:vcs-table -->
 
@@ -245,6 +219,8 @@ See `docs/ROADMAP.md` → Model-split handover protocol (SD-3) and governance sy
 <!-- /overseer:anchor:done-recently -->
 
 ## Change log
+
+- **2026-09-12** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `bef115d`; realign: D2 aligned — skip realign; next_regen=regenerated
 
 - **2026-09-12** — **FRV-a DONE (Thinking freeze).** `PHASE-FRV-FREEZE-REVIEW-VERDICT-INTEGRITY.md` → `pass` (FRV-r5), stamp `sha256:c113efa3…`. F1–F7 frozen as **one** Auto build; verdict records move off the artifact and onto the hash-chained ledger. FRV-r4 caught a BLOCKER-class reachability defect (split-label-only gating = dead code; 4 of 103 rows). NEXT → **FRV-b**.
 
