@@ -58,8 +58,19 @@ while ROUND <= MAX_ROUNDS:
      - Do NOT trust prior round summaries — re-read files
 
   2. If pass:
+     - Write the Review-record row and finish ALL artifact edits BEFORE
+       running `ok review --freeze`. Never update the Review record after
+       stamping without immediately restamping.
      - Run: ok review --freeze <artifact-path>
-     - If CLI pass: stamp ok; update artifact Review-record table; EXIT success
+     - If CLI pass: stamp ok. STOP. Do **not** claim Auto is cleared.
+     - Print that `ok next` will emit the adversarial-freeze paste when
+       `honesty.adversarial_freeze` is `suggest` or `require`.
+     - Invent / copy a `producer_session` nonce into the handover NEXT block.
+     - MUST NOT write, insert, or flip `auto_may_start` to `true`.
+     - MUST NOT write `auto_may_start` at all.
+     - MUST NOT append `adversarial_freeze` `pass` in the author session.
+     - Appending `freeze_review` in the author session remains allowed (FRV);
+       it does **not** satisfy AFF.
 
   3. If blocked OR escalating finding:
      - Record in Review-record table; STOP for human

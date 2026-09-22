@@ -27,6 +27,12 @@ def build_optional_feature_tips(config: OverseerConfig) -> list[str]:
             "require; set honesty.require_independent_second_reviewer: require to "
             "re-enable second-chat DONE gating (docs/INDEPENDENT-SECOND-REVIEWER.md)"
         )
+    if config.honesty.enabled and config.honesty.adversarial_freeze == "off":
+        tips.append(
+            "tip: adversarial_freeze off — set honesty.adversarial_freeze: suggest "
+            "(or require) for pre-Auto attack-posture freeze review "
+            "(docs/ADVERSARIAL-FREEZE-REVIEW.md)"
+        )
     return tips
 
 

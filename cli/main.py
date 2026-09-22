@@ -320,6 +320,8 @@ def build_parser() -> argparse.ArgumentParser:
     hs_parser.add_argument("--frozen-spec", metavar="PATH_STRING")
     hs_parser.add_argument("--deploy-health", metavar="PHASE_ID")
     hs_parser.add_argument("--independent-second-review", metavar="PHASE_ID")
+    hs_parser.add_argument("--adversarial-freeze", metavar="PHASE_ID")
+    hs_parser.add_argument("--artifact-digest", metavar="DIGEST")
 
     ledger_parser = subparsers.add_parser("ledger", help="L2 verdict ledger (K10)")
     ledger_sub = ledger_parser.add_subparsers(dest="ledger_action", required=True)

@@ -33,6 +33,10 @@ from tools.independent_second_reviewer import (
     build_independent_second_reviewer_gate,
     format_independent_second_reviewer_gate_line,
 )
+from tools.adversarial_freeze import (
+    build_adversarial_freeze_gate,
+    format_adversarial_freeze_gate_line,
+)
 from tools.governance_hygiene.types import DriftReport, GovernanceSyncResult, PatchPlan, VerifiedReads
 from tools.workspace import workspace_relay_footer_state
 
@@ -123,6 +127,26 @@ def _emit_governance_gate_footer(
             not isr_gate.ok
             and isr_gate.mode == "require"
             and isr_gate.token == "missing_independent_second_review"
+        ):
+            relay_state = workspace_relay_footer_state(config, repo_root)
+            emit("")
+            emit(f"workspace_relay: {relay_state}")
+            return 2, relay_state
+
+    aff_gate = build_adversarial_freeze_gate(
+        config,
+        repo_root,
+        handover_text=handover_text,
+        roadmap_text=roadmap_text,
+    )
+    aff_line = format_adversarial_freeze_gate_line(aff_gate)
+    if aff_line:
+        emit("")
+        emit(aff_line)
+        if (
+            not aff_gate.ok
+            and aff_gate.mode == "require"
+            and aff_gate.token == "missing_adversarial_freeze"
         ):
             relay_state = workspace_relay_footer_state(config, repo_root)
             emit("")

@@ -13,6 +13,7 @@ HonestyErrorToken = Literal[
     "missing_verification_evidence",
     "missing_deploy_health",
     "missing_independent_second_review",
+    "missing_adversarial_freeze",
     "approval_integrity",
     "ledger_broken",
     "role_violation",
@@ -34,6 +35,7 @@ ENTRY_KINDS = frozenset(
         "verification_evidence",
         "independent_second_review",
         "freeze_review",
+        "adversarial_freeze",
     }
 )
 
@@ -41,6 +43,8 @@ VERIFICATION_ARTIFACT_TYPES = frozenset({"test_output", "deploy_health", "screen
 BV_VERDICTS = frozenset({"pass", "findings", "blocked"})
 ISR_VERDICTS = frozenset({"pass", "findings", "blocked"})
 FREEZE_VERDICTS = frozenset({"pass", "findings", "blocked"})
+AFF_VERDICTS = frozenset({"pass", "findings", "blocked", "skip"})
+AFF_POSTURES = frozenset({"attack"})
 
 ACTOR_ROLES = frozenset({"owner", "overseer", "producer", "verifier"})
 
@@ -71,6 +75,7 @@ class HonestyStatusJson:
     verification_evidence: dict[str, Any] | None = None
     deploy_health: dict[str, Any] | None = None
     independent_second_review: dict[str, Any] | None = None
+    adversarial_freeze: dict[str, Any] | None = None
 
     def to_dict(self) -> dict[str, Any]:
         payload: dict[str, Any] = {
@@ -90,6 +95,8 @@ class HonestyStatusJson:
             payload["deploy_health"] = self.deploy_health
         if self.independent_second_review is not None:
             payload["independent_second_review"] = self.independent_second_review
+        if self.adversarial_freeze is not None:
+            payload["adversarial_freeze"] = self.adversarial_freeze
         return payload
 
 

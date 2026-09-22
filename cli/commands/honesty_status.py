@@ -63,6 +63,8 @@ def run_honesty_status_command(args: Namespace, ctx: CliContext) -> int:
         frozen_spec=getattr(args, "frozen_spec", None),
         deploy_health=getattr(args, "deploy_health", None),
         independent_second_review=getattr(args, "independent_second_review", None),
+        adversarial_freeze=getattr(args, "adversarial_freeze", None),
+        artifact_digest=getattr(args, "artifact_digest", None),
         emit_json=bool(args.json),
     )
     result = run_honesty_status(config=config, repo_root=repo_root, options=options)
@@ -80,6 +82,8 @@ def run_honesty_status_command(args: Namespace, ctx: CliContext) -> int:
         ctx.output.error("refused")
     elif result.exit_code == 20:
         ctx.output.error("missing independent verdict")
+    elif result.exit_code == 22:
+        ctx.output.error("ledger broken")
     elif result.exit_code == 25:
         ctx.output.error("provenance signature verification failed")
     elif result.exit_code == 26:
@@ -90,6 +94,8 @@ def run_honesty_status_command(args: Namespace, ctx: CliContext) -> int:
         ctx.output.error("missing deploy health")
     elif result.exit_code == 38:
         ctx.output.error("missing independent second review")
+    elif result.exit_code == 40:
+        ctx.output.error("missing adversarial freeze")
     elif result.exit_code == 1:
         ctx.output.error("usage")
 

@@ -47,3 +47,10 @@ disk — not an open tab. See `docs/PRINT-NEXT.md`.
 
 The kit records and gates a second-chat verdict before Auto DONE when ISR is enabled; it does
 not run another model. See `docs/INDEPENDENT-SECOND-REVIEWER.md`.
+
+## Adversarial freeze
+
+When `honesty.adversarial_freeze` is `suggest` or `require`, author freeze pass does not clear
+Auto until a different-chat attack review records `adversarial_freeze` (or suggest skip).
+See `docs/ADVERSARIAL-FREEZE-REVIEW.md`. The key is absent in consumer init templates (derived
+default); kit dogfood sets `suggest` explicitly.

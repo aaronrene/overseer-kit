@@ -22,6 +22,17 @@ security, irreversibility, real money, or Tier-3 gates.
 - Before Tier 3 action consumes a frozen artifact (merge, staging push, live flip)
 - Ad-hoc / side research via **`/check-ok`** (scaffolds `docs/reviews/` then this gate)
 
+## Four review kinds
+
+| Kind | When | Posture |
+| --- | --- | --- |
+| **freeze-review-loop** | Author Thinking session | Improve until clean (same session) |
+| **independent freeze review** | After author claims close | Verify claimed close (`freeze_review`) |
+| **adversarial freeze** | After loop pass, before Auto | Try to kill the spec — `/adversarial-freeze-review` |
+| **independent second reviewer (ISR)** | After Auto build | Re-check the build |
+
+See `docs/ADVERSARIAL-FREEZE-REVIEW.md` and `/adversarial-freeze-review`.
+
 ## Review checklist
 
 1. **Ground-truth edge:** does a later phase treat this output as truth without re-deriving?

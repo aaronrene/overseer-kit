@@ -21,7 +21,9 @@ class MuseOnlyAdapter(BaseAdapter):
     """MuseHub backend — git and mirror are hard no-ops."""
 
     def status(self) -> StatusResult | ReadError:
-        branch_result = self._muse("branch", "--show-current")
+        # Muse 0.2.x exposes the current branch through rev-parse; unlike Git,
+        # its branch command does not accept --show-current.
+        branch_result = self._muse("rev-parse", "--abbrev-ref", "HEAD")
         if isinstance(branch_result, ReadError):
             return branch_result
         dirty_result = self._muse_dirty()

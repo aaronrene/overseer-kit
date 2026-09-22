@@ -18,7 +18,11 @@ ground truth:
    `docs/reviews/<date>-<slug>.md` via **`/check-ok`** / `ok check-ok --scaffold-only`
 2. Run **`/freeze-review`** or **`/freeze-review-loop`** (thinking-high)
 3. Mechanical gate: `ok check-ok --path <artifact>` (same engine as `ok review --freeze`)
-4. Do **not** start Auto until verdict is **`pass`** (or human clears `blocked`)
+4. Do **not** start Auto until verdict is **`pass`** (or human clears `blocked`).
+   When `honesty.adversarial_freeze` is `suggest` or `require`, author
+   freeze-review-loop `pass` is **not** Auto-cleared — `ok next` emits the
+   adversarial-freeze Thinking paste until a digest-bound
+   `adversarial_freeze` pass (or `suggest` skip) clears the gate.
 
 ## End gate (implementation)
 

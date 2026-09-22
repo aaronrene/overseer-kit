@@ -16,6 +16,17 @@ from tools.governance_hygiene.parse import (
     phase_tokens,
 )
 from tools.freeze_authorization.resolve import freeze_authorization_state
+from tools.freeze_reviewer.artifact import (
+    artifact_digest,
+    extract_existing_stamp,
+    parse_artifact,
+)
+from tools.adversarial_freeze.authorize import (
+    adversarial_authorization_state,
+    aff_hold_bypassed,
+    author_loop_complete,
+    frv_authorizing_freeze_paths,
+)
 from tools.governance_hygiene.types import QueueRow
 
 # Closed vocabulary from policy/model-labels.yaml ``labels[].display`` (frozen for GS-PASTE).
@@ -43,7 +54,10 @@ ADVISORY_OPERATOR_BLOCK_MALFORMED = "operator_block_malformed"
 ADVISORY_LEDGER_CHAIN_BROKEN = "ledger_chain_broken"
 ADVISORY_FORGED_SUBSTANTIVE_GATE = "forged_substantive_gate"
 ADVISORY_UNREADABLE_GATE = "unreadable_gate"
+ADVISORY_ADVERSARIAL_FREEZE_PENDING = "adversarial_freeze_pending"
+ADVISORY_ADVERSARIAL_FREEZE_SKIP = "adversarial_freeze_skip"
 AUTO_MODEL = "Auto"
+OPERATOR_AUTO_MODEL = "Operator + Auto"
 
 OPEN_STATUSES = frozenset({"TODO", "NEXT", "WIP"})
 DONE_STATUSES = frozenset({"DONE", "MERGED"})
@@ -532,7 +546,7 @@ def plan_next_regen(
     config: OverseerConfig,
     repo_root: Path,
 ) -> NextRegenDecision:
-    """Full §GSP.4 + §GSP.5.2 + §GSP.5.4 decision for NEXT/paste regen."""
+    """Full §GSP.4 + §GSP.5.2 + §GSP.5.4 + §AFF.7 decision for NEXT/paste regen."""
     row, reason = select_unambiguous_next_row(roadmap_text)
     if row is None:
         return NextRegenDecision(None, reason, None, None, False)
@@ -553,7 +567,100 @@ def plan_next_regen(
     else:
         step_label = step_id
 
+    emit_model, is_step_b, advisory = _apply_adversarial_freeze_hold(
+        row=row,
+        repo_root=repo_root,
+        config=config,
+        emit_model=emit_model,
+        is_step_b=is_step_b,
+        advisory=advisory,
+        step_id=step_id,
+    )
+
     return NextRegenDecision(row, None, emit_model, step_label, is_step_b, advisory=advisory)
+
+
+def _apply_adversarial_freeze_hold(
+    *,
+    row: QueueRow,
+    repo_root: Path,
+    config: OverseerConfig,
+    emit_model: str | None,
+    is_step_b: bool,
+    advisory: str | None,
+    step_id: str,
+) -> tuple[str | None, bool, str | None]:
+    """Apply AFF Trigger A / Trigger B after FRV split emission (§AFF.7.1)."""
+    model = normalize_model_cell(row.model)
+    if model == OPERATOR_AUTO_MODEL:
+        return emit_model, is_step_b, advisory
+    if aff_hold_bypassed(config):
+        return emit_model, is_step_b, advisory
+    if emit_model is None:
+        return emit_model, is_step_b, advisory
+
+    candidates = discover_freeze_candidates(repo_root, step_id, row.deliverable)
+
+    # Trigger A — FRV would emit Auto
+    if emit_model == "Auto" or is_step_b:
+        if not candidates:
+            return emit_model, is_step_b, advisory
+        authorizing = frv_authorizing_freeze_paths(
+            repo_root, candidates, phase_id=step_id, config=config
+        )
+        if not authorizing:
+            return emit_model, is_step_b, advisory
+        states = [
+            adversarial_authorization_state(repo_root, path, config=config)
+            for path in authorizing
+        ]
+        if all(s.state in {"pass", "skipped", "off"} for s in states):
+            if any(s.state == "skipped" for s in states):
+                return emit_model, is_step_b, ADVISORY_ADVERSARIAL_FREEZE_SKIP
+            return emit_model, is_step_b, advisory
+        # pending or absent → hold
+        return "Thinking", False, ADVISORY_ADVERSARIAL_FREEZE_PENDING
+
+    # Trigger B — Thinking emission after author freeze-review-loop complete
+    if emit_model != "Thinking":
+        return emit_model, is_step_b, advisory
+    if not candidates:
+        return emit_model, is_step_b, advisory
+
+    completed_states: list[str] = []
+    for path in candidates:
+        frv = freeze_authorization_state(
+            repo_root, path, phase_id=step_id, config=config
+        )
+        stamp_digest = None
+        current_digest = ""
+        try:
+            rel = path.resolve().relative_to(repo_root.resolve()).as_posix()
+            parsed = parse_artifact(path, rel_path=rel)
+            current_digest = artifact_digest(parsed)
+            stamp = extract_existing_stamp(parsed)
+            if isinstance(stamp, dict):
+                raw = stamp.get("artifact_digest")
+                stamp_digest = raw if isinstance(raw, str) else None
+        except Exception:
+            continue
+        if not author_loop_complete(
+            frv.state,
+            stamp_digest=stamp_digest,
+            current_digest=current_digest,
+        ):
+            continue
+        aff = adversarial_authorization_state(repo_root, path, config=config)
+        if aff.state == "off":
+            continue
+        completed_states.append(aff.state)
+
+    if not completed_states:
+        return emit_model, is_step_b, advisory
+    if any(s in {"pending", "absent"} for s in completed_states):
+        return "Thinking", False, ADVISORY_ADVERSARIAL_FREEZE_PENDING
+    # pass / skipped / off — leave Thinking emission (do not rewrite to Auto)
+    return emit_model, is_step_b, advisory
 
 
 def _branch_value(config: OverseerConfig, phase_id: str) -> str:
@@ -622,6 +729,14 @@ def render_next_session(
     position = _current_position(roadmap_text, row)
     landed = _landed_table_row(roadmap_text)
 
+    if decision.advisory == ADVISORY_ADVERSARIAL_FREEZE_PENDING:
+        one_next = (
+            "Adversarial freeze review (attack posture) — different chat from "
+            "the author; try to kill the freeze before Auto may start."
+        )
+    else:
+        one_next = row.deliverable.strip() or f"Advance {step_id}."
+
     lines = [
         f"## NEXT SESSION — {title}",
         "",
@@ -637,7 +752,7 @@ def render_next_session(
         "",
         f"### THE ONE NEXT STEP — **Model: {model}**",
         "",
-        row.deliverable.strip() or f"Advance {step_id}.",
+        one_next,
         "",
         "| | |",
         "| --- | --- |",
@@ -655,7 +770,7 @@ def render_paste_ready(
     decision: NextRegenDecision,
     config: OverseerConfig,
 ) -> str:
-    """Render ``paste-ready-prompt`` anchor body (§GSP.5.3 / H16)."""
+    """Render ``paste-ready-prompt`` anchor body (§GSP.5.3 / H16 / §AFF.7.2)."""
     assert decision.row is not None
     assert decision.emit_model is not None
     assert decision.step_label is not None
@@ -666,27 +781,82 @@ def render_paste_ready(
     read_first = _docs_read_first(config)
     title = phase_tokens(row.phase_label)[0] if phase_tokens(row.phase_label) else step_id
 
-    fence_lines = [
-        f"{step_id} — {title} ({config.repo.name}).",
-        "",
-        f"Model: {model}",
-        f"Repo: {config.repo.name}",
-        f"Branch: {branch}",
-        f"Step: {step_id}",
-        "Authority: authoritative",
-        "",
-        f"Read first: {read_first}.",
-        "",
-        "Deliverables:",
-        f"- {row.deliverable.strip() or step_id}",
-        "",
-        f"Hard stops: {HARD_STOPS}",
-        "",
-        "Governance sync: update roadmap + handover on completion.",
-    ]
-    if model == "Auto" or decision.is_step_b:
-        fence_lines.append("")
-        fence_lines.extend(BUILD_VERIFICATION_LINES)
+    if decision.advisory == ADVISORY_ADVERSARIAL_FREEZE_PENDING:
+        cited = None
+        for match in re.finditer(r"`?(docs/[^`\s|]+\.md)`?", row.deliverable):
+            cited = match.group(1)
+            break
+        artifact_line = cited or (row.deliverable.strip() or step_id)
+        fence_lines = [
+            f"{step_id} — adversarial freeze review ({config.repo.name}).",
+            "",
+            "Model: Thinking",
+            f"Repo: {config.repo.name}",
+            f"Branch: {branch}",
+            f"Step: {step_id}",
+            "Authority: authoritative",
+            "Posture: attack — try to kill the freeze; do not rubber-stamp close",
+            "",
+            "This MUST be a different chat from the author freeze-review-loop session.",
+            "If this is the author session, stop. Prefer a different model than the author",
+            "(preference only; the kit does not gate model labels).",
+            "",
+            f"Read the freeze artifact: `{artifact_line}`",
+            f"Also read: {read_first}.",
+            "",
+            "Cite every finding as path:line.",
+            "",
+            "Mandatory Review-record / restamp / FRV-rebind / AFF-append transaction:",
+            "1. Finish the review and decide pass|findings|blocked WITHOUT appending yet.",
+            "2. Write the adversarial round into the freeze artifact Review-record table;",
+            "   complete every other artifact edit now.",
+            "3. Run ok review --freeze <artifact>; require mechanical pass; stamp digest",
+            "   must equal current FRV artifact_digest D.",
+            "4. If Auto requires FRV authorization, append freeze_review pass for the same",
+            "   frozen_spec + artifact_digest D; verify the ledger.",
+            "5. Append adversarial_freeze as the final binding operation with the",
+            "   actual verdict and same frozen_spec + artifact_digest D.",
+            "   On pass: §AFF.5.2 fields only — actor_role: verifier,",
+            "   actor_session_id: <THIS_CHAT_SESSION_ID>, phase_id, round,",
+            "   reviewer_model, frozen_spec, artifact_digest,",
+            "   aff_verdict: pass, aff_posture: attack, and",
+            "   producer_session_id: <AUTHOR_PRODUCER_SESSION_NONCE>",
+            "   (do not scrape IDE session ids). Verify the ledger again.",
+            "6. Do not edit the freeze artifact after step 5.",
+            "",
+            "On findings/blocked: append that negative verdict as the final step;",
+            "never omit a negative append merely to preserve an older pass.",
+            "Under suggest, operator skip is a separate owner append (aff_verdict: skip)",
+            "— the reviewer chat does not skip for the operator.",
+            "",
+            "The kit performs no model call and holds no key.",
+            "No merge to main.",
+            "",
+            "Hard stops: No merge to main without Tier 3 · no secrets · no live posture",
+            "flips · no model call from the kit CLI · no redesign of the freeze",
+        ]
+    else:
+        fence_lines = [
+            f"{step_id} — {title} ({config.repo.name}).",
+            "",
+            f"Model: {model}",
+            f"Repo: {config.repo.name}",
+            f"Branch: {branch}",
+            f"Step: {step_id}",
+            "Authority: authoritative",
+            "",
+            f"Read first: {read_first}.",
+            "",
+            "Deliverables:",
+            f"- {row.deliverable.strip() or step_id}",
+            "",
+            f"Hard stops: {HARD_STOPS}",
+            "",
+            "Governance sync: update roadmap + handover on completion.",
+        ]
+        if model == "Auto" or decision.is_step_b:
+            fence_lines.append("")
+            fence_lines.extend(BUILD_VERIFICATION_LINES)
 
     fence_body = "\n".join(fence_lines)
     return "\n".join(

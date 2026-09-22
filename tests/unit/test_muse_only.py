@@ -12,7 +12,7 @@ def test_status_success(muse_only_config, repo_root) -> None:
     root = str(repo_root)
     runner = make_runner(
         {
-            f"muse -C {root} branch": ok("feat/hub"),
+            f"muse -C {root} rev-parse --abbrev-ref HEAD": ok("feat/hub"),
             f"muse -C {root} status --json": ok('{"dirty": false, "branch": "feat/hub"}'),
         }
     )
@@ -25,7 +25,9 @@ def test_status_success(muse_only_config, repo_root) -> None:
 
 def test_status_fails_closed_on_muse_error(muse_only_config, repo_root) -> None:
     root = str(repo_root)
-    runner = make_runner({f"muse -C {root} branch": fail("muse unavailable")})
+    runner = make_runner(
+        {f"muse -C {root} rev-parse --abbrev-ref HEAD": fail("muse unavailable")}
+    )
     adapter = adapter_for(muse_only_config, repo_root, runner)
     result = adapter.status()
     assert isinstance(result, ReadError)
