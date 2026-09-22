@@ -1,0 +1,14 @@
+{
+  "v": 1,
+  "kind": "adversarial_freeze",
+  "actor_role": "verifier",
+  "actor_session_id": "adversarial-chat-2",
+  "phase_id": "AFF",
+  "frozen_spec": "docs/archive/phases/PHASE-AFF-ADVERSARIAL-FREEZE-HONESTY-GATE.md",
+  "round": 1,
+  "aff_verdict": "blocked",
+  "aff_posture": "attack",
+  "artifact_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "producer_session_id": "aff-a-author-session",
+  "reviewer_model": "thinking-high"
+}

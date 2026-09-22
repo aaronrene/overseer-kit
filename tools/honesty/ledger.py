@@ -47,7 +47,11 @@ def verify_chain(
 
     expected_prev = GENESIS_PREV
     for entry in entries:
-        if entry.get("v") != 1:
+        version = entry.get("v")
+        if type(version) is not int or version != 1:
+            return 22
+        ts = entry.get("ts")
+        if not isinstance(ts, str) or not ts.strip():
             return 22
         stored_hash = entry.get("entry_hash")
         if not isinstance(stored_hash, str):
@@ -85,9 +89,9 @@ def _resolve_ledger_path(config: OverseerConfig, repo_root: Path) -> Path:
 
 
 def _finalize_entry(body: dict[str, Any], prev_hash: str) -> dict[str, Any]:
-    """Fill envelope hashes and default timestamp."""
+    """Fill envelope hashes; server-fill ``ts`` only when the client omitted it."""
     entry = dict(body)
-    if not entry.get("ts"):
+    if "ts" not in entry:
         entry["ts"] = utc_now_z()
     entry["prev_hash"] = prev_hash
     entry["entry_hash"] = compute_entry_hash(entry)

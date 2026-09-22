@@ -26,6 +26,9 @@
    `freeze_review` ledger entry (`ok ledger append --kind freeze_review`).
    An explicit `auto_may_start: false` at the freeze-block top level blocks
    Auto regardless of ledger or stamp; the CLI never writes or clears that key.
+   Author freeze-review-loop `pass` is also **not** Auto-cleared when
+   `honesty.adversarial_freeze` is `suggest` or `require` — see
+   `docs/ADVERSARIAL-FREEZE-REVIEW.md`.
 
 ## Paste-ready prompt
 

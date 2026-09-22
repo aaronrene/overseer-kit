@@ -39,6 +39,11 @@ from tools.independent_second_reviewer import (
     format_independent_second_reviewer_gate_line,
     independent_second_reviewer_gate_payload,
 )
+from tools.adversarial_freeze import (
+    build_adversarial_freeze_gate,
+    format_adversarial_freeze_gate_line,
+    adversarial_freeze_gate_payload,
+)
 from tools.optional_feature_tips import (
     build_optional_feature_tips,
     optional_feature_tips_payload,
@@ -138,6 +143,7 @@ def _exit_code_from_conditions(
     footprint_coverage_ok: bool = True,
     verification_evidence_gate_ok: bool = True,
     independent_second_reviewer_gate_ok: bool = True,
+    adversarial_freeze_gate_ok: bool = True,
     governance_freshness_ok: bool = True,
     land_closeout_ok: bool = True,
     workspace_ok: bool = True,
@@ -164,6 +170,7 @@ def _exit_code_from_conditions(
         or not footprint_coverage_ok
         or not verification_evidence_gate_ok
         or not independent_second_reviewer_gate_ok
+        or not adversarial_freeze_gate_ok
         or not governance_freshness_ok
         or not land_closeout_ok
     ):
@@ -390,6 +397,16 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
     if isr_line:
         report.add_warning(isr_line)
 
+    adversarial_freeze_gate = build_adversarial_freeze_gate(
+        config,
+        repo_root,
+        handover_text=handover_text,
+        roadmap_text=roadmap_text,
+    )
+    aff_line = format_adversarial_freeze_gate_line(adversarial_freeze_gate)
+    if aff_line:
+        report.add_warning(aff_line)
+
     optional_feature_tips = build_optional_feature_tips(config)
 
     # §NXP.6 — warn only; must not fold into --exit-code.
@@ -429,6 +446,9 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
     isr_payload = independent_second_reviewer_gate_payload(independent_second_reviewer_gate)
     if isr_payload is not None:
         payload["independent_second_reviewer_gate"] = isr_payload
+    aff_payload = adversarial_freeze_gate_payload(adversarial_freeze_gate)
+    if aff_payload is not None:
+        payload["adversarial_freeze_gate"] = aff_payload
     if lock_error:
         payload["lock_error"] = True
 
@@ -454,6 +474,7 @@ def run_status(args: Namespace, ctx: CliContext) -> int:
         footprint_coverage_ok=footprint_coverage.ok,
         verification_evidence_gate_ok=verification_evidence_gate.ok,
         independent_second_reviewer_gate_ok=independent_second_reviewer_gate.ok,
+        adversarial_freeze_gate_ok=adversarial_freeze_gate.ok,
         governance_freshness_ok=governance_freshness.ok,
         land_closeout_ok=land_closeout.ok,
         workspace_ok=workspace_ok,

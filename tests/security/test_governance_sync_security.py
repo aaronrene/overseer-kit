@@ -60,7 +60,7 @@ def test_muse_only_never_invokes_git(tmp_path: Path) -> None:
     root = str(tmp_path.resolve())
     runner = make_runner(
         {
-            f"muse -C {root} branch --show-current": ok("main"),
+            f"muse -C {root} rev-parse --abbrev-ref HEAD": ok("main"),
             f"muse -C {root} status --porcelain": ok(""),
             f"muse -C {root} rev-parse main": ok('sha256:abc'),
         }

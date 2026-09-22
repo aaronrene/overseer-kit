@@ -73,6 +73,14 @@ status fail closed. Opt out: `honesty.require_independent_second_reviewer: off`
 (or `warn`). The kit records and gates the verdict; it does not run another
 model. See `docs/INDEPENDENT-SECOND-REVIEWER.md`.
 
+## Adversarial freeze
+
+When `honesty.adversarial_freeze` is `suggest` or `require`, author
+freeze-review-loop pass does not clear Auto. A different chat must try to kill
+the freeze and record a digest-bound `adversarial_freeze` pass (or, under
+`suggest`, an owner skip). The kit never dispatches a model. See
+`docs/ADVERSARIAL-FREEZE-REVIEW.md`.
+
 Open the repository root (the folder that contains `.overseer/`) as the IDE workspace.
 If you open a parent folder, project rules and skills under `.cursor/` often do not load.
 The CLI still works. The open editor tab is not the source of truth — run `ok next`.

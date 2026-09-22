@@ -51,7 +51,7 @@ def test_muse_only_adapter_leaves_git_dirty_none(muse_only_config, repo_root: Pa
     root = str(repo_root.resolve())
     runner = make_runner(
         {
-            f"muse -C {root} branch --show-current": ok("main"),
+            f"muse -C {root} rev-parse --abbrev-ref HEAD": ok("main"),
             f"muse -C {root} status --porcelain": ok(""),
         }
     )

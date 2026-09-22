@@ -4,61 +4,79 @@
 
 **Living relay for 🆗 Overseer Kit.** Paste the **Paste-ready prompt** fence into a fresh chat.
 
-> **NEXT right now = FRV → main (land-a).**  
-> FRV-b is **DONE** (BV `pass` + ISR `pass`). Do not re-run FRV-b Auto or FRV-b-BV.
+> **NEXT right now = OCI-a (Thinking, new branch/worktree).**
+> AFF-b is DONE: BV-r4 `pass` + ISR `pass`. Do not continue AFF on this branch.
 
 ---
 
 <!-- overseer:next role=primary lane=product status=live -->
 <!-- overseer:anchor:next-session -->
-## NEXT SESSION — FRV → main (land-a)
+## NEXT SESSION — OCI-a Overseer context isolation freeze
 
-**Date:** 2026-09-12  
-**Current position:** **FRV-b DONE** (BV-r1 `pass` + ISR `pass`) → **FRV → main (land-a)**  
-**Model:** Operator + Auto  
-**land-phase:** land-a
+**Date:** 2026-09-20  
+**Current position:** AFF-b DONE → **OCI-a**
+**Model:** Thinking
 
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **FRV-b** | F1–F7 **DONE**. BV **`pass` (FRV-b-BV-r1)** + ISR **`pass`**. Verifier `4c695c4f-96ff-487f-ad92-30ec473f1b51` ≠ producer `f98ae0dd-1e92-4dc1-a4f0-285fd4635244`. Fourteen-key stamp; exit `39`; `freeze_review` ledger kind; shared `tools/freeze_authorization/`; plain `Auto` gated; both prose fallbacks gone; digest `sha256:c113efa3…` unchanged. `test_frv_` **35** green; suite **1379** / **15** pre-existing. Ledger: `verification_evidence` `639da5c1…` (`test_output` sha256:`dc9dbb4c…`) + `independent_second_review` `86f49a9c…`. |
+| **AFF-b-ISR** | Independent V1–V8 **`pass`**. Stamp re-derived `sha256:5b8a9aa5…`; `test_aff_` **101** green (`test_output` sha256:`89b76e1c…`). ISR ledger entry `a069d8ad…`. AFF-b → **DONE**. |
+| **AFF-b** | Adversarial-freeze honesty gate build complete (BV-r4 + ISR). |
 
-### THE ONE NEXT STEP — **Model: Operator + Auto**
+### THE ONE NEXT STEP — **Model: Thinking**
 
-Open or update the land PR for `feat/freeze-review-verdict-integrity`, then **stop** for Tier 3 merge. Do not claim land complete. After merge is confirmed on `main`, paste land-b.
+Freeze Overseer context isolation on a **new dedicated branch/worktree**. Do not reuse `feat/adversarial-freeze-honesty-gate`. Spec-only — no Auto.
 
 | | |
 | --- | --- |
-| **ID** | **FRV → main (land-a)** |
-| **Branch** | `feat/freeze-review-verdict-integrity` |
+| **ID** | **OCI-a** |
+| **Branch** | `feat/overseer-context-isolation` |
 | **Repo** | **overseer-kit** |
-| **Tip** | Git `c77527e` + this closeout · Muse `sha256:be07c11b…` + this closeout |
-| **Read first** | `docs/ROADMAP.md` FRV → main row; this handover; SD-21 land path |
-| **Hard stops** | No merge to `main` without Tier 3 · no secrets · no live posture flips · do not claim land complete until land-b |
+| **Read first** | `docs/ROADMAP.md` (OCI-a row); `docs/OVERSEER-HANDOVER.md`; `docs/OVERSEER-KIT-SPEC.md` |
+| **Hard stops** | New branch/worktree · no AFF reuse · no Auto · no consumer sync · no launcher replacement · no Bornfree/VideoFactory edit · no merge to `main` · no secrets · no live posture flips |
 <!-- /overseer:anchor:next-session -->
 
 <!-- overseer:anchor:paste-ready-prompt -->
-### Paste-ready prompt — FRV → main (land-a)
+### Paste-ready prompt — OCI-a
 
 ```text
-Model: Operator + Auto
-ID: FRV → main (land-a)
-land-phase: land-a
+OCI-a — Overseer context isolation freeze (overseer-kit).
 
+Model: Thinking
 Repo: overseer-kit
-Branch: feat/freeze-review-verdict-integrity
+Step: OCI-a
 Authority: authoritative
+Posture: freeze WHAT/HOW; no Auto implementation
 
-Deliver:
-1. Open/update PR (or SD-21 Muse→mirror→GitHub main path when criteria hold)
-2. Stop for Tier 3 merge authorization when required
-3. Do NOT claim land complete
-4. Do NOT regenerate post-merge NEXT in this paste
+AFF-b is DONE (BV-r4 pass + ISR pass). Start this freeze on a new dedicated
+branch/worktree: feat/overseer-context-isolation. Never reuse
+feat/adversarial-freeze-honesty-gate.
 
-After merge is confirmed on main: paste land-b (same slice). Land is incomplete until land-b.
+Read first: docs/ROADMAP.md (OCI-a row); docs/OVERSEER-HANDOVER.md;
+docs/OVERSEER-KIT-SPEC.md.
 
-Hard stops: No merge to main without Tier 3 · no secrets · no live posture flips.
+Verified problem (shared kit defect reported from Bornfree / VideoFactory /
+Movie Maker):
+- stable consumers can execute a live unfinished kit checkout
+- inherited cwd can select the wrong repo
+- default-lane fallback can inject another lane's NEXT
+
+Freeze:
+- stable vs development runtime identity
+- consumer-lock compatibility
+- repository-bound hooks using explicit -C
+- fail-closed lane/window binding
+- installer/upgrade rollback
+- migration
+- seven-tier coverage
+
+Create a frozen: true artifact. Run /freeze-review-loop to pass. Do not start
+Auto. Do not append adversarial_freeze in the author session.
+
+Hard stops: No consumer sync · no launcher replacement · no Bornfree /
+VideoFactory edit · no merge to main without Tier 3 · no secrets · no live
+posture flips · no Auto implementation during Thinking
 ```
 <!-- /overseer:anchor:paste-ready-prompt -->
 
@@ -74,8 +92,8 @@ Hard stops: No merge to main without Tier 3 · no secrets · no live posture fli
 | **Tests** | Seven tiers per `policy/test-tiers.yaml` before DONE |
 | **Close** | Update ROADMAP + this handover together; feature branch → PR (no commit/push without consent) |
 | **Governance gates** | §KH1.9 **live** — `ok status` + `governance-sync` pending-gate reminders |
-| **Muse dev tree** | `ok status --exit-code` must show `substrate.ok: true`, `muse_sync.ok: true`, **and** `footprint_self_integrity.ok: true` before phase DONE. Hollow substrate → `muse init --force .`; Muse behind Git (`muse_sync: pending`) → `muse code add -A && muse commit -m "…"`; declared-but-absent kit file (`footprint_self_integrity: missing`) → `ok sync` (all Tier 1) |
-| **Handover shape (KH1)** | Every NEXT must include valid **`Model:`** from `policy/model-labels.yaml` **and** a `### Paste-ready prompt` fenced block (H7/H8). Never use `Operator choice` as a Model label. |
+| **Muse dev tree** | `ok status --exit-code` must show `substrate.ok: true`, `muse_sync.ok: true`, **and** `footprint_self_integrity.ok: true` before phase DONE |
+| **Handover shape (KH1)** | Every NEXT must include valid **`Model:`** from `policy/model-labels.yaml` **and** a `### Paste-ready prompt` fenced block (H7/H8). |
 
 ---
 
@@ -85,25 +103,28 @@ Hard stops: No merge to main without Tier 3 · no secrets · no live posture fli
 | Area | State |
 | --- | --- |
 | **VCS regime** | `muse+git-mirror` |
-| **GitHub main** | `bef115dd6616b261dfe8dd779725ebe845563b25` |
-| **Feature tip (Git)** | `c77527eb4aa911798f6b9a54213281841c433889` + FRV-b-BV closeout |
-| **Feature tip (Muse)** | `sha256:be07c11b0f40af46bf7d36f8858617ff837831cd63d85c9550deec90a674adf1` + FRV-b-BV closeout |
-| **Canonical anchor** | `sha256:8d7f41aafae41deee70035a92f93602ef1722a290153597451e5932af503a42c` (last_export) |
-| **Branch** | `feat/freeze-review-verdict-integrity` |
+| **GitHub main** | `ebaf51831770c59d3705da85e9d72108908a8bf2` |
+| **Feature tip (Git)** | `7a71efa188f22837a696a8b20f83eb0314f9094e` |
+| **Feature tip (Muse)** | `sha256:b693b50c47c6c0dd0bfcfa3c3dca360f9732b93932e258c34e71080fbc3f47ae` |
+| **Branch** | `feat/adversarial-freeze-honesty-gate` (AFF-b closeout). OCI-a must use a **new** branch. |
 | **Dirty** | `no` |
-| **Drift** | D1=drifted (feature ahead of marked main), D2=aligned, D3=aligned |
+| **Drift** | D1 drifted vs `main` until land (expected on feature branch) |
+| **AFF-b** | **DONE** — BV-r4 `pass` + ISR `pass` |
+| **AFF-b-ISR** | **`pass`**; verifier `cc0054de-21be-4972-ac80-22822646e805`; producer `d7f82f3d-9259-42cf-bd61-e32193d71c0a`; entry `a069d8ad…`; round 4 |
+| **AFF-b-BV-r4** | **`pass`**; verifier `969C4CFD…`; evidence `f95fe2b5…`; `test_aff_` **101**; `test_output` sha256:`d47e56e52e81c53baf71813ef360beb27bd239ccda222b63c58e87e58047697e` |
+| **ISR independent `test_aff_`** | **101** passed; `test_output` sha256:`89b76e1cddaabd347f7384d5c9a5a6ac689e118bb51d78bbc4888bb070c4768e` |
+| **Stamp** | `sha256:5b8a9aa52ee25e9d4824e72b1df4154f8c184cc82bd30703a9b1bb5737eb96c3` (re-derived) |
+| **Producer nonce** | `d7f82f3d-9259-42cf-bd61-e32193d71c0a` |
+| **Muse sync** | synced |
 <!-- /overseer:anchor:verified-snapshot -->
 
 <!-- overseer:anchor:vcs-table -->
-## VCS (verified 2026-09-12)
+## VCS (verified 2026-09-20)
 
 | Item | Value |
 | --- | --- |
-| Branch | `feat/freeze-review-verdict-integrity` |
-| Git tip | `c77527e` + FRV-b-BV closeout (BV `pass` + ISR `pass`, FRV-b DONE) |
-| Muse tip | `sha256:be07c11b…` + FRV-b-BV closeout |
-| GitHub `main` | `bef115dd6616b261dfe8dd779725ebe845563b25` |
-| Canonical anchor | `sha256:8d7f41aa…` (.muse/git-bridge.toml:last_export.muse_commit_id) |
+| Branch | `feat/adversarial-freeze-honesty-gate` |
+| GitHub `main` | `ebaf51831770c59d3705da85e9d72108908a8bf2` |
 | Dirty | no |
 <!-- /overseer:anchor:vcs-table -->
 
@@ -113,47 +134,38 @@ Hard stops: No merge to main without Tier 3 · no secrets · no live posture fli
 - No live capability / posture gate flips without Tier 3 authorization
 - No secrets in commits, adapters, logs, or governance docs
 - Governance sync is mandatory before session end (SD-17)
+- OCI-a: new branch/worktree; no consumer sync; no launcher replacement
 
 <!-- overseer:anchor:change-log -->
-- **2026-09-12** — **FRV-b DONE (BV-r1 `pass` + ISR `pass`).** Second-chat verifier `4c695c4f…` ≠ producer `f98ae0dd…`. V1–V8 against frozen §FRV.3–§FRV.12 + `main...HEAD`. Five targeted mutations killed. Ledger `639da5c1…` / `86f49a9c…`. NEXT → **FRV → main (land-a)** (Tier 3). No merge this session.
+- **2026-09-20** — **AFF-b-ISR → `pass`; AFF-b → DONE.** Independent verifier `cc0054de-21be-4972-ac80-22822646e805` ≠ producer `d7f82f3d…` ≠ BV-r4 `969C4CFD…`. Re-derived stamp `sha256:5b8a9aa5…`; V1–V8 clean; `test_aff_` **101** (`test_output` sha256:`89b76e1c…`). Confirmed Mode B evidence `f95fe2b5…`. Appended `independent_second_review` pass round 4, entry `a069d8ad…`. Mode D → `0`. NEXT → **OCI-a** (Thinking, new branch/worktree). No OCI-a start in this chat. No merge.
 
-- **2026-09-12** — **Handover clarity: FRV-b-BV paste surfaced.** Operator could not find the verifier prompt (looked for FRV-b-BV / “FRB-BPV”). Banner + explicit copy instruction + producer id `f98ae0dd-1e92-4dc1-a4f0-285fd4635244` + refreshed feature-branch snapshot. ROADMAP glance → FRV-b-BV. NEXT unchanged at the time: **FRV-b-BV** (Thinking, second chat).
+- **2026-09-20** — **AFF-b-BV-r4 → `pass`; AFF-b remains WIP pending ISR.** Independent verifier `969C4CFD-BD3F-43E7-9A51-2CBED235C114` re-derived stamp `sha256:5b8a9aa5…`; V1–V8 clean; BV3-M1/M2 closed on real `render_paste_ready`. Seven-tier `test_aff_` **101 passed** (`test_output` sha256:`d47e56e52e81c53baf71813ef360beb27bd239ccda222b63c58e87e58047697e`). Full suite **1480 passed / 15 pre-existing failures**; all 15 reproduced on parent `ebaf518`. Appended `verification_evidence` pass round 4, entry `f95fe2b5…`. No ISR, no DONE, no OCI-a, no merge. NEXT → **AFF-b-ISR**.
 
-- **2026-09-12** — **FRV-b code complete (Auto, not DONE).** F1–F7 one build: fourteen-key mechanical stamp, exit 39, `freeze_review` ledger authorization, `tools/freeze_authorization/`, both prose fallbacks deleted, plain `Auto` gated. `test_frv_` **35** green; suite **1379** / **15** pre-existing. Stamp migration dogfood digest unchanged `sha256:c113efa3…`. NEXT was **FRV-b-BV** (second chat).
+- **2026-09-20** — **AFF-b-FIX complete; AFF-b remains WIP.** Closed BV-r3 BV3-M1–M2 only: adversarial paste pass instruction emits full §AFF.5.2 field set; e2e asserts exact “The kit performs no model call and holds no key.” and the complete pass-field instruction from `render_paste_ready`. Seven tiers: **101 passed** (`test_output` sha256:`9aac8ce3aca73de15887fc9901d4b77d65260b4b7a1e69463a6ab449c0f06ff8`). Fixer producer_session_id `d7f82f3d-9259-42cf-bd61-e32193d71c0a`. No verification_evidence/ISR pass; no DONE; no `auto_may_start: true`; no merge. NEXT → **AFF-b-BV** (fresh Thinking chat), then ISR.
 
-- **2026-09-12** — **FRV-a DONE (Thinking freeze).** `docs/archive/phases/PHASE-FRV-FREEZE-REVIEW-VERDICT-INTEGRITY.md` → `pass` (FRV-r5), mechanical stamp `sha256:c113efa3…`. Froze the repair of the freeze gate itself. Verified by source inspection, not assumed: the default reviewer is a four-regex keyword scan (`tools/freeze_reviewer/providers/base.py:15-19`, `:51-125`) that accepts a `reviewer` argument and never reads it (`:145-160`); its result is written as the hardcoded string `pass` (`tools/freeze_reviewer/stamp.py:33-42`) under the **same** key and vocabulary a substantive review uses (`tools/freeze_reviewer/types.py:18`, `:82-91`), asserting a `reviewer_model` with no causal role — **all 31** stamped archive docs carry that identical false claim. Because `pre_stamp_canonical_bytes` excises `review_stamp` before hashing (`tools/freeze_reviewer/artifact.py:119-147`) and the no-op guard requires an existing `pass` (`tools/freeze_reviewer/stamp.py:45-52`), a human downgrade **fails** the guard and the write proceeds as a wholesale replacement (`:55-58`) — sticky when pass, self-healing back to pass when a human objects. That field authorizes a mechanical build session (`tools/governance_hygiene/next_regen.py:517-524`), and with no stamp a bold `**pass**` in a prose table suffices (`:415-436`). Two readers and two prose fallbacks found, not one: `tools/governance_gates/scan.py:133` + `:236-241` were unenumerated in the brief and are now in scope; the reader set is **closed at three modules**. Root cause frozen: *a verdict record must not live inside the artifact it judges* — reusing the ISR ledger machinery rather than inventing a parallel mechanism. F1 vocabulary split (fourteen-key stamp, legacy window, all 31 digests provably stable since the stamp is excised pre-hash); F2 self-describing stamp with `reviewer_model` **null** under a rule engine; F3 merge-not-replace + escalation refusal + `--override-non-pass-stamp` + exit `39`; F4 additive hash-chained `freeze_review` kind matched on `phase_id` + `frozen_spec` + `artifact_digest`; F5 **both** prose fallbacks deleted, no opt-in; F6 `auto_may_start: false` honored, its locus outside `review_stamp` chosen so flipping it invalidates any bound entry; F7 reconciliation over the enumerated archive (40 docs: 31 mechanical, 5 prose-only, 4 already inert) with no bulk rewrite and no retro-failed DONE row. Narrowly revisits the `PHASE-ISR-INDEPENDENT-SECOND-REVIEWER.md:182` rejection for the freeze gate only — ledger record required, session independence **not** imported. Five rounds; **FRV-r4 caught a BLOCKER-class reachability defect**: the gate was wired only to `Thinking → Auto`, which is **4** of **103** live roadmap rows (all long DONE) against **43** plain `Auto`, so it would have been dead code under this repo's own two-row convention → §FRV.6.5.1 extends it via the existing §GSP.4.3 ambiguity channel. FRV-r3 also caught a fourteen-vs-thirteen key-count error and a `phase_id` divergence between the two readers (§FRV.6.4.1). Seven-tier §FRV.12, prefix `test_frv_`. **No FRV-b Auto code, no test file, no CLI edit this session.** NEXT → **FRV-b** (Auto, one build) on `feat/freeze-review-verdict-integrity`.
+- **2026-09-20** — **AFF-b-BV-r3 → `findings`; AFF-b remains WIP.** Independent verifier `A3FD0F5F-AD08-43A0-B262-C5F7E81DDF02`. V3 failed: paste pass instruction omitted §AFF.5.2 fields (`actor_role`, `actor_session_id`, `phase_id`, `round`, `reviewer_model`); e2e asserted incomplete no-key sentence and did not assert the complete pass-field instruction. No verification_evidence/ISR pass. NEXT → **AFF-b-FIX** (cited lines only). No DONE. No OCI-a. No merge.
 
-- **2026-09-05** — **NXP → main DONE (land-b).** GitHub PR [#78](https://github.com/aaronrene/overseer-kit/pull/78) merged @ `c921bf1` (NXP-a freeze + NXP-b build). Muse FF `sha256:c07f2f34…` → muse-bridge → squash. Post-merge sync; N5 backlog unblocked (§NXP.7). NEXT → **queue-idle**.
+- **2026-09-20** — **AFF-b-FIX complete; AFF-b remains WIP.** Closed BV-r2 V3 only: §AFF.7.2 paste/`render_next_session` assertions complete; suggest+absent public `ok status --json --exit-code` restored (`state: absent`, exact §AFF.9 warning) with governance-sync retained. Seven tiers: **101 passed** (`test_output` sha256:`1bbccffea4cd7370e81c1b59bfefa9a2558239ef89fead6c51c2c530343aa575`). Fixer producer_session_id `70B57C08-5CDD-476B-AB5D-ACDDA6FC6B22`. No verification_evidence/ISR pass; no DONE; no `auto_may_start: true`; no merge. NEXT → **AFF-b-BV** (fresh Thinking chat), then ISR.
 
-- **2026-09-04** — **NXP-b DONE** — **BV-r2 `pass` + ISR `pass`** from independent verifier `2869c11a…` (≠ producer `3a3eda52…`, who was BV-r1 verifier then NXP-b-FIX producer). V1–V8 over `940c3b4..HEAD`, covering both the build commit `410ddc1` and the test fix `6c35b72`. BV-r1's findings were **re-derived by mutation rather than trusted**: 12 targeted mutations run against the NXP tiers, 10 killed. The rewritten §NXP.8 e2e row fails (`2 ≠ 0`) when N4 is folded into `--exit-code` while the pre-fix `410ddc1` row *passes* under the identical mutation; the rewritten data-integrity row fails on a **newline-only** fence-body change while the pre-fix row *passes* (content-byte changes are caught by both) — BV1 and BV2 confirmed real, and confirmed genuinely closed. Verified live: twelve-step layout with heading byte-exact on line 1, four ` · ` U+00B7 separators, stdout minus provenance+blank reproducing pre-NXP nine-step bytes exactly, `check-next` unconfigured at exit `0` naming bare basename **and** compliant target, board-naming advisory printing while `ok status --exit-code` returns `0`. Exit precedence `2 > 6 > 35 > 3 > 0`, `CURRENT_NEXT_HEADING`, and `extract_paste_fence_body` untouched. §NXP.8 **54** green; suite **1343** pass / **16** pre-existing, failure set identical to parent `940c3b4` in matched worktree environments. Ledger: `verification_evidence` `bv_verdict: pass` round 2 (`test_output` sha256:`d4c5e0ae…`) + `independent_second_review` `isr_verdict: pass` (`8e5e49d9…`); `ok ledger verify` → `0`; Mode B and Mode D → `0`. Two non-blocking observations recorded in NEXT (unasserted `check-next --json` payload fields; unreachable `is_absolute()` guard) plus a frozen-spec factual slip in §NXP.1 V6. **No merge to `main`** — NEXT → **NXP-land-a** (Tier 3).
+- **2026-09-20** — **AFF-b-BV-r2 → `findings`; AFF-b remains WIP.** Independent verifier re-derived stamp `sha256:5b8a9aa5…` and reproduced `test_aff_` **101** green (`test_output` sha256:`2714f0c2bb53db8b986d4c0503f8a07994be246c2ac83132bd96916c4e470e92`). V1/V2/V4–V7 clean for Mode E CLI, require `ok status --json --exit-code`, governance-sync footer, two-row + `Thinking → Auto` split, exact `type(v) is int` / non-blank `ts` / `type(round) is int`, no secrets, no `auto_may_start: true`. V3 failed: paste test still omits several §AFF.7.2 bullets (including `render_next_session`); suggest+absent public status JSON was dropped. No verification_evidence/ISR pass. NEXT → **AFF-b-FIX** (cited lines only). No DONE. No OCI-a. No merge.
 
-- **2026-09-04** — **NXP-b-FIX applied** @ `6c35b72` (producer `3a3eda52…` — same session as BV-r1, so **it cannot verify this**). Made the two vacuous §NXP.8 rows real: BV1 e2e now uses an initialized fixture that exits `0` on all pre-existing conditions and asserts the N4 advisory fires **and** exit stays `0`; BV2 reconstructs pre-NXP nine-step stdout and asserts byte-for-byte equality after removing exactly the provenance line + blank. BV4 adds §NXP.3.6 refusal (exit `2`, reason token, message, empty stdout), the `absolute_repo_root` failure predicate, and §NXP.4 failure-shape keys; dropped the discarded first `read_at_now()`; restored `tools/workspace/__init__.py` trailing newline. **No N1–N4 behavior change.** All three original mutations now fail the correct tier. Suite **1343** pass / **16** pre-existing. NEXT → **NXP-b-BV-r2** in a fresh chat (ISR `producer_session_id: 3a3eda52…`).
+- **2026-09-20** — **AFF-b-FIX complete; AFF-b remains WIP.** Repaired exactly BV-r1's public-path coverage gaps. New `test_aff_` coverage executes `ok status --json --exit-code` and governance-sync, Mode-E CLI parser/command wiring, the frozen `Thinking → Auto` split, and all §AFF.7.2 adversarial paste requirements. The require-mode governance footer now emits its fail-closed message and returns `2`. Seven tiers: **101 passed** (`test_output` sha256:`17b3cb961cade1cbe06a7ac12efd8d7c11fba2196b71a094c3bd8add7d4a33ac`). Full suite by test-directory partition: **1100 passed / 7 pre-existing non-AFF failures**; the recorded historical 15-failure baseline was not reproducible in this checkout. Fixer producer_session_id `245D25BC-C44E-4995-9687-03422D0DAB92`. No verification_evidence/ISR pass appended; no DONE; no `auto_may_start: true`; no merge. NEXT → **AFF-b-BV** (fresh Thinking chat), then ISR.
 
-- **2026-09-04** — **NXP-b-BV-r1 → `findings`** (second chat, verifier `3a3eda52…`; **no ISR appended**). V1–V8 against frozen `PHASE-NXP-NEXT-PROVENANCE.md` §NXP.3–§NXP.6: implementation **correct** — verified live, not just green (twelve-step bytes + U+00B7 separators, N2 keys on both JSON shapes, N3 exit `0`, N4 advisory present while `ok status --exit-code` → `0`, no secrets/env/subprocess added, `board_name_violation` reused not forked). Full suite **1340** pass / **16** fail, byte-identical on parent `940c3b4`. Findings are test-honesty, not behavior: **BV1** §NXP.8 e2e exit-code row tautological (`tests/e2e/test_print_next_e2e.py:132-134`) and **BV2** data-integrity fence-body golden newline-insensitive (`tests/data_integrity/test_print_next_integrity.py:78-88`) — both proven vacuous by mutation; **BV3** builder producer nonce unrecorded, so `actor_session_id ≠ producer_session_id` is unassertable; **BV4** §NXP.3.6 / §NXP.4 branches untested. `verification_evidence` `bv_verdict: findings`, `test_output` sha256:`a1ea596e…`. NEXT → **NXP-b-FIX** then BV-r2 in a third chat.
+- **2026-09-20** — **AFF-b-BV-r1 → `findings`; AFF-b remains WIP.** Independent verifier reproduced seven-tier `test_aff_` **100** green (`test_output` sha256:`24051cf4…`) and full suite **1479 passed / 15 pre-existing failures**. Static/runtime V1–V2 and V4–V8 were clean, including exact `type(v) is int`, non-blank `ts`, exact `type(round) is int`, no secrets, and no `auto_may_start: true`. V3 failed: helper-only status test did not execute `ok status --exit-code` or governance-sync; no AFF test exercised Mode-E CLI parsing/command wiring; frozen `Thinking → Auto` split e2e was absent; and the adversarial NEXT assertion did not prove all §AFF.7.2 requirements. No verification-evidence pass or ISR pass appended. NEXT → **AFF-b-FIX**. OCI-a context isolation queued after AFF-b DONE on a new branch/worktree; do not bundle it into AFF.
 
-- **2026-09-04** — **NXP-b code complete** on `feat/nxp-next-provenance` (not DONE). N1 twelve-step provenance + clock seam; N2 JSON identity keys; N3 `check-next` advisory exit `0`; N4 status board-name warn. §NXP.8 **45** green. Full suite **1340** pass / **16** pre-existing unrelated fails. NEXT → second-chat BV + ISR (`require`).
+- **2026-09-20** — **AFF-b Auto code complete (not DONE).** Built §AFF.2–§AFF.14 / §AFF.16: ledger kind `adversarial_freeze`, Mode E exit `40`, NEXT Trigger A/B + adversarial paste, status/governance-sync `adversarial_freeze_gate`, twin skill `docs/ADVERSARIAL-FREEZE-REVIEW.md` + `/adversarial-freeze-review`, dogfood `adversarial_freeze: suggest`, shared envelope (`type(v) is int`, non-blank `ts`) + `type(round) is int` on all round-bearing kinds + AFF resolver. `test_aff_` **100** green (`test_output` sha256:`b64bac0e…`). Producer nonce `AED44535-4E5B-4F56-BA72-81B44E222C16`. Circular-import fix committed (`d8cffc6`). No `auto_may_start: true`. No model dispatch. No merge. NEXT → **AFF-b-BV** (Thinking, second chat) then ISR (`require`).
 
-- **2026-09-02** — **ISR default → `require`** (operator posture). Absent key / shipped default is now `require` (was `off`); kit dogfood `require` (was `warn`). Opt out: `off` or `warn`. PHASE-ISR operator amend recorded. Closed-loop premise.
+- **2026-09-20** — **AFF-ADV-r5 → `pass`; AFF-a DONE.** Mechanical restamp `sha256:5b8a9aa5…`. Reviewer nonce `aff-adv-r5-2026-09-20` ≠ author `aff-a-author-fix-r4-2026-09-20`. NEXT was **AFF-b** (Auto).
 
-- **2026-09-02** — **ISR → main + MuseHub solidify DONE.** Hub → staging; created `aaronrene/overseer-kit`; pushed 85 commits; PR [#74](https://github.com/aaronrene/overseer-kit/pull/74) @ `84db8c8`. NEXT → **queue-idle**.
+- **2026-09-20** — **AFF-r7 author repair → `pass` (AFF-a still WIP).** Closed ADV4-M1–M2. Mechanical stamp `sha256:04dda1dc…`.
 
-- **2026-09-02** — **MuseHub-first before ISR merge** — Gap confirmed: hub `localhost:1337` dead; `aaronrene/overseer-kit` 404 on staging/production. Operator: solidify MuseHub staging then merge PR #74. Handover + paste + `MUSE-BRIDGE-WORKFLOW.md` retargeted.
+- **2026-09-20** — **AFF-ADV-r4 → `findings` (AFF-a still WIP).** ADV4-M1–M2 recorded.
 
-- **2026-09-02** — **ISR → main land-a** — Muse FF `feat/isr-independent-second-reviewer` → `main` (`sha256:f59d4cc6…`) → muse-bridge → GitHub PR [#74](https://github.com/aaronrene/overseer-kit/pull/74) OPEN/mergeable. Rebased stale `muse-mirror` onto `main` before re-export (LT #72/#73 had bypassed mirror). Merge held for MuseHub-first. `require_independent_second_reviewer` remains kit dogfood **warn**.
+- **2026-09-20** — **AFF-r6 author repair → `pass` (AFF-a still WIP).** Closed ADV3-M1–M3.
 
-- **2026-09-02** — **ISR-b DONE** (Auto + second-chat BV `pass`, ISR-b-BV-r1). V1–V8 against freeze + branch diff; `independent_second_review` pass (actor `c72e9414…` ≠ producer `62762b24…`); Mode B `verification_evidence` (`test_output` sha256:`4a82e963…`). `test_isr_` **48** green. NEXT → **ISR → main (land-a)**. No merge this session.
+- **2026-09-20** — **AFF-ADV-r3 → `findings` (AFF-a stays WIP).** ADV3-M1–M3 recorded.
 
-- **2026-09-02** — **ISR-a DONE (Thinking freeze).** `docs/archive/phases/PHASE-ISR-INDEPENDENT-SECOND-REVIEWER.md` → `pass` (ISR-r4), stamp `sha256:e6284150…`. Second-chat / separate-verifier gate before Auto DONE; kit records/gates only; no model dispatch; portable CLI+docs primary; seven-tier §ISR.11 frozen. **No ISR-b Auto code this session.** NEXT → ISR-b Auto on `feat/isr-independent-second-reviewer`.
-
-- **2026-09-02** — **consumer-lt-rollout DONE.** `ok sync` LT footprint into Knowtation, Scooling, VideoFactory, the-brain, bornfree-hub, ourware, scooling-lab, scooling-sc-brain. Knowtation/Scooling: `session_bookends` + honesty warn + hooks; VF/the-brain: bookends + hooks (honesty tip deferred). Knowtation/VF used `--only` to avoid clobbering living docs / consumer-modified policy. All synced repos `footprint_coverage: ok`. Deferred: MuseHub (no config.yaml), bornfree/ourware/lab bookends, VF full `--force` on customized tiers/rules, Knowtation `origin:kit` living-doc lock hygiene. NEXT → **ISR-a** (Independent second reviewer Thinking freeze).
-
-- **2026-09-02** — **LT → main DONE (land-b).** GitHub PR [#72](https://github.com/aaronrene/overseer-kit/pull/72) merged @ `ff737cc` (LT-a freeze + LT-b build). Local `main` FF; post-merge hygiene; NEXT → **consumer-lt-rollout**.
-
-- **2026-09-01** — **LT-b DONE (Auto build + BV `pass`, LT-b-BV-r1).** Built exactly to frozen `docs/archive/phases/PHASE-LT-LOOP-TIGHTENING.md`: footprint coverage gate; `session_bookends` (default off, dogfood enabled + hooks synced); kit honesty warn + active-slice Mode B; `ok handover-compact` + dogfood compact (**88** archived); optional-feature tips on `ok status`; workspace-root docs; §LT.10 **34** green. `ok sync --force` applied; `footprint_coverage: ok`. No consumer defaults; no tab-reload claim. NEXT → **queue-idle**.
-
-- **2026-09-01** — **LT-a DONE (Thinking freeze).** `docs/archive/phases/PHASE-LT-LOOP-TIGHTENING.md` → `pass` (LT-r2), stamp `sha256:6a5aafb5…`. Slices 1–4 frozen. **No LT-b Auto code this session.** NEXT → LT-b Auto on `feat/loop-tightening`.
-
-- **2026-09-01** — **LT-a drafted (Thinking freeze, review pending).** Slices 1–4 in `docs/archive/phases/PHASE-LT-LOOP-TIGHTENING.md` on `feat/loop-tightening`. Backlog captured: independent second reviewer, KH2 remask, session-type bookends, auto-enable hooks, host tab reload. No Auto code.
+- **2026-09-20** — **AFF-r5 author repair → `pass` (AFF-a still WIP).** Closed ADV2 findings.
 
 - Older entries: docs/archive/handover/CHANGE-LOG.md
 <!-- /overseer:anchor:change-log -->
@@ -167,52 +179,54 @@ Hard stops: No merge to main without Tier 3 · no secrets · no live posture fli
 3. **Thinking → Auto split:** when NEXT is split, emit `{step}a` (Thinking) then `{step}b` (Auto) — never one combined prompt.
 4. **Build verification (mandatory):** after `{step}b`, run `/build-verification-review` before ROADMAP status → **DONE**.
 5. **Closing commit:** the session-ending commit bundles code/tests + `docs/ROADMAP.md` + `docs/OVERSEER-HANDOVER.md`.
-6. **Change log compaction:** living change log keeps the newest 15 dated bullets. Older bullets move via `ok handover-compact --write` to `docs/archive/handover/CHANGE-LOG.md`.
-
-See `docs/ROADMAP.md` → Model-split handover protocol (SD-3) and governance sync (SD-17).
+6. **Change log compaction:** living change log keeps the newest 15 dated bullets via `ok handover-compact --write`.
 
 <!-- overseer:anchor:done-recently -->
 ### What just landed
 
 | Slice | Deliverable |
 | --- | --- |
-| **FRV-b** | F1–F7 **DONE** — BV `pass` (FRV-b-BV-r1) + ISR `pass` (verifier `4c695c4f…` ≠ producer `f98ae0dd…`) |
-| **FRV-a** | Freeze-review verdict integrity **freeze `pass`** (FRV-r5), mechanical stamp `sha256:c113efa3…`. F1–F7 frozen as one Auto build: vocabulary split, self-describing stamp, inverted stickiness, ledger-based Auto authorization, both prose fallbacks deleted, operator block honored, archive reconciliation. Spec-only. |
-| **NXP → main** | PR [#78](https://github.com/aaronrene/overseer-kit/pull/78) merged @ `c921bf1` (NXP-a + NXP-b). Muse `sha256:c07f2f34…`. |
-| **NXP-b** | NEXT provenance + board identity **DONE** on `main`: N1 provenance line, N2 JSON identity keys, N3 `check-next` advisory at exit `0`, N4 `ok status` board-name warn. BV-r2 `pass` + ISR `pass`. |
-| **ISR → main** | PR [#74](https://github.com/aaronrene/overseer-kit/pull/74) merged @ `84db8c8` (ISR-a freeze + ISR-b + MuseHub docs). |
-| **MuseHub solidify** | Hub → `staging.musehub.ai`; public `aaronrene/overseer-kit`; kit dogfood matches Knowtation/Scooling hub posture. |
-| PR #73 | docs: LT land-b closeout + consumer rollout NEXT (merged 2026-09-02) |
+| **AFF-b-ISR** | **`pass`** — V1–V8 clean; ISR entry `a069d8ad…`; AFF-b → DONE. |
+| **AFF-b-BV-r4** | **`pass`** — V1–V8 clean; evidence `f95fe2b5…`. |
+| **AFF-b-FIX** | Closed BV-r3 BV3-M1/M2; `test_aff_` **101**. |
+| **AFF-b-BV-r3** | **`findings`** — incomplete §AFF.5.2 pass-field instruction + incomplete no-key e2e. |
+| **AFF-b-FIX (BV-r2)** | Closed BV-r2 V3; `test_aff_` **101**. |
+| **AFF-b-BV-r2** | **`findings`** — incomplete §AFF.7.2 assertions + dropped suggest+absent status JSON. |
+| **AFF-b-BV-r1** | **`findings`** — public status/governance and Mode-E CLI coverage plus split-flow e2e repair required. |
+| **AFF-b Auto** | Code complete then BV+ISR. §AFF.2–§AFF.14; dogfood `suggest`; Mode E `40`. |
+| **AFF-ADV-r5** | Different-chat attack review → **`pass`**. AFF-a DONE. Stamp `sha256:5b8a9aa5…`. |
+| **AFF-a** | Adversarial-freeze honesty gate freeze **`pass`**. Spec-only. |
+| **FRV-b** | F1–F7 **DONE** — BV `pass` + ISR `pass`. |
 <!-- /overseer:anchor:done-recently -->
 
 ## Change log
 
-- **2026-09-12** — **FRV-b DONE.** BV-r1 `pass` + ISR `pass` (verifier `4c695c4f…` ≠ producer `f98ae0dd…`). NEXT → **FRV → main (land-a)** (Tier 3). No merge this session.
+- **2026-09-20** — **AFF-b-ISR → `pass`; AFF-b → DONE.** Independent `test_aff_` **101** (`sha256:89b76e1c…`); ISR entry `a069d8ad…`. NEXT → **OCI-a** (new branch/worktree).
 
-- **2026-09-12** — **FRV-b-BV paste surfaced** in handover (banner + producer id). NEXT was **FRV-b-BV** (Thinking verifier, second chat).
+- **2026-09-20** — **AFF-b-BV-r4 → `pass`; AFF-b remains WIP.** `test_aff_` **101** (`sha256:d47e56e…`); evidence `f95fe2b5…`; full-suite 15/15 failures reproduced on parent. NEXT → **AFF-b-ISR**.
 
-- **2026-09-12** — **FRV-b code complete (Auto, not DONE)** @ `a6c9fb8`. NEXT was **FRV-b-BV**.
+- **2026-09-20** — **AFF-b-FIX complete; AFF-b remains WIP.** Closed BV-r3 BV3-M1–M2; `test_aff_` **101** (`sha256:9aac8ce3…`). NEXT → **AFF-b-BV**.
 
-- **2026-09-12** — **FRV-a DONE (Thinking freeze).** `PHASE-FRV-FREEZE-REVIEW-VERDICT-INTEGRITY.md` → `pass` (FRV-r5), stamp `sha256:c113efa3…`. F1–F7 frozen as **one** Auto build; verdict records move off the artifact and onto the hash-chained ledger. FRV-r4 caught a BLOCKER-class reachability defect (split-label-only gating = dead code; 4 of 103 rows). Cleared for FRV-b (now code-complete).
+- **2026-09-20** — **AFF-b-BV-r3 → `findings`; AFF-b remains WIP.** Verifier `A3FD0F5F…`. V3: incomplete §AFF.5.2 pass fields + incomplete no-key e2e. NEXT → **AFF-b-FIX**.
 
-- **2026-09-05** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `8358f96`; realign: D2 aligned — skip realign; next_regen=human_authorship_required:zero_open_rows
+- **2026-09-20** — **AFF-b-FIX complete; AFF-b remains WIP.** Closed BV-r2 V3; `test_aff_` **101** (`sha256:1bbccffe…`). NEXT → **AFF-b-BV**.
 
-- **2026-09-05** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `bdf1f20`; realign: D2 aligned — skip realign; next_regen=human_authorship_required:zero_open_rows
+- **2026-09-20** — **AFF-b-BV-r2 → `findings`; AFF-b remains WIP.** Independent `test_aff_` **101** (`sha256:2714f0c2…`). V3: incomplete §AFF.7.2 assertions + dropped suggest+absent status JSON. NEXT → **AFF-b-FIX**.
 
-- **2026-09-05** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `1e1582c`; realign: D2 aligned — skip realign; next_regen=human_authorship_required:zero_open_rows
+- **2026-09-20** — **AFF-b-FIX (BV-r1)** repaired public status/governance-sync, Mode-E CLI, and `Thinking → Auto` split. `test_aff_` **101**. NEXT was AFF-b-BV.
 
-- **2026-09-05** — **NXP → main DONE (land-b).** PR [#78](https://github.com/aaronrene/overseer-kit/pull/78) @ `c921bf1`. NEXT → **queue-idle** (N5 backlog unblocked).
-- **2026-09-04** — **NXP-b DONE.** BV-r2 `pass` + ISR `pass` (verifier `2869c11a…` ≠ producer `3a3eda52…`). BV-r1's two findings re-derived by mutation and confirmed closed. NEXT → **NXP-land-a** (Tier 3, no merge yet).
-- **2026-09-04** — **NXP-b-BV-r1 → `findings`** (second chat). Implementation matches §NXP.3–§NXP.6; two §NXP.8 matrix rows asserted vacuously (mutation-proven). No ISR, no DONE. NEXT → **NXP-b-FIX**.
-- **2026-09-04** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `ce16f9b`; realign: D2 aligned — skip realign; next_regen=human_authorship_required:zero_open_rows
+- **2026-09-20** — **AFF-b-BV-r1 → `findings`; AFF-b remains WIP.** Independent `test_aff_` **100**; full suite **1479 / 15 pre-existing**. NEXT → **AFF-b-FIX**. OCI-a queued separately after AFF closes.
 
-- **2026-09-02** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `fc2ecb0`; realign: D2 aligned — skip realign; next_regen=human_authorship_required:zero_open_rows
+- **2026-09-20** — **AFF-b Auto code complete (not DONE).** `test_aff_` **100**; producer `AED44535…`; NEXT → **AFF-b-BV** then ISR. No DONE, no merge, no `auto_may_start: true`.
 
-- **2026-09-02** — governance-sync: drift (D1=drifted, D2=aligned, D3=aligned) @ `945d034`; realign: D2 aligned — skip realign; next_regen=human_authorship_required:zero_open_rows
+- **2026-09-20** — **AFF-ADV-r5 → `pass`; AFF-a DONE.** Mechanical restamp `sha256:5b8a9aa5…`. NEXT was **AFF-b** (Auto).
 
-- **2026-09-02** — **ISR → main + MuseHub solidify DONE.** PR [#74](https://github.com/aaronrene/overseer-kit/pull/74) @ `84db8c8`; staging hub hosts kit. NEXT → **queue-idle**.
-- **2026-09-02** — **MuseHub solidify DONE** — connected `staging.musehub.ai`; created public `aaronrene/overseer-kit`; first push 85 commits.
-- **2026-09-02** — **ISR-b DONE** (Auto + BV `pass`, ISR-b-BV-r1).
-- **2026-09-02** — **ISR-a DONE (Thinking freeze).** PHASE-ISR → `pass` (ISR-r4).
-- **2026-09-02** — **consumer-lt-rollout DONE.** LT synced to live consumers.
-- **2026-09-02** — **LT → main DONE (land-b).** PR [#72](https://github.com/aaronrene/overseer-kit/pull/72) @ `ff737cc`.
+- **2026-09-20** — **AFF-r7 author repair → `pass`; AFF-a remains WIP.** NEXT was AFF-ADV-r5.
+
+- **2026-09-20** — **AFF-ADV-r4 → `findings`; AFF-a remains WIP.** ADV4-M1–M2 recorded.
+
+- **2026-09-20** — **AFF-r6 author repair → `pass`; AFF-a remains WIP.**
+
+- **2026-09-20** — **AFF-ADV-r3 → `findings`; AFF-a remains WIP.**
+
+- **2026-09-20** — **AFF-r5 author repair → `pass`; AFF-a remains WIP.**

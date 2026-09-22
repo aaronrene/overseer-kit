@@ -1,0 +1,11 @@
+{
+  "v": 1,
+  "kind": "adversarial_freeze",
+  "actor_role": "owner",
+  "actor_session_id": "owner-session-1",
+  "phase_id": "AFF",
+  "frozen_spec": "docs/archive/phases/PHASE-AFF-ADVERSARIAL-FREEZE-HONESTY-GATE.md",
+  "round": 1,
+  "aff_verdict": "skip",
+  "artifact_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+}

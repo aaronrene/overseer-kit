@@ -8,6 +8,8 @@ from typing import Any
 from tools.honesty.provenance import validate_provenance
 from tools.honesty.types import (
     ACTOR_ROLES,
+    AFF_POSTURES,
+    AFF_VERDICTS,
     BV_VERDICTS,
     ENTRY_KINDS,
     FREEZE_VERDICTS,
@@ -195,9 +197,149 @@ def find_matching_freeze_review(
     return matches[-1] if matches else None
 
 
+def _aff_phase_id_ok(value: Any) -> bool:
+    return isinstance(value, str) and bool(value.strip())
+
+
+def _aff_round_ok(value: Any) -> bool:
+    return type(value) is int and value >= 1
+
+
+def _aff_reviewer_model_ok(value: Any) -> bool:
+    return isinstance(value, str) and bool(value.strip())
+
+
+def _adversarial_freeze_eligible(
+    entry: dict[str, Any],
+    *,
+    frozen_spec: str,
+    artifact_digest: str,
+    phase_id: str | None,
+    producer_session: str | None,
+) -> bool:
+    """Return True when an AFF entry is eligible for the latest-verdict resolver (§AFF.5.5)."""
+    if entry.get("kind") != "adversarial_freeze":
+        return False
+    verdict = entry.get("aff_verdict")
+    if verdict not in AFF_VERDICTS:
+        return False
+    if entry.get("frozen_spec") != frozen_spec:
+        return False
+    if entry.get("artifact_digest") != artifact_digest:
+        return False
+    if not _aff_phase_id_ok(entry.get("phase_id")):
+        return False
+    if not _aff_round_ok(entry.get("round")):
+        return False
+    if phase_id is not None and entry.get("phase_id") != phase_id:
+        return False
+
+    if verdict == "skip":
+        if entry.get("actor_role") != "owner":
+            return False
+        if "aff_posture" in entry or "producer_session_id" in entry:
+            return False
+        return True
+
+    # pass | findings | blocked
+    if entry.get("actor_role") != "verifier":
+        return False
+    if entry.get("aff_posture") != "attack":
+        return False
+    if not _aff_reviewer_model_ok(entry.get("reviewer_model")):
+        return False
+    actor_session = entry.get("actor_session_id")
+    producer_id = entry.get("producer_session_id")
+    if not isinstance(actor_session, str) or not actor_session.strip():
+        return False
+    if not isinstance(producer_id, str) or not producer_id.strip():
+        return False
+    if actor_session == producer_id:
+        return False
+    if producer_session is not None:
+        if producer_id != producer_session:
+            return False
+        if actor_session == producer_session:
+            return False
+    return True
+
+
+def find_latest_adversarial_freeze_verdict(
+    entries: list[dict[str, Any]],
+    *,
+    frozen_spec: str,
+    artifact_digest: str,
+    phase_id: str | None = None,
+    producer_session: str | None = None,
+) -> dict[str, Any] | None:
+    """Return the last eligible AFF verdict across all four verdicts (§AFF.5.5).
+
+    Does not open a network connection, call a model, or read IDE session ids.
+    """
+    winner: dict[str, Any] | None = None
+    for entry in entries:
+        if _adversarial_freeze_eligible(
+            entry,
+            frozen_spec=frozen_spec,
+            artifact_digest=artifact_digest,
+            phase_id=phase_id,
+            producer_session=producer_session,
+        ):
+            winner = entry
+    return winner
+
+
+def find_matching_adversarial_freeze_pass(
+    entries: list[dict[str, Any]],
+    *,
+    frozen_spec: str,
+    artifact_digest: str,
+    phase_id: str | None = None,
+    producer_session: str | None = None,
+) -> dict[str, Any] | None:
+    """Return the latest eligible verdict only when it is ``pass``."""
+    winner = find_latest_adversarial_freeze_verdict(
+        entries,
+        frozen_spec=frozen_spec,
+        artifact_digest=artifact_digest,
+        phase_id=phase_id,
+        producer_session=producer_session,
+    )
+    if winner is not None and winner.get("aff_verdict") == "pass":
+        return winner
+    return None
+
+
+def find_matching_adversarial_freeze_skip(
+    entries: list[dict[str, Any]],
+    *,
+    frozen_spec: str,
+    artifact_digest: str,
+    phase_id: str | None = None,
+) -> dict[str, Any] | None:
+    """Return the latest eligible verdict only when it is ``skip``."""
+    winner = find_latest_adversarial_freeze_verdict(
+        entries,
+        frozen_spec=frozen_spec,
+        artifact_digest=artifact_digest,
+        phase_id=phase_id,
+        producer_session=None,
+    )
+    if winner is not None and winner.get("aff_verdict") == "skip":
+        return winner
+    return None
+
+
 def _require_non_empty_str(value: Any, field: str) -> str:
     if not isinstance(value, str) or not value.strip():
         raise EntryValidationError(2, f"{field} must be a non-empty string")
+    return value
+
+
+def _require_exact_positive_int(value: Any, field: str) -> int:
+    """Exact-type positive integer (rejects JSON/Python boolean)."""
+    if type(value) is not int or value < 1:
+        raise EntryValidationError(2, f"{field} must be an integer >= 1")
     return value
 
 
@@ -216,11 +358,17 @@ def validate_append_body(*, kind: str, body: dict[str, Any]) -> dict[str, Any]:
     merged = dict(body)
     merged["kind"] = kind
 
-    version = merged.get("v", 1)
-    if version != 1:
-        raise EntryValidationError(2, "v must be integer 1")
+    if "v" in merged:
+        version = merged["v"]
+        if type(version) is not int or version != 1:
+            raise EntryValidationError(2, "v must be integer 1")
+    else:
+        merged["v"] = 1
 
-    merged["v"] = 1
+    if "ts" in merged:
+        ts = merged["ts"]
+        if not isinstance(ts, str) or not ts.strip():
+            raise EntryValidationError(2, "ts must be a non-empty string when supplied")
 
     if kind == "genesis":
         if "actor_role" in merged or "actor_session_id" in merged:
@@ -253,6 +401,13 @@ def validate_append_body(*, kind: str, body: dict[str, Any]) -> dict[str, Any]:
             "artifact_digest",
             "checklist_ids",
             "findings_count",
+            "aff_verdict",
+            "aff_posture",
+            "bound_freeze_review_hash",
+            "side_check_path",
+            "producer_model",
+            "reviewer_model",
+            "notes",
         ):
             if key in merged:
                 raise EntryValidationError(2, f"genesis must not carry {key}")
@@ -262,7 +417,14 @@ def validate_append_body(*, kind: str, body: dict[str, Any]) -> dict[str, Any]:
     if actor_role not in ACTOR_ROLES:
         raise EntryValidationError(
             23
-            if kind in {"verdict", "verification_evidence", "independent_second_review", "freeze_review"}
+            if kind
+            in {
+                "verdict",
+                "verification_evidence",
+                "independent_second_review",
+                "freeze_review",
+                "adversarial_freeze",
+            }
             else 2,
             "invalid or missing actor_role",
         )
@@ -316,9 +478,7 @@ def validate_append_body(*, kind: str, body: dict[str, Any]) -> dict[str, Any]:
             raise EntryValidationError(23, "verification_evidence requires actor_role=verifier")
         _require_non_empty_str(merged.get("phase_id"), "phase_id")
         _require_non_empty_str(merged.get("frozen_spec"), "frozen_spec")
-        round_val = merged.get("round")
-        if not isinstance(round_val, int) or round_val < 1:
-            raise EntryValidationError(2, "round must be an integer >= 1")
+        _require_exact_positive_int(merged.get("round"), "round")
         bv_verdict = merged.get("bv_verdict")
         if bv_verdict not in BV_VERDICTS:
             raise EntryValidationError(2, "bv_verdict must be pass|findings|blocked")
@@ -336,9 +496,7 @@ def validate_append_body(*, kind: str, body: dict[str, Any]) -> dict[str, Any]:
             )
         _require_non_empty_str(merged.get("phase_id"), "phase_id")
         _require_non_empty_str(merged.get("frozen_spec"), "frozen_spec")
-        round_val = merged.get("round")
-        if not isinstance(round_val, int) or round_val < 1:
-            raise EntryValidationError(2, "round must be an integer >= 1")
+        _require_exact_positive_int(merged.get("round"), "round")
         isr_verdict = merged.get("isr_verdict")
         if isr_verdict not in ISR_VERDICTS:
             raise EntryValidationError(2, "isr_verdict must be pass|findings|blocked")
@@ -375,9 +533,7 @@ def validate_append_body(*, kind: str, body: dict[str, Any]) -> dict[str, Any]:
             raise EntryValidationError(23, "freeze_review requires actor_role=verifier")
         _require_non_empty_str(merged.get("phase_id"), "phase_id")
         _require_non_empty_str(merged.get("frozen_spec"), "frozen_spec")
-        round_val = merged.get("round")
-        if not isinstance(round_val, int) or round_val < 1:
-            raise EntryValidationError(2, "round must be an integer >= 1")
+        _require_exact_positive_int(merged.get("round"), "round")
         if merged.get("gate") != "substantive":
             raise EntryValidationError(2, "gate must be substantive")
         freeze_verdict = merged.get("freeze_verdict")
@@ -397,7 +553,7 @@ def validate_append_body(*, kind: str, body: dict[str, Any]) -> dict[str, Any]:
                 raise EntryValidationError(2, "checklist_ids must be a non-empty list of non-empty strings")
         findings_count = merged.get("findings_count")
         if findings_count is not None:
-            if not isinstance(findings_count, int) or findings_count < 0:
+            if type(findings_count) is not int or findings_count < 0:
                 raise EntryValidationError(2, "findings_count must be an integer >= 0")
         producer_session_id = merged.get("producer_session_id")
         if producer_session_id is not None:
@@ -409,6 +565,70 @@ def validate_append_body(*, kind: str, body: dict[str, Any]) -> dict[str, Any]:
         notes = merged.get("notes")
         if notes is not None and not isinstance(notes, str):
             raise EntryValidationError(2, "notes must be a string when present")
+
+    elif kind == "adversarial_freeze":
+        aff_verdict = merged.get("aff_verdict")
+        if aff_verdict not in AFF_VERDICTS:
+            raise EntryValidationError(2, "aff_verdict must be pass|findings|blocked|skip")
+        _require_non_empty_str(merged.get("phase_id"), "phase_id")
+        _require_non_empty_str(merged.get("frozen_spec"), "frozen_spec")
+        _require_exact_positive_int(merged.get("round"), "round")
+        digest = merged.get("artifact_digest")
+        if not isinstance(digest, str) or not re.fullmatch(r"sha256:[0-9a-f]{64}", digest):
+            raise EntryValidationError(2, "artifact_digest must be sha256: + 64 lowercase hex")
+
+        if aff_verdict == "skip":
+            if actor_role != "owner":
+                raise EntryValidationError(23, "adversarial_freeze skip requires actor_role=owner")
+            if "aff_posture" in merged:
+                raise EntryValidationError(2, "skip must not carry aff_posture")
+            if "producer_session_id" in merged:
+                raise EntryValidationError(2, "skip must not carry producer_session_id")
+            notes = merged.get("notes")
+            if notes is not None and not isinstance(notes, str):
+                raise EntryValidationError(2, "notes must be a string when present")
+        else:
+            if actor_role != "verifier":
+                raise EntryValidationError(
+                    23, "adversarial_freeze pass/findings/blocked requires actor_role=verifier"
+                )
+            aff_posture = merged.get("aff_posture")
+            if aff_posture not in AFF_POSTURES:
+                raise EntryValidationError(2, "aff_posture must be attack")
+            producer_session_id = _require_non_empty_str(
+                merged.get("producer_session_id"), "producer_session_id"
+            )
+            if actor_session == producer_session_id:
+                raise EntryValidationError(
+                    2, "actor_session_id must differ from producer_session_id"
+                )
+            _require_non_empty_str(merged.get("reviewer_model"), "reviewer_model")
+            producer_model = merged.get("producer_model")
+            if producer_model is not None and not isinstance(producer_model, str):
+                raise EntryValidationError(2, "producer_model must be a string when present")
+            producer_agent_id = merged.get("producer_agent_id")
+            verifier_agent_id = merged.get("verifier_agent_id")
+            if producer_agent_id is not None and not isinstance(producer_agent_id, str):
+                raise EntryValidationError(2, "producer_agent_id must be a string when present")
+            if verifier_agent_id is not None and not isinstance(verifier_agent_id, str):
+                raise EntryValidationError(2, "verifier_agent_id must be a string when present")
+            if (
+                isinstance(producer_agent_id, str)
+                and isinstance(verifier_agent_id, str)
+                and producer_agent_id == verifier_agent_id
+            ):
+                raise EntryValidationError(
+                    2, "producer_agent_id must differ from verifier_agent_id when both present"
+                )
+            bound_hash = merged.get("bound_freeze_review_hash")
+            if bound_hash is not None:
+                _require_non_empty_str(bound_hash, "bound_freeze_review_hash")
+            side_check = merged.get("side_check_path")
+            if side_check is not None:
+                _require_non_empty_str(side_check, "side_check_path")
+            notes = merged.get("notes")
+            if notes is not None and not isinstance(notes, str):
+                raise EntryValidationError(2, "notes must be a string when present")
 
     if "provenance" in merged:
         merged["provenance"] = validate_provenance(merged["provenance"])

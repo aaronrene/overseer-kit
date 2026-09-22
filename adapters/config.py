@@ -41,6 +41,7 @@ HONESTY_KEYS = frozenset(
         "require_verification_evidence",
         "require_deploy_health",
         "require_independent_second_reviewer",
+        "adversarial_freeze",
         "allow_signed_approval",
         "ci_reexecutor",
         "require_agent_signature",
@@ -61,6 +62,7 @@ GOVERNANCE_GATES_KEYS = frozenset(
     }
 )
 L1_EVIDENCE_MODES = frozenset({"off", "warn", "require"})
+ADVERSARIAL_FREEZE_MODES = frozenset({"off", "suggest", "require"})
 MODEL_ROUTING_KEYS = frozenset({"enabled", "policy"})
 DEFAULT_MODEL_ROUTING_POLICY = "policy/model-routing.yaml"
 COST_AWARENESS_SURFACES = frozenset({"status", "governance-sync"})
@@ -167,6 +169,7 @@ class HonestyConfig:
     require_verification_evidence: str = "off"
     require_deploy_health: str = "off"
     require_independent_second_reviewer: str = "require"
+    adversarial_freeze: str = "suggest"
     allow_signed_approval: bool = False
     ci_reexecutor: str | None = None
     require_agent_signature: bool = False
@@ -439,7 +442,9 @@ def _validate_config(raw: dict[str, Any], path: str) -> OverseerConfig:
         raise ConfigError("freeze_contract.human_escalation must be a list of strings", path)
     _validate_human_escalation(list(escalation), path)
 
-    checkpoints, honesty, modules, extensions, extension_warnings = _parse_k9_modules(raw, path)
+    checkpoints, honesty, modules, extensions, extension_warnings = _parse_k9_modules(
+        raw, path, human_escalation=list(escalation)
+    )
     if honesty.require_agent_signature and regime == "git-only":
         raise ConfigError(
             "honesty.require_agent_signature is forbidden under git-only",
@@ -698,10 +703,14 @@ def _validate_repo_relative_path(value: str, field: str, path: str) -> None:
 def _parse_k9_modules(
     raw: dict[str, Any],
     path: str,
+    *,
+    human_escalation: list[str] | None = None,
 ) -> tuple[CheckpointsConfig, HonestyConfig, ModulesConfig | None, tuple[ExtensionEntry, ...], tuple[str, ...]]:
     """Parse optional K9 checkpoints/honesty/modules/extensions (§K9.2)."""
     checkpoints = _parse_checkpoints(raw.get("checkpoints"), path)
-    honesty = _parse_honesty(raw.get("honesty"), path)
+    honesty = _parse_honesty(
+        raw.get("honesty"), path, human_escalation=human_escalation or []
+    )
     modules = _parse_modules(raw.get("modules"), path)
     extensions, extension_warnings = _parse_extensions(raw.get("extensions"), path)
 
@@ -766,9 +775,16 @@ def _parse_checkpoints(raw_checkpoints: Any, path: str) -> CheckpointsConfig:
     )
 
 
-def _parse_honesty(raw_honesty: Any, path: str) -> HonestyConfig:
+def _parse_honesty(
+    raw_honesty: Any,
+    path: str,
+    *,
+    human_escalation: list[str] | None = None,
+) -> HonestyConfig:
+    escalation = list(human_escalation or [])
     if raw_honesty is None:
-        return HonestyConfig()
+        derived = "suggest" if "security" in escalation else "off"
+        return HonestyConfig(adversarial_freeze=derived)
     h_raw = _require_mapping(raw_honesty, "honesty", path)
     extra = set(h_raw) - HONESTY_KEYS
     if extra:
@@ -806,6 +822,18 @@ def _parse_honesty(raw_honesty: Any, path: str) -> HonestyConfig:
             "honesty.require_independent_second_reviewer must be off|warn|require", path
         )
 
+    if "adversarial_freeze" in h_raw:
+        adversarial_freeze = h_raw.get("adversarial_freeze")
+        if (
+            not isinstance(adversarial_freeze, str)
+            or adversarial_freeze not in ADVERSARIAL_FREEZE_MODES
+        ):
+            raise ConfigError(
+                "honesty.adversarial_freeze must be off|suggest|require", path
+            )
+    else:
+        adversarial_freeze = "suggest" if "security" in escalation else "off"
+
     allow_signed = h_raw.get("allow_signed_approval", False)
     if not isinstance(allow_signed, bool):
         raise ConfigError("honesty.allow_signed_approval must be a boolean", path)
@@ -828,6 +856,7 @@ def _parse_honesty(raw_honesty: Any, path: str) -> HonestyConfig:
         require_verification_evidence=require_verification,
         require_deploy_health=require_deploy_health,
         require_independent_second_reviewer=require_isr,
+        adversarial_freeze=adversarial_freeze,
         allow_signed_approval=allow_signed,
         ci_reexecutor=ci_reexecutor,
         require_agent_signature=require_agent_signature,

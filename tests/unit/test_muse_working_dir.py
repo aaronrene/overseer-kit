@@ -38,7 +38,7 @@ def test_musehub_adapter_uses_working_dir(tmp_path: Path) -> None:
     muse_cwd = (tmp_path / "musehub").resolve()
     runner = make_runner(
         {
-            f"muse -C {muse_cwd} branch --show-current": ok("main"),
+            f"muse -C {muse_cwd} rev-parse --abbrev-ref HEAD": ok("main"),
             f"muse -C {muse_cwd} status --porcelain": ok(""),
         }
     )

@@ -2,9 +2,13 @@ lock_version: 1
 kit_version: 0.1.0
 config_version: 1
 installed_at: '2026-07-10T00:00:00Z'
-synced_at: '2026-09-02T12:34:41Z'
-footprint_digest: sha256:b089c79899056b8e116371e68cdbbffa400f344359cc38fe8ccf59c37ace4ab1
+synced_at: '2026-09-20T15:24:42Z'
+footprint_digest: sha256:f401931fb27a140fef8d5376c19a21d584ae9a9c8827c6aaaecda337d788c962
 footprint:
+- path: .claude/skills/adversarial-freeze-review/SKILL.md
+  source: cursor/skills/adversarial-freeze-review/SKILL.md
+  sha256: 7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044
+  origin: kit
 - path: .claude/skills/build-verification-review/SKILL.md
   source: cursor/skills/build-verification-review/SKILL.md
   sha256: f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c
@@ -23,11 +27,11 @@ footprint:
   origin: kit
 - path: .claude/skills/freeze-review-loop/SKILL.md
   source: cursor/skills/freeze-review-loop/SKILL.md
-  sha256: aed458da4550a7b6203013157594c05b75c0f1daf5881671df15d5241e75d237
+  sha256: 825a1090612be0923ee1b9bcfee973b7f6e982369b8d74af11d75462e844fde7
   origin: kit
 - path: .claude/skills/freeze-review/SKILL.md
   source: cursor/skills/freeze-review/SKILL.md
-  sha256: f5f9ee86919ad4852ab6b72a1abd63d46323c05fdad79c10e8256a4736a90abe
+  sha256: 620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b
   origin: kit
 - path: .claude/skills/governance-sync/SKILL.md
   source: cursor/skills/governance-sync/SKILL.md
@@ -67,7 +71,7 @@ footprint:
   origin: kit
 - path: .cursor/rules/check-ok-thinking.mdc
   source: cursor/rules/check-ok-thinking.mdc
-  sha256: c704275c61d6784f996c0a27d0396e326037eafcb387a6146d87f893d3abf980
+  sha256: 7a7d48d8c317c3763f057f2025586e124d0f897705c0be55688351755847d474
   origin: kit
 - path: .cursor/rules/governance-sync.mdc
   source: cursor/rules/governance-sync.mdc
@@ -97,6 +101,10 @@ footprint:
   source: cursor/rules/workspace-authority.mdc
   sha256: 083f5163e957b1e00956c5370b06d078590627b4bd9b00a27c7378434b344ff5
   origin: kit
+- path: .cursor/skills/adversarial-freeze-review/SKILL.md
+  source: cursor/skills/adversarial-freeze-review/SKILL.md
+  sha256: 7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044
+  origin: kit
 - path: .cursor/skills/build-verification-review/SKILL.md
   source: cursor/skills/build-verification-review/SKILL.md
   sha256: f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c
@@ -115,11 +123,11 @@ footprint:
   origin: kit
 - path: .cursor/skills/freeze-review-loop/SKILL.md
   source: cursor/skills/freeze-review-loop/SKILL.md
-  sha256: aed458da4550a7b6203013157594c05b75c0f1daf5881671df15d5241e75d237
+  sha256: 825a1090612be0923ee1b9bcfee973b7f6e982369b8d74af11d75462e844fde7
   origin: kit
 - path: .cursor/skills/freeze-review/SKILL.md
   source: cursor/skills/freeze-review/SKILL.md
-  sha256: f5f9ee86919ad4852ab6b72a1abd63d46323c05fdad79c10e8256a4736a90abe
+  sha256: 620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b
   origin: kit
 - path: .cursor/skills/governance-sync/SKILL.md
   source: cursor/skills/governance-sync/SKILL.md
