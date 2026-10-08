@@ -30,7 +30,8 @@ handoff files and their two new directories were added. No production code chang
 **Bounded v1 local validation is complete.** This is the manual Git source-install
 scope on Python 3.14.4 / Darwin arm64. Packaged installation, automatic migration,
 installation rebinding, consumer hook activation and other platforms remain outside
-this validation. The source version is now `1.0.0` and release hygiene is in progress.
+this validation. The source version is now `1.0.0`; the clean release branch passed
+all local release gates and is ready for publication review.
 
 Post-validation documentation maintenance rewrote README around the actual bounded
 v1 behavior, daily workflow, limits, evidence and update procedure. Update awareness
@@ -41,8 +42,10 @@ Checkout-local config, launchers, NEXT, and Cursor integration are ignored rathe
 than distributed. Legacy policy state is archived and current contributor/security
 documentation describes only bounded v1. A secret scan and dependency checks pass.
 
-The current release-preparation action will advance through `next-write` after the
-clean branch is tested and publication is attempted. DINERO has its own
+The clean branch remains local: automatic approval review rejected its push because
+the complete source/documentation payload and GitHub destination require explicit
+owner approval together. The release-preparation action advances through
+`next-write` to that concrete publication block. DINERO has its own
 **DINERO-OVERSEER-PILOT-COMPLETE** stop and distinct repository UUID. Do not repeat
 the closed review, installation, or pilot. HANDOVER summarizes evidence without a
 competing prompt. Former OCI/NXR/GSR/sole-writer chains remain superseded. Broader

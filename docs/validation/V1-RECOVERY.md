@@ -628,10 +628,28 @@ together in **3.44s**. This rerun classifies the errors but does not replace the
 required clean release-branch full-suite run.
 
 `git fetch --prune origin` succeeded and confirmed `origin/main` remains
-`d47291d5d9030de5ebef713da95efa978c4d8c6e`. `gh auth status` reported that the
-stored credential for `aaronrene` is invalid. Publication therefore tests Git push
-authentication independently; pull-request creation requires repaired GitHub CLI
-authentication if the invalid credential remains. Direct push to `main` is not part
-of the plan. The clean release branch must be a squash from `origin/main`, must pass
-the supported suite in its own conventional venv, and must contain no local binding
-or personal absolute path before it is presented for review.
+`d47291d5d9030de5ebef713da95efa978c4d8c6e`. The clean
+`release/overseer-v1.0.0` branch contains one squash commit on that base. It contains
+no tracked checkout-local binding or owner's absolute home path; `git diff --check`
+and a gitleaks scan of its single commit passed. A fresh conventional `.venv`
+downloaded the pinned requirements from PyPI; `pip check`, version agreement
+(`VERSION`, package metadata, runtime, and CLI all `1.0.0`), and `compileall` passed.
+The full supported suite then passed twice: **77 tests, 0 failed or skipped in
+42.15s**, followed by **77 tests, 0 failed or skipped in 43.07s** after recording
+the first clean-branch gate result.
+
+`gh auth status` reported that the stored credential for `aaronrene` is invalid.
+Publication therefore tests Git push authentication independently; pull-request
+creation requires repaired GitHub CLI authentication if the invalid credential
+remains. Direct push to `main` is not part of the plan.
+
+After all local gates passed, the attempted command
+`git push -u origin release/overseer-v1.0.0` was rejected before execution by the
+environment's automatic approval review. Its stated reason was that the full source
+and documentation payload would be sent to an unverified external GitHub destination
+without explicit approval of that payload and destination together. No workaround
+was attempted. Nothing was published: the release branch, pull request, tag,
+release, and `main` remain remote-unchanged. Publication now requires the owner to
+explicitly approve pushing this complete 74-file release diff to
+`https://github.com/aaronrene/overseer-kit.git` as branch
+`release/overseer-v1.0.0`.

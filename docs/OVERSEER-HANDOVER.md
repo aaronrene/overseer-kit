@@ -82,12 +82,18 @@ absolute paths or repository identity. Superseded policy state is retained under
 describe bounded v1. A full-directory gitleaks scan, `pip check`, `compileall`, and
 `git diff --check` passed. The first supported-suite run passed 75 tests and hit two
 20-second fixture setup timeouts; both exact cases passed together on immediate
-rerun in 3.44 seconds. A clean-branch full run remains the release gate.
+rerun in 3.44 seconds. The clean squash branch then installed all pinned dependencies
+from PyPI into its own conventional venv; `pip check`, version agreement, compilation,
+and the full supported suite passed twice, with **77 passed in 42.15s** and then
+**77 passed in 43.07s** after recording the gate result.
 
 Publication uses a clean squash from `origin/main` so intermediate recovery commits
 with checkout-local paths never enter public history. The owner authorized the
 recommended release hygiene and publication work, but direct pushes to `main`,
 automatic hooks, and bulk consumer modification remain excluded. The installed
-GitHub CLI credential is invalid; Git transport is tested separately during branch
-publication. The release-preparation action remains active until that result is
-published through `next-write`.
+GitHub CLI credential is invalid. The attempted Git transport push was rejected by
+automatic approval review before execution because the full source/documentation
+payload and external destination were not explicitly approved together. No branch,
+pull request, tag, release, or `main` change was published. The release-preparation
+action advances through `next-write` to the concrete publication authorization
+block.
