@@ -1,8 +1,8 @@
 # Overseer Kit v1 handover
 
-2026-10-08 — architecture review passed; both completed-build P2 findings have
-been corrected and rechecked in the same review session. Final v1 remains
-incomplete. This closes session 2 work within the 5–8-session budget.
+2026-10-08 — clean source installation and current/previous rollback passed.
+Architecture review and both corrected completed-build P2 findings remain closed.
+Final v1 awaits a separately authorized consumer pilot. Session budget: 3 of 5–8.
 
 Original mixed checkout and historical evidence remain preserved. Verified local
 snapshot: `../RECOVERY-SNAPSHOTS/20261008T122430Z-v1-recovery` (21,213 entries;
@@ -10,27 +10,36 @@ snapshot: `../RECOVERY-SNAPSHOTS/20261008T122430Z-v1-recovery` (21,213 entries;
 [validation](validation/V1-RECOVERY.md) and the [scope reset](decisions/V1-SCOPE-RESET.md).
 
 Implementation: `overseer-kit-v1-recovery`, branch `feat/overseer-v1-recovery`,
-base `d47291d5d9030de5ebef713da95efa978c4d8c6e`. Review initially assessed HEAD
-`2bfa69864ec2f8bb3d89cc66d6353dd111421875`; corrections affect only CLI option
-abbreviation and sync asset mode comparison, with an explicit runtime digest sync.
-Repository UUID remains `6dba88a5-029c-4136-9277-c3a0c81f31a6`.
+base `d47291d5d9030de5ebef713da95efa978c4d8c6e`. Session 3 validated current source
+`b2a09775d1daabd0b49003b36b18cfce31434fb5` and previous source
+`2bfa69864ec2f8bb3d89cc66d6353dd111421875`. Repository UUID remains
+`6dba88a5-029c-4136-9277-c3a0c81f31a6`. No production code or permanent tests changed.
 
-The original review and repeated probes found two P2 defects despite a green
-77-test suite. Both are now corrected: abbreviated options refuse; sync repairs
-lost executable modes and dry-run reports those repairs without mutation.
-Latest verification: **77 passed, zero failed, zero skipped in 54.44s**, plus
-**22 disposable fix-verification cases passed**. Temporary fixtures were removed;
-no permanent tests were added. All prior review evidence remains in validation.
-Historical baseline failures are not claimed fixed.
+Two disposable installations received their own fresh conventional venv and
+uncached dependencies from PyPI. Initial sandbox DNS failure was resolved by
+approved network access; both `pip check` runs passed. Both Git fixtures passed
+previous → current → previous with direct and bound status/NEXT, explicit sync,
+non-mutating dry-run and foreign-installation refusal. Identity, Git HEAD, NEXT,
+living documents, binary payload and launcher were preserved; rollback restored
+all fixture file hashes/modes including config. All six lifecycle stages passed.
+Temporary installations and fixtures were removed.
 
-The repeated-prompt loop came from leaving a completed review in canonical NEXT.
-The sole current action is now **OVERSEER-V1-INSTALL-ROLLBACK-1**, model
-**GPT-6 Astra**, kind **implement**, in `docs/NEXT.md`. Read it through `cli/ok -C .
-next`. Clean installation/current-previous rollback is next; no further identical
-review rerun is needed. Finding closure was performed by the same reviewer and
-is not presented as another independent review.
+The full supported suite from the current disposable installation passed:
+**77 passed, zero failed, zero skipped in 54.46s**. Six lifecycle stages are
+separate script checks, not additional pytest tests. Exact commands, raw logs,
+JUnit, status records and cleanup evidence are recorded in validation and
+`../RECOVERY-RUNS/20261008-v1-session-3`. No unresolved milestone failure remains;
+historical baseline failures are not claimed fixed.
 
-Remaining: clean installation/current-previous rollback validation and a separately
-authorized noncritical consumer pilot. Muse-only integration and automatic config
-migration/rebinding remain deferred. No push, mirror, merge, release, deployment,
-real-consumer activation, or pilot is authorized here.
+This validates manual fixed-path source replacement plus sync on Python 3.14.4 /
+Darwin arm64, with identical dependency requirements. Packaged installation,
+automatic migration/rebinding, concurrent replacement and other platforms remain
+unvalidated. The previous revision retains its historical defects; it was used
+only as a disposable rollback target. The closed review was not repeated.
+
+The completed installation action has been replaced through `next-write` with
+**OVERSEER-V1-PILOT-AUTHORIZATION-1**, kind **stop**. `docs/NEXT.md` is the sole
+current prompt; read it through `cli/ok -C . next`. A noncritical consumer pilot
+requires separate explicit owner authorization naming its repository and allowed
+operations. No real-consumer access, push, mirror, merge, release, deployment,
+consumer hook activation, or pilot is authorized by this closeout.

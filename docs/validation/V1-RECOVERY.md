@@ -1,7 +1,8 @@
 # V1 recovery milestone — verification, 2026-10-08
 
-**Result: architecture review passed; completed-build findings corrected and
-rechecked; final v1 is not complete.** Session 1 reached the session-2 status/NEXT checkpoint
+**Result: clean source installation and current/previous rollback passed in
+session 3; architecture review and corrected build findings remain closed.
+Final v1 awaits a separately authorized consumer pilot.** Session 1 reached the session-2 status/NEXT checkpoint
 across two disposable repositories. Session 2 independently reviewed the bounded
 architecture and completed recovery build; see the review below. The original
 implementation evidence is retained in the preceding milestone sections.
@@ -146,8 +147,9 @@ new NEXT may already be present; readers never see a partially written file.
 The implementation run had no unresolved supported-suite failures. The independent
 review below identified two additional defects outside that coverage; both are
 closed by the correction/recheck recorded at the end of this document. Final v1
-remains incomplete. The current action in `docs/NEXT.md` is
-**OVERSEER-V1-INSTALL-ROLLBACK-1**. Keep the five-to-eight-session cap.
+remains incomplete. Installation/rollback is now closed by session 3 below.
+The current action in `docs/NEXT.md` is **OVERSEER-V1-PILOT-AUTHORIZATION-1**,
+kind `stop`. Keep the five-to-eight-session cap.
 
 ## Independent architecture and completed-build review — session 2, 2026-10-08
 
@@ -312,3 +314,136 @@ and HANDOVER now summarize this disposition. The five-to-eight-session cap remai
 installation/rollback and the separately authorized consumer pilot are outstanding.
 No new packet, security subsystem, real consumer, push, mirror, merge, release,
 deployment, consumer hook activation, or pilot was introduced.
+
+## Clean source installation and rollback — session 3, 2026-10-08
+
+Action `OVERSEER-V1-INSTALL-ROLLBACK-1`, lane `product`, model `GPT-6 Astra`.
+Physical cwd/Git root: `/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery`;
+branch `feat/overseer-v1-recovery`; starting clean HEAD
+`b2a09775d1daabd0b49003b36b18cfce31434fb5`; config name `overseer-kit`, UUID
+`6dba88a5-029c-4136-9277-c3a0c81f31a6`. Initial own-checkout `./cli/ok -C .
+status --json` and `./cli/ok -C . next` passed. No production code or permanent
+test changed; the closed architecture/build review was not repeated.
+
+**Passed: two clean dependency installations, six fixture lifecycle stages, and
+77 supported tests (0 failed, 0 skipped) in 54.46s.** The lifecycle stages are
+script assertions, not six additional pytest tests. Each independent runtime
+followed previous → current → previous at its original physical path:
+
+| Source | Git revision | Runtime SHA-256 |
+| --- | --- | --- |
+| Previous / rollback | `2bfa69864ec2f8bb3d89cc66d6353dd111421875` | `f85810afb27de05cff194a01f8b229ea23d9a9b82b5d7613d1d4bd7647133066` |
+| Current | `b2a09775d1daabd0b49003b36b18cfce31434fb5` | `045412b50c755e188a37aff017924a1eaf6b21fe57f1b14407e74eb026630bc8` |
+
+Both report version `1.0.0.dev1`; the source digest distinguishes them. Sources
+were exported using `git archive`, without copying the recovery venv. Installations
+`runtime a` and `runtime b` and Git repositories `fixture a` and `fixture b` lived
+under `/private/tmp/overseer-v1-install-2jo3ue_u` (paths intentionally contain
+spaces). Each runtime had its own new conventional `.venv`; neither PyYAML nor
+pytest was importable before installation. Python was 3.14.4 on Darwin arm64.
+
+The first pip attempt exited 1 because sandbox DNS could not resolve PyPI. The
+same installation command passed with approved network access for both venvs,
+using `--isolated --no-cache-dir --index-url https://pypi.org/simple`. No installed
+package bytes or pip cache were used to seed them. Both `pip check` runs reported
+no broken requirements, and isolated imports resolved within the respective
+venv. Both freezes: PyYAML 6.0.3, pytest 9.1.1, iniconfig 2.3.1, packaging 26.3,
+pluggy 1.6.0, Pygments 2.21.0. The two revisions have identical runtime and dev
+requirements; the clean environments remained in place throughout the exercise.
+
+Every lifecycle stage validated direct and bound-launcher status/NEXT, with
+explicit expected UUID, branch, lane, model, action ID/kind and NEXT digest.
+Both fixtures used `FIXTURE-INSTALL-1` with distinct prompts and identities:
+`875f5b76-5978-4ba1-a8be-11235fb07cf0` (A) and
+`f315a1dd-454b-46d0-af75-ad745b2054a7` (B). Before each sync, both entrypoints
+refused status/NEXT with exit 2 and `runtime_changed`. Dry-run listed only
+`.overseer/config.yaml` and changed no fixture bytes/modes. Explicit sync updated
+that pin; repeated sync reported `changed: []`. Cross-installation sync refused
+with `runtime_installation_mismatch` and made no changes in all six stages.
+
+Assertions preserved the UUID/name/root, Git branch and HEAD, NEXT bytes/digest,
+preexisting ROADMAP/HANDOVER, prompt and binary payload bytes/modes, bound launcher
+bytes/mode, and original venv configuration. After rollback, every fixture file
+outside `.git`, including config, matched its original post-init/publication hash
+and mode. No fixture hooks were installed by the lifecycle script; the supported
+suite exercises its own disposable hooks. Both installation directories and both
+Git fixtures were removed after success.
+
+### Exact commands and retained evidence
+
+All orchestration commands below were invoked from the recovery worktree. The
+preserved script contains the assertions, and `commands.jsonl` records every
+expanded argv, cwd, expected/actual exit, stdout and stderr, including the initial
+DNS failure. `results.json` contains all six status records; `supported.xml` is
+the JUnit report; `cleanup.txt` records removal. Evidence directory:
+`/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261008-v1-session-3`.
+
+```sh
+.venv/bin/python /Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261008-v1-session-3/validate.py prepare
+.venv/bin/python /Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261008-v1-session-3/validate.py install
+# Same install command retried with network access after sandbox DNS failure.
+.venv/bin/python /Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261008-v1-session-3/validate.py probe
+```
+
+The script exports each revision with `git archive --format=tar -o ARCHIVE REV`
+and uses Python `tarfile.extractall(runtime, filter='data')` to replace the local
+trusted source at the fixed installation path, leaving its venv in place. Both
+revisions have the same tracked file set. For each runtime it invokes (variables
+below stand for the corresponding exact paths/UUID/digest in `commands.jsonl`):
+
+```sh
+/opt/homebrew/Cellar/python@3.14/3.14.4_1/Frameworks/Python.framework/Versions/3.14/bin/python3.14 -m venv "$runtime/.venv"
+# cwd is the respective runtime:
+"$runtime/.venv/bin/python" -m pip --isolated install --no-cache-dir --index-url https://pypi.org/simple -r requirements-v1-dev.txt
+"$runtime/.venv/bin/python" -m pip check
+"$runtime/.venv/bin/python" -m pip freeze
+"$runtime/cli/ok" -C "$fixture" status --json
+"$runtime/cli/ok" -C "$fixture" next --repo-id "$uuid" --branch main --lane product --model 'GPT-6 Astra' --action-id FIXTURE-INSTALL-1 --action-kind maintain --expect-next "$digest"
+# After each source replacement, status/NEXT must first refuse; then:
+"$runtime/cli/ok" -C "$fixture" sync --dry-run --json
+"$runtime/cli/ok" -C "$fixture" sync --json
+```
+
+The full supported suite ran from the **current disposable source** with its
+freshly installed dependencies (cwd `/private/tmp/overseer-v1-install-2jo3ue_u/runtime a`):
+
+```sh
+'/private/tmp/overseer-v1-install-2jo3ue_u/runtime a/.venv/bin/python' -m pytest -q -p no:cacheprovider --junitxml=/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261008-v1-session-3/supported.xml
+```
+
+### Disposition and limits
+
+No unresolved failure remains in this milestone. The initial network failure was
+environmental and resolved by the successful clean downloads. Historical baseline
+failures remain as recorded above. This proves a manual fixed-path source upgrade
+and rollback for these two revisions on Python 3.14.4/Darwin arm64. It does not
+validate package installation, other Python/platform combinations, changing
+dependency/schema versions, concurrent commands during source replacement,
+automatic recovery, or moving/rebinding an installation. Source replacement is
+not atomic; operators must stop commands during it, then explicitly sync. No
+current/previous symlink-switching mechanism is introduced. Rolling back to the
+previous revision also restores its known historical P2 defects; rollback success
+does not endorse that revision for consumer use or reopen the closed review.
+
+Session budget is now **3 of 5–8**. Both living summaries were updated together.
+The remaining final-v1 milestone is a separately authorized noncritical consumer
+pilot. `next-write` replaces the completed installation action with
+**OVERSEER-V1-PILOT-AUTHORIZATION-1**, kind `stop`, using the explicit repository
+context and prior raw digest
+`1b10ff44b1b702578bf4f616b478474aa263568602e6278625c1e7443fc242aa`.
+Publication exited 0; the new raw NEXT digest is
+`35afaafe249e089ac3171baba58538f365abf8b23108f5dd8307f31be8158de4`.
+The temporary confined prompt was removed after copying it to evidence as
+`next-prompt.txt`; `published-NEXT.md` preserves the published document.
+
+```sh
+./cli/ok -C . next-write --repo-id 6dba88a5-029c-4136-9277-c3a0c81f31a6 --branch feat/overseer-v1-recovery --lane product --model 'GPT-6 Astra' --action-id OVERSEER-V1-PILOT-AUTHORIZATION-1 --action-kind stop --expect-next 1b10ff44b1b702578bf4f616b478474aa263568602e6278625c1e7443fc242aa --prompt-file .overseer/session-3-prompt.txt --json
+./cli/ok -C . status --json
+./cli/ok -C . next --repo-id 6dba88a5-029c-4136-9277-c3a0c81f31a6 --branch feat/overseer-v1-recovery --lane product --model 'GPT-6 Astra' --action-id OVERSEER-V1-PILOT-AUTHORIZATION-1 --action-kind stop --expect-next 35afaafe249e089ac3171baba58538f365abf8b23108f5dd8307f31be8158de4
+git diff --check
+```
+
+Own-checkout status, explicitly validated NEXT, and whitespace checks passed.
+No new packet, discarded security subsystem, real consumer, push, mirror, merge,
+release, deployment, consumer hook activation, or pilot was used. Final v1 is
+not complete; neither the green suite nor this closeout authorizes a pilot.

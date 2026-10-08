@@ -3,24 +3,15 @@ schema: 1
 repo_id: 6dba88a5-029c-4136-9277-c3a0c81f31a6
 repo_root: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery
 branch: feat/overseer-v1-recovery
-base_head: 2bfa69864ec2f8bb3d89cc66d6353dd111421875
+base_head: b2a09775d1daabd0b49003b36b18cfce31434fb5
 lane: product
 model: GPT-6 Astra
-action_id: OVERSEER-V1-INSTALL-ROLLBACK-1
-action_kind: implement
-prompt_sha256: 9cc4a30c04f5f5c24ba2b5e4993894b0535310978e261601137ed600d01989bc
+action_id: OVERSEER-V1-PILOT-AUTHORIZATION-1
+action_kind: stop
+prompt_sha256: a09c921eef1f6dd13c50375c859b0b5b87f42fc395683a5a1aa78061248e4594
 ---
-Validate clean source installation and current/previous rollback for bounded v1.
-Read AGENTS.md, docs/decisions/V1-SCOPE-RESET.md, and docs/validation/V1-RECOVERY.md.
-The architecture review and its two corrected build findings are closed; do not
-repeat OVERSEER-V1-REVIEW-1 against unchanged code.
-Use disposable installation directories and Git fixtures, each runtime with its
-own conventional venv. Verify clean dependency installation, status/NEXT, upgrade
-to current and rollback to previous, preserving fixture identity and documents.
-Keep changes bounded; record exact commands, results, and limitations in the
-existing validation document and update both living summaries. Run the supported
-suite for any code change. Keep the five-to-eight-session cap.
-No new packets or discarded security machinery. No real consumers, push, mirror,
-merge, release, deployment, consumer hook activation, or pilot. On completion,
-publish the actual next action through next-write; do not leave this completed
-action as NEXT. A consumer pilot requires separate explicit authorization.
+Await explicit owner authorization naming one noncritical consumer repository
+and the allowed pilot operations. Do not access a consumer or activate hooks
+before that authorization. Read docs/validation/V1-RECOVERY.md for the completed
+installation/rollback evidence; do not repeat the closed review or install action.
+Final v1 remains incomplete. Preserve the five-to-eight-session cap (3 used).
