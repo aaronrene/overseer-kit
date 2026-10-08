@@ -11,9 +11,10 @@ Keep repository/root/UUID binding, canonical `docs/NEXT.md`, explicit context
 checks, stale-state refusal, deterministic source imports, confined atomic writes,
 and living-document preservation intact.
 
-MuseHub-first authority and controlled GitHub mirroring are required by the owner's
-scope correction. Their restoration is pending; use the validation audit as the
-design baseline rather than reactivating the entire legacy CLI.
+The owner's scope correction requires a per-repository choice of Git/GitHub only
+or MuseHub authority with controlled GitHub mirroring. Preserve standalone Git-only
+operation without a Muse dependency. Muse restoration is pending; use the validation
+audit as the design baseline rather than reactivating the entire legacy CLI.
 
 Former hosted, desktop, governance-sync, freeze-review, publishing, registry,
 receipt, transaction, and orchestration implementations remain historical source.

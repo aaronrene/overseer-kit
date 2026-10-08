@@ -1,10 +1,13 @@
 # Overseer Kit — bounded v1 agent instructions
 
-Owner correction, 2026-10-08: OCI is excluded; MuseHub-first authority and the
-Muse-to-GitHub mirror are required for intended v1. The Git-based candidate is
-incomplete for that scope. Read the restoration audit in
-`docs/validation/V1-RECOVERY.md` before implementation or publication. Audit work
-does not authorize production restoration or any remote write.
+Owner clarification, 2026-10-08: there is no session-count ceiling. Complete the
+planned local restoration, preserving a per-repository choice of Git/GitHub only
+or MuseHub authority with a GitHub mirror. Git-only is a fully supported ongoing
+mode; it must not require Muse installation, login, or migration. The kit project's
+own intended publication flow remains Muse-first. OCI remains excluded. Read the
+restoration audit in `docs/validation/V1-RECOVERY.md` before implementation. The
+old budget stop is resolved; do not request a session extension again. Remote
+publication, consumer access and hook activation retain their explicit boundaries.
 
 The owner's recovery request and `docs/decisions/V1-SCOPE-RESET.md` supersede the
 former v1 security prerequisites, old NEXT, and per-step freeze/approval chains.

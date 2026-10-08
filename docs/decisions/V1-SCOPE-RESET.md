@@ -9,19 +9,41 @@ completion/publication recommendation are superseded. The original record below
 is retained to explain what was implemented and tested; it is not evidence that
 the owner consented to excluding Muse.
 
-Intended v1 retains the repository/UUID/lane/NEXT protections and requires MuseHub
-as the shared source of truth plus controlled GitHub mirroring. Git-only adoption
-remains useful. Native Muse authority must drive freshness for Muse-managed work;
+Intended v1 retains the repository/UUID/lane/NEXT protections and offers a
+per-repository choice: Git/GitHub only, or MuseHub as the shared source of truth
+with controlled GitHub mirroring. Git-only is an ongoing supported mode, not a
+temporary migration stage. Native Muse authority drives freshness for Muse-managed work;
 adding a mirror script alone is insufficient. OCI, discarded storage/security
 machinery, and packet chains remain excluded. Other old features are dispositioned
 individually in the [restoration audit](../validation/V1-RECOVERY.md#musehub-restoration-audit--2026-10-08),
 not automatically reinstated.
 
-The current action authorized audit, fixtures, documentation, read-only remote
+The completed audit authorized fixtures, documentation, read-only remote
 inspection, and next-write. It did not authorize production implementation,
 publication, original Muse ref mutation, consumer access, or hook activation.
 The preserved release branch is on hold. The audit supplies the restoration
-milestones and explicitly reconciles the original session cap.
+milestones; the subsequent clarification below supersedes its budget stop.
+
+## Subsequent owner clarification: mode choice and no session ceiling
+
+The owner explicitly removed any session limit and directed the planned local
+restoration to proceed while preserving both operating choices. Earlier five-to-
+eight-session language and the audit's budget-approval NEXT are historical and no
+longer constrain work. Do not invent a replacement cap or request another extension.
+Milestones remain useful for testing and truthful progress, not as a work allowance.
+
+Git/GitHub-only users must be able to stay in that mode indefinitely without Muse,
+a MuseHub account, background network checks, or automatic conversion. MuseHub+
+GitHub users explicitly select Muse authority and receive a controlled one-way
+distribution mirror. The kit project's own Muse-first source-of-truth decision
+does not force that choice on consumers. Any transition is explicit, preserves
+identity/documents and existing edits, and must have tested rollback behavior.
+
+Local R1–R3 restoration is authorized. R1 is the next implementation milestone;
+R2 repairs mirroring and R3 validates source reconciliation and installation/
+rollback. Completion is determined by evidence and acceptance criteria. Removing
+the session cap does not claim technical limits are solved or authorize remote
+writes, consumer access, original Muse ref changes, or automatic hook activation.
 
 ## Original implementation decision — historical record
 

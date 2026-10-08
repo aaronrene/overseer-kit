@@ -1,10 +1,12 @@
 # Overseer Kit v1 handover
 
-2026-10-08 — Muse restoration audit completed. The intended MuseHub-first product
-is not complete. The owner corrected the reset: remove OCI complexity, retain
-MuseHub as the source of truth and reliable GitHub mirroring. The earlier Git-only
-completion/publication recommendation is superseded; historical validation remains
-valid for the behavior actually tested.
+2026-10-08 — Audit completed; owner authorized local restoration with no session
+ceiling. The complete intended product is still in progress. Users choose per
+repository between standalone Git/GitHub-only operation and MuseHub authority
+with a GitHub mirror. Git-only remains fully supported without Muse installed or
+an obligation to migrate. The kit project's own publication flow remains
+Muse-first. OCI stays excluded. Historical Git validation remains valid for the
+behavior actually tested; it does not establish the pending Muse integration.
 
 Recovery: `overseer-kit-v1-recovery`, branch `feat/overseer-v1-recovery`, repository
 name `overseer-kit`, UUID `6dba88a5-029c-4136-9277-c3a0c81f31a6`. This audit started
@@ -74,12 +76,23 @@ publish receiving-checkout NEXT through `next-write` rather than copying it.
 Local coding can work offline; remote state remains unknown until explicitly
 checked. GitHub edits require explicit review/import into Muse before authority.
 
-The original cap was five to eight sessions. Four were numbered; subsequent README
-maintenance and release preparation were unnumbered, and this audit adds work.
-For planning use a conservative seven consumed, not an invented exact historical
-count. R1–R3 are estimated at three additional sessions, with one contingency.
-The actual next action is therefore the owner's bounded budget decision, followed
-by R1 after approval. Recommend three additional sessions and a checkpoint before
-a fourth or remote publication. The completed audit and superseded publication
-block must not remain NEXT. Canonical `docs/NEXT.md` is the only runnable handoff;
-this document supplies context, not an alternate prompt.
+The owner has removed the earlier five-to-eight-session ceiling; the audit's
+budget stop is resolved. No replacement session limit or extension approval is
+required. R1–R3 local restoration can proceed, beginning with Muse-aware local
+status/NEXT and explicit adoption. R1 must also prove that Git-only operation
+works without the Muse executable or credentials and that mixed checkouts select
+their authority explicitly. Acceptance criteria, preservation requirements and
+separate remote/consumer/hook authorization still apply.
+
+Canonical NEXT advances through `next-write` to
+`OVERSEER-V1-MUSE-RESTORATION-R1`, kind `implement`, model `GPT-6 Astra` with Extra
+High reasoning requested in the task. It must not remain at the completed audit
+or resolved budget stop. `docs/NEXT.md` is the only runnable handoff; this document
+supplies context, not an alternate prompt. The current clarification changes
+documentation and NEXT only; it does not claim R1 is already implemented.
+
+Clarification closeout started from clean recovery HEAD
+`3665a89fd3541f6c6fe3f8002221a9795d387e5b`. The unchanged supported suite passed
+**77 tests, zero failures, errors or skips in 44.24s**. The runtime pin is unchanged.
+After the local documentation commit, NEXT is bound to that new HEAD through
+`next-write`; direct and bound launcher readback are checked before handoff.

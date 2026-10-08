@@ -6,6 +6,11 @@ remains valid within its tested scope. The [restoration audit below](#musehub-re
 supersedes the prior publication recommendation and records actual Muse evidence.
 Earlier milestone text is preserved as history, not a present release claim.
 
+**Subsequent owner clarification:** no session-count ceiling applies. Planned
+local restoration is authorized, and both Git/GitHub-only and MuseHub+GitHub modes
+are required user choices. Git-only is fully supported without Muse or forced
+migration. The audit's budget stop is resolved; see the final clarification entry.
+
 **Result: bounded v1 local validation is complete and 1.0.0 release preparation is
 in progress.** The explicitly authorized
 DINERO manual pilot passed in session 4; clean installation/rollback, architecture
@@ -982,6 +987,9 @@ The supported Git suite does not cover them.
 
 ### Session cap and next decision
 
+Historical audit recommendation, superseded by the subsequent owner clarification
+at the end of this record. There is now no session cap or budget approval blocker.
+
 Four recovery sessions were explicitly numbered in the existing record. README
 maintenance and release preparation were substantial later work but not numbered.
 This audit is another substantial work session. For planning, conservatively count
@@ -1087,3 +1095,59 @@ cli/ok -C . next \
 The temporary prompt input is removed after publication. Local NEXT remains the
 sole executable handoff. This audit neither reinstates a Git-only publication task
 nor authorizes spending beyond the original session cap.
+
+## Owner clarification and R1 handoff — 2026-10-08
+
+The owner explicitly removed any session-count ceiling and directed local
+restoration to proceed with a permanent per-repository choice: Git/GitHub only,
+or MuseHub authority with a GitHub mirror. Git-only is not merely a transition
+stage and must work without Muse installed, MuseHub credentials, or forced
+migration. The kit project's own Muse-first publishing choice does not force
+Muse onto consumers. The preceding budget recommendation and budget-stop NEXT
+are superseded; earlier session records remain historical evidence.
+
+The roadmap, handover, scope decision, AGENTS, contributor guidance and README now
+state that contract. R1 local implementation is the next action, followed by R2
+mirror repair and R3 source reconciliation/integration validation. Milestones have
+acceptance criteria, not an arbitrary number of allowed sessions. Remote writes,
+consumer access and hook activation retain their existing authorization boundaries.
+This clarification changes seven documentation files and local NEXT; no production
+code, dependencies, runtime pin, original Muse state, consumer or release worktree
+is changed. R1 is authorized but not claimed implemented by this documentation action.
+
+Verification from clean starting HEAD `3665a89fd3541f6c6fe3f8002221a9795d387e5b`
+on `feat/overseer-v1-recovery`:
+
+```sh
+.venv/bin/python -m pytest -q -p no:cacheprovider --junitxml=../RECOVERY-RUNS/20261008-muse-restoration-audit/choice-clarification-supported.xml
+git diff --check
+```
+
+The full supported suite passed **77 tests, zero failures, errors or skips in
+44.24s**. The whitespace check passed. Existing audit findings remain open; this
+does not validate the unimplemented Muse backend or publication repairs.
+
+After committing the documents locally, publish the R1 handoff with the verified
+prior NEXT digest. Preserve exact writer/status/readback results in
+`../RECOVERY-RUNS/20261008-muse-restoration-audit/choice-clarification-closeout.json`.
+The temporary prompt input is removed after the write. Exact publication and
+ordinary user readback commands, run from the recovery root:
+
+```sh
+cli/ok -C . next-write \
+  --repo-id 6dba88a5-029c-4136-9277-c3a0c81f31a6 \
+  --branch feat/overseer-v1-recovery --lane product --model 'GPT-6 Astra' \
+  --action-id OVERSEER-V1-MUSE-RESTORATION-R1 --action-kind implement \
+  --expect-next 065550bc98e3c826f9fac3a60d12f027b63d5bd91a97b5e25c55c1d572c36571 \
+  --prompt-file .overseer/r1-prompt-input.txt
+./.overseer/bin/ok status
+./.overseer/bin/ok next
+```
+
+The two read commands remain the daily interface. `init` sets up one new checkout;
+`sync --dry-run`/`sync` explicitly refresh its runtime binding after an update;
+`next-write` is the agent/operator closeout command, not an automatic task chooser.
+An invalid or stale NEXT requires reconciliation and explicit publication rather
+than copying or manually editing generated binding fields. The configured model
+is a label; select GPT-6 Astra with Extra High reasoning in the agent interface for
+R1. Overseer does not select the running model or certify arbitrary task prose.

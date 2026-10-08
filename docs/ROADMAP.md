@@ -1,9 +1,18 @@
 # Overseer Kit v1 roadmap
 
-2026-10-08 — Muse restoration audit complete; intended v1 remains incomplete.
-The owner's [scope correction](decisions/V1-SCOPE-RESET.md) restores MuseHub
-authority and GitHub mirroring as requirements. OCI remains excluded. The
-Git-only release candidate is preserved locally and is on hold.
+2026-10-08 — Muse restoration audit complete; local restoration authorized with
+no session-count ceiling. Intended v1 remains incomplete. The owner's
+[scope clarification](decisions/V1-SCOPE-RESET.md) requires both operating choices:
+
+- **Git/GitHub only:** a fully supported ongoing mode with no Muse dependency,
+  account, network requirement for local handoffs, or forced migration.
+- **MuseHub with a GitHub mirror:** Muse history is authoritative for that project;
+  GitHub receives an explicitly verified distribution mirror.
+
+Mode selection is per repository. Both retain the same root/UUID/lane/NEXT
+protections; transitions must be explicit and preserve existing work. The kit
+project's own intended source of truth is MuseHub. OCI remains excluded. The
+existing Git-only release candidate is preserved locally and remains on hold.
 
 | Milestone | State |
 | --- | --- |
@@ -14,7 +23,7 @@ Git-only release candidate is preserved locally and is on hold.
 | Previously authorized DINERO manual pilot | Closed; 32 checks passed; no consumer access in this audit |
 | README/update reminders and local release preparation | Completed for Git scope; candidate held pending intended Muse scope |
 | Muse restoration audit and remote-base reconciliation | Complete; 841/841 Git main file bytes match staging MuseHub main |
-| R1: Muse-aware local status/NEXT and adoption | Planned; production implementation not authorized by this audit |
+| R1: Optional Muse-aware local status/NEXT and explicit adoption | Authorized and next; retain standalone Git-only operation without Muse installed |
 | R2: Controlled mirror with reliable retry and source correspondence | Planned; depends on R1 authority/exclusion policy |
 | R3: Isolated source reconciliation, integration review, combined installation/rollback | Planned; depends on R1/R2 |
 | Authorized Muse-first publication and bounded consumer validation | Later gate; no remote write or consumer activation authorized here |
@@ -26,7 +35,8 @@ local logs are retained in `../RECOVERY-RUNS/20261008-muse-restoration-audit/`.
 There were 40 diagnostic probes: 39 confirmed their named observations and one
 hypothesis was corrected. Some observations reproduce defects; this is not a count
 of passing product tests. The supported suite passed **77 tests, zero failures or
-skips in 41.80s**; the closeout result and hygiene checks are in validation.
+skips in 44.24s** after this scope clarification; the audit's earlier 41.80s run
+and the latest closeout checks are preserved in validation.
 
 Reuse the tested Git handoff core and native Muse import/export. Add a narrow Muse
 revision backend and repair the mirror boundary before use. The current runtime
@@ -42,15 +52,13 @@ with approved network access, correcting the earlier conclusion that sandbox
 authentication output established invalid credentials. Publication rights remain
 untested. No branch, tag, release, mirror or remote source change was published.
 
-Budget: four sessions were explicitly numbered. README maintenance, release
-preparation and this audit were additional substantial work. Conservatively plan
-with seven used, while recognizing that exact historical session boundaries were
-not recorded. R1–R3 need an estimated three further sessions, with a fourth
-contingency. This does not fit the original eight-session ceiling on that count.
-The next decision is a bounded budget extension: three additional restoration
-sessions, with a checkpoint before a fourth or any remote publication. R1 follows
-that decision. Only canonical `docs/NEXT.md`, published by `next-write`, carries
-the executable next prompt; this summary is not a competing task queue.
+The owner removed the session cap. Earlier counts and estimates remain historical
+evidence, not a stopping rule. Proceed through R1–R3 with meaningful acceptance
+checks and report newly discovered work honestly; no session-extension approval
+is needed. The old budget decision is resolved. The next action is R1 local
+implementation, followed by mirror repair and combined validation. Only canonical
+`docs/NEXT.md`, published by `next-write`, carries the executable next prompt;
+this summary is not a competing task queue.
 
 Keep the release worktree, original history and existing consumer installations
 intact. Do not rerun closed Git review/install/pilot work against unchanged code.

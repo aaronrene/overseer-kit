@@ -5,8 +5,10 @@ handoff inside each Git repository. It helps prevent an agent or operator from u
 a prompt from the wrong project, branch, lane, or point in history.
 
 The Git-based handoff core is locally validated, but intended v1 is incomplete.
-The owner requires MuseHub as the source of truth with GitHub mirroring; restoration
-has been audited and is not implemented yet. The source version `1.0.0` is an
+The intended product lets each repository choose Git/GitHub only or MuseHub as its
+source of truth with a GitHub mirror. Git-only is a permanent supported choice:
+no Muse installation, account, or migration is required. Muse restoration has been
+audited and is not implemented yet. The source version `1.0.0` is an
 unpublished candidate, and its Git-only release is on hold. The behavior described
 below is the current implementation, not the completed Muse-first product. See the
 [scope decision](docs/decisions/V1-SCOPE-RESET.md) and the complete
