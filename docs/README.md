@@ -9,6 +9,7 @@ daily use, handoff publication, update notifications, and current limitations.
 | --- | --- |
 | [Scope reset](decisions/V1-SCOPE-RESET.md) | Authoritative bounded-v1 product scope |
 | [Validation](validation/V1-RECOVERY.md) | Reviews, test results, installation/rollback, and consumer pilot evidence |
+| [Muse restoration audit](validation/V1-RECOVERY.md#musehub-restoration-audit--2026-10-08) | Corrected Muse-first scope, reproduced gaps, architecture, and restoration plan |
 | [Canonical NEXT format](PRINT-NEXT.md) | How v1 reads and publishes the sole handoff |
 | [Roadmap](ROADMAP.md) | Current milestone summary; never a prompt source |
 | [Handover](OVERSEER-HANDOVER.md) | Current evidence summary; never a prompt source |
@@ -17,7 +18,7 @@ daily use, handoff publication, update notifications, and current limitations.
 ## Historical material
 
 The October 2026 scope reset superseded the former hosted/desktop product,
-multi-repository orchestration, Muse regimes, freeze/ledger gates, governance-sync,
+multi-repository orchestration, freeze/ledger gates, governance-sync,
 publishing commands, OCI/registry design, and automatic recovery machinery.
 
 Older specifications, runbooks, landing pages, templates, skills, policies, tools,
@@ -26,3 +27,8 @@ Unless a current document above explicitly incorporates them, they do not descri
 the v1 command surface and should not be followed as installation or operating
 instructions. `cli/legacy_main.py` preserves the former CLI source; `cli/main.py`
 exposes only bounded v1.
+
+The owner corrected the mistaken exclusion of MuseHub authority and GitHub
+mirroring. These are intended-v1 requirements awaiting restoration, not discarded
+features. The historical bridge has known audit findings; its runbook is evidence,
+not a currently approved publication procedure.

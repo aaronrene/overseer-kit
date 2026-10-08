@@ -1,5 +1,11 @@
 # Overseer Kit — bounded v1 agent instructions
 
+Owner correction, 2026-10-08: OCI is excluded; MuseHub-first authority and the
+Muse-to-GitHub mirror are required for intended v1. The Git-based candidate is
+incomplete for that scope. Read the restoration audit in
+`docs/validation/V1-RECOVERY.md` before implementation or publication. Audit work
+does not authorize production restoration or any remote write.
+
 The owner's recovery request and `docs/decisions/V1-SCOPE-RESET.md` supersede the
 former v1 security prerequisites, old NEXT, and per-step freeze/approval chains.
 Read that decision, ROADMAP, HANDOVER, and canonical `docs/NEXT.md`.
@@ -23,9 +29,10 @@ source. Do not revive OCI/native GSR/sole-writer machinery or new packet chains.
 Use feature branches and review changes before merging. A feature-branch push and
 pull request may be used when the owner authorizes publication; never push directly
 to `main`, publish a release, deploy, initialize another consumer, or activate hooks
-without explicit authority. Muse is historical evidence only; do not mutate its
-refs or export onto a dev tree. Bounded-v1 architecture/build review, clean
-installation/rollback, and the authorized DINERO pilot are recorded in
+without explicit authority. Preserve original Muse refs and never export onto a
+development tree. Restore Muse integration under the corrected scope; do not treat
+the old bridge as validated for the new runtime. Bounded-v1 architecture/build
+review, clean installation/rollback, and the authorized DINERO pilot are recorded in
 `docs/validation/V1-RECOVERY.md`. Do not repeat closed milestones against unchanged
 code or revive the superseded machinery.
 

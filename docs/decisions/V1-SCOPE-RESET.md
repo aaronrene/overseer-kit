@@ -1,5 +1,30 @@
 # Bounded v1 scope reset — 2026-10-08
 
+## Owner correction and current authority — 2026-10-08
+
+The owner explicitly clarified that the reset was meant to remove OCI complexity,
+not MuseHub authority or Muse-to-GitHub mirroring. The earlier interpretation
+excluded more than the owner intended. That exclusion and the resulting Git-only
+completion/publication recommendation are superseded. The original record below
+is retained to explain what was implemented and tested; it is not evidence that
+the owner consented to excluding Muse.
+
+Intended v1 retains the repository/UUID/lane/NEXT protections and requires MuseHub
+as the shared source of truth plus controlled GitHub mirroring. Git-only adoption
+remains useful. Native Muse authority must drive freshness for Muse-managed work;
+adding a mirror script alone is insufficient. OCI, discarded storage/security
+machinery, and packet chains remain excluded. Other old features are dispositioned
+individually in the [restoration audit](../validation/V1-RECOVERY.md#musehub-restoration-audit--2026-10-08),
+not automatically reinstated.
+
+The current action authorized audit, fixtures, documentation, read-only remote
+inspection, and next-write. It did not authorize production implementation,
+publication, original Muse ref mutation, consumer access, or hook activation.
+The preserved release branch is on hold. The audit supplies the restoration
+milestones and explicitly reconciles the original session cap.
+
+## Original implementation decision — historical record
+
 The owner's October 6 recovery handover and October 8 implementation request
 supersede the old NEXT, freeze chains, and security prerequisites. This is session
 1 of a five-to-eight-session attempt. By session 2, status and NEXT must work

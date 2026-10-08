@@ -1,5 +1,11 @@
 # V1 recovery milestone — verification, 2026-10-08
 
+**Current disposition after owner correction: intended MuseHub-first v1 is
+incomplete; the Git-only release is on hold.** The earlier Git-based validation
+remains valid within its tested scope. The [restoration audit below](#musehub-restoration-audit--2026-10-08)
+supersedes the prior publication recommendation and records actual Muse evidence.
+Earlier milestone text is preserved as history, not a present release claim.
+
 **Result: bounded v1 local validation is complete and 1.0.0 release preparation is
 in progress.** The explicitly authorized
 DINERO manual pilot passed in session 4; clean installation/rollback, architecture
@@ -653,3 +659,431 @@ release, and `main` remain remote-unchanged. Publication now requires the owner 
 explicitly approve pushing this complete 74-file release diff to
 `https://github.com/aaronrene/overseer-kit.git` as branch
 `release/overseer-v1.0.0`.
+
+## MuseHub restoration audit — 2026-10-08
+
+### Verdict and scope correction
+
+MuseHub and Overseer can work together. The reset excluded more than the owner
+intended: Muse authority and GitHub mirroring were deferred along with OCI. The
+owner has explicitly corrected that interpretation. This audit restores the
+intended requirements, not the production integration. No runtime, adapter,
+bridge script, dependency, or permanent test was changed in this action.
+
+The Git handoff core remains reusable. Real fixture runs of Muse 0.2.1rc5 proved
+Git import, incremental import, snapshot export, symbol extraction, and caller
+impact analysis. The retained deploy script and adapters need bounded repairs;
+they must not simply be switched back on. The minimum complete product needs a
+Muse-aware revision backend, safe local handoff policy, and a controlled mirror
+procedure with truthful publication status. No evidence requires OCI, a daemon,
+or automatic two-way history synchronization.
+
+The strongest reconciliation result is **841/841 Git main files byte-identical
+to staging MuseHub main**. Five additional Muse paths are the already-explained
+bridge sentinel and four generated Tauri schemas. No other path/content difference
+was found. The recovery has a verified common base; its new Git commits still
+need to be carried forward into authoritative Muse history under a later action.
+
+### Identity, preservation, and evidence classes
+
+Recovery cwd/root: `overseer-kit-v1-recovery`, branch `feat/overseer-v1-recovery`,
+starting HEAD `3b8d7b4bc73830ff447b847d8d8dfef18f301502`; name `overseer-kit`, UUID
+`6dba88a5-029c-4136-9277-c3a0c81f31a6`. It started clean. The clean release worktree
+is preserved at `06f988e5a078ede81c9dc664520833980a9a19a3` on
+`release/overseer-v1.0.0` and was not modified. Original development Git edits,
+Muse HEAD/refs/config/repo identity/bridge records were inventoried and compared;
+no original ref or worktree edit was changed. Recovery snapshots remain intact.
+DINERO and other consumers were not accessed. No automatic hooks were activated.
+
+Evidence labels below: **R** = reproduced in disposable fixtures with the installed
+CLI; **O** = observed in source, configuration, or read-only remote response;
+**I** = architectural inference/recommendation; **U** = not established.
+Script path-guard/publication-order probes used recording stand-ins, not real
+GitHub/MuseHub writes. Real exports used `--no-push`, except a failure/retry probe
+whose only destination was a nonexistent local path. No remote publication occurred.
+
+Evidence is retained locally in `../RECOVERY-RUNS/20261008-muse-restoration-audit/`:
+`audit.py`, `followup.py`, command/result JSON files, original before/after
+inventories, and `compare_remote.py` with `remote-comparison-corrected.json`.
+`fixture-root.txt` identifies retained disposable fixtures. These are ordinary
+audit logs, not a product packet system. An exploratory comparison mistakenly
+compared Muse object IDs to raw file hashes; its `remote-comparison.json` is
+superseded. The corrected comparison reads actual Muse object bytes and compares
+them to `git show` bytes. It found no missing objects among the compared files.
+
+### Actual infrastructure and remote state
+
+| Component | Observed state and meaning |
+| --- | --- |
+| Local Muse | Installed `muse 0.2.1rc5`, its own existing Python environment; package requires Python >=3.14. The kit's separate `.venv` uses Python 3.14.4. |
+| Preserved local Muse main | `sha256:80c922b95203a49a07d1706db41ac051a91414bff298d83739df87028610cec1`; 826-path snapshot. It is not current staging main. |
+| Preserved local AFF | `sha256:8461d44b77376fbf06fa7c3e085d309e3010fd8d5886d63c63e69ce118811ad4`; 846 paths. |
+| Staging MuseHub | Configured hub `https://staging.musehub.ai`, repo `aaronrene/overseer-kit`; read-only listing succeeds. Repo ID `sha256:f5863e477e2f2caf510df731720976d3d91fdd821fd5657ec8da6b57c89a3bea`. |
+| Staging main and AFF branch | Both point to `sha256:208d9dc47f0c6d8553ee80aafc8f0993a6ebf0a88410746f47f58b4e7c6fd6a6`. Its parent is the preserved local AFF tip; its six file changes are the recorded Muse branch-status compatibility fix and five tests. |
+| GitHub main | `d47291d5d9030de5ebef713da95efa978c4d8c6e`; all 841 tracked files match staging main bytes. Repository is public. |
+| GitHub muse-mirror | `3e21496f7c4eab64b6d9ab3f868c5cdcaf8cfcde`; listing proves existence, not current content parity or readiness to overwrite it. |
+| GitHub candidate/tag | Neither `refs/heads/release/overseer-v1.0.0` nor `refs/tags/v1.0.0` was returned. Git-only candidate remains local. |
+| Production MuseHub | A configured alternative URL exists, but CLI inspection refuses a stored hub-fingerprint mismatch. No trust reset, production access workaround, or authoritative-host switch was attempted. |
+| Old local remote | `https://localhost:1337/aaronrene/overseer-kit` remains configured; not tested or selected. |
+| Last local bridge export | September 20 record references Muse `sha256:56f82a98997e8bfc722fc6d971506a57f5e063d1f8bd5c9e16ae858185eb8cad` and Git `e74d95c4862d7ca863c9ecf9075ddf1bbf48b376`, branch `feat/overseer-context-isolation`. It does not describe current staging main or the recovery. |
+
+The runbook describes local Muse feature commits, merge to Muse main, `muse push
+staging`, then isolated `.muse/mirror` export, push `muse-mirror`, and PR to GitHub
+main. The script is manually invoked. The native exporter pushes by default;
+it also offers an opt-in watch mode, which the kit script does not use. There is
+no evidence of an active automatic service here. GitHub returned zero Actions
+workflows and zero repository webhooks; `main` reports `protected: false`.
+External account/org automation and MuseHub webhooks were not exhaustively audited.
+
+Reverse import exists in Muse and in the legacy `realign` method. Its presence
+does not establish safe automatic bidirectional synchronization. `realign` counts
+against `origin/main` but imports the local Git branch from `.`; it also uses
+different working-root conventions than bridge-record lookup. It cannot be reused
+unchanged as a reliable upstream reconciliation operation.
+
+Native export creates a Git commit for the selected Muse snapshot when its content
+changes. It does not reproduce the complete Muse branch/merge graph in Git. The
+proposed single source/target branch pair preserves authoritative history in Muse
+and supplies an explicitly mapped distribution snapshot in Git. Multiple source
+branches, tags and merge-topology round trips were not validated and are not implied
+by a successful file comparison. Installed implementation references below are
+`muse/core/bridge/{exporter,importer,state,hooks}.py` in Muse's own environment.
+
+An initial shallow staging clone returned retryable `fetch_failed` while the
+server prepared its archive. One bounded retry succeeded into a separate disposable
+directory with `--no-checkout`. Despite `--depth 1`, it delivered 128 commits,
+127 snapshots and 801 blobs, about 22.06 MB, and reported no shallow boundaries.
+Depth must not be treated as a verified bandwidth/storage cap for this server.
+No application files or hooks from that clone were executed.
+
+Earlier sandbox DNS failures and `gh auth status` output did not establish an
+invalid credential. With approved network access, `gh repo view` and read-only API
+requests succeeded. Write permissions and authentication for publication were not
+tested. Production Muse's fingerprint refusal is a distinct trust problem; its
+cause (legitimate rotation or otherwise) remains unknown.
+
+### Current and proposed architecture
+
+Current candidate, with disconnected publication histories:
+
+```mermaid
+flowchart LR
+  OLD["Preserved local Muse history"] -. "retained bridge; not run" .-> MIR["Isolated Git mirror"]
+  HUB["Staging MuseHub main: authoritative historical base"] -. "841 shared files match" .-> GH["GitHub main: pre-recovery base"]
+  OLD -. "local main is older" .-> HUB
+  REC["New recovery: local Git commits"] --> OK["Overseer v1: Git branch/HEAD checks"]
+  OK --> NEXT["Local bound NEXT"]
+  REC --> CAND["Local release squash: publication held"]
+  MIR -. "historical publish path" .-> GH
+```
+
+Recommended restored architecture (a design, not implemented):
+
+```mermaid
+flowchart LR
+  ADOPT["Existing Git project"] -->|"explicit one-time import"| LOCAL["Local Muse feature checkout"]
+  LOCAL -->|"explicit push and reviewed proposal"| HUB["MuseHub: accepted authoritative main"]
+  HUB -->|"explicit fetch of approved revision"| SNAP["Pinned Muse revision for export"]
+  SNAP -->|"prepare locally; verify files and modes"| MIR["Dedicated clean Git mirror"]
+  MIR -->|"explicit push after checks"| BR["GitHub muse-mirror"]
+  BR -->|"reviewed PR with source revision"| GH["GitHub main: distribution mirror"]
+  LOCAL -->|"Muse branch/revision backend"| OK["Overseer status and NEXT writer"]
+  GIT["Git-only adopter"] -->|"Git backend"| OK
+  OK --> NEXT["One canonical NEXT per local checkout/lane"]
+  LOCAL -->|"optional read-only code analysis"| REVIEW["Symbols, callers, review context"]
+```
+
+MuseHub main defines shared accepted state; a local Muse feature commit is local
+work until successfully published/reviewed. A Git mirror commit is a distribution
+representation, not a competing source of truth. GitHub-only edits require explicit
+review/import into a Muse feature branch before they become authoritative; never
+silently import mirror-generated commits or force one system over the other.
+
+### Findings and corrections
+
+P1 means a blocker for the intended Muse-first release; P2 means an important
+compatibility/operational correction. These are not a claim of a hostile-host
+security review. No unchanged closed Git-core review was repeated.
+
+| ID / priority | Evidence and affected surface | Impact | Correction and acceptance check |
+| --- | --- | --- | --- |
+| M01 / P1 | R: `cli/v1.py:root_for`, `branch`, `head`, `config_for`, `initialize`, `validate_next` require Git and `vcs: git`; Muse-only root and mirror regime refused. | Intended authority cannot participate in status/NEXT. | Add a narrow Muse read backend and explicit schema migration; same isolation tests must pass for Git, Muse-only checkout, and Muse with separate Git mirror. |
+| M02 / P1 | R: Muse commit and mirror lag leave Git NEXT valid; later Git commit invalidates it. `cli/v1.py:203`. | Correct Git behavior is insufficient for Muse-managed freshness. | Tag the revision kind and bind branch/head to the selected authority. Refuse wrong source kind or old authoritative revision; keep offline local operation possible. |
+| M03 / P1 | R with stand-ins: script accepts `MUSE_BRIDGE_MIRROR_DIR=.` and `.muse/..`; `_resolve_abs` compares textual paths. `scripts/muse-bridge-deploy.sh:13–37` and template. | A directory alias can defeat the development-root guard. | Resolve physical paths, refuse symlinks/overlapping roots, require a dedicated clean target with expected identity and destination before any write. Test dot, parent, absolute, symlink, sibling and linked-worktree cases. |
+| M04 / P1 | O/R: script has no `--muse-ref`; installed exporter defaults to HEAD. Script and adapter publish semantics do not prove Hub state. | Could publish a feature/local-only snapshot while claiming canonical main. | Resolve and pin the approved MuseHub main revision, verify local availability and equality, export that immutable ID. Test wrong branch, moving source, unpushed revision, and unknown remote state. |
+| M05 / P1 | O/R: export call omits `--no-push`; native push occurs before script sentinel checks. `exporter.py:581`, script `:67–89`. | Validation can run after publication. | Split prepare/check/publish, no implicit network write during prepare, preserve exact expected target head. Test refused checks produce zero remote mutations. |
+| M06 / P1 | R: a failed export push to a nonexistent local remote is followed by a successful no-change retry with `pushed: false`; script pushes explicitly only if the branch is absent. | Existing remote branch can remain behind while wrapper exits successfully. | Independently compare local and remote head and retry the pending push; report commit/export/push/PR stages separately. Test interruption before/after commit/push and existing branch. |
+| M07 / P1 | R: unrelated dirty target file enters export commit through native `git add -A`; never-owned Git file survives source snapshot export. `exporter.py:209,329`. | The mirror can contain unrelated content or stale historical files. | Refuse dirty/foreign targets; verify exact projected snapshot. Review legacy extra-file deletions explicitly in isolated migration; do not sweep development or unknown files. |
+| M08 / P1 | R: a repeated unchanged export writes `last_export.git_sha = ""`. `exporter.py:588–598`; native state is single-target and process-local locking only. | Existing mapping is insufficient as sole publication/freshness proof. | Retain/derive the current Git head only after matching source/tree, verify destination and remote separately; serialize one configured mirror. Use existing record and a source-ID commit trailer, not a new ledger. |
+| M09 / P1 | R: existing `.museignore` allows `docs/NEXT.md`; exported bytes contain physical fixture root/UUID. Git ignores do not establish Muse policy. | Private/local binding reaches distribution and cannot be valid in a different checkout. | Explicit exclusion in Muse snapshot and export plus Git policy. Rebuild local NEXT only through next-write; test existing tracked files and source templates, not only ignore strings. |
+| M10 / P2 | R: non-shebang executable loses executable bit; shebang script retains it. Native export infers 0644/0755. | Arbitrary executable metadata is not preserved. | Define supported mode/symlink policy, verify the kit's executable allowlist and bytes; refuse or explicitly handle unsupported assets. No broad exact-mode claim. |
+| M11 / P2 | R: nonexistent `--muse-ref` with `--dry-run` exits 0. Native exporter returns before source resolution. | Native dry-run is not a validated publish plan. | Wrapper resolves source/target/tree and reports real delta before approval; test missing source and missing objects. |
+| M12 / P1 | O: local main differs from staging; recorded bridge anchors another feature. Snapshot comparison now proves staging/Git base parity. | Starting from stale local main or latest dirty original HEAD can lose or mix work. | Prepare new isolated Muse restoration branch from staging `208d…`; apply only reviewed recovery diff, preserving all original branches and snapshots. |
+| M13 / P2 | O/R: `tools/muse_sync/check.py:36` reports `synced` when both working trees are dirty; it never checks Hub or mirror remote. Adapter fallback can return Git ID in a Muse anchor slot. | “Synced” is easy to mistake for remote publication proof; identifier spaces mix. | Separate local dirty state, local revision, Hub observation, export mapping and GitHub delivery. Unknown stays unknown; no cross-VCS ID equality. |
+| M14 / P2 | R with stand-ins: `gh` commands use invocation cwd; PR errors are suppressed with `|| true`. Script `:102–114`. | Wrong repository context or failed PR can be hidden by exit 0. | Pin repository explicitly, surface authentication/network/PR failure distinctly and preserve successful earlier stages for retry. |
+| M15 / P2 | O: installed Muse requires Python >=3.14; kit advertises >=3.11. Root discovery in legacy adapters/bridge records differs for `working_dir` and worktrees. | Installing the combined tool or using a linked Muse worktree may fail unexpectedly. | Keep Muse's own environment, pin/test CLI contract, document combined platform floor; explicit physical Muse root/worktree resolution. Test linked Muse worktrees, not just Git ones. |
+| M16 / release blocker for production host | O: production CLI refuses hub fingerprint mismatch; staging read succeeds. U: cause and production repo state. | Production cannot be called verified or selected silently. | Stay on configured staging for local restoration. Before any production switch, verify fingerprint independently with operator/service evidence; never reset trust just to pass. |
+| M17 / P2 | O: no active GitHub workflows/webhooks; main unprotected. Templates invoke removed `governance-sync`, `land-closeout`, `review` or old desktop publishing. | Old templates are incompatible; no CI gate is currently enforcing new tests. | Add minimal supported Git+Muse fixture CI when implementation changes, verify checkout dotfile inclusion, retire confusing template guidance. Branch protection is a separate authorized setting change. |
+| M18 / P1 | O: native exporter loads `.muse/bridge-hooks.toml` and runs pre/post hooks even with `--no-push`; its Git commit inherits Git hook configuration. `exporter.py:561–578`, `hooks.py`. | `--no-push` alone does not establish a side-effect-free preparation step or enforce the no-hooks requirement. | Use an isolated preparation context with no inherited bridge hooks and disabled Git hooks; detect configured hooks and report them without executing or deleting them. Add fixture markers proving neither hook family runs during prepare. |
+
+Reran no historical mega-suite to make these findings disappear. Old K7 tests use
+recorded runners and explicitly do not execute real export; their names do not
+prove current bridge lifecycle correctness. The old `realign`, shell-based runner,
+config loader, footprint installer and governance rewrite engine are references,
+not wholesale dependencies to reintroduce into the new trusted core.
+
+### Minimal authority, identity, and handoff contract
+
+1. Retain the checkout UUID and physical path for local execution. Store the Muse
+   repository identity separately for authoritative-source selection; a clone of
+   the same Muse history gets its own local Overseer identity. Do not conflate
+   host identity, logical project identity, and checkout identity.
+2. Use explicit `git` or `muse` revision kinds. For Muse-managed work, branch and
+   base revision come from that physical Muse checkout; Git metadata nearby must
+   not silently take precedence. The Git mirror can be separate, so developer
+   work does not require maintaining two writable histories in one directory.
+3. Keep `status` and `next` local/read-only. Show “not checked/offline” for remote
+   publication unless an explicit bounded check was requested. Local unpushed
+   work can have a valid local NEXT; publication actions additionally require a
+   fresh check of the approved Hub revision and expected mirror head.
+4. Keep exactly one runnable `docs/NEXT.md` per initialized checkout/lane. Ignore
+   local config, launcher, NEXT and editor hooks in both VCS systems and in export.
+   Consumer init currently does not install this ignore policy; add a reviewed,
+   additive migration that preserves existing ignore rules and reports already
+   tracked local files. No automatic untracking or silent config conversion.
+5. Version ROADMAP/HANDOVER as explanatory summaries. A task handed to another
+   machine may use reviewed prose from a proposal or explicit supplied input;
+   `next-write` binds it to that machine's current UUID/root/branch/revision and
+   expected prior digest. Never execute imported NEXT as-is or regenerate a task
+   heuristically from history. Portable task export/import is optional, not a
+   second canonical prompt source required for restoration.
+6. When NEXT is ignored, publish it after the local commit. The current exception
+   for the one Git commit containing exact NEXT bytes does not apply to ignored
+   NEXT. Define the equivalent explicit lifecycle for Muse rather than introducing
+   commit/NEXT self-reference or an auto-commit loop.
+7. Preserve explicit lane/model expectations. One lane per checkout is supported;
+   multiple simultaneous lanes use separate initialized worktrees. A model label
+   is a declaration, not proof of which model is running. Prose task correctness
+   and completion still require operator/agent judgment.
+8. A single source branch/target mirror pair is the first supported publication
+   contract. Record both revision IDs, source branch, destination and observed
+   state; restrict reuse of the native single-target bridge file. Use normal
+   process locking and head comparisons for concurrent operators, not a daemon
+   or packet/transaction framework. Recheck before publish and use ordinary
+   non-force pushes. Remote drift stops publication for explicit reconciliation.
+
+### Feature disposition and adoption
+
+| Capability | Disposition | Work/cost and boundary |
+| --- | --- | --- |
+| UUID/root isolation, canonical NEXT, CAS writer, runtime pin | Retain | Existing tested core; extend revision backend without replacing confinement. |
+| Git-only onboarding | Retain | Useful transition entry point; no Muse required until explicitly selected. |
+| Muse authority and MuseHub publication | Restore now | Essential; backend, explicit migration, source reconciliation and current API checks. |
+| Muse-only developer checkout with separate Git mirror | Restore essential read support | Same Muse backend; do not require dummy Git history. Full unrelated Muse command wrappers are unnecessary. |
+| GitHub mirror and reviewed PR path | Restore/improve now | Dedicated target, immutable source, exclusions, exact manifest/modes, retry and visible stage status. |
+| Reverse Git import | Keep explicit adoption/reconciliation | Real import tested; automatic two-way sync deferred to avoid import/export loops. Review external changes in Muse before mirroring. |
+| Muse code intelligence | Improve as optional read-only assistance | Symbols and caller impact verified; pin revision/version, provide advisory context, never infer test pass or task completion. |
+| Local NEXT portability | Improve policy now | Never mirror machine-bound NEXT; explicit re-publication on destination. Automatic rebind/portable-task product feature can wait. |
+| Automatic editor hooks | Optional, off | Existing fixture coverage is not consumer authorization or Muse IDE-session validation. |
+| Multi-lane work | Retain isolation with separate checkouts | Same-checkout multi-lane orchestration remains deferred; do not reactivate old workspace prompt extraction. |
+| Regime upgrade commands | Replace only necessary transition | Reuse preservation ideas; old ceremony targets legacy config/footprint and assumes old CLI. |
+| Update reminders | Retain simple release watching | GitHub Release follows verified mirrored source and matching version; it does not update consumers automatically. MuseHub release listing exists but cross-platform subscription behavior not validated. |
+| Review/model routing/check-ok/checkpoints/cost tools | Optional/deferred individually | Helpful historic tools, not essential authority/mirror dependencies. Keep manual meaningful review; no blanket freeze chain reinstatement. |
+| Desktop/hosted dashboard/deploy-health/publishing helpers | Deferred | Large unsupported surfaces. Hosted Muse adapter fetched files, not semantic code context; not required for this CLI. |
+| Automatic governance rewrites/old NEXT inference | Do not restore | Conflicts with explicit next-write and dependable context selection. |
+| OCI/registry/receipts/generations/native GSR/sole-writer/packet chains | Intentionally removed | Owner's complexity reduction stands. No substitute implementation. |
+
+Fresh combined setup should validate the kit venv plus the separate pinned Muse
+CLI/environment. Git-only Python support and Muse's >=3.14 requirement must be
+described separately. Adoption should import a reviewed committed Git baseline
+into an isolated Muse repository, compare contents and exclusions, connect the
+explicit Hub destination, and bind only after the transition is understood.
+Dirty or untracked application changes must be inventoried/preserved, not swept
+into import or mirror. Existing old config is a migration input, not directly
+accepted by the new strict schema.
+
+Daily use remains local status/NEXT, deliberate commits and next-write. Mirror
+publication is an explicit operation at a reviewed boundary. Offline coding is
+allowed; offline publication is pending, never “synced.” An interrupted run keeps
+its completed local work and retries only missing verified stages. Source update
+and per-consumer sync preserve UUID/documents; schema or backend transitions need
+their own dry-run and rollback coverage. Relocating an installation or copying a
+checkout remains unsupported without explicit validated rebinding. No consumer
+rollout should occur merely because this audit or the old Git suite is green.
+
+### Code-understanding value: verified versus proposed
+
+The installed CLI exposes semantic analysis. On a tiny Python fixture,
+`muse code symbols --file maths.py --json` returned the expected functions and
+`muse code impact maths.py::add --json` identified its caller. Imported Git history
+also yielded the expected function symbol. This proves useful local code-domain
+capability; it does not prove arbitrary-project analysis quality or hosted indexing
+freshness. Inspection found legacy adapters using Muse status/commit/bridge commands,
+and a hosted adapter reading file content; no wiring of these semantic-analysis
+commands into the old Overseer handoff path was found in `adapters`, `cli`, or `tools`.
+
+The official [code-intelligence documentation](https://musehub.ai/muse/intelligence)
+describes additional graph/history queries. Recommend optional revision-labelled
+symbol/caller context for reviews and change summaries. Treat outputs as advisory;
+run actual tests and retain normal code review. Further commands, hosted semantic
+indexes, MCP availability, permissions and freshness need separate verification
+before promising integration. No automatic semantic result should choose NEXT.
+
+Official [getting-started documentation](https://musehub.ai/muse/getting-started)
+describes explicit import/export and existing bridge state. The installed source
+was the authority for reproduced behavior where documentation was insufficient.
+The [API reference](https://musehub.ai/muse/api) describes proposals and releases;
+publication permissions and workflows were not exercised. Public documentation's
+HTTP examples were not used to send credentials; actual inspected remotes use HTTPS.
+
+### Ordered restoration plan and acceptance
+
+The following is proposed work, not implementation authorization from this audit.
+
+| Milestone | Work and likely files | Reuse, dependencies, acceptance |
+| --- | --- | --- |
+| R1: Muse-aware local handoffs and adoption contract | Narrow backend beside `cli/v1.py`; schema/root/branch/head/dirty selection; runtime manifest; `.museignore`, Git ignores and migration design; new supported tests. | Reuse `v1_io`, writer/context checks and tested CLI. Reference adapter read methods, not old write engine. Gate: Muse-only and mixed roots, explicit backend selection, two-repo/lane isolation, stale Muse revision, linked Muse/Git worktrees, offline status, explicit old-config migration and rollback all pass; existing 77 remain green. |
+| R2: Controlled mirror preparation/publication | Replace unsafe behavior in `scripts/muse-bridge-deploy.sh` and template with a small tested wrapper/engine; update runbook. | Reuse native import/export with `--no-push` and existing correspondence; R1 supplies authority/exclusions. Gate: pinned Hub/source and Git destination, exact export projection, mode policy, clean target, path aliases, stale remote, missing objects, no-change mapping, failed-push retry, explicit PR repo and no false success. Real local fixtures; remote writes still separate. |
+| R3: Source reconciliation, independent integration review, installation and release readiness | Isolated Muse branch based on verified staging `208d…`; reviewed delta from `d472…` to corrected recovery; documentation, supported CI, dependency/version notes. | Preserve original refs and candidate. Independently review changed integration once, not the closed unchanged core. Test fresh combined installation, config migration, previous/current rollback and no-hooks manual lifecycle in fixtures. Gate: source-tree agreement plus all R1/R2 findings closed. |
+| R4 if needed: authorized publication and a bounded consumer check | Explicit named Hub/Git destination and payload; Muse review/acceptance, mirror, PR, merged snapshot verification, coordinated tag/release and opt-in notification. | R3 green is prerequisite. No direct-main push or force-push. Production trust verification needed only if selecting production. Consumer and remote mutation scope must be explicit; audit grants none. Keep DINERO untouched unless later authorized. |
+
+Source restoration must use the verified remote base rather than copy the dirty
+original tree. The Git recovery diff is an implementation input; no Git-to-Muse
+operation against the real project ran here. A later action should prepare a new
+isolated branch, compare every intended change and excluded path, then review it
+before any authoritative merge. No history rewriting or original-ref reset is
+required by this plan.
+
+Rollback preserves the old kit source, exact consumer config/documents and original
+Muse refs. Before a release, abandon only the disposable candidate on failure.
+After a publication, correct shared history with a reviewed forward change; do
+not force-reset Hub/Git branches to hide partial publication. Local runtime rollback
+must refuse an incompatible new config until an explicit tested reverse migration
+or preserved config restoration is chosen.
+
+### Test matrix and remaining unknowns
+
+| Area | Required verification beyond this audit |
+| --- | --- |
+| Git regression | All supported tests, same-root/root selection, CAS races, confinement, environment poisoning and runtime-change refusal. |
+| Muse backend | Branch/head/status schema on pinned CLI; unborn/detached roots; linked `.muse` pointers; copied logical identity with new checkout identity; malformed and timed-out output; wrong lane/model/source kind; Muse commit invalidates NEXT. |
+| Handoff lifecycle | Ignored NEXT written after commit, portable prose requires new binding, existing tracked local assets detected, rejected writes leave all documents unchanged. |
+| Mirror | Fresh and reused target; file addition/change/deletion, stale Git-only paths, binary data, executable modes and symlink policy; non-main source; Hub/local mismatch; destination URLs and branch context; protected/foreign paths. |
+| Failure/retry/concurrency | Before/after local export commit, missing objects, bridge-record failure, failed push with existing branch, lost response after successful push, PR failure, same-source concurrent operators, remote head changes and no forced overwrite. |
+| Hook policy | Explicit no-hook preparation across Muse bridge hooks and inherited Git hooks; preserve configured hooks without activating them. No editor/consumer hooks enabled by migration. |
+| Adoption/installation | Git import with exclusions and incremental no-op; old config migration; independent kit/Muse venvs; source/runtime pin change; current/previous backend+schema rollback. |
+| Operational release | Read-only remote observations versus verified writes, staging authority, separate production trust decision, mirror tree and release source identity, CI and release notifications. |
+
+Unvalidated: production Hub trust/state; publication credentials/rights; actual
+remote write lifecycle; native exporter missing-object/failure atomicity; full
+mode/symlink fidelity; linked Muse worktree isolation; cross-platform behavior;
+all semantic analysis commands and hosted-index freshness. These are not passes.
+The supported Git suite does not cover them.
+
+### Session cap and next decision
+
+Four recovery sessions were explicitly numbered in the existing record. README
+maintenance and release preparation were substantial later work but not numbered.
+This audit is another substantial work session. For planning, conservatively count
+**seven used** (four recorded + two unnumbered work units + this audit), rather
+than silently treating all later work as free. That is a planning convention, not
+a claim that conversation/tool boundaries prove exact historical session counts.
+
+There is at most one session left under the eight-session ceiling on that count.
+Estimate **three additional implementation/validation sessions, with a fourth
+contingency for remote publication or upstream compatibility**, totaling 10–11
+on this conservative count. Even counting this as only numbered session five,
+the upper estimate exceeds eight. Completion cannot honestly be promised inside
+the old cap. The owner must approve a revised bounded budget or deliberately
+choose a smaller delivery scope before production implementation begins.
+
+Recommend authorizing R1–R3 as three additional sessions, with a checkpoint before
+any fourth session or remote publication. No new infrastructure architecture is
+needed just to spend those sessions. The first implementation action after that
+decision is R1, Muse-aware local status/NEXT. Staging remains the verified current
+Hub; a production switch and trust reset are separate later decisions.
+
+### Audit commands and results
+
+All commands below ran from the recovery worktree unless a fixture cwd is encoded
+in the retained command log. `$EVIDENCE` below denotes the sibling local audit-log
+directory, not a product environment variable or service. Public path examples
+use `/Users/operator`; local evidence retains exact expanded argv/cwd.
+
+```sh
+muse --version
+muse bridge git-export --help
+muse bridge git-import --help
+muse code --help
+muse ls-remote https://staging.musehub.ai/aaronrene/overseer-kit --json
+muse ls-remote https://musehub.ai/aaronrene/overseer-kit --json
+git ls-remote origin refs/heads/main refs/heads/muse-mirror refs/heads/release/overseer-v1.0.0 refs/tags/v1.0.0
+gh repo view aaronrene/overseer-kit --json nameWithOwner,isPrivate,defaultBranchRef
+gh api repos/aaronrene/overseer-kit/actions/workflows --jq '{total_count,workflows:[.workflows[]|{name,path,state}]}'
+gh api repos/aaronrene/overseer-kit/branches/main --jq '{name,protected,sha:.commit.sha}'
+gh api repos/aaronrene/overseer-kit/hooks --jq '[.[]|{name,active,events}]'
+.venv/bin/python -B ../RECOVERY-RUNS/20261008-muse-restoration-audit/audit.py
+.venv/bin/python -B ../RECOVERY-RUNS/20261008-muse-restoration-audit/followup.py
+muse clone https://staging.musehub.ai/aaronrene/overseer-kit /private/tmp/overseer-muse-audit-8l4oktxp/staging-inspection --branch main --depth 1 --no-checkout --retry-timeout 20 --json
+muse clone https://staging.musehub.ai/aaronrene/overseer-kit /private/tmp/overseer-muse-audit-8l4oktxp/staging-inspection-retry --branch main --depth 1 --no-checkout --retry-timeout 45 --json
+/Users/operator/.local/share/muse/venv/bin/python -B ../RECOVERY-RUNS/20261008-muse-restoration-audit/compare_remote.py
+git diff --check
+```
+
+Sandbox network failures were retried with approved network access. GitHub reads
+and staging listing succeeded; production listing returned exit 3 for fingerprint
+mismatch. First clone returned retryable exit 3; second exited 0 with the archive
+counts above. Fixtures used the kit's existing conventional `.venv`; Muse commands
+used the installed Muse environment. No runtime shared another installation's venv.
+
+The first driver recorded 29 diagnostic probes: 28 confirmed, one hypothesis
+disproved (both config and NEXT exported). Follow-up recorded 11/11 confirmed:
+NEXT was exported, while the hidden `.overseer` directory was omitted in this
+fixture. Thus 40 diagnostic probes were performed, 39 confirmed their named
+observation and one was corrected by investigation. These include reproduced
+defects and are **not 40 passing product tests**. Raw results remain unedited.
+
+The unchanged supported suite was run once for the documentation commit required
+by AGENTS.md; its closeout result is recorded below. No old review was repeated.
+The current NEXT is advanced through next-write to the bounded budget decision,
+not left at the completed audit or superseded GitHub-only publication block.
+
+### Audit closeout checks
+
+```sh
+.venv/bin/python -m pytest -q -p no:cacheprovider --junitxml=../RECOVERY-RUNS/20261008-muse-restoration-audit/supported.xml
+gitleaks dir --no-banner --redact .
+.venv/bin/python -B ../RECOVERY-RUNS/20261008-muse-restoration-audit/hygiene.py
+git diff --check
+```
+
+The supported suite passed **77 tests, 0 failures, 0 errors and 0 skipped in
+41.80s** (JUnit elapsed time 41.786s). The secret scan found no leaks. The read-only
+hygiene script confirmed unchanged selected original Muse state and Git working
+edits, unchanged clean release HEAD, exactly nine documentation files changed,
+no broken relative file links in those documents, and a clean whitespace check.
+No production code or runtime pin changed. These checks do not close the 18 Muse
+restoration findings or establish remote publication readiness.
+
+After the local documentation commit, NEXT is published using the pre-read audit
+digest; the publication/readback log is retained as `next-closeout.json` beside
+`supported.xml` and `hygiene-results.json`. This avoids binding ignored NEXT to
+the pre-commit revision. The exact writer invocation from the recovery cwd is:
+
+```sh
+cli/ok -C . next-write \
+  --repo-id 6dba88a5-029c-4136-9277-c3a0c81f31a6 \
+  --branch feat/overseer-v1-recovery --lane product --model 'GPT-6 Astra' \
+  --action-id OVERSEER-V1-MUSE-RESTORATION-BUDGET-1 --action-kind stop \
+  --expect-next 951218d30539f9704ce1c802c46c7cac1709f66f40b4bf0494d36eda39750030 \
+  --prompt-file .overseer/muse-audit-input.txt
+cli/ok -C . status --json
+cli/ok -C . next \
+  --repo-id 6dba88a5-029c-4136-9277-c3a0c81f31a6 \
+  --branch feat/overseer-v1-recovery --lane product --model 'GPT-6 Astra' \
+  --action-id OVERSEER-V1-MUSE-RESTORATION-BUDGET-1 --action-kind stop
+```
+
+The temporary prompt input is removed after publication. Local NEXT remains the
+sole executable handoff. This audit neither reinstates a Git-only publication task
+nor authorizes spending beyond the original session cap.

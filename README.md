@@ -4,9 +4,11 @@ Overseer Kit is a small local command-line tool that keeps one trustworthy next-
 handoff inside each Git repository. It helps prevent an agent or operator from using
 a prompt from the wrong project, branch, lane, or point in history.
 
-Bounded v1 local validation is complete. The current source version is `1.0.0`.
-Release status and installation availability are shown on GitHub; no rollout is
-automatic. See the
+The Git-based handoff core is locally validated, but intended v1 is incomplete.
+The owner requires MuseHub as the source of truth with GitHub mirroring; restoration
+has been audited and is not implemented yet. The source version `1.0.0` is an
+unpublished candidate, and its Git-only release is on hold. The behavior described
+below is the current implementation, not the completed Muse-first product. See the
 [scope decision](docs/decisions/V1-SCOPE-RESET.md) and the complete
 [validation record](docs/validation/V1-RECOVERY.md).
 
@@ -151,6 +153,9 @@ This needs no Overseer server or OCI registry. Maintainers should increment
 `VERSION`, update `CHANGELOG.md`, tag the tested commit, and publish a GitHub Release
 only when a build is ready for users. A version in the source tree is not itself a
 published release; verify that the matching GitHub Release exists before updating.
+For the intended Muse-first release, accept the reviewed source in MuseHub first,
+then verify its GitHub mirror before tagging and announcing that same version.
+That restored publication procedure remains pending; this is the required order.
 
 Users can also check manually, with no changes to their working files:
 
@@ -191,3 +196,8 @@ user account.
 Historical pre-reset commands remain in `cli/legacy_main.py` for evidence but are
 outside the public v1 command surface. Historical test sources remain preserved;
 see [test scope](tests/README.md).
+
+The [Muse restoration audit](docs/validation/V1-RECOVERY.md#musehub-restoration-audit--2026-10-08)
+records verified reuse, bridge defects, authority and handoff design, and the
+remaining milestones. Do not run the historical deploy script to publish this
+candidate. OCI remains excluded.

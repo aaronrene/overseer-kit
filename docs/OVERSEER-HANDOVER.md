@@ -1,99 +1,85 @@
 # Overseer Kit v1 handover
 
-2026-10-08 — the explicitly authorized DINERO manual pilot passed.
-Bounded v1 local validation is complete: architecture review, corrected build
-findings, clean installation/rollback and the consumer pilot are all closed.
-Sessions used: 4, within the original five-to-eight-session recovery cap.
+2026-10-08 — Muse restoration audit completed. The intended MuseHub-first product
+is not complete. The owner corrected the reset: remove OCI complexity, retain
+MuseHub as the source of truth and reliable GitHub mirroring. The earlier Git-only
+completion/publication recommendation is superseded; historical validation remains
+valid for the behavior actually tested.
 
-Original mixed checkout and historical evidence remain preserved. Verified local
-snapshot: `../RECOVERY-SNAPSHOTS/20261008T122430Z-v1-recovery` (21,213 entries;
-153 bundle refs). Original preservation and Muse reconciliation evidence is in
-[validation](validation/V1-RECOVERY.md) and the [scope reset](decisions/V1-SCOPE-RESET.md).
+Recovery: `overseer-kit-v1-recovery`, branch `feat/overseer-v1-recovery`, repository
+name `overseer-kit`, UUID `6dba88a5-029c-4136-9277-c3a0c81f31a6`. This audit started
+from clean HEAD `3b8d7b4bc73830ff447b847d8d8dfef18f301502`. It changes documentation
+and canonical local NEXT only. Runtime `1.0.0` and digest
+`3643f0c9e6c5be2cc2e4d3aa7ed13eea34eb9fb213ea221d16d3faf6f3a1b623` are unchanged.
+The clean release worktree remains at `06f988e5a078ede81c9dc664520833980a9a19a3`
+on `release/overseer-v1.0.0`; do not publish that Git-only candidate.
 
-Implementation: `overseer-kit-v1-recovery`, branch `feat/overseer-v1-recovery`,
-base `d47291d5d9030de5ebef713da95efa978c4d8c6e`. Session 3 validated current source
-`b2a09775d1daabd0b49003b36b18cfce31434fb5` and previous source
-`2bfa69864ec2f8bb3d89cc66d6353dd111421875`. Repository UUID remains
-`6dba88a5-029c-4136-9277-c3a0c81f31a6`. Session 4 started at documentation closeout
-HEAD `152f9f9d9b3163aec90087097c782755dede9154`, with the same tested runtime digest.
-No production code or permanent tests changed in either validation milestone.
+Original Muse HEAD/refs/config/repository identity/bridge records and Git working
+edits were compared before/after and preserved. The original mixed checkout and
+`../RECOVERY-SNAPSHOTS/20261008T122430Z-v1-recovery` remain intact (prior verified
+snapshot: 21,213 entries and 153 bundle refs). No consumer, including DINERO, was
+accessed; no hooks, real-project mirror, original Muse refs or remote state changed.
 
-Two disposable installations received their own fresh conventional venv and
-uncached dependencies from PyPI. Initial sandbox DNS failure was resolved by
-approved network access; both `pip check` runs passed. Both Git fixtures passed
-previous → current → previous with direct and bound status/NEXT, explicit sync,
-non-mutating dry-run and foreign-installation refusal. Identity, Git HEAD, NEXT,
-living documents, binary payload and launcher were preserved; rollback restored
-all fixture file hashes/modes including config. All six lifecycle stages passed.
-Temporary installations and fixtures were removed.
+Read the [scope correction](decisions/V1-SCOPE-RESET.md) and
+[full audit](validation/V1-RECOVERY.md#musehub-restoration-audit--2026-10-08).
+They include evidence classes, diagrams, prioritized findings, feature disposition,
+restoration milestones, rollback policy, acceptance tests and exact commands.
+Local audit scripts/logs and retained fixtures are indexed under
+`../RECOVERY-RUNS/20261008-muse-restoration-audit/`. An exploratory comparison used
+the wrong hash representation; only `remote-comparison-corrected.json` is the final
+byte-comparison result. Raw observations are preserved rather than rewritten.
 
-The session-3 clean-install suite passed: **77 passed, zero failed, zero skipped
-in 54.46s**. Six lifecycle stages are separate script checks. Session 4's supported
-suite passed **77 tests, zero failed or skipped in 54.41s**, plus **32 pilot checks**.
-Evidence is in validation and `../RECOVERY-RUNS/20261008-v1-session-3` and
-`../RECOVERY-RUNS/20261008-v1-session-4`. No unresolved supported failure remains;
-historical baseline failures are not claimed fixed.
+Verified read-only remote state:
 
-The owner's explicit authorization named `/Users/operator/DINERO`, local
-setup and handoff checks, preservation of all existing work, no automatic hooks,
-and no online publication. DINERO is on `chore/open-source-prep`, unchanged HEAD
-`716a68d27c9ffb38f800a75d2b51a1ddfb2a9989`, now bound to UUID
-`84fab465-04f4-4b63-9d9a-96639aa020aa`. Its preexisting `universe.py` edit is intact.
-All 21,930 preexisting regular files retained their bytes/modes; existing symlinks,
-directory modes/ownership and Git metadata also matched the preservation inventory.
-The five new local setup/handoff files remain untracked; no consumer commit was
-made. The `.cursor` directory remains empty and no hooks were activated.
+- Staging MuseHub repository ID:
+  `sha256:f5863e477e2f2caf510df731720976d3d91fdd821fd5657ec8da6b57c89a3bea`.
+- Staging `main` and AFF branch:
+  `sha256:208d9dc47f0c6d8553ee80aafc8f0993a6ebf0a88410746f47f58b4e7c6fd6a6`.
+- GitHub `main`: `d47291d5d9030de5ebef713da95efa978c4d8c6e`; all 841 tracked files
+  match staging bytes. Five extra Muse paths are local/generated historical files.
+- GitHub `muse-mirror`: `3e21496f7c4eab64b6d9ab3f868c5cdcaf8cfcde`; its existence
+  does not prove current tree parity. Candidate branch and v1.0.0 tag are absent.
+- GitHub reads work with approved network access; earlier sandbox output did not
+  establish invalid credentials. Write authorization/capability was not tested.
+- Production Muse CLI refuses a hub-fingerprint mismatch. Cause and production
+  repository state are unknown. Keep staging; never reset trust merely to pass.
 
-Direct and bound status/NEXT succeeded in fresh processes. Both directions of
-cross-repository selection refused without a prompt. Wrong lane/model/branch/
-action/digest and stale/wrong-lane writes refused without mutation. The pilot
-handoff advanced through `next-write` to `DINERO-OVERSEER-PILOT-COMPLETE`, kind
-`stop`, and requests to resume the completed action refused. From DINERO, use
-`.overseer/bin/ok status` and `.overseer/bin/ok next`. Keep this kit installation
-at its current physical path; DINERO's launcher is explicitly bound to it.
+Native Muse `0.2.1rc5` in its separate Python environment successfully imported Git,
+exported local snapshots and analyzed Python symbols/callers. Existing bridge
+components are reusable, but current publication handling is unsafe to reactivate.
+Key reproduced gaps: Git NEXT remains valid after a Muse commit; the deploy script
+uses implicit HEAD and pushes before postchecks; path aliases evade its root guard;
+failed push/no-change retry can leave the remote behind; no-change export clears
+its Git mapping; dirty/stale target files can enter the mirror; machine-bound NEXT
+is exported; executable metadata is not generally preserved; PR failure can be
+hidden. These require integration work, not OCI or automatic two-way sync.
 
-This validates manual fixed-path source replacement plus sync on Python 3.14.4 /
-Darwin arm64, with identical dependency requirements. Packaged installation,
-automatic migration/rebinding, concurrent replacement and other platforms remain
-unvalidated. The previous revision retains its historical defects; it was used
-only as a disposable rollback target. The closed review was not repeated.
+There were 40 diagnostics: 39 confirmed their named observation, one corrected
+hypothesis. Reproduced defects are not passing product tests. The unchanged full
+supported suite passed **77 tests, zero failures or skips in 41.80s** for the
+documentation commit; limits are recorded at the end of validation. Earlier
+evidence remains closed: session 3 had
+two fresh installations and six rollback stages; session 4 had 77 supported tests
+and 32 authorized manual DINERO pilot checks. The clean release branch later passed
+77 tests twice (42.15s and 43.07s). No historical mega-suite or closed Git review was
+repeated, and none of these results validates the missing Muse integration.
 
-The satisfied authorization stop advanced through `next-write` to the active
-pilot and then **OVERSEER-V1-COMPLETE**, kind **stop**. `docs/NEXT.md` remains the
-sole current prompt; no recovery task is queued. The CLI checks binding and
-freshness, while operators/agents remain responsible for choosing the task text
-and publishing the next action when work finishes. The pilot did not test automatic
-IDE handoff or hook activation. No push, mirror, merge, release, deployment,
-additional consumer pilot, or consumer hook activation is authorized by closeout.
+Recommended implementation order is R1, narrow Muse-aware status/NEXT and explicit
+adoption; R2, controlled mirror preparation/verification/publication; R3, isolated
+Muse source reconciliation plus integration review and combined installation/
+rollback. Start a future Muse restoration branch from verified staging main and
+apply the reviewed recovery delta; never copy the dirty original checkout. Keep
+local bindings ignored, preserve UUID/documents through explicit migration, and
+publish receiving-checkout NEXT through `next-write` rather than copying it.
+Local coding can work offline; remote state remains unknown until explicitly
+checked. GitHub edits require explicit review/import into Muse before authority.
 
-Post-validation README maintenance now explains what bounded v1 does and does not
-do, source setup, consumer initialization, daily status/NEXT use, explicit
-`next-write`, validation, and limitations. Update notification stays outside the
-CLI: users may opt into GitHub **Watch → Custom → Releases**, or explicitly fetch
-and compare Git history. After a reviewed fast-forward source update, each consumer
-runs `sync --dry-run` and `sync`. No background network check, automatic pull,
-telemetry, service, registry or OCI path was added.
-
-Release preparation advances the source version to `1.0.0`. Generated checkout
-bindings (`.overseer/config.yaml`, `.overseer/bin/`, `docs/NEXT.md`, and `.cursor/`)
-are now ignored instead of distributed, so a public commit does not contain local
-absolute paths or repository identity. Superseded policy state is retained under
-`docs/archive/v1/legacy-overseer/`; current contributor, security, and docs indexes
-describe bounded v1. A full-directory gitleaks scan, `pip check`, `compileall`, and
-`git diff --check` passed. The first supported-suite run passed 75 tests and hit two
-20-second fixture setup timeouts; both exact cases passed together on immediate
-rerun in 3.44 seconds. The clean squash branch then installed all pinned dependencies
-from PyPI into its own conventional venv; `pip check`, version agreement, compilation,
-and the full supported suite passed twice, with **77 passed in 42.15s** and then
-**77 passed in 43.07s** after recording the gate result.
-
-Publication uses a clean squash from `origin/main` so intermediate recovery commits
-with checkout-local paths never enter public history. The owner authorized the
-recommended release hygiene and publication work, but direct pushes to `main`,
-automatic hooks, and bulk consumer modification remain excluded. The installed
-GitHub CLI credential is invalid. The attempted Git transport push was rejected by
-automatic approval review before execution because the full source/documentation
-payload and external destination were not explicitly approved together. No branch,
-pull request, tag, release, or `main` change was published. The release-preparation
-action advances through `next-write` to the concrete publication authorization
-block.
+The original cap was five to eight sessions. Four were numbered; subsequent README
+maintenance and release preparation were unnumbered, and this audit adds work.
+For planning use a conservative seven consumed, not an invented exact historical
+count. R1–R3 are estimated at three additional sessions, with one contingency.
+The actual next action is therefore the owner's bounded budget decision, followed
+by R1 after approval. Recommend three additional sessions and a checkpoint before
+a fourth or remote publication. The completed audit and superseded publication
+block must not remain NEXT. Canonical `docs/NEXT.md` is the only runnable handoff;
+this document supplies context, not an alternate prompt.

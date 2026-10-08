@@ -1,52 +1,60 @@
 # Overseer Kit v1 roadmap
 
-Authority: [bounded scope reset](decisions/V1-SCOPE-RESET.md), 2026-10-08.
-Sessions used: 4, within the original five-to-eight-session recovery cap
-(implementation, review/finding closure, installation/rollback, authorized pilot).
-The session-2 status/NEXT checkpoint was achieved in session 1 across two
-repositories using disposable fixtures.
+2026-10-08 — Muse restoration audit complete; intended v1 remains incomplete.
+The owner's [scope correction](decisions/V1-SCOPE-RESET.md) restores MuseHub
+authority and GitHub mirroring as requirements. OCI remains excluded. The
+Git-only release candidate is preserved locally and is on hold.
 
 | Milestone | State |
 | --- | --- |
-| Preserve original work and reconcile local Muse/Git base | Verified |
-| Repository-bound status/init/sync/NEXT and atomic writer | Implemented and tested |
-| Focused, two-repository, and supported-suite verification | Passed: 77 supported tests; prior 22 disposable fix checks |
-| Architecture review | Passed for the bounded trusted-host design |
-| Completed-build review | Closed: both P2 findings corrected and rechecked in session 2 |
-| Clean installation and current/previous rollback exercise | Passed: two clean venv installations, six fixture lifecycle stages |
-| Explicitly authorized noncritical consumer pilot | Passed: DINERO, 32 pilot checks; automatic hooks disabled |
+| Preserve original work and recovery snapshots | Complete; original Muse refs/config and Git edits unchanged during this audit |
+| Git repository-bound status/init/sync/NEXT and atomic writer | Implemented; existing supported suite has 77 tests |
+| Git-core architecture and corrected build findings | Closed; unchanged review not repeated |
+| Git clean installation and current/previous rollback | Closed; two separate venv installations, six fixture lifecycle stages |
+| Previously authorized DINERO manual pilot | Closed; 32 checks passed; no consumer access in this audit |
+| README/update reminders and local release preparation | Completed for Git scope; candidate held pending intended Muse scope |
+| Muse restoration audit and remote-base reconciliation | Complete; 841/841 Git main file bytes match staging MuseHub main |
+| R1: Muse-aware local status/NEXT and adoption | Planned; production implementation not authorized by this audit |
+| R2: Controlled mirror with reliable retry and source correspondence | Planned; depends on R1 authority/exclusion policy |
+| R3: Isolated source reconciliation, integration review, combined installation/rollback | Planned; depends on R1/R2 |
+| Authorized Muse-first publication and bounded consumer validation | Later gate; no remote write or consumer activation authorized here |
 
-Evidence, exact commands and limitations: [validation](validation/V1-RECOVERY.md).
-Latest supported suite: **77 passed, zero failed or skipped in 54.41s** in session 4.
-The earlier clean-install suite and both fixture rollback cycles passed in session 3.
-The owner authorized a local DINERO pilot with preservation of all existing work,
-automatic hooks disabled and no online publication. All **32 pilot checks passed**:
-correct handoff readback, repository/context refusal, stale-write refusal, and
-advancement from a completed action to an idle stop. All 21,930 preexisting regular
-files retained their bytes and modes; existing links, directory modes/ownership,
-Git state and the uncommitted application edit were preserved. Only five setup/
-handoff files and their two new directories were added. No production code changed.
+The [audit record](validation/V1-RECOVERY.md#musehub-restoration-audit--2026-10-08)
+contains current/proposed diagrams, 18 prioritized findings, feature disposition,
+an ordered restoration plan, commands/results and the acceptance matrix. Ordinary
+local logs are retained in `../RECOVERY-RUNS/20261008-muse-restoration-audit/`.
+There were 40 diagnostic probes: 39 confirmed their named observations and one
+hypothesis was corrected. Some observations reproduce defects; this is not a count
+of passing product tests. The supported suite passed **77 tests, zero failures or
+skips in 41.80s**; the closeout result and hygiene checks are in validation.
 
-**Bounded v1 local validation is complete.** This is the manual Git source-install
-scope on Python 3.14.4 / Darwin arm64. Packaged installation, automatic migration,
-installation rebinding, consumer hook activation and other platforms remain outside
-this validation. The source version is now `1.0.0`; the clean release branch passed
-all local release gates and is ready for publication review.
+Reuse the tested Git handoff core and native Muse import/export. Add a narrow Muse
+revision backend and repair the mirror boundary before use. The current runtime
+does not notice a Muse-only revision change; the retained script can export HEAD,
+push before its checks, hide PR failure, and mishandle an interrupted push. Native
+export also needs clean-target, exact-content, mode and mapping checks. Local
+bindings/NEXT must remain local in both VCS systems. Muse symbol/caller analysis
+worked in fixtures and is optional advisory context, not a handoff authority.
 
-Post-validation documentation maintenance rewrote README around the actual bounded
-v1 behavior, daily workflow, limits, evidence and update procedure. Update awareness
-uses opt-in GitHub **Watch → Custom → Releases** notifications plus an explicit
-manual `git fetch`/review/fast-forward pull and per-consumer `sync`. No background
-checker, automatic pull, telemetry, service, registry or OCI machinery was added.
-Checkout-local config, launchers, NEXT, and Cursor integration are ignored rather
-than distributed. Legacy policy state is archived and current contributor/security
-documentation describes only bounded v1. A secret scan and dependency checks pass.
+Staging is the verified current Hub. Production CLI access refuses a hub fingerprint
+mismatch; no trust reset or host switch occurred. Read-only GitHub queries succeeded
+with approved network access, correcting the earlier conclusion that sandbox
+authentication output established invalid credentials. Publication rights remain
+untested. No branch, tag, release, mirror or remote source change was published.
 
-The clean branch remains local: automatic approval review rejected its push because
-the complete source/documentation payload and GitHub destination require explicit
-owner approval together. The release-preparation action advances through
-`next-write` to that concrete publication block. DINERO has its own
-**DINERO-OVERSEER-PILOT-COMPLETE** stop and distinct repository UUID. Do not repeat
-the closed review, installation, or pilot. HANDOVER summarizes evidence without a
-competing prompt. Former OCI/NXR/GSR/sole-writer chains remain superseded. Broader
-consumer initialization and hook activation remain separate, explicit operations.
+Budget: four sessions were explicitly numbered. README maintenance, release
+preparation and this audit were additional substantial work. Conservatively plan
+with seven used, while recognizing that exact historical session boundaries were
+not recorded. R1–R3 need an estimated three further sessions, with a fourth
+contingency. This does not fit the original eight-session ceiling on that count.
+The next decision is a bounded budget extension: three additional restoration
+sessions, with a checkpoint before a fourth or any remote publication. R1 follows
+that decision. Only canonical `docs/NEXT.md`, published by `next-write`, carries
+the executable next prompt; this summary is not a competing task queue.
+
+Keep the release worktree, original history and existing consumer installations
+intact. Do not rerun closed Git review/install/pilot work against unchanged code.
+Automatic hooks remain off; broad adoption waits for combined validation. Simple
+opt-in GitHub Release watching can remain the update reminder once releases follow
+verified Muse-to-GitHub publication. No automatic pull, OCI, daemon or replacement
+governance framework is required.

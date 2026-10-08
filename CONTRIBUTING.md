@@ -11,7 +11,11 @@ Keep repository/root/UUID binding, canonical `docs/NEXT.md`, explicit context
 checks, stale-state refusal, deterministic source imports, confined atomic writes,
 and living-document preservation intact.
 
-Former hosted, desktop, Muse, governance-sync, freeze-review, publishing, registry,
+MuseHub-first authority and controlled GitHub mirroring are required by the owner's
+scope correction. Their restoration is pending; use the validation audit as the
+design baseline rather than reactivating the entire legacy CLI.
+
+Former hosted, desktop, governance-sync, freeze-review, publishing, registry,
 receipt, transaction, and orchestration implementations remain historical source.
 Do not expose them through the v1 entrypoint or treat their old documentation and
 tests as current requirements.

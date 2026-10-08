@@ -1,5 +1,11 @@
 # Muse + GitHub mirror workflow — overseer-kit
 
+> Audit hold, 2026-10-08: the Muse-first intent below remains required, but the
+> retained deploy script is not validated for the new v1 setup. The restoration
+> audit reproduced path-guard, source-selection, publication-order, and retry
+> problems. Do not run these publication commands until those findings are closed.
+> See [the audit](docs/validation/V1-RECOVERY.md#musehub-restoration-audit--2026-10-08).
+
 ## Plain summary
 
 **overseer-kit** uses **Muse** as canonical version history. **MuseHub staging**
