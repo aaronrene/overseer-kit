@@ -8,6 +8,7 @@ import os
 from pathlib import Path
 import re
 import shlex
+import stat
 import subprocess
 import sys
 import uuid
@@ -279,15 +280,15 @@ def apply_assets(root, mapping, *, dry_run=False):
     updates = []
     # Validate all destinations before the first replacement.
     for path, data in mapping.items():
-        confined(root, path, parents=not dry_run, missing_parents=dry_run)
+        target = confined(root, path, parents=not dry_run, missing_parents=dry_run)
         old = read(root, path, missing=True)
-        if old != data:
-            updates.append((path, data, "absent" if old is None else digest(old)))
+        mode = 0o755 if path.endswith(".sh") or path.endswith("/ok") else 0o644
+        if old != data or (old is not None and stat.S_IMODE(target.stat().st_mode) != mode):
+            updates.append((path, data, "absent" if old is None else digest(old), mode))
     if not dry_run:
-        for path, data, expected in updates:
-            atomic(root, path, data, expected=expected,
-                   mode=0o755 if path.endswith(".sh") or path.endswith("/ok") else 0o644)
-    return [p for p, _, _ in updates]
+        for path, data, expected, mode in updates:
+            atomic(root, path, data, expected=expected, mode=mode)
+    return [p for p, _, _, _ in updates]
 
 
 def initialize(root, args):
@@ -329,7 +330,8 @@ def initialize(root, args):
 
 
 def parser():
-    p = argparse.ArgumentParser(prog="ok", description="Bounded repository and NEXT utility")
+    p = argparse.ArgumentParser(prog="ok", description="Bounded repository and NEXT utility",
+                                allow_abbrev=False)
     def globals_to(target):
         for names, opts in [(("-C", "--repo"), {}), (("--config",), {}),
                             (("--json",), {"action": "store_true"}),
@@ -342,7 +344,7 @@ def parser():
     p.add_argument("--version", action="version", version=VERSION)
     sub = p.add_subparsers(dest="command", required=True)
     for name in ("status", "init", "sync", "next", "next-write", "hook"):
-        cmd = sub.add_parser(name)
+        cmd = sub.add_parser(name, allow_abbrev=False)
         globals_to(cmd)
         if name == "init":
             cmd.add_argument("--regime", default="git-only")
