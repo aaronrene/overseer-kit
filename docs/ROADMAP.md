@@ -32,8 +32,15 @@ scope on Python 3.14.4 / Darwin arm64. Packaged installation, automatic migratio
 installation rebinding, consumer hook activation and other platforms remain outside
 this validation. No release or broader rollout was performed.
 
+Post-validation documentation maintenance rewrote README around the actual bounded
+v1 behavior, daily workflow, limits, evidence and update procedure. Update awareness
+uses opt-in GitHub **Watch → Custom → Releases** notifications plus an explicit
+manual `git fetch`/review/fast-forward pull and per-consumer `sync`. No background
+checker, automatic pull, telemetry, service, registry or OCI machinery was added.
+The current build remains unreleased `1.0.0.dev1`; `main` is not yet its source.
+
 `docs/NEXT.md` is the sole current action and prompt:
-**OVERSEER-V1-COMPLETE**, kind `stop`; no recovery task remains queued. DINERO has
+**OVERSEER-V1-README-UPDATES-COMPLETE**, kind `stop`; no task remains queued. DINERO has
 its own **DINERO-OVERSEER-PILOT-COMPLETE** stop and distinct repository UUID.
 Do not repeat the closed review, installation or pilot. HANDOVER summarizes
 evidence without a competing prompt. Former OCI/NXR/GSR/sole-writer chains remain

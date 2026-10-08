@@ -65,3 +65,14 @@ freshness, while operators/agents remain responsible for choosing the task text
 and publishing the next action when work finishes. The pilot did not test automatic
 IDE handoff or hook activation. No push, mirror, merge, release, deployment,
 additional consumer pilot, or consumer hook activation is authorized by closeout.
+
+Post-validation README maintenance now explains what bounded v1 does and does not
+do, source setup, consumer initialization, daily status/NEXT use, explicit
+`next-write`, validation, and limitations. Update notification stays outside the
+CLI: users may opt into GitHub **Watch → Custom → Releases**, or explicitly fetch
+and compare Git history. After a reviewed fast-forward source update, each consumer
+runs `sync --dry-run` and `sync`. No background network check, automatic pull,
+telemetry, service, registry or OCI path was added. `1.0.0.dev1` remains local and
+unreleased on `feat/overseer-v1-recovery`; the README does not claim it is on main.
+The documentation action closes as **OVERSEER-V1-README-UPDATES-COMPLETE**, kind
+`stop`; no task is queued and no release/push/deployment is authorized.

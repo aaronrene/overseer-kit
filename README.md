@@ -1,82 +1,195 @@
-# Overseer Kit — bounded v1 recovery
+# Overseer Kit
 
-A local CLI for repository identity, status, and one validated next action.
-Bounded v1 local validation is complete, including the authorized DINERO manual
-pilot. The build remains `1.0.0.dev1`; no release or broader rollout was performed.
-Read [scope](docs/decisions/V1-SCOPE-RESET.md) and
-[verification](docs/validation/V1-RECOVERY.md).
+Overseer Kit is a small local command-line tool that keeps one trustworthy next-task
+handoff inside each Git repository. It helps prevent an agent or operator from using
+a prompt from the wrong project, branch, lane, or point in history.
 
-Use a conventional Python 3.11+ environment in this checkout:
+Bounded v1 local validation is complete. The current build is `1.0.0.dev1`; it has
+not been published as a release or rolled out automatically. See the
+[scope decision](docs/decisions/V1-SCOPE-RESET.md) and the complete
+[validation record](docs/validation/V1-RECOVERY.md).
+
+## What it does
+
+Each initialized repository receives:
+
+- a persistent UUID and exact physical-root binding in `.overseer/config.yaml`;
+- a repository-bound launcher at `.overseer/bin/ok`;
+- one canonical handoff in `docs/NEXT.md`;
+- small ROADMAP and HANDOVER documents when they do not already exist.
+
+Before printing NEXT, Overseer checks the repository UUID and root, Git branch,
+configured lane and model label, action ID and kind, prompt digest, expected NEXT
+digest when supplied, and Git freshness. A copied launcher, copied config, stale
+handoff, wrong repository, wrong lane, wrong branch, or stale writer is refused
+without printing the prompt.
+
+The public commands are:
+
+| Command | Purpose |
+| --- | --- |
+| `status` | Show repository, runtime, Git, and NEXT status without changing files. |
+| `init` | Give one Git checkout its identity and initial local handoff files. |
+| `sync` | Refresh the bound launcher and runtime pin after an explicit kit update. |
+| `next` | Validate and print the current handoff. It never runs the task. |
+| `next-write` | Publish a new handoff with explicit context and the previous NEXT digest. |
+
+## What it does not do
+
+Overseer does not decide what task should come next, execute a prompt, infer that
+work is complete, verify which AI model is actually running, or judge whether task
+prose is strategically correct. The operator or agent chooses the task and advances
+it explicitly with `next-write`.
+
+The bounded v1 does not push, pull, fetch, merge, release, deploy, modify application
+code, or contact a network. It has no hosted service, registry, background process,
+telemetry, automatic updater, transaction system, or OCI machinery. It supports
+local Git checkouts and worktrees. Moving an initialized checkout or moving the kit
+installation requires an explicitly reviewed rebind; copying is not migration.
+
+## Prepare the source installation
+
+Use Python 3.11 or newer and keep this checkout at a stable physical path. The kit
+uses its own conventional virtual environment; consumer repositories do not install
+its Python dependencies.
 
 ```sh
+cd /absolute/path/to/overseer-kit
 python3 -m venv .venv
-.venv/bin/python -m pip install -r requirements-v1-dev.txt
+.venv/bin/python -m pip install -r requirements-v1.txt
 ./cli/ok --version
-./cli/ok -C /absolute/disposable/repo init
-./cli/ok -C /absolute/disposable/repo status
-./cli/ok -C /absolute/disposable/repo next
-./cli/ok -C /absolute/disposable/repo sync
+```
+
+The validated recovery build currently lives on `feat/overseer-v1-recovery`, not
+on the published `main` branch. Until it is deliberately merged and released,
+new clones from `main` do not receive bounded v1. The existing validated local
+checkout can be used in place. Do not present `main` as the v1 installation source
+until the release work has actually happened.
+
+For development and the supported test suite:
+
+```sh
+.venv/bin/python -m pip install -r requirements-v1-dev.txt
 .venv/bin/python -m pytest -q
 ```
 
-The supported runtime is this source checkout with its own `.venv`. Normal venv
-Python symlinks are allowed. The launcher uses isolated Python and has no PATH or
-neighboring-checkout fallback. Consumer `.overseer/bin/ok` launchers bind an exact
-physical repository root and UUID to an absolute installation. A copied config,
-NEXT, or bound launcher fails closed. `-C` must name a Git root; without it the
-current working directory selects its containing Git repository. A bound launcher
-refuses a cwd belonging to another repository unless `-C` explicitly names its
-own repository. Symlink aliases of a root resolve to the same physical identity.
+## Add one repository
 
-`init` assigns the UUID once. It preserves existing ROADMAP/HANDOVER documents.
-It refuses legacy configuration; migration is an explicit maintainer operation,
-not an automatic identity rewrite. `sync` refreshes the launcher and the version
-and source digest pin in config, preserving NEXT and living documents. It never
-changes repository identity or switches installations. Moved checkouts need an
-explicitly reviewed config/launcher rebind; copying is not a supported migration.
-`--hooks` on init/sync installs read-only Cursor hooks; use only disposable
-fixtures during this milestone. User hook configurations should be reviewed before
-opting into replacement. No hook searches PATH, environment overrides, or peers.
-
-Only `docs/NEXT.md` carries the current action and prompt. `next` validates its
-UUID/root, current branch, configured lane/model, action ID grammar, action kind,
-prompt digest, and Git freshness before printing. Optional `--repo-id`, `--branch`,
-`--lane`, `--model`, `--action-id`, `--action-kind`, and `--expect-next` check caller
-expectations. Use these when resuming a previously read action. Printed binding
-fields are generated from validated metadata, never extracted from prose.
-
-Publish a prompt stored in a regular, confined UTF-8 repository file:
+Use the repository's absolute path. Initialization preserves existing ROADMAP and
+HANDOVER files and refuses an existing unmanaged launcher.
 
 ```sh
-./cli/ok -C /absolute/disposable/repo next-write \
-  --repo-id UUID-FROM-STATUS --branch main --lane product \
-  --model 'GPT-6 Astra' --action-id TASK-1 --action-kind implement \
-  --expect-next DIGEST-FROM-STATUS --prompt-file prompt.txt
+./cli/ok -C /absolute/path/to/project init \
+  --repo-name PROJECT-NAME \
+  --lane product \
+  --model 'GPT-6 Astra'
 ```
 
-Kinds: `plan`, `implement`, `review`, `maintain`, `stop`. The writer only changes
-NEXT, compares the prior raw SHA-256 (`absent` for a missing NEXT), serializes
-cooperating writers with a short advisory directory lock, fsyncs a unique sibling
-temporary file, and replaces atomically. No journal or recovery state is created.
-Keep binding labels out of prompt prose. A write anchors to the current Git HEAD;
-NEXT remains valid through one non-merge commit containing those exact bytes.
-Any later commit requires a deliberate refresh. Config and NEXT are ordinary
-owner-managed files; digests detect mistakes, not malicious owner edits.
+Automatic editor hooks are off by default. Keep them off unless you deliberately
+review and authorize hook installation for that repository.
 
-`status` reports repository and runtime identity even when NEXT is invalid. Exit
-codes: 0 success, 1 status with invalid NEXT, 2 refusal/usage/error. Refused `next`
-and hooks emit no prompt. Hooks consume optional Cursor `workspace_roots` and
-refuse foreign or ambiguous roots. No command executes the next action or performs
-network, push, merge, release, deployment, or automatic branch changes.
+## Daily use
 
-Historical pre-reset commands remain as source in `cli/legacy_main.py` and their
-modules, but are outside this command surface. Historical tests remain intact;
-see [test scope](tests/README.md). Architecture review, completed-build finding
-closure, clean installation/rollback and the authorized DINERO pilot are complete;
-the [validation record](docs/validation/V1-RECOVERY.md) describes the evidence and
-limits. DINERO hooks remain disabled. Other consumers need their own authorization.
+From an initialized repository:
 
-NEXT checks repository binding, declared context and freshness. The operator or
-agent still chooses the task text and advances it through `next-write` when work
-finishes. The CLI does not infer task completion or verify which AI model is
-actually running. Reading a stop action means no executable task is queued.
+```sh
+./.overseer/bin/ok status
+./.overseer/bin/ok next
+```
+
+`status --json` is useful for automation. A dirty repository is reported but does
+not by itself invalidate NEXT. A changed branch, a later Git commit, altered prompt,
+wrong identity, or changed runtime does invalidate it. Exit codes are 0 for success,
+1 when `status` can report identity but NEXT is invalid, and 2 for refusal or usage
+errors.
+
+Use the expectation options when resuming a previously read handoff:
+
+```sh
+./.overseer/bin/ok next \
+  --repo-id UUID-FROM-STATUS \
+  --branch BRANCH-FROM-STATUS \
+  --lane product \
+  --model 'GPT-6 Astra' \
+  --action-id EXPECTED-ACTION \
+  --action-kind implement \
+  --expect-next DIGEST-FROM-STATUS
+```
+
+## Publish the next handoff
+
+Store the new prompt in a regular UTF-8 file inside the consumer repository, then
+run the kit installation's writer. All context fields and the current raw NEXT
+digest are required:
+
+```sh
+/absolute/path/to/overseer-kit/cli/ok -C /absolute/path/to/project next-write \
+  --repo-id UUID-FROM-STATUS \
+  --branch CURRENT-BRANCH \
+  --lane product \
+  --model 'GPT-6 Astra' \
+  --action-id TASK-1 \
+  --action-kind implement \
+  --expect-next DIGEST-FROM-STATUS \
+  --prompt-file prompt.txt
+```
+
+Action kinds are `plan`, `implement`, `review`, `maintain`, and `stop`. Use `stop`
+when no executable task is queued. The writer compares the previous digest, locks
+cooperating writers briefly, writes a unique temporary file, flushes it, and replaces
+NEXT atomically. It changes no other consumer document.
+
+## Simple update notifications
+
+Overseer deliberately does not check the internet in the background. The simplest
+notification system is GitHub's existing release watcher:
+
+1. Open the repository on GitHub.
+2. Select **Watch → Custom → Releases**.
+3. GitHub will notify you when a maintainer publishes a new release.
+
+This needs no Overseer server or OCI registry. Maintainers should increment
+`VERSION`, update `CHANGELOG.md`, tag the tested commit, and publish a GitHub Release
+only when a build is ready for users. The current `1.0.0.dev1` build is not yet a
+published release, so there is no bounded-v1 release notification to subscribe to
+yet.
+
+Users can also check manually, with no changes to their working files:
+
+```sh
+git -C /absolute/path/to/overseer-kit fetch --tags origin
+git -C /absolute/path/to/overseer-kit status --short --branch
+git -C /absolute/path/to/overseer-kit log --oneline HEAD..origin/main
+```
+
+Review the release notes before updating. After bounded v1 is released on `main`, a
+clean source installation can update explicitly:
+
+```sh
+git -C /absolute/path/to/overseer-kit pull --ff-only
+/absolute/path/to/overseer-kit/cli/ok -C /absolute/path/to/project sync --dry-run
+/absolute/path/to/overseer-kit/cli/ok -C /absolute/path/to/project sync
+```
+
+Run `sync` once for each initialized repository. A source change intentionally makes
+status/NEXT refuse with `runtime_changed` until that explicit sync updates the runtime
+pin. `sync --dry-run` shows the planned managed-file changes first. It preserves the
+repository UUID, NEXT, ROADMAP, HANDOVER, and application files.
+
+## Validation and limits
+
+Bounded v1 passed architecture and completed-build review, clean dependency
+installation, current/previous rollback, 77 supported tests, and 32 checks in an
+authorized DINERO consumer pilot. That pilot preserved all existing consumer files
+and its preexisting uncommitted edit while keeping automatic hooks disabled.
+
+Validation used Python 3.14.4 on Darwin arm64 and a fixed-path source installation.
+It does not establish packaged installation, other-platform compatibility,
+concurrent commands during source replacement, or automatic migration/rebinding.
+The trusted-host design protects against stale state and ordinary mistakes; it is
+not a security boundary against a malicious administrator or process with the same
+user account.
+
+Historical pre-reset commands remain in `cli/legacy_main.py` for evidence but are
+outside the public v1 command surface. Historical test sources remain preserved;
+see [test scope](tests/README.md).
