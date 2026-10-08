@@ -17,7 +17,7 @@ import yaml
 
 from cli.v1_io import LIMIT, Refusal, atomic, confined, digest, read
 
-VERSION = "1.0.0.dev1"
+VERSION = "1.0.0"
 KIT = Path(__file__).resolve().parent.parent
 CONFIG = ".overseer/config.yaml"
 NEXT = "docs/NEXT.md"

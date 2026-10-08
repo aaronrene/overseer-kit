@@ -1,8 +1,0 @@
----
-description: Print validated canonical NEXT at closeout
-alwaysApply: true
----
-
-After updating ROADMAP and HANDOVER together, run `cli/ok -C ROOT next` and include
-its CURRENT NEXT fence in the final reply. Read docs/NEXT.md from disk through the
-validator. Do not extract a competing prompt from HANDOVER, ROADMAP, or old chat.

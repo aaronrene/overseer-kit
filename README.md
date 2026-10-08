@@ -4,8 +4,9 @@ Overseer Kit is a small local command-line tool that keeps one trustworthy next-
 handoff inside each Git repository. It helps prevent an agent or operator from using
 a prompt from the wrong project, branch, lane, or point in history.
 
-Bounded v1 local validation is complete. The current build is `1.0.0.dev1`; it has
-not been published as a release or rolled out automatically. See the
+Bounded v1 local validation is complete. The current source version is `1.0.0`.
+Release status and installation availability are shown on GitHub; no rollout is
+automatic. See the
 [scope decision](docs/decisions/V1-SCOPE-RESET.md) and the complete
 [validation record](docs/validation/V1-RECOVERY.md).
 
@@ -60,11 +61,9 @@ python3 -m venv .venv
 ./cli/ok --version
 ```
 
-The validated recovery build currently lives on `feat/overseer-v1-recovery`, not
-on the published `main` branch. Until it is deliberately merged and released,
-new clones from `main` do not receive bounded v1. The existing validated local
-checkout can be used in place. Do not present `main` as the v1 installation source
-until the release work has actually happened.
+Install from the latest published `v1.*` release or from a reviewed source checkout.
+Do not treat an unreviewed feature branch as an update. Before the first v1 release
+is published, only the validated local release candidate is available.
 
 For development and the supported test suite:
 
@@ -150,9 +149,8 @@ notification system is GitHub's existing release watcher:
 
 This needs no Overseer server or OCI registry. Maintainers should increment
 `VERSION`, update `CHANGELOG.md`, tag the tested commit, and publish a GitHub Release
-only when a build is ready for users. The current `1.0.0.dev1` build is not yet a
-published release, so there is no bounded-v1 release notification to subscribe to
-yet.
+only when a build is ready for users. A version in the source tree is not itself a
+published release; verify that the matching GitHub Release exists before updating.
 
 Users can also check manually, with no changes to their working files:
 

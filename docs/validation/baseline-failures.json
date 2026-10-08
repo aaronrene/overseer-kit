@@ -277,12 +277,12 @@
   {
     "test": "tests.integration.test_q3_release_desktop_integration::test_release_workflow_parses_and_contracts",
     "category": "missing path/fixture",
-    "message": "FileNotFoundError: [Errno 2] No such file or directory: '/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery/.github/workflows/desktop-release.yml'"
+    "message": "FileNotFoundError: [Errno 2] No such file or directory: '/Users/operator/OVERSEER_KIT/overseer-kit-v1-recovery/.github/workflows/desktop-release.yml'"
   },
   {
     "test": "tests.integration.test_q3_release_desktop_integration::test_smoke_workflow_no_release_publish",
     "category": "missing path/fixture",
-    "message": "FileNotFoundError: [Errno 2] No such file or directory: '/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery/.github/workflows/desktop-build-smoke.yml'"
+    "message": "FileNotFoundError: [Errno 2] No such file or directory: '/Users/operator/OVERSEER_KIT/overseer-kit-v1-recovery/.github/workflows/desktop-build-smoke.yml'"
   },
   {
     "test": "tests.integration.test_q4b_ui_integration::test_redesigned_static_and_diagrams_served",
@@ -337,7 +337,7 @@
   {
     "test": "tests.performance.test_q3_release_desktop_performance::test_secret_scan_bounded_to_release_workflow_paths",
     "category": "other product/test failure",
-    "message": "AssertionError: assert False\n +  where False = is_file()\n +    where is_file = PosixPath('/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery/.github/workflows/desktop-release.yml').is_file"
+    "message": "AssertionError: assert False\n +  where False = is_file()\n +    where is_file = PosixPath('/Users/operator/OVERSEER_KIT/overseer-kit-v1-recovery/.github/workflows/desktop-release.yml').is_file"
   },
   {
     "test": "tests.performance.test_q4b_ui_performance::test_index_and_diagrams_within_bound",
@@ -417,7 +417,7 @@
   {
     "test": "tests.security.test_q2_ok_cli_security::test_overseer_json_stdout_is_single_object_deprecation_on_stderr",
     "category": "other product/test failure",
-    "message": "assert \"warning: 'ov...amed 'yaml'\\n\" == \"warning: 'ov... commands).\\n\"\n  \n  Skipping 50 identical leading characters in diff, use -v to show\n    commands).\n  + Traceback (most recent call last):\n  +   File \"<frozen runpy>\", line 198, in _run_module_as_main\n  +   File \"<frozen runpy>\", line 88, in _run_code\n  +   File \"/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery/cli/main.py\", li"
+    "message": "assert \"warning: 'ov...amed 'yaml'\\n\" == \"warning: 'ov... commands).\\n\"\n  \n  Skipping 50 identical leading characters in diff, use -v to show\n    commands).\n  + Traceback (most recent call last):\n  +   File \"<frozen runpy>\", line 198, in _run_module_as_main\n  +   File \"<frozen runpy>\", line 88, in _run_code\n  +   File \"/Users/operator/OVERSEER_KIT/overseer-kit-v1-recovery/cli/main.py\", li"
   },
   {
     "test": "tests.security.test_q2_ok_cli_security::test_shims_forward_args_without_shell_expansion",
@@ -432,22 +432,22 @@
   {
     "test": "tests.security.test_q3_release_desktop_security::test_no_secret_literals_in_workflows",
     "category": "missing path/fixture",
-    "message": "FileNotFoundError: [Errno 2] No such file or directory: '/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery/.github/workflows/desktop-release.yml'"
+    "message": "FileNotFoundError: [Errno 2] No such file or directory: '/Users/operator/OVERSEER_KIT/overseer-kit-v1-recovery/.github/workflows/desktop-release.yml'"
   },
   {
     "test": "tests.security.test_q3_release_desktop_security::test_release_workflow_does_not_echo_secrets",
     "category": "missing path/fixture",
-    "message": "FileNotFoundError: [Errno 2] No such file or directory: '/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery/.github/workflows/desktop-release.yml'"
+    "message": "FileNotFoundError: [Errno 2] No such file or directory: '/Users/operator/OVERSEER_KIT/overseer-kit-v1-recovery/.github/workflows/desktop-release.yml'"
   },
   {
     "test": "tests.security.test_q3_release_desktop_security::test_pull_request_cannot_publish_releases",
     "category": "missing path/fixture",
-    "message": "FileNotFoundError: [Errno 2] No such file or directory: '/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery/.github/workflows/desktop-release.yml'"
+    "message": "FileNotFoundError: [Errno 2] No such file or directory: '/Users/operator/OVERSEER_KIT/overseer-kit-v1-recovery/.github/workflows/desktop-release.yml'"
   },
   {
     "test": "tests.security.test_q3_release_desktop_security::test_permissions_least_privilege",
     "category": "missing path/fixture",
-    "message": "FileNotFoundError: [Errno 2] No such file or directory: '/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery/.github/workflows/desktop-release.yml'"
+    "message": "FileNotFoundError: [Errno 2] No such file or directory: '/Users/operator/OVERSEER_KIT/overseer-kit-v1-recovery/.github/workflows/desktop-release.yml'"
   },
   {
     "test": "tests.security.test_q4b_ui_security::test_no_new_endpoints_or_auth_disable",
@@ -507,7 +507,7 @@
   {
     "test": "tests.unit.test_q3_release_desktop_unit::test_secret_scanner_flags_pem_and_passes_clean_workflow",
     "category": "missing path/fixture",
-    "message": "FileNotFoundError: [Errno 2] No such file or directory: '/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery/.github/workflows/desktop-release.yml'"
+    "message": "FileNotFoundError: [Errno 2] No such file or directory: '/Users/operator/OVERSEER_KIT/overseer-kit-v1-recovery/.github/workflows/desktop-release.yml'"
   },
   {
     "test": "tests.unit.test_sync::test_sync_refuse_consumer_modified",

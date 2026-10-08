@@ -30,19 +30,20 @@ handoff files and their two new directories were added. No production code chang
 **Bounded v1 local validation is complete.** This is the manual Git source-install
 scope on Python 3.14.4 / Darwin arm64. Packaged installation, automatic migration,
 installation rebinding, consumer hook activation and other platforms remain outside
-this validation. No release or broader rollout was performed.
+this validation. The source version is now `1.0.0` and release hygiene is in progress.
 
 Post-validation documentation maintenance rewrote README around the actual bounded
 v1 behavior, daily workflow, limits, evidence and update procedure. Update awareness
 uses opt-in GitHub **Watch → Custom → Releases** notifications plus an explicit
 manual `git fetch`/review/fast-forward pull and per-consumer `sync`. No background
 checker, automatic pull, telemetry, service, registry or OCI machinery was added.
-The current build remains unreleased `1.0.0.dev1`; `main` is not yet its source.
+Checkout-local config, launchers, NEXT, and Cursor integration are ignored rather
+than distributed. Legacy policy state is archived and current contributor/security
+documentation describes only bounded v1. A secret scan and dependency checks pass.
 
-`docs/NEXT.md` is the sole current action and prompt:
-**OVERSEER-V1-README-UPDATES-COMPLETE**, kind `stop`; no task remains queued. DINERO has
-its own **DINERO-OVERSEER-PILOT-COMPLETE** stop and distinct repository UUID.
-Do not repeat the closed review, installation or pilot. HANDOVER summarizes
-evidence without a competing prompt. Former OCI/NXR/GSR/sole-writer chains remain
-superseded. No push, mirror, main merge, release, deployment, additional consumer
-pilot, or consumer hook activation is authorized.
+The current release-preparation action will advance through `next-write` after the
+clean branch is tested and publication is attempted. DINERO has its own
+**DINERO-OVERSEER-PILOT-COMPLETE** stop and distinct repository UUID. Do not repeat
+the closed review, installation, or pilot. HANDOVER summarizes evidence without a
+competing prompt. Former OCI/NXR/GSR/sole-writer chains remain superseded. Broader
+consumer initialization and hook activation remain separate, explicit operations.

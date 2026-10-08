@@ -34,7 +34,7 @@ Evidence is in validation and `../RECOVERY-RUNS/20261008-v1-session-3` and
 `../RECOVERY-RUNS/20261008-v1-session-4`. No unresolved supported failure remains;
 historical baseline failures are not claimed fixed.
 
-The owner's explicit authorization named `/Users/aaronrenecarvajal/DINERO`, local
+The owner's explicit authorization named `/Users/operator/DINERO`, local
 setup and handoff checks, preservation of all existing work, no automatic hooks,
 and no online publication. DINERO is on `chore/open-source-prep`, unchanged HEAD
 `716a68d27c9ffb38f800a75d2b51a1ddfb2a9989`, now bound to UUID
@@ -72,7 +72,22 @@ do, source setup, consumer initialization, daily status/NEXT use, explicit
 CLI: users may opt into GitHub **Watch → Custom → Releases**, or explicitly fetch
 and compare Git history. After a reviewed fast-forward source update, each consumer
 runs `sync --dry-run` and `sync`. No background network check, automatic pull,
-telemetry, service, registry or OCI path was added. `1.0.0.dev1` remains local and
-unreleased on `feat/overseer-v1-recovery`; the README does not claim it is on main.
-The documentation action closes as **OVERSEER-V1-README-UPDATES-COMPLETE**, kind
-`stop`; no task is queued and no release/push/deployment is authorized.
+telemetry, service, registry or OCI path was added.
+
+Release preparation advances the source version to `1.0.0`. Generated checkout
+bindings (`.overseer/config.yaml`, `.overseer/bin/`, `docs/NEXT.md`, and `.cursor/`)
+are now ignored instead of distributed, so a public commit does not contain local
+absolute paths or repository identity. Superseded policy state is retained under
+`docs/archive/v1/legacy-overseer/`; current contributor, security, and docs indexes
+describe bounded v1. A full-directory gitleaks scan, `pip check`, `compileall`, and
+`git diff --check` passed. The first supported-suite run passed 75 tests and hit two
+20-second fixture setup timeouts; both exact cases passed together on immediate
+rerun in 3.44 seconds. A clean-branch full run remains the release gate.
+
+Publication uses a clean squash from `origin/main` so intermediate recovery commits
+with checkout-local paths never enter public history. The owner authorized the
+recommended release hygiene and publication work, but direct pushes to `main`,
+automatic hooks, and bulk consumer modification remain excluded. The installed
+GitHub CLI credential is invalid; Git transport is tested separately during branch
+publication. The release-preparation action remains active until that result is
+published through `next-write`.

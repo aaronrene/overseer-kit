@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+No changes yet.
+
+## 1.0.0 — 2026-10-08
+
 ### Added
 
 - Bounded v1 command surface: `status`, `init`, `sync`, `next`, and `next-write`.

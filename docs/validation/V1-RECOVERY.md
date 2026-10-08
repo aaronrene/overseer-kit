@@ -1,6 +1,7 @@
 # V1 recovery milestone — verification, 2026-10-08
 
-**Result: bounded v1 local validation is complete.** The explicitly authorized
+**Result: bounded v1 local validation is complete and 1.0.0 release preparation is
+in progress.** The explicitly authorized
 DINERO manual pilot passed in session 4; clean installation/rollback, architecture
 review and corrected build findings remain closed. No release or broader rollout
 was performed. Session 1 reached the session-2 status/NEXT checkpoint
@@ -11,12 +12,12 @@ implementation evidence is retained in the preceding milestone sections.
 ## Preservation and base
 
 Original physical checkout and Git root:
-`/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit`; repository name `overseer-kit`;
+`/Users/operator/OVERSEER_KIT/overseer-kit`; repository name `overseer-kit`;
 branch `feat/overseer-context-isolation`; HEAD
 `e9be0c4b3cafb149b9f3b7af2ab060f01bbfa504`.
 
 Verified local snapshot:
-`/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-SNAPSHOTS/20261008T122430Z-v1-recovery`.
+`/Users/operator/OVERSEER_KIT/RECOVERY-SNAPSHOTS/20261008T122430Z-v1-recovery`.
 The archive contains 21,213 entries: complete checkout including .git/.muse/venv,
 all untracked/ignored payload, operator-owned workspace file, recovery handover,
 prior OCI snapshot, and NXR/GSR evidence. Separate all-ref Git bundle (153 refs),
@@ -34,7 +35,7 @@ additions. No original payload or historical evidence was deleted. This snapshot
 is local and is not an off-device backup.
 
 Implementation worktree:
-`/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery`; branch
+`/Users/operator/OVERSEER_KIT/overseer-kit-v1-recovery`; branch
 `feat/overseer-v1-recovery`; base `d47291d5d9030de5ebef713da95efa978c4d8c6e`.
 The [scope decision](../decisions/V1-SCOPE-RESET.md) records the exact local Muse
 reconciliation: 835 identical files, six explained repair differences and five
@@ -133,7 +134,7 @@ no real consumer hook was activated. `git diff --check` passed.
 
 Machine counts: [test-results.json](test-results.json). Full logs, JUnit files,
 Muse comparison, preservation recheck, and SHA256SUMS are stored at
-`/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261008-v1-session-1`.
+`/Users/operator/OVERSEER_KIT/RECOVERY-RUNS/20261008-v1-session-1`.
 
 ## Limits and next action
 
@@ -156,7 +157,7 @@ authorized consumer pilot closed in session 4 below. The current action in
 
 Reviewer: fresh GPT-6 Astra review session, action `OVERSEER-V1-REVIEW-1`, lane
 `product`. Physical cwd and Git root both resolved to
-`/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery`; branch
+`/Users/operator/OVERSEER_KIT/overseer-kit-v1-recovery`; branch
 `feat/overseer-v1-recovery`; full HEAD
 `2bfa69864ec2f8bb3d89cc66d6353dd111421875`. Config name `overseer-kit`, UUID
 `6dba88a5-029c-4136-9277-c3a0c81f31a6`. The checkout was clean before review.
@@ -281,7 +282,7 @@ closure within session 2, not a claim of another independent review or final-v1
 completion. Earlier review observations above are retained as historical evidence.
 
 Starting identity: physical cwd/Git root
-`/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery`, branch
+`/Users/operator/OVERSEER_KIT/overseer-kit-v1-recovery`, branch
 `feat/overseer-v1-recovery`, HEAD `2bfa69864ec2f8bb3d89cc66d6353dd111421875`,
 config name `overseer-kit`, UUID `6dba88a5-029c-4136-9277-c3a0c81f31a6`.
 
@@ -319,7 +320,7 @@ deployment, consumer hook activation, or pilot was introduced.
 ## Clean source installation and rollback — session 3, 2026-10-08
 
 Action `OVERSEER-V1-INSTALL-ROLLBACK-1`, lane `product`, model `GPT-6 Astra`.
-Physical cwd/Git root: `/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery`;
+Physical cwd/Git root: `/Users/operator/OVERSEER_KIT/overseer-kit-v1-recovery`;
 branch `feat/overseer-v1-recovery`; starting clean HEAD
 `b2a09775d1daabd0b49003b36b18cfce31434fb5`; config name `overseer-kit`, UUID
 `6dba88a5-029c-4136-9277-c3a0c81f31a6`. Initial own-checkout `./cli/ok -C .
@@ -377,13 +378,13 @@ preserved script contains the assertions, and `commands.jsonl` records every
 expanded argv, cwd, expected/actual exit, stdout and stderr, including the initial
 DNS failure. `results.json` contains all six status records; `supported.xml` is
 the JUnit report; `cleanup.txt` records removal. Evidence directory:
-`/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261008-v1-session-3`.
+`/Users/operator/OVERSEER_KIT/RECOVERY-RUNS/20261008-v1-session-3`.
 
 ```sh
-.venv/bin/python /Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261008-v1-session-3/validate.py prepare
-.venv/bin/python /Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261008-v1-session-3/validate.py install
+.venv/bin/python /Users/operator/OVERSEER_KIT/RECOVERY-RUNS/20261008-v1-session-3/validate.py prepare
+.venv/bin/python /Users/operator/OVERSEER_KIT/RECOVERY-RUNS/20261008-v1-session-3/validate.py install
 # Same install command retried with network access after sandbox DNS failure.
-.venv/bin/python /Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261008-v1-session-3/validate.py probe
+.venv/bin/python /Users/operator/OVERSEER_KIT/RECOVERY-RUNS/20261008-v1-session-3/validate.py probe
 ```
 
 The script exports each revision with `git archive --format=tar -o ARCHIVE REV`
@@ -409,7 +410,7 @@ The full supported suite ran from the **current disposable source** with its
 freshly installed dependencies (cwd `/private/tmp/overseer-v1-install-2jo3ue_u/runtime a`):
 
 ```sh
-'/private/tmp/overseer-v1-install-2jo3ue_u/runtime a/.venv/bin/python' -m pytest -q -p no:cacheprovider --junitxml=/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261008-v1-session-3/supported.xml
+'/private/tmp/overseer-v1-install-2jo3ue_u/runtime a/.venv/bin/python' -m pytest -q -p no:cacheprovider --junitxml=/Users/operator/OVERSEER_KIT/RECOVERY-RUNS/20261008-v1-session-3/supported.xml
 ```
 
 ### Disposition and limits
@@ -461,18 +462,18 @@ permanent test changed; the previous review and installation exercises were not
 repeated. The supported suite was run before the local documentation commit.
 
 The owner explicitly authorized: “the local Overseer pilot in
-/Users/aaronrenecarvajal/DINERO as described. Preserve all existing files and edits,
+/Users/operator/DINERO as described. Preserve all existing files and edits,
 leave automatic hooks disabled, and do not publish anything online.” The described
 scope was local inspection/setup, status/NEXT, publication/readback of a handoff,
 and repository separation. This superseded the authorization stop for this one
 consumer. No additional consumer or online operation was authorized.
 
-Kit physical cwd/Git root: `/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery`;
+Kit physical cwd/Git root: `/Users/operator/OVERSEER_KIT/overseer-kit-v1-recovery`;
 branch `feat/overseer-v1-recovery`; starting HEAD
 `152f9f9d9b3163aec90087097c782755dede9154`; config name `overseer-kit`, UUID
 `6dba88a5-029c-4136-9277-c3a0c81f31a6`. Runtime version remains `1.0.0.dev1`, digest
 `045412b50c755e188a37aff017924a1eaf6b21fe57f1b14407e74eb026630bc8`.
-Consumer physical cwd/Git root: `/Users/aaronrenecarvajal/DINERO`; branch
+Consumer physical cwd/Git root: `/Users/operator/DINERO`; branch
 `chore/open-source-prep`; unchanged HEAD `716a68d27c9ffb38f800a75d2b51a1ddfb2a9989`.
 There was no existing Overseer config or handoff. Initialization assigned name
 `DINERO`, UUID `84fab465-04f4-4b63-9d9a-96639aa020aa`, lane `product`, model
@@ -526,7 +527,7 @@ or independent model reviewer, and did not test automatic IDE session injection.
 ### Commands, evidence and NEXT advancement
 
 Evidence directory:
-`/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261008-v1-session-4`.
+`/Users/operator/OVERSEER_KIT/RECOVERY-RUNS/20261008-v1-session-4`.
 It contains the bounded `pilot.py` driver, full before/after inventories,
 `commands.jsonl` (each expanded argv/cwd/exit/stdout/stderr), baseline/final Git
 states, `results.json`, initial/pilot/final status, both consumer NEXT payloads,
@@ -537,15 +538,15 @@ chain or discarded security subsystem was introduced.
 Exact orchestration commands, from the recovery worktree:
 
 ```sh
-.venv/bin/python /Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261008-v1-session-4/pilot.py baseline
+.venv/bin/python /Users/operator/OVERSEER_KIT/RECOVERY-RUNS/20261008-v1-session-4/pilot.py baseline
 ./cli/ok -C . next-write --repo-id 6dba88a5-029c-4136-9277-c3a0c81f31a6 --branch feat/overseer-v1-recovery --lane product --model 'GPT-6 Astra' --action-id OVERSEER-V1-PILOT-1 --action-kind implement --expect-next 35afaafe249e089ac3171baba58538f365abf8b23108f5dd8307f31be8158de4 --prompt-file .overseer/pilot-start.txt --json
-.venv/bin/python /Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261008-v1-session-4/pilot.py pilot
-.venv/bin/python -m pytest -q -p no:cacheprovider --junitxml=/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261008-v1-session-4/supported.xml
+.venv/bin/python /Users/operator/OVERSEER_KIT/RECOVERY-RUNS/20261008-v1-session-4/pilot.py pilot
+.venv/bin/python -m pytest -q -p no:cacheprovider --junitxml=/Users/operator/OVERSEER_KIT/RECOVERY-RUNS/20261008-v1-session-4/supported.xml
 ```
 
 The pilot command received filesystem escalation for the explicitly authorized
 DINERO writes outside the tool's workspace roots; it did not broaden user scope.
-Initialization was `cli/ok -C /Users/aaronrenecarvajal/DINERO init --repo-name DINERO
+Initialization was `cli/ok -C /Users/operator/DINERO init --repo-name DINERO
 --lane product --model 'GPT-6 Astra' --json`, without `--hooks`. Both consumer
 publications used all expected context fields, the actual prior digest and the
 confined `.overseer/pilot-input.txt`; full commands are in `commands.jsonl`.
@@ -585,5 +586,52 @@ it cannot decide whether arbitrary task prose is substantively correct, detect
 which AI model is actually running, or infer that work is complete. Operators and
 agents must still select appropriate work and publish the next action using
 `next-write`. The pilot directly demonstrated that advancement and refusal of the
-completed action. This closeout leaves no recovery task queued and authorizes no
-push, mirror, merge, release, deployment, new consumer, or consumer hook activation.
+completed action. This pilot closeout left no recovery task queued. Later owner
+authorization permits recommended release hygiene and publication work; it does
+not activate consumer hooks or change the pilot findings.
+
+## 1.0.0 release preparation — 2026-10-08
+
+The owner asked to complete recommended hygiene and determine whether other
+repositories can safely receive the kit. Release preparation changes the source
+version from `1.0.0.dev1` to `1.0.0`, updates current README/contributor/security
+documentation, and archives superseded `.overseer` policy state. Checkout-local
+bindings are removed from the distribution and ignored:
+`.overseer/config.yaml`, `.overseer/bin/`, `docs/NEXT.md`, and `.cursor/`. The
+physical files remain available in initialized local checkouts. Public tracked
+files contain `/Users/operator` placeholders rather than the owner's home path.
+
+The release candidate continues to use the tested bounded-v1 runtime and dependency
+set. No prompt-selection, identity, writer, confinement, hook, or consumer behavior
+changed; the runtime version string changed to `1.0.0`, which requires an explicit
+consumer `sync`. No OCI updater, background process, automatic pull, telemetry,
+service, or registry was introduced.
+
+Checks performed from `overseer-kit-v1-recovery`:
+
+```sh
+gitleaks dir --no-banner --redact .
+.venv/bin/python -m pip check
+.venv/bin/python -m compileall -q cli tests/v1 tests/retained
+git diff --check
+.venv/bin/python -m pytest -q -p no:cacheprovider
+.venv/bin/python -m pytest -q -p no:cacheprovider \
+  'tests/v1/test_commands.py::test_malformed_config_refused[context-lane-bad/lane]' \
+  'tests/v1/test_isolation.py::test_copied_config_or_next_fails_without_foreign_prompt[docs/NEXT.md]'
+```
+
+The secret scan, dependency check, compilation, and whitespace check exited zero.
+The first full supported run reported **75 passed and 2 setup errors in 742.82s**;
+both errors were 20-second timeouts while otherwise successful `init --hooks`
+fixture setup was under unusual filesystem load. The exact two cases then passed
+together in **3.44s**. This rerun classifies the errors but does not replace the
+required clean release-branch full-suite run.
+
+`git fetch --prune origin` succeeded and confirmed `origin/main` remains
+`d47291d5d9030de5ebef713da95efa978c4d8c6e`. `gh auth status` reported that the
+stored credential for `aaronrene` is invalid. Publication therefore tests Git push
+authentication independently; pull-request creation requires repaired GitHub CLI
+authentication if the invalid credential remains. Direct push to `main` is not part
+of the plan. The clean release branch must be a squash from `origin/main`, must pass
+the supported suite in its own conventional venv, and must contain no local binding
+or personal absolute path before it is presented for review.

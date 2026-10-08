@@ -1,9 +1,0 @@
----
-description: Update both living summaries together
-alwaysApply: true
----
-
-Update docs/ROADMAP.md and docs/OVERSEER-HANDOVER.md in the closing feature commit.
-The only action source is docs/NEXT.md, published by next-write. The historical
-automatic governance-sync command and its implicit push are outside v1. Recovery
-authorizes local feature commits only. Print validated NEXT from disk at closeout.
