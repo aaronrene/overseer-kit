@@ -115,6 +115,9 @@ def test_branch_and_head_freshness(repo):
     assert r.returncode != 0 and 'branch_mismatch' in r.stderr
     subprocess.run(['/usr/bin/git','-C',str(repo),'switch','main'], check=True, capture_output=True)
     subprocess.run(['/usr/bin/git','-C',str(repo),'add','.'], check=True)
+    # Preserve the legacy tracked-NEXT closing-commit exception explicitly.
+    # New init now excludes checkout-local NEXT from ordinary git add.
+    subprocess.run(['/usr/bin/git','-C',str(repo),'add','-f','docs/NEXT.md'], check=True)
     subprocess.run(['/usr/bin/git','-C',str(repo),'-c','core.hooksPath=/dev/null','commit','-m','publish NEXT'], check=True, capture_output=True)
     assert command('-C', repo, 'next').returncode == 0
     subprocess.run(['/usr/bin/git','-C',str(repo),'-c','core.hooksPath=/dev/null','commit','--allow-empty','-m','later work'], check=True, capture_output=True)
@@ -182,7 +185,19 @@ def test_unborn_repository_first_commit_is_supported(tmp_path):
     subprocess.run(['/usr/bin/git','-C',str(root),'add','.'],check=True)
     subprocess.run(['/usr/bin/git','-C',str(root),'-c','user.name=Fixture','-c',
         'user.email=fixture@example.invalid','-c','core.hooksPath=/dev/null','commit','-m','first'],check=True,capture_output=True)
-    assert command('-C',root,'next').returncode==0
+    r = command('-C',root,'next')
+    assert r.returncode == 2 and 'next_stale_head' in r.stderr
+    # The ignored local handoff is deliberately published after the first commit.
+    import yaml
+    cfg = yaml.safe_load((root/'.overseer/config.yaml').read_bytes())
+    from cli.v1_io import digest
+    (root/'prompt.txt').write_text('First post-commit task.\n')
+    r = command('-C',root,'next-write','--repo-id',cfg['repo']['id'], '--branch','main',
+                '--lane','product','--model','GPT-6 Astra','--action-id','FIRST',
+                '--action-kind','implement','--expect-next',digest((root/'docs/NEXT.md').read_bytes()),
+                '--prompt-file','prompt.txt')
+    assert r.returncode == 0, r.stderr
+    assert command('-C',root,'next').returncode == 0
 
 
 def test_git_worktree_supported(repo,tmp_path):

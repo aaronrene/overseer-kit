@@ -11,6 +11,7 @@ daily use, handoff publication, update notifications, and current limitations.
 | [Validation](validation/V1-RECOVERY.md) | Reviews, test results, installation/rollback, and consumer pilot evidence |
 | [Muse restoration audit](validation/V1-RECOVERY.md#musehub-restoration-audit--2026-10-08) | Corrected Muse-first scope, reproduced gaps, architecture, and restoration plan |
 | [Canonical NEXT format](PRINT-NEXT.md) | How v1 reads and publishes the sole handoff |
+| [Explicit adoption and rollback](MIGRATE-EXISTING-REPO.md) | Git/Muse selection, local exclusions, config migration and rollback |
 | [Roadmap](ROADMAP.md) | Current milestone summary; never a prompt source |
 | [Handover](OVERSEER-HANDOVER.md) | Current evidence summary; never a prompt source |
 | [Test scope](../tests/README.md) | Supported and historical test boundaries |
@@ -29,6 +30,6 @@ instructions. `cli/legacy_main.py` preserves the former CLI source; `cli/main.py
 exposes only bounded v1.
 
 The owner corrected the mistaken exclusion of MuseHub authority and GitHub
-mirroring. These are intended-v1 requirements awaiting restoration, not discarded
-features. The historical bridge has known audit findings; its runbook is evidence,
+mirroring. R1 implements optional local Muse handoffs and adoption; mirror repair
+and combined validation are pending. The historical bridge has known audit findings; its runbook is evidence,
 not a currently approved publication procedure.

@@ -1,14 +1,15 @@
 # Overseer Kit
 
 Overseer Kit is a small local command-line tool that keeps one trustworthy next-task
-handoff inside each Git repository. It helps prevent an agent or operator from using
+handoff inside each Git or explicitly selected Muse repository. It helps prevent an agent or operator from using
 a prompt from the wrong project, branch, lane, or point in history.
 
 The Git-based handoff core is locally validated, but intended v1 is incomplete.
 The intended product lets each repository choose Git/GitHub only or MuseHub as its
 source of truth with a GitHub mirror. Git-only is a permanent supported choice:
-no Muse installation, account, or migration is required. Muse restoration has been
-audited and is not implemented yet. The source version `1.0.0` is an
+no Muse installation, account, or migration is required. R1 implements optional
+local Muse handoffs and explicit adoption; mirror repair and combined release
+validation remain pending. The source version `1.0.0` is an
 unpublished candidate, and its Git-only release is on hold. The behavior described
 below is the current implementation, not the completed Muse-first product. See the
 [scope decision](docs/decisions/V1-SCOPE-RESET.md) and the complete
@@ -23,9 +24,11 @@ Each initialized repository receives:
 - one canonical handoff in `docs/NEXT.md`;
 - small ROADMAP and HANDOVER documents when they do not already exist.
 
-Before printing NEXT, Overseer checks the repository UUID and root, Git branch,
+Before printing NEXT, Overseer checks the repository UUID and root, selected VCS branch,
 configured lane and model label, action ID and kind, prompt digest, expected NEXT
-digest when supplied, and Git freshness. A copied launcher, copied config, stale
+digest when supplied, and authoritative revision freshness. Muse mode also pins
+the Muse repository identity, store, separate Python environment and package source
+digest. A copied launcher, copied config, stale
 handoff, wrong repository, wrong lane, wrong branch, or stale writer is refused
 without printing the prompt.
 
@@ -33,9 +36,10 @@ The public commands are:
 
 | Command | Purpose |
 | --- | --- |
-| `status` | Show repository, runtime, Git, and NEXT status without changing files. |
-| `init` | Give one Git checkout its identity and initial local handoff files. |
+| `status` | Show repository, runtime, selected local revision, and NEXT status without changing files. |
+| `init` | Give one checkout its identity, exclusions and initial local handoff files. |
 | `sync` | Refresh the bound launcher and runtime pin after an explicit kit update. |
+| `adopt` | Explicitly change schema/authority, preview exclusions, or restore a preserved config. |
 | `next` | Validate and print the current handoff. It never runs the task. |
 | `next-write` | Publish a new handoff with explicit context and the previous NEXT digest. |
 
@@ -49,7 +53,7 @@ it explicitly with `next-write`.
 The bounded v1 does not push, pull, fetch, merge, release, deploy, modify application
 code, or contact a network. It has no hosted service, registry, background process,
 telemetry, automatic updater, transaction system, or OCI machinery. It supports
-local Git checkouts and worktrees. Moving an initialized checkout or moving the kit
+local Git and Muse code-domain checkouts and linked worktrees. Moving an initialized checkout or moving the kit
 installation requires an explicitly reviewed rebind; copying is not migration.
 
 ## Prepare the source installation
@@ -76,6 +80,15 @@ For development and the supported test suite:
 .venv/bin/python -m pytest -q
 ```
 
+Muse is optional and stays in its own conventional venv: R1 supports exactly
+Muse `0.2.1rc5` with Python 3.14 or newer. The kit itself still supports Python
+3.11 or newer and does not install Muse. To run the additional real Muse matrix:
+
+```sh
+.venv/bin/python -m pytest -q tests/v1 tests/retained tests/muse \
+  --muse-python /absolute/path/to/muse-venv/bin/python
+```
+
 ## Add one repository
 
 Use the repository's absolute path. Initialization preserves existing ROADMAP and
@@ -83,6 +96,7 @@ HANDOVER files and refuses an existing unmanaged launcher.
 
 ```sh
 ./cli/ok -C /absolute/path/to/project init \
+  --vcs git \
   --repo-name PROJECT-NAME \
   --lane product \
   --model 'GPT-6 Astra'
@@ -90,6 +104,12 @@ HANDOVER files and refuses an existing unmanaged launcher.
 
 Automatic editor hooks are off by default. Keep them off unless you deliberately
 review and authorize hook installation for that repository.
+
+For an already prepared Muse checkout, select `--vcs muse --muse-python
+/absolute/path/to/muse-venv/bin/python`. An uninitialized mixed checkout requires
+an explicit choice. An existing Git binding remains Git even if Muse metadata
+appears later. `init` and `sync` never change its authority. See
+[adoption and rollback](docs/MIGRATE-EXISTING-REPO.md) before changing modes.
 
 ## Daily use
 
@@ -101,10 +121,17 @@ From an initialized repository:
 ```
 
 `status --json` is useful for automation. A dirty repository is reported but does
-not by itself invalidate NEXT. A changed branch, a later Git commit, altered prompt,
+not by itself invalidate NEXT. A changed branch, a later authoritative commit, altered prompt,
 wrong identity, or changed runtime does invalidate it. Exit codes are 0 for success,
 1 when `status` can report identity but NEXT is invalid, and 2 for refusal or usage
 errors.
+
+Muse freshness uses its own branch and revision, regardless of a nearby Git HEAD.
+Publication is always `not_checked_offline` on these local commands; a valid local
+NEXT says nothing about MuseHub acceptance or GitHub delivery. Muse dirty state
+compares regular working files with the branch snapshot and reports a nonempty
+shared stage as dirty. R1 does not certify executable modes, symlinks, or a separate
+per-worktree Muse staging index.
 
 Use the expectation options when resuming a previously read handoff:
 
@@ -141,6 +168,11 @@ Action kinds are `plan`, `implement`, `review`, `maintain`, and `stop`. Use `sto
 when no executable task is queued. The writer compares the previous digest, locks
 cooperating writers briefly, writes a unique temporary file, flushes it, and replaces
 NEXT atomically. It changes no other consumer document.
+
+Muse writers additionally require `--vcs muse --base-head CURRENT-MUSE-REVISION`.
+Use `--base-head unborn` before the first commit. Commit application work first,
+then publish ignored NEXT against the new revision. Git accepts the same explicit
+revision options; its legacy tracked-NEXT closing-commit exception remains supported.
 
 ## Simple update notifications
 

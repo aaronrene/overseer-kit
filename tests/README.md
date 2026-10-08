@@ -1,7 +1,17 @@
 # Test scope after the v1 reset
 
 `python -m pytest` runs the supported v1 release matrix: `tests/v1` and
-`tests/retained`. The complete requirement mapping, baseline counts, and known
+`tests/retained`, including migration/protocol tests and a standalone installation
+that has no Muse package. The additional supported real-Muse matrix is explicit:
+
+```sh
+.venv/bin/python -m pytest -q tests/v1 tests/retained tests/muse \
+  --muse-python /absolute/path/to/muse-venv/bin/python
+```
+
+Selecting `tests/muse` without the separate Muse venv fails; no skip masks that
+requirement. Git-only users can run the default suite without installing Muse.
+The complete requirement mapping, baseline counts, and known
 historical failures are in `docs/validation/V1-RECOVERY.md`.
 
 The original seven tier directories (`unit`, `integration`, `e2e`, `security`,

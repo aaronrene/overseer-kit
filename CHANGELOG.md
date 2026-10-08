@@ -2,7 +2,13 @@
 
 ## Unreleased
 
-No changes yet.
+- R1: optional local Muse authority for status/NEXT, including linked worktree
+  identity, Muse branch/revision freshness and separate pinned Muse environment.
+- Explicit `adopt` dry-run, config migration and rollback preserving checkout
+  identity, documents and application edits; additive Git/Muse local-file exclusions.
+- Git-only remains supported without Muse or an account; no automatic conversion.
+- Mirror repair and combined Muse-first release validation remain pending. The
+  `1.0.0` source version and prior release preparation are unpublished candidates.
 
 ## 1.0.0 — 2026-10-08
 

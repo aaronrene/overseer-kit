@@ -1,20 +1,21 @@
 # Contributing to Overseer Kit
 
-Overseer Kit v1 is deliberately small: a trusted-host local Git utility for
+Overseer Kit v1 is deliberately small: a trusted-host local Git/Muse utility for
 repository identity, status, and one canonical NEXT handoff. Read `README.md`,
 `docs/decisions/V1-SCOPE-RESET.md`, and `tests/README.md` before changing it.
 
 ## Supported scope
 
-The public commands are `status`, `init`, `sync`, `next`, and `next-write`.
+The public commands are `status`, `init`, `sync`, `adopt`, `next`, and `next-write`.
 Keep repository/root/UUID binding, canonical `docs/NEXT.md`, explicit context
 checks, stale-state refusal, deterministic source imports, confined atomic writes,
 and living-document preservation intact.
 
 The owner's scope correction requires a per-repository choice of Git/GitHub only
 or MuseHub authority with controlled GitHub mirroring. Preserve standalone Git-only
-operation without a Muse dependency. Muse restoration is pending; use the validation
-audit as the design baseline rather than reactivating the entire legacy CLI.
+operation without a Muse dependency. R1 local authority/adoption is implemented;
+mirror repair and combined validation remain pending. Use the validation audit
+and R1 results as the baseline rather than reactivating the entire legacy CLI.
 
 Former hosted, desktop, governance-sync, freeze-review, publishing, registry,
 receipt, transaction, and orchestration implementations remain historical source.
@@ -33,6 +34,10 @@ python3 -m venv .venv
 
 The default pytest collection is the supported matrix in `tests/v1` and
 `tests/retained`. Do not delete or rewrite historical tests to obtain a green run.
+Changes to Muse integration also require the real `tests/muse` matrix with
+`--muse-python /absolute/muse-venv/bin/python`, in addition to the default suite.
+The pinned Muse environment is separate and requires Python >=3.14. See
+`tests/README.md`; no skip may conceal an unavailable supported integration check.
 
 ## Making a change
 
@@ -45,7 +50,7 @@ The default pytest collection is the supported matrix in `tests/v1` and
 6. Push the feature branch and open a pull request. Never push directly to `main`.
 
 Do not commit checkout-local bindings: `.overseer/config.yaml`, `.overseer/bin/`,
-`docs/NEXT.md`, or `.cursor/`. They contain physical paths and are generated for
+`.overseer/local/`, `docs/NEXT.md`, or `.cursor/`. They contain physical paths and are generated for
 each initialized checkout. Do not commit secrets, `.env*`, private keys, consumer
 content, or machine-specific run logs.
 

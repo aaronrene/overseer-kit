@@ -12,6 +12,14 @@ patterns = [
     ".vscode/",
     ".idea/",
     "*.iml",
+
+    # Checkout-local bindings and VCS administration are never distributed.
+    "/.overseer/config.yaml",
+    "/.overseer/bin/",
+    "/.overseer/local/",
+    "/docs/NEXT.md",
+    "/.cursor/",
+    "/.git/",
 ]
 
 [domain.code]
@@ -59,6 +67,14 @@ patterns = [
 
     # ── Ruby ─────────────────────────────────────────────────────────
     # ".mpack/",
+
+    # Keep these last: domain negations must not re-include local bindings.
+    "/.overseer/config.yaml",
+    "/.overseer/bin/",
+    "/.overseer/local/",
+    "/docs/NEXT.md",
+    "/.cursor/",
+    "/.git/",
 
 ]
 

@@ -1151,3 +1151,202 @@ An invalid or stale NEXT requires reconciliation and explicit publication rather
 than copying or manually editing generated binding fields. The configured model
 is a label; select GPT-6 Astra with Extra High reasoning in the agent interface for
 R1. Overseer does not select the running model or certify arbitrary task prose.
+
+## R1 optional local Muse handoffs and adoption — 2026-10-08
+
+**R1 is implemented and locally validated. R2 mirror repair is next; the complete
+intended product remains unfinished and the preserved release candidate remains
+on hold.** This implements the owner's authorized local restoration, without a
+session-count ceiling. Both Git/GitHub-only and MuseHub-authoritative modes remain
+permanent per-repository choices. No Git binding is automatically converted.
+The completed audit above was the design baseline; the closed audit and unchanged
+Git-core architecture/build review were not repeated.
+
+### Identity, implementation and runtime
+
+Physical cwd and Git root were the recovery worktree `overseer-kit-v1-recovery`,
+branch `feat/overseer-v1-recovery`, name `overseer-kit`, UUID
+`6dba88a5-029c-4136-9277-c3a0c81f31a6`, starting from clean HEAD
+`64a1585c25bc40e62c9d0950b3b51604d49111b5`. Initial status and canonical R1 NEXT
+validated. Exact local paths, preservation inventories, commands and raw results
+are retained in `../RECOVERY-RUNS/20261008-muse-restoration-r1/`.
+
+The runtime manifest now includes `cli/v1_revision.py`, `cli/v1_muse_reader.py`,
+and `cli/v1_policy.py` alongside the changed `cli/v1.py`. Version remains the
+unpublished candidate `1.0.0`; runtime digest changed from
+`3643f0c9e6c5be2cc2e4d3aa7ed13eea34eb9fb213ea221d16d3faf6f3a1b623` to
+`379df92544be4722597b7ccecdf6a1efca1a181b1a852046172fd375c7fbe2cb`.
+An actual runtime-change refusal was verified, followed by `sync --dry-run`,
+explicit `sync`, status and NEXT readback. Dry-run changed no bytes; sync preserved
+UUID, existing Git authority, NEXT and both summaries. `runtime-sync.json` records
+those exact results. The recovery itself is not attached to original Muse history;
+R3 will reconcile source in isolation.
+
+Implementation contract:
+
+- Root discovery stops at the nearest Git or Muse marker. An uninitialized Muse
+  or mixed root requires explicit `--vcs`; existing schema-1 Git bindings stay Git.
+  Both ordinary and linked physical roots retain UUID/lane/model/launcher checks.
+- Schema-2 NEXT carries revision kind and Muse logical repository ID separately
+  from checkout UUID. Muse branch/revision determines freshness; a changed Git
+  HEAD in a Muse-managed mixed root does not. Any later Muse commit invalidates
+  NEXT. Muse writers require `--vcs muse --base-head REVISION`, recheck source and
+  config before replacement, and retain raw-digest CAS and the confined writer.
+- Git does not import or launch Muse. Muse uses an explicitly selected separate
+  venv, exact package version and SHA-256 of its Python package sources. Missing,
+  malformed, oversized, timed-out or incompatible responses refuse without Git
+  fallback. Each helper call has a 15-second deadline and 2 MiB combined output cap.
+- The pinned Muse CLI's `require_repo` performs startup GC, its legacy stage reader
+  can delete a binary index, and linked-worktree discovery returns the main store.
+  Therefore local Overseer reads use a small helper with pinned native object-read
+  APIs, explicit registered worktree HEAD resolution and a Python side-effect
+  assertion. No CLI cleanup, stage migration, hook execution, cache write, child
+  process or network operation belongs to that helper. This is a compatibility
+  assertion on trusted local dependencies, not a hostile-code security sandbox.
+- `status` and `next` stay offline and report publication as `not_checked_offline`.
+  Local unpushed revisions can have valid NEXT; Hub acceptance and GitHub delivery
+  remain unobserved. Muse dirty state covers regular working-file contents and a
+  nonempty shared stage, not complete filesystem metadata fidelity.
+- `adopt` explicitly previews/applies schema/backend changes or restores a saved
+  config. It preserves checkout identity, context, NEXT, living documents, hooks
+  and application edits. Expected config digest and target branch/revision are
+  required. Exact prior config bytes are saved under `.overseer/local/`; config
+  publishes last. Rollback works to Git even if Muse is unavailable. A preserved
+  NEXT with the wrong source kind refuses until an explicit `next-write`.
+
+### Reviewed exclusion and adoption policy
+
+Fresh init and explicit adoption add root-relative exclusions for
+`.overseer/config.yaml`, `.overseer/bin/`, `.overseer/local/`, `docs/NEXT.md`,
+checkout-local `.cursor/`, and the other VCS's administration directory. Existing
+ignore rules/comments remain intact. Muse exclusions follow existing global and
+domain rules; forced tracking of local bindings is refused. Source templates in
+`templates/` and `cursor/`, ROADMAP and HANDOVER remain versionable. Existing tracked
+Git index or selected Muse snapshot/stage bindings are reported in dry-run and
+block apply; no automatic untracking or history rewrite occurs. Git mode does not
+inspect Muse tracking or require Muse installation. The repository's tracked
+`.museignore` and `.gitignore` now carry this policy too.
+
+Actual native Muse snapshot tests prove that new config/launcher/NEXT/editor hooks/
+backup files are absent while templates and living summaries remain. Tests also
+prove existing tracked NEXT blocks adoption rather than being declared safe merely
+because an ignore rule exists. Export projection and historical mirror cleanup
+remain R2 responsibilities; no R1 export or real-project mirroring was performed.
+
+The fixture import uses a reviewed committed Git baseline in an isolated Muse
+repository, explicitly restores its manifest and compares every file byte with
+`git show`. The original fixture's dirty and untracked application edits and local
+identity remain unchanged. That new physical checkout receives a different local
+UUID. Same-checkout config adoption preserves the existing UUID, documents and
+edits. This is deliberate local binding, not automatic source/history import.
+
+Rollback restores exact config bytes, including comments, while preserving newer
+application/document/NEXT edits and retaining additive exclusions. Backup/config
+and ignore writes remain per-file atomic. Injected failure before config replacement
+leaves the old binding usable; a concurrent ignore-file edit is refused rather than
+overwritten. The inherited post-replacement directory-fsync limitation still applies:
+a failure can leave the complete new file present. No transaction/recovery subsystem
+was added. The [adoption guide](../MIGRATE-EXISTING-REPO.md) contains operational
+commands, input schemas and rollback boundaries.
+
+### Commands, corrections and exact results
+
+Kit: its own conventional `.venv`, Python **3.14.4**, PyYAML **6.0.3**, pytest
+**9.1.1**. Muse: installed **0.2.1rc5** in its separate conventional venv at
+`/Users/operator/.local/share/muse/venv`; its tested Python package-source digest was
+`7b181b6eff6bde1b53105f2a7be7bd8937224988965d7462a3a6b04658f35e92`.
+The standalone Git installation test creates an additional conventional `.venv`,
+seeds only PyYAML offline, proves that `muse` cannot be imported there, and exercises
+init/status/NEXT/sync with a PATH that contains no Muse. No shared editable-package
+finder, neighboring venv fallback, Muse account or network installation was used.
+
+| Run / retained XML stem | Actual result | Pytest reported duration |
+| --- | --- | --- |
+| `initial-supported` | 75 passed, 2 failed | 52.92s |
+| `initial-integration` | 26 passed, 23 failed | 22.69s |
+| `integration-recheck` | 24 passed, 1 failed | 51.55s |
+| `combined` | 131 passed, 1 failed | 122.30s |
+| `import-branch-recheck` | 2 passed, 27 deselected | 5.19s |
+| `final-supported` | **135 passed, 0 failed, 0 errors, 0 skipped** | **132.34s** |
+
+The first two Git failures were outdated fixture expectations after init began
+ignoring NEXT. Coverage now explicitly preserves the legacy tracked-NEXT closing
+commit exception and checks commit-then-next-write for newly ignored NEXT. No
+historical test source was changed. Twenty-three initial integration failures came
+from one reader defect: native Muse creates an empty ref file for an unborn branch.
+That representation is now handled explicitly. The remaining worktree failure was
+an erroneous dirty flag from treating the `.muse` pointer file as application data;
+both VCS marker files are now excluded from that scan. The combined run exposed
+an import fixture assumption: native import creates history without populating the
+working tree. The corrected fixture explicitly restores and compares the manifest;
+its focused recheck passed. All corrections are included in the final full run.
+
+The final 135 tests comprise **99 `tests/v1`, 6 `tests/retained`, and 30 real
+`tests/muse` tests**: all 77 prior supported cases plus 58 new cases. No skip/xfail
+hides a supported behavior. Git-only default collection is the 105 tests in
+`tests/v1` and `tests/retained`; real Muse tests are an explicit additional matrix
+and fail if selected without `--muse-python`. Final JUnit suite duration is
+132.263s; the table uses pytest's console duration. `test-results.json` preserves
+all exact JUnit attributes and per-directory counts, including earlier failures.
+
+Commands from the recovery root (the actual absolute Muse Python path is retained
+in local evidence; the portable placeholder below denotes that separate venv):
+
+```sh
+.venv/bin/python -m pytest -q -p no:cacheprovider --junitxml=../RECOVERY-RUNS/20261008-muse-restoration-r1/initial-supported.xml
+.venv/bin/python -m pytest -q tests/v1/test_adoption.py tests/muse --muse-python /absolute/muse-venv/bin/python -p no:cacheprovider --junitxml=../RECOVERY-RUNS/20261008-muse-restoration-r1/initial-integration.xml
+.venv/bin/python -m pytest -q tests/muse --muse-python /absolute/muse-venv/bin/python -p no:cacheprovider --junitxml=../RECOVERY-RUNS/20261008-muse-restoration-r1/integration-recheck.xml
+.venv/bin/python -m pytest -q tests/v1 tests/retained tests/muse --muse-python /absolute/muse-venv/bin/python -p no:cacheprovider --junitxml=../RECOVERY-RUNS/20261008-muse-restoration-r1/combined.xml
+.venv/bin/python -m pytest -q tests/muse/test_handoffs.py -k 'committed_git_baseline or branch_change' --muse-python /absolute/muse-venv/bin/python -p no:cacheprovider --junitxml=../RECOVERY-RUNS/20261008-muse-restoration-r1/import-branch-recheck.xml
+.venv/bin/python -m pytest -q tests/v1 tests/retained tests/muse --muse-python /absolute/muse-venv/bin/python -p no:cacheprovider --junitxml=../RECOVERY-RUNS/20261008-muse-restoration-r1/final-supported.xml
+.venv/bin/python -B ../RECOVERY-RUNS/20261008-muse-restoration-r1/runtime-sync.py
+.venv/bin/python -B ../RECOVERY-RUNS/20261008-muse-restoration-r1/preserve.py after
+gitleaks dir --no-banner --redact .
+git diff --check
+```
+
+Meaningful new coverage includes Git without Muse, explicit mixed-root selection,
+nearest-VCS-root isolation, Muse-only unborn/committed roots, native linked Git and
+Muse worktrees, separate checkout/source identity, Muse branch and revision changes,
+Git movement under Muse authority, copied config/NEXT/launchers, wrong lane/model/
+UUID/source/revision, runtime pin changes, missing executable/objects, malformed refs/
+responses/stage, bounded output/time, concurrent CAS, source change before writing,
+read-only filesystem inventories, real native Git import, actual snapshot exclusions,
+already-tracked bindings, explicit schema migration, config rollback with missing
+Muse, failure before config publication and concurrent ignore edits.
+
+### Preservation, limits and handoff
+
+The preservation comparison passed: original Muse HEAD/refs/config/repository
+identity/bridge records and original Git working edits are unchanged. The release
+worktree remains clean at `06f988e5a078ede81c9dc664520833980a9a19a3` on
+`release/overseer-v1.0.0`. `preservation-before.json` and `preservation-after.json`
+contain matching hashes and Git observations. The secret scan exited 0 with no
+leaks; whitespace checks passed. No consumer was accessed, no real-project mirror
+ran, no remote write occurred, and no automatic hook, OCI or discarded governance
+machinery was activated.
+
+Supported here: POSIX local Git and pinned Muse code-domain **read/NEXT** behavior,
+including registered linked worktrees, plus explicit bounded-v1 config adoption/
+rollback. The helper correctly reads a linked worktree's branch; this does not
+validate native Muse commit/checkout behavior there. This Muse version shares its
+stage at the main store. Status does not certify separate staging isolation,
+symlink fidelity or complete executable metadata. Other Muse versions/domains,
+Windows, historical governance configs, relocated bindings, full dependency
+integrity, arbitrary TOML layouts, cross-installation runtime rollback and new
+network installation remain outside this R1 evidence. The package pin hashes Muse
+Python sources, not the entire interpreter/dependency environment.
+
+R1 closes M01/M02 for this local scope and the local-read/exclusion portions of
+M09/M15. R2 must close the export/mirror findings, including hooks, exact projection,
+modes, source/destination correspondence and delivery retries. R3 retains isolated
+source reconciliation from verified staging, supported CI, independent integration
+review and combined current/previous installation rollback. Production trust,
+publication credentials, real remote write lifecycle and authorized consumers
+remain separate gates. No independent review or complete-product finish is claimed.
+
+After the local R1 feature commit, canonical NEXT is advanced through `next-write`
+to **OVERSEER-V1-MUSE-RESTORATION-R2**, kind **implement**, bound to the new HEAD and
+the pre-read prior NEXT digest. `next-closeout.json` records the exact writer argv,
+result and direct/bound-launcher status/NEXT readbacks. The ignored prompt input
+is removed after publication. The R1 implementation action must not remain NEXT.
