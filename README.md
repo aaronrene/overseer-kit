@@ -1,376 +1,74 @@
-# 🆗 Overseer Kit
+# Overseer Kit — bounded v1 recovery
 
-Portable governance for AI-assisted development: handover/roadmap discipline, VCS hygiene,
-freeze-contract review, and repo-agnostic tooling you inject into any project.
+A local CLI for repository identity, status, and one validated next action.
+This branch is the first recovery milestone, not a release or consumer rollout.
+Read [scope](docs/decisions/V1-SCOPE-RESET.md) and
+[verification](docs/validation/V1-RECOVERY.md).
 
----
+Use a conventional Python 3.11+ environment in this checkout:
 
-## What it is
-
-The Overseer Kit is the **single canonical source** for the overseer method — a disciplined way to
-run phased AI-assisted work without losing context between sessions, merging without review, or
-letting governance docs drift from reality.
-
-Instead of hand-copying handover notes, tier rules, and model labels into every repository, you
-vendor the kit locally and keep one small config file: `.overseer/config.yaml`.
-
-```bash
-./cli/ok init              # first install (POSIX shim → python -m cli.main)
-./cli/ok sync              # pull template/policy updates
-./cli/ok status            # drift + VCS regime check
-./cli/ok governance-sync   # handover/roadmap hygiene (default: dry-run)
-./cli/ok review --freeze <path>
-
-# Equivalent without the shim:
-.venv/bin/python -m cli.main governance-sync --dry-run
+```sh
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements-v1-dev.txt
+./cli/ok --version
+./cli/ok -C /absolute/disposable/repo init
+./cli/ok -C /absolute/disposable/repo status
+./cli/ok -C /absolute/disposable/repo next
+./cli/ok -C /absolute/disposable/repo sync
+.venv/bin/python -m pytest -q
 ```
 
-Do **not** run `python cli/ok` — `cli/ok` is a shell script, not Python. The compatibility shim `cli/overseer` prints a one-line stderr deprecation and runs the same runtime.
+The supported runtime is this source checkout with its own `.venv`. Normal venv
+Python symlinks are allowed. The launcher uses isolated Python and has no PATH or
+neighboring-checkout fallback. Consumer `.overseer/bin/ok` launchers bind an exact
+physical repository root and UUID to an absolute installation. A copied config,
+NEXT, or bound launcher fails closed. `-C` must name a Git root; without it the
+current working directory selects its containing Git repository. A bound launcher
+refuses a cwd belonging to another repository unless `-C` explicitly names its
+own repository. Symlink aliases of a root resolve to the same physical identity.
 
-**Guardrail:** every baseline capability works on plain GitHub. MuseHub is an **optional**
-substrate that deepens version control — it never gates core governance features.
+`init` assigns the UUID once. It preserves existing ROADMAP/HANDOVER documents.
+It refuses legacy configuration; migration is an explicit maintainer operation,
+not an automatic identity rewrite. `sync` refreshes the launcher and the version
+and source digest pin in config, preserving NEXT and living documents. It never
+changes repository identity or switches installations. Moved checkouts need an
+explicitly reviewed config/launcher rebind; copying is not a supported migration.
+`--hooks` on init/sync installs read-only Cursor hooks; use only disposable
+fixtures during this milestone. User hook configurations should be reviewed before
+opting into replacement. No hook searches PATH, environment overrides, or peers.
 
----
+Only `docs/NEXT.md` carries the current action and prompt. `next` validates its
+UUID/root, current branch, configured lane/model, action ID grammar, action kind,
+prompt digest, and Git freshness before printing. Optional `--repo-id`, `--branch`,
+`--lane`, `--model`, `--action-id`, `--action-kind`, and `--expect-next` check caller
+expectations. Use these when resuming a previously read action. Printed binding
+fields are generated from validated metadata, never extracted from prose.
 
-## Core concepts
+Publish a prompt stored in a regular, confined UTF-8 repository file:
 
-### Handover and Overseer Handover
-
-| Term | Meaning |
-| --- | --- |
-| **Handover** | The practice of ending each work session with an honest relay: what landed, what is true now, and the **one** next step — so a fresh AI chat can continue without re-deriving context. |
-| **`OVERSEER-HANDOVER.md`** | The living handover document in each repo (from `templates/OVERSEER-HANDOVER.template.md`). Contains a **NEXT SESSION** block with a paste-ready prompt, a verified snapshot (branch, phase status), and a change log. |
-| **Overseer method** | The full system: roadmap phase control + handover relay + decision tiers + model labels + freeze review + governance sync + VCS hygiene. The kit productizes this into vendored files and CLI tools. |
-
-Think of **ROADMAP** as the plan (what phases exist, their status, which model tier each uses) and
-**HANDOVER** as the baton (what to do right now, copy-pasted into the next session).
-
-**RULE #8 (Orchestrator):** after `ok init` / `ok sync`, day-to-day phased work follows the vendored
-always-on rule `.cursor/rules/orchestrator.mdc` — paste the handover prompt, freeze-review before
-Auto, build-verify before DONE, keep roadmap + handover in sync via `ok governance-sync`. Do not
-keep a separate hand-rolled “update ROADMAP.md / OVERSEER_HANDOVER.md” protocol beside the kit.
-
-### ROADMAP
-
-`docs/ROADMAP.md` (from template) is the **phase control board**:
-
-- Build queue table: phase → model label → status → deliverable
-- Phase Model Key (`Thinking`, `Auto`, `Thinking → Auto`, `Operator + Auto`)
-- Definition of Done per phase (tests, governance sync, no secrets)
-
-Phases move **TODO → WIP → DONE → BLOCKED**. Only one **THE ONE NEXT STEP** should be active in
-the handover at a time.
-
-### Benefits
-
-| Benefit | How the kit delivers it |
-| --- | --- |
-| **No session amnesia** | Handover NEXT block + verified snapshot give every new chat the same ground truth. |
-| **No doc drift** | `governance-sync` compares docs to real VCS state and patches handover/roadmap together (SD-17). |
-| **Safe phase boundaries** | Thinking phases freeze contracts; Auto phases build mechanically against them — reviewed before downstream work depends on them (§6 freeze contract). |
-| **Clear authority** | Tier 1/2/3 policy (`policy/tiers.yaml`) — agents act on routine work, ask once on design choices, stop on merges/staging/secrets/money. |
-| **One place to improve** | Fix governance once in the kit; `ok sync` updates every consumer footprint. |
-| **VCS honesty** | Adapter reads fail-closed; optional MuseHub `realign` + safe mirror export prevent canonical-history inversions. |
-| **Test discipline** | RULE #0 seven-tier contract (`policy/test-tiers.yaml`) — unit through security before a phase is DONE. |
-| **Tool portability** | Policy, templates, and CLI are IDE-agnostic; Cursor gets first-class rules/skills on top. |
-
----
-
-## How it works (end-to-end flow)
-
-```text
-┌─────────────────────────────────────────────────────────────────┐
-│  ROADMAP — phases, model labels, status, Definition of Done      │
-└────────────────────────────┬────────────────────────────────────┘
-                             │
-         ┌───────────────────┴───────────────────┐
-         ▼                                       ▼
-  Thinking / {step}a                      Auto / {step}b
-  (design + freeze spec)                  (build to frozen spec)
-         │                                       │
-         ▼                                       ▼
-  ok review --freeze                  seven-tier tests
-  (pass / findings / blocked)                      │
-         │                                       ▼
-         └───────────────┬───────────────────────┘
-                         ▼
-              governance-sync (handover + roadmap)
-                         │
-                         ▼
-              feature-branch commit (Tier 1)
-                         │
-                         ▼
-              PR → merge to main (Tier 3 — human)
+```sh
+./cli/ok -C /absolute/disposable/repo next-write \
+  --repo-id UUID-FROM-STATUS --branch main --lane product \
+  --model 'GPT-6 Astra' --action-id TASK-1 --action-kind implement \
+  --expect-next DIGEST-FROM-STATUS --prompt-file prompt.txt
 ```
 
-### Step-by-step (one phase)
-
-1. **Read** `docs/ROADMAP.md` target phase and `docs/OVERSEER-HANDOVER.md` NEXT block.
-2. **Paste** the handover prompt into your AI session (any tool — see below).
-3. **Thinking phase** (if applicable): produce or update a frozen spec; commit on a feature branch.
-4. **Freeze review**: `./cli/ok review --freeze <spec-path> [--dry-run]`.
-5. **Auto phase** (if applicable): implement exactly against the frozen spec; run tests.
-6. **Governance sync**: `./cli/ok governance-sync --dry-run` then apply when correct.
-7. **Close**: update ROADMAP status row + handover NEXT block together; feature-branch commit.
-8. **Publish**: open PR; merge to `main` only with Tier-3 operator authorization.
-
-For **`Thinking → Auto`** phases, the handover emits **two** prompts: `{step}a` (Thinking) then
-`{step}b` (Auto) — never both at once unless `{step}a` is incomplete.
-
----
-
-## Where models are set
-
-Models are **labels and routing policy**, not hard-coded API calls. The kit tells you *which class
-of model* to use; you select the actual model in your IDE or CLI.
-
-| Source | What it controls |
-| --- | --- |
-| **`policy/model-labels.yaml`** | Canonical labels: `Thinking`, `Auto`, `Thinking → Auto`, `Operator + Auto`. Every roadmap row and handover NEXT block must include `Model:`. |
-| **`docs/ROADMAP.md`** | Phase Model Key table + per-phase `Model` column in the build queue. |
-| **`docs/OVERSEER-HANDOVER.md`** | `Model:` on NEXT SESSION and paste-ready prompts; split rules for `{step}a` / `{step}b`. |
-| **`.overseer/config.yaml` → `freeze_contract.reviewer`** | Freeze reviewer provider/mode (local or API) for `ok review --freeze`. |
-| **`policy/model-labels.yaml` → `reviewer_models`** | Hints for freeze-review model tier (`thinking-high` vs `auto-default`). |
-| **`cursor_model_hint` fields** | Non-binding guidance mapping labels to common IDE model families. |
-
-The kit **never** chooses your API model automatically during normal build work — it enforces that
-you *declare* the tier so sessions stay consistent.
-
----
-
-## AI tool compatibility
-
-The kit is **IDE- and vendor-neutral at the core**. Policy, templates, handover paste blocks, and
-the `overseer` CLI work the same regardless of which assistant you use.
-
-| Layer | Cursor | Claude Code | GitHub Copilot | Any assistant (paste-only) |
-| --- | --- | --- | --- | --- |
-| **ROADMAP + HANDOVER docs** | ✓ | ✓ | ✓ | ✓ — primary interface |
-| **`ok` CLI** (incl. **`ok check-ok`**) | ✓ terminal | ✓ terminal | ✓ terminal | ✓ terminal |
-| **`policy/*.yaml`** | ✓ | ✓ | ✓ | ✓ — read for tier/model rules |
-| **`.cursor/rules/*.mdc`** | Auto on `init`/`sync` | Optional if tool reads them | Partial | N/A — use `policy/tiers.yaml` / `AGENTS.md` |
-| **Skills (`SKILL.md`)** | `.cursor/skills/**` (native) | `.claude/skills/**` (native; same bytes via `ok sync`) | Not native — paste `docs/CHECK-OK.md` | Paste `docs/CHECK-OK.md` or follow skill steps |
-| **Check OK** | Type `Check OK` / `/check-ok` | Type `Check OK` / `/check-ok` | `ok check-ok` + paste prompt | `ok check-ok` + paste prompt |
-| **Cursor Automations** | Optional templates in `cursor/automations/` (incl. `governance-sync-session-end.json`; Tier 2 enable) | N/A | N/A | Use CLI (`governance-sync`, `review --freeze`, `check-ok`) instead |
-
-### What changes per tool
-
-| Tool | Typical usage pattern |
-| --- | --- |
-| **Cursor** | Richest integration: rules always apply, skills invocable, optional session-end Automations. Paste handover prompt when starting a phase chat. |
-| **Claude Code** | After `ok sync`, skills live in `.claude/skills/` (incl. `/check-ok`). Also: terminal `ok` CLI, `AGENTS.md`, handover paste. |
-| **GitHub Copilot** | Same docs + CLI; no native skills. Use `ok check-ok` and paste `docs/CHECK-OK.md`; rely on handover + `policy/tiers.yaml`. |
-| **Any other assistant** | Fully supported via **docs-first**: open HANDOVER or `docs/CHECK-OK.md`, paste the prompt, run `ok check-ok` / other CLI commands, commit on a feature branch. |
-
-**Degrade path (by design):** if Cursor Automations are unavailable, `ok governance-sync`
-and `ok review --freeze` are the portable fallback — no Cursor-only gate on core governance.
-
-### Overseer App (Track Q — local UI + desktop)
-
-| Surface | Command / path | Notes |
-| --- | --- | --- |
-| **Web UI** | `ok app` | Loopback server + browser; session credentials printed once on stderr |
-| **Desktop shell** | `desktop/` (Tauri) | Spawns `ok app`; same UI in a native window |
-| **Operator guide** | `docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md` | Paths 1–3, Mac Release honesty, Scooling notes |
-
-### Open the local console
-
-The public site never mints session credentials and does not run the console. Use one of:
-
-**Path 1 — Download Mac console** (preferred on Apple Silicon)
-
-1. Confirm **Python 3.11+** (`python3 --version`).
-2. Download the signed Apple Silicon (`aarch64`) `.dmg`:
-   [Overseer.Kit_0.1.0_aarch64.dmg](https://github.com/aaronrene/overseer-kit/releases/download/v0.1.0/Overseer.Kit_0.1.0_aarch64.dmg)
-   (Release [v0.1.0](https://github.com/aaronrene/overseer-kit/releases/tag/v0.1.0); `signing.status: signed`).
-3. Optionally verify `SHA256SUMS.txt` + manifest (see the desktop runbook).
-4. **Bind a governed checkout before launch:** set `OVERSEER_REPO_ROOT` to the absolute path of
-   the repo that already has `.overseer/` from `ok init`. Without that env var, the app binds the
-   **bundled kit root** inside the app resources — useful for dogfooding the kit, not a project
-   folder picker.
-5. Open the app; desktop shell auto-fills session bootstrap.
-6. Confirm the chrome shows the expected bound path before any write action.
-
-*Apple Silicon (`aarch64`) Mac · signed+notarized · requires Python 3.11+. Set
-`OVERSEER_REPO_ROOT` to your governed repo. Windows/Linux signed installers are not published yet.
-No in-app folder picker in Auto v1.*
-
-**Path 2 — Browser (`ok app`)**
-
-1. From a governed repo: `ok app --open` (or `ok app`, then open the printed URL).
-2. Copy `session_credential` and `csrf_token` from **that** terminal.
-3. Paste into Session bootstrap → Connect.
-4. Credentials are process-lifetime only; never commit them.
-
-**Path 3 — Dev desktop**
-
-1. From kit root: `./scripts/bundle-desktop-kit.sh` then `cd desktop && npm install && npm run tauri dev`.
-2. Same auto-fill as Path 1; needs Python 3.11+ + Rust/Node for **dev builds**.
-
-*This console is bound to one local checkout. Reads and writes (when confirmed) apply only to that
-tree — not to overseerkit.com and not to arbitrary remote repos. Desktop Path 1/3: set
-`OVERSEER_REPO_ROOT` to your governed repo; otherwise the shell binds the bundled kit.*
-
-## Two review gates (honesty discipline)
-
-SD-3 **`Thinking → Auto`** is two gates, not one:
-
-| Gate | When | Skill | Enforced how |
-| --- | --- | --- | --- |
-| **Freeze review** | After `{step}a` freezes the spec | `/freeze-review-loop` | ROADMAP DoD + handover paste blocks |
-| **Build verification** | After `{step}b`, **before DONE** | `/build-verification-review` | **Always-on** `.cursor/rules/build-verification-required.mdc` + ROADMAP DoD |
-| **Mechanical tests** | During/after build | `policy/test-tiers.yaml` | ROADMAP Definition of Done |
-
-Skills run in the **agent session** (not a background daemon). The always-on rule prevents marking
-DONE without verification. Escalation categories still stop for a human.
-
-**Custom doc names** (VideoFactory, MuseHub, multi-repo workspaces): set `docs.handover`,
-`docs.roadmap`, `docs.handover_title`, `docs.roadmap_title` in `.overseer/config.yaml` — see
-`docs/consumers/videofactory/OVERSEER-SETUP.md`.
-
----
-
-## VCS regimes
-
-| Regime | Canonical history | Best for |
-| --- | --- | --- |
-| **`git-only`** | GitHub `main` | Any repo with Git alone — full kit features, no Muse install |
-| **`muse+git-mirror`** | MuseHub (`sha256:` commits) | Teams that want content-addressed history + safe GitHub mirror |
-| **`muse-only`** | MuseHub only | Muse-native projects where Git is not used |
-
-Same CLI commands in every regime. The adapter layer handles the differences fail-closed.
-
-### Git-only (start here)
-
-No MuseHub required. See `docs/GIT-ONLY-QUICKSTART.md`.
-
-```bash
-./cli/ok init --regime git-only --non-interactive
-./cli/ok status --check-footprint
-./cli/ok governance-sync --dry-run
-```
-
-Repos that already have hand-authored handover/roadmap files should use `init --migrate` instead
-(see `docs/MIGRATE-EXISTING-REPO.md` and [`CONTRIBUTING.md`](CONTRIBUTING.md)).
-
-### MuseHub optional upgrade (`muse+git-mirror`)
-
-| Capability | What you gain |
-| --- | --- |
-| **Content-addressed history** | Muse commits (`sha256:…`) as the canonical record |
-| **`realign`** | Detect and repair Muse↔Git history drift |
-| **Safe mirror export** | Publish to GitHub via an isolated checkout — never on your dev tree |
-| **Provenance** | Richer version metadata than Git commit ids alone |
-
-**How to connect a repo:**
-
-1. Install [Muse](https://musehub.ai) and authenticate (`muse --version`).
-2. Initialize Muse in the repo: `muse -C <repo-root> init` (creates `.muse/` locally).
-3. Flip `.overseer/config.yaml` to `regime: muse+git-mirror`, `canonical: muse`, and set
-   `vcs.git.mirror_branch` (typically `muse-mirror`).
-4. Run `./cli/ok sync` — seeds `MUSE-BRIDGE-WORKFLOW.md` and
-   `scripts/muse-bridge-deploy.sh` when the regime requires them.
-5. **Day-to-day:** `muse commit` on feature branches in Muse.
-6. **Publish to GitHub:** only via the safe deploy script:
-
-   ```bash
-   ./scripts/muse-bridge-deploy.sh "mirror: <summary>"
-   ```
-
-   Flow: Muse `main` → isolated `.muse/mirror/` → `origin/muse-mirror` → PR → `main`.
-
-**Hard rules (SD-14):**
-
-- Never `muse bridge git-export --git-dir .` on your working tree.
-- Never `git push origin main` when Muse is canonical — mirror via `muse-mirror` PR only.
-
-Full operator steps: `docs/K7-DOGFOOD-OPERATOR-RUNBOOK.md` and root `MUSE-BRIDGE-WORKFLOW.md`.
-
----
-
-## Install and day-to-day usage
-
-### First install (any repo)
-
-```bash
-# From a clone of this kit (or path to cli/ok):
-./cli/ok -C <your-repo> init --regime git-only --non-interactive
-
-# Or migrate an existing repo with living docs:
-./cli/ok -C <your-repo> init --migrate --from-config <prepared.yaml> --non-interactive
-```
-
-This writes: governance docs, `policy/`, `.cursor/` fragments, `.overseer/version.lock`, and
-`AGENTS.md` (when in footprint).
-
-### Every session
-
-1. Open `docs/OVERSEER-HANDOVER.md` → copy **Paste-ready prompt**.
-2. Work on a **feature branch** (Tier 1).
-3. Run tests for your phase tier.
-4. Before ending: `./cli/ok governance-sync --dry-run` → fix drift → apply if needed.
-5. Commit docs + code together on the feature branch.
-6. Open PR; merge only with Tier-3 authorization.
-
-### Pull kit updates
-
-```bash
-./cli/ok sync              # preview drift
-./cli/ok sync -y           # apply kit footprint updates
-./cli/ok status --check-footprint
-```
-
----
-
-## Status
-
-**K12 DONE** — Track N public landing, scenario gallery, MIT LICENSE, SECURITY.md,
-GitHub→MuseHub funnel. See `docs/ROADMAP.md`. Contributor guide: [`CONTRIBUTING.md`](CONTRIBUTING.md).
-
-**Public landing:** open [`docs/landing/index.html`](docs/landing/index.html) locally or enable
-GitHub Pages from the `/docs/landing` path on your default branch.
-
----
-
-## Runtime vs governance
-
-This kit owns the **governance layer** (docs, VCS adapters, hygiene agent, freeze reviewer).
-Multi-agent product runtime (orchestrator / worker / checker patterns) lives in consumer
-codebases — see `docs/OVERSEER-KIT-SPEC.md`. The kit does not ship product adapters.
-
----
-
-## Docs
-
-| Doc | Purpose |
-| --- | --- |
-| `CONTRIBUTING.md` | How to propose changes |
-| `SECURITY.md` | Vulnerability reporting |
-| `docs/README.md` | Public docs index (start here) |
-| `docs/OVERSEER-KIT-SPEC.md` | Frozen architecture |
-| `docs/OVERSEER-HANDOVER.md` | Living relay (this repo's handover) |
-| `docs/ROADMAP.md` | Phase control + build status |
-| `policy/model-labels.yaml` | Model tier labels + handover split rules |
-| `policy/tiers.yaml` | Decision authority Tier 1/2/3 |
-| `policy/test-tiers.yaml` | Seven-tier test contract |
-| `docs/GIT-ONLY-QUICKSTART.md` | Greenfield install without Muse |
-| `docs/MIGRATE-EXISTING-REPO.md` | `init --migrate` for existing living docs |
-| `docs/CONSUMER-ADAPTER-PATTERN.md` | How any consumer plugs into L0–L2 |
-| `docs/consumers/*/OVERSEER-SETUP.md` | Thin consumer boundary stubs |
-| `docs/landing/index.html` | Public landing |
-| `docs/landing/scenarios/index.html` | Scenario gallery A–E |
-| `docs/archive/README.md` | Maintainer archive (phase freezes + vision) |
-| `docs/PUBLIC-VISIBILITY-CHECKLIST.md` | Maintainer pre-public gate (Tier 3) |
-| `docs/K7-DOGFOOD-OPERATOR-RUNBOOK.md` | Flip a repo to `muse+git-mirror` |
-| `MUSE-BRIDGE-WORKFLOW.md` | SD-14 mirror rules (vendored when regime requires) |
-| `cursor/README.md` | What ships into `.cursor/` on init/sync |
-| `.cursor/skills/freeze-review-loop/SKILL.md` | Bounded pre-build freeze loop (opt-in) |
-| `.cursor/skills/build-verification-review/SKILL.md` | Post-build honesty review (opt-in) |
-
----
-
-## Dogfood
-
-This repo uses its own handover/roadmap workflow while being built. VCS regime:
-**`muse+git-mirror`** — MuseHub canonical, GitHub mirror via `scripts/muse-bridge-deploy.sh` only
-(see `.overseer/config.yaml` and `AGENTS.md`).
+Kinds: `plan`, `implement`, `review`, `maintain`, `stop`. The writer only changes
+NEXT, compares the prior raw SHA-256 (`absent` for a missing NEXT), serializes
+cooperating writers with a short advisory directory lock, fsyncs a unique sibling
+temporary file, and replaces atomically. No journal or recovery state is created.
+Keep binding labels out of prompt prose. A write anchors to the current Git HEAD;
+NEXT remains valid through one non-merge commit containing those exact bytes.
+Any later commit requires a deliberate refresh. Config and NEXT are ordinary
+owner-managed files; digests detect mistakes, not malicious owner edits.
+
+`status` reports repository and runtime identity even when NEXT is invalid. Exit
+codes: 0 success, 1 status with invalid NEXT, 2 refusal/usage/error. Refused `next`
+and hooks emit no prompt. Hooks consume optional Cursor `workspace_roots` and
+refuse foreign or ambiguous roots. No command executes the next action or performs
+network, push, merge, release, deployment, or automatic branch changes.
+
+Historical pre-reset commands remain as source in `cli/legacy_main.py` and their
+modules, but are outside this command surface. Historical tests remain intact;
+see [test scope](tests/README.md). Final v1 still needs independent reviews,
+installation/rollback validation, and an authorized noncritical consumer pilot.

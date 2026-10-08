@@ -1,58 +1,13 @@
-overseer_config_version: 1
-
+schema: 1
 repo:
   name: overseer-kit
-  root_relative_docs: docs
-
-vcs:
-  regime: muse+git-mirror
-  canonical: muse
-  git:
-    remote: origin
-    main_branch: main
-    mirror_branch: muse-mirror
-    feature_branch_pattern: "feat/{slug}"
-  muse:
-    staging_remote: staging
-    main_branch: main
-    working_dir: null
-
-docs:
-  handover: OVERSEER-HANDOVER.md
-  roadmap: ROADMAP.md
-  coordination: null
-  standing_decisions: ROADMAP.md
-
-thresholds:
-  realign_max_commits: 50
-  drift_warn_only: true
-
-freeze_contract:
-  enabled: true
-  reviewer: agent
-  human_escalation:
-    - security
-    - irreversible
-    - real_money
-    - gates_tier3
-
-governance_gates:
-  remind: true
-  freeze_review:
-    required_before_auto: true
-  build_verification:
-    required_before_done: true
-  surfaces:
-    - status
-    - governance-sync
-    - handover-paste
-
-session_bookends:
-  enabled: true
-
-honesty:
-  enabled: true
-  ledger: .overseer/honesty/VERDICT-LEDGER.jsonl
-  require_verification_evidence: warn
-  require_independent_second_reviewer: require
-  adversarial_freeze: suggest
+  id: 6dba88a5-029c-4136-9277-c3a0c81f31a6
+  root: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery
+context:
+  lane: product
+  model: GPT-6 Astra
+runtime:
+  root: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery
+  version: 1.0.0.dev1
+  sha256: f85810afb27de05cff194a01f8b229ea23d9a9b82b5d7613d1d4bd7647133066
+vcs: git
