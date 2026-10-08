@@ -1,7 +1,8 @@
 # Overseer Kit — bounded v1 recovery
 
 A local CLI for repository identity, status, and one validated next action.
-This branch is the first recovery milestone, not a release or consumer rollout.
+Bounded v1 local validation is complete, including the authorized DINERO manual
+pilot. The build remains `1.0.0.dev1`; no release or broader rollout was performed.
 Read [scope](docs/decisions/V1-SCOPE-RESET.md) and
 [verification](docs/validation/V1-RECOVERY.md).
 
@@ -70,5 +71,12 @@ network, push, merge, release, deployment, or automatic branch changes.
 
 Historical pre-reset commands remain as source in `cli/legacy_main.py` and their
 modules, but are outside this command surface. Historical tests remain intact;
-see [test scope](tests/README.md). Final v1 still needs independent reviews,
-installation/rollback validation, and an authorized noncritical consumer pilot.
+see [test scope](tests/README.md). Architecture review, completed-build finding
+closure, clean installation/rollback and the authorized DINERO pilot are complete;
+the [validation record](docs/validation/V1-RECOVERY.md) describes the evidence and
+limits. DINERO hooks remain disabled. Other consumers need their own authorization.
+
+NEXT checks repository binding, declared context and freshness. The operator or
+agent still chooses the task text and advances it through `next-write` when work
+finishes. The CLI does not infer task completion or verify which AI model is
+actually running. Reading a stop action means no executable task is queued.

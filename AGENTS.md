@@ -20,9 +20,12 @@ source. Do not revive OCI/native GSR/sole-writer machinery or new packet chains.
 
 This recovery branch uses local Git commits as explicitly authorized. Muse remains
 canonical historical evidence; do not mutate its refs or export onto a dev tree.
-No push, mirror, main merge, release, deployment, consumer activation, or pilot.
-Final v1 still requires one architecture review, one completed-build review,
-installation/rollback validation, and an explicitly authorized consumer pilot.
+No push, mirror, main merge, release, deployment, or additional consumer activation
+or pilot is authorized. The specifically owner-authorized DINERO manual pilot is
+complete; its automatic hooks remain disabled. Bounded-v1 local validation is
+complete: architecture review, completed-build finding closure, clean installation/
+rollback, and that consumer pilot are recorded in `docs/validation/V1-RECOVERY.md`.
+Do not repeat closed milestones against unchanged code. No release is claimed.
 
 At closeout report exact test counts and unresolved failures. Include the validated
 CURRENT NEXT fence from disk. Do not claim independent review or final-v1 completion

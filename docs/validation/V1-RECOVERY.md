@@ -1,8 +1,9 @@
 # V1 recovery milestone — verification, 2026-10-08
 
-**Result: clean source installation and current/previous rollback passed in
-session 3; architecture review and corrected build findings remain closed.
-Final v1 awaits a separately authorized consumer pilot.** Session 1 reached the session-2 status/NEXT checkpoint
+**Result: bounded v1 local validation is complete.** The explicitly authorized
+DINERO manual pilot passed in session 4; clean installation/rollback, architecture
+review and corrected build findings remain closed. No release or broader rollout
+was performed. Session 1 reached the session-2 status/NEXT checkpoint
 across two disposable repositories. Session 2 independently reviewed the bounded
 architecture and completed recovery build; see the review below. The original
 implementation evidence is retained in the preceding milestone sections.
@@ -147,9 +148,9 @@ new NEXT may already be present; readers never see a partially written file.
 The implementation run had no unresolved supported-suite failures. The independent
 review below identified two additional defects outside that coverage; both are
 closed by the correction/recheck recorded at the end of this document. Final v1
-remains incomplete. Installation/rollback is now closed by session 3 below.
-The current action in `docs/NEXT.md` is **OVERSEER-V1-PILOT-AUTHORIZATION-1**,
-kind `stop`. Keep the five-to-eight-session cap.
+was incomplete at that point. Installation/rollback closed in session 3 and the
+authorized consumer pilot closed in session 4 below. The current action in
+`docs/NEXT.md` is **OVERSEER-V1-COMPLETE**, kind `stop`; no recovery task is queued.
 
 ## Independent architecture and completed-build review — session 2, 2026-10-08
 
@@ -447,3 +448,142 @@ Own-checkout status, explicitly validated NEXT, and whitespace checks passed.
 No new packet, discarded security subsystem, real consumer, push, mirror, merge,
 release, deployment, consumer hook activation, or pilot was used. Final v1 is
 not complete; neither the green suite nor this closeout authorizes a pilot.
+
+## Authorized DINERO manual pilot — session 4, 2026-10-08
+
+**Result: 32 pilot checks passed, 0 failed; supported suite 77 passed, 0 failed,
+0 skipped in 54.41s. Bounded v1 local validation is complete.** This conclusion
+combines the recorded architecture/build review and finding closure, clean source
+installation/current-previous rollback, and the explicitly authorized real-consumer
+pilot. It is not a new independent review or a release. Four sessions were used,
+within the original five-to-eight-session recovery cap. No production code or
+permanent test changed; the previous review and installation exercises were not
+repeated. The supported suite was run before the local documentation commit.
+
+The owner explicitly authorized: “the local Overseer pilot in
+/Users/aaronrenecarvajal/DINERO as described. Preserve all existing files and edits,
+leave automatic hooks disabled, and do not publish anything online.” The described
+scope was local inspection/setup, status/NEXT, publication/readback of a handoff,
+and repository separation. This superseded the authorization stop for this one
+consumer. No additional consumer or online operation was authorized.
+
+Kit physical cwd/Git root: `/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery`;
+branch `feat/overseer-v1-recovery`; starting HEAD
+`152f9f9d9b3163aec90087097c782755dede9154`; config name `overseer-kit`, UUID
+`6dba88a5-029c-4136-9277-c3a0c81f31a6`. Runtime version remains `1.0.0.dev1`, digest
+`045412b50c755e188a37aff017924a1eaf6b21fe57f1b14407e74eb026630bc8`.
+Consumer physical cwd/Git root: `/Users/aaronrenecarvajal/DINERO`; branch
+`chore/open-source-prep`; unchanged HEAD `716a68d27c9ffb38f800a75d2b51a1ddfb2a9989`.
+There was no existing Overseer config or handoff. Initialization assigned name
+`DINERO`, UUID `84fab465-04f4-4b63-9d9a-96639aa020aa`, lane `product`, model
+`GPT-6 Astra`, bound to this kit's existing conventional venv/source installation.
+DINERO did not need an application venv change or dependency installation.
+
+### Preservation and checks
+
+Before consumer writes, a complete inventory recorded 24,630 entries, including
+21,930 regular files totaling 418,101,685 bytes. Every preexisting regular file
+retained its SHA-256, size, mode, uid and gid. All preexisting symlink targets and
+directory modes/ownership matched afterward. The inventory includes `.git`, ignored
+local files and existing application environments; their contents were not emitted
+to command output. The uncommitted `backend/app/data/universe.py` edit was preserved,
+with a separate original-file copy and binary diff in local evidence. No preexisting
+file was overwritten or removed, and no Git ref, index, branch or consumer commit
+was changed. Existing-file access times and parent-directory modification times
+are not preservation criteria.
+
+Only these five files and the two new `.overseer` directories remain added:
+`.overseer/config.yaml`, `.overseer/bin/ok`, `docs/NEXT.md`, `docs/ROADMAP.md`, and
+`docs/OVERSEER-HANDOVER.md`. They remain untracked for owner review. Init created
+both living documents because neither existed; pilot closeout updated only those
+new documents. A generated `.overseer/pilot-input.txt` was used for `next-write`
+and removed after its final text was copied to evidence. No original was deleted.
+The `.cursor` directory remains empty; no hook installation or application launch
+was requested or performed. No online publication/network call was part of the pilot.
+
+The 32 named assertions in `results.json` cover:
+
+- UUID/root binding and repeat-init identity/file preservation; dry-run and actual
+  sync reporting no changes.
+- Publishing the pilot handoff, then exact prompt/identity/digest readback in four
+  fresh-process contexts: direct explicit selection; bound launcher in DINERO;
+  bound launcher in a nested directory; and explicit DINERO selection from kit cwd.
+- Refusal of foreign cwd and foreign explicit roots by both bound launchers, and
+  foreign expected UUIDs in both directions, without printing a prompt.
+- Refusal of wrong lane, model, branch, action ID, action kind and old NEXT digest;
+  stale-digest and wrong-lane writes also refused without changing the active files.
+- Publication of a completed-pilot stop; exact readback; refusal to resume the old
+  completed action ID. Read commands and refused commands left managed files intact.
+- Full original-file preservation, the exact allowed additions, unchanged consumer
+  Git identity, absence of hooks, and unchanged kit config/NEXT during consumer checks.
+
+Pilot checks are separate script assertions, not 32 additional pytest tests. The
+latest default supported matrix passed all 77 tests with no failures or skips.
+Historical baseline failures remain as recorded; no unresolved supported finding
+or pilot failure remains. The pilot used fresh CLI processes, not a second human
+or independent model reviewer, and did not test automatic IDE session injection.
+
+### Commands, evidence and NEXT advancement
+
+Evidence directory:
+`/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261008-v1-session-4`.
+It contains the bounded `pilot.py` driver, full before/after inventories,
+`commands.jsonl` (each expanded argv/cwd/exit/stdout/stderr), baseline/final Git
+states, `results.json`, initial/pilot/final status, both consumer NEXT payloads,
+the preserved application edit, and `supported.xml`. Inventory hashes permit
+comparison without duplicating the consumer's private file contents. No packet
+chain or discarded security subsystem was introduced.
+
+Exact orchestration commands, from the recovery worktree:
+
+```sh
+.venv/bin/python /Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261008-v1-session-4/pilot.py baseline
+./cli/ok -C . next-write --repo-id 6dba88a5-029c-4136-9277-c3a0c81f31a6 --branch feat/overseer-v1-recovery --lane product --model 'GPT-6 Astra' --action-id OVERSEER-V1-PILOT-1 --action-kind implement --expect-next 35afaafe249e089ac3171baba58538f365abf8b23108f5dd8307f31be8158de4 --prompt-file .overseer/pilot-start.txt --json
+.venv/bin/python /Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261008-v1-session-4/pilot.py pilot
+.venv/bin/python -m pytest -q -p no:cacheprovider --junitxml=/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261008-v1-session-4/supported.xml
+```
+
+The pilot command received filesystem escalation for the explicitly authorized
+DINERO writes outside the tool's workspace roots; it did not broaden user scope.
+Initialization was `cli/ok -C /Users/aaronrenecarvajal/DINERO init --repo-name DINERO
+--lane product --model 'GPT-6 Astra' --json`, without `--hooks`. Both consumer
+publications used all expected context fields, the actual prior digest and the
+confined `.overseer/pilot-input.txt`; full commands are in `commands.jsonl`.
+The kit authorization action advanced to `OVERSEER-V1-PILOT-1` at raw digest
+`c3e360cbe998d43b0eb9f6df89a8c75a4dde60d3a3864234327a237c03eb00c1` before the pilot.
+
+Consumer final NEXT: **DINERO-OVERSEER-PILOT-COMPLETE**, kind `stop`, raw digest
+`19c23f573bcbef7c30cd8a28c34aea6e5c36416d8e3ecab76fb6e04409afeb09`. It states that
+the pilot is complete and no DINERO development task is queued. The kit's final
+NEXT advances through `next-write` to **OVERSEER-V1-COMPLETE**, kind `stop`, rather
+than retaining the fulfilled authorization or completed pilot action.
+Publication exited 0 with raw digest
+`9394499dd51514988700706783cc2ef518ce20f9fa16eacd900369e25d11b3e5`:
+
+```sh
+./cli/ok -C . next-write --repo-id 6dba88a5-029c-4136-9277-c3a0c81f31a6 --branch feat/overseer-v1-recovery --lane product --model 'GPT-6 Astra' --action-id OVERSEER-V1-COMPLETE --action-kind stop --expect-next c3e360cbe998d43b0eb9f6df89a8c75a4dde60d3a3864234327a237c03eb00c1 --prompt-file .overseer/pilot-closeout.txt --json
+```
+
+Both temporary kit prompt inputs were copied into evidence and removed. The final
+kit NEXT is preserved as `kit-final-NEXT.md`. Both living summaries, README and
+agent guidance now reflect the completed local scope. Only kit documentation is
+committed; DINERO's additions and existing edit remain uncommitted. Status/NEXT
+and `git diff --check` are checked at closeout, with results in `closeout.json`.
+
+### Scope at completion
+
+Completion covers the bounded manual local Git handoff tool on the tested
+Python 3.14.4/Darwin arm64 environment, with the source installation kept at its
+fixed physical path. It does not claim a packaged release, broader deployment,
+automatic hook operation in DINERO, other-platform verification, old-product
+failure repair, or automatic migration/rebinding. DINERO's application was not run
+or modified. Its existing edit and the new untracked files mean `dirty: true` is
+expected and does not make NEXT invalid.
+
+The CLI validates repository identity, declared lane/model, action and freshness;
+it cannot decide whether arbitrary task prose is substantively correct, detect
+which AI model is actually running, or infer that work is complete. Operators and
+agents must still select appropriate work and publish the next action using
+`next-write`. The pilot directly demonstrated that advancement and refusal of the
+completed action. This closeout leaves no recovery task queued and authorizes no
+push, mirror, merge, release, deployment, new consumer, or consumer hook activation.
