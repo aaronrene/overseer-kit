@@ -1,67 +1,70 @@
 # Overseer Kit v1 roadmap
 
-2026-10-09 — **Bounded local legacy-mirror reconciliation is implemented;
-remote publication remains held.** `mirror reconcile` now imports an explicitly
-reviewed local history bundle into a new engine-owned bare target and creates a
-source-exact commit whose first parent is the approved legacy mirror and second
-parent is the approved GitHub base. It preserves both histories and retains the
-ordinary fresh-target refusal, source/target ownership, exact delta, correspondence,
-drift and retry checks. Later exports use one verified prior mirror parent.
+2026-10-09 — **The Git credential compatibility defect is repaired and validated
+locally. Publication of the resulting candidate requires new owner authorization.**
+The helper accepts repeated `capability[]` and `wwwauth[]` challenge metadata while
+keeping the destination exact and scalar fields unique. It ignores the metadata
+without negotiating state or a different credential type. Unknown fields, malformed
+UTF-8, control characters and oversized requests still fail before token lookup.
+The 16,384-byte bound, ephemeral credentials, no-op store/erase, disabled redirects
+and strict mirror ownership, drift, correspondence and retry checks remain intact.
 
-Git delivery has a per-command credential helper restricted to the approved GitHub
-HTTPS path and physical `gh` executable. Credentials stay in memory/Git pipes;
-redirects and inherited askpass programs are disabled. Fixture credentials validate
-the wiring. Actual remote authentication and write acceptance remain unvalidated.
+The new tests reproduce the observed protocol mismatch with fake credentials:
+**33 passed, 6 failed** on the old helper; **39 passed** after repair. The 25 added
+cases include real Git credential-fill negotiation, repeated metadata and refusals
+that prove no token-provider invocation for invalid scope or malformed input.
+No real credential or remote service was used in this repair.
 
-The [publication decision](decisions/V1-MUSE-PUBLICATION.md) and
-[mirror runbook](../MUSE-BRIDGE-WORKFLOW.md) describe the operation and its limits.
-The exact committed Git candidate, reconciled Muse revision/snapshot and disposable
-projection identities are frozen together in
-[candidate.json](../../RECOVERY-RUNS/20261009-mirror-reconciliation/candidate.json).
-[source-latest.json](../../RECOVERY-RUNS/20261009-mirror-reconciliation/source-latest.json)
-contains every source path/hash/mode, executable list and the complete resulting
-delta; the paired projection record verifies all of them. These records are made
-after the commit so the candidate does not contain its own hash.
-
-The starting [110-path delta](decisions/V1-MUSE-PUBLICATION-DELTA.json) is retained:
-46 additions, 32 modifications, 32 removals. A disposable projection of the actual
-855-file starting candidate passed against both retained GitHub histories at
-`3e21496f7c4eab64b6d9ab3f868c5cdcaf8cfcde` and
-`d47291d5d9030de5ebef713da95efa978c4d8c6e`, including all ten executable paths,
-both ancestry relationships, verification and no-change retry. The new candidate
-adds the six implementation/test/decision files and includes all reviewed edits.
-No original file content was automatically merged from GitHub.
-
-| Local matrix | Actual final result | Pytest duration |
+| Required local matrix | Actual result | Pytest duration |
 | --- | --- | --- |
-| Git-only, Python 3.11.15 | **131 passed** | 52.59s |
-| Git-only, Python 3.14.4 | **131 passed** | 61.28s |
-| Combined Muse, Python 3.14.4 | **264 passed** | 360.10s |
+| Git-only, Python 3.11.15 | **156 passed** | 53.10s |
+| Git-only, Python 3.14.4 | **156 passed** | 59.10s |
+| Combined Muse, Python 3.14.4 | **289 passed** | 368.81s |
 
-All final rows have zero failures/errors/skips. The matrix adds 14 credential
-protocol tests and 25 reconciliation tests. The validation record retains fixture
-corrections and earlier runs; no unresolved supported-test failure is hidden.
-Unchanged closed reviews were not repeated. No hosted CI was dispatched. Previous
-[hosted run 37948400522](https://github.com/aaronrene/overseer-kit/actions/runs/37948400522)
-remains evidence only for Git `2d689a8398002ce667743ac7fefd12291b8973bf`
-(117/117/225 passes), not the new candidate.
+All final runs have zero failures/errors/skips. Counts are 150 v1 + 6 retained
++ 133 Muse/mirror = 289 combined. The exact recovery Muse package-source digest
+was checked by the supported driver; the Python 3.11 source fixture used retained
+dependencies offline. No unchanged closed review or installation milestone was
+repeated. The full matrix preceded the local feature commit; afterward only
+validation/decision/summary documentation was finalized before committing.
 
-Exact recovery wheel/source pins and the repository Actions URL are unchanged.
-The original rc5 archive remains unavailable; this recovery is not an upstream
-release. Git-only remains a permanent mode without Muse installation or login;
-Muse adoption stays explicit. The recovery runtime is now
-`d86f8903fb177f3109da914fa43e4223bdd3100f64c8e4fefd9cbc8385cc9133`; local `sync` refreshes its binding without hooks.
+The new exact Git candidate, isolated Muse revision/parent/snapshot and disposable
+two-parent projection are frozen together in
+[candidate.json](../../RECOVERY-RUNS/20261009-credential-compatibility/candidate.json).
+Source/projection records retain all 861 paths/bytes/modes, ten executable paths,
+the reviewed incremental delta and full GitHub delta (52 additions, 32 modifications,
+32 removals). The projection preserves legacy mirror
+`3e21496f7c4eab64b6d9ab3f868c5cdcaf8cfcde` as first parent and GitHub main
+`d47291d5d9030de5ebef713da95efa978c4d8c6e` as second parent. It is a disposable
+fixture; no real delivery commit is computed or approved.
 
-Original refs/edits, original identity/trust/configuration and the clean held
-release `06f988e5a078ede81c9dc664520833980a9a19a3` remain preserved. The existing
-isolated Muse feature advances locally; its main stays at the observed staging
-base. The proposed real delivery paths remain absent. No remote write or query,
-main merge/push, PR, tag/release, real mirror delivery, consumer access, production
-trust reset, automatic hook or OCI operation is included. No complete-product
-readiness claim is made.
+The [publication decision](decisions/V1-MUSE-PUBLICATION.md) preserves the earlier
+failed attempt and its owner scope. That authorization applies only to Git
+`eef4901d76658c74bf1c56799a514c1cd756d28f`, Muse
+`sha256:b310c0197a35b47c201cb055c211f0132efb902f86ecc76fd343302e8f2ed4cc`
+and snapshot
+`sha256:f0d48dd3f6b8d7cbc661e7f3ce07c7dfe3fb38efbe30332b43768ebd412658f1`.
+It does not transfer to the repaired candidate. The prior attempt changed no remote
+ref and created no hosted run. Its readbacks are retained observations, not current
+remote-state assertions. Live authentication, push rights, staging acceptance and
+mirror delivery remain unvalidated. No complete-product readiness claim is made.
 
-The [validation closeout](validation/V1-RECOVERY.md#local-legacy-mirror-reconciliation--2026-10-09)
-and `../RECOVERY-RUNS/20261009-mirror-reconciliation/` retain actual evidence.
-New remote operations require explicit owner authorization for the frozen resulting
-candidate. Both summaries were refreshed together; canonical `docs/NEXT.md`,
-published only through `next-write`, carries the remaining owner decision.
+Prior evidence and all three pending documentation edits were retained before
+this repair. The isolated feature alone advances by a source-exact local commit;
+its main stays at the retained staging base. Original refs/edits, identity/trust/
+configuration and clean held release `06f988e5a078ede81c9dc664520833980a9a19a3`
+remain protected. The actual delivery `source` and `mirror.git` paths remain absent.
+
+Recovery wheel/source pins and the Actions URL are unchanged. Git-only operation
+is permanently supported without Muse installation/login, and Muse adoption stays
+explicit. The local runtime digest is
+`e15e5f9a7567f18dd79181627eb040b876ada83a4c9334a70451eb419b9b53ed`;
+`sync` refreshed the local binding without hooks. No remote read/write, hosted
+job, MuseHub publication, shared-main change, PR, tag/release, consumer access,
+production trust reset, automatic hook or OCI operation occurred in this repair.
+
+The [validation closeout](validation/V1-RECOVERY.md#local-credential-compatibility-repair--2026-10-09)
+and repair evidence retain actual results. Both summaries were refreshed together;
+only `next-write` publishes the remaining owner authorization decision for the
+resulting candidate. Any authorized delivery must record its real projection SHA
+before pushing and preserve the approved source and ordered Git parents.

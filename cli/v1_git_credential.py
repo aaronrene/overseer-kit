@@ -26,11 +26,21 @@ def main():
     if len(raw) > 16384:
         return 1
     fields = {}
-    for row in raw.decode('utf-8', errors='strict').splitlines():
+    for row in raw.decode('utf-8', errors='strict').split('\n'):
         if not row:
             continue
+        if any(ord(c) < 32 or ord(c) == 127 for c in row):
+            return 1
         key, sep, value = row.partition('=')
-        if not sep or key in fields or key not in ('protocol', 'host', 'path', 'username'):
+        if not sep:
+            return 1
+        # Git sends repeatable capability offers and HTTP authentication challenges.
+        # Ignore only these metadata arrays: they cannot change destination scope,
+        # select a credential type, or opt this username/password helper into state.
+        # The whole request remains bounded; unknown fields still fail closed.
+        if key in ('capability[]', 'wwwauth[]'):
+            continue
+        if key in fields or key not in ('protocol', 'host', 'path', 'username'):
             return 1
         fields[key] = value
     if any(fields.get(k) != v for k, v in

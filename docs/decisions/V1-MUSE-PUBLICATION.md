@@ -1,7 +1,132 @@
 # Muse-first publication and legacy mirror decision — 2026-10-09
 
-**Status: bounded local reconciliation implemented; remote publication is not
-authorized.** The owner authorized this implementation, disposable fixtures, local
+**Status: the credential compatibility defect is repaired and validated locally;
+publication of the resulting candidate requires a new owner decision.** No remote
+operation was performed in this repair. The previous five-stage authorization
+remains tied to `eef4901d76658c74bf1c56799a514c1cd756d28f`; it does not transfer
+to this implementation or its resulting Muse snapshot/projection.
+
+## Local credential compatibility repair
+
+The helper now accepts repeatable `capability[]` and `wwwauth[]` metadata from
+Git's HTTP authentication challenge. It ignores that metadata without acknowledging
+capabilities, selecting another credential type or enabling state. Destination
+fields remain unique and exact: HTTPS, `github.com`, and the approved repository
+path. Unknown fields, duplicate scalar fields, malformed UTF-8, control characters
+and requests above 16,384 bytes are refused before invoking the token provider.
+Credentials remain confined to the helper/Git pipes; store/erase stay no-ops.
+No persistent credential configuration, redirect policy or mirror check changed.
+
+Disposable fake-token tests reproduced six failures with the old helper and then
+passed all **39 credential tests** with the repair. The 25 new cases cover repeated
+metadata, real Git credential-fill negotiation, wrong destinations, malformed
+requests and the exact byte boundary. Rejected requests cannot invoke the fake
+token provider. This repairs the observed local protocol mismatch; it does not
+prove live GitHub authentication, push rights or server acceptance.
+
+| Required local matrix | Result | Pytest duration |
+| --- | --- | --- |
+| Git-only, Python 3.11.15 | **156 passed** | 53.10s |
+| Git-only, Python 3.14.4 | **156 passed** | 59.10s |
+| Combined Muse, Python 3.14.4 | **289 passed** | 368.81s |
+
+All final rows have zero failures/errors/skips. The supported driver checked the
+unchanged recovery Muse package-source digest; no dependency or artifact was
+downloaded. The repaired code and tests were reviewed locally; unchanged closed
+reviews were not repeated. The full matrix ran before the local feature commit.
+
+New exact Git/Muse/snapshot and disposable projection identities are recorded
+together after the commit in
+[candidate.json](../../../RECOVERY-RUNS/20261009-credential-compatibility/candidate.json).
+The source/projection records contain the complete 861-file path/hash/mode manifest,
+ten executable paths, reviewed incremental delta and approved ordered parents
+`3e21496f7c4eab64b6d9ab3f868c5cdcaf8cfcde`, then
+`d47291d5d9030de5ebef713da95efa978c4d8c6e`. The isolated feature is reconciled
+locally; its main and all original refs/edits remain protected. Projection occurs
+only in a disposable fixture. No real delivery commit is computed or approved.
+
+The prior failed-publication evidence and pending documentation were preserved in
+the repair evidence before editing. Both summaries are refreshed together, and
+the [validation closeout](../validation/V1-RECOVERY.md#local-credential-compatibility-repair--2026-10-09)
+records actual results and limitations. Exact recovery wheel/source pins, permanent
+Git-only operation and explicit Muse adoption remain intact. No remote reads/writes,
+hosted jobs, MuseHub publication, shared-main change, PR, tag/release, consumer access,
+production trust reset, automatic hook or OCI operation is included. Live publication
+remains unvalidated; no complete-product readiness claim is made. Canonical NEXT
+alone carries the remaining owner authorization decision for the resulting candidate.
+
+## Prior owner decision and failed publication attempt
+
+This section retains the earlier attempt against `eef4901d76658c74bf1c56799a514c1cd756d28f`.
+It stopped at GitHub credential negotiation: no remote ref changed, no new hosted
+run was created, and no Muse write, real mirror preparation or PR was attempted.
+The local defect described here is repaired above; remote acceptance remains untested.
+
+The owner delegated discretion to authorize all five stages if safe and necessary,
+asking for an explanation before proceeding. The recommendation was explained
+before execution: authorize all five for this exact candidate, with successful
+hosted CI and native feature readback required before staging-main acceptance,
+then verified source acceptance before mirror delivery and an unmerged PR. Stop
+on drift, authentication failure or unexpected server behavior.
+
+The authorized identities are Git
+`eef4901d76658c74bf1c56799a514c1cd756d28f`, Muse
+`sha256:b310c0197a35b47c201cb055c211f0132efb902f86ecc76fd343302e8f2ed4cc`
+and snapshot
+`sha256:f0d48dd3f6b8d7cbc661e7f3ce07c7dfe3fb38efbe30332b43768ebd412658f1`.
+The frozen candidate has 861 files, ten executable paths, and a GitHub delta of
+52 additions, 32 modifications and 32 removals. Its verified two-parent projection
+`29aa0a0fa24b591d680f8f80ba997d2cb141692d` remains a disposable fixture.
+
+| Authorized stage | Exact destination and gate | Actual result |
+| --- | --- | --- |
+| Git feature and hosted CI | Non-force exact-candidate push to `aaronrene/overseer-kit:feat/overseer-v1-recovery`; inspect push-triggered `supported-v1.yml`. | Push failed during credential negotiation. Ref remains `2d689a8398002ce667743ac7fefd12291b8973bf`; no matching hosted run. |
+| Native source feature | Non-force push to `https://staging.musehub.ai/aaronrene/overseer-kit`, `feat/overseer-v1-restoration-r3`, including necessary staging-issued object uploads; only after green Git CI. | Not attempted. |
+| Staging source acceptance | Fast-forward staging `main` from `sha256:208d9dc47f0c6d8553ee80aafc8f0993a6ebf0a88410746f47f58b4e7c6fd6a6` to the same Muse candidate, in a dedicated checkout, after feature readback. | Not attempted. |
+| Mirror delivery | Verify accepted source; reconcile both approved Git parents in the dedicated bare target; record its actual commit before non-force push to `aaronrene/overseer-kit:muse-mirror`. | Not attempted; real delivery commit not computed. |
+| Distribution PR | Create/reuse `aaronrene/overseer-kit` PR `muse-mirror` → `main`, inspect resulting CI, leave unmerged. | Not attempted. |
+
+Scoped preflight/readback was included. GitHub refs, the active workflow and exact
+existing recovery-wheel URL matched. Staging public refs, logical identity and
+the existing native TLS pin also matched. Readback after the failed push confirmed
+unchanged Git feature, main, mirror and artifact refs. No GitHub-main merge/push,
+force operation, tag/release, consumer access, production trust reset, automatic
+hook or OCI operation was authorized or performed.
+
+The frozen helper rejects the credential request that Apple Git 2.50.1 sends
+after GitHub's authentication challenge: repeated `capability[]` fields and a
+`wwwauth[]` field are outside its accepted protocol. A no-write diagnostic recorded
+only field names and exit status: the helper returned 1, and Git reported that
+no username was available with terminal prompts disabled. A disposable fake-token
+fixture passes the simple real-Git credential fill but reproduces refusal for
+each extended field group and their combination. Existing fixtures did not cover
+this challenge. These results establish a local protocol compatibility defect;
+they do not establish inadequate account permissions or a need to rotate tokens.
+No credential values were recorded and no persistent credential settings changed.
+
+The owner statement, exact scope, preflight/readbacks and sanitized diagnostics are
+in [the delivery evidence](../../../RECOVERY-RUNS/20261009-muse-publication-delivery/result.json).
+Original refs/edits, isolated Muse refs and all 861 source paths/bytes/modes,
+identity/trust/configuration and the held release are preserved. The evidence
+directory now exists; its proposed `source` and `mirror.git` paths remain absent.
+
+The recommendation is a bounded local helper compatibility fix with regression
+coverage for real-Git challenge fields, retaining exact repository scoping,
+strict parsing, in-memory credentials and all mirror checks. A resulting new
+candidate requires new explicit remote authorization; this approval must not be
+silently transferred to it. Publication remains stopped at the failed gate.
+These documentation updates are pending local follow-up outside the frozen
+candidate; neither Git HEAD nor the isolated Muse feature was advanced.
+Canonical NEXT alone carries the remaining local action.
+
+## Historical local implementation closeout
+
+The remaining sections retain the preceding closeout and planning evidence.
+The owner decision and failed publication outcome above supersede their earlier
+authorization status and statements about absent delivery evidence paths.
+
+At the preceding closeout, remote publication was not authorized. The owner
+authorized implementation, disposable fixtures, local
 feature commit and reconciliation into the existing isolated Muse feature. The
 new `mirror reconcile` operation preserves both approved GitHub histories as ordered
 parents of a source-exact snapshot. Scoped GitHub credentials are exercised with

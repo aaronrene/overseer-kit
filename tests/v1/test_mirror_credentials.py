@@ -1,7 +1,9 @@
 """Exercise Git's credential protocol with a fake gh; never use real secrets."""
 import os
 from pathlib import Path
+import shlex
 import subprocess
+import sys
 from unittest.mock import patch
 
 import pytest
@@ -88,3 +90,78 @@ def test_transport_credentials_are_ephemeral_and_redirects_disabled(adapter, mon
 def test_transport_rejects_unscoped_urls(adapter, url):
     with pytest.raises(Refusal, match='credential_destination'):
         adapter.git_options({'url': url})
+
+
+SCOPE = b'protocol=https\nhost=github.com\npath=fixture/mirror.git\n'
+CHALLENGE = (b'capability[]=authtype\ncapability[]=state\n'
+             b'wwwauth[]=Basic realm="GitHub"\n')
+
+
+def helper(adapter, payload, operation='get'):
+    return subprocess.run([sys.executable, '-I', '-B',
+                           str(Path(mirror.__file__).with_name('v1_git_credential.py')),
+                           str(adapter.gh), 'fixture/mirror', operation],
+                          input=payload, env=mirror.env(), capture_output=True, timeout=10)
+
+
+@pytest.mark.parametrize('metadata', [
+    b'capability[]=authtype\ncapability[]=state\ncapability[]=state\n',
+    b'wwwauth[]=Basic realm="GitHub"\nwwwauth[]=Bearer realm="fixture"\n',
+    b'wwwauth[]=\nwwwauth[]=Basic realm="GitHub"\n',
+    CHALLENGE,
+])
+def test_helper_accepts_repeatable_challenge_metadata(adapter, metadata):
+    result = helper(adapter, metadata + SCOPE + b'\n')
+    assert result.returncode == 0
+    assert result.stdout == b'username=x-access-token\npassword=fixture-token-never-a-real-credential\n\n'
+    assert result.stderr == b''
+    # Offers/challenges are not echoed or acknowledged as negotiated capabilities.
+    assert b'capability' not in result.stdout and b'wwwauth' not in result.stdout
+
+
+def test_real_git_credential_fill_with_http_challenge(adapter):
+    result = credential(adapter, CHALLENGE + SCOPE + b'\n')
+    assert result.returncode == 0, result.stderr
+    assert b'username=x-access-token\n' in result.stdout
+    assert b'password=fixture-token-never-a-real-credential\n' in result.stdout
+    assert result.stderr == b''
+
+
+@pytest.mark.parametrize('payload', [
+    CHALLENGE + SCOPE.replace(b'https', b'http'),
+    CHALLENGE + SCOPE.replace(b'github.com', b'example.invalid'),
+    CHALLENGE + SCOPE.replace(b'fixture/mirror.git', b'fixture/other.git'),
+    CHALLENGE + SCOPE.replace(b'fixture/mirror.git', b'fixture/mirror.git/extra'),
+    CHALLENGE + SCOPE.replace(b'path=fixture/mirror.git\n', b''),
+    CHALLENGE + SCOPE + b'protocol=https\n',
+    CHALLENGE + SCOPE + b'host=example.invalid\n',
+    CHALLENGE + SCOPE + b'path=fixture/other.git\n',
+    CHALLENGE + SCOPE + b'username=first\nusername=second\n',
+    SCOPE + b'state[]=not-negotiated\n',
+    SCOPE + b'credential=not-negotiated\n',
+    SCOPE + b'unknown[]=ignored-by-mistake\n',
+    SCOPE + b'capability[]\n',
+    SCOPE + b'wwwauth[]=bad\x00challenge\n',
+    SCOPE + b'wwwauth[]=bad\rchallenge\n',
+    SCOPE + b'wwwauth[]=bad\x0bchallenge\n',
+    SCOPE + b'wwwauth[]=bad\x7fchallenge\n',
+    SCOPE + b'wwwauth[]=\xff\n',
+    SCOPE + b'wwwauth[]=' + b'x' * 16384 + b'\n',
+])
+def test_challenge_never_bypasses_scope_or_parser_before_token_lookup(adapter, payload):
+    marker = adapter.gh.with_name('token-provider-invoked')
+    adapter.gh.write_text('#!/bin/sh\n: > ' + shlex.quote(str(marker)) + '\n'
+                          'printf "%s\\n" fixture-token-never-a-real-credential\n')
+    result = helper(adapter, payload + b'\n')
+    assert result.returncode == 1
+    assert result.stdout == result.stderr == b''
+    assert not marker.exists()
+
+
+def test_challenge_total_request_byte_limit(adapter):
+    prefix = SCOPE + b'wwwauth[]='
+    payload = prefix + b'x' * (16384 - len(prefix) - 2) + b'\n\n'
+    assert len(payload) == 16384
+    assert helper(adapter, payload).returncode == 0
+    oversized = helper(adapter, payload + b'\n')
+    assert oversized.returncode == 1 and oversized.stdout == oversized.stderr == b''

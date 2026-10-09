@@ -2380,3 +2380,94 @@ remains absent. No unchanged closed review was repeated and no complete-product
 readiness is claimed. Decision/runbook and both summaries are refreshed together;
 only `next-write`, with the exact prior digest and context, publishes the remaining
 owner authorization decision and is followed by direct/bound readbacks.
+
+## Local credential compatibility repair — 2026-10-09
+
+The owner authorized a bounded local repair after the frozen candidate's GitHub
+feature push failed during credential negotiation. The prior attempt and scoped
+readbacks remain in `../RECOVERY-RUNS/20261009-muse-publication-delivery/`; no new
+remote operation is part of this repair. Physical cwd/Git root is
+`/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery`, repository
+`overseer-kit`, UUID `6dba88a5-029c-4136-9277-c3a0c81f31a6`, branch
+`feat/overseer-v1-recovery`, starting HEAD
+`eef4901d76658c74bf1c56799a514c1cd756d28f`. Initial status and canonical NEXT
+matched `OVERSEER-V1-CREDENTIAL-COMPATIBILITY`. The three pending documentation
+edits and prior evidence hashes were retained before implementation.
+
+### Repair and regression evidence
+
+The credential helper now accepts Git's repeatable `capability[]` and `wwwauth[]`
+metadata without acknowledging capabilities, negotiating state or changing its
+username/password response. Exact HTTPS host/repository scope and unique scalar
+fields remain mandatory. Unknown fields, malformed UTF-8, control characters and
+requests larger than 16,384 bytes are refused before calling the token provider.
+Tokens stay in memory and the helper/Git pipes; no persistent configuration or
+credential storage was added. Store/erase remain no-ops. Mirror code, ordered
+parent rules, ownership, drift, correspondence and retries are unchanged.
+
+The existing credential module gains 25 cases. Fake-token fixtures cover repeated
+capabilities and challenges, empty challenge-array entries, the exact request-size
+boundary, real `/usr/bin/git credential fill`, and malformed or out-of-scope
+requests that must never invoke the fake provider. The source defect was reproduced
+before applying the repair; these are observed regression failures, not skipped or
+expected-failure tests. Git used for the protocol fixture is Apple Git 2.50.1.
+
+| Run | Actual result | Pytest duration |
+| --- | --- | --- |
+| New regressions against old helper | **33 passed, 6 failed** | 2.77s |
+| Credential tests after repair | **39 passed** | 2.45s |
+| Full Git-only, Python 3.11.15 | **156 passed** | 53.10s |
+| Full Git-only, Python 3.14.4 | **156 passed** | 59.10s |
+| Full combined Muse, Python 3.14.4 | **289 passed** | 368.81s |
+
+Final rows have zero failures/errors/skips. Combined counts are **150 v1 + 6
+retained + 133 Muse/mirror = 289**. No unresolved local regression remains. This
+proves local challenge-protocol compatibility with fixture credentials; it does
+not establish live GitHub authentication, account push rights or server acceptance.
+Those operations were not retried. Unchanged closed reviews were not repeated.
+
+The conventional kit venv uses Python 3.14.4, pytest 9.1.1 and PyYAML 6.0.3.
+The independent Python 3.11.15 source fixture has its own conventional venv seeded
+from retained local dependencies. No package was downloaded. Combined validation
+uses `../RECOVERY-RUNS/20261008-muse-artifact-readiness/installation/muse-current/.venv/bin/python`;
+the supported driver verifies the unchanged rc5 package-source SHA-256
+`7b181b6eff6bde1b53105f2a7be7bd8937224988965d7462a3a6b04658f35e92`.
+The recovery wheel/source pins, CI contract and Actions URL are unchanged.
+
+Commands from the recovery checkout (OUT is the absolute repair evidence directory):
+
+```sh
+.venv/bin/python -B -m pytest -q tests/v1/test_mirror_credentials.py -p no:cacheprovider --junitxml="$OUT/regression-after.xml"
+"$OUT/installation/kit-python311/.venv/bin/python" -B "$OUT/installation/kit-python311/tools/ci/supported_v1.py" --junitxml "$OUT/git311.xml"
+.venv/bin/python -B tools/ci/supported_v1.py --junitxml "$OUT/git314.xml"
+.venv/bin/python -B tools/ci/supported_v1.py --muse-python /Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261008-muse-artifact-readiness/installation/muse-current/.venv/bin/python --junitxml "$OUT/combined314.xml"
+```
+
+### Candidate reconciliation and preserved boundaries
+
+The matrix ran before the local feature commit; subsequent precommit changes are
+limited to the decision, validation and paired summaries. Tested and committed
+manifests record that distinction. The committed tree is reconciled only into the
+existing isolated `feat/overseer-v1-restoration-r3`, after checking its exact prior
+revision/snapshot, all working bytes/modes and the reviewed Git delta. Only the
+isolated feature advances; its main stays at the retained staging base. The
+original Muse/Git refs and edits, global identity/trust/configuration and clean
+held release `06f988e5a078ede81c9dc664520833980a9a19a3` are preserved.
+
+Post-commit identities are frozen together in
+[candidate.json](../../../RECOVERY-RUNS/20261009-credential-compatibility/candidate.json),
+with full source manifest, delta, parent/snapshot and projection reports. The
+disposable projection uses both approved histories as ordered parents and verifies
+all 861 paths/bytes/modes, ten executable paths, both ancestor relationships and
+no-change retry. The fixture projection is not a real delivery candidate. Actual
+delivery paths remain absent and the real delivery commit remains uncomputed.
+
+`sync` refreshed only the local runtime binding, to digest
+`e15e5f9a7567f18dd79181627eb040b876ada83a4c9334a70451eb419b9b53ed`, without hooks.
+Permanent Git-only operation and explicit Muse adoption remain supported. No new
+remote read/write, hosted CI, MuseHub publication, shared-main change, PR,
+tag/release, consumer access, production trust reset, automatic hook or OCI
+operation occurred. No complete-product readiness claim is made. The prior
+five-stage authorization does not transfer to this resulting candidate. The
+decision and both summaries are refreshed together; only `next-write` publishes
+the remaining owner authorization action, with exact prior digest and readback.
