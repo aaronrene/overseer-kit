@@ -11,7 +11,7 @@ documents explicit preparation, verification and separately authorized delivery.
 Git-only is a permanent supported choice:
 no Muse installation, account, or migration is required. R1 implements optional
 local Muse handoffs and explicit adoption; R2 adds controlled mirror preparation
-and retry. Combined R3 validation remains pending. The source version `1.0.0` is an
+and retry. R3 reconciles the source in isolation and validates combined local operation. The source version `1.0.0` is an
 unpublished candidate, and its Git-only release is on hold. The behavior described
 below is the current implementation, not the completed Muse-first product. See the
 [scope decision](docs/decisions/V1-SCOPE-RESET.md) and the complete
@@ -85,7 +85,7 @@ For development and the supported test suite:
 .venv/bin/python -m pytest -q
 ```
 
-Muse is optional and stays in its own conventional venv: R1 supports exactly
+Muse is optional and stays in its own conventional venv: The supported integration uses exactly
 Muse `0.2.1rc5` with Python 3.14 or newer. The kit itself still supports Python
 3.11 or newer and does not install Muse. To run the additional real Muse matrix:
 
@@ -93,6 +93,30 @@ Muse `0.2.1rc5` with Python 3.14 or newer. The kit itself still supports Python
 .venv/bin/python -m pytest -q tests/v1 tests/retained tests/muse \
   --muse-python /absolute/path/to/muse-venv/bin/python
 ```
+
+The supported CI entrypoint is `tools/ci/supported_v1.py`, run with this source
+installation's `.venv/bin/python` and a required `--junitxml PATH`. Supplying
+`--muse-python /absolute/muse-venv/bin/python` selects the full Git/Muse/mirror
+matrix and checks the exact reviewed rc5 package source digest. Omitting it runs
+the permanent Git-only matrix. No CI step publishes or installs hooks.
+
+`.github/workflows/supported-v1.yml` defines Git jobs for Python 3.11/3.14 and the
+combined job for Python 3.14 on Linux. Hosted execution is not yet evidenced.
+The combined job needs repository variable `MUSE_RC5_URL` pointing to a retained
+HTTPS archive whose SHA-256 is
+`1a17ee8792e423927ff07ac96c85de0016bc7f79ebacc4e8a8e5073b436f2ea6`.
+It fails if the variable or exact archive is unavailable. Staging's moving
+installer now selects rc11; its rc5 release URL returned 404 during R3. Do not
+substitute another version or the unverified PyPI package named `muse`.
+R3's fresh local environment used a wheel reconstructed from verified installed
+rc5 files plus freshly installed dependencies; this is not proof that the original
+upstream archive can be installed on a clean host. Artifact availability, hosted
+CI, and Linux/3.11 execution remain release prerequisites. See the exact
+[validation results](docs/validation/V1-RECOVERY.md).
+
+Muse rc5's recursive `code add .` can omit a new dot-directory. Explicitly stage
+`.github/workflows/supported-v1.yml` when preparing this source, and compare the
+actual committed manifest before using it as a distribution or CI input.
 
 ## Add one repository
 

@@ -1,3 +1,8 @@
+# HISTORICAL PRE-RESET TEMPLATE — not supported by bounded v1.
+# Do not activate: commands below belong to the preserved legacy implementation.
+# Supported Git/Muse fixture CI: .github/workflows/supported-v1.yml.
+# The former activation guidance below is retained only as history.
+
 # Example: signed desktop installer release CI (§QR.4 / K11-style template).
 # Vendored documentation parity — copy to .github/workflows/desktop-release.yml
 # in the kit dogfood repo (already present) or a fork.

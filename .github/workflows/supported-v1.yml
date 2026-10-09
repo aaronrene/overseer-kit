@@ -1,0 +1,54 @@
+name: Supported v1
+
+on:
+  pull_request:
+  push:
+    branches: [main, 'feat/**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  git:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.11', '3.14']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m venv .venv
+      - run: .venv/bin/python -m pip install -r requirements-v1-dev.txt
+      - run: .venv/bin/python tools/ci/supported_v1.py --junitxml git.xml
+
+  muse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - run: python -m venv .venv
+      - run: .venv/bin/python -m pip install -r requirements-v1-dev.txt
+      # Set this to an immutable copy of the reviewed rc5 archive. There is no
+      # fallback to staging's moving installer or to an unrelated PyPI package.
+      # Missing artifact is a failed gate, never a skipped/passing Muse job.
+      - name: Install the reviewed optional Muse runtime
+        env:
+          MUSE_RC5_URL: ${{ vars.MUSE_RC5_URL }}
+        run: |
+          test -n "$MUSE_RC5_URL" || { echo 'MUSE_RC5_URL must identify the reviewed rc5 archive'; exit 1; }
+          curl --fail --silent --show-error --proto '=https' "$MUSE_RC5_URL" -o "$RUNNER_TEMP/muse-rc5.tar.gz"
+          echo "1a17ee8792e423927ff07ac96c85de0016bc7f79ebacc4e8a8e5073b436f2ea6  $RUNNER_TEMP/muse-rc5.tar.gz" | sha256sum --check
+          python -m venv "$RUNNER_TEMP/muse-venv"
+          "$RUNNER_TEMP/muse-venv/bin/python" -m pip install "$RUNNER_TEMP/muse-rc5.tar.gz"
+          "$RUNNER_TEMP/muse-venv/bin/python" -m pip check
+      - name: Full Git, Muse and mirror matrix
+        run: .venv/bin/python tools/ci/supported_v1.py --muse-python "$RUNNER_TEMP/muse-venv/bin/python" --junitxml combined.xml

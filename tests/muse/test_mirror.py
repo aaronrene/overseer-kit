@@ -528,3 +528,18 @@ def test_malformed_pr_url_is_a_retryable_refusal():
             {'url':42,'headRefOid':'a'*40,'isCrossRepository':False}]).encode()):
         with pytest.raises(Refusal, match='pr_not_verified'):
             adapter.ensure_pr(Path('/'), dest, {}, 'a'*40)
+
+
+@pytest.mark.parametrize('value', [{}, '', None, False, 0, [None], [{}],
+    [{'url': None, 'headRefOid': 'a'*40, 'isCrossRepository': False}],
+    [{'url': '', 'headRefOid': 'a'*40, 'isCrossRepository': False}],
+    [{'url': 'https://github.com/fixture/mirror/pull/1', 'headRefOid': 'a'*40, 'isCrossRepository': 0}],
+    [{'url': 'https://github.com/fixture/mirror/pull/1', 'headRefOid': 'invalid', 'isCrossRepository': False}]])
+def test_unknown_pr_state_never_creates_a_pr(value):
+    adapter = mirror.NetworkDelivery('/usr/bin/true')
+    dest = {'repository':'fixture/mirror','branch':'muse-mirror','base':'main'}
+    with patch.object(adapter, 'gh_run', return_value=json.dumps(value).encode()) as gh:
+        with pytest.raises(Refusal, match='mirror_pr_'):
+            adapter.ensure_pr(Path('/'), dest, {}, 'a'*40)
+        assert gh.call_count == 1
+        assert gh.call_args.args[1:3] == ('pr', 'list')

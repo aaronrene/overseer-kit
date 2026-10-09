@@ -1,8 +1,9 @@
 # Controlled Muse → GitHub mirror
 
-R2 implements local preparation and delivery retry. The complete product and the
-held release candidate remain unfinished. R3 source reconciliation, integration
-review and combined installation/rollback follow. No real-project mirror or remote
+R2 implements local preparation and delivery retry; R3 validates isolated source
+reconciliation and combined local operation. The complete product and held release
+candidate remain unfinished; upstream artifact availability and hosted CI remain
+unresolved. No real-project mirror or remote
 write is authorized by this document. Git-only operation remains a permanent
 choice; mirroring requires explicit R1 Muse adoption.
 
@@ -43,6 +44,11 @@ Save reviewed JSON under `.overseer/local/approved-mirror.json`. Required schema
   "executables": ["path/to/approved-executable"]
 }
 ```
+
+For this kit's rc5 source preparation, explicitly stage new dot-directory files
+such as `.github/workflows/supported-v1.yml`: recursive `muse code add .` can omit
+them. Compare the actual native snapshot and mirror against the reviewed source
+manifest. A successful command alone does not prove dotfile inclusion.
 
 The executable list must be sorted, unique, and contain exactly the projected
 executable paths. The source logical ID must match the existing R1 binding. The
@@ -130,7 +136,8 @@ transaction and cannot freeze MuseHub/GitHub while an operation runs.
 
 PR list/create/readback always specify the GitHub repository, head/base branches
 and target cwd. The PR must be open, from that repository, and at the exact mirror
-commit. Failure remains visible and retryable. Authentication/network/PR failures
+commit. Only an exact empty PR-list response authorizes creation; malformed
+observations and invalid URLs refuse before any create attempt. Failure remains visible and retryable. Authentication/network/PR failures
 never erase a successful export or verified push. Retry first observes current
 state, skips only verified completed stages, and retries missing push/PR work.
 

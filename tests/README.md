@@ -11,6 +11,15 @@ that has no Muse package. The additional supported real-Muse matrix is explicit:
 
 Selecting `tests/muse` without the separate Muse venv fails; no skip masks that
 requirement. Git-only users can run the default suite without installing Muse.
+`tools/ci/supported_v1.py` is the shared local/hosted CI entrypoint. Run it with
+this source installation's `.venv/bin/python`, `--junitxml PATH`, and optionally
+`--muse-python /absolute/muse-venv/bin/python`. It verifies required dotfiles and
+pins the reviewed rc5 package sources before combined collection. The checked-in
+workflow runs Git on 3.11/3.14 and combined on 3.14; remote CI execution is still
+unverified. The Muse job fails without an immutable `MUSE_RC5_URL` archive matching
+the recorded checksum. No skip hides that installation prerequisite. Legacy
+`templates/ci` examples are explicitly historical and must not be activated.
+
 The complete requirement mapping, baseline counts, and known
 historical failures are in `docs/validation/V1-RECOVERY.md`.
 

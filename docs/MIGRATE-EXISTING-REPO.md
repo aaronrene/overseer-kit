@@ -3,7 +3,7 @@
 Git/GitHub-only operation is a permanent choice. It needs neither Muse nor a
 MuseHub account. `init` and `sync` do not convert a Git binding. MuseHub authority
 with a GitHub mirror is an explicit per-repository choice; R1 implements the local
-authority binding, while R2 mirror delivery remains pending.
+authority binding, and R2 implements controlled mirror preparation and delivery retry.
 
 The supported migration input is the bounded-v1 schema-1 Git config or a schema-2
 Git/Muse config. Historical `overseer_config_version` governance configs, copied
@@ -87,9 +87,9 @@ and selected Muse snapshot/stage paths and refuses apply while local bindings
 remain tracked. Review and explicitly remove them from the relevant tracking
 state, retaining local files and history, before retrying. In Git mode Muse
 tracking is not inspected: installing Muse cannot be a prerequisite for staying
-Git-only. A later Muse adoption performs that additional check. R2 must separately
-enforce exclusions on the projected export and any existing mirror; ignore files
-alone are not proof that a distribution snapshot is safe.
+Git-only. A later Muse adoption performs that additional check. R2 separately enforces exclusions on the actual projected export and refuses
+unowned existing mirrors; ignore files alone are not proof that a distribution
+snapshot is safe.
 
 ## Roll back without losing later work
 
@@ -111,7 +111,12 @@ files, documents and the current NEXT are preserved, including edits made since
 adoption. Publish a new NEXT for the restored backend; old Muse NEXT cannot run in
 Git mode. Restored runtime pins remain exact: if kit source changed meanwhile,
 review and explicitly `sync` before ordinary use. Relocating between kit installations
-is outside this config rollback; combined installation rollback remains R3 work.
+is outside this config rollback. R3 tests replacing source at one fixed kit path
+and explicitly syncing between current and R2 runtimes. An older Git-only runtime
+refuses Muse schema: restore the preserved schema-1 Git config with the current
+runtime, publish Git NEXT, then replace the runtime and explicitly sync. A different
+physical Muse venv is selected through `adopt --muse-python`, with the old config
+retained for explicit restoration. No path is silently rebound.
 
 Additive exclusions remain on rollback, preserving any later user edits and keeping
 backups private. Rollback never resets VCS refs, removes imported history, restores

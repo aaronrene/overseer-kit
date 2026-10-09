@@ -1,71 +1,60 @@
 # Overseer Kit v1 roadmap
 
-2026-10-08 — R2 controlled mirror preparation and retry are implemented locally.
-R3 source reconciliation and combined validation are next. The complete intended
-product remains unfinished; the preserved release candidate stays on hold. The
-[scope clarification](decisions/V1-SCOPE-RESET.md) authorizes local restoration
-without a session ceiling and preserves two permanent choices:
+**Combined suite: 213 passed (275.37s); Git-only: 105 passed (60.88s); manual lifecycle: 24 checks passed.**
 
-- **Git/GitHub only:** standalone handoffs without Muse, an account, network checks,
-  or forced migration.
-- **MuseHub with a GitHub mirror:** explicitly selected Muse authority and controlled
-  one-way snapshot distribution. Preparation is offline; delivery is a separately
-  authorized operation with fresh source/destination observations.
+2026-10-08 — R3 local source reconciliation and combined operation are implemented.
+The complete intended product is unfinished; the existing release worktree remains
+on hold. The next readiness gap is a reproducible reviewed Muse rc5 installation
+artifact. Hosted CI and publication still need their own evidence and authorization.
+There is no session ceiling. The [scope decision](decisions/V1-SCOPE-RESET.md)
+preserves two permanent choices:
+
+- **Git/GitHub only:** local handoffs without Muse, an account, network checks or
+  forced migration.
+- **MuseHub with a GitHub mirror:** explicit Muse authority and controlled one-way
+  snapshot distribution, with offline preparation and separate delivery approval.
 
 | Milestone | State |
 | --- | --- |
-| Preserve original work and recovery snapshots | Complete through R2; original Muse state/Git edits and clean held release preserved |
-| Git status/init/sync/NEXT and confined atomic writer | Retained; full supported matrix includes the permanent Git-only mode |
-| Git-core architecture/build review, installation/rollback, authorized DINERO pilot | Closed; unchanged reviews and consumer work not repeated |
-| Muse restoration audit and common-base reconciliation | Complete; 841/841 shared file bytes matched verified staging main |
-| R1: Optional Muse local handoffs and explicit adoption | Implemented; original 135-test combined evidence retained |
-| R2: Controlled mirror preparation, correspondence and delivery retry | Implemented; 66 new mirror cases pass; full combined results in validation |
-| R3: Isolated source reconciliation, changed-integration review, combined installation/rollback | Next |
-| Authorized Muse-first publication and bounded consumer validation | Later gate; no real mirror, remote write or consumer activation performed in R2 |
+| Original working edits, Muse refs and held release | Preserved; staging evidence rehashed and reread |
+| Git-core architecture/build review and authorized DINERO pilot | Closed; unchanged reviews and consumer work not repeated |
+| R1 optional Muse authority and explicit adoption | Retained and covered by combined validation |
+| R2 controlled mirror and retry | Retained; R3 independent review corrected one malformed-PR observation issue |
+| R3 isolated source reconciliation | Native feature branch based on verified staging; every source path/byte/mode and explicit exclusion checked |
+| R3 installation, migration and rollback | 24 manual no-hooks fixture checks passed; fresh local rc5 install used reconstructed verified package bytes |
+| Supported CI | Workflow and local runner implemented; Git and combined local results in validation; hosted execution not evidenced |
+| Reproducible upstream Muse dependency | Open: rc5 archive returned 404; moving installer selects unsupported rc11 |
+| Muse-first publication and bounded consumer validation | Separate later gate; no remote write or consumer access in R3 |
 
-R1 retains checkout UUID/root/context protections and uses the selected VCS for
-freshness. Muse logical identity and its separate runtime are pinned; Git bindings
-never convert automatically. Explicit adoption preserves documents and edits, saves
-exact prior config, and supports tested rollback. R1 exclusions protect local
-config, launcher, NEXT, backups and editor assets. Local status/NEXT still report
-publication as `not_checked_offline`.
-
-R2 adds `mirror prepare`, `verify`, and explicit `deliver`, plus a bound replacement
-for the old deploy script/template. An approved plan pins source main/revision/Hub
-identity, target physical path, GitHub repository/branches and expected heads.
-Only newly created or engine-owned bare targets are accepted. Inherited hooks,
-foreign content, overlap, source/target drift and missing objects refuse.
-
-Pinned native Muse reads supply the projected bytes; Git plumbing replaces the
-unsafe native export mutation path. Every blob/path/mode is checked before updating
-the target ref. Actual snapshot exclusions are reported. Regular files project to
-`100644`/`100755` under an explicit executable list; symlinks, hardlinks and special
-permission bits refuse. No-change retry preserves the mapping; interrupted record
-writes recover from checked source/plan trailers. Push and PR retry independently
-observe state and report separate outcomes with explicit repository context.
-
-The [mirror runbook](../MUSE-BRIDGE-WORKFLOW.md) describes the schema, supported
-limits and invocation. Existing legacy mirrors need explicit reconciliation; this
-implementation does not authorize replacing the kit's current remote mirror.
-The live public-staging JSON refs adapter and GitHub write lifecycle have only
-recording-transport evidence. Production trust, private Hub authentication and
-publication rights remain unverified. There is no host/trust fallback.
-
-**Final combined suite: 201 passed, zero failures/errors/skips in 261.42s.**
-
-The [R2 validation entry](validation/V1-RECOVERY.md#r2-controlled-mirror-preparation-and-retry--2026-10-08)
-records exact commands, full suite counts, initial corrections, runtime digest and
-preservation checks. No independent integration review or final-v1 approval is
-claimed from the implementation suite.
-
-R3 must reconcile in isolation from verified staging main
+The isolated feature source starts from staging
 `sha256:208d9dc47f0c6d8553ee80aafc8f0993a6ebf0a88410746f47f58b4e7c6fd6a6`,
-apply only the reviewed recovery delta from Git `d47291d5d9030de5ebef713da95efa978c4d8c6e`,
-and compare source bytes, exclusions and explicit executable policy. Preserve
-original refs and the held release. Validate supported Git/Muse CI, review the
-changed integration once, and exercise fresh combined installation, migration,
-current/previous rollback and a no-hooks manual lifecycle in disposable fixtures.
-Production fingerprint trust must not be reset to bypass its recorded refusal.
+using only the enumerated recovery delta from Git
+`d47291d5d9030de5ebef713da95efa978c4d8c6e`. Original histories and the isolated
+store's main remain unchanged. Source/mirror manifests retain exact final Git/Muse
+IDs under `../RECOVERY-RUNS/20261008-muse-restoration-r3/`. The new workflow survives
+native snapshot and mirror projection; rc5 requires explicit staging of new
+dot-directory files. Ten executable paths use the reviewed Git mode policy.
 
-Only canonical `docs/NEXT.md`, published and validated through `next-write`, carries
-the executable next action. R2 closeout advances it to R3; this is a summary.
+One independent changed-integration review found and rechecked a P2: malformed PR
+observations could trigger creation. Only an exact empty list now allows creation;
+invalid rows, heads, boolean fields or URLs refuse first. This review did not
+reopen the unchanged Git-core milestones. Exact suite counts, earlier failures,
+installation provenance and final review evidence are in the
+[R3 validation record](validation/V1-RECOVERY.md#r3-isolated-source-and-combined-validation--2026-10-08).
+
+Fresh kit and Muse venvs use separate dependencies. Fixed-path source replacement
+between current/R2, explicit Muse environment selection, schema-1 rollback to the
+held Git-only version and restoration with Muse unavailable were exercised.
+Repository identity, summaries, binary bytes, executable modes and owner edits
+survived. No lifecycle hooks were activated. Moving kit installations is still an
+explicitly refused rebind, not a supported rollback shortcut.
+
+The Muse CI job fails unless `MUSE_RC5_URL` supplies the original checksum-pinned
+archive. The locally reconstructed wheel is labelled as such and does not close
+upstream distribution readiness. Linux/Python 3.11 hosted execution, live staging
+refs negotiation, credentials/rights, the real push/PR lifecycle, legacy remote
+mirror reconciliation and production fingerprint trust remain unverified. There
+is no version fallback, trust reset, main merge, release, OCI or final-product claim.
+
+Canonical `docs/NEXT.md`, published by `next-write` and read back from disk, is the
+only executable next action. This roadmap is a milestone summary.

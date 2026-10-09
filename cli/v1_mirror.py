@@ -445,14 +445,27 @@ class NetworkDelivery:
         args = ('pr', 'list', '--repo', dest['repository'], '--head', dest['branch'], '--base', dest['base'],
                 '--state', 'open', '--json', 'url,headRefOid,isCrossRepository')
         def observe():
-            rows = json.loads(self.gh_run(target, *args))
+            rows = json.loads(self.gh_run(target, *args), object_pairs_hook=unique_json)
+            if not isinstance(rows, list):
+                raise Refusal('mirror_pr_response_invalid')
             if len(rows) > 1:
                 raise Refusal('mirror_pr_ambiguous')
-            if rows and (rows[0]['headRefOid'] != commit or rows[0]['isCrossRepository']):
+            if not rows:
+                return None
+            row = rows[0]
+            if (not isinstance(row, dict) or set(row) != {'url', 'headRefOid', 'isCrossRepository'}
+                    or not isinstance(row['headRefOid'], str) or not HEX.fullmatch(row['headRefOid'])
+                    or type(row['isCrossRepository']) is not bool):
+                raise Refusal('mirror_pr_response_invalid')
+            if row['headRefOid'] != commit or row['isCrossRepository']:
                 raise Refusal('mirror_pr_head_mismatch')
-            return rows[0]['url'] if rows else None
+            url = row['url']
+            if not isinstance(url, str) or not re.fullmatch(
+                    re.escape('https://github.com/' + dest['repository'] + '/pull/') + r'[1-9][0-9]*', url):
+                raise Refusal('mirror_pr_not_verified')
+            return url
         url = observe()
-        if not url:
+        if url is None:
             # A file preserves literal newlines and avoids shell interpretation.
             with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8') as body:
                 body.write(f'Approved Muse snapshot: {source["revision"]}\nSource: {source["hub_url"]}\nGit mirror: {commit}\n')

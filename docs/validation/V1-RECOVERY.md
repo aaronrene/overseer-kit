@@ -1546,3 +1546,232 @@ input is removed. R3 starts from verified staging in isolation, applies the revi
 recovery delta, checks exact source/projection/modes and validates combined operation.
 Remote writes, original Muse ref changes, consumer access and automatic hooks remain
 outside this handoff. No complete-product finish is claimed.
+
+## R3 isolated source and combined validation — 2026-10-08
+
+**R3 implements and validates the bounded local changed integration. The complete
+product and held release are unfinished.** Reproducible upstream Muse rc5 artifact
+availability and hosted CI remain open readiness prerequisites. Publication,
+production trust and consumer access retain separate authorization boundaries.
+Git-only is an ongoing supported mode; no implicit Muse conversion was added.
+
+### Identity and retained staging reconciliation
+
+Physical cwd/Git root: `/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery`;
+branch `feat/overseer-v1-recovery`; initial clean HEAD
+`c389d748c8fc75e23f492e096298db8b83fab054`; name `overseer-kit`; UUID
+`6dba88a5-029c-4136-9277-c3a0c81f31a6`. Initial status and canonical R3 NEXT passed.
+The recovery stays Git-bound. No original Muse store or held worktree was modified.
+
+The retained audit clone at
+`/private/tmp/overseer-muse-audit-8l4oktxp/staging-inspection-retry` was rehashed,
+including all stored files and modes. Its repo ID, main, commit, snapshot and parent
+were read again with the pinned native object APIs:
+
+- Repo: `sha256:f5863e477e2f2caf510df731720976d3d91fdd821fd5657ec8da6b57c89a3bea`.
+- Main: `sha256:208d9dc47f0c6d8553ee80aafc8f0993a6ebf0a88410746f47f58b4e7c6fd6a6`.
+- Snapshot: `sha256:dd6becf74cf9ac7ca6cd6a5b6a3b3ba0696a724cc7eec28b969baf5764ee7b8a`.
+- Parent: `sha256:8461d44b77376fbf06fa7c3e085d309e3010fd8d5886d63c63e69ce118811ad4`.
+
+All **846** snapshot blobs read successfully; all **841** Git base paths at
+`d47291d5d9030de5ebef713da95efa978c4d8c6e` matched actual bytes. The only additional
+staging paths were the previously dispositioned bridge sentinel and four generated
+Tauri schemas. They are explicitly excluded from the new snapshot; immutable
+staging history remains intact. This verifies retained observation, not a new live
+claim that staging main has stayed unchanged.
+
+`reconcile.py` copies that verified store into
+`../RECOVERY-RUNS/20261008-muse-restoration-r3/isolated-muse-source`, creates native
+branch `feat/overseer-v1-restoration-r3`, and applies the enumerated Git base-to-
+recovery delta. It never reads dirty original application files. The initial R2
+candidate was native Muse
+`sha256:c87cf2c2f03da507f66f93922cb339a2cbebb33ad6372a6039032fb09a20da12`,
+a direct child of staging, with **845** exact source paths. The final committed R3
+source is reconciled on the same isolated branch after the local feature commit.
+`source-latest.json` and `source-<Git SHA>.json` record exact final Git/Muse identities,
+parent/snapshot, every intended file hash/mode, delta, exclusions and retained
+inventory. The final source contains **848** paths, with no unexpected omission,
+addition, byte difference or executable-bit difference. Every unchanged file is
+also checked, not merely the changed files.
+
+Ten executable paths use Git's reviewed `100755` modes; all other regular files
+use `100644`. Muse snapshots do not encode POSIX modes, so the side manifest and
+working-copy checks remain necessary; this is not a native mode round-trip claim.
+There are no symlinks, hardlinks or special bits in the projected candidate. Local
+config/bin/backups/NEXT/editor assets and VCS administration remain excluded; portable
+`.claude` sources, templates, historical tests and the new `.github` workflow remain.
+
+A first commit attempt refused `nothing_staged`; the driver was corrected to use
+native staging before commit. A new fixture then exposed rc5's recursive staging
+omission of new dot-directory files: the workflow was missing from the actual
+snapshot. Explicit staging of every approved hidden-directory source path repairs
+that preparation procedure without changing Muse or relaxing the final comparison.
+The regression verifies native snapshot/mirror workflow bytes and executable mode.
+
+`project-source.py` uses a separate disposable copy, moves only **that fixture's**
+main to the candidate, initializes a new local binding and prepares/verifies/retries
+an absent bare mirror. Initialization's redundant `.gitignore` suffix is restored
+to the already-excluding approved source bytes before projection. Every resulting
+Git blob/path/mode is compared with the source manifest, including CI dotfiles;
+no-change retry preserves the mapping. `projection-latest.json` records the final
+Git mirror SHA and source identity. The actual isolated source's main remains at
+staging and its feature ref remains unchanged by projection. No real remote or
+legacy mirror is targeted.
+
+### Independent review and runtime correction
+
+One independent subagent (`/root/integration_review`) reviewed R1/R2 authority,
+adoption/rollback, mirror reads/projection/retry and new R3 CI, reconstruction,
+reconciliation and lifecycle evidence. It did not repeat the unchanged closed
+Git-core architecture/build reviews. One **P2** was found in `ensure_pr`: falsy or
+malformed PR-list observations could be interpreted as absence and trigger
+`gh pr create`. Mocked probes reproduced list→create for `{}`, a JSON empty string
+and a row with a null URL; no network write occurred.
+
+The correction requires an actual list and complete typed row, exact commit,
+non-cross-repository boolean and valid repository-specific PR URL. Only an exact
+empty list permits creation. Eleven new malformed/falsy observations assert that
+only a read occurred. The reviewer independently reran those plus the prior URL
+case: **12 passed, 65 deselected in 0.04s**. The finding is closed. The reviewer
+found no additional issue in the bounded changed integration; the unavailable
+upstream archive and unexecuted hosted CI are explicit readiness limits.
+
+The existing runtime manifest already includes `cli/v1_mirror.py`; no CI/test file
+is loaded by the installed command runtime. Manifest membership/version remain
+unchanged (`1.0.0`, unpublished). Content digest changes from R2
+`90e179326877edc25263f0f1e1597c6b4067c09e64d03565e0b828d07640ccc6` to
+`d5b692b52c152f006b71414f8b10fd20811b66ad1d90d61bdd9808881b31f3bb`.
+An actual changed-runtime refusal, read-only sync preview, explicit sync and
+status/NEXT readback passed, preserving config identity/authority and living prose.
+`runtime-sync.json` records exact commands and hashes.
+
+### Fresh installation, CI and manual rollback
+
+`installation/kit-current/.venv` and `installation/muse-current/.venv` are fresh,
+independent Python 3.14.4 environments. Kit dependencies were installed from PyPI
+with the pinned requirements: PyYAML 6.0.3 and pytest 9.1.1. The kit venv cannot
+import Muse. Source installation copies all enumerated current source paths,
+dotfiles and executable modes, with a checked manifest; it inherits no development
+editable finder. Both environments passed `pip check`.
+
+**Upstream reproducibility limit:** a read-only download of staging `install.sh`
+now reports **0.2.1rc11**, whereas the supported **0.2.1rc5** archive URL returned
+HTTP **404**. The former local source tar is absent too. No installer was executed,
+no upgrade selected, and no production trust changed. For the authorized fresh
+local installation, `prepare-install.py` verified **388** installed RECORD hashes,
+reconstructed a labelled **389-entry local wheel**, and installed it with fresh
+PyPI dependencies constrained to the existing supported versions. Its source hash
+is unchanged R1 `7b181b6eff6bde1b53105f2a7be7bd8937224988965d7462a3a6b04658f35e92`;
+wheel SHA-256 is
+`5c41d7816818b142ecb025fc259947ab9b7d55be158becd39696a2c87d22edfa`.
+This proves installation from verified local package bytes, **not** availability
+or fresh installation of the original upstream artifact. It is not a published
+wheel. Dependency constraints and provenance are retained with the evidence.
+
+`.github/workflows/supported-v1.yml` defines Git 3.11/3.14 jobs and a combined 3.14
+job; `tools/ci/supported_v1.py` is the same executable local CI entrypoint. It checks
+required dotfiles, the kit's conventional venv, a separate explicit Muse venv and
+exact reviewed Muse package-source digest. Git collection never installs/imports
+Muse. The Muse job requires repository variable `MUSE_RC5_URL`, verifies original
+archive SHA-256
+`1a17ee8792e423927ff07ac96c85de0016bc7f79ebacc4e8a8e5073b436f2ea6`, and fails if missing.
+No current-install URL or version fallback, silent skip, hook activation or
+publication job is present. The three incompatible legacy CI templates are marked
+historical; their sources are retained. YAML structure and local runner are checked;
+GitHub-hosted Linux/3.11/3.14 execution and branch-protection settings are unverified.
+
+The manual `lifecycle.py` run passed **24 checks**, using a disposable fixed-path
+kit source and application fixture. Concrete previous sources were:
+
+- R2 `c389d748c8fc75e23f492e096298db8b83fab054`, runtime `90e179…ccc6`.
+- Held Git-only version read via Git archive at
+  `06f988e5a078ede81c9dc664520833980a9a19a3`; observed runtime digest `3643f0c9e6c5be2cc2e4d3aa7ed13eea34eb9fb213ea221d16d3faf6f3a1b623`.
+- Current tested runtime `d5b692…3bb`, sourced from the checked installation manifest.
+
+The run covered old schema-1 Git initialization; current source-change refusal and
+explicit sync; explicit schema upgrade and Muse adoption; preserved UUID/root/
+context/prose/edits and exact config backups; Muse commit invalidation and explicit
+NEXT publication; fixed-path current/R2 rollback and resume; explicitly selecting
+old/fresh Muse venv paths and restoring the prior config; unavailable-Muse refusal
+and explicit Git rollback without Muse; schema-1 restoration **before** loading
+the Git-only runtime; current resumption; and offline mirror prepare/verify/retry.
+The old runtime refused the Muse schema as required. Unapproved cross-installation
+rebinding refused. Both summaries, binary payload, executable mode and untracked
+owner edit survived. No Git, Muse or editor lifecycle hooks were activated.
+
+### Exact test results and corrections
+
+The complete local matrix is **99 v1 + 6 retained + 108 Muse/mirror = 213 tests**.
+The 12 added R3 cases are 11 PR-observation refusals and one source/dotfile/mode
+projection regression. No supported requirement is skipped or xfailed.
+
+| Run / XML stem | Actual result | Pytest duration |
+| --- | --- | --- |
+| `source-distribution` | 1 failed (fixture referred to nonexistent template) | 1.94s |
+| `review-recheck` | 12 passed, 1 failed, 65 deselected (native dot-directory omission exposed) | 4.65s |
+| `dotfiles-recheck` | 1 passed | 5.04s |
+| `git-ci` | 105 passed, zero failures/errors/skips | 60.88s |
+| `fresh-combined` | 205 passed, 8 setup errors | 254.43s |
+| `final-supported` | **213 passed, zero failures/errors/skips** | **275.37s** |
+
+The first test fixture named a nonexistent portable template and was corrected
+to the real ROADMAP template. The next failure was the native dot-directory
+staging behavior described above; it is now explicitly handled and checked.
+The initial full combined run overlapped the manual unavailable-runtime probe:
+temporarily removing the disposable Muse Python caused eight setup errors in the
+concurrent suite. This was validation orchestration error, not eight hidden passes.
+The interpreter was restored; the complete suite was rerun without concurrent
+runtime mutations. Both failed logs/XML remain unchanged. Exact JUnit per-directory
+counts and timings are in the sibling evidence artifact
+`../RECOVERY-RUNS/20261008-muse-restoration-r3/test-results.json` (the older tracked
+`docs/validation/test-results.json` remains historical).
+
+Commands from recovery root (all full paths/argv retained by drivers):
+
+```sh
+.venv/bin/python -B ../RECOVERY-RUNS/20261008-muse-restoration-r3/preserve.py before
+/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python -B ../RECOVERY-RUNS/20261008-muse-restoration-r3/reconcile.py
+.venv/bin/python tools/ci/supported_v1.py --junitxml ../RECOVERY-RUNS/20261008-muse-restoration-r3/git-ci.xml
+.venv/bin/python -B ../RECOVERY-RUNS/20261008-muse-restoration-r3/lifecycle.py
+../RECOVERY-RUNS/20261008-muse-restoration-r3/installation/kit-current/.venv/bin/python ../RECOVERY-RUNS/20261008-muse-restoration-r3/installation/kit-current/tools/ci/supported_v1.py --muse-python /Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261008-muse-restoration-r3/installation/muse-current/.venv/bin/python --junitxml /Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261008-muse-restoration-r3/final-supported.xml
+.venv/bin/python -B ../RECOVERY-RUNS/20261008-muse-restoration-r3/project-source.py
+.venv/bin/python -B ../RECOVERY-RUNS/20261008-muse-restoration-r3/runtime-sync.py
+.venv/bin/python -B ../RECOVERY-RUNS/20261008-muse-restoration-r3/preserve.py after
+gitleaks dir --no-banner --redact .
+git diff --check
+```
+
+Network-independent install attempts first failed due sandbox DNS restrictions;
+authorized dependency downloads then succeeded. Read-only staging installer/archive
+requests did not change Hub refs or trust. `install-*.log`, reconstructed wheel
+provenance, requirements constraints and source manifests distinguish those steps.
+
+### Preservation, limits and actual next action
+
+Original Muse HEAD/refs/config/repo identity/bridge records and original Git edits
+match the before inventory. The retained staging clone's full file/mode inventory
+also matches. The held release remains clean at
+`06f988e5a078ede81c9dc664520833980a9a19a3`, branch `release/overseer-v1.0.0`.
+No consumer, real remote mirror, remote write, automatic hook, production trust
+reset or OCI operation occurred. Secret/whitespace checks passed. Raw evidence and
+scripts live in `../RECOVERY-RUNS/20261008-muse-restoration-r3/`.
+
+M12 local source reconciliation is verified. M17 workflow/local runner are
+implemented and validated, but hosted CI and immutable rc5 artifact provisioning
+are not closed. The independent changed-integration review and local installation/
+rollback requirements have evidence with the explicit recovered-package limitation.
+The actual remaining action is **Muse artifact/CI readiness**, not repeating R3 or
+publishing the held candidate. Recover the checksum-pinned upstream archive or
+review a reproducible distribution derived from the verified rc5 source, preserve
+honest provenance and update the CI installation contract as needed. A version
+upgrade would need its own compatibility validation, not a silent substitution.
+
+Publication remains a later explicit gate: live Hub protocol/rights, legacy GitHub
+mirror reconciliation and real push/PR lifecycle still need operational evidence.
+Production trust stays refused; private/authenticated Hub support, linked native
+Muse mutations/stage isolation, arbitrary mode/symlink fidelity, relocation and
+unrun platforms are not certified by this result. No complete-product finish is
+claimed. After the feature commit, canonical NEXT is advanced through `next-write`
+using actual HEAD and the prior raw digest, then checked via direct and bound
+status/NEXT and raw disk hashes. `next-closeout.json` and `current-next.txt` preserve
+the exact resulting fence; summaries contain no competing prompt.

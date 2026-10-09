@@ -1,3 +1,8 @@
+# HISTORICAL PRE-RESET TEMPLATE — not supported by bounded v1.
+# Do not activate: commands below belong to the preserved legacy implementation.
+# Supported Git/Muse fixture CI: .github/workflows/supported-v1.yml.
+# The former activation guidance below is retained only as history.
+
 # Example: headless freeze review in CI (§K5.10 / K11).
 # Vendored by overseer sync — copy to .github/workflows/freeze-review.yml in consumer repos.
 #
