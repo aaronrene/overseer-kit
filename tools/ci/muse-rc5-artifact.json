@@ -1,0 +1,12 @@
+{
+  "artifacts": {
+    "muse-0.2.1rc5-1overseerrecovery-py3-none-any.whl": "6b596288fd61f1d0373ead76eff90f82b14291984bff2dbecf9e51cf0694eb4d",
+    "muse-0.2.1rc5-overseer-recovery1-source.zip": "28f5fefacf5860b600edbb83e3cdd35485b983a900ab229a2a1ea673776ae3f0"
+  },
+  "origin": "Recovered from locally installed Muse 0.2.1rc5 package bytes; Overseer recovery build, not an upstream release or original sdist rebuild.",
+  "original_sdist_sha256": "1a17ee8792e423927ff07ac96c85de0016bc7f79ebacc4e8a8e5073b436f2ea6",
+  "package_source_sha256": "7b181b6eff6bde1b53105f2a7be7bd8937224988965d7462a3a6b04658f35e92",
+  "payload_manifest_sha256": "3a30de887720d3019ad8a40b300960f97693fc13b91da8814784dabe897115ff",
+  "r3_reconstructed_wheel_sha256": "5c41d7816818b142ecb025fc259947ab9b7d55be158becd39696a2c87d22edfa",
+  "schema": 1
+}

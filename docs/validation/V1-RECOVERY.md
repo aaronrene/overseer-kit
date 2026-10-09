@@ -1775,3 +1775,171 @@ claimed. After the feature commit, canonical NEXT is advanced through `next-writ
 using actual HEAD and the prior raw digest, then checked via direct and bound
 status/NEXT and raw disk hashes. `next-closeout.json` and `current-next.txt` preserve
 the exact resulting fence; summaries contain no competing prompt.
+
+
+## Muse artifact and CI readiness — 2026-10-08
+
+**Local artifact readiness is implemented and validated; hosted CI and the complete
+product remain unfinished.** This entry supersedes R3's missing reproducible local
+artifact prerequisite, not the upstream-archive, hosted execution or publication
+limits. The recovery checkout started clean at `92026da78b9861a7278d8a3df8c58f9aa576a1fe`,
+branch `feat/overseer-v1-recovery`; physical cwd/Git root
+`/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery`; configured name
+`overseer-kit`, UUID `6dba88a5-029c-4136-9277-c3a0c81f31a6`. Status and canonical
+artifact-readiness NEXT passed before changes.
+
+### Exact recovered artifact and provenance
+
+The original `https://staging.musehub.ai/releases/muse-0.2.1rc5.tar.gz` still returned
+HTTP **404**, after a sandbox DNS failure and an authorized read-only network retry.
+The recorded temporary download location and **88** pip cache files had no archive
+matching original SHA-256 `1a17ee8792e423927ff07ac96c85de0016bc7f79ebacc4e8a8e5073b436f2ea6`.
+No moving installer was executed and no rc11 substitution occurred.
+
+The authorized alternative uses verified locally installed rc5 payload sources.
+R3's reconstructed wheel digest `5c41d7816818b142ecb025fc259947ab9b7d55be158becd39696a2c87d22edfa`
+was rechecked; all **388** input RECORD hashes/sizes were verified and every payload
+file matched both the original installed rc5 and R3's independent installed copy.
+The committed per-file manifest includes **384 Python files**, package data and
+all original distribution metadata/license. The original sdist is not recovered;
+local RECORD/pip provenance does not prove upstream release authenticity.
+
+`tools/ci/muse_artifact.py` produces a deterministic source payload ZIP and wheel.
+The ZIP is explicitly a recovery archive, not an upstream sdist or complete upstream
+repository: upstream tests/build configuration are not recovered. Entry order,
+1980-01-01 timestamps, regular 0644 modes and uncompressed ZIP storage are fixed.
+No build backend/network/Muse import is needed. The wheel retains version
+**0.2.1rc5**, uses build tag **1overseerrecovery**, changes only WHEEL packaging
+metadata, adds `OVERSEER_RECOVERY.json`, and regenerates RECORD. Its **390** entries
+preserve all 387 other input files byte-for-byte. Provenance explicitly states
+`upstream_release: false` and `original_sdist_recovered: false`.
+
+| Reviewed item | Exact SHA-256 |
+| --- | --- |
+| `muse-0.2.1rc5-1overseerrecovery-py3-none-any.whl` (6,969,954 bytes) | `6b596288fd61f1d0373ead76eff90f82b14291984bff2dbecf9e51cf0694eb4d` |
+| `muse-0.2.1rc5-overseer-recovery1-source.zip` (6,935,646 bytes) | `28f5fefacf5860b600edbb83e3cdd35485b983a900ab229a2a1ea673776ae3f0` |
+| 388-file payload manifest | `3a30de887720d3019ad8a40b300960f97693fc13b91da8814784dabe897115ff` |
+| Unchanged rc5 Python source digest | `7b181b6eff6bde1b53105f2a7be7bd8937224988965d7462a3a6b04658f35e92` |
+
+Three builds matched exactly: original installed payload under Python **3.14.4**,
+recovery source ZIP under **3.14.4**, and the same ZIP under **3.11.15**. The source
+archive allows rebuilding without the original installation. A separate author
+ZIP/RECORD review compared every entry with R3, checked source digests, archive
+metadata and embedded provenance. This is scoped author review plus tests, **not**
+a new independent peer review. Closed unchanged reviews were not repeated.
+The [tracked recipe](../../tools/ci/MUSE-RC5-RECOVERY.md) and JSON contract specify
+inputs/outputs. Artifacts remain local in the evidence directory; none are tracked
+as repository binaries, hosted or published.
+
+### Fresh installation and CI contract
+
+New `installation/kit-current/.venv` and `installation/muse-current/.venv` contain
+independent Python 3.14.4 environments. The kit installs its pinned requirements;
+Muse installs the exact verified recovery wheel with runtime dependency versions
+constrained to R3's tested dependency set. Both pass `pip check`, and the kit cannot
+import Muse. All **387** unchanged installed payload files match the input manifest;
+version, recovery provenance and exact installed source digest pass. The source
+installation carries all **854** intended files and modes, including hidden CI
+files, without inheriting an editable finder or development package environment.
+A separate `installation/kit-python311/.venv` validates Git-only on Python 3.11.15.
+
+The workflow now explicitly supersedes `MUSE_RC5_URL` with
+**`MUSE_RC5_RECOVERY_WHEEL_URL`**. An HTTPS download must match the reviewed wheel
+filename/digest before venv creation/pip installation. The existing combined runner
+still verifies installed rc5 version and source digest; it never accepts a version
+fallback. The Git-only jobs require no Muse. YAML parsing, ordering of verification
+before installation and an actual unset-variable shell refusal passed. No repository
+variable was set and no hosted workflow was invoked. Dependency versions are
+constrained, but third-party wheel hashes, Python/toolchain artifacts, offline
+availability and cross-platform native builds are not fully locked or certified.
+
+### Exact supported results
+
+| Run / XML stem | Actual result | Pytest duration |
+| --- | --- | --- |
+| `artifact-tests` | **12 passed**, zero failures/errors/skips | **0.89s** |
+| `git314` — fresh kit, Python 3.14.4 | **117 passed**, zero failures/errors/skips | **56.89s** |
+| `git311` — fresh kit, Python 3.11.15 | **117 passed**, zero failures/errors/skips | **50.44s** |
+| `fresh-combined` — independent fresh kit/Muse 3.14.4 | **225 passed**, zero failures/errors/skips | **248.14s** |
+
+The matrix is **111 v1 + 6 retained + 108 Muse/mirror**. Twelve new Git-only
+regressions exercise reproducibility and refusal of modified source/data/metadata,
+extra package files, linked inputs, source/manifest drift, duplicate ZIP entries
+and substituted source/wheel artifacts. The native snapshot/mirror regression now
+includes every CI contract/recipe/constraint file. There were no failed test runs
+in this action. Each suite used independent fixture roots; no interpreter was
+removed or modified while a suite was running. These are **local macOS** runs;
+GitHub-hosted Linux remains unexecuted. Kit runtime bytes are unchanged at
+`d5b692b52c152f006b71414f8b10fd20811b66ad1d90d61bdd9808881b31f3bb` (unpublished 1.0.0),
+so R3's 24-check rollback and closed independent integration review were retained.
+
+Commands (OUT is the absolute `../RECOVERY-RUNS/20261008-muse-artifact-readiness`):
+
+```sh
+.venv/bin/python -B "$OUT/preserve.py" before
+.venv/bin/python -B tools/ci/muse_artifact.py rebuild --installed-root /Users/aaronrenecarvajal/.local/share/muse/venv/lib/python3.14/site-packages --output-dir "$OUT/build-a"
+.venv/bin/python -B tools/ci/muse_artifact.py rebuild --source-archive "$OUT/build-a/muse-0.2.1rc5-overseer-recovery1-source.zip" --output-dir "$OUT/build-b"
+python3.11 -B tools/ci/muse_artifact.py rebuild --source-archive "$OUT/build-a/muse-0.2.1rc5-overseer-recovery1-source.zip" --output-dir "$OUT/build-python311"
+.venv/bin/python -B "$OUT/review-artifact.py"
+.venv/bin/python -m pytest -q tests/v1/test_muse_artifact.py -p no:cacheprovider --junitxml="$OUT/artifact-tests.xml"
+"$OUT/installation/kit-current/.venv/bin/python" "$OUT/installation/kit-current/tools/ci/supported_v1.py" --junitxml "$OUT/git314.xml"
+"$OUT/installation/kit-python311/.venv/bin/python" "$OUT/installation/kit-python311/tools/ci/supported_v1.py" --junitxml "$OUT/git311.xml"
+"$OUT/installation/kit-current/.venv/bin/python" "$OUT/installation/kit-current/tools/ci/supported_v1.py" --muse-python "$OUT/installation/muse-current/.venv/bin/python" --junitxml "$OUT/fresh-combined.xml"
+"$OUT/installation/muse-current/.venv/bin/python" -B "$OUT/reconcile.py"
+.venv/bin/python -B "$OUT/project-source.py"
+.venv/bin/python -B "$OUT/preserve.py" after
+gitleaks dir --no-banner --redact .
+git diff --check
+```
+
+Raw installation logs, executable drivers, source manifests, XML, counts, artifact
+content/CI author review and reproducibility evidence are in that directory.
+Dependency downloads were authorized read-only network access to PyPI into fresh
+local venvs; no consumer or remote repository write occurred.
+
+### Source agreement, preservation and remaining authorization
+
+Before mutation, all **848** R3 candidate files were checked for exact bytes and
+full normalized modes; no unexpected working file was present. After the reviewed
+local Git feature commit, `reconcile.py` applies the new enumerated delta into the
+**existing** `feat/overseer-v1-restoration-r3` isolated Muse branch. The new source
+has **854** exact paths, ten `100755` executables and all other files `100644`.
+It explicitly stages approved dot-directory paths. The snapshot, working tree and
+disposable mirror are compared against every Git file/hash/mode, including unchanged
+files. The five staging-only generated/local exclusions remain explicit; local
+config, NEXT, hooks/editor assets and VCS administration are not published.
+
+`source-latest.json` and `projection-latest.json` retain final Git/Muse/snapshot/
+mirror identities, complete manifests, exclusion lists and verified no-change retry.
+The source stays in R3's existing evidence tree; new evidence lives in this action's
+directory. The isolated branch's parent is the previous candidate and isolated main
+stays at staging `sha256:208d9dc47f0c6d8553ee80aafc8f0993a6ebf0a88410746f47f58b4e7c6fd6a6`.
+Only a disposable projection copy moves its own main. The retained staging store,
+original Muse refs/config/identity/bridge files and Git edits match preservation
+inventories. The held release remains clean at
+`06f988e5a078ede81c9dc664520833980a9a19a3` on `release/overseer-v1.0.0`.
+
+The remaining readiness action is **artifact-hosting and hosted-CI authorization**.
+Concrete local payloads/digests and the install workflow are reviewable now. No
+hosting destination has been selected/authorized and no repository variable set.
+The recorded Git origin is `https://github.com/aaronrene/overseer-kit.git`; any
+remote feature-branch write and GitHub-hosted workflow execution need explicit
+approval, separately from hosting the recovered dependency. Approval must name
+the artifact destination/access and permitted Git branch/CI operations. The exact
+recovery wheel is the install payload; retain the pinned source ZIP alongside it
+for reproducibility. Such approval does not authorize main merges, a product
+release, MuseHub publication or mirror delivery. A failed hosted platform result
+must remain visible and be resolved without silent dependency/version replacement.
+
+Live Hub protocol/rights, legacy GitHub mirror reconciliation and actual push/PR
+lifecycle remain later Muse-first publication work. Production trust, private Hub
+support, linked native mutations/stage isolation, arbitrary filesystem fidelity
+and unrun platforms remain uncertified. No consumer access, remote write, artifact
+publication, production trust reset, automatic hook or OCI operation occurred.
+
+Both summaries are updated together. After the feature commit and exact native/
+mirror verification, canonical NEXT is published through `next-write` with actual
+HEAD and the expected prior raw digest, then checked from disk through direct and
+bound status/NEXT. The action is `OVERSEER-V1-HOSTED-CI-AUTHORIZATION`, kind `plan`.
+`next-closeout.json` and `current-next.txt` retain the actual readback. This closes
+local artifact preparation, not hosted CI or the complete product.

@@ -10,7 +10,10 @@ def test_native_source_and_mirror_keep_ci_dotfiles(muse_root, muse_python, muse,
     root = muse_root
     init(root, muse_python)
     paths = ['.github/workflows/supported-v1.yml', '.museignore', '.gitignore',
-             'tools/ci/supported_v1.py', 'templates/ROADMAP.template.md']
+             'tools/ci/supported_v1.py', 'tools/ci/muse_artifact.py',
+             'tools/ci/muse-rc5-artifact.json', 'tools/ci/muse-rc5-source-files.json',
+             'tools/ci/requirements-muse-rc5.txt', 'tools/ci/MUSE-RC5-RECOVERY.md',
+             'templates/ROADMAP.template.md']
     for relative in paths:
         target = root / relative
         target.parent.mkdir(parents=True, exist_ok=True)

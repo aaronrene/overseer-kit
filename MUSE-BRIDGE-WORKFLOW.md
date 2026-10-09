@@ -2,8 +2,9 @@
 
 R2 implements local preparation and delivery retry; R3 validates isolated source
 reconciliation and combined local operation. The complete product and held release
-candidate remain unfinished; upstream artifact availability and hosted CI remain
-unresolved. No real-project mirror or remote
+candidate remain unfinished. A reproducible, explicitly local rc5 recovery
+distribution is prepared with an [exact contract](tools/ci/MUSE-RC5-RECOVERY.md);
+artifact hosting, hosted CI and the original upstream archive remain unresolved. No real-project mirror or remote
 write is authorized by this document. Git-only operation remains a permanent
 choice; mirroring requires explicit R1 Muse adoption.
 

@@ -1,60 +1,57 @@
 # Overseer Kit v1 roadmap
 
-**Combined suite: 213 passed (275.37s); Git-only: 105 passed (60.88s); manual lifecycle: 24 checks passed.**
+**Fresh combined suite: 225 passed (248.14s). Git-only: 117 passed on Python
+3.14.4 (56.89s) and 117 on Python 3.11.15 (50.44s). No failures/errors/skips.**
 
-2026-10-08 — R3 local source reconciliation and combined operation are implemented.
-The complete intended product is unfinished; the existing release worktree remains
-on hold. The next readiness gap is a reproducible reviewed Muse rc5 installation
-artifact. Hosted CI and publication still need their own evidence and authorization.
-There is no session ceiling. The [scope decision](decisions/V1-SCOPE-RESET.md)
-preserves two permanent choices:
+2026-10-08 — Local Muse artifact readiness is implemented and validated. The
+complete product and held release remain unfinished. A reproducible rc5 recovery
+source archive and wheel now exist locally with exact reviewed digests and honest
+provenance. Artifact hosting and hosted CI still require authorization and evidence;
+Muse-first product publication remains a separate later gate. No session ceiling
+applies. The [scope decision](decisions/V1-SCOPE-RESET.md) retains two permanent choices:
 
-- **Git/GitHub only:** local handoffs without Muse, an account, network checks or
-  forced migration.
-- **MuseHub with a GitHub mirror:** explicit Muse authority and controlled one-way
-  snapshot distribution, with offline preparation and separate delivery approval.
+- **Git/GitHub only:** no Muse installation, account, network check or migration.
+- **MuseHub with a GitHub mirror:** explicit adoption and controlled one-way
+  distribution, with separate delivery approval.
 
 | Milestone | State |
 | --- | --- |
-| Original working edits, Muse refs and held release | Preserved; staging evidence rehashed and reread |
-| Git-core architecture/build review and authorized DINERO pilot | Closed; unchanged reviews and consumer work not repeated |
-| R1 optional Muse authority and explicit adoption | Retained and covered by combined validation |
-| R2 controlled mirror and retry | Retained; R3 independent review corrected one malformed-PR observation issue |
-| R3 isolated source reconciliation | Native feature branch based on verified staging; every source path/byte/mode and explicit exclusion checked |
-| R3 installation, migration and rollback | 24 manual no-hooks fixture checks passed; fresh local rc5 install used reconstructed verified package bytes |
-| Supported CI | Workflow and local runner implemented; Git and combined local results in validation; hosted execution not evidenced |
-| Reproducible upstream Muse dependency | Open: rc5 archive returned 404; moving installer selects unsupported rc11 |
-| Muse-first publication and bounded consumer validation | Separate later gate; no remote write or consumer access in R3 |
+| Original edits/Muse refs and held release | Preserved; release remains on hold |
+| Closed Git-core reviews and authorized DINERO pilot | Unchanged; not repeated |
+| R1 authority/adoption and R2 mirror/retry | Retained; full combined suite passes |
+| R3 source reconciliation and changed-integration review | Retained; new delta carried into the same isolated Muse feature branch |
+| R3 current/previous rollback | Prior 24-check evidence retained; runtime unchanged |
+| Reproducible local rc5 distribution | Closed locally: 388 input files; identical builds on Python 3.11/3.14 |
+| Fresh independent installation | Verified recovery wheel, separate kit/Muse venvs, dependency checks and full suite pass |
+| Supported CI contract | Exact recovery artifact/source pins; both Git versions and combined runner pass locally |
+| Artifact hosting and hosted Linux CI | Await separately scoped authorization; no URL configured or hosted run claimed |
+| Muse-first publication | Separate later gate; live Hub/rights, legacy mirror and real delivery remain unvalidated |
 
-The isolated feature source starts from staging
-`sha256:208d9dc47f0c6d8553ee80aafc8f0993a6ebf0a88410746f47f58b4e7c6fd6a6`,
-using only the enumerated recovery delta from Git
-`d47291d5d9030de5ebef713da95efa978c4d8c6e`. Original histories and the isolated
-store's main remain unchanged. Source/mirror manifests retain exact final Git/Muse
-IDs under `../RECOVERY-RUNS/20261008-muse-restoration-r3/`. The new workflow survives
-native snapshot and mirror projection; rc5 requires explicit staging of new
-dot-directory files. Ten executable paths use the reviewed Git mode policy.
+The original checksum-pinned Muse archive still returns 404; it was not recovered.
+The recovery wheel keeps **0.2.1rc5**, adds build tag `1overseerrecovery` and embeds
+provenance saying it is **not an upstream release**. All 384 Python files and
+package data are unchanged. Three builds from the installed payload/source ZIP
+produce identical artifacts. The [recipe and contract](../tools/ci/MUSE-RC5-RECOVERY.md)
+record what is recovered and what remains unavailable. Third-party dependency
+versions are constrained; their binary artifacts/platform availability are not a
+fully reproducible offline supply chain.
 
-One independent changed-integration review found and rechecked a P2: malformed PR
-observations could trigger creation. Only an exact empty list now allows creation;
-invalid rows, heads, boolean fields or URLs refuse first. This review did not
-reopen the unchanged Git-core milestones. Exact suite counts, earlier failures,
-installation provenance and final review evidence are in the
-[R3 validation record](validation/V1-RECOVERY.md#r3-isolated-source-and-combined-validation--2026-10-08).
+CI now requires `MUSE_RC5_RECOVERY_WHEEL_URL`, verifies the exact wheel before pip,
+and checks the installed rc5 source digest. The former original-archive variable
+is superseded explicitly. Missing URL or altered bytes fail without fallback.
+Artifacts exist only under `../RECOVERY-RUNS/20261008-muse-artifact-readiness/`.
+No artifact publication, remote write, consumer access, hook activation, production
+trust reset, OCI or complete-product claim occurred.
 
-Fresh kit and Muse venvs use separate dependencies. Fixed-path source replacement
-between current/R2, explicit Muse environment selection, schema-1 rollback to the
-held Git-only version and restoration with Muse unavailable were exercised.
-Repository identity, summaries, binary bytes, executable modes and owner edits
-survived. No lifecycle hooks were activated. Moving kit installations is still an
-explicitly refused rebind, not a supported rollback shortcut.
+The existing `feat/overseer-v1-restoration-r3` isolated Muse branch receives only
+the reviewed Git delta. All **854** source paths, bytes, ten executable modes and
+exclusions are checked again in its snapshot, working tree and disposable mirror.
+Staging main remains unchanged. Final identities are in the new evidence directory's
+`source-latest.json` and `projection-latest.json`.
 
-The Muse CI job fails unless `MUSE_RC5_URL` supplies the original checksum-pinned
-archive. The locally reconstructed wheel is labelled as such and does not close
-upstream distribution readiness. Linux/Python 3.11 hosted execution, live staging
-refs negotiation, credentials/rights, the real push/PR lifecycle, legacy remote
-mirror reconciliation and production fingerprint trust remain unverified. There
-is no version fallback, trust reset, main merge, release, OCI or final-product claim.
-
-Canonical `docs/NEXT.md`, published by `next-write` and read back from disk, is the
-only executable next action. This roadmap is a milestone summary.
+Exact results, author artifact review, installation provenance, preservation and
+remaining limits are in the [artifact readiness validation](validation/V1-RECOVERY.md#muse-artifact-and-ci-readiness--2026-10-08).
+This work does not claim a new independent peer review or hosted Linux execution.
+The runtime digest remains `d5b692b52c152f006b71414f8b10fd20811b66ad1d90d61bdd9808881b31f3bb`.
+Canonical `docs/NEXT.md`, published with `next-write` and verified from disk, is the
+only executable next action; this file is a milestone summary.
