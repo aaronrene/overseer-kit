@@ -27,7 +27,9 @@ KINDS = ("plan", "implement", "review", "maintain", "stop")
 TOKEN = re.compile(r"[A-Za-z0-9][A-Za-z0-9_.-]{0,127}\Z")
 RUNTIME_FILES = ("cli/__init__.py", "cli/bootstrap.py", "cli/main.py", "cli/ok",
                  "cli/overseer", "cli/v1.py", "cli/v1_io.py", "cli/v1_revision.py",
-                 "cli/v1_muse_reader.py", "cli/v1_policy.py", "cli/digest.py", "VERSION")
+                 "cli/v1_muse_reader.py", "cli/v1_policy.py", "cli/v1_mirror.py",
+                 "cli/v1_mirror_reader.py", "scripts/muse-bridge-deploy.sh",
+                 "templates/scripts/muse-bridge-deploy.sh.template", "cli/digest.py", "VERSION")
 
 
 class UniqueLoader(yaml.SafeLoader):
@@ -458,9 +460,14 @@ def parser():
     p.set_defaults(repo=None, config=None, json=False, bound_root=None, bound_id=None, binding_path=None)
     p.add_argument("--version", action="version", version=VERSION)
     sub = p.add_subparsers(dest="command", required=True)
-    for name in ("status", "init", "sync", "adopt", "next", "next-write", "hook"):
+    for name in ("status", "init", "sync", "adopt", "mirror", "next", "next-write", "hook"):
         cmd = sub.add_parser(name, allow_abbrev=False)
         globals_to(cmd)
+        if name == "mirror":
+            cmd.add_argument("operation", choices=("prepare", "verify", "deliver"))
+            cmd.add_argument("--plan-file", required=True, help="Confined reviewed JSON plan")
+            cmd.add_argument("--expect-plan", required=True, help="SHA-256 of the exact approved plan bytes")
+            cmd.add_argument("--gh", help="Absolute gh executable, required only for explicit delivery")
         if name == "init":
             cmd.add_argument("--regime", choices=("git-only", "muse-only", "muse+git-mirror"))
             cmd.add_argument("--vcs", choices=("git", "muse"))
@@ -513,7 +520,10 @@ def main(argv=None):
             result = initialize(root, args)
         else:
             config, original = config_for(root, args, syncing=args.command in ("sync", "adopt"))
-            if args.command == "adopt":
+            if args.command == "mirror":
+                from cli.v1_mirror import command
+                result = command(root, config, original, args)
+            elif args.command == "adopt":
                 result = adopt(root, config, original, args)
             elif args.command == "sync":
                 confined(root, NEXT)

@@ -1350,3 +1350,199 @@ to **OVERSEER-V1-MUSE-RESTORATION-R2**, kind **implement**, bound to the new HEA
 the pre-read prior NEXT digest. `next-closeout.json` records the exact writer argv,
 result and direct/bound-launcher status/NEXT readbacks. The ignored prompt input
 is removed after publication. The R1 implementation action must not remain NEXT.
+
+## R2 controlled mirror preparation and retry — 2026-10-08
+
+**R2 is implemented locally; R3 source reconciliation and combined validation are
+next. The complete intended product remains unfinished and the preserved release
+candidate remains on hold.** Permanent Git-only operation and explicit R1 Muse
+adoption remain supported. The completed restoration audit and R1 supplied the
+baseline; closed unchanged Git-core reviews were not repeated.
+
+### Identity and implementation
+
+Physical cwd/Git root: `/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery`;
+branch `feat/overseer-v1-recovery`; starting clean HEAD
+`99a13c0e4ff73fa42b5901d73f69705b454b7ba2`; name `overseer-kit`; UUID
+`6dba88a5-029c-4136-9277-c3a0c81f31a6`. Starting status and canonical R2 NEXT passed.
+The recovery itself remains Git-bound and was not mirrored or Muse-adopted.
+
+`cli/v1_mirror.py` supplies explicit prepare/verify/deliver stages.
+`cli/v1_mirror_reader.py` reads native Muse objects in the R1-pinned separate venv.
+The runtime manifest adds those modules and both replaced bridge wrappers. Version
+remains the unpublished `1.0.0`; digest changes from
+`379df92544be4722597b7ccecdf6a1efca1a181b1a852046172fd375c7fbe2cb` to
+`90e179326877edc25263f0f1e1597c6b4067c09e64d03565e0b828d07640ccc6`.
+A real runtime-change refusal, sync dry-run, explicit sync, status and NEXT readback
+passed. Dry-run changed no observed bytes; sync preserved Git authority, identity,
+NEXT and summaries. Exact commands and hashes are in `initial-runtime-sync.json` and
+`diagnostic-runtime-sync.json` and `runtime-sync.json`; the final sync follows
+the delivery-response validation refinement.
+
+An approved raw-digest-pinned JSON plan names the authoritative main/revision/logical
+ID and Hub URL, target physical path, explicit GitHub URL/repository/branches and
+expected local/remote heads. R1 config/runtime/source bindings remain mandatory.
+Preparation is offline and labels Hub state `approved_input_not_checked_offline`.
+Delivery requires a fresh matching authoritative observation; local-only/unpublished
+source, unknown remote state and moved heads cannot be called delivered.
+
+The target is a dedicated bare Git repository created only at an absent isolated
+physical path. Its parent must exist. It must not overlap source, shared Muse store
+or kit installation. Existing development trees, linked Git worktrees, empty/foreign
+directories, aliases, changed config/refs, hooks and extra content are refused.
+Engine-owned targets have a fixed config with hooks disabled. Global/environment
+Git configuration is isolated. Source bridge-hook configuration is detected and
+refused without executing or deleting it. No application checkout, filter, index,
+`git add -A`, watch process or automatic hook exists on this path.
+
+**Implementation refinement from the audit proposal:** the native export mutation
+path is not reused. Even `--no-push` can execute hooks, mutate source bridge state,
+skip missing blobs and infer executable modes. The small engine instead reuses
+R1's pinned native object-read APIs, validates all source blobs, and writes Git
+objects/trees directly. It compares exact committed paths/bytes/modes before the
+ref CAS, then verifies correspondence again. This preserves native snapshot reading
+without relying on the uncorrected exporter. No original Muse record/ref is written.
+
+### Projection, correspondence and retry contract
+
+Actual projection enforces R1 local config/bin/local/NEXT/editor exclusions, both
+VCS administration directories, `.env`/`.env.*`, and the historical local sentinel.
+Already-tracked snapshot bindings are omitted and named in reports; source history
+is preserved. Portable templates and living summaries remain. Every blob, including
+excluded blobs, must exist and validate. Missing objects refuse before target creation.
+
+Regular singly linked files are supported. Working file bytes must match the pinned
+snapshot, shared staging must be empty, and executable bits must match an explicit
+sorted allowlist. Git modes normalize to `100644`/`100755`; no shebang inference or
+full POSIX-metadata claim is made. Symlinks, hardlinks and special permission bits
+refuse. Empty-directory metadata is reported and omitted. The helper bounds source
+blob bytes at 32 MiB, encoded response at 48 MiB and runtime at 30 seconds.
+
+Source/config/target are rechecked before ref publication and delivery. Ordinary
+source-directory and target-parent locks serialize operators, including creation.
+A single `.overseer/local/git-bridge.json` correspondence record binds one pair;
+source-ID and exact-plan commit trailers plus the expected parent/tree support
+recovery after interrupted record writing. No-change retry preserves the nonempty
+Git SHA and identical record bytes. New source revisions with unchanged projections
+receive a correspondence commit with no file delta. Unreachable objects from a
+failed local prepare may remain; rerun completes only after fresh validation.
+
+Delivery separately observes remote head even after no-change export, retries an
+incomplete non-force distribution-branch push, and verifies readback. Lost push
+responses can resolve to success through observation. PR failure does not erase
+verified push/export success. PR list/create/readback specify the repository,
+head/base and target cwd and require the exact mirror head. Reports distinguish
+export, authority, push and PR outcomes. No force push, main push, merge or release
+is implemented. Checks and Git ref negotiation are not a transaction across services.
+
+R2 deliberately refuses legacy/unowned mirror targets and initial destinations
+with existing history. Historical extra-file deletions/local-binding cleanup need
+explicit isolated reconciliation; no real GitHub mirror history was changed or
+certified. The [runbook](../../MUSE-BRIDGE-WORKFLOW.md) and its template replace the
+old default publication instructions with this contract.
+
+### Commands and exact local results
+
+Kit environment: its conventional `.venv`, Python 3.14.4, pytest 9.1.1, PyYAML 6.0.3.
+Muse: 0.2.1rc5 in `/Users/aaronrenecarvajal/.local/share/muse/venv`, with the unchanged
+R1 package-source pin `7b181b6eff6bde1b53105f2a7be7bd8937224988965d7462a3a6b04658f35e92`.
+All native mutations and Git exports used disposable fixtures. Push/PR tests used
+recording transports; they are not real remote-write evidence.
+
+| Run / XML stem | Actual result | Pytest duration |
+| --- | --- | --- |
+| `initial-mirror` | 26 passed, 23 failed | 97.61s |
+| `mirror-recheck` | 48 passed, 1 failed | 133.62s |
+| `expanded-mirror` | **58 passed, zero failures/errors/skips** | **138.73s** |
+| `full-supported` | **193 passed, zero failures/errors/skips** | **282.20s** |
+| `final-supported` | **193 passed, zero failures/errors/skips** | **253.32s** |
+| `protocol` | **8 passed, 58 deselected** | **0.06s** |
+| `complete-supported` | **201 passed, zero failures/errors/skips** | **261.42s** |
+
+The first run exposed an overly strict full-POSIX-mode comparison: native Muse
+initializes `.museattributes` as `0600`. The corrected policy checks the executable
+bit and rejects special bits while normalizing ordinary permissions to Git modes.
+The remaining recheck failure was the fixture, not a hidden product pass: macOS
+stripped setuid/setgid when chmod was requested. The corrected test asserts a
+persistent sticky bit and proves refusal. A focused one-case diagnostic reproduced
+the initial mode failure in 2.55s; it is not counted as a passing test. Earlier raw
+logs/XML are retained unchanged. After the first full 193-test pass, final review
+refined the helper protocol to preserve a bounded specific refusal reason (including
+the detected hook path) instead of losing it on the intentionally discarded stderr
+channel. The hook-marker assertion now verifies that diagnostic, and the complete
+suite was rerun. Code inspection then identified unhandled malformed Hub JSON, Git ref lines and
+a non-string PR URL. Corrections and eight additional protocol regressions verify
+explicit refusals rather than incidental parser exceptions. The final
+`complete-supported` run includes all 201 tests against the final runtime.
+
+The expanded 58 mirror cases cover binary bytes, explicit non-shebang executables,
+nonexecuting shebangs, add/change/delete, same-content source commits, historical
+tracked local bindings/secrets, source/target/remote drift, unpushed/unknown Hub
+state, missing Muse commit/snapshot/blob and missing Git blob, physical aliases and
+linked Git targets, dirty/stale/foreign targets, Muse/Git hook markers, unsupported
+modes/symlinks/hardlinks, corrupt exported paths/bytes/modes, interruption before/after
+local ref update/recording and push, existing remote branch retry, no-change mapping,
+concurrent operators, explicit PR context/failure, Git-only refusal, malformed plan
+input and missing delivery executable. Eight further delivery-protocol cases bring
+new mirror coverage to 66. The final matrix comprises 99 v1, six retained and
+96 Muse/mirror cases (30 R1 plus 66 R2). Its JUnit elapsed time is 261.401s;
+the table reports pytest console duration. No supported test is skipped or xfailed.
+
+Commands from the recovery root, with the separate Muse venv explicitly selected:
+
+```sh
+.venv/bin/python -m pytest -q tests/muse/test_mirror.py --muse-python /Users/aaronrenecarvajal/.local/share/muse/venv/bin/python -p no:cacheprovider --junitxml=../RECOVERY-RUNS/20261008-muse-restoration-r2/initial-mirror.xml
+.venv/bin/python -m pytest -q tests/muse/test_mirror.py --muse-python /Users/aaronrenecarvajal/.local/share/muse/venv/bin/python -p no:cacheprovider --junitxml=../RECOVERY-RUNS/20261008-muse-restoration-r2/mirror-recheck.xml
+.venv/bin/python -m pytest -q tests/muse/test_mirror.py --muse-python /Users/aaronrenecarvajal/.local/share/muse/venv/bin/python -p no:cacheprovider --junitxml=../RECOVERY-RUNS/20261008-muse-restoration-r2/expanded-mirror.xml
+.venv/bin/python -m pytest -q tests/v1 tests/retained tests/muse --muse-python /Users/aaronrenecarvajal/.local/share/muse/venv/bin/python -p no:cacheprovider --junitxml=../RECOVERY-RUNS/20261008-muse-restoration-r2/full-supported.xml
+.venv/bin/python -m pytest -q tests/v1 tests/retained tests/muse --muse-python /Users/aaronrenecarvajal/.local/share/muse/venv/bin/python -p no:cacheprovider --junitxml=../RECOVERY-RUNS/20261008-muse-restoration-r2/final-supported.xml
+.venv/bin/python -m pytest -q tests/muse/test_mirror.py -k 'malformed_authority or malformed_git or malformed_pr' --muse-python /Users/aaronrenecarvajal/.local/share/muse/venv/bin/python -p no:cacheprovider --junitxml=../RECOVERY-RUNS/20261008-muse-restoration-r2/protocol.xml
+.venv/bin/python -m pytest -q tests/v1 tests/retained tests/muse --muse-python /Users/aaronrenecarvajal/.local/share/muse/venv/bin/python -p no:cacheprovider --junitxml=../RECOVERY-RUNS/20261008-muse-restoration-r2/complete-supported.xml
+.venv/bin/python -B ../RECOVERY-RUNS/20261008-muse-restoration-r2/runtime-sync.py
+.venv/bin/python -B ../RECOVERY-RUNS/20261008-muse-restoration-r2/preserve.py after
+gitleaks dir --no-banner --redact .
+sh -n scripts/muse-bridge-deploy.sh templates/scripts/muse-bridge-deploy.sh.template
+git diff --check
+```
+
+The secret scan found no leaks, shell syntax and wrapper help passed, changed
+document relative links resolved, and whitespace checks passed.
+
+Raw logs, JUnit XML, machine counts, preservation inventories and closeout readbacks
+are retained in `../RECOVERY-RUNS/20261008-muse-restoration-r2/`. The conventional
+Git-only installation regression still runs without Muse import/installation;
+default Git-only collection remains 105 tests, with native Muse explicitly selected.
+
+### Preservation, limits and next milestone
+
+Before/after preservation comparison passed: original Muse HEAD/refs/config/repo
+identity/bridge records and original Git working edits are unchanged. The release
+worktree remains clean at `06f988e5a078ede81c9dc664520833980a9a19a3` on
+`release/overseer-v1.0.0`. No consumer, real-project mirror, remote write or remote
+inspection was performed. No hook activation, original Muse ref change or OCI ran.
+
+The optional delivery adapter is restricted to public staging JSON `/refs` and
+explicit GitHub repository context. Real server negotiation, credentials/rights,
+private/authenticated Hub support, production trust and the live push/PR lifecycle
+remain unvalidated. It refuses rather than falling back to another host, resetting
+fingerprints or logging in automatically. Source snapshot/main support does not
+reproduce Muse's history graph in Git or validate native Muse linked-worktree mutation
+and separate staging isolation. Existing legacy mirror migration remains explicit
+reconciliation work. Local implementation tests do not close operational publication
+gates or establish independent integration review.
+
+R2 closes local M03–M11, M14 and M18 behaviors for this bounded target/projection
+contract and the mirror portion of M09. M04's live Hub observation and M06/M14's real
+remote lifecycle still need separately authorized operational evidence. M12 source
+reconciliation, M17 supported CI, combined installation/current-previous rollback
+and independent changed-integration review remain R3. M16 production trust remains
+a separate gate. The existing Git-core reviews and authorized DINERO pilot stay closed.
+
+After the local feature commit, canonical NEXT is published through `next-write`
+to **OVERSEER-V1-MUSE-RESTORATION-R3**, kind **implement**, using the verified prior
+NEXT digest and actual new HEAD. `next-closeout.json` records exact writer arguments,
+raw digest verification and direct/bound status/NEXT readbacks. The temporary prompt
+input is removed. R3 starts from verified staging in isolation, applies the reviewed
+recovery delta, checks exact source/projection/modes and validates combined operation.
+Remote writes, original Muse ref changes, consumer access and automatic hooks remain
+outside this handoff. No complete-product finish is claimed.

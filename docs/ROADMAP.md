@@ -1,64 +1,71 @@
 # Overseer Kit v1 roadmap
 
-2026-10-08 — R1 local restoration is implemented. The complete intended v1 remains
-incomplete and the preserved Git-only release candidate stays on hold. The owner's
+2026-10-08 — R2 controlled mirror preparation and retry are implemented locally.
+R3 source reconciliation and combined validation are next. The complete intended
+product remains unfinished; the preserved release candidate stays on hold. The
 [scope clarification](decisions/V1-SCOPE-RESET.md) authorizes local restoration
-without a session-count ceiling and preserves two permanent operating choices:
+without a session ceiling and preserves two permanent choices:
 
-- **Git/GitHub only:** standalone operation without Muse installed, a MuseHub
-  account, network access for local handoffs, or forced migration.
-- **MuseHub with a GitHub mirror:** explicitly selected Muse authority, followed
-  by a controlled one-way distribution mirror. Local handoffs are implemented;
-  mirror repair and publication verification remain pending.
+- **Git/GitHub only:** standalone handoffs without Muse, an account, network checks,
+  or forced migration.
+- **MuseHub with a GitHub mirror:** explicitly selected Muse authority and controlled
+  one-way snapshot distribution. Preparation is offline; delivery is a separately
+  authorized operation with fresh source/destination observations.
 
 | Milestone | State |
 | --- | --- |
-| Preserve original work and recovery snapshots | Complete; original Muse refs/state and Git edits preserved through R1 |
-| Git status/init/sync/NEXT and confined atomic writer | Retained; existing requirements remain covered |
-| Git-core architecture/build review, installation/rollback, authorized DINERO pilot | Closed; unchanged review and consumer work not repeated |
+| Preserve original work and recovery snapshots | Complete through R2; original Muse state/Git edits and clean held release preserved |
+| Git status/init/sync/NEXT and confined atomic writer | Retained; full supported matrix includes the permanent Git-only mode |
+| Git-core architecture/build review, installation/rollback, authorized DINERO pilot | Closed; unchanged reviews and consumer work not repeated |
 | Muse restoration audit and common-base reconciliation | Complete; 841/841 shared file bytes matched verified staging main |
-| R1: Optional Muse-aware local status/NEXT and explicit adoption | Implemented and locally tested; exact results in validation |
-| R2: Controlled mirror with reliable retry and source correspondence | Next; depends on R1 authority and local exclusion policy |
-| R3: Isolated source reconciliation, integration review, combined installation/rollback | Planned; depends on R1/R2 |
-| Authorized Muse-first publication and bounded consumer validation | Later gate; no remote writes or consumer activation authorized here |
+| R1: Optional Muse local handoffs and explicit adoption | Implemented; original 135-test combined evidence retained |
+| R2: Controlled mirror preparation, correspondence and delivery retry | Implemented; 66 new mirror cases pass; full combined results in validation |
+| R3: Isolated source reconciliation, changed-integration review, combined installation/rollback | Next |
+| Authorized Muse-first publication and bounded consumer validation | Later gate; no real mirror, remote write or consumer activation performed in R2 |
 
-R1 adds an explicit Git/Muse revision backend, schema-2 source-labelled NEXT,
-Muse logical identity and runtime pins, physical linked-worktree selection,
-expected Muse revision checks, and additive exclusions in both VCS systems.
-`adopt --dry-run` previews a deliberate config change; apply preserves identity,
-documents and application edits and saves the exact prior config. Tested rollback
-restores that config, including when Muse is unavailable, while retaining safe
-local exclusions. Authority changes require explicit `next-write`; they never
-choose a new task. Existing schema-1 Git bindings remain valid and stay Git.
+R1 retains checkout UUID/root/context protections and uses the selected VCS for
+freshness. Muse logical identity and its separate runtime are pinned; Git bindings
+never convert automatically. Explicit adoption preserves documents and edits, saves
+exact prior config, and supports tested rollback. R1 exclusions protect local
+config, launcher, NEXT, backups and editor assets. Local status/NEXT still report
+publication as `not_checked_offline`.
 
-The [R1 validation record](validation/V1-RECOVERY.md#r1-optional-local-muse-handoffs-and-adoption--2026-10-08)
-records **135 passed, zero failures, errors or skips in 132.34s**, together with
-exact commands, corrections, runtime digest and limitations.
-The [adoption guide](MIGRATE-EXISTING-REPO.md) documents the supported migration
-inputs, reviewed exclusion policy, already-tracked-file refusal and rollback.
-R1 covers local read commands on Muse code-domain repositories and registered
-linked worktrees with Muse 0.2.1rc5 in a separate Python >=3.14 environment. It does
-not certify native Muse mutation commands on linked worktrees, per-worktree staging,
-full mode/symlink fidelity, or remote publication. Local publication state remains
-`not_checked_offline`.
+R2 adds `mirror prepare`, `verify`, and explicit `deliver`, plus a bound replacement
+for the old deploy script/template. An approved plan pins source main/revision/Hub
+identity, target physical path, GitHub repository/branches and expected heads.
+Only newly created or engine-owned bare targets are accepted. Inherited hooks,
+foreign content, overlap, source/target drift and missing objects refuse.
 
-The completed [audit](validation/V1-RECOVERY.md#musehub-restoration-audit--2026-10-08)
-is the baseline for R2. Its unsafe deploy script/export behavior remains disabled
-for real-project use: implicit source selection, early push, interrupted-push retry,
-stale target content, mode projection, lost correspondence and hidden PR errors
-still need repair. R2 must enforce exclusions on the actual export projection and
-mirror, including historical tracked local files; ignore strings alone are not proof.
-Prepare with native export `--no-push` only in an isolated context that cannot execute
-inherited Muse/Git hooks. Validate source, target and snapshot before any separately
-authorized publication.
+Pinned native Muse reads supply the projected bytes; Git plumbing replaces the
+unsafe native export mutation path. Every blob/path/mode is checked before updating
+the target ref. Actual snapshot exclusions are reported. Regular files project to
+`100644`/`100755` under an explicit executable list; symlinks, hardlinks and special
+permission bits refuse. No-change retry preserves the mapping; interrupted record
+writes recover from checked source/plan trailers. Push and PR retry independently
+observe state and report separate outcomes with explicit repository context.
 
-R3 must start isolated Muse source reconciliation from verified staging main
+The [mirror runbook](../MUSE-BRIDGE-WORKFLOW.md) describes the schema, supported
+limits and invocation. Existing legacy mirrors need explicit reconciliation; this
+implementation does not authorize replacing the kit's current remote mirror.
+The live public-staging JSON refs adapter and GitHub write lifecycle have only
+recording-transport evidence. Production trust, private Hub authentication and
+publication rights remain unverified. There is no host/trust fallback.
+
+**Final combined suite: 201 passed, zero failures/errors/skips in 261.42s.**
+
+The [R2 validation entry](validation/V1-RECOVERY.md#r2-controlled-mirror-preparation-and-retry--2026-10-08)
+records exact commands, full suite counts, initial corrections, runtime digest and
+preservation checks. No independent integration review or final-v1 approval is
+claimed from the implementation suite.
+
+R3 must reconcile in isolation from verified staging main
 `sha256:208d9dc47f0c6d8553ee80aafc8f0993a6ebf0a88410746f47f58b4e7c6fd6a6`,
-then apply the reviewed recovery delta. Preserve the original checkout and release
-worktree. Production Hub trust remains unresolved; do not switch hosts or reset
-trust to bypass the recorded fingerprint refusal. No R1 remote or consumer access
-occurred, and no automatic hooks or governance machinery were restored.
+apply only the reviewed recovery delta from Git `d47291d5d9030de5ebef713da95efa978c4d8c6e`,
+and compare source bytes, exclusions and explicit executable policy. Preserve
+original refs and the held release. Validate supported Git/Muse CI, review the
+changed integration once, and exercise fresh combined installation, migration,
+current/previous rollback and a no-hooks manual lifecycle in disposable fixtures.
+Production fingerprint trust must not be reset to bypass its recorded refusal.
 
 Only canonical `docs/NEXT.md`, published and validated through `next-write`, carries
-the runnable next action. R1 closeout advances it to R2; this roadmap is a summary,
-not an alternate prompt or a claim that the complete product is finished.
+the executable next action. R2 closeout advances it to R3; this is a summary.

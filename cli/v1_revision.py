@@ -17,7 +17,7 @@ OID = re.compile(r"sha256:[0-9a-f]{64}\Z")
 RESPONSE_LIMIT = 2 * 1024 * 1024
 
 
-def bounded_run(argv, *, cwd, env, timeout=15):
+def bounded_run(argv, *, cwd, env, timeout=15, limit=RESPONSE_LIMIT):
     """Bound elapsed time and combined output before accumulating a response."""
     with subprocess.Popen(argv, cwd=cwd, env=env, stdout=subprocess.PIPE,
                           stderr=subprocess.PIPE) as proc:
@@ -38,7 +38,7 @@ def bounded_run(argv, *, cwd, env, timeout=15):
                             selector.unregister(key.fileobj)
                             continue
                         count += len(chunk)
-                        if count > RESPONSE_LIMIT:
+                        if count > limit:
                             raise Refusal("muse_response_too_large")
                         if key.fileobj is proc.stdout:
                             output.extend(chunk)

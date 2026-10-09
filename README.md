@@ -6,10 +6,12 @@ a prompt from the wrong project, branch, lane, or point in history.
 
 The Git-based handoff core is locally validated, but intended v1 is incomplete.
 The intended product lets each repository choose Git/GitHub only or MuseHub as its
-source of truth with a GitHub mirror. Git-only is a permanent supported choice:
+source of truth with a GitHub mirror. The [mirror workflow](MUSE-BRIDGE-WORKFLOW.md)
+documents explicit preparation, verification and separately authorized delivery.
+Git-only is a permanent supported choice:
 no Muse installation, account, or migration is required. R1 implements optional
-local Muse handoffs and explicit adoption; mirror repair and combined release
-validation remain pending. The source version `1.0.0` is an
+local Muse handoffs and explicit adoption; R2 adds controlled mirror preparation
+and retry. Combined R3 validation remains pending. The source version `1.0.0` is an
 unpublished candidate, and its Git-only release is on hold. The behavior described
 below is the current implementation, not the completed Muse-first product. See the
 [scope decision](docs/decisions/V1-SCOPE-RESET.md) and the complete
@@ -40,6 +42,7 @@ The public commands are:
 | `init` | Give one checkout its identity, exclusions and initial local handoff files. |
 | `sync` | Refresh the bound launcher and runtime pin after an explicit kit update. |
 | `adopt` | Explicitly change schema/authority, preview exclusions, or restore a preserved config. |
+| `mirror` | Prepare or verify a pinned Muse projection offline; explicitly deliver it after separate authorization. |
 | `next` | Validate and print the current handoff. It never runs the task. |
 | `next-write` | Publish a new handoff with explicit context and the previous NEXT digest. |
 
@@ -50,8 +53,10 @@ work is complete, verify which AI model is actually running, or judge whether ta
 prose is strategically correct. The operator or agent chooses the task and advances
 it explicitly with `next-write`.
 
-The bounded v1 does not push, pull, fetch, merge, release, deploy, modify application
-code, or contact a network. It has no hosted service, registry, background process,
+Local handoff commands and mirror preparation stay offline. Only explicitly
+invoked `mirror deliver` observes Hub/GitHub, pushes the verified distribution
+commit and creates or verifies its PR. It never merges, releases or deploys.
+The kit has no hosted service, registry, background process,
 telemetry, automatic updater, transaction system, or OCI machinery. It supports
 local Git and Muse code-domain checkouts and linked worktrees. Moving an initialized checkout or moving the kit
 installation requires an explicitly reviewed rebind; copying is not migration.
