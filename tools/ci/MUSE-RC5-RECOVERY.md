@@ -57,6 +57,20 @@ recovery wheel. The old `MUSE_RC5_URL` contract is superseded, not silently reus
 The verifier checks the exact wheel filename/digest before pip runs; the runner
 also checks the installed Python source. Missing URL, wrong bytes or another Muse
 version fail. There is no fallback to the moving installer or PyPI's `muse` name.
-Artifacts remain in local recovery evidence; they are not committed or published.
-Hosting them, configuring repository variables, and running hosted CI require
-separate authorization. Muse-first product publication remains a later gate.
+The owner authorized hosting and CI on 2026-10-09. Exact copies of the wheel and
+source ZIP are published in `aaronrene/overseer-kit`, separate artifact branch
+`ci/muse-rc5-recovery1-artifacts`, commit
+`bff17390675358b764d43f31f71233ed11a673b0`. Both HTTPS downloads matched the pinned
+hashes and sizes before the repository variable was configured to:
+
+```text
+https://raw.githubusercontent.com/aaronrene/overseer-kit/bff17390675358b764d43f31f71233ed11a673b0/muse-0.2.1rc5-1overseerrecovery-py3-none-any.whl
+```
+
+The paired source ZIP is at the same URL directory, named
+`muse-0.2.1rc5-overseer-recovery1-source.zip`. Retain the artifact branch while CI
+uses this commit; no release or mutable branch URL is used. Local evidence and
+source manifests remain preserved. Actual hosted test results belong to the
+[execution record](../../docs/validation/V1-RECOVERY.md#hosted-ci-execution--2026-10-09);
+successful hosting alone does not validate CI. Muse-first product publication
+remains a later gate.

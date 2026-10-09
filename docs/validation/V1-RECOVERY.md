@@ -1943,3 +1943,119 @@ HEAD and the expected prior raw digest, then checked from disk through direct an
 bound status/NEXT. The action is `OVERSEER-V1-HOSTED-CI-AUTHORIZATION`, kind `plan`.
 `next-closeout.json` and `current-next.txt` retain the actual readback. This closes
 local artifact preparation, not hosted CI or the complete product.
+
+## Hosted CI authorization preparation — 2026-10-09
+
+**Decision prepared; explicit owner authorization remains pending.** The current
+handoff grants no artifact hosting, repository-variable configuration, remote
+feature push or hosted CI execution. The [decision record](../decisions/V1-HOSTED-CI-AUTHORIZATION.md)
+names the exact payload, proposed repository/branch/workflow scope, required owner
+destination/access and URL fields, execution order and result acceptance criteria.
+No destination was inferred and no remote operation was performed.
+
+Physical cwd/Git root is
+`/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery`, configured name
+`overseer-kit`, UUID `6dba88a5-029c-4136-9277-c3a0c81f31a6`, branch
+`feat/overseer-v1-recovery`, unchanged HEAD
+`86d7a78f2b29440eebcbf97dc1afda9fdaa1f4e7`. Initial status/NEXT validated and
+the tracked tree was clean. The decision and both summary updates are local,
+uncommitted documentation; they are not included in the prior 854-path Muse
+projection. No source/runtime/workflow/contract changes or feature commit occurred.
+
+The exact wheel verifier passed again. SHA-256 and size checks of both `build-a`
+artifacts matched the committed contract; the 388-file manifest digest matched.
+Existing JUnit XML was reread: artifact regressions **12**, Git 3.14 **117**, Git
+3.11 **117**, combined **225**; each records zero failures/errors/skips. These are
+retained local macOS results, not new tests or hosted execution. No unchanged
+closed review or supported suite was repeated for this documentation-only plan.
+Hosted Linux Git 3.11/3.14 and combined Muse 3.14 remain unvalidated; no new test
+failure was observed, and no unavailable hosted result is treated as passing.
+
+The original archive remains unavailable by prior evidence, and the recovery is
+not an upstream release. The current workflow's unauthenticated, non-redirecting
+HTTPS fetch constrains the owner-selected URL; the `feat/**` push trigger means
+feature publication also requires hosted-CI authorization. Neither permission is
+implied by credentials or by this plan. No URL was configured or remote run made.
+
+Both summaries were updated together. The only remaining executable action is
+published through `next-write`, using the unchanged actual HEAD and the expected
+prior raw NEXT digest, then validated through direct and bound status/NEXT.
+The owner must supply the named destination/access, exact repository variable
+value, and permitted feature-branch/CI operations before dependent remote work.
+The isolated Muse branch, original refs/edits and held release were not modified;
+Muse-first publication, real mirror delivery and consumer access remain separate.
+No production trust reset, hooks, OCI or complete-product claim occurred.
+
+## Hosting destination selection — 2026-10-09
+
+The owner delegated the hosting choice and requested the next execution prompt.
+The selected public GitHub artifact branch, exact locally prepared commit and
+both raw HTTPS URLs are recorded in the
+[decision](../decisions/V1-HOSTED-CI-AUTHORIZATION.md#concrete-selected-hosting-location).
+Read-only `gh repo view` confirmed `aaronrene/overseer-kit` is public and the
+account has ADMIN access. Read-only matching-ref API responses contained neither
+proposed artifact nor recovery feature branch. No remote write was performed.
+
+The two local payload hashes were checked against the committed contract and
+copied into a separate bare Git repository with only a provenance README.
+Artifact commit `bff17390675358b764d43f31f71233ed11a673b0` and its exact URL plan
+are retained under `.overseer/local/rc5-github-hosting/`; `git fsck --full` passed.
+This artifact-only commit changes no recovery checkout ref, source, workflow or
+Muse state. The URLs remain unhosted until execution is authorized and performed.
+
+Both summaries were updated together and canonical NEXT was published through
+`next-write` with the expected prior digest, unchanged actual HEAD and explicit
+context. NEXT contains the owner-submission wording requested by the user;
+assistant-authored approval text does not authorize remote writes on its own.
+No suite or closed review was repeated: retained local results remain 225 combined
+and 117 Git-only on each supported Python, with zero failures/errors/skips.
+Hosted Linux Git 3.11/3.14 and combined Muse 3.14 remain unvalidated. No product
+release, real mirror delivery or consumer access is included in this test phase.
+
+## Hosted CI execution — 2026-10-09
+
+The owner explicitly authorized public publication of artifact commit
+`bff17390675358b764d43f31f71233ed11a673b0` to
+`aaronrene/overseer-kit:ci/muse-rc5-recovery1-artifacts`, the exact commit-pinned
+`MUSE_RC5_RECOVERY_WHEEL_URL`, recovery feature pushes and supported-v1 hosted jobs,
+including scoped CI fixes, dispatches and retries. This supersedes the pending
+approval state above; the product publication/consumer exclusions still apply.
+The [decision](../decisions/V1-HOSTED-CI-AUTHORIZATION.md) records the full scope.
+
+Execution started at Git `86d7a78f2b29440eebcbf97dc1afda9fdaa1f4e7`, branch
+`feat/overseer-v1-recovery`, physical cwd/Git root
+`/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery`, configured name
+`overseer-kit`, UUID `6dba88a5-029c-4136-9277-c3a0c81f31a6`. The pending changes were
+only the previously prepared authorization documents. Initial status/NEXT passed.
+
+Read-only preflight found both remote destination branches and the repository
+variable absent; the repository remained public and current access ADMIN. The
+exact two artifact blobs matched the committed digest contract before publication.
+The original refs/config/Git edits and held release were inventoried; the held
+release was clean at `06f988e5a078ede81c9dc664520833980a9a19a3`. All 854 existing
+isolated Muse source paths, bytes and modes matched prior evidence before mutation.
+
+The artifact branch was published by normal non-force push and its remote ref
+read back at the exact approved commit. Both direct HTTPS requests returned 200:
+the wheel is 6,969,954 bytes with SHA-256
+`6b596288fd61f1d0373ead76eff90f82b14291984bff2dbecf9e51cf0694eb4d`;
+the source ZIP is 6,935,646 bytes with SHA-256
+`28f5fefacf5860b600edbb83e3cdd35485b983a900ab229a2a1ea673776ae3f0`.
+Only after those checks, `MUSE_RC5_RECOVERY_WHEEL_URL` was created and read back
+with the owner-approved commit-pinned wheel URL. Evidence files are
+`artifact-remote-ref.json`, `hosted-downloads.json`, `variable-before.json` and
+`variable-after.json` in `../RECOVERY-RUNS/20261009-hosted-ci/`.
+
+Local validation, feature publication and hosted results are recorded as they
+complete below. No hosted result is claimed yet. The exact artifact/source pins
+remain unchanged; no upstream archive recovery, Muse version substitution or
+complete product is claimed. No unchanged closed independent review is repeated.
+
+The required local precommit supported suite completed: **225 passed, zero
+failures/errors/skips, 262.75s**, using the recovery kit `.venv` and the separate
+verified recovery Muse 3.14 venv. Raw output and JUnit are `local-initial.log` and
+`local-initial.xml`; `local-initial-results.json` records parsed counts. Source,
+tests, runtime and workflow are unchanged; this initial execution commit changes
+only authorization/hosting documentation. `gitleaks dir --no-banner --redact .`
+reported no leaks, and `git diff --check` passed. Required test evidence is not
+represented as a repeated independent review or hosted pass.

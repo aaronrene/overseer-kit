@@ -1,57 +1,33 @@
 # Overseer Kit v1 roadmap
 
-**Fresh combined suite: 225 passed (248.14s). Git-only: 117 passed on Python
-3.14.4 (56.89s) and 117 on Python 3.11.15 (50.44s). No failures/errors/skips.**
+2026-10-09 — Explicit owner authorization is recorded in the
+[hosting/CI decision](decisions/V1-HOSTED-CI-AUTHORIZATION.md). The exact recovery
+artifact commit `bff17390675358b764d43f31f71233ed11a673b0` has been published to the
+public `aaronrene/overseer-kit` branch `ci/muse-rc5-recovery1-artifacts` by normal
+push. Both HTTPS downloads match their exact hashes/sizes, and the approved
+repository URL variable is configured and verified. Hosted Linux results remain pending; local evidence
+remains **225 combined**, **117 Git-only on Python 3.11**, and **117 Git-only on
+Python 3.14**, with zero failures/errors/skips.
 
-2026-10-08 — Local Muse artifact readiness is implemented and validated. The
-complete product and held release remain unfinished. A reproducible rc5 recovery
-source archive and wheel now exist locally with exact reviewed digests and honest
-provenance. Artifact hosting and hosted CI still require authorization and evidence;
-Muse-first product publication remains a separate later gate. No session ceiling
-applies. The [scope decision](decisions/V1-SCOPE-RESET.md) retains two permanent choices:
+Git-only remains a permanent option without Muse, and Muse adoption is explicit.
+The original upstream archive remains unavailable; the exact recovery wheel and
+source ZIP retain their reviewed hashes and recovery provenance. This dependency
+hosting is not an upstream release or an Overseer product release.
 
-- **Git/GitHub only:** no Muse installation, account, network check or migration.
-- **MuseHub with a GitHub mirror:** explicit adoption and controlled one-way
-  distribution, with separate delivery approval.
+The authorized scope includes non-force `feat/overseer-v1-recovery` pushes and
+supported-v1 Git Linux 3.11/3.14 and combined Muse 3.14 jobs, with scoped fixes and
+retries preserving artifact/source pins. New recovery candidates are reconciled
+into the existing isolated `feat/overseer-v1-restoration-r3` Muse branch and checked
+against a disposable mirror. Original refs/edits, staging main and the held release
+remain preserved. Closed unchanged reviews and runtime rollback stay closed.
 
-| Milestone | State |
-| --- | --- |
-| Original edits/Muse refs and held release | Preserved; release remains on hold |
-| Closed Git-core reviews and authorized DINERO pilot | Unchanged; not repeated |
-| R1 authority/adoption and R2 mirror/retry | Retained; full combined suite passes |
-| R3 source reconciliation and changed-integration review | Retained; new delta carried into the same isolated Muse feature branch |
-| R3 current/previous rollback | Prior 24-check evidence retained; runtime unchanged |
-| Reproducible local rc5 distribution | Closed locally: 388 input files; identical builds on Python 3.11/3.14 |
-| Fresh independent installation | Verified recovery wheel, separate kit/Muse venvs, dependency checks and full suite pass |
-| Supported CI contract | Exact recovery artifact/source pins; both Git versions and combined runner pass locally |
-| Artifact hosting and hosted Linux CI | Await separately scoped authorization; no URL configured or hosted run claimed |
-| Muse-first publication | Separate later gate; live Hub/rights, legacy mirror and real delivery remain unvalidated |
+Muse-first product publication, live Hub protocol/rights, legacy mirror
+reconciliation, actual delivery and consumer access remain separate gates. No
+main push/merge, PR, tag/release, production trust reset, automatic hooks, OCI or
+complete-product claim is authorized. Hosted execution does not prove those gates.
 
-The original checksum-pinned Muse archive still returns 404; it was not recovered.
-The recovery wheel keeps **0.2.1rc5**, adds build tag `1overseerrecovery` and embeds
-provenance saying it is **not an upstream release**. All 384 Python files and
-package data are unchanged. Three builds from the installed payload/source ZIP
-produce identical artifacts. The [recipe and contract](../tools/ci/MUSE-RC5-RECOVERY.md)
-record what is recovered and what remains unavailable. Third-party dependency
-versions are constrained; their binary artifacts/platform availability are not a
-fully reproducible offline supply chain.
-
-CI now requires `MUSE_RC5_RECOVERY_WHEEL_URL`, verifies the exact wheel before pip,
-and checks the installed rc5 source digest. The former original-archive variable
-is superseded explicitly. Missing URL or altered bytes fail without fallback.
-Artifacts exist only under `../RECOVERY-RUNS/20261008-muse-artifact-readiness/`.
-No artifact publication, remote write, consumer access, hook activation, production
-trust reset, OCI or complete-product claim occurred.
-
-The existing `feat/overseer-v1-restoration-r3` isolated Muse branch receives only
-the reviewed Git delta. All **854** source paths, bytes, ten executable modes and
-exclusions are checked again in its snapshot, working tree and disposable mirror.
-Staging main remains unchanged. Final identities are in the new evidence directory's
-`source-latest.json` and `projection-latest.json`.
-
-Exact results, author artifact review, installation provenance, preservation and
-remaining limits are in the [artifact readiness validation](validation/V1-RECOVERY.md#muse-artifact-and-ci-readiness--2026-10-08).
-This work does not claim a new independent peer review or hosted Linux execution.
-The runtime digest remains `d5b692b52c152f006b71414f8b10fd20811b66ad1d90d61bdd9808881b31f3bb`.
-Canonical `docs/NEXT.md`, published with `next-write` and verified from disk, is the
-only executable next action; this file is a milestone summary.
+Current evidence is under `../RECOVERY-RUNS/20261009-hosted-ci/`; prior artifact
+readiness evidence remains under `../RECOVERY-RUNS/20261008-muse-artifact-readiness/`.
+The [validation record](validation/V1-RECOVERY.md#hosted-ci-execution--2026-10-09)
+records the actual operations and results. Canonical `docs/NEXT.md`, published only
+through `next-write`, is the sole executable next action.
