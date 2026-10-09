@@ -1,39 +1,35 @@
-# Overseer Kit — public docs
+# Overseer Kit v1 documentation
 
-Portable governance for AI-assisted development. Start here; deeper history lives
-under [`archive/`](archive/README.md).
+Start with the repository `README.md`. It describes installation, initialization,
+daily use, handoff publication, update notifications, and current limitations.
 
-## Start
+## Current documents
 
-| Doc | When to read |
+| Document | Purpose |
 | --- | --- |
-| [Git-only quickstart](GIT-ONLY-QUICKSTART.md) | Adopt with plain GitHub (`ok init`) |
-| [Migrate existing repo](MIGRATE-EXISTING-REPO.md) | `ok init --migrate` when living docs already exist |
-| [Check OK](CHECK-OK.md) | Ad-hoc honesty / freeze + build verification |
-| [Consumer adapter pattern](CONSUMER-ADAPTER-PATTERN.md) | How a product repo plugs into the kit |
-| [Overseer Kit spec](OVERSEER-KIT-SPEC.md) | Frozen architecture (maintainers + serious adopters) |
+| [Scope reset](decisions/V1-SCOPE-RESET.md) | Authoritative bounded-v1 product scope |
+| [Validation](validation/V1-RECOVERY.md) | Reviews, test results, installation/rollback, and consumer pilot evidence |
+| [Muse restoration audit](validation/V1-RECOVERY.md#musehub-restoration-audit--2026-10-08) | Corrected Muse-first scope, reproduced gaps, architecture, and restoration plan |
+| [Canonical NEXT format](PRINT-NEXT.md) | How v1 reads and publishes the sole handoff |
+| [Explicit adoption and rollback](MIGRATE-EXISTING-REPO.md) | Git/Muse selection, local exclusions, config migration and rollback |
+| [Roadmap](ROADMAP.md) | Current milestone summary; never a prompt source |
+| [Handover](OVERSEER-HANDOVER.md) | Current evidence summary; never a prompt source |
+| [Test scope](../tests/README.md) | Supported and historical test boundaries |
 
-## Day-to-day product surfaces
+## Historical material
 
-| Doc | Role |
-| --- | --- |
-| [Desktop operator runbook](TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md) | Mac console / `ok app` |
-| [Stage 3 upgrade runbook](TRACK-O-STAGE3-UPGRADE-OPERATOR-RUNBOOK.md) | `muse-only` → `muse+git-mirror` |
-| [Normie custody contract](TRACK-O-NORMIE-CUSTODY-PRODUCT-CONTRACT.md) | Stages Start → Work → backup → optional bind |
-| [Hosted dashboard runbook](HOSTED-GOVERNANCE-DASHBOARD-OPERATOR-RUNBOOK.md) | Read-only remote glance |
-| [K7 Muse dogfood runbook](K7-DOGFOOD-OPERATOR-RUNBOOK.md) | Kit’s own `muse+git-mirror` substrate |
-| [Landing hosting](landing/HOSTING.md) | Static site (`overseerkit.com`) |
+The October 2026 scope reset superseded the former hosted/desktop product,
+multi-repository orchestration, freeze/ledger gates, governance-sync,
+publishing commands, OCI/registry design, and automatic recovery machinery.
 
-## Living governance (this repo dogfoods the kit)
+Older specifications, runbooks, landing pages, templates, skills, policies, tools,
+and phase records remain in this repository as historical source and evidence.
+Unless a current document above explicitly incorporates them, they do not describe
+the v1 command surface and should not be followed as installation or operating
+instructions. `cli/legacy_main.py` preserves the former CLI source; `cli/main.py`
+exposes only bounded v1.
 
-| Doc | Role |
-| --- | --- |
-| [ROADMAP.md](ROADMAP.md) | Phase board |
-| [OVERSEER-HANDOVER.md](OVERSEER-HANDOVER.md) | Session relay + paste-ready NEXT |
-
-## Sister / consumer products
-
-Optional example consumers keep **thin public stubs** under [`consumers/`](consumers/).
-Use [`MIGRATE-EXISTING-REPO.md`](MIGRATE-EXISTING-REPO.md) and
-`tests/fixtures/pilot/` for install-shaped examples. Domain packs and verify
-scripts **never** live in this kit.
+The owner corrected the mistaken exclusion of MuseHub authority and GitHub
+mirroring. R1 implements optional local Muse handoffs and adoption; mirror repair
+and combined validation are pending. The historical bridge has known audit findings; its runbook is evidence,
+not a currently approved publication procedure.

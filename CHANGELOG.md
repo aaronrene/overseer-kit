@@ -2,13 +2,34 @@
 
 ## Unreleased
 
+- R1: optional local Muse authority for status/NEXT, including linked worktree
+  identity, Muse branch/revision freshness and separate pinned Muse environment.
+- Explicit `adopt` dry-run, config migration and rollback preserving checkout
+  identity, documents and application edits; additive Git/Muse local-file exclusions.
+- Git-only remains supported without Muse or an account; no automatic conversion.
+- Mirror repair and combined Muse-first release validation remain pending. The
+  `1.0.0` source version and prior release preparation are unpublished candidates.
+
+## 1.0.0 — 2026-10-08
+
 ### Added
 
-- **`ok pr-land`** — authorized wait-for-green PR merge (`tools/close_ritual/pr_land.py`).
-  Polls `gh pr checks` locally, refuses merge on failure (exit 2 for babysit),
-  merges only when green. Requires `--authorized "<reason>"` (Tier-3 delegated).
-  Spec: `docs/archive/phases/PHASE-PR-LAND-AFTER-CHECKS.md`. Policy: `policy/tiers.yaml`
-  `delegated_merge_when_green`.
+- Bounded v1 command surface: `status`, `init`, `sync`, `next`, and `next-write`.
+- Persistent per-checkout UUID and physical-root binding.
+- Canonical `docs/NEXT.md` with repository, branch, lane, model-label, action,
+  prompt-digest, expected-digest, and Git-freshness validation.
+- Repository-bound launchers with isolated source-installation imports.
+- Confined atomic NEXT writes and stale-writer refusal.
+- Optional read-only Cursor hooks; disabled by default.
+- Clean source installation, current/previous rollback, and authorized DINERO
+  pilot validation.
+
+### Changed
+
+- Reset the supported product to a small trusted-host local Git handoff utility.
+- Preserve former CLI and tests as historical sources outside the public v1 surface.
+- Document opt-in GitHub Release notifications and explicit Git pull/sync updates;
+  no automatic update check or background network access was added.
 
 ## 0.1.0 — 2026-07-10
 

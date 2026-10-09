@@ -4,42 +4,37 @@
 
 | Version | Supported |
 | --- | --- |
-| 0.1.x | Yes |
+| 1.x | Yes |
+| 0.x and historical pre-reset commands | No |
 
-Security fixes apply to the current kit release line tracked in `VERSION` at the repository root.
+Security fixes apply to the latest published 1.x release. A version written in the
+source tree is not published until the matching GitHub Release exists.
+
+## Design boundary
+
+Bounded v1 protects against stale state and ordinary operator mistakes on a trusted
+local host. It validates physical repository binding, UUID, branch, declared lane
+and model label, action metadata, prompt digest, expected prior digest, runtime pin,
+and Git freshness. It confines managed reads/writes, refuses symlinks and hardlinks,
+and replaces NEXT atomically.
+
+It is not a sandbox or a security boundary against the operating-system
+administrator, root, or another malicious process running as the same user. It does
+not verify the actual AI model, judge prompt quality, execute prompts, contact the
+network, update itself, push, merge, release, or deploy.
 
 ## Reporting a vulnerability
 
-If you discover a security issue in Overseer Kit (CLI, adapters, vendored templates, or
-landing-site validator):
+Open a private GitHub security advisory at
+<https://github.com/aaronrene/overseer-kit/security/advisories/new>. Do not open a
+public issue for an undisclosed vulnerability.
 
-1. **Preferred:** Open a [GitHub private security advisory](https://github.com/aaronrene/overseer-kit/security/advisories/new) on this repository.
-2. **Alternate:** Email **security@overseer-kit.dev** with a description, reproduction steps, and impact assessment.
+Include the affected command/file, supported version, reproduction steps using a
+disposable Git repository when possible, impact, and whether local repository or
+same-user access is required. Never include real tokens, private keys, or consumer
+data in a report or fixture.
 
-Please do **not** open a public issue for undisclosed vulnerabilities.
-
-### What to include
-
-- Affected command, config key, or file path
-- Steps to reproduce (fixture repo layout if relevant)
-- Whether the issue requires local repo access, network access, or Tier-3 operator action
-- Any suggested fix (optional)
-
-### Response expectations
-
-- **Acknowledgment:** within 72 hours of a valid report
-- **Critical issues** (remote code execution, secret exfiltration, fail-open on governance gates):
-  best-effort patch on the next kit release line
-- **Lower severity:** scheduled with the normal phase queue
-
-## Out of scope
-
-- Consumer domain packs and product runtimes outside this kit (report to the owning project);
-  thin stubs under `docs/consumers/` are boundary docs only — not a support desk
-- Third-party MuseHub runtime or Muse CLI (report to MuseHub maintainers)
-- Misconfiguration in consumer `.overseer/config.yaml` when the kit behaved per frozen spec
-
-## Safe disclosure practices
-
-- Never commit API keys, tokens, or private keys into test fixtures or landing pages.
-- `OVERSEER_REVIEW_API_KEY` and similar secrets belong in environment variables only — never in config YAML.
+Historical modules outside the bounded-v1 entrypoint and third-party tools are not
+supported surfaces. A vulnerability that makes a supported v1 command escape its
+repository boundary, print a foreign/refused prompt, accept stale context, or expose
+data should be reported.

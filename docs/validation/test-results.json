@@ -1,0 +1,52 @@
+{
+  "baseline": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "104",
+    "skipped": "0",
+    "tests": "1495",
+    "time": "25.112",
+    "timestamp": "2026-10-08T05:26:15.222775-07:00",
+    "hostname": "Carloss-MacBook-Pro.local"
+  },
+  "baseline-filtered": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "44",
+    "skipped": "0",
+    "tests": "1357",
+    "time": "21.786",
+    "timestamp": "2026-10-08T05:26:51.958244-07:00",
+    "hostname": "Carloss-MacBook-Pro.local"
+  },
+  "commands": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "45",
+    "time": "23.827",
+    "timestamp": "2026-10-08T05:34:07.472791-07:00",
+    "hostname": "Carloss-MacBook-Pro.local"
+  },
+  "isolation": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "14",
+    "time": "21.024",
+    "timestamp": "2026-10-08T05:36:15.221032-07:00",
+    "hostname": "Carloss-MacBook-Pro.local"
+  },
+  "supported": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "77",
+    "time": "44.970",
+    "timestamp": "2026-10-08T05:37:21.563603-07:00",
+    "hostname": "Carloss-MacBook-Pro.local"
+  }
+}

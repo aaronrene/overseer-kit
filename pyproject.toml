@@ -4,14 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "overseer-kit"
-version = "0.1.0"
-description = "Portable governance adapters for the Overseer Kit"
+version = "1.0.0"
+description = "Repository-bound status and canonical NEXT utility"
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
 dependencies = [
     "PyYAML>=6.0",
-    "cryptography>=42.0",
 ]
 
 [project.optional-dependencies]
@@ -24,5 +23,5 @@ where = ["."]
 include = ["adapters*", "cli*", "tools*"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
+testpaths = ["tests/v1", "tests/retained"]
 pythonpath = ["."]

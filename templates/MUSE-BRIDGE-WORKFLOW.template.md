@@ -1,48 +1,18 @@
-# Muse + GitHub mirror workflow — {{repo.name}}
+# Explicit Muse mirror workflow — {{repo.name}}
 
-## Plain summary
+Git-only operation is a permanent choice. Mirroring requires explicit Muse
+adoption, approved main/revision and destination, and an isolated physical target.
+The current bounded-v1 runtime offers `ok mirror prepare`, `verify`, and separately
+authorized `deliver`. The script delegates to the bound launcher; it has no default
+export/push and no positional commit-message interface.
 
-**{{repo.name}}** uses **MuseHub** as canonical version history. GitHub receives updates only
-through a **safe, isolated mirror checkout** — never by exporting onto your working tree.
+Read the installed kit's `MUSE-BRIDGE-WORKFLOW.md` for the reviewed JSON plan schema,
+raw plan-digest requirement, exclusions, explicit executable list and retry rules.
+Prepare creates only a dedicated bare target outside all source/development trees.
+No-change runs preserve correspondence; delivery independently observes Hub/Git
+state and reports export, push and PR outcomes separately with explicit context.
 
-## Technical summary
-
-Regime: **`{{vcs.regime}}`** (`canonical: {{vcs.canonical}}`). Muse branch
-**`{{vcs.muse.main_branch}}`** is authoritative. Publish to GitHub via
-`./scripts/muse-bridge-deploy.sh` → isolated `.muse/mirror/` →
-**`{{vcs.git.remote}}/{{vcs.git.mirror_branch}}`** → PR → **`{{vcs.git.main_branch}}`**.
-
-```text
-Muse {{vcs.muse.main_branch}}
-    → ./scripts/muse-bridge-deploy.sh
-    → .muse/mirror/
-    → {{vcs.git.remote}}/{{vcs.git.mirror_branch}}
-    → PR
-    → {{vcs.git.main_branch}}
-```
-
-## Hard rules (SD-14)
-
-1. **Never** run `muse bridge git-export --git-dir .` (or any path equal to the development
-   checkout). Bridge target is always isolated `.muse/mirror/`.
-2. **Never** `git push {{vcs.git.remote}} {{vcs.git.main_branch}}`. Mirror only via the deploy
-   script → permanent **`{{vcs.git.mirror_branch}}`** branch → reviewed PR.
-3. **`{{vcs.git.mirror_branch}}`** is permanent — do not delete it or hand-edit it as a
-   substitute for Muse.
-
-## Day-to-day
-
-- Feature work: `muse commit` on feature branches in Muse.
-- After merges to Muse **`{{vcs.muse.main_branch}}`**, publish with:
-
-  ```bash
-  ./scripts/muse-bridge-deploy.sh "mirror: <summary>"
-  ```
-
-- Staging (when used): `muse push {{vcs.muse.staging_remote}}` — operator-gated; deferral is
-  operational, not a config change.
-
-## Operator script
-
-Run **`./scripts/muse-bridge-deploy.sh`** — the tokenized, cwd-safe bridge deploy script vendored
-by overseer-kit for `muse+git-mirror` installs.
+Do not reuse legacy `.muse/mirror` targets, native export defaults, automatic hooks,
+old regime tokens or old publication instructions. Existing remote mirror history
+needs explicit reconciliation before use. Preparation is offline; it does not
+establish publication authorization or complete-product readiness.
