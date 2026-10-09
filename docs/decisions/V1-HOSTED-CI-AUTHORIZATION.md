@@ -1,6 +1,6 @@
 # rc5 recovery artifact hosting and hosted CI — owner decision
 
-2026-10-09. **Explicit owner authorization received and execution underway.**
+2026-10-09. **Owner-authorized artifact hosting and hosted Linux validation passed.**
 The owner submitted `OVERSEER-V1-HOSTED-CI-EXECUTION`, naming the exact public
 artifact commit/branch, download URL and repository variable. Authorization includes
 non-force recovery feature pushes and supported-v1 hosted runs, scoped CI fixes,
@@ -10,8 +10,12 @@ automatic hooks and OCI. The recovered dependency is not an upstream release.
 
 The artifact branch has been published by normal push at exactly
 `bff17390675358b764d43f31f71233ed11a673b0`. Execution evidence is retained under
-`../RECOVERY-RUNS/20261009-hosted-ci/`. Hosted test results remain pending until
-actual jobs complete successfully; authorization is not validation.
+`../RECOVERY-RUNS/20261009-hosted-ci/`. All three jobs in
+[run 37946983229](https://github.com/aaronrene/overseer-kit/actions/runs/37946983229)
+passed on recovery candidate `25f319fb5505f86a36933bb7d7ebbb94b626899f`.
+Git-only Python 3.11.17 and 3.14.8 each passed 117 tests; combined Muse Python
+3.14.8 passed 225, all on Ubuntu 24.04.5 with zero failures/errors/skips.
+Final documentation closeout is checked separately; the product release is held.
 
 ## Concrete selected hosting location
 
@@ -71,8 +75,8 @@ Python 3.14.4**, **117 Git-only tests on Python 3.11.15**, and **12 artifact
 regressions** (included in the supported suites), all with zero failures, errors
 or skips. During planning, existing JUnit counts were reread without repeating suites or
 closed reviews. Execution runs the required supported suite before its feature
-commit; unchanged closed reviews remain closed. Hosted Linux Git 3.11/3.14 and
-combined Muse 3.14 remain **unvalidated**.
+commit; unchanged closed reviews remain closed. The subsequent execution results above close the hosted Linux Git 3.11/3.14
+and combined Muse 3.14 validation gap for the recorded candidate.
 
 The original upstream rc5 archive remains unavailable; the last recorded fetch
 was HTTP 404. This action did not repeat that network request. The wheel is an
@@ -167,12 +171,15 @@ The held release remains the prior recorded
 
 Muse-first product publication, live Hub protocol/rights, legacy mirror
 reconciliation, real delivery and consumer access remain separate gates under
-the [mirror runbook](../../MUSE-BRIDGE-WORKFLOW.md). This proposal grants no main
+the [mirror runbook](../../MUSE-BRIDGE-WORKFLOW.md). This authorization grants no main
 merge/push, tag/release, deployment, MuseHub write, mirror delivery, consumer access,
 production trust reset, automatic hook activation or OCI operation. There is no
 complete-product claim or new independent review.
 
-**Execution results:** artifact branch pushed at its authorized exact commit.
+**Execution results:** artifact branch pushed at its authorized exact commit;
+both downloads verified; URL variable configured/read back; recovery feature
+published; all three hosted jobs passed. No scoped CI fix, rerun or manual
+dispatch was needed for the first validation run.
 The HTTPS readback, variable value, recovery feature candidates and hosted results
 are recorded in the [execution validation](../validation/V1-RECOVERY.md#hosted-ci-execution--2026-10-09)
 and sibling evidence directory. No PR, main/release, MuseHub or consumer operation

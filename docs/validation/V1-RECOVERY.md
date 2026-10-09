@@ -2059,3 +2059,71 @@ tests, runtime and workflow are unchanged; this initial execution commit changes
 only authorization/hosting documentation. `gitleaks dir --no-banner --redact .`
 reported no leaks, and `git diff --check` passed. Required test evidence is not
 represented as a repeated independent review or hosted pass.
+
+### Hosted results and local source agreement
+
+Feature candidate **`25f319fb5505f86a36933bb7d7ebbb94b626899f`** was committed after
+the 225-test local pass, reconciled into the existing isolated Muse feature branch,
+and compared byte-for-byte and mode-for-mode with a disposable mirror before
+its normal non-force push. Its Muse revision is
+`sha256:5019028e847d55386a3681b62f37ee69f008a0afaf768e16f3f42145e245fd8a`;
+the disposable mirror is `881c4f9477496d0602be581e2475b98bd6f9c64b`.
+All **855** paths and ten executable modes match, with prepare/verify/no-change
+retry passing. The source's staging main remains unchanged. This is local mirror
+preparation evidence, not real mirror delivery or MuseHub acceptance.
+
+[Hosted run 37946983229](https://github.com/aaronrene/overseer-kit/actions/runs/37946983229)
+was triggered by the authorized feature push and concluded **success** on that
+exact Git candidate. All runners report Ubuntu **24.04.5**, image `ubuntu-24.04`.
+
+| Job / ID | Actual interpreter | Result | Pytest duration |
+| --- | --- | --- | --- |
+| Git / `113875689575` | CPython 3.11.17 | **117 passed**, zero failures/errors/skips | 36.12s |
+| Git / `113875689416` | CPython 3.14.8 | **117 passed**, zero failures/errors/skips | 45.66s |
+| Muse / `113875690049` | CPython 3.14.8 | **225 passed**, zero failures/errors/skips | 352.64s |
+
+Muse installation verified the exact wheel before pip; dependency `pip check`
+and the runner's independent installed-source/version check succeeded. The
+Git-only jobs required no Muse. No code, workflow, dependency or source-pin change,
+manual dispatch or failed-test rerun was needed. The jobs used the checked-in
+workflow unchanged. Actual logs, environment lines and parsed summaries are
+`job-<ID>.log`, `run-37946983229.json` and `results-37946983229.json`.
+
+Two local observation attempts were retried without changing product code:
+`project-source.py` was initially invoked before the asynchronous reconciliation
+report existed and refused before fixture mutation; after reconciliation finished,
+`projection-initial-retry.log` records the successful full projection. GitHub log
+retrieval before run completion was unavailable; all three completed job logs were
+then collected successfully. Those observations were not failed tests and are not
+hidden as passes. No unresolved supported-test failure remains.
+
+### Closeout and remaining gates
+
+The closeout delta changes only the decision, validation record and both summaries.
+The tested implementation, tests, workflow, artifact contract and runtime are
+unchanged. The successful full local suite remains the required precommit evidence;
+closed unchanged reviews and the prior runtime rollback are not repeated.
+The closeout commit is reconciled into the same isolated Muse feature branch and
+verified in a disposable projection before its non-force feature push. The final
+candidate/source/projection and hosted-run observations are retained in
+`source-latest.json`, `projection-latest.json`, `feature-push-latest.json` and
+`closeout.json` in this action's evidence directory. The first hosted run above
+binds its named candidate, not a different subsequent SHA.
+
+Original Muse refs/config/identity/bridge files and original Git edits match the
+preservation inventory; the held release stays clean at
+`06f988e5a078ede81c9dc664520833980a9a19a3`. Runtime remains unchanged at
+`d5b692b52c152f006b71414f8b10fd20811b66ad1d90d61bdd9808881b31f3bb`.
+Artifacts remain retained locally and on their exact public artifact commit.
+The original upstream archive remains unavailable, the wheel remains an Overseer
+recovery, and third-party binaries/toolchains are not a fully locked offline chain.
+
+Artifact-hosting and hosted-Linux validation are closed for the recorded passing
+candidate. Remaining product work is a separately scoped Muse-first publication
+plan: live staging Hub protocol/rights and source acceptance, legacy mirror
+reconciliation, real push/PR delivery, and any separately authorized consumer
+access. No main merge/push, PR, tag/release, MuseHub write, real mirror delivery,
+consumer access, production trust reset, hooks, OCI or complete-product claim
+occurred in this action. Both summaries were updated together; after final
+readbacks, `next-write` alone publishes the actual remaining action at actual HEAD
+with the expected prior digest, followed by direct and bound status/NEXT checks.
