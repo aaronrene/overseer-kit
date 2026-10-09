@@ -1,0 +1,1622 @@
+[
+  {
+    "path": "tests/data_integrity/test_aff_integrity.py",
+    "sha256": "d21f405be1b51a0aa36916419a70a50ab2948df589ac35ce113ac25b8173dc27",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_api_review_integrity.py",
+    "sha256": "84fbc94fabbd884880e16c42314af8ba4c5094e1016ac8f8f41974d884455bf5",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_atomic_writes.py",
+    "sha256": "2daabd3fcb596736f162a4ec3c54f11bae5eed4ba2459e41c3c423e8545f2965",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_check_ok_integrity.py",
+    "sha256": "069c7ef4454c5dd187e6c5eeab85c30ffc5f263d44d6447abca343de49b57090",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_checkpoints_manifest.py",
+    "sha256": "b2282040eee6d1c3cb5c59d9b7288288695fd5d18eaba78cf4b9961d8b0d7572",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_cost_awareness_integrity.py",
+    "sha256": "8583d707db8d982de57dff1407fe2e72afc387e89dc8ec2ab37c398b6354ceba",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_footprint_integrity_purity.py",
+    "sha256": "8f4760a2da8c61ddb1c173d773243bbdb53e7a3c855615abe367634f4faa51bc",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_frv_integrity.py",
+    "sha256": "588020ec9fb582680ea529914ae3c7dd64bb1a4cafadb6642046a129ba59d9bd",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_gfg_d2_bridge_roundtrip.py",
+    "sha256": "57c870648c91955085ff50c85488ecf37918060ea2f16461bf20e99a3407ab7b",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_governance_freshness_integrity.py",
+    "sha256": "2dabd633dd56c7231c4c44c86713cdea8097a024b2b0cfb461ee2a053563cf27",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_governance_gates_integrity.py",
+    "sha256": "e167f8f6384f0e176f41643d5a36fbf6e8e594747429e6a3fca679f2a65426d7",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_governance_idempotency.py",
+    "sha256": "7573871e6f6ca66621b61d9132438fc52dadd89fba4bdb6c1dae04df4d3ad401",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_gs_paste_integrity.py",
+    "sha256": "8693dc715229fb81084cbc12858fb953ac735b6cb17b8653f2cc17ee39246f74",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_gsb_reconcile_integrity.py",
+    "sha256": "0e71f52d524492a0c757903101435969e6d2b5e054cdf3c63512891e93ad7a6c",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_gsw_write_integrity.py",
+    "sha256": "0e825e0f2111a8dc3e1f0c4ee995c9f45d3f936c24193cd7c7f408ca2c820844",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_honesty_ledger_integrity.py",
+    "sha256": "e894effaa53aa91105f10cdbc00025ac124710791b645f109f1541f876b80951",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_hosted_dashboard_integrity.py",
+    "sha256": "803f04fcb6292cab60710b437f80a7518d10396df71935b5c1fc711637e5cd7c",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_idempotency.py",
+    "sha256": "3214b4fdca9e6e970fc911d288d5d7ca410615154d5dbc9739dfb9171e922932",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_isr_integrity.py",
+    "sha256": "2022a5724509bc80213a6577844206100ad6da705242ef7fbb1533bed9bf72d6",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_k7_bridge_idempotency.py",
+    "sha256": "09115ec9ac6d1bb5d7759709766dae20f3afe5496db2cb440a1ab42bba415bd3",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_lac_integrity.py",
+    "sha256": "f12f0d3b49de68786dd1d06c756982ff73c9e066d5e5213425779fcacf595e25",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_land_closeout_integrity.py",
+    "sha256": "a9f18bbbc6434b7d54b043e57e3673a227dd78ee440645b49ee9cf7db9c35604",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_landing_integrity.py",
+    "sha256": "289117254f679166210fedb9529ea9e9031ae01d2e67ec7e8ec81625dc545758",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_lt_integrity.py",
+    "sha256": "4e0054e40ab318473d16ae66b4e04dd6d424a8ed4b0fcb013c109078be09dc45",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_migrate_idempotency.py",
+    "sha256": "6dd5ab38de02fdff070c6c590956a1f279fd5c1a196b4248e81a181ecafb6da4",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_model_routing_integrity.py",
+    "sha256": "c6c6d7e14fbef07f8bbbef2f743231516a53ca3a1913e864846e449963b8f825",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_muse_sync_purity.py",
+    "sha256": "8dc522ed006420981b7aba5bc8e89b8b5934dcc21834d465d8af9a950f9c2e2b",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_p_deploy_integrity.py",
+    "sha256": "2eb742d2db8947d9938d4dd4bfa1845c341fe4c4bd32d949e8b9bddca8acd624",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_p_evidence_integrity.py",
+    "sha256": "9bf074ae6c5964459d8f9ebd43e5b46e0d084f44a0ba4d7e5dbecf56ca089aec",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_post_land_sync_integrity.py",
+    "sha256": "aef507bb7416d0842f74e106bb4ccd25c3d0313ee58cc30c4dd727213dc2032e",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_preserve_shared_assets_integrity.py",
+    "sha256": "c9d7f41957879eb3a03e5a4a85569f37af32ff43718b214d57af8448f78491b7",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_print_next_integrity.py",
+    "sha256": "b5e14bd5337ebb63d37917096ac0beeb1552a9ed15dfe01f76b3d4558d149b15",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_provenance_integrity.py",
+    "sha256": "0e9fece89095a4e41734ff5b191e7cb8835b57ed071377753b7b068058b0178f",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_q1_app_integrity.py",
+    "sha256": "3373531ec6ada59dbe7c37f33e0c546bf90191ee5671995a7054efedc1b02568",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_q2_ok_cli_integrity.py",
+    "sha256": "05eda7e3522893b9f263f61c2006539aa53a02d3ba3afab9fe1d8f6de06cd4f0",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_q3_desktop_integrity.py",
+    "sha256": "934ef02a68bf5fc83ba1811061bbf385232e5fe2736e9ca93d23df75156154d9",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_q3_release_desktop_integrity.py",
+    "sha256": "a5f4f4b720348a76d5c0dbb7aad2ac3fc8a16dbf05df07fbae3bc08fb45a4038",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_q4b_ui_integrity.py",
+    "sha256": "97d9f4a3116ac6108d38f87fae1c736ab055012f560569468bb4ee6550b72338",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_review_idempotency.py",
+    "sha256": "daadff5cd8f7bd1ee5d45de15d075e0fc737208eef1a814d70b01f8de4626dcc",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_stamp_atomic.py",
+    "sha256": "34d8f6f83ac504040a19d09c9b08f2b8fed033ad3c0093975f9c06aa6dd7e0c5",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_track_o_integrity.py",
+    "sha256": "fff3d50c9b6d65f4fae39d5d50c5165e3898194d2082b84337b77560f5852783",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_upgrade_regime_integrity.py",
+    "sha256": "348b2786488b7a2362169d7fe5ad80374303bf695bb70029b89243e23dc93fce",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/data_integrity/test_workspace_integrity.py",
+    "sha256": "1cd4959cce7e28a1b674d298af0fdeaf89beeec52d17e192dfadc37178c89cfe",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_aff_e2e.py",
+    "sha256": "469d6e345abf6d99e50e95d03cd93c0cbed5a625e4846fbd824f7295803d566c",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_api_freeze_review_cycle.py",
+    "sha256": "6eb69212e4b264ef21449759495f1e982c107649094611e419d9c226e0749e10",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_check_ok_cycle.py",
+    "sha256": "731d7b19efd7433ac018237da2c2de9b46e57f72d57eedd7cf7fa16864b95659",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_cost_awareness_e2e.py",
+    "sha256": "a7ecfefe1c0e9285106411f572eb457b50bef7187085fa4c3912bf18fc98ab8a",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_footprint_integrity_gate_cycle.py",
+    "sha256": "bdd2c58e1b036bb61eec13011f03a89a2a998acaeac61c0885f24f0787349803",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_freeze_review_cycle.py",
+    "sha256": "1433033af9f6751fa3cd66cdcc448aa9977d9219e0de88d0932643c68b750521",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_frv_e2e.py",
+    "sha256": "496143ceb142a5d5287f9ebb822a4db708e37f4232c0f8aab47b4fac7c8e7036",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_full_install_cycle.py",
+    "sha256": "0858786f428954e4dd34e8ec8c3a4d4c64d0338feb2adfea79c8917fe4cf0c02",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_gfg_d2_healthy_bridge.py",
+    "sha256": "733f2a2ac658ce37d41d8a1ca5516f560f025253d964b7ff7d1afe63cdf00505",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_governance_freshness_cycle.py",
+    "sha256": "e4761b2ca9a60c8434077023568da368c327d8b3984462119e66e185d402d702",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_governance_gates_cycle.py",
+    "sha256": "ebafefac8393881ab71fdb66279939ffef8bc5fa661d59a508de6f9750771619",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_governance_sync_cycle.py",
+    "sha256": "35c9eb8dbb231df91c3568b3686e78a1a94b0f2b725535cf91a6f6d2662b48b1",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_gs_paste_cycle.py",
+    "sha256": "518feab5abf78067f7c87ae79355889b5db76de9240888fbbfb00a06d4830764",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_gsb_same_day_collision_cycle.py",
+    "sha256": "bec050bb748fa8c349f85c7fdc520a898eff76a53cf7604cb85c81c103f42d55",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_gsw_dirty_tree_write_cycle.py",
+    "sha256": "3795366219ad758e7aeb5f3d5b78f99ae5a46fa9297d3c2939222ea2ea506226",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_honesty_cycle.py",
+    "sha256": "6efb8bac5467c046365700d08b9b617a4697283a8f337f4a9e07ff7ea57c0baa",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_hosted_dashboard_e2e.py",
+    "sha256": "98f38f1deffc1d3e72dff6b68a3635e906409b09e14392bfe4d4ddfdaf0f51b2",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_isr_e2e.py",
+    "sha256": "8a108dab41819edb901b0be732576189a1396f7423fed65a1756c5783a71639f",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_k7_dogfood_cycle.py",
+    "sha256": "f82c6617f2851525b5c5533dc2d37b712d9010faae21e6572b5883f27647b84d",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_lac_e2e.py",
+    "sha256": "36c8487f7f610b2b0b5201b99b3aa810765e3ccb2c32b9ac9384152b79c60d00",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_land_closeout_cycle.py",
+    "sha256": "2ef542b2ef26cc91d93f6122948bd0f51282f8581f9670adaa3d1028e84b7381",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_landing_cycle.py",
+    "sha256": "bc654b8196e18b6d2d12c01ceb82c49417f4d5fb243009210e4a6a3b5c389505",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_lt_e2e.py",
+    "sha256": "2ee7da7495d63e233acdeeb86526c19eb95449b635a65bc626bb85f19837d092",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_model_routing_e2e.py",
+    "sha256": "1272567d837db7081779d6557a26668de69996838a8c641dd1b8d5edc42ec84f",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_muse_sync_gate_cycle.py",
+    "sha256": "79752aa3726f1637c5cbf65061f6a495d48776df2e992b51da64d01ec77cdfcf",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_p_deploy_e2e.py",
+    "sha256": "a404a24aa71ba12c59ad602430dbc09e7358b7873bdba0d10806e24c24d7905a",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_p_evidence_e2e.py",
+    "sha256": "697abe106d8091d983965189c98b0f318b6256c12ad8dc420ba74a52e431ea53",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_pilot_migrate_cycle.py",
+    "sha256": "403c460e4fb76f0db7e35a8f8a478803b4a6668ca7fbe89a7c2e68a957baeb56",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_post_land_sync_cycle.py",
+    "sha256": "0b5f32c26990b8847a3655a10b8a78821c7f2ab7d13c9cdec66a9b31d109b527",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_preserve_shared_assets_e2e.py",
+    "sha256": "984b1383f54257cf02f64d479afdae431f0832c7a1c1b9db86bddc5f46c083ef",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_print_next_e2e.py",
+    "sha256": "46c6f8b2e958ccd3053badef265e093ebc56124bbf8916c8a8c48f7b4244149b",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_provenance_e2e.py",
+    "sha256": "ae7b3e86508305d48b6b596385da29bf0b094bff19eb5a659d20f09f12929c81",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_q1_app_e2e.py",
+    "sha256": "53a22bda1de464585e205ae4d6b00c2d5fde9d4448a52b9532bb069900579dc4",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_q2_ok_cli_e2e.py",
+    "sha256": "0d551ab2bfe33073a136a6e905ac84c2e0c4c5aed8866098bd9ac69b827208bc",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_q3_desktop_e2e.py",
+    "sha256": "e224eda122669304b0bff505de4e37c47bcef2d915fb1fe279fb4869e982ea00",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_q3_release_desktop_e2e.py",
+    "sha256": "b5bac3d7d5f546d332b35b2454ded74cc63c273d69e2c2b2e0bfe683605d27a1",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_q4b_ui_e2e.py",
+    "sha256": "2e7814c5a8308c374c610cdd8b2eaec57c8ff47b8e08c0e1d946bc3a7d5b14f4",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_track_o_pack.py",
+    "sha256": "78880be5a0338f3efc62f4cfdb2326d318edbdc051b1e6303704259ffddc53c8",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_upgrade_regime_e2e.py",
+    "sha256": "3dab4946dfd75a1db564dd2f1de877e46fe092747fd150e46dd906787a2ab951",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_verify_step_cycle.py",
+    "sha256": "7b0b97db03fdecc9fcae2991e3bf61bf2134fae77b0f2344fc5a283650c54bbe",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/e2e/test_workspace_cycle.py",
+    "sha256": "e8f30234d707dc7350e9b9b20f186ddd5308bbbb28dea9508094f5447e4e3002",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_adapter_factory.py",
+    "sha256": "c40f75a9e09990ba03ec9ad71b8dfbc0d67e82279a212e436434370d47204eef",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_aff_integration.py",
+    "sha256": "529d84ea62746c58fb31fbf9513635199524dbd6b95eb7d4436ba18e6d18ad26",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_api_review_provider.py",
+    "sha256": "3632955dbef4535585cfa44746885891484b2952c63d454435ec741449869228",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_checkpoints_orchestrator.py",
+    "sha256": "6e1f2091d9ef8cb502266bb3cf96a042332488346494fdae31d43c82ccf0a764",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_cli_check_ok.py",
+    "sha256": "a5b623e09fd3d67326a3b250ad2e824407c60f83768b63c1ca6728faa559fcd9",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_cli_init_sync_status.py",
+    "sha256": "6cf776c64e016a353f4cdc2e735363702d4161fdfe16198ee858e2fa8522f5f7",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_cli_review_freeze.py",
+    "sha256": "f02852b08db8237d64824fc23e282416ccfbeb684a9cd5a4de91954d897773b5",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_cli_workspace.py",
+    "sha256": "0af4eb7c2add7d637938eac330265bd1c6f79e28008d7ab386efc5ffc6531847",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_cost_awareness_integration.py",
+    "sha256": "0a9a0fac132f33171dfec449d0263cdcf57af627fb7354d20650cb378e92ef1f",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_footprint_integrity_status.py",
+    "sha256": "87c1e30cffb9361c33c3fca1e151e455bc4227ea80513f2bdd7548951c4e1501",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_frv_integration.py",
+    "sha256": "99fe7c8b47f6f690cb655d19f0c22eefbaefa142b141e5f379ff17e50f3a7686",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_gfg_d2_realign_plan.py",
+    "sha256": "bcb47741ea7a8859e46ff9999c21d6382e4bfe078697e7a6323342e3370f14e3",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_governance_freshness_status.py",
+    "sha256": "773c9827d9da684d0ba8ec0eeb2f6f35d35531ae40ef65f6bd28c1d2b593d6f0",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_governance_gates_surfaces.py",
+    "sha256": "78335ac7697039a57a6bc441971072b0589fc821ff3cde23d6e6feeb2ea8ef33",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_governance_sync_dry_run.py",
+    "sha256": "08c23ec2f56dbba7da7f9a4d09197025e5a780cfdefd21a8b52e1a531a510ccc",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_gs_paste_governance_sync.py",
+    "sha256": "3b199c6dac4348ec2b44c1ff0f5c148aaf8c9b1ea102627a192f13fd89f8312a",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_gsb_reconcile_write.py",
+    "sha256": "babfccebc28ec77f3930c7d34e72c446233629733a769979975d503545943f7d",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_gsw_write_order.py",
+    "sha256": "8183fed87d2960c62e0915a06d8b17963f4c7d6ebe8a45d83eed9e7a82d624c5",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_honesty_ledger.py",
+    "sha256": "a30fca098533cda8ca8a6eba903471ea497314b382d8b0814673223e3ccb96d3",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_hosted_dashboard_integration.py",
+    "sha256": "81493aa9fb11d97144d9e848f6841d7827a77a02f420f7281ffa04254beaf710",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_isr_integration.py",
+    "sha256": "0ae331ffcd9191d77b526c5acad77e70ce2ebe8e9891ff1086268200f8a6a0c3",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_k7_bridge_footprint.py",
+    "sha256": "7b4c524a798b91d453e826dba740cfe989360ba2dd2e1a880407ad58ef086207",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_lac_integration.py",
+    "sha256": "9633b50e21e82cc35d3f7f1ccc70345cc499f45dbafb393b05a249e0855d5f7d",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_land_closeout_status.py",
+    "sha256": "f1fda1492670c4c77392104df80fc0b1583c280e089549f4fc78c60710af0778",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_landing_validate.py",
+    "sha256": "90be4469c6aad95bb9c59c1030edb346ec7cf7c7d1b7bb1ba828fdf08339fe99",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_lt_integration.py",
+    "sha256": "c603da88d6bbbce8b043557a8d41dc3bb4311c1fe0a11bfa72576366f1a76b1a",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_model_routing_integration.py",
+    "sha256": "abc209a2fb526d98c0e4f42fcbab4c9a9e7092b08f3053d72533b3b79cff97b5",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_muse_sync_status.py",
+    "sha256": "611cc8ed7a006fea76d7f4b6bb4bff3f63548696da35dd3931056526ab0a3008",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_nxp_advisories.py",
+    "sha256": "75b8a9ca95e2be96218e60fde7a6812f0a87a2510783011d9508844587c8cc7a",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_p_deploy_integration.py",
+    "sha256": "c8360054d04c30c2826a6b14b2791d679a6c8315c0cd60f49e40e9e97e72464f",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_p_evidence_integration.py",
+    "sha256": "c9694f2cc1ceace9328abb64af275644a7d155dc7e95290c36c3dbc14ab35121",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_pilot_matrix_configs.py",
+    "sha256": "2a875806b9f7aa88e6deee4b8df4ac0ea67715803a44b5111a57ce056328aa40",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_post_land_sync_integration.py",
+    "sha256": "7c7231ea5d1a6d11db74cea1968d778ee60ddad6873478795e0f015090c3eb7d",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_preserve_shared_assets.py",
+    "sha256": "033f036744b9e2b61492106453766ed00f30eba4c21a2374a29adc70644445dd",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_print_next_cli.py",
+    "sha256": "62e26c842e40d31dd0b862db96c3d44056978bd2960536bb3bf6ddbe1e8d856f",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_provenance_integration.py",
+    "sha256": "1b64d9e6b1fc4294f41abdfdb129cdc81ba308239bfdcfc5e3e9adfd9de440de",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_q1_app_integration.py",
+    "sha256": "e0f869448d05df2e877b6acb8b74c832c3f723168842e8bc8d529c73ff32416e",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_q2_ok_cli_integration.py",
+    "sha256": "418c12746ad9bfa86c28f1a58f82d040f3991c181c28215cee8f6528a6e9167a",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_q3_desktop_integration.py",
+    "sha256": "33a1f6bda2f01892795b9553e4a8095a51da40a336c305aad5a3185377c987f8",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_q3_release_desktop_integration.py",
+    "sha256": "36b15ec3a8b4259e5d3b1434f708e9af39bd8e4e16e01ba62476b71ac61ca904",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_q4b_ui_integration.py",
+    "sha256": "327631774d52920e85ce2255f3c735e3c4e98873453867d8ac279f595dd5e54a",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_substrate_status.py",
+    "sha256": "c4a8f985404d31b971b67f71492d097d6f4ad6fdee282136cef274d5d342f0e1",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_track_o_harness.py",
+    "sha256": "0ca3d23604487a4dd14a7b3fc20ec25fa496b79eef131b9c81452628a6863b3b",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/integration/test_upgrade_regime_integration.py",
+    "sha256": "948aaa2c245e150e7018504a17508c322320e482160d740643827303ec028cce",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_aff_perf.py",
+    "sha256": "81a470f00c79265352447c40ff2f51423dfe0c90f38ac047c0794ab7f9dc7ae3",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_api_review_bounded.py",
+    "sha256": "3c0430de429731da2b3a4e4a5040ea6e3b41bfcf93a36f95334c1703a5274f3e",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_check_ok_perf.py",
+    "sha256": "acc1a45df7eb6dc8f53cb9dfa34481b2f236fc4e4de6f73dd0d47cc2141b99bf",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_checkpoints_bounded.py",
+    "sha256": "b1f77b8881cd994bf75f1430589be365bc7e300ad9ac1b11d7d8fce69e7bb797",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_cost_awareness_performance.py",
+    "sha256": "5f8f1bd5dd786d2c4b04f4a1fa801476f54670c6d2104f310b336cef234b6a4c",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_footprint_integrity_performance.py",
+    "sha256": "2d35cdcf1d320cad190a9be8d8fb97f1eb686b7f54374fc64efd5a89af3c779a",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_frv_perf.py",
+    "sha256": "286bf62c0c19a3b03f1c8837d001355e389487eef5266f7078f82227b369a922",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_gfg_d2_bridge_parse.py",
+    "sha256": "da56857a88f37cf9f1d1418ed094031fb2fac39f19ab7e93df7849abeddabb73",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_governance_freshness_performance.py",
+    "sha256": "e7e5fdb1c4d5384bb955b98507595c5f49a37823258083b2d695443fedd78fce",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_governance_gates_bounded.py",
+    "sha256": "8c803b7309e98af98f4b4a457884de21c21535343128efab54791d65c46d3e9a",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_governance_sync_bounded.py",
+    "sha256": "e08f6bc2833439fcfc7c580de32fbf693f96668e766fbf986513b168ad246ad6",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_gs_paste_performance.py",
+    "sha256": "3bd9ea8a19a0742082972fc1e77bdac5d78166729d6b16a520a4235a132a55fe",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_gsb_reconcile_bounded.py",
+    "sha256": "20b353595642d23ad79de44492ca2f93b9b7474bfd38a72edc5ddfaac2bff983",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_gsw_write_bounded.py",
+    "sha256": "2238a16bef1c16619ce2f0d418cf832c60e199f8b6cce011256b1f4d5e071402",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_honesty_bounded.py",
+    "sha256": "aea0f1b1efae768c928821b65d6646455f1a0f6dba0310172b3910adf8d1587b",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_hosted_dashboard_performance.py",
+    "sha256": "e25c16228380eaff082eddc5c024dd15f8c18761696313c0d19f9146373811b2",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_isr_perf.py",
+    "sha256": "9fd96affc709c7f49214144d2e281bb6edc689bc2352d5f9073d54fa0968ab89",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_k7_footprint_check.py",
+    "sha256": "4d05cb2f67d1ccfbe9ce8eda694df66770f7fdb95428ee15b48e2312cd6f29ed",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_lac_performance.py",
+    "sha256": "1c6eec41ec34a2f7b69800963cd3672a11a99e3df29307a5ec6ebfdc1651daff",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_land_closeout_performance.py",
+    "sha256": "c068625c53cbc34b9b019364fa2dc198670f6aac742eb06d41788cb3da36cdef",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_landing_bounded.py",
+    "sha256": "32c159809434cc47f46e18984a53b02066796fedf328efae4dbbc628f0bf89e6",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_lt_perf.py",
+    "sha256": "e6fec960b0a1f479a2e8f73c526484a20206c41502142e89a4eda7432a0acdcd",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_model_routing_performance.py",
+    "sha256": "5f9a6f5c125b8b7ae4b80424bc7f1bcc9be2c96816272657da609a8cd14c9b75",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_muse_sync_performance.py",
+    "sha256": "9c543474e986ad16da5009f957259aed51560fc3a655bd0b8a33a0eb0b0f08ed",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_p_deploy_performance.py",
+    "sha256": "c50dacdf96b0f64a4d473178c4c6e48fb3df463282031b19643b2af25edbf765",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_p_evidence_performance.py",
+    "sha256": "5b50ebc9e569b2a82d94b9548bc9cae31dfe9af515906d812a7feae076a54cd3",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_pilot_status_bounded.py",
+    "sha256": "1ba3a4e977d438a8cbe431d7e71950b3cc79233c7b69ce2a6812e54f1695c143",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_post_land_sync_bounded.py",
+    "sha256": "caf8574d81b06d2d2dd2d43678b5b7d8fc6dec1afcaf33a7905f3d08c7fb4e6a",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_preserve_shared_assets_performance.py",
+    "sha256": "9c78b5a7a99e82ff28f94a8b91fb199be5484bb6865bed53480495c8f7c07540",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_print_next_perf.py",
+    "sha256": "43020016fce825813673821a4feb3588faa00ad546cb2a2e7f73b49aff1f8e5f",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_provenance_performance.py",
+    "sha256": "1b650616dc6e89cb31acda5e5e3a439c4fa1e8c00d9a07c497a85d3dbebe9ee7",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_q1_app_performance.py",
+    "sha256": "8be138b4e5bed75e1889ebfbfdae3d1ba5ab4d9276de58c743c7e4e362749d0e",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_q2_ok_cli_performance.py",
+    "sha256": "c4a620562da75abf790ff3fb5dca0fc994fdf37c9688b83c4811868f7ee9f9b4",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_q3_desktop_performance.py",
+    "sha256": "1f8b75a0ea5e47cb0fc533b2407a992c30d1636014bf7029cfb4b25a9961e95b",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_q3_release_desktop_performance.py",
+    "sha256": "7ec9d60484154e4847fbe3642ac8601eadd9944dc9a003604901569d4392442e",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_q4b_ui_performance.py",
+    "sha256": "b381aba1576bf90d31d99371d104289fbe88af4edd1bfcf0b0c4174ba4b207ff",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_review_bounded.py",
+    "sha256": "b2e43c6f4f5a89c485e40c5255743b27b4618f6bcce8ea54f6a9b6d9bd2fb799",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_status_bounded.py",
+    "sha256": "60cf6477ba26b89666b97a14668bd2a17ca3752b8ea7ffba364ea6f94f000c82",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_track_o_performance.py",
+    "sha256": "af34a0ed758e92107f7bb5842bf8321ad34e04020d5ad85b2235b41cbb5a6627",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_upgrade_regime_performance.py",
+    "sha256": "1edaf13b4fe8988f08d969279ed94ea2c792b6476ed2c93150eb45852176e9d2",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/performance/test_workspace_perf.py",
+    "sha256": "07d0310df036ac1da94025af476a89a3ba872ff945f236517781aca067ccae15",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_aff_security.py",
+    "sha256": "98ba539c72cd6c297eb2d524fba5811bad82517fb90630fc0461ed0e19f8e059",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_api_provider_security.py",
+    "sha256": "59dbc76407a5e8ba039ef78c4362df12ce96efcd59f458818946e1fa91c85003",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_check_ok_security.py",
+    "sha256": "01fa33b2a7c5ebf1d3fbf8bbf34ed111d7ed20d778683d6fa7f053f74ad57718",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_checkpoints_security.py",
+    "sha256": "0506a9c16e16bc60f8516ec9fcf856fdff67a25adc987e94d1d14d05319ca561",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_cli_injection.py",
+    "sha256": "7feb29d6435cc38f1013b641fdbd39640835575e023a2228bf41f801ff8c71b6",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_cli_least_privilege.py",
+    "sha256": "24dfef61a11213e3814125d1f9a5c673bd4710c4ed9cf081109ab70fa7180109",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_cost_awareness_security.py",
+    "sha256": "575ccf08b2e3675f27b861fc75527a2bb3367cafba3cc6d91fb45a68ba7e5d08",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_fail_closed.py",
+    "sha256": "7a9a1d95f052fc0c74ecd4ccd4a68f6de7ba2063937e9379b65a33d09c60c7e2",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_footprint_integrity_security.py",
+    "sha256": "8b87842f529d1f5f0ae2c85da0955d92484977d219640eb81a04a050d4a6f6dc",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_frv_security.py",
+    "sha256": "895a142ca870f6904382a3815eca67ea1052b165d9ffe8f279715e03bc40fd67",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_gfg_d2_fail_closed.py",
+    "sha256": "7d4028b4a622c09db997cf91d2e87cd57734ac380d04f2ee687181d76132c8db",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_governance_freshness_security.py",
+    "sha256": "63c56aaffa40850ce163197400a37d8e392a59e7975776fbacb2d91e3b5f248e",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_governance_gates_security.py",
+    "sha256": "62af67ca4f9176370d0bef5b555097dadabd76063df46d05bd8fda7c5207d311",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_governance_sync_security.py",
+    "sha256": "574b32a4cbe370381008844610cecbf0962d1596a72d84953b02de91d540a5b3",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_gs_paste_security.py",
+    "sha256": "5d2527e7e7d6ff0c21f5f6e9ed432110496998a39406760ae40493e081f473c3",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_gsb_reconcile_security.py",
+    "sha256": "828d8af5ce9065be830c1a5b763808658002ff104d0d7efa8e08f6099401758a",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_gsw_write_security.py",
+    "sha256": "40bd51dd217805b53ac7ed392b3e626d30c5347746fa53e794336e9636bcab23",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_honesty_security.py",
+    "sha256": "0ba1eb86e41c824b0605af604832e883b371af3d713929c92e45d662ae571fe8",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_hosted_dashboard_security.py",
+    "sha256": "c5b11a0dd69ccf21092062fb49fb4486d552abd6beb721c56472e4a2a74a9807",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_injection.py",
+    "sha256": "b1ac0bd79bbac1b08a8eb43673cbc3cf6e14ff5ef97b59d9489c22d88b3c3ac3",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_isr_security.py",
+    "sha256": "76119d21ec859607b862b193e785bad884238973cb8d8485f57c10799c38d5ac",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_k7_bridge_security.py",
+    "sha256": "6864354c6cb5b574979e5469cdd0176edeb1ab79f67f993f1a12dce1579f74ee",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_lac_security.py",
+    "sha256": "3fbd7fbb166cb00ebb83fcdf9b344c6b26e2f499fb2c68b8202adef0d8922055",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_land_closeout_security.py",
+    "sha256": "bb76dd3e0105d1e19884bb6910624dfdad6f3a1123c95fe49d4565783c8617b7",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_landing_security.py",
+    "sha256": "eb6dd22a82b48e34f994ad2ac3b21a5d293b2f939fa9a320e3e4c2eb92087a4d",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_least_privilege.py",
+    "sha256": "6b29e2a4f63cf22aa5ffc427648e25549e36d5fd7ca56782da9afc3d55695be5",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_lt_security.py",
+    "sha256": "9aafdc666791be4cb02a9483ebddd45227a669f893dbd124203815f795b99e8e",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_model_routing_security.py",
+    "sha256": "07b6042202221da24613cf905085f3a06e7910339211f5a47491f94badd8013e",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_muse_sync_security.py",
+    "sha256": "9763e950d3858c556b2d6463d0de3174e04b7b82456640b6ebf598739755835b",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_no_secret_leak.py",
+    "sha256": "865276ef97261b13f832bc8cb6470e433ce99d9fa726ca767dc141273120f791",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_p_deploy_security.py",
+    "sha256": "e3daa3ab1cde1ebd36dbd2b5a7747eca47e96834c683faf002fab725c8bcaf3c",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_p_evidence_security.py",
+    "sha256": "65f95947dfe36adc946f7c2d1cfdf29971d9a58d56f656910f6610ed37753354",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_pilot_least_privilege.py",
+    "sha256": "59efe87ee2a8983af1f20124fb95dbf8856bc4d9ad8e95450a884e7ff5886145",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_pilot_no_secret_leak.py",
+    "sha256": "471323d9202bc91b970aeeb501273d6cd600a05b049f20b9ef121084b8726c79",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_post_land_sync_security.py",
+    "sha256": "84b4c54ffaa47553c2ba1cd585ba7b11a45b31a6f18d5ae93d58043040a549ce",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_preserve_shared_assets_security.py",
+    "sha256": "98602965f67f477ad91642faaf8ff508667663906c8847f620f46ca66a5dcb0b",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_print_next_security.py",
+    "sha256": "52a5c64758cf8d4bd41d96a1f1ecc33a8e770500dbf5b6c148bf635027b46580",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_provenance_security.py",
+    "sha256": "d1a84257a17cc9803413193ca540269f4e1f6187d359449a54f7faad578be472",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_q1_app_security.py",
+    "sha256": "ee63c8f195a74f6ae01d1fcd01397441c242b32da537ed001fefb8d6413d35cd",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_q2_ok_cli_security.py",
+    "sha256": "099dfb2bcfb9d6fc4e3cb4416636835cad830697a28fd2ebed31fe97b3686c0b",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_q3_desktop_security.py",
+    "sha256": "0fc16ed67e8c3b2c45c27adb7efe556911d648915c02550ebabbaa15d6892adb",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_q3_release_desktop_security.py",
+    "sha256": "5f3382bf64f575a12d4b7ca2d868eb4743ebdeba47095b25ef939d28273ff9ec",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_q4b_ui_security.py",
+    "sha256": "6e4305d71ff9259706ab1f0bfa730eb2e9b14c4969051964a37161620ebf5557",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_review_injection.py",
+    "sha256": "a716a1a26ff49fa5f72851cf5a958efe2dd63be45781bba0ea8818a2e4845f9a",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_review_least_privilege.py",
+    "sha256": "2e76eeb78745ee0a65cd92239401060888b01ded8c24d06508e2f7aa7b08c7c8",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_review_no_secret_leak.py",
+    "sha256": "36c141b84b5645af5387198b97917dce233615cc4a4c0e98b3579c5cd685ba7f",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_track_o_security.py",
+    "sha256": "cad399a91e548bc7081401bbc081cf35ffe86fd0408bdfbe98c2c565a34284f7",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_upgrade_regime_security.py",
+    "sha256": "aa67c6236e47aaa269986de36bec8170631d94c446eb54fc204e19dae41db52e",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/security/test_workspace_security.py",
+    "sha256": "4579d24e7c2c441f213c04f852c7d1b1751ddffdaee5848242d1fe6b1bd75437",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_aff_stress.py",
+    "sha256": "123e10c75415e199727b942821b4f816244f06c52da0b2406b1e9730e76c84f3",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_api_large_artifact.py",
+    "sha256": "eb78003a113a1fdbea86df9c832106a2f50fa3bb839616667e21c666bc21dd16",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_check_ok_stress.py",
+    "sha256": "e4fecd6ee2a46a1be0e54fdebb4f945eb544c49c0a71cc9db603a1d75362a760",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_checkpoints_large_template.py",
+    "sha256": "afd7e58a67326dc50281218b3660b08c7e484050a21b976584298795a3440fce",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_cost_awareness_stress.py",
+    "sha256": "0970d51e5ef09a2cf17d43ca2cb7f44eca878840b29598258c1d98fa96f98681",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_footprint_integrity_stress.py",
+    "sha256": "9acd85f59996ca7cfda8023c201275fbc802fe8790630978b7fad51f4fe20001",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_frv_stress.py",
+    "sha256": "37b45f12f3aa02b3f073671fc470808bf541b32f3730c1b3c4638d2832154f2d",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_gfg_d2_bridge_sections.py",
+    "sha256": "1956f044ab12410df0aaf9e15904d86f1663fed31eabe8abd3d01aeb567199cf",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_governance_freshness_stress.py",
+    "sha256": "48d1f7861c5bece8ff95a54870406d294785b65fd66f8e1ae29f4a499a3415da",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_governance_gates_large_roadmap.py",
+    "sha256": "72aafba55eba248587db38c69f6bf0e993cae6f131dc48f0a94f6dad6cec2118",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_governance_large_roadmap.py",
+    "sha256": "a53353e6a10e6bc9e79a889995255e103d572f682b7579fe19a3ac69f0490baf",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_gs_paste_stress.py",
+    "sha256": "67f854bca6490be0177946de6874c692679d93b73b28d7302827992c1f519ca5",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_gsb_collision_stress.py",
+    "sha256": "df48996f1d54c7287e3685aefbd6668d0ad6923bc1ce2e8fbcf187b7f344ecf3",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_gsw_repeated_apply.py",
+    "sha256": "40a1b9f690561532da39551e423597cbdad8b32e068838f4653f6ebcf85336d7",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_honesty_large_ledger.py",
+    "sha256": "3e078b94a8427472277d1ff9b1a8d48159d2ba8fec907ff152c26cec68a8744c",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_hosted_dashboard_stress.py",
+    "sha256": "ef27a7ab463fe1f444c78389be99c41711852ec668d4a0419876c45d6d0252ed",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_isr_stress.py",
+    "sha256": "96d9b580cce6c62bd461d9585849cdaaad83fb38224f114b098a0d24b3e79ccb",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_k7_large_bridge_workflow.py",
+    "sha256": "169d0ccd3e273fb498f7839ca43e7c0584bbc5d3e5d67dcba1192d60ffe3ec71",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_lac_stress.py",
+    "sha256": "74742fb769917bd121fe8dcd7df48ad12e74631238d0149d146039a4bf289bb3",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_land_closeout_stress.py",
+    "sha256": "5978a7de2fdecb532b51d68bf333a559e7e0551ff3ef41a61f96db2b22e824b5",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_landing_large_html.py",
+    "sha256": "c993603b43d460c23b7d53671c243a3084d40110d4829bd7a24fb7980ff87c84",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_large_footprint.py",
+    "sha256": "79691b04227dca110b798e83404f70124d0202899b78b29eaf04a144010714ff",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_large_freeze_artifact.py",
+    "sha256": "526f8e4a07328c73b198c5d1bad8ced894628f57c2d826106a64a74d5678943f",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_lt_stress.py",
+    "sha256": "5092a738e065aaf9c1dfaace9c3875115eaf07e47c162f1d06839ad0a9e45387",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_model_routing_stress.py",
+    "sha256": "0365cdfb4849a9e79b3d800abfe53500e39b94943edd801d1307a25ae4689b53",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_muse_sync_stress.py",
+    "sha256": "597237189dc178af4a04ac17bcd5a0e3ac5eba5721409f3c867d6a1560969cb4",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_p_deploy_stress.py",
+    "sha256": "403be3f9e1938719bd28224749d1b5ddb7c3c882d092f1a059a6c76e8c96b9d2",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_p_evidence_stress.py",
+    "sha256": "35d04549aba2ace2f9e7b70d63d2e0d694ebda9f89a26d073349b9e47b61e696",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_pilot_large_preserved_docs.py",
+    "sha256": "91220bccdd85083620ddab010aebb2a2cc77a76106931dcee270e4ecf37a6cae",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_post_land_sync_stress.py",
+    "sha256": "2f64a84b4ea48496d6d4ee36ec26cfeeca8b8ef6d6123e4e9c850f6179829ca1",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_preserve_shared_assets_stress.py",
+    "sha256": "58018953efbe75b31217e786d921982d83d91af2ee3f883d0beb1b837181c888",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_print_next_stress.py",
+    "sha256": "91f6c5497493e10f1e28d9a4926b5dfeb1fde3d8473c29dcc8a0c77b6296d1dd",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_provenance_stress.py",
+    "sha256": "c2ca21778a13414a913157d63f873027d6f642adaa9a84a5190fb1e380c3cc1f",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_q1_app_stress.py",
+    "sha256": "cbde7f2e290acccf827b3e699ec1f87babd684bcfa56ce5b76c14e496ba6cd86",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_q2_ok_cli_stress.py",
+    "sha256": "2dddb9a90afa3e207ad272d904b020713561dcf209415d793eda33368787e3a8",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_q3_desktop_stress.py",
+    "sha256": "4000dae8a3ff8812ea362f14c3756e32e4ea55452eac807f2687d729a426a26d",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_q3_release_desktop_stress.py",
+    "sha256": "94ba1aae47ac6e4331c0b1739b6766842a08c5735ac7f17b79960c3ef65f3302",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_q4b_ui_stress.py",
+    "sha256": "ad6dff6cf7385a91a97bbe00052185a47167aa76c1173b9351d3e2ed7d25cc88",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_track_o_stress.py",
+    "sha256": "fbb3841369c742b8ccac1005b48f93080ab219520acd97301f96a445053e507a",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_upgrade_regime_stress.py",
+    "sha256": "c29ad63378cf24ff41febb56e2d43be0d27d861387f375cb3e6b7c96abf7cbce",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/stress/test_workspace_stress.py",
+    "sha256": "3e7dba89114c5512a9bbaa4583fcedb5dc913963dbdc136c754c958134722d62",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_aff_unit.py",
+    "sha256": "ad1346896b43f19dcb4c968a528e0b2e9bd8d6e8d596a1ae3f55c1b41c002255",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_api_provider_k11.py",
+    "sha256": "62ceab9ee035bd9391915764202bd9c3a61d16c55452596715b2cea8b2b83fda",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_check_ok_scaffold.py",
+    "sha256": "9d046aebdada0997dcf36399bfc9901795395eca18353dffe5ce98399102149f",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_checklist_engine.py",
+    "sha256": "df1635b7dc623f23c685ecde5166640258f0ab9334696697b300b502e2dc1d48",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_checklist_exit_precedence.py",
+    "sha256": "28366d591b644a6a94ee7e8d4029c9a7a0165c43e3cbbe0153261960b707ad1d",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_checkpoints_k9b.py",
+    "sha256": "1c483af2ea091d5122442ff43739446c3a6af96cca093bbe5e33fe8be421d1dc",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_cli_argparse.py",
+    "sha256": "c913b1306049241cb6cd289a5b273ead1a87d571afca56985a1b7f9a84371c19",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_close_ritual_land_check.py",
+    "sha256": "4de4c0c3c8a09827f4d36b429d5d47acc3b404feea7ec6b2880493c0c25e6883",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_close_ritual_pr_land.py",
+    "sha256": "3c097316420e3f2f24bbfd51d6750b486194c816ca72eaa79adab83aec2fe30f",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_config.py",
+    "sha256": "3ef345a8418be78cba11e40ad9b5701563477f8b71ca26ae3e86baf7503497d0",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_cost_awareness_unit.py",
+    "sha256": "4cad9f393a4306f77dabfb47e2cd3a1fc3efef768cf3b38768311e09753ef50f",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_findings_verdict.py",
+    "sha256": "aedcf9de64239041e5943af3f32b1a7d4cb8389e47d197c202ed701e0f95fea7",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_footprint_digest.py",
+    "sha256": "a1756303d45b8a7ea010e1fcf6ff634b1b6a7ab21206a7822a59bfd1e3cd8608",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_footprint_integrity.py",
+    "sha256": "241e659bed40ab433f08da5f574e80cddd6d754885ed620bbc8b0f2c0eb7671e",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_frv_unit.py",
+    "sha256": "ea6759f2d7852112e4aaaf7e862c2f03299f042e74313f5c0d84b81af48cc643",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_gfg_d2_muse_id_space.py",
+    "sha256": "adfae88e90592f1c59f9805aa1eae1ea02046b87d6b0e3dbb5b745167611f7dc",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_git_only.py",
+    "sha256": "da0f71a7d3e1444b262050beba6b19315de245b865f93731a88b1296672e1b96",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_governance_drift.py",
+    "sha256": "863bfcbd432dfff3a6d978884125a126e49e98897e5e6c6f257e687a05f1e925",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_governance_freshness.py",
+    "sha256": "de64a1d5d46ca01cf010f6f62d4cbbb6bf1ddbbe3abbfbf4c38e3eb165a65502",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_governance_gates.py",
+    "sha256": "634f8fa7d44a6c19836d81996a00584f694095a4b87aa096a95f75f6761b1383",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_gs_paste_next_regen.py",
+    "sha256": "99e36b56200c0db6f960742007f547b6251de5692fe039fe7a20d867e0b713a5",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_gsb_branch_collision.py",
+    "sha256": "f950ebe2c84d8244ac154c0180972c9f85849ed68810bd0c70f2d8fcf5342f76",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_gsw_write_path.py",
+    "sha256": "06bd93c1b7d80ad0d900843d647e6385387eb5687c91e61c31bd2f2e371d7a7c",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_honesty_k10.py",
+    "sha256": "efe53bfd3ecc54d916dd95970e27fcc15e627a5ab77d53af8392a76dbc224bea",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_hosted_dashboard_unit.py",
+    "sha256": "7ac6420aa507d45654e440ff1ac80852401533f376a020ba609a5c9bf2ae3647",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_init.py",
+    "sha256": "67e9acc961a6486beaeeb596bffc24cbe66218c1cf5954f623ef76d2c62b6b74",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_init_migrate.py",
+    "sha256": "bc4c539a8213d11391d0a27a9a00b5fcb9b43cdc2bd7b5633788c29eab666d64",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_isr_unit.py",
+    "sha256": "8a05bb6ef39daae05f267fea6c8841af22799eac0d4e0b3ae8b88f41a5e04e41",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_k7_footprint.py",
+    "sha256": "408cf491756c9e5cd8680d970e9d0bafdfd94bcfec6a9d0f9fa3783c5e8c19e7",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_k8_lanes.py",
+    "sha256": "b7c2dccd013d0e055410e650ae45e9f728569cbd83a5f5f36967cee4dccf193d",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_land_closeout.py",
+    "sha256": "9ddc063db853dc2ff19214c63229c7b1522753176327d532a8b092b955a25116",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_landing_k12.py",
+    "sha256": "20fb564db46d014ff65ef7fee6bafb065bd2b108e3d23c9cd679a32476c1eb35",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_lt_unit.py",
+    "sha256": "c8b43f60186541b961aeacf1e5c9389fc884c161ad07b95dd89a486b8070a036",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_model_routing_unit.py",
+    "sha256": "9bfdda5daa01a8498da8871bd7e0e0661a781e3d373b963270835dece56fd53c",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_muse_git_mirror.py",
+    "sha256": "4ed31c70980ec19e48ecb12ba5f426b50c81297f3b69f19ca1abb34a64501130",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_muse_only.py",
+    "sha256": "ced601bbffebf41854e1106628ea828a426bc33603d35be20d11867f9e141ee6",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_muse_sync.py",
+    "sha256": "52c494a89d7b4464f28d60a6fa62e5e386592f24a86d5d0f248ab99cea46b893",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_muse_working_dir.py",
+    "sha256": "c8373959d91cbac3e2f6d340f4e431484e57e13d5b3c77ac8310d26bf93624a6",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_p_deploy_unit.py",
+    "sha256": "0df871a09cc0e80dbad3077654dc13c89c2f69d09b92eab83cce53a949d977b9",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_p_evidence_unit.py",
+    "sha256": "705eef0fe701c19b3cb3e1827c98b5fe35b289fd68c5c89541da9b9b556ffc68",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_path_normalize.py",
+    "sha256": "2b0094daeca0a2890f3380addeafa36cf771f6e1fec212d3465341edecd4d877",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_post_land_sync_unit.py",
+    "sha256": "cc4d5c0d1d53ff0a581559cc369654f92a1e732af6ad636758d4e66a83ac3f59",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_print_next.py",
+    "sha256": "322a31503606f543272e234cae9cf0b9d16e0c5178d8af043ff868f5e8872d20",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_provenance_unit.py",
+    "sha256": "a09faf599708de78403ad1326a39ae31daa4b9cf820d128d70d328605ed2ce76",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_provider_fallback.py",
+    "sha256": "a3a06c8e48f6401ab1a45eb7630a367cc91993c37dfe990e6d9809c54085d92f",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_q1_app_unit.py",
+    "sha256": "9af0ba343baf3fdbbac8e795bcddc9ab03cf8a36f73b9f814e60c791b90748a1",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_q2_ok_cli_unit.py",
+    "sha256": "c0fac677e7f24867ce4584c92511a6ea431f6ec8fb38c846edb66c3160ebc729",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_q3_desktop_unit.py",
+    "sha256": "0e371c0dcc7d49ab14f8e020ae7e84f5cb2b5de5cc6248723f2d2a73cbe98552",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_q3_release_desktop_unit.py",
+    "sha256": "a11ff6df65ca4b02ec89e716ea66598cd5c4dcfbe65b12ebadc7cbb7dc793ee4",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_q4b_ui_unit.py",
+    "sha256": "c8c735392b15bef39398e8a103382be23b7713827eb323617026a557febf91a2",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_report_stamp_line.py",
+    "sha256": "76150cbff51f176e32fd5febe682dcf202204c4852327881e9520420efe770c3",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_review_argparse.py",
+    "sha256": "1ab54c5b2320759c3e9dcbec18234314ec0162188289aa90c9c0fae6994aa3b4",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_review_stamp.py",
+    "sha256": "721c40b6720fd724f3f2871aa7377764f6a59de2c72e0c9d855f9cc703dd41fb",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_reviewer_config.py",
+    "sha256": "1ba626d4fa19506a98f8a9b36f1389d30ea45dfab2ef8d6067fc27cfcc62e4f6",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_serializer_key_order.py",
+    "sha256": "83dbce71af135f265753439f7a25eec7385bf6f3fd44a88be2a964dffd37be89",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_skills_footprint.py",
+    "sha256": "58b640dcbf6414eb30475e0d383c35d74f5b05733479bc50da52ca27811691be",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_status.py",
+    "sha256": "d6799effa8610c23d7b7a1c7df20fbf9725e0bd9593466ce83c31bf4ecd9ef6c",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_substrate_health.py",
+    "sha256": "17504bb406c76dc2284571cd9025509d067fb85bc8ccacdbd80da64a19bb6e9e",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_sync.py",
+    "sha256": "f498b0453fa500d3069beb4b1cce8601618eceab93cc8c51921bf351946388ad",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_templating.py",
+    "sha256": "05cbe0486e9c5ded85980da06be2752e0b91a5822b41c3538a5a8c2433ea103b",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_track_o_contract.py",
+    "sha256": "de10cd3d2d68a4a49ee2be368bce69d9bbdd9827e4c8b725327864515d9722a2",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_upgrade_regime_unit.py",
+    "sha256": "160b8275ffc14d0c5558bc44c67d6c4404c11d0c53ec00981c322f4877c11587",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_version_lock.py",
+    "sha256": "81a0eabae546f157e835d662bddac45c2756fe80915f71649be5b86dfb879ae7",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_workspace_exit_precedence.py",
+    "sha256": "dbd73dd2080ae66523a44e6c4bb2663c04c6ec3bf6f908c8fef1c4ebd7e68760",
+    "status": "historical pre-reset contract; see tests/README.md"
+  },
+  {
+    "path": "tests/unit/test_workspace_unit.py",
+    "sha256": "847172d9c3f6fa00fd3fa83541ca8829335d3e9bbd0e5210549f0f805c369784",
+    "status": "historical pre-reset contract; see tests/README.md"
+  }
+]

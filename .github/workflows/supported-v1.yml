@@ -1,0 +1,55 @@
+name: Supported v1
+
+on:
+  pull_request:
+  push:
+    branches: [main, 'feat/**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  git:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.11', '3.14']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m venv .venv
+      - run: .venv/bin/python -m pip install -r requirements-v1-dev.txt
+      - run: .venv/bin/python tools/ci/supported_v1.py --junitxml git.xml
+
+  muse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - run: python -m venv .venv
+      - run: .venv/bin/python -m pip install -r requirements-v1-dev.txt
+      # Separate authorization is required to host the local recovery artifact
+      # and execute hosted CI. This is not an upstream Muse release. Missing or
+      # changed bytes fail; no moving installer, version or PyPI Muse fallback.
+      - name: Install the reviewed optional Muse runtime
+        env:
+          MUSE_RC5_RECOVERY_WHEEL_URL: ${{ vars.MUSE_RC5_RECOVERY_WHEEL_URL }}
+        run: |
+          test -n "$MUSE_RC5_RECOVERY_WHEEL_URL" || { echo 'MUSE_RC5_RECOVERY_WHEEL_URL must identify the reviewed local recovery wheel'; exit 1; }
+          wheel="$RUNNER_TEMP/muse-0.2.1rc5-1overseerrecovery-py3-none-any.whl"
+          curl --fail --silent --show-error --proto '=https' "$MUSE_RC5_RECOVERY_WHEEL_URL" -o "$wheel"
+          python tools/ci/muse_artifact.py verify --wheel "$wheel"
+          python -m venv "$RUNNER_TEMP/muse-venv"
+          "$RUNNER_TEMP/muse-venv/bin/python" -m pip install --constraint tools/ci/requirements-muse-rc5.txt "$wheel"
+          "$RUNNER_TEMP/muse-venv/bin/python" -m pip check
+      - name: Full Git, Muse and mirror matrix
+        run: .venv/bin/python tools/ci/supported_v1.py --muse-python "$RUNNER_TEMP/muse-venv/bin/python" --junitxml combined.xml

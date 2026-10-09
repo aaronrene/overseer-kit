@@ -1,86 +1,44 @@
-# Overseer Kit — agent instructions
+# Overseer Kit — bounded v1 agent instructions
 
-## Version control
+Owner clarification, 2026-10-08: there is no session-count ceiling. Complete the
+planned local restoration, preserving a per-repository choice of Git/GitHub only
+or MuseHub authority with a GitHub mirror. Git-only is a fully supported ongoing
+mode; it must not require Muse installation, login, or migration. The kit project's
+own intended publication flow remains Muse-first. OCI remains excluded. Read the
+restoration audit in `docs/validation/V1-RECOVERY.md` before implementation. The
+old budget stop is resolved; do not request a session extension again. Remote
+publication, consumer access and hook activation retain their explicit boundaries.
 
-- **Current regime: `muse+git-mirror`** (see `.overseer/config.yaml`). **MuseHub is canonical**;
-  GitHub `main` is the mirror merge target only.
-- Feature work: `muse commit` on a feature branch; **never** `git push origin main`.
-- Mirror to GitHub only via the safe deploy script → permanent `muse-mirror` branch → PR to `main`.
-- **Never** run `muse bridge git-export --git-dir .` on the dev tree (it deletes ignored files like
-  `.env.local`); the bridge target is always an isolated `.muse/mirror/` checkout.
-- Never force-push `main`.
+The owner's recovery request and `docs/decisions/V1-SCOPE-RESET.md` supersede the
+former v1 security prerequisites, old NEXT, and per-step freeze/approval chains.
+Read that decision, ROADMAP, HANDOVER, and canonical `docs/NEXT.md`.
 
-See root `MUSE-BRIDGE-WORKFLOW.md` and `scripts/muse-bridge-deploy.sh` for SD-14 mirror rules.
+At each actionable turn report physical cwd, Git root, and branch/full HEAD. If the
+checkout has been initialized, also report its `.overseer/config.yaml` repository
+name. Current workspace identity overrides inherited instructions. Never access a
+real consumer repository without explicit authorization; use disposable fixtures
+for cross-repository checks.
 
-## Read first
+Use the conventional `.venv` and deterministic `cli/ok` launcher. In an initialized
+checkout run `ok -C ROOT status` and `ok -C ROOT next`; NEXT is read-only. Only
+`next-write` publishes NEXT, with explicit context and expected prior digest. Do not
+add competing prompts to ROADMAP or HANDOVER. Update both summaries together on
+milestone closeout.
 
-- `docs/OVERSEER-KIT-SPEC.md` — frozen architecture; do not redesign during Build phases.
-- `docs/ROADMAP.md` — phase control + Build status table.
-- `docs/OVERSEER-HANDOVER.md` — living relay; update with ROADMAP on phase completion.
-- `.cursor/rules/orchestrator.mdc` — RULE #8 day-to-day (install → paste NEXT → freeze/build gates → sync).
+The supported v1 test matrix is in `docs/validation/V1-RECOVERY.md`; run the full
+supported suite before a local feature commit. Preserve historical tests and
+source. Do not revive OCI/native GSR/sole-writer machinery or new packet chains.
 
-## Orchestrator (RULE #8)
+Use feature branches and review changes before merging. A feature-branch push and
+pull request may be used when the owner authorizes publication; never push directly
+to `main`, publish a release, deploy, initialize another consumer, or activate hooks
+without explicit authority. Preserve original Muse refs and never export onto a
+development tree. Restore Muse integration under the corrected scope; do not treat
+the old bridge as validated for the new runtime. Bounded-v1 architecture/build
+review, clean installation/rollback, and the authorized DINERO pilot are recorded in
+`docs/validation/V1-RECOVERY.md`. Do not repeat closed milestones against unchanged
+code or revive the superseded machinery.
 
-Phased work runs through this kit — not a hand-rolled root `ROADMAP.md` / `OVERSEER_HANDOVER.md` script.
-
-1. Start from the handover **Paste-ready prompt** (Model label required).
-2. **Thinking** freezes a `frozen: true` artifact → `/freeze-review-loop` / `ok review --freeze` → `pass`.
-3. **Auto** builds to that freeze → seven-tier tests → `/build-verification-review` → `pass` before DONE.
-4. Close with ROADMAP + HANDOVER updated together; `ok governance-sync --dry-run` then apply; feature-branch commit.
-5. Merge to `main` is Tier 3 only.
-
-Consumers: `ok init` / `ok sync` / `ok status`; doc paths come from `.overseer/config.yaml`.
-
-## Boundaries
-
-- This kit is **repo-agnostic governance** — not a product runtime.
-- Scooling Phase 9A (`src/phase9a/`) is a **reference** for worker/checker/foreman patterns; do not copy product adapters into the kit.
-- Consumer repos customize via `.overseer/config.yaml` only.
-
-## Tests
-
-Seven-tier tests (unit, integration, e2e, stress, data-integrity, performance, security) for every Build phase that adds code. Machine-readable: `policy/test-tiers.yaml` (RULE #0).
-
-## Governance sync
-
-On phase completion, update **both** `docs/ROADMAP.md` and `docs/OVERSEER-HANDOVER.md` in the closing commit.
-
-## Check OK (any AI tool)
-
-Ad-hoc honesty check — same freeze-review + build-verification path as roadmap loops.
-
-| How | Command |
-| --- | --- |
-| Cursor / Claude Code | Type **Check OK** or `/check-ok` |
-| Terminal (Copilot / any) | `ok check-ok --topic "<slug>"` |
-| Paste prompt | `docs/CHECK-OK.md` |
-
-Skills install to **both** `.cursor/skills/` and `.claude/skills/` on `ok sync`. Do not open a
-new `docs.lanes` entry for one-offs.
-
-## Print NEXT on closeout
-
-After updating the living handover and/or roadmap, the final reply must include the
-paste-ready fence from disk under `## CURRENT NEXT — paste this`. Prefer `ok next`
-(synonym: `ok governance-sync --print-next`). Never trust the open IDE tab. See
-`docs/PRINT-NEXT.md`.
-
-## Independent second reviewer
-
-**Default `require`.** Before Auto ROADMAP **DONE**, a second chat (different
-session) must record an `independent_second_review` ledger pass, or honesty /
-status fail closed. Opt out: `honesty.require_independent_second_reviewer: off`
-(or `warn`). The kit records and gates the verdict; it does not run another
-model. See `docs/INDEPENDENT-SECOND-REVIEWER.md`.
-
-## Adversarial freeze
-
-When `honesty.adversarial_freeze` is `suggest` or `require`, author
-freeze-review-loop pass does not clear Auto. A different chat must try to kill
-the freeze and record a digest-bound `adversarial_freeze` pass (or, under
-`suggest`, an owner skip). The kit never dispatches a model. See
-`docs/ADVERSARIAL-FREEZE-REVIEW.md`.
-
-Open the repository root (the folder that contains `.overseer/`) as the IDE workspace.
-If you open a parent folder, project rules and skills under `.cursor/` often do not load.
-The CLI still works. The open editor tab is not the source of truth — run `ok next`.
+At closeout report exact test counts and unresolved failures. Include the validated
+CURRENT NEXT fence from disk. Do not claim independent review or final-v1 completion
+from a green implementation suite alone.

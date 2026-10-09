@@ -1,0 +1,522 @@
+[
+  {
+    "test": "tests.data_integrity.test_atomic_writes::test_no_half_written_file_on_failure",
+    "category": "missing path/fixture",
+    "message": "FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/1h/h0k1lcss0fdc_2rvzffnlq040000gp/T/pytest-of-aaronrenecarvajal/pytest-13/test_no_half_written_file_on_f0/docs/OVERSEER-HANDOVER.md'"
+  },
+  {
+    "test": "tests.data_integrity.test_hosted_dashboard_integrity::test_twin_fetch_identical_sha256",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.data_integrity.test_hosted_dashboard_integrity::test_cache_refresh_and_no_secrets_in_result",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.data_integrity.test_migrate_idempotency::test_promote_then_hand_edit_flips_integrity",
+    "category": "other product/test failure",
+    "message": "assert 2 == 6"
+  },
+  {
+    "test": "tests.data_integrity.test_q1_app_integrity::test_governance_sync_dry_run_idempotent",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.data_integrity.test_q1_app_integrity::test_session_credential_not_written_to_repo",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.data_integrity.test_q2_ok_cli_integrity::test_ok_status_json_is_idempotent",
+    "category": "launcher missing yaml",
+    "message": "assert 1 == 0\n +  where 1 = ShimResult(exit_code=1, stdout='', stderr='Traceback (most recent call last):\\n  File \"<frozen runpy>\", line 198, in _...1-recovery/adapters/config.py\", line 9, in <module>\\n    import yaml\\nModuleNotFoundError: No module named \\'yaml\\'\\n').exit_code"
+  },
+  {
+    "test": "tests.data_integrity.test_q3_desktop_integrity::test_launch_stop_twice_yields_same_health_shape",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.e2e.test_cost_awareness_e2e::test_e2e_thinking_freeze_slice_paid_high",
+    "category": "other product/test failure",
+    "message": "AssertionError: assert 'standard' == 'deep-reasoning'\n  \n  - deep-reasoning\n  + standard"
+  },
+  {
+    "test": "tests.e2e.test_hosted_dashboard_e2e::test_authenticated_flow_org_docs_gates",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.e2e.test_hosted_dashboard_e2e::test_cli_preview_sigint_exit_zero_no_vcs_mutation",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.e2e.test_lac_e2e::test_connect_collapses_auth_and_shows_bound_path_and_playbook",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.e2e.test_lac_e2e::test_ok_app_sigint_exit_zero",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.e2e.test_lt_e2e::test_warn_mode_done_without_ledger_status_exit_0",
+    "category": "other product/test failure",
+    "message": "assert 2 == 0"
+  },
+  {
+    "test": "tests.e2e.test_q1_app_e2e::test_full_operator_flow",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.e2e.test_q2_ok_cli_e2e::test_ok_shim_fail_closed_remediation_then_status_and_review_dry_run",
+    "category": "launcher missing yaml",
+    "message": "assert 1 == 2\n +  where 1 = ShimResult(exit_code=1, stdout='', stderr='Traceback (most recent call last):\\n  File \"<frozen runpy>\", line 198, in _...1-recovery/adapters/config.py\", line 9, in <module>\\n    import yaml\\nModuleNotFoundError: No module named \\'yaml\\'\\n').exit_code"
+  },
+  {
+    "test": "tests.e2e.test_q3_desktop_e2e::test_desktop_operator_flow_matches_q1_surface",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.e2e.test_q4b_ui_e2e::test_overview_structure_status_roadmap_actions",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.e2e.test_q4b_ui_e2e::test_ok_app_sigint_exit_zero",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.e2e.test_workspace_cycle::test_s1_s2_stale_then_refresh",
+    "category": "launcher missing yaml",
+    "message": "assert 1 == 35\n +  where 1 = ShimResult(exit_code=1, stdout='', stderr='Traceback (most recent call last):\\n  File \"<frozen runpy>\", line 198, in _...1-recovery/adapters/config.py\", line 9, in <module>\\n    import yaml\\nModuleNotFoundError: No module named \\'yaml\\'\\n').exit_code"
+  },
+  {
+    "test": "tests.e2e.test_workspace_cycle::test_s3_archived_not_selected",
+    "category": "launcher missing yaml",
+    "message": "assert 1 == 0\n +  where 1 = ShimResult(exit_code=1, stdout='', stderr='Traceback (most recent call last):\\n  File \"<frozen runpy>\", line 198, in _...1-recovery/adapters/config.py\", line 9, in <module>\\n    import yaml\\nModuleNotFoundError: No module named \\'yaml\\'\\n').exit_code\n +    where ShimResult(exit_code=1, stdout='', stderr='Traceback (most recent call last):\\n  File \"<frozen runpy>\", line "
+  },
+  {
+    "test": "tests.e2e.test_workspace_cycle::test_s4_s12_distinct_basenames_and_doctor",
+    "category": "other product/test failure",
+    "message": "json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+  },
+  {
+    "test": "tests.e2e.test_workspace_cycle::test_s6_lane_tip_non_primary",
+    "category": "launcher missing yaml",
+    "message": "assert 1 == 0\n +  where 1 = ShimResult(exit_code=1, stdout='', stderr='Traceback (most recent call last):\\n  File \"<frozen runpy>\", line 198, in _...1-recovery/adapters/config.py\", line 9, in <module>\\n    import yaml\\nModuleNotFoundError: No module named \\'yaml\\'\\n').exit_code\n +    where ShimResult(exit_code=1, stdout='', stderr='Traceback (most recent call last):\\n  File \"<frozen runpy>\", line "
+  },
+  {
+    "test": "tests.e2e.test_workspace_cycle::test_s7_optional_brain_absent",
+    "category": "other product/test failure",
+    "message": "json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+  },
+  {
+    "test": "tests.e2e.test_workspace_cycle::test_s8_external_two_repo",
+    "category": "launcher missing yaml",
+    "message": "assert 1 == 0\n +  where 1 = ShimResult(exit_code=1, stdout='', stderr='Traceback (most recent call last):\\n  File \"<frozen runpy>\", line 198, in _...1-recovery/adapters/config.py\", line 9, in <module>\\n    import yaml\\nModuleNotFoundError: No module named \\'yaml\\'\\n').exit_code\n +    where ShimResult(exit_code=1, stdout='', stderr='Traceback (most recent call last):\\n  File \"<frozen runpy>\", line "
+  },
+  {
+    "test": "tests.e2e.test_workspace_cycle::test_s10_s11_product_relay",
+    "category": "launcher missing yaml",
+    "message": "assert 1 == 0\n +  where 1 = ShimResult(exit_code=1, stdout='', stderr='Traceback (most recent call last):\\n  File \"<frozen runpy>\", line 198, in _...1-recovery/adapters/config.py\", line 9, in <module>\\n    import yaml\\nModuleNotFoundError: No module named \\'yaml\\'\\n').exit_code\n +    where ShimResult(exit_code=1, stdout='', stderr='Traceback (most recent call last):\\n  File \"<frozen runpy>\", line "
+  },
+  {
+    "test": "tests.e2e.test_workspace_cycle::test_e2e_init_prefixed_defaults",
+    "category": "launcher missing yaml",
+    "message": "assert 1 == 0\n +  where 1 = ShimResult(exit_code=1, stdout='', stderr='Traceback (most recent call last):\\n  File \"<frozen runpy>\", line 198, in _...1-recovery/adapters/config.py\", line 9, in <module>\\n    import yaml\\nModuleNotFoundError: No module named \\'yaml\\'\\n').exit_code"
+  },
+  {
+    "test": "tests.integration.test_cli_init_sync_status::test_init_full_footprint_per_regime[config-muse-only.yaml-<lambda>]",
+    "category": "other product/test failure",
+    "message": "assert 2 == 0"
+  },
+  {
+    "test": "tests.integration.test_cli_review_freeze::test_review_freeze_per_regime[config-muse-only.yaml-<lambda>]",
+    "category": "other product/test failure",
+    "message": "assert 2 == 7"
+  },
+  {
+    "test": "tests.integration.test_cli_workspace::test_workspace_status_json_basenames",
+    "category": "launcher missing yaml",
+    "message": "assert 1 == 0\n +  where 1 = ShimResult(exit_code=1, stdout='', stderr='Traceback (most recent call last):\\n  File \"<frozen runpy>\", line 198, in _...1-recovery/adapters/config.py\", line 9, in <module>\\n    import yaml\\nModuleNotFoundError: No module named \\'yaml\\'\\n').exit_code"
+  },
+  {
+    "test": "tests.integration.test_cli_workspace::test_check_next_exit_codes",
+    "category": "launcher missing yaml",
+    "message": "assert 1 == 0\n +  where 1 = ShimResult(exit_code=1, stdout='', stderr='Traceback (most recent call last):\\n  File \"<frozen runpy>\", line 198, in _...1-recovery/adapters/config.py\", line 9, in <module>\\n    import yaml\\nModuleNotFoundError: No module named \\'yaml\\'\\n').exit_code\n +    where ShimResult(exit_code=1, stdout='', stderr='Traceback (most recent call last):\\n  File \"<frozen runpy>\", line "
+  },
+  {
+    "test": "tests.integration.test_cli_workspace::test_status_workspace_does_not_imply_ok_on_green_single_repo",
+    "category": "launcher missing yaml",
+    "message": "assert 1 == 0\n +  where 1 = ShimResult(exit_code=1, stdout='', stderr='Traceback (most recent call last):\\n  File \"<frozen runpy>\", line 198, in _...1-recovery/adapters/config.py\", line 9, in <module>\\n    import yaml\\nModuleNotFoundError: No module named \\'yaml\\'\\n').exit_code"
+  },
+  {
+    "test": "tests.integration.test_cli_workspace::test_doctor_board_name_violation",
+    "category": "launcher missing yaml",
+    "message": "assert 1 == 0\n +  where 1 = ShimResult(exit_code=1, stdout='', stderr='Traceback (most recent call last):\\n  File \"<frozen runpy>\", line 198, in _...1-recovery/adapters/config.py\", line 9, in <module>\\n    import yaml\\nModuleNotFoundError: No module named \\'yaml\\'\\n').exit_code"
+  },
+  {
+    "test": "tests.integration.test_hosted_dashboard_integration::test_health_body_unauthenticated",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.integration.test_hosted_dashboard_integration::test_org_summary_and_docs_envelope",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.integration.test_hosted_dashboard_integration::test_missing_doc_not_found",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.integration.test_hosted_dashboard_integration::test_write_scope_route_refuse",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.integration.test_hosted_dashboard_integration::test_cors_deny_non_allowlisted_origin",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.integration.test_hosted_dashboard_integration::test_track_q_paths_not_registered",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.integration.test_hosted_dashboard_integration::test_empty_allowlist_zero_repos",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.integration.test_hosted_dashboard_integration::test_unknown_query_400",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.integration.test_lac_integration::test_api_health_returns_repo_root_with_bearer",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.integration.test_lac_integration::test_path_b_static_still_serves",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.integration.test_lac_integration::test_unknown_api_still_rejected",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.integration.test_q1_app_integration::test_static_ui_served",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.integration.test_q1_app_integration::test_status_exit_code_matches_cli",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.integration.test_q1_app_integration::test_docs_endpoints_return_text",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.integration.test_q1_app_integration::test_gates_slice_matches_status",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.integration.test_q1_app_integration::test_review_freeze_dry_run",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.integration.test_q1_app_integration::test_governance_sync_dry_run",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.integration.test_q2_ok_cli_integration::test_ok_and_overseer_shims_emit_equivalent_status_json",
+    "category": "launcher missing yaml",
+    "message": "assert 1 == 0\n +  where 1 = ShimResult(exit_code=1, stdout='', stderr='warning: \\'overseer\\' is deprecated; use \\'ok\\' (same commands).\\nTraceback...1-recovery/adapters/config.py\", line 9, in <module>\\n    import yaml\\nModuleNotFoundError: No module named \\'yaml\\'\\n').exit_code"
+  },
+  {
+    "test": "tests.integration.test_q3_desktop_integration::test_desktop_launcher_starts_ok_app_and_serves_ui",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.integration.test_q3_desktop_integration::test_launch_argv_matches_canonical_shim",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.integration.test_q3_desktop_integration::test_auth_bootstrap_script_is_non_persisting",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.integration.test_q3_desktop_integration::test_desktop_launcher_stop_is_idempotent",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.integration.test_q3_release_desktop_integration::test_release_workflow_parses_and_contracts",
+    "category": "missing path/fixture",
+    "message": "FileNotFoundError: [Errno 2] No such file or directory: '/Users/operator/OVERSEER_KIT/overseer-kit-v1-recovery/.github/workflows/desktop-release.yml'"
+  },
+  {
+    "test": "tests.integration.test_q3_release_desktop_integration::test_smoke_workflow_no_release_publish",
+    "category": "missing path/fixture",
+    "message": "FileNotFoundError: [Errno 2] No such file or directory: '/Users/operator/OVERSEER_KIT/overseer-kit-v1-recovery/.github/workflows/desktop-build-smoke.yml'"
+  },
+  {
+    "test": "tests.integration.test_q4b_ui_integration::test_redesigned_static_and_diagrams_served",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.performance.test_hosted_dashboard_performance::test_single_repo_doc_fetch_bound",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.performance.test_hosted_dashboard_performance::test_startup_listen_bound",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.performance.test_k7_footprint_check::test_check_footprint_bounded_with_bridge_files",
+    "category": "other product/test failure",
+    "message": "assert 2 == 6"
+  },
+  {
+    "test": "tests.performance.test_lac_performance::test_health_additive_no_full_repo_walk",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.performance.test_q1_app_performance::test_startup_listen_within_bound",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.performance.test_q1_app_performance::test_status_within_bound",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.performance.test_q1_app_performance::test_doc_read_within_bound",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.performance.test_q2_ok_cli_performance::test_ok_shim_status_json_within_existing_budget",
+    "category": "launcher missing yaml",
+    "message": "assert 1 == 0\n +  where 1 = ShimResult(exit_code=1, stdout='', stderr='Traceback (most recent call last):\\n  File \"<frozen runpy>\", line 198, in _...1-recovery/adapters/config.py\", line 9, in <module>\\n    import yaml\\nModuleNotFoundError: No module named \\'yaml\\'\\n').exit_code"
+  },
+  {
+    "test": "tests.performance.test_q3_desktop_performance::test_desktop_launcher_startup_within_budget",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.performance.test_q3_release_desktop_performance::test_secret_scan_bounded_to_release_workflow_paths",
+    "category": "other product/test failure",
+    "message": "AssertionError: assert False\n +  where False = is_file()\n +    where is_file = PosixPath('/Users/operator/OVERSEER_KIT/overseer-kit-v1-recovery/.github/workflows/desktop-release.yml').is_file"
+  },
+  {
+    "test": "tests.performance.test_q4b_ui_performance::test_index_and_diagrams_within_bound",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.security.test_hosted_dashboard_security::test_mutating_methods_on_api",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.security.test_hosted_dashboard_security::test_path_traversal_in_params_refused",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.security.test_hosted_dashboard_security::test_missing_auth_401_except_health",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.security.test_hosted_dashboard_security::test_deploy_route_not_registered",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.security.test_lac_security::test_repo_root_only_on_authenticated_health",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.security.test_q1_app_security::test_missing_bearer_returns_401",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.security.test_q1_app_security::test_bad_csrf_on_post_returns_403",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.security.test_q1_app_security::test_disallowed_origin_returns_403",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.security.test_q1_app_security::test_forbidden_routes_not_present[/api/init]",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.security.test_q1_app_security::test_forbidden_routes_not_present[/api/sync]",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.security.test_q1_app_security::test_forbidden_routes_not_present[/api/verify-step]",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.security.test_q1_app_security::test_forbidden_routes_not_present[/api/route]",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.security.test_q1_app_security::test_forbidden_routes_not_present[/api/merge]",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.security.test_q1_app_security::test_doc_path_traversal_refused",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.security.test_q2_ok_cli_security::test_overseer_json_stdout_is_single_object_deprecation_on_stderr",
+    "category": "other product/test failure",
+    "message": "assert \"warning: 'ov...amed 'yaml'\\n\" == \"warning: 'ov... commands).\\n\"\n  \n  Skipping 50 identical leading characters in diff, use -v to show\n    commands).\n  + Traceback (most recent call last):\n  +   File \"<frozen runpy>\", line 198, in _run_module_as_main\n  +   File \"<frozen runpy>\", line 88, in _run_code\n  +   File \"/Users/operator/OVERSEER_KIT/overseer-kit-v1-recovery/cli/main.py\", li"
+  },
+  {
+    "test": "tests.security.test_q2_ok_cli_security::test_shims_forward_args_without_shell_expansion",
+    "category": "launcher missing yaml",
+    "message": "assert 1 == 0\n +  where 1 = ShimResult(exit_code=1, stdout='', stderr='Traceback (most recent call last):\\n  File \"<frozen runpy>\", line 198, in _...1-recovery/adapters/config.py\", line 9, in <module>\\n    import yaml\\nModuleNotFoundError: No module named \\'yaml\\'\\n').exit_code"
+  },
+  {
+    "test": "tests.security.test_q3_desktop_security::test_desktop_launcher_does_not_write_secrets_to_repo",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.security.test_q3_release_desktop_security::test_no_secret_literals_in_workflows",
+    "category": "missing path/fixture",
+    "message": "FileNotFoundError: [Errno 2] No such file or directory: '/Users/operator/OVERSEER_KIT/overseer-kit-v1-recovery/.github/workflows/desktop-release.yml'"
+  },
+  {
+    "test": "tests.security.test_q3_release_desktop_security::test_release_workflow_does_not_echo_secrets",
+    "category": "missing path/fixture",
+    "message": "FileNotFoundError: [Errno 2] No such file or directory: '/Users/operator/OVERSEER_KIT/overseer-kit-v1-recovery/.github/workflows/desktop-release.yml'"
+  },
+  {
+    "test": "tests.security.test_q3_release_desktop_security::test_pull_request_cannot_publish_releases",
+    "category": "missing path/fixture",
+    "message": "FileNotFoundError: [Errno 2] No such file or directory: '/Users/operator/OVERSEER_KIT/overseer-kit-v1-recovery/.github/workflows/desktop-release.yml'"
+  },
+  {
+    "test": "tests.security.test_q3_release_desktop_security::test_permissions_least_privilege",
+    "category": "missing path/fixture",
+    "message": "FileNotFoundError: [Errno 2] No such file or directory: '/Users/operator/OVERSEER_KIT/overseer-kit-v1-recovery/.github/workflows/desktop-release.yml'"
+  },
+  {
+    "test": "tests.security.test_q4b_ui_security::test_no_new_endpoints_or_auth_disable",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.security.test_q4b_ui_security::test_diagram_path_escape_refused",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.stress.test_hosted_dashboard_stress::test_bounded_concurrent_gets",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.stress.test_hosted_dashboard_stress::test_large_doc_bounded_and_org_cap",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.stress.test_lac_stress::test_concurrent_landing_svgs_and_health_do_not_leak_credentials",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.stress.test_q1_app_stress::test_concurrent_status_reads",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.stress.test_q1_app_stress::test_large_doc_read_bounded",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.stress.test_q2_ok_cli_stress::test_overseer_shim_deprecation_is_one_line_per_process",
+    "category": "launcher missing yaml",
+    "message": "assert 1 == 0\n +  where 1 = ShimResult(exit_code=1, stdout='', stderr='warning: \\'overseer\\' is deprecated; use \\'ok\\' (same commands).\\nTraceback...1-recovery/adapters/config.py\", line 9, in <module>\\n    import yaml\\nModuleNotFoundError: No module named \\'yaml\\'\\n').exit_code"
+  },
+  {
+    "test": "tests.stress.test_q3_desktop_stress::test_repeated_launch_stop_cycles_leave_no_tmp_artifacts",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.stress.test_q4b_ui_stress::test_concurrent_diagrams_and_status",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.unit.test_q1_app_unit::test_occupied_default_port_reports_busy",
+    "category": "sandbox socket denial",
+    "message": "PermissionError: [Errno 1] Operation not permitted"
+  },
+  {
+    "test": "tests.unit.test_q3_release_desktop_unit::test_secret_scanner_flags_pem_and_passes_clean_workflow",
+    "category": "missing path/fixture",
+    "message": "FileNotFoundError: [Errno 2] No such file or directory: '/Users/operator/OVERSEER_KIT/overseer-kit-v1-recovery/.github/workflows/desktop-release.yml'"
+  },
+  {
+    "test": "tests.unit.test_sync::test_sync_refuse_consumer_modified",
+    "category": "missing path/fixture",
+    "message": "FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/1h/h0k1lcss0fdc_2rvzffnlq040000gp/T/pytest-of-aaronrenecarvajal/pytest-13/test_sync_refuse_consumer_modi0/docs/OVERSEER-HANDOVER.md'"
+  },
+  {
+    "test": "tests.unit.test_sync::test_sync_force_applies",
+    "category": "other product/test failure",
+    "message": "AssertionError: assert 'consumer edit' not in 'consumer edit\\n'\n  \n  'consumer edit' is contained here:\n  Strings contain only whitespace, escaping them using repr()\n    'consumer edit\\n'"
+  }
+]
