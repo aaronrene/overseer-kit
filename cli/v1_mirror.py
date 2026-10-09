@@ -14,8 +14,10 @@ import json
 import os
 from pathlib import Path
 import re
+import shlex
 import stat
 import subprocess
+import sys
 import tempfile
 import urllib.request
 
@@ -34,18 +36,19 @@ def packed(value):
 
 def env():
     result = {k: v for k, v in os.environ.items()
-              if not k.startswith(('GIT_', 'MUSE_', 'PYTHON')) and k != 'VIRTUAL_ENV'}
+              if not k.startswith(('GIT_', 'MUSE_', 'PYTHON'))
+              and k not in {'VIRTUAL_ENV', 'SSH_ASKPASS', 'SSH_ASKPASS_REQUIRE', 'GH_DEBUG'}}
     result.update(PATH='/usr/bin:/bin', GIT_CONFIG_NOSYSTEM='1', GIT_CONFIG_GLOBAL='/dev/null',
-                  GIT_TERMINAL_PROMPT='0', GIT_OPTIONAL_LOCKS='0', LC_ALL='C',
+                  GIT_TERMINAL_PROMPT='0', GIT_ASKPASS='/usr/bin/false', GIT_OPTIONAL_LOCKS='0', LC_ALL='C',
                   GH_HOST='github.com', GH_PROMPT_DISABLED='1',
                   GIT_AUTHOR_NAME='Overseer mirror', GIT_AUTHOR_EMAIL='mirror@example.invalid',
                   GIT_COMMITTER_NAME='Overseer mirror', GIT_COMMITTER_EMAIL='mirror@example.invalid')
     return result
 
 
-def git(target, *args, data=None, optional=False):
+def git(target, *args, data=None, optional=False, options=()):
     proc = subprocess.run(['/usr/bin/git', '--no-replace-objects', '-c', 'core.hooksPath=/dev/null',
-                           '-c', 'core.fsmonitor=false', '-c', 'gc.auto=0', '-C', str(target), *args],
+                           '-c', 'core.fsmonitor=false', '-c', 'gc.auto=0', *options, '-C', str(target), *args],
                           input=data, env=env(), capture_output=True, timeout=30)
     if proc.returncode and not optional:
         raise Refusal('mirror_git_failed: ' + args[0])
@@ -67,9 +70,11 @@ def physical(value):
 
 def validate_plan(plan, root, config):
     from cli.v1 import keys, KIT
-    keys(plan, ('schema', 'source', 'destination', 'target', 'expected_target', 'executables'))
+    fields = ('schema', 'source', 'destination', 'target', 'expected_target', 'executables')
+    keys(plan, (*fields, 'reconciliation') if 'reconciliation' in plan else fields)
     keys(plan['source'], ('repo_id', 'branch', 'revision', 'hub_url'))
-    keys(plan['destination'], ('url', 'repository', 'branch', 'base', 'expected_head'))
+    dest_fields = ('url', 'repository', 'branch', 'base', 'expected_head')
+    keys(plan['destination'], (*dest_fields, 'expected_base') if 'expected_base' in plan['destination'] else dest_fields)
     source, dest = plan['source'], plan['destination']
     if plan['schema'] != 1 or config['vcs'] != 'muse':
         raise Refusal('mirror_requires_explicit_muse_authority')
@@ -80,7 +85,7 @@ def validate_plan(plan, root, config):
     # Public staging is the tested authority. Do not bypass unresolved production trust.
     if not re.fullmatch(r'https://staging\.musehub\.ai/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+', source['hub_url']):
         raise Refusal('mirror_authority_url_unsupported')
-    if not re.fullmatch(r'[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+', dest['repository']):
+    if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]*/[A-Za-z0-9][A-Za-z0-9_.-]*', dest['repository']):
         raise Refusal('mirror_github_repository_invalid')
     if dest['url'] != 'https://github.com/' + dest['repository'] + '.git':
         raise Refusal('mirror_destination_repository_mismatch')
@@ -92,7 +97,12 @@ def validate_plan(plan, root, config):
     for expected in (plan['expected_target'], dest['expected_head']):
         if expected != 'absent' and not HEX.fullmatch(expected):
             raise Refusal('mirror_expected_head_invalid')
-    if plan['expected_target'] == 'absent' and dest['expected_head'] != 'absent':
+    if 'expected_base' in dest and not HEX.fullmatch(dest['expected_base']):
+        raise Refusal('mirror_expected_base_invalid')
+    if 'reconciliation' in plan:
+        from cli.v1_mirror_history import validate
+        validate(plan)
+    elif plan['expected_target'] == 'absent' and dest['expected_head'] != 'absent':
         raise Refusal('mirror_legacy_destination_requires_reconciliation')
     ex = plan['executables']
     if not isinstance(ex, list) or any(not isinstance(p, str) for p in ex) or ex != sorted(set(ex)):
@@ -107,10 +117,13 @@ def validate_plan(plan, root, config):
 
 
 def binding(plan, config):
-    return {'source_root': config['repo']['root'], 'checkout_id': config['repo']['id'],
+    pair = {'source_root': config['repo']['root'], 'checkout_id': config['repo']['id'],
             'source_id': plan['source']['repo_id'], 'source_branch': plan['source']['branch'],
             'hub_url': plan['source']['hub_url'], 'target': plan['target'],
-            'destination': {k: v for k, v in plan['destination'].items() if k != 'expected_head'}}
+            'destination': {k: v for k, v in plan['destination'].items() if k not in {'expected_head', 'expected_base'}}}
+    if 'reconciliation' in plan:
+        pair['reconciliation'] = plan['reconciliation']
+    return pair
 
 
 @contextmanager
@@ -173,7 +186,7 @@ def inspect_target(target, pair):
     for path in target.rglob('*'):
         mode = path.lstat()
         if stat.S_ISLNK(mode.st_mode) or (not stat.S_ISDIR(mode.st_mode) and
-                (not stat.S_ISREG(mode.st_mode) or mode.st_nlink != 1)):
+                (not stat.S_ISREG(mode.st_mode) or mode.st_nlink != 1 or mode.st_mode & 0o7111)):
             raise Refusal('mirror_target_unsafe_path')
         rel = path.relative_to(target).as_posix()
         if path.is_dir() and rel not in {'objects', 'refs', 'refs/heads'}:
@@ -193,7 +206,7 @@ def inspect_target(target, pair):
     return head(target)
 
 
-def create_target(target, pair):
+def create_target(target, pair, plan=None, files=None):
     # Initialize a sibling first: a killed init never leaves an ambiguous target.
     with tempfile.TemporaryDirectory(prefix='.overseer-mirror-', dir=target.parent) as name:
         stage = Path(name)
@@ -204,6 +217,10 @@ def create_target(target, pair):
         (stage / 'objects/pack').rmdir()
         (stage / 'refs/tags').rmdir()
         (stage / MARKER).write_bytes(packed(pair))
+        if plan and 'reconciliation' in plan:
+            from cli.v1_mirror_history import import_history
+            import_history(stage, plan, files)
+        inspect_target(stage, pair)
         if target.exists():
             raise Refusal('mirror_target_appeared')
         os.rename(stage, target)
@@ -246,6 +263,15 @@ def verify_tree(target, commit, files):
         raise Refusal('mirror_tree_paths_mismatch')
 
 
+def expected_parents(plan):
+    if plan['expected_target'] != 'absent':
+        return [plan['expected_target']]
+    if 'reconciliation' in plan:
+        r = plan['reconciliation']
+        return [r['mirror_head'], r['base_head']]
+    return []
+
+
 def correspondence(target, commit, plan, plan_hash, files):
     if commit == 'absent':
         return False
@@ -254,7 +280,7 @@ def correspondence(target, commit, plan, plan_hash, files):
     if not message.endswith(trailers + '\n'):
         return False
     parents = git(target, 'show', '-s', '--format=%P', commit).decode().strip()
-    if parents != ('' if plan['expected_target'] == 'absent' else plan['expected_target']):
+    if parents != ' '.join(expected_parents(plan)):
         raise Refusal('mirror_commit_parent_mismatch')
     verify_tree(target, commit, files)
     return True
@@ -263,7 +289,9 @@ def correspondence(target, commit, plan, plan_hash, files):
 def save_record(root, old, pair, plan, plan_hash, commit):
     record = {'binding': pair, 'last_export': {'muse_branch': plan['source']['branch'],
               'muse_commit_id': plan['source']['revision'], 'git_remote': plan['destination']['url'],
-              'git_ref': plan['destination']['branch'], 'git_sha': commit, 'plan_sha256': plan_hash}}
+              'git_ref': plan['destination']['branch'], 'git_sha': commit, 'plan_sha256': plan_hash,
+              'parents': expected_parents(plan),
+              'tree': git(Path(plan['target']), 'rev-parse', commit + '^{tree}').decode().strip()}}
     data = packed(record)
     if data != old:
         atomic(root, RECORD, data, expected='absent' if old is None else digest(old))
@@ -271,10 +299,15 @@ def save_record(root, old, pair, plan, plan_hash, commit):
 
 def execute(root, config, original, plan, plan_hash, operation, transport=None):
     target = validate_plan(plan, root, config)
+    initial_reconciliation = 'reconciliation' in plan and plan['expected_target'] == 'absent'
+    if operation == 'reconcile' and not initial_reconciliation:
+        raise Refusal('mirror_reconcile_requires_initial_history_plan')
     result = {'ok': False, 'repository': config['repo'], 'source': plan['source'],
               'target': str(target), 'destination': plan['destination'], 'plan_sha256': plan_hash,
               'export': 'not_prepared', 'push': 'not_attempted', 'pr': 'not_attempted',
               'authority': 'approved_input_not_checked_offline'}
+    if 'reconciliation' in plan:
+        result['reconciliation'] = plan['reconciliation']
     with locked(root, target):
         try:
             pair = binding(plan, config)
@@ -289,14 +322,14 @@ def execute(root, config, original, plan, plan_hash, operation, transport=None):
             already = observed != 'absent' and correspondence(target, observed, plan, plan_hash, files)
             if not already and observed != plan['expected_target']:
                 raise Refusal('mirror_target_head_drift')
-            if not already and operation != 'prepare':
+            if not already and operation != ('reconcile' if initial_reconciliation else 'prepare'):
                 raise Refusal('mirror_preparation_required')
             if not already:
                 if observed == 'absent' and target.exists():
                     # Only an owned, unborn target left by an interrupted prepare.
                     inspect_target(target, pair)
                 elif observed == 'absent':
-                    create_target(target, pair)
+                    create_target(target, pair, plan, files)
                 else:
                     if not old or json.loads(old)['last_export']['git_sha'] != observed:
                         raise Refusal('mirror_target_mapping_mismatch')
@@ -305,10 +338,18 @@ def execute(root, config, original, plan, plan_hash, operation, transport=None):
                     message = git(target, 'show', '-s', '--format=%B', observed).decode()
                     if f'Overseer-Mirror-Plan: {previous_plan}\n' not in message:
                         raise Refusal('mirror_target_correspondence_missing')
+                    previous = json.loads(old)['last_export']
+                    actual = git(target, 'show', '-s', '--format=%T%n%P', observed).decode().splitlines()
+                    trailers = f'Muse-Source: {previous["muse_commit_id"]}\nOverseer-Mirror-Plan: {previous_plan}\n\n'
+                    if actual != [previous['tree'], ' '.join(previous['parents'])] or not message.endswith(trailers):
+                        raise Refusal('mirror_target_correspondence_mismatch')
+                if initial_reconciliation:
+                    from cli.v1_mirror_history import verify_history
+                    verify_history(target, plan, files)
                 new_tree = tree(target, files)
                 same_tree = observed != 'absent' and git(target, 'rev-parse', observed + '^{tree}').decode().strip() == new_tree
                 message = f'Mirror approved Muse snapshot\n\nMuse-Source: {plan["source"]["revision"]}\nOverseer-Mirror-Plan: {plan_hash}\n'
-                parents = [] if observed == 'absent' else ['-p', observed]
+                parents = [arg for parent in expected_parents(plan) for arg in ('-p', parent)]
                 commit = git(target, 'commit-tree', new_tree, *parents, data=message.encode()).decode().strip()
                 verify_tree(target, commit, files)
                 # Recheck immutable source, working projection, config and target before the CAS.
@@ -316,12 +357,17 @@ def execute(root, config, original, plan, plan_hash, operation, transport=None):
                     raise Refusal('mirror_source_or_config_changed')
                 if inspect_target(target, pair) != observed:
                     raise Refusal('mirror_target_changed_before_commit')
+                if initial_reconciliation:
+                    verify_history(target, plan, files)
                 git(target, 'update-ref', 'refs/heads/' + plan['destination']['branch'], commit,
                     '0' * 40 if observed == 'absent' else observed)
                 result['export'] = 'mapped_no_content_change' if same_tree else 'prepared'
                 observed = commit
             else:
                 result['export'] = 'no_change_verified'
+            if initial_reconciliation:
+                from cli.v1_mirror_history import verify_history
+                verify_history(target, plan, files)
             result['git_head'] = observed
             # Recover an interrupted record write using exact tree, parent and trailers.
             if not correspondence(target, observed, plan, plan_hash, files):
@@ -331,7 +377,7 @@ def execute(root, config, original, plan, plan_hash, operation, transport=None):
             if operation == 'deliver':
                 if transport is None:
                     raise Refusal('mirror_delivery_transport_missing')
-                deliver(result, transport, lambda: recheck(root, config, original, plan, pair, projection, observed))
+                deliver(result, transport, lambda: recheck(root, config, original, plan, plan_hash, pair, projection, observed))
             else:
                 result['ok'] = True
         except (Refusal, OSError, ValueError, KeyError, TypeError, subprocess.SubprocessError) as exc:
@@ -339,12 +385,16 @@ def execute(root, config, original, plan, plan_hash, operation, transport=None):
     return result
 
 
-def recheck(root, config, original, plan, pair, projection, commit):
+def recheck(root, config, original, plan, plan_hash, pair, projection, commit):
     if read(root, '.overseer/config.yaml') != original or check_source(root, config, plan) != projection:
         raise Refusal('mirror_source_or_config_changed')
     if inspect_target(Path(plan['target']), pair) != commit:
         raise Refusal('mirror_target_drift_before_delivery')
-    verify_tree(Path(plan['target']), commit, projection['files'])
+    if not correspondence(Path(plan['target']), commit, plan, plan_hash, projection['files']):
+        raise Refusal('mirror_correspondence_failed')
+    if 'reconciliation' in plan and plan['expected_target'] == 'absent':
+        from cli.v1_mirror_history import verify_history
+        verify_history(Path(plan['target']), plan, projection['files'])
 
 
 def deliver(result, transport, revalidate):
@@ -359,6 +409,12 @@ def deliver(result, transport, revalidate):
         result['authority'] = 'observed_matching'
         return value
     def observe_remote():
+        expected_base = dest.get('expected_base', result.get('reconciliation', {}).get('base_head'))
+        if expected_base is not None:
+            base = transport.remote_head(dict(dest, branch=dest['base']))
+            result['remote_base'] = base
+            if base != expected_base:
+                raise Refusal('mirror_remote_base_drift')
         value = transport.remote_head(dest)
         result['remote_head'] = value
         return value
@@ -423,7 +479,8 @@ class NetworkDelivery:
         return value.get('repo_id'), heads.get(source['branch'])
 
     def remote_head(self, dest):
-        raw = git(Path('/'), 'ls-remote', '--refs', dest['url'], 'refs/heads/' + dest['branch'])
+        raw = git(Path('/'), 'ls-remote', '--refs', dest['url'], 'refs/heads/' + dest['branch'],
+                  options=self.git_options(dest))
         rows = raw.decode().splitlines()
         if not rows:
             return 'absent'
@@ -433,7 +490,23 @@ class NetworkDelivery:
         return rows[0].split('\t')[0]
 
     def push(self, target, dest, commit):
-        git(target, 'push', '--porcelain', dest['url'], commit + ':refs/heads/' + dest['branch'])
+        git(target, 'push', '--porcelain', dest['url'], commit + ':refs/heads/' + dest['branch'],
+            options=self.git_options(dest))
+
+    def git_options(self, dest):
+        repository = dest['url'].removeprefix('https://github.com/').removesuffix('.git')
+        if (not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]*/[A-Za-z0-9][A-Za-z0-9_.-]*', repository)
+                or dest['url'] != 'https://github.com/' + repository + '.git'
+                or dest.get('repository', repository) != repository):
+            raise Refusal('mirror_credential_destination_invalid')
+        helper = Path(__file__).with_name('v1_git_credential.py')
+        command = '!' + shlex.join([sys.executable, '-I', '-B', str(helper), str(self.gh), repository])
+        # Reset helpers, constrain protocol/path, and disable redirects. Tokens never
+        # enter argv, URLs, persistent config, logs or the correspondence record.
+        values = ('credential.helper=', 'credential.useHttpPath=true',
+                  'credential.' + dest['url'] + '.helper=' + command,
+                  'http.followRedirects=false', 'protocol.allow=never', 'protocol.https.allow=always')
+        return tuple(arg for value in values for arg in ('-c', value))
 
     def gh_run(self, target, *args):
         proc = subprocess.run([str(self.gh), *args], cwd=target, env=env(), capture_output=True, timeout=30)

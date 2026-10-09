@@ -28,7 +28,8 @@ TOKEN = re.compile(r"[A-Za-z0-9][A-Za-z0-9_.-]{0,127}\Z")
 RUNTIME_FILES = ("cli/__init__.py", "cli/bootstrap.py", "cli/main.py", "cli/ok",
                  "cli/overseer", "cli/v1.py", "cli/v1_io.py", "cli/v1_revision.py",
                  "cli/v1_muse_reader.py", "cli/v1_policy.py", "cli/v1_mirror.py",
-                 "cli/v1_mirror_reader.py", "scripts/muse-bridge-deploy.sh",
+                 "cli/v1_mirror_reader.py", "cli/v1_mirror_history.py", "cli/v1_git_credential.py",
+                 "scripts/muse-bridge-deploy.sh",
                  "templates/scripts/muse-bridge-deploy.sh.template", "cli/digest.py", "VERSION")
 
 
@@ -464,7 +465,7 @@ def parser():
         cmd = sub.add_parser(name, allow_abbrev=False)
         globals_to(cmd)
         if name == "mirror":
-            cmd.add_argument("operation", choices=("prepare", "verify", "deliver"))
+            cmd.add_argument("operation", choices=("prepare", "reconcile", "verify", "deliver"))
             cmd.add_argument("--plan-file", required=True, help="Confined reviewed JSON plan")
             cmd.add_argument("--expect-plan", required=True, help="SHA-256 of the exact approved plan bytes")
             cmd.add_argument("--gh", help="Absolute gh executable, required only for explicit delivery")
