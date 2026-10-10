@@ -1,346 +1,71 @@
-# Muse-first publication and legacy mirror decision — 2026-10-09
+# Muse-first publication — completed rc.1 source delivery
 
-**Status: the credential compatibility defect is repaired and validated locally;
-publication of the resulting candidate requires a new owner decision.** No remote
-operation was performed in this repair. The previous five-stage authorization
-remains tied to `eef4901d76658c74bf1c56799a514c1cd756d28f`; it does not transfer
-to this implementation or its resulting Muse snapshot/projection.
+The repaired source was accepted in staging Muse, mirrored to GitHub, and accepted
+through [PR #86](https://github.com/aaronrene/overseer-kit/pull/86).
+The owner accepted the existing squash merge. The separately authorized
+[rc.1 prerelease](https://github.com/aaronrene/overseer-kit/releases/tag/v1.0.0-rc.1) is published. Neither decision is pending.
 
-## Local credential compatibility repair
+## Exact accepted identities
 
-The helper now accepts repeatable `capability[]` and `wwwauth[]` metadata from
-Git's HTTP authentication challenge. It ignores that metadata without acknowledging
-capabilities, selecting another credential type or enabling state. Destination
-fields remain unique and exact: HTTPS, `github.com`, and the approved repository
-path. Unknown fields, duplicate scalar fields, malformed UTF-8, control characters
-and requests above 16,384 bytes are refused before invoking the token provider.
-Credentials remain confined to the helper/Git pipes; store/erase stay no-ops.
-No persistent credential configuration, redirect policy or mirror check changed.
-
-Disposable fake-token tests reproduced six failures with the old helper and then
-passed all **39 credential tests** with the repair. The 25 new cases cover repeated
-metadata, real Git credential-fill negotiation, wrong destinations, malformed
-requests and the exact byte boundary. Rejected requests cannot invoke the fake
-token provider. This repairs the observed local protocol mismatch; it does not
-prove live GitHub authentication, push rights or server acceptance.
-
-| Required local matrix | Result | Pytest duration |
-| --- | --- | --- |
-| Git-only, Python 3.11.15 | **156 passed** | 53.10s |
-| Git-only, Python 3.14.4 | **156 passed** | 59.10s |
-| Combined Muse, Python 3.14.4 | **289 passed** | 368.81s |
-
-All final rows have zero failures/errors/skips. The supported driver checked the
-unchanged recovery Muse package-source digest; no dependency or artifact was
-downloaded. The repaired code and tests were reviewed locally; unchanged closed
-reviews were not repeated. The full matrix ran before the local feature commit.
-
-New exact Git/Muse/snapshot and disposable projection identities are recorded
-together after the commit in
-[candidate.json](../../../RECOVERY-RUNS/20261009-credential-compatibility/candidate.json).
-The source/projection records contain the complete 861-file path/hash/mode manifest,
-ten executable paths, reviewed incremental delta and approved ordered parents
-`3e21496f7c4eab64b6d9ab3f868c5cdcaf8cfcde`, then
-`d47291d5d9030de5ebef713da95efa978c4d8c6e`. The isolated feature is reconciled
-locally; its main and all original refs/edits remain protected. Projection occurs
-only in a disposable fixture. No real delivery commit is computed or approved.
-
-The prior failed-publication evidence and pending documentation were preserved in
-the repair evidence before editing. Both summaries are refreshed together, and
-the [validation closeout](../validation/V1-RECOVERY.md#local-credential-compatibility-repair--2026-10-09)
-records actual results and limitations. Exact recovery wheel/source pins, permanent
-Git-only operation and explicit Muse adoption remain intact. No remote reads/writes,
-hosted jobs, MuseHub publication, shared-main change, PR, tag/release, consumer access,
-production trust reset, automatic hook or OCI operation is included. Live publication
-remains unvalidated; no complete-product readiness claim is made. Canonical NEXT
-alone carries the remaining owner authorization decision for the resulting candidate.
-
-## Prior owner decision and failed publication attempt
-
-This section retains the earlier attempt against `eef4901d76658c74bf1c56799a514c1cd756d28f`.
-It stopped at GitHub credential negotiation: no remote ref changed, no new hosted
-run was created, and no Muse write, real mirror preparation or PR was attempted.
-The local defect described here is repaired above; remote acceptance remains untested.
-
-The owner delegated discretion to authorize all five stages if safe and necessary,
-asking for an explanation before proceeding. The recommendation was explained
-before execution: authorize all five for this exact candidate, with successful
-hosted CI and native feature readback required before staging-main acceptance,
-then verified source acceptance before mirror delivery and an unmerged PR. Stop
-on drift, authentication failure or unexpected server behavior.
-
-The authorized identities are Git
-`eef4901d76658c74bf1c56799a514c1cd756d28f`, Muse
-`sha256:b310c0197a35b47c201cb055c211f0132efb902f86ecc76fd343302e8f2ed4cc`
-and snapshot
-`sha256:f0d48dd3f6b8d7cbc661e7f3ce07c7dfe3fb38efbe30332b43768ebd412658f1`.
-The frozen candidate has 861 files, ten executable paths, and a GitHub delta of
-52 additions, 32 modifications and 32 removals. Its verified two-parent projection
-`29aa0a0fa24b591d680f8f80ba997d2cb141692d` remains a disposable fixture.
-
-| Authorized stage | Exact destination and gate | Actual result |
-| --- | --- | --- |
-| Git feature and hosted CI | Non-force exact-candidate push to `aaronrene/overseer-kit:feat/overseer-v1-recovery`; inspect push-triggered `supported-v1.yml`. | Push failed during credential negotiation. Ref remains `2d689a8398002ce667743ac7fefd12291b8973bf`; no matching hosted run. |
-| Native source feature | Non-force push to `https://staging.musehub.ai/aaronrene/overseer-kit`, `feat/overseer-v1-restoration-r3`, including necessary staging-issued object uploads; only after green Git CI. | Not attempted. |
-| Staging source acceptance | Fast-forward staging `main` from `sha256:208d9dc47f0c6d8553ee80aafc8f0993a6ebf0a88410746f47f58b4e7c6fd6a6` to the same Muse candidate, in a dedicated checkout, after feature readback. | Not attempted. |
-| Mirror delivery | Verify accepted source; reconcile both approved Git parents in the dedicated bare target; record its actual commit before non-force push to `aaronrene/overseer-kit:muse-mirror`. | Not attempted; real delivery commit not computed. |
-| Distribution PR | Create/reuse `aaronrene/overseer-kit` PR `muse-mirror` → `main`, inspect resulting CI, leave unmerged. | Not attempted. |
-
-Scoped preflight/readback was included. GitHub refs, the active workflow and exact
-existing recovery-wheel URL matched. Staging public refs, logical identity and
-the existing native TLS pin also matched. Readback after the failed push confirmed
-unchanged Git feature, main, mirror and artifact refs. No GitHub-main merge/push,
-force operation, tag/release, consumer access, production trust reset, automatic
-hook or OCI operation was authorized or performed.
-
-The frozen helper rejects the credential request that Apple Git 2.50.1 sends
-after GitHub's authentication challenge: repeated `capability[]` fields and a
-`wwwauth[]` field are outside its accepted protocol. A no-write diagnostic recorded
-only field names and exit status: the helper returned 1, and Git reported that
-no username was available with terminal prompts disabled. A disposable fake-token
-fixture passes the simple real-Git credential fill but reproduces refusal for
-each extended field group and their combination. Existing fixtures did not cover
-this challenge. These results establish a local protocol compatibility defect;
-they do not establish inadequate account permissions or a need to rotate tokens.
-No credential values were recorded and no persistent credential settings changed.
-
-The owner statement, exact scope, preflight/readbacks and sanitized diagnostics are
-in [the delivery evidence](../../../RECOVERY-RUNS/20261009-muse-publication-delivery/result.json).
-Original refs/edits, isolated Muse refs and all 861 source paths/bytes/modes,
-identity/trust/configuration and the held release are preserved. The evidence
-directory now exists; its proposed `source` and `mirror.git` paths remain absent.
-
-The recommendation is a bounded local helper compatibility fix with regression
-coverage for real-Git challenge fields, retaining exact repository scoping,
-strict parsing, in-memory credentials and all mirror checks. A resulting new
-candidate requires new explicit remote authorization; this approval must not be
-silently transferred to it. Publication remains stopped at the failed gate.
-These documentation updates are pending local follow-up outside the frozen
-candidate; neither Git HEAD nor the isolated Muse feature was advanced.
-Canonical NEXT alone carries the remaining local action.
-
-## Historical local implementation closeout
-
-The remaining sections retain the preceding closeout and planning evidence.
-The owner decision and failed publication outcome above supersede their earlier
-authorization status and statements about absent delivery evidence paths.
-
-At the preceding closeout, remote publication was not authorized. The owner
-authorized implementation, disposable fixtures, local
-feature commit and reconciliation into the existing isolated Muse feature. The
-new `mirror reconcile` operation preserves both approved GitHub histories as ordered
-parents of a source-exact snapshot. Scoped GitHub credentials are exercised with
-fixture tokens only. Actual remote acceptance remains unvalidated.
-
-## Frozen implementation candidate
-
-The exact post-commit Git SHA, Muse revision/snapshot, local projection SHA and
-parents, executable list, full path/hash/mode manifest and updated delta are
-recorded together in
-[`candidate.json`](../../../RECOVERY-RUNS/20261009-mirror-reconciliation/candidate.json),
-[`source-latest.json`](../../../RECOVERY-RUNS/20261009-mirror-reconciliation/source-latest.json)
-and [`projection-latest.json`](../../../RECOVERY-RUNS/20261009-mirror-reconciliation/projection-latest.json).
-These local closeout records are written after the commit and source reconciliation;
-they avoid embedding a candidate's own Git or Muse digest in its hashed files.
-The portable JSON below is retained as the **reviewed starting delta**. The new
-complete delta is in the frozen source record; it includes this implementation
-and all planning/closeout documents. No permission for the starting candidate
-extends to the new candidate or to later edits.
-
-## Reviewed starting candidate and destinations
-
-These are the planning baseline identities, retained for comparison, not the new
-implementation candidate or an approval:
-
-| Item | Exact identity |
+| Item | Identity |
 | --- | --- |
-| Recovery Git candidate | `2d689a8398002ce667743ac7fefd12291b8973bf` |
-| Git feature | `aaronrene/overseer-kit:feat/overseer-v1-recovery` |
-| Isolated Muse feature | `feat/overseer-v1-restoration-r3` |
-| Muse candidate | `sha256:987d0cde6e15bf17e0a9db96f94a6d03fdcefa6e52f7543c141b2998c38bddfa` |
-| Muse snapshot | `sha256:dbda007c1c2b058039369d9dc7a3a8c3dd851a585c05dd2790965c0a14d6bc0d` |
-| Muse logical repository | `sha256:f5863e477e2f2caf510df731720976d3d91fdd821fd5657ec8da6b57c89a3bea` |
-| Public staging source | `https://staging.musehub.ai/aaronrene/overseer-kit` |
-| Observed staging main | `sha256:208d9dc47f0c6d8553ee80aafc8f0993a6ebf0a88410746f47f58b4e7c6fd6a6` |
-| Git destination | `https://github.com/aaronrene/overseer-kit.git` |
-| Existing distribution branch | `muse-mirror` at `3e21496f7c4eab64b6d9ab3f868c5cdcaf8cfcde` |
-| GitHub PR base | `main` at `d47291d5d9030de5ebef713da95efa978c4d8c6e` |
-| Disposable projection, not a delivery candidate | `b462344c0bd99994a1d07759f5c5d6c7b64efa47` |
+| Frozen recovery Git | `32254cd939885d9d6f40634997ea5b9c37ea776c` |
+| Logical Muse repository | `sha256:f5863e477e2f2caf510df731720976d3d91fdd821fd5657ec8da6b57c89a3bea` |
+| Accepted staging Muse revision | `sha256:106ef9e12cca7f3be3ffb2a6bd3abfa76f032dce453c9e5010d732a8d86f2e14` |
+| Muse snapshot | `sha256:36037a7bad29f82f50c7ea6442672dc5df306278859119da5c1e393fead3c0aa` |
+| Actual Git mirror | `9c9db93b47ceabd9a021a1d0679cb696d65cc6c2` |
+| Mirror parent 1 | `3e21496f7c4eab64b6d9ab3f868c5cdcaf8cfcde` |
+| Mirror parent 2 / former GitHub main | `d47291d5d9030de5ebef713da95efa978c4d8c6e` |
+| Accepted GitHub main / rc.1 tag | `293e79eb96dc9b94b76fa28ffad5e9e0a6e85b30` |
+| Accepted Git tree | `735b2eb9248148e5c11d377fa79fb1f4dc11b75f` |
 
-The isolated source is
-`../RECOVERY-RUNS/20261008-muse-restoration-r3/isolated-muse-source`.
-Its starting candidate was five commits after the observed staging main; all **855** paths,
-bytes and ten executable modes match the Git candidate and retained projection.
-The proposed future publication checkout and new bare target are, respectively,
-`/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261009-muse-publication-delivery/source`
-and the sibling `mirror.git`. Their parent directory is currently absent. These
-are dedicated kit publication paths, never original or consumer working trees.
+## Completed sequence and evidence limits
 
-The original planning documents were outside that 855-file baseline. The new
-implementation commit includes them and the bounded migration. The frozen records
-above identify the resulting candidate; the old hosted pass remains bound solely
-to its original SHA.
+1. The repaired Git feature passed [hosted CI 37983390020](https://github.com/aaronrene/overseer-kit/actions/runs/37983390020).
+2. Native non-force publication to staging feature `feat/overseer-v1-restoration-r3`
+   uploaded seven commits and 108 objects. Fresh readback verified the exact
+   revision, snapshot and all 861 file bytes. Staging main then fast-forwarded
+   from `sha256:208d9dc47f0c6d8553ee80aafc8f0993a6ebf0a88410746f47f58b4e7c6fd6a6`
+   to that same revision; no additional objects were required.
+3. The real mirror preserved both ordered parents above, all 861 files and ten
+   executable modes. It was recorded before its non-force `muse-mirror` push.
+4. PR #86 passed [hosted CI 37985479580](https://github.com/aaronrene/overseer-kit/actions/runs/37985479580).
+   GitHub records the squash merge at `2026-10-09T21:54:16Z`. The owner subsequently
+   accepted it; this does not retroactively expand the earlier delivery permission.
+5. [Accepted-main CI 37996198972](https://github.com/aaronrene/overseer-kit/actions/runs/37996198972)
+   passed for the exact tag target. Its tree matches the mirror. The two-parent
+   mirror history remains preserved outside the squash commit's single-parent ancestry.
 
-## Retained read-only findings from publication planning
+Each run passed **156 / 156 / 289 tests**, with zero reported failures/errors/skips.
+Native push/readback details and owner statements are retained operator records,
+not separately hosted raw logs. The public [release manifest](https://github.com/aaronrene/overseer-kit/releases/download/v1.0.0-rc.1/release-manifest.json)
+binds the reported Muse identities to the released source; GitHub CI alone does
+not prove native Muse writes. See [evidence classification](../validation/V1-PUBLIC-EVIDENCE.md).
 
-Staging `/refs` returned HTTP 200 with the exact logical ID above, `domain: code`,
-default branch `main` and the recorded main revision. Its only other advertised
-branch, `feat/adversarial-freeze-honesty-gate`, has that same revision. The recovery
-feature is not published. The actual `NetworkDelivery.authority` reader accepted
-this response and returned the expected ID/main pair. This closes the earlier
-unknown about the **public read protocol**, not the write protocol.
+The initial mirror authority read stopped before push with `HTTPError`; an unchanged
+plan/candidate retry succeeded after a fresh matching read. Native rc5 clone omitted
+19 empty directories while all 861 file bytes matched. Only approved metadata was
+restored in isolated readbacks. General clone fidelity is not claimed; dirty-state
+verification remains required. Muse snapshots lack POSIX modes, so the ten-path
+executable policy remains explicit. No production trust reset occurred.
 
-TLS validation succeeded and the certificate matched the existing native Muse
-pin, `sha256:f32899524a3c1210b9e6ba60ce80cc3b203d3344ddac7c00d7c6abd9b52d271e`.
-Muse fingerprints use `blob_id(DER)`, not plain SHA-256 of DER. No pin, identity or
-configuration was changed. Production was not contacted and its earlier trust
-issue remains outside this staging plan.
+## Separate follow-up source
 
-The stored staging signing identity has handle `aaronrene`. Signed GETs for
-repository metadata, collaborators, settings and open proposals returned 200.
-The repository reports owner/ownerUserId `aaronrene`, public visibility,
-`domainId: code`, no collaborators and no open proposals. The generic metadata
-field `domain: generic` is inconsistent with `/refs` and `domainId`; delivery uses
-the checked `/refs` code-domain contract. Settings allow merge commits and squash,
-disable rebase, and set `deleteBranchOnMerge: true`. These reads establish the
-available identity and reported ownership, **not proven push or merge rights**.
-No write probe was attempted. `/openapi.json` returned an HTML application page,
-not an API schema; it provides no additional write-contract evidence.
+The proposed `docs/v1-publication-closeout` is a new documentation-only source
+change from the accepted Muse revision above, paired with GitHub base
+`293e79eb96dc9b94b76fa28ffad5e9e0a6e85b30`. It requires a fresh isolated source
+checkout, explicit reviewed file/mode inventory, a new Muse revision/snapshot,
+and an exact Git mirror/PR. No such refs or commits were created during local
+planning. If live bases drift, reconcile before publication; do not substitute
+moving main or mutate the preserved restoration feature/main.
 
-GitHub reports public visibility and current viewer permission ADMIN. Read-only
-remote refs and fetched objects establish the heads above. No open GitHub PR was
-returned. No current `release/overseer-v1.0.0` branch or `v1.0.0` tag was returned
-by the targeted ref check. The separately hosted artifact branch remains at
-`bff17390675358b764d43f31f71233ed11a673b0`.
+The kit remains Muse-first; Git-only consumers remain supported indefinitely.
+Preserve rc.1's tag/assets, recovery pins/artifact URL, original edits/refs and
+held release `06f988e5a078ede81c9dc664520833980a9a19a3`. Main acceptance and rc.1
+publication are closed. Later docs delivery, PR acceptance and any stable release
+are separate decisions. This record makes no stable or complete-product claim.
 
-## Reviewed starting reconciliation delta
-
-[The exact delta](V1-MUSE-PUBLICATION-DELTA.json) records every changed path,
-before/after SHA-256, modes, five staging-only removals and the executable list.
-The current GitHub main and legacy mirror have **identical 841-file trees**.
-Their histories differ: merge base `ebaf51831770c59d3705da85e9d72108908a8bf2`,
-one main-only commit and six mirror-only commits. There is no mirror-only file
-content to import into the candidate; both histories still must be preserved.
-
-The reviewed GitHub tree delta is **46 additions, 32 modifications, 32 removals**:
-
-| Group | Disposition |
-| --- | --- |
-| Bounded-v1 CLI, tests, CI and recovery contract | Add the recorded recovery implementation and validation files. |
-| Launchers, documentation, ignore rules, bridge wrappers and templates | Use the reviewed recovery versions; hooks remain opt-in. |
-| 24 checkout-local `.cursor/` files | Omit the installed rules/skills/hooks from distribution; retain source assets under `cursor/` and historical Git objects. |
-| Eight legacy `.overseer/` files | Omit live local/governance bindings; all eight old blobs are byte-identical to their recorded archives under `docs/archive/v1/`. |
-| Staging-only bridge sentinel and four generated Tauri schemas | Omit the five already dispositioned local/generated files, retaining immutable Muse history. |
-
-Thus the native staging comparison is **846 → 855 files**, with 46 additions,
-32 modifications and 37 removals. The GitHub comparison is **841 → 855 files**.
-Removals apply to the proposed published snapshot, not original working edits or
-historical objects. This comparison does not reopen unchanged closed reviews.
-
-## Implemented bounded local reconciliation
-
-`mirror reconcile` is explicit and offline. Ordinary `prepare` retains the
-`mirror_legacy_destination_requires_reconciliation` refusal and its original
-fresh-target behavior. Reconciliation requires an absent physical target, a
-SHA-256-bound complete Git v2 bundle with exactly the approved destination mirror
-and base refs, both exact commit IDs, and an exhaustive before/after hash/mode delta.
-The histories must be related and their approved trees identical. Different trees,
-prerequisites, extra refs or unrelated objects require another reviewed decision.
-
-The engine unpacks into a temporary bare repository, runs strict object checks,
-verifies reachability and the exact delta, and installs only its owned target.
-No configuration, hooks, alternates or working files are imported. The initial
-projection has **first parent** the approved legacy mirror and **second parent**
-the approved GitHub base. Its tree comes entirely from the checked Muse source.
-Both histories survive, main is an ancestor, and a later normal mirror push can
-fast-forward. No automatic merge of legacy content is performed.
-
-The complete reconciliation binding stays in the ownership marker and normal
-correspondence record. Exact trailers, ordered parents, tree, source identity,
-revision, executable policy and plan digest are checked on retries. Later source
-exports retain this binding and use the verified prior mirror as their sole parent.
-Later plans can explicitly pin a newly reviewed live base with
-`destination.expected_base` while preserving the original parent binding.
-Import/ref/record interruptions remain retryable without adopting foreign targets
-or forging ownership. The [runbook](../../MUSE-BRIDGE-WORKFLOW.md) gives the schema,
-limits and record refresh procedure for older ordinary projections.
-
-Delivery rechecks both live GitHub heads, source authority and local bytes/modes
-before writing and before PR work. A moved base or mirror stops delivery, including
-on retry. This cannot make the services atomic; partial outcomes stay visible.
-Git reads/pushes use a per-command credential helper restricted to the exact
-GitHub HTTPS path and named physical `gh`, with redirects disabled. Tokens remain
-in the helper/Git pipes, never URLs, argv, persistent config or reports; store and
-erase do nothing. Fake-credential protocol tests do not prove live push rights.
-
-Disposable fixtures cover the one-main/six-mirror divergent history shape, both
-ancestor relationships, the 110-path starting delta, modes/exclusions, wrong
-heads/bundles/dispositions, base drift, foreign/executable target metadata,
-interrupted preparation/delivery and no-change retry. The retained real histories
-and original candidate also receive a disposable exact projection. Required local
-Git-only and combined Muse results are recorded in the validation section below.
-Unchanged closed architecture/build reviews were not repeated.
-
-## Proposed remote operations for a later owner decision
-
-These are concrete proposed operations, **not authorization or commands to run
-in this local implementation action**. Use only the exact resulting identities
-in the frozen candidate records, after
-new explicit owner approval; substitute no moving branch or later edit.
-
-| Stage | Exact destination and proposed effect | Required evidence/limit |
-| --- | --- | --- |
-| Publish source feature | Non-force native Muse push to public staging `aaronrene/overseer-kit`, branch `feat/overseer-v1-restoration-r3`, at the approved Muse revision. | Recheck absent/approved prior branch head and staging pin; preserve the local isolated feature. |
-| Accept source main | After review, non-force fast-forward staging `main` from the approved `208d9d...` base to that same exact candidate, using the dedicated publication checkout. | Requires explicit approval to advance **shared staging main**. Candidate must descend from the checked base; no force, tag push, branch deletion, proposal merge or production fallback. |
-| Verify authority | Read staging `/refs` and fetch/read the accepted immutable snapshot into the dedicated checkout; bind it explicitly for Muse authority. | Exact logical ID, accepted main revision, all paths/bytes/modes and exclusions must match; no original ref may move. |
-| Reconcile and deliver | Use `mirror reconcile` to prepare the reviewed two-parent mirror commit in the new bare target; normal non-force push only to GitHub `aaronrene/overseer-kit:muse-mirror`. | Recheck both approved GitHub heads, plan digest, accepted Muse main and exact tree. Record the computed Git commit before delivery, then verify the remote head. |
-| Open distribution PR | Create or reuse the exact open GitHub PR `muse-mirror` → `main`, in `aaronrene/overseer-kit`. | Separate permission for PR creation and any resulting hosted CI; record actual URL/head and results. Leave PR unmerged. |
-
-Native rc5 source inspection identifies the Muse push transport as signed staging
-requests for `/push/mpack-presign` and `/push/unpack-mpack`, with an object upload
-to the returned storage URL. A future owner approval must include those required
-uploads, restricted to the staging-provided destination and approved objects.
-Use only the pinned recovery runtime, `force: false`, a named branch, no tag/all
-branches options, no trust reset and no automatic hooks. Verify native command
-scope in the dedicated checkout before any write. Rights/server acceptance remain
-unvalidated until those specifically authorized operations return and read back
-successfully. Refusals remain visible; do not broaden permissions to get past one.
-
-Fast-forwarding the reviewed Muse candidate is the proposed acceptance method;
-this avoids relying on an unverified proposal-merge strategy or the server's
-branch-deletion default. It still requires explicit owner approval for main.
-GitHub main merge, release/tag publication, consumers and production are separate
-decisions after source acceptance and actual mirror delivery evidence.
-
-## Validation and retained boundaries
-
-Local results and final identities are recorded in
-[the validation closeout](../validation/V1-RECOVERY.md#local-legacy-mirror-reconciliation--2026-10-09)
-and `../RECOVERY-RUNS/20261009-mirror-reconciliation/`. The required matrix uses
-Git-only Python 3.11.15 and 3.14.4 and combined Muse Python 3.14.4, with the exact
-recovery package source digest checked by the supported driver. No new hosted
-job, remote query or remote write is part of this implementation.
-Final local results are **131 passed** on Git-only 3.11.15 (52.59s), **131 passed**
-on Git-only 3.14.4 (61.28s), and **264 passed** on combined Muse 3.14.4 (360.10s),
-all with zero failures/errors/skips. No supported failure remains unresolved.
-
-[Hosted run 37948400522](https://github.com/aaronrene/overseer-kit/actions/runs/37948400522)
-remains evidence only for `2d689a8398002ce667743ac7fefd12291b8973bf`: Git Python
-3.11.17 **117 passed**, Git Python 3.14.8 **117 passed**, combined Muse Python
-3.14.8 **225 passed**. It does not validate the new candidate. New feature pushes
-and any resulting hosted jobs require explicit authorization for the resulting SHA.
-
-The recovery wheel/source pins and repository Actions URL are unchanged. The
-original rc5 archive remains unavailable; this wheel is not an upstream release.
-Permanent Git-only operation and explicit Muse adoption remain intact. Original
-refs/edits, isolated Muse main and trust/configuration, and held release
-`06f988e5a078ede81c9dc664520833980a9a19a3` are preserved. Only the existing isolated
-feature advances by a source-exact local commit. Its projection lives in a separate
-disposable fixture; the proposed real delivery paths remain absent.
-
-No MuseHub or GitHub write, main change, PR, tag/release, real mirror delivery,
-consumer access, production trust reset, automatic hook or OCI operation occurred.
-No complete-product claim is made. Read-only planning evidence remains in
-`../RECOVERY-RUNS/20261009-muse-publication-plan/`; it is a retained observation,
-not a fresh remote-state assertion. Canonical NEXT alone carries the remaining
-owner decision; this document grants no remote permissions.
+The [frozen pre-publication decision](https://github.com/aaronrene/overseer-kit/blob/293e79eb96dc9b94b76fa28ffad5e9e0a6e85b30/docs/decisions/V1-MUSE-PUBLICATION.md)
+retains the earlier planning and failed-attempt narrative. Its pending language
+is historical. Later operator-held closeouts are summarized here without exposing
+machine paths or presenting local logs as public downloads.

@@ -1,70 +1,44 @@
 # Overseer Kit v1 roadmap
 
-2026-10-09 — **The Git credential compatibility defect is repaired and validated
-locally. Publication of the resulting candidate requires new owner authorization.**
-The helper accepts repeated `capability[]` and `wwwauth[]` challenge metadata while
-keeping the destination exact and scalar fields unique. It ignores the metadata
-without negotiating state or a different credential type. Unknown fields, malformed
-UTF-8, control characters and oversized requests still fail before token lookup.
-The 16,384-byte bound, ephemeral credentials, no-op store/erase, disabled redirects
-and strict mirror ownership, drift, correspondence and retry checks remain intact.
+## Published bounded prerelease
 
-The new tests reproduce the observed protocol mismatch with fake credentials:
-**33 passed, 6 failed** on the old helper; **39 passed** after repair. The 25 added
-cases include real Git credential-fill negotiation, repeated metadata and refusals
-that prove no token-provider invocation for invalid scope or malformed input.
-No real credential or remote service was used in this repair.
+[v1.0.0-rc.1](https://github.com/aaronrene/overseer-kit/releases/tag/v1.0.0-rc.1) was published at `2026-10-10T00:36:33Z`,
+release ID `408458432`, as a prerelease and not Latest. PR #86 main acceptance
+and prerelease authorization are complete. The exact tag target is
+`293e79eb96dc9b94b76fa28ffad5e9e0a6e85b30`; source metadata still reports `1.0.0`.
+The five attachments were independently downloaded and hash/size-verified before
+and after publication. The archive holds 861 accepted files and ten executables.
 
-| Required local matrix | Actual result | Pytest duration |
-| --- | --- | --- |
-| Git-only, Python 3.11.15 | **156 passed** | 53.10s |
-| Git-only, Python 3.14.4 | **156 passed** | 59.10s |
-| Combined Muse, Python 3.14.4 | **289 passed** | 368.81s |
+Three retained hosted runs each passed **156 / 156 / 289 tests**, with zero
+reported failures/errors/skips and no unresolved supported-test failure.
+See the [public evidence index](validation/V1-PUBLIC-EVIDENCE.md),
+[Muse publication record](decisions/V1-MUSE-PUBLICATION.md) and
+[release closeout](decisions/V1-RELEASE-PUBLICATION.md).
+Earlier scoped reviews, installation/rollback and the authorized pilot remain
+closed at their original scope; no unchanged milestone was repeated.
 
-All final runs have zero failures/errors/skips. Counts are 150 v1 + 6 retained
-+ 133 Muse/mirror = 289 combined. The exact recovery Muse package-source digest
-was checked by the supported driver; the Python 3.11 source fixture used retained
-dependencies offline. No unchanged closed review or installation milestone was
-repeated. The full matrix preceded the local feature commit; afterward only
-validation/decision/summary documentation was finalized before committing.
+## Operating choices and limits
 
-The new exact Git candidate, isolated Muse revision/parent/snapshot and disposable
-two-parent projection are frozen together in
-[candidate.json](../../RECOVERY-RUNS/20261009-credential-compatibility/candidate.json).
-Source/projection records retain all 861 paths/bytes/modes, ten executable paths,
-the reviewed incremental delta and full GitHub delta (52 additions, 32 modifications,
-32 removals). The projection preserves legacy mirror
-`3e21496f7c4eab64b6d9ab3f868c5cdcaf8cfcde` as first parent and GitHub main
-`d47291d5d9030de5ebef713da95efa978c4d8c6e` as second parent. It is a disposable
-fixture; no real delivery commit is computed or approved.
+Git-only operation is permanently supported without Muse installation or login.
+Muse adoption is explicit; the kit project's own source publication is Muse-first.
+The optional Muse package is a labelled recovery build with unchanged exact pins
+and immutable artifact URL, not an upstream release. Native clone omitted 19
+empty directories while preserving all 861 file bytes; only verified isolated
+readbacks restored the approved metadata. Source version `1.0.0` alone cannot
+identify rc.1. No stable or complete-product readiness is claimed.
 
-The [publication decision](decisions/V1-MUSE-PUBLICATION.md) preserves the earlier
-failed attempt and its owner scope. That authorization applies only to Git
-`eef4901d76658c74bf1c56799a514c1cd756d28f`, Muse
-`sha256:b310c0197a35b47c201cb055c211f0132efb902f86ecc76fd343302e8f2ed4cc`
-and snapshot
-`sha256:f0d48dd3f6b8d7cbc661e7f3ce07c7dfe3fb38efbe30332b43768ebd412658f1`.
-It does not transfer to the repaired candidate. The prior attempt changed no remote
-ref and created no hosted run. Its readbacks are retained observations, not current
-remote-state assertions. Live authentication, push rights, staging acceptance and
-mirror delivery remain unvalidated. No complete-product readiness claim is made.
+## Separate documentation follow-up
 
-Prior evidence and all three pending documentation edits were retained before
-this repair. The isolated feature alone advances by a source-exact local commit;
-its main stays at the retained staging base. Original refs/edits, identity/trust/
-configuration and clean held release `06f988e5a078ede81c9dc664520833980a9a19a3`
-remain protected. The actual delivery `source` and `mirror.git` paths remain absent.
+This documentation belongs to a later `docs/v1-publication-closeout` proposal,
+not the published rc.1 tree. It corrects stale commands and reconciles completed
+publication records. The published tag and five asset bytes remain fixed;
+the two companion documents are unchanged copies of the release attachments.
+Local planning has not created a source revision, branch, commit or PR for this
+follow-up. Future delivery needs its own reviewed Muse source, exact mirror
+commit and GitHub PR. Canonical checkout-local NEXT is the only task prompt.
 
-Recovery wheel/source pins and the Actions URL are unchanged. Git-only operation
-is permanently supported without Muse installation/login, and Muse adoption stays
-explicit. The local runtime digest is
-`e15e5f9a7567f18dd79181627eb040b876ada83a4c9334a70451eb419b9b53ed`;
-`sync` refreshed the local binding without hooks. No remote read/write, hosted
-job, MuseHub publication, shared-main change, PR, tag/release, consumer access,
-production trust reset, automatic hook or OCI operation occurred in this repair.
-
-The [validation closeout](validation/V1-RECOVERY.md#local-credential-compatibility-repair--2026-10-09)
-and repair evidence retain actual results. Both summaries were refreshed together;
-only `next-write` publishes the remaining owner authorization decision for the
-resulting candidate. Any authorized delivery must record its real projection SHA
-before pushing and preserve the approved source and ordered Git parents.
+Frozen recovery Git `32254cd939885d9d6f40634997ea5b9c37ea776c`, original refs/edits,
+isolated Muse feature/main and held release
+`06f988e5a078ede81c9dc664520833980a9a19a3` remain preserved. The held release is
+not a distribution target. Consumer access, deployment, production trust reset,
+automatic hooks, OCI and any stable release are outside this docs proposal.
