@@ -1,20 +1,21 @@
 # Controlled Muse → GitHub mirror
 
-R2 implements local preparation and delivery retry; R3 validates isolated source
-reconciliation and combined local operation. The complete product and held release
-candidate remain unfinished. A reproducible, explicitly local rc5 recovery
-distribution is hosted with an [exact contract](tools/ci/MUSE-RC5-RECOVERY.md);
-the owner separately authorized dependency hosting and recovery-feature CI. Actual
-hosted results are in the [execution record](docs/validation/V1-RECOVERY.md#hosted-ci-execution--2026-10-09).
-The original upstream archive remains unavailable. No real-project mirror or remote
-write is authorized by this runbook. Git-only operation remains a permanent
-choice; mirroring requires explicit R1 Muse adoption.
+The kit's repaired Muse source was accepted in staging, mirrored to GitHub and
+accepted through PR #86 before rc.1 publication. The
+[publication record](docs/decisions/V1-MUSE-PUBLICATION.md) binds the exact source,
+mirror and accepted Git tree; [public evidence](docs/validation/V1-PUBLIC-EVIDENCE.md)
+links the three retained hosted runs and release. This is bounded prerelease
+evidence, not stable or complete-product readiness.
 
-The [publication decision](docs/decisions/V1-MUSE-PUBLICATION.md) records the
-2026-10-09 read checks, exact legacy delta and local reconciliation results.
-`mirror reconcile` now prepares an explicitly reviewed two-parent initial commit.
-Ordinary `prepare` still refuses an existing remote branch on first preparation.
-Disposable projections are fixture evidence; real delivery needs new owner approval.
+The optional runtime is a pinned Overseer recovery build of Muse rc5, not an
+upstream release; retain its [exact contract](tools/ci/MUSE-RC5-RECOVERY.md).
+Git-only remains permanent. Muse adoption and every source/mirror publication are
+explicit choices. This runbook does not authorize a new remote write.
+
+`mirror reconcile` prepares a reviewed two-parent initial commit when a legacy
+mirror already exists. Ordinary `prepare` still refuses an existing remote branch
+on first preparation. A later docs source/PR is a new candidate with new identities;
+never relabel it as rc.1 or export it onto an existing development tree.
 
 The current workflow replaces the old deploy script's implicit export/push. The
 script and its template now delegate to the repository-bound `ok mirror` command.
@@ -197,17 +198,18 @@ exact approved GitHub HTTPS repository path. The helper invokes that physical
 answers only Git's matching credential request. Store/erase are no-ops. Helpers
 are reset per command, HTTP redirects are disabled, and other Git transport
 protocols are refused. No credential enters a URL, persistent target config,
-record or report. Fixture tokens validate this wiring; actual authentication and
-write acceptance still need separately authorized delivery evidence.
+record or report. Fixture tokens validate this wiring. The repaired rc.1 delivery also
+authenticated successfully, as recorded in the publication closeout; that result
+does not grant permission for another delivery.
 
 Delivery observes the exact public staging repository's JSON `/refs` response and
 requires its code-domain repository ID and main revision to match approval. It
 refuses unknown, moved or unpublished sources, redirects, unsupported hosts and
 malformed responses. Authenticated/private MuseHub and production trust are outside
 this adapter; there is no login, fingerprint reset or host fallback. The public
-staging read protocol was verified on 2026-10-09 using this adapter. Write rights,
-native source publication and authenticated Git delivery remain unvalidated;
-fixture evidence and successful signed reads are not remote write-acceptance evidence.
+staging read protocol and later authorized source/mirror delivery were verified
+on 2026-10-09. Native push/readback details remain operator-recorded evidence;
+public release/CI links have the narrower scope described in the evidence index.
 
 It compares the explicit Git URL/branch head independently of whether export made
 a new commit, rechecks source/target/remote immediately before writing, uses a
@@ -239,4 +241,4 @@ Interrupted preparation can leave unreachable local objects, but never publishes
 an unchecked tree; ordinary rerun can finish. There is no new ledger or daemon.
 
 The [validation record](docs/validation/V1-RECOVERY.md#r2-controlled-mirror-preparation-and-retry--2026-10-08)
-contains actual local results and remaining R3 work.
+distinguishes retained local fixture results from later source/CI/publication evidence.

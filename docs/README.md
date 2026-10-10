@@ -7,6 +7,10 @@ daily use, handoff publication, update notifications, and current limitations.
 
 | Document | Purpose |
 | --- | --- |
+| [Published rc.1 closeout](decisions/V1-RELEASE-PUBLICATION.md) | Exact tag, assets and completed publication |
+| [Public evidence](validation/V1-PUBLIC-EVIDENCE.md) | Public release/CI links and local-evidence limits |
+| [Git-only quickstart](GIT-ONLY-QUICKSTART.md) | Permanent Git-only operation with current commands |
+| [Installation and rollback](releases/v1.0.0-rc.1/INSTALL-AND-ROLLBACK.md) | Unchanged published companion guide |
 | [Scope reset](decisions/V1-SCOPE-RESET.md) | Authoritative bounded-v1 product scope |
 | [Validation](validation/V1-RECOVERY.md) | Reviews, test results, installation/rollback, and consumer pilot evidence |
 | [Muse restoration audit](validation/V1-RECOVERY.md#musehub-restoration-audit--2026-10-08) | Corrected Muse-first scope, reproduced gaps, architecture, and restoration plan |
@@ -30,6 +34,8 @@ instructions. `cli/legacy_main.py` preserves the former CLI source; `cli/main.py
 exposes only bounded v1.
 
 The owner corrected the mistaken exclusion of MuseHub authority and GitHub
-mirroring. R1 implements optional local Muse handoffs and adoption; mirror repair
-and combined validation are pending. The historical bridge has known audit findings; its runbook is evidence,
-not a currently approved publication procedure.
+mirroring. R1–R3 restoration, repaired source delivery, GitHub acceptance and rc.1
+publication are recorded in the current closeouts above. The controlled bridge
+workflow describes explicit preparation and separately authorized delivery.
+Git-only remains permanent and Muse adoption explicit. This documentation proposal
+does not update the published candidate or claim stable/complete-product readiness.

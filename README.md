@@ -4,18 +4,21 @@ Overseer Kit is a small local command-line tool that keeps one trustworthy next-
 handoff inside each Git or explicitly selected Muse repository. It helps prevent an agent or operator from using
 a prompt from the wrong project, branch, lane, or point in history.
 
-The Git-based handoff core is locally validated, but intended v1 is incomplete.
-The intended product lets each repository choose Git/GitHub only or MuseHub as its
-source of truth with a GitHub mirror. The [mirror workflow](MUSE-BRIDGE-WORKFLOW.md)
-documents explicit preparation, verification and separately authorized delivery.
-Git-only is a permanent supported choice:
-no Muse installation, account, or migration is required. R1 implements optional
-local Muse handoffs and explicit adoption; R2 adds controlled mirror preparation
-and retry. R3 reconciles the source in isolation and validates combined local operation. The source version `1.0.0` is an
-unpublished candidate, and its Git-only release is on hold. The behavior described
-below is the current implementation, not the completed Muse-first product. See the
-[scope decision](docs/decisions/V1-SCOPE-RESET.md) and the complete
-[validation record](docs/validation/V1-RECOVERY.md).
+[v1.0.0-rc.1](https://github.com/aaronrene/overseer-kit/releases/tag/v1.0.0-rc.1) is the published bounded CLI prerelease,
+not a stable or complete-product release. Its tag targets
+`293e79eb96dc9b94b76fa28ffad5e9e0a6e85b30`; source, CLI and package metadata
+still report `1.0.0`. Identify rc.1 by the tag, commit and release manifest,
+not by `ok --version` alone.
+
+Git/GitHub-only operation is a permanent supported choice with no Muse installation,
+account or migration requirement. Muse authority and controlled GitHub mirroring
+are explicit per-repository choices. The kit project's own publication is Muse-first.
+See the [publication record](docs/decisions/V1-MUSE-PUBLICATION.md) and
+[public evidence](docs/validation/V1-PUBLIC-EVIDENCE.md).
+
+These docs are a separate post-publication follow-up. They do not change the rc.1
+tag or archive. The [published installation/rollback guide](https://github.com/aaronrene/overseer-kit/releases/download/v1.0.0-rc.1/INSTALL-AND-ROLLBACK.md)
+supersedes the historical README and quickstart inside that frozen archive.
 
 ## What it does
 
@@ -63,20 +66,28 @@ installation requires an explicitly reviewed rebind; copying is not migration.
 
 ## Prepare the source installation
 
-Use Python 3.11 or newer and keep this checkout at a stable physical path. The kit
-uses its own conventional virtual environment; consumer repositories do not install
-its Python dependencies.
+Start with the exact [rc.1 release](https://github.com/aaronrene/overseer-kit/releases/tag/v1.0.0-rc.1) and its five named
+attachments. Verify their checksums before extracting the attached source archive
+at a fixed physical kit path. Follow the
+[installation/rollback guide](docs/releases/v1.0.0-rc.1/INSTALL-AND-ROLLBACK.md)
+for the full procedure and the [Git-only quickstart](docs/GIT-ONLY-QUICKSTART.md)
+for repository setup.
+
+The tested interpreters are Python 3.11 and 3.14 for Git-only operation; optional
+Muse uses a separate Python 3.14 environment. Hosted evidence is Linux and retained
+local evidence is macOS arm64. Use a conventional `.venv` at the fixed kit path;
+consumer repositories do not install the kit's dependencies. Packaged/editable
+Overseer installation, arbitrary newer interpreters and Windows are not established.
+
+For an already verified source checkout at that fixed path:
 
 ```sh
-cd /absolute/path/to/overseer-kit
-python3 -m venv .venv
+cd /absolute/fixed/path/to/overseer-kit
+python3.11 -m venv .venv
 .venv/bin/python -m pip install -r requirements-v1.txt
+.venv/bin/python -m pip check
 ./cli/ok --version
 ```
-
-Install from the latest published `v1.*` release or from a reviewed source checkout.
-Do not treat an unreviewed feature branch as an update. Before the first v1 release
-is published, only the validated local release candidate is available.
 
 For development and the supported test suite:
 
@@ -86,8 +97,8 @@ For development and the supported test suite:
 ```
 
 Muse is optional and stays in its own conventional venv: The supported integration uses exactly
-Muse `0.2.1rc5` with Python 3.14 or newer. The kit itself still supports Python
-3.11 or newer and does not install Muse. To run the additional real Muse matrix:
+the pinned Overseer recovery build of Muse `0.2.1rc5` with Python 3.14.
+The kit does not install Muse. See the guide for the immutable wheel URL and pins. To run the additional real Muse matrix:
 
 ```sh
 .venv/bin/python -m pytest -q tests/v1 tests/retained tests/muse \
@@ -100,19 +111,17 @@ installation's `.venv/bin/python` and a required `--junitxml PATH`. Supplying
 matrix and checks the exact reviewed rc5 package source digest. Omitting it runs
 the permanent Git-only matrix. No CI step publishes or installs hooks.
 
-`.github/workflows/supported-v1.yml` defines Git jobs for Python 3.11/3.14 and the
-combined job for Python 3.14 on Linux. Hosted execution is not yet evidenced.
-The combined job needs repository variable `MUSE_RC5_URL` pointing to a retained
-HTTPS archive whose SHA-256 is
-`1a17ee8792e423927ff07ac96c85de0016bc7f79ebacc4e8a8e5073b436f2ea6`.
-It fails if the variable or exact archive is unavailable. Staging's moving
-installer now selects rc11; its rc5 release URL returned 404 during R3. Do not
-substitute another version or the unverified PyPI package named `muse`.
-R3's fresh local environment used a wheel reconstructed from verified installed
-rc5 files plus freshly installed dependencies; this is not proof that the original
-upstream archive can be installed on a clean host. Artifact availability, hosted
-CI, and Linux/3.11 execution remain release prerequisites. See the exact
-[validation results](docs/validation/V1-RECOVERY.md).
+[Supported v1 CI](.github/workflows/supported-v1.yml) defines Git jobs for
+Python 3.11/3.14 and a combined Python 3.14 job on Linux. Three retained hosted
+runs each passed **156 / 156 / 289 tests**, with zero reported failures/errors/skips;
+their exact heads and links are in the [public evidence index](docs/validation/V1-PUBLIC-EVIDENCE.md).
+
+The combined job uses `MUSE_RC5_RECOVERY_WHEEL_URL` and verifies the recovery wheel
+against [the exact artifact contract](tools/ci/muse-rc5-artifact.json).
+This is an Overseer recovery build from verified installed bytes, not an upstream
+rc5 release or reconstruction of the unavailable original sdist. Keep the immutable
+wheel URL and all four recovery digests in the [published guide](docs/releases/v1.0.0-rc.1/INSTALL-AND-ROLLBACK.md).
+Do not substitute a moving installer, another rc version or the PyPI package named `muse`.
 
 Muse rc5's recursive `code add .` can omit a new dot-directory. Explicitly stage
 `.github/workflows/supported-v1.yml` when preparing this source, and compare the
@@ -189,6 +198,7 @@ digest are required:
   --model 'GPT-6 Astra' \
   --action-id TASK-1 \
   --action-kind implement \
+  --base-head REVISION-FROM-STATUS \
   --expect-next DIGEST-FROM-STATUS \
   --prompt-file prompt.txt
 ```
@@ -212,30 +222,27 @@ notification system is GitHub's existing release watcher:
 2. Select **Watch → Custom → Releases**.
 3. GitHub will notify you when a maintainer publishes a new release.
 
-This needs no Overseer server or OCI registry. Maintainers should increment
-`VERSION`, update `CHANGELOG.md`, tag the tested commit, and publish a GitHub Release
-only when a build is ready for users. A version in the source tree is not itself a
-published release; verify that the matching GitHub Release exists before updating.
-For the intended Muse-first release, accept the reviewed source in MuseHub first,
-then verify its GitHub mirror before tagging and announcing that same version.
-That restored publication procedure remains pending; this is the required order.
+Release watching needs no Overseer server or OCI registry. The published rc.1
+records reviewed Muse source acceptance, its verified GitHub mirror, owner-accepted
+PR #86 and the exact release tag. Later documentation has its own source revision
+and PR; it must never be substituted into that tag or its five assets.
 
-Users can also check manually, with no changes to their working files:
-
-```sh
-git -C /absolute/path/to/overseer-kit fetch --tags origin
-git -C /absolute/path/to/overseer-kit status --short --branch
-git -C /absolute/path/to/overseer-kit log --oneline HEAD..origin/main
-```
-
-Review the release notes before updating. After bounded v1 is released on `main`, a
-clean source installation can update explicitly:
+Review a specific release's notes and exact commit before updating. Stop commands
+during source replacement, preserve the previous source/dependency set, and update
+only a clean installation at the same physical path. Follow the guide's explicit
+inventory and rollback procedure; moving `main` is not a release selection.
+After replacing the source, preview and apply sync for each authorized repository:
 
 ```sh
-git -C /absolute/path/to/overseer-kit pull --ff-only
-/absolute/path/to/overseer-kit/cli/ok -C /absolute/path/to/project sync --dry-run
-/absolute/path/to/overseer-kit/cli/ok -C /absolute/path/to/project sync
+KIT_ROOT=/absolute/fixed/path/to/overseer-kit
+PROJECT_ROOT=/absolute/path/to/authorized-project
+"$KIT_ROOT/cli/ok" -C "$PROJECT_ROOT" sync --dry-run --json
+"$KIT_ROOT/cli/ok" -C "$PROJECT_ROOT" sync --json
+"$PROJECT_ROOT/.overseer/bin/ok" status --json
+"$PROJECT_ROOT/.overseer/bin/ok" next
 ```
+
+Review the preview before applying sync.
 
 Run `sync` once for each initialized repository. A source change intentionally makes
 status/NEXT refuse with `runtime_changed` until that explicit sync updates the runtime
@@ -244,23 +251,29 @@ repository UUID, NEXT, ROADMAP, HANDOVER, and application files.
 
 ## Validation and limits
 
-Bounded v1 passed architecture and completed-build review, clean dependency
-installation, current/previous rollback, 77 supported tests, and 32 checks in an
-authorized DINERO consumer pilot. That pilot preserved all existing consumer files
-and its preexisting uncommitted edit while keeping automatic hooks disabled.
+The three retained hosted runs each passed **156 / 156 / 289** tests. Earlier
+scoped architecture/build reviews, fixed-path source installation/rollback and the
+32-check authorized DINERO pilot remain closed at their original scope. They were
+not repeated for this documentation follow-up. No unresolved supported-test failure
+is recorded; historical out-of-scope failures remain disclosed in the
+[validation record](docs/validation/V1-RECOVERY.md).
 
-Validation used Python 3.14.4 on Darwin arm64 and a fixed-path source installation.
-It does not establish packaged installation, other-platform compatibility,
-concurrent commands during source replacement, or automatic migration/rebinding.
-The trusted-host design protects against stale state and ordinary mistakes; it is
-not a security boundary against a malicious administrator or process with the same
-user account.
+Native Muse rc5 clone omitted **19 empty directories** while preserving all **861
+file bytes**. Only verified isolated readbacks restored the approved directory
+metadata. Do not disable dirty-state checks or copy those directories into an
+unrelated project. Muse snapshots do not store POSIX modes; the mirror uses an
+explicit ten-path executable policy.
+
+Recovered Muse provenance, private/production Hub operation, general file/mode
+fidelity, relocation, untested platforms, packaged/desktop installation and broader
+consumer rollout remain limited or unvalidated. The trusted-host design protects
+against stale state and ordinary mistakes; it is not a boundary against a malicious
+administrator or another process with the same user account.
 
 Historical pre-reset commands remain in `cli/legacy_main.py` for evidence but are
 outside the public v1 command surface. Historical test sources remain preserved;
 see [test scope](tests/README.md).
 
 The [Muse restoration audit](docs/validation/V1-RECOVERY.md#musehub-restoration-audit--2026-10-08)
-records verified reuse, bridge defects, authority and handoff design, and the
-remaining milestones. Do not run the historical deploy script to publish this
+links the historical findings and their bounded restoration disposition. Do not run the historical deploy script to publish this
 candidate. OCI remains excluded.
