@@ -7,6 +7,12 @@ description: >-
   Cursor, Claude Code, and via CLI for Copilot / any assistant.
 ---
 
+
+> **Historical pre-reset product.** This document describes the pre-reset historical product.
+> Its legacy commands are not exposed by the bounded-v1 entrypoint. Do not use it
+> as current onboarding. See the [root README](../../../README.md) and [current docs index](../../../docs/README.md).
+
+
 # Check OK
 
 Use when the operator says **Check OK**, **check ok**, **Check if OK**, or

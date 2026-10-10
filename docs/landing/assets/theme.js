@@ -19,6 +19,7 @@
     root.setAttribute("data-theme", theme);
     var btn = document.getElementById("theme-toggle");
     if (!btn) return;
+    btn.hidden = false;
     var next = theme === "dark" ? "light" : "dark";
     btn.setAttribute("aria-label", "Switch to " + next + " mode");
     btn.setAttribute("title", next === "light" ? "Light mode" : "Dark mode");
@@ -31,6 +32,7 @@
     apply(root.getAttribute("data-theme") || preferred());
     var btn = document.getElementById("theme-toggle");
     if (!btn) return;
+    btn.hidden = false;
     btn.addEventListener("click", function () {
       var current = root.getAttribute("data-theme") === "light" ? "light" : "dark";
       var next = current === "dark" ? "light" : "dark";

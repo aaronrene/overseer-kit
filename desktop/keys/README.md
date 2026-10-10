@@ -1,3 +1,7 @@
+> **Historical pre-reset product.** This document describes the pre-reset historical product.
+> Its legacy commands are not exposed by the bounded-v1 entrypoint. Do not use it
+> as current onboarding. See the [root README](../../README.md) and [current docs index](../../docs/README.md).
+
 # Desktop release public keys (§QR.5.3 / §QR.6.3)
 
 This directory holds **public** verifying material only for Linux detached

@@ -1,3 +1,7 @@
+> **Historical pre-reset product.** This document describes the pre-reset historical product.
+> Its legacy commands are not exposed by the bounded-v1 entrypoint. Do not use it
+> as current onboarding. See the [root README](../README.md) and [current docs index](README.md).
+
 # Adversarial freeze review — portable paste (any AI tool)
 
 The kit records and gates the adversarial freeze verdict. It does not run

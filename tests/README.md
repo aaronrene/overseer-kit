@@ -15,10 +15,26 @@ requirement. Git-only users can run the default suite without installing Muse.
 this source installation's `.venv/bin/python`, `--junitxml PATH`, and optionally
 `--muse-python /absolute/muse-venv/bin/python`. It verifies required dotfiles and
 pins the reviewed rc5 package sources before combined collection. The checked-in
-workflow runs Git on 3.11/3.14 and combined on 3.14; remote CI execution is still
-unverified. The Muse job fails without an immutable `MUSE_RC5_URL` archive matching
-the recorded checksum. No skip hides that installation prerequisite. Legacy
+workflow runs Git on 3.11/3.14 and combined on 3.14. Hosted CI is verified: the
+[PR #87 post-merge run](https://github.com/aaronrene/overseer-kit/actions/runs/38060695412)
+passed 156 / 156 / 289 tests, with zero failures, errors or skips. The Muse job
+uses `MUSE_RC5_RECOVERY_WHEEL_URL` to download the immutable recovery wheel and
+verifies its exact artifact contract before installation. No skip hides that installation prerequisite. Legacy
 `templates/ci` examples are explicitly historical and must not be activated.
+
+The exact supported procedure, from each source installation with its own `.venv`, is:
+
+```sh
+.venv/bin/python -B tools/ci/supported_v1.py --junitxml /tmp/overseer-git.xml
+.venv/bin/python -B tools/ci/supported_v1.py \
+  --muse-python /absolute/path/to/muse-venv/bin/python \
+  --junitxml /tmp/overseer-combined.xml
+```
+
+Run the Git command on both Python 3.11 and 3.14; run combined on Python 3.14
+with the separate pinned Muse environment. Follow [the recovery artifact contract](../tools/ci/MUSE-RC5-RECOVERY.md)
+and the [installation guide](../docs/releases/v1.0.0-rc.1/INSTALL-AND-ROLLBACK.md).
+Record each candidate identity and require zero failures, errors and skips.
 
 The complete requirement mapping, baseline counts, and known
 historical failures are in `docs/validation/V1-RECOVERY.md`.

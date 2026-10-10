@@ -1,3 +1,7 @@
+> **Historical pre-reset product.** This document describes the pre-reset historical product.
+> Its legacy commands are not exposed by the bounded-v1 entrypoint. Do not use it
+> as current onboarding. See the [root README](../README.md) and [current docs index](README.md).
+
 # Overseer Kit — Cross-Repo Governance System Architecture (Frozen Thinking Outline)
 
 Status: **Frozen meta-architecture for the Build phases (K1–K6 + 9A-5). No implementation in

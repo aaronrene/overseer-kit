@@ -22,5 +22,5 @@ contains the exact tracked NEXT bytes remains supported; newly ignored NEXT
 does not use it. Adopting a different backend preserves NEXT bytes but refuses
 them until explicitly republished for the new authority. No task is inferred.
 
-The `governance-sync --print-next` alias and legacy prompt extraction are historical
+The former synchronization alias and legacy prompt extraction are historical
 and not supported by the v1 launcher. On closeout print CURRENT NEXT from disk.

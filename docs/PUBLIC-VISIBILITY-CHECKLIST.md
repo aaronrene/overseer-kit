@@ -1,3 +1,7 @@
+> **Historical pre-reset product.** This document describes the pre-reset historical product.
+> Its legacy commands are not exposed by the bounded-v1 entrypoint. Do not use it
+> as current onboarding. See the [root README](../README.md) and [current docs index](README.md).
+
 # Public visibility checklist (maintainers · Tier 3)
 
 Use this once before flipping `aaronrene/overseer-kit` from **private** to

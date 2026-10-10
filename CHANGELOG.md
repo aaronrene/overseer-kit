@@ -1,16 +1,25 @@
 # Changelog
 
-## Unreleased
+## v1.0.0-rc.1 — published 2026-10-10
 
-- R1: optional local Muse authority for status/NEXT, including linked worktree
-  identity, Muse branch/revision freshness and separate pinned Muse environment.
-- Explicit `adopt` dry-run, config migration and rollback preserving checkout
-  identity, documents and application edits; additive Git/Muse local-file exclusions.
-- Git-only remains supported without Muse or an account; no automatic conversion.
-- Mirror repair and combined Muse-first release validation remain pending. The
-  `1.0.0` source version and prior release preparation are unpublished candidates.
+The bounded local CLI prerelease is published, not stable and not Latest. Its tag
+remains at `293e79eb96dc9b94b76fa28ffad5e9e0a6e85b30`; all five assets are unchanged.
+The seven commands are `status`, `init`, `sync`, `adopt`, `mirror`, `next`, and
+`next-write`. Git-only use remains permanent; Muse adoption and mirroring are
+explicit. Mirror repair and combined validation are complete.
 
-## 1.0.0 — 2026-10-08
+PR #87 later published the documentation closeout. Production deployment succeeded,
+and post-merge CI passed 156 / 156 / 289 tests with zero failures, errors or skips.
+No recovery task remains. See [the current summary](docs/ROADMAP.md).
+
+## Historical records
+
+The entries below describe earlier source milestones, including the pre-reset
+historical product. Their command lists are not the bounded-v1 entrypoint contract.
+The `1.0.0` source milestone was not a stable release. Use the [README](README.md)
+and [docs index](docs/README.md) for current commands.
+
+## Historical source milestone: 1.0.0 — 2026-10-08
 
 ### Added
 

@@ -1,3 +1,7 @@
+> **Historical pre-reset product.** This document describes the pre-reset historical product.
+> Its legacy commands are not exposed by the bounded-v1 entrypoint. Do not use it
+> as current onboarding. See the [root README](../../../README.md) and [current docs index](../../README.md).
+
 # Example consumer — custom living-doc names (public stub)
 
 This stub shows how a consumer repo can rename roadmap/handover files via

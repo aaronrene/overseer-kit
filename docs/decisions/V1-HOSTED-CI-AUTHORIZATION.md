@@ -1,3 +1,10 @@
+> **Dated recovery history; closeout complete.** PR #87 documentation publication,
+> production deployment and post-merge CI (156 / 156 / 289, zero failures/errors/skips)
+> are complete. No recovery task remains. Earlier pending states below are historical.
+> Pre-reset commands mentioned in this record are not exposed by the bounded-v1
+> entrypoint. Use the [root README](../../README.md), [docs index](../README.md)
+> and [current closeout](../ROADMAP.md). The rc.1 tag and five assets are unchanged.
+
 # rc5 recovery artifact hosting and hosted CI — owner decision
 
 2026-10-09. **Owner-authorized artifact hosting and hosted Linux validation passed.**
