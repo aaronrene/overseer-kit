@@ -71,7 +71,6 @@ Use `next-write` explicitly when the authoritative context changes. Rollback
 restores your reviewed prior source/dependencies at the same path, then syncs.
 
 The bounded public commands are `status`, `init`, `sync`, `adopt`, `mirror`,
-`next` and `next-write`. Historical `governance-sync`, `review` and
-`status --check-footprint` instructions do not apply to this CLI.
+`next` and `next-write`. Pre-reset command instructions do not apply to this CLI.
 Muse adoption remains an optional, explicit choice with config rollback; see
 [the guide](releases/v1.0.0-rc.1/INSTALL-AND-ROLLBACK.md).

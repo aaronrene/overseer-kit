@@ -1,51 +1,35 @@
-# Landing clarity pass — visitor IA (amends LAC §LAC.3.1)
-# Validated by tools/landing/validate.py
-
+# Bounded-v1 informational site contract.
 version: 1
 license: MIT
-
 sections:
-  - id: hero
-  - id: kit-basics
-  - id: problem
-  - id: how-it-works
-  - id: structure
-  - id: console-access
-  - id: musehub
-  - id: next-steps
-  - id: scenarios
-
+- id: hero
+- id: context
+- id: how-it-works
+- id: modes
+- id: boundaries
+- id: start
 personas:
-  - id: A
-    slug: software-engineering
-    title: Software engineering
-    status: dogfood
-  - id: B
-    slug: video-studio
-    title: Video studio
-    status: dogfood
-  - id: C
-    slug: research-pipeline
-    title: Research paper pipeline
-    status: reference
-  - id: D
-    slug: accounting-close
-    title: Accounting close
-    status: aspirational
-  - id: E
-    slug: classroom
-    title: Classroom
-    status: reference
-
+- id: wrong-project
+  title: Prevent a prompt from the wrong project
+  status: example
+- id: resume
+  title: Resume against the right revision
+  status: example
+- id: git-only
+  title: Keep the tools you already use
+  status: example
+- id: adopt
+  title: Choose repository authority explicitly
+  status: example
+- id: mirror
+  title: Inspect a controlled GitHub mirror
+  status: example
 status_badges:
-  - dogfood
-  - reference
-  - aspirational
-
+- example
 funnel_steps:
-  - github
-  - kit
-  - musehub
-
-# Frozen Auto v1 primary Download CTA (§LAC.2) — Apple Silicon aarch64 only
-primary_download_href: https://github.com/aaronrene/overseer-kit/releases/download/v0.1.0/Overseer.Kit_0.1.0_aarch64.dmg
+- install
+- init
+- status
+- next
+- next-write
+primary_download_href: https://github.com/aaronrene/overseer-kit/releases/tag/v1.0.0-rc.1

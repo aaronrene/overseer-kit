@@ -1,3 +1,7 @@
+> **Historical pre-reset product.** This document describes the pre-reset historical product.
+> Its legacy commands are not exposed by the bounded-v1 entrypoint. Do not use it
+> as current onboarding. See the [root README](../README.md) and [current docs index](../docs/README.md).
+
 # Cross-Repo Coordination And Overseer Playbook — {{repo.name}}
 
 Status: **Coordination doc — process, not product.** Explains where work happens, how repos stay in

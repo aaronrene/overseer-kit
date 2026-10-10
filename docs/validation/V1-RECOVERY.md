@@ -1,3 +1,10 @@
+> **Dated recovery history; closeout complete.** PR #87 documentation publication,
+> production deployment and post-merge CI (156 / 156 / 289, zero failures/errors/skips)
+> are complete. No recovery task remains. Earlier pending states below are historical.
+> Pre-reset commands mentioned in this record are not exposed by the bounded-v1
+> entrypoint. Use the [root README](../../README.md), [docs index](../README.md)
+> and [current closeout](../ROADMAP.md). The rc.1 tag and five assets are unchanged.
+
 # Bounded v1 recovery — public validation closeout
 
 [v1.0.0-rc.1](https://github.com/aaronrene/overseer-kit/releases/tag/v1.0.0-rc.1) is published as a prerelease, not Latest.

@@ -1,7 +1,7 @@
 # Public evidence for v1.0.0-rc.1
 
 This index describes the published prerelease and the evidence retained at its
-closeout. It belongs to a separate later documentation proposal. It is not an
+closeout. It was published in the later documentation closeout (PR #87). It is not an
 extra file in the rc.1 archive or a claim of new implementation tests.
 
 ## Release and immutable source
@@ -55,3 +55,12 @@ to their original preparation. Read the release closeout for completed status.
 Historical documents outside this follow-up's explicit file inventory remain
 historical; this is not a repository-wide rewrite. Their old commands and local
 evidence paths are not current operating guidance.
+
+## Completed documentation closeout
+
+[PR #87](https://github.com/aaronrene/overseer-kit/pull/87) merged as
+`8b519ab9e44e7f7738ede815d21d6f319b0c9d78`. Automatic production deployment
+`c3a1baaf-203c-475b-b6b9-2591a34ddc19` succeeded and became canonical.
+[Post-merge CI](https://github.com/aaronrene/overseer-kit/actions/runs/38060695412)
+passed 156 / 156 / 289 tests with zero failures, errors or skips.
+The rc.1 tag and five assets are unchanged. No recovery task remains.

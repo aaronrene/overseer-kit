@@ -4,24 +4,26 @@
 
 | Version | Supported |
 | --- | --- |
-| 1.x | Yes |
+| 1.0.0-rc.1 (prerelease) | Bounded CLI scope |
 | 0.x and historical pre-reset commands | No |
 
-Security fixes apply to the latest published 1.x release. A version written in the
-source tree is not published until the matching GitHub Release exists.
+The published version is [v1.0.0-rc.1](https://github.com/aaronrene/overseer-kit/releases/tag/v1.0.0-rc.1),
+a prerelease, not stable and not Latest. Source version `1.0.0` is not a stable-release claim.
 
 ## Design boundary
 
 Bounded v1 protects against stale state and ordinary operator mistakes on a trusted
 local host. It validates physical repository binding, UUID, branch, declared lane
 and model label, action metadata, prompt digest, expected prior digest, runtime pin,
-and Git freshness. It confines managed reads/writes, refuses symlinks and hardlinks,
+and selected Git or Muse revision freshness. It confines managed reads/writes, refuses symlinks and hardlinks,
 and replaces NEXT atomically.
 
 It is not a sandbox or a security boundary against the operating-system
 administrator, root, or another malicious process running as the same user. It does
-not verify the actual AI model, judge prompt quality, execute prompts, contact the
-network, update itself, push, merge, release, or deploy.
+not verify the actual AI model, judge prompt quality, execute prompts, update itself,
+merge, release, or deploy. Local handoff commands stay offline. Explicitly invoked
+`mirror deliver` contacts MuseHub/GitHub, pushes the verified mirror commit and
+creates or verifies its pull request; it never merges that request.
 
 ## Reporting a vulnerability
 

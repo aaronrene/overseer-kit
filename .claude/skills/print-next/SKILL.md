@@ -6,6 +6,12 @@ description: >-
   memory or an open tab. Required on every closeout that touches those docs.
 ---
 
+
+> **Historical pre-reset product.** This document describes the pre-reset historical product.
+> Its legacy commands are not exposed by the bounded-v1 entrypoint. Do not use it
+> as current onboarding. See the [root README](../../../README.md) and [current docs index](../../../docs/README.md).
+
+
 # Print NEXT (closeout)
 
 After **any** update to the living handover and/or roadmap, the agent’s **FINAL reply**

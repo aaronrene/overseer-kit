@@ -1,3 +1,7 @@
+> **Historical pre-reset product.** This document describes the pre-reset historical product.
+> Its legacy commands are not exposed by the bounded-v1 entrypoint. Do not use it
+> as current onboarding. See the [root README](../README.md) and [current docs index](../docs/README.md).
+
 # Overseer Kit — desktop (Track Q / Q3)
 
 Cross-platform Tauri shell for the Q1 local web UI. The desktop app **does not reimplement governance logic** — it spawns the canonical **`ok app`** subprocess and loads the same loopback UI in a native window.

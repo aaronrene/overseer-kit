@@ -1,12 +1,13 @@
 # Overseer Kit v1 documentation
 
-Start with the repository `README.md`. It describes installation, initialization,
+Start with the [repository README](../README.md). It describes installation, initialization,
 daily use, handoff publication, update notifications, and current limitations.
 
 ## Current documents
 
 | Document | Purpose |
 | --- | --- |
+| [Controlled Muse bridge](../MUSE-BRIDGE-WORKFLOW.md) | Explicit Muse preparation and GitHub delivery |
 | [Published rc.1 closeout](decisions/V1-RELEASE-PUBLICATION.md) | Exact tag, assets and completed publication |
 | [Public evidence](validation/V1-PUBLIC-EVIDENCE.md) | Public release/CI links and local-evidence limits |
 | [Git-only quickstart](GIT-ONLY-QUICKSTART.md) | Permanent Git-only operation with current commands |
@@ -23,10 +24,10 @@ daily use, handoff publication, update notifications, and current limitations.
 ## Historical material
 
 The October 2026 scope reset superseded the former hosted/desktop product,
-multi-repository orchestration, freeze/ledger gates, governance-sync,
+multi-repository orchestration, freeze/ledger gates, legacy governance synchronization,
 publishing commands, OCI/registry design, and automatic recovery machinery.
 
-Older specifications, runbooks, landing pages, templates, skills, policies, tools,
+Older specifications, runbooks, templates, skills, policies, tools,
 and phase records remain in this repository as historical source and evidence.
 Unless a current document above explicitly incorporates them, they do not describe
 the v1 command surface and should not be followed as installation or operating
@@ -37,5 +38,7 @@ The owner corrected the mistaken exclusion of MuseHub authority and GitHub
 mirroring. R1–R3 restoration, repaired source delivery, GitHub acceptance and rc.1
 publication are recorded in the current closeouts above. The controlled bridge
 workflow describes explicit preparation and separately authorized delivery.
-Git-only remains permanent and Muse adoption explicit. This documentation proposal
-does not update the published candidate or claim stable/complete-product readiness.
+Git-only remains permanent and Muse adoption explicit. PR #87 documentation publication,
+production deployment and recovery closeout are complete; no recovery task remains.
+The [current static site](https://overseerkit.com/) explains the bounded CLI.
+Later documentation does not change the rc.1 tag or five release assets.

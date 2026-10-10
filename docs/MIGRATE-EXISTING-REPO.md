@@ -8,8 +8,8 @@ authority binding, and R2 implements controlled mirror preparation and delivery 
 The supported migration input is the bounded-v1 schema-1 Git config or a schema-2
 Git/Muse config. Historical `overseer_config_version` governance configs, copied
 bindings and relocated checkouts are refused. Preserve those inputs and arrange
-an explicit reviewed conversion; the former `init --migrate` and governance-sync
-commands are historical, not supported v1 commands.
+an explicit reviewed conversion. Former migration and governance commands are
+historical, not supported v1 commands.
 
 ## Prepare the source deliberately
 

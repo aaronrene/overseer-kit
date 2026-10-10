@@ -1,3 +1,7 @@
+> **Historical pre-reset product.** This document describes the pre-reset historical product.
+> Its legacy commands are not exposed by the bounded-v1 entrypoint. Do not use it
+> as current onboarding. See the [root README](../README.md) and [current docs index](../docs/README.md).
+
 # VCS Adapter Interface
 
 Canonical copy of `docs/OVERSEER-KIT-SPEC.md` §4. K2 implements these methods for three backends.

@@ -1,4 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="448" height="148" viewBox="0 0 448 148" role="img" aria-labelledby="mcTitle mcDesc">
+<title>Historical pre-reset product diagram — not bounded-v1 guidance</title>
+<desc>Retained historical illustration. Its legacy commands are not exposed by bounded v1. See the root README and docs index on GitHub.</desc>
+
   <title id="mcTitle">Mechanical check</title>
   <desc id="mcDesc">Agent claim enters a mechanical gate that compares bytes, diffs, and results against your bar; only a real match may pass.</desc>
   <defs>
@@ -47,4 +50,5 @@
     <circle r="22" fill="#0d1520" stroke="#e85d4c" stroke-width="3"/>
     <text text-anchor="middle" y="6" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="15" font-weight="700" fill="#e85d4c">fail</text>
   </g>
+<g aria-label="Historical pre-reset product"><rect x="0" y="0" width="100%" height="28" fill="#fff4d6"/><text x="8" y="19" fill="#382900" font-family="sans-serif" font-size="12">HISTORICAL PRE-RESET PRODUCT — see current README</text></g>
 </svg>
