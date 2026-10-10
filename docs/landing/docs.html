@@ -1,31 +1,82 @@
-<!DOCTYPE html><html lang="en" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Install and use the seven public Overseer Kit commands."><title>Docs — Overseer Kit</title><link rel="icon" href="assets/favicon.ico" sizes="any"><link rel="stylesheet" href="assets/style.css"><script src="assets/theme.js" defer></script></head><body>
-
-  <a class="skip-link" href="#main">Skip to content</a>
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Overseer Kit docs — install the bounded local CLI and use its trusted NEXT handoff.">
+  <title>Docs — Overseer Kit</title>
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/theme.js" defer></script>
+</head>
+<body>
   <header class="site-header">
-    <nav aria-label="Main navigation">
+    <nav>
       <a class="brand" href="index.html" aria-label="Overseer Kit home">
-        <span class="logo-mark" aria-hidden="true">OK</span><span class="brand-name">Overseer Kit</span>
+        <span class="logo-mark" aria-hidden="true">OK</span>
+        <span class="brand-name">Overseer Kit</span>
       </a>
       <div class="nav-links">
-        <a href="index.html#how-it-works">How it works</a><a href="index.html#start">Get started</a>
-        <a href="scenarios/index.html">Scenarios</a><a href="docs.html">Docs</a>
-        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to light mode" title="Light / dark"><span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span><span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span></button>
+        <a href="index.html#how-it-works">How it works</a>
+        <a href="index.html#console-access">Get started</a>
+        <a href="scenarios/index.html">Scenarios</a>
+        <a href="docs.html" aria-current="page">Docs</a>
+        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to light mode" title="Light / dark">
+          <span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span>
+          <span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span>
+        </button>
       </div>
     </nav>
-  </header><main id="main"><section class="page-hero"><p class="section-kicker">Documentation</p><h1>Use the CLI that ships.</h1><p class="lead">Initialize → check status → read NEXT → publish a reviewed replacement.</p><p><span class="release-badge">v1.0.0-rc.1 prerelease</span> Git-only needs no Muse installation or account.</p></section>
-<section><h2>Current documents</h2><div class="card-grid suite-grid"><div class="card"><h3>Start here</h3><p><a href="https://github.com/aaronrene/overseer-kit/blob/main/README.md">Repository README</a><br><a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/GIT-ONLY-QUICKSTART.md">Git-only quickstart</a><br><a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/CONSUMER-ADAPTER-PATTERN.md">Consumer adapter pattern</a></p></div><div class="card"><h3>Install safely</h3><p><a href="https://github.com/aaronrene/overseer-kit/releases/download/v1.0.0-rc.1/INSTALL-AND-ROLLBACK.md">Installation and rollback</a><br><a href="https://github.com/aaronrene/overseer-kit/releases/tag/v1.0.0-rc.1">Five immutable release assets</a></p></div><div class="card"><h3>Optional Muse</h3><p><a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/MIGRATE-EXISTING-REPO.md">Adoption and rollback</a><br><a href="https://github.com/aaronrene/overseer-kit/blob/main/MUSE-BRIDGE-WORKFLOW.md">Controlled bridge workflow</a></p></div></div></section>
-<section><h2>The daily flow</h2><p>After following the installation guide, set <code>PROJECT_ROOT</code> to an existing Git checkout you are authorized to initialize.</p><pre><code>./cli/ok -C &quot;$PROJECT_ROOT&quot; init --vcs git \
-  --repo-name PROJECT-NAME --lane product --model &#x27;GPT-6 Astra&#x27;
-&quot;$PROJECT_ROOT/.overseer/bin/ok&quot; status --json
-&quot;$PROJECT_ROOT/.overseer/bin/ok&quot; next</code></pre><p>Use the UUID, branch, revision, and <code>next_sha256</code> reported by status when you publish reviewed task text:</p><pre><code>./cli/ok -C &quot;$PROJECT_ROOT&quot; next-write \
-  --repo-id UUID-FROM-STATUS --branch BRANCH-FROM-STATUS \
-  --lane product --model &#x27;GPT-6 Astra&#x27; \
-  --action-id REVIEWED-ACTION --action-kind plan \
-  --base-head REVISION-FROM-STATUS --expect-next NEXT-SHA256-FROM-STATUS \
-  --prompt-file .overseer/local/task.txt</code></pre><p>NEXT validates and prints the task. It does not execute it. Use action kind <code>stop</code> when no executable task remains.</p></section>
-<section><h2>The seven public commands</h2><div class="table-wrap"><table class="command-table"><caption>Bounded-v1 command surface</caption><thead><tr><th scope="col">Command</th><th scope="col">Purpose</th></tr></thead><tbody><tr><th scope="row"><code>status</code></th><td>Read repository identity, runtime, revision, and NEXT status.</td></tr><tr><th scope="row"><code>init</code></th><td>Initialize one checkout with its identity and local handoff files.</td></tr><tr><th scope="row"><code>sync</code></th><td>Refresh the bound launcher and runtime pin after an explicit update.</td></tr><tr><th scope="row"><code>adopt</code></th><td>Explicitly change repository authority or restore preserved configuration.</td></tr><tr><th scope="row"><code>mirror</code></th><td>Prepare and verify a Muse projection; explicitly deliver its GitHub mirror and pull request.</td></tr><tr><th scope="row"><code>next</code></th><td>Validate and print the trusted handoff without running it.</td></tr><tr><th scope="row"><code>next-write</code></th><td>Publish a reviewed handoff with exact context and the previous NEXT digest.</td></tr></tbody></table></div></section>
-<section class="band-problem"><header class="section-intro"><p class="section-kicker">Product boundary</p><h2>A focused local tool</h2></header><p>Overseer has no hosted service, desktop runtime, automatic task execution, automatic merge, telemetry, or updater. Hooks are optional and off by default. Older specifications and desktop material remain historical records; current guides describe the bounded v1.</p></section></main>
-  <footer class="site-footer"><div class="footer-inner">
-    <div><p><strong>Honesty for Agents.</strong></p><p>This website is informational. It does not run Overseer.</p><p>v1.0.0-rc.1 is a prerelease, not stable and not Latest.</p></div>
-    <div class="footer-links"><a href="https://github.com/aaronrene/overseer-kit">GitHub</a><a href="https://github.com/aaronrene/overseer-kit/blob/main/LICENSE">MIT license</a><a href="https://github.com/aaronrene/overseer-kit/blob/main/SECURITY.md">Security</a></div>
-  </div></footer></body></html>
+  </header>
+
+  <main>
+    <h1>Docs</h1>
+    <p class="lead">Start with the reviewed prerelease, then bind one authorized repository and read its trusted NEXT handoff.</p>
+
+    <section>
+      <h2>On this site</h2>
+      <ul class="compact">
+        <li><a href="index.html#how-it-works">How it works</a> — initialize, status, NEXT, and reviewed replacement</li>
+        <li><a href="index.html#structure">Structure</a> — repository context, authority choices, and validation layers</li>
+        <li><a href="index.html#console-access">Get started</a> — <code>Git-only</code>, Muse authority, or a controlled mirror</li>
+        <li><a href="scenarios/index.html">Scenario gallery</a> — original job flows labeled as practical examples</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Install / init (short path)</h2>
+      <ol>
+        <li>Download the reviewed v1.0.0-rc.1 installation and rollback guide from GitHub Releases.</li>
+        <li>From the kit: <code>./cli/ok -C &quot;$PROJECT_ROOT&quot; init --vcs git --repo-name PROJECT-NAME --lane product --model &quot;MODEL LABEL&quot;</code></li>
+        <li>Run the repository-bound launcher with status --json, then next.</li>
+        <li>Review replacement task text, then use <code>next-write</code> with the current context and prior NEXT digest.</li>
+      </ol>
+      <p>NEXT validates and prints task text from the <a href="https://github.com/aaronrene/overseer-kit/releases/tag/v1.0.0-rc.1">reviewed prerelease</a>. It does not execute the prompt; use action kind stop when no task remains.</p>
+    </section>
+
+    <section>
+      <h2>GitHub docs</h2>
+      <p>Current guides and the full documentation tree live in the repository.</p>
+      <ul class="compact">
+        <li><a href="https://github.com/aaronrene/overseer-kit">Repository home</a></li>
+        <li><a href="https://github.com/aaronrene/overseer-kit/blob/main/README.md">README</a></li>
+        <li><a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/README.md">Docs index</a></li>
+        <li><a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/GIT-ONLY-QUICKSTART.md">Git-only quickstart</a></li>
+        <li><a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/MIGRATE-EXISTING-REPO.md">Muse adoption and rollback</a></li>
+        <li><a href="https://github.com/aaronrene/overseer-kit/blob/main/MUSE-BRIDGE-WORKFLOW.md">Controlled GitHub mirror workflow</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      <a href="https://github.com/aaronrene/overseer-kit/blob/main/LICENSE">MIT open source</a>
+      · <a href="https://github.com/aaronrene/overseer-kit/blob/main/SECURITY.md">Security</a>
+      · <a href="index.html">Home</a>
+    </p>
+    <p class="footer-tagline">🆗 Overseer Kit — Honesty for Agents.</p>
+  </footer>
+</body>
+</html>

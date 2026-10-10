@@ -1,25 +1,201 @@
-<!DOCTYPE html><html lang="en" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Five illustrative bounded-v1 Overseer Kit scenarios."><title>Scenarios — Overseer Kit</title><link rel="icon" href="../assets/favicon.ico" sizes="any"><link rel="stylesheet" href="../assets/style.css"><script src="../assets/theme.js" defer></script></head><body>
-
-  <a class="skip-link" href="#main">Skip to content</a>
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Overseer Kit scenario gallery — original job flows presented as bounded-v1 examples.">
+  <title>Scenario gallery — Overseer Kit</title>
+  <link rel="icon" href="../assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="../assets/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="../assets/style.css">
+  <script src="../assets/theme.js" defer></script>
+</head>
+<body>
   <header class="site-header">
-    <nav aria-label="Main navigation">
+    <nav>
       <a class="brand" href="../index.html" aria-label="Overseer Kit home">
-        <span class="logo-mark" aria-hidden="true">OK</span><span class="brand-name">Overseer Kit</span>
+        <span class="logo-mark" aria-hidden="true">OK</span>
+        <span class="brand-name">Overseer Kit</span>
       </a>
       <div class="nav-links">
-        <a href="../index.html#how-it-works">How it works</a><a href="../index.html#start">Get started</a>
-        <a href="../scenarios/index.html">Scenarios</a><a href="../docs.html">Docs</a>
-        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to light mode" title="Light / dark"><span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span><span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span></button>
+        <a href="../index.html#how-it-works">How it works</a>
+        <a href="../index.html#structure">Structure</a>
+        <a href="../index.html#console-access">Get started</a>
+        <a href="index.html" aria-current="page">Scenarios</a>
+        <a href="../docs.html">Docs</a>
+        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to light mode" title="Light / dark">
+          <span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span>
+          <span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span>
+        </button>
       </div>
     </nav>
-  </header><main id="main"><section class="page-hero"><p class="section-kicker">Scenarios</p><h1>Fewer context mistakes.<br>More deliberate handoffs.</h1><p class="lead">These are examples of how the bounded CLI can fit into real work. They are not claims of shipped integrations or automatic features.</p><p><span class="release-badge">v1.0.0-rc.1 prerelease</span></p></section>
-<section class="scenario-detail" id="persona-wrong-project"><div class="scenario-copy"><span class="example-badge">Example</span><p class="section-kicker">Two similar projects</p><h2>Prevent a prompt from the wrong project</h2><p>You switch between similar repository folders. The repository-bound launcher checks the persistent UUID and exact physical root before printing NEXT. A copied configuration or foreign handoff stops.</p><p class="scenario-command"><code>status → next</code></p></div><figure class="scenario-flow"><img src="../assets/diagrams/mechanical-check.svg" width="448" height="148" alt="Repository context reaches a mechanical identity check and either matches or stops"></figure></section>
-<section class="scenario-detail scenario-alt" id="persona-resume"><div class="scenario-copy"><span class="example-badge">Example</span><p class="section-kicker">Returning to a branch</p><h2>Resume against the right revision</h2><p>A task written before a branch switch or later commit may be stale. Check status and NEXT, review what changed, then publish a replacement against the current revision and previous NEXT digest.</p><p class="scenario-command"><code>status → next → next-write</code></p></div><figure class="scenario-flow"><img src="../assets/diagrams/honesty-loop.svg" width="420" height="368" alt="Initialize, status, NEXT, and reviewed replacement flow"></figure></section>
-<section class="scenario-detail" id="persona-git-only"><div class="scenario-copy"><span class="example-badge">Example</span><p class="section-kicker">A Git-only developer</p><h2>Keep the tools you already use</h2><p>Initialize a Git checkout and read its handoff locally. Git-only operation is permanent and requires no Muse package, account, or later migration.</p><p class="scenario-command"><code>init → status → next</code></p></div><figure class="scenario-flow"><img src="../assets/diagrams/regimes.svg" width="480" height="240" alt="Git-only is a permanent mode alongside optional Muse modes"></figure></section>
-<section class="scenario-detail scenario-alt" id="persona-adopt"><div class="scenario-copy"><span class="example-badge">Example</span><p class="section-kicker">A team choosing Muse</p><h2>Choose repository authority explicitly</h2><p>Review adoption and rollback guidance, prepare the separate pinned Muse environment, and preview the change. Muse metadata by itself never changes a Git binding.</p><p class="scenario-command"><code>adopt</code></p></div><figure class="scenario-flow"><img src="../assets/diagrams/kit-consumer.svg" width="570" height="195" alt="Verified kit source initializes or adopts explicit repository authority"></figure></section>
-<section class="scenario-detail" id="persona-mirror"><div class="scenario-copy"><span class="example-badge">Example</span><p class="section-kicker">A maintainer publishing source</p><h2>Inspect a controlled GitHub mirror</h2><p>With Muse selected, prepare a reviewed projection, verify both source and destination identities, and explicitly deliver the mirror. Delivery may create a pull request; the operator reviews and merges it.</p><p class="scenario-command"><code>mirror</code></p></div><figure class="scenario-flow"><img src="../assets/diagrams/regimes.svg" width="480" height="240" alt="Muse authority can use a controlled GitHub mirror"></figure></section>
-<section class="band-problem"><h2>Start with your own repository.</h2><p><a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/GIT-ONLY-QUICKSTART.md">Git-only quickstart</a> · <a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/MIGRATE-EXISTING-REPO.md">Muse adoption and rollback</a> · <a href="https://github.com/aaronrene/overseer-kit/blob/main/MUSE-BRIDGE-WORKFLOW.md">Controlled mirroring</a></p><p>Overseer does not choose the task or run it. This website is informational and does not run Overseer.</p></section></main>
-  <footer class="site-footer"><div class="footer-inner">
-    <div><p><strong>Honesty for Agents.</strong></p><p>This website is informational. It does not run Overseer.</p><p>v1.0.0-rc.1 is a prerelease, not stable and not Latest.</p></div>
-    <div class="footer-links"><a href="https://github.com/aaronrene/overseer-kit">GitHub</a><a href="https://github.com/aaronrene/overseer-kit/blob/main/LICENSE">MIT license</a><a href="https://github.com/aaronrene/overseer-kit/blob/main/SECURITY.md">Security</a></div>
-  </div></footer></body></html>
+  </header>
+
+  <main class="gallery-main">
+    <header class="gallery-intro">
+      <h1>Scenario gallery</h1>
+      <p class="lead">Five original persona flows showing how a trusted repository handoff can support different work. Domain checks remain examples owned by each project.</p>
+      <div class="badge-key" aria-label="Badge key">
+        <span class="badge-key-item"><span class="badge badge-dogfood">supported</span> uses shipped CLI behavior</span>
+        <span class="badge-key-item"><span class="badge badge-reference">reference</span> project-owned pattern</span>
+        <span class="badge-key-item"><span class="badge badge-aspirational">illustrative</span> example only</span>
+      </div>
+    </header>
+
+    <article class="scenario-detail" id="persona-A">
+      <span class="badge badge-dogfood">supported</span>
+      <h2>A — Software engineering</h2>
+      <p><strong>Pain:</strong> A new agent session starts in the wrong checkout or follows a handoff written for an older revision.</p>
+      <h3>How the kit helps</h3>
+      <ul class="compact">
+        <li><strong>Baseline:</strong> Repository-bound status plus one validated NEXT handoff.</li>
+        <li><strong>Project checks:</strong> CI and domain tests remain owned and run by the repository.</li>
+        <li><strong>Operator review:</strong> The team reviews the task, work, and merge; Overseer does not approve them.</li>
+        <li><strong>Optional Muse:</strong> Select Muse authority and a controlled GitHub mirror when that model fits.</li>
+      </ul>
+      <figure class="flow-diagram flow-linear diagram" aria-label="Software engineering flow">
+        <figcaption>Ship path — validate context, do the work, then use the project’s normal review</figcaption>
+        <ol class="flow-track">
+          <li>Reviewed NEXT</li>
+          <li>Status matches</li>
+          <li>Agent works</li>
+          <li>Tests + review</li>
+          <li class="flow-end">Merge</li>
+        </ol>
+        <p class="flow-aside">Context mismatch → stop; failed project checks → no merge</p>
+      </figure>
+      <p>Start with the shipped local workflow:
+        <a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/GIT-ONLY-QUICKSTART.md">Git-only quickstart</a></p>
+    </article>
+
+    <article class="scenario-detail" id="persona-B">
+      <span class="badge badge-dogfood">reference</span>
+      <h2>B — Video studio</h2>
+      <p><strong>Pain:</strong> A session resumes from stale production notes, and project-specific QC steps are easy to miss.</p>
+      <h3>How the kit helps</h3>
+      <ul class="compact">
+        <li><strong>Baseline:</strong> One repository-bound NEXT identifies the reviewed production task.</li>
+        <li><strong>Project checks:</strong> The studio may keep its own narration, export, and QC scripts.</li>
+        <li><strong>Human review:</strong> A listener can approve the export through the studio’s own process.</li>
+        <li><strong>Optional Muse:</strong> Muse authority can retain repository history; the kit does not ship a video workflow.</li>
+      </ul>
+      <figure class="flow-diagram flow-converge diagram" aria-label="Video studio flow">
+        <figcaption>Example production lane — project scripts and human review remain external to the kit</figcaption>
+        <div class="flow-split">
+          <ol class="flow-track">
+            <li>Narration</li>
+            <li>Export</li>
+            <li>QC scripts</li>
+          </ol>
+          <span class="flow-join" aria-hidden="true">↘</span>
+          <ol class="flow-track flow-track-short">
+            <li>Independent listen</li>
+            <li class="flow-end">Publish through studio process</li>
+          </ol>
+        </div>
+        <p class="flow-aside">Any project check fails → revise before publish</p>
+      </figure>
+    </article>
+
+    <article class="scenario-detail" id="persona-C">
+      <span class="badge badge-reference">reference</span>
+      <h2>C — Research paper pipeline</h2>
+      <p><strong>Pain:</strong> A research session loses its source context or continues from stale task instructions.</p>
+      <h3>How the kit helps</h3>
+      <ul class="compact">
+        <li><strong>Project checks:</strong> A research repository may record source URLs, hashes, quote spans, and regenerated tables.</li>
+        <li><strong>Human review:</strong> A researcher can re-fetch sources and compare the draft with project evidence.</li>
+        <li><strong>Optional Muse:</strong> Muse authority may preserve repository history when the team chooses it.</li>
+      </ul>
+      <figure class="flow-diagram flow-loop diagram" aria-label="Research pipeline flow">
+        <figcaption>Evidence loop — re-fetch until quotes and tables match sources</figcaption>
+        <ol class="flow-track">
+          <li>Retrieve + hash</li>
+          <li>Quote / table checks</li>
+          <li>Verifier re-fetch</li>
+        </ol>
+        <p class="flow-loop-label" aria-hidden="true">↻ mismatch → rewrite from sources</p>
+        <ol class="flow-track flow-track-short">
+          <li class="flow-end">Bind output SHA → draft</li>
+        </ol>
+        <p class="flow-aside">Optional: pin evidence pack for peer review</p>
+      </figure>
+      <p><em>Illustrative project workflow — research checks are not shipped in kit core.</em></p>
+    </article>
+
+    <article class="scenario-detail" id="persona-D">
+      <span class="badge badge-aspirational">illustrative</span>
+      <h2>D — Accounting close</h2>
+      <p><strong>Pain:</strong> A close process resumes without a clear repository handoff or current reconciliation task.</p>
+      <h3>How the kit helps</h3>
+      <ul class="compact">
+        <li><strong>Project checks:</strong> An accounting repository may define CSV schemas, checksums, and reconciliation thresholds.</li>
+        <li><strong>Human control:</strong> Separate preparation and review roles authorize any financial export.</li>
+        <li><strong>Boundary:</strong> Overseer does not execute transfers, enforce roles, or provide an accounting domain pack.</li>
+      </ul>
+      <figure class="flow-diagram flow-dual diagram" aria-label="Accounting close flow">
+        <figcaption>Dual control — prep and review stay separate until authorize</figcaption>
+        <div class="flow-dual-cols">
+          <ol class="flow-track">
+            <li class="flow-role">Prep</li>
+            <li>CSV + checksum</li>
+            <li>Reconcile diffs</li>
+          </ol>
+          <ol class="flow-track">
+            <li class="flow-role">Review</li>
+            <li>Re-run checks</li>
+            <li>Human authorize</li>
+          </ol>
+        </div>
+        <p class="flow-join-line" aria-hidden="true">↓ both green</p>
+        <ol class="flow-track flow-track-short">
+          <li class="flow-end">Export / payout file</li>
+        </ol>
+        <p class="flow-aside">Illustrative only: financial authorization stays outside Overseer</p>
+      </figure>
+      <p><em>Illustrative only — no kit claim of a production accounting workflow.</em></p>
+    </article>
+
+    <article class="scenario-detail" id="persona-E">
+      <span class="badge badge-reference">reference</span>
+      <h2>E — Classroom</h2>
+      <p><strong>Pain:</strong> Students resume from copied or stale instructions and may skip the teacher’s project checks.</p>
+      <h3>How the kit helps</h3>
+      <ul class="compact">
+        <li><strong>Baseline:</strong> A repository-bound NEXT carries the teacher’s reviewed assignment task.</li>
+        <li><strong>Project checks:</strong> The course may require tests and secret scanning before submission.</li>
+        <li><strong>Human review:</strong> A teacher or TA reviews the work; Overseer does not grade it.</li>
+        <li><strong>Optional Muse:</strong> A course may choose Muse authority; Git-only remains fully supported.</li>
+      </ul>
+      <figure class="flow-diagram flow-handoff diagram" aria-label="Classroom flow">
+        <figcaption>Teacher sets the rails; student work cannot self-grade</figcaption>
+        <ol class="flow-track">
+          <li class="flow-role">Teacher</li>
+          <li>Install kit</li>
+          <li>Freeze assignment</li>
+        </ol>
+        <p class="flow-join-line" aria-hidden="true">→ handoff</p>
+        <ol class="flow-track">
+          <li class="flow-role">Student</li>
+          <li>Build</li>
+          <li>Tests green</li>
+          <li>TA verify</li>
+          <li class="flow-end">Grade publish</li>
+        </ol>
+        <p class="flow-aside">Optional later lesson: choose Muse authority explicitly</p>
+      </figure>
+      <p><strong>Boundary:</strong> This is an example teaching pattern. The kit ships repository context and handoff commands, not a classroom platform.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      <a href="https://github.com/aaronrene/overseer-kit/blob/main/LICENSE">MIT</a>
+      · <a href="https://github.com/aaronrene/overseer-kit/blob/main/SECURITY.md">Security</a>
+      · <a href="../index.html">Home</a>
+    </p>
+    <p class="footer-tagline">🆗 Overseer Kit — Honesty for Agents.</p>
+  </footer>
+</body>
+</html>

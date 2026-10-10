@@ -8,16 +8,17 @@ CLI. It does not run Overseer, initialize repositories or execute tasks.
 
 | Path | Content |
 | --- | --- |
-| `/` | Trusted NEXT, daily flow, operating choices and prerelease installation |
-| `/docs.html` | Current guides and the seven public commands |
-| `/scenarios/` | Clearly labelled examples of actual bounded-v1 behavior |
-| `/assets/style.css` | Local responsive styles, including light and dark themes |
+| `/` | Original landing layout with accurate NEXT, authority and installation copy |
+| `/docs.html` | Current installation, initialization and repository guides |
+| `/scenarios/` | Original persona flows, clearly labelled as supported behavior or examples |
+| `/assets/style.css` | The original responsive styles, including light and dark themes |
 | `/assets/theme.js` | Optional theme preference only |
 
 All three pages work without JavaScript. Theme selection is an enhancement;
 no application backend, tracking script, credential prompt or repository access
-is involved. Retained historical diagrams are marked as historical and are not
-current product guidance. The current pages do not embed them.
+is involved. The original diagrams remain in their original positions as
+conceptual illustrations. Their surrounding captions state the bounded-v1
+contract; the diagrams are not claims of automated product features.
 
 The primary release link selects **v1.0.0-rc.1**, a prerelease, not stable and not
 Latest. Installation and rollback links select its immutable companion guide.
@@ -25,15 +26,11 @@ Git-only setup needs no Muse installation or account.
 
 ## Local verification
 
-Open `docs/landing/index.html` directly in a browser. From the kit source root:
-
-```sh
-.venv/bin/python -B -m tools.landing.validate .
-```
-
-Verify all three pages at desktop and mobile widths, with JavaScript disabled,
-and in light and dark themes. Follow current guide/release links. Check HTML
-structure, keyboard navigation, readable contrast and local asset paths.
+Open `docs/landing/index.html` directly in a browser. Verify all three pages at
+desktop and mobile widths, with JavaScript disabled, and in light and dark
+themes. Follow current guide/release links. Compare the DOM structure, stylesheet,
+theme script and image bytes with the approved original presentation baseline;
+only factual text and link destinations should differ.
 
 ## Existing publication controls
 
