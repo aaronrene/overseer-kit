@@ -1542,16 +1542,3 @@ footer a {
     text-align: center;
   }
 }
-
-
-/* Bounded-v1 restoration additions. The visual system above is the original site. */
-.skip-link{position:fixed;left:1rem;top:-6rem;z-index:100;background:var(--surface,#121a26);color:var(--text,#eef3f8);padding:.8rem 1rem;border:2px solid var(--accent,#7ec8ff)}
-.skip-link:focus{top:1rem}
-.release-badge,.example-badge{display:inline-block;padding:.28rem .6rem;border:1px solid currentColor;border-radius:999px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
-.release-badge{color:#e8a35c}.example-badge{color:#5cb88a}
-.command-table{width:100%;border-collapse:collapse;margin:1.5rem 0}.command-table th,.command-table td{text-align:left;vertical-align:top;padding:1rem;border-bottom:1px solid var(--line,#2a3848)}.command-table th[scope=row]{white-space:nowrap}.table-wrap{overflow-x:auto}
-.scenario-command{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line,#2a3848)}
-.truth-note{color:var(--muted,#a8b6c9);font-size:.92rem}
-.hero-inner,.hero-copy{min-width:0}.hero-terminal{max-width:100%}.hero-foot-links{display:flex;flex-wrap:wrap;gap:.2rem .45rem}body{overflow-x:hidden}
-.scenario-detail{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(18rem,.95fr);gap:3rem;align-items:center}.scenario-alt .scenario-copy{order:2}.scenario-alt .scenario-flow{order:1}.scenario-flow img{display:block;max-width:100%;height:auto;margin:auto}.page-hero{padding:3rem 0 1rem;max-width:52rem}.footer-inner{max-width:68rem;margin:auto}.footer-links{display:flex;justify-content:center;gap:.5rem;flex-wrap:wrap}
-@media(max-width:700px){.command-table th,.command-table td{padding:.75rem}.command-table th[scope=row]{white-space:normal}.scenario-detail{grid-template-columns:1fr;gap:1.5rem}.scenario-alt .scenario-copy,.scenario-alt .scenario-flow{order:initial}.site-header nav{align-items:flex-start}.site-header .nav-links{width:100%;display:flex;flex-wrap:wrap;gap:.65rem 1rem}.site-header .theme-toggle{margin-left:auto}.hero-inner{grid-template-columns:1fr}.hero-visual{margin-top:0}.hero-copy h1{font-size:2.15rem}}

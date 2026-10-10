@@ -3,33 +3,36 @@ version: 1
 license: MIT
 sections:
 - id: hero
-- id: context
+- id: kit-basics
+- id: problem
 - id: how-it-works
-- id: modes
-- id: boundaries
-- id: start
+- id: structure
+- id: console-access
+- id: musehub
+- id: next-steps
+- id: scenarios
 personas:
-- id: wrong-project
-  title: Prevent a prompt from the wrong project
-  status: example
-- id: resume
-  title: Resume against the right revision
-  status: example
-- id: git-only
-  title: Keep the tools you already use
-  status: example
-- id: adopt
-  title: Choose repository authority explicitly
-  status: example
-- id: mirror
-  title: Inspect a controlled GitHub mirror
-  status: example
+- id: A
+  title: Software engineering
+  status: supported
+- id: B
+  title: Video studio
+  status: reference
+- id: C
+  title: Research paper pipeline
+  status: reference
+- id: D
+  title: Accounting close
+  status: illustrative
+- id: E
+  title: Classroom
+  status: reference
 status_badges:
-- example
+- supported
+- reference
+- illustrative
 funnel_steps:
 - install
-- init
-- status
+- bind
 - next
-- next-write
-primary_download_href: https://github.com/aaronrene/overseer-kit/releases/tag/v1.0.0-rc.1
+primary_download_href: https://github.com/aaronrene/overseer-kit/releases/download/v1.0.0-rc.1/INSTALL-AND-ROLLBACK.md

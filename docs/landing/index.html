@@ -1,75 +1,360 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Overseer Kit — honesty for agents through one trusted NEXT handoff per repository.">
-<title>Overseer Kit — Honesty for Agents</title><link rel="icon" href="assets/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png"><link rel="stylesheet" href="assets/style.css"><script src="assets/theme.js" defer></script></head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Overseer Kit — honesty for agents through a trusted repository handoff.">
+  <title>Overseer Kit — Honesty for Agents</title>
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/theme.js" defer></script>
+</head>
 <body>
-
-  <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
-    <nav aria-label="Main navigation">
+    <nav>
       <a class="brand" href="index.html" aria-label="Overseer Kit home">
-        <span class="logo-mark" aria-hidden="true">OK</span><span class="brand-name">Overseer Kit</span>
+        <span class="logo-mark" aria-hidden="true">OK</span>
+        <span class="brand-name">Overseer Kit</span>
       </a>
       <div class="nav-links">
-        <a href="index.html#how-it-works">How it works</a><a href="index.html#start">Get started</a>
-        <a href="scenarios/index.html">Scenarios</a><a href="docs.html">Docs</a>
-        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to light mode" title="Light / dark"><span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span><span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span></button>
+        <a href="#how-it-works">How it works</a>
+        <a href="#console-access">Get started</a>
+        <a href="scenarios/index.html">Scenarios</a>
+        <a href="docs.html">Docs</a>
+        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to light mode" title="Light / dark">
+          <span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span>
+          <span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span>
+        </button>
       </div>
     </nav>
   </header>
-<main id="main">
-  <section id="hero" class="hero">
-    <div class="hero-plane" aria-hidden="true"></div><div class="hero-inner"><div class="hero-copy">
-      <p class="release-badge">Bounded v1 · rc.1 prerelease</p>
-      <h1>Honesty for Agents.</h1>
-      <p class="lead">Pick up the right task, in the right repository, at the right revision.</p>
-      <p class="sublead">Overseer Kit keeps one trusted NEXT handoff per repository. It checks the context before an agent session begins and makes every replacement deliberate.</p>
-      <div class="hero-terminal" role="region" aria-label="Daily Overseer command example"><div class="hero-terminal-chrome" aria-hidden="true"><span class="hero-terminal-dot"></span><span class="hero-terminal-dot"></span><span class="hero-terminal-dot"></span><span class="hero-terminal-title">ok — trusted NEXT</span></div>
-      <pre class="hero-terminal-body"><code><span class="term-prompt">$</span> <span class="term-cmd">./.overseer/bin/ok status</span>
-<span class="term-out">repository · branch · revision · NEXT</span>
-<span class="term-prompt">$</span> <span class="term-cmd">./.overseer/bin/ok next</span>
-<span class="term-ok">validated handoff ready</span> <span class="term-cursor" aria-hidden="true"></span></code></pre></div>
-      <p class="hero-foot-links"><a id="cta-release" href="https://github.com/aaronrene/overseer-kit/releases/tag/v1.0.0-rc.1">Get v1.0.0-rc.1</a><span class="hero-foot-sep" aria-hidden="true">·</span><a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/GIT-ONLY-QUICKSTART.md">Git-only quickstart</a><span class="hero-foot-sep" aria-hidden="true">·</span><a href="https://github.com/aaronrene/overseer-kit">View on GitHub</a></p>
-      <p class="truth-note">The release is a prerelease. Installation is checksum verified and uses a fixed local source path.</p>
-    </div><figure class="hero-visual"><img src="assets/diagrams/honesty-loop.svg" width="640" height="560" alt="Overseer flow: initialize, check status, read trusted NEXT, and publish a reviewed replacement"></figure></div>
-  </section>
 
-  <section id="context" class="band-kit-basics" aria-label="Context and trusted handoff">
-    <div class="kit-basics-inner"><aside class="mech-check-strip"><figure class="mech-check-visual"><img src="assets/diagrams/mechanical-check.svg" width="448" height="148" alt="Repository context enters a mechanical identity and revision check and either matches or stops"></figure>
-      <div class="mech-check-copy"><div class="mech-check-kicker-row"><p class="mech-check-kicker">The core safeguard</p><details class="mech-check-details"><summary>Technical detail</summary><div class="mech-details-body"><p><strong>Before NEXT is printed:</strong> Overseer validates the repository UUID, physical root, selected authority, branch, revision, and handoff digest.</p><p class="mech-details-cmd-label">Daily read</p><pre class="mech-details-cmd"><code>./.overseer/bin/ok status
-./.overseer/bin/ok next</code></pre></div></details></div>
-      <h2>Context check — the right task for this exact checkout</h2><p>A copied prompt should not become another project’s work. Overseer compares on-disk identity and current version-control state before it prints the trusted handoff. A mismatch stops the read and leaves the task untouched.</p></div></aside>
-      <div class="kit-basics-grid"><article class="kit-basics-panel"><div class="kit-basics-icon" aria-hidden="true"><img src="assets/ok-mark.svg" width="64" height="64" alt=""></div><div class="kit-basics-copy"><h2>One trusted NEXT</h2><ul class="kit-basics-list"><li><strong>Readable</strong> — a plain-text task you can inspect before using it.</li><li><strong>Bound</strong> — repository, branch, revision, lane, model label, and action identity travel with it.</li><li><strong>Deliberate</strong> — replacing it requires the prior NEXT digest.</li></ul></div></article>
-      <article class="kit-basics-panel"><div class="kit-basics-icon kit-basics-icon-docs" aria-hidden="true"><img src="assets/diagrams/living-docs-icon.svg" width="78" height="78" alt=""></div><div class="kit-basics-copy"><h2>Repository · Branch · Revision</h2><ul class="kit-basics-list"><li><strong>Repository</strong> — persistent UUID plus exact physical-folder binding.</li><li><strong>Branch</strong> — confirms the workstream named by the handoff.</li><li><strong>Revision</strong> — detects when work moved after the task was written.</li><li><strong>Authority</strong> — Git or Muse is chosen explicitly for each repository.</li></ul></div></article></div>
-    </div>
-  </section>
+  <main>
+    <section id="hero" class="hero">
+      <div class="hero-plane" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <h1>Honesty for Agents.</h1>
+          <p class="lead">Keep every agent anchored to the right repository, revision, and reviewed next task.</p>
+          <p class="sublead">A small local CLI for durable handoffs between sessions. Git-only stays fully supported; Muse is an explicit repository choice.</p>
 
-  <section id="problem" class="band-problem"><header class="section-intro"><p class="section-kicker">The failure mode</p><h2>Why context honesty matters</h2><p class="section-lede">AI-assisted work breaks down when a good prompt is detached from the repository state that made it true.</p></header>
-    <ul class="pain-grid"><li><span class="pain-label">Wrong repository</span><p>A handoff copied from a similar project looks plausible.</p></li><li><span class="pain-label">Stale revision</span><p>The branch moved after the task was written.</p></li><li><span class="pain-label">Lost handoff</span><p>A new session reconstructs intent from partial memory.</p></li><li><span class="pain-label">Accidental replacement</span><p>A task is overwritten without proving which version it replaced.</p></li></ul>
-    <p class="problem-close"><span class="problem-close-lead">Overseer makes the handoff inspectable</span> — and refuses to present it when its repository context no longer matches.</p>
-  </section>
+          <div class="hero-terminal" role="region" aria-label="Overseer status and NEXT command example">
+            <div class="hero-terminal-chrome" aria-hidden="true">
+              <span class="hero-terminal-dot"></span>
+              <span class="hero-terminal-dot"></span>
+              <span class="hero-terminal-dot"></span>
+              <span class="hero-terminal-title">ok — trusted NEXT</span>
+            </div>
+            <pre class="hero-terminal-body"><code><span class="term-prompt">$</span> <span class="term-cmd">ok -C . status</span> <span class="term-flag">--json</span> <span class="term-str"></span>
+<span class="term-out">branch: main · NEXT digest: 7ac9…</span>
+<span class="term-prompt">$</span> <span class="term-cmd">ok -C . next</span> <span class="term-flag"></span> <span class="term-str"></span>
+<span class="term-ok">context matches · print reviewed task</span> <span class="term-cursor" aria-hidden="true"></span></code></pre>
+          </div>
 
-  <section id="how-it-works" class="band-how"><header class="section-intro"><p class="section-kicker">The real flow</p><h2>How it works</h2><p class="section-lede">Initialize once. Check the context. Read NEXT. Publish a reviewed replacement only when the task changes.</p></header>
-    <ol class="loop-steps"><li class="loop-step"><span class="loop-index" aria-hidden="true">01</span><div class="loop-body"><h3>Initialize the repository</h3><p>Choose Git or Muse explicitly, then bind the repository’s persistent identity and physical root.</p></div></li><li class="loop-step"><span class="loop-index" aria-hidden="true">02</span><div class="loop-body"><h3>Check status</h3><p>See the active authority, repository, branch, revision, lane, model label, and NEXT digest.</p></div></li><li class="loop-step"><span class="loop-index" aria-hidden="true">03</span><div class="loop-body"><h3>Read trusted NEXT</h3><p>Validate and print the handoff. Overseer does not run it or decide whether the task is good.</p></div></li><li class="loop-step"><span class="loop-index" aria-hidden="true">04</span><div class="loop-body"><h3>Replace it deliberately</h3><p>Review the new task and publish it with exact context plus the previous NEXT digest.</p></div></li></ol>
-  </section>
+          <p class="hero-foot-links">
+            <a id="cta-download-mac"
+               href="https://github.com/aaronrene/overseer-kit/releases/download/v1.0.0-rc.1/INSTALL-AND-ROLLBACK.md">Install v1.0.0-rc.1</a>
+            <span class="hero-foot-sep" aria-hidden="true">·</span>
+            <a href="https://github.com/aaronrene/overseer-kit">Clone on GitHub</a>
+          </p>
+          <p class="tertiary-links">
+            <a href="scenarios/index.html">Scenarios</a>
+            · <a href="docs.html">Docs</a>
+            · <a href="https://github.com/aaronrene/overseer-kit/releases/tag/v1.0.0-rc.1">Release</a>
+          </p>
+        </div>
+        <figure class="hero-visual">
+          <img src="assets/diagrams/honesty-loop.svg"
+               width="640"
+               height="560"
+               alt="Original Overseer honesty-loop illustration; a conceptual workflow rather than an automated v1 command sequence">
+        </figure>
+      </div>
+    </section>
 
-  <section id="modes"><h2>Structure at a glance</h2><p>The familiar diagrams are back, with labels aligned to the bounded v1 that actually ships.</p>
-    <figure class="diagram-figure"><figcaption>One handoff is bound to one repository context. Lane remains a label inside that context.</figcaption><img src="assets/diagrams/lanes.svg" alt="Repository identity, branch, revision, and lane lead to one trusted NEXT handoff" width="720" height="280"><ul class="diagram-fallback"><li>Repository identity plus physical root</li><li>Branch, revision, lane, and model label</li><li>One trusted NEXT</li></ul></figure>
-    <figure class="diagram-figure" id="diagram-regimes"><figcaption>Git-only is permanently supported. Muse authority and an optional GitHub mirror are explicit choices.</figcaption><img src="assets/diagrams/regimes.svg" alt="Version-control choices: Git-only, Muse with a GitHub mirror, and Muse-only" width="640" height="320"><ul class="diagram-fallback"><li>Git-only — permanently supported</li><li>Muse plus GitHub mirror — Muse authoritative, mirror controlled</li><li>Muse-only — no GitHub mirror</li></ul></figure>
-    <figure class="diagram-figure"><figcaption>Three checks establish whether a handoff belongs to the current checkout.</figcaption><img src="assets/diagrams/layers.svg" alt="Repository identity, current branch and revision, and NEXT digest checks" width="420" height="280"><ul class="diagram-fallback"><li>Repository identity and physical root</li><li>Selected authority, branch, and revision</li><li>NEXT context and digest</li></ul></figure>
-    <figure class="diagram-figure"><figcaption>The kit installs a repository-bound launcher. Your agent session remains separate and under your control.</figcaption><img src="assets/diagrams/kit-consumer.svg" alt="Overseer Kit source initializes a repository with local configuration and a trusted NEXT handoff for an agent session" width="760" height="260"><ul class="diagram-fallback"><li>Verified kit source → explicit init or adopt</li><li>Repository-bound config and launcher</li><li>Validated NEXT → your agent session</li></ul></figure>
-  </section>
+    <section id="kit-basics" class="band-kit-basics" aria-label="Repository check, trusted NEXT, and living docs">
+      <div class="kit-basics-inner">
+        <aside class="mech-check-strip" id="mechanical-check" aria-label="Mechanical check">
+          <figure class="mech-check-visual">
+            <img src="assets/diagrams/mechanical-check.svg"
+                 width="448"
+                 height="148"
+                 alt="Original mechanical-check illustration representing a context match or stop">
+          </figure>
+          <div class="mech-check-copy">
+            <div class="mech-check-kicker-row">
+              <p class="mech-check-kicker">The core safeguard</p>
+              <details class="mech-check-details">
+                <summary>Technical detail</summary>
+                <div class="mech-details-body">
+                  <p><strong>Default after <code>ok init</code>:</strong> the bound launcher checks repository identity, physical root, authority, branch, revision, and <code>NEXT</code> context before printing a task. It does not judge the task or run it.</p>
+                  <p class="mech-details-cmd-label">Read-only checks</p>
+                  <pre class="mech-details-cmd"><code>ok -C . status --json
+ok -C . next</code></pre>
+                  <p class="mech-details-cmd-label">Reviewed replacement</p>
+                  <pre class="mech-details-cmd"><code>ok -C . next-write …</code></pre>
+                </div>
+              </details>
+            </div>
+            <h2>Mechanical check — current context, on-disk identity</h2>
+            <p>Overseer compares the current checkout with the handoff on disk: repository UUID and root, selected authority, branch, revision, lane, model label, and prior digest. A mismatch stops instead of silently printing stale instructions.</p>
+          </div>
+        </aside>
+        <div class="kit-basics-grid">
+          <article class="kit-basics-panel">
+            <div class="kit-basics-icon" aria-hidden="true">
+              <img src="assets/ok-mark.svg" width="64" height="64" alt="">
+            </div>
+            <div class="kit-basics-copy">
+              <h2>Trusted NEXT</h2>
+              <ul class="kit-basics-list">
+                <li><strong>One handoff</strong> — <code>next</code> validates and prints the repository’s sole current task.</li>
+                <li><strong>Exact context</strong> — copied configuration, a foreign handoff, or a stale revision refuses closed.</li>
+                <li><strong>Your agent stays yours</strong> — Overseer prints task text; it never executes the prompt or chooses the work.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="kit-basics-panel">
+            <div class="kit-basics-icon kit-basics-icon-docs" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="78" height="78" viewBox="8 12 84 72" focusable="false">
+                <rect x="14" y="18" width="40" height="52" rx="4" fill="none" stroke="#7ec8ff" stroke-width="3"/>
+                <path d="M24 34h20M24 46h20M24 58h12" fill="none" stroke="#7ec8ff" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M24 34l3.5 3.5 7-8" fill="none" stroke="#5cb88a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M68 28a18 18 0 0 1 0 36" fill="none" stroke="#e8a35c" stroke-width="3" stroke-linecap="round"/>
+                <path d="M68 64a18 18 0 0 1 0-36" fill="none" stroke="#e85d4c" stroke-width="3" stroke-linecap="round" stroke-dasharray="4 5"/>
+                <path d="M78 22l6 6-6 6" fill="none" stroke="#e8a35c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M58 70l-6-6 6-6" fill="none" stroke="#e85d4c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="kit-basics-copy">
+              <h2>Repository · Revision · NEXT</h2>
+              <ul class="kit-basics-list">
+                <li><strong>Repository</strong> — a persistent UUID and exact physical root bind the local configuration.</li>
+                <li><strong>Revision</strong> — freshness follows the current Git commit or selected Muse revision.</li>
+                <li><strong>NEXT</strong> — one canonical handoff carries the reviewed task and its context.</li>
+                <li><strong>Replacement</strong> — next-write requires the previous NEXT digest and explicit current context.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  <section id="boundaries" class="band-problem"><header class="section-intro"><p class="section-kicker">Small by design</p><h2>What Overseer does — and does not do</h2></header><ul class="pain-grid"><li><span class="pain-label">Local CLI</span><p>It runs in a repository you are authorized to manage.</p></li><li><span class="pain-label">No automatic execution</span><p>It prints a task; it does not run the prompt.</p></li><li><span class="pain-label">No automatic merge</span><p>Mirror delivery may open a pull request; the operator reviews and merges.</p></li><li><span class="pain-label">No hosted product</span><p>No service, desktop app, background process, telemetry, or updater.</p></li></ul><p class="problem-close">Hooks are optional and off by default. Overseer protects against stale context and ordinary mistakes on a trusted host; it is not a security boundary against a malicious administrator.</p></section>
+    <section id="problem" class="band-problem">
+      <header class="section-intro">
+        <p class="section-kicker">The failure mode</p>
+        <h2>Why governance honesty matters</h2>
+        <p class="section-lede">AI-assisted work breaks down when a new session starts from the wrong context.</p>
+      </header>
+      <ul class="pain-grid">
+        <li>
+          <span class="pain-label">Amnesia</span>
+          <p>Each new chat re-derives context from scratch.</p>
+        </li>
+        <li>
+          <span class="pain-label">Wrong repository</span>
+          <p>A plausible prompt is pasted into a similar checkout.</p>
+        </li>
+        <li>
+          <span class="pain-label">Silent drift</span>
+          <p>A handoff outlives the branch or revision that produced it.</p>
+        </li>
+        <li>
+          <span class="pain-label">Unreviewed replacement</span>
+          <p>Task text changes without checking its prior digest or context.</p>
+        </li>
+      </ul>
+      <p class="problem-close"><span class="problem-close-lead">Overseer Kit makes context visible before work continues</span> — a local handoff tool, not a hosted agent or workflow engine.</p>
+    </section>
 
-  <section id="start"><h2>Get started</h2><p>Choose the version-control mode that matches the repository. Git-only requires no Muse installation, account, or future migration.</p><div class="card-grid suite-grid"><div class="card"><h3>Git-only</h3><p>Permanently supported. Initialize an existing Git checkout and keep all daily handoff work local.</p><p><a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/GIT-ONLY-QUICKSTART.md">Open the quickstart →</a></p></div><div class="card"><h3>Muse-only</h3><p>Explicitly initialize or adopt Muse authority. Freshness follows the selected Muse branch and revision.</p><p><a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/MIGRATE-EXISTING-REPO.md">Read adoption and rollback →</a></p></div><div class="card"><h3>Muse + GitHub mirror</h3><p>Prepare and verify a controlled projection. Explicit delivery can push the mirror and create a pull request; it never merges it.</p><p><a href="https://github.com/aaronrene/overseer-kit/blob/main/MUSE-BRIDGE-WORKFLOW.md">Read the bridge workflow →</a></p></div></div>
-    <div class="funnel" aria-label="Daily handoff path"><span class="funnel-step">Install</span><span class="funnel-arrow">→</span><span class="funnel-step">Initialize</span><span class="funnel-arrow">→</span><span class="funnel-step">Status</span><span class="funnel-arrow">→</span><span class="funnel-step">NEXT</span><span class="funnel-arrow">→</span><span class="funnel-step">Reviewed replacement</span></div>
-  </section>
-  <section id="musehub" class="musehub-band" aria-labelledby="musehub-heading"><div class="musehub-band-inner"><div class="musehub-brand"><img class="musehub-logo" src="assets/musehub-logo.svg" width="360" height="80" alt="MuseHub"></div><div class="musehub-copy"><h2 id="musehub-heading">Muse when it fits the repository</h2><p>Git-only remains a complete ongoing mode. Muse can become the explicit authority, with or without a controlled GitHub mirror. The choice belongs to each repository.</p><p class="musehub-links"><a href="#diagram-regimes">See version-control choices</a> · <a href="https://github.com/aaronrene/overseer-kit/blob/main/MUSE-BRIDGE-WORKFLOW.md">Bridge workflow</a></p></div></div></section>
-  <section id="scenarios"><h2>See it in practice</h2><p>Five bounded-v1 examples show wrong-project protection, revision freshness, Git-only use, explicit Muse adoption, and controlled mirroring.</p><p><a class="btn btn-secondary" href="scenarios/index.html">Open the scenario gallery →</a></p></section>
-</main>
-  <footer class="site-footer"><div class="footer-inner">
-    <div><p><strong>Honesty for Agents.</strong></p><p>This website is informational. It does not run Overseer.</p><p>v1.0.0-rc.1 is a prerelease, not stable and not Latest.</p></div>
-    <div class="footer-links"><a href="https://github.com/aaronrene/overseer-kit">GitHub</a><a href="https://github.com/aaronrene/overseer-kit/blob/main/LICENSE">MIT license</a><a href="https://github.com/aaronrene/overseer-kit/blob/main/SECURITY.md">Security</a></div>
-  </div></footer></body></html>
+    <section id="how-it-works" class="band-how">
+      <header class="section-intro">
+        <p class="section-kicker">The loop</p>
+        <h2>How it works</h2>
+        <p class="section-lede">Bind the repository, inspect current status, read the trusted handoff, and replace it deliberately.</p>
+      </header>
+      <ol class="loop-steps">
+        <li class="loop-step">
+          <span class="loop-index" aria-hidden="true">01</span>
+          <div class="loop-body">
+            <h3>Initialize explicitly</h3>
+            <p>Bind one authorized checkout to its persistent identity, physical root, authority, lane, and model label.</p>
+          </div>
+        </li>
+        <li class="loop-step">
+          <span class="loop-index" aria-hidden="true">02</span>
+          <div class="loop-body">
+            <h3>Check status</h3>
+            <p>See the active repository, authority, branch, revision, runtime pin, and current NEXT digest.</p>
+          </div>
+        </li>
+        <li class="loop-step">
+          <span class="loop-index" aria-hidden="true">03</span>
+          <div class="loop-body">
+            <h3>Read trusted NEXT</h3>
+            <p>Validate and print the task for your agent. Overseer does not execute it or decide whether it is good.</p>
+          </div>
+        </li>
+        <li class="loop-step">
+          <span class="loop-index" aria-hidden="true">04</span>
+          <div class="loop-body">
+            <h3>Replace deliberately</h3>
+            <p>Review new task text, then publish it against the current revision and the exact prior NEXT digest.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="structure">
+      <h2>Structure at a glance</h2>
+      <p>The original diagrams remain as working metaphors. The captions below state the bounded-v1 contract that ships.</p>
+
+      <figure class="diagram-figure" id="diagram-lanes">
+        <figcaption>One trusted handoff is bound to one repository context; lane is an explicit label inside it.</figcaption>
+        <img src="assets/diagrams/lanes.svg" alt="Original work-lanes illustration, used here as a conceptual view of repository context and one trusted handoff" width="720" height="280">
+        <ul class="diagram-fallback">
+          <li>Repository identity + physical root + current revision</li>
+          <li>One lane label and one trusted NEXT handoff</li>
+        </ul>
+      </figure>
+
+      <figure class="diagram-figure" id="diagram-regimes">
+        <figcaption>Git-only is permanently supported. Muse authority, with or without a controlled GitHub mirror, is an explicit choice.</figcaption>
+        <img src="assets/diagrams/regimes.svg" alt="Version-control options from git-only to Muse with GitHub mirror to Muse-only" width="640" height="320">
+        <ul class="diagram-fallback">
+          <li>git-only — permanent mode; no Muse required</li>
+          <li>muse+git-mirror — Muse authority + controlled GitHub mirror</li>
+          <li>muse-only — Muse authority; no GitHub mirror</li>
+        </ul>
+      </figure>
+
+      <figure class="diagram-figure" id="diagram-layers">
+        <figcaption>Context validation has three layers: repository identity, current authority and revision, then NEXT context and digest.</figcaption>
+        <img src="assets/diagrams/layers.svg" alt="Original safety-layer illustration, representing repository, revision, and NEXT context checks" width="420" height="280">
+        <ul class="diagram-fallback">
+          <li>Repository — persistent identity and physical root</li>
+          <li>Authority — selected VCS, branch, and revision</li>
+          <li>NEXT — bound context and previous digest</li>
+        </ul>
+      </figure>
+
+      <figure class="diagram-figure" id="diagram-kit-consumer">
+        <figcaption>The verified kit initializes or adopts a repository, installs a bound launcher, and validates NEXT for your agent.</figcaption>
+        <img src="assets/diagrams/kit-consumer.svg" alt="Original kit-and-consumer illustration, representing verified source, explicit setup, repository binding, and an agent handoff" width="760" height="260">
+        <ul class="diagram-fallback">
+          <li>Verified kit → explicit init or adopt → bound config</li>
+          <li>Validated NEXT → your agent; product checks stay in your repository</li>
+        </ul>
+      </figure>
+    </section>
+
+    <section id="console-access">
+      <h2>Get started</h2>
+      <p>This site is <strong>informational</strong>. Install the local CLI from the reviewed release, then choose Git or Muse authority for a repository you are authorized to manage.</p>
+
+      <article class="path-card path-preferred" id="path-1">
+        <h3>Path 1 — Git-only <span class="path-badge">permanent · no account</span></h3>
+        <ol>
+          <li>Follow the reviewed <strong>v1.0.0-rc.1</strong> <code>INSTALL-AND-ROLLBACK.md</code> guide.</li>
+          <li>Set <code>PROJECT_ROOT</code> to an existing <code>Git</code> checkout you are authorized to initialize.</li>
+          <li>Run <code>./cli/ok</code> for <code>init --vcs git</code> with the required <code>repository name and context</code>.</li>
+          <li>Use the repository-bound launcher for status, next, and a reviewed next-write.</li>
+        </ol>
+        <p class="cta-honesty">Git-only is a complete ongoing mode. It requires no Muse installation, account, or future migration.</p>
+      </article>
+
+      <article class="path-card" id="path-2">
+        <h3>Path 2 — Muse authority (<code>adopt</code>)</h3>
+        <ol>
+          <li>Read the Muse <code>adoption and rollback</code> guide before changing repository authority.</li>
+          <li>Prepare the <a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/MIGRATE-EXISTING-REPO.md" id="local-console-loopback">separate pinned Muse environment</a>; Muse is not required by the core install.</li>
+          <li>Preview <code>adopt</code> and confirm the <code>repository identity, root, branch, and revision</code>.</li>
+          <li>Apply the authority change explicitly; Muse metadata alone never changes a Git binding.</li>
+        </ol>
+      </article>
+
+      <article class="path-card" id="path-3">
+        <h3>Path 3 — Muse + GitHub mirror</h3>
+        <ol>
+          <li>Prepare and verify the controlled projection with <code>mirror</code>; inspect <code>source and destination identities</code>.</li>
+          <li>Explicit delivery may push the mirror and open a pull request. It never merges the pull request.</li>
+        </ol>
+      </article>
+
+      <p class="bound-honesty"><em>Overseer is bound to one local checkout. It prints a task; it does not execute the prompt, judge the task, or merge code.</em></p>
+      <p>Operator detail:
+        <a href="https://github.com/aaronrene/overseer-kit/releases/download/v1.0.0-rc.1/INSTALL-AND-ROLLBACK.md">Installation and rollback</a>
+        · Release index: <a href="https://github.com/aaronrene/overseer-kit/releases/tag/v1.0.0-rc.1">v1.0.0-rc.1</a>
+        · Git guide:
+        <a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/GIT-ONLY-QUICKSTART.md">Git-only quickstart</a></p>
+    </section>
+
+    <section id="musehub" class="musehub-band" aria-labelledby="musehub-heading">
+      <div class="musehub-band-inner">
+        <div class="musehub-brand">
+          <img class="musehub-logo" src="assets/musehub-logo.svg" width="360" height="80" alt="MuseHub">
+        </div>
+        <div class="musehub-copy">
+          <h2 id="musehub-heading">Muse when it fits the repository</h2>
+          <p><code>Git-only</code> remains a complete ongoing mode. Muse can become the explicit repository authority, with or without a controlled GitHub mirror. The choice belongs to each repository.</p>
+          <p class="musehub-links">
+            <a href="#diagram-regimes">See version-control options</a>
+            · Adoption guide:
+            <code>docs/MIGRATE-EXISTING-REPO.md</code>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="next-steps">
+      <h2>Where to go next</h2>
+      <p>This site explains the bounded local CLI. Day-to-day agent work stays in your existing tools.</p>
+      <div class="card-grid suite-grid">
+        <div class="card">
+          <h3>GitHub</h3>
+          <p><a href="https://github.com/aaronrene/overseer-kit">overseer-kit</a> — <code>source</code>, issues, and release history.</p>
+        </div>
+        <div class="card">
+          <h3>Docs</h3>
+          <p><a href="docs.html">Docs on this site</a>
+            · <a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/CONSUMER-ADAPTER-PATTERN.md">Adapter pattern</a>
+            · <a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/GIT-ONLY-QUICKSTART.md">Quickstart</a></p>
+        </div>
+        <div class="card">
+          <h3>Release</h3>
+          <p>After reviewing <code>v1.0.0-rc.1</code>:
+            <a href="https://github.com/aaronrene/overseer-kit/releases/tag/v1.0.0-rc.1">Open the release</a>
+            — see <a href="#console-access">Get started</a>.</p>
+        </div>
+        <div class="card">
+          <h3>Scenarios</h3>
+          <p><a href="scenarios/index.html">Scenario gallery</a> — the original job flows, clearly labeled as examples.</p>
+        </div>
+      </div>
+      <div class="funnel" id="funnel" aria-label="Adoption path">
+        <span class="funnel-step" id="funnel-github">Install the CLI</span>
+        <span class="funnel-arrow">→</span>
+        <span class="funnel-step" id="funnel-kit">Bind one repository</span>
+        <span class="funnel-arrow">→</span>
+        <span class="funnel-step" id="funnel-musehub">Read trusted NEXT</span>
+      </div>
+    </section>
+
+    <section id="scenarios">
+      <h2>Scenarios</h2>
+      <p>The original persona flows remain, with copy that separates shipped CLI behavior from illustrative domain practice.</p>
+      <p><a class="btn btn-secondary" href="scenarios/index.html">Open the scenario gallery →</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      <a href="https://github.com/aaronrene/overseer-kit/blob/main/LICENSE">MIT open source</a>
+      · <a href="https://github.com/aaronrene/overseer-kit/blob/main/SECURITY.md">Security</a>
+    </p>
+    <p class="footer-tagline">🆗 Overseer Kit — Honesty for Agents.</p>
+  </footer>
+</body>
+</html>
