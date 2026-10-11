@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Overseer Kit — honesty for agents through a trusted repository handoff.">
+  <meta name="description" content="Overseer Kit — honesty for agents through reviewed plans, phased work, verified completion, and durable handoffs.">
   <title>Overseer Kit — Honesty for Agents</title>
   <link rel="icon" href="assets/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32">
@@ -37,20 +37,20 @@
       <div class="hero-inner">
         <div class="hero-copy">
           <h1>Honesty for Agents.</h1>
-          <p class="lead">Keep every agent anchored to the right repository, revision, and reviewed next task.</p>
-          <p class="sublead">A small local CLI for durable handoffs between sessions. Git-only stays fully supported; Muse is an explicit repository choice.</p>
+          <p class="lead">Freeze the plan. Challenge it independently. Build in phases. Review the result before anyone marks it DONE.</p>
+          <p class="sublead">ROADMAP holds the plan. HANDOVER carries the baton between sessions. Overseer Kit helps teams keep both honest from first review through final verification.</p>
 
-          <div class="hero-terminal" role="region" aria-label="Overseer status and NEXT command example">
+          <div class="hero-terminal" role="region" aria-label="Overseer plan, build, review, and handover example">
             <div class="hero-terminal-chrome" aria-hidden="true">
               <span class="hero-terminal-dot"></span>
               <span class="hero-terminal-dot"></span>
               <span class="hero-terminal-dot"></span>
-              <span class="hero-terminal-title">ok — trusted NEXT</span>
+              <span class="hero-terminal-title">overseer — honesty loop</span>
             </div>
-            <pre class="hero-terminal-body"><code><span class="term-prompt">$</span> <span class="term-cmd">ok -C . status</span> <span class="term-flag">--json</span> <span class="term-str"></span>
-<span class="term-out">branch: main · NEXT digest: 7ac9…</span>
-<span class="term-prompt">$</span> <span class="term-cmd">ok -C . next</span> <span class="term-flag"></span> <span class="term-str"></span>
-<span class="term-ok">context matches · print reviewed task</span> <span class="term-cursor" aria-hidden="true"></span></code></pre>
+            <pre class="hero-terminal-body"><code><span class="term-prompt">01</span> <span class="term-cmd">PLAN</span> <span class="term-flag">freeze · challenge</span> <span class="term-str"></span>
+<span class="term-out">independent review · revise until clear</span>
+<span class="term-prompt">02</span> <span class="term-cmd">BUILD</span> <span class="term-flag">phases · checks</span> <span class="term-str"></span>
+<span class="term-ok">VERIFY against freeze · HANDOVER truth</span> <span class="term-cursor" aria-hidden="true"></span></code></pre>
           </div>
 
           <p class="hero-foot-links">
@@ -69,37 +69,37 @@
           <img src="assets/diagrams/honesty-loop.svg"
                width="640"
                height="560"
-               alt="Original Overseer honesty-loop illustration; a conceptual workflow rather than an automated v1 command sequence">
+               alt="Overseer honesty loop: freeze and independently review a plan, build it in phases, verify the result, and re-check findings until it passes">
         </figure>
       </div>
     </section>
 
-    <section id="kit-basics" class="band-kit-basics" aria-label="Repository check, trusted NEXT, and living docs">
+    <section id="kit-basics" class="band-kit-basics" aria-label="Plan review, build verification, and living docs">
       <div class="kit-basics-inner">
         <aside class="mech-check-strip" id="mechanical-check" aria-label="Mechanical check">
           <figure class="mech-check-visual">
             <img src="assets/diagrams/mechanical-check.svg"
                  width="448"
                  height="148"
-                 alt="Original mechanical-check illustration representing a context match or stop">
+                 alt="Mechanical check comparing a claim of DONE with on-disk evidence, passing only when the evidence matches">
           </figure>
           <div class="mech-check-copy">
             <div class="mech-check-kicker-row">
-              <p class="mech-check-kicker">The core safeguard</p>
+              <p class="mech-check-kicker">The core workflow</p>
               <details class="mech-check-details">
                 <summary>Technical detail</summary>
                 <div class="mech-details-body">
-                  <p><strong>Default after <code>ok init</code>:</strong> the bound launcher checks repository identity, physical root, authority, branch, revision, and <code>NEXT</code> context before printing a task. It does not judge the task or run it.</p>
-                  <p class="mech-details-cmd-label">Read-only checks</p>
+                  <p><strong>Two review boundaries for <code>ROADMAP</code>:</strong> challenge the frozen plan before build, then compare the completed implementation with that plan before <code>DONE</code>. A separate agent chat or human performs the judgment; Overseer provides the structure and durable record.</p>
+                  <p class="mech-details-cmd-label">Current rc.1 continuity layer</p>
                   <pre class="mech-details-cmd"><code>ok -C . status --json
 ok -C . next</code></pre>
-                  <p class="mech-details-cmd-label">Reviewed replacement</p>
+                  <p class="mech-details-cmd-label">Publish the reviewed handoff</p>
                   <pre class="mech-details-cmd"><code>ok -C . next-write …</code></pre>
                 </div>
               </details>
             </div>
-            <h2>Mechanical check — current context, on-disk identity</h2>
-            <p>Overseer compares the current checkout with the handoff on disk: repository UUID and root, selected authority, branch, revision, lane, model label, and prior digest. A mismatch stops instead of silently printing stale instructions.</p>
+            <h2>Mechanical check — the frozen plan against on-disk evidence</h2>
+            <p>Define what “done” means before the build: scope, phases, deliverables, files, test exits, or project-owned checks. Review that plan independently, then compare the completed work with the accepted freeze instead of trusting the builder’s summary.</p>
           </div>
         </aside>
         <div class="kit-basics-grid">
@@ -108,11 +108,11 @@ ok -C . next</code></pre>
               <img src="assets/ok-mark.svg" width="64" height="64" alt="">
             </div>
             <div class="kit-basics-copy">
-              <h2>Trusted NEXT</h2>
+              <h2>Review before build</h2>
               <ul class="kit-basics-list">
-                <li><strong>One handoff</strong> — <code>next</code> validates and prints the repository’s sole current task.</li>
-                <li><strong>Exact context</strong> — copied configuration, a foreign handoff, or a stale revision refuses closed.</li>
-                <li><strong>Your agent stays yours</strong> — Overseer prints task text; it never executes the prompt or chooses the work.</li>
+                <li><strong>Freeze the plan</strong> — write the intended outcome, phases, outputs, and acceptance evidence in <code>ROADMAP</code> before implementation starts.</li>
+                <li><strong>Challenge it independently</strong> — give the freeze to a separate agent chat or human reviewer with no incentive to approve it.</li>
+                <li><strong>Loop on findings</strong> — revise and re-review until the plan is clear enough to build without guesswork.</li>
               </ul>
             </div>
           </article>
@@ -129,12 +129,12 @@ ok -C . next</code></pre>
               </svg>
             </div>
             <div class="kit-basics-copy">
-              <h2>Repository · Revision · NEXT</h2>
+              <h2>Roadmap · Handover · Phases</h2>
               <ul class="kit-basics-list">
-                <li><strong>Repository</strong> — a persistent UUID and exact physical root bind the local configuration.</li>
-                <li><strong>Revision</strong> — freshness follows the current Git commit or selected Muse revision.</li>
-                <li><strong>NEXT</strong> — one canonical handoff carries the reviewed task and its context.</li>
-                <li><strong>Replacement</strong> — next-write requires the previous NEXT digest and explicit current context.</li>
+                <li><strong>ROADMAP</strong> — the phase board: what is planned, frozen, building, under review, or done.</li>
+                <li><strong>HANDOVER</strong> — the session baton: what landed, what remains true, and what the next session should do.</li>
+                <li><strong>Phases</strong> — turn an accepted plan into bounded slices with explicit outputs and checks.</li>
+                <li><strong>Continuity</strong> — the current CLI binds NEXT to the repository and revision so the right work reaches the right session.</li>
               </ul>
             </div>
           </article>
@@ -146,7 +146,7 @@ ok -C . next</code></pre>
       <header class="section-intro">
         <p class="section-kicker">The failure mode</p>
         <h2>Why governance honesty matters</h2>
-        <p class="section-lede">AI-assisted work breaks down when a new session starts from the wrong context.</p>
+        <p class="section-lede">AI-assisted work breaks down at the boundaries between planning, building, review, and the next session.</p>
       </header>
       <ul class="pain-grid">
         <li>
@@ -154,54 +154,54 @@ ok -C . next</code></pre>
           <p>Each new chat re-derives context from scratch.</p>
         </li>
         <li>
-          <span class="pain-label">Wrong repository</span>
-          <p>A plausible prompt is pasted into a similar checkout.</p>
+          <span class="pain-label">Self-approval</span>
+          <p>The same builder declares its own plan or implementation complete.</p>
         </li>
         <li>
           <span class="pain-label">Silent drift</span>
           <p>A handoff outlives the branch or revision that produced it.</p>
         </li>
         <li>
-          <span class="pain-label">Unreviewed replacement</span>
-          <p>Task text changes without checking its prior digest or context.</p>
+          <span class="pain-label">Skipped checkpoints</span>
+          <p>A plausible summary replaces evidence and expensive mistakes surface late.</p>
         </li>
       </ul>
-      <p class="problem-close"><span class="problem-close-lead">Overseer Kit makes context visible before work continues</span> — a local handoff tool, not a hosted agent or workflow engine.</p>
+      <p class="problem-close"><span class="problem-close-lead">Overseer Kit makes shortcuts visible before work advances</span> — by keeping the plan, reviews, phase state, evidence, and next handoff explicit.</p>
     </section>
 
     <section id="how-it-works" class="band-how">
       <header class="section-intro">
         <p class="section-kicker">The loop</p>
         <h2>How it works</h2>
-        <p class="section-lede">Bind the repository, inspect current status, read the trusted handoff, and replace it deliberately.</p>
+        <p class="section-lede">Lock the plan, challenge it independently, build accepted phases, then verify the implementation before DONE.</p>
       </header>
       <ol class="loop-steps">
         <li class="loop-step">
           <span class="loop-index" aria-hidden="true">01</span>
           <div class="loop-body">
-            <h3>Initialize explicitly</h3>
-            <p>Bind one authorized checkout to its persistent identity, physical root, authority, lane, and model label.</p>
+            <h3>Lock and challenge the plan</h3>
+            <p>Write what will be built, how it will be phased, and what evidence will count. Freeze it, then have a separate agent chat or human reviewer try to find gaps.</p>
           </div>
         </li>
         <li class="loop-step">
           <span class="loop-index" aria-hidden="true">02</span>
           <div class="loop-body">
-            <h3>Check status</h3>
-            <p>See the active repository, authority, branch, revision, runtime pin, and current NEXT digest.</p>
+            <h3>Build in bounded phases</h3>
+            <p>Implement only the accepted scope. Each phase carries declared outputs and project-owned checks so later sessions do not have to reconstruct intent.</p>
           </div>
         </li>
         <li class="loop-step">
           <span class="loop-index" aria-hidden="true">03</span>
           <div class="loop-body">
-            <h3>Read trusted NEXT</h3>
-            <p>Validate and print the task for your agent. Overseer does not execute it or decide whether it is good.</p>
+            <h3>Review the completed build</h3>
+            <p>Compare the implementation and its evidence with the frozen plan. Resolve findings and re-check before marking the phase complete.</p>
           </div>
         </li>
         <li class="loop-step">
           <span class="loop-index" aria-hidden="true">04</span>
           <div class="loop-body">
-            <h3>Replace deliberately</h3>
-            <p>Review new task text, then publish it against the current revision and the exact prior NEXT digest.</p>
+            <h3>Hand over the truth</h3>
+            <p>Update ROADMAP and HANDOVER to match what actually landed. The rc.1 CLI then keeps the next task bound to the correct repository and revision.</p>
           </div>
         </li>
       </ol>
@@ -209,19 +209,19 @@ ok -C . next</code></pre>
 
     <section id="structure">
       <h2>Structure at a glance</h2>
-      <p>The original diagrams remain as working metaphors. The captions below state the bounded-v1 contract that ships.</p>
+      <p>The original diagrams show the operating model: living documents, explicit reviews, phased work, project evidence, and a clean handoff to the next session.</p>
 
       <figure class="diagram-figure" id="diagram-lanes">
-        <figcaption>One trusted handoff is bound to one repository context; lane is an explicit label inside it.</figcaption>
-        <img src="assets/diagrams/lanes.svg" alt="Original work-lanes illustration, used here as a conceptual view of repository context and one trusted handoff" width="720" height="280">
+        <figcaption>Each work lane pairs a ROADMAP phase board with a HANDOVER session baton. Keep lanes few and meaningful.</figcaption>
+        <img src="assets/diagrams/lanes.svg" alt="Single-lane ROADMAP and HANDOVER pair with an optional multi-lane layout for separate streams of work" width="720" height="280">
         <ul class="diagram-fallback">
-          <li>Repository identity + physical root + current revision</li>
-          <li>One lane label and one trusted NEXT handoff</li>
+          <li>Single-lane default: ROADMAP ↔ HANDOVER</li>
+          <li>Optional multi-lane: each work stream gets its own living-document pair</li>
         </ul>
       </figure>
 
       <figure class="diagram-figure" id="diagram-regimes">
-        <figcaption>Git-only is permanently supported. Muse authority, with or without a controlled GitHub mirror, is an explicit choice.</figcaption>
+        <figcaption>Version control supports the governance work in the background. Git-only is complete; Muse authority and a controlled GitHub mirror are optional repository choices.</figcaption>
         <img src="assets/diagrams/regimes.svg" alt="Version-control options from git-only to Muse with GitHub mirror to Muse-only" width="640" height="320">
         <ul class="diagram-fallback">
           <li>git-only — permanent mode; no Muse required</li>
@@ -231,59 +231,59 @@ ok -C . next</code></pre>
       </figure>
 
       <figure class="diagram-figure" id="diagram-layers">
-        <figcaption>Context validation has three layers: repository identity, current authority and revision, then NEXT context and digest.</figcaption>
-        <img src="assets/diagrams/layers.svg" alt="Original safety-layer illustration, representing repository, revision, and NEXT context checks" width="420" height="280">
+        <figcaption>Start with living documents and plan review. Add project-owned checks and stronger separation of review when the work needs them.</figcaption>
+        <img src="assets/diagrams/layers.svg" alt="Three safety layers: baseline governance and freeze review, optional domain checkpoints, and optional dual-control records" width="420" height="280">
         <ul class="diagram-fallback">
-          <li>Repository — persistent identity and physical root</li>
-          <li>Authority — selected VCS, branch, and revision</li>
-          <li>NEXT — bound context and previous digest</li>
+          <li>Baseline — ROADMAP, HANDOVER, frozen plan, and independent review</li>
+          <li>Project checks — tests, files, hashes, diffs, or domain scripts</li>
+          <li>Separation — an independent completed-build review before DONE</li>
         </ul>
       </figure>
 
       <figure class="diagram-figure" id="diagram-kit-consumer">
-        <figcaption>The verified kit initializes or adopts a repository, installs a bound launcher, and validates NEXT for your agent.</figcaption>
-        <img src="assets/diagrams/kit-consumer.svg" alt="Original kit-and-consumer illustration, representing verified source, explicit setup, repository binding, and an agent handoff" width="760" height="260">
+        <figcaption>The kit supplies the governance pattern and living documents. Each project supplies its own runtime, tests, domain checks, and product decisions.</figcaption>
+        <img src="assets/diagrams/kit-consumer.svg" alt="Overseer Kit feeding governance and living documents into projects that retain their own domain checks and product runtime" width="760" height="260">
         <ul class="diagram-fallback">
-          <li>Verified kit → explicit init or adopt → bound config</li>
-          <li>Validated NEXT → your agent; product checks stay in your repository</li>
+          <li>Kit → configuration + ROADMAP + HANDOVER + review pattern</li>
+          <li>Projects → implementation, tests, domain checks, and user experience</li>
         </ul>
       </figure>
     </section>
 
     <section id="console-access">
       <h2>Get started</h2>
-      <p>This site is <strong>informational</strong>. Install the local CLI from the reviewed release, then choose Git or Muse authority for a repository you are authorized to manage.</p>
+      <p>This site is <strong>informational</strong> and does not run Overseer. Install the reviewed prerelease, initialize an authorized repository, then use the governance loop with the agent tools and reviewers you already trust.</p>
 
       <article class="path-card path-preferred" id="path-1">
-        <h3>Path 1 — Git-only <span class="path-badge">permanent · no account</span></h3>
+        <h3>Path 1 — Install and initialize <span class="path-badge">start here</span></h3>
         <ol>
           <li>Follow the reviewed <strong>v1.0.0-rc.1</strong> <code>INSTALL-AND-ROLLBACK.md</code> guide.</li>
           <li>Set <code>PROJECT_ROOT</code> to an existing <code>Git</code> checkout you are authorized to initialize.</li>
-          <li>Run <code>./cli/ok</code> for <code>init --vcs git</code> with the required <code>repository name and context</code>.</li>
-          <li>Use the repository-bound launcher for status, next, and a reviewed next-write.</li>
+          <li>Run <code>./cli/ok</code> with <code>init --vcs git</code> and the required <code>repository name and context</code>. Existing ROADMAP and HANDOVER files are preserved.</li>
+          <li>Use the repository-bound launcher to inspect status and carry the reviewed next task between sessions.</li>
         </ol>
-        <p class="cta-honesty">Git-only is a complete ongoing mode. It requires no Muse installation, account, or future migration.</p>
+        <p class="cta-honesty">Git-only is a complete ongoing mode. The governance workflow does not require Muse, a hosted service, or a new agent product.</p>
       </article>
 
       <article class="path-card" id="path-2">
-        <h3>Path 2 — Muse authority (<code>adopt</code>)</h3>
+        <h3>Path 2 — Freeze and review the <code>plan</code></h3>
         <ol>
-          <li>Read the Muse <code>adoption and rollback</code> guide before changing repository authority.</li>
-          <li>Prepare the <a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/MIGRATE-EXISTING-REPO.md" id="local-console-loopback">separate pinned Muse environment</a>; Muse is not required by the core install.</li>
-          <li>Preview <code>adopt</code> and confirm the <code>repository identity, root, branch, and revision</code>.</li>
-          <li>Apply the authority change explicitly; Muse metadata alone never changes a Git binding.</li>
+          <li>Write the goal, scope, phases, outputs, and acceptance evidence in <code>ROADMAP</code>.</li>
+          <li>Freeze the plan with the <a href="https://github.com/aaronrene/overseer-kit/blob/main/README.md#the-governance-loop" id="local-console-loopback">governance loop</a>, then give it to a separate agent chat or human reviewer.</li>
+          <li>Resolve <code>cited findings</code> and <code>re-review</code> until the plan is safe to treat as build input.</li>
+          <li>Record the accepted state so later phases do not silently reinterpret it.</li>
         </ol>
       </article>
 
       <article class="path-card" id="path-3">
-        <h3>Path 3 — Muse + GitHub mirror</h3>
+        <h3>Path 3 — Build, verify, and hand over</h3>
         <ol>
-          <li>Prepare and verify the controlled projection with <code>mirror</code>; inspect <code>source and destination identities</code>.</li>
-          <li>Explicit delivery may push the mirror and open a pull request. It never merges the pull request.</li>
+          <li>Build only the accepted <code>phases</code> and run <code>project checks</code>; then have a separate reviewer compare the implementation and evidence with the frozen plan.</li>
+          <li>After findings clear, update ROADMAP and HANDOVER together and publish the next reviewed task.</li>
         </ol>
       </article>
 
-      <p class="bound-honesty"><em>Overseer is bound to one local checkout. It prints a task; it does not execute the prompt, judge the task, or merge code.</em></p>
+      <p class="bound-honesty"><em>Overseer supplies the rails and durable state. It does not run agents, appoint the independent reviewer, decide that work is good, or merge code.</em></p>
       <p>Operator detail:
         <a href="https://github.com/aaronrene/overseer-kit/releases/download/v1.0.0-rc.1/INSTALL-AND-ROLLBACK.md">Installation and rollback</a>
         · Release index: <a href="https://github.com/aaronrene/overseer-kit/releases/tag/v1.0.0-rc.1">v1.0.0-rc.1</a>
@@ -297,8 +297,8 @@ ok -C . next</code></pre>
           <img class="musehub-logo" src="assets/musehub-logo.svg" width="360" height="80" alt="MuseHub">
         </div>
         <div class="musehub-copy">
-          <h2 id="musehub-heading">Muse when it fits the repository</h2>
-          <p><code>Git-only</code> remains a complete ongoing mode. Muse can become the explicit repository authority, with or without a controlled GitHub mirror. The choice belongs to each repository.</p>
+          <h2 id="musehub-heading">Optional history with MuseHub</h2>
+          <p>The honesty loop works in <code>Git-only</code> mode. When a repository benefits from Muse-backed history, Muse can become its explicit authority with or without a controlled GitHub mirror. That storage choice supports the workflow; it does not define it.</p>
           <p class="musehub-links">
             <a href="#diagram-regimes">See version-control options</a>
             · Adoption guide:
@@ -310,11 +310,11 @@ ok -C . next</code></pre>
 
     <section id="next-steps">
       <h2>Where to go next</h2>
-      <p>This site explains the bounded local CLI. Day-to-day agent work stays in your existing tools.</p>
+      <p>This site explains the governance workflow and the bounded rc.1 CLI that carries its handoffs. Planning, building, and review stay in your existing tools.</p>
       <div class="card-grid suite-grid">
         <div class="card">
           <h3>GitHub</h3>
-          <p><a href="https://github.com/aaronrene/overseer-kit">overseer-kit</a> — <code>source</code>, issues, and release history.</p>
+          <p><a href="https://github.com/aaronrene/overseer-kit">overseer-kit</a> — <code>source</code>, living docs, review patterns, issues, and release history.</p>
         </div>
         <div class="card">
           <h3>Docs</h3>
@@ -333,18 +333,18 @@ ok -C . next</code></pre>
           <p><a href="scenarios/index.html">Scenario gallery</a> — the original job flows, clearly labeled as examples.</p>
         </div>
       </div>
-      <div class="funnel" id="funnel" aria-label="Adoption path">
-        <span class="funnel-step" id="funnel-github">Install the CLI</span>
+      <div class="funnel" id="funnel" aria-label="Honesty loop">
+        <span class="funnel-step" id="funnel-github">Freeze + review plan</span>
         <span class="funnel-arrow">→</span>
-        <span class="funnel-step" id="funnel-kit">Bind one repository</span>
+        <span class="funnel-step" id="funnel-kit">Build in phases</span>
         <span class="funnel-arrow">→</span>
-        <span class="funnel-step" id="funnel-musehub">Read trusted NEXT</span>
+        <span class="funnel-step" id="funnel-musehub">Verify before DONE</span>
       </div>
     </section>
 
     <section id="scenarios">
       <h2>Scenarios</h2>
-      <p>The original persona flows remain, with copy that separates shipped CLI behavior from illustrative domain practice.</p>
+      <p>See how the same plan-review, phased-build, and completion-review loop applies to software, media, research, finance, and classrooms.</p>
       <p><a class="btn btn-secondary" href="scenarios/index.html">Open the scenario gallery →</a></p>
     </section>
   </main>

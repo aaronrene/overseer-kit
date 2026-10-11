@@ -1,24 +1,26 @@
 # Public informational site
 
 `overseerkit.com` serves the static files in `docs/landing/` through the existing
-Cloudflare Pages project `overseer-kit`. The website explains the bounded-v1 local
-CLI. It does not run Overseer, initialize repositories or execute tasks.
+Cloudflare Pages project `overseer-kit`. The website explains the Overseer governance
+loop and the bounded-v1 local CLI that preserves continuity between its steps. It
+does not run Overseer, initialize repositories, perform reviews or execute tasks.
 
 ## Published routes
 
 | Path | Content |
 | --- | --- |
-| `/` | Original landing layout with accurate NEXT, authority and installation copy |
-| `/docs.html` | Current installation, initialization and repository guides |
-| `/scenarios/` | Original persona flows, clearly labelled as supported behavior or examples |
+| `/` | Original landing layout with the plan-review, phased-build and completion-review workflow |
+| `/docs.html` | Governance workflow, current CLI boundary, installation and repository guides |
+| `/scenarios/` | Original persona flows, clearly labelled as governance patterns or examples |
 | `/assets/style.css` | The original responsive styles, including light and dark themes |
 | `/assets/theme.js` | Optional theme preference only |
 
 All three pages work without JavaScript. Theme selection is an enhancement;
 no application backend, tracking script, credential prompt or repository access
-is involved. The original diagrams remain in their original positions as
-conceptual illustrations. Their surrounding captions state the bounded-v1
-contract; the diagrams are not claims of automated product features.
+is involved. The original diagrams remain in their original positions and explain
+the operating model. Their surrounding copy makes clear that independent humans or
+agent sessions perform review judgment and project repositories own domain checks;
+the current CLI does not automate either role.
 
 The primary release link selects **v1.0.0-rc.1**, a prerelease, not stable and not
 Latest. Installation and rollback links select its immutable companion guide.

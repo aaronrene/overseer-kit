@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Overseer Kit scenario gallery — original job flows presented as bounded-v1 examples.">
+  <meta name="description" content="Overseer Kit scenarios — review the plan, build in phases, verify the result, and hand over the truth across different kinds of work.">
   <title>Scenario gallery — Overseer Kit</title>
   <link rel="icon" href="../assets/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="../assets/favicon-32.png" sizes="32x32">
@@ -35,10 +35,10 @@
   <main class="gallery-main">
     <header class="gallery-intro">
       <h1>Scenario gallery</h1>
-      <p class="lead">Five original persona flows showing how a trusted repository handoff can support different work. Domain checks remain examples owned by each project.</p>
+      <p class="lead">Five examples showing how the same honesty loop can govern different work: freeze the plan, review it independently, build in phases, verify the result, and hand over the truth.</p>
       <div class="badge-key" aria-label="Badge key">
-        <span class="badge-key-item"><span class="badge badge-dogfood">supported</span> uses shipped CLI behavior</span>
-        <span class="badge-key-item"><span class="badge badge-reference">reference</span> project-owned pattern</span>
+        <span class="badge-key-item"><span class="badge badge-dogfood">supported</span> the kit uses this governance pattern itself</span>
+        <span class="badge-key-item"><span class="badge badge-reference">reference</span> practical project-owned pattern</span>
         <span class="badge-key-item"><span class="badge badge-aspirational">illustrative</span> example only</span>
       </div>
     </header>
@@ -46,24 +46,24 @@
     <article class="scenario-detail" id="persona-A">
       <span class="badge badge-dogfood">supported</span>
       <h2>A — Software engineering</h2>
-      <p><strong>Pain:</strong> A new agent session starts in the wrong checkout or follows a handoff written for an older revision.</p>
+      <p><strong>Pain:</strong> Agents mark features DONE without a challenged plan or independent implementation review; contributors lose honest phase boundaries between sessions.</p>
       <h3>How the kit helps</h3>
       <ul class="compact">
-        <li><strong>Baseline:</strong> Repository-bound status plus one validated NEXT handoff.</li>
-        <li><strong>Project checks:</strong> CI and domain tests remain owned and run by the repository.</li>
-        <li><strong>Operator review:</strong> The team reviews the task, work, and merge; Overseer does not approve them.</li>
-        <li><strong>Optional Muse:</strong> Select Muse authority and a controlled GitHub mirror when that model fits.</li>
+        <li><strong>Living docs:</strong> ROADMAP holds the phased plan; HANDOVER records what landed and the next reviewed action.</li>
+        <li><strong>Before build:</strong> A separate agent chat or human challenges the frozen plan and sends findings back for revision.</li>
+        <li><strong>Before DONE:</strong> Project tests run, then an independent reviewer compares the implementation with the accepted freeze.</li>
+        <li><strong>Continuity:</strong> The current CLI keeps the resulting NEXT handoff bound to the right repository and revision.</li>
       </ul>
       <figure class="flow-diagram flow-linear diagram" aria-label="Software engineering flow">
-        <figcaption>Ship path — validate context, do the work, then use the project’s normal review</figcaption>
+        <figcaption>Ship path — challenge the plan before build and review the implementation before DONE</figcaption>
         <ol class="flow-track">
-          <li>Reviewed NEXT</li>
-          <li>Status matches</li>
-          <li>Agent works</li>
-          <li>Tests + review</li>
-          <li class="flow-end">Merge</li>
+          <li>Frozen plan</li>
+          <li>Plan review</li>
+          <li>Phased build</li>
+          <li>Build review</li>
+          <li class="flow-end">DONE / merge</li>
         </ol>
-        <p class="flow-aside">Context mismatch → stop; failed project checks → no merge</p>
+        <p class="flow-aside">Findings return to the plan or build; failed evidence means no DONE</p>
       </figure>
       <p>Start with the shipped local workflow:
         <a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/GIT-ONLY-QUICKSTART.md">Git-only quickstart</a></p>
@@ -72,16 +72,16 @@
     <article class="scenario-detail" id="persona-B">
       <span class="badge badge-dogfood">reference</span>
       <h2>B — Video studio</h2>
-      <p><strong>Pain:</strong> A session resumes from stale production notes, and project-specific QC steps are easy to miss.</p>
+      <p><strong>Pain:</strong> Remakes, fake approvals, and “done” narration before export checks or an independent listen pass.</p>
       <h3>How the kit helps</h3>
       <ul class="compact">
-        <li><strong>Baseline:</strong> One repository-bound NEXT identifies the reviewed production task.</li>
-        <li><strong>Project checks:</strong> The studio may keep its own narration, export, and QC scripts.</li>
-        <li><strong>Human review:</strong> A listener can approve the export through the studio’s own process.</li>
-        <li><strong>Optional Muse:</strong> Muse authority can retain repository history; the kit does not ship a video workflow.</li>
+        <li><strong>Living docs:</strong> A production ROADMAP and HANDOVER keep each video lane and session aligned.</li>
+        <li><strong>Before production:</strong> Review the treatment, narration plan, and acceptance bar before expensive generation begins.</li>
+        <li><strong>Project checks:</strong> The studio owns narration, export, and QC scripts.</li>
+        <li><strong>Before publish:</strong> A separate verifier re-runs the checks and a human listener approves the finished export.</li>
       </ul>
       <figure class="flow-diagram flow-converge diagram" aria-label="Video studio flow">
-        <figcaption>Example production lane — project scripts and human review remain external to the kit</figcaption>
+        <figcaption>Production lane — the plan is reviewed first; scripts and an independent listen verify the result</figcaption>
         <div class="flow-split">
           <ol class="flow-track">
             <li>Narration</li>
@@ -101,12 +101,12 @@
     <article class="scenario-detail" id="persona-C">
       <span class="badge badge-reference">reference</span>
       <h2>C — Research paper pipeline</h2>
-      <p><strong>Pain:</strong> A research session loses its source context or continues from stale task instructions.</p>
+      <p><strong>Pain:</strong> A plausible draft carries fabricated citations or tables that do not match the source data.</p>
       <h3>How the kit helps</h3>
       <ul class="compact">
-        <li><strong>Project checks:</strong> A research repository may record source URLs, hashes, quote spans, and regenerated tables.</li>
-        <li><strong>Human review:</strong> A researcher can re-fetch sources and compare the draft with project evidence.</li>
-        <li><strong>Optional Muse:</strong> Muse authority may preserve repository history when the team chooses it.</li>
+        <li><strong>Plan review:</strong> Freeze the research question, source rules, and acceptance evidence before drafting.</li>
+        <li><strong>Project checks:</strong> Record source URLs and hashes, validate quote spans, and regenerate tables from data.</li>
+        <li><strong>Completion review:</strong> A separate verifier re-fetches a sample of sources and binds the verdict to the reviewed output; HANDOVER carries unresolved findings and the exact evidence state forward.</li>
       </ul>
       <figure class="flow-diagram flow-loop diagram" aria-label="Research pipeline flow">
         <figcaption>Evidence loop — re-fetch until quotes and tables match sources</figcaption>
@@ -127,12 +127,12 @@
     <article class="scenario-detail" id="persona-D">
       <span class="badge badge-aspirational">illustrative</span>
       <h2>D — Accounting close</h2>
-      <p><strong>Pain:</strong> A close process resumes without a clear repository handoff or current reconciliation task.</p>
+      <p><strong>Pain:</strong> Disputed payouts and reconciliations advance without a frozen plan, reproducible evidence, or dual control.</p>
       <h3>How the kit helps</h3>
       <ul class="compact">
-        <li><strong>Project checks:</strong> An accounting repository may define CSV schemas, checksums, and reconciliation thresholds.</li>
-        <li><strong>Human control:</strong> Separate preparation and review roles authorize any financial export.</li>
-        <li><strong>Boundary:</strong> Overseer does not execute transfers, enforce roles, or provide an accounting domain pack.</li>
+        <li><strong>Plan review:</strong> Freeze the close procedure, inputs, tolerances, and authorization boundary before preparation.</li>
+        <li><strong>Project checks:</strong> The accounting repository defines CSV schemas, checksums, and reconciliation thresholds.</li>
+        <li><strong>Completion review:</strong> Separate preparation and review roles re-run evidence before authorizing an export. Overseer does not execute transfers or enforce financial roles.</li>
       </ul>
       <figure class="flow-diagram flow-dual diagram" aria-label="Accounting close flow">
         <figcaption>Dual control — prep and review stay separate until authorize</figcaption>
@@ -160,13 +160,13 @@
     <article class="scenario-detail" id="persona-E">
       <span class="badge badge-reference">reference</span>
       <h2>E — Classroom</h2>
-      <p><strong>Pain:</strong> Students resume from copied or stale instructions and may skip the teacher’s project checks.</p>
+      <p><strong>Pain:</strong> Students skip tests, reinterpret the assignment mid-build, or self-mark work complete.</p>
       <h3>How the kit helps</h3>
       <ul class="compact">
-        <li><strong>Baseline:</strong> A repository-bound NEXT carries the teacher’s reviewed assignment task.</li>
+        <li><strong>Plan review:</strong> The teacher freezes the assignment, phases, allowed tools, and grading evidence.</li>
+        <li><strong>Phased work:</strong> Students build against that accepted brief and carry real progress through HANDOVER.</li>
         <li><strong>Project checks:</strong> The course may require tests and secret scanning before submission.</li>
-        <li><strong>Human review:</strong> A teacher or TA reviews the work; Overseer does not grade it.</li>
-        <li><strong>Optional Muse:</strong> A course may choose Muse authority; Git-only remains fully supported.</li>
+        <li><strong>Completion review:</strong> A teacher or TA verifies the result; Overseer does not grade it.</li>
       </ul>
       <figure class="flow-diagram flow-handoff diagram" aria-label="Classroom flow">
         <figcaption>Teacher sets the rails; student work cannot self-grade</figcaption>
@@ -183,9 +183,9 @@
           <li>TA verify</li>
           <li class="flow-end">Grade publish</li>
         </ol>
-        <p class="flow-aside">Optional later lesson: choose Muse authority explicitly</p>
+        <p class="flow-aside">Review findings return to the student before grade publication</p>
       </figure>
-      <p><strong>Boundary:</strong> This is an example teaching pattern. The kit ships repository context and handoff commands, not a classroom platform.</p>
+      <p><strong>Boundary:</strong> This is an example teaching pattern. The kit supplies governance and handoff structure, not a classroom platform. The reviewed prerelease does not run Overseer in the browser or appoint reviewers.</p>
     </article>
   </main>
 

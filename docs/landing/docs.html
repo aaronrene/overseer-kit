@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Overseer Kit docs — install the bounded local CLI and use its trusted NEXT handoff.">
+  <meta name="description" content="Overseer Kit docs — review a frozen plan, build it in phases, verify the result, and hand over the truth.">
   <title>Docs — Overseer Kit</title>
   <link rel="icon" href="assets/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32">
@@ -33,32 +33,32 @@
 
   <main>
     <h1>Docs</h1>
-    <p class="lead">Start with the reviewed prerelease, then bind one authorized repository and read its trusted NEXT handoff.</p>
+    <p class="lead">Start with the honesty loop: freeze and challenge the plan, build accepted phases, review the implementation, then hand over what is actually true.</p>
 
     <section>
       <h2>On this site</h2>
       <ul class="compact">
-        <li><a href="index.html#how-it-works">How it works</a> — initialize, status, NEXT, and reviewed replacement</li>
-        <li><a href="index.html#structure">Structure</a> — repository context, authority choices, and validation layers</li>
-        <li><a href="index.html#console-access">Get started</a> — <code>Git-only</code>, Muse authority, or a controlled mirror</li>
-        <li><a href="scenarios/index.html">Scenario gallery</a> — original job flows labeled as practical examples</li>
+        <li><a href="index.html#how-it-works">How it works</a> — plan review, phased build, completion review, and truthful handover</li>
+        <li><a href="index.html#structure">Structure</a> — ROADMAP/HANDOVER lanes, safety layers, and optional repository authority</li>
+        <li><a href="index.html#console-access">Get started</a> — <code>install</code>, freeze the plan, build, verify, and hand over</li>
+        <li><a href="scenarios/index.html">Scenario gallery</a> — the same governance loop applied to different kinds of work</li>
       </ul>
     </section>
 
     <section>
-      <h2>Install / init (short path)</h2>
+      <h2>Start the workflow</h2>
       <ol>
-        <li>Download the reviewed v1.0.0-rc.1 installation and rollback guide from GitHub Releases.</li>
+        <li>Download the reviewed v1.0.0-rc.1 prerelease installation and rollback guide from GitHub Releases.</li>
         <li>From the kit: <code>./cli/ok -C &quot;$PROJECT_ROOT&quot; init --vcs git --repo-name PROJECT-NAME --lane product --model &quot;MODEL LABEL&quot;</code></li>
-        <li>Run the repository-bound launcher with status --json, then next.</li>
-        <li>Review replacement task text, then use <code>next-write</code> with the current context and prior NEXT digest.</li>
+        <li>Write bounded phases in ROADMAP, freeze the outputs and acceptance evidence, then resolve findings from a separate agent chat or human reviewer before build.</li>
+        <li>Build the accepted phases, run project-owned checks, and have a separate reviewer compare the result with the freeze before DONE. Update ROADMAP and HANDOVER to match reality, then use <code>next-write</code> to carry the reviewed next task forward.</li>
       </ol>
-      <p>NEXT validates and prints task text from the <a href="https://github.com/aaronrene/overseer-kit/releases/tag/v1.0.0-rc.1">reviewed prerelease</a>. It does not execute the prompt; use action kind stop when no task remains.</p>
+      <p>The reviews are independent actions performed by your chosen agent session or human reviewer. The current <a href="https://github.com/aaronrene/overseer-kit/releases/tag/v1.0.0-rc.1">reviewed prerelease</a> does not run agents or decide that a plan or build is correct; its public CLI preserves repository-bound continuity between those actions.</p>
     </section>
 
     <section>
       <h2>GitHub docs</h2>
-      <p>Current guides and the full documentation tree live in the repository.</p>
+      <p>Current guides, living-document templates, and the full documentation tree live in the repository. Repository, revision, and NEXT checks support the governance loop; they are not its purpose. This public website does not run Overseer, execute prompts, perform reviews, or access a repository.</p>
       <ul class="compact">
         <li><a href="https://github.com/aaronrene/overseer-kit">Repository home</a></li>
         <li><a href="https://github.com/aaronrene/overseer-kit/blob/main/README.md">README</a></li>
