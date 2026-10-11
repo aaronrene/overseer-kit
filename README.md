@@ -1,8 +1,19 @@
 # Overseer Kit
 
-Overseer Kit is a small local command-line tool that keeps one trustworthy next-task
-handoff inside each Git or explicitly selected Muse repository. It helps prevent an agent or operator from using
-a prompt from the wrong project, branch, lane, or point in history.
+**Honesty for Agents.**
+
+Overseer Kit is a portable governance pattern for AI-assisted work. ROADMAP holds
+the plan and its phases. The team freezes that plan, gives it to a separate agent
+session or human to challenge, builds only the accepted phases, then independently
+compares the implementation and its evidence with the freeze before marking work
+DONE. HANDOVER carries what actually happened and what should happen next into the
+following session.
+
+The kit supplies the structure and durable record. Review judgment comes from the
+independent agent or human the team chooses, and each project owns its tests and
+domain checks. The current public CLI is the continuity layer beneath that workflow:
+it keeps the reviewed next task bound to the correct repository and revision. It
+does not run agents or decide that a plan or build is correct.
 
 [v1.0.0-rc.1](https://github.com/aaronrene/overseer-kit/releases/tag/v1.0.0-rc.1) is the published bounded CLI prerelease,
 not a stable or complete-product release. Its tag targets
@@ -20,7 +31,25 @@ These docs are a separate post-publication follow-up. They do not change the rc.
 tag or archive. The [published installation/rollback guide](https://github.com/aaronrene/overseer-kit/releases/download/v1.0.0-rc.1/INSTALL-AND-ROLLBACK.md)
 supersedes the historical README and quickstart inside that frozen archive.
 
-## What it does
+## The governance loop
+
+1. **Plan and freeze:** define the outcome, phases, outputs, and acceptance evidence
+   in ROADMAP before implementation begins.
+2. **Challenge before build:** send the frozen plan to a separate agent session or
+   human reviewer. Resolve cited findings and re-review before treating the plan as
+   build input.
+3. **Build in phases:** implement the accepted scope and run the project’s own tests
+   or domain checks at the declared boundaries.
+4. **Review before DONE:** compare the completed implementation and evidence with
+   the frozen plan. Findings return to the build until they clear.
+5. **Hand over the truth:** update ROADMAP and HANDOVER to reflect what landed, then
+   publish the reviewed next task for the following session.
+
+Repository identity, revision freshness, and NEXT-digest checks protect that loop
+from stale or misplaced instructions. Git-only is a complete supported mode; Muse
+authority and a controlled GitHub mirror are optional repository choices.
+
+## What the rc.1 CLI adds
 
 Each initialized repository receives:
 
@@ -49,12 +78,13 @@ The public commands are:
 | `next` | Validate and print the current handoff. It never runs the task. |
 | `next-write` | Publish a new handoff with explicit context and the previous NEXT digest. |
 
-## What it does not do
+## What the rc.1 CLI does not do
 
-Overseer does not decide what task should come next, execute a prompt, infer that
-work is complete, verify which AI model is actually running, or judge whether task
-prose is strategically correct. The operator or agent chooses the task and advances
-it explicitly with `next-write`.
+The public rc.1 CLI does not perform the independent plan review, execute a prompt,
+run the phased build, infer that work is complete, verify which AI model is actually
+running, or judge whether task prose or implementation is strategically correct.
+The team performs those planning, build, and review actions in its existing tools.
+The operator or agent advances the resulting handoff explicitly with `next-write`.
 
 Local handoff commands and mirror preparation stay offline. Only explicitly
 invoked `mirror deliver` observes Hub/GitHub, pushes the verified distribution
