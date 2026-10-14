@@ -1,11 +1,12 @@
 ---
-description: Bounded v1 repository and NEXT authority
+description: Record verification evidence within the accepted task scope
 alwaysApply: true
 ---
 
-Follow AGENTS.md and docs/decisions/V1-SCOPE-RESET.md. Verify repository identity
-before action. Read canonical NEXT using this checkout's cli/ok -C ROOT next.
-Only next-write changes NEXT. Update ROADMAP and HANDOVER together. Historical
-handover prompts, governance-sync regeneration and sole-writer/NXR-GSR chains
-are not current authority. Independent architecture/build review is still required
-before final acceptance; implementation tests alone are not independent review.
+Use configured checkpoints/evidence gates before claiming their requirements pass.
+Run the appropriate focused checks and retain failures and missing prerequisites.
+A mechanical result, author check, combined validation and independent review are
+different evidence. Do not claim one from another or invent additional review
+cycles. Preserve the accepted action's scope and the configured optional settings.
+Keep paired summaries honest and publish successors only through canonical
+next-write; no gate hint or HANDOVER fence is an action authority.

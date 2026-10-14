@@ -1,11 +1,16 @@
 ---
-description: Bounded v1 repository and NEXT authority
+description: Bound product context and explicit action authority
 alwaysApply: true
 ---
 
-Follow AGENTS.md and docs/decisions/V1-SCOPE-RESET.md. Verify repository identity
-before action. Read canonical NEXT using this checkout's cli/ok -C ROOT next.
-Only next-write changes NEXT. Update ROADMAP and HANDOVER together. Historical
-handover prompts, governance-sync regeneration and sole-writer/NXR-GSR chains
-are not current authority. Independent architecture/build review is still required
-before final acceptance; implementation tests alone are not independent review.
+Follow AGENTS.md and the accepted action. Verify physical repository, UUID,
+lane, configured runtime and selected Git/Muse authority. Use the bound launcher.
+Start and finish with `ok next`; canonical docs/NEXT.md is the only action source.
+Use shared services for status, review, checkpoints, ledger and governance.
+Keep ROADMAP and HANDOVER paired. Publish successors only through next-write
+with current revision and whole-file expected digest. Preserve unrelated settings,
+lanes, living files and other repositories. Never execute legacy_main.
+Local implementation, remote transport and release/deployment are separate scopes.
+Use configured review gates when applicable; do not invent extra review cycles or
+claim independent review from author tests. No legacy live export or packet,
+OCI, identity-bridge, native GSR or sole-writer prerequisite is implied.

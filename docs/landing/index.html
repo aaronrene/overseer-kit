@@ -55,7 +55,7 @@
 
           <p class="hero-foot-links">
             <a id="cta-download-mac"
-               href="https://github.com/aaronrene/overseer-kit/releases/download/v0.1.0/Overseer.Kit_0.1.0_aarch64.dmg">Download Mac console (Apple Silicon)</a>
+               href="source.html">Prepare local source</a>
             <span class="hero-foot-sep" aria-hidden="true">·</span>
             <a href="https://github.com/aaronrene/overseer-kit">Clone on GitHub</a>
           </p>
@@ -132,7 +132,7 @@ ok check-ok --path docs/reviews/….md</code></pre>
               <h2>Roadmap · Handover · Lanes</h2>
               <ul class="kit-basics-list">
                 <li><strong>Roadmap</strong> — the phase board: what is planned, frozen, building, or done.</li>
-                <li><strong>Handover</strong> — the session baton: what just landed and the one next prompt to paste.</li>
+                <li><strong>Handover</strong> — the session summary; canonical NEXT holds the validated action.</li>
                 <li><strong>Lanes</strong> — more than one roadmap/handover pair when several streams of work run in parallel.</li>
                 <li><strong>Hygiene</strong> — sync roadmap and handover every session; commit the feature branch; no dirty tree at close.</li>
               </ul>
@@ -255,14 +255,14 @@ ok check-ok --path docs/reviews/….md</code></pre>
       <p>This site does <strong>not</strong> run the console and does not mint session credentials. Open a local process, then use the UI in the browser or desktop shell.</p>
 
       <article class="path-card path-preferred" id="path-1">
-        <h3>Path 1 — Download Mac console <span class="path-badge">preferred · Apple Silicon</span></h3>
+        <h3>Path 1 — Local source <span class="path-badge">restoration build</span></h3>
         <ol>
           <li>Confirm <strong>Python 3.11+</strong> (<code>python3 --version</code>).</li>
-          <li>Download the signed Apple Silicon <code>.dmg</code> via the Download link above (Release <code>v0.1.0</code>).</li>
-          <li>Set <code>OVERSEER_REPO_ROOT</code> to a repo that already has <code>.overseer/</code> from <code>ok init</code>. Without it, the app binds the bundled kit inside the app.</li>
+          <li>Prepare the local source bundle and provision its pinned conventional Python environment using the source guide.</li>
+          <li>Select an initialized repository explicitly with <code>--repo /absolute/repository</code>; its runtime binding must match the selected kit.</li>
           <li>Open the app and confirm the bound path before any write action.</li>
         </ol>
-        <p class="cta-honesty">Apple Silicon Mac · signed and notarized · Python 3.11+ required. Windows/Linux signed installers are not published yet.</p>
+        <p class="cta-honesty">Current restoration: source preparation only. Combined validation and independent review are pending. No current signed installer is claimed.</p>
       </article>
 
       <article class="path-card" id="path-2">
@@ -278,7 +278,7 @@ ok check-ok --path docs/reviews/….md</code></pre>
       <article class="path-card" id="path-3">
         <h3>Path 3 — Dev desktop</h3>
         <ol>
-          <li>From kit root: <code>./scripts/bundle-desktop-kit.sh</code>, then <code>cd desktop && npm install && npm run tauri dev</code>.</li>
+          <li>From kit root: <code>./scripts/bundle-desktop-kit.sh desktop/src-tauri/resources/kit</code>; provision pinned local build prerequisites, then <code>cd desktop && npm run tauri dev -- -- --kit-root /absolute/kit --repo /absolute/repository</code>.</li>
           <li>Same bind rules as Path 1; needs Python 3.11+ plus Rust/Node for dev builds.</li>
         </ol>
       </article>

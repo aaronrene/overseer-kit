@@ -1,0 +1,1554 @@
+{
+  "muse-0.2.1rc5.dist-info/METADATA": {
+    "sha256": "5e8dc1d73691501e7a323d772d53ff30289518ce3090bbcfd4535c6a29414b31",
+    "size": 9690
+  },
+  "muse-0.2.1rc5.dist-info/WHEEL": {
+    "sha256": "4c769fa1bee87cdf8db2e30decc838a99c8769023b2a40fe4257106ad6215cfa",
+    "size": 87
+  },
+  "muse-0.2.1rc5.dist-info/entry_points.txt": {
+    "sha256": "f17374f87f8ac3e323b4f0b05c859b4abc3dbaf79a52a28c87d068da4d7f0d35",
+    "size": 43
+  },
+  "muse-0.2.1rc5.dist-info/licenses/LICENSE": {
+    "sha256": "74edd7e8919364037b21f992b840077dcc969844e0e3fb928891b8f2b535370b",
+    "size": 1079
+  },
+  "muse/__init__.py": {
+    "sha256": "21cc851ad775e0c0ad84994c4c93f03001b7fa79c7d6145a015be8c194332892",
+    "size": 893
+  },
+  "muse/_version.py": {
+    "sha256": "dc3593107f00f7edf24dcd2e5f64334ab9c3dc9ec4fd3579fe2f76ae81078717",
+    "size": 1071
+  },
+  "muse/cli/__init__.py": {
+    "sha256": "4aef280d24c31eda3633a8fd284b2776a1fa018e40923d2978e24bda54cefa87",
+    "size": 16
+  },
+  "muse/cli/app.py": {
+    "sha256": "da35c423900349f807bfefd67d7e052bdef92b856fb8f91ebbc064938102046a",
+    "size": 27796
+  },
+  "muse/cli/commands/__init__.py": {
+    "sha256": "489ed5d45bf6fc027a3368888dbd24ae48517adec26ed41c1d6d681b10c60161",
+    "size": 25
+  },
+  "muse/cli/commands/age.py": {
+    "sha256": "f5e130f2dca9b7a53b509f5f40a68890220deec761b1a7566f539ce7db810421",
+    "size": 31216
+  },
+  "muse/cli/commands/agent.py": {
+    "sha256": "b827865025d3b00bd4e3d78eb6b807a73de7e65a45c2a1c374233bcf0fbe383c",
+    "size": 20517
+  },
+  "muse/cli/commands/agent_config.py": {
+    "sha256": "30ea1c958a60fc8a6bbef29b549103f59bf44c2a0554aaf2aa22bd44d94d943f",
+    "size": 52242
+  },
+  "muse/cli/commands/agent_map.py": {
+    "sha256": "6e2fc67d12e101d3d63e6e1a249b8994232e4d7f48348d19455ce71c98907957",
+    "size": 6103
+  },
+  "muse/cli/commands/annotate.py": {
+    "sha256": "0a265e8c678d554c2dd922203dba7a1f759b9ff6ed2b1ffc5d152bc217051925",
+    "size": 24331
+  },
+  "muse/cli/commands/api_surface.py": {
+    "sha256": "1295414521fa2b648112aa15d04243ab048e6d8caefe5d65e0203e2d60b1e539",
+    "size": 18546
+  },
+  "muse/cli/commands/apply.py": {
+    "sha256": "e01ded71abf20718bc18a31239aad994903634e32d55b890223f0a89b8a7c9fd",
+    "size": 14153
+  },
+  "muse/cli/commands/apply_patch.py": {
+    "sha256": "3e84f68abd5a8fdd59deb8b2d7bcfa24e2a922ccd8466123abf0702ea73fc7c4",
+    "size": 11326
+  },
+  "muse/cli/commands/archive.py": {
+    "sha256": "395483bb85deafea937bae1e44ba967f3c4ed2da72e25d8128c8c9735112c624",
+    "size": 22723
+  },
+  "muse/cli/commands/arpeggiate.py": {
+    "sha256": "abf9b415b6b287c2862b045a9a6b476cd8c768367406343f1cc52f041de606d4",
+    "size": 6171
+  },
+  "muse/cli/commands/attributes.py": {
+    "sha256": "3092c82e63f51b6dec7d6fe944f5d747c36754b1ab1e8e187b36f11ca20ac679",
+    "size": 24534
+  },
+  "muse/cli/commands/auth.py": {
+    "sha256": "a1b97cc66862b99802337cbbe93870ff0cc8187dbe06562fef559337716723a3",
+    "size": 111364
+  },
+  "muse/cli/commands/bisect.py": {
+    "sha256": "a733405fb36cdd51938b1281a93ac674736f45dbc720938b24c868b0d5ac19f8",
+    "size": 38719
+  },
+  "muse/cli/commands/blame.py": {
+    "sha256": "b24e06d619ec1a9efc07431e9a9ebac331b2938f99769e6b1dde56be3d1a76c5",
+    "size": 20860
+  },
+  "muse/cli/commands/blast_risk.py": {
+    "sha256": "2b4e3bbbfaf7f700fb4fbb407c1b3ba8f33dc362e1fb6ec2a4b9227bb8243e15",
+    "size": 31330
+  },
+  "muse/cli/commands/branch.py": {
+    "sha256": "c06bff534269caf81a8d4d943f2b4c0b5581b92bf8dacc3d83b4c2a5a349886c",
+    "size": 38969
+  },
+  "muse/cli/commands/breakage.py": {
+    "sha256": "0201d5452c7d79c7356448a83e4148ffad4ff66f14be0343ba80aba24a7af54c",
+    "size": 21602
+  },
+  "muse/cli/commands/bridge.py": {
+    "sha256": "ac902691c1001e717482d6c66abce5a916e8362bbfa67f59880719c88e3f398e",
+    "size": 3109
+  },
+  "muse/cli/commands/bundle.py": {
+    "sha256": "9cbe1fa030a2306673fbb8955e5aac48986ae678aa017ecd12493bb7a3900b67",
+    "size": 43266
+  },
+  "muse/cli/commands/cadence.py": {
+    "sha256": "4018f2c6d01c8c14217b521fdd888e6bb344f4bf6dea66eb17867e7e59931de0",
+    "size": 4104
+  },
+  "muse/cli/commands/cat.py": {
+    "sha256": "0f8ce674b00e2af125200171a45d2fae55a0793f406cf30305675be00cb0a76c",
+    "size": 35106
+  },
+  "muse/cli/commands/cat_object.py": {
+    "sha256": "4a6968c17e40da688f97e8668c6d003765c635ce5f16536836282724329d4e78",
+    "size": 10256
+  },
+  "muse/cli/commands/check.py": {
+    "sha256": "e0562f5496d0160f346847fd77c3f38e150109738e86f12e495cd6e038f7b7ef",
+    "size": 15894
+  },
+  "muse/cli/commands/check_attr.py": {
+    "sha256": "1e14f854509378b04bbfa11f8ad924d077b8a2f8a1f6ead483e21844cacf7cb3",
+    "size": 16548
+  },
+  "muse/cli/commands/check_ignore.py": {
+    "sha256": "e9ef2ff799a87563726e322b041439f2dedf3fb73b6ea31ebdb028ca8bd629e5",
+    "size": 12121
+  },
+  "muse/cli/commands/check_ref_format.py": {
+    "sha256": "5f64264eb8fb7591421bbe7f3a30044eeb68fbe9b3eaaf8922c2b912314a179d",
+    "size": 11780
+  },
+  "muse/cli/commands/checkout.py": {
+    "sha256": "ff1709446a4a8581142cf7afbbcfeda8074269fb1adfe013a5690f69db367caf",
+    "size": 50030
+  },
+  "muse/cli/commands/checkout_symbol.py": {
+    "sha256": "2a66617c23357558184a0d29f6b39f0910f683a889caa3f66178cdcbdee9f781",
+    "size": 18019
+  },
+  "muse/cli/commands/cherry_pick.py": {
+    "sha256": "9ad1b4faea7175d261d3b7fb25014ae107829c59b1e5e8783819e9ef5182016d",
+    "size": 15761
+  },
+  "muse/cli/commands/clean.py": {
+    "sha256": "b25e91b26897321640547f8ba743c1c9932a34e192f7de973f6f8784ca2445ab",
+    "size": 12887
+  },
+  "muse/cli/commands/clone.py": {
+    "sha256": "7dc1d49c8e6dea2cdbe595d56ff993f324ab2f4d9f60c23d091ac47018af11fb",
+    "size": 22390
+  },
+  "muse/cli/commands/clones.py": {
+    "sha256": "b41b18ec8e434fbdb472777a4084116aece5eeb5ce0b4f3d25769eec3bb2a91f",
+    "size": 18248
+  },
+  "muse/cli/commands/code_check.py": {
+    "sha256": "5fa2f4319de0397b0e07a31444b1c7a6a531c95b6a3509ceed0d2fcee6359a1e",
+    "size": 10455
+  },
+  "muse/cli/commands/code_query.py": {
+    "sha256": "27802b1594a212f06f4f55b4e8880ec89603b0591ee9c962003e5cb86ec79169",
+    "size": 7267
+  },
+  "muse/cli/commands/code_stage.py": {
+    "sha256": "bf093fcb2cee6cbeb44169c8226b1b536c98e73d3017d026467a79efbaf71837",
+    "size": 50510
+  },
+  "muse/cli/commands/codemap.py": {
+    "sha256": "bca86d6a7f671191bffa3aee940c5dead36048f040ead2080870c9d3b787c276",
+    "size": 15456
+  },
+  "muse/cli/commands/commit.py": {
+    "sha256": "64888797ca12afaea76e163f94eaf70fd56393f4f52fcf257dc9f7908f16729e",
+    "size": 34472
+  },
+  "muse/cli/commands/commit_graph.py": {
+    "sha256": "711e4434fbc4dfe0d249d79f26897c336555ab36bf2815f9603dff14d14ef9ab",
+    "size": 9795
+  },
+  "muse/cli/commands/commit_tree.py": {
+    "sha256": "32ce4f13caae71ea0511bbf015725eea00ca1798d6d296d103d27b4c2bff19e2",
+    "size": 9582
+  },
+  "muse/cli/commands/compare.py": {
+    "sha256": "2a5b52d75d9360ab87620bddd5c5b446d4478d6ccca18dffaf3aafa96b551c7c",
+    "size": 17785
+  },
+  "muse/cli/commands/config_cmd.py": {
+    "sha256": "0ee405852d70cea7ddea98fb033d80a8b903799a886b2a54f6363e564171f890",
+    "size": 18995
+  },
+  "muse/cli/commands/conflicts.py": {
+    "sha256": "edd3157d6c1d3765057bcad64d3e5deb369a99a68655f2bde63f76aa0a015db6",
+    "size": 13805
+  },
+  "muse/cli/commands/content_grep.py": {
+    "sha256": "5a4ac79eb95d77ed4faea8d825bfd3fc051542aebc6bc8c9a885a7ecea43781b",
+    "size": 21251
+  },
+  "muse/cli/commands/contour.py": {
+    "sha256": "8449c881397ad2e4176a89cb157983b3472df033d2332a202dc85ed298017c13",
+    "size": 4112
+  },
+  "muse/cli/commands/contract.py": {
+    "sha256": "cd9c77fa06bf8e16338ad686fa13bfcd25e1abc5005b286762b89bbde363616f",
+    "size": 46458
+  },
+  "muse/cli/commands/coord_gc.py": {
+    "sha256": "0e262436cbedd6732fcf145a60078b00acfd470558f9a045c746641903e55e69",
+    "size": 13068
+  },
+  "muse/cli/commands/coord_sync.py": {
+    "sha256": "a2786dd910eaadde04ac59081cd52628f2048bf370850cd7e6b89eefb97dac40",
+    "size": 30163
+  },
+  "muse/cli/commands/core_blame.py": {
+    "sha256": "a91a67bcce1f94f1bedbb5a99b294279d1d1b3ec04c5aec40110d9dcf894b898",
+    "size": 9474
+  },
+  "muse/cli/commands/core_cat.py": {
+    "sha256": "b1311e1febb43b7239e42802c89e38debf6e93600f2e708eb769888fef1667d4",
+    "size": 14443
+  },
+  "muse/cli/commands/count_objects.py": {
+    "sha256": "5a4a5707bbcbeec954bbf87d027aebf53466d2654849506a9a8765f0d951f528",
+    "size": 9967
+  },
+  "muse/cli/commands/coupling.py": {
+    "sha256": "fddab6af6f927e888a9acae1a88c9fed0cf53fde4db7d2fe8bb4060496f0fc9e",
+    "size": 13583
+  },
+  "muse/cli/commands/coverage.py": {
+    "sha256": "2c34bd677e067039599afb220b3d4bf6ba56d4b4289bd66690dfa588edc8b911",
+    "size": 22934
+  },
+  "muse/cli/commands/dag.py": {
+    "sha256": "ca1d927e912f88a82f3e89cf8b314c5f2f92eb549a7f0b56b88ec3f8673c6c98",
+    "size": 16890
+  },
+  "muse/cli/commands/dead.py": {
+    "sha256": "c8a2873f5a5c96772a36eac33fc09034738aac57bc946441ece2c6bad51bf221",
+    "size": 50268
+  },
+  "muse/cli/commands/density.py": {
+    "sha256": "fd19a2c23a4299f30b0cd37fde0a96a0e08afe5786bd6d2db92fa8d7be9adc65",
+    "size": 4399
+  },
+  "muse/cli/commands/deps.py": {
+    "sha256": "e56023b8cb3694c592a6d996df9bb75e1398b0c1618a478ae31cc7534da035bd",
+    "size": 22285
+  },
+  "muse/cli/commands/describe.py": {
+    "sha256": "7fe8ac2514c332d47ed75f3a4581065f80db6446126220f2fa1e2820bf2a838f",
+    "size": 5645
+  },
+  "muse/cli/commands/detect_refactor.py": {
+    "sha256": "fb74a13e59952d41e5b6bc35cc5b435adaf68a9d4760c4eea7471bceecafc1b5",
+    "size": 16836
+  },
+  "muse/cli/commands/diff.py": {
+    "sha256": "953f4c5f1264e6fe9aec39ed549b5c6289b1fc21b3c9da3e9620f7cda4d2a24b",
+    "size": 42476
+  },
+  "muse/cli/commands/docs_cmd.py": {
+    "sha256": "d57bedfe23ca171780f174abdc7dfc0a4ab724825c6f99ef566037721c749ad1",
+    "size": 26033
+  },
+  "muse/cli/commands/domain_cmd.py": {
+    "sha256": "04d947ca62ecbb57e6585eb71d0d49716573d47cb56d8d420c58bb5c60c22e3a",
+    "size": 11772
+  },
+  "muse/cli/commands/domain_info.py": {
+    "sha256": "35af14ff4eb2af3b3b9124da8942799aa400148c862bd4ce4e6038fdbb1df36c",
+    "size": 11337
+  },
+  "muse/cli/commands/domains.py": {
+    "sha256": "1d8b4055a8ad4f0cadfe64a987fa269a2bfa0a9bfe1b43009d046fdf89e125e7",
+    "size": 87859
+  },
+  "muse/cli/commands/entangle.py": {
+    "sha256": "85d5bf74df67b22e6a89411f2cbf1fc4c3f9ea9fb451aa9cff551a6e26095a40",
+    "size": 30115
+  },
+  "muse/cli/commands/fetch.py": {
+    "sha256": "fd0d9d65c3c2dba4cefb809c31e449719d9c8c1ccf8430bcea762ccc3693be5d",
+    "size": 21018
+  },
+  "muse/cli/commands/find_phrase.py": {
+    "sha256": "6a0bd51705db17966552aaff58ea573ef01ce6afc8cd50a6e8be03ac82d62522",
+    "size": 6401
+  },
+  "muse/cli/commands/find_symbol.py": {
+    "sha256": "87f2f489ff7839145898ef966fb65813709141a3e4b85967155e06afa128108f",
+    "size": 27299
+  },
+  "muse/cli/commands/fix_snapshot_ids.py": {
+    "sha256": "865e7bd207db326c90ba1e7479992b61e422203ee333b989ba71e8ddbdae4c42",
+    "size": 4849
+  },
+  "muse/cli/commands/for_each_ref.py": {
+    "sha256": "7a2c782e02f8a009b7d77655f133be4f03dd464e085d7b724f3f57a66a41af4e",
+    "size": 12255
+  },
+  "muse/cli/commands/forecast.py": {
+    "sha256": "443a6bbdde3c636fa00042697357457dea2995157825368dcc49cc50344ed4b6",
+    "size": 21302
+  },
+  "muse/cli/commands/format_patch.py": {
+    "sha256": "dc3d21d52963cf7a74df6c15f94adc2a7014f9501b94c69bd25e3f1f24eff15a",
+    "size": 25690
+  },
+  "muse/cli/commands/gc.py": {
+    "sha256": "51e4f09fcda37bb0aaa9db9066c82ec4a38fb5117cfcb1211048f2d1484f9a64",
+    "size": 14054
+  },
+  "muse/cli/commands/gravity.py": {
+    "sha256": "3089549acc38df9bf4ed4611997f05c1dc8c2e49aaa886b320fac62af83c3a4e",
+    "size": 31888
+  },
+  "muse/cli/commands/grep.py": {
+    "sha256": "113d02acc0b0ca461b836762b58844be8bb1269647be0b4091695b7faf87816b",
+    "size": 15230
+  },
+  "muse/cli/commands/harmony/__init__.py": {
+    "sha256": "f8bfc7db9c5f310e644261617bc94ab992ce07cbeb3d1dcaeef9c9f678a05636",
+    "size": 1251
+  },
+  "muse/cli/commands/harmony/_args.py": {
+    "sha256": "aeea558131414a5dac762573ca0313be10993dd3bd573cee917c3d4a1b48d33e",
+    "size": 32885
+  },
+  "muse/cli/commands/harmony/_handlers.py": {
+    "sha256": "564d34a42c39dc52386ec9da765bdde2e5eb7c5029369612092bc39e2c32206b",
+    "size": 40859
+  },
+  "muse/cli/commands/harmony/_shapes.py": {
+    "sha256": "dff637bceb4e7d71e60f19390cba9a9b5315ef776ae63b25f777f0b842d49d98",
+    "size": 19341
+  },
+  "muse/cli/commands/hash_object.py": {
+    "sha256": "184f996a7d58fd6697201d63be88d1be701f9b29aacf5ba3cc7722e6ce6c7543",
+    "size": 9220
+  },
+  "muse/cli/commands/heartbeat_coord.py": {
+    "sha256": "936aecb22e0c9261dd1e52bb9c1feaad852d24d6124d5e96e396a4ec92c51833",
+    "size": 11566
+  },
+  "muse/cli/commands/hooks.py": {
+    "sha256": "a1cb45a7f788b6e9474e2312b9c997178e80c54cc33b47f918b8210474cd1eb1",
+    "size": 11889
+  },
+  "muse/cli/commands/hotspots.py": {
+    "sha256": "7d0a7b34fc8ec436462932752b9778e4d6988542d02afac67baf82044fe59262",
+    "size": 16848
+  },
+  "muse/cli/commands/hub/__init__.py": {
+    "sha256": "ab2b4557b3cee59d5806c4027b3475ba70e7373ba9d8143b3f3ca882f4b9ec91",
+    "size": 2782
+  },
+  "muse/cli/commands/hub/_core.py": {
+    "sha256": "b182c08ec48dd58edad1e27b4a390cfc091149d37c666ffb4a8ad47579701e69",
+    "size": 46363
+  },
+  "muse/cli/commands/hub/attestations.py": {
+    "sha256": "1307ca0382a250f33e81254590ef5a3a803c4f317dbdf698c3a72278116d71e4",
+    "size": 21600
+  },
+  "muse/cli/commands/hub/collaborators.py": {
+    "sha256": "a6dcff23ced97ee8c05d87ff77d05172147d10e6d202668744bb3b77b7c8b1bd",
+    "size": 13483
+  },
+  "muse/cli/commands/hub/connection.py": {
+    "sha256": "9d7bea7f56ac5d801b6ffe8c857679c4859b87d4c7b98db3a4b7b1f062f5c76d",
+    "size": 18616
+  },
+  "muse/cli/commands/hub/issues.py": {
+    "sha256": "8f59755836ecdd4a079f1ee09aa38ea2d768310d25a25cc41c98bb4c2040361e",
+    "size": 48190
+  },
+  "muse/cli/commands/hub/labels.py": {
+    "sha256": "5a757617e5508d7d3717e6de8ba474aa8d41bb31fb3fe4cc2bac0ad36d521f6c",
+    "size": 19018
+  },
+  "muse/cli/commands/hub/proposals.py": {
+    "sha256": "3a23b29b898e2c8f171ea7fe6ae9333236c356fc54cd783f3739a13cf6e02fd5",
+    "size": 52720
+  },
+  "muse/cli/commands/hub/releases.py": {
+    "sha256": "ca762a7ffea994236559ac920094de424a5897ad0cdb196e32e2ebd81f4c584a",
+    "size": 18762
+  },
+  "muse/cli/commands/hub/repos.py": {
+    "sha256": "0535725ea4c038743946a8c671b087326b2b64c4f14cf54d9f824538c1f064cc",
+    "size": 36977
+  },
+  "muse/cli/commands/hub/users.py": {
+    "sha256": "c4000fe71ca5ccd0d3dd863aea720be3d073343ed96f88d48db53e4f07a5e352",
+    "size": 16449
+  },
+  "muse/cli/commands/hub/webhooks.py": {
+    "sha256": "073454a953fa66118f0a646a69fefe82655c8ded93226814c9aeecd6b043f22f",
+    "size": 14806
+  },
+  "muse/cli/commands/humanize.py": {
+    "sha256": "a3ef04aed33076713934cd3f54a8a05c51702edd50e6510d527cccd7c3fe2938",
+    "size": 5326
+  },
+  "muse/cli/commands/impact.py": {
+    "sha256": "f073964c50950284968592661b07c2dc8c89c9df87b08e01665a164c41e6504b",
+    "size": 20125
+  },
+  "muse/cli/commands/index_rebuild.py": {
+    "sha256": "37c57011f0284fa6e2296b4a87864d71103dfd9e8d792c29bfdc4b02a82d2a4a",
+    "size": 26298
+  },
+  "muse/cli/commands/init.py": {
+    "sha256": "9b6df807180c7dc5f27d9e2a94a115c05a9faf89cdc10cd426ca8fb875a30120",
+    "size": 23629
+  },
+  "muse/cli/commands/instrumentation.py": {
+    "sha256": "224b750bc9be185a6e8ded5111be17882dddfa0f3c7403c7ed9f31faf5941bee",
+    "size": 5592
+  },
+  "muse/cli/commands/intent.py": {
+    "sha256": "18c664765fa7a4c7838c8979b44b59e334339a99bee7062c7784a5f3b2ead0e7",
+    "size": 10854
+  },
+  "muse/cli/commands/invariants.py": {
+    "sha256": "a1b80f07563945104909708b78a4de0342935b0671a84b3ecfdfe0193b6aae21",
+    "size": 13451
+  },
+  "muse/cli/commands/invert.py": {
+    "sha256": "e3af94266caec11f97d94badc13d1a021c315548f268b7a4da33c9d4ea738504",
+    "size": 6792
+  },
+  "muse/cli/commands/label.py": {
+    "sha256": "5b11633c16927bcfd398e3f3f635b353cf1c3fba6aa426943662f84637aa3cc1",
+    "size": 15384
+  },
+  "muse/cli/commands/languages.py": {
+    "sha256": "9e947e090e6de204fee177ed696a5b957bcd09b03e9e369266774f500b80d607",
+    "size": 16398
+  },
+  "muse/cli/commands/lineage.py": {
+    "sha256": "e89856c273d6ce1aaa825d657e4d242cd888f88c51ebbb9dc9f7bc326209cf60",
+    "size": 23296
+  },
+  "muse/cli/commands/list_coord.py": {
+    "sha256": "b4a4944632fa0124c94c151d773b1159b0e470426168d1754e3cdc3909ca8723",
+    "size": 19833
+  },
+  "muse/cli/commands/log.py": {
+    "sha256": "5ef7a84f7b260dec948ab320cb41afff4ff5b98d4e162b46fa2d97e2f086199b",
+    "size": 44378
+  },
+  "muse/cli/commands/ls_files.py": {
+    "sha256": "ec87876f7b57a92ff739046810a339fb3c10c54a5b4e6183f80694f5ee78bc91",
+    "size": 7900
+  },
+  "muse/cli/commands/ls_remote.py": {
+    "sha256": "83b54f925791ac60b09e369c474a77ff70511d5faeca7d593921228505e49d56",
+    "size": 8873
+  },
+  "muse/cli/commands/ls_tree.py": {
+    "sha256": "714579325f5f404e33d076e13e9c6c8d71da66a2107e73f5454acc5dfae6d1bd",
+    "size": 18943
+  },
+  "muse/cli/commands/maintenance.py": {
+    "sha256": "9421a16fddfc2a1fd78da11a6bff062f61a55d7636afe8d6f5a322de29f4d97d",
+    "size": 20393
+  },
+  "muse/cli/commands/merge.py": {
+    "sha256": "1f0685bd67696920c8307c241a21826801757858253fa137ac03249e9f2316e7",
+    "size": 62695
+  },
+  "muse/cli/commands/merge_base.py": {
+    "sha256": "f2be87e6e5b78b7e5e554d57be56b78bb97115c014294b534f18a8ee7ed2192e",
+    "size": 7631
+  },
+  "muse/cli/commands/merge_tree.py": {
+    "sha256": "0ba785e83668ff125adf00384ff4d073e013d3be97cfb806512d1581c27b4ac2",
+    "size": 14031
+  },
+  "muse/cli/commands/midi_check.py": {
+    "sha256": "afaba95a729b66ec15e6087e7ef0f186b349354e09d99bf8849be42e3f083e8f",
+    "size": 5383
+  },
+  "muse/cli/commands/midi_compare.py": {
+    "sha256": "686d5b9b963eb00dd4325ba0c5cd022f259254bd03620e34e63ed56df5f4ade4",
+    "size": 6490
+  },
+  "muse/cli/commands/midi_harmony.py": {
+    "sha256": "6f8d3e4b11ff9eb9f624ca899ed9afd16045bb3f2843d42ff72a91970e200a39",
+    "size": 6233
+  },
+  "muse/cli/commands/midi_query.py": {
+    "sha256": "2bfb8159807147aa28e510d1154bef61e9eb1b63ef5556f097053002a90bb100",
+    "size": 5250
+  },
+  "muse/cli/commands/midi_shard.py": {
+    "sha256": "804a47ea5f875e300b2efacf9726ad50e06648bf5e5c2aa85e0690999143c2e0",
+    "size": 6638
+  },
+  "muse/cli/commands/migrate.py": {
+    "sha256": "303b324da50d9bb438899b358a5378cc8db9826b66028f6b87f78a1a43762e62",
+    "size": 7032
+  },
+  "muse/cli/commands/migrate_cmd.py": {
+    "sha256": "0a192da31fc5bea3ce79f1f82140e229ea9fb55f28ae3a4953a903fa2b7ac326",
+    "size": 24920
+  },
+  "muse/cli/commands/mist.py": {
+    "sha256": "71e07f3f7cc00e6435d0956c19973bec4e33d5b1842a7da975491ab31f2df9dc",
+    "size": 57223
+  },
+  "muse/cli/commands/mix.py": {
+    "sha256": "79d13e1f3ca2e7338f497a3b80c60dd7476d2e4aed1c385f2177405baee5e973",
+    "size": 5660
+  },
+  "muse/cli/commands/motif_detect.py": {
+    "sha256": "cdc92f3f3b17fde607de422b0b47fe7e9b0669adccd200ebe61cb52307ff90cd",
+    "size": 4761
+  },
+  "muse/cli/commands/mv.py": {
+    "sha256": "2f81f441d5c599f42ded1e4671c15440c38fdcd46d953259ca3b3487a36c64b7",
+    "size": 21370
+  },
+  "muse/cli/commands/name_rev.py": {
+    "sha256": "d9c3108fb37bb5ad350d44fc523046e2bb301cf93eb4e797e7155dcc0fef24e9",
+    "size": 15652
+  },
+  "muse/cli/commands/narrative.py": {
+    "sha256": "00ae1c262bd824cee4b676f3bea92293815a66ab81ee25330a555639b8c6186a",
+    "size": 39609
+  },
+  "muse/cli/commands/note_blame.py": {
+    "sha256": "157fa604daf73bfeff11a6161af98fe38fda069b397991ae3397485442915b5a",
+    "size": 6953
+  },
+  "muse/cli/commands/note_hotspots.py": {
+    "sha256": "b36b83e1edd6ca458b8b36aee99f90c6d5422404f3afe763d2d6de74faabcbbe",
+    "size": 6918
+  },
+  "muse/cli/commands/note_log.py": {
+    "sha256": "94387a41e56e7bcc4a9c5be5be304b155e73f25982ac1ddd8cf6580fc2dd2382",
+    "size": 6418
+  },
+  "muse/cli/commands/notes.py": {
+    "sha256": "fc6fc035290ea065684daf0d50526f1b8331300caa085e9c6c7add0c9782827f",
+    "size": 5809
+  },
+  "muse/cli/commands/pack_objects.py": {
+    "sha256": "9897cc80320f8c3f95f610e27511bf650fcccfd1c6316e6c0dd4a176aa2ff0c6",
+    "size": 6614
+  },
+  "muse/cli/commands/patch.py": {
+    "sha256": "0a9833565f041905eecf7ef47fa7258c29ded5ba795213bb4dbf185edabec0cb",
+    "size": 13187
+  },
+  "muse/cli/commands/patch_id.py": {
+    "sha256": "c9eb4f101864ba8ad2a64b4ee4acbfc672f887d77a6c5af3e29d0dd397bb6e48",
+    "size": 11791
+  },
+  "muse/cli/commands/path_cmd.py": {
+    "sha256": "ce59f9fe27093ba6ab629c00107f2272dc86f056dae528d47b1296baa7b52704",
+    "size": 7762
+  },
+  "muse/cli/commands/piano_roll.py": {
+    "sha256": "f1d762c5876dab6df42601a33bf38a408929f9bb55e37a0129048584e0d69f52",
+    "size": 8512
+  },
+  "muse/cli/commands/plan_merge.py": {
+    "sha256": "0bdbff6fbce845aef39d9aee62159ffddeac01302f009b7f48deae0af626c5d1",
+    "size": 44504
+  },
+  "muse/cli/commands/predict.py": {
+    "sha256": "0088a7f10b4bfba93389e9c2d2352e63c34a0dba89629107631c9dda1cdfde2c",
+    "size": 35239
+  },
+  "muse/cli/commands/prune.py": {
+    "sha256": "f02e57cd0e8b581c83b9dc0685a227908c8bf898f566790576e0a8ffa63dab08",
+    "size": 11072
+  },
+  "muse/cli/commands/pull.py": {
+    "sha256": "a1e716149299d961698d56bd58de11dc43b074de47b67b8641ae2dc5c010aed2",
+    "size": 32627
+  },
+  "muse/cli/commands/push.py": {
+    "sha256": "33d3b8d6889c87890bf92c1a065754027cd6bd90507e2d1645d8ec5f03f4811d",
+    "size": 43201
+  },
+  "muse/cli/commands/quantize.py": {
+    "sha256": "d8b88d27e7f28d315fa127741ad710a82abd1b710ec8e0c7ef84ce8a92b0394b",
+    "size": 5506
+  },
+  "muse/cli/commands/query.py": {
+    "sha256": "abe6966d571af60f390383dcfc267c0373060bec80dfd48e33d8a77608dedeb1",
+    "size": 22958
+  },
+  "muse/cli/commands/query_history.py": {
+    "sha256": "c5374b57bfb3676db85994a8b6608c718eddba7a8f6562e855b7a4e0cef1ff1e",
+    "size": 24132
+  },
+  "muse/cli/commands/range_diff.py": {
+    "sha256": "cefafb1484bc6c5f10db24f85672023d2b053b93045596d6a50af89aa246f4de",
+    "size": 21975
+  },
+  "muse/cli/commands/read.py": {
+    "sha256": "96e41af51da493c6219508de5c76f95e2b7e534cafccb40859c99345c93e112c",
+    "size": 22394
+  },
+  "muse/cli/commands/read_commit.py": {
+    "sha256": "fceadbe680675a68fc1428c891eb942278706b638f2c03c49a9519e4be732686",
+    "size": 8093
+  },
+  "muse/cli/commands/read_snapshot.py": {
+    "sha256": "90c24a3690ec2976630cabc5680548740c89fd6899b4ac31160797303041bdb3",
+    "size": 5848
+  },
+  "muse/cli/commands/rebase.py": {
+    "sha256": "859ee20ac23a9d69fdb38c8e6196c9dfd0cfdb97fef423432c6c2203664ce914",
+    "size": 32723
+  },
+  "muse/cli/commands/reconcile.py": {
+    "sha256": "cef21529ad7d5d2ee92f3817fd698f71b46ae28c66111d1150227ab13c77dbfd",
+    "size": 14013
+  },
+  "muse/cli/commands/reflog.py": {
+    "sha256": "c4c3d1f848ae740127f7209563299bf78257e2f72c6f36b04da55d82ebc94259",
+    "size": 27322
+  },
+  "muse/cli/commands/release.py": {
+    "sha256": "7466e00cad5374682c3015ca3bdf3a2ca39426f8074b49bf07005b3f20ed56fd",
+    "size": 47205
+  },
+  "muse/cli/commands/release_coord.py": {
+    "sha256": "ebba016def49fedc60788ba45f922ff71064799022f48b56feed48eade91ee5f",
+    "size": 16581
+  },
+  "muse/cli/commands/remote.py": {
+    "sha256": "cb427fde185c9f332007321ab50a15cc558cfe94bf95ae4006e9498b25ab7ecf",
+    "size": 47884
+  },
+  "muse/cli/commands/rename.py": {
+    "sha256": "fc78228109718cc6ba4cfa9910043e65123b50b8b59ee0c75b142a2898e08d44",
+    "size": 30752
+  },
+  "muse/cli/commands/reserve.py": {
+    "sha256": "2ff8854cf4da331e54ebbc702ee830026c45d33735c322dfb8232219472e0f00",
+    "size": 15261
+  },
+  "muse/cli/commands/reset.py": {
+    "sha256": "c75fdec591a90822e4146019185a51ada4fa3ed41a44a902852d9b62b722833d",
+    "size": 9171
+  },
+  "muse/cli/commands/resolve.py": {
+    "sha256": "4e3214b2e5e39a53e7e9eb4596697f01f8095f66cc372c400d1b2a79458a3f58",
+    "size": 8101
+  },
+  "muse/cli/commands/restore.py": {
+    "sha256": "17df39ffd0696cbd954f9e4204a1db1130921d33a8b8ca4a8fbce5f9cf088e96",
+    "size": 18408
+  },
+  "muse/cli/commands/retrograde.py": {
+    "sha256": "793bbf7ae296f06434f0ff3111fd9fe9319fd0432d97f208fb362429af93f247",
+    "size": 4208
+  },
+  "muse/cli/commands/rev_list.py": {
+    "sha256": "9515e10c15c0ea47421b389b580539b6ab72bb3917fd9e6364bcb5e449b76802",
+    "size": 20172
+  },
+  "muse/cli/commands/rev_parse.py": {
+    "sha256": "101e5785c6985969e56a3c671d1c32df349fde8d47ee1478397d41acca48d0d2",
+    "size": 9214
+  },
+  "muse/cli/commands/revert.py": {
+    "sha256": "5f32ff15c360ce90a188cc9235a20b1d64098e4194f21dbd066590aa8334508f",
+    "size": 20115
+  },
+  "muse/cli/commands/rhythm.py": {
+    "sha256": "f574ce059dffe02ba228ce7f35cf0944b28ec7ebf5a943bb2208b9c7a5149e0d",
+    "size": 4737
+  },
+  "muse/cli/commands/rm.py": {
+    "sha256": "632f008abe060443050a9d2e696a1a2f3260090f937bfe955b02b5416b6b7a5a",
+    "size": 17712
+  },
+  "muse/cli/commands/scale_detect.py": {
+    "sha256": "52b24e2d5c2500ae2d48d9a93037fb14a192862fd0ce0e54c8c52961a6345daa",
+    "size": 4282
+  },
+  "muse/cli/commands/semantic_cherry_pick.py": {
+    "sha256": "b84b618ddf2a947470662aa2951eb0d1e06d5a85799fa770971ea5b8efebbc40",
+    "size": 16495
+  },
+  "muse/cli/commands/semantic_test_coverage.py": {
+    "sha256": "8a301e7264b17a92874166ef88dea90ea478b78432db91e21a4ffe8af5a3fa38",
+    "size": 32966
+  },
+  "muse/cli/commands/shard.py": {
+    "sha256": "fc4439eb088d7c32a3048142f62184bf7451263c72460d3fad68ada2d60e9944",
+    "size": 17572
+  },
+  "muse/cli/commands/shelf.py": {
+    "sha256": "9773a30f18ec0b366e582f1c69019be60ad0092a316a9055eddf7bb60715c3f5",
+    "size": 61583
+  },
+  "muse/cli/commands/shortlog.py": {
+    "sha256": "a3815597abd4fe34713ab4249c50d010d5f0fe7e3d8cf8f07f821f962bc5b657",
+    "size": 17072
+  },
+  "muse/cli/commands/show_ref.py": {
+    "sha256": "f5f80b3f02a158db468a430c1d67dc130ae23edacc8fc4c42a1685d380953502",
+    "size": 9865
+  },
+  "muse/cli/commands/sign.py": {
+    "sha256": "d290873092be45be6508ef3567d88543730b644f031e40f2d28daeb1781f9411",
+    "size": 32604
+  },
+  "muse/cli/commands/snapshot_cmd.py": {
+    "sha256": "b6f281cc04e5304d4f2e9c0e5c93c8ba9fde3c127828966a432b5ede8cca73ac",
+    "size": 28064
+  },
+  "muse/cli/commands/snapshot_diff.py": {
+    "sha256": "985d4cb54eb750ea3f1c5f69371daa1c819eab46a4bae0770924895d96b7d573",
+    "size": 22234
+  },
+  "muse/cli/commands/social.py": {
+    "sha256": "578035dd96ff94188db129b240a51ba78db502781cd86437aaf348e6e053298a",
+    "size": 18065
+  },
+  "muse/cli/commands/sparse_checkout.py": {
+    "sha256": "907d6fdd215c95e71738a04572471a1f5e03a2122dd3e83bc5e22189e2902222",
+    "size": 25261
+  },
+  "muse/cli/commands/stable.py": {
+    "sha256": "ee1f7c0b2800913a27c55179273a735c7c032c2d1f079faa1bf61fede11b7656",
+    "size": 13135
+  },
+  "muse/cli/commands/status.py": {
+    "sha256": "a7a57c6de2ba2b7e7e546d38b4bb7cd965829388eb9c7b6429e5048909c5b2bc",
+    "size": 40305
+  },
+  "muse/cli/commands/switch.py": {
+    "sha256": "c328aab01940cac52cccf0c980bef184ece051843fa48dd0a49147635acfa50a",
+    "size": 22209
+  },
+  "muse/cli/commands/symbol_log.py": {
+    "sha256": "06aa76035ae299fef0adc2b005817685e07f3b36bd9acb2d1dd39b74b5c66901",
+    "size": 15780
+  },
+  "muse/cli/commands/symbolic_ref.py": {
+    "sha256": "2a2bfd316d79bbd7539512d3e1b0616b8a8f664f643ae77241b5d84ccfc1dbea",
+    "size": 12096
+  },
+  "muse/cli/commands/symbols.py": {
+    "sha256": "76ff999e031684ef23716d56e3656ac3246311b4fece4b9c6af3942b3c124b90",
+    "size": 19584
+  },
+  "muse/cli/commands/symlog.py": {
+    "sha256": "ace118fdd4cb1411ee4881bcadb5c340d33c1811a0a398839dfe091501f993b7",
+    "size": 46384
+  },
+  "muse/cli/commands/tag.py": {
+    "sha256": "b19499d243a5393755b63d8e3a53ee81c016432f327716f2fc439e2524c68a17",
+    "size": 22731
+  },
+  "muse/cli/commands/task_queue.py": {
+    "sha256": "77a85e318c9650d33b32367d6de443f944c9236c1449304696b5de7d291dd3b3",
+    "size": 55945
+  },
+  "muse/cli/commands/tempo.py": {
+    "sha256": "70e015564ffd4a6435fedd0994ba35c0ee6daf3eb3559802d1f8c27201f1f479",
+    "size": 3804
+  },
+  "muse/cli/commands/tension.py": {
+    "sha256": "84a3f9f47d363ca33750dda5bc2011b97a3b4ca4225493e9add1d4367f072d11",
+    "size": 4099
+  },
+  "muse/cli/commands/test_cmd.py": {
+    "sha256": "fddb3193fa126e59db490948837930407ae000365d53d0d93b53a0d6e13d2d4b",
+    "size": 30447
+  },
+  "muse/cli/commands/transpose.py": {
+    "sha256": "afa0a09b4f0fdd363f745787210a060ea347cdaff163f782dc9f665d553f741d",
+    "size": 6112
+  },
+  "muse/cli/commands/trust.py": {
+    "sha256": "0f74c4c2f3d6030d15d6c2aedf3f5e91c182eeef0bfe2d93cd043e670c59622d",
+    "size": 14158
+  },
+  "muse/cli/commands/type_cmd.py": {
+    "sha256": "40b21bfe4534130059f690102f7f3f777730d36930ab11eafdffd8c871ef1b15",
+    "size": 20231
+  },
+  "muse/cli/commands/unpack_objects.py": {
+    "sha256": "1cd7104e19e97b36a96698a2f2834fbab397478f140303bf783ba16736430c44",
+    "size": 7133
+  },
+  "muse/cli/commands/update_ref.py": {
+    "sha256": "222617c6aa3811287076e79b8d16319b900a8ed0a9818bb1e9e939721e980536",
+    "size": 9514
+  },
+  "muse/cli/commands/velocity.py": {
+    "sha256": "1dd467332f5b2bcd8dfe6754ac18d124383b6dca2c64bcc1fc40985d0a195efa",
+    "size": 24682
+  },
+  "muse/cli/commands/velocity_normalize.py": {
+    "sha256": "5c4af5d48d77c8cdd36b81bb9ef03794e3e6477e13f06b1c920440351b44c506",
+    "size": 5253
+  },
+  "muse/cli/commands/velocity_profile.py": {
+    "sha256": "81528b4e80259d68d8896d17ae885a395c834e11f96e8a80d0b42f396ca04c6d",
+    "size": 7556
+  },
+  "muse/cli/commands/verify.py": {
+    "sha256": "1ee2459fad6d9da71aa331a02682880b1a2c814c4cc2e079e54b271a94863856",
+    "size": 10680
+  },
+  "muse/cli/commands/verify_commit.py": {
+    "sha256": "2d0c7b93eea44ba45fceafbc071f18937a903e1f4f4fde2bf592133e4d439de0",
+    "size": 14400
+  },
+  "muse/cli/commands/verify_object.py": {
+    "sha256": "1abab7c2b0fa14a85c1d9f5980ff92e3153d23ee7b2201347bc43b25bb1bee1e",
+    "size": 13631
+  },
+  "muse/cli/commands/verify_pack.py": {
+    "sha256": "289666601ca59dab9e99c2241738f6e55cc65f677885472fdc58d49962d058ff",
+    "size": 20527
+  },
+  "muse/cli/commands/verify_tag.py": {
+    "sha256": "f04d27508d6a60a25f421eab59dc46191e6b4ac83842b55d8c0bf9250bcf06dd",
+    "size": 14573
+  },
+  "muse/cli/commands/voice_leading.py": {
+    "sha256": "87b5afc165d9f49373f106c3f9f6a5af74f23b387c00325859d5a947fe306e8b",
+    "size": 4568
+  },
+  "muse/cli/commands/watch_coord.py": {
+    "sha256": "3bd0da84a329703f8fe05ffda152ec2ee028b051eb94105c80585e3b94cad0dc",
+    "size": 37946
+  },
+  "muse/cli/commands/workspace.py": {
+    "sha256": "0b2aeb708ae8a53acf4147d7c62b30cb177662297a0ad57047f834d0d219fe7e",
+    "size": 31719
+  },
+  "muse/cli/commands/worktree.py": {
+    "sha256": "6f2e71d004365144ea00750baac858f0e2216e6381f732398e2fe6232af24c31",
+    "size": 27365
+  },
+  "muse/cli/config.py": {
+    "sha256": "e743ec539ebccff635f56c049d29caa179aa7ee04facb18e4a4e98e010562af0",
+    "size": 56215
+  },
+  "muse/cli/dev_guard.py": {
+    "sha256": "60fbe7e7cda4618db402f46ab07df593469fb86f48ff9c0de2885b24ac4e7036",
+    "size": 4910
+  },
+  "muse/cli/domain_command_registry.py": {
+    "sha256": "3b67b04e9663194e77c394606dc4b141a6440f38cb102af8d6c84119c00c506e",
+    "size": 1927
+  },
+  "muse/cli/guard.py": {
+    "sha256": "33732349558b55038ea5f6f5e3bd1c77a2a6fb84d41fe684b46f8756d48df81e",
+    "size": 5409
+  },
+  "muse/core/__init__.py": {
+    "sha256": "13326bf6f6319906a9fdfd514a7d1a0451ffc974eac86a448f9574404f725f94",
+    "size": 48
+  },
+  "muse/core/agent_slots.py": {
+    "sha256": "f58ab7736d6c8d0327348c4491e4aa999965d694aaf07f46f8fafee7d629fd98",
+    "size": 7715
+  },
+  "muse/core/attributes.py": {
+    "sha256": "7afdaf85667077aab1d922d4f5118e85330abd5c16502ce3c2d32ebc00930a8f",
+    "size": 14121
+  },
+  "muse/core/bip39.py": {
+    "sha256": "26939f4b0747e2db234c5e07dc27e684382811573d38b794fb3f3214ae4c961d",
+    "size": 16522
+  },
+  "muse/core/bisect.py": {
+    "sha256": "37c89c28fa3b236950631659203c3142ffab11c521d2c2aa623d6af5df555503",
+    "size": 21882
+  },
+  "muse/core/blame.py": {
+    "sha256": "607667724cab4eb3d3069a34e81e357f0db65a169629c52bb336da3d2d50e37f",
+    "size": 7852
+  },
+  "muse/core/bridge/__init__.py": {
+    "sha256": "458d2c1e9f6403abb9dd3912c10846b5789870a9720e8b7fbc031b42f9690682",
+    "size": 1770
+  },
+  "muse/core/bridge/exporter.py": {
+    "sha256": "a70a44296ec67e96322a7c6c09a0d60d50e620c44b9ff365fc6dd522f4948188",
+    "size": 27265
+  },
+  "muse/core/bridge/git_primitives.py": {
+    "sha256": "599f346ce136ed5d81f6cc834313912f7d7dc7a6d3420e462d170fe2fb6afe99",
+    "size": 19010
+  },
+  "muse/core/bridge/harmony_shelf.py": {
+    "sha256": "af90f92dc278092412164add1f71f3fa59791db0b24269986ba5245298cdb6e1",
+    "size": 14244
+  },
+  "muse/core/bridge/hooks.py": {
+    "sha256": "a4609b42d4d663ac4bd08b0b0ed6b8202ed385af47f50b4c18a32887286a8685",
+    "size": 3787
+  },
+  "muse/core/bridge/importer.py": {
+    "sha256": "b1c3981e28965deae487ac8a66645ff26ec3c0de3629364da880f9f199f5ae35",
+    "size": 25115
+  },
+  "muse/core/bridge/state.py": {
+    "sha256": "61e52a20b3d97cd6d7d62e01b598d86396c7ebadcbfe39c60b32e0c290db9065",
+    "size": 8546
+  },
+  "muse/core/bridge/status.py": {
+    "sha256": "22307bee7c44a55f2e1c009ee017c8b4e66cddca6efad414b5266fd5be793f81",
+    "size": 8751
+  },
+  "muse/core/cache_base.py": {
+    "sha256": "1bdbadf31b021261cd8653fa71512c5a6141e3a23b21af0256acf2412fb3de14",
+    "size": 9230
+  },
+  "muse/core/callgraph_cache.py": {
+    "sha256": "35e7f45f451a70870af16e1aaed3bf1203d38e4297636f8eef4c557d9fa5342d",
+    "size": 5946
+  },
+  "muse/core/ci.py": {
+    "sha256": "ba5545b3ec8356802440de8274bad2b19a3f5ea32019656f04419baa8d8e1ae3",
+    "size": 14142
+  },
+  "muse/core/cohen_transform.py": {
+    "sha256": "9b365ea1f984b3727b0b80c0c5d67102e251f49d6914d58b08eb9a1d1a7aa5ef",
+    "size": 23105
+  },
+  "muse/core/commits.py": {
+    "sha256": "baf8f0a55189e725504930a5b452a9c383508a7f070ad204842c28f27afcd1f8",
+    "size": 32272
+  },
+  "muse/core/compression.py": {
+    "sha256": "78a13878bb651f58fbaf99aca6e9d67d52ef46d60ffd128f789ee3e2b009e181",
+    "size": 9688
+  },
+  "muse/core/coord_bus.py": {
+    "sha256": "6eb372ce2dcd2a19fdd4fb1a57de554ecd29fc5b284355247cef5e8086990f6d",
+    "size": 12847
+  },
+  "muse/core/coordination.py": {
+    "sha256": "e6f9eacfd1896b6c017c78fb03668bfcb49f8a5d0003732eaa6e8aee09f31c11",
+    "size": 47703
+  },
+  "muse/core/crdts/__init__.py": {
+    "sha256": "cf81e7a00df63931a7b2e8a96b720934f4a7670a4559453d73687db757c27d52",
+    "size": 3695
+  },
+  "muse/core/crdts/aw_map.py": {
+    "sha256": "5e4d2226572edf465e636a5e83b15a1a37aa9eac91c0685bb4a62ca8fa966079",
+    "size": 9372
+  },
+  "muse/core/crdts/g_counter.py": {
+    "sha256": "424ec1605e9ce75d73e33a9b1e1691ab674d442889cba6f6096d87e7a7c5afb8",
+    "size": 6395
+  },
+  "muse/core/crdts/lww_register.py": {
+    "sha256": "71bee5f8bf26715429319e4b5f05f1a27b6fbeb327ade6cd66bd10d76b3b4e93",
+    "size": 6579
+  },
+  "muse/core/crdts/or_set.py": {
+    "sha256": "11da1dec444ff9edf3ac8746717611d27f0dcc1109e7011d6384d6830d6681b8",
+    "size": 9125
+  },
+  "muse/core/crdts/rga.py": {
+    "sha256": "9ed70c07027ae7e937b06180c96eb30d06abc0190f8daeee7fa799383f700a15",
+    "size": 12710
+  },
+  "muse/core/crdts/vclock.py": {
+    "sha256": "ef578bea9edcf21250b1b98098a6e0f280f8511eaff001a4c80dfbbdb5acc824",
+    "size": 6994
+  },
+  "muse/core/dag.py": {
+    "sha256": "5378c3955d5d9c825671f41efb5baa9ba8cc4f3a3064d6b2cae3fbeeb63fad2a",
+    "size": 21790
+  },
+  "muse/core/describe.py": {
+    "sha256": "b4be1eee0862677bd25deb4656bc026dd9b6c12c289ace63c2daded80e074f52",
+    "size": 5471
+  },
+  "muse/core/diff_algorithms/__init__.py": {
+    "sha256": "0e3cbb433126b2c2edef4370c0d683747e20270a7030e5e8321540033982aaca",
+    "size": 12962
+  },
+  "muse/core/diff_algorithms/lcs.py": {
+    "sha256": "f79e6ddb5ae4a06f70b4e1aaf46f6e46380b168a4067f508fc6d7c3c8482d957",
+    "size": 8382
+  },
+  "muse/core/diff_algorithms/numerical.py": {
+    "sha256": "c5f3d1d7100288ca63e8789ebab35689a313a81fb504495613784a19b8b2a546",
+    "size": 6670
+  },
+  "muse/core/diff_algorithms/set_ops.py": {
+    "sha256": "4cc79cc4300e3f83dd4ef1669b22dd312814454d854b56c55960fae7d42e4726",
+    "size": 2968
+  },
+  "muse/core/diff_algorithms/tree_edit.py": {
+    "sha256": "c93eee03b8d36b4a0644efe5a8c5c09d6e3e9c79d5301e3b3f58e265849c93fe",
+    "size": 10306
+  },
+  "muse/core/doc_extractor.py": {
+    "sha256": "221cc374696ef4eb27536d6e9a7f3b8e3e1d16db241ee6a5e14da9945605e06b",
+    "size": 25110
+  },
+  "muse/core/doc_history.py": {
+    "sha256": "ab8ba0462cf76bdf142ae52feeb3b2dc515910bb0e7c9b3be252da748aa72f5c",
+    "size": 15119
+  },
+  "muse/core/doc_renderer.py": {
+    "sha256": "6158ae5baf95e09c07025eb8dddd34a724ac65766311359974a2ef19b30d625b",
+    "size": 23738
+  },
+  "muse/core/domain_migration.py": {
+    "sha256": "0c4a2d39432bc26fda5f92efe51d19f83e9b057b435938a8b33dd593e9e1ba76",
+    "size": 11144
+  },
+  "muse/core/envelope.py": {
+    "sha256": "74f64d14fe5b4de98b51749d9f6f039dcc8afe476682d9035b6b60610bd3e6ae",
+    "size": 3069
+  },
+  "muse/core/errors.py": {
+    "sha256": "8bf11816e2dc3285d9f6c7d76b12322dd9d49f98b55a40e29d90b1fba0fe417e",
+    "size": 3643
+  },
+  "muse/core/gc.py": {
+    "sha256": "a1874e2545f626d793f72aee138eb5be5ee453c72cab9698ef6fdaf101685c46",
+    "size": 30665
+  },
+  "muse/core/graph.py": {
+    "sha256": "8c76cc0519f00aa9ae622fa885ae0b465119e2353829b79573a2fd527af2a6b2",
+    "size": 12800
+  },
+  "muse/core/harmony/__init__.py": {
+    "sha256": "1a5fe589dd60f17a84261b32813880a462f0cacab451190c89dc7199ec0a5d4a",
+    "size": 6445
+  },
+  "muse/core/harmony/audit.py": {
+    "sha256": "a8c768ca3baa54eed9ac9d574defacd74d2d9bb3667545ed26537878f9f853c4",
+    "size": 3901
+  },
+  "muse/core/harmony/engine.py": {
+    "sha256": "15231af51bb49a8404d04169af11ae2f688054a9d72759ee9e2422a23c18b898",
+    "size": 32526
+  },
+  "muse/core/harmony/escalations.py": {
+    "sha256": "e74e252383532299a37c68031d391b66b50a662b8243436881e25ad82ef406de",
+    "size": 8695
+  },
+  "muse/core/harmony/fingerprint.py": {
+    "sha256": "5f1e8c6d20cad540f4b3f6a316f4b1869b3fb77c51c58bc1e7817082ae971237",
+    "size": 7035
+  },
+  "muse/core/harmony/paths.py": {
+    "sha256": "50aa7723bab9ca30330bea9dfcc8f4a8c4479dc853b718b80aa171c5656fa73e",
+    "size": 7599
+  },
+  "muse/core/harmony/patterns.py": {
+    "sha256": "a9bcd0753bbd3660b6d53e7df4a899cf66c65e1e78299c0eeec2f88db52be829",
+    "size": 10489
+  },
+  "muse/core/harmony/policies.py": {
+    "sha256": "a7231dc05dadfab3c875b83663f98e2ba5a6f154bac677808ffd3a4cb5309a62",
+    "size": 8977
+  },
+  "muse/core/harmony/resolutions.py": {
+    "sha256": "c1826ba75f6765759faffb571431ab150748eb836eed23aacf7d8902a8fe22f0",
+    "size": 10588
+  },
+  "muse/core/harmony/types.py": {
+    "sha256": "b70d9983aa3c812d1635bd777211c676f0a7e5e1b34f99637808981b34c5935f",
+    "size": 16364
+  },
+  "muse/core/hdkeys.py": {
+    "sha256": "3c7a9b229b36d1d0526c3aa98ededb4c1f1effe9998ef2ed15f65454786376b4",
+    "size": 33853
+  },
+  "muse/core/hooks.py": {
+    "sha256": "f71f05b4c5c806494af428fc254a1e89fce0d099f548491b4c7bd57d80b0e0e6",
+    "size": 11955
+  },
+  "muse/core/hub_scoping_migration.py": {
+    "sha256": "78e61f202fd278ddef2a2624c79803fc3e7a7467acdacd2f7778be39035987e2",
+    "size": 11903
+  },
+  "muse/core/hub_trust.py": {
+    "sha256": "424518b9267e9eccb1c9e4fbf390ec7b8f12417232ae2163fe3c4aceffd7cb46",
+    "size": 10111
+  },
+  "muse/core/identity.py": {
+    "sha256": "d069f0802f540e0a727a68955dd8797c192744e59e64dcb31d71e82448fb798a",
+    "size": 23981
+  },
+  "muse/core/ids.py": {
+    "sha256": "c86b3f612cbec71bba93f12e07f703eeb0f24915038ca925e2a60e8fceb67971",
+    "size": 3381
+  },
+  "muse/core/ignore.py": {
+    "sha256": "15d8cc33e047d2653dbc24fd6326fa55677f00265e5e9cb9328dd7fbc08d7534",
+    "size": 12031
+  },
+  "muse/core/implicit_edge_cache.py": {
+    "sha256": "5edd444637888eb4559003cd8b79837e2e8629dfcd5db70758d6fceb0281b66a",
+    "size": 6822
+  },
+  "muse/core/indices.py": {
+    "sha256": "b0497283adedd8da81393d89b857da7b90c8ac4b549f5f0f2616a48a794c974f",
+    "size": 12669
+  },
+  "muse/core/invariants.py": {
+    "sha256": "a9eea60477b6a4e30f76d3e701809d87fa63b37cd83796bd113a1109ec41e6a6",
+    "size": 10009
+  },
+  "muse/core/io.py": {
+    "sha256": "040fc3f3325bb5406f788c693b73ff98726e8a3f12d68125c55234f747e76b23",
+    "size": 11498
+  },
+  "muse/core/keychain.py": {
+    "sha256": "8340844af7f46c3d0f93aaafad8ec5fb0dc02b52e4874c3b3fec667fc04e19a8",
+    "size": 6443
+  },
+  "muse/core/keypair.py": {
+    "sha256": "57250854737b6c0720218e25b78af682c7fe17db269b6ee35e05f15d2078fa3b",
+    "size": 4048
+  },
+  "muse/core/merge_debug.py": {
+    "sha256": "3f4a23309af3f9297b25a774088d26771607276490078c69c4b60c97f4556345",
+    "size": 1568
+  },
+  "muse/core/merge_engine.py": {
+    "sha256": "ba0428da8e23aac606a668f9c9abb797909c615027fa5a7754940317bc3c67d3",
+    "size": 33464
+  },
+  "muse/core/migrate.py": {
+    "sha256": "c9020587167ee1a6318f0e02d7e9f84dc07ac8c1bc3a1c63f4d2ee79977e11a2",
+    "size": 32515
+  },
+  "muse/core/mpack.py": {
+    "sha256": "cc2d853bb480571cf97a2b6c845de94be4e100ab028837e18019d1fb6866c1a0",
+    "size": 57487
+  },
+  "muse/core/msign.py": {
+    "sha256": "0935f5e8e3231616c5db2c15b348bd0f1b2d0d78eac398a2490c99eec3fae801",
+    "size": 17305
+  },
+  "muse/core/object_availability.py": {
+    "sha256": "df9a3e04b9ef19592387bfd0cde86ab2bb12cc3f971f4bd512c1e47df11f99c5",
+    "size": 4365
+  },
+  "muse/core/object_store.py": {
+    "sha256": "49b91621fcd784bb8d022313ef8572cc93b5193ca8499a00f43a75a781498a2c",
+    "size": 38678
+  },
+  "muse/core/op_log.py": {
+    "sha256": "2b7e00387161c348df0c94dc6945bc8bf2f7b2995c4512f9d365be739e9e6811",
+    "size": 14959
+  },
+  "muse/core/op_merge.py": {
+    "sha256": "43845fe25f1902e265f59fc8e611ea02c0dc07d4b30c9e45dffdf4aa491bdbdf",
+    "size": 23198
+  },
+  "muse/core/pack_store.py": {
+    "sha256": "4428f43cb11c3a83d4559ecebc84f83ec522966cea929a54ce1dceed815e71a9",
+    "size": 13468
+  },
+  "muse/core/patch_record.py": {
+    "sha256": "f86c36a005963df885ba80a1f3ab8884dde4dda8aafe43c7ffe161731f18de83",
+    "size": 13067
+  },
+  "muse/core/paths.py": {
+    "sha256": "a82935a163b631ac78977d49d98b977760c1e041d7b6c738470898e78b3dd93c",
+    "size": 18585
+  },
+  "muse/core/plugins/__init__.py": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "size": 0
+  },
+  "muse/core/plugins/code_harmony.py": {
+    "sha256": "382b5178fbcce12d07f43630a46178ea1a30cdf7d8e93f13f3d90abd2662e1d6",
+    "size": 9714
+  },
+  "muse/core/provenance.py": {
+    "sha256": "23a324e849ba79997b4368f10a3174dd4ca6c3424a08f72aa8887009cc44f867",
+    "size": 12935
+  },
+  "muse/core/query_engine.py": {
+    "sha256": "b4856540dba31af2d40740162e7c678d1790fa466e11da292164b40ab5f3f4af",
+    "size": 11715
+  },
+  "muse/core/rebase.py": {
+    "sha256": "69c3bff49640d2b83af716ebda2fbf90e2452ec5de92f561f804df06488f294c",
+    "size": 14805
+  },
+  "muse/core/record_helpers.py": {
+    "sha256": "7e91ed71d9714e4fc50f975ea1cbe01732d46a00f4a29d1ae51e2ce844f4bcac",
+    "size": 2281
+  },
+  "muse/core/reflog.py": {
+    "sha256": "e22d022f988c87b428b3ebec98406e759f17a4ccbcbd5e294fcae1a1827a2fb0",
+    "size": 17252
+  },
+  "muse/core/refs.py": {
+    "sha256": "523ff870779b4f0034eec0f4e5826290ec252a56823e2e90bb72f6c9f7b1c372",
+    "size": 15879
+  },
+  "muse/core/releases.py": {
+    "sha256": "8b83b3789c570746c42b50507ed0daf86de80f68df15a587d09afe726ed9e31d",
+    "size": 14494
+  },
+  "muse/core/repo.py": {
+    "sha256": "a56cce91203c6b48df8eeed306e152255c07bb67748d18fc46ff99b8726e94f4",
+    "size": 18226
+  },
+  "muse/core/schema.py": {
+    "sha256": "f0b806aad6d72326bbb876cb98e3f09e5975279f8a6978df030e7b35f42bc2e5",
+    "size": 8436
+  },
+  "muse/core/secp256k1_sign.py": {
+    "sha256": "810c6096782978833c9035b6f4b8f2494f5f4663f46eae1a0f4388e023c74ee0",
+    "size": 16356
+  },
+  "muse/core/semver.py": {
+    "sha256": "61a2b24d8871f9a8aa49ed6f679d16126fe80a9f3cb8cbd6055cfbda0eb06b03",
+    "size": 7404
+  },
+  "muse/core/semver_classifier.py": {
+    "sha256": "e73bca6e5916e13e2b5ff894ae8ecfc403d928a3c4249d8737ca50831c181e8c",
+    "size": 35303
+  },
+  "muse/core/shallow.py": {
+    "sha256": "faf90d1c0d0771eaea4ad7bbb5b1acb045d5cb7d18ba6218ce016aa476713f42",
+    "size": 3460
+  },
+  "muse/core/shelf.py": {
+    "sha256": "db93a36d2aebf73e38b468ed55a60e20df26a1ce5aadc41623c4f11b4a3ab201",
+    "size": 7698
+  },
+  "muse/core/slip010.py": {
+    "sha256": "9c782c5daa5a3774f9b5c7c488d836f683730a087f6b59fdd560759058a08b88",
+    "size": 19824
+  },
+  "muse/core/snapshot.py": {
+    "sha256": "a00dcf38b9d3d57e076ffde6856029c254291cd6c13677bbeeb9b246771a7d9f",
+    "size": 20786
+  },
+  "muse/core/snapshot_content_migrate.py": {
+    "sha256": "269b97c53c51ac6cedb50b24159ac4e276402b9095e47926728adbb9c9bc0c63",
+    "size": 13416
+  },
+  "muse/core/snapshots.py": {
+    "sha256": "164e1ea768cc6654ac99437ebc22847c4111dac0f377ea958b414073a35aaab3",
+    "size": 13005
+  },
+  "muse/core/sparse.py": {
+    "sha256": "7d051da9ecf52489e1efd66610126f8db42c8abf8cd81bde1a6324e332df58e6",
+    "size": 4082
+  },
+  "muse/core/stat_cache.py": {
+    "sha256": "ddb98d0725f0ad894dc2e7c012954208061d7e33e063167193a70e58a6ea72c0",
+    "size": 15487
+  },
+  "muse/core/symbol_cache.py": {
+    "sha256": "8b64a9e91971212a6c7590f9a9fd46a068aa4030b4b1ba6944125eb6d9aaca49",
+    "size": 6988
+  },
+  "muse/core/symlog.py": {
+    "sha256": "8a8fa39ec42380fd529c63682fddcb482462d7c453bf9f5cb98872e42e62b574",
+    "size": 37048
+  },
+  "muse/core/tags.py": {
+    "sha256": "d5ecc526718c98bc2fd15b81633e2b60b117bc2070054e31183a725005eb2605",
+    "size": 8421
+  },
+  "muse/core/task_queue.py": {
+    "sha256": "afb7ccebd048c7f267601144209ff88733ec7bbd9ba0775a304f2bb745f9ef88",
+    "size": 36261
+  },
+  "muse/core/terminal.py": {
+    "sha256": "991dfd04eaf693a7b72cd249fc994b21afc73dd003aa90b67584da3b690301ac",
+    "size": 631
+  },
+  "muse/core/test_history.py": {
+    "sha256": "b47a094e25c08afc0676baa922da38b596b86f5aa55b9dd7716dafb2e2beecf4",
+    "size": 16887
+  },
+  "muse/core/test_runner.py": {
+    "sha256": "555353b23c94ac0c9b4b37a9c5b987ede9b6477086be8ba9245dc19319abb76c",
+    "size": 21222
+  },
+  "muse/core/test_selection.py": {
+    "sha256": "534b3a671acd21474e4c2fc9db7d8bd606f45ca268949257725a143813a177eb",
+    "size": 16959
+  },
+  "muse/core/timing.py": {
+    "sha256": "f7c8274bc07615ff3382c04bc8a71db8da869e13110fc9e360623be0774bd896",
+    "size": 933
+  },
+  "muse/core/transport.py": {
+    "sha256": "5b2c2b54088ed239f6b2092622e5b06c07a32eb0a35f54ca8858ffdb12a96334",
+    "size": 62551
+  },
+  "muse/core/type_analysis.py": {
+    "sha256": "ad9a1f3857da46b47eeecad775a99ce9ac06626235dc756e03404b401c6166eb",
+    "size": 21987
+  },
+  "muse/core/types.py": {
+    "sha256": "a94bc415b30f61f736561c42c7a8633be4529394faefe68f26ce73646405337f",
+    "size": 20918
+  },
+  "muse/core/validation.py": {
+    "sha256": "b3161515c4571da36908ff18644b02c064c8a1991b85daa43be7b83b2f6e45a5",
+    "size": 21721
+  },
+  "muse/core/verify.py": {
+    "sha256": "46c3285983bc80c5a79ed39891fd20247013dcb0560f37faec9281da0d27b354",
+    "size": 21800
+  },
+  "muse/core/version_tags.py": {
+    "sha256": "af21472fb2c5992b0ed2ce2819579ff77039228d07fa4af36199aa7d5a411acf",
+    "size": 12024
+  },
+  "muse/core/workdir.py": {
+    "sha256": "2ca3c1c2d42e85c939670a6df9ac89854e384ee42e186a2e98664eb7acd3402d",
+    "size": 6697
+  },
+  "muse/core/workspace.py": {
+    "sha256": "867d4403e07fdd05ef936fd8b48a836479840e197dbd3533a72562291af8e190",
+    "size": 24116
+  },
+  "muse/core/worktree.py": {
+    "sha256": "9a3e4d0199ad5e3600ea739c0b84ea973a3222eaffba8dd53b67f06b5231a7aa",
+    "size": 17981
+  },
+  "muse/core/xml_safe.py": {
+    "sha256": "553045b5b87e3cb11e3fa742f404fd226598bd21ffa4b7dc2267523e6feb9fd8",
+    "size": 1815
+  },
+  "muse/domain.py": {
+    "sha256": "5cb030eea49f9d53f3b441605396162371e9dd250d3bdb29fb844a3af167ec1f",
+    "size": 44429
+  },
+  "muse/plugins/__init__.py": {
+    "sha256": "2458d599b82985e76f51440f919a032ff8de2223dac3864b01f34d090dd87674",
+    "size": 27
+  },
+  "muse/plugins/chess/__init__.py": {
+    "sha256": "8f382fb41d11969bd5a60811eddfb33d78779dd302c7866e57824ea114ae2b97",
+    "size": 563
+  },
+  "muse/plugins/chess/plugin.py": {
+    "sha256": "530d9813b96cb6b478954f8ad59799216a1581c2b0bf95aaeff5801ef34aa527",
+    "size": 9331
+  },
+  "muse/plugins/code/__init__.py": {
+    "sha256": "9c9a53fd3ed1ba8f308a197f8fae2cbd26dbe584279000af594bd7730b25f389",
+    "size": 730
+  },
+  "muse/plugins/code/_callgraph.py": {
+    "sha256": "8d4dc6d9e72f82f31f84cdbd92d1cb44a11241cf909b54548008f431c36d4542",
+    "size": 12817
+  },
+  "muse/plugins/code/_code_query.py": {
+    "sha256": "c0f77c22d11416e5b3031dcafb6317b8ae9f646f395dd0a4ff4b3adfb3f2fe62",
+    "size": 13058
+  },
+  "muse/plugins/code/_framework.py": {
+    "sha256": "c459afe3f39d19114efd4017c483135c47c8055df1e8ea773bebe80459dc9964",
+    "size": 25549
+  },
+  "muse/plugins/code/_invariants.py": {
+    "sha256": "1be7212f50b8208f56c7e75ff16489f2435bd0b39e25613182ff311aebe48f44",
+    "size": 43156
+  },
+  "muse/plugins/code/_predicate.py": {
+    "sha256": "e709b3fdc5c7408b1fd7451fdfbf3d1101e1b3b206e22259bda0b51f0288664c",
+    "size": 13745
+  },
+  "muse/plugins/code/_query.py": {
+    "sha256": "b8bf904081bdaf3d8600fd9173a79e664733060c68b449dd3d1cc102d97c2d12",
+    "size": 16144
+  },
+  "muse/plugins/code/_refactor_classify.py": {
+    "sha256": "1bfc86de348804f7bf4b78d22031c1d1a2c34368f92b37dbec4fb17bab90e7cb",
+    "size": 8813
+  },
+  "muse/plugins/code/ast_parser.py": {
+    "sha256": "0c8a1a3466c7dc028830983fc0fc4cc0f4bb21490ca5b1bb7dc5a5691e3c908c",
+    "size": 115050
+  },
+  "muse/plugins/code/manifest.py": {
+    "sha256": "a56825c6e8de1cb44eb17eda2c4e23627f3cc1be16b0fb57cc9d48302efbb9fe",
+    "size": 13055
+  },
+  "muse/plugins/code/plugin.py": {
+    "sha256": "76869d462522d12bff1a9471880998b02b9fef0bda220905d6c0693280d28e28",
+    "size": 70021
+  },
+  "muse/plugins/code/release_analysis.py": {
+    "sha256": "7aa331a34ffd088c5e47dd459c8369a0367e26a0b6f9263ec368d698b7aace0f",
+    "size": 14961
+  },
+  "muse/plugins/code/stage.py": {
+    "sha256": "366a639711f6332deb4be09b808ef474f0e30527c53904072449bf33c7c3812c",
+    "size": 7121
+  },
+  "muse/plugins/code/symbol_diff.py": {
+    "sha256": "f0f59c1490a025f006fd92d3e104797b35ca2d76f8ea9eeaaa172cddeb190d89",
+    "size": 27432
+  },
+  "muse/plugins/identity/__init__.py": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "size": 0
+  },
+  "muse/plugins/identity/dag.py": {
+    "sha256": "2a83006a56590eab8d8795603691e9a64f35b7af3ecdd3fc2608dbccb8bca2ff",
+    "size": 1287
+  },
+  "muse/plugins/identity/plugin.py": {
+    "sha256": "86095a3d134780f782d5dbc5bb12f810f3e6f721a8a94b22cd33c352fbd750e2",
+    "size": 10072
+  },
+  "muse/plugins/identity/records.py": {
+    "sha256": "0e9e33f56766acd1e2f83a7966b27ca5c48000d8f452cd8f0facf5cfebba7f52",
+    "size": 2370
+  },
+  "muse/plugins/midi/__init__.py": {
+    "sha256": "a2eeb84da60d1a36c1d6fe00fc2df85cc0a27e1950ea765a0895cc4c09ff2e9e",
+    "size": 75
+  },
+  "muse/plugins/midi/_analysis.py": {
+    "sha256": "10fb90c03a611c8874cc016709a1f8b8769a5ae5a5799cee792b0bf442eb3006",
+    "size": 21519
+  },
+  "muse/plugins/midi/_crdt_notes.py": {
+    "sha256": "cc95d010c63458c7c3da12e44fe53a32ea886cc06b43b7b261122e6f3cca80e4",
+    "size": 14763
+  },
+  "muse/plugins/midi/_invariants.py": {
+    "sha256": "9a2ae5148ceef6c91786c8145b1d2d1b5cdd6986a0aaec239866ce8a73045a49",
+    "size": 20109
+  },
+  "muse/plugins/midi/_midi_keys.py": {
+    "sha256": "030235ce7df83eda74ad749d0b690fde668a63c1ee4e42210ebd9e3c5fa8f88c",
+    "size": 2081
+  },
+  "muse/plugins/midi/_midi_query.py": {
+    "sha256": "0fa0d3997cf98ebe345d588bf1f2818de011a187ad224b6c1b40bacef7e9408e",
+    "size": 19049
+  },
+  "muse/plugins/midi/_query.py": {
+    "sha256": "7edfed8de009f3845a288b209b7fa64023925b118bf1fae900c4bb4a7a15f7a4",
+    "size": 10146
+  },
+  "muse/plugins/midi/entity.py": {
+    "sha256": "55033e46983cc76176426599f1b62fc0a3eee0004a0c929cea22814b4ebd23fd",
+    "size": 21976
+  },
+  "muse/plugins/midi/manifest.py": {
+    "sha256": "235d40633e107f303cf162041eaeab9572e841564f020e8b9f7cc1c22f3d8a04",
+    "size": 11188
+  },
+  "muse/plugins/midi/midi_diff.py": {
+    "sha256": "33d49fb7b6133dc629b3e57828078732c78c1a45c2c92eae0d86224ce54c7ec7",
+    "size": 12803
+  },
+  "muse/plugins/midi/midi_merge.py": {
+    "sha256": "f2f57678159ae03edae692f1097f6352e0ad7416eebaef91187b2f9b2d15c750",
+    "size": 24052
+  },
+  "muse/plugins/midi/plugin.py": {
+    "sha256": "8693af8e359738cd2ec55f2b5e2449966e4251d3f6254a4a62517a802490dc84",
+    "size": 49395
+  },
+  "muse/plugins/mist/__init__.py": {
+    "sha256": "61a4fe73c00a9591ec19f785c507e7294e9c1017a4d26b9b72377f346ad03899",
+    "size": 87
+  },
+  "muse/plugins/mist/plugin.py": {
+    "sha256": "44e17a696cbeaece83d61df62abf92ed340bdeab7aca9c0c6e8035a8a6a40d90",
+    "size": 21222
+  },
+  "muse/plugins/registry.py": {
+    "sha256": "1b12877620325914b8c2e472b3bcfeb4f6f6c90d63a61ee7c30f5e55255abeec",
+    "size": 5443
+  },
+  "muse/plugins/scaffold/__init__.py": {
+    "sha256": "8a133ab68f98893d144140c60a90d83c0e4aa92f6c16da43495cef19216b5f98",
+    "size": 384
+  },
+  "muse/plugins/scaffold/plugin.py": {
+    "sha256": "6e1b59890381a2b011543fe8ee7cec7c569c53d109b6fd37dfb7577a6d494e0d",
+    "size": 19519
+  },
+  "muse/plugins/social/__init__.py": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "size": 0
+  },
+  "muse/plugins/social/plugin.py": {
+    "sha256": "1881620753dd38c669ac294165e3807ebc2ff4ac197c6cda95baf804e741b41b",
+    "size": 13345
+  },
+  "muse/plugins/timeline/__init__.py": {
+    "sha256": "8b27e175533dc846c896ac83386067053ce9328c2602e2c0997068b84e71e26f",
+    "size": 154
+  },
+  "muse/plugins/timeline/_otio_bridge.py": {
+    "sha256": "eb61bd02c04afe25041faf725bf432a8e9a89cb2a1a2138fadd814bd3689a1a6",
+    "size": 21964
+  },
+  "muse/plugins/timeline/entity.py": {
+    "sha256": "1e5c4b2524998587396f5db9058158293e399ba92984edb3a40d4743258074f5",
+    "size": 11908
+  },
+  "muse/plugins/timeline/manifest.py": {
+    "sha256": "4f707a70577251e78466695519a6d44dfd14c55464e9a179b9c111b562dc8585",
+    "size": 4767
+  },
+  "muse/plugins/timeline/plugin.py": {
+    "sha256": "c1d32b286bd09196d3bd0880c624773a0d9f068f477cbc2ec08e03e8ca76bdee",
+    "size": 9019
+  },
+  "muse/plugins/timeline/rational_time.py": {
+    "sha256": "814079098d4e4775ac62274b360c7bf3fa789f9a3218c02ada79a8e21b02398f",
+    "size": 9530
+  },
+  "muse/plugins/todo/__init__.py": {
+    "sha256": "c277216e23d4f5ab7f3090ceca789e855b3d14edb1c8b44ebcb56dacbb6ca43b",
+    "size": 321
+  },
+  "muse/plugins/todo/plugin.py": {
+    "sha256": "9e9ba38b7657477365b7ae881f84487aa52d1c74a42325d842dcb3ee04c1a79e",
+    "size": 7924
+  }
+}

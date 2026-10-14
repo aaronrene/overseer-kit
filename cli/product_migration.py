@@ -19,7 +19,17 @@ import stat
 import uuid
 from argparse import Namespace
 
-from cli.v1_io import Refusal, atomic, confined, digest, read
+from cli.v1_io import Refusal, atomic as _atomic, confined, digest, read as _read, LIMIT
+
+ASSET_LIMIT = 16 * 1024 * 1024
+
+
+def read(root, relative, **kwargs):
+    return _read(root, relative, limit=LIMIT if relative in (CONFIG, NEXT) else ASSET_LIMIT, **kwargs)
+
+
+def atomic(root, relative, data, **kwargs):
+    return _atomic(root, relative, data, limit=LIMIT if relative in (CONFIG, NEXT) else ASSET_LIMIT, **kwargs)
 
 CONFIG = ".overseer/config.yaml"
 NEXT = "docs/NEXT.md"
@@ -401,7 +411,8 @@ def _apply_plan(root, args, plan):
         if (row["path"] not in approved or row["before"]["path"] != row["path"] or
                 base64.b64decode(row["content_b64"], validate=True) != approved[row["path"]] or
                 row["after"] != digest(approved[row["path"]]) or
-                row["mode"] != (0o755 if row["path"] == LAUNCHER else row["before"]["mode"])):
+                row["mode"] != (row['before']['mode'] if row['path'] in (CONFIG, '.gitignore', '.museignore') and row['before']['mode'] is not None else
+                                0o755 if row['path'].endswith(('.sh', '/ok')) else 0o644)):
             raise Refusal("migration_asset_plan_changed")
     for path, content in approved.items():
         if path not in {row["path"] for row in rows}:
@@ -555,6 +566,8 @@ def sync(root, config, original, args):
                 raise Refusal("sync_asset_modified: " + row["path"])
             preserved.append(row["path"])
             mapping.pop(row["path"], None)
+    from cli.product_footprint import with_lock
+    mapping = with_lock(root, mapping, updated, preserved=preserved)
     # Keep compatibility config bytes unless refresh is actually required; a
     # schema upgrade is explicit migration, never an incidental sync side effect.
     source = v1.decode(original)

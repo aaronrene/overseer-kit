@@ -1,75 +1,29 @@
-# Migrate an existing repo (`ok init --migrate`)
+# Migrate an existing repository
 
-Use this when a consumer already has hand-authored handover/roadmap (or other
-living docs) and you want Overseer Kit without clobbering them.
+Use the installation's bound CLI with the explicit physical repository root.
+Preserve full configuration, repository/lane ownership, authored documents,
+custom policies/skills/rules and existing NEXT. A real consumer migration needs
+its own authorized task; restoration checks use disposable repositories.
 
-Live installs against production trees are **operator-gated**. Kit CI and
-day-to-day development use fixtures under `tests/fixtures/pilot/` only.
+1. Read `ok init --help`, capture identity/authority/runtime and quiesce writers.
+2. Run `ok -C ROOT init --migrate --dry-run --json`. This reads the existing
+   `.overseer/config.yaml`; it does not replace it from an arbitrary fixture.
+3. Save and inspect the complete JSON plan, classifications, protected-file hashes,
+   normalized settings and legacy prompt drafts. Use explicit `--refresh-runtime`
+   in the preview only when adopting this installation's changed runtime.
+4. Apply the exact saved plan with `init --migrate --apply-plan RELATIVE_PLAN_FILE
+   --expect-plan PLAN_SHA256 --expect-config SOURCE_CONFIG_SHA256`. All values are
+   emitted by the preview. The plan file must be inside the selected repository.
+5. Inspect reported changes/backups and run `status --check-footprint`; explicit
+   `sync --dry-run` then approved `sync --preserve-modified` records the full owned
+   footprint while preserving custom files. Missing assets and integrity drift
+   stay visible. Existing NEXT is never regenerated.
+6. After a partial failure, inspect its report and backup before using the same
+   plan/digests with `--resume`. Changed context or protected bytes still refuse.
 
-## Hard stops
-
-Never during a migrate session:
-
-- `--force --include-preserved` on a live consumer without explicit written consent
-- Merge migrate PRs to consumer `main` / Muse canonical main without review
-- `muse push staging`, staging deploy, or live env/gate flips
-- Retire the consumer’s previous hand process before parity PASS + sign-off
-- Dogfood `muse+git-mirror` on this kit itself via consumer migrate steps (that is
-  kit-operator work — see `docs/K7-DOGFOOD-OPERATOR-RUNBOOK.md`)
-
-## Prepared example configs
-
-Copy from `tests/fixtures/pilot/` and pass the real install root with `-C` only —
-fixtures must not gain absolute machine paths.
-
-| Example | Fixture |
-| --- | --- |
-| Scooling-shaped | `config-scooling.yaml` |
-| Knowtation-shaped | `config-knowtation.yaml` |
-| MuseHub-shaped | `config-musehub.yaml` |
-| VideoFactory-shaped | `config-videofactory.yaml` |
-
-Thin public boundary stubs: `docs/consumers/*/OVERSEER-SETUP.md`.
-Adapter pattern: `docs/CONSUMER-ADAPTER-PATTERN.md`.
-
-## Steps
-
-1. Open a feature branch under that repo’s VCS rules.
-2. Optionally dry-run:
-
-   ```bash
-   ./cli/ok -C <repo-root> init --migrate --from-config <prepared.yaml> --non-interactive --dry-run
-   ```
-
-3. Apply migrate (**never** pass `--force --include-preserved` by default):
-
-   ```bash
-   ./cli/ok -C <repo-root> init --migrate --from-config <prepared.yaml> --non-interactive
-   ```
-
-4. Check footprint:
-
-   ```bash
-   ./cli/ok -C <repo-root> status --check-footprint
-   ```
-
-5. Parity probe:
-
-   ```bash
-   ./cli/ok -C <repo-root> governance-sync --dry-run
-   ```
-
-   Universal criteria and historical matrix live in
-   `docs/archive/phases/PHASE-K6-PILOT-INSTALL-MATRIX.md` §K6.6.
-
-6. On PASS: record a change-log line; leave the previous hand process in place
-   until an explicit later retirement.
-7. Open a PR / Muse proposal for review; **do not** auto-merge.
-
-## Regime extras (when applicable)
-
-| Regime shape | Confirm before PASS |
-| --- | --- |
-| Knowtation-shaped `no-docs-only-pr` rule | Semantic parity after token render (byte-identity not required) |
-| MuseHub `muse-only` | Git forbidden; `vcs.muse.working_dir` status succeeds |
-| VideoFactory docs-at-root | Bare `OVERSEER_HANDOVER.md` / `ROADMAP.md`; non-kit `.cursor/rules/*` retained |
+A legacy HANDOVER prompt is a draft only. Accept a successor explicitly and publish
+through bound `next-write` with the current authority/revision and expected whole-file
+NEXT digest (`absent` only when absent). Do not promote preserved files with generic
+force. See [source upgrade/rollback guidance](SOURCE-DISTRIBUTION.md) and
+[authority and lanes](FPR-2-AUTHORITY-AND-LANES.md). Remote transport, publication and
+release are separate actions.

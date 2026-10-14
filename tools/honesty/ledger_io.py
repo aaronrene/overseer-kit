@@ -44,6 +44,8 @@ def parse_jsonl_text(text: str) -> list[dict[str, Any]]:
 
 def read_ledger_entries(path: Path) -> list[dict[str, Any]]:
     """Read ledger entries; missing or empty file returns []."""
+    from cli.product_boundary import watch
+    watch(path)
     if not path.is_file():
         return []
     text = path.read_text(encoding="utf-8")
@@ -59,6 +61,13 @@ def serialize_entry(entry: dict[str, Any]) -> str:
 
 def atomic_append_lines(path: Path, lines: list[str]) -> None:
     """Append lines atomically; on failure leave prior bytes unchanged."""
+    from cli.product_boundary import active
+    boundary = active()
+    if boundary is not None:
+        from cli.product_boundary import read
+        existing = read(boundary.context.root, boundary.relative(path), missing=True) or b''
+        boundary.write(path, existing + ''.join(lines).encode('utf-8'))
+        return
     path.parent.mkdir(parents=True, exist_ok=True)
     if not path.exists():
         path.write_text("", encoding="utf-8")

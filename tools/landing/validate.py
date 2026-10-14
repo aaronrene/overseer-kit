@@ -10,11 +10,8 @@ import yaml
 
 from tools.landing.schema import LandingManifest, load_manifest
 
-# Frozen Auto v1 primary Download CTA (§LAC.2 / §LAC.12).
-FROZEN_PRIMARY_DOWNLOAD_HREF = (
-    "https://github.com/aaronrene/overseer-kit/releases/download/"
-    "v0.1.0/Overseer.Kit_0.1.0_aarch64.dmg"
-)
+# FPR-3 source route, without an unvalidated installer claim.
+FROZEN_PRIMARY_DOWNLOAD_HREF = "source.html"
 
 LAC_SECTION_IDS: tuple[str, ...] = (
     "hero",
@@ -164,8 +161,8 @@ def _check_lac_index_contract(html: str, landing: Path, result: ValidationResult
         href = match.group(1) or match.group(2)
         if href != FROZEN_PRIMARY_DOWNLOAD_HREF:
             result.add("download_cta", f"href {href!r} != frozen {FROZEN_PRIMARY_DOWNLOAD_HREF!r}")
-        if not GITHUB_RELEASE_DOWNLOAD_RE.match(href):
-            result.add("download_cta", f"href host/path not GitHub releases .dmg: {href}")
+        if "signed and notarized" in html or "Download the signed" in html:
+            result.add("download_cta", "unvalidated signed installer claim")
 
     for phrase in FORBIDDEN_LANDING_PHRASES:
         if phrase in html:

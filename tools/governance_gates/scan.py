@@ -79,6 +79,8 @@ def scan_governance_gates(
 
 
 def _read_text(path: Path) -> str | None:
+    from cli.product_boundary import watch
+    path = watch(path)
     if not path.is_file():
         return None
     return path.read_text(encoding="utf-8")
@@ -240,5 +242,4 @@ def _contract_path_for_phase(
     token = phase_id.split()[0].upper()
     candidates = sorted(docs_root.glob(f"PHASE-{token}*.md"))
     return candidates[0] if candidates else None
-
 

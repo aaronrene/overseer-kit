@@ -1,3 +1,5 @@
+> Historical product contract: maintained outcomes are mapped in [the restoration plan](decisions/FULL-PRODUCT-RESTORATION-PLAN.md). Current entrypoints use [canonical NEXT and explicit effects](FPR-3-PRODUCT-SURFACES.md); older HANDOVER prompt and installer mechanisms below are not current execution instructions.
+
 # Overseer Kit — Cross-Repo Governance System Architecture (Frozen Thinking Outline)
 
 Status: **Frozen meta-architecture for the Build phases (K1–K6 + 9A-5). No implementation in

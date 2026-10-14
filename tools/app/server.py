@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import mimetypes
 import threading
+import socket
 from dataclasses import dataclass
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -22,6 +23,7 @@ from tools.app.engine import (
     handle_gates,
     handle_governance_sync,
     handle_health,
+    handle_next,
     handle_honesty_status,
     handle_ledger_append,
     handle_ledger_show,
@@ -57,6 +59,8 @@ class AppHTTPServer(ThreadingHTTPServer):
 
     def __init__(self, config: AppServerConfig) -> None:
         self.app_config = config
+        if config.bind == '::1':
+            self.address_family = socket.AF_INET6
         super().__init__((config.bind, config.port), AppRequestHandler)
 
 
@@ -120,6 +124,11 @@ class AppRequestHandler(BaseHTTPRequestHandler):
         self.send_error(HTTPStatus.NOT_FOUND)
 
     def _route_api(self, path: str, body: dict | None, *, query: dict[str, list[str]]) -> ApiEnvelope:
+        allowed = {'lane'} if path == '/api/next' else {'last'} if path == '/api/ledger/show' else set()
+        if set(query) - allowed or any(len(values) != 1 for values in query.values()):
+            return auth_refusal(http_status=400, error='invalid_query')
+        if 'last' in query and (not query['last'][0].isdigit() or int(query['last'][0]) > 10000):
+            return auth_refusal(http_status=400, error='invalid_last')
         config = self.server.app_config
         ctx = config.ctx
         repo_arg = str(config.repo_root)
@@ -129,7 +138,9 @@ class AppRequestHandler(BaseHTTPRequestHandler):
                 port=config.port,
                 bind=config.bind,
                 repo_root=config.repo_root,
+                ctx=ctx,
             ),
+            ("GET", "/api/next"): lambda _h, _b: handle_next(ctx, repo_arg=repo_arg, lane=(query.get("lane") or [None])[0]),
             ("GET", "/api/status"): lambda _h, _b: handle_status(ctx, repo_arg=repo_arg),
             ("GET", "/api/gates"): lambda _h, _b: handle_gates(ctx, repo_arg=repo_arg),
             ("GET", "/api/docs/roadmap"): lambda _h, _b: handle_docs_roadmap(ctx, repo_arg=repo_arg),
@@ -175,13 +186,26 @@ class AppRequestHandler(BaseHTTPRequestHandler):
         return origin_allowed(self.headers.get("Origin"), self.server.app_config.port)
 
     def _read_json_body(self) -> dict | None | object:
-        length = int(self.headers.get("Content-Length", "0") or "0")
+        try:
+            length = int(self.headers.get("Content-Length", "0") or "0")
+        except ValueError:
+            length = -1
+        if length < 0 or length > 128 * 1024 or self.headers.get('Transfer-Encoding'):
+            self._send_envelope(auth_refusal(http_status=400, error='body_size'))
+            return _READ_ERROR
         raw = self.rfile.read(length) if length else b""
         if not raw:
             return {}
         try:
-            parsed = json.loads(raw.decode("utf-8"))
-        except json.JSONDecodeError:
+            def unique(pairs):
+                value = {}
+                for key, item in pairs:
+                    if key in value:
+                        raise ValueError('duplicate field')
+                    value[key] = item
+                return value
+            parsed = json.loads(raw.decode("utf-8"), object_pairs_hook=unique)
+        except (ValueError, UnicodeError):
             self._send_envelope(auth_refusal(http_status=400, error="bad_json"))
             return _READ_ERROR
         if not isinstance(parsed, dict):
@@ -219,7 +243,7 @@ class AppRequestHandler(BaseHTTPRequestHandler):
     def _serve_static(self, path: Path) -> None:
         try:
             resolved = path.resolve()
-            if not str(resolved).startswith(str(STATIC_ROOT.resolve())):
+            if not resolved.is_relative_to(STATIC_ROOT.resolve()) or path.is_symlink():
                 self.send_error(HTTPStatus.FORBIDDEN)
                 return
         except OSError:
@@ -270,11 +294,18 @@ class AppServerHandle:
     def shutdown(self) -> None:
         self.httpd.shutdown()
         self.thread.join(timeout=5)
+        self.httpd.server_close()
 
 
 def start_app_server(config: AppServerConfig) -> AppServerHandle:
     """Bind and start the app server in a background thread."""
+    from dataclasses import replace
+    from tools.app.bind import validate_bind_address
+    if validate_bind_address(config.bind) is None:
+        raise ValueError('loopback_bind_required')
     httpd = AppHTTPServer(config)
+    config = replace(config, port=httpd.server_address[1])
+    httpd.app_config = config
     thread = threading.Thread(target=httpd.serve_forever, name="overseer-app", daemon=True)
     thread.start()
     return AppServerHandle(config=config, httpd=httpd, thread=thread)
@@ -290,6 +321,9 @@ def build_server_config(
     csrf_token: str | None = None,
 ) -> AppServerConfig:
     """Construct server configuration with optional fixed credentials for tests."""
+    if getattr(ctx, 'bound_context', None) is None:
+        from tools.app.engine import _capture
+        ctx.bound_context, ctx.bound_args = _capture(ctx, str(repo_root))
     return AppServerConfig(
         repo_root=repo_root.resolve(),
         bind=bind,
@@ -319,9 +353,9 @@ def run_app_server(
         session_credential=session,
         csrf_token=csrf,
     )
-    if on_ready is not None:
-        on_ready(config, f"{config.bind}:{config.port}")
     handle = start_app_server(config)
+    if on_ready is not None:
+        on_ready(handle.config, f"{handle.config.bind}:{handle.config.port}")
     try:
         handle.thread.join()
     except KeyboardInterrupt:

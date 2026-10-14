@@ -32,6 +32,24 @@ def run_pr_land_command(args: Namespace, ctx: CliContext) -> int:
         if not ctx.output.quiet and not ctx.output.json_mode:
             ctx.output.emit(line)
 
+    from cli.product_boundary import active
+    from cli.product_service import gh_run
+    boundary = active()
+    kwargs = {}
+    deferred_sync = False
+    if boundary is not None:
+        if boundary.context.observed['vcs'] != 'git':
+            from cli.v1_io import Refusal
+            raise Refusal('pr_land_is_git_transport_use_mirror_deliver_for_muse')
+        kwargs['runner'] = lambda argv: gh_run(boundary, argv)
+        if config.close_ritual.post_land_sync.enabled and not args.post_land_sync:
+            from dataclasses import replace
+            deferred_sync = True
+            config = replace(config, close_ritual=replace(config.close_ritual,
+                post_land_sync=replace(config.close_ritual.post_land_sync, enabled=False)))
+        elif args.post_land_sync:
+            from cli.product_transport import post_land_git
+            kwargs['git_runner'] = lambda argv: post_land_git(boundary, argv)
     result = run_pr_land(
         str(args.pr),
         authorization=str(args.authorized or ""),
@@ -43,8 +61,12 @@ def run_pr_land_command(args: Namespace, ctx: CliContext) -> int:
         emit=emit,
         repo_root=repo_root,
         config=config,
+        **kwargs,
     )
 
+    if deferred_sync:
+        result.post_land_sync = {'status': 'requires_explicit_post_land_sync',
+            'messages': ['Configured setting preserved; pass --post-land-sync to authorize local main transition.']}
     if ctx.output.json_mode:
         ctx.output.emit_json(result.to_dict())
     return result.exit_code

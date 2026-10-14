@@ -1,11 +1,11 @@
 ---
-description: Bounded v1 repository and NEXT authority
+description: Paired local governance with canonical NEXT
 alwaysApply: true
 ---
 
-Follow AGENTS.md and docs/decisions/V1-SCOPE-RESET.md. Verify repository identity
-before action. Read canonical NEXT using this checkout's cli/ok -C ROOT next.
-Only next-write changes NEXT. Update ROADMAP and HANDOVER together. Historical
-handover prompts, governance-sync regeneration and sole-writer/NXR-GSR chains
-are not current authority. Independent architecture/build review is still required
-before final acceptance; implementation tests alone are not independent review.
+Keep ROADMAP and HANDOVER consistent. `ok governance-sync` defaults to dry-run;
+`--write` applies and commits locally on a clean feature branch. Request remote
+enrichment/transport separately and only within authorization. Preserve canonical
+NEXT; `--print-next` delegates to its validated reader. Offline remote freshness
+is unknown. Muse realignment uses controlled mirror reconciliation, never export
+into a live worktree. Refresh a successor explicitly with bound next-write and CAS.

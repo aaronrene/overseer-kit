@@ -47,5 +47,5 @@ funnel_steps:
   - kit
   - musehub
 
-# Frozen Auto v1 primary Download CTA (§LAC.2) — Apple Silicon aarch64 only
-primary_download_href: https://github.com/aaronrene/overseer-kit/releases/download/v0.1.0/Overseer.Kit_0.1.0_aarch64.dmg
+# Current restoration source preparation; not a release download.
+primary_download_href: source.html

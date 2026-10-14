@@ -34,7 +34,7 @@
     <button type="button" data-tab="overview" id="tab-btn-overview" class="active" title="What this console is; suite doors; how to open it; bound repo">Overview</button>
     <button type="button" data-tab="status" id="tab-btn-status" title="Health of governance for the bound repo">Status</button>
     <button type="button" data-tab="roadmap" id="tab-btn-roadmap" title="Living phase board">Roadmap</button>
-    <button type="button" data-tab="handover" id="tab-btn-handover" title="Next-session relay / paste prompt">Handover</button>
+    <button type="button" data-tab="handover" id="tab-btn-handover" title="Canonical NEXT and handover">Next / Handover</button>
     <button type="button" data-tab="gates" id="tab-btn-gates" title="Pending honesty/governance reminders">Gates</button>
     <button type="button" data-tab="actions" id="tab-btn-actions" title="Dry-run-first freeze review + governance-sync + honesty-status">Actions</button>
     <button type="button" data-tab="ledger" id="tab-btn-ledger" title="Append-only honesty ledger view/verify">Ledger</button>
@@ -91,6 +91,8 @@
     </section>
 
     <section id="tab-handover" class="tab-panel">
+      <button id="load-next" type="button">Read validated NEXT</button>
+      <pre id="next-output"></pre>
       <button id="load-handover" type="button">Load handover</button>
       <pre id="handover-output"></pre>
     </section>
@@ -104,6 +106,7 @@
       <h3>Freeze review</h3>
       <label>Artifact path <input id="freeze-path" type="text" placeholder="docs/archive/phases/PHASE-....md"></label>
       <label><input id="freeze-dry-run" type="checkbox" checked> Dry run (default)</label>
+      <label><input id="freeze-network" type="checkbox"> Allow the configured reviewer API call</label>
       <button id="run-freeze" type="button">Run freeze review</button>
       <pre id="freeze-output"></pre>
 

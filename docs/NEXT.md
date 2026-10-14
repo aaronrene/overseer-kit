@@ -3,28 +3,30 @@ schema: 1
 repo_id: 6988dc4a-5f22-454b-9d68-ac5905b383bf
 repo_root: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014
 branch: feat/overseer-v1-recovery-20261014
-base_head: 8c2b642336e29a3a5a781f70f25f4769e6899642
+base_head: 695444fb5f8261391f5c273807129c13dc8db1fd
 lane: product
 model: GPT-6 Astra
-action_id: OVERSEER-FULL-PRODUCT-RESTORATION-SURFACES-3
+action_id: OVERSEER-FULL-PRODUCT-RESTORATION-VALIDATION-4
 action_kind: implement
-prompt_sha256: 55acd67c45e04574f4563d2f34d6b1753bb33e67aac0b4c1a62345506f96241f
+prompt_sha256: 201f539055c654bb4177b2e775b49e4098224682c8b0622fefeda26d06e788d7
 ---
 Reasoning: Max
-Role: Principal product integration engineer
+Role: Principal integration validation engineer
 
-Perform FPR-3 only after the owner accepts this prompt. Acceptance authorizes
-local implementation and focused disposable checks for FPR-3 in section 8 of
-docs/decisions/FULL-PRODUCT-RESTORATION-PLAN.md. It does not authorize FPR-4,
+Perform FPR-4 only after the owner accepts this prompt. Acceptance authorizes
+local combined validation and necessary bounded repairs for section 9 of
+docs/decisions/FULL-PRODUCT-RESTORATION-PLAN.md. It does not authorize FPR-5,
 remote operations, release or deployment.
 
 Verify physical cwd, Git top-level, branch, full HEAD, configured name overseer-kit,
 UUID, product lane, runtime binding and clean state. Validate this NEXT as the
-single FPR-2 feature closing commit whose sole predecessor is
-8c2b642336e29a3a5a781f70f25f4769e6899642. Stop on mismatch, unexpected dirt or moved
+single FPR-3 feature closing commit whose sole predecessor is
+695444fb5f8261391f5c273807129c13dc8db1fd. Stop on mismatch, unexpected dirt or moved
 source refs. Read AGENTS.md, ROADMAP, HANDOVER, canonical NEXT, the full restoration
 plan, docs/validation/FPR-1-FOUNDATION.md, docs/validation/FPR-2-AUTHORITY.md,
-docs/FPR-2-AUTHORITY-AND-LANES.md, V1-SCOPE-RESET, V1-CERTIFICATION and tests/README.md.
+docs/validation/FPR-3-SURFACES.md and its source/test disposition and results,
+docs/FPR-2-AUTHORITY-AND-LANES.md, docs/FPR-3-PRODUCT-SURFACES.md,
+docs/SOURCE-DISTRIBUTION.md, V1-SCOPE-RESET, V1-CERTIFICATION and tests/README.md.
 
 Keep this branch as integration base. Verify committed sources here:
 feat/overseer-context-isolation at e9be0c4b3cafb149b9f3b7af2ab060f01bbfa504;
@@ -35,42 +37,53 @@ older worktrees, merging, cherry-picking or wholesale reverting. Preserve other
 refs, Muse history, snapshots, rollback fixtures, completed bounded pilot and
 bounded source-release directory.
 
-Implement exactly FPR-3 inputs, outputs and acceptance criteria. Connect every
-maintained command and subcommand in section 4 through the unified CLI and bound
-services: full status, governance hygiene, review/Check OK, workspace, verification,
-honesty/ledger, routing/cost, landing and compaction. Restore loopback app, desktop
-and read-only hosted surfaces, truthful rules/skills/templates/site/runbooks, and
-reproducible local source packaging with manifest and upgrade/rollback guidance.
-Prefer retained D/P engines and selectively integrate M's artifact/source verifier,
-CI driver/workflow and distribution tests. Do not route through legacy_main.
+Run one combined section-9 selection against a recorded integrated source/runtime
+and dependency set. Use this installation's conventional venv, pinned local
+prerequisites, disposable repositories under a nonrepository parent and fake
+providers/transports only. Cover all three authority modes; two simultaneous
+repositories with distinct defaults and overlapping lanes; worktrees/nested
+boundaries; lane ownership and workspace; canonical automatic/manual bookends;
+Git closing-commit and native Muse exact-revision freshness; CAS/context races;
+every maintained command and full settings; app/desktop/hosted controls; legacy
+and bounded migrations; controlled mirror reconciliation and credentials; fresh
+source-package installation and advertised entry points; compatible configuration
+upgrade/rollback; and the intended Python 3.11/3.14 and local native-build matrix.
+Preserve tracked Git bindings, explicit authority selection, confined writes,
+captured context, final rechecks, pinned closing reads and whole-file CAS. No
+public path may invoke legacy_main or scrape/regenerate a handoff.
 
-Preserve full settings, repository/lane ownership, explicit authority selection,
-tracked Git bindings, native Muse exact-revision freshness, confined writes,
-captured context, final rechecks, pinned closing reads and whole-file CAS. All
-handoff surfaces use canonical docs/NEXT.md; no prompt scraping or regeneration.
-Keep controlled mirror/credential bounds and refuse legacy live export. Separate
-local mutation, remote transport and release actions explicitly.
+Use the FPR-3 disposition map to include every restored/reachable requirement and
+relevant cross-cutting family, including all 104 historical failures. Preserve
+original tests and historical results; add explicit replacement cases for changed
+contracts. Record commands, exit codes, source/runtime hashes and dependency
+versions. Fix real failures with failing-before/passing-after evidence; rerun only
+affected checks unless shared changes invalidate the combined result. Missing
+prerequisites, sockets, hosts or toolchains remain unresolved evidence, never a
+green skip or an implicit reduction of the promised product.
 
-Run focused real-entrypoint and app-service checks in disposable repositories
-under a nonrepository parent using this installation's conventional venv. Cover
-registry/options, preserved engine/security contracts, app auth/CSRF/origin/path
-controls, hosted write refusal/allowlists, desktop launcher/bundle identity,
-settings preservation and artifact inclusion/exclusion. Map every original test
-family and all 104 historical failures to restored requirements, replacements or
-excluded mechanisms before FPR-4. Record missing prerequisites and failures
-honestly; use pinned local prerequisites and fake providers/transports only.
+Obtain the pending owner choices before claiming named automatic host/version or
+platform/distribution acceptance, and before running the separately selected new
+integrated pilot. The proposed pilot is a new noncritical disposable local project
+with selected host/authority and fake remote transports. Continue independent
+fixture work while those choices are pending. Preserve the completed bounded
+pilot and do not repeat its review, installation/rollback or certification process.
+Exercise changed safety behaviors in the new matrix. Record native GUI, host
+lifecycle delivery and provider limitations separately from fixture success.
 
 No real consumers/hooks, providers/network, live mirror/export/delivery, fetch,
 push, main merge, tags, publication, signing, release or deployment. Do not restore
 OCI, native/Mach GSR, sole-writer storage, identity bridges or packet prerequisites.
-Do not repeat completed bounded review, installation/rollback or pilot. Leave
-combined validation to FPR-4 and the single independent final review to FPR-5;
-create no intervening review-only handoff.
+Keep local mutation, remote transport and release actions explicit. Do not run
+FPR-5 or create an intervening review-only handoff; reserve one independent final
+review of the fixed integrated source and complete evidence for FPR-5.
 
-Close with focused evidence and source/test disposition, paired ROADMAP/HANDOVER
-updates, and one canonical FPR-4 successor through bound next-write using current
-context and expected prior digest. Refresh this installation's runtime binding
-explicitly if required while preserving identity/settings/NEXT. Make one coherent
-local FPR-3 feature commit after checks, then validate NEXT from disk. Report
-changes, failures/limits, owner choices, commit and validated successor. Do not
-claim release readiness before combined validation and independent final review.
+Close with the combined matrix, source/environment and migration/install/rollback/
+pilot evidence, failures/limits and unresolved owner choices. Update ROADMAP and
+HANDOVER together. Publish one canonical FPR-5 successor through bound next-write
+using current context and expected prior digest; identify the independent-reviewer
+choice without claiming self-review as independent. Refresh this installation's
+runtime binding explicitly if repairs require it, preserving identity/settings/NEXT.
+Make one coherent local FPR-4 feature commit after checks, then validate NEXT from
+disk. Report changes, failures/limits, owner choices, commit and validated successor.
+Do not claim release readiness before combined validation and independent final
+review, and do not infer release authorization from either.

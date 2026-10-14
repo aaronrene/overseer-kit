@@ -1,0 +1,72 @@
+{
+  "before": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "1becd740f9cb24ae722df5c135215eb4508407069705bc1116d1f2fd1f40ed51"
+  },
+  "after": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "7d38764f026848d7d89d81abedfc62f1de5eefde6443d0032d770c2ff09a20d1"
+  },
+  "identity_and_all_settings_preserved": true,
+  "canonical_next_preserved": true,
+  "disabled_hooks_preserved": true,
+  "apply": {
+    "ok": true,
+    "repository": {
+      "name": "overseer-kit",
+      "id": "6988dc4a-5f22-454b-9d68-ac5905b383bf",
+      "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "root_relative_docs": "docs"
+    },
+    "changed": [
+      ".overseer/version.lock",
+      ".overseer/config.yaml"
+    ],
+    "classification": [
+      {
+        "path": ".overseer/bin/ok",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4",
+        "after": "1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4"
+      }
+    ],
+    "preserved": [],
+    "dry_run": false,
+    "diff": {},
+    "next": "preserved"
+  },
+  "intermediate_before_parser_compatibility": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "c681148b95285d36497332c8439f68f3e5063bb74d60fc408e731d23178a0115"
+  },
+  "intermediate_apply": {
+    "ok": true,
+    "repository": {
+      "name": "overseer-kit",
+      "id": "6988dc4a-5f22-454b-9d68-ac5905b383bf",
+      "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "root_relative_docs": "docs"
+    },
+    "changed": [
+      ".overseer/version.lock",
+      ".overseer/config.yaml"
+    ],
+    "classification": [
+      {
+        "path": ".overseer/bin/ok",
+        "classification": "unchanged",
+        "origin": "unrecorded",
+        "before": "1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4",
+        "after": "1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4"
+      }
+    ],
+    "preserved": [],
+    "dry_run": false,
+    "diff": {},
+    "next": "preserved"
+  }
+}

@@ -1,0 +1,18 @@
+error: rustc 1.87.0 is not supported by the following packages:
+  darling@0.23.0 requires rustc 1.88.0
+  darling_core@0.23.0 requires rustc 1.88.0
+  darling_macro@0.23.0 requires rustc 1.88.0
+  plist@1.10.0 requires rustc 1.88.0
+  plist@1.10.0 requires rustc 1.88.0
+  serde_with@3.21.0 requires rustc 1.88
+  serde_with@3.21.0 requires rustc 1.88
+  serde_with_macros@3.21.0 requires rustc 1.88
+  time@0.3.53 requires rustc 1.88.0
+  time@0.3.53 requires rustc 1.88.0
+  time-core@0.1.9 requires rustc 1.88.0
+  time-core@0.1.9 requires rustc 1.88.0
+  time-macros@0.2.31 requires rustc 1.88.0
+Either upgrade rustc or select compatible dependency versions with
+`cargo update <name>@<current-ver> --precise <compatible-ver>`
+where `<compatible-ver>` is the latest version supporting rustc 1.87.0
+

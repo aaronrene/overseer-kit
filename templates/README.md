@@ -1,6 +1,6 @@
 # Templates — token-parameterized governance doc skeletons
 
-Copied into consumer repos by `ok init` / `ok sync` (K4) with substitution from
+Available as reviewed skeletons; full init/sync installs owned rules, skills and policy while preserving living documents. Render explicitly with substitution from
 `.overseer/config.yaml`.
 
 | Template | Becomes (typical) |

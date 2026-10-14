@@ -1,28 +1,12 @@
-# Workspace status skill
+# Workspace status
 
-Use when the operator asks for constellation / multi-repo NEXT authority, types
-`/workspace-status`, or before pasting a NEXT prompt from a multi-root workspace.
+Use the repository-bound launcher with an explicit root. Run `ok workspace status`,
+`ok workspace check-next --lane product` and `ok workspace doctor` for the
+configured constellation. Only explicitly declared absolute member roots are read.
+Every member owns its identity, settings, authority, runtime and canonical NEXT.
 
-## Purpose
-
-Show which member owns **product_order** PRIMARY and whether relay tips are fresh.
-Focused editor tabs are not authority.
-
-## CLI
-
-```bash
-./cli/ok workspace status
-./cli/ok workspace status --json
-./cli/ok workspace check-next
-./cli/ok workspace doctor
-./cli/ok status --workspace --exit-code
-```
-
-Exit `35` (`WORKSPACE_RELAY`) means stale/ambiguous/missing relay integrity.
-Single-repo `ok status` green does **not** imply `workspace.ok`.
-
-## Board filenames
-
-Prefer `{REPO_SLUG}-OVERSEER-HANDOVER.md` / `{REPO_SLUG}-ROADMAP.md` so multi-root tabs
-are distinct. Doctor reports `board_name_violation` for bare legacy names under
-`strict_board_names`.
+Report required and optional member failures separately; status `--strict-all`
+makes optional failures fatal. Doctor reports naming/identity/manifest conflicts.
+Exit 35 indicates a member or relay refusal. Relay pins bind the whole canonical
+NEXT digest. Never discover neighboring repositories or scrape HANDOVER prompts.
+This read-only skill cannot mutate members or invent a cross-repository action.

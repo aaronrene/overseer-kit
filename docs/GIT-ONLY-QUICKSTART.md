@@ -1,39 +1,21 @@
-# Git-only quickstart (Overseer Kit)
+# Git-only source quickstart
 
-Use this when you have a plain GitHub repo and **no MuseHub**. The kit’s governance
-features work on Git alone; Muse is optional.
+Use the installation's conventional `.venv` with `requirements-v1.txt`.
+From the installation, select an existing local repository explicitly:
 
-## Prerequisites
-
-- A clone of [overseer-kit](https://github.com/aaronrene/overseer-kit) (or a path to its `cli/ok` shim)
-- A GitHub repository (empty or existing)
-- Python 3.11+ available to the shim (kit `.venv` is fine)
-
-No Muse install is required for `git-only`.
-
-## Commands
-
-From your consumer repo (or with `-C <repo>`):
-
-```bash
-# Greenfield (empty / new repo)
-<path-to-overseer-kit>/cli/ok -C . init --regime git-only --non-interactive
-
-# Status + footprint check
-<path-to-overseer-kit>/cli/ok -C . status --check-footprint
-
-# Governance hygiene probe (default dry-run — writes nothing)
-<path-to-overseer-kit>/cli/ok -C . governance-sync --dry-run
-
-# Freeze review on a sample artifact
-<path-to-overseer-kit>/cli/ok -C . review --freeze docs/<artifact> --dry-run
+```sh
+./cli/ok -C /absolute/project init --vcs git
+./cli/ok -C /absolute/project status
+./cli/ok -C /absolute/project next
+./cli/ok -C /absolute/project app
 ```
 
-For repos that **already** have hand-authored handover/roadmap files, use migrate
-(see `docs/MIGRATE-EXISTING-REPO.md`) instead of greenfield `init`.
+Git is the selected local revision authority; remote state is unknown offline.
+Muse is not required or probed. `docs/NEXT.md` is canonical; HANDOVER and ROADMAP
+summarize progress. Publish an accepted task only with explicit-context,
+expected-digest `next-write`. Use `--help` for its required fields.
 
-## Guardrails
-
-- **K7:** no core governance capability is MuseHub-only. `git-only` is a first-class baseline.
-- Never commit secrets into `.overseer/config.yaml` (names and booleans only).
-- Feature-branch commits only; do not auto-merge to `main`.
+Existing installs use explicit reviewed migration or runtime refresh, preserving
+identity/settings/NEXT. See [product operations](FPR-3-PRODUCT-SURFACES.md) and
+[source upgrades/rollback](SOURCE-DISTRIBUTION.md). Automatic host-version delivery,
+combined validation and independent review remain pending; no release claim follows.

@@ -1,0 +1,87 @@
+{
+  "scope": "Precommit closing checks; postcommit NEXT validation is required separately",
+  "physical_root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+  "head_before": "695444fb5f8261391f5c273807129c13dc8db1fd",
+  "required_closing_parent": "695444fb5f8261391f5c273807129c13dc8db1fd",
+  "branch": "feat/overseer-v1-recovery-20261014",
+  "runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "7d38764f026848d7d89d81abedfc62f1de5eefde6443d0032d770c2ff09a20d1"
+  },
+  "expected_prior_next_sha256": "24ce90e3c3db56b3b745ac72da66f5370dd20025783c5f2a1b0272b527eb335c",
+  "published_next_sha256": "0b6ef939df67ff2a2f5a4321c7787f56a4d0e804e7b433c30eccde162295dfb0",
+  "published_action": {
+    "schema": 1,
+    "repo_id": "6988dc4a-5f22-454b-9d68-ac5905b383bf",
+    "repo_root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "branch": "feat/overseer-v1-recovery-20261014",
+    "base_head": "695444fb5f8261391f5c273807129c13dc8db1fd",
+    "lane": "product",
+    "model": "GPT-6 Astra",
+    "action_id": "OVERSEER-FULL-PRODUCT-RESTORATION-VALIDATION-4",
+    "action_kind": "implement",
+    "prompt_sha256": "201f539055c654bb4177b2e775b49e4098224682c8b0622fefeda26d06e788d7"
+  },
+  "all_refs_unchanged": true,
+  "preserved_files": {
+    ".overseer/bin/ok": true,
+    ".cursor/hooks.json": true,
+    "docs/reviews/V1-RECOVERY-REVIEW.md": true,
+    "docs/validation/V1-CERTIFICATION.md": true,
+    "docs/validation/install-rollback-results.json": true,
+    "docs/validation/pilot-results.json": true
+  },
+  "original_test_support_files_unchanged": 393,
+  "historical_failures_dispositioned": 104,
+  "installation_status": {
+    "ok": false,
+    "footprint_integrity": {
+      "ok": false,
+      "paths_requiring_attention": [
+        ".claude/skills/freeze-review-loop/SKILL.md",
+        ".claude/skills/governance-sync/SKILL.md",
+        ".claude/skills/print-next/SKILL.md",
+        ".claude/skills/workspace-status/SKILL.md",
+        ".cursor/hooks.json",
+        ".cursor/hooks/session-end-closeout.sh",
+        ".cursor/hooks/session-start-next.sh",
+        ".cursor/rules/build-verification-required.mdc",
+        ".cursor/rules/check-ok-thinking.mdc",
+        ".cursor/rules/governance-sync.mdc",
+        ".cursor/rules/no-docs-only-pr-to-main.mdc",
+        ".cursor/rules/orchestrator.mdc",
+        ".cursor/rules/print-next-closeout.mdc",
+        ".cursor/rules/tier-authority.mdc",
+        ".cursor/rules/workspace-authority.mdc",
+        ".cursor/skills/freeze-review-loop/SKILL.md",
+        ".cursor/skills/governance-sync/SKILL.md",
+        ".cursor/skills/print-next/SKILL.md",
+        ".cursor/skills/workspace-status/SKILL.md",
+        "MUSE-BRIDGE-WORKFLOW.md",
+        "scripts/muse-bridge-deploy.sh"
+      ]
+    },
+    "footprint_coverage": {
+      "ok": false,
+      "missing_records": [
+        "policy/model-routing.yaml"
+      ]
+    },
+    "drift": {
+      "status": "changed",
+      "changed_files": [
+        ".overseer/STANDING-DECISIONS.reference.md"
+      ]
+    },
+    "readiness": {
+      "authority": "bound",
+      "remote": "not_checked_offline",
+      "release": "not_certified"
+    },
+    "diagnostics": [
+      "legacy_reviewer_model_preserved: thinking-high"
+    ],
+    "disposition": "Runtime/launcher-only refresh preserves existing footprint records and disabled hooks. The old installation reports asset/lock drift; no forced full sync or hook activation was performed. Fresh full-footprint behavior is checked in disposable fixtures; installed footprint reconciliation remains explicit."
+  }
+}

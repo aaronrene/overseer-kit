@@ -20,8 +20,8 @@ The former sole-writer/NXR-GSR chain remains historical and is not the living NE
 | FPR-0 — full-product reconciliation analysis | Complete — [integration plan](decisions/FULL-PRODUCT-RESTORATION-PLAN.md); committed-object analysis and documentation only |
 | FPR-1 — unified foundation and automatic handoff | Complete locally — unified dispatcher/schema-3 migration, preserved bindings/settings, canonical Cursor fixture bookends; [focused evidence](validation/FPR-1-FOUNDATION.md) |
 | FPR-2 — Muse authority, mirror and repository lanes | Complete locally — selected authority, controlled mirrors, explicit adoption/rollback and canonical lane collection; [focused evidence](validation/FPR-2-AUTHORITY.md) |
-| FPR-3 — complete product surface | **NEXT, awaiting owner acceptance** — remaining maintained commands/app/distribution surfaces under section 8 of the plan |
-| FPR-4 — combined validation | Planned after FPR-3 — one integrated matrix, clean installation/migration/rollback and one noncritical full-flow pilot |
+| FPR-3 — complete product surface | Complete locally — unified maintained commands, bound app/desktop/hosted surfaces, full footprint and local source packaging; [focused evidence](validation/FPR-3-SURFACES.md) |
+| FPR-4 — combined validation | **NEXT, awaiting owner acceptance** — one integrated matrix, installation/migration/rollback and a newly selected disposable integrated pilot |
 | FPR-5 — independent final review and release decision | Planned after FPR-4 — one independent review of the integrated build, bounded repairs if required, then owner release decision |
 
 The exact current action lives only in `docs/NEXT.md`; use `ok -C ROOT next`.
@@ -96,21 +96,41 @@ trusted-host model, validated on Python 3.14.4, for `status`, `init`, `sync`,
 repair evidence while preserving the independent **FINDINGS** verdict.
 Historical baseline **1,391 passed / 104 failed** remains unchanged.
 
-The canonical successor is **FPR-3**, pending separate owner acceptance of
-`docs/NEXT.md`. FPR-2 adds independent Git/Muse authority, explicit adoption and
-rollback, isolated controlled mirror/reconciliation services, scoped credentials,
-validated regime upgrades and schema-3 repository lanes in the same canonical
-file. Single and batch publication share the confined whole-file CAS writer;
-Muse uses exact native revisions and Git retains pinned closing reads.
-[Evidence and source/test disposition](validation/FPR-2-AUTHORITY.md) and
-[operation notes](FPR-2-AUTHORITY-AND-LANES.md) record focused checks and limits.
-This installation stays Git-only with tracked bindings, preserved settings and
-hooks disabled; only its runtime binding is explicitly refreshed. Native fixtures
-use the pinned local rc5 package with fake transports and credentials. The
-completed bounded review, installation/rollback and pilot are not repeated.
-No FPR-3 execution, combined FPR-4 validation, independent FPR-5 review, consumer
-operation, provider/network access, merge, push, publication or deployment is
-implied. The complete product is not restored or release-ready after FPR-2.
+FPR-3 restores all historical commands/subcommands through the unified dispatcher,
+full status/governance/review/workspace/checkpoints/evidence/ledger/routing/landing/
+compaction, bound loopback app and desktop, read-only hosted projections, full
+owned footprint and truthful guidance. Canonical NEXT remains the sole action
+source. Local mutation, remote transport and release effects are explicit.
+See [FPR-3 focused evidence and source/test disposition](validation/FPR-3-SURFACES.md)
+and [operation notes](FPR-3-PRODUCT-SURFACES.md).
+
+The final focused surface/artifact/native selection passed **70 checks**. The
+retained engine/security selection passed **314 checks**; the closing hosted/parser
+selection passed **73 checks** after restoring its public parser factory. Across recorded focused
+runs, **529 distinct cases have passing latest outcomes**; this is not a combined
+matrix. Initial failures and their fixes remain in the logs, including migration
+record size, an atomic-reader replacement race, full-footprint fixture assertions
+and socket prerequisites. The explicit local Rust 1.88 toolchain built the native
+shell offline. A deterministic resource archive launched the actual CLI/app with
+its own conventional venv and verified UUID/root/runtime health. No native GUI,
+new signed installer, publication or deployment is claimed.
+
+All 393 original test/support files retain their hashes, and all 104 historical
+failures have an explicit requirement/replacement/mechanism disposition before
+FPR-4. This installation remains Git-only; its explicit runtime refresh preserved
+UUID/root/lane/model, full settings, canonical NEXT and disabled hooks. The retained
+installation footprint still reports old lock/asset drift; no forced full sync or
+hook activation was performed. See the focused closing record for exact paths. Controlled
+Muse tests used only pinned local prerequisites and disposable fixtures. Other
+refs, old worktrees/Muse history, snapshots, rollback fixtures, completed bounded
+pilot and bounded source-release directory are preserved.
+
+The canonical successor is **FPR-4 combined validation**, pending owner acceptance
+of `docs/NEXT.md`, with GPT-6 Astra and Max reasoning. Section 9 of the restoration
+plan defines that matrix. The single independent final review remains FPR-5;
+no intervening review-only handoff is created. Client/host versions, broader remote
+scope, platform/distribution claims, the integrated pilot and final reviewer remain
+explicit owner choices. FPR-3 author checks do not establish release readiness.
 
 FPR-2 focused evidence covers 559 distinct maintained passing cases across
 recorded runs. Final affected reruns passed 169 Git/config/lane and 41 native

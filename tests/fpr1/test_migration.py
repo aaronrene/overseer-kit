@@ -145,7 +145,7 @@ def test_partial_replacement_keeps_old_config_and_resumes(legacy, monkeypatch):
     monkeypatch.setattr(migration, "atomic", fail_config)
     result = migration.migrate(legacy, args)
     assert result["ok"] is False and result["partial"] is True
-    assert result["completed"] == [migration.LAUNCHER]
+    assert set(result['completed']) == {row['path'] for row in document['plan']['assets'] if row['path'] != migration.CONFIG}
     assert (legacy / migration.CONFIG).read_bytes() == original
     monkeypatch.setattr(migration, "atomic", actual)
     args.resume = True
@@ -441,8 +441,8 @@ def test_sync_glob_selects_only_available_scripts_with_read_only_diff(tmp_path):
     report = json.loads(result.stdout)
     selected = {".cursor/hooks/session-start-next.sh", ".cursor/hooks/session-end-closeout.sh"}
     assert set(report["changed"]) == selected
-    assert set(report["diff"]) == selected
-    assert all("--event" in value for value in report["diff"].values())
+    assert set(report["diff"]) == selected | {migration.LOCK}
+    assert all("--event" in report["diff"][path] for path in selected)
     assert all((root / path).read_bytes() == body for path, body in old.items())
     result = command(root, "sync", "--hooks", "--only", ".cursor/hooks/session-*.sh", "--json")
     assert result.returncode == 0, result.stderr
@@ -466,7 +466,7 @@ def test_sync_unmatched_selection_refuses_before_runtime_refresh(tmp_path):
     config["runtime"]["sha256"] = "0" * 64
     original = v1.encode(config)
     (root / migration.CONFIG).write_bytes(original)
-    result = command(root, "sync", "--only", "launcher", "--only", "policy/*.yaml")
+    result = command(root, "sync", "--only", "launcher", "--only", "not-a-shipped-asset/*")
     assert result.returncode == 2 and "sync_only_no_matches" in result.stderr
     assert (root / migration.CONFIG).read_bytes() == original
 
@@ -487,6 +487,6 @@ def test_sync_glob_preserves_origin_and_explicit_custom_settings(tmp_path):
     assert result.returncode == 0, result.stderr
     report = json.loads(result.stdout)
     assert set(report["preserved"]) == {start, end}
-    assert report["changed"] == []
+    assert report["changed"] == [migration.LOCK]
     assert (root / start).read_bytes() == old[start]
     assert (root / end).read_bytes() == custom

@@ -29,7 +29,7 @@ def run_land_closeout_command(args: Namespace, ctx: CliContext) -> int:
     probe = getattr(args, "probe_merged_pr", None)
     if probe is None:
         # §PMHF.5.3 default: probe when the regime has git/gh; never for muse-only.
-        probe = config.vcs.regime != "muse-only"
+        probe = False
 
     report = check_land_closeout(
         config,

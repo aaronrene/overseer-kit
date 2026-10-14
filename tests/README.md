@@ -1,32 +1,29 @@
-# Test disposition: bounded v1, foundation and FPR-2 authority
+# Test disposition: restored full-product requirements
 
-Default collection is the explicit `testpaths` list in `pyproject.toml`:
-`tests/v1`, `tests/fpr1`, `tests/fpr2` plus unchanged digest/config/path/adapter unit tests and adapter-factory
-integration tests. No supported requirement is waived with skips or xfails.
+FPR-3 restores maintained commands and app/desktop/hosted surfaces through the
+single bound CLI. The complete [test disposition](../docs/validation/fpr3/test-disposition.json)
+records every original family and all 104 historical failures, with retained
+requirements and explicit replacement cases. All 393 original test/support files
+remain byte-identical. Historical failures are not relabelled as passes.
 
-`tests/v1` replaces the old public status/init/sync and print-NEXT contract with
-physical-root/UUID binding, canonical NEXT, runtime checks, atomic writer, and
-two disposable repositories. The legacy tests assume a different config schema,
-CLI context injection, handover prompt scraping and governance regeneration;
-those expectations do not govern the replacement CLI.
+The focused FPR-3 selection and logs are in [surface evidence](../docs/validation/FPR-3-SURFACES.md).
+The combined reusable driver is `tools/ci/supported_v1.py`; running the FPR-4
+combined matrix is a separate successor action. Use this installation's `.venv`
+and a disposable basetemp under a nonrepository parent. The default testpaths
+are a convenience subset, never the full release/combined matrix.
 
-All 393 original test/support files remain byte-identical at their original
-paths, inventoried in `historical/baseline-test-inventory.json`. A supported test
-checks these hashes. Original tests outside the explicit supported list are
-**historical/non-gating for this milestone**, not deleted or reported as passing.
-Hosted/desktop, provider/review/ledger, publication and orchestration capabilities
-are outside this first CLI milestone; this does not assert they are permanently
-superseded. The full baseline's unresolved failures are recorded in
-`docs/validation/baseline-failures.json`.
+Old public tests that inject a CliContext or scrape HANDOVER have maintained
+outcomes covered through actual `cli/ok` and bound app-service replacements.
+Useful engine/security tests remain required. Source packaging does not claim a
+new signed installer. Native Muse requires the separate exact pinned runtime;
+real local sockets and toolchains must be available when their tests are selected.
+No missing prerequisite may become a skip or a success.
 
-OCI/NXH and sole-writer/GSR architecture contracts in the dirty original checkout
-remain in that checkout and the verified recovery snapshot; none were imported
-or restored as a release gate. Git/Muse adapter sources and selected tests remain
-available, but adapter passes do not establish native Muse authority for v1 CLI.
-
-Run the supported suite with `.venv/bin/python -m pytest -q -p no:cacheprovider`.
-Run historical material explicitly by path when investigating it. See
-`docs/validation/V1-RECOVERY.md` for the requirement mapping and exact results.
+Only superseded mechanisms are excluded: OCI, native/Mach GSR, sole-writer storage,
+identity bridges, infrastructure packet prerequisites, live worktree export,
+ambient runtime discovery and prompt regeneration. The user-facing evidence
+ledger remains maintained. Completed bounded certification, rollback and pilot
+records are preserved rather than repeated during this wave.
 
 
 FPR-1 adds the schema/dispatch/migration/event acceptance cases in `tests/fpr1`.

@@ -1,6 +1,6 @@
 """The product dispatcher; all handlers cross the same repository boundary.
 
-FPR-1 foundation and FPR-2 authority/lane services are registered. Engine tests may inject their own dependencies
+Foundation, authority/lane and maintained product services are registered. Engine tests may inject their own dependencies
 below this boundary; there is no production validation-bypass switch.
 """
 from __future__ import annotations
@@ -15,7 +15,9 @@ import sys
 from cli import v1
 from cli.v1_io import LIMIT, Refusal, digest, read
 
-COMMANDS = frozenset({'status', 'init', 'sync', 'next', 'next-write', 'hook', 'adopt', 'mirror', 'upgrade-regime'})
+from cli.product_commands import COMMANDS as PRODUCT_COMMANDS
+
+COMMANDS = PRODUCT_COMMANDS | frozenset({'status', 'init', 'sync', 'next', 'next-write', 'hook', 'adopt', 'mirror', 'upgrade-regime'})
 
 
 @dataclass(frozen=True)
@@ -35,7 +37,7 @@ class ValidatedContext:
 
 
 def parser():
-    p = argparse.ArgumentParser(prog='ok', description='Repository-bound Overseer product foundation',
+    p = argparse.ArgumentParser(prog='ok', description='Repository-bound Overseer product; local changes, remote transport and release are separate',
                                 allow_abbrev=False)
 
     def globals_to(target):
@@ -59,6 +61,9 @@ def parser():
     for name in sorted(COMMANDS):
         cmd = sub.add_parser(name, allow_abbrev=False)
         globals_to(cmd)
+        if name in PRODUCT_COMMANDS:
+            from cli.product_commands import configure
+            configure(cmd, name, globals_to)
         if name in ('init', 'adopt'):
             cmd.add_argument('--vcs', choices=('git', 'muse'))
             cmd.add_argument('--muse-python')
@@ -110,6 +115,10 @@ def parser():
                                  choices=v1.KINDS if field == 'action-kind' else None)
             if name != 'adopt':
                 cmd.add_argument('--expect-next', required=name == 'next-write')
+        if name == 'status':
+            cmd.add_argument('--exit-code', action='store_true')
+            cmd.add_argument('--check-footprint', action='store_true')
+            cmd.add_argument('--workspace', action='store_true')
         if name in ('next', 'status'):
             cmd.add_argument('--all-lanes', action='store_true')
         if name == 'next-write':
@@ -123,6 +132,11 @@ def parser():
             cmd.add_argument('--hook-path', required=True)
             cmd.add_argument('--event', choices=('sessionStart', 'stop'))
     return p
+
+
+def build_parser():
+    """Preserve the public parser factory on the unified command registry."""
+    return parser()
 
 
 def _arguments(argv):
@@ -157,6 +171,8 @@ def _arguments(argv):
                 raise Refusal('migration_apply_options_in_dry_run')
     if args.command == 'sync' and args.only and 'hooks' in args.only and not args.hooks:
         raise Refusal('sync_hooks_require_explicit_hooks')
+    from cli.product_commands import validate
+    validate(args)
     return args
 
 
@@ -235,6 +251,14 @@ def _read(context, args):
         record = read(root, RECORD, missing=True)
         result['mirror'] = {'record_present': record is not None, 'verification': 'not_checked_offline',
                             'authority': False}
+    from cli.product_status import sections
+    result.update(sections(context, args))
+    if getattr(args, 'check_footprint', False) or getattr(args, 'exit_code', False):
+        result['ok'] = result['ok'] and result['footprint_integrity']['ok'] and result['footprint_coverage']['ok']
+    if getattr(args, 'exit_code', False):
+        result['ok'] = result['ok'] and result['drift']['status'] == 'current'
+    if 'workspace' in result:
+        result['ok'] = result['ok'] and result['workspace']['ok']
     context.recheck(args)
     return result
 
@@ -278,6 +302,9 @@ def main(argv=None):
                 args.expect_next = None
                 result = {'ok': True, 'next_sha256': digest(v1.write_next(
                     root, context.config, args, prompt, expected=expected, context=context.observed))}
+            elif args.command in PRODUCT_COMMANDS:
+                from cli.product_service import execute
+                return execute(context, args)
             else:
                 result = _read(context, args)
                 if result is None:

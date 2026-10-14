@@ -1,0 +1,12 @@
+............................F.....                                       [100%]
+=================================== FAILURES ===================================
+____________________ test_no_auth_disable_flag_in_cli_help _____________________
+
+    def test_no_auth_disable_flag_in_cli_help() -> None:
+>       from cli.main import build_parser
+E       ImportError: cannot import name 'build_parser' from 'cli.main' (/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/main.py)
+
+tests/security/test_hosted_dashboard_security.py:85: ImportError
+=========================== short test summary info ============================
+FAILED tests/security/test_hosted_dashboard_security.py::test_no_auth_disable_flag_in_cli_help
+1 failed, 33 passed in 3.21s

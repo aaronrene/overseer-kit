@@ -17,6 +17,11 @@ class WriteFailure(Exception):
 
 def atomic_write_bytes(path: Path, data: bytes) -> None:
     """Write ``data`` atomically via temp file + ``os.replace``."""
+    from cli.product_boundary import active
+    boundary = active()
+    if boundary is not None:
+        boundary.write(path, data)
+        return
     path.parent.mkdir(parents=True, exist_ok=True)
     tmp_path = path.with_name(f".{path.name}.overseer.tmp")
     try:

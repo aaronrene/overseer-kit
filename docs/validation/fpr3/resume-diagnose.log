@@ -1,0 +1,31 @@
+F
+=================================== FAILURES ===================================
+____________ test_partial_replacement_keeps_old_config_and_resumes _____________
+
+legacy = PosixPath('/private/tmp/overseer-fpr3-resume-diagnose/test_partial_replacement_keeps0/legacy')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10733b230>
+
+    def test_partial_replacement_keeps_old_config_and_resumes(legacy, monkeypatch):
+        document, args = prepare(legacy)
+        original = (legacy / migration.CONFIG).read_bytes()
+        actual = migration.atomic
+    
+        def fail_config(root, path, data, **kwargs):
+            if path == migration.CONFIG:
+                raise OSError("injected replacement failure")
+            return actual(root, path, data, **kwargs)
+    
+        monkeypatch.setattr(migration, "atomic", fail_config)
+        result = migration.migrate(legacy, args)
+        assert result["ok"] is False and result["partial"] is True
+>       assert result["completed"] == [migration.LAUNCHER]
+E       AssertionError: assert ['.overseer/b...KILL.md', ...] == ['.overseer/bin/ok']
+E         
+E         Left contains 37 more items, first extra item: '.claude/skills/adversarial-freeze-review/SKILL.md'
+E         Use -v to get more diff
+
+tests/fpr1/test_migration.py:148: AssertionError
+=========================== short test summary info ============================
+FAILED tests/fpr1/test_migration.py::test_partial_replacement_keeps_old_config_and_resumes
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed in 2.89s

@@ -8,7 +8,7 @@ const TAB_EXPLAINERS = {
   overview: "What this console is; suite doors; how to open it; bound repo",
   status: "Health of governance for the bound repo",
   roadmap: "Living phase board",
-  handover: "Next-session relay / paste prompt",
+  handover: "Validated canonical NEXT and repository handover",
   gates: "Pending honesty/governance reminders",
   actions: "Dry-run-first freeze review + governance-sync + honesty-status",
   ledger: "Append-only honesty ledger view/verify",
@@ -209,6 +209,10 @@ document.getElementById("load-roadmap").addEventListener("click", async () => {
   showJson("roadmap-output", payload);
 });
 
+document.getElementById("load-next").addEventListener("click", async () => {
+  const { payload } = await apiFetch("/api/next");
+  document.getElementById("next-output").textContent = payload.ok ? payload.result.rendered : JSON.stringify(payload, null, 2);
+});
 document.getElementById("load-handover").addEventListener("click", async () => {
   const { payload } = await apiFetch("/api/docs/handover");
   showJson("handover-output", payload);
@@ -221,14 +225,14 @@ document.getElementById("load-gates").addEventListener("click", async () => {
 
 document.getElementById("run-freeze").addEventListener("click", async () => {
   const dryRun = document.getElementById("freeze-dry-run").checked;
-  if (!dryRun && !requireConfirm("Run freeze review with stamp write? This is irreversible on the feature branch.")) {
+  if (!dryRun && !requireConfirm("Run freeze review and write its local stamp?")) {
     return;
   }
   const path = document.getElementById("freeze-path").value.trim();
   const { payload } = await apiFetch("/api/review/freeze", {
     method: "POST",
     mutating: true,
-    body: { path, dry_run: dryRun },
+    body: { path, dry_run: dryRun, allow_network: document.getElementById("freeze-network").checked },
   });
   showJson("freeze-output", payload);
 });

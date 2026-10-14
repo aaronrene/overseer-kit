@@ -38,6 +38,15 @@ def run_check_ok(args: Namespace, ctx: CliContext, *, raw_argv: list[str] | None
         ctx.output.error(format_config_error(exc, repo_root))
         return 2
 
+    if args.dry_run:
+        from tools.check_ok.scaffold import resolve_artifact_path
+        target = resolve_artifact_path(repo_root, path=args.path, topic=args.topic)
+        target = confine_path(repo_root, str(target))
+        if not target.is_file() or args.force_scaffold or args.scaffold_only:
+            ctx.output.emit_json({'command': 'check-ok', 'dry_run': True,
+                                  'path': target.relative_to(repo_root).as_posix(),
+                                  'would_scaffold': not target.is_file() or args.force_scaffold})
+            return 0
     path_arg = args.path
     if path_arg:
         try:

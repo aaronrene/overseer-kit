@@ -1,6 +1,7 @@
 //! Spawn the canonical ``ok app`` process and parse its startup banner.
 
-use std::io::{BufRead, BufReader};
+use std::io::{BufRead, BufReader, Read, Write};
+use std::net::TcpStream;
 use std::path::{Path, PathBuf};
 use std::process::{Child, Command, Stdio};
 use std::sync::mpsc;
@@ -31,35 +32,28 @@ impl OkAppChild {
     }
 }
 
-pub fn resolve_kit_root() -> PathBuf {
-    if let Ok(root) = std::env::var("OVERSEER_KIT_ROOT") {
-        return PathBuf::from(root);
+impl Drop for OkAppChild {
+    fn drop(&mut self) {
+        self.kill();
     }
-
-    if let Ok(resource_dir) = std::env::var("TAURI_RESOURCE_DIR") {
-        let bundled = PathBuf::from(resource_dir).join("kit");
-        if bundled.join("cli").join(CANONICAL_LAUNCHER).is_file() {
-            return bundled;
-        }
-    }
-
-    if let Ok(cwd) = std::env::current_dir() {
-        for ancestor in cwd.ancestors() {
-            let shim = ancestor.join("cli").join(CANONICAL_LAUNCHER);
-            if shim.is_file() {
-                return ancestor.to_path_buf();
-            }
-        }
-    }
-
-    PathBuf::from(".")
 }
 
-pub fn resolve_repo_root(kit_root: &Path) -> PathBuf {
-    if let Ok(root) = std::env::var("OVERSEER_REPO_ROOT") {
-        return PathBuf::from(root);
-    }
-    kit_root.to_path_buf()
+fn explicit_path(flag: &str) -> Option<PathBuf> {
+    let args: Vec<String> = std::env::args().collect();
+    let positions: Vec<usize> = args.iter().enumerate().filter(|(_, a)| a.as_str() == flag).map(|(i, _)| i).collect();
+    if positions.len() > 1 { panic!("duplicate desktop binding option"); }
+    positions.first().map(|i| PathBuf::from(args.get(i + 1).expect("missing desktop binding value")).canonicalize().expect("physical desktop path required"))
+}
+
+pub fn resolve_kit_root() -> PathBuf {
+    if let Some(root) = explicit_path("--kit-root") { return root; }
+    let executable = std::env::current_exe().expect("desktop executable location");
+    let resources = executable.parent().expect("executable parent").join("../Resources/kit");
+    resources.canonicalize().expect("bundled kit missing; development requires --kit-root")
+}
+
+pub fn resolve_repo_root(_kit_root: &Path) -> PathBuf {
+    explicit_path("--repo").expect("desktop requires --repo with an explicitly bound checkout")
 }
 
 pub fn build_ok_app_command(kit_root: &Path, repo_root: &Path, port: u16) -> Command {
@@ -74,13 +68,22 @@ pub fn build_ok_app_command(kit_root: &Path, repo_root: &Path, port: u16) -> Com
         .arg("--bind")
         .arg(DEFAULT_BIND)
         .current_dir(kit_root)
-        .env("PYTHONPATH", kit_root)
         .stdout(Stdio::null())
         .stderr(Stdio::piped());
     command
 }
 
 pub fn spawn_ok_app(kit_root: &Path, repo_root: &Path, port: u16) -> Result<(OkAppChild, StartupBanner), String> {
+    let checked = Command::new(kit_root.join("cli/ok"))
+        .args(["status", "--json", "--repo"]).arg(repo_root)
+        .current_dir(kit_root).output().map_err(|e| e.to_string())?;
+    let binding: serde_json::Value = serde_json::from_slice(&checked.stdout)
+        .map_err(|_| "desktop could not validate repository/runtime binding".to_string())?;
+    if binding["runtime"]["root"].as_str() != kit_root.to_str()
+        || binding["repository"]["root"].as_str() != repo_root.to_str()
+        || !binding["repository"]["id"].is_string() {
+        return Err("desktop preflight binding mismatch".to_string());
+    }
     let mut child = build_ok_app_command(kit_root, repo_root, port)
         .spawn()
         .map_err(|err| format!("failed to spawn ok app: {err}"))?;
@@ -107,6 +110,11 @@ pub fn spawn_ok_app(kit_root: &Path, repo_root: &Path, port: u16) -> Result<(OkA
             lines.push(line);
         }
         if let Some(banner) = parse_startup_stderr(&lines) {
+            if let Err(error) = verify_health(&banner, &binding, port) {
+                let _ = child.kill();
+                let _ = child.wait();
+                return Err(error);
+            }
             return Ok((OkAppChild { child }, banner));
         }
         if let Some(status) = child.try_wait().ok().flatten() {
@@ -117,7 +125,29 @@ pub fn spawn_ok_app(kit_root: &Path, repo_root: &Path, port: u16) -> Result<(OkA
     }
 
     let _ = child.kill();
+    let _ = child.wait();
     Err("timed out waiting for ok app startup banner".to_string())
+}
+
+fn verify_health(banner: &StartupBanner, binding: &serde_json::Value, port: u16) -> Result<(), String> {
+    if banner.url != format!("http://127.0.0.1:{port}/")
+        || banner.session_credential.contains(['\r', '\n']) {
+        return Err("desktop startup endpoint mismatch".into());
+    }
+    let mut stream = TcpStream::connect(("127.0.0.1", port)).map_err(|e| e.to_string())?;
+    stream.set_read_timeout(Some(Duration::from_secs(15))).map_err(|e| e.to_string())?;
+    write!(stream, "GET /api/health HTTP/1.1\r\nHost: 127.0.0.1:{port}\r\nAuthorization: Bearer {}\r\nConnection: close\r\n\r\n", banner.session_credential).map_err(|e| e.to_string())?;
+    let mut response = String::new();
+    stream.take(131072).read_to_string(&mut response).map_err(|e| e.to_string())?;
+    let (headers, body) = response.split_once("\r\n\r\n").ok_or("invalid health response")?;
+    let value: serde_json::Value = serde_json::from_str(body).map_err(|e| e.to_string())?;
+    if !headers.lines().next().unwrap_or("").contains(" 200 ") || value["ok"] != true
+        || value["result"]["repo_root"] != binding["repository"]["root"]
+        || value["result"]["repo_id"] != binding["repository"]["id"]
+        || value["result"]["runtime"] != binding["runtime"] {
+        return Err("desktop health identity mismatch".into());
+    }
+    Ok(())
 }
 
 pub fn parse_startup_stderr(lines: &[String]) -> Option<StartupBanner> {

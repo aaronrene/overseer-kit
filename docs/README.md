@@ -1,3 +1,7 @@
+# Current full-product restoration
+
+Start with [source quickstart](V1-QUICKSTART.md), [maintained surfaces](FPR-3-PRODUCT-SURFACES.md), [source distribution](SOURCE-DISTRIBUTION.md), and [FPR-3 evidence](validation/FPR-3-SURFACES.md). Canonical `docs/NEXT.md` is the sole action source. Older phase pages below describe their historical scope, not current release readiness.
+
 # Overseer Kit — public docs
 
 Portable governance for AI-assisted development. Start here; deeper history lives

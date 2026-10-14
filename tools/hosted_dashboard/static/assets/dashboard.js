@@ -106,6 +106,9 @@
   document.getElementById("load-handover").addEventListener("click", function () {
     loadDoc("handover");
   });
+  document.getElementById("load-next").addEventListener("click", function () {
+    loadDoc("next");
+  });
   document.getElementById("load-gates").addEventListener("click", function () {
     loadDoc("gates");
   });

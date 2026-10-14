@@ -1,0 +1,55 @@
+......F.......................F......................................... [ 88%]
+.........                                                                [100%]
+=================================== FAILURES ===================================
+____________ test_partial_replacement_keeps_old_config_and_resumes _____________
+
+legacy = PosixPath('/private/tmp/overseer-fpr3-binding-2/test_partial_replacement_keeps0/legacy')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x106a10c30>
+
+    def test_partial_replacement_keeps_old_config_and_resumes(legacy, monkeypatch):
+        document, args = prepare(legacy)
+        original = (legacy / migration.CONFIG).read_bytes()
+        actual = migration.atomic
+    
+        def fail_config(root, path, data, **kwargs):
+            if path == migration.CONFIG:
+                raise OSError("injected replacement failure")
+            return actual(root, path, data, **kwargs)
+    
+        monkeypatch.setattr(migration, "atomic", fail_config)
+        result = migration.migrate(legacy, args)
+        assert result["ok"] is False and result["partial"] is True
+>       assert result["completed"] == [migration.LAUNCHER]
+E       AssertionError: assert ['.overseer/b...KILL.md', ...] == ['.overseer/bin/ok']
+E         
+E         Left contains 37 more items, first extra item: '.claude/skills/adversarial-freeze-review/SKILL.md'
+E         Use -v to get more diff
+
+tests/fpr1/test_migration.py:148: AssertionError
+______ test_sync_glob_selects_only_available_scripts_with_read_only_diff _______
+
+tmp_path = PosixPath('/private/tmp/overseer-fpr3-binding-2/test_sync_glob_selects_only_av0')
+
+    def test_sync_glob_selects_only_available_scripts_with_read_only_diff(tmp_path):
+        root = _sync_fixture(tmp_path)
+        old = migration._bounded_hook_assets(root)
+        for path, body in old.items():
+            (root / path).write_bytes(body)
+        next_bytes = (root / migration.NEXT).read_bytes()
+        result = command(root, "sync", "--hooks", "--only", ".cursor/hooks/session-*.sh",
+                         "--dry-run", "--diff", "--json")
+        assert result.returncode == 0, result.stderr
+        report = json.loads(result.stdout)
+        selected = {".cursor/hooks/session-start-next.sh", ".cursor/hooks/session-end-closeout.sh"}
+>       assert set(report["changed"]) == selected | {migration.LOCK}
+E       AssertionError: assert {'.cursor/hoo...tart-next.sh'} == {'.cursor/hoo...version.lock'}
+E         
+E         Extra items in the right set:
+E         '.overseer/version.lock'
+E         Use -v to get more diff
+
+tests/fpr1/test_migration.py:443: AssertionError
+=========================== short test summary info ============================
+FAILED tests/fpr1/test_migration.py::test_partial_replacement_keeps_old_config_and_resumes
+FAILED tests/fpr1/test_migration.py::test_sync_glob_selects_only_available_scripts_with_read_only_diff
+2 failed, 79 passed in 270.06s (0:04:30)

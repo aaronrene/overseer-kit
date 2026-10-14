@@ -304,6 +304,13 @@ class OverseerConfig:
 
 def load_config(path: Path) -> OverseerConfig:
     """Parse and validate config; raise ``ConfigError`` on any violation."""
+    from cli.product_boundary import active
+    boundary = active()
+    if boundary is not None:
+        if path != boundary.context.root / '.overseer/config.yaml':
+            from cli.v1_io import Refusal
+            raise Refusal('engine_config_must_match_captured_context')
+        return boundary.model.adapter
     path = path.resolve()
     if not path.is_file():
         raise ConfigError("config file missing", str(path))

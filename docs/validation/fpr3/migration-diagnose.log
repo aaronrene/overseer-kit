@@ -1,0 +1,26 @@
+F
+=================================== FAILURES ===================================
+___________ test_legacy_plan_is_read_only_deterministic_and_lossless ___________
+
+legacy = PosixPath('/private/tmp/overseer-fpr3-migration-diagnose/test_legacy_plan_is_read_only_0/legacy')
+
+    def test_legacy_plan_is_read_only_deterministic_and_lossless(legacy):
+        before = {p.relative_to(legacy): p.read_bytes() for p in legacy.rglob("*") if p.is_file() and ".git" not in p.parts}
+        first = command(legacy, "init", "--migrate", "--dry-run", "--json")
+        second = command(legacy, "init", "--migrate", "--dry-run", "--json")
+        assert first.returncode == second.returncode == 0, first.stderr + second.stderr
+        assert first.stdout == second.stdout
+        assert before == {p.relative_to(legacy): p.read_bytes() for p in legacy.rglob("*") if p.is_file() and ".git" not in p.parts}
+        document, _ = prepare(legacy)
+        result = apply_cli(legacy, document)
+>       assert result.returncode == 0, result.stderr + result.stdout
+E       AssertionError: refused: file_invalid: migration-plan.json
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...8dd5520ea473bb719c6ae1d4b8', '--json'], returncode=2, stdout='', stderr='refused: file_invalid: migration-plan.json\n').returncode
+
+tests/fpr1/test_migration.py:72: AssertionError
+=========================== short test summary info ============================
+FAILED tests/fpr1/test_migration.py::test_legacy_plan_is_read_only_deterministic_and_lossless
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed in 0.92s

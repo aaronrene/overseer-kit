@@ -148,6 +148,8 @@ def scaffold_side_check(
         raise ValueError("path-escape") from exc
 
     rel = target.relative_to(repo_root.resolve()).as_posix()
+    from cli.product_boundary import watch
+    watch(target)
     if target.is_file() and not overwrite:
         return ScaffoldResult(path=target, rel_path=rel, created=False)
 
@@ -160,6 +162,6 @@ def scaffold_side_check(
         output_path=rel,
         date_stamp=(today or date.today()).isoformat(),
     )
-    target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(body, encoding="utf-8")
+    from cli.atomic import atomic_write_text
+    atomic_write_text(target, body)
     return ScaffoldResult(path=target, rel_path=rel, created=True)

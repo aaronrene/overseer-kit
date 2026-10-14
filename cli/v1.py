@@ -33,11 +33,11 @@ def runtime_files():
     Paths and bytes both participate; adding or removing a source changes it.
     """
     paths = {"VERSION", "cli/ok", "cli/overseer", "scripts/muse-bridge-deploy.sh"}
-    for directory in ("cli", "adapters"):
+    for directory in ("cli", "adapters", "tools"):
         paths.update(p.relative_to(KIT).as_posix() for p in (KIT / directory).rglob("*.py"))
     paths.update("tools/hosted_dashboard/" + p for p in
                  ("__init__.py", "config.py", "hosts.py", "validators.py"))
-    for directory in ("cursor", "templates", "policy"):
+    for directory in ("cursor", "templates", "policy", "tools/app/static", "tools/hosted_dashboard/static"):
         paths.update(p.relative_to(KIT).as_posix() for p in (KIT / directory).rglob("*")
                      if p.is_file() and "__pycache__" not in p.parts)
     return tuple(sorted(paths))
@@ -369,6 +369,15 @@ def assets(root, config, hooks=False):
         from cli.product_bookends import cursor_assets, instruction_assets
         result.update(cursor_assets(root))
         result.update(instruction_assets(root))
+    from cli.product_config import normalize
+    from cli.footprint import resolve_footprint
+    from cli.product_migration import _document_paths
+    model = normalize(encode(config), root=root)
+    living = _document_paths(config)
+    for item in resolve_footprint(model.adapter, kit=KIT):
+        if item.destination not in living and not item.destination.startswith('.cursor/hooks'):
+            result[item.destination] = item.content
+    result['policy/model-routing.yaml'] = (KIT / 'policy/model-routing.yaml').read_bytes()
     return result
 
 
@@ -447,6 +456,8 @@ def initialize(root, args):
         confined(root, path, missing_parents=True)
         if read(root, path, missing=True) is None:
             mapping[path] = body.encode()
+    from cli.product_footprint import with_lock
+    mapping = with_lock(root, mapping, config)
     if existing is None:
         mapping[CONFIG] = config_data  # Binding is committed after all other assets.
 

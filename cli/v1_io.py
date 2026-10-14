@@ -42,26 +42,35 @@ def confined(root: Path, relative: str, *, parents: bool = False,
     return target
 
 
-def read(root: Path, relative: str, *, missing: bool = False) -> bytes | None:
+def read(root: Path, relative: str, *, missing: bool = False, limit: int = LIMIT) -> bytes | None:
     path = confined(root, relative, missing_parents=missing)
-    try:
-        fd = os.open(path, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)
-    except FileNotFoundError:
-        if missing:
-            return None
-        raise Refusal("file_missing: " + relative) from None
+    for attempt in range(3):
+        try:
+            fd = os.open(path, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)
+        except FileNotFoundError:
+            if missing:
+                return None
+            raise Refusal("file_missing: " + relative) from None
+        # An atomic replacement may unlink the inode between open and fstat.
+        # Reopen the new pathname; never confuse that with a hard-linked file.
+        if os.fstat(fd).st_nlink != 0:
+            break
+        os.close(fd)
+    else:
+        raise Refusal('file_changed_during_read: ' + relative)
     with os.fdopen(fd, "rb") as stream:
         st = os.fstat(stream.fileno())
-        if not stat.S_ISREG(st.st_mode) or st.st_nlink != 1 or st.st_size > LIMIT:
+        if not stat.S_ISREG(st.st_mode) or st.st_nlink > 1 or st.st_size > limit:
             raise Refusal("file_invalid: " + relative)
-        data = stream.read(LIMIT + 1)
-        if len(data) > LIMIT:
+        data = stream.read(limit + 1)
+        if len(data) > limit:
             raise Refusal("file_too_large")
         return data
 
 
 def atomic(root: Path, relative: str, data: bytes, *, expected: str,
-           mode: int = 0o644, before_replace: Callable[[], None] | None = None) -> None:
+           mode: int = 0o644, before_replace: Callable[[], None] | None = None,
+           limit: int = LIMIT) -> None:
     """Compare prior bytes; fsync a unique sibling; replace and fsync its directory.
 
     Caller serialization is deliberately not a security subsystem. The second
@@ -69,12 +78,12 @@ def atomic(root: Path, relative: str, data: bytes, *, expected: str,
     of scope. NEXT callers also take a brief advisory directory lock and check
     their captured context after the candidate is persisted, before replacement.
     """
-    if len(data) > LIMIT:
+    if len(data) > limit:
         raise Refusal("file_too_large")
     path = confined(root, relative, parents=True)
 
     def compare() -> None:
-        old = read(root, relative, missing=True)
+        old = read(root, relative, missing=True, limit=limit)
         actual = "absent" if old is None else digest(old)
         if expected != actual:
             raise Refusal("stale_write: " + relative)

@@ -53,6 +53,16 @@ def repo_relative(repo_root: Path, path: Path) -> str:
 
 def confine_path(repo_root: Path, user_path: str) -> Path:
     """Resolve ``user_path`` under ``repo_root``; reject traversal escapes."""
+    from cli.product_boundary import active
+    boundary = active()
+    if boundary is not None:
+        try:
+            return boundary.watch(Path(user_path) if Path(user_path).is_absolute() else repo_root / user_path)
+        except Exception as exc:
+            from cli.v1_io import Refusal
+            if isinstance(exc, Refusal):
+                raise PathEscapeError(str(exc)) from exc
+            raise
     root = repo_root.resolve()
     candidate = Path(user_path).expanduser()
     if candidate.is_absolute():

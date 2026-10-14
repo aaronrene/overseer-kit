@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Local source — Overseer Kit</title><link rel="stylesheet" href="assets/style.css"></head>
+<body><main><h1>Prepare local source</h1><p>This full-product restoration has no new published or signed installer. Combined validation and independent review remain pending.</p>
+<p>Use the selected source installation's conventional Python environment and pinned local prerequisites. The full instructions are in <code>docs/SOURCE-DISTRIBUTION.md</code> in that source checkout.</p>
+<pre>.venv/bin/python tools/ci/source_package.py build --output /absolute/new-source.tar.gz
+.venv/bin/python tools/ci/source_package.py verify --archive /absolute/new-source.tar.gz
+.venv/bin/python tools/ci/source_package.py unpack --archive /absolute/new-source.tar.gz --destination /absolute/new-installation</pre>
+<p>The archive carries a hash, size and executable-mode manifest. It excludes live repository bindings, canonical NEXT, stores, virtual environments and secrets. Provision the new installation's own conventional venv before launch. No neighboring installation supplies its runtime.</p>
+<p>Desktop resource preparation and local CLI/app operation are distinct from signing, publication and deployment. Keep matching configuration and source backups for explicit quiescent rollback.</p><p><a href="index.html">Back to Overseer Kit</a></p></main></body></html>

@@ -63,9 +63,9 @@ while ROUND <= MAX_ROUNDS:
        stamping without immediately restamping.
      - Run: ok review --freeze <artifact-path>
      - If CLI pass: stamp ok. STOP. Do **not** claim Auto is cleared.
-     - Print that `ok next` will emit the adversarial-freeze paste when
+     - Publish any accepted adversarial-freeze successor explicitly with next-write when
        `honesty.adversarial_freeze` is `suggest` or `require`.
-     - Invent / copy a `producer_session` nonce into the handover NEXT block.
+     - Record the actual producer session in the evidence and accepted canonical NEXT publication.
      - MUST NOT write, insert, or flip `auto_may_start` to `true`.
      - MUST NOT write `auto_may_start` at all.
      - MUST NOT append `adversarial_freeze` `pass` in the author session.

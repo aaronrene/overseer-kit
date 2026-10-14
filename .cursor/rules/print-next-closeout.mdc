@@ -1,11 +1,11 @@
 ---
-description: Bounded v1 repository and NEXT authority
+description: Read the canonical handoff at both session bookends
 alwaysApply: true
 ---
 
-Follow AGENTS.md and docs/decisions/V1-SCOPE-RESET.md. Verify repository identity
-before action. Read canonical NEXT using this checkout's cli/ok -C ROOT next.
-Only next-write changes NEXT. Update ROADMAP and HANDOVER together. Historical
-handover prompts, governance-sync regeneration and sole-writer/NXR-GSR chains
-are not current authority. Independent architecture/build review is still required
-before final acceptance; implementation tests alone are not independent review.
+At session start and after the final closing commit, run this repository's bound
+`.overseer/bin/ok -C /absolute/repository next` with the intended lane. Display its
+validated output including the model. A refusal is not a prompt to reconstruct
+from HANDOVER, ROADMAP, chat history or open tabs. Only explicit next-write with
+current context and expected whole-file digest publishes a successor. Host lifecycle
+adapters are opt-in and require an owner-selected supported host/event format.

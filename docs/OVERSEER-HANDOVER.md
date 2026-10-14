@@ -8,30 +8,47 @@ Active implementation: `overseer-kit-v1-recovery-20261014`, branch
 `feat/overseer-v1-recovery-20261014`, reconciled base `d47291d`.
 Both older dirty worktrees remain untouched.
 
-**Current successor: FPR-3 remaining maintained commands and product surfaces,
-awaiting owner acceptance.** Use GPT-6 Astra with Max reasoning. The accepted
-FPR-2 wave implements selected Git/Muse authority, explicit adoption/rollback,
-controlled mirror/reconciliation/credential services, regime upgrades and
-schema-3 repository lanes through the shared CLI and canonical NEXT writer.
-See [focused evidence and source/test disposition](validation/FPR-2-AUTHORITY.md)
-and [operation notes](FPR-2-AUTHORITY-AND-LANES.md). Opening HEAD was
-`8c2b642336e29a3a5a781f70f25f4769e6899642`, the exact FPR-1 closing commit with
-verified clean identity and pinned source refs. This installation remains Git-only;
-tracked bindings/settings/NEXT were preserved through explicit runtime refresh.
+**Current successor: FPR-4 combined validation, awaiting owner acceptance.**
+Opening FPR-3 HEAD was `695444fb5f8261391f5c273807129c13dc8db1fd`, the single
+FPR-2 feature closing commit whose sole predecessor is
+`8c2b642336e29a3a5a781f70f25f4769e6899642`. Identity, clean state and pinned
+source refs were verified before implementation.
 
-The [restoration plan](decisions/FULL-PRODUCT-RESTORATION-PLAN.md) still defines
-three implementation waves, one combined FPR-4 matrix and one independent FPR-5
-review. FPR-3 was not implemented or authorized by FPR-2. Native tests use only
-disposable stores and the explicitly pinned local Muse rc5 runtime. No live
-mirror/export/delivery, provider/network, real consumer or hook activity occurred.
-Focused evidence covers 559 distinct maintained passing cases across recorded
-runs; final affected checks passed 169 Git/config/lane and 41 native cases. The
-102-case mirror/reconciliation run passed. One historical native-export assertion
-is explicitly replaced; its original failure remains recorded.
-Single and batch lane writes use the same whole-file CAS writer. Muse NEXT binds
-the exact native revision after the work commit; mirror Git state is never its
-authority. Git's pinned single-closing-read behavior and final context checks
-remain, including refusal to refresh an unchanged lane from another lane's commit.
+FPR-3 restores all historical commands/subcommands through the unified dispatcher,
+full status/governance/review/workspace/checkpoints/evidence/ledger/routing/landing/
+compaction, bound loopback app and desktop, read-only hosted projections, full
+owned footprint and truthful guidance. Canonical NEXT remains the sole action
+source. Local mutation, remote transport and release effects are explicit.
+See [FPR-3 focused evidence and source/test disposition](validation/FPR-3-SURFACES.md)
+and [operation notes](FPR-3-PRODUCT-SURFACES.md).
+
+The final focused surface/artifact/native selection passed **70 checks**. The
+retained engine/security selection passed **314 checks**; the closing hosted/parser
+selection passed **73 checks** after restoring its public parser factory. Across recorded focused
+runs, **529 distinct cases have passing latest outcomes**; this is not a combined
+matrix. Initial failures and their fixes remain in the logs, including migration
+record size, an atomic-reader replacement race, full-footprint fixture assertions
+and socket prerequisites. The explicit local Rust 1.88 toolchain built the native
+shell offline. A deterministic resource archive launched the actual CLI/app with
+its own conventional venv and verified UUID/root/runtime health. No native GUI,
+new signed installer, publication or deployment is claimed.
+
+All 393 original test/support files retain their hashes, and all 104 historical
+failures have an explicit requirement/replacement/mechanism disposition before
+FPR-4. This installation remains Git-only; its explicit runtime refresh preserved
+UUID/root/lane/model, full settings, canonical NEXT and disabled hooks. The retained
+installation footprint still reports old lock/asset drift; no forced full sync or
+hook activation was performed. See the focused closing record for exact paths. Controlled
+Muse tests used only pinned local prerequisites and disposable fixtures. Other
+refs, old worktrees/Muse history, snapshots, rollback fixtures, completed bounded
+pilot and bounded source-release directory are preserved.
+
+The canonical successor is **FPR-4 combined validation**, pending owner acceptance
+of `docs/NEXT.md`, with GPT-6 Astra and Max reasoning. Section 9 of the restoration
+plan defines that matrix. The single independent final review remains FPR-5;
+no intervening review-only handoff is created. Client/host versions, broader remote
+scope, platform/distribution claims, the integrated pilot and final reviewer remain
+explicit owner choices. FPR-3 author checks do not establish release readiness.
 
 Continue on this integration branch; certification remains tied to its recorded
 bounded source. The full-product modules are already
@@ -42,9 +59,9 @@ the newer `32254cd` Muse authority/mirror/reconciliation/credential modules
 selectively. The plan inventories every historical CLI command and maintained
 surface; it does not treat `legacy_main.py` as a supported second product.
 
-FPR-1 unifies CLI/config/migration/binding and automatic canonical NEXT. FPR-2
-integrates independent authority selection, controlled mirrors and repository
-lanes. FPR-3 reconnects remaining maintained commands, app/desktop/hosted surfaces,
+FPR-1 unified CLI/config/migration/binding and automatic canonical NEXT. FPR-2
+integrated independent authority selection, controlled mirrors and repository
+lanes. FPR-3 reconnected remaining maintained commands, app/desktop/hosted surfaces,
 templates and truthful documentation. Preserve all legacy settings and refuse
 contradictions; retain tracked Git NEXT semantics instead of importing M's
 blanket local-binding ignore policy. FPR-0 left source/tests/configuration unchanged. FPR-1 now includes focused
@@ -128,20 +145,23 @@ or multi-user operation, consumer hooks and providers remain outside that claim.
 The old sole-writer/NXR-GSR NEXT is superseded.
 
 FPR-1 closed with one coherent local feature commit, focused evidence, paired
-summaries and canonical FPR-2 successor. FPR-2 closes with its own coherent feature
+summaries and canonical FPR-2 successor. FPR-2 closed with its own coherent feature
 commit and one FPR-3 successor published only by bound `next-write`.
 Runtime/config migration preserved UUID/root/lane, existing NEXT and documents;
 its byte-exact local backup remains available. Only that explicit successor
-publication changes NEXT. Pending owner choices remain actual automatic client
+publication changed NEXT. Pending owner choices remain actual automatic client
 versions, broader Muse transport if required, platform/distribution claims and
-the integrated pilot/independent reviewer. This closeout does not authorize
-FPR-3 execution, consumers, real-consumer hooks, providers/network, live mirror,
-merge, push, publication or deployment. FPR-2 is not complete-product restoration
-or release readiness.
+the integrated pilot/independent reviewer. The accepted FPR-3 action authorized its
+local implementation and focused checks. FPR-3 closes with one coherent feature
+commit and a bound FPR-4 successor awaiting owner acceptance. It does not authorize
+consumers, real-consumer hooks, providers/network, live mirror, merge, push,
+publication or deployment. Combined validation and independent final review
+remain required before a release-readiness claim.
 
 Read the exact current action with `./cli/ok -C . next`. Only `next-write` publishes
 canonical `docs/NEXT.md`; do not regenerate a prompt from this summary or ROADMAP.
 At turn start verify physical cwd, Git root, branch, HEAD and configured name.
 Use disposable repositories for all isolation tests. Current user repository
-scope overrides inherited handoffs. Validation belongs in
-`docs/validation/V1-RECOVERY.md`; update this handover and ROADMAP together.
+scope overrides inherited handoffs. Current focused validation is in
+`docs/validation/FPR-3-SURFACES.md`; preserve the bounded `V1-RECOVERY.md` evidence
+and update this handover and ROADMAP together.

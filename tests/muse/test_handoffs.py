@@ -25,6 +25,13 @@ def init(root, python, *args):
 def commit(root, muse, text='first'):
     (root / 'app.py').write_text('value = ' + repr(text) + '\n')
     muse(root, 'code', 'add', '.')
+    # rc5's recursive staging omits dot-directories. FPR-3 installs the full
+    # portable footprint; stage its nonignored hidden assets explicitly.
+    for relative in ('.claude', '.overseer/policy', '.overseer/version.lock', '.overseer/STANDING-DECISIONS.reference.md'):
+        path = root / relative
+        for item in sorted(path.rglob('*')) if path.is_dir() else [path]:
+            if item.is_file():
+                muse(root, 'code', 'add', item.relative_to(root).as_posix())
     muse(root, 'commit', '-m', text, '--json')
     return muse(root, 'rev-parse', 'HEAD').stdout.strip()
 
