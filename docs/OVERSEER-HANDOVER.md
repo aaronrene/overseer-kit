@@ -1,9 +1,28 @@
-# Overseer Kit — bounded v1 handover
+# Overseer Kit handover
 
-Authority: [scope reset](decisions/V1-SCOPE-RESET.md), 2026-10-14.
+Current authority: owner direction on 2026-10-14 to restore the complete product
+without discarding the certified safety work. The [scope reset](decisions/V1-SCOPE-RESET.md)
+and [bounded certification](validation/V1-CERTIFICATION.md) remain preserved as the
+record of the smaller source snapshot, not the desired full-product endpoint.
 Active implementation: `overseer-kit-v1-recovery-20261014`, branch
 `feat/overseer-v1-recovery-20261014`, reconciled base `d47291d`.
 Both older dirty worktrees remain untouched.
+
+**Current successor: FPR-0 full-product reconciliation analysis.** Use GPT-6
+Astra with Max reasoning. Compare, through this clean worktree's Git objects, the
+complete product/lane line `feat/overseer-context-isolation` (`e9be0c4`), the
+newer Muse authority/mirror line `feat/overseer-v1-recovery` (`32254cd`), and the
+certified repository-bound NEXT safety line at this branch (`3ed3b7d`). Produce
+one authoritative integration plan before changing product code. The plan must
+restore automatic validated NEXT bookends, all maintained product commands,
+per-repository lanes and optional Muse-as-authority with isolated Git mirroring,
+while retaining the safer repository binding and concurrency fixes.
+
+The owner wants a short, deliberate validation path: one architecture analysis,
+focused checks during three implementation waves, one combined validation, and
+one independent final review. Do not create a review cycle for every wave. Do not
+touch the preserved worktrees, access consumers or perform network/remote actions
+during FPR-0. The exact analysis instructions live only in `docs/NEXT.md`.
 
 Preservation and local Muse/base reconciliation are complete. The independent
 architecture/completed-build review of `d8f10d8` against `d47291d` is complete with
@@ -59,14 +78,20 @@ this claim on [author repair evidence](validation/V1-RECOVERY.md#r1r2-findings-r
 the original independent **FINDINGS** verdict remains unchanged. Historical
 baseline **1,391 passed / 104 failed** remains unresolved and was not rerun.
 
-The sole successor is a **certified completion stop**. Release or distribution
-requires a separate owner decision. No further implementation task is selected
-or authorized; certification grants no release, merge, push, publication or
-deployment authority. Do not repeat the completed
+The bounded certification is complete and must not be repeated. Its original
+independent review, repair evidence, installation/rollback exercise and pilot
+remain historical evidence for the smaller claim. Do not repeat the completed
 [review](reviews/V1-RECOVERY-REVIEW.md), installation/rollback or pilot.
 Packaged installation, other platforms, existing-consumer migration, sustained
-or multi-user operation, consumer hooks and providers remain outside the claim.
+or multi-user operation, consumer hooks and providers remain outside that claim.
 The old sole-writer/NXR-GSR NEXT is superseded.
+
+The newly authorized successor is FPR-0, kind `plan`. It may inspect repository
+history and committed branch contents and may create the restoration decision
+document plus paired ROADMAP/HANDOVER/NEXT closeout in this clean worktree. It may
+not implement the restoration, activate hooks, access consumers, use providers or
+network, push, mirror, merge, publish or deploy. The analysis must define all
+later work and the single final review boundary before FPR-1 begins.
 
 Read the exact current action with `./cli/ok -C . next`. Only `next-write` publishes
 canonical `docs/NEXT.md`; do not regenerate a prompt from this summary or ROADMAP.
