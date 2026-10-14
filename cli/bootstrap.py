@@ -19,11 +19,11 @@ def run() -> int:
         print("refused: import_origin_mismatch", file=sys.stderr)
         return 2
     try:
-        from cli.v1 import main
+        from cli.main import main
     except ModuleNotFoundError:
         print("refused: install requirements-v1.txt into this installation's .venv", file=sys.stderr)
         return 2
-    if Path(sys.modules["cli.v1"].__file__).resolve() != root / "cli/v1.py":
+    if Path(sys.modules["cli.main"].__file__).resolve() != root / "cli/main.py":
         print("refused: import_origin_mismatch", file=sys.stderr)
         return 2
     return main()

@@ -12,6 +12,10 @@ FINDINGS verdict and author repair evidence remain separate. Certification grant
 no release, merge, push, publication or deployment authority; release or
 distribution requires a separate owner decision.
 
+Current implementation evidence: [FPR-1 foundation](FPR-1-FOUNDATION.md) records
+the changed dispatcher/config/migration/bookends and focused regression run.
+The bounded evidence below is preserved verbatim; it does not certify FPR-1.
+
 ## Clean-base result before implementation
 
 Base `d47291d5d9030de5ebef713da95efa978c4d8c6e`, clean `overseer-kit-main-stable`.

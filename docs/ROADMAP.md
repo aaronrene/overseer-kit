@@ -18,8 +18,8 @@ The former sole-writer/NXR-GSR chain remains historical and is not the living NE
 | Final bounded-v1 certification | CERTIFIED; exact claim and limits in the final adjudication |
 | Offline bounded source snapshot | Complete locally; retain as an internal reference, not the complete product release |
 | FPR-0 — full-product reconciliation analysis | Complete — [integration plan](decisions/FULL-PRODUCT-RESTORATION-PLAN.md); committed-object analysis and documentation only |
-| FPR-1 — unified foundation and automatic handoff | **NEXT, awaiting owner acceptance** — one active CLI/config, safe repository binding, lossless migration and automatic validated NEXT bookends |
-| FPR-2 — Muse authority, mirror and repository lanes | Planned after FPR-1 — Git-only, Muse-only and Muse-with-Git-mirror with isolated mirroring and per-repository lanes |
+| FPR-1 — unified foundation and automatic handoff | Complete locally — unified dispatcher/schema-3 migration, preserved bindings/settings, canonical Cursor fixture bookends; [focused evidence](validation/FPR-1-FOUNDATION.md) |
+| FPR-2 — Muse authority, mirror and repository lanes | **NEXT, awaiting owner acceptance** — independently selected Git/Muse authority, controlled mirrors and repository lanes; exact scope in the plan |
 | FPR-3 — complete product surface | Planned after FPR-2 — restore governance, review, workspace, verification, routing, landing and local app/desktop/dashboard features |
 | FPR-4 — combined validation | Planned after FPR-3 — one integrated matrix, clean installation/migration/rollback and one noncritical full-flow pilot |
 | FPR-5 — independent final review and release decision | Planned after FPR-4 — one independent review of the integrated build, bounded repairs if required, then owner release decision |
@@ -79,7 +79,7 @@ records both fixes and a 173-pass supported run without rewriting that verdict.
 The completed review is not pending again. [Installation/rollback evidence](validation/V1-RECOVERY.md#clean-source-installation-and-rollback--2026-10-14)
 records current `348e0f3` to previous `333f81e` to current, with explicit runtime
 refresh and preserved UUID, living documents and NEXT. The previous build retains
-known R1/R2 findings. The latest complete supported suite passed **173 tests in
+known R1/R2 findings. The last preserved bounded supported suite passed **173 tests in
 107.49 seconds**; the prior fixture-location error and historical failures remain
 recorded.
 
@@ -96,7 +96,15 @@ trusted-host model, validated on Python 3.14.4, for `status`, `init`, `sync`,
 repair evidence while preserving the independent **FINDINGS** verdict.
 Historical baseline **1,391 passed / 104 failed** remains unchanged.
 
-The canonical successor is **FPR-1**, the local foundation implementation wave,
-pending separate owner acceptance of `docs/NEXT.md`. FPR-0 has not restored or
-released the product. No consumer access, real-consumer hooks, network/provider
-access, merge, push, publication or deployment is authorized by this closeout.
+The canonical successor is **FPR-2**, pending separate owner acceptance of
+`docs/NEXT.md`. The accepted FPR-1 wave completed only local foundation work.
+[Evidence and disposition](validation/FPR-1-FOUNDATION.md) record the source
+selection, focused checks, mechanical repairs, explicit runtime/config migration
+and preserved certification history. The integrated matrix passed 315 tests;
+58 affected-command checks passed after the final unsupported-authority refusal
+repair. Existing canonical NEXT was preserved during
+migration; its successor was published only through the bound CAS writer.
+Cursor hooks ran only in newly created fixtures; actual host versions remain
+unverified. Claude/Codex bookends are instruction-triggered. No consumer access,
+real-consumer hooks, network/provider access, merge, push, publication or deployment
+is authorized. The complete product is not restored or release-ready after FPR-1.

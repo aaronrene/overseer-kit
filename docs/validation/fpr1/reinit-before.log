@@ -1,0 +1,40 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+________________ test_repeated_init_refuses_custom_owned_assets ________________
+
+repo = PosixPath('/private/tmp/overseer-fpr1-reinit-before/test_repeated_init_refuses_cus0/product')
+
+    def test_repeated_init_refuses_custom_owned_assets(repo):
+        launcher = repo/'.overseer/bin/ok'
+        custom = launcher.read_bytes() + b'# owner addition\n'
+        launcher.write_bytes(custom)
+        before = (repo/v1.CONFIG).read_bytes(), (repo/v1.NEXT).read_bytes()
+        result = command('-C', repo, 'init')
+>       assert result.returncode == 2 and 'init_asset_modified' in result.stderr
+E       assert (0 == 2)
+E        +  where 0 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...docs"\n  },\n  "initialized": true,\n  "dry_run": false,\n  "changed": [\n    ".overseer/bin/ok"\n  ]\n}\n', stderr='').returncode
+
+tests/fpr1/test_dispatch.py:145: AssertionError
+______________ test_repeated_init_preserves_preserved_asset_mode _______________
+
+repo = PosixPath('/private/tmp/overseer-fpr1-reinit-before/test_repeated_init_preserves_p0/product')
+
+    def test_repeated_init_preserves_preserved_asset_mode(repo):
+        launcher = repo/'.overseer/bin/ok'
+        launcher.chmod(0o644)
+        lock = {'footprint': [{'path': '.overseer/bin/ok', 'origin': 'preserved',
+                              'sha256': v1.digest(launcher.read_bytes()), 'source': 'bound-launcher'}]}
+        (repo/'.overseer/version.lock').write_bytes(v1.encode(lock))
+        result = command('-C', repo, 'init')
+        assert result.returncode == 0, result.stderr
+>       assert launcher.stat().st_mode & 0o777 == 0o644
+E       AssertionError: assert (33261 & 511) == 420
+E        +  where 33261 = os.stat_result(st_mode=33261, st_ino=1701794130, st_dev=16777234, st_nlink=1, st_uid=502, st_gid=0, st_size=446, st_atime=1792011705, st_mtime=1792011705, st_ctime=1792011706).st_mode
+E        +    where os.stat_result(st_mode=33261, st_ino=1701794130, st_dev=16777234, st_nlink=1, st_uid=502, st_gid=0, st_size=446, st_atime=1792011705, st_mtime=1792011705, st_ctime=1792011706) = stat()
+E        +      where stat = PosixPath('/private/tmp/overseer-fpr1-reinit-before/test_repeated_init_preserves_p0/product/.overseer/bin/ok').stat
+
+tests/fpr1/test_dispatch.py:158: AssertionError
+=========================== short test summary info ============================
+FAILED tests/fpr1/test_dispatch.py::test_repeated_init_refuses_custom_owned_assets
+FAILED tests/fpr1/test_dispatch.py::test_repeated_init_preserves_preserved_asset_mode
+2 failed in 1.62s

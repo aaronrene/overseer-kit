@@ -1,0 +1,217 @@
+{
+  "action": "OVERSEER-FULL-PRODUCT-RESTORATION-FOUNDATION-1",
+  "opening_head": "521c8df5cf2c57d876cdd44adfd1cbc34063d416",
+  "source_pins": {
+    "feat/overseer-context-isolation": "e9be0c4b3cafb149b9f3b7af2ab060f01bbfa504",
+    "feat/overseer-v1-recovery": "32254cd939885d9d6f40634997ea5b9c37ea776c",
+    "main": "d47291d5d9030de5ebef713da95efa978c4d8c6e"
+  },
+  "safety_source": "348e0f323a3b17cd5022a1bfd56fa09a6831c51f",
+  "environment": {
+    "python": "3.14.4",
+    "pyyaml": "6.0.3",
+    "pytest": "9.1.1"
+  },
+  "fixture_parent": "/private/tmp (outside any repository)",
+  "full_focused": {
+    "tests": 315,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 315,
+    "seconds": 268.373,
+    "xml": "focused.xml",
+    "log": "focused.log",
+    "runtime_sha256": "84cb854b69b36c13bfe1ca2e9e3e7644324543d2983070bd026dcaf1e9865106"
+  },
+  "final_affected": {
+    "tests": 58,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 58,
+    "seconds": 47.488,
+    "xml": "final-dispatch.xml",
+    "log": "final-dispatch.log",
+    "runtime_sha256": "dbe7e93e6797611ac410d4e94f40ba7ea34c4419b1389568b3579d558eb353db",
+    "selection": [
+      "tests/fpr1/test_dispatch.py",
+      "tests/v1/test_commands.py"
+    ],
+    "change_after_full_run": "two-line early refusal for unsupported non-migration init authority before Git root discovery"
+  },
+  "unique_cases_with_passing_final_disposition": 317,
+  "claim": "315-case integrated matrix plus 58 affected-command checks after final refusal guard; not a single 317-case final-source run",
+  "historical_baseline": {
+    "passed": 1391,
+    "failed": 104,
+    "rerun": false,
+    "files_preserved": 393,
+    "all_opening_test_support_files_preserved": 400
+  },
+  "runs_including_development_failure_evidence": [
+    {
+      "tests": 2,
+      "failures": 2,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 0,
+      "seconds": 0.074,
+      "xml": "authority-before.xml",
+      "log": "authority-before.log"
+    },
+    {
+      "tests": 1,
+      "failures": 0,
+      "errors": 1,
+      "skipped": 0,
+      "passed": 0,
+      "seconds": 0.276,
+      "xml": "collection-before-repair.xml",
+      "log": "collection-before-repair.log"
+    },
+    {
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 8,
+      "seconds": 6.533,
+      "xml": "final-boundaries.xml",
+      "log": "final-boundaries.log"
+    },
+    {
+      "tests": 58,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 58,
+      "seconds": 47.488,
+      "xml": "final-dispatch.xml",
+      "log": "final-dispatch.log"
+    },
+    {
+      "tests": 315,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 315,
+      "seconds": 268.373,
+      "xml": "focused.xml",
+      "log": "focused.log"
+    },
+    {
+      "tests": 307,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 307,
+      "seconds": 295.051,
+      "xml": "integrated-before-final-fixes.xml",
+      "log": "integrated-before-final-fixes.log"
+    },
+    {
+      "tests": 29,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 28,
+      "seconds": 45.527,
+      "xml": "overseer-fpr1-bookends-20261014-retry.xml",
+      "log": "overseer-fpr1-bookends-20261014-retry.log"
+    },
+    {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 1,
+      "seconds": 2.133,
+      "xml": "overseer-fpr1-bookends-copied-recheck.xml",
+      "log": "overseer-fpr1-bookends-copied-recheck.log"
+    },
+    {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 4,
+      "seconds": 0.42,
+      "xml": "overseer-fpr1-bookends-historical.xml",
+      "log": "overseer-fpr1-bookends-historical.log"
+    },
+    {
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 10,
+      "seconds": 5.472,
+      "xml": "overseer-fpr1-dispatch-r2.xml",
+      "log": "overseer-fpr1-dispatch-r2.log"
+    },
+    {
+      "tests": 10,
+      "failures": 2,
+      "errors": 1,
+      "skipped": 0,
+      "passed": 7,
+      "seconds": 5.851,
+      "xml": "overseer-fpr1-dispatch.xml",
+      "log": "overseer-fpr1-dispatch.log"
+    },
+    {
+      "tests": 64,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 63,
+      "seconds": 68.558,
+      "xml": "overseer-fpr1-smoke.xml",
+      "log": "overseer-fpr1-smoke.log"
+    },
+    {
+      "tests": 2,
+      "failures": 2,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 0,
+      "seconds": 1.616,
+      "xml": "reinit-before.xml",
+      "log": "reinit-before.log"
+    }
+  ],
+  "source_refs_unchanged": true,
+  "native_host_support_verified": false,
+  "real_hooks_installed": false,
+  "independent_review": false,
+  "completed_pilot_and_rollback_rerun": false,
+  "transcript_only_development_runs": [
+    {
+      "selection": "tests/fpr1/test_bookends.py",
+      "passed": 6,
+      "errors": 23,
+      "seconds": 12.79,
+      "standalone_log_or_xml": false,
+      "cause": "fresh-init advisory lock directory absent; repaired in this wave"
+    },
+    {
+      "selection": "tests/fpr1/test_config.py (initial)",
+      "passed": 29,
+      "failures": 2,
+      "standalone_log_or_xml": false,
+      "cause": "invalid fixture and overly narrow expected diagnostic; corrected without waiving validator"
+    },
+    {
+      "selection": "tests/fpr1/test_config.py (author final)",
+      "passed": 39,
+      "failures": 0,
+      "standalone_log_or_xml": false
+    }
+  ],
+  "static_checks": {
+    "shell_syntax": "passed for cli/ok, cli/overseer, bound launcher and focused runner",
+    "documentation_links": "modified local Markdown links resolve",
+    "staged_diff_check": "passed excluding raw pytest .log/.xml evidence; unfiltered check reports only pytest-generated trailing whitespace preserved verbatim"
+  }
+}

@@ -10,6 +10,8 @@ desktop/src-tauri/resources/
 .env.*
 !.env.example
 .overseer/scratch/
+# Byte-exact local migration backups; tracked bindings and NEXT remain tracked.
+.overseer/migrations/
 .muse/
 .overseer/.muse-bridge-sentinel
 .overseer/last_governance_sync

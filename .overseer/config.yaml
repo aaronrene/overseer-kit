@@ -1,13 +1,49 @@
-schema: 1
+vcs:
+  regime: git-only
+  canonical: git
+  git:
+    remote: origin
+    main_branch: main
+    mirror_branch: null
+    feature_branch_pattern: feat/{slug}
+  muse:
+    staging_remote: null
+    main_branch: null
+    working_dir: null
+docs:
+  handover: OVERSEER-HANDOVER.md
+  roadmap: ROADMAP.md
+  coordination: null
+  standing_decisions: ROADMAP.md
+  handover_title: Overseer Handover
+  roadmap_title: Roadmap
+  canonical_next: docs/NEXT.md
+  default_lane: product
+  lanes:
+    product:
+      handover: OVERSEER-HANDOVER.md
+      roadmap: ROADMAP.md
+      handover_title: Overseer Handover
+      roadmap_title: Roadmap
+      repo_id: 6988dc4a-5f22-454b-9d68-ac5905b383bf
+thresholds:
+  realign_max_commits: 50
+  drift_warn_only: true
+freeze_contract:
+  enabled: true
+  reviewer: agent
+  human_escalation:
+  - security
 repo:
   name: overseer-kit
   id: 6988dc4a-5f22-454b-9d68-ac5905b383bf
   root: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014
+  root_relative_docs: docs
 context:
   lane: product
   model: GPT-6 Astra
 runtime:
   root: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014
   version: 1.0.0.dev1
-  sha256: b7fa1921fcb586ac6fcf8422f094fe20f9f9a438f64eecdaddd97d347115db95
-vcs: git
+  sha256: dbe7e93e6797611ac410d4e94f40ba7ea34c4419b1389568b3579d558eb353db
+schema: 3

@@ -8,14 +8,18 @@ Active implementation: `overseer-kit-v1-recovery-20261014`, branch
 `feat/overseer-v1-recovery-20261014`, reconciled base `d47291d`.
 Both older dirty worktrees remain untouched.
 
-**Current successor: FPR-1 unified foundation and automatic NEXT, awaiting owner
-acceptance.** Use GPT-6 Astra with Max reasoning. FPR-0 is complete as committed-
-object analysis and documentation only; see the
-[full-product restoration plan](decisions/FULL-PRODUCT-RESTORATION-PLAN.md).
-The opening HEAD was `0b763df6d7c9066582d27b349a731a4ff70a43e2`; identity, clean
-state, pinned refs and the required single-closing-commit NEXT all validated.
+**Current successor: FPR-2 authority, controlled mirrors and repository lanes,
+awaiting owner acceptance.** Use GPT-6 Astra with Max reasoning. The accepted
+FPR-1 wave completed the unified dispatcher/config/migration/bookend foundation;
+see [focused evidence and source/test disposition](validation/FPR-1-FOUNDATION.md).
+FPR-1 opened at `521c8df5cf2c57d876cdd44adfd1cbc34063d416`, with verified identity,
+clean state, pinned refs and the exact FPR-0 documentation closing commit.
+The [restoration plan](decisions/FULL-PRODUCT-RESTORATION-PLAN.md) still defines
+three implementation waves, one combined FPR-4 matrix and one independent FPR-5
+review. FPR-2/3 were not implemented or authorized by FPR-1.
 
-Continue from this certified branch. The full-product modules are already
+Continue on this integration branch; certification remains tied to its recorded
+bounded source. The full-product modules are already
 retained from `d47291d`; 627 of 633 examined product/test paths match the preserved
 `e9be0c4` line, with none absent and the six differences retaining the Muse branch
 compatibility repair. Keep `348e0f3` repository/NEXT concurrency safety and port
@@ -28,8 +32,14 @@ integrates independent authority selection, controlled mirrors and repository
 lanes. FPR-3 reconnects remaining maintained commands, app/desktop/hosted surfaces,
 templates and truthful documentation. Preserve all legacy settings and refuse
 contradictions; retain tracked Git NEXT semantics instead of importing M's
-blanket local-binding ignore policy. Product source, tests and configuration are
-unchanged by FPR-0; no suites or completed exercises were rerun.
+blanket local-binding ignore policy. FPR-0 left source/tests/configuration unchanged. FPR-1 now includes focused
+regressions through the integrated entrypoint, explicit schema-3/runtime migration
+and deterministic recovery checks. The integrated matrix passed 315 tests;
+58 affected-command checks passed after the final unsupported-authority refusal
+repair. The completed bounded review, installation/
+rollback exercise and pilot were not rerun. Active native hooks remain disabled;
+Cursor event fixtures and truthful instruction-triggered Claude/Codex bookends
+are documented without an unverified host delivery claim.
 
 The validation path is focused author checks during the three implementation
 waves, one combined FPR-4 matrix and one independent FPR-5 review, bounded repairs
@@ -47,7 +57,7 @@ R1/R2 at base `333f81e9bf847dcd418b305b931b1279da3c7ade` is complete: writer con
 is rechecked after locking and before replacement; closing-commit checks use one
 captured commit ID, and readers recheck context before output.
 
-The latest local `.venv` complete supported suite passed **173 tests in 107.49 seconds**,
+The last preserved bounded `.venv` supported suite passed **173 tests in 107.49 seconds**,
 with zero failures, errors or skips. This includes 20 new deterministic regression
 cases (19 failed before repair), existing concurrent CAS and unborn/closing-commit
 behavior, both isolation directions and 55 retained original tests. All 393
@@ -102,11 +112,16 @@ Packaged installation, other platforms, existing-consumer migration, sustained
 or multi-user operation, consumer hooks and providers remain outside that claim.
 The old sole-writer/NXR-GSR NEXT is superseded.
 
-FPR-0 closes with one documentation-only commit containing the plan, paired
-summaries and one FPR-1 prompt published through bound `next-write`. FPR-1 remains
-unauthorized until the owner separately accepts that prompt. This closeout does
-not authorize consumers, real-consumer hooks, providers/network, push, mirror,
-merge, publication or deployment. Do not call the product restored or release-ready.
+FPR-1 closes with one coherent local feature commit, its focused evidence,
+paired summaries and canonical FPR-2 successor published by bound `next-write`.
+Runtime/config migration preserved UUID/root/lane, existing NEXT and documents;
+its byte-exact local backup remains available. Only that explicit successor
+publication changes NEXT. Pending owner choices remain actual automatic client
+versions, broader Muse transport if required, platform/distribution claims and
+the integrated pilot/independent reviewer. This closeout does not authorize
+FPR-2 execution, consumers, real-consumer hooks, providers/network, live mirror,
+merge, push, publication or deployment. FPR-1 is not complete-product restoration
+or release readiness.
 
 Read the exact current action with `./cli/ok -C . next`. Only `next-write` publishes
 canonical `docs/NEXT.md`; do not regenerate a prompt from this summary or ROADMAP.

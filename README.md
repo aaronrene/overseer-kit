@@ -1,8 +1,11 @@
-> **2026-10-14 recovery branch:** the supported first milestone is the bounded
-> repository/NEXT CLI. See [quickstart](docs/V1-QUICKSTART.md),
-> [scope reset](docs/decisions/V1-SCOPE-RESET.md), and
-> [validation](docs/validation/V1-RECOVERY.md). The earlier product documentation
-> below is historical and does not authorize its workflows in this recovery task.
+> **FPR-1 foundation:** the supported entrypoint is the isolated `cli/ok`, with
+> schema-3 configuration, explicit migration and canonical NEXT bookends.
+> See [current CLI/migration notes](docs/validation/FPR-1-FOUNDATION.md),
+> [quickstart](docs/V1-QUICKSTART.md), and the
+> [restoration plan](docs/decisions/FULL-PRODUCT-RESTORATION-PLAN.md).
+> FPR-2/3 remain pending; this is not a complete-product or release-readiness claim.
+> The earlier product documentation below is historical pending FPR-3 alignment;
+> its unavailable workflows and direct Python invocation are not supported paths.
 
 # 🆗 Overseer Kit
 

@@ -1,4 +1,9 @@
-# Bounded v1 source installation
+# Repository-bound source installation
+
+FPR-1 adds the unified schema-3 foundation and explicit migration described in
+[FPR-1 notes](validation/FPR-1-FOUNDATION.md). The certification below remains
+historical evidence for its unchanged, narrower source snapshot. FPR-1 is not
+full-product certification; FPR-2/3 implementation and FPR-4/5 remain pending.
 
 The [certified bounded milestone](validation/V1-CERTIFICATION.md) covers
 repository-bound source v1 for local POSIX Git repositories/worktrees under the
@@ -30,8 +35,9 @@ Initialize a disposable Git repository using this installation's absolute CLI:
 ```
 
 Init creates a UUID and binds the physical checkout plus runtime location/hash.
-It preserves existing ROADMAP and HANDOVER. An existing legacy config is refused;
-automatic migration or rebinding is not part of this milestone. A bound launcher
+It preserves existing ROADMAP and HANDOVER. Legacy configs can be inspected with
+`status` and normalized only through explicit `init --migrate --dry-run` /
+digest-checked plan apply. Automatic rebinding remains unavailable. A bound launcher
 at `.overseer/bin/ok` refuses another repository. `--hooks` is opt-in and exercised
 only in disposable fixtures in this task; this development checkout has automatic
 hooks disabled. Sync preserves NEXT and documents, repairs executable modes, and
@@ -39,13 +45,16 @@ explicitly accepts code changes only from the already-bound installation.
 
 NEXT is canonical `docs/NEXT.md`. See [the writer contract](PRINT-NEXT.md).
 No public command executes prompts, publishes, merges, or contacts providers.
-The former command surface remains in `cli/legacy_main.py` as historical source.
-Do not use it as a way around v1 repository checks.
+The former command surface remains in `cli/legacy_main.py` as historical source;
+executing that dispatcher refuses. Both `cli/ok` and `cli/overseer` reach the
+one dispatcher through isolated bootstrap. Claude/Codex entry/close instructions
+invoke the bound reader and are labelled instruction-triggered. Cursor native
+start/stop registrations are fixture-tested; actual host versions await FPR-4.
 
 Run the complete supported suite:
 
 ```sh
-PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest -q -p no:cacheprovider
+sh docs/validation/fpr1/run-focused.sh
 ```
 
 The independent review is complete; R1/R2 repair evidence is recorded in

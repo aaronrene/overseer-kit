@@ -11,6 +11,10 @@ current authorization. Preserve both older dirty worktrees and local Muse histor
 
 Use this installation's conventional `.venv` and `cli/ok`. Runtime symlinks are
 normal. `ok -C ROOT status` and `ok -C ROOT next` are read-only and repository-bound.
+At session entry and after the closing commit, invoke the bound
+`.overseer/bin/ok -C ROOT next` and display its validated action. These Codex
+bookends are instruction-triggered; no native Codex lifecycle delivery is claimed.
+Report any refusal without guessing a replacement task.
 Only `next-write` publishes canonical `docs/NEXT.md`, with explicit context and
 expected prior digest. ROADMAP and HANDOVER are paired summaries, not alternative
 prompt sources. Update both when the milestone changes.

@@ -1,0 +1,62 @@
+{
+  "reason": "Explicit binding refresh after final unsupported-authority refusal guard",
+  "before_config_sha256": "329947f35c21969a4ae7304b93eeff6084966e20f29d778e5aca0f595cbf007c",
+  "after_config_sha256": "a8a59cde1625b373670bf7116c8a564ab691bf72c5e304b8c1d9aa41fc0ba32a",
+  "before_runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "84cb854b69b36c13bfe1ca2e9e3e7644324543d2983070bd026dcaf1e9865106"
+  },
+  "after_runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "dbe7e93e6797611ac410d4e94f40ba7ea34c4419b1389568b3579d558eb353db"
+  },
+  "identity_settings_and_next_preserved": true,
+  "next_sha256": "590496d30ba196f670e5c71ceeecf525dbb17f606581172a9e997f24754c11fd",
+  "operations": [
+    {
+      "argv": [
+        "./.overseer/bin/ok",
+        "sync",
+        "--dry-run",
+        "--json"
+      ],
+      "returncode": 0,
+      "stdout": "{\"ok\": true, \"repository\": {\"name\": \"overseer-kit\", \"id\": \"6988dc4a-5f22-454b-9d68-ac5905b383bf\", \"root\": \"/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014\", \"root_relative_docs\": \"docs\"}, \"changed\": [\".overseer/config.yaml\"], \"classification\": [{\"path\": \".overseer/bin/ok\", \"classification\": \"unchanged\", \"origin\": \"unrecorded\", \"before\": \"1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4\", \"after\": \"1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4\"}], \"preserved\": [], \"dry_run\": true, \"diff\": {}, \"next\": \"preserved\"}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "./.overseer/bin/ok",
+        "sync",
+        "--json"
+      ],
+      "returncode": 0,
+      "stdout": "{\"ok\": true, \"repository\": {\"name\": \"overseer-kit\", \"id\": \"6988dc4a-5f22-454b-9d68-ac5905b383bf\", \"root\": \"/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014\", \"root_relative_docs\": \"docs\"}, \"changed\": [\".overseer/config.yaml\"], \"classification\": [{\"path\": \".overseer/bin/ok\", \"classification\": \"unchanged\", \"origin\": \"unrecorded\", \"before\": \"1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4\", \"after\": \"1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4\"}], \"preserved\": [], \"dry_run\": false, \"diff\": {}, \"next\": \"preserved\"}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "./.overseer/bin/ok",
+        "status",
+        "--json"
+      ],
+      "returncode": 0,
+      "ok": true,
+      "next_sha256": "590496d30ba196f670e5c71ceeecf525dbb17f606581172a9e997f24754c11fd"
+    },
+    {
+      "argv": [
+        "./.overseer/bin/ok",
+        "next",
+        "--expect-next",
+        "590496d30ba196f670e5c71ceeecf525dbb17f606581172a9e997f24754c11fd",
+        "--json"
+      ],
+      "returncode": 0,
+      "ok": true,
+      "next_sha256": "590496d30ba196f670e5c71ceeecf525dbb17f606581172a9e997f24754c11fd"
+    }
+  ]
+}

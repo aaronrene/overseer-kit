@@ -1,0 +1,36 @@
+{
+  "opening_head": "521c8df5cf2c57d876cdd44adfd1cbc34063d416",
+  "historical_files_preserved": 393,
+  "protected_artifacts": [
+    {
+      "path": ".cursor/hooks.json",
+      "sha256": "2f3f0de72a829aa7ad28055c884127a5db5660c5c78556ac7b8aea8dd2e2ac0e",
+      "unchanged": true
+    },
+    {
+      "path": "docs/reviews/V1-RECOVERY-REVIEW.md",
+      "sha256": "d6bd4958fcade51005bede1b01efbd29b6c64c3b7c5fdf14c147e133d0fc90e0",
+      "unchanged": true
+    },
+    {
+      "path": "docs/validation/test-results.json",
+      "sha256": "52d625598e9de2f051e387373f6f4664f43330a4ce1abddc5a4e86babef6fc12",
+      "unchanged": true
+    },
+    {
+      "path": "docs/validation/install-rollback-results.json",
+      "sha256": "29a34ed755bd1e9d880b83271c7c0c042443ec830c08899de1ab0040fec89dbf",
+      "unchanged": true
+    },
+    {
+      "path": "docs/validation/pilot-results.json",
+      "sha256": "16c460c68a251f37be92c33a614e96094b6e1ad5eab200df519fd762a787b407",
+      "unchanged": true
+    }
+  ],
+  "python": "3.14.4",
+  "pyyaml": "6.0.3",
+  "pytest": "9.1.1",
+  "worktree_and_source_refs_verified": true,
+  "no_old_worktree_or_pilot_access": true
+}

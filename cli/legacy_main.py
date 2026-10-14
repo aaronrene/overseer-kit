@@ -6,6 +6,10 @@ import argparse
 import sys
 from pathlib import Path
 
+if __name__ == "__main__":
+    print("refused: historical dispatcher; use cli/ok", file=sys.stderr)
+    raise SystemExit(2)
+
 from cli.args import extract_global_args
 
 COMMANDS = frozenset(
@@ -432,7 +436,14 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main(argv: list[str] | None = None, *, ctx: CliContext | None = None) -> int:
-    """CLI main; return exit code."""
+    """The archived dispatcher is never a public or injectable execution path."""
+    print("refused: historical dispatcher; use cli/ok", file=sys.stderr)
+    return 2
+
+
+def _archived_dispatch(argv: list[str] | None = None, *, ctx: CliContext | None = None) -> int:
+    """Historical source reference; engines retain their own injectable APIs."""
+    raise RuntimeError("archived dispatcher is not executable; use cli/ok")
     parser = build_parser()
     raw_argv = list(argv) if argv is not None else sys.argv[1:]
     global_argv, rest_argv = extract_global_args(raw_argv)

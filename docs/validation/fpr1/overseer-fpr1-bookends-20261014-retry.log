@@ -1,0 +1,26 @@
+........................F....                                            [100%]
+=================================== FAILURES ===================================
+__________ test_copied_or_edited_hook_cannot_become_owned_by_filename __________
+
+bookend_repo = PosixPath("/private/tmp/overseer-fpr1-bookends-20261014-retry/test_copied_or_edited_hook_can0/fixture with spaces and 'quote'")
+tmp_path = PosixPath('/private/tmp/overseer-fpr1-bookends-20261014-retry/test_copied_or_edited_hook_can0')
+
+    def test_copied_or_edited_hook_cannot_become_owned_by_filename(bookend_repo, tmp_path):
+        root = bookend_repo
+        other = seed(tmp_path / "other")
+        initialized = command("-C", other, "init", "--hooks")
+        assert initialized.returncode == 0, initialized.stderr
+        source = root / bookends.EVENT_PATHS["sessionStart"]
+        shutil.copyfile(other / bookends.EVENT_PATHS["sessionStart"], source)
+        # Direct internal transport entry still verifies the bytes at its claimed path.
+        refused = command("-C", root, "hook", "--hook-path", source, input="{}",
+                          executable=root / ".overseer/bin/ok")
+        assert refused.returncode == 2 and not refused.stdout
+>       assert "hook_binding_mismatch" in refused.stderr
+E       assert 'hook_binding_mismatch' in "refused: runtime_changed: run this installation's explicit sync\n"
+E        +  where "refused: runtime_changed: run this installation's explicit sync\n" = CompletedProcess(args=["/private/tmp/overseer-fpr1-bookends-20261014-retry/test_copied_or_edited_hook_can0/fixture wit...n-start-next.sh"], returncode=2, stdout='', stderr="refused: runtime_changed: run this installation's explicit sync\n").stderr
+
+tests/fpr1/test_bookends.py:155: AssertionError
+=========================== short test summary info ============================
+FAILED tests/fpr1/test_bookends.py::test_copied_or_edited_hook_cannot_become_owned_by_filename
+1 failed, 28 passed in 45.53s

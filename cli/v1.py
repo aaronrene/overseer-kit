@@ -23,8 +23,25 @@ CONFIG = ".overseer/config.yaml"
 NEXT = "docs/NEXT.md"
 KINDS = ("plan", "implement", "review", "maintain", "stop")
 TOKEN = re.compile(r"[A-Za-z0-9][A-Za-z0-9_.-]{0,127}\Z")
-RUNTIME_FILES = ("cli/__init__.py", "cli/bootstrap.py", "cli/main.py", "cli/ok",
-                 "cli/overseer", "cli/v1.py", "cli/v1_io.py", "cli/digest.py", "VERSION")
+def runtime_files():
+    """Owned code/resources used by normalization, migration and bound assets.
+
+    Include complete cli/adapter source families so lazy helpers cannot escape
+    the binding. Optional hosted configuration validators do not load transports.
+    Paths and bytes both participate; adding or removing a source changes it.
+    """
+    paths = {"VERSION", "cli/ok", "cli/overseer"}
+    for directory in ("cli", "adapters"):
+        paths.update(p.relative_to(KIT).as_posix() for p in (KIT / directory).rglob("*.py"))
+    paths.update("tools/hosted_dashboard/" + p for p in
+                 ("__init__.py", "config.py", "hosts.py", "validators.py"))
+    for directory in ("cursor", "templates", "policy"):
+        paths.update(p.relative_to(KIT).as_posix() for p in (KIT / directory).rglob("*")
+                     if p.is_file() and "__pycache__" not in p.parts)
+    return tuple(sorted(paths))
+
+
+RUNTIME_FILES = runtime_files()
 
 
 class UniqueLoader(yaml.SafeLoader):
@@ -89,8 +106,18 @@ def git(root: Path, *args: str, optional: bool = False, raw: bool = False):
 def root_for(args) -> Path:
     cwd = Path.cwd().resolve()
     requested = Path(args.repo).expanduser().resolve(strict=True) if args.repo else cwd
-    top = git(requested, "rev-parse", "--show-toplevel")
-    root = Path(top).resolve(strict=True)
+    # A configured Muse/legacy root can be inspected without probing Git.
+    # Never walk beyond the nearest repository boundary into a parent checkout.
+    selected = requested
+    if not args.repo:
+        while not (selected / CONFIG).exists():
+            if (selected / ".git").exists() or (selected / ".muse").exists() or selected == selected.parent:
+                break
+            selected = selected.parent
+    if (selected / CONFIG).exists() or (selected / CONFIG).is_symlink():
+        root = selected
+    else:
+        root = Path(git(requested, "rev-parse", "--show-toplevel")).resolve(strict=True)
     if args.repo and requested != root:
         raise Refusal("explicit_repo_must_be_root")
     if args.bound_root and root != Path(args.bound_root):
@@ -124,36 +151,31 @@ def head(root):
 def runtime():
     if (KIT / "VERSION").read_text().strip() != VERSION:
         raise Refusal("runtime_version_mismatch")
-    data = b"".join(p.encode() + b"\0" + (KIT / p).read_bytes() + b"\0" for p in RUNTIME_FILES)
+    data = b"".join(p.encode() + b"\0" + confined(KIT, p).read_bytes() + b"\0"
+                    for p in runtime_files())
     return {"root": str(KIT), "version": VERSION, "sha256": digest(data)}
 
 
 def config_for(root, args, *, syncing=False):
+    from cli.product_config import normalize
     data = read(root, CONFIG)
-    config = decode(data)
-    keys(config, ("schema", "repo", "context", "runtime", "vcs"))
-    if type(config["schema"]) is not int or config["schema"] != 1 or config["vcs"] != "git":
-        raise Refusal("config_version_or_vcs_unsupported")
-    keys(config["repo"], ("name", "id", "root"))
-    keys(config["context"], ("lane", "model"))
-    keys(config["runtime"], ("root", "version", "sha256"))
+    normalized = normalize(data, root=root)
+    config = normalized.data
+    if not normalized.bound:
+        raise Refusal("configuration_unbound: inspect with status; use init --migrate")
     repo = config["repo"]
-    label(repo["name"])
-    try:
-        if str(uuid.UUID(repo["id"])) != repo["id"]:
-            raise ValueError()
-    except (ValueError, TypeError, AttributeError):
-        raise Refusal("repo_identity_invalid") from None
     if repo["root"] != str(root):
         raise Refusal("config_repository_mismatch")
-    if args.bound_id and repo["id"] != args.bound_id:
+    if getattr(args, "bound_id", None) and repo["id"] != args.bound_id:
         raise Refusal("launcher_identity_mismatch")
-    token(config["context"]["lane"])
-    label(config["context"]["model"])
     if config["runtime"]["root"] != str(KIT):
         raise Refusal("runtime_installation_mismatch")
     if not syncing and config["runtime"] != runtime():
         raise Refusal("runtime_changed: run this installation's explicit sync")
+    if config["vcs"]["canonical"] != "git":
+        raise Refusal("authority_unavailable: Muse operations require FPR-2; no Git fallback")
+    if Path(git(root, "rev-parse", "--show-toplevel")).resolve(strict=True) != root:
+        raise Refusal("config_repository_mismatch")
     return config, data
 
 
@@ -192,10 +214,16 @@ def parse_next(data):
         raise Refusal("next_frontmatter_invalid")
     meta = decode(parts[0].encode())
     prompt = parts[1]
+    if not isinstance(meta, dict):
+        raise Refusal("schema_keys_invalid")
+    extra = ("vcs", "source_id") if meta.get("schema") == 2 else ()
     keys(meta, ("schema", "repo_id", "repo_root", "branch", "base_head", "lane",
-                "model", "action_id", "action_kind", "prompt_sha256"))
-    if type(meta["schema"]) is not int or meta["schema"] != 1:
+                "model", "action_id", "action_kind", "prompt_sha256", *extra))
+    if type(meta["schema"]) is not int or meta["schema"] not in (1, 2):
         raise Refusal("next_version_invalid")
+    if extra and (meta["vcs"] not in ("git", "muse") or
+                  (meta["vcs"] == "git" and meta["source_id"] is not None)):
+        raise Refusal("next_revision_kind_invalid")
     for field in ("repo_id", "repo_root", "branch", "base_head", "model"):
         label(meta[field])
     token(meta["lane"])
@@ -220,6 +248,8 @@ def validate_prompt(prompt):
 
 def validate_next(root, config, data, args, *, context, freshness=True):
     meta, prompt = parse_next(data)
+    if meta.get("vcs", "git") != "git":
+        raise Refusal("authority_unavailable: Muse NEXT requires FPR-2")
     for field, expected in {"repo_id": config["repo"]["id"], "repo_root": str(root),
                             "branch": context["branch"], **config["context"]}.items():
         if meta[field] != expected:
@@ -283,19 +313,16 @@ def launcher(root, identity):
 
 
 def hook_script(root):
-    return ("#!/bin/sh\nset -eu\nexec " + shlex.quote(str(root / ".overseer/bin/ok"))
-            + ' hook --hook-path "$0"\n').encode()
+    from cli.product_bookends import hook_script as render_hook
+    return render_hook(root)
 
 
 def assets(root, config, hooks=False):
     result = {".overseer/bin/ok": launcher(root, config["repo"]["id"])}
     if hooks:
-        for name in ("session-start-next.sh", "session-end-closeout.sh"):
-            result[".cursor/hooks/" + name] = hook_script(root)
-        result[".cursor/hooks.json"] = (json.dumps({"version": 1, "hooks": {
-            "sessionStart": [{"command": str(root / ".cursor/hooks/session-start-next.sh")}],
-            "stop": [{"command": str(root / ".cursor/hooks/session-end-closeout.sh")}],
-        }}, indent=2) + "\n").encode()
+        from cli.product_bookends import cursor_assets, instruction_assets
+        result.update(cursor_assets(root))
+        result.update(instruction_assets(root))
     return result
 
 
@@ -315,165 +342,82 @@ def apply_assets(root, mapping, *, dry_run=False):
 
 
 def initialize(root, args):
-    if args.regime != "git-only":
-        raise Refusal("v1_requires_git_checkout")
-    confined(root, CONFIG, parents=True)
+    from cli.product_config import normalize
+    from cli.product_migration import apply_mapping, classify_assets
+    if args.regime not in (None, "git-only"):
+        raise Refusal("authority_unavailable: init authority activation requires FPR-2")
     existing = read(root, CONFIG, missing=True)
     if existing is not None:
         config, _ = config_for(root, args)
+        for field, requested in (("lane", args.lane), ("model", args.model)):
+            if requested is not None and config["context"][field] != requested:
+                raise Refusal("init_context_change_requires_selection")
+        if args.repo_name is not None and config["repo"]["name"] != args.repo_name:
+            raise Refusal("init_repository_name_mismatch")
     else:
-        config = {"schema": 1, "repo": {"name": label(args.repo_name or root.name),
+        bounded = {"schema": 1, "repo": {"name": label(args.repo_name or root.name),
                   "id": str(uuid.uuid4()), "root": str(root)}, "context": {
-                  "lane": token(args.lane), "model": label(args.model)},
+                  "lane": token(args.lane or "product"), "model": label(args.model or "GPT-6 Astra")},
                   "runtime": runtime(), "vcs": "git"}
-    context = capture_context(root, existing if existing is not None else encode(config))
-    confined(root, NEXT, parents=True)
+        config = normalize(encode(bounded), root=root).data
+    observed = capture_context(root, existing)
+    config_data = encode(config) if existing is None else existing
     current = read(root, NEXT, missing=True)
     if current is not None:
-        validate_next(root, config, current, argparse.Namespace(), context=context, freshness=False)
-    # Refuse preexisting unmanaged launchers rather than silently taking ownership.
+        validate_next(root, config, current, argparse.Namespace(), context=observed, freshness=False)
     mapping = assets(root, config, args.hooks)
-    for path in ("docs/ROADMAP.md", "docs/OVERSEER-HANDOVER.md"):
-        confined(root, path)
+    if existing is not None:
+        for row in classify_assets(root, mapping, config):
+            if row["classification"] == "preserved":
+                mapping.pop(row["path"])
+            elif row["classification"] in ("consumer-modified", "both-changed"):
+                raise Refusal("init_asset_modified: " + row["path"])
     for path in mapping:
-        confined(root, path, parents=True)
+        confined(root, path, missing_parents=True)
         old = read(root, path, missing=True)
         if existing is None and old is not None:
             raise Refusal("init_asset_exists: " + path)
-    if existing is None:
-        atomic(root, CONFIG, encode(config), expected="absent")
     for path, body in {"docs/ROADMAP.md": "# Roadmap\n\nCurrent action: docs/NEXT.md.\n",
                        "docs/OVERSEER-HANDOVER.md": "# Handover\n\nRead current action with `ok next`.\n"}.items():
+        confined(root, path, missing_parents=True)
         if read(root, path, missing=True) is None:
-            atomic(root, path, body.encode(), expected="absent")
-    if current is None:
+            mapping[path] = body.encode()
+    if existing is None:
+        mapping[CONFIG] = config_data  # Binding is committed after all other assets.
+
+    def recheck():
+        if (read(root, CONFIG, missing=True) != existing or runtime() != config["runtime"] or
+                branch(root) != observed["branch"] or head(root) != observed["head"] or
+                Path(git(root, "rev-parse", "--show-toplevel")).resolve() != root):
+            raise Refusal("init_context_changed")
+
+    # All destinations are preflighted without mutation before creating the
+    # directory used for the ordinary advisory lock on a fresh installation.
+    for path in mapping:
+        confined(root, path, missing_parents=True)
+    if not args.dry_run:
+        confined(root, CONFIG, parents=True)
+    changed = apply_mapping(root, mapping, check_context=recheck, dry_run=args.dry_run)
+    if not args.dry_run and existing is None and current is None:
         initial = argparse.Namespace(action_id="SETUP", action_kind="plan", bound_id=args.bound_id)
-        write_next(root, config, initial, "Choose the first bounded task for this repository.\n",
-                   expected="absent", context=context)
-    apply_assets(root, mapping)
-    return {"ok": True, "repository": config["repo"], "initialized": True}
+        write_next(root, config, initial, "Choose the first task for this repository.\n",
+                   expected="absent", context=capture_context(root, config_data))
+    return {"ok": True, "repository": config["repo"], "initialized": not args.dry_run,
+            "dry_run": args.dry_run, "changed": changed}
 
 
 def parser():
-    p = argparse.ArgumentParser(prog="ok", description="Bounded repository and NEXT utility",
-                                allow_abbrev=False)
-    def globals_to(target):
-        for names, opts in [(("-C", "--repo"), {}), (("--config",), {}),
-                            (("--json",), {"action": "store_true"}),
-                            (("--bound-root",), {"help": argparse.SUPPRESS}),
-                            (("--bound-id",), {"help": argparse.SUPPRESS}),
-                            (("--binding-path",), {"help": argparse.SUPPRESS})]:
-            target.add_argument(*names, default=argparse.SUPPRESS, **opts)
-    globals_to(p)
-    p.set_defaults(repo=None, config=None, json=False, bound_root=None, bound_id=None, binding_path=None)
-    p.add_argument("--version", action="version", version=VERSION)
-    sub = p.add_subparsers(dest="command", required=True)
-    for name in ("status", "init", "sync", "next", "next-write", "hook"):
-        cmd = sub.add_parser(name, allow_abbrev=False)
-        globals_to(cmd)
-        if name == "init":
-            cmd.add_argument("--regime", default="git-only")
-            cmd.add_argument("--repo-name")
-            cmd.add_argument("--lane", default="product")
-            cmd.add_argument("--model", default="GPT-6 Astra")
-            cmd.add_argument("--non-interactive", action="store_true")
-        if name in ("init", "sync"):
-            cmd.add_argument("--hooks", action="store_true", help="Install bound hooks (fixtures only in this milestone)")
-        if name == "sync":
-            cmd.add_argument("--dry-run", action="store_true")
-        if name in ("next", "next-write", "status"):
-            for field in ("repo-id", "branch", "lane", "model", "action-id", "action-kind"):
-                cmd.add_argument("--" + field, required=name == "next-write",
-                                 choices=KINDS if field == "action-kind" else None)
-            cmd.add_argument("--expect-next", required=name == "next-write")
-        if name == "next-write":
-            cmd.add_argument("--prompt-file", required=True, help="Confined repository-relative UTF-8 file")
-        if name == "hook":
-            cmd.add_argument("--hook-path", required=True)
-    return p
+    """Compatibility import for tests; there is one product parser."""
+    from cli.main import parser as product_parser
+    return product_parser()
 
 
 def main(argv=None):
-    argv = list(sys.argv[1:] if argv is None else argv)
-    try:
-        # Argparse's last-wins behavior must not override a bound launcher's root.
-        for aliases in (("-C", "--repo"), ("--config",), ("--bound-root",), ("--bound-id",), ("--binding-path",)):
-            if sum(a.split("=", 1)[0] in aliases or (a.startswith("-C") and a != "-C" and "-C" in aliases) for a in argv) > 1:
-                raise Refusal("duplicate_binding_option")
-        args = parser().parse_args(argv)
-        root = root_for(args)
-        if args.command == "init":
-            result = initialize(root, args)
-        else:
-            config, original = config_for(root, args, syncing=args.command == "sync")
-            if args.command == "sync":
-                confined(root, NEXT)
-                updated = dict(config, runtime=runtime())
-                mapping = assets(root, updated, args.hooks)
-                mapping[CONFIG] = encode(updated)
-                changed = apply_assets(root, mapping, dry_run=args.dry_run)
-                result = {"ok": True, "repository": config["repo"], "changed": changed, "dry_run": args.dry_run}
-            elif args.command == "next-write":
-                context = capture_context(root, original)
-                prompt = read(root, args.prompt_file).decode("utf-8")
-                if not prompt.endswith("\n"):
-                    prompt += "\n"
-                # The expected digest applies to the old NEXT, not the new candidate.
-                expected = args.expect_next
-                args.expect_next = None
-                result = {"ok": True, "next_sha256": digest(write_next(
-                    root, config, args, prompt, expected=expected, context=context))}
-            else:
-                if args.command == "hook":
-                    path = Path(os.path.abspath(args.hook_path))
-                    if not args.bound_id or path.is_symlink() or path not in (
-                        root / ".cursor/hooks/session-start-next.sh", root / ".cursor/hooks/session-end-closeout.sh"):
-                        raise Refusal("hook_location_mismatch")
-                    if not sys.stdin.isatty():
-                        raw = sys.stdin.buffer.read(LIMIT + 1)
-                        if len(raw) > LIMIT:
-                            raise Refusal("hook_input_too_large")
-                        if raw.strip():
-                            event = json.loads(raw)
-                            if not isinstance(event, dict):
-                                raise Refusal("hook_input_invalid")
-                            roots = event.get("workspace_roots", [])
-                            if roots and (not isinstance(roots, list) or len(roots) != 1 or not isinstance(roots[0], str) or Path(roots[0]).resolve() != root):
-                                raise Refusal("hook_workspace_mismatch")
-                context = capture_context(root, original)
-                result = {"ok": True, "repository": config["repo"], "branch": context["branch"],
-                          "head": context["head"], "runtime": config["runtime"]}
-                try:
-                    data = read(root, NEXT)
-                    meta, prompt = validate_next(root, config, data, args, context=context)
-                    result.update(next=meta, next_sha256=digest(data))
-                except Refusal as exc:
-                    if args.command != "status":
-                        raise
-                    result.update(ok=False, next_error=str(exc))
-                if args.command in ("next", "hook"):
-                    check_context(root, config, args, context)
-                    output = rendered(meta, prompt)
-                    if args.command == "hook":
-                        print(json.dumps({"additional_context": output, "followup_message": output}))
-                    elif args.json:
-                        print(json.dumps(dict(result, prompt=prompt, rendered=output)))
-                    else:
-                        print(output, end="")
-                    return 0
-                result["dirty"] = bool(git(root, "status", "--porcelain", "--untracked-files=normal"))
-                check_context(root, config, args, context)
-        if args.json:
-            print(json.dumps(result))
-        else:
-            print(json.dumps(result, indent=2))
-        return 0 if result["ok"] else 1
-    except (Refusal, OSError, ValueError, UnicodeError, subprocess.SubprocessError) as exc:
-        # No partial prompt and no traceback/config bytes on refusal.
-        message = str(exc) if isinstance(exc, Refusal) else type(exc).__name__
-        print("refused: " + message[:300], file=sys.stderr)
-        return 2
+    """Compatibility engine seam; always uses production context validation."""
+    from cli.main import main as dispatch
+    return dispatch(argv)
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    print("refused: launch with cli/ok", file=sys.stderr)
+    raise SystemExit(2)

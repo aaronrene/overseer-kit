@@ -1,0 +1,55 @@
+{
+  "argv": [
+    "./.overseer/bin/ok",
+    "next-write",
+    "--repo-id",
+    "6988dc4a-5f22-454b-9d68-ac5905b383bf",
+    "--branch",
+    "feat/overseer-v1-recovery-20261014",
+    "--lane",
+    "product",
+    "--model",
+    "GPT-6 Astra",
+    "--action-id",
+    "OVERSEER-FULL-PRODUCT-RESTORATION-AUTHORITY-2",
+    "--action-kind",
+    "implement",
+    "--expect-next",
+    "590496d30ba196f670e5c71ceeecf525dbb17f606581172a9e997f24754c11fd",
+    "--prompt-file",
+    ".overseer/scratch/fpr2-prompt.txt",
+    "--json"
+  ],
+  "returncode": 0,
+  "result": {
+    "ok": true,
+    "next_sha256": "15efa968ea3bcbe6e5f280bd7cd079f68e5d1f3fa1728246259799a01d582e3c"
+  },
+  "publication_head": "521c8df5cf2c57d876cdd44adfd1cbc34063d416",
+  "expected_prior_sha256": "590496d30ba196f670e5c71ceeecf525dbb17f606581172a9e997f24754c11fd",
+  "published_next_sha256": "15efa968ea3bcbe6e5f280bd7cd079f68e5d1f3fa1728246259799a01d582e3c",
+  "metadata": {
+    "schema": 1,
+    "repo_id": "6988dc4a-5f22-454b-9d68-ac5905b383bf",
+    "repo_root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "branch": "feat/overseer-v1-recovery-20261014",
+    "base_head": "521c8df5cf2c57d876cdd44adfd1cbc34063d416",
+    "lane": "product",
+    "model": "GPT-6 Astra",
+    "action_id": "OVERSEER-FULL-PRODUCT-RESTORATION-AUTHORITY-2",
+    "action_kind": "implement",
+    "prompt_sha256": "10e5f27c4b16e82d6bb37790e4fd0d5a936086e159e76cc6bf6dfe8cf454ae53"
+  },
+  "precommit_readback": {
+    "argv": [
+      "./.overseer/bin/ok",
+      "next",
+      "--expect-next",
+      "15efa968ea3bcbe6e5f280bd7cd079f68e5d1f3fa1728246259799a01d582e3c",
+      "--json"
+    ],
+    "returncode": 0,
+    "prompt_matches_accepted_draft": true
+  },
+  "postcommit_requirement": "Bound next readback must accept exactly one closing commit with sole parent publication_head and disk NEXT equal to the closing commit blob. Final observed commit/readback are recorded outside tracked files to avoid a self-referential evidence commit."
+}
