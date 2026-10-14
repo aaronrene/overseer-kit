@@ -51,12 +51,22 @@ was exercised. The pilot has no remotes and Git hooks are disabled. An incorrect
 digest supplied during recovery readback correctly refused; corrected readback
 passed. This operator input error is recorded, not a waived product failure.
 
-The sole successor is a **completion stop pending the owner's next scope
-decision**. No further implementation task is selected or authorized. Pilot
-success does not establish final-v1 certification. [Repair evidence](validation/V1-RECOVERY.md#r1r2-findings-repair--2026-10-14)
-is author validation, not another independent review. Do not repeat the completed
-[review](reviews/V1-RECOVERY-REVIEW.md), installation/rollback or pilot. No remote
-publication is authorized. The old sole-writer/NXR-GSR NEXT is superseded.
+The [final certification adjudication](validation/V1-CERTIFICATION.md) is
+**CERTIFIED** for repository-bound source v1 for local POSIX Git repositories
+under the trusted-host model, validated on Python 3.14.4, with the public
+`status`, `init`, `sync`, `next` and `next-write` surface. R1/R2 are resolved for
+this claim on [author repair evidence](validation/V1-RECOVERY.md#r1r2-findings-repair--2026-10-14);
+the original independent **FINDINGS** verdict remains unchanged. Historical
+baseline **1,391 passed / 104 failed** remains unresolved and was not rerun.
+
+The sole successor is a **certified completion stop**. Release or distribution
+requires a separate owner decision. No further implementation task is selected
+or authorized; certification grants no release, merge, push, publication or
+deployment authority. Do not repeat the completed
+[review](reviews/V1-RECOVERY-REVIEW.md), installation/rollback or pilot.
+Packaged installation, other platforms, existing-consumer migration, sustained
+or multi-user operation, consumer hooks and providers remain outside the claim.
+The old sole-writer/NXR-GSR NEXT is superseded.
 
 Read the exact current action with `./cli/ok -C . next`. Only `next-write` publishes
 canonical `docs/NEXT.md`; do not regenerate a prompt from this summary or ROADMAP.

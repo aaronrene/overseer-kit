@@ -1,8 +1,11 @@
 # Bounded v1 source installation
 
-Supported milestone: POSIX Git repositories/worktrees and Python 3.11+ with a
-conventional venv. This build was tested offline on Python 3.14.4. Other Python
-versions and packaged installation are not yet validated. Ordinary venv Python
+The [certified bounded milestone](validation/V1-CERTIFICATION.md) covers
+repository-bound source v1 for local POSIX Git repositories/worktrees under the
+trusted-host model, validated on Python 3.14.4, with `status`, `init`, `sync`,
+`next` and `next-write`. Python 3.11+ is the source prerequisite, not a validated
+version matrix. Other Python versions, other platforms and packaged installation
+are outside this certification. Ordinary venv Python
 symlinks are expected. There is no PATH-Python or neighboring-checkout fallback.
 
 For a normal installation with separately authorized dependency access:
@@ -53,7 +56,10 @@ The owner-authorized [newly created test-repository pilot](validation/V1-RECOVER
 passed one local documentation handoff cycle without consumer hooks or network
 access. It does not validate an existing consumer's operational workflow. Any
 other consumer repository or further pilot work still needs owner authorization.
-Test and pilot passes do not establish final v1. This is not a release announcement.
+The separate [final adjudication](validation/V1-CERTIFICATION.md) certifies only
+the bounded claim above, preserving the independent FINDINGS verdict and author
+repair evidence. Release or distribution requires a separate owner decision;
+certification grants no release, merge, push, publication or deployment authority.
 
 The validated rollback procedure replaces committed source at the **same physical
 installation root**, while retaining its conventional `.venv`. Stop commands using

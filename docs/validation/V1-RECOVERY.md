@@ -5,6 +5,13 @@ Muse reconciliation, the clean base and the isolated feature branch. Original
 dirty payloads and both preexisting worktrees are preserved. This record concerns
 only the current recovery milestone, not earlier release or pilot claims.
 
+Final disposition: [bounded v1 CERTIFIED](V1-CERTIFICATION.md) by the separate
+2026-10-14 evidence adjudication. The stage-specific pending/completion statements
+below are preserved historical records, not the current task. The independent
+FINDINGS verdict and author repair evidence remain separate. Certification grants
+no release, merge, push, publication or deployment authority; release or
+distribution requires a separate owner decision.
+
 ## Clean-base result before implementation
 
 Base `d47291d5d9030de5ebef713da95efa978c4d8c6e`, clean `overseer-kit-main-stable`.

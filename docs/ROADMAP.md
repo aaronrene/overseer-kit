@@ -12,7 +12,8 @@ The former sole-writer/NXR-GSR chain is historical and is not the living NEXT.
 | Repair writer context and reader revision findings | Complete; 20 deterministic regressions passed |
 | Clean installation and current/previous rollback | Complete; 43 disposable exercise checks passed |
 | Separately authorized noncritical pilot | Complete in newly created test repository; one documentation handoff cycle |
-| Final-v1 certification or release | Not established or authorized by the pilot |
+| Final bounded-v1 certification | CERTIFIED; exact claim and limits in the final adjudication |
+| Release or distribution | Requires a separate owner decision; not authorized |
 
 The exact current action lives only in `docs/NEXT.md`; use `ok -C ROOT next`.
 Update this summary and HANDOVER together. No release or remote operation is
@@ -37,6 +38,13 @@ without hooks, status/NEXT, both sync modes, digest-checked handoffs, and one
 documentation task with local closing commits passed. See the
 [pilot evidence](validation/V1-RECOVERY.md#newly-created-test-repository-pilot--2026-10-14).
 This was one maintainer in one session, with no preexisting consumer workflow.
-The canonical successor is a completion stop pending the owner's next scope
-decision. No further implementation, consumer access or remote operation is
-authorized; pilot success alone does not establish final-v1 certification.
+The [final certification adjudication](validation/V1-CERTIFICATION.md) now
+certifies repository-bound source v1 for local POSIX Git repositories under the
+trusted-host model, validated on Python 3.14.4, for `status`, `init`, `sync`,
+`next` and `next-write`. It resolves R1/R2 on the separately recorded author
+repair evidence while preserving the independent **FINDINGS** verdict.
+Historical baseline **1,391 passed / 104 failed** remains unchanged.
+
+The canonical successor is a **certified completion stop**. Release or
+distribution requires a separate owner decision. No further implementation,
+consumer access, merge, push, publication or deployment is authorized.
