@@ -8,21 +8,37 @@ Active implementation: `overseer-kit-v1-recovery-20261014`, branch
 `feat/overseer-v1-recovery-20261014`, reconciled base `d47291d`.
 Both older dirty worktrees remain untouched.
 
-**Current successor: FPR-0 full-product reconciliation analysis.** Use GPT-6
-Astra with Max reasoning. Compare, through this clean worktree's Git objects, the
-complete product/lane line `feat/overseer-context-isolation` (`e9be0c4`), the
-newer Muse authority/mirror line `feat/overseer-v1-recovery` (`32254cd`), and the
-certified repository-bound NEXT safety line at this branch (`3ed3b7d`). Produce
-one authoritative integration plan before changing product code. The plan must
-restore automatic validated NEXT bookends, all maintained product commands,
-per-repository lanes and optional Muse-as-authority with isolated Git mirroring,
-while retaining the safer repository binding and concurrency fixes.
+**Current successor: FPR-1 unified foundation and automatic NEXT, awaiting owner
+acceptance.** Use GPT-6 Astra with Max reasoning. FPR-0 is complete as committed-
+object analysis and documentation only; see the
+[full-product restoration plan](decisions/FULL-PRODUCT-RESTORATION-PLAN.md).
+The opening HEAD was `0b763df6d7c9066582d27b349a731a4ff70a43e2`; identity, clean
+state, pinned refs and the required single-closing-commit NEXT all validated.
 
-The owner wants a short, deliberate validation path: one architecture analysis,
-focused checks during three implementation waves, one combined validation, and
-one independent final review. Do not create a review cycle for every wave. Do not
-touch the preserved worktrees, access consumers or perform network/remote actions
-during FPR-0. The exact analysis instructions live only in `docs/NEXT.md`.
+Continue from this certified branch. The full-product modules are already
+retained from `d47291d`; 627 of 633 examined product/test paths match the preserved
+`e9be0c4` line, with none absent and the six differences retaining the Muse branch
+compatibility repair. Keep `348e0f3` repository/NEXT concurrency safety and port
+the newer `32254cd` Muse authority/mirror/reconciliation/credential modules
+selectively. The plan inventories every historical CLI command and maintained
+surface; it does not treat `legacy_main.py` as a supported second product.
+
+FPR-1 unifies CLI/config/migration/binding and automatic canonical NEXT. FPR-2
+integrates independent authority selection, controlled mirrors and repository
+lanes. FPR-3 reconnects remaining maintained commands, app/desktop/hosted surfaces,
+templates and truthful documentation. Preserve all legacy settings and refuse
+contradictions; retain tracked Git NEXT semantics instead of importing M's
+blanket local-binding ignore policy. Product source, tests and configuration are
+unchanged by FPR-0; no suites or completed exercises were rerun.
+
+The validation path is focused author checks during the three implementation
+waves, one combined FPR-4 matrix and one independent FPR-5 review, bounded repairs
+if needed, one final adjudication and one owner release decision. Do not create
+a review cycle for every wave. Outstanding owner choices are automatic client
+versions beyond the preserved Cursor contract, expanded Muse transport scope if
+required, platform/packaging/remote-validation claims, and the integrated pilot
+and independent reviewer. The plan states defaults and blockers explicitly.
+The exact pending implementation prompt lives only in `docs/NEXT.md`.
 
 Preservation and local Muse/base reconciliation are complete. The independent
 architecture/completed-build review of `d8f10d8` against `d47291d` is complete with
@@ -86,12 +102,11 @@ Packaged installation, other platforms, existing-consumer migration, sustained
 or multi-user operation, consumer hooks and providers remain outside that claim.
 The old sole-writer/NXR-GSR NEXT is superseded.
 
-The newly authorized successor is FPR-0, kind `plan`. It may inspect repository
-history and committed branch contents and may create the restoration decision
-document plus paired ROADMAP/HANDOVER/NEXT closeout in this clean worktree. It may
-not implement the restoration, activate hooks, access consumers, use providers or
-network, push, mirror, merge, publish or deploy. The analysis must define all
-later work and the single final review boundary before FPR-1 begins.
+FPR-0 closes with one documentation-only commit containing the plan, paired
+summaries and one FPR-1 prompt published through bound `next-write`. FPR-1 remains
+unauthorized until the owner separately accepts that prompt. This closeout does
+not authorize consumers, real-consumer hooks, providers/network, push, mirror,
+merge, publication or deployment. Do not call the product restored or release-ready.
 
 Read the exact current action with `./cli/ok -C . next`. Only `next-write` publishes
 canonical `docs/NEXT.md`; do not regenerate a prompt from this summary or ROADMAP.

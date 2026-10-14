@@ -17,8 +17,8 @@ The former sole-writer/NXR-GSR chain remains historical and is not the living NE
 | Separately authorized noncritical pilot | Complete in newly created test repository; one documentation handoff cycle |
 | Final bounded-v1 certification | CERTIFIED; exact claim and limits in the final adjudication |
 | Offline bounded source snapshot | Complete locally; retain as an internal reference, not the complete product release |
-| FPR-0 — full-product reconciliation analysis | **NEXT** — compare preserved product, Muse/mirror and bounded-safety lines; freeze one integration plan |
-| FPR-1 — unified foundation and automatic handoff | Planned after FPR-0 — one active CLI/config, safe repository binding, migration and automatic validated NEXT bookends |
+| FPR-0 — full-product reconciliation analysis | Complete — [integration plan](decisions/FULL-PRODUCT-RESTORATION-PLAN.md); committed-object analysis and documentation only |
+| FPR-1 — unified foundation and automatic handoff | **NEXT, awaiting owner acceptance** — one active CLI/config, safe repository binding, lossless migration and automatic validated NEXT bookends |
 | FPR-2 — Muse authority, mirror and repository lanes | Planned after FPR-1 — Git-only, Muse-only and Muse-with-Git-mirror with isolated mirroring and per-repository lanes |
 | FPR-3 — complete product surface | Planned after FPR-2 — restore governance, review, workspace, verification, routing, landing and local app/desktop/dashboard features |
 | FPR-4 — combined validation | Planned after FPR-3 — one integrated matrix, clean installation/migration/rollback and one noncritical full-flow pilot |
@@ -29,15 +29,29 @@ Update this summary and HANDOVER together. No release or remote operation is
 authorized. See `docs/validation/V1-RECOVERY.md` for the bounded test matrix and
 results; historical suites are not silently treated as passing.
 
-FPR-0 must reconcile three preserved lines without modifying their existing
-worktrees: the complete product and lane work at `feat/overseer-context-isolation`
-(`e9be0c4`), the newer Muse authority/mirror/reconciliation work at
-`feat/overseer-v1-recovery` (`32254cd`), and the certified repository-bound NEXT
-safety work at `feat/overseer-v1-recovery-20261014` (`3ed3b7d`). It must inventory
-user-visible behavior, select authoritative implementations with evidence, define
-one compatible configuration and migration path, and freeze explicit acceptance
-criteria before implementation. Preserved code is the starting point; do not
-rewrite working features merely because they live on different branches.
+FPR-0 reconciled the pinned product/lane line (`e9be0c4`), newer Muse line
+(`32254cd`), repaired safety implementation (`348e0f3`) and main baseline
+(`d47291d`) through committed objects. The [plan](decisions/FULL-PRODUCT-RESTORATION-PLAN.md)
+selects this branch at opening HEAD `0b763df6d7c9066582d27b349a731a4ff70a43e2`
+as the integration base: its D-derived full-product engines remain present,
+and its B-derived NEXT repairs must survive selective Muse integration. No blind
+merge, wholesale revert or rewrite is needed. The historical CLI's 20 names,
+all maintained capabilities, config migrations and acceptance boundaries are
+inventoried. Product code and tests remain unchanged by FPR-0.
+
+The target is one schema-3 normalized configuration accepting legacy full and
+bounded inputs, one `cli/ok`, and one canonical `docs/NEXT.md` service. Preserve
+all settings/lanes/identity and refuse contradictions. Do not import M's blanket
+local-binding ignore policy over the tracked Git NEXT closing-commit contract.
+The plan separates canonical publication from governance hygiene and isolates
+operator-controlled Muse mirroring. Three implementation waves lead to one
+combined FPR-4 matrix and one independent FPR-5 review, bounded repairs if needed,
+one final adjudication and one owner release decision.
+
+Owner choices still concern automatic chat-client versions beyond the preserved
+Cursor contract, any expanded Muse transport scope, platform/packaging/remote
+validation claims, and the integrated pilot/reviewer. They are detailed in the
+plan; none authorizes remote operations or implementation during FPR-0.
 
 To avoid another long chain of reviews, the restoration uses one high-reasoning
 architecture analysis, focused mechanical checks during three implementation
@@ -82,7 +96,7 @@ trusted-host model, validated on Python 3.14.4, for `status`, `init`, `sync`,
 repair evidence while preserving the independent **FINDINGS** verdict.
 Historical baseline **1,391 passed / 104 failed** remains unchanged.
 
-The canonical successor is **FPR-0**, a read-only full-product reconciliation
-analysis. It authorizes repository/Git-object inspection and a documentation-only
-integration plan, not implementation, consumer access, hooks, network/provider
-access, merge, push, publication or deployment.
+The canonical successor is **FPR-1**, the local foundation implementation wave,
+pending separate owner acceptance of `docs/NEXT.md`. FPR-0 has not restored or
+released the product. No consumer access, real-consumer hooks, network/provider
+access, merge, push, publication or deployment is authorized by this closeout.
