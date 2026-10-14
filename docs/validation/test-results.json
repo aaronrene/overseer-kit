@@ -74,5 +74,33 @@
       "log": "5ef5a199a65076dd501238d1c73ae2bdc03d3b1d8087541799853e2add8b702d",
       "xml": "4efb39f1ac954ce51e54e43911c46a2902e0c326505cd26c7cc4a0299503b9b7"
     }
+  },
+  "install_rollback_supported_initial": {
+    "tests": 173,
+    "failures": 2,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 171,
+    "junit_seconds": 125.349,
+    "classification": "Maintainer fixture-placement error: basetemp inside Git checkout; two isolation tests require a nonrepository parent. No product change or sandbox waiver.",
+    "artifact_sha256": {
+      "log": "8263279431e8acd536b9aa68b53f5bdc2cc539e4c2bd56a62504f82bc905eb8b",
+      "xml": "e44ba6d8ea97d8848f2eb453ad590abd7f34fb3dd7df7e8d325776e0e0bbe5c4"
+    },
+    "command": "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest -q -p no:cacheprovider --basetemp=.overseer/scratch/validation/install-rollback/pytest-fixtures --junitxml=.overseer/scratch/validation/install-rollback/supported.xml"
+  },
+  "install_rollback_supported": {
+    "tests": 173,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 173,
+    "junit_seconds": 130.923,
+    "classification": "Passed unchanged suite with disposable basetemp outside any Git repository. No product failures or environment restrictions.",
+    "artifact_sha256": {
+      "log": "f9e383ec394b2facd54220f2e330dc634c0afdcab96b27f252e2a44915fe49d6",
+      "xml": "320fbc5ed936fe27a12f643b9ade73f26504c2e302602543e82229d49766f473"
+    },
+    "command": "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest -q -p no:cacheprovider --basetemp=/private/tmp/overseer-v1-install-rollback-suite.yJhCCM/fixtures --junitxml=.overseer/scratch/validation/install-rollback/supported.xml"
   }
 }

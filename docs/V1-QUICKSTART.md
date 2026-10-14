@@ -46,6 +46,23 @@ PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest -q -p no:cacheprovider
 ```
 
 The independent review is complete; R1/R2 repair evidence is recorded in
-[validation](validation/V1-RECOVERY.md). Clean installation/current-previous
-rollback and a separately authorized consumer pilot remain outstanding.
-This is not a release announcement.
+[validation](validation/V1-RECOVERY.md). Clean source installation and
+current-to-previous-to-current rollback passed in disposable fixtures; see the
+[reproduction and limits](validation/V1-RECOVERY.md#clean-source-installation-and-rollback--2026-10-14).
+A noncritical consumer pilot still requires separate owner authorization.
+Test passes do not establish final v1. This is not a release announcement.
+
+The validated rollback procedure replaces committed source at the **same physical
+installation root**, while retaining its conventional `.venv`. Stop commands using
+that installation during source replacement. Before explicit refresh, bound
+commands refuse with `runtime_changed`; run that installation's `sync --dry-run`
+and then `sync` for the bound repository to accept the changed runtime. UUID,
+physical root, living documents and NEXT remain intact. Restore current source at
+that same root and repeat the explicit refresh to recover. Sync from a different
+installation path refuses, including when its code is identical; automatic
+rebinding is outside the contract.
+
+This is trusted-host source maintenance with per-file, rerunnable sync, not an
+atomic installation switch or a packaged upgrade facility. The tested previous
+build retains known R1/R2 concurrency findings; successful rollback does not clear
+them. No packages were downloaded for this validation.
