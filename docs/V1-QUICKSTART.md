@@ -49,8 +49,11 @@ The independent review is complete; R1/R2 repair evidence is recorded in
 [validation](validation/V1-RECOVERY.md). Clean source installation and
 current-to-previous-to-current rollback passed in disposable fixtures; see the
 [reproduction and limits](validation/V1-RECOVERY.md#clean-source-installation-and-rollback--2026-10-14).
-A noncritical consumer pilot still requires separate owner authorization.
-Test passes do not establish final v1. This is not a release announcement.
+The owner-authorized [newly created test-repository pilot](validation/V1-RECOVERY.md#newly-created-test-repository-pilot--2026-10-14)
+passed one local documentation handoff cycle without consumer hooks or network
+access. It does not validate an existing consumer's operational workflow. Any
+other consumer repository or further pilot work still needs owner authorization.
+Test and pilot passes do not establish final v1. This is not a release announcement.
 
 The validated rollback procedure replaces committed source at the **same physical
 installation root**, while retaining its conventional `.venv`. Stop commands using

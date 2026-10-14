@@ -314,3 +314,124 @@ Evidence and handoff form one local closing commit. Product source, runtime
 binding, supported test selection and historical tests were not changed by this
 maintenance action. The independent review remains complete, and no new review,
 release or final-v1 certification is claimed.
+
+## Newly created test-repository pilot — 2026-10-14
+
+**The explicitly authorized, newly created local test-repository pilot passed.**
+This is a bounded documentation workflow result, not final-v1 certification.
+The owner's current instruction superseded the previous pilot-authorization stop
+only for this named target and for recording recovery evidence. The target was
+confirmed absent before creation; an existing path would have stopped the run.
+
+Recovery physical cwd and Git top-level were verified as
+`/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014`, branch
+`feat/overseer-v1-recovery-20261014`, full starting HEAD
+`fabb62dadd7a03d1bb31ad0ed4c72289dc358b7e`, configured name `overseer-kit`, UUID
+`6988dc4a-5f22-454b-9d68-ac5905b383bf`. The worktree began clean. The required
+scope, validation, installation/rollback, review, quickstart, AGENTS and canonical
+NEXT documents were read. The completed independent review was not repeated.
+
+| Pilot binding | Recorded value |
+| --- | --- |
+| Physical root | `/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-v1-pilot-20261014` |
+| Configured name | `overseer-v1-pilot-20261014` |
+| UUID | `8520ff03-a248-4dbd-8f21-ec53de6c967b` |
+| Dedicated branch | `pilot/overseer-v1-20261014` |
+| Lane / model / reasoning | `product` / `GPT-6 Astra` / Extra High |
+| Runtime root | The bound recovery installation above |
+| Runtime version / SHA-256 | `1.0.0.dev1` / `b7fa1921fcb586ac6fcf8422f094fe20f9f9a438f64eecdaddd97d347115db95` |
+
+The installation's existing Python 3.14.4 `.venv` and `cli/ok` were used offline;
+no dependencies were installed. Git initialization used an empty template and
+local `core.hooksPath=/dev/null`. Overseer init omitted `--hooks`. The pilot has
+no Git hook directory, Cursor hooks or remotes. Existing pilot ROADMAP/HANDOVER
+content created just before init retained its bytes and mtimes.
+
+### End-to-end documentation handoff
+
+1. Init produced an unborn-repository SETUP NEXT. Status and NEXT succeeded
+   through the recovery CLI with explicit `-C` and through the pilot's bound
+   launcher from its cwd. Reads supplied UUID, branch, lane, model, action ID,
+   action kind and expected NEXT digest. Snapshots including Git files confirmed
+   unchanged bytes, modes and mtimes. `sync --dry-run` and `sync` both proposed
+   or applied no changes and preserved the same snapshot.
+2. Bound `next-write` published `OVERSEER-V1-PILOT-DOCS-1`, kind `implement`, with
+   explicit context and SETUP's prior digest. The handoff requested one operating
+   note. Retrying with the stale prior digest refused `stale_write` without
+   mutation. Initial local commit
+   `d0288f6159330833ab1b85089a62a43066503123` contains the exact handoff bytes;
+   fully expected status/NEXT readback accepted that first closing commit.
+3. The committed handoff was read and consumed after checking the pilot's physical
+   root, Git top-level, branch, full HEAD, configured name and UUID. The task added
+   `docs/PILOT-OPERATIONS.md`, documenting bindings, commands, digest expectations,
+   the one-closing-commit rule, disabled hooks, absent remotes and limitations.
+   Its read/sync examples ran without mutation and shell examples passed syntax
+   checks. ROADMAP and HANDOVER were updated together.
+4. Bound `next-write` published `OVERSEER-V1-PILOT-COMPLETE-1`, kind `stop`, with
+   the documentation handoff's prior digest and explicit context. A stale retry
+   again refused without mutation. Documentation closing commit
+   `50b5a19b7d6f1c964368140ed0dc3dc91504de16` contains that exact NEXT. Explicit
+   readback passed afterward, final pilot status is clean, and no task remains
+   pending there. All pilot commits are local to the pilot repository.
+
+| Publication | Expected prior NEXT SHA-256 | Published NEXT SHA-256 |
+| --- | --- | --- |
+| Documentation task | `8b5c527cf6702706f3c89012d744d021ec4f583d9ee73e18a1e51a8ddc1a04da` | `b7cf48030884d9683c11d058574e049478565237969bf1290900382033113f62` |
+| Pilot completion stop | `b7cf48030884d9683c11d058574e049478565237969bf1290900382033113f62` | `927525832146b01fcb21473c42c3afff81099e94667aa15dd9ae50a78f2e1eae` |
+
+[Machine-readable results](pilot-results.json) retain the exact commands' artifact
+hash, both local commits, handoff transitions, final status, preservation manifest
+hash, suite result and limitations. Raw command output and the session evidence
+helper remain in ignored `.overseer/scratch/validation/pilot-20261014/`. This is
+local validation evidence, not a new runtime protocol or packet chain.
+
+### Required checks and preservation
+
+The unchanged complete supported suite passed **173 tests in 107.49 seconds**
+(JUnit 107.478), with zero failures, errors or skips, before either pilot commit
+or the recovery evidence commit. It used this installation's Python 3.14.4 and
+pytest 9.1.1, disabled bytecode/cache writes, and a fresh fixture parent outside
+any Git checkout. The exact command and log/XML hashes are appended under
+`pilot_supported` in [test-results.json](test-results.json). Existing isolated
+hook tests belong to the required supported suite; no hooks were installed in
+the pilot or activated in a consumer. No product failure or environment
+restriction occurred in this supported run.
+
+All **393** historical test/support hashes passed. Historical baseline
+**1,391 passed / 104 failed** and its original disposition remain unchanged;
+that full suite was not rerun or declared green. Both older dirty worktrees
+retained their branches, HEADs, status/diffs and tracked/untracked nonignored
+file bytes, modes and mtimes. The installation/rollback fixture tree and recovery
+venv retained bytes, modes, symlinks and mtimes. Installation/rollback evidence,
+test selection and scope decision are unchanged. The completed review still
+hashes to `d6bd4958fcade51005bede1b01efbd29b6c64c3b7c5fdf14c147e133d0fc90e0`.
+Shell syntax and whitespace checks passed. Runtime source was not changed.
+
+The first recovery NEXT readback mistakenly supplied an incorrect expected
+digest and exited 2 with `next_digest_mismatch`. Readback using the writer-reported
+digest succeeded; published bytes were unchanged. This maintainer input error
+is recorded separately from the passing suite and pilot; no product failure was
+waived or repaired.
+
+### Limits and successor
+
+This was one maintainer in one session, one documentation task, and two local
+commit boundaries in a newly created test repository. It did not exercise an
+established consumer's history, migration or normal workload, an independent
+operator, sustained or multi-user use, consumer hooks, providers, packaged
+installation or other platforms. The trusted-host and per-file atomic,
+nontransactional limits remain. The previous rollback build still retains known
+R1/R2 findings. Pilot success neither rewrites the independent review nor grants
+final-v1 certification, release authority or broader consumer authorization.
+
+Exactly one recovery successor was published through bound `next-write`:
+`OVERSEER-V1-RECOVERY-PILOT-COMPLETE-1`, kind `stop`, model **GPT-6 Astra**,
+reasoning **Extra High**, based on the verified recovery starting HEAD above.
+Prior digest was `8c28a7f77072a620f9f40204bfbd0edf2184bfa56f405aa4823a893e1b80e44d`;
+published digest is `56e52bc98dad1577a1e86b240c3c442770e38e15ec64cbe7d2a395fc030f78c6`.
+ROADMAP and HANDOVER were updated together, and quickstart now reflects this
+bounded pilot. The successor stops pending the owner's next scope decision;
+completed review, installation/rollback and pilot work are not queued again.
+The evidence and canonical NEXT form one local recovery closing commit, followed
+by fully expected readback. No other consumer, network/provider, push, mirror,
+main merge, release, deployment or superseded architecture was used.

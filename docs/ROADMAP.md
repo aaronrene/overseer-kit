@@ -11,7 +11,8 @@ The former sole-writer/NXR-GSR chain is historical and is not the living NEXT.
 | Independent architecture and completed-build review | Complete; original findings verdict preserved |
 | Repair writer context and reader revision findings | Complete; 20 deterministic regressions passed |
 | Clean installation and current/previous rollback | Complete; 43 disposable exercise checks passed |
-| Separately authorized noncritical pilot | Not authorized; sole successor is the stop/authorization gate |
+| Separately authorized noncritical pilot | Complete in newly created test repository; one documentation handoff cycle |
+| Final-v1 certification or release | Not established or authorized by the pilot |
 
 The exact current action lives only in `docs/NEXT.md`; use `ok -C ROOT next`.
 Update this summary and HANDOVER together. No release or remote operation is
@@ -26,7 +27,16 @@ records both fixes and a 173-pass supported run without rewriting that verdict.
 The completed review is not pending again. [Installation/rollback evidence](validation/V1-RECOVERY.md#clean-source-installation-and-rollback--2026-10-14)
 records current `348e0f3` to previous `333f81e` to current, with explicit runtime
 refresh and preserved UUID, living documents and NEXT. The previous build retains
-known R1/R2 findings. The current complete supported suite passed **173 tests in
-130.93 seconds**; an initial fixture-location error and the historical failures
-remain recorded. A separately authorized noncritical pilot remains before final
-v1. This handoff grants no pilot, consumer access or remote-operation authority.
+known R1/R2 findings. The latest complete supported suite passed **173 tests in
+107.49 seconds**; the prior fixture-location error and historical failures remain
+recorded.
+
+The owner authorized only the newly created local repository
+`overseer-v1-pilot-20261014`, branch `pilot/overseer-v1-20261014`. Initialization
+without hooks, status/NEXT, both sync modes, digest-checked handoffs, and one
+documentation task with local closing commits passed. See the
+[pilot evidence](validation/V1-RECOVERY.md#newly-created-test-repository-pilot--2026-10-14).
+This was one maintainer in one session, with no preexisting consumer workflow.
+The canonical successor is a completion stop pending the owner's next scope
+decision. No further implementation, consumer access or remote operation is
+authorized; pilot success alone does not establish final-v1 certification.

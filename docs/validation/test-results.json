@@ -102,5 +102,20 @@
       "xml": "320fbc5ed936fe27a12f643b9ade73f26504c2e302602543e82229d49766f473"
     },
     "command": "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest -q -p no:cacheprovider --basetemp=/private/tmp/overseer-v1-install-rollback-suite.yJhCCM/fixtures --junitxml=.overseer/scratch/validation/install-rollback/supported.xml"
+  },
+  "pilot_supported": {
+    "tests": 173,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 173,
+    "junit_seconds": 107.478,
+    "console_seconds": 107.49,
+    "classification": "Passed unchanged supported suite before local pilot and recovery evidence commits. No product failure or environment restriction.",
+    "artifact_sha256": {
+      "log": "46dba4affaf41c04d3017d6ff9b5ee3785e1b3a8905baa1294b1c416301bafac",
+      "xml": "b0d05d295e5f29e4b36b72da24babcc720392395d5fba49ba9f9b875c48da148"
+    },
+    "command": "PYTHONDONTWRITEBYTECODE=1 GIT_OPTIONAL_LOCKS=0 GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_NOSYSTEM=1 .venv/bin/python -m pytest -q -p no:cacheprovider --basetemp=/private/tmp/overseer-v1-pilot-suite.Zv4dSO/fixtures --junitxml=.overseer/scratch/validation/pilot-20261014/supported.xml"
   }
 }
