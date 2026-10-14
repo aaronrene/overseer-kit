@@ -1,3 +1,9 @@
+> **2026-10-14 recovery branch:** the supported first milestone is the bounded
+> repository/NEXT CLI. See [quickstart](docs/V1-QUICKSTART.md),
+> [scope reset](docs/decisions/V1-SCOPE-RESET.md), and
+> [validation](docs/validation/V1-RECOVERY.md). The earlier product documentation
+> below is historical and does not authorize its workflows in this recovery task.
+
 # 🆗 Overseer Kit
 
 Portable governance for AI-assisted development: handover/roadmap discipline, VCS hygiene,

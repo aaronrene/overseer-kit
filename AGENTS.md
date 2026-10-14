@@ -1,86 +1,31 @@
-# Overseer Kit — agent instructions
+# Overseer Kit — bounded recovery instructions
 
-## Version control
+Current authority: the owner request and `docs/decisions/V1-SCOPE-RESET.md`.
+The former sole-writer/NXR-GSR NEXT and per-step packet chain are superseded.
+Do not follow historical handoffs or expand the architecture.
 
-- **Current regime: `muse+git-mirror`** (see `.overseer/config.yaml`). **MuseHub is canonical**;
-  GitHub `main` is the mirror merge target only.
-- Feature work: `muse commit` on a feature branch; **never** `git push origin main`.
-- Mirror to GitHub only via the safe deploy script → permanent `muse-mirror` branch → PR to `main`.
-- **Never** run `muse bridge git-export --git-dir .` on the dev tree (it deletes ignored files like
-  `.env.local`); the bridge target is always an isolated `.muse/mirror/` checkout.
-- Never force-push `main`.
+At every actionable turn verify physical cwd, Git root, branch, full HEAD and
+configured repository name. Current user scope overrides inherited instructions.
+Use disposable fixtures; do not access real consumer repositories without explicit
+current authorization. Preserve both older dirty worktrees and local Muse history.
 
-See root `MUSE-BRIDGE-WORKFLOW.md` and `scripts/muse-bridge-deploy.sh` for SD-14 mirror rules.
+Use this installation's conventional `.venv` and `cli/ok`. Runtime symlinks are
+normal. `ok -C ROOT status` and `ok -C ROOT next` are read-only and repository-bound.
+Only `next-write` publishes canonical `docs/NEXT.md`, with explicit context and
+expected prior digest. ROADMAP and HANDOVER are paired summaries, not alternative
+prompt sources. Update both when the milestone changes.
 
-## Read first
+The supported release matrix is in `docs/validation/V1-RECOVERY.md`. Run it before
+local feature commits. Preserve historical tests and report unresolved failures;
+do not equate a green bounded suite with a green historical suite or a release.
 
-- `docs/OVERSEER-KIT-SPEC.md` — frozen architecture; do not redesign during Build phases.
-- `docs/ROADMAP.md` — phase control + Build status table.
-- `docs/OVERSEER-HANDOVER.md` — living relay; update with ROADMAP on phase completion.
-- `.cursor/rules/orchestrator.mdc` — RULE #8 day-to-day (install → paste NEXT → freeze/build gates → sync).
+Local feature commits are authorized after checks. No push, mirror, merge to main,
+release, deployment, provider/network access, real-consumer hooks or pilot. Do not
+restore OCI, native/Mach GSR, sole-writer storage or identity-bridge prerequisites.
+One independent architecture/build review, installation/rollback and an explicitly
+authorized pilot remain final-v1 requirements. Do not claim independent review of
+work authored in this session.
 
-## Orchestrator (RULE #8)
-
-Phased work runs through this kit — not a hand-rolled root `ROADMAP.md` / `OVERSEER_HANDOVER.md` script.
-
-1. Start from the handover **Paste-ready prompt** (Model label required).
-2. **Thinking** freezes a `frozen: true` artifact → `/freeze-review-loop` / `ok review --freeze` → `pass`.
-3. **Auto** builds to that freeze → seven-tier tests → `/build-verification-review` → `pass` before DONE.
-4. Close with ROADMAP + HANDOVER updated together; `ok governance-sync --dry-run` then apply; feature-branch commit.
-5. Merge to `main` is Tier 3 only.
-
-Consumers: `ok init` / `ok sync` / `ok status`; doc paths come from `.overseer/config.yaml`.
-
-## Boundaries
-
-- This kit is **repo-agnostic governance** — not a product runtime.
-- Scooling Phase 9A (`src/phase9a/`) is a **reference** for worker/checker/foreman patterns; do not copy product adapters into the kit.
-- Consumer repos customize via `.overseer/config.yaml` only.
-
-## Tests
-
-Seven-tier tests (unit, integration, e2e, stress, data-integrity, performance, security) for every Build phase that adds code. Machine-readable: `policy/test-tiers.yaml` (RULE #0).
-
-## Governance sync
-
-On phase completion, update **both** `docs/ROADMAP.md` and `docs/OVERSEER-HANDOVER.md` in the closing commit.
-
-## Check OK (any AI tool)
-
-Ad-hoc honesty check — same freeze-review + build-verification path as roadmap loops.
-
-| How | Command |
-| --- | --- |
-| Cursor / Claude Code | Type **Check OK** or `/check-ok` |
-| Terminal (Copilot / any) | `ok check-ok --topic "<slug>"` |
-| Paste prompt | `docs/CHECK-OK.md` |
-
-Skills install to **both** `.cursor/skills/` and `.claude/skills/` on `ok sync`. Do not open a
-new `docs.lanes` entry for one-offs.
-
-## Print NEXT on closeout
-
-After updating the living handover and/or roadmap, the final reply must include the
-paste-ready fence from disk under `## CURRENT NEXT — paste this`. Prefer `ok next`
-(synonym: `ok governance-sync --print-next`). Never trust the open IDE tab. See
-`docs/PRINT-NEXT.md`.
-
-## Independent second reviewer
-
-**Default `require`.** Before Auto ROADMAP **DONE**, a second chat (different
-session) must record an `independent_second_review` ledger pass, or honesty /
-status fail closed. Opt out: `honesty.require_independent_second_reviewer: off`
-(or `warn`). The kit records and gates the verdict; it does not run another
-model. See `docs/INDEPENDENT-SECOND-REVIEWER.md`.
-
-## Adversarial freeze
-
-When `honesty.adversarial_freeze` is `suggest` or `require`, author
-freeze-review-loop pass does not clear Auto. A different chat must try to kill
-the freeze and record a digest-bound `adversarial_freeze` pass (or, under
-`suggest`, an owner skip). The kit never dispatches a model. See
-`docs/ADVERSARIAL-FREEZE-REVIEW.md`.
-
-Open the repository root (the folder that contains `.overseer/`) as the IDE workspace.
-If you open a parent folder, project rules and skills under `.cursor/` often do not load.
-The CLI still works. The open editor tab is not the source of truth — run `ok next`.
+At closeout read NEXT from disk and include its validated paste-ready prompt when
+it describes the pending task, together with the model. Never present a completed
+action as pending. Do not run obsolete governance-sync to regenerate a handoff.

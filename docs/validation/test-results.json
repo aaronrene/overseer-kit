@@ -1,0 +1,42 @@
+{
+  "baseline": {
+    "tests": 1495,
+    "failures": 104,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 1391,
+    "junit_seconds": 28.849
+  },
+  "focused": {
+    "tests": 64,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 64,
+    "junit_seconds": 39.956
+  },
+  "isolation": {
+    "tests": 34,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 34,
+    "junit_seconds": 63.16
+  },
+  "retained": {
+    "tests": 55,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 55,
+    "junit_seconds": 0.18
+  },
+  "supported": {
+    "tests": 153,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 153,
+    "junit_seconds": 107.474
+  }
+}
