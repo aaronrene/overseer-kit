@@ -6,6 +6,7 @@ import os
 from pathlib import Path
 import stat
 import tempfile
+from typing import Callable
 
 from cli.digest import sha256_hex_raw as digest
 
@@ -60,12 +61,13 @@ def read(root: Path, relative: str, *, missing: bool = False) -> bytes | None:
 
 
 def atomic(root: Path, relative: str, data: bytes, *, expected: str,
-           mode: int = 0o644) -> None:
+           mode: int = 0o644, before_replace: Callable[[], None] | None = None) -> None:
     """Compare prior bytes; fsync a unique sibling; replace and fsync its directory.
 
     Caller serialization is deliberately not a security subsystem. The second
     comparison catches ordinary stale writers; malicious same-UID races are out
-    of scope. NEXT callers also take a brief advisory directory lock.
+    of scope. NEXT callers also take a brief advisory directory lock and check
+    their captured context after the candidate is persisted, before replacement.
     """
     if len(data) > LIMIT:
         raise Refusal("file_too_large")
@@ -86,6 +88,8 @@ def atomic(root: Path, relative: str, data: bytes, *, expected: str,
             stream.flush()
             os.fsync(stream.fileno())
         compare()
+        if before_replace is not None:
+            before_replace()
         os.replace(name, path)
         directory = os.open(path.parent, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)
         try:

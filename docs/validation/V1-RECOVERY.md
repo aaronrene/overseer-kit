@@ -61,7 +61,10 @@ exercises both repository directions, those fixes and copied-runtime refusal.
 Closing-commit freshness compares exact bytes. No later publication/Muse runtime
 or release work was imported. `cli/legacy_main.py` preserves the original entrypoint.
 
-## Current verification
+## Implementation verification (before independent review)
+
+This section preserves the implementation session's result and then-pending
+review. The completed review and subsequent R1/R2 repair are recorded below.
 
 **Milestone passed; independent review remains pending.**
 
@@ -99,3 +102,77 @@ noncritical pilot. None is claimed complete by this implementation session.
 Sync is per-file atomic and rerunnable, not transactional. After replacement, a
 directory-fsync error reports failure even though the complete new NEXT may exist.
 The trusted-host contract does not claim resistance to malicious same-UID/root.
+
+## R1/R2 findings repair — 2026-10-14
+
+Repair base: `333f81e9bf847dcd418b305b931b1279da3c7ade`, branch
+`feat/overseer-v1-recovery-20261014`, physical root
+`/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014`, configured
+name `overseer-kit`, UUID `6988dc4a-5f22-454b-9d68-ac5905b383bf`. These bindings
+were printed and verified before repair; the starting worktree was clean.
+
+The [independent review](../reviews/V1-RECOVERY-REVIEW.md) is complete. Its original
+**FINDINGS** verdict and evidence remain byte-identical (SHA-256
+`d6bd4958fcade51005bede1b01efbd29b6c64c3b7c5fdf14c147e133d0fc90e0`). This section
+records author repair evidence, not a repeated or new independent review.
+
+- **R1:** NEXT publication captures config bytes, branch and full HEAD once. It
+  revalidates physical/Git root, config/UUID/runtime and branch/HEAD after taking
+  the directory lock and again after candidate fsync, immediately before atomic
+  replacement. A changed observation refuses without rebasing the prompt,
+  replacing old NEXT or leaving a temporary candidate behind. The existing
+  expected-digest CAS and directory lock remain in place.
+- **R2:** closing-commit parent and NEXT-blob lookups both use the captured full
+  commit ID. NEXT, status and hook output recheck the same captured context before
+  rendering/emission; status metadata uses that snapshot too. The valid unborn
+  and one-closing-commit cases retain their original contract.
+- **Regression evidence:** `tests/v1/test_context.py` uses real disposable Git
+  repositories. A child running the isolated bootstrap signals a real busy flock
+  before the parent changes branch, HEAD, config or runtime binding. A test-only
+  wrapper commits H2 after the real H1 parent lookup for the mixed-revision case.
+  Additional cases change context after the blob read or candidate fsync.
+  Successful read snapshots include Git metadata, bytes, modes and mtimes.
+
+Before the repair, the new cases produced **19 failed / 1 passed in 10.56 seconds**:
+the old writer published and old readers emitted output despite the injected
+context changes. After repair, **20 passed in 13.04 seconds**. These were product
+regressions, not environment restrictions. Raw logs/XML are retained in ignored
+`.overseer/scratch/validation/r1-r2-{before,after,supported}.{log,xml}`. Both focused
+runs used the local `.venv` with the complete command below plus
+`tests/v1/test_context.py` and the corresponding JUnit filename.
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest -q -p no:cacheprovider --junitxml=.overseer/scratch/validation/r1-r2-supported.xml
+```
+
+**Complete supported result: 173 passed in 132.21 seconds; zero failures, errors
+or skips.** This includes all 153 previously supported tests plus 20 new cases,
+the 34-case isolation matrix in both directions, concurrent CAS, valid unborn
+and single-closing-commit behavior, and 55 retained original tests. No supported
+failure was waived; this run encountered no environment restriction. Counts,
+JUnit timings and raw artifact hashes are appended to [test-results.json](test-results.json).
+Shell syntax checks and `git diff --check` also passed.
+
+The configured runtime was refreshed through this installation's explicit
+`sync --dry-run` then `sync`, changing only its digest to
+`b7fa1921fcb586ac6fcf8422f094fe20f9f9a438f64eecdaddd97d347115db95`. Ordinary venv
+symlinks, repository/runtime binding, no-follow confinement and per-file atomic
+writes remain. Git operations are not transactionally locked with NEXT: checks
+detect observed context changes, without claiming a global Git/filesystem
+transaction or resistance to malicious same-UID/root actors.
+
+All **393** historical test/support files remain byte-identical. The original
+historical disposition and baseline **1,391 passed / 104 failed** remain unchanged;
+that full historical suite was not rerun or declared green. No older worktree,
+real consumer, network/provider, remote operation or superseded architecture was
+used. Clean installation/current-previous rollback is the successor after repair;
+the noncritical pilot still requires separate authorization. Final v1 is not
+claimed complete.
+
+Exactly one successor was published through this checkout's bound `next-write`:
+`OVERSEER-V1-RECOVERY-INSTALL-ROLLBACK-1`, kind `maintain`, model `GPT-6 Astra`,
+reasoning Extra High. Explicit repository/branch/lane/model/action and digest
+expectations passed on readback. NEXT SHA-256 is
+`a85a75b6be582edb9c15b2990423559454ae323eab919ec643b7714cf0a11ce1`, based on the
+repair base above for the single local closing commit. ROADMAP and HANDOVER were
+updated together; the prompt remains canonical only in `docs/NEXT.md`.

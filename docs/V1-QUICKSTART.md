@@ -45,5 +45,7 @@ Run the complete supported suite:
 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest -q -p no:cacheprovider
 ```
 
-Independent review, clean installation/current-previous rollback, and a separately
-authorized consumer pilot remain outstanding. This is not a release announcement.
+The independent review is complete; R1/R2 repair evidence is recorded in
+[validation](validation/V1-RECOVERY.md). Clean installation/current-previous
+rollback and a separately authorized consumer pilot remain outstanding.
+This is not a release announcement.

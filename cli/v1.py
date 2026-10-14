@@ -157,6 +157,22 @@ def config_for(root, args, *, syncing=False):
     return config, data
 
 
+def capture_context(root, config_data):
+    return {"config": config_data, "branch": branch(root), "head": head(root)}
+
+
+def check_context(root, config, args, captured):
+    """Refuse a changed observation; never rebase a prepared prompt implicitly."""
+    if (root.resolve(strict=True) != root or
+            Path(git(root, "rev-parse", "--show-toplevel")).resolve(strict=True) != root):
+        raise Refusal("repository_context_changed")
+    current, data = config_for(root, args)
+    if current != config or data != captured["config"]:
+        raise Refusal("config_context_changed")
+    if branch(root) != captured["branch"] or head(root) != captured["head"]:
+        raise Refusal("repository_context_changed")
+
+
 def check_expectations(meta, args):
     for field in ("repo_id", "branch", "lane", "model", "action_id", "action_kind"):
         expected = getattr(args, field, None)
@@ -202,22 +218,24 @@ def validate_prompt(prompt):
         raise Refusal("prompt_contains_binding_fields")
 
 
-def validate_next(root, config, data, args, *, freshness=True):
+def validate_next(root, config, data, args, *, context, freshness=True):
     meta, prompt = parse_next(data)
     for field, expected in {"repo_id": config["repo"]["id"], "repo_root": str(root),
-                            "branch": branch(root), **config["context"]}.items():
+                            "branch": context["branch"], **config["context"]}.items():
         if meta[field] != expected:
             raise Refusal("next_" + field + "_mismatch")
     check_expectations(meta, args)
     if getattr(args, "expect_next", None) and args.expect_next != digest(data):
         raise Refusal("next_digest_mismatch")
-    current = head(root)
+    current = context["head"]
     if freshness and current != meta["base_head"]:
         # Permit the one closing commit that publishes these exact NEXT bytes.
         # Any subsequent commit needs an explicit refresh through next-write.
-        parents = git(root, "rev-list", "--parents", "-n", "1", "HEAD").split()[1:]
+        if current == "unborn":
+            raise Refusal("next_stale_head")
+        parents = git(root, "rev-list", "--parents", "-n", "1", current).split()[1:]
         expected_parents = [] if meta["base_head"] == "unborn" else [meta["base_head"]]
-        committed = git(root, "show", "HEAD:" + NEXT, optional=True, raw=True)
+        committed = git(root, "show", current + ":" + NEXT, optional=True, raw=True)
         if parents != expected_parents or committed != data:
             raise Refusal("next_stale_head")
     return meta, prompt
@@ -232,21 +250,24 @@ def rendered(meta, prompt):
     return "## CURRENT NEXT — paste this\n\n" + fence + "text\n" + body + fence + "\n"
 
 
-def write_next(root, config, args, prompt, *, expected):
+def write_next(root, config, args, prompt, *, expected, context):
     meta = {"schema": 1, "repo_id": config["repo"]["id"], "repo_root": str(root),
-            "branch": branch(root), "base_head": head(root), **config["context"],
+            "branch": context["branch"], "base_head": context["head"], **config["context"],
             "action_id": args.action_id, "action_kind": args.action_kind,
             "prompt_sha256": digest(prompt.encode())}
     check_expectations(meta, args)
     payload = b"---\n" + encode(meta) + b"---\n" + prompt.encode()
-    validate_next(root, config, payload, args, freshness=False)
+    validate_next(root, config, payload, args, context=context, freshness=False)
+    check_context(root, config, args, context)
     path = confined(root, NEXT, parents=True)
     # Advisory directory lock avoids ordinary concurrent lost updates without
     # persistent lock state or a recovery protocol.
     fd = os.open(path.parent, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)
     try:
         fcntl.flock(fd, fcntl.LOCK_EX)
-        atomic(root, NEXT, payload, expected=expected)
+        check_context(root, config, args, context)
+        atomic(root, NEXT, payload, expected=expected,
+               before_replace=lambda: check_context(root, config, args, context))
     finally:
         os.close(fd)
     return payload
@@ -305,10 +326,11 @@ def initialize(root, args):
                   "id": str(uuid.uuid4()), "root": str(root)}, "context": {
                   "lane": token(args.lane), "model": label(args.model)},
                   "runtime": runtime(), "vcs": "git"}
+    context = capture_context(root, existing if existing is not None else encode(config))
     confined(root, NEXT, parents=True)
     current = read(root, NEXT, missing=True)
     if current is not None:
-        validate_next(root, config, current, argparse.Namespace(), freshness=False)
+        validate_next(root, config, current, argparse.Namespace(), context=context, freshness=False)
     # Refuse preexisting unmanaged launchers rather than silently taking ownership.
     mapping = assets(root, config, args.hooks)
     for path in ("docs/ROADMAP.md", "docs/OVERSEER-HANDOVER.md"):
@@ -325,8 +347,9 @@ def initialize(root, args):
         if read(root, path, missing=True) is None:
             atomic(root, path, body.encode(), expected="absent")
     if current is None:
-        initial = argparse.Namespace(action_id="SETUP", action_kind="plan")
-        write_next(root, config, initial, "Choose the first bounded task for this repository.\n", expected="absent")
+        initial = argparse.Namespace(action_id="SETUP", action_kind="plan", bound_id=args.bound_id)
+        write_next(root, config, initial, "Choose the first bounded task for this repository.\n",
+                   expected="absent", context=context)
     apply_assets(root, mapping)
     return {"ok": True, "repository": config["repo"], "initialized": True}
 
@@ -391,13 +414,15 @@ def main(argv=None):
                 changed = apply_assets(root, mapping, dry_run=args.dry_run)
                 result = {"ok": True, "repository": config["repo"], "changed": changed, "dry_run": args.dry_run}
             elif args.command == "next-write":
+                context = capture_context(root, original)
                 prompt = read(root, args.prompt_file).decode("utf-8")
                 if not prompt.endswith("\n"):
                     prompt += "\n"
                 # The expected digest applies to the old NEXT, not the new candidate.
                 expected = args.expect_next
                 args.expect_next = None
-                result = {"ok": True, "next_sha256": digest(write_next(root, config, args, prompt, expected=expected))}
+                result = {"ok": True, "next_sha256": digest(write_next(
+                    root, config, args, prompt, expected=expected, context=context))}
             else:
                 if args.command == "hook":
                     path = Path(os.path.abspath(args.hook_path))
@@ -415,16 +440,19 @@ def main(argv=None):
                             roots = event.get("workspace_roots", [])
                             if roots and (not isinstance(roots, list) or len(roots) != 1 or not isinstance(roots[0], str) or Path(roots[0]).resolve() != root):
                                 raise Refusal("hook_workspace_mismatch")
-                result = {"ok": True, "repository": config["repo"], "branch": branch(root), "head": head(root), "runtime": runtime()}
+                context = capture_context(root, original)
+                result = {"ok": True, "repository": config["repo"], "branch": context["branch"],
+                          "head": context["head"], "runtime": config["runtime"]}
                 try:
                     data = read(root, NEXT)
-                    meta, prompt = validate_next(root, config, data, args)
+                    meta, prompt = validate_next(root, config, data, args, context=context)
                     result.update(next=meta, next_sha256=digest(data))
                 except Refusal as exc:
                     if args.command != "status":
                         raise
                     result.update(ok=False, next_error=str(exc))
                 if args.command in ("next", "hook"):
+                    check_context(root, config, args, context)
                     output = rendered(meta, prompt)
                     if args.command == "hook":
                         print(json.dumps({"additional_context": output, "followup_message": output}))
@@ -434,6 +462,7 @@ def main(argv=None):
                         print(output, end="")
                     return 0
                 result["dirty"] = bool(git(root, "status", "--porcelain", "--untracked-files=normal"))
+                check_context(root, config, args, context)
         if args.json:
             print(json.dumps(result))
         else:
