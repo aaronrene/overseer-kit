@@ -1,0 +1,24 @@
+......................................................F...               [100%]
+=================================== FAILURES ===================================
+___________ test_authority_switch_collection_requires_explicit_reset ___________
+
+muse_root = PosixPath('/private/tmp/fpr2-complete-native-handoffs/test_authority_switch_collecti0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+
+    def test_authority_switch_collection_requires_explicit_reset(muse_root, muse_python):
+        import subprocess
+        root = muse_root
+        init(root, muse_python)
+        lanes(root)
+        assert publish(root, lane='architecture').returncode == 0
+        subprocess.run(['/usr/bin/git', '-C', str(root), 'init', '-b', 'main'], check=True, capture_output=True)
+>       assert command('-C', root, 'adopt', *adoption_args(root, vcs='git')).returncode == 0
+E       AssertionError: assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...2, stdout='', stderr='refused: config_invalid: <normalized-config>: git-only regime requires muse fields to be null\n').returncode
+E        +    where CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...2, stdout='', stderr='refused: config_invalid: <normalized-config>: git-only regime requires muse fields to be null\n') = command('-C', PosixPath('/private/tmp/fpr2-complete-native-handoffs/test_authority_switch_collecti0/muse-only'), 'adopt', *['--vcs', 'git', '--expect-config', '9771ad8ba7d4c984c7d2073fbff5fcd32d9acb11ab3b136b569565dd371f6415', '--repo-id', 'b6bb6129-61fc-41f1-bae7-3540c0697825', ...])
+E        +      where ['--vcs', 'git', '--expect-config', '9771ad8ba7d4c984c7d2073fbff5fcd32d9acb11ab3b136b569565dd371f6415', '--repo-id', 'b6bb6129-61fc-41f1-bae7-3540c0697825', ...] = adoption_args(PosixPath('/private/tmp/fpr2-complete-native-handoffs/test_authority_switch_collecti0/muse-only'), vcs='git')
+
+tests/muse/test_product.py:142: AssertionError
+=========================== short test summary info ============================
+FAILED tests/muse/test_product.py::test_authority_switch_collection_requires_explicit_reset
+1 failed, 57 passed in 268.56s (0:04:28)

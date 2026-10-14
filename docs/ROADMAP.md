@@ -19,8 +19,8 @@ The former sole-writer/NXR-GSR chain remains historical and is not the living NE
 | Offline bounded source snapshot | Complete locally; retain as an internal reference, not the complete product release |
 | FPR-0 — full-product reconciliation analysis | Complete — [integration plan](decisions/FULL-PRODUCT-RESTORATION-PLAN.md); committed-object analysis and documentation only |
 | FPR-1 — unified foundation and automatic handoff | Complete locally — unified dispatcher/schema-3 migration, preserved bindings/settings, canonical Cursor fixture bookends; [focused evidence](validation/FPR-1-FOUNDATION.md) |
-| FPR-2 — Muse authority, mirror and repository lanes | **NEXT, awaiting owner acceptance** — independently selected Git/Muse authority, controlled mirrors and repository lanes; exact scope in the plan |
-| FPR-3 — complete product surface | Planned after FPR-2 — restore governance, review, workspace, verification, routing, landing and local app/desktop/dashboard features |
+| FPR-2 — Muse authority, mirror and repository lanes | Complete locally — selected authority, controlled mirrors, explicit adoption/rollback and canonical lane collection; [focused evidence](validation/FPR-2-AUTHORITY.md) |
+| FPR-3 — complete product surface | **NEXT, awaiting owner acceptance** — remaining maintained commands/app/distribution surfaces under section 8 of the plan |
 | FPR-4 — combined validation | Planned after FPR-3 — one integrated matrix, clean installation/migration/rollback and one noncritical full-flow pilot |
 | FPR-5 — independent final review and release decision | Planned after FPR-4 — one independent review of the integrated build, bounded repairs if required, then owner release decision |
 
@@ -96,15 +96,24 @@ trusted-host model, validated on Python 3.14.4, for `status`, `init`, `sync`,
 repair evidence while preserving the independent **FINDINGS** verdict.
 Historical baseline **1,391 passed / 104 failed** remains unchanged.
 
-The canonical successor is **FPR-2**, pending separate owner acceptance of
-`docs/NEXT.md`. The accepted FPR-1 wave completed only local foundation work.
-[Evidence and disposition](validation/FPR-1-FOUNDATION.md) record the source
-selection, focused checks, mechanical repairs, explicit runtime/config migration
-and preserved certification history. The integrated matrix passed 315 tests;
-58 affected-command checks passed after the final unsupported-authority refusal
-repair. Existing canonical NEXT was preserved during
-migration; its successor was published only through the bound CAS writer.
-Cursor hooks ran only in newly created fixtures; actual host versions remain
-unverified. Claude/Codex bookends are instruction-triggered. No consumer access,
-real-consumer hooks, network/provider access, merge, push, publication or deployment
-is authorized. The complete product is not restored or release-ready after FPR-1.
+The canonical successor is **FPR-3**, pending separate owner acceptance of
+`docs/NEXT.md`. FPR-2 adds independent Git/Muse authority, explicit adoption and
+rollback, isolated controlled mirror/reconciliation services, scoped credentials,
+validated regime upgrades and schema-3 repository lanes in the same canonical
+file. Single and batch publication share the confined whole-file CAS writer;
+Muse uses exact native revisions and Git retains pinned closing reads.
+[Evidence and source/test disposition](validation/FPR-2-AUTHORITY.md) and
+[operation notes](FPR-2-AUTHORITY-AND-LANES.md) record focused checks and limits.
+This installation stays Git-only with tracked bindings, preserved settings and
+hooks disabled; only its runtime binding is explicitly refreshed. Native fixtures
+use the pinned local rc5 package with fake transports and credentials. The
+completed bounded review, installation/rollback and pilot are not repeated.
+No FPR-3 execution, combined FPR-4 validation, independent FPR-5 review, consumer
+operation, provider/network access, merge, push, publication or deployment is
+implied. The complete product is not restored or release-ready after FPR-2.
+
+FPR-2 focused evidence covers 559 distinct maintained passing cases across
+recorded runs. Final affected reruns passed 169 Git/config/lane and 41 native
+cases; the complete mirror/reconciliation run passed 102. One unchanged historical
+native-export/automatic-push assertion is explicitly superseded by real controlled
+wrapper checks. This is not one combined final-product run or release validation.

@@ -193,6 +193,14 @@ def _adapter_view(data):
     view["overseer_config_version"] = 1
     view["repo"] = {key: view["repo"][key] for key in ("name", "root_relative_docs")}
     view["vcs"]["muse"].pop("binding", None)
+    if data['vcs']['regime'] == 'git-only':
+        # Full schema retains inactive source settings across explicit adoption.
+        # The historical Git adapter must not interpret them as active Muse.
+        for field in ('staging_remote', 'main_branch', 'working_dir'):
+            value = view['vcs']['muse'].get(field)
+            if value is not None and not isinstance(value, str):
+                raise Refusal('config_invalid: inactive Muse setting must be a string or null')
+            view['vcs']['muse'][field] = None
     view["docs"].pop("canonical_next", None)
     for lane in (view["docs"].get("lanes") or {}).values():
         lane.pop("repo_id", None)
@@ -405,7 +413,7 @@ def normalize(data: bytes, *, root: Path, runtime: dict | None = None,
             _label(value, "vcs.muse.binding.runtime." + key)
         if not Path(mr["python"]).is_absolute() or Path(mr["python"]).parent.name != "bin" or not SHA256.fullmatch(mr["sha256"]):
             raise Refusal("muse_runtime_binding_invalid")
-        diagnostics.append("muse_source_binding_preserved_unverified: activation requires FPR-2")
+        diagnostics.append("muse_source_binding_requires_native_verification")
     working_dir = muse.get("working_dir")
     if working_dir is not None:
         _relative(working_dir, "vcs.muse.working_dir", root, directory=True)

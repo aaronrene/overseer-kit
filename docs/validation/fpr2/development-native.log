@@ -1,0 +1,2946 @@
+FFFFFFFFFFFFFFFFFFFFFFF.FFFFFFEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE [ 42%]
+EEEEEEEEEEEEE.EE...................EEEEEEEEEEEEEEE...................... [ 84%]
+...........................                                              [100%]
+==================================== ERRORS ====================================
+______ ERROR at setup of test_projection_modes_mapping_and_offline_retry _______
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_projection_modes_mapping_0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1048a4eb0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_projection_modes_mapping_0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_projection_modes_mapping_0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_______ ERROR at setup of test_source_drift_refused_before_target[head] ________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_source_drift_refused_befo0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1054d33d0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_source_drift_refused_befo0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_source_drift_refused_befo0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+______ ERROR at setup of test_source_drift_refused_before_target[branch] _______
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_source_drift_refused_befo1/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1054d2f00>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_source_drift_refused_befo1')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_source_drift_refused_befo1/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_____ ERROR at setup of test_source_drift_refused_before_target[source_id] _____
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_source_drift_refused_befo2/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1054d2da0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_source_drift_refused_befo2')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_source_drift_refused_befo2/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_source_drift_refused_before_target[unknown_revision] __
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_source_drift_refused_befo3/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1054d2c40>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_source_drift_refused_befo3')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_source_drift_refused_befo3/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+______ ERROR at setup of test_source_drift_refused_before_target[working] ______
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_source_drift_refused_befo4/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1054d1fe0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_source_drift_refused_befo4')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_source_drift_refused_befo4/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_______ ERROR at setup of test_source_drift_refused_before_target[mode] ________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_source_drift_refused_befo5/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1054d17a0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_source_drift_refused_befo5')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_source_drift_refused_befo5/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_______ ERROR at setup of test_source_drift_refused_before_target[stage] _______
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_source_drift_refused_befo6/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1054d1a60>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_source_drift_refused_befo6')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_source_drift_refused_befo6/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_____________ ERROR at setup of test_missing_objects_refused[blob] _____________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_missing_objects_refused_b0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1054d10c0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_missing_objects_refused_b0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_missing_objects_refused_b0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+____________ ERROR at setup of test_missing_objects_refused[commit] ____________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_missing_objects_refused_c0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1054d0d50>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_missing_objects_refused_c0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_missing_objects_refused_c0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+___________ ERROR at setup of test_missing_objects_refused[snapshot] ___________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_missing_objects_refused_s0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10544fcc0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_missing_objects_refused_s0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_missing_objects_refused_s0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_____ ERROR at setup of test_targets_are_physical_isolated_and_owned[same] _____
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_targets_are_physical_isol0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10544fc10>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_targets_are_physical_isol0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_targets_are_physical_isol0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+____ ERROR at setup of test_targets_are_physical_isolated_and_owned[child] _____
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_targets_are_physical_isol1/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10544fab0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_targets_are_physical_isol1')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_targets_are_physical_isol1/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+____ ERROR at setup of test_targets_are_physical_isolated_and_owned[parent] ____
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_targets_are_physical_isol2/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10521b1c0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_targets_are_physical_isol2')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_targets_are_physical_isol2/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+__ ERROR at setup of test_targets_are_physical_isolated_and_owned[dot_parent] __
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_targets_are_physical_isol3/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x104939590>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_targets_are_physical_isol3')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_targets_are_physical_isol3/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+____ ERROR at setup of test_targets_are_physical_isolated_and_owned[alias] _____
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_targets_are_physical_isol4/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x104939f30>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_targets_are_physical_isol4')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_targets_are_physical_isol4/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_targets_are_physical_isolated_and_owned[alias_parent] _
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_targets_are_physical_isol5/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10493ac40>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_targets_are_physical_isol5')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_targets_are_physical_isol5/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_targets_are_physical_isolated_and_owned[git_worktree] _
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_targets_are_physical_isol6/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1048a4a90>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_targets_are_physical_isol6')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_targets_are_physical_isol6/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+___ ERROR at setup of test_targets_are_physical_isolated_and_owned[foreign] ____
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_targets_are_physical_isol7/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1048a4ca0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_targets_are_physical_isol7')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_targets_are_physical_isol7/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+____ ERROR at setup of test_targets_are_physical_isolated_and_owned[empty] _____
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_targets_are_physical_isol8/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10493b3d0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_targets_are_physical_isol8')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_targets_are_physical_isol8/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_dirty_stale_or_hooked_owned_target_refused[untracked] _
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_dirty_stale_or_hooked_own0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x104939590>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_dirty_stale_or_hooked_own0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_dirty_stale_or_hooked_own0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+__ ERROR at setup of test_dirty_stale_or_hooked_owned_target_refused[config] ___
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_dirty_stale_or_hooked_own1/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10521a560>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_dirty_stale_or_hooked_own1')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_dirty_stale_or_hooked_own1/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+___ ERROR at setup of test_dirty_stale_or_hooked_owned_target_refused[hooks] ___
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_dirty_stale_or_hooked_own2/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10521a140>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_dirty_stale_or_hooked_own2')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_dirty_stale_or_hooked_own2/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+____ ERROR at setup of test_dirty_stale_or_hooked_owned_target_refused[ref] ____
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_dirty_stale_or_hooked_own3/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x105219d20>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_dirty_stale_or_hooked_own3')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_dirty_stale_or_hooked_own3/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_dirty_stale_or_hooked_owned_target_refused[alternate] _
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_dirty_stale_or_hooked_own4/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1054d10c0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_dirty_stale_or_hooked_own4')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_dirty_stale_or_hooked_own4/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+__ ERROR at setup of test_dirty_stale_or_hooked_owned_target_refused[symlink] __
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_dirty_stale_or_hooked_own5/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1054d1a60>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_dirty_stale_or_hooked_own5')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_dirty_stale_or_hooked_own5/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+__ ERROR at setup of test_inherited_muse_hook_refused_preserved_and_never_run __
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_inherited_muse_hook_refus0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1054d3270>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_inherited_muse_hook_refus0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_inherited_muse_hook_refus0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+__ ERROR at setup of test_inherited_git_environment_and_global_hooks_disabled __
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_inherited_git_environment0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1048a4bf0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_inherited_git_environment0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_inherited_git_environment0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_existing_snapshot_local_bindings_and_secrets_are_projected_out _
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_existing_snapshot_local_b0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1048a4720>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_existing_snapshot_local_b0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_existing_snapshot_local_b0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+__ ERROR at setup of test_supported_modes_refuse_unsupported_source[symlink] ___
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_supported_modes_refuse_un0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1048a5bc0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_supported_modes_refuse_un0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_supported_modes_refuse_un0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+__ ERROR at setup of test_supported_modes_refuse_unsupported_source[hardlink] __
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_supported_modes_refuse_un1/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1048a6350>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_supported_modes_refuse_un1')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_supported_modes_refuse_un1/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_supported_modes_refuse_unsupported_source[unlisted_executable] _
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_supported_modes_refuse_un2/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1054d2c40>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_supported_modes_refuse_un2')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_supported_modes_refuse_un2/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_supported_modes_refuse_unsupported_source[missing_executable] _
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_supported_modes_refuse_un3/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1054d0670>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_supported_modes_refuse_un3')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_supported_modes_refuse_un3/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_supported_modes_refuse_unsupported_source[unsupported_mode] _
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_supported_modes_refuse_un4/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1054d10c0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_supported_modes_refuse_un4')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_supported_modes_refuse_un4/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_______ ERROR at setup of test_interrupted_prepare_can_retry[before_ref] _______
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_interrupted_prepare_can_r0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10493acf0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_interrupted_prepare_can_r0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_interrupted_prepare_can_r0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_______ ERROR at setup of test_interrupted_prepare_can_retry[after_ref] ________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_interrupted_prepare_can_r1/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10493b3d0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_interrupted_prepare_can_r1')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_interrupted_prepare_can_r1/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_______ ERROR at setup of test_interrupted_push_no_change_retry[before] ________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_interrupted_push_no_chang0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1048a62a0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_interrupted_push_no_chang0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_interrupted_push_no_chang0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+________ ERROR at setup of test_interrupted_push_no_change_retry[after] ________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_interrupted_push_no_chang1/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1048a4ca0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_interrupted_push_no_chang1')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_interrupted_push_no_chang1/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_pr_failure_preserves_push_and_retries_pr_with_repository_context _
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_pr_failure_preserves_push0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1048a5900>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_pr_failure_preserves_push0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_pr_failure_preserves_push0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_delivery_requires_current_source_and_expected_remote[unknown_hub] _
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_delivery_requires_current0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1048a4510>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_delivery_requires_current0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_delivery_requires_current0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_delivery_requires_current_source_and_expected_remote[unpushed_source] _
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_delivery_requires_current1/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1048a49e0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_delivery_requires_current1')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_delivery_requires_current1/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_delivery_requires_current_source_and_expected_remote[remote_drift] _
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_delivery_requires_current2/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1048a7320>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_delivery_requires_current2')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_delivery_requires_current2/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_delivery_requires_current_source_and_expected_remote[source_drift] _
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_delivery_requires_current3/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1048a7950>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_delivery_requires_current3')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_delivery_requires_current3/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_delivery_requires_current_source_and_expected_remote[target_drift] _
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_delivery_requires_current4/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x104844040>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_delivery_requires_current4')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_delivery_requires_current4/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_source_change_during_prepare_refuses_ref_and_can_resume _
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_source_change_during_prep0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1048a75e0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_source_change_during_prep0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_source_change_during_prep0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+____ ERROR at setup of test_add_change_delete_and_no_content_source_commit _____
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_add_change_delete_and_no_0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1048a77f0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_add_change_delete_and_no_0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_add_change_delete_and_no_0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_________ ERROR at setup of test_concurrent_operators_and_cli_plan_pin _________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_concurrent_operators_and_0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1048a7530>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_concurrent_operators_and_0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_concurrent_operators_and_0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_____ ERROR at setup of test_explicit_pair_binding_prevents_second_target ______
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_explicit_pair_binding_pre0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10544e980>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_explicit_pair_binding_pre0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_explicit_pair_binding_pre0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+___ ERROR at setup of test_network_adapter_argv_and_pr_failure_are_explicit ____
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_network_adapter_argv_and_0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1048a7ab0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_network_adapter_argv_and_0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_network_adapter_argv_and_0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+__ ERROR at setup of test_target_ref_change_during_export_is_not_overwritten ___
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_target_ref_change_during_0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1048a4bf0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_target_ref_change_during_0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_target_ref_change_during_0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_corrupt_export_projection_cannot_update_ref[foreign] __
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_corrupt_export_projection0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1048a6610>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_corrupt_export_projection0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_corrupt_export_projection0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+__ ERROR at setup of test_corrupt_export_projection_cannot_update_ref[bytes] ___
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_corrupt_export_projection1/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1048a6ae0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_corrupt_export_projection1')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_corrupt_export_projection1/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+___ ERROR at setup of test_corrupt_export_projection_cannot_update_ref[mode] ___
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_corrupt_export_projection2/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x104844720>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_corrupt_export_projection2')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_corrupt_export_projection2/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+________ ERROR at setup of test_missing_git_blob_invalidates_no_change _________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_missing_git_blob_invalida0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1048447d0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_missing_git_blob_invalida0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_missing_git_blob_invalida0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_remote_change_immediately_before_push_stops_delivery __
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_remote_change_immediately0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x104844d50>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_remote_change_immediately0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_remote_change_immediately0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_invalid_cli_plan_and_missing_delivery_executable_refuse_cleanly _
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_invalid_cli_plan_and_miss0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x104845a60>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_invalid_cli_plan_and_miss0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_invalid_cli_plan_and_miss0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+____ ERROR at setup of test_legacy_git_destination_is_not_silently_replaced ____
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_legacy_git_destination_is0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x104845c70>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_legacy_git_destination_is0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_legacy_git_destination_is0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_exact_110_path_delta_divergent_histories_modes_and_exclusions _
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_exact_110_path_delta_dive0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10550c3b0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_exact_110_path_delta_dive0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_exact_110_path_delta_dive0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_reconciliation_refuses_unreviewed_inputs[mirror_head] _
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_reconciliation_refuses_un0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1048a66c0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_reconciliation_refuses_un0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_reconciliation_refuses_un0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+__ ERROR at setup of test_reconciliation_refuses_unreviewed_inputs[base_head] __
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_reconciliation_refuses_un1/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10493acf0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_reconciliation_refuses_un1')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_reconciliation_refuses_un1/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_reconciliation_refuses_unreviewed_inputs[bundle_hash] _
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_reconciliation_refuses_un2/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10550c250>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_reconciliation_refuses_un2')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_reconciliation_refuses_un2/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_reconciliation_refuses_unreviewed_inputs[bundle_ref] __
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_reconciliation_refuses_un3/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10544f1c0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_reconciliation_refuses_un3')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_reconciliation_refuses_un3/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_reconciliation_refuses_unreviewed_inputs[corrupt_pack] _
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_reconciliation_refuses_un4/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1048459b0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_reconciliation_refuses_un4')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_reconciliation_refuses_un4/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_reconciliation_refuses_unreviewed_inputs[missing_delta] _
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_reconciliation_refuses_un5/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10550c510>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_reconciliation_refuses_un5')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_reconciliation_refuses_un5/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_reconciliation_refuses_unreviewed_inputs[changed_delta] _
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_reconciliation_refuses_un6/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10550c670>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_reconciliation_refuses_un6')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_reconciliation_refuses_un6/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_reconciliation_refuses_unreviewed_inputs[foreign_target] _
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_reconciliation_refuses_un7/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10550d220>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_reconciliation_refuses_un7')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_reconciliation_refuses_un7/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_reconciliation_refuses_unreviewed_inputs[empty_target] _
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_reconciliation_refuses_un8/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10550d850>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_reconciliation_refuses_un8')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_reconciliation_refuses_un8/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_____________ ERROR at setup of test_unrelated_history_is_refused ______________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_unrelated_history_is_refu0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10550de80>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_unrelated_history_is_refu0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_unrelated_history_is_refu0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+______ ERROR at setup of test_reconciliation_requires_explicit_operation _______
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_reconciliation_requires_e0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10550e4b0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_reconciliation_requires_e0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_reconciliation_requires_e0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_interrupted_reconciliation_recovers_exact_correspondence[import] _
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_interrupted_reconciliatio0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10550eae0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_interrupted_reconciliatio0')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_interrupted_reconciliatio0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_interrupted_reconciliation_recovers_exact_correspondence[before_ref] _
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_interrupted_reconciliatio1/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10550f110>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_interrupted_reconciliatio1')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_interrupted_reconciliatio1/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ ERROR at setup of test_interrupted_reconciliation_recovers_exact_correspondence[after_ref] _
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_interrupted_reconciliatio2/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10550f740>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_interrupted_reconciliatio2')
+
+    @pytest.fixture
+    def case(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_mirror.py:22: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_interrupted_reconciliatio2/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+=================================== FAILURES ===================================
+_________ test_muse_only_unborn_commit_freshness_and_offline_readonly __________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_muse_only_unborn_commit_f0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10493bab0>
+
+    def test_muse_only_unborn_commit_freshness_and_offline_readonly(muse_root, muse_python, muse):
+        root = muse_root
+>       initial = init(root, muse_python)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/muse/test_handoffs.py:53: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_muse_only_unborn_commit_f0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_________________ test_mixed_authority_uses_only_muse_revision _________________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_mixed_authority_uses_only0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10493b1c0>
+
+    def test_mixed_authority_uses_only_muse_revision(muse_root, muse_python, muse):
+        root = muse_root
+        subprocess.run(['/usr/bin/git', '-C', str(root), 'init', '-b', 'git-main'], check=True, capture_output=True)
+>       init(root, muse_python)
+
+tests/muse/test_handoffs.py:81: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_mixed_authority_uses_only0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_________ test_native_linked_worktree_own_branch_and_checkout_identity _________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_native_linked_worktree_ow0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10493ada0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_native_linked_worktree_ow0')
+
+    def test_native_linked_worktree_own_branch_and_checkout_identity(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_handoffs.py:96: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_native_linked_worktree_ow0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+______ test_muse_writer_rejects_wrong_context_without_writes[lane-wrong] _______
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_muse_writer_rejects_wrong0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+field = 'lane', value = 'wrong'
+
+    @pytest.mark.parametrize('field,value', [('lane', 'wrong'), ('model', 'Other'),
+        ('repo_id', 'wrong'), ('branch', 'wrong'), ('base_head', 'sha256:'+'0'*64),
+        ('vcs', 'git'), ('vcs', None), ('base_head', None)])
+    def test_muse_writer_rejects_wrong_context_without_writes(muse_root, muse_python, field, value):
+>       init(muse_root, muse_python)
+
+tests/muse/test_handoffs.py:120: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_muse_writer_rejects_wrong0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+______ test_muse_writer_rejects_wrong_context_without_writes[model-Other] ______
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_muse_writer_rejects_wrong1/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+field = 'model', value = 'Other'
+
+    @pytest.mark.parametrize('field,value', [('lane', 'wrong'), ('model', 'Other'),
+        ('repo_id', 'wrong'), ('branch', 'wrong'), ('base_head', 'sha256:'+'0'*64),
+        ('vcs', 'git'), ('vcs', None), ('base_head', None)])
+    def test_muse_writer_rejects_wrong_context_without_writes(muse_root, muse_python, field, value):
+>       init(muse_root, muse_python)
+
+tests/muse/test_handoffs.py:120: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_muse_writer_rejects_wrong1/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_____ test_muse_writer_rejects_wrong_context_without_writes[repo_id-wrong] _____
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_muse_writer_rejects_wrong2/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+field = 'repo_id', value = 'wrong'
+
+    @pytest.mark.parametrize('field,value', [('lane', 'wrong'), ('model', 'Other'),
+        ('repo_id', 'wrong'), ('branch', 'wrong'), ('base_head', 'sha256:'+'0'*64),
+        ('vcs', 'git'), ('vcs', None), ('base_head', None)])
+    def test_muse_writer_rejects_wrong_context_without_writes(muse_root, muse_python, field, value):
+>       init(muse_root, muse_python)
+
+tests/muse/test_handoffs.py:120: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_muse_writer_rejects_wrong2/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_____ test_muse_writer_rejects_wrong_context_without_writes[branch-wrong] ______
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_muse_writer_rejects_wrong3/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+field = 'branch', value = 'wrong'
+
+    @pytest.mark.parametrize('field,value', [('lane', 'wrong'), ('model', 'Other'),
+        ('repo_id', 'wrong'), ('branch', 'wrong'), ('base_head', 'sha256:'+'0'*64),
+        ('vcs', 'git'), ('vcs', None), ('base_head', None)])
+    def test_muse_writer_rejects_wrong_context_without_writes(muse_root, muse_python, field, value):
+>       init(muse_root, muse_python)
+
+tests/muse/test_handoffs.py:120: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_muse_writer_rejects_wrong3/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ test_muse_writer_rejects_wrong_context_without_writes[base_head-sha256:0000000000000000000000000000000000000000000000000000000000000000] _
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_muse_writer_rejects_wrong4/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+field = 'base_head'
+value = 'sha256:0000000000000000000000000000000000000000000000000000000000000000'
+
+    @pytest.mark.parametrize('field,value', [('lane', 'wrong'), ('model', 'Other'),
+        ('repo_id', 'wrong'), ('branch', 'wrong'), ('base_head', 'sha256:'+'0'*64),
+        ('vcs', 'git'), ('vcs', None), ('base_head', None)])
+    def test_muse_writer_rejects_wrong_context_without_writes(muse_root, muse_python, field, value):
+>       init(muse_root, muse_python)
+
+tests/muse/test_handoffs.py:120: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_muse_writer_rejects_wrong4/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+________ test_muse_writer_rejects_wrong_context_without_writes[vcs-git] ________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_muse_writer_rejects_wrong5/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+field = 'vcs', value = 'git'
+
+    @pytest.mark.parametrize('field,value', [('lane', 'wrong'), ('model', 'Other'),
+        ('repo_id', 'wrong'), ('branch', 'wrong'), ('base_head', 'sha256:'+'0'*64),
+        ('vcs', 'git'), ('vcs', None), ('base_head', None)])
+    def test_muse_writer_rejects_wrong_context_without_writes(muse_root, muse_python, field, value):
+>       init(muse_root, muse_python)
+
+tests/muse/test_handoffs.py:120: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_muse_writer_rejects_wrong5/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_______ test_muse_writer_rejects_wrong_context_without_writes[vcs-None] ________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_muse_writer_rejects_wrong6/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+field = 'vcs', value = None
+
+    @pytest.mark.parametrize('field,value', [('lane', 'wrong'), ('model', 'Other'),
+        ('repo_id', 'wrong'), ('branch', 'wrong'), ('base_head', 'sha256:'+'0'*64),
+        ('vcs', 'git'), ('vcs', None), ('base_head', None)])
+    def test_muse_writer_rejects_wrong_context_without_writes(muse_root, muse_python, field, value):
+>       init(muse_root, muse_python)
+
+tests/muse/test_handoffs.py:120: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_muse_writer_rejects_wrong6/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+____ test_muse_writer_rejects_wrong_context_without_writes[base_head-None] _____
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_muse_writer_rejects_wrong7/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+field = 'base_head', value = None
+
+    @pytest.mark.parametrize('field,value', [('lane', 'wrong'), ('model', 'Other'),
+        ('repo_id', 'wrong'), ('branch', 'wrong'), ('base_head', 'sha256:'+'0'*64),
+        ('vcs', 'git'), ('vcs', None), ('base_head', None)])
+    def test_muse_writer_rejects_wrong_context_without_writes(muse_root, muse_python, field, value):
+>       init(muse_root, muse_python)
+
+tests/muse/test_handoffs.py:120: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_muse_writer_rejects_wrong7/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+___________ test_copied_muse_bindings_refused[.overseer/config.yaml] ___________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_copied_muse_bindings_refu0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10521b5e0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_copied_muse_bindings_refu0')
+binding = '.overseer/config.yaml'
+
+    @pytest.mark.parametrize('binding', [v1.CONFIG, v1.NEXT, '.overseer/bin/ok'])
+    def test_copied_muse_bindings_refused(muse_root, muse_python, muse, tmp_path, binding):
+>       init(muse_root, muse_python)
+
+tests/muse/test_handoffs.py:129: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_copied_muse_bindings_refu0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_______________ test_copied_muse_bindings_refused[docs/NEXT.md] ________________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_copied_muse_bindings_refu1/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10521b1c0>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_copied_muse_bindings_refu1')
+binding = 'docs/NEXT.md'
+
+    @pytest.mark.parametrize('binding', [v1.CONFIG, v1.NEXT, '.overseer/bin/ok'])
+    def test_copied_muse_bindings_refused(muse_root, muse_python, muse, tmp_path, binding):
+>       init(muse_root, muse_python)
+
+tests/muse/test_handoffs.py:129: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_copied_muse_bindings_refu1/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_____________ test_copied_muse_bindings_refused[.overseer/bin/ok] ______________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_copied_muse_bindings_refu2/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10521ac40>
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_copied_muse_bindings_refu2')
+binding = '.overseer/bin/ok'
+
+    @pytest.mark.parametrize('binding', [v1.CONFIG, v1.NEXT, '.overseer/bin/ok'])
+    def test_copied_muse_bindings_refused(muse_root, muse_python, muse, tmp_path, binding):
+>       init(muse_root, muse_python)
+
+tests/muse/test_handoffs.py:129: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_copied_muse_bindings_refu2/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_________ test_muse_missing_or_malformed_state_refuses[missing_python] _________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_muse_missing_or_malformed0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10521a560>, broken = 'missing_python'
+
+    @pytest.mark.parametrize('broken', ['missing_python', 'runtime_pin', 'missing_object', 'malformed_head', 'detached', 'bad_ref', 'wrong_source', 'unregistered_pointer'])
+    def test_muse_missing_or_malformed_state_refuses(muse_root, muse_python, muse, broken):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_handoffs.py:142: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_muse_missing_or_malformed0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+__________ test_muse_missing_or_malformed_state_refuses[runtime_pin] ___________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_muse_missing_or_malformed1/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10521a140>, broken = 'runtime_pin'
+
+    @pytest.mark.parametrize('broken', ['missing_python', 'runtime_pin', 'missing_object', 'malformed_head', 'detached', 'bad_ref', 'wrong_source', 'unregistered_pointer'])
+    def test_muse_missing_or_malformed_state_refuses(muse_root, muse_python, muse, broken):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_handoffs.py:142: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_muse_missing_or_malformed1/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_________ test_muse_missing_or_malformed_state_refuses[missing_object] _________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_muse_missing_or_malformed2/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10544e980>, broken = 'missing_object'
+
+    @pytest.mark.parametrize('broken', ['missing_python', 'runtime_pin', 'missing_object', 'malformed_head', 'detached', 'bad_ref', 'wrong_source', 'unregistered_pointer'])
+    def test_muse_missing_or_malformed_state_refuses(muse_root, muse_python, muse, broken):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_handoffs.py:142: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_muse_missing_or_malformed2/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_________ test_muse_missing_or_malformed_state_refuses[malformed_head] _________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_muse_missing_or_malformed3/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10544efb0>, broken = 'malformed_head'
+
+    @pytest.mark.parametrize('broken', ['missing_python', 'runtime_pin', 'missing_object', 'malformed_head', 'detached', 'bad_ref', 'wrong_source', 'unregistered_pointer'])
+    def test_muse_missing_or_malformed_state_refuses(muse_root, muse_python, muse, broken):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_handoffs.py:142: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_muse_missing_or_malformed3/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+____________ test_muse_missing_or_malformed_state_refuses[detached] ____________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_muse_missing_or_malformed4/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x10544f690>, broken = 'detached'
+
+    @pytest.mark.parametrize('broken', ['missing_python', 'runtime_pin', 'missing_object', 'malformed_head', 'detached', 'bad_ref', 'wrong_source', 'unregistered_pointer'])
+    def test_muse_missing_or_malformed_state_refuses(muse_root, muse_python, muse, broken):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_handoffs.py:142: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_muse_missing_or_malformed4/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+____________ test_muse_missing_or_malformed_state_refuses[bad_ref] _____________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_muse_missing_or_malformed5/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1054d00f0>, broken = 'bad_ref'
+
+    @pytest.mark.parametrize('broken', ['missing_python', 'runtime_pin', 'missing_object', 'malformed_head', 'detached', 'bad_ref', 'wrong_source', 'unregistered_pointer'])
+    def test_muse_missing_or_malformed_state_refuses(muse_root, muse_python, muse, broken):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_handoffs.py:142: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_muse_missing_or_malformed5/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+__________ test_muse_missing_or_malformed_state_refuses[wrong_source] __________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_muse_missing_or_malformed6/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1054d0a90>, broken = 'wrong_source'
+
+    @pytest.mark.parametrize('broken', ['missing_python', 'runtime_pin', 'missing_object', 'malformed_head', 'detached', 'bad_ref', 'wrong_source', 'unregistered_pointer'])
+    def test_muse_missing_or_malformed_state_refuses(muse_root, muse_python, muse, broken):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_handoffs.py:142: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_muse_missing_or_malformed6/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+______ test_muse_missing_or_malformed_state_refuses[unregistered_pointer] ______
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_muse_missing_or_malformed7/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1054d1170>
+broken = 'unregistered_pointer'
+
+    @pytest.mark.parametrize('broken', ['missing_python', 'runtime_pin', 'missing_object', 'malformed_head', 'detached', 'bad_ref', 'wrong_source', 'unregistered_pointer'])
+    def test_muse_missing_or_malformed_state_refuses(muse_root, muse_python, muse, broken):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_handoffs.py:142: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_muse_missing_or_malformed7/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+__________________ test_changed_revision_during_write_refused __________________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_changed_revision_during_w0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+
+    def test_changed_revision_during_write_refused(muse_root, muse_python):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_handoffs.py:180: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_changed_revision_during_w0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_ test_tracked_muse_binding_blocks_adoption_and_snapshot_excludes_new_local_files _
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_tracked_muse_binding_bloc0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1054d2400>
+
+    def test_tracked_muse_binding_blocks_adoption_and_snapshot_excludes_new_local_files(muse_root, muse_python, muse):
+        root = muse_root
+        # Existing tracked NEXT requires explicit source cleanup, not an ignore-only promise.
+        (root/'docs').mkdir()
+        (root/v1.NEXT).write_text('old imported local binding\n')
+        commit(root, muse)
+        (root/v1.NEXT).unlink()
+        r = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', muse_python)
+        assert r.returncode == 2 and 'tracked_local_bindings' in r.stderr
+        # Explicit fixture cleanup creates a new snapshot; history remains intact.
+        muse(root, 'code', 'add', '.')
+        muse(root, 'commit', '-m', 'remove tracked local binding', '--json')
+>       init(root, muse_python)
+
+tests/muse/test_handoffs.py:243: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_tracked_muse_binding_bloc0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_________ test_committed_git_baseline_import_isolated_from_owner_edits _________
+
+tmp_path = PosixPath('/private/tmp/fpr2-muse1/test_committed_git_baseline_im0')
+muse = <function muse.<locals>.run at 0x1054d26c0>
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+
+    def test_committed_git_baseline_import_isolated_from_owner_edits(tmp_path, muse, muse_python):
+        source = seed(tmp_path/'git-source')
+        assert command('-C', source, 'init').returncode == 0
+        from cli.v1_policy import ignore_assets
+        for p, body in ignore_assets(source).items():
+            (source/p).write_bytes(body)
+        (source/'app.py').write_text('committed = True\n')
+        for args in (('add', '.'), ('-c', 'core.hooksPath=/dev/null', 'commit', '-m', 'reviewed baseline')):
+            subprocess.run(['/usr/bin/git', '-C', str(source), *args], check=True, capture_output=True)
+        (source/'app.py').write_text('owner dirty edit\n')
+        (source/'untracked.txt').write_text('owner untracked edit\n')
+        before = inventory(source)
+        imported = (tmp_path/'isolated-import').resolve()
+        imported.mkdir()
+        muse(imported, 'bridge', 'git-import', str(source), '--target', str(imported), '--branch', 'main', '--json')
+        # Import creates history, not a populated working tree. Materialize only
+        # the reviewed imported manifest in this disposable destination.
+        manifest = json.loads(muse(imported, 'ls-files', '--json').stdout)['files']
+        paths = [item['path'] for item in manifest]
+        committed = subprocess.check_output(['/usr/bin/git', '-C', str(source), 'ls-files', '-z']).decode().rstrip('\0').split('\0')
+        assert sorted(paths) == sorted(committed)
+        muse(imported, 'restore', '--source', 'main', *paths, '--json')
+        for path in paths:
+            assert (imported/path).read_bytes() == subprocess.check_output(
+                ['/usr/bin/git', '-C', str(source), 'show', 'HEAD:'+path])
+        assert (imported/'app.py').read_text() == 'committed = True\n'
+        assert not (imported/'untracked.txt').exists()
+        assert not (imported/v1.CONFIG).exists() and not (imported/v1.NEXT).exists()
+>       state = init(imported, muse_python)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/muse/test_handoffs.py:286: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_committed_git_baseline_im0/isolated-import')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .gitignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...rvajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .gitignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+________________ test_muse_concurrent_cas_and_foreign_lane_read ________________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_muse_concurrent_cas_and_f0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+
+    def test_muse_concurrent_cas_and_foreign_lane_read(muse_root, muse_python):
+        root = muse_root
+>       state = init(root, muse_python)
+                ^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/muse/test_handoffs.py:294: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_muse_concurrent_cas_and_f0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+______________ test_legacy_stage_is_not_silently_deleted_by_read _______________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_legacy_stage_is_not_silen0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+
+    def test_legacy_stage_is_not_silently_deleted_by_read(muse_root, muse_python):
+>       init(muse_root, muse_python)
+
+tests/muse/test_handoffs.py:313: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_legacy_stage_is_not_silen0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+___________________ test_muse_branch_change_invalidates_next ___________________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_muse_branch_change_invali0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1048a4040>
+
+    def test_muse_branch_change_invalidates_next(muse_root, muse_python, muse):
+>       init(muse_root, muse_python)
+
+tests/muse/test_handoffs.py:323: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_muse_branch_change_invali0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_____________ test_adoption_reports_existing_muse_snapshot_binding _____________
+
+muse_root = PosixPath('/private/tmp/fpr2-muse1/test_adoption_reports_existing0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x1048a47d0>
+
+    def test_adoption_reports_existing_muse_snapshot_binding(muse_root, muse_python, muse):
+        root = muse_root
+>       init(root, muse_python)
+
+tests/muse/test_handoffs.py:333: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/fpr2-muse1/test_adoption_reports_existing0/muse-only')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .museignore
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...vajal/.local/share/muse/venv/bin/python'], returncode=2, stdout='', stderr='refused: init_asset_exists: .museignore\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+=========================== short test summary info ============================
+FAILED tests/muse/test_handoffs.py::test_muse_only_unborn_commit_freshness_and_offline_readonly
+FAILED tests/muse/test_handoffs.py::test_mixed_authority_uses_only_muse_revision
+FAILED tests/muse/test_handoffs.py::test_native_linked_worktree_own_branch_and_checkout_identity
+FAILED tests/muse/test_handoffs.py::test_muse_writer_rejects_wrong_context_without_writes[lane-wrong]
+FAILED tests/muse/test_handoffs.py::test_muse_writer_rejects_wrong_context_without_writes[model-Other]
+FAILED tests/muse/test_handoffs.py::test_muse_writer_rejects_wrong_context_without_writes[repo_id-wrong]
+FAILED tests/muse/test_handoffs.py::test_muse_writer_rejects_wrong_context_without_writes[branch-wrong]
+FAILED tests/muse/test_handoffs.py::test_muse_writer_rejects_wrong_context_without_writes[base_head-sha256:0000000000000000000000000000000000000000000000000000000000000000]
+FAILED tests/muse/test_handoffs.py::test_muse_writer_rejects_wrong_context_without_writes[vcs-git]
+FAILED tests/muse/test_handoffs.py::test_muse_writer_rejects_wrong_context_without_writes[vcs-None]
+FAILED tests/muse/test_handoffs.py::test_muse_writer_rejects_wrong_context_without_writes[base_head-None]
+FAILED tests/muse/test_handoffs.py::test_copied_muse_bindings_refused[.overseer/config.yaml]
+FAILED tests/muse/test_handoffs.py::test_copied_muse_bindings_refused[docs/NEXT.md]
+FAILED tests/muse/test_handoffs.py::test_copied_muse_bindings_refused[.overseer/bin/ok]
+FAILED tests/muse/test_handoffs.py::test_muse_missing_or_malformed_state_refuses[missing_python]
+FAILED tests/muse/test_handoffs.py::test_muse_missing_or_malformed_state_refuses[runtime_pin]
+FAILED tests/muse/test_handoffs.py::test_muse_missing_or_malformed_state_refuses[missing_object]
+FAILED tests/muse/test_handoffs.py::test_muse_missing_or_malformed_state_refuses[malformed_head]
+FAILED tests/muse/test_handoffs.py::test_muse_missing_or_malformed_state_refuses[detached]
+FAILED tests/muse/test_handoffs.py::test_muse_missing_or_malformed_state_refuses[bad_ref]
+FAILED tests/muse/test_handoffs.py::test_muse_missing_or_malformed_state_refuses[wrong_source]
+FAILED tests/muse/test_handoffs.py::test_muse_missing_or_malformed_state_refuses[unregistered_pointer]
+FAILED tests/muse/test_handoffs.py::test_changed_revision_during_write_refused
+FAILED tests/muse/test_handoffs.py::test_tracked_muse_binding_blocks_adoption_and_snapshot_excludes_new_local_files
+FAILED tests/muse/test_handoffs.py::test_committed_git_baseline_import_isolated_from_owner_edits
+FAILED tests/muse/test_handoffs.py::test_muse_concurrent_cas_and_foreign_lane_read
+FAILED tests/muse/test_handoffs.py::test_legacy_stage_is_not_silently_deleted_by_read
+FAILED tests/muse/test_handoffs.py::test_muse_branch_change_invalidates_next
+FAILED tests/muse/test_handoffs.py::test_adoption_reports_existing_muse_snapshot_binding
+ERROR tests/muse/test_mirror.py::test_projection_modes_mapping_and_offline_retry
+ERROR tests/muse/test_mirror.py::test_source_drift_refused_before_target[head]
+ERROR tests/muse/test_mirror.py::test_source_drift_refused_before_target[branch]
+ERROR tests/muse/test_mirror.py::test_source_drift_refused_before_target[source_id]
+ERROR tests/muse/test_mirror.py::test_source_drift_refused_before_target[unknown_revision]
+ERROR tests/muse/test_mirror.py::test_source_drift_refused_before_target[working]
+ERROR tests/muse/test_mirror.py::test_source_drift_refused_before_target[mode]
+ERROR tests/muse/test_mirror.py::test_source_drift_refused_before_target[stage]
+ERROR tests/muse/test_mirror.py::test_missing_objects_refused[blob] - Asserti...
+ERROR tests/muse/test_mirror.py::test_missing_objects_refused[commit] - Asser...
+ERROR tests/muse/test_mirror.py::test_missing_objects_refused[snapshot] - Ass...
+ERROR tests/muse/test_mirror.py::test_targets_are_physical_isolated_and_owned[same]
+ERROR tests/muse/test_mirror.py::test_targets_are_physical_isolated_and_owned[child]
+ERROR tests/muse/test_mirror.py::test_targets_are_physical_isolated_and_owned[parent]
+ERROR tests/muse/test_mirror.py::test_targets_are_physical_isolated_and_owned[dot_parent]
+ERROR tests/muse/test_mirror.py::test_targets_are_physical_isolated_and_owned[alias]
+ERROR tests/muse/test_mirror.py::test_targets_are_physical_isolated_and_owned[alias_parent]
+ERROR tests/muse/test_mirror.py::test_targets_are_physical_isolated_and_owned[git_worktree]
+ERROR tests/muse/test_mirror.py::test_targets_are_physical_isolated_and_owned[foreign]
+ERROR tests/muse/test_mirror.py::test_targets_are_physical_isolated_and_owned[empty]
+ERROR tests/muse/test_mirror.py::test_dirty_stale_or_hooked_owned_target_refused[untracked]
+ERROR tests/muse/test_mirror.py::test_dirty_stale_or_hooked_owned_target_refused[config]
+ERROR tests/muse/test_mirror.py::test_dirty_stale_or_hooked_owned_target_refused[hooks]
+ERROR tests/muse/test_mirror.py::test_dirty_stale_or_hooked_owned_target_refused[ref]
+ERROR tests/muse/test_mirror.py::test_dirty_stale_or_hooked_owned_target_refused[alternate]
+ERROR tests/muse/test_mirror.py::test_dirty_stale_or_hooked_owned_target_refused[symlink]
+ERROR tests/muse/test_mirror.py::test_inherited_muse_hook_refused_preserved_and_never_run
+ERROR tests/muse/test_mirror.py::test_inherited_git_environment_and_global_hooks_disabled
+ERROR tests/muse/test_mirror.py::test_existing_snapshot_local_bindings_and_secrets_are_projected_out
+ERROR tests/muse/test_mirror.py::test_supported_modes_refuse_unsupported_source[symlink]
+ERROR tests/muse/test_mirror.py::test_supported_modes_refuse_unsupported_source[hardlink]
+ERROR tests/muse/test_mirror.py::test_supported_modes_refuse_unsupported_source[unlisted_executable]
+ERROR tests/muse/test_mirror.py::test_supported_modes_refuse_unsupported_source[missing_executable]
+ERROR tests/muse/test_mirror.py::test_supported_modes_refuse_unsupported_source[unsupported_mode]
+ERROR tests/muse/test_mirror.py::test_interrupted_prepare_can_retry[before_ref]
+ERROR tests/muse/test_mirror.py::test_interrupted_prepare_can_retry[after_ref]
+ERROR tests/muse/test_mirror.py::test_interrupted_push_no_change_retry[before]
+ERROR tests/muse/test_mirror.py::test_interrupted_push_no_change_retry[after]
+ERROR tests/muse/test_mirror.py::test_pr_failure_preserves_push_and_retries_pr_with_repository_context
+ERROR tests/muse/test_mirror.py::test_delivery_requires_current_source_and_expected_remote[unknown_hub]
+ERROR tests/muse/test_mirror.py::test_delivery_requires_current_source_and_expected_remote[unpushed_source]
+ERROR tests/muse/test_mirror.py::test_delivery_requires_current_source_and_expected_remote[remote_drift]
+ERROR tests/muse/test_mirror.py::test_delivery_requires_current_source_and_expected_remote[source_drift]
+ERROR tests/muse/test_mirror.py::test_delivery_requires_current_source_and_expected_remote[target_drift]
+ERROR tests/muse/test_mirror.py::test_source_change_during_prepare_refuses_ref_and_can_resume
+ERROR tests/muse/test_mirror.py::test_add_change_delete_and_no_content_source_commit
+ERROR tests/muse/test_mirror.py::test_concurrent_operators_and_cli_plan_pin
+ERROR tests/muse/test_mirror.py::test_explicit_pair_binding_prevents_second_target
+ERROR tests/muse/test_mirror.py::test_network_adapter_argv_and_pr_failure_are_explicit
+ERROR tests/muse/test_mirror.py::test_target_ref_change_during_export_is_not_overwritten
+ERROR tests/muse/test_mirror.py::test_corrupt_export_projection_cannot_update_ref[foreign]
+ERROR tests/muse/test_mirror.py::test_corrupt_export_projection_cannot_update_ref[bytes]
+ERROR tests/muse/test_mirror.py::test_corrupt_export_projection_cannot_update_ref[mode]
+ERROR tests/muse/test_mirror.py::test_missing_git_blob_invalidates_no_change
+ERROR tests/muse/test_mirror.py::test_remote_change_immediately_before_push_stops_delivery
+ERROR tests/muse/test_mirror.py::test_invalid_cli_plan_and_missing_delivery_executable_refuse_cleanly
+ERROR tests/muse/test_mirror.py::test_legacy_git_destination_is_not_silently_replaced
+ERROR tests/muse/test_reconciliation.py::test_exact_110_path_delta_divergent_histories_modes_and_exclusions
+ERROR tests/muse/test_reconciliation.py::test_reconciliation_refuses_unreviewed_inputs[mirror_head]
+ERROR tests/muse/test_reconciliation.py::test_reconciliation_refuses_unreviewed_inputs[base_head]
+ERROR tests/muse/test_reconciliation.py::test_reconciliation_refuses_unreviewed_inputs[bundle_hash]
+ERROR tests/muse/test_reconciliation.py::test_reconciliation_refuses_unreviewed_inputs[bundle_ref]
+ERROR tests/muse/test_reconciliation.py::test_reconciliation_refuses_unreviewed_inputs[corrupt_pack]
+ERROR tests/muse/test_reconciliation.py::test_reconciliation_refuses_unreviewed_inputs[missing_delta]
+ERROR tests/muse/test_reconciliation.py::test_reconciliation_refuses_unreviewed_inputs[changed_delta]
+ERROR tests/muse/test_reconciliation.py::test_reconciliation_refuses_unreviewed_inputs[foreign_target]
+ERROR tests/muse/test_reconciliation.py::test_reconciliation_refuses_unreviewed_inputs[empty_target]
+ERROR tests/muse/test_reconciliation.py::test_unrelated_history_is_refused - ...
+ERROR tests/muse/test_reconciliation.py::test_reconciliation_requires_explicit_operation
+ERROR tests/muse/test_reconciliation.py::test_interrupted_reconciliation_recovers_exact_correspondence[import]
+ERROR tests/muse/test_reconciliation.py::test_interrupted_reconciliation_recovers_exact_correspondence[before_ref]
+ERROR tests/muse/test_reconciliation.py::test_interrupted_reconciliation_recovers_exact_correspondence[after_ref]
+29 failed, 70 passed, 72 errors in 161.61s (0:02:41)

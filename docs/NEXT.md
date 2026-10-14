@@ -3,75 +3,74 @@ schema: 1
 repo_id: 6988dc4a-5f22-454b-9d68-ac5905b383bf
 repo_root: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014
 branch: feat/overseer-v1-recovery-20261014
-base_head: 521c8df5cf2c57d876cdd44adfd1cbc34063d416
+base_head: 8c2b642336e29a3a5a781f70f25f4769e6899642
 lane: product
 model: GPT-6 Astra
-action_id: OVERSEER-FULL-PRODUCT-RESTORATION-AUTHORITY-2
+action_id: OVERSEER-FULL-PRODUCT-RESTORATION-SURFACES-3
 action_kind: implement
-prompt_sha256: 10e5f27c4b16e82d6bb37790e4fd0d5a936086e159e76cc6bf6dfe8cf454ae53
+prompt_sha256: 55acd67c45e04574f4563d2f34d6b1753bb33e67aac0b4c1a62345506f96241f
 ---
 Reasoning: Max
 Role: Principal product integration engineer
 
-Perform FPR-2 only after the owner accepts this prompt. This acceptance authorizes
-local authority, controlled-mirror and repository-lane implementation plus focused
-fixture checks under section 8 of docs/decisions/FULL-PRODUCT-RESTORATION-PLAN.md.
-It does not authorize FPR-3, remote operations, release or deployment.
+Perform FPR-3 only after the owner accepts this prompt. Acceptance authorizes
+local implementation and focused disposable checks for FPR-3 in section 8 of
+docs/decisions/FULL-PRODUCT-RESTORATION-PLAN.md. It does not authorize FPR-4,
+remote operations, release or deployment.
 
-First verify physical cwd, Git top-level, branch, full HEAD, configured name
-overseer-kit, UUID, product lane, runtime binding and clean state. Validate this
-NEXT as the exact single FPR-1 feature closing commit whose sole predecessor is
-521c8df5cf2c57d876cdd44adfd1cbc34063d416. Stop on mismatch, unexpected dirt or moved
+Verify physical cwd, Git top-level, branch, full HEAD, configured name overseer-kit,
+UUID, product lane, runtime binding and clean state. Validate this NEXT as the
+single FPR-2 feature closing commit whose sole predecessor is
+8c2b642336e29a3a5a781f70f25f4769e6899642. Stop on mismatch, unexpected dirt or moved
 source refs. Read AGENTS.md, ROADMAP, HANDOVER, canonical NEXT, the full restoration
-plan, docs/validation/FPR-1-FOUNDATION.md, V1-SCOPE-RESET, V1-CERTIFICATION and
-tests/README.md before implementation.
+plan, docs/validation/FPR-1-FOUNDATION.md, docs/validation/FPR-2-AUTHORITY.md,
+docs/FPR-2-AUTHORITY-AND-LANES.md, V1-SCOPE-RESET, V1-CERTIFICATION and tests/README.md.
 
-Keep this branch as integration base. Verify and read committed objects here:
+Keep this branch as integration base. Verify committed sources here:
 feat/overseer-context-isolation at e9be0c4b3cafb149b9f3b7af2ab060f01bbfa504;
 feat/overseer-v1-recovery at 32254cd939885d9d6f40634997ea5b9c37ea776c;
 main at d47291d5d9030de5ebef713da95efa978c4d8c6e; repaired safety source at
-348e0f323a3b17cd5022a1bfd56fa09a6831c51f. Do not enter older worktrees, merge,
-cherry-pick or wholesale revert. Preserve other refs, Muse history, snapshots,
-rollback fixtures, completed bounded pilot and bounded source-release directory.
+348e0f323a3b17cd5022a1bfd56fa09a6831c51f. Read committed objects without entering
+older worktrees, merging, cherry-picking or wholesale reverting. Preserve other
+refs, Muse history, snapshots, rollback fixtures, completed bounded pilot and
+bounded source-release directory.
 
-Implement exactly FPR-2's inputs, outputs and acceptance criteria. Selectively
-integrate M's revision/Muse readers, policy, adoption, controlled mirror/history
-and repaired scoped-credential modules with their tests. Keep D's Muse branch
-compatibility and B/FPR-1 confinement, isolated runtime binding, normalized config,
-captured writer context, pinned closing reads, final rechecks and digest CAS.
-Enable independently selected Git-only, Muse-only and Muse-with-Git-mirror modes
-without fallback. Provide explicit authority adopt/rollback and isolated
-prepare/reconcile/verify/deliver services. Preserve all settings and tracked
-bindings; authority adoption and any preservation/untracking choice must be
-explicit. Connect upgrade-regime to controlled plans; refuse the unsafe legacy
-live-export route.
+Implement exactly FPR-3 inputs, outputs and acceptance criteria. Connect every
+maintained command and subcommand in section 4 through the unified CLI and bound
+services: full status, governance hygiene, review/Check OK, workspace, verification,
+honesty/ledger, routing/cost, landing and compaction. Restore loopback app, desktop
+and read-only hosted surfaces, truthful rules/skills/templates/site/runbooks, and
+reproducible local source packaging with manifest and upgrade/rollback guidance.
+Prefer retained D/P engines and selectively integrate M's artifact/source verifier,
+CI driver/workflow and distribution tests. Do not route through legacy_main.
 
-Add schema-3 multi-lane NEXT in the same canonical file, retaining schema-1/2
-compatibility, per-repository lane ownership, explicit lane selection, visible
-stale/missing lanes and whole-file CAS. Extend manual/bookend display through the
-same service. Muse NEXT binds the exact native revision after the work commit;
-do not invent a Muse closing-commit exception or treat Git mirror state as authority.
+Preserve full settings, repository/lane ownership, explicit authority selection,
+tracked Git bindings, native Muse exact-revision freshness, confined writes,
+captured context, final rechecks, pinned closing reads and whole-file CAS. All
+handoff surfaces use canonical docs/NEXT.md; no prompt scraping or regeneration.
+Keep controlled mirror/credential bounds and refuse legacy live export. Separate
+local mutation, remote transport and release actions explicitly.
 
-Run focused real-entrypoint disposable tests under a nonrepository parent using
-this installation's conventional venv. Cover Git without Muse, Muse without Git,
-linked/native store identity and read-only dirty/shared-stage reads, mixed
-authority, two-repository lane isolation, R1/R2-equivalent races, concurrent lane
-writes, mirror target/path/mode/secret bounds, complete bundle/delta/parent checks,
-reconciliation drift/interruption and fake transport/credential retries.
-Use explicit pinned local Muse prerequisites; do not fetch or contact providers.
-Record unavailable prerequisites honestly. Do not rerun completed bounded review,
-installation/rollback or pilot, or create an intervening review-only handoff.
+Run focused real-entrypoint and app-service checks in disposable repositories
+under a nonrepository parent using this installation's conventional venv. Cover
+registry/options, preserved engine/security contracts, app auth/CSRF/origin/path
+controls, hosted write refusal/allowlists, desktop launcher/bundle identity,
+settings preservation and artifact inclusion/exclusion. Map every original test
+family and all 104 historical failures to restored requirements, replacements or
+excluded mechanisms before FPR-4. Record missing prerequisites and failures
+honestly; use pinned local prerequisites and fake providers/transports only.
 
-No real consumers/hooks, live mirror/export/delivery, providers/network, push,
-main merge, tags, publication, release or deployment. Do not restore OCI,
-native/Mach GSR, sole-writer storage, identity bridges or packet prerequisites.
-Leave remaining product surfaces to FPR-3, combined validation to FPR-4 and the
-single independent final review to FPR-5.
+No real consumers/hooks, providers/network, live mirror/export/delivery, fetch,
+push, main merge, tags, publication, signing, release or deployment. Do not restore
+OCI, native/Mach GSR, sole-writer storage, identity bridges or packet prerequisites.
+Do not repeat completed bounded review, installation/rollback or pilot. Leave
+combined validation to FPR-4 and the single independent final review to FPR-5;
+create no intervening review-only handoff.
 
-Close with focused evidence, source/test disposition, paired ROADMAP/HANDOVER
-updates and one canonical FPR-3 successor through bound next-write with current
-context and expected prior digest. Explicitly refresh this installation's runtime
-binding if required, preserving identity/settings/NEXT. Make the coherent local
-FPR-2 feature commit after checks and validate NEXT from disk afterward. Report
-exact changes, failures/limits, owner choices, commit and validated successor.
-Do not claim complete-product restoration or release readiness after FPR-2.
+Close with focused evidence and source/test disposition, paired ROADMAP/HANDOVER
+updates, and one canonical FPR-4 successor through bound next-write using current
+context and expected prior digest. Refresh this installation's runtime binding
+explicitly if required while preserving identity/settings/NEXT. Make one coherent
+local FPR-3 feature commit after checks, then validate NEXT from disk. Report
+changes, failures/limits, owner choices, commit and validated successor. Do not
+claim release readiness before combined validation and independent final review.

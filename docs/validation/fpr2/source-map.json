@@ -1,0 +1,99 @@
+{
+  "pins": {
+    "P": "e9be0c4b3cafb149b9f3b7af2ab060f01bbfa504",
+    "M": "32254cd939885d9d6f40634997ea5b9c37ea776c",
+    "B": "348e0f323a3b17cd5022a1bfd56fa09a6831c51f",
+    "D": "d47291d5d9030de5ebef713da95efa978c4d8c6e"
+  },
+  "modules": [
+    {
+      "path": "cli/v1_git_credential.py",
+      "source": "M",
+      "source_sha256": "0909bca9e01ac741274934d1c17faf6b657c0438478726b547a86f293832db78",
+      "selection": "exact",
+      "sha256": "0909bca9e01ac741274934d1c17faf6b657c0438478726b547a86f293832db78"
+    },
+    {
+      "path": "cli/v1_mirror.py",
+      "source": "M",
+      "source_sha256": "127fdd4039350f03d3d82f79b6b287f616bb45a485a62895fdb23964a24a28bd",
+      "selection": "adapted",
+      "sha256": "e181741b5149743b585f4cb297213974984156f166d68ab232140c8068d6208d"
+    },
+    {
+      "path": "cli/v1_mirror_history.py",
+      "source": "M",
+      "source_sha256": "dd25c4e669446ad98fbfe1ebf2b5cdb6591bc8c7ee65c4e447ec98061b156df6",
+      "selection": "exact",
+      "sha256": "dd25c4e669446ad98fbfe1ebf2b5cdb6591bc8c7ee65c4e447ec98061b156df6"
+    },
+    {
+      "path": "cli/v1_mirror_reader.py",
+      "source": "M",
+      "source_sha256": "2c0bd8692e84a15b3f4f2335b4787116a746f0ad11660f4bbd04841cbb08cde9",
+      "selection": "adapted",
+      "sha256": "7e4a6221f1f44bc6e8866075a4082f2e695d469a3d983eb4507d50ed01987713"
+    },
+    {
+      "path": "cli/v1_muse_reader.py",
+      "source": "M",
+      "source_sha256": "8c50d6651f3ba85f5c949e79f7e01cb36db7e562e87a1f68e8e21b513363fa37",
+      "selection": "exact",
+      "sha256": "8c50d6651f3ba85f5c949e79f7e01cb36db7e562e87a1f68e8e21b513363fa37"
+    },
+    {
+      "path": "cli/v1_policy.py",
+      "source": "M",
+      "source_sha256": "ea421727fae14e441f2e3dc9d7ed7a5e887533550f2fac7e53db6502088cc0c9",
+      "selection": "adapted",
+      "sha256": "adc0f7d26372772d8e9135cd3d142396e25a320a0aa7dd6caae16a5abce2daa8"
+    },
+    {
+      "path": "cli/v1_revision.py",
+      "source": "M",
+      "source_sha256": "9e89d25a79cd914f036e19cf4df0f9766a7722aa283627e81788dc186f19bd53",
+      "selection": "adapted",
+      "sha256": "85b0a8e309614a0c9652b7d06584f6bdd3d4274f52e17f847297be25ec2eb1ab"
+    }
+  ],
+  "test_sources": {
+    "tests/muse/conftest.py": {
+      "source": "M",
+      "selection": "adapted"
+    },
+    "tests/muse/test_handoffs.py": {
+      "source": "M",
+      "selection": "adapted"
+    },
+    "tests/muse/test_mirror.py": {
+      "source": "M",
+      "selection": "adapted"
+    },
+    "tests/muse/test_reconciliation.py": {
+      "source": "M",
+      "selection": "exact"
+    },
+    "tests/v1/test_adoption.py": {
+      "source": "M",
+      "selection": "adapted"
+    },
+    "tests/v1/test_mirror_credentials.py": {
+      "source": "M",
+      "selection": "exact"
+    }
+  },
+  "adapted_integration_files": [
+    "cli/main.py",
+    "cli/v1.py",
+    "cli/product_config.py",
+    "cli/product_migration.py",
+    "cli/product_bookends.py",
+    "scripts/muse-bridge-deploy.sh",
+    "templates/scripts/muse-bridge-deploy.sh.template"
+  ],
+  "new_services": [
+    "cli/product_authority.py",
+    "cli/product_next.py",
+    "cli/product_upgrade.py"
+  ]
+}

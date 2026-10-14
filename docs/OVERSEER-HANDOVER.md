@@ -8,15 +8,30 @@ Active implementation: `overseer-kit-v1-recovery-20261014`, branch
 `feat/overseer-v1-recovery-20261014`, reconciled base `d47291d`.
 Both older dirty worktrees remain untouched.
 
-**Current successor: FPR-2 authority, controlled mirrors and repository lanes,
+**Current successor: FPR-3 remaining maintained commands and product surfaces,
 awaiting owner acceptance.** Use GPT-6 Astra with Max reasoning. The accepted
-FPR-1 wave completed the unified dispatcher/config/migration/bookend foundation;
-see [focused evidence and source/test disposition](validation/FPR-1-FOUNDATION.md).
-FPR-1 opened at `521c8df5cf2c57d876cdd44adfd1cbc34063d416`, with verified identity,
-clean state, pinned refs and the exact FPR-0 documentation closing commit.
+FPR-2 wave implements selected Git/Muse authority, explicit adoption/rollback,
+controlled mirror/reconciliation/credential services, regime upgrades and
+schema-3 repository lanes through the shared CLI and canonical NEXT writer.
+See [focused evidence and source/test disposition](validation/FPR-2-AUTHORITY.md)
+and [operation notes](FPR-2-AUTHORITY-AND-LANES.md). Opening HEAD was
+`8c2b642336e29a3a5a781f70f25f4769e6899642`, the exact FPR-1 closing commit with
+verified clean identity and pinned source refs. This installation remains Git-only;
+tracked bindings/settings/NEXT were preserved through explicit runtime refresh.
+
 The [restoration plan](decisions/FULL-PRODUCT-RESTORATION-PLAN.md) still defines
 three implementation waves, one combined FPR-4 matrix and one independent FPR-5
-review. FPR-2/3 were not implemented or authorized by FPR-1.
+review. FPR-3 was not implemented or authorized by FPR-2. Native tests use only
+disposable stores and the explicitly pinned local Muse rc5 runtime. No live
+mirror/export/delivery, provider/network, real consumer or hook activity occurred.
+Focused evidence covers 559 distinct maintained passing cases across recorded
+runs; final affected checks passed 169 Git/config/lane and 41 native cases. The
+102-case mirror/reconciliation run passed. One historical native-export assertion
+is explicitly replaced; its original failure remains recorded.
+Single and batch lane writes use the same whole-file CAS writer. Muse NEXT binds
+the exact native revision after the work commit; mirror Git state is never its
+authority. Git's pinned single-closing-read behavior and final context checks
+remain, including refusal to refresh an unchanged lane from another lane's commit.
 
 Continue on this integration branch; certification remains tied to its recorded
 bounded source. The full-product modules are already
@@ -112,15 +127,16 @@ Packaged installation, other platforms, existing-consumer migration, sustained
 or multi-user operation, consumer hooks and providers remain outside that claim.
 The old sole-writer/NXR-GSR NEXT is superseded.
 
-FPR-1 closes with one coherent local feature commit, its focused evidence,
-paired summaries and canonical FPR-2 successor published by bound `next-write`.
+FPR-1 closed with one coherent local feature commit, focused evidence, paired
+summaries and canonical FPR-2 successor. FPR-2 closes with its own coherent feature
+commit and one FPR-3 successor published only by bound `next-write`.
 Runtime/config migration preserved UUID/root/lane, existing NEXT and documents;
 its byte-exact local backup remains available. Only that explicit successor
 publication changes NEXT. Pending owner choices remain actual automatic client
 versions, broader Muse transport if required, platform/distribution claims and
 the integrated pilot/independent reviewer. This closeout does not authorize
-FPR-2 execution, consumers, real-consumer hooks, providers/network, live mirror,
-merge, push, publication or deployment. FPR-1 is not complete-product restoration
+FPR-3 execution, consumers, real-consumer hooks, providers/network, live mirror,
+merge, push, publication or deployment. FPR-2 is not complete-product restoration
 or release readiness.
 
 Read the exact current action with `./cli/ok -C . next`. Only `next-write` publishes

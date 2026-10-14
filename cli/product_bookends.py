@@ -146,8 +146,11 @@ def validate_event(root: Path, config: dict, args, raw: bytes) -> str:
     for field in ("workspace_root", "repo_root"):
         if field in payload:
             _physical_root(payload[field], root)
-    if "lane" in payload and payload["lane"] != config["context"]["lane"]:
-        raise Refusal("hook_lane_mismatch")
+    if "lane" in payload:
+        if payload["lane"] not in config['docs']['lanes'] or (
+                getattr(args, 'lane', None) not in (None, payload['lane'])):
+            raise Refusal('hook_lane_mismatch')
+        args.lane = payload['lane']
     if "repo_id" in payload and payload["repo_id"] != config["repo"]["id"]:
         raise Refusal("hook_identity_mismatch")
     for field in ("hook_event_name", "event_name", "event"):

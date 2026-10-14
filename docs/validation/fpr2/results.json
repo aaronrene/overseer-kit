@@ -1,0 +1,83 @@
+{
+  "action_id": "OVERSEER-FULL-PRODUCT-RESTORATION-AUTHORITY-2",
+  "opening_head": "8c2b642336e29a3a5a781f70f25f4769e6899642",
+  "complete_selection_runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "13d5e7d075b0b8053081b6be448db225d74d6721a7d7cf3ec6c2495963c93c9d"
+  },
+  "final_runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "1becd740f9cb24ae722df5c135215eb4508407069705bc1116d1f2fd1f40ed51"
+  },
+  "runs": [
+    {
+      "name": "git",
+      "tests": 398,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 397,
+      "seconds": 429.884,
+      "log_sha256": "b6fe3fda93caa50ab490d527546711a6c749124e7af8e6110b020268d7ff9569",
+      "xml_sha256": "1b986b5be3cad78d1ff447d01fbf847ae66e59c02d40d52d8555c9b212f602ff"
+    },
+    {
+      "name": "native-handoffs",
+      "tests": 58,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 57,
+      "seconds": 268.556,
+      "log_sha256": "1988d5dae444bfc7ba9327b7ceddd83e516baedbd151e06940806d1c6fff2deb",
+      "xml_sha256": "af0f773955151c944e42492a33edfb7a3fcfc035a6631df47bd109940a73041d"
+    },
+    {
+      "name": "native-mirrors",
+      "tests": 102,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 102,
+      "seconds": 458.494,
+      "log_sha256": "59a2824212a0de5252a6f58c5d7a94624c8027519fafb5370a9c5f248ab240ce",
+      "xml_sha256": "ef67d22ded500f6b2da0acb49cf474d39cc69c1e027d0575396e1746cc2d0e01"
+    },
+    {
+      "name": "affected-git",
+      "tests": 169,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 169,
+      "seconds": 137.801,
+      "log_sha256": "d91d63ebfae7bcd204fb4c098f7bb5e8f6f1fa2001a454352296528075572a2a",
+      "xml_sha256": "9dfbdb476cb9d0a03f375efef5599bda9e19c419666693f956d44b1c2b088714"
+    },
+    {
+      "name": "affected-native",
+      "tests": 41,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 41,
+      "seconds": 207.922,
+      "log_sha256": "31cb2218dad8f0494b9c5fa41d7d4ed5dabf2219757338e8a39979ff917ba44a",
+      "xml_sha256": "65b0ed9c24a4e426b95a7fb00d6ca02d9eeba7c44535a59b84bf739cd4bcc415"
+    }
+  ],
+  "distinct_maintained_passing_cases": 559,
+  "superseded": {
+    "case": "tests.unit.test_k7_footprint::test_rendered_deploy_script_safety_invariants",
+    "reason": "Requires native git-export and automatic push, explicitly replaced by FPR-2 controlled mirror services. Original test unchanged; original failure retained.",
+    "replacement": "tests.muse.test_product::test_bound_bridge_wrapper_uses_controlled_offline_service"
+  },
+  "remaining_maintained_failures": [],
+  "skips": 0,
+  "independent_review": false,
+  "combined_FPR4_validation": false,
+  "live_network_or_provider_operations": false,
+  "prerequisites": "Pinned local Muse 0.2.1rc5 source digest verified; no missing prerequisite for focused FPR-2 selection."
+}

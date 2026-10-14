@@ -1,0 +1,37 @@
+{
+  "before_sha256": "a8a59cde1625b373670bf7116c8a564ab691bf72c5e304b8c1d9aa41fc0ba32a",
+  "after_sha256": "6fb11f1698f8ab9d93cd4a5bb263c31b24069ad0ee48203bc4b10abd786df3b7",
+  "before_runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "dbe7e93e6797611ac410d4e94f40ba7ea34c4419b1389568b3579d558eb353db"
+  },
+  "after_runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "064ca8cbbd3d6de3a0869dd3853292f75a66addc4bd2bb7ff227a735e47589e2"
+  },
+  "next_sha256": "15efa968ea3bcbe6e5f280bd7cd079f68e5d1f3fa1728246259799a01d582e3c",
+  "identity_settings_next_launcher_preserved": true,
+  "calls": [
+    {
+      "args": [
+        "sync",
+        "--dry-run",
+        "--json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"ok\": true, \"repository\": {\"name\": \"overseer-kit\", \"id\": \"6988dc4a-5f22-454b-9d68-ac5905b383bf\", \"root\": \"/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014\", \"root_relative_docs\": \"docs\"}, \"changed\": [\".overseer/config.yaml\"], \"classification\": [{\"path\": \".overseer/bin/ok\", \"classification\": \"unchanged\", \"origin\": \"unrecorded\", \"before\": \"1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4\", \"after\": \"1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4\"}], \"preserved\": [], \"dry_run\": true, \"diff\": {}, \"next\": \"preserved\"}\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "sync",
+        "--json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"ok\": true, \"repository\": {\"name\": \"overseer-kit\", \"id\": \"6988dc4a-5f22-454b-9d68-ac5905b383bf\", \"root\": \"/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014\", \"root_relative_docs\": \"docs\"}, \"changed\": [\".overseer/config.yaml\"], \"classification\": [{\"path\": \".overseer/bin/ok\", \"classification\": \"unchanged\", \"origin\": \"unrecorded\", \"before\": \"1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4\", \"after\": \"1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4\"}], \"preserved\": [], \"dry_run\": false, \"diff\": {}, \"next\": \"preserved\"}\n",
+      "stderr": ""
+    }
+  ]
+}

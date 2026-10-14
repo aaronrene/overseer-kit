@@ -166,5 +166,5 @@ def test_unavailable_init_authority_refuses_before_git_discovery(tmp_path, monke
     monkeypatch.setattr(v1, 'git', forbidden)
     assert main.main(['-C', str(root), 'init', '--regime', regime]) == 2
     output = capsys.readouterr()
-    assert not output.out and 'authority_unavailable' in output.err
+    assert not output.out and 'muse_python_required' in output.err
     assert not (root/'.overseer').exists()

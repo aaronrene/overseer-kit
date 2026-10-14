@@ -305,9 +305,12 @@ def test_october_muse_plan_preserves_authority_and_never_calls_git_revision(lega
 
     monkeypatch.setattr(v1, "branch", forbidden)
     monkeypatch.setattr(v1, "head", forbidden)
-    result = migration.migrate(legacy, options())
-    assert result["plan"]["apply_supported"] is False
-    config = result["plan"]["normalized_config"]
+    before = (legacy / migration.CONFIG).read_bytes()
+    with pytest.raises(Refusal, match='muse_python_requires_separate_venv'):
+        migration.migrate(legacy, options())
+    assert (legacy / migration.CONFIG).read_bytes() == before
+    from cli.product_config import normalize
+    config = normalize(before, root=legacy).data
     assert config["vcs"]["canonical"] == "muse"
     assert config["vcs"]["muse"]["binding"] == original["muse"]
 

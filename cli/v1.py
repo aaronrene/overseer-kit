@@ -1,4 +1,4 @@
-"""Repository-bound v1 commands. No registry, receipt, transaction, or network path."""
+"""Repository-bound context and the single confined canonical NEXT writer."""
 from __future__ import annotations
 
 import argparse
@@ -16,6 +16,8 @@ import uuid
 import yaml
 
 from cli.v1_io import LIMIT, Refusal, atomic, confined, digest, read
+from cli.v1_revision import revision
+from cli.v1_policy import local_path
 
 VERSION = "1.0.0.dev1"
 KIT = Path(__file__).resolve().parent.parent
@@ -30,7 +32,7 @@ def runtime_files():
     the binding. Optional hosted configuration validators do not load transports.
     Paths and bytes both participate; adding or removing a source changes it.
     """
-    paths = {"VERSION", "cli/ok", "cli/overseer"}
+    paths = {"VERSION", "cli/ok", "cli/overseer", "scripts/muse-bridge-deploy.sh"}
     for directory in ("cli", "adapters"):
         paths.update(p.relative_to(KIT).as_posix() for p in (KIT / directory).rglob("*.py"))
     paths.update("tools/hosted_dashboard/" + p for p in
@@ -117,7 +119,8 @@ def root_for(args) -> Path:
     if (selected / CONFIG).exists() or (selected / CONFIG).is_symlink():
         root = selected
     else:
-        root = Path(git(requested, "rev-parse", "--show-toplevel")).resolve(strict=True)
+        from cli.v1_revision import discover
+        root = discover(requested)
     if args.repo and requested != root:
         raise Refusal("explicit_repo_must_be_root")
     if args.bound_root and root != Path(args.bound_root):
@@ -156,7 +159,7 @@ def runtime():
     return {"root": str(KIT), "version": VERSION, "sha256": digest(data)}
 
 
-def config_for(root, args, *, syncing=False):
+def config_for(root, args, *, syncing=False, authority=True):
     from cli.product_config import normalize
     data = read(root, CONFIG)
     normalized = normalize(data, root=root)
@@ -172,26 +175,32 @@ def config_for(root, args, *, syncing=False):
         raise Refusal("runtime_installation_mismatch")
     if not syncing and config["runtime"] != runtime():
         raise Refusal("runtime_changed: run this installation's explicit sync")
-    if config["vcs"]["canonical"] != "git":
-        raise Refusal("authority_unavailable: Muse operations require FPR-2; no Git fallback")
-    if Path(git(root, "rev-parse", "--show-toplevel")).resolve(strict=True) != root:
-        raise Refusal("config_repository_mismatch")
+    if authority:
+        revision(root, config)
     return config, data
 
 
-def capture_context(root, config_data):
-    return {"config": config_data, "branch": branch(root), "head": head(root)}
+def capture_context(root, config_data, config=None):
+    from cli.product_config import normalize
+    config = config or (normalize(config_data, root=root).data if config_data else None)
+    if config is None or config['vcs']['canonical'] == 'git':
+        if Path(git(root, 'rev-parse', '--show-toplevel')).resolve(strict=True) != root:
+            raise Refusal('repository_context_changed')
+        return {"config": config_data, "branch": branch(root), "head": head(root),
+                "vcs": "git", "source_id": None}
+    state = revision(root, config)
+    return {"config": config_data, "branch": state.branch, "head": state.head,
+            "vcs": state.kind, "source_id": state.source_id}
 
 
 def check_context(root, config, args, captured):
     """Refuse a changed observation; never rebase a prepared prompt implicitly."""
-    if (root.resolve(strict=True) != root or
-            Path(git(root, "rev-parse", "--show-toplevel")).resolve(strict=True) != root):
+    if root.resolve(strict=True) != root:
         raise Refusal("repository_context_changed")
     current, data = config_for(root, args)
     if current != config or data != captured["config"]:
         raise Refusal("config_context_changed")
-    if branch(root) != captured["branch"] or head(root) != captured["head"]:
+    if capture_context(root, data, current) != captured:
         raise Refusal("repository_context_changed")
 
 
@@ -203,6 +212,10 @@ def check_expectations(meta, args):
 
 
 def parse_next(data):
+    from cli.product_next import parse_collection
+    collection = parse_collection(data)
+    if collection is not None:
+        return collection
     try:
         text = data.decode("utf-8")
     except UnicodeError:
@@ -247,18 +260,25 @@ def validate_prompt(prompt):
 
 
 def validate_next(root, config, data, args, *, context, freshness=True):
+    from cli.product_next import selected_entry, selected_lane
     meta, prompt = parse_next(data)
-    if meta.get("vcs", "git") != "git":
-        raise Refusal("authority_unavailable: Muse NEXT requires FPR-2")
+    meta, prompt = selected_entry(meta, prompt, config, args)
+    authority = config['vcs']['canonical']
+    if meta.get("vcs", "git") != authority or meta.get('source_id') != context.get('source_id'):
+        raise Refusal('next_authority_or_source_mismatch')
     for field, expected in {"repo_id": config["repo"]["id"], "repo_root": str(root),
-                            "branch": context["branch"], **config["context"]}.items():
+                            "branch": context["branch"], 'lane': selected_lane(config, args)}.items():
         if meta[field] != expected:
             raise Refusal("next_" + field + "_mismatch")
+    if len(config['docs']['lanes']) == 1 and meta['model'] != config['context']['model']:
+        raise Refusal('next_model_mismatch')
     check_expectations(meta, args)
     if getattr(args, "expect_next", None) and args.expect_next != digest(data):
         raise Refusal("next_digest_mismatch")
     current = context["head"]
     if freshness and current != meta["base_head"]:
+        if authority == 'muse':
+            raise Refusal('next_stale_head')
         # Permit the one closing commit that publishes these exact NEXT bytes.
         # Any subsequent commit needs an explicit refresh through next-write.
         if current == "unborn":
@@ -268,6 +288,17 @@ def validate_next(root, config, data, args, *, context, freshness=True):
         committed = git(root, "show", current + ":" + NEXT, optional=True, raw=True)
         if parents != expected_parents or committed != data:
             raise Refusal("next_stale_head")
+        if meta['schema'] == 3 and parents:
+            previous = git(root, 'show', parents[0] + ':' + NEXT, optional=True, raw=True)
+            if previous:
+                old_meta, old_body = parse_next(previous)
+                try:
+                    old_meta, old_body = selected_entry(old_meta, old_body, config, args)
+                except Refusal:
+                    old_meta = {}
+                if all(old_meta.get(k) == meta[k] for k in
+                       ('branch', 'base_head', 'model', 'action_id', 'action_kind', 'prompt_sha256')):
+                    raise Refusal('next_stale_head: lane not published by closing commit')
     return meta, prompt
 
 
@@ -281,13 +312,28 @@ def rendered(meta, prompt):
 
 
 def write_next(root, config, args, prompt, *, expected, context):
-    meta = {"schema": 1, "repo_id": config["repo"]["id"], "repo_root": str(root),
-            "branch": context["branch"], "base_head": context["head"], **config["context"],
-            "action_id": args.action_id, "action_kind": args.action_kind,
-            "prompt_sha256": digest(prompt.encode())}
-    check_expectations(meta, args)
-    payload = b"---\n" + encode(meta) + b"---\n" + prompt.encode()
-    validate_next(root, config, payload, args, context=context, freshness=False)
+    if getattr(args, 'batch_file', None):
+        from cli.product_next import batch_publication
+        payload = batch_publication(root, config, args, expected, context)
+    else:
+        from cli.product_next import selected_lane, publication
+        lane = selected_lane(config, args)
+        meta = {"schema": 1, "repo_id": config["repo"]["id"], "repo_root": str(root),
+                "branch": context["branch"], "base_head": context["head"],
+                'lane': lane, 'model': getattr(args, 'model', None) or config['context']['model'],
+                "action_id": args.action_id, "action_kind": args.action_kind,
+                "prompt_sha256": digest(prompt.encode())}
+        if context.get('vcs') == 'muse':
+            meta.update(schema=2, vcs='muse', source_id=context['source_id'])
+            if getattr(args, 'vcs', None) != 'muse' or getattr(args, 'base_head', None) != context['head']:
+                raise Refusal('muse_writer_requires_explicit_vcs_and_base_head')
+        if getattr(args, 'vcs', None) not in (None, context.get('vcs', 'git')):
+            raise Refusal('expected_vcs_mismatch')
+        if getattr(args, 'base_head', None) not in (None, context['head']):
+            raise Refusal('expected_base_head_mismatch')
+        check_expectations(meta, args)
+        payload = publication(root, config, meta, prompt, expected, reset=getattr(args, 'reset_authority', False))
+        validate_next(root, config, payload, args, context=context, freshness=False)
     check_context(root, config, args, context)
     path = confined(root, NEXT, parents=True)
     # Advisory directory lock avoids ordinary concurrent lost updates without
@@ -344,11 +390,13 @@ def apply_assets(root, mapping, *, dry_run=False):
 def initialize(root, args):
     from cli.product_config import normalize
     from cli.product_migration import apply_mapping, classify_assets
-    if args.regime not in (None, "git-only"):
-        raise Refusal("authority_unavailable: init authority activation requires FPR-2")
+    from cli.product_authority import select, bind_muse, tracked_bindings
+    from cli.v1_policy import ignore_assets
     existing = read(root, CONFIG, missing=True)
     if existing is not None:
         config, _ = config_for(root, args)
+        if select(root, args, config) != config['vcs']['canonical'] or getattr(args, 'muse_python', None):
+            raise Refusal('use_explicit_adopt_for_config_changes')
         for field, requested in (("lane", args.lane), ("model", args.model)):
             if requested is not None and config["context"][field] != requested:
                 raise Refusal("init_context_change_requires_selection")
@@ -360,12 +408,29 @@ def initialize(root, args):
                   "lane": token(args.lane or "product"), "model": label(args.model or "GPT-6 Astra")},
                   "runtime": runtime(), "vcs": "git"}
         config = normalize(encode(bounded), root=root).data
-    observed = capture_context(root, existing)
+        authority = select(root, args)
+        if authority == 'muse':
+            config = bind_muse(root, config, getattr(args, 'muse_python', None))
+            config['vcs']['regime'] = args.regime or 'muse-only'
+            if getattr(args, 'muse_staging_remote', None):
+                config['vcs']['muse']['staging_remote'] = args.muse_staging_remote
+            if getattr(args, 'mirror_branch', None):
+                config['vcs']['git']['mirror_branch'] = args.mirror_branch
+        elif getattr(args, 'muse_python', None):
+            raise Refusal('git_does_not_use_muse_python')
+    config = normalize(encode(config), root=root).data
+    observed = capture_context(root, existing, config)
     config_data = encode(config) if existing is None else existing
     current = read(root, NEXT, missing=True)
     if current is not None:
         validate_next(root, config, current, argparse.Namespace(), context=observed, freshness=False)
+    ignore_expected = {}
     mapping = assets(root, config, args.hooks)
+    if existing is None and config['vcs']['canonical'] == 'muse':
+        tracked = tracked_bindings(root, config)
+        if any(tracked.values()) and getattr(args, 'tracked_bindings', None) != 'preserve':
+            raise Refusal('tracked_local_bindings: explicitly choose --tracked-bindings preserve or untrack separately')
+        mapping.update(ignore_assets(root, expected=ignore_expected))
     if existing is not None:
         for row in classify_assets(root, mapping, config):
             if row["classification"] == "preserved":
@@ -375,7 +440,7 @@ def initialize(root, args):
     for path in mapping:
         confined(root, path, missing_parents=True)
         old = read(root, path, missing=True)
-        if existing is None and old is not None:
+        if existing is None and old is not None and path not in ('.gitignore', '.museignore'):
             raise Refusal("init_asset_exists: " + path)
     for path, body in {"docs/ROADMAP.md": "# Roadmap\n\nCurrent action: docs/NEXT.md.\n",
                        "docs/OVERSEER-HANDOVER.md": "# Handover\n\nRead current action with `ok next`.\n"}.items():
@@ -386,9 +451,12 @@ def initialize(root, args):
         mapping[CONFIG] = config_data  # Binding is committed after all other assets.
 
     def recheck():
+        for relative, expected_digest in ignore_expected.items():
+            body = read(root, relative, missing=True)
+            if ('absent' if body is None else digest(body)) not in (expected_digest, digest(mapping[relative])):
+                raise Refusal('stale_write: ' + relative)
         if (read(root, CONFIG, missing=True) != existing or runtime() != config["runtime"] or
-                branch(root) != observed["branch"] or head(root) != observed["head"] or
-                Path(git(root, "rev-parse", "--show-toplevel")).resolve() != root):
+                capture_context(root, existing, config) != observed):
             raise Refusal("init_context_changed")
 
     # All destinations are preflighted without mutation before creating the
@@ -399,7 +467,8 @@ def initialize(root, args):
         confined(root, CONFIG, parents=True)
     changed = apply_mapping(root, mapping, check_context=recheck, dry_run=args.dry_run)
     if not args.dry_run and existing is None and current is None:
-        initial = argparse.Namespace(action_id="SETUP", action_kind="plan", bound_id=args.bound_id)
+        initial = argparse.Namespace(action_id="SETUP", action_kind="plan", bound_id=args.bound_id,
+                                     vcs=observed['vcs'], base_head=observed['head'])
         write_next(root, config, initial, "Choose the first task for this repository.\n",
                    expected="absent", context=capture_context(root, config_data))
     return {"ok": True, "repository": config["repo"], "initialized": not args.dry_run,

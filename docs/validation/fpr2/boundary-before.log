@@ -1,0 +1,35 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________ test_sync_rechecks_physical_git_boundary_after_fsync _____________
+
+repo = PosixPath('/private/tmp/fpr2-boundary-before/test_sync_rechecks_physical_gi0/similar-kit')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x107735f30>
+capsys = <_pytest.capture.CaptureFixture object at 0x10772e510>
+
+    def test_sync_rechecks_physical_git_boundary_after_fsync(repo, monkeypatch, capsys):
+        config_path = repo/v1.CONFIG
+        config = yaml.safe_load(config_path.read_bytes())
+        config['runtime']['sha256'] = '0'*64
+        config_path.write_text(yaml.safe_dump(config))
+        before = config_path.read_bytes()
+        real = os.fsync
+        changed = False
+        def fsync(fd):
+            nonlocal changed
+            real(fd)
+            if not changed:
+                changed = True
+                # Same native Git metadata, same branch and full HEAD, new top-level.
+                (repo/'.git').rename(repo.parent/'.git')
+        monkeypatch.setattr(os, 'fsync', fsync)
+        result = v1.main(['-C', str(repo), 'sync', '--json'])
+        assert changed
+>       assert result == 2, capsys.readouterr()
+E       AssertionError: CaptureResult(out='{"ok": true, "repository": {"id": "cb3547d2-1c1a-4e82-a914-ad2a560479f1", "name": "similar-kit", "r...1ed40c54ccc76327d8ec4a17ed4abc89f8e"}], "preserved": [], "dry_run": false, "diff": {}, "next": "preserved"}
+E         ', err='')
+E       assert 0 == 2
+
+tests/fpr2/test_sync_boundary.py:27: AssertionError
+=========================== short test summary info ============================
+FAILED tests/fpr2/test_sync_boundary.py::test_sync_rechecks_physical_git_boundary_after_fsync
+1 failed in 0.85s

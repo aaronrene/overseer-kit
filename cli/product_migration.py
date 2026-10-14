@@ -225,6 +225,14 @@ def _legacy_drafts(root, config):
 
 def _context(root):
     from cli import v1
+    from cli.product_config import normalize
+    config = normalize(read(root, CONFIG), root=root).data
+    if config['vcs']['canonical'] == 'muse':
+        state = v1.revision(root, config)
+        return {'root': str(root), 'branch': state.branch, 'head': state.head,
+                'source_id': state.source_id, 'runtime': v1.runtime()}
+    if Path(v1.git(root, 'rev-parse', '--show-toplevel')).resolve(strict=True) != root:
+        raise Refusal('migration_context_changed')
     return {"root": str(root), "branch": v1.branch(root), "head": v1.head(root),
             "runtime": v1.runtime()}
 
@@ -232,7 +240,6 @@ def _context(root):
 def _check_context(root, captured, allowed_config):
     from cli import v1
     if (root.resolve(strict=True) != root or
-            Path(v1.git(root, "rev-parse", "--show-toplevel")).resolve(strict=True) != root or
             _context(root) != captured):
         raise Refusal("migration_context_changed")
     if digest(read(root, CONFIG)) not in allowed_config:
@@ -243,7 +250,7 @@ def _updates(root, mapping):
     updates = []
     for path, data in mapping.items():
         before = _snapshot(root, path)
-        mode = (before["mode"] if path == CONFIG and before["mode"] is not None else
+        mode = (before["mode"] if path in (CONFIG, ".gitignore", ".museignore") and before["mode"] is not None else
                 0o755 if path.endswith(".sh") or path.endswith("/ok") else 0o644)
         if before["sha256"] != digest(data) or before["mode"] != mode:
             updates.append({"path": path, "before": before, "after": digest(data),
@@ -302,13 +309,19 @@ def build_plan(root, args):
     launcher = read(root, LAUNCHER, missing=True)
     if launcher is not None and not _bound_launcher(launcher, root, config):
         raise Refusal("migration_launcher_binding_conflict")
-    # Authority selection is preserved even while native operations are deferred.
+    # Preserve the selected authority and verify its native binding when available.
     git_authority = config["vcs"]["canonical"] == "git"
     current_next = read(root, NEXT, missing=True)
-    if git_authority and current_next is not None:
-        v1.validate_next(root, config, current_next, Namespace(),
-                         context={"branch": v1.branch(root), "head": v1.head(root)}, freshness=False)
-    mapping = v1.assets(root, config, False) if git_authority else {}
+    available = git_authority or bool(config['vcs']['muse'].get('binding'))
+    if available and current_next is not None:
+        observed = v1.capture_context(root, original, config)
+        for lane in config['docs']['lanes']:
+            # A missing lane is visible at read time, and is not invented by migration.
+            meta, body = v1.parse_next(current_next)
+            if (meta['schema'] == 3 and lane not in meta['entries']) or (meta['schema'] != 3 and meta['lane'] != lane):
+                continue
+            v1.validate_next(root, config, current_next, Namespace(lane=lane), context=observed, freshness=False)
+    mapping = v1.assets(root, config, False) if available else {}
     if getattr(args, "hooks", False):
         raise Refusal("migration_does_not_install_existing_repository_hooks")
     mapping[CONFIG] = v1.encode(config)
@@ -325,15 +338,15 @@ def build_plan(root, args):
             "repository": config["repo"], "source_config_sha256": digest(original),
             "normalized_config": config, "field_map": model.field_map,
             "diagnostics": list(model.diagnostics), "refresh_runtime": bool(getattr(args, "refresh_runtime", False)),
-            "context": _context(root) if git_authority else {"root": str(root), "runtime": v1.runtime(),
-                "authority": "muse", "unavailable": "native_authority_activation_requires_FPR_2"},
+            "context": _context(root) if available else {"root": str(root), "runtime": v1.runtime(),
+                "authority": "muse", "unavailable": "muse_binding_required"},
             "assets": updates, "protected": protected,
             "classification": classifications,
             "legacy_prompt_drafts": _legacy_drafts(root, config),
             "next": "preserved byte-for-byte; accepted drafts publish only through next-write",
-            "apply_supported": git_authority and config["runtime"] == v1.runtime()}
-    if not git_authority:
-        plan["diagnostics"].append("Muse authority preserved; apply requires FPR-2 native context validation")
+            "apply_supported": available and config["runtime"] == v1.runtime()}
+    if not available:
+        plan['diagnostics'].append('Muse authority preserved; apply requires explicit native binding')
     if config["runtime"] != v1.runtime():
         plan["diagnostics"].append("Runtime changed: repeat dry-run with explicit --refresh-runtime")
     return plan
@@ -367,8 +380,6 @@ def _apply_plan(root, args, plan):
     validated = normalize(v1.encode(target), root=root, runtime=v1.runtime())
     if not validated.bound or target.get("schema") != 3 or validated.data != target:
         raise Refusal("migration_config_plan_invalid")
-    if validated.authority != "git":
-        raise Refusal("native_authority_activation_requires_FPR_2")
     proposed = normalize(original, root=root, runtime=v1.runtime(), bind=True,
                          identity=target["repo"]["id"], lane=target["context"]["lane"],
                          model=target["context"]["model"]).data
@@ -513,9 +524,8 @@ def migrate(root, args):
 
 def sync(root, config, original, args):
     from cli import v1
-    if config["vcs"]["canonical"] != "git":
-        raise Refusal("native_authority_activation_requires_FPR_2")
-    captured = _context(root)
+    captured = v1.capture_context(root, original, config)
+    runtime_observed = v1.runtime()
     updated = copy.deepcopy(config)
     updated["runtime"] = v1.runtime()
     mapping = v1.assets(root, updated, bool(getattr(args, "hooks", False)))
@@ -557,7 +567,9 @@ def sync(root, config, original, args):
     protected = [row for path, row in protected_map.items() if path not in changing]
 
     def check():
-        _check_context(root, captured, {digest(original)})
+        if (read(root, CONFIG) != original or v1.capture_context(root, original, config) != captured
+                or v1.runtime() != runtime_observed):
+            raise Refusal('sync_context_changed')
         for row in protected:
             if not _same(root, row):
                 raise Refusal("sync_protected_asset_changed: " + row["path"])

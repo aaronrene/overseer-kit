@@ -1,0 +1,44 @@
+.F....                                                                   [100%]
+=================================== FAILURES ===================================
+______ test_upgrade_controlled_plan_preserves_settings_and_never_exports _______
+
+case = (PosixPath('/private/tmp/fpr2-product/test_upgrade_controlled_plan_p0/muse-only'), {'schema': 1, 'source': {'repo_id':...mirror', 'base': 'main', ...}, 'target': '/private/tmp/fpr2-product/test_upgrade_controlled_plan_p0/bare-mirror', ...})
+
+    def test_upgrade_controlled_plan_preserves_settings_and_never_exports(case):
+        root, plan = case
+        cfgpath = root/v1.CONFIG
+        original = yaml.safe_load(cfgpath.read_bytes())
+        body = json.dumps(plan).encode()
+        path = '.overseer/local/plan.json'
+        (root/path).parent.mkdir(exist_ok=True)
+        (root/path).write_bytes(body)
+        before = inventory(root)
+        args = ['-C', root, 'upgrade-regime', '--plan-file', path, '--expect-plan', digest(body)]
+        preview = command(*args, '--dry-run', '--json')
+        assert preview.returncode == 0, preview.stderr
+        assert inventory(root) == before
+        for extra in (['--live-bridge'], ['--live-bridge', '--yes']):
+            result = command(*args, *extra)
+            assert result.returncode == 2 and 'unsafe_legacy_live_export' in result.stderr
+            assert inventory(root) == before
+        assert command(*args, '--apply', '--expect-config', digest(cfgpath.read_bytes())).returncode == 0
+        updated = yaml.safe_load(cfgpath.read_bytes())
+        expected = deepcopy(original); expected['vcs']['regime'] = 'muse+git-mirror'
+        assert updated == expected
+        from pathlib import Path
+        assert not Path(plan['target']).exists()
+        for p, value in before.items():
+            if p != v1.CONFIG:
+                assert inventory(root)[p] == value
+        for operation in ('prepare', 'verify'):
+            result = command('-C', root, 'mirror', operation, '--plan-file', path, '--expect-plan', digest(body))
+>           assert result.returncode == 0, result.stderr + result.stdout
+E           AssertionError: refused: config_invalid: <normalized-config>: muse+git-mirror regime requires vcs.muse.staging_remote
+E             
+E           assert 2 == 0
+E            +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...t='', stderr='refused: config_invalid: <normalized-config>: muse+git-mirror regime requires vcs.muse.staging_remote\n').returncode
+
+tests/muse/test_product.py:44: AssertionError
+=========================== short test summary info ============================
+FAILED tests/muse/test_product.py::test_upgrade_controlled_plan_preserves_settings_and_never_exports
+1 failed, 5 passed in 30.46s

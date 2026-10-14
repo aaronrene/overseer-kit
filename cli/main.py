@@ -1,6 +1,6 @@
 """The product dispatcher; all handlers cross the same repository boundary.
 
-Only FPR-1 commands are registered. Engine tests may inject their own dependencies
+FPR-1 foundation and FPR-2 authority/lane services are registered. Engine tests may inject their own dependencies
 below this boundary; there is no production validation-bypass switch.
 """
 from __future__ import annotations
@@ -15,7 +15,7 @@ import sys
 from cli import v1
 from cli.v1_io import LIMIT, Refusal, digest, read
 
-COMMANDS = frozenset({'status', 'init', 'sync', 'next', 'next-write', 'hook'})
+COMMANDS = frozenset({'status', 'init', 'sync', 'next', 'next-write', 'hook', 'adopt', 'mirror', 'upgrade-regime'})
 
 
 @dataclass(frozen=True)
@@ -56,10 +56,35 @@ def parser():
                    no_color=False, bound_root=None, bound_id=None, binding_path=None)
     p.add_argument('--version', action='version', version=v1.VERSION)
     sub = p.add_subparsers(dest='command', required=True)
-    for name in ('status', 'init', 'sync', 'next', 'next-write', 'hook'):
+    for name in sorted(COMMANDS):
         cmd = sub.add_parser(name, allow_abbrev=False)
         globals_to(cmd)
+        if name in ('init', 'adopt'):
+            cmd.add_argument('--vcs', choices=('git', 'muse'))
+            cmd.add_argument('--muse-python')
+            cmd.add_argument('--tracked-bindings', choices=('preserve',))
+        if name == 'adopt':
+            cmd.add_argument('--restore-config')
+            cmd.add_argument('--expect-config', required=True)
+            cmd.add_argument('--base-head', required=True)
+            cmd.add_argument('--dry-run', action='store_true')
+        if name == 'mirror':
+            cmd.add_argument('operation', choices=('prepare', 'reconcile', 'verify', 'deliver'))
+            cmd.add_argument('--plan-file', required=True)
+            cmd.add_argument('--expect-plan', required=True)
+            cmd.add_argument('--gh')
+            cmd.add_argument('--allow-network', action='store_true')
+        if name == 'upgrade-regime':
+            cmd.add_argument('--plan-file')
+            cmd.add_argument('--expect-plan')
+            cmd.add_argument('--expect-config')
+            cmd.add_argument('--apply', action='store_true')
+            cmd.add_argument('--dry-run', action='store_true')
+            cmd.add_argument('--yes', action='store_true')
+            cmd.add_argument('--live-bridge', action='store_true')
         if name == 'init':
+            cmd.add_argument('--muse-staging-remote')
+            cmd.add_argument('--mirror-branch')
             cmd.add_argument('--regime', default=None)
             cmd.add_argument('--repo-name')
             cmd.add_argument('--lane')
@@ -72,21 +97,29 @@ def parser():
             cmd.add_argument('--resume', action='store_true')
             cmd.add_argument('--refresh-runtime', action='store_true')
         if name in ('init', 'sync'):
-            cmd.add_argument('--hooks', action='store_true', help='Install bound Cursor bookends (disposable fixtures in FPR-1)')
+            cmd.add_argument('--hooks', action='store_true', help='Install bound Cursor bookends in the explicitly selected repository')
             cmd.add_argument('--dry-run', action='store_true')
         if name == 'sync':
             cmd.add_argument('--only', action='append', metavar='GLOB',
                              help='Select available foundation asset paths (or launcher/hooks)')
             cmd.add_argument('--diff', action='store_true')
             cmd.add_argument('--preserve-modified', action='store_true')
-        if name in ('next', 'next-write', 'status'):
+        if name in ('next', 'next-write', 'status', 'adopt'):
             for field in ('repo-id', 'branch', 'lane', 'model', 'action-id', 'action-kind'):
-                cmd.add_argument('--' + field, required=name == 'next-write',
+                cmd.add_argument('--' + field, required=(name == 'next-write' and field in ('repo-id', 'branch')) or (name == 'adopt' and field not in ('action-id', 'action-kind')),
                                  choices=v1.KINDS if field == 'action-kind' else None)
-            cmd.add_argument('--expect-next', required=name == 'next-write')
+            if name != 'adopt':
+                cmd.add_argument('--expect-next', required=name == 'next-write')
+        if name in ('next', 'status'):
+            cmd.add_argument('--all-lanes', action='store_true')
         if name == 'next-write':
-            cmd.add_argument('--prompt-file', required=True, help='Confined repository-relative UTF-8 file')
+            cmd.add_argument('--vcs', choices=('git', 'muse'))
+            cmd.add_argument('--base-head')
+            cmd.add_argument('--prompt-file', help='Confined repository-relative UTF-8 file')
+            cmd.add_argument('--batch-file', help='Confined JSON map of explicitly selected lane updates')
+            cmd.add_argument('--reset-authority', action='store_true', help='Explicitly replace old-authority lane collection after adoption')
         if name == 'hook':
+            cmd.add_argument('--lane')
             cmd.add_argument('--hook-path', required=True)
             cmd.add_argument('--event', choices=('sessionStart', 'stop'))
     return p
@@ -97,11 +130,20 @@ def _arguments(argv):
     # the binding established by a generated launcher or a caller's earlier flag.
     for aliases in (('-C', '--repo'), ('--config',), ('--bound-root',), ('--bound-id',),
                     ('--binding-path',), ('--lane',), ('--model',), ('--repo-id',),
-                    ('--branch',), ('--expect-next',), ('--expect-plan',), ('--expect-config',)):
+                    ('--branch',), ('--vcs',), ('--base-head',), ('--action-id',), ('--action-kind',),
+                    ('--prompt-file',), ('--batch-file',), ('--expect-next',), ('--expect-plan',), ('--expect-config',)):
         if sum(a.split('=', 1)[0] in aliases or
                (a.startswith('-C') and a != '-C' and '-C' in aliases) for a in argv) > 1:
             raise Refusal('duplicate_binding_option')
     args = parser().parse_args(argv)
+    if args.command == 'next-write':
+        if bool(args.prompt_file) == bool(args.batch_file):
+            raise Refusal('next_write_requires_prompt_or_batch_file')
+        fields = ('lane', 'model', 'action_id', 'action_kind')
+        if args.batch_file and any(getattr(args, k, None) for k in fields):
+            raise Refusal('batch_entries_supply_lane_model_action')
+        if not args.batch_file and not all(getattr(args, k, None) for k in fields):
+            raise Refusal('next_write_requires_explicit_lane_model_action')
     if args.command == 'init':
         migrate_flags = args.apply_plan or args.expect_plan or args.expect_config or args.resume or args.refresh_runtime
         if migrate_flags and not args.migrate:
@@ -124,7 +166,7 @@ def _inspect(root, args):
     original = read(root, v1.CONFIG)
     model = normalize(original, root=root)
     config = model.data
-    if model.bound and config['vcs']['canonical'] == 'git':
+    if model.bound and (config['vcs']['canonical'] == 'git' or config['vcs']['muse'].get('binding')):
         return None
     if args.bound_id and config.get('repo', {}).get('id') != args.bound_id:
         raise Refusal('launcher_identity_mismatch')
@@ -156,23 +198,25 @@ def _read(context, args):
         raw = b'' if sys.stdin.isatty() else read_event(sys.stdin)
         event = validate_event(root, config, args, raw)
     result = {'ok': True, 'repository': config['repo'], 'branch': observed['branch'],
-              'head': observed['head'], 'runtime': config['runtime']}
+              'head': observed['head'], 'runtime': config['runtime'],
+              'vcs': observed['vcs'], 'source_id': observed['source_id'],
+              'publication': 'not_checked_offline'}
     try:
         data = read(root, v1.NEXT)
-        meta, prompt = v1.validate_next(root, config, data, args, context=observed)
-        result.update(next=meta, next_sha256=digest(data))
+        from cli.product_next import display
+        fields, output = display(root, config, data, args, observed)
+        result.update(fields, next_sha256=digest(data))
     except Refusal as exc:
         if args.command != 'status':
             raise
         result.update(ok=False, next_error=str(exc))
     if args.command in ('next', 'hook'):
         context.recheck(args)
-        output = v1.rendered(meta, prompt)
         if args.command == 'hook':
             from cli.product_bookends import hook_response
             print(json.dumps(hook_response(output, event)))
         elif args.json:
-            print(json.dumps(dict(result, prompt=prompt, rendered=output)))
+            print(json.dumps(dict(result, rendered=output)))
         elif not args.quiet:
             print(output, end='')
         return None
@@ -184,7 +228,13 @@ def _read(context, args):
                   diagnostics=list(model.diagnostics), authority=config['vcs']['canonical'],
                   assets=classify_assets(root, v1.assets(root, config), config),
                   preserved_inventory=inventory(root, config))
-    result['dirty'] = bool(v1.git(root, 'status', '--porcelain', '--untracked-files=normal'))
+    state = v1.revision(root, config, dirty=True)
+    result.update(dirty=state.dirty, tracked_local=list(state.tracked_local))
+    if state.kind == 'muse':
+        from cli.v1_mirror import RECORD
+        record = read(root, RECORD, missing=True)
+        result['mirror'] = {'record_present': record is not None, 'verification': 'not_checked_offline',
+                            'authority': False}
     context.recheck(args)
     return result
 
@@ -192,8 +242,6 @@ def _read(context, args):
 def main(argv=None):
     try:
         args = _arguments(list(sys.argv[1:] if argv is None else argv))
-        if args.command == 'init' and not args.migrate and args.regime not in (None, 'git-only'):
-            raise Refusal('authority_unavailable: init authority activation requires FPR-2')
         root = v1.root_for(args)
         if args.command == 'init':
             if args.migrate:
@@ -201,6 +249,10 @@ def main(argv=None):
                 result = migrate(root, args)
             else:
                 result = v1.initialize(root, args)
+        elif args.command == 'adopt':
+            from cli.product_authority import adopt
+            config, original = v1.config_for(root, args, authority=False)
+            result = adopt(root, config, original, args)
         elif args.command == 'status' and (inspection := _inspect(root, args)) is not None:
             result = inspection
         else:
@@ -208,8 +260,18 @@ def main(argv=None):
             if args.command == 'sync':
                 from cli.product_migration import sync
                 result = sync(root, context.config, context.original, args)
+            elif args.command == 'mirror':
+                if args.operation == 'deliver' and not (args.allow_network and args.gh):
+                    raise Refusal('mirror_deliver_requires_allow_network_and_explicit_gh')
+                from cli.v1_mirror import command
+                context.recheck(args)
+                result = command(root, context.config, context.original, args)
+                context.recheck(args)
+            elif args.command == 'upgrade-regime':
+                from cli.product_upgrade import upgrade
+                result = upgrade(context, args)
             elif args.command == 'next-write':
-                prompt = read(root, args.prompt_file).decode('utf-8')
+                prompt = '' if args.batch_file else read(root, args.prompt_file).decode('utf-8')
                 if not prompt.endswith('\n'):
                     prompt += '\n'
                 expected = args.expect_next

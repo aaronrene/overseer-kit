@@ -14,8 +14,22 @@ writer atomically replaces a same-directory temporary file and fsyncs it and its
 directory where supported. Concurrent stale writers refuse. A directory-fsync
 failure after replace reports failure although a complete new file may be present.
 
-The one closing commit containing the exact NEXT bytes is accepted; a later commit
-requires explicit refresh. `sync` preserves NEXT and living documents. A missing or
+Git accepts the exact single closing commit containing these NEXT bytes; a later
+commit requires explicit refresh. In a schema-3 collection, that exception also
+requires the selected entry to have changed in the closing commit. Muse requires
+the exact native revision and has no closing-commit exception; publish after the
+work commit using explicit `--vcs muse --base-head sha256:...`. Mirror Git state
+never determines Muse freshness. `sync` preserves NEXT and living documents. A missing or
 invalid NEXT must be repaired explicitly; the reader never silently chooses another
 repository or revives historical prompts. A copied config, NEXT, launcher or hook
 must refuse if its repository/location bindings disagree.
+
+
+For multiple declared repository-owned lanes, use `next --lane NAME` or
+`next --all-lanes`. An unselected session shows labelled valid/missing/stale
+entries and requires a lane choice before action. Bookends use the same service.
+`next-write --lane NAME` updates only that entry with whole-file digest CAS;
+unselected entries keep their revisions. `--batch-file` explicitly publishes
+several accepted entries in one write. Schema-1/2 documents remain readable.
+See [authority and lane operations](FPR-2-AUTHORITY-AND-LANES.md) for the strict
+batch format, authority-change reset and native prerequisite contract.

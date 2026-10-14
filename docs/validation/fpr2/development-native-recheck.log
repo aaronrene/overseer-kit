@@ -1,0 +1,23 @@
+..............F
+=================================== FAILURES ===================================
+_________ test_muse_missing_or_malformed_state_refuses[missing_python] _________
+
+muse_root = PosixPath('/private/tmp/fpr2-native-debug2/test_muse_missing_or_malformed0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x107339dd0>, broken = 'missing_python'
+
+    @pytest.mark.parametrize('broken', ['missing_python', 'runtime_pin', 'missing_object', 'malformed_head', 'detached', 'bad_ref', 'wrong_source', 'unregistered_pointer'])
+    def test_muse_missing_or_malformed_state_refuses(muse_root, muse_python, muse, broken):
+        root = muse_root
+        init(root, muse_python)
+        head = commit(root, muse)
+>       assert publish(root).returncode == 0
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...ocal/prompt.txt'], returncode=2, stdout='', stderr="refused: runtime_changed: run this installation's explicit sync\n").returncode
+E        +    where CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...ocal/prompt.txt'], returncode=2, stdout='', stderr="refused: runtime_changed: run this installation's explicit sync\n") = publish(PosixPath('/private/tmp/fpr2-native-debug2/test_muse_missing_or_malformed0/muse-only'))
+
+tests/muse/test_handoffs.py:144: AssertionError
+=========================== short test summary info ============================
+FAILED tests/muse/test_handoffs.py::test_muse_missing_or_malformed_state_refuses[missing_python]
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 14 passed in 72.46s (0:01:12)

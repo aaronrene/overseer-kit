@@ -1,0 +1,22 @@
+{
+  "complete_selection_runtime": "13d5e7d075b0b8053081b6be448db225d74d6721a7d7cf3ec6c2495963c93c9d",
+  "final_runtime": "1becd740f9cb24ae722df5c135215eb4508407069705bc1116d1f2fd1f40ed51",
+  "exact_runtime_delta_reconstructed": true,
+  "changed_files": [
+    {
+      "path": "cli/product_config.py",
+      "before_sha256": "4ef9ba6e66d8661500f43a0737e2a7277cc10bdee72a4f24124bfd76a335f006",
+      "after_sha256": "5825f141d81d32471e3801d15ca7c094d84be45ff332764e67f96c7ce55c9433"
+    },
+    {
+      "path": "scripts/muse-bridge-deploy.sh",
+      "before_sha256": "d5239df5f2f02843d844c8494768858e9cfce3a97465a368564ccc518f550627",
+      "after_sha256": "d1a4351567edbe3d054b545b8cb165e302e231037ae152bba14bd3a6a9e302d6"
+    },
+    {
+      "path": "templates/scripts/muse-bridge-deploy.sh.template",
+      "before_sha256": "d5239df5f2f02843d844c8494768858e9cfce3a97465a368564ccc518f550627",
+      "after_sha256": "d1a4351567edbe3d054b545b8cb165e302e231037ae152bba14bd3a6a9e302d6"
+    }
+  ]
+}

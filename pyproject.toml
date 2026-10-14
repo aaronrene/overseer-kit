@@ -27,6 +27,7 @@ include = ["adapters*", "cli*", "tools*"]
 testpaths = [
     "tests/v1",
     "tests/fpr1",
+    "tests/fpr2",
     "tests/unit/test_footprint_digest.py",
     "tests/unit/test_config.py",
     "tests/unit/test_git_only.py",

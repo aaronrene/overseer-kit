@@ -1,11 +1,14 @@
-> **FPR-1 foundation:** the supported entrypoint is the isolated `cli/ok`, with
-> schema-3 configuration, explicit migration and canonical NEXT bookends.
-> See [current CLI/migration notes](docs/validation/FPR-1-FOUNDATION.md),
-> [quickstart](docs/V1-QUICKSTART.md), and the
+> **FPR-2 authority and lanes:** the isolated `cli/ok` now supports selected
+> Git/Muse authority, explicit adoption/rollback, controlled mirror services and
+> canonical schema-3 repository lanes alongside the FPR-1 foundation.
+> See [authority/lane operations](docs/FPR-2-AUTHORITY-AND-LANES.md),
+> [focused evidence](docs/validation/FPR-2-AUTHORITY.md),
+> [foundation migration notes](docs/validation/FPR-1-FOUNDATION.md), and the
 > [restoration plan](docs/decisions/FULL-PRODUCT-RESTORATION-PLAN.md).
-> FPR-2/3 remain pending; this is not a complete-product or release-readiness claim.
-> The earlier product documentation below is historical pending FPR-3 alignment;
-> its unavailable workflows and direct Python invocation are not supported paths.
+> Remaining product surfaces are FPR-3; this is not complete-product restoration
+> or release readiness. The earlier product documentation below is historical
+> pending FPR-3 alignment; unavailable workflows and direct Python invocation
+> are not supported paths.
 
 # 🆗 Overseer Kit
 

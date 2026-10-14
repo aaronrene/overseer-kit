@@ -1,7 +1,7 @@
-# Test disposition: bounded v1 and FPR-1 foundation
+# Test disposition: bounded v1, foundation and FPR-2 authority
 
 Default collection is the explicit `testpaths` list in `pyproject.toml`:
-`tests/v1`, `tests/fpr1` plus unchanged digest/config/path/adapter unit tests and adapter-factory
+`tests/v1`, `tests/fpr1`, `tests/fpr2` plus unchanged digest/config/path/adapter unit tests and adapter-factory
 integration tests. No supported requirement is waived with skips or xfails.
 
 `tests/v1` replaces the old public status/init/sync and print-NEXT contract with
@@ -42,3 +42,33 @@ now have actual `cli/ok` tests; changed unsafe contracts are mapped explicitly.
 FPR-2 and FPR-3 add authority/lanes and remaining product surfaces before the single
 combined FPR-4 validation and independent FPR-5 review. The completed bounded
 review, installation/rollback and pilot are not rerun by this wave.
+
+
+FPR-2 adds `tests/muse` as an explicitly selected required native suite, with
+`--muse-python /absolute/pinned/venv/bin/python`. Its fixture verifies rc5 and the
+committed package-source pin; a missing prerequisite fails rather than skipping.
+Default Git-only collection remains runnable without Muse. The complete focused
+selection is `docs/validation/fpr2/run-focused.sh`, with `FPR2_MUSE_PYTHON` set and
+fixtures under a nonrepository parent. Source/test mappings and development/final
+results are in [FPR-2 evidence](../docs/validation/FPR-2-AUTHORITY.md).
+
+Imported M adoption tests now use normalized schema and retain tracked Git
+bindings. Native mirror/history/credential cases retain meaningful safety checks;
+new tests cover lane collection/batch CAS, native context races, controlled
+upgrades and explicit preservation. Two FPR-1 unavailable-Muse assertions and its
+fake native migration prerequisite expectation change to the activated native
+contract; real native migration has replacement coverage. Historical D tests,
+source-distribution tests pending FPR-3, and the 104 historical failures are not
+silently reclassified as passing. These are focused author checks, not the
+completed bounded exercises, FPR-4 combined matrix or an independent review.
+
+
+One preserved footprint assertion,
+`test_k7_footprint.py::test_rendered_deploy_script_safety_invariants`, specifically
+requires native git-export and automatic push. Its recorded FPR-2 failure remains
+visible. The focused runner explicitly deselects that superseded route and runs
+`tests/muse/test_product.py::test_bound_bridge_wrapper_uses_controlled_offline_service`
+in its place, alongside target/projection/retry/credential tests. The replacement
+executes the actual wrapper from a foreign cwd and checks offline prepare/verify,
+legacy flag refusal and delivery refusal without explicit transport authorization.
+The original historical test is byte-identical; it is not silently made green.
