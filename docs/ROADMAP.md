@@ -26,7 +26,7 @@ The former sole-writer/NXR-GSR chain remains historical and is not the living NE
 | FPR-5 bounded repairs | All six implemented; 1,361 selected cases have passing evidence across the new combined run and affected rerun; [author evidence](validation/FPR-5-REPAIRS.md) |
 | Remaining acceptance, final adjudication and release decision | **Closeout packet complete; final readiness not established** — [exact claim/source/evidence map](validation/FPR-5-ACCEPTANCE-PACKET.md) records all outcomes and limits. Cursor start/stop remain owner-postponed **NOT VERIFIED**. Resolve required incident/claim dispositions before one independent non-author adjudication, then a separate owner release decision |
 | FPR-OPS-1 — unexplained cross-window conversation restoration | **One authorized restoration capture complete; cause unresolved** — [distinct-route result](validation/FPR-5-RESTORE-REPRO.md): actual custom-editor persistence preserves distinct routes; an explicitly injected membership mismatch reaches the outgoing resume request. Backend acceptance/turn execution unobserved. Prior investigation preserved; qualification blocker remains. One host/owner guard recommendation; NEXT stops with no further experiment or review scheduled |
-| FPR-OPS-2 — broken shared legacy `ok` environment | **Confirmed; unrepaired local installation** — separate from mirroring and the working recovery launcher. Candidate code is not newly shown defective. Exact interpreter/dependency/backup plan precedes repair and consumer use; global/consumer mutations remain unauthorized |
+| FPR-OPS-2 — broken shared legacy `ok` environment | **Confined dependency repair complete** — [repair and verified rollback](validation/FPR-5-LEGACY-CLI-REPAIR.md). Only stable `.venv` changed; existing source/interpreter/global wrapper preserved. Imports, native dependencies, CLI startup and disposable root/path-confinement checks pass. Legacy UUID/branch/digest-bound NEXT remains unsupported; no consumer qualification or FPR-OPS-1 resolution claimed |
 | FPR-EVID-1 — external temporary originals unavailable | **Availability gap mapped; not waived** — 40 interactive copies (34 exact/six redacted), 79 host copies and 28 pilot records verify. Temporary originals, backup trees and two screenshots are unavailable at recorded paths. Packet preserves provenance and custody limits for later sufficiency assessment |
 
 The exact current action lives only in `docs/NEXT.md`; use `ok -C ROOT next`.
@@ -43,12 +43,16 @@ confined host/owner repository-binding guard remains a recommendation, unapplied
 NEXT stops; no further experiment, repair or review is scheduled or authorized.
 Cursor sessionStart/stop remain owner-postponed **NOT VERIFIED**. The owner did
 not deliberately open duplicates; restart/full-disk causation remains unknown
-and visible-chat selection remains mitigation only. The separate FPR-OPS-2 plan
-still proposes stable source with its own interpreter, exact local dependency
-selection and backups before any separately authorized legacy environment repair.
-No legacy/global/consumer mutation occurred.
-The packet distinguishes candidate evidence, an unqualified host workflow, a
-broken legacy installation and missing external originals. Required disposition
+and visible-chat selection remains mitigation only. The separately authorized
+[FPR-OPS-2 repair](validation/FPR-5-LEGACY-CLI-REPAIR.md) now restores required
+libraries in the stable checkout's own venv using 190 exact local artifact files.
+Its interpreter, source and global wrapper are unchanged; rollback was rehearsed
+before target mutation. Startup and disposable root/path-confinement checks pass.
+The legacy source lacks UUID/branch/digest-bound NEXT; that remains an explicit
+limitation, not a claimed repair. No other global/consumer mutation occurred.
+The packet and subsequent repair record distinguish candidate evidence, an
+unqualified host workflow, a repaired legacy installation with limited binding,
+and missing external originals. Required disposition
 of those limits precedes final readiness; do not silently narrow the full claim.
 Update this summary and HANDOVER together. No release or remote operation is
 authorized. See `docs/validation/V1-RECOVERY.md` for the bounded test matrix and

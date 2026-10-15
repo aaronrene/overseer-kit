@@ -1,0 +1,14 @@
+Reasoning: Max
+Role: Owner scope checkpoint; not independent adjudicator
+
+Read docs/validation/FPR-5-LEGACY-CLI-REPAIR.md.
+The authorized FPR-OPS-2 dependency repair is complete. Preserve its rollback
+and the legacy CLI's unsupported UUID/branch/digest binding limitation.
+Stop here; no further repair, experiment, review or release is authorized.
+FPR-OPS-1 remains unresolved. Preserve both completed investigation reports.
+Cursor sessionStart/stop remain owner-postponed NOT VERIFIED.
+Preserve original findings/failures, old worktrees, protected refs and Muse history.
+No profiles/accounts, permission changes, installed/global/consumer mutations,
+hooks, network/providers, live export/delivery, fetch/push, main merge, tags,
+signing or deployment. Final non-author adjudication and owner release remain
+unauthorized.

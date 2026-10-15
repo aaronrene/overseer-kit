@@ -31,26 +31,33 @@ final-adjudication readiness remain unestablished; FPR-OPS-1 remains an open
 qualification blocker. Final non-author adjudication and separate owner release
 remain unauthorized. No completed test, review, pilot or failed launch was
 repeated; no installed source, profile/account, global/consumer or hook mutation
-occurred. All restrictions remain in force.
+occurred during that restoration capture. The later authorized venv repair is
+recorded separately below. All other restrictions remain in force.
 
 The owner did **not** deliberately open the same conversation or duplicate project
 windows. Logs establish shared display, not how it was selected or restored. The
 earlier explanation overstated the cause. FPR-OPS-1 tracks investigation and
 workspace/task mismatch prevention; changing visible chats was mitigation only.
-FPR-OPS-2 tracks the separately confirmed shared legacy `ok` failure: its venv
-lacks `cryptography`; no repair is applied and no new recovery-source defect is
-established. It blocks use of that old installation until a bounded repair. The
-separate plan proposes the stable checkout's source and own Python 3.14.4
-interpreter, exact backups and per-target NEXT validation. Its manifest has
-dependency ranges, so compatible local artifact versions/hashes must be selected
-before any installation; no global/consumer mutation is authorized.
+FPR-OPS-2's separately authorized [dependency repair](validation/FPR-5-LEGACY-CLI-REPAIR.md)
+is complete. Only `overseer-kit-main-stable/.venv` changed: 190 exact previously
+recorded local artifact files provide PyYAML 6.0.3, cryptography 49.0.0, cffi 2.1.0
+and pycparser 3.0; two old venv aliases to external Python 3.10 PyYAML were replaced.
+The stable source, its own Python 3.14.4 interpreter, global wrapper and external
+alias targets remain unchanged. Exact rollback was rehearsed before mutation;
+required imports/native operations, CLI startup and disposable root selection/
+config-path refusal pass. The legacy CLI does not support modern UUID/branch/
+digest-bound NEXT, so that qualification remains unavailable through this source.
+This repair does not resolve FPR-OPS-1 or establish consumer acceptance. The
+original missing-cryptography failure and both incident reports are preserved.
+NEXT stops; no further experiment or review is scheduled.
+
 FPR-EVID-1's availability gap is now mapped: 40 interactive copies (34 exact/six
 redacted), 79 host/platform copies and 28 curated pilot records verify, while
 temporary originals/backups and two screenshots remain unavailable. Preserve
 those custody limits for later independent sufficiency assessment.
 Neither restart nor recent-repair causation is proven. See the owner record for
 evidence and scheduling boundaries. Existing consumers, profiles and global
-launchers stay untouched by this closeout.
+launchers stay untouched; only the expressly authorized stable venv was repaired.
 
 The owner selected
 Cursor 3.24.18 on macOS 15.7.2 arm64, retained the complete Python 3.11/3.14 and

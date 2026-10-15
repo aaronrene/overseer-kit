@@ -1,0 +1,86 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261015-fpr-ops2-s8rcdg_c/disposable-venv/bin/python3",
+        "-I",
+        "-B",
+        "-c",
+        "import sys, json, platform, importlib.metadata as md\nfrom pathlib import Path\nimport yaml, yaml._yaml, cryptography, cffi, _cffi_backend, pycparser\nfrom cryptography.hazmat.primitives import hashes\nexpected = {\"PyYAML\":\"6.0.3\", \"cryptography\":\"49.0.0\", \"cffi\":\"2.1.0\", \"pycparser\":\"3.0\"}\nassert {name:md.version(name) for name in expected} == expected\nassert sys.version_info[:3] == (3,14,4) and platform.machine() == \"arm64\"\nassert yaml.safe_load(\"repair: true\") == {\"repair\":True}\nassert cffi.FFI().sizeof(\"int\") > 0\nassert pycparser.CParser().parse(\"int fixture;\") is not None\nh=hashes.Hash(hashes.SHA256()); h.update(b\"offline dependency compatibility\")\nassert len(h.finalize()) == 32\npaths={m.__name__:m.__file__ for m in [yaml,cryptography,cffi,_cffi_backend,pycparser]}\nassert all(Path(p).is_relative_to(Path(sys.prefix)) for p in paths.values())\nprint(json.dumps({\"version\":sys.version,\"prefix\":sys.prefix,\"executable\":sys.executable,\n \"resolved_interpreter\":str(Path(sys.executable).resolve()),\"machine\":platform.machine(),\n \"packages\":expected,\"module_paths\":paths,\"native_dependency_operations\":\"passed\"},indent=2))\n"
+      ],
+      "cwd": "/private/var/folders/1h/h0k1lcss0fdc_2rvzffnlq040000gp/T/fpr5-ops2-check-9wtsupbb",
+      "exit_code": 0,
+      "stdout": "{\n  \"version\": \"3.14.4 (main, Apr  7 2026, 13:13:20) [Clang 17.0.0 (clang-1700.6.4.2)]\",\n  \"prefix\": \"/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261015-fpr-ops2-s8rcdg_c/disposable-venv\",\n  \"executable\": \"/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261015-fpr-ops2-s8rcdg_c/disposable-venv/bin/python3\",\n  \"resolved_interpreter\": \"/opt/homebrew/Cellar/python@3.14/3.14.4_1/Frameworks/Python.framework/Versions/3.14/bin/python3.14\",\n  \"machine\": \"arm64\",\n  \"packages\": {\n    \"PyYAML\": \"6.0.3\",\n    \"cryptography\": \"49.0.0\",\n    \"cffi\": \"2.1.0\",\n    \"pycparser\": \"3.0\"\n  },\n  \"module_paths\": {\n    \"yaml\": \"/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261015-fpr-ops2-s8rcdg_c/disposable-venv/lib/python3.14/site-packages/yaml/__init__.py\",\n    \"cryptography\": \"/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261015-fpr-ops2-s8rcdg_c/disposable-venv/lib/python3.14/site-packages/cryptography/__init__.py\",\n    \"cffi\": \"/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261015-fpr-ops2-s8rcdg_c/disposable-venv/lib/python3.14/site-packages/cffi/__init__.py\",\n    \"_cffi_backend\": \"/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261015-fpr-ops2-s8rcdg_c/disposable-venv/lib/python3.14/site-packages/_cffi_backend.cpython-314-darwin.so\",\n    \"pycparser\": \"/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261015-fpr-ops2-s8rcdg_c/disposable-venv/lib/python3.14/site-packages/pycparser/__init__.py\"\n  },\n  \"native_dependency_operations\": \"passed\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261015-fpr-ops2-s8rcdg_c/disposable-venv/bin/python3",
+        "-B",
+        "-s",
+        "-m",
+        "cli.main",
+        "--help"
+      ],
+      "cwd": "/private/var/folders/1h/h0k1lcss0fdc_2rvzffnlq040000gp/T/fpr5-ops2-check-9wtsupbb",
+      "exit_code": 0,
+      "stdout": "usage: ok [-h] [--version] [-C PATH] [--config PATH] [--json] [-q] [-v]\n          [--no-color]\n          {init,sync,status,review,check-ok,check-if-ok,governance-sync,next,workspace,land-check,land-closeout,pr-land,verify-step,honesty-status,ledger,route,app,hosted-dashboard,upgrade-regime,handover-compact} ...\n\nOverseer Kit vendoring CLI\n\npositional arguments:\n  {init,sync,status,review,check-ok,check-if-ok,governance-sync,next,workspace,land-check,land-closeout,pr-land,verify-step,honesty-status,ledger,route,app,hosted-dashboard,upgrade-regime,handover-compact}\n    init                First install into a repo\n    sync                Update vendored footprint\n    status              Read-only status report\n    review              Freeze-contract review\n    check-ok            Check OK: ad-hoc honesty check (scaffold + review\n                        --freeze)\n    check-if-ok         Synonym for check-ok (deprecated name)\n    governance-sync     Governance hygiene agent (default dry-run)\n    next                Print the paste-ready NEXT fence from disk (read-\n                        only). Not workspace check-next.\n    workspace           Multi-repo constellation status / relay freshness\n                        (\u00a7MR.7)\n    land-check          Close-ritual land-to-main check (never auto-merges)\n    land-closeout       Post-merge land closeout probe (\u00a7PMHF; never merges,\n                        never writes docs)\n    pr-land             Authorized wait-for-green PR merge (Tier-3 delegated;\n                        requires --authorized)\n    verify-step         L1 checkpoint orchestrator (K9b)\n    honesty-status      L2 co-requirement check (K10)\n    ledger              L2 verdict ledger (K10)\n    route               Read-only model-routing resolution (\u00a7PR.6)\n    app                 Local loopback web UI (Track Q)\n    hosted-dashboard    Read-only remote governance dashboard preview (\u00a7HGD)\n    upgrade-regime      Stage 3 ceremony: muse-only \u2192 muse+git-mirror (Track O\n                        / O3)\n    handover-compact    Archive old handover change-log bullets (\u00a7LT.6)\n\noptions:\n  -h, --help            show this help message and exit\n  --version             Print kit version and exit\n  -C, --repo PATH       Repo root\n  --config PATH         Config file path\n  --json                Emit machine-readable JSON\n  -q, --quiet           Suppress non-essential stdout\n  -v, --verbose         Verbose diagnostics on stderr\n  --no-color            Disable ANSI color\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261015-fpr-ops2-s8rcdg_c/disposable-venv/bin/python3",
+        "-B",
+        "-s",
+        "-m",
+        "cli.main",
+        "-C",
+        "/private/var/folders/1h/h0k1lcss0fdc_2rvzffnlq040000gp/T/fpr5-ops2-check-9wtsupbb/a",
+        "--json",
+        "next"
+      ],
+      "cwd": "/private/var/folders/1h/h0k1lcss0fdc_2rvzffnlq040000gp/T/fpr5-ops2-check-9wtsupbb/b/nested",
+      "exit_code": 0,
+      "stdout": "{\n  \"error\": null,\n  \"fence\": \"Model: GPT-6 Astra\\nFixture: a\\n\",\n  \"heading\": \"## CURRENT NEXT \\u2014 paste this\",\n  \"lane\": null,\n  \"ok\": true,\n  \"path\": \"docs/OVERSEER-HANDOVER.md\",\n  \"read_at\": \"2026-10-15T16:28:40Z\",\n  \"repo_name\": \"ops2-fixture-a\",\n  \"repo_root\": \"/private/var/folders/1h/h0k1lcss0fdc_2rvzffnlq040000gp/T/fpr5-ops2-check-9wtsupbb/a\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261015-fpr-ops2-s8rcdg_c/disposable-venv/bin/python3",
+        "-B",
+        "-s",
+        "-m",
+        "cli.main",
+        "-C",
+        "/private/var/folders/1h/h0k1lcss0fdc_2rvzffnlq040000gp/T/fpr5-ops2-check-9wtsupbb/b",
+        "--json",
+        "next"
+      ],
+      "cwd": "/private/var/folders/1h/h0k1lcss0fdc_2rvzffnlq040000gp/T/fpr5-ops2-check-9wtsupbb/a/nested",
+      "exit_code": 0,
+      "stdout": "{\n  \"error\": null,\n  \"fence\": \"Model: GPT-6 Astra\\nFixture: b\\n\",\n  \"heading\": \"## CURRENT NEXT \\u2014 paste this\",\n  \"lane\": null,\n  \"ok\": true,\n  \"path\": \"docs/OVERSEER-HANDOVER.md\",\n  \"read_at\": \"2026-10-15T16:28:40Z\",\n  \"repo_name\": \"ops2-fixture-b\",\n  \"repo_root\": \"/private/var/folders/1h/h0k1lcss0fdc_2rvzffnlq040000gp/T/fpr5-ops2-check-9wtsupbb/b\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261015-fpr-ops2-s8rcdg_c/disposable-venv/bin/python3",
+        "-B",
+        "-s",
+        "-m",
+        "cli.main",
+        "-C",
+        "/private/var/folders/1h/h0k1lcss0fdc_2rvzffnlq040000gp/T/fpr5-ops2-check-9wtsupbb/a",
+        "--config",
+        "/private/var/folders/1h/h0k1lcss0fdc_2rvzffnlq040000gp/T/fpr5-ops2-check-9wtsupbb/b/.overseer/config.yaml",
+        "--json",
+        "next"
+      ],
+      "cwd": "/private/var/folders/1h/h0k1lcss0fdc_2rvzffnlq040000gp/T/fpr5-ops2-check-9wtsupbb/a",
+      "exit_code": 4,
+      "stdout": "",
+      "stderr": "refused: config path outside repo root\n"
+    }
+  ],
+  "rollback_rehearsal": "exact restorable inventory match",
+  "target_unchanged": true
+}

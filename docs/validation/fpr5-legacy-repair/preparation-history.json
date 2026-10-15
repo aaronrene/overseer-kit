@@ -1,0 +1,39 @@
+{
+  "kind": "Preparation failures preserved; all occurred before target mutation and before dependency/CLI behavioral validation",
+  "failures": [
+    {
+      "attempt": 1,
+      "error": "AttributeError: module 'os' has no attribute 'listxattr'",
+      "correction": "use native macOS no-follow xattr read API"
+    },
+    {
+      "attempt": 2,
+      "error": "AssertionError: backup is not exact",
+      "correction": "ditto preserved content/xattrs but refreshed symlink mtimes; add copystat after copying"
+    },
+    {
+      "attempt": 3,
+      "error": "AssertionError: RECORD relative path not in file manifest",
+      "correction": "identify optional external cffi-gen-src entry excluded by historical library manifest"
+    },
+    {
+      "attempt": 4,
+      "error": "FileNotFoundError: recovery .venv/bin/cffi-gen-src",
+      "correction": "confirm optional launcher absent; explicitly omit, retain original RECORD reference, invent no script"
+    },
+    {
+      "attempt": 5,
+      "error": "AssertionError: stale PyYAML entry is not an empty nonsymlink directory",
+      "correction": "inventory proves two symlinks to external Python3.10; replace only aliases, verify their exact restoration"
+    }
+  ],
+  "successful_preparation_attempt": 6,
+  "completed_validation_repeated": false,
+  "retained_preparation_directories": [
+    "/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261015-fpr-ops2-5988i_h8",
+    "/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261015-fpr-ops2-9aw34zgr",
+    "/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261015-fpr-ops2-ax9prql8",
+    "/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261015-fpr-ops2-byzuq0pr",
+    "/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261015-fpr-ops2-s8rcdg_c"
+  ]
+}

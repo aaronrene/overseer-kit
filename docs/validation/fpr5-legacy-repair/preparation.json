@@ -1,0 +1,12 @@
+{
+  "run": "/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261015-fpr-ops2-s8rcdg_c",
+  "backup": "/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261015-fpr-ops2-s8rcdg_c/venv-before",
+  "bundle": "/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261015-fpr-ops2-s8rcdg_c/selected-artifacts",
+  "verified_rollback": true,
+  "target": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-main-stable/.venv",
+  "added_file_count": 190,
+  "before_inventory_sha256": "7c1ac1030d42cb1f6eb84ebcf2f486df2bb83c585923a8d439666cd952fa5222",
+  "selection_sha256": "5817b475473a5d30a76ffd1a024f3089d4573b0cc28df17b79f4c16af10ea148",
+  "target_mutated": false,
+  "metadata_scope": "bytes, paths, symlinks, modes, uid/gid, mtime_ns, flags, xattrs; inode/ctime are not restorable"
+}
