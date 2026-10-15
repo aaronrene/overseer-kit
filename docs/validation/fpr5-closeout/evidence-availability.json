@@ -1,0 +1,1005 @@
+{
+  "kind": "Curated evidence verification and unavailable-original disposition, not independent certification",
+  "groups": {
+    "interactive": {
+      "inventory": "docs/validation/fpr5-interactive/observations/INVENTORY.json",
+      "inventory_sha256": "4c43df50643473313175ab2b7f37fb0e0b137adbb45f249639f65dd490b49735",
+      "verified_copies": 40,
+      "byte_identical": 34,
+      "redacted": 6,
+      "external_source_paths_present": 0,
+      "records": [
+        {
+          "path": "docs/validation/fpr5-interactive/observations/owner-observation-desktop-g1lukv03/host.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/owner-observation-desktop-g1lukv03/launch.json",
+          "sha256": "adb2fae73395ce9f07082ff3874fa60ef1b0e3aa929c466b6eeafd27f41ba9c8",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/owner-observation-desktop-g1lukv03/observation-context.json",
+          "sha256": "c51838f2af8f7dae77e1246ecc72a1664b0bb3b1e033a581f95b31c125f753e3",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/owner-observation-desktop-g1lukv03/result.json",
+          "sha256": "518d663383f48210ea38ecdb2d6e14f63101bc3c930a30bfb84b032e0913a820",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/owner-observation-desktop-0pkcm8sj/bound-next-at-observation.json",
+          "sha256": "d2159c8528863ba84a8bf1945ae8be8b4c814f493fd87ceb3b7550ce4a2140cd",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/owner-observation-desktop-0pkcm8sj/host.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/owner-observation-desktop-0pkcm8sj/launch.json",
+          "sha256": "9de3dbdb16f409e09a1e72ce3e021b25eed1343a468a79e0378ac1fbcea69e8d",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/owner-observation-desktop-0pkcm8sj/quit-after-owner-observation.json",
+          "sha256": "51ba794120bcbf991f940cb74ebcb7a17d5acb36e345ed00c1ad0519bca94088",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/owner-observation-desktop-0pkcm8sj/result.json",
+          "sha256": "8f4340c85d904532d1f67dddb2c55a1c99a10442e3824873267fe95fd675c4b3",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/owner-observation-desktop-0pkcm8sj/user-desktop-next.txt",
+          "sha256": "1fdf2699901617283449c1807f8bef859f0a6579c68872aeb1802ec342305eb1",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/owner-observation-desktop-0pkcm8sj/user-observation.json",
+          "sha256": "6a4f7ce18dadc3f0332aadeb17be8b9e11532622896f77f9024a4aeca7916b13",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/owner-observation-cursor-p7_1rhzy/host.log",
+          "sha256": "19292898bce99018f2693defd7a4b7ea365fa1a497983b18d23394f19b971bb7",
+          "byte_identical_to_recorded_source": false,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": true
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/owner-observation-cursor-p7_1rhzy/launch.json",
+          "sha256": "6002ff93d2a5c229e1fa0a8136e176e527c5e70ee38c4cc994023998600f7e1c",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/owner-observation-cursor-p7_1rhzy/result.json",
+          "sha256": "34b4c1c3d84947369a59eb7257ab215ab03d6b6de538197cd48916318db5f7b0",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/c-n68k5cn1/close-after-keychain-gate.json",
+          "sha256": "cfecd6ffdef8846f4e7a203cba2c74801421c26645ca386320579a3471382a29",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/c-n68k5cn1/forced-close-after-keychain-gate.json",
+          "sha256": "af8ebc2c6f31e1ce41f5c097e21aa9e1625e944308f7ca713e7c33b81810fcb8",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/c-n68k5cn1/host.log",
+          "sha256": "876a69974493e5ac5c02e3cafaa9775ea11c76887b84d93d4d97cfa1890899bb",
+          "byte_identical_to_recorded_source": false,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": true
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/c-n68k5cn1/launch.json",
+          "sha256": "3c75119ea189e6bd86f64da9c823886f69426bb2fafb43fc7d3aeee2fddf6d3e",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/c-n68k5cn1/result.json",
+          "sha256": "4ff83ea17f9a4f882cfd97573b1a54b3772c23dcffcb365d9f03a9c50202bfb9",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/c-n68k5cn1/user-observation.json",
+          "sha256": "adf56d44ebcd430a4971901b295446941878f8e68307834064d72f15c441d32f",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/owner-desktop-600-preparation-ne7i2ulw/owner_observe_600.py",
+          "sha256": "2cbe0dbedef59337b4c821098073d2d3f1833686448cc66f4686fb0774dddeae",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/owner-desktop-600-preparation-ne7i2ulw/preparation.json",
+          "sha256": "5b3a663ee04eba67341d5a9cb4a74581deb0ba33eb371e47596950fbf42a783b",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/cursor-short-preparation-8ictvmw7/owner_observe_short.py",
+          "sha256": "b7e38c0dc86f5cba4e607b334df26193d80037db84ba62030e840b4dc7e6dbb9",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/cursor-short-preparation-8ictvmw7/preparation.json",
+          "sha256": "12d16f0799933551ba0333cb6b6ec3f844904a8360cc00fdd2c0d55e7196b155",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/c-n68k5cn1/client-logs/20261015T043839/composer.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/c-n68k5cn1/client-logs/20261015T043839/conversationSearch.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/c-n68k5cn1/client-logs/20261015T043839/main.log",
+          "sha256": "7f96a21c6f025384117feb9811349ff7f2b83c7f14e66ae585584dc78c5dd121",
+          "byte_identical_to_recorded_source": false,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": true
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/c-n68k5cn1/client-logs/20261015T043839/mcpprocess.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/c-n68k5cn1/client-logs/20261015T043839/network-shared.log",
+          "sha256": "55863262e30c01d83fd9306e7f1d1a0791343d0291b3a7ddab908e53e38bd4ca",
+          "byte_identical_to_recorded_source": false,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": true
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/c-n68k5cn1/client-logs/20261015T043839/remoteTunnelService.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/c-n68k5cn1/client-logs/20261015T043839/sharedprocess.log",
+          "sha256": "a16b5a2ab0b98b81cea9b5629e49051f23deca66db2f7eba8df34c7aa70d57dc",
+          "byte_identical_to_recorded_source": false,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": true
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/c-n68k5cn1/client-logs/20261015T043839/window1/renderer.log",
+          "sha256": "f2d83421c9a2f0ced31f60568b565168d04967e4d44d107207542114b10aad19",
+          "byte_identical_to_recorded_source": false,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": true
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/c-n68k5cn1/client-logs/20261015T043839/window1/views.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/original-helper/owner_observe.py",
+          "sha256": "0c906888bca6b9435af12c6e1f71a1fc835191560cd35c6515d7fc788a8a9d6b",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/original-helper/owner-observe-script-validation.json",
+          "sha256": "8471dd91c8999b38d650284c74d683129ca448c92fb63e41a0557be9bc86625b",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/cursor-source-notes.json",
+          "sha256": "0af0304b7eee9961da4d6a3f2e47fbe0515df7a248efde3e4a2afd337c66c0f2",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/cursor-log-scan.json",
+          "sha256": "3d6a98a53d7d17404589c9ce6e43d2353967ab1a8b3db4b3209d26c03c24e4b8",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/desktop-text-comparison.json",
+          "sha256": "bdeb14056bd640c78b9cfdb9ce7cddc6353aaf627fc2c7ff747c0a2561a49afb",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/curation-checks.json",
+          "sha256": "ab5b0236b0241966c435565adbf5cbec7014569cc3541e3decc81ce610c8de0f",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-interactive/observations/curate.py",
+          "sha256": "31c77b44b4436b4558540f665e9ead71e3c487ef12b03f0fddb2181c3257962d",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        }
+      ]
+    },
+    "host_platform": {
+      "inventory": "docs/validation/fpr5-acceptance/host-platform/INVENTORY.json",
+      "inventory_sha256": "b9b7157dc56b06d0e59cf33e123d75d3b346b4ff9c0ce8a47170f2cf19680edc",
+      "verified_copies": 79,
+      "byte_identical": 77,
+      "redacted": 2,
+      "external_source_paths_present": 0,
+      "records": [
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/OWNER-NEXT-STEPS.txt",
+          "sha256": "e9431627c7ad3e5ecdc2ca4b6abee88aab8e9ecfb4ae6b63bb2900b65d1fa36d",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/candidate/affected-desktop-result.json",
+          "sha256": "97ddd6f5f5c001b8dd3a803355a27ff18fe38da115b1352b02a64f0439d8242e",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/candidate/affected-desktop.log",
+          "sha256": "33a65faa6d43872188f947ccc7a58afa0833d7c35618dbdf4111923cd8bfe7b5",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/candidate/affected-desktop.xml",
+          "sha256": "354edda64928a7fa275968cd04175569a73c21c6649cc6836bd3160b49b0be88",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/candidate/candidate-report.json",
+          "sha256": "59f2485f9d117a5ed2e0456c7580db558220ce595cfbdd8c58f1cf73dc3575d2",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/candidate/candidate-resource-verification.json",
+          "sha256": "9de8103fddf866eb5160cdcbe337d6841d21bc471589b5c65f4d0e8981db59a2",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/candidate/candidate-source-manifest.json",
+          "sha256": "556bc73d2430d7ca6a5b8733b3c68cbfe9fcd665f22b0e195b21250d1bac5cde",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/candidate/cleanup-after-floor.json",
+          "sha256": "71226ce2463a0f198684198b38e4e326387b2dc67f9dc23a353e3b0dd5f21a86",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/candidate/gui-clean-exit-r2/command.json",
+          "sha256": "4f23e7fe6620b08c0c987724dacd748492b319a05640a2f30048c6035e2ee22f",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/candidate/gui-clean-exit-r2/native-gui.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/candidate/gui-clean-exit-r2/port-recheck.json",
+          "sha256": "d74401e0cc16fd1e29136747682765fb2ef31d246285df4769495d1ea25a99dd",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/candidate/gui-clean-exit-r2/result.json",
+          "sha256": "fd95b19cfd369598182b7b4e5813982dbdb1a9a486b3a01632940eed435449ea",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/candidate/native-build-cached-cleanup.json",
+          "sha256": "da0450959c208bdb5136170eef2582049bc8537a3dd7483ea859676d1be640f7",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/candidate/native-build-cached-command.json",
+          "sha256": "19da24792306af178f4c22014ebcb8f3d25d2f2f8416ad318d12d0a6fd0f8991",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/candidate/native-build-cached-result.json",
+          "sha256": "5fddc80bd2ad09065b858cbbc98f54ebfb4756c0d39e9a9f03d824eb19f7adbf",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/candidate/native-build-cached.log",
+          "sha256": "c7084f5e4468603acc9202247b331184ed998e4f11a3eec5c18c998c6d55e760",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/candidate/native-build-reduced-command.json",
+          "sha256": "31007c3da8605df45995892608131a16e2567d79b24812cf3411ba8966c27ce4",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/candidate/native-build-reduced-result.json",
+          "sha256": "7595a1890ac594f5d6beff69528c7a7cf3af65a00ef18ddad5645fd7f1ebeda4",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/candidate/native-build-reduced.log",
+          "sha256": "39a0bc0933172505992d55b0b405969fc55e72554ec655dafbe953eb1dad6ce9",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/candidate/native-gui-command.json",
+          "sha256": "517de549b0cfd27a70cc0f6bad80700efd5f4ca69facb41bb6574bd9262d43a4",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/candidate/native-gui-result.json",
+          "sha256": "0769c91e8c02318532f25af6ef25140e707e4192eb319ff70d148ea9ccf6e526",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/candidate/native-gui.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/candidate/native-normal-quit-request.json",
+          "sha256": "fbd69302e65840e406bee46fa62b73c9f9158890af7326441b5e85c6f8bbb929",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/candidate/native-window-observation.json",
+          "sha256": "534b85fca7ae2699b7dcc73c2043ee45744cb489cfbcf4c88a2963b30de3d31b",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/candidate/native_build_cached.py",
+          "sha256": "4e5580396ac407d6152f6ac943234973558458d21e2d409e6580d15b8de87d16",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/candidate/native_build_reduced.py",
+          "sha256": "2829cb8d04f2aabe9e09610af8232bbb4df44da24ba5541212ea3b03053b0983",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/candidate/native_clean_exit.py",
+          "sha256": "50447a8ce94395a7437fe08a364cd27396789014d9d7a4776524611b185b84fb",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/candidate/native_gui_observe.py",
+          "sha256": "70e32d129a10e02141d317f2d6b211299368f0be5e885b8b444e953e214e40c1",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/candidate/old-cache-after.json",
+          "sha256": "de7ff30b5a093efa9907a3aefa838e103205cfbb69ada8b1be819a8c28dd039b",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/candidate/old-cache-before.json",
+          "sha256": "de7ff30b5a093efa9907a3aefa838e103205cfbb69ada8b1be819a8c28dd039b",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/candidate/source-delta.json",
+          "sha256": "42a2bf65588ae32362a766f6541184232f23d1822659e801746560cb130a8f97",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/cdp_local.py",
+          "sha256": "12bca0265bddbf0d303216e4a9a912b5af4f3fe3436703fb2ccda7e4983d922f",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/cleanup-after-enospc.json",
+          "sha256": "b6dbbd23c205963a0ba74a0309c8321670a85ae75d28584ebdccb4fd602d58d3",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/cursor-host.log",
+          "sha256": "76b76869d1780b11e061e321885afadf63c45de423f2b6f3f30bed33f1f04084",
+          "byte_identical_to_recorded_source": false,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": true
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/cursor-launch.json",
+          "sha256": "e5ebef98a1e2a30b3be10381d322a37fbac5edf03e4578e11a9ac564bca97294",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/cursor-next-before.txt",
+          "sha256": "7f2e7102a9d75b95fc6cb9303dbc5d98b663faf958960f9a8ac9154e187e9000",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/cursor-r2/cursor-host.log",
+          "sha256": "682ce97e177856bdeecd8529bd9ec3ad1e2c38bfb31c7e814301fb2da0a08702",
+          "byte_identical_to_recorded_source": false,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": true
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/cursor-r2/cursor-launch.json",
+          "sha256": "d3d96137863ff36a2c3482bf83e80178e7ab47fc1059233f8add467669a75bdd",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/cursor-r2/cursor-next-before.txt",
+          "sha256": "15c142594017616878a612b1b8de659576f75159ebea7af6a87446993c9db7a4",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/cursor-r2/cursor-result.json",
+          "sha256": "db1a748d880c936078cdb23a37d51e2a48387cf8a43fa2f3eae91742c102fed6",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/cursor-r2/cursor_observe.py",
+          "sha256": "4f1434e53b8a8fe458ea18ad3a79322305da3d3db0ea2489dd9958becf89ef32",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/cursor-r2/hook-observation-index.json",
+          "sha256": "8b5614515518dd941e6127d1c8d82144473f000c476f0b5da54748829cad58aa",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/cursor-r2/observation-limitations.json",
+          "sha256": "f3b0ed27c0208803701d5bfe3d4ed403796b4bb5acfab40ef708f7fc2a51a7c9",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/cursor-r2/observed-hooks-window1.log",
+          "sha256": "58d6d3632024569d349bbdab14cb47c403f06ae49352f12b4bbeaf86984202de",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/cursor-r2/observed-hooks-window2.log",
+          "sha256": "4694a931ac8a48becc755b31c323397e24bdb74370b6d590dff8923b3efb1154",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/cursor-r2/read-dom.json",
+          "sha256": "89eeafc223634187ff98770650b16eb2a5d5bf02f936abf16779b5084f6a4ea0",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/cursor-r2/screenshot.json",
+          "sha256": "51732a2d76a9e59bba806fafcf96aaebc70058a495f43fd1c0baf7b6444eba43",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/cursor-r2/window-ids.json",
+          "sha256": "3edea12ae52914e933f94d5b972fb280b2d83e7c3f27286bd385b58d51f90da5",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/cursor-result.json",
+          "sha256": "023a9d079261e323105b3a95f790cff13e93e5c1990ab7387027407baccacb85",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/cursor_observe.py",
+          "sha256": "c994b8e69fd689fab9ad9fab5596519374fcdf2081350d266ff5622db112db03",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/deny-external-initial.sb",
+          "sha256": "ecbf34e155d73f5d8356d955be1651e6ed9355e904f5e5d4ddb4fa199cfab3cd",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/deny-external.sb",
+          "sha256": "634a6dc18c0e01a9644f3ac0c58f4f89b53e03e9c98bbbf2022ac78c2906045c",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/evidence-manifest.json",
+          "sha256": "d2fe2946efb04f267c06e1d3f5d7b3d5f0264bb29c32b53366583fae8b465048",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/host-platform-report.json",
+          "sha256": "cde5e501de6d58b4d148b0e9809c2acbb60cdf2a638f51e7c5f9a657c2f9f6e3",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/isolated-cursor.sb",
+          "sha256": "ba54a8e1217b4d9d5db7c11115bcc4515f501a10d83c945d474680147dc34eff",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/native-build-command.json",
+          "sha256": "aed78f7e18cdc54a9ff0fc65829cfe7d94a74140ff07360a6abd8ed54c106f73",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/native-build-reduced-command.json",
+          "sha256": "0a44e6cd211e237c40d1f11cab43a59bd3e57aa6d48be7d4f9ad3566c77e1933",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/native-build-reduced-result.json",
+          "sha256": "35fee4a0d01cc4040a524320be390268294d86857ea05cff7d6603a1fe6cfec4",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/native-build-reduced.log",
+          "sha256": "7cbfdce3ba0a56a708b000ab09ecd3ce3198f43242d334f6eefd1b8f24473237",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/native-build-result.json",
+          "sha256": "35f80f303c9e2341d9f4e226b4812b03d5ecf5ba8465489d3f2006a39cdb1e36",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/native-build.log",
+          "sha256": "f83356d069b8dcd9585c771297d91ba5734c2266d24c789e42290fdbd2b1c741",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/native-fresh-binary.json",
+          "sha256": "25a4baa477cc61ff6d798f5be63091bb57020346324a35659c2a9c1c1538a268",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/native-gui-cleanup.json",
+          "sha256": "74a6ee994d32e9a8680def2d1a7ab68806c99ad8093b5d39a3da25c01aa76b71",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/native-gui-command.json",
+          "sha256": "48e7b6daaf86e3cbd8b77f9d3ab6ef5c97b9084a91dd044cfaff14aaf8333739",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/native-gui-result.json",
+          "sha256": "ac8d42323f98e1699c6a39e84c9c0f785d6182d7c02b61428c9e382565c27d72",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/native-gui.log",
+          "sha256": "34052583508a5ea4db44ac58a9a826f8b7451c8ea35c9a6464d3f02acc88b8ec",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/native_build_reduced.py",
+          "sha256": "6e20d5ee142e9e15f8b12686994b58fd2cddecf957a674096f928c5580a74616",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/native_gui_observe.py",
+          "sha256": "13db2654f8a2366584499457d098c2ad803569fc8069178662a00225f26478a7",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/old-native-reuse-correction.json",
+          "sha256": "a194cf622dbb14470f8686a0cf06ef287c1e06ed5bfcf73f8088620d108232ea",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/old-native-reuse-refusal.json",
+          "sha256": "527d8d9a3bff2923ad13ff3184d2cfb25351a757776c96ba24d1052767f23a1b",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/opening.json",
+          "sha256": "3e4b0e46f7b8d7d6da664ecece34c71b08b3afa91006872033cfe20fa725dc55",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/owner-observe-script-validation.json",
+          "sha256": "8471dd91c8999b38d650284c74d683129ca448c92fb63e41a0557be9bc86625b",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/owner_observe.py",
+          "sha256": "0c906888bca6b9435af12c6e1f71a1fc835191560cd35c6515d7fc788a8a9d6b",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/platform-inventory.json",
+          "sha256": "ded9d4865e7cab811c78ff9631fcd4d549b68ec6673972b6c7baa8d12462d5cf",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/sandbox-escalation-probe.json",
+          "sha256": "e577b644ff19b9c583959d994333fffe0b02c5091a2fabd05b902b24b01a9e75",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/sandbox-probe.json",
+          "sha256": "5ca40e27fcd3183bc4f11bb9bc55de06bbeef27a44de351e8b4b2f13636e0564",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/source-preparation.json",
+          "sha256": "ef5d6a7e24c74d3d7f1f4c5d6e7d30144287598dc070d90b7a0f3ec1ec8f6823",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/swift-helper-failure.txt",
+          "sha256": "11bec96508210d023aab602b6499d4c69d37bdf75993ed0c578a6950ae94badc",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/host-platform/window_inventory.swift",
+          "sha256": "4e19dda089066e8f1cc18d19347741faf7af8340d1c9c604c0f0fdbc339b870a",
+          "byte_identical_to_recorded_source": true,
+          "external_source_exists_at_recorded_path": false,
+          "redacted": false
+        }
+      ]
+    },
+    "pilot": {
+      "inventory": "docs/validation/fpr5-acceptance/pilot/INVENTORY.json",
+      "inventory_sha256": "780fed6b9d988a8a5233bc9dd3959514989eec1ba84557488979f178c08a8f08",
+      "verified_copies": 28,
+      "records": [
+        {
+          "path": "docs/validation/fpr5-acceptance/pilot/01-migration.py",
+          "sha256": "fc820de51acbad5de7ed499889fc474c75323b1df0e7a609128de5b645d78984"
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/pilot/01b-publish-start.py",
+          "sha256": "66f0194f452fc3e7cc63ef5df8e60f66b091513c420d43fb0031572f5459bfb3"
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/pilot/01c-publish-start.py",
+          "sha256": "b70e2f50265f7e0f5d812d47f961067e41cd5fc053ba00407b1241af7db5e7cf"
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/pilot/01d-publish-start.py",
+          "sha256": "9b845e512b405abd272e0a3e4afab10f190222d7a945f4a28a0d7c0bfc9277b2"
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/pilot/02-workflow.py",
+          "sha256": "59122f7ec3f79dfe32db91d47d3d0ded45fab6116d5f66768b67a6933c247ba7"
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/pilot/02b-workflow.py",
+          "sha256": "6773b740acb8e61db5778ada2d8e2ddd59ff151e20692ce6f0e89055a0732476"
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/pilot/03-surfaces.py",
+          "sha256": "db976215b466e2caf21ad37b5fe416d1b33f9f18f11effdc6acef256068dcc73"
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/pilot/04-simulated-landing-close.py",
+          "sha256": "c3a8843993565358f3e20b3c0f2ddf6dd35fb2f123fec14a08729580490b6991"
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/pilot/05-rollback.py",
+          "sha256": "7044d1b73c18278b090e6a4be833d6a2740325c70cf80e620373f116add96d9c"
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/pilot/06-finalize.py",
+          "sha256": "04fa5dee0c7a266a3b080790f82715e0b9c5695703d99afc727e4dba4cd97bbf"
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/pilot/ARTIFACTS.json",
+          "sha256": "a102179634069659174d52b1c6d0312186db643ca4a36455e84073c050f6c197"
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/pilot/RESULTS.json",
+          "sha256": "41d32b3af312e88d8917c05e3a8041be41f0850ff1c8a7e06b1e629aa14e9e47"
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/pilot/evidence/00-bootstrap.json",
+          "sha256": "25c68045df401986205897dfaab30df7cdb69cd5250a39b62b32ba2c4514704b"
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/pilot/evidence/01-migration.json",
+          "sha256": "275ad9000aa3027b856b30b2f3f966b0e9af8ba62862adb790de4c03fd7ce72a"
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/pilot/evidence/01b-publish-start.json",
+          "sha256": "6f9c13f7ed09a6e58da2685615ee1a20e2dfd0b3246bc996fd2ffa7f25c78884"
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/pilot/evidence/01c-publish-start.json",
+          "sha256": "9dc4bdcdd0b622d193d35dd1a7677966900a795cd1ed1c7957fd33b841b8695d"
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/pilot/evidence/01d-publish-start.json",
+          "sha256": "8e12e045e94f792b3010bde00ba3023309efdfb7563f558aca5bb14d59dd9336"
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/pilot/evidence/02-workflow.json",
+          "sha256": "9254760798d6283578f580cea5255b5c13d805b1547b1fb1e84660d19b0826a3"
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/pilot/evidence/02b-workflow.json",
+          "sha256": "2e51ce96dc43fc962988f53897b6917e15a02fd7fdc21bbd627f6618e74d022c"
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/pilot/evidence/03-surfaces.json",
+          "sha256": "0a40946246bf7dfb4c68e99ba9e39cb08408a25cde027ce5e6165ea126f99c5f"
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/pilot/evidence/03b-surfaces-loopback.json",
+          "sha256": "5a751b7e1778ef4dbecf920f3e5e0a6879d6f57cafd386c025d20d79b1adf07c"
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/pilot/evidence/03c-surfaces-correct-method.json",
+          "sha256": "8578cced67237f817cbdeec334cead17102b4b387dce7cb74282ec368ef5c7f1"
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/pilot/evidence/04-simulated-landing-close.json",
+          "sha256": "7636c006b347f3e722c4b098807dcd8b67f4c2d34fa97ffcc09d8ff32046febe"
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/pilot/evidence/05-rollback.json",
+          "sha256": "db4105ff1d1e2cddd119ce98730c3064667ed7adecf4bbc9502463c29412684e"
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/pilot/evidence/06-final-readback.json",
+          "sha256": "6bd4b786a1aab0c25e10bd7896e758573f9dd4d7cef63abe932af7333a89ed2e"
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/pilot/evidence/fake-gh-argv.txt",
+          "sha256": "750da12f0f5c5d6e46a64ee98a1c9bafd2c07f2b9a0ab67bd23a9c0d5c3caf09"
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/pilot/fake-gh.sh",
+          "sha256": "69282002fce0c5d1d2389c3e4ac2a5b57dd29569f2f3ff4a8fa679574227a9be"
+        },
+        {
+          "path": "docs/validation/fpr5-acceptance/pilot/pilotlib.py",
+          "sha256": "a1c5d20806a36bd52057324bfa0d0e2cf19f6e20ed135d18a9745a3a292d1917"
+        }
+      ],
+      "temporary_project_exists": false,
+      "external_backup_entries": 20,
+      "external_backup_entries_present": 0,
+      "invalid_json_preserved": "evidence/01c-publish-start.json was ENOSPC-truncated; byte-verified without JSON parsing"
+    }
+  },
+  "repeated_tests": false,
+  "originals_reconstructed": false,
+  "cause_of_absence": "unknown",
+  "screenshots": [
+    {
+      "path": "/Users/aaronrenecarvajal/Desktop/Screenshot 2026-10-15 at 4.33.53\u202fAM.png",
+      "expected_sha256": "3c292faf794e12e20a3d1a3c49f0cd05ad3bab410ce23d5e10751953fe04116e",
+      "exists_at_recorded_path": false,
+      "disposition": "Original pixels unavailable when absent; retained owner observation is not independent visual inspection"
+    },
+    {
+      "path": "/Users/aaronrenecarvajal/Desktop/Screenshot 2026-10-15 at 4.40.02\u202fAM.png",
+      "expected_sha256": "5c7ff656bf665474111ca3c1dfcb8b5c88753775e61da857fc8a5f0a2785b4b0",
+      "exists_at_recorded_path": false,
+      "disposition": "Original pixels unavailable when absent; retained owner observation is not independent visual inspection"
+    }
+  ],
+  "disposition": {
+    "packet_preparation": "supported by surviving source/test/curated records with explicit provenance",
+    "full_original_custody": "not established",
+    "lost_images_unredacted_lines_binaries_and_fixtures": "not supplied by hashes or summaries",
+    "independent_sufficiency_verdict": "not performed",
+    "followup_if_a_claim_requires_missing_original": "Identify exact claim and missing proof before requesting new authority; do not repeat completed tests silently"
+  }
+}

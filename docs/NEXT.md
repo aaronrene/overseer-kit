@@ -3,41 +3,34 @@ schema: 1
 repo_id: 6988dc4a-5f22-454b-9d68-ac5905b383bf
 repo_root: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014
 branch: feat/overseer-v1-recovery-20261014
-base_head: 829dc3352c6510cd5623afa72a032de868a05f3f
+base_head: d6d6b92d0f10c58a41e25678835f2436b1a5f827
 lane: product
 model: GPT-6 Astra
-action_id: OVERSEER-FPR5-ACCEPTANCE-CLOSEOUT-1
+action_id: OVERSEER-FPR5-HANDOFF-RELIABILITY-1
 action_kind: maintain
-prompt_sha256: d70ed9b1aa0cd37c231cbe9523cc10e6f95ac225731e54b857585c181d18b89f
+prompt_sha256: 39eec33d12b2d102bb38e83535d3b152886ebf4a9db6d2b43c9d1499af639ce3
 ---
 Reasoning: Max
-Role: Acceptance coordinator; not independent adjudicator
+Role: Bounded incident investigator; not independent adjudicator
 
-Read AGENTS.md, docs/decisions/FPR-5-OWNER-CLOSEOUT.md and the FPR-5 source/evidence
-inventories. Verify physical/Git root, configured name/UUID, branch, clean state,
-unchanged runtime cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774
-and the decision closing commit whose sole parent is
-829dc3352c6510cd5623afa72a032de868a05f3f. Stop on unexplained differences.
+Read AGENTS.md, docs/validation/FPR-5-ACCEPTANCE-PACKET.md and its inventories.
+Verify root/name/UUID, branch, clean state, unchanged source/runtime and the packet
+closing commit whose sole parent is d6d6b92d0f10c58a41e25678835f2436b1a5f827.
+Stop on unexplained differences. Packet preparation is complete.
 
-Prepare one final acceptance closeout packet mapping the exact source and proposed
-claim to existing evidence, owner decisions, exclusions and unresolved requirements.
-The owner already postponed actual Cursor 3.24.18 sessionStart and stop: record
-both as NOT VERIFIED. Do not ask again or count postponement as a pass or release.
-Do not repeat completed tests, reviews, pilots or the unsuccessful isolated launch.
+Investigate FPR-OPS-1 using saved sanitized evidence and installed Cursor/Codex
+source read-only. The owner did not deliberately open duplicate conversations;
+the restoration cause is unknown. Trace conversation selection, window restoration,
+task repository and stream ownership. Deliver an evidenced cause and confined
+repair proposal, or the smallest disposable reproduction if evidence is insufficient.
+Identify where a workspace/task mismatch guard could be enforced; do not claim
+navigation fixed the cause. Keep the separate legacy CLI repair plan explicit.
 
-The owner did not deliberately open duplicate conversations. FPR-OPS-1's restoration
-cause is unknown; changing visible chats was mitigation only. Include its bounded
-investigation and mismatch-prevention plan, the confirmed unrepaired legacy CLI
-dependency issue FPR-OPS-2, and unavailable external originals FPR-EVID-1. Distinguish
-pre-release blockers from explicit claim limitations without silently narrowing
-scope. If required evidence remains insufficient, identify the smallest follow-up;
-do not assert readiness or initiate another general review cycle.
-
-Preserve original FINDINGS, raw failures, old worktrees, protected refs and Muse
-history. No real-profile/account/keychain/privacy changes, consumer mutations/hooks,
-global launcher edits, external providers/network, live delivery/export, fetch/push,
-main merge, tags, signing or deployment. Only bound next-write may publish a
-successor with explicit context and current expected digest; update ROADMAP and
-HANDOVER together. After complete required evidence and explicit dispositions:
-one final independent adjudication by a non-author, then a separate owner release
-decision. Neither is authorized by this preparation task.
+Cursor sessionStart/stop remain owner-postponed NOT VERIFIED. Do not repeat tests,
+reviews, pilots or the failed launch. No real profiles/accounts, keychain/privacy
+changes, global/extension/consumer mutations or hooks, external network/providers,
+live export/delivery, fetch/push, main merge, tags, signing or deployment.
+Preserve original findings/failures, old worktrees, protected refs and Muse history.
+Publish successors only through bound next-write with explicit context/current
+expected digest; update ROADMAP and HANDOVER together. Final non-author adjudication
+and separate owner release remain pending and are not authorized by this task.

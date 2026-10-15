@@ -8,20 +8,32 @@ Active implementation: `overseer-kit-v1-recovery-20261014`, branch
 `feat/overseer-v1-recovery-20261014`, reconciled base `d47291d`.
 Both older dirty worktrees remain untouched.
 
-**Current task: acceptance closeout preparation.** The owner explicitly postponed
-the two actual Cursor checks: both remain **NOT VERIFIED**, with no repeat tests
-or expanded security/network permissions. The [owner closeout](decisions/FPR-5-OWNER-CLOSEOUT.md)
-records that decision; do not ask for it again. Prepare one source/claim/evidence
-packet and dispose of open reliability/evidence issues before asserting readiness
-for final independent adjudication. No adjudication or release is authorized here.
+**Acceptance packet complete; NEXT is bounded handoff-restoration investigation.**
+The [packet](validation/FPR-5-ACCEPTANCE-PACKET.md) maps the exact candidate,
+all maintained commands, section-9 requirements, six repairs and open issues to
+existing evidence. Source comparison covers 791 runtime/test/native/package/
+driver/requirements entries without differences; all 20 historical command names
+are registered. These are coordination checks, not independent certification.
+No completed suite, review, pilot or isolated launch was repeated.
+
+The owner-postponed Cursor start/stop checks remain **NOT VERIFIED**; do not ask
+again or turn them into a pass. Full automatic-host/integrated-pilot acceptance
+and final-adjudication readiness remain unestablished. The next task is the
+bounded FPR-OPS-1 saved-trace/installed-source investigation, producing an evidenced
+cause/repair proposal or the smallest disposable reproduction. It is not another
+packet-preparation or general review cycle. All restrictions remain in force.
 
 The owner did **not** deliberately open the same conversation or duplicate project
 windows. Logs establish shared display, not how it was selected or restored. The
 earlier explanation overstated the cause. FPR-OPS-1 tracks investigation and
 workspace/task mismatch prevention; changing visible chats was mitigation only.
 FPR-OPS-2 tracks the separately confirmed shared legacy `ok` failure: its venv
-lacks `cryptography`; no repair is applied. FPR-EVID-1 tracks missing external
-temporary originals/screenshots while committed curated evidence remains intact.
+lacks `cryptography`; no repair is applied and no new recovery-source defect is
+established. It blocks use of that old installation until a bounded repair.
+FPR-EVID-1's availability gap is now mapped: 40 interactive copies (34 exact/six
+redacted), 79 host/platform copies and 28 curated pilot records verify, while
+temporary originals/backups and two screenshots remain unavailable. Preserve
+those custody limits for later independent sufficiency assessment.
 Neither restart nor recent-repair causation is proven. See the owner record for
 evidence and scheduling boundaries. Existing consumers, profiles and global
 launchers stay untouched by this closeout.

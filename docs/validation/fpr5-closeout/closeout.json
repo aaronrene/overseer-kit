@@ -1,0 +1,57 @@
+{
+  "kind": "Acceptance packet preparation only; no independent adjudication",
+  "packet_complete": true,
+  "opening_head": "d6d6b92d0f10c58a41e25678835f2436b1a5f827",
+  "closing_commit_rule": "one local feature commit with opening HEAD as sole parent",
+  "runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774"
+  },
+  "source_groups_verified": {
+    "runtime_files": {
+      "recorded_count": 295,
+      "differences": []
+    },
+    "test_sources": {
+      "recorded_count": 440,
+      "differences": []
+    },
+    "native_sources": {
+      "recorded_count": 40,
+      "differences": []
+    },
+    "packaging_sources": {
+      "recorded_count": 10,
+      "differences": []
+    },
+    "validation_scripts": {
+      "recorded_count": 4,
+      "differences": []
+    },
+    "requirements": {
+      "recorded_count": 2,
+      "differences": []
+    }
+  },
+  "production_tests_dependencies_changed": false,
+  "raw_prior_evidence_preserved": true,
+  "protected_refs_before_commit": 144,
+  "next_sha256": "09b344ba932e4ddf072cb22fc008ed461a8e1e72772ee62a78c9a2d368048abd",
+  "successor": "OVERSEER-FPR5-HANDOFF-RELIABILITY-1",
+  "successor_role": "bounded read-only incident investigation",
+  "repeated_tests_reviews_pilots": false,
+  "full_product_acceptance": false,
+  "final_adjudication_ready": false,
+  "release_authorized": false,
+  "checks": [
+    "Source and evidence hashes",
+    "Original review and raw failures unchanged",
+    "Curated evidence and missing-original disposition",
+    "Actual bound CLI command enumeration",
+    "Relative document links",
+    "Whitespace",
+    "Expected-context bound NEXT readback"
+  ],
+  "global_consumer_profile_permissions_or_network_changes": false
+}

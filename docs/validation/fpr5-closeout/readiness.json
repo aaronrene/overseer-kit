@@ -1,0 +1,38 @@
+{
+  "kind": "Coordinator readiness disposition; no independent verdict",
+  "packet_complete": true,
+  "implementation_and_six_author_repairs_complete": true,
+  "runtime_sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774",
+  "full_product_acceptance": false,
+  "independent_final_adjudication_ready": false,
+  "owner_release_authorized": false,
+  "cursor_sessionStart": "POSTPONED / NOT VERIFIED",
+  "cursor_stop": "POSTPONED / NOT VERIFIED",
+  "issues": {
+    "FPR-OPS-1": {
+      "state": "OPEN",
+      "scope": "restored-window automatic handoff and consumer-rollout qualification",
+      "next": "bounded saved-trace/installed-source investigation; cause or smallest disposable reproduction/repair proposal",
+      "cause": "unknown; owner did not deliberately open duplicates"
+    },
+    "FPR-OPS-2": {
+      "state": "CONFIRMED / UNREPAIRED",
+      "scope": "legacy installed shared command; not newly demonstrated recovery-source defect",
+      "required_before": "reliance on that installed command or affected consumer rollout",
+      "next": "exact interpreter/dependency/backup plan; no global/consumer mutation under current authority"
+    },
+    "FPR-EVID-1": {
+      "state": "MAPPED LIMITATION / ORIGINALS UNAVAILABLE",
+      "scope": "external original custody, visual reinspection and temporary fixture availability",
+      "next": "retain surviving-record provenance and missing originals in final claim/evidence assessment",
+      "independent_sufficiency_accepted": false
+    }
+  },
+  "required_sequence": [
+    "Bounded FPR-OPS-1 investigation and explicit disposition of affected claim",
+    "Resolve remaining required claim/evidence decisions without silently narrowing scope; repair old shared install before its consumer use",
+    "One final independent adjudication by an appointed non-author when ready",
+    "Separate owner release decision; any publication remains separately authorized"
+  ],
+  "no_repeated_tests_reviews_pilots": true
+}

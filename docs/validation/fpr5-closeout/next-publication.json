@@ -1,0 +1,30 @@
+{
+  "argv": [
+    "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.overseer/bin/ok",
+    "-C",
+    "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "next-write",
+    "--repo-id",
+    "6988dc4a-5f22-454b-9d68-ac5905b383bf",
+    "--branch",
+    "feat/overseer-v1-recovery-20261014",
+    "--lane",
+    "product",
+    "--model",
+    "GPT-6 Astra",
+    "--action-id",
+    "OVERSEER-FPR5-HANDOFF-RELIABILITY-1",
+    "--action-kind",
+    "maintain",
+    "--expect-next",
+    "ee86103ff11d977b17ebd27011c9282096f270cfaa80d9e9fbcbd6df537b47ae",
+    "--base-head",
+    "d6d6b92d0f10c58a41e25678835f2436b1a5f827",
+    "--prompt-file",
+    "docs/validation/fpr5-closeout/next-prompt.txt",
+    "--json"
+  ],
+  "exit_code": 0,
+  "stdout": "{\"ok\": true, \"next_sha256\": \"09b344ba932e4ddf072cb22fc008ed461a8e1e72772ee62a78c9a2d368048abd\"}\n",
+  "stderr": ""
+}
