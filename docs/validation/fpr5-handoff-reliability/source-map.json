@@ -1,0 +1,248 @@
+{
+  "schema": 1,
+  "kind": "Read-only installed-source excerpts, not incident-time byte attestation",
+  "recorded_at": "2026-10-15T15:04:18.457046+00:00",
+  "sources": {
+    "extension": {
+      "path": "/Users/aaronrenecarvajal/.cursor/extensions/openai.chatgpt-26.908.40401-darwin-arm64/out/extension.js",
+      "sha256": "820691c93be40e73f0929b633cddc694b41775050cd72283faba283e53941f4f",
+      "bytes": 2062793
+    },
+    "renderer": {
+      "path": "/Users/aaronrenecarvajal/.cursor/extensions/openai.chatgpt-26.908.40401-darwin-arm64/webview/assets/app-initial-bca4f920746a.js",
+      "sha256": "9c43854dc714687bbbdab5895bc084a09681b97c998b3f612e30a7aeac97bfec",
+      "bytes": 6022063
+    },
+    "renderer_ui": {
+      "path": "/Users/aaronrenecarvajal/.cursor/extensions/openai.chatgpt-26.908.40401-darwin-arm64/webview/assets/app-initial-a190b16fc630.js",
+      "sha256": "50b1a443400ba2f7ac0be53c56536a3e145bccfff0e2f456f100850133a01683",
+      "bytes": 4527455
+    },
+    "cursor_main": {
+      "path": "/Applications/Cursor.app/Contents/Resources/app/out/main.js",
+      "sha256": "208e7b1ba65e410e50a6ddc167ffe358b469aa6079c2b6a7eb6937682771871d",
+      "bytes": 2762781
+    },
+    "bookends": {
+      "path": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/product_bookends.py",
+      "sha256": "0d4aa41b0234da77f45b767e6ab8a7aafaaa8da2aef027bfe7f3863b3b04ce04",
+      "bytes": 7090
+    },
+    "bound_context": {
+      "path": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/v1.py",
+      "sha256": "81d2d6686d9dff330e5d40c55626054abe7abcf6d938a6ce6ecf3270690e4e71",
+      "bytes": 24321
+    }
+  },
+  "versions": {
+    "cursor": "3.24.18",
+    "cursor_commit": "be4c9e5350d77747b42cd467cbd3370a753d4640",
+    "extension": "26.908.40401"
+  },
+  "offset_convention": "Zero-based UTF-8 byte offsets; end exclusive. Line numbers are one-based; minified lines are long.",
+  "excerpts": {
+    "C1": {
+      "file": "cursor_main",
+      "byte_start": 1777542,
+      "byte_end_exclusive": 1778575,
+      "line": 148,
+      "sha256": "eed6b2f79790565705877f25e9723fdb0b7f8a4ccd066515270e052ad0c09d95",
+      "text": "async doGetPathsFromLastSession(){const e=this.getRestoreWindowsSetting();switch(e){case\"none\":return[];case\"one\":case\"all\":case\"preserve\":case\"folders\":{const t=[];e!==\"one\"&&t.push(...this.windowsStateHandler.state.openedWindows),this.windowsStateHandler.state.lastActiveWindow&&t.push(this.windowsStateHandler.state.lastActiveWindow);const n=await Promise.all(t.map(async r=>{if(r.workspace){const s=await this.resolveOpenable({workspaceUri:r.workspace.configPath},{remoteAuthority:r.remoteAuthority,rejectTransientWorkspaces:!0});if(uf(s))return s}else if(r.folderUri){const s=await this.resolveOpenable({folderUri:r.folderUri},{remoteAuthority:r.remoteAuthority});if(Mu(s))return s}else if(e!==\"folders\"&&r.backupPath)return{backupPath:r.backupPath,remoteAuthority:r.remoteAuthority}}));return wn(n)}}}getRestoreWindowsSetting(){let e;return this.lifecycleMainService.wasRestarted?e=\"all\":(e=this.configurationService.getValue(\"window\")?.restoreWindows||\"all\",[\"preserve\",\"all\",\"folders\",\"one\",\"none\"].includes(e)||(e=\"all\")),e}",
+      "supports": "Restore policy selects saved window descriptors. wasRestarted is an application lifecycle flag, not evidence of the reported OS restart."
+    },
+    "E1": {
+      "file": "extension",
+      "byte_start": 1841212,
+      "byte_end_exclusive": 1841541,
+      "line": 985,
+      "sha256": "4cce9cb42020deeb869757aa235347a50eabdf456b25b8086a90415eb414dcc8",
+      "text": "async ensureRestoredConversationTabsResolved(){for(let e of Ie.window.tabGroups.all)for(let r of e.tabs){let n=r.input,o=null;n instanceof Ie.TabInputCustom||n instanceof Ie.TabInputText?o=n.uri:o=null,o?.scheme===ph&&Ie.commands.executeCommand(\"vscode.openWith\",o,t.customEditorViewType,{preserveFocus:!0,preview:r.isPreview})}}",
+      "supports": "Reopens restored openai-codex tab URIs via vscode.openWith without workspace comparison in this method."
+    },
+    "E2": {
+      "file": "extension",
+      "byte_start": 1687727,
+      "byte_end_exclusive": 1688006,
+      "line": 931,
+      "sha256": "4d059f05dde40d43a317f7b0675b4c5dbfc4289a2f743e520831e029a399f360",
+      "text": "function dI(t){let{scheme:e,authority:r,path:n}=t;if(e!==ph)return null;if(r!==oPe)return null;let i=(n.startsWith(\"/\")?n.slice(1):n).split(\"/\"),s=null;return i.length>=2&&(i[0]===\"local\"||i[0]===\"remote\")&&(s=i[1]),{path:`${n}${t.query===\"\"?\"\":`?${t.query}`}`,conversationId:s}}",
+      "supports": "Conversation URI parser accepts scheme/authority/path; no repository field."
+    },
+    "E3": {
+      "file": "extension",
+      "byte_start": 1815147,
+      "byte_end_exclusive": 1816274,
+      "line": 947,
+      "sha256": "65488bc57dab2dce0c2408d5aa38e58dc50260301e7e618aa0bcf5b2f305a7d1",
+      "text": "async resolveCustomEditor(e,r,n){let o=dI(e.uri);if(o==null)throw new Error(`Invalid Codex conversation URI: ${e.uri.toString()}`);let{conversationId:i}=o,s=null,a=null;if(i!=null)try{let{summary:c}=await this.conversationSummaryProvider.getConversationSummary(i);s=c.preview,a=c.modelProvider}catch(c){this.logger.error(\"Error fetching conversation summary\",{safe:{error:c},sensitive:{}})}r.title=Uke(s),r.iconPath={light:Ie.Uri.joinPath(this.extensionUri,\"resources\",\"blossom-black.svg\"),dark:Ie.Uri.joinPath(this.extensionUri,\"resources\",\"blossom-white.svg\")},i!=null&&this.chatSessionItemProvider?.registerPendingConversation({conversationId:i,resource:e.uri,label:s??void 0,modelProvider:a},{markInProgress:!1,onlyIfMissing:!0}),this.editorPanels.set(r,{ready:!1,pendingMessages:[],initialRoute:i==null||o.path.startsWith(\"/local/\")?o.path:`/local/${i}`}),i!=null&&this.registerOnDidDisposeForWebviewPanel(r,i),await this.initializeWebview(r.webview,\"panel\",r.onDidDispose,()=>{this.onPanelReady(r)}),i!=null&&this.previewLoader.fetchConversationPreviews().then(c=>{let l=c.get(i);this.isPanelAlive(r)&&(r.title=Uke(l))})}",
+      "supports": "Conversation ID becomes initialRoute; no workspace validation in resolver."
+    },
+    "E4": {
+      "file": "extension",
+      "byte_start": 1837340,
+      "byte_end_exclusive": 1837477,
+      "line": 985,
+      "sha256": "6f661e532f9c02c22553cf997709cd4dba85c9dcc4c1c06d637a52346bf0dd4b",
+      "text": "initialRouteMetaTag(e){let n=this.editorPanels.get(e)?.initialRoute??null;return n?`<meta name=\"initial-route\" content=\"${Wd(n)}\">`:null}",
+      "supports": "The editor route is put in initial-route metadata."
+    },
+    "E5": {
+      "file": "extension",
+      "byte_start": 1817084,
+      "byte_end_exclusive": 1817302,
+      "line": 947,
+      "sha256": "e7abb91f1db09456a5f60360226ea1bee03b5e960f1676bf2893cb7be5618cec",
+      "text": "navigateToRoute(e,r){let n={type:\"navigate-to-route\",path:e,state:r};this.sidebarView&&this.sidebarWebviewReady?this.postMessageToWebview(this.sidebarView.webview,n):this.pendingNavigationRoutes.push({path:e,state:r})}",
+      "supports": "Sidebar navigation message or pending queue accepts route."
+    },
+    "E6": {
+      "file": "extension",
+      "byte_start": 2038910,
+      "byte_end_exclusive": 2039440,
+      "line": 995,
+      "sha256": "e0dc5b8df0bb00722d8080702b306316257760c889ba0fa242932787d83f5277",
+      "text": "async handleUri(e){Z().info(\"Handling URI\",{safe:{path:e.path},sensitive:{}});try{let r=e.path||\"/\";if(/^\\/connector\\/oauth_callback(?:\\/[A-Za-z0-9_-]{12})?$/u.test(r)){await this.codexWebviewProvider.broadcastAppConnectOAuthCallback(e.toString(!0));return}this.ideAppEntryLifecycle.handleDeepLink(e.toString(!0)),await Hs(),this.codexWebviewProvider.navigateToRoute(`${r}${e.query===\"\"?\"\":`?${e.query}`}`)}catch(r){Z().error(\"Failed to handle URI\",{safe:{path:e.path,error:r instanceof Error?r.message:String(r)},sensitive:{}})}}",
+      "supports": "Deep-link entry forwards route to sidebar. Saved incident excerpts do not identify this entry as the trigger."
+    },
+    "E7": {
+      "file": "extension",
+      "byte_start": 1699811,
+      "byte_end_exclusive": 1700013,
+      "line": 931,
+      "sha256": "e4d9f59a0a40fb3cd2d4ca1d036693faad150a14dc32242e05e467c04b0b9e7e",
+      "text": "function aS(){let t=fPe.workspace.workspaceFolders?.filter(({uri:r})=>(r.fsPath!==\"/\"||r.scheme===\"file\"||r.scheme===\"vscode-remote\")&&pm(r.fsPath)).map(({uri:r})=>r.fsPath)??[];return hr()?t.map(dr):t}",
+      "supports": "Host API provides window workspace folders."
+    },
+    "E8": {
+      "file": "extension",
+      "byte_start": 1515255,
+      "byte_end_exclusive": 1515591,
+      "line": 920,
+      "sha256": "6031e4820eff576aa3479e39d05046b61d100e6832a46f2696a4887809a7398f",
+      "text": "async findThreadOwner({hostId:r,conversationId:n}){let o=await eI(this.ipcClient,this.ownerDiscoveryTimeoutMs),i=await this.ipcClient.sendRequest(\"thread-owner-discovery\",{hostId:r,conversationId:n},{timeoutMs:o});if(i.resultType===\"error\"){if(i.error===\"no-client-found\")return null;throw new Error(i.error)}return i.handledByClientId}",
+      "supports": "Owner discovery request carries hostId/conversationId, not repository/window identity."
+    },
+    "E9": {
+      "file": "extension",
+      "byte_start": 1515591,
+      "byte_end_exclusive": 1516197,
+      "line": 920,
+      "sha256": "f18d143833ecb4a30c6c4479524c863a22cccdad65281e2d694bc480a9b8fd2a",
+      "text": "async requestThreadFollower({hostId:r,request:{method:n,params:o},targetClientId:i,timeoutMs:s}){let a=await eI(this.ipcClient,s);if(n===\"thread-follower-start-turn\"&&\"turnStart\"in o&&(o.turnStart.context?.responseItems?.length??0)>0){let c=await this.ipcClient.sendRequest(\"thread-owner-discovery\",{hostId:r,conversationId:o.conversationId},{targetClientId:i,timeoutMs:a}).catch(()=>null);if(c?.resultType!==\"success\"||c.handledByClientId!==i||c.result?.supportsUntrustedAppInput!==!0)throw new Error(vre)}return this.ipcClient.sendRequest(n,o,{hostId:r===\"local\"?void 0:r,targetClientId:i,timeoutMs:a})}}",
+      "supports": "Follower request targets owner; special untrusted input capability check is not a repository mismatch check."
+    },
+    "E10": {
+      "file": "extension",
+      "byte_start": 1883601,
+      "byte_end_exclusive": 1883877,
+      "line": 985,
+      "sha256": "3e50be0a9b0fba207303fd9a7e9397474198e6a81f1bd9f79358dace17a99229",
+      "text": "function Ewt(t){return(lMe.workspace.workspaceFolders?.map(r=>r.uri.fsPath)??[]).some(r=>Cwt(t,r))}function Cwt(t,e){if(!t||!e)return!1;let r=cMe(t),n=cMe(e);return r===n||r.startsWith(n.endsWith(AS.sep)?n:`${n}${AS.sep}`)}function cMe(t){return AS.normalize(t).toLowerCase()}",
+      "supports": "IDE context lookup uses path membership; does not prove execution admission."
+    },
+    "E11": {
+      "file": "extension",
+      "byte_start": 1824383,
+      "byte_end_exclusive": 1824786,
+      "line": 959,
+      "sha256": "c28ba0388a8b362e616f5d813618bf4ef647c74b873930acf75050001e253230",
+      "text": "async readPersistedAtomState(){let e=await this.globalState.get(de.PERSISTED_ATOM_STATE);return!e||typeof e!=\"object\"?{}:e}async sendPersistedAtomState(e){let r=await this.readPersistedAtomState();this.postMessageToWebview(e,{type:\"persisted-atom-sync\",state:r})}broadcastPersistedAtomUpdate(e,r){let n=r===void 0;this.broadcastToAllViews({type:\"persisted-atom-updated\",key:e,value:n?null:r,deleted:n})}",
+      "supports": "Persisted atoms read from global state and broadcast. No incident route key/value is available; not proof of selection cause."
+    },
+    "R1": {
+      "file": "renderer",
+      "byte_start": 3230389,
+      "byte_end_exclusive": 3230845,
+      "line": 1985,
+      "sha256": "367b6b439ce672f97de06c64b735035eaabf17e0a131fd4c545f85af3ce4980d",
+      "text": "function i$({requestedCwd:e,responseCwd:t,threadCwd:n,fallbackCwd:r}){let i=t||n;return e!=null&&i!=null&&J3t(e,i)?e:i||e||r||void 0}function J3t(e,t){let n=Y3t(e),r=Y3t(t);return n===r||n.startsWith(`${r}/`)}function Y3t(e){let t=e.replaceAll(`\\\\`,`/`);for(;t.length>1&&t.endsWith(`/`)&&!Z3t(t);)t=t.slice(0,-1);return X3t(t)?t.toLowerCase():t}function X3t(e){return/^[a-zA-Z]:\\//.test(e)||e.startsWith(`//`)}function Z3t(e){return/^[a-zA-Z]:\\/$/.test(e)}",
+      "supports": "Cwd arbitration can choose thread cwd when requested workspace differs; preserves requested nested path."
+    },
+    "R2": {
+      "file": "renderer",
+      "byte_start": 3263743,
+      "byte_end_exclusive": 3263846,
+      "line": 1985,
+      "sha256": "a1b14f2e48596048aa024c53f3f351a422cebae53668cd36f21f4ebcb679dce9",
+      "text": "function y6t(e,t,n){let r=t.filter(e=>e!==n);return e==null||e===``||e===n?r:[e,...r.filter(t=>t!==e)]}",
+      "supports": "Resume root candidate list prepends resumed cwd to non-sentinel window roots; this alone does not prove effective write grants."
+    },
+    "R3": {
+      "file": "renderer",
+      "byte_start": 3242785,
+      "byte_end_exclusive": 3252478,
+      "line": 1985,
+      "sha256": "010bef6489176779abf222bdc2dc424c8a195eddf8e352f615a3bdce330054f1",
+      "text": "async function _6t({manager:e,workspace:t,params:n,product:r,historyPolicy:i,canAcquireOwnership:a,isCurrentResumeAttempt:o,setHydrationCleanup:s,schedule:c,isReconnectRecovery:l=!1}){if(!o())return{status:`not-ready`,reason:`canceled`};let{conversationId:u,model:d,serviceTier:f,reasoningEffort:p,workspaceRoots:m,permissions:h,collaborationMode:g,showThreadGoalResumeConfirmation:_,trace:v}=n,y=e.getConversation(u),b=e.getHostId(),x=e.getWindowActivity(),S=x?.visibilityState;e.logger.info(`maybe_resume_started`,{safe:{conversationId:u,previousResumeState:y?.resumeState??null,previousStreamRole:e.getStreamRole(u)?.role??null,documentVisibilityState:S},sensitive:{hostId:b,routePath:x?.routePath}});let C=b===QH,w=e.getStreamRole(u)==null,T=()=>(x=e.getWindowActivity(),e.getStreamRole(u)==null&&!a());if(T())return e.ensureRecentConversationId(u),e.logger.info(`maybe_resume_skipped_inactive_hotkey_window`,{safe:{conversationId:u,documentVisibilityState:S},sensitive:{hostId:b,routePath:x?.routePath}}),{status:`not-ready`,reason:`inactive-window`};let E,D=y==null&&!C?r.readCatalogEntry(b,u):void 0;if(D!=null){try{let e=await D;E=e?.sourceKind===`chatgpt`?void 0:e}catch(t){e.logger.warning(`maybe_resume_catalog_read_failed`,{safe:{conversationId:u},sensitive:{error:t,hostId:b}})}if(!o())return{status:`not-ready`,reason:`canceled`};if(y=e.getConversation(u),w=e.getStreamRole(u)==null,T())return{status:`not-ready`,reason:`inactive-window`}}let O=y==null&&E==null?e.getThreadSummaries().find(e=>e.conversationId===u):void 0;if(!C&&y==null&&E==null&&n.knownCatalogEntry?.sourceKind!==`chatgpt`&&n.knownCatalogEntry?.hostId===b&&n.knownCatalogEntry.threadId===u&&(O==null||O.updatedAt<n.knownCatalogEntry.sourceUpdatedAt*1e3)&&(E=n.knownCatalogEntry,O=void 0),y==null){let t=Date.now();y=qKt(O??{conversationId:u,hostId:b,createdAt:E==null?t:E.sourceCreatedAt*1e3,updatedAt:E==null?t:E.sourceUpdatedAt*1e3,recencyAt:E==null?void 0:E.sourceRecencyAt*1e3,title:E?.displayTitle??null,cwd:E?.cwd??``,gitInfo:null,hasUnreadTurn:e.getThreadHasUnreadTurn(u),modelProvider:E?.modelProvider??``,parentThreadId:null,source:null,threadSource:E?.threadSource??null,threadRuntimeStatus:void 0,workspaceKind:E?.cwd===r.workspace.projectlessPathSentinel?`projectless`:`project`}),e.setConversation(y)}if(n.threadAccess===`shared`&&y.threadAccess!==`shared`&&(e.updateConversationState(u,e=>{e.threadAccess=`shared`}),y={...y,threadAccess:`shared`}),y.resumeState!==`resumed`&&e.getStreamRole(u)?.role===`follower`)return{status:`not-ready`,reason:`owner-recovering`};if(!w&&y.resumeState!==`needs_resume`)return e.ensureRecentConversationId(u),{status:`ready`};let k=y;QX(y);let A=e.useTailHydration(),j=r.beginHydration?.({conversationId:u,durable:C,threadIsAeon:y.threadStartKind==null&&y.threadSource==null&&void 0,parentTrace:v,startupResume:n.startupResume,tailHydration:A}),ee;s(()=>{ee?.(),j?.cancel()});let M={source:`thread_hydration`,trace:j?.trace,priority:l?`interactive`:`critical`},N=e.readThread(u,{includeTurns:!1,requestOptions:{...M,timeoutMs:SY}}).catch(t=>(e.logger.warning(`Failed to read thread metadata before resume`,{safe:{conversationId:u},sensitive:{error:t}}),null)),te=Date.now(),ne,re;try{[ne,re]=await Promise.all([S6t(e,u),t.load(!0)])}catch(e){throw j?.recordWritableRoots(te),j?.fail(e),e}if(!o())return{status:`not-ready`,reason:`canceled`};j?.recordWritableRoots(te),y=e.getConversation(u);let ie=y==null?void 0:QX(y),ae=ie?.permissionParamsSource===`inferred`?void 0:ie?.params,oe=e.getThreadWorkspaceState(u)?.applied??null,se=oe==null&&y?.workspaceKind===`projectless`?r.workspace.getWritableRoot(y.latestThreadSettings?.sandboxPolicy??ae?.sandboxPolicy):null,ce=b6t(y,m[0]??null,r.workspace.projectlessPathSentinel),le=oe?.cwd??r.workspace.getCwd({cwd:y?.cwd,fallbackCwd:se??ce,workspaceBrowserRoot:y?.workspaceBrowserRoot,workspaceKind:y?.workspaceKind}),ue=oe?.runtimeWorkspaceRoots??y6t(le,m,r.workspace.projectlessPathSentinel);if(e.updateConversationState(u,e=>{e.resumeState=`resuming`}),!o())return{status:`not-ready`,reason:`canceled`};A&&e.beginResumeNotificationBuffer(u);let de=null,fe=!1;try{let a=y==null?[]:JX(y),s=null,v=await N;if(j?.mark(`metadata_ready`),!o())return{status:`not-ready`,reason:`canceled`};de=v;let w=v==null?null:r.getThreadStartKind(v.thread);if(v!=null){if(re){let n=v.thread,r=t.getThreadWorkspaceKind(u,n),i=t.getThreadWorkspaceBrowserRoot(n),a=t.getThreadProjectlessOutputDirectory(u,n);e.updateConversationState(u,e=>{e.workspaceKind=r,e.workspaceBrowserRoot=r===`projectless`?i??e.workspaceBrowserRoot:null,e.projectlessOutputDirectory=r===`projectless`?a??e.projectlessOutputDirectory:null}),y=e.getConversation(u)}if(oe==null){let e=i$({requestedCwd:le,responseCwd:null,threadCwd:E?.cwd&&E.cwd!==r.workspace.projectlessPathSentinel&&E.sourceUpdatedAt>=v.thread.updatedAt?E.cwd:v.thread.cwd,fallbackCwd:ue[0]});le=r.workspace.getCwd({cwd:e??le,fallbackCwd:se??b6t(y,ue[0],r.workspace.projectlessPathSentinel),workspaceBrowserRoot:y?.workspaceBrowserRoot,workspaceKind:y?.workspaceKind}),ue=y6t(le,m,r.workspace.projectlessPathSentinel)}let n=v.thread.name?.trim()??``,{updatedAt:i,recencyAt:a}=YZ(v.thread);e.updateConversationState(u,e=>{e.sessionId=v.thread.sessionId,v.thread.daybreakEnabled!==void 0&&(e.daybreakEnabled=v.thread.daybreakEnabled),e.rolloutPath=v.thread.path??``,e.cwd=le??e.cwd,e.originator=v.thread.originator??e.originator,e.source=v.thread.source,e.agentNickname=v.thread.agentNickname,e.threadSource=v.thread.threadSource??e.threadSource??null,w!=null&&(e.threadStartKind=w),e.gitInfo=v.thread.gitInfo??e.gitInfo,n&&(!e.title||e.title===(E?.displayTitle??O?.title))&&(e.title=n);let t=e.recencyAt??e.updatedAt;e.updatedAt=Math.max(e.updatedAt,i),e.recencyAt=XZ({currentRecencyAt:t,threadRecencyAt:a,updatedAt:i})})}y=e.getConversation(u);let D=y==null?void 0:QX(y),te=D?.params,ie=D?.permissionParamsSource===`inferred`?void 0:te,ae=y?.latestThreadSettings,ce=v?.thread.historyMode??y?.historyMode??`legacy`,pe=A&&!C&&ce===`paginated`&&e.supportsPaginatedThreadHistory(),me=oe?.runtimeWorkspaceRoots??x6t({conversation:y,projectlessPathSentinel:r.workspace.projectlessPathSentinel,projectlessWorkspaceWriteRoot:se,resumeCwd:le,resumeWorkspaceRoots:ue}),he=y?.workspaceKind===`projectless`&&me.length===0?hV():mV(me),ge=h?.approvalsReviewer??ae?.approvalsReviewer??ie?.approvalsReviewer??y?.currentPermissions?.approvalsReviewer??he.approvalsReviewer,_e=y?.currentPermissions?.activePermissionProfile;ae?.activePermissionProfile===void 0?ie?.permissions!=null&&(_e={id:ie.permissions,extends:null}):_e=ae.activePermissionProfile;let ve=h??{activePermissionProfile:_e,approvalPolicy:ae?.approvalPolicy??ie?.approvalPolicy??y?.currentPermissions?.approvalPolicy??he.approvalPolicy,approvalsReviewer:ge,runtimeWorkspaceRoots:n$(n$(y?.currentPermissions?.runtimeWorkspaceRoots??[],me),ne),sandboxPolicy:ae?.sandboxPolicy??ie?.sandboxPolicy??y?.currentPermissions?.sandboxPolicy??he.sandboxPolicy};if(h==null&&ve.activePermissionProfile!=null&&(y?.currentPermissions==null||y.currentPermissions.activePermissionProfile?.id===ve.activePermissionProfile.id)){let e=y?.currentPermissions?.sandboxPolicy??ve.sandboxPolicy;e.type===`workspaceWrite`&&(ve.runtimeWorkspaceRoots=n$(n$(y?.currentPermissions?.runtimeWorkspaceRoots??[],me),ne.filter(t=>!e.writableRoots.some(e=>r.workspace.arePathsEquivalent(e,t)))))}let ye=t$(ve.sandboxPolicy,ne),be={...ve,sandboxPolicy:r.workspace.getSandboxPolicy({sandboxPolicy:ye,workspaceKind:y?.workspaceKind})},xe=h!=null||ae?.approvalPolicy!=null||ae?.sandboxPolicy!=null||ae?.permissions!=null||ae?.activePermissionProfile!==void 0||ie!=null||y?.currentPermissions?.activePermissionProfile?.id===`:danger-full-access`,Se=f;ie?.serviceTier!==void 0&&(Se=ie.serviceTier),ae?.serviceTier!==void 0&&(Se=ae.serviceTier);let Ce=await r.prepare({initialConversation:k,conversation:y,thread:v?.thread,params:n,permissions:be,serviceTier:Se??null,workspaceRoots:ue,requestOptions:M});if(!o())return{status:`not-ready`,reason:`canceled`};if(`status`in Ce||T())return A&&e.releaseResumeNotificationBuffer(u),e.updateConversationState(u,e=>{e.resumeState===`resuming`&&(e.resumeState=`needs_resume`)}),j?.cancel(),`status`in Ce?Ce:{status:`not-ready`,reason:`inactive-window`};let we=C?Ce.independentHistory:null,Te=Ce.start,Ee=Ce.requestOptions,De=l?M:Ce.backgroundRequestOptions,Oe=!Ce.preserveServerPermissions&&xe,ke=!Ce.preserveServerPermissions&&(h?.approvalsReviewer!=null||ae?.approvalsReviewer!=null||ie?.approvalsReviewer!=null||D?.permissionParamsSource!==`inferred`&&y?.currentPermissions?.approvalsReviewer!=null);oe==null&&(y?.workspaceKind===`projectless`||b===`local`&&FQ(Te.cwd)!=null)&&(Te.config={...Te.config,\"features.request_permissions_tool\":!0});let Ae=h3t(le??ue[0],Te.runtimeWorkspaceRoots??[]),je={...be,runtimeWorkspaceRoots:Ae},Me=Object.entries(Te.config??{}).filter(([e,t])=>t!=null&&(e!==`profiles`||typeof t!=`object`||Array.isArray(t)||Object.keys(t).length>0)),Ne=Me.length>0,Pe=Me.some(([e,t])=>!e.startsWith(`features.`)||!(0,c$.default)(Ce.defaultFeatureOverrides?.[e],t)&&!(0,c$.default)(Ce.defaultFeatureOverrides?.[e.slice(9)],t)),Fe=Ce.canReuseRunningThread&&v?.thread.status.type===`idle`&&h==null&&f==null&&!(Oe&&Te.permissions!=null)&&!Pe;if(e.getStreamRole(u)?.role===`follower`&&we==null)return e.updateConversationState(u,e=>{e.resumeState===`resuming`&&(e.resumeState=`resumed`)}),o()?(A&&e.releaseResumeNotificationBuffer(u),j?.finish(),{status:`ready`}):{status:`not-ready`,reason:`canceled`};if(fe=e.getStreamRole(u)==null,fe&&e.setConversationStreamRole(u,{role:`owner`}),!o())return{status:`not-ready`,reason:`canceled`};",
+      "supports": "Resume reads metadata, resolves cwd and runtime roots, then handles stream role. Excerpt ends before request construction."
+    },
+    "R4": {
+      "file": "renderer",
+      "byte_start": 3252478,
+      "byte_end_exclusive": 3253561,
+      "line": 1985,
+      "sha256": "10bd3fb218351ee5c5b191e4cd1c9490737c70e79efa83a12fedcc06225267f6",
+      "text": "let Ie={threadId:u,history:null,path:v==null?y?.rolloutPath||null:v.thread.path,model:null,modelProvider:Te.modelProvider,...Se===void 0?{}:{serviceTier:Te.serviceTier},cwd:Te.cwd,...Fe?{}:{baseInstructions:Te.baseInstructions??void 0,developerInstructions:Te.developerInstructions??void 0},personality:ae?.personality===void 0?te?.personality??Te.personality:ae.personality,excludeTurns:A&&(!C||we!=null)&&!we?.useCompactHistory,...A&&!C&&!pe?{initialTurnsPage:{limit:5,itemsView:`full`,sortDirection:`desc`}}:{}};Oe&&(Ie.approvalPolicy=Te.approvalPolicy,Te.permissions==null?Ie.sandbox=Te.sandbox:(Ie.permissions=Te.permissions,Ie.runtimeWorkspaceRoots=Ae)),ke&&(Ie.approvalsReviewer=Te.approvalsReviewer),Ne&&!Fe&&(Ie.config=Te.config);let Le=Ce.completeRequest(Ie),Re=Le.config??null,ze=Re==null?y?.shellEnvironmentPolicy??null:null;if((Re!=null||y?.shellEnvironmentPolicy==null&&!Fe)&&(ze=await e.readShellEnvironmentPolicy(Le.cwd,Re)),!o())return{status:`not-ready`,reason:`canceled`};let Be=e.getConversation(u)?.environmentSelectionEvidence;j?.mark(`runtime_resume_started`);",
+      "supports": "Resume request includes threadId and computed cwd; request policy conditional."
+    },
+    "R5": {
+      "file": "renderer",
+      "byte_start": 3074782,
+      "byte_end_exclusive": 3074926,
+      "line": 1947,
+      "sha256": "e7e78290fd62f7b58f6ec402af8b6759d192a8316c597927dc632aaa8df5c5ac",
+      "text": "case`thread-follower-start-turn`:{let n=await e.startTurn(t.params.conversationId,t.params.turnStart);return{method:t.method,result:{result:n}}}",
+      "supports": "Owner handler calls startTurn for forwarded conversation and turnStart; no sender-workspace comparison at this case."
+    },
+    "R6": {
+      "file": "renderer",
+      "byte_start": 3092817,
+      "byte_end_exclusive": 3093233,
+      "line": 1948,
+      "sha256": "06fd4e7abf562afbb594dc04cbc4cf5e14d568802f8796e93954fff06b6064ab",
+      "text": "handleConversationActivityChanged(e,t){this.params.logger.info(`thread_stream_view_activity_changed`,{safe:{conversationId:e,active:t,resumeState:this.params.threadStore.getConversation(e)?.resumeState??null,streamRole:this.params.streamState.getStreamRole(e)?.role??null},sensitive:{}}),this.updateConversationInactivityTracking(e),t||this.params.scheduleMicrotask(()=>{this.releaseInactivePassiveConversation(e)})}",
+      "supports": "Saved view-activity log reports view activation/resume/role, not cwd, tool dispatch, or selection reason."
+    },
+    "U1": {
+      "file": "renderer_ui",
+      "byte_start": 806362,
+      "byte_end_exclusive": 806604,
+      "line": 711,
+      "sha256": "cf841c523ab2812e63984c7d4fbad4233ac6b99e3121254cc8a35d35d7691ea4",
+      "text": "function kst(){let e=document.querySelector(`meta[name=\"initial-route\"]`);if(e?.content?.trim())return e.content.trim();let t=new URL(window.location.href).searchParams.get(`initialRoute`);return t?t.trim():null}var TA,EA=e((()=>{TA=kst()}));",
+      "supports": "Renderer initial route reads injected metadata then URL."
+    },
+    "U2": {
+      "file": "renderer_ui",
+      "byte_start": 4272591,
+      "byte_end_exclusive": 4273073,
+      "line": 4951,
+      "sha256": "07f59b1bffa2882ce5c013fdf9fe66f122125886ddff3338e8144a7614579b9f",
+      "text": "function k2n(e){let t=(0,A2n.c)(8),{children:n}=e,[r,i]=(0,W7.useState)(!1),a=Zo(),o=F_()&&!fi(TA)?null:TA,s=o===`${a.pathname}${a.search}`,c=(0,W7.useEffectEvent)(i),l;t[0]!==r||t[1]!==s||t[2]!==c?(l=()=>{!o||r||!s||c(!0)},t[0]=r,t[1]=s,t[2]=c,t[3]=l):l=t[3];let u;if(t[4]!==r||t[5]!==s?(u=[r,s,o],t[4]=r,t[5]=s,t[6]=u):u=t[6],(0,W7.useEffect)(l,u),!o||r||s)return n;let d;return t[7]===Symbol.for(`react.memo_cache_sentinel`)?(d=(0,j2n.jsx)(oa,{to:o,replace:!0}),t[7]=d):d=t[7],d}",
+      "supports": "Renderer redirects to the injected route; no repository binding in this component."
+    },
+    "O1": {
+      "file": "bookends",
+      "byte_start": 3948,
+      "byte_end_exclusive": 6721,
+      "line": 103,
+      "sha256": "f6d10f614c56131b625d4910d8c791b63c4dd0f505c5e6a06abb35ea4e4ecef2",
+      "text": "def validate_event(root: Path, config: dict, args, raw: bytes) -> str:\n    \"\"\"Validate an event after the dispatcher's repository/runtime validation.\n\n    Empty stdin and {} preserve B's native-event compatibility. Optional event\n    root/lane fields become assertions, never selectors or fallback discovery.\n    Unrelated host metadata is ignored; all binding fields we accept are strict.\n    \"\"\"\n    if not all(getattr(args, field, None) for field in (\"bound_id\", \"bound_root\", \"binding_path\")):\n        raise Refusal(\"hook_requires_bound_launcher\")\n    path = Path(os.path.abspath(args.hook_path))\n    events = [event for event, relative in EVENT_PATHS.items() if path == root / relative]\n    if len(events) != 1:\n        raise Refusal(\"hook_location_mismatch\")\n    event = events[0]\n    relative = EVENT_PATHS[event]\n    confined(root, relative)\n    requested = getattr(args, \"event\", None)\n    if requested is not None and requested != event:\n        raise Refusal(\"hook_event_mismatch\")\n    # A copied or edited hook must not acquire authority just from its filename.\n    actual = read(root, relative)\n    allowed = {hook_script(root, event)}\n    if requested is None:\n        allowed.add(hook_script(root))\n    if actual not in allowed:\n        raise Refusal(\"hook_binding_mismatch\")\n    if not isinstance(raw, bytes):\n        raise Refusal(\"hook_input_invalid\")\n    if len(raw) > LIMIT:\n        raise Refusal(\"hook_input_too_large\")\n    try:\n        payload = json.loads(raw.decode(\"utf-8\"), object_pairs_hook=_unique_object,\n                             parse_constant=_reject_constant) if raw.strip() else {}\n    except (UnicodeError, ValueError, TypeError, RecursionError):\n        raise Refusal(\"hook_input_invalid\") from None\n    if not isinstance(payload, dict):\n        raise Refusal(\"hook_input_invalid\")\n    if \"workspace_roots\" in payload:\n        roots = payload[\"workspace_roots\"]\n        if not isinstance(roots, list) or len(roots) > 1:\n            raise Refusal(\"hook_workspace_mismatch\")\n        for selected in roots:\n            _physical_root(selected, root)\n    for field in (\"workspace_root\", \"repo_root\"):\n        if field in payload:\n            _physical_root(payload[field], root)\n    if \"lane\" in payload:\n        if payload[\"lane\"] not in config['docs']['lanes'] or (\n                getattr(args, 'lane', None) not in (None, payload['lane'])):\n            raise Refusal('hook_lane_mismatch')\n        args.lane = payload['lane']\n    if \"repo_id\" in payload and payload[\"repo_id\"] != config[\"repo\"][\"id\"]:\n        raise Refusal(\"hook_identity_mismatch\")\n    for field in (\"hook_event_name\", \"event_name\", \"event\"):\n        if field in payload and payload[field] != event:\n            raise Refusal(\"hook_event_mismatch\")\n    return event\n\n",
+      "supports": "Optional event roots/UUID are assertions; empty payload allowed; no active Codex task binding."
+    },
+    "O2": {
+      "file": "bound_context",
+      "byte_start": 5918,
+      "byte_end_exclusive": 7978,
+      "line": 162,
+      "sha256": "97f370d89e269a87e391f0082647a2b95b1310b4b76515d2b418b62e7c7f35bf",
+      "text": "def config_for(root, args, *, syncing=False, authority=True):\n    from cli.product_config import normalize\n    data = read(root, CONFIG)\n    normalized = normalize(data, root=root)\n    config = normalized.data\n    if not normalized.bound:\n        raise Refusal(\"configuration_unbound: inspect with status; use init --migrate\")\n    repo = config[\"repo\"]\n    if repo[\"root\"] != str(root):\n        raise Refusal(\"config_repository_mismatch\")\n    if getattr(args, \"bound_id\", None) and repo[\"id\"] != args.bound_id:\n        raise Refusal(\"launcher_identity_mismatch\")\n    if config[\"runtime\"][\"root\"] != str(KIT):\n        raise Refusal(\"runtime_installation_mismatch\")\n    if not syncing and config[\"runtime\"] != runtime():\n        raise Refusal(\"runtime_changed: run this installation's explicit sync\")\n    if authority:\n        revision(root, config)\n    return config, data\n\n\ndef capture_context(root, config_data, config=None):\n    from cli.product_config import normalize\n    config = config or (normalize(config_data, root=root).data if config_data else None)\n    if config is None or config['vcs']['canonical'] == 'git':\n        if Path(git(root, 'rev-parse', '--show-toplevel')).resolve(strict=True) != root:\n            raise Refusal('repository_context_changed')\n        return {\"config\": config_data, \"branch\": branch(root), \"head\": head(root),\n                \"vcs\": \"git\", \"source_id\": None}\n    state = revision(root, config)\n    return {\"config\": config_data, \"branch\": state.branch, \"head\": state.head,\n            \"vcs\": state.kind, \"source_id\": state.source_id}\n\n\ndef check_context(root, config, args, captured):\n    \"\"\"Refuse a changed observation; never rebase a prepared prompt implicitly.\"\"\"\n    if root.resolve(strict=True) != root:\n        raise Refusal(\"repository_context_changed\")\n    current, data = config_for(root, args)\n    if current != config or data != captured[\"config\"]:\n        raise Refusal(\"config_context_changed\")\n    if capture_context(root, data, current) != captured:\n        raise Refusal(\"repository_context_changed\")\n\n",
+      "supports": "Bound repository/runtime/context validation; not client task identity enforcement."
+    }
+  },
+  "limitations": [
+    "Installed version labels match saved incident record; no incident-time client bundle hashes survive in that record.",
+    "No real profiles, credentials, current conversations, logs or accounts read.",
+    "App-server binary internals and full Electron restoration were not executed or certified."
+  ]
+}

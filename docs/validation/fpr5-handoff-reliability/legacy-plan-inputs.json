@@ -1,0 +1,18 @@
+{
+  "kind": "Separate legacy repair proposal inputs; no legacy command or environment executed",
+  "source": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-main-stable",
+  "proposed_launcher": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-main-stable/cli/ok",
+  "proposed_interpreter": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-main-stable/.venv/bin/python3",
+  "interpreter_resolved_read_only": "/opt/homebrew/Cellar/python@3.14/3.14.4_1/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+  "pyproject": {
+    "path": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-main-stable/pyproject.toml",
+    "sha256": "fbb015fc13f9d85916ecf016253daff4c57d3c429fba61b43969f599140bd941",
+    "dependencies": [
+      "PyYAML>=6.0",
+      "cryptography>=42.0"
+    ]
+  },
+  "dependency_pins_ready": false,
+  "reason": "Legacy manifest declares ranges. Exact locally approved artifact versions, hashes and interpreter compatibility must be selected before installation; recovery pins are not silently substituted.",
+  "mutations_authorized": false
+}

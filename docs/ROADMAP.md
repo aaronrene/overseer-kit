@@ -25,17 +25,23 @@ The former sole-writer/NXR-GSR chain remains historical and is not the living NE
 | FPR-5 — independent final review | Complete — original **FINDINGS** verdict and evidence preserved in [the review](reviews/FPR-5-REVIEW.md) |
 | FPR-5 bounded repairs | All six implemented; 1,361 selected cases have passing evidence across the new combined run and affected rerun; [author evidence](validation/FPR-5-REPAIRS.md) |
 | Remaining acceptance, final adjudication and release decision | **Closeout packet complete; final readiness not established** — [exact claim/source/evidence map](validation/FPR-5-ACCEPTANCE-PACKET.md) records all outcomes and limits. Cursor start/stop remain owner-postponed **NOT VERIFIED**. Resolve required incident/claim dispositions before one independent non-author adjudication, then a separate owner release decision |
-| FPR-OPS-1 — unexplained cross-window conversation restoration | **NEXT: bounded investigation** — owner did not deliberately open duplicates. Logs establish shared display, not cause. Trace saved metadata and installed host source; deliver an evidenced cause/repair proposal or smallest disposable reproduction. Qualification blocker for restored-window automatic handoff/consumer rollout; no new general review |
+| FPR-OPS-1 — unexplained cross-window conversation restoration | **Bounded investigation complete; cause unresolved** — [source trace and offline reproduction](validation/FPR-5-HANDOFF-RELIABILITY.md) demonstrate propagation of a seeded shared route, independent task cwd and workspace-free owner discovery. The historical selection trigger and execution target remain unknown. Guard proposal and smallest further capture delivered; qualification blocker remains. NEXT stops pending a separately scoped client capture or repair |
 | FPR-OPS-2 — broken shared legacy `ok` environment | **Confirmed; unrepaired local installation** — separate from mirroring and the working recovery launcher. Candidate code is not newly shown defective. Exact interpreter/dependency/backup plan precedes repair and consumer use; global/consumer mutations remain unauthorized |
 | FPR-EVID-1 — external temporary originals unavailable | **Availability gap mapped; not waived** — 40 interactive copies (34 exact/six redacted), 79 host copies and 28 pilot records verify. Temporary originals, backup trees and two screenshots are unavailable at recorded paths. Packet preserves provenance and custody limits for later sufficiency assessment |
 
 The exact current action lives only in `docs/NEXT.md`; use `ok -C ROOT next`.
-The [acceptance packet](validation/FPR-5-ACCEPTANCE-PACKET.md) is complete; do not
-schedule packet preparation again. The next task is the bounded FPR-OPS-1
-restoration/context investigation. No repeat host launch, general test run or
-independent review is queued. Cursor postponement needs no repeat approval and
-does not establish a pass or release. Restart/full-disk causation and deliberate
-duplicate opening are not established; visible-chat selection is mitigation only.
+The [acceptance packet](validation/FPR-5-ACCEPTANCE-PACKET.md) and bounded FPR-OPS-1
+investigation are complete. The new source-function reproduction used synthetic
+state and no client launch; it does not establish the incident's cause. The
+[report](validation/FPR-5-HANDOFF-RELIABILITY.md) identifies host/owner admission
+checks and a two-project capture starting with distinct routes. NEXT stops pending
+separate scope for that new client capture or repair. No repeat host launch,
+general test run or independent review is queued. Cursor postponement needs no
+repeat approval and does not establish a pass or release. The owner did not
+deliberately open duplicates; restart/full-disk causation remains unknown and
+visible-chat selection remains mitigation only. The separate legacy CLI plan
+proposes stable source with its own interpreter; compatible exact dependency
+artifacts still need selection because its manifest only declares ranges.
 The packet distinguishes candidate evidence, an unqualified host workflow, a
 broken legacy installation and missing external originals. Required disposition
 of those limits precedes final readiness; do not silently narrow the full claim.

@@ -8,20 +8,29 @@ Active implementation: `overseer-kit-v1-recovery-20261014`, branch
 `feat/overseer-v1-recovery-20261014`, reconciled base `d47291d`.
 Both older dirty worktrees remain untouched.
 
-**Acceptance packet complete; NEXT is bounded handoff-restoration investigation.**
+**Acceptance packet and bounded investigation complete; restoration cause unresolved.**
 The [packet](validation/FPR-5-ACCEPTANCE-PACKET.md) maps the exact candidate,
 all maintained commands, section-9 requirements, six repairs and open issues to
 existing evidence. Source comparison covers 791 runtime/test/native/package/
 driver/requirements entries without differences; all 20 historical command names
 are registered. These are coordination checks, not independent certification.
-No completed suite, review, pilot or isolated launch was repeated.
+No completed suite, review, pilot or isolated launch was repeated. The
+[handoff reliability report](validation/FPR-5-HANDOFF-RELIABILITY.md) adds an
+offline reproduction using seven saved source excerpts, synthetic routes and two
+temporary empty directories. A seeded shared URI resolves in both mock windows;
+cwd arbitration can retain the other project's task root and owner discovery
+does not carry workspace identity. This is propagation evidence, not a
+reproduction of the unknown historical selection trigger or proof of wrong-root
+execution. Production source/runtime and original evidence remain unchanged.
 
 The owner-postponed Cursor start/stop checks remain **NOT VERIFIED**; do not ask
 again or turn them into a pass. Full automatic-host/integrated-pilot acceptance
-and final-adjudication readiness remain unestablished. The next task is the
-bounded FPR-OPS-1 saved-trace/installed-source investigation, producing an evidenced
-cause/repair proposal or the smallest disposable reproduction. It is not another
-packet-preparation or general review cycle. All restrictions remain in force.
+and final-adjudication readiness remain unestablished. FPR-OPS-1 remains an open
+qualification blocker. The report delivers a confined host/owner mismatch guard
+proposal and a minimal further capture starting with two distinct routes. NEXT
+stops pending separate scope for that new disposable client capture or repair;
+do not repeat this investigation, packet preparation or general reviews. All
+restrictions remain in force.
 
 The owner did **not** deliberately open the same conversation or duplicate project
 windows. Logs establish shared display, not how it was selected or restored. The
@@ -29,7 +38,11 @@ earlier explanation overstated the cause. FPR-OPS-1 tracks investigation and
 workspace/task mismatch prevention; changing visible chats was mitigation only.
 FPR-OPS-2 tracks the separately confirmed shared legacy `ok` failure: its venv
 lacks `cryptography`; no repair is applied and no new recovery-source defect is
-established. It blocks use of that old installation until a bounded repair.
+established. It blocks use of that old installation until a bounded repair. The
+separate plan proposes the stable checkout's source and own Python 3.14.4
+interpreter, exact backups and per-target NEXT validation. Its manifest has
+dependency ranges, so compatible local artifact versions/hashes must be selected
+before any installation; no global/consumer mutation is authorized.
 FPR-EVID-1's availability gap is now mapped: 40 interactive copies (34 exact/six
 redacted), 79 host/platform copies and 28 curated pilot records verify, while
 temporary originals/backups and two screenshots remain unavailable. Preserve

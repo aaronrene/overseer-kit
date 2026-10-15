@@ -1,0 +1,98 @@
+{
+  "schema": 1,
+  "kind": "Incident investigation evidence; excludes inventory itself",
+  "parent_commit": "4c7f225b6148f95fb575bcd604b113aed5b5999b",
+  "files": {
+    "bound-next-precommit.json": {
+      "sha256": "0312a3ef4d3f9bef7d0e104f5e3babe824bc6692f476acaed9f2393232797615",
+      "bytes": 4628,
+      "mode": 420
+    },
+    "closeout.json": {
+      "sha256": "ef2c793d03c5c218754b8e9da67ce0deabc7ede8f7c9607f660cd006dd897f5c",
+      "bytes": 1959,
+      "mode": 420
+    },
+    "legacy-plan-inputs.json": {
+      "sha256": "88864392a8179405de126f979bc5bad9540a5fd33d02c1276f85232900faa753",
+      "bytes": 1069,
+      "mode": 420
+    },
+    "next-prompt.txt": {
+      "sha256": "00f0c497e43ac726b8f149f155d422cf2b772a703d1fa2064fa189ed515645e2",
+      "bytes": 1149,
+      "mode": 420
+    },
+    "next-publication.json": {
+      "sha256": "bdfb3d3c2afb6df9b3f19f5c721536778ec90d584ba2a6cc133d0e79ac0d3a70",
+      "bytes": 1078,
+      "mode": 420
+    },
+    "opening-verification.json": {
+      "sha256": "07043ea3c39656fa3b6f16a076ecc1a2f685e3134792dde4d8db7840bd9afa8e",
+      "bytes": 1413,
+      "mode": 420
+    },
+    "reproduce.mjs": {
+      "sha256": "f04a97f6132a7740025ac5408bf2274a92b9d484dd4fd9cc44ed71dc521b1ed9",
+      "bytes": 6764,
+      "mode": 420
+    },
+    "reproduction-command.json": {
+      "sha256": "ac2a7d5fedc83cb0395245939871fd64f851a40c1b0bff63d66b37a1f9c60f8c",
+      "bytes": 505,
+      "mode": 420
+    },
+    "reproduction-result.json": {
+      "sha256": "8250ee8533f4f629beb462bdaba4b5824c23402a3243d61f3d7b35a5cbac66e2",
+      "bytes": 2716,
+      "mode": 420
+    },
+    "reproduction-stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "mode": 420
+    },
+    "source-map.json": {
+      "sha256": "07817a4488abbd664c66730eb760752eb27a22f9c7758d3f9c07b03882b20a33",
+      "bytes": 33151,
+      "mode": 420
+    },
+    "summary-lock-refresh.json": {
+      "sha256": "e6554e2263de1bccede5cf9dcc602cc199c9c75b96bfa929730b323e2840a812",
+      "bytes": 1594,
+      "mode": 420
+    }
+  },
+  "companion_files": {
+    ".overseer/version.lock": {
+      "sha256": "2bd7d1f2fddfb515ecacc345990bbafb69aca958f9ab9d96577c44324ead7c9a",
+      "bytes": 8498,
+      "mode": 420
+    },
+    "docs/NEXT.md": {
+      "sha256": "6828ef2e035d236be8ce5c53216f32daa50a3997edb889ac2f9607a675cae0bc",
+      "bytes": 1565,
+      "mode": 420
+    },
+    "docs/OVERSEER-HANDOVER.md": {
+      "sha256": "65dea813be0039297b6795e0429658f283e062d0a8e65ed2d32c5785def9e068",
+      "bytes": 18757,
+      "mode": 420
+    },
+    "docs/ROADMAP.md": {
+      "sha256": "7cda4170589407cf3b942de56b5f836327f424c4dbe0a2c15360a0042b6c21a7",
+      "bytes": 16410,
+      "mode": 420
+    },
+    "docs/validation/FPR-5-HANDOFF-RELIABILITY.md": {
+      "sha256": "8aa3e36bcecf6cafa54417dc4882bbba53ce4f191e7a90d11e23be11a6f10635",
+      "bytes": 16131,
+      "mode": 420
+    }
+  },
+  "runtime_sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774",
+  "cause_established": false,
+  "independent_adjudication_ready": false,
+  "release_ready": false
+}
