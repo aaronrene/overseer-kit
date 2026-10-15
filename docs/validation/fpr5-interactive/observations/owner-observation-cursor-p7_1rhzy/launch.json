@@ -1,0 +1,35 @@
+{
+  "surface": "cursor",
+  "argv": [
+    "/usr/bin/sandbox-exec",
+    "-f",
+    "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/isolated-cursor.sb",
+    "/Applications/Cursor.app/Contents/MacOS/Cursor",
+    "--user-data-dir",
+    "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-observation-cursor-p7_1rhzy/profile",
+    "--extensions-dir",
+    "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-observation-cursor-p7_1rhzy/extensions",
+    "--new-window",
+    "--no-sandbox",
+    "--disable-gpu",
+    "--disable-extensions",
+    "--disable-updates",
+    "--disable-telemetry",
+    "--disable-crash-reporter",
+    "--skip-welcome",
+    "--skip-release-notes",
+    "--password-store=basic",
+    "--log",
+    "trace",
+    "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project"
+  ],
+  "env": {
+    "PATH": "/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin",
+    "TMPDIR": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-observation-cursor-p7_1rhzy/temp/",
+    "LANG": "en_US.UTF-8"
+  },
+  "pid": 38329,
+  "limit_seconds": 600,
+  "next_sha256": "489ded7be7f530ea242e1ed5dbdce96037ec752cc63c9359eaa778aa483ba055",
+  "runtime_sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774"
+}

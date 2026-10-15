@@ -1,0 +1,72 @@
+{
+  "kind": "Static inspection of installed Cursor source; not lifecycle acceptance",
+  "cursor_version": "3.24.18",
+  "source": {
+    "path": "/Applications/Cursor.app/Contents/Resources/app/out/vs/workbench/workbench.desktop.main.js",
+    "bytes": 39803884,
+    "mode": "0644",
+    "sha256": "ed6922a7a86c8c448a46aa39af0c931580da162770fe406a0d41737290e637d9"
+  },
+  "offset_convention": "Zero-based byte offset in exact SHA-256 pinned workbench file; not Unicode character offsets",
+  "references": [
+    {
+      "meaning": "new_chat_tab_action",
+      "byte_offset_zero_based": 29016341,
+      "snippet_utf8": "id:bse,title:{value:\"New Chat Tab\",original:\"New Chat Tab\"},f1:!0,icon:Pe.add,keybinding:[{primary:Ie.CtrlCmd|fe.KeyT,weight:600,when:e},{primary:Ie.CtrlCmd|fe.KeyN,weight:600,when:t}]})}async run(e,t){const n=e.get(L2),i=e.get(gs),r=e.get(Lte),s=e.get(qr),o=e.get(xn),a=e.get(Hv);let c,l;if(Rki(t))l=i.getGroup(t.groupId),l||(l=r.getChatEditorGroupById(t.groupId));else if(Ee.isUri(t)){const g=e.get(hn).findEditors(t)["
+    },
+    {
+      "meaning": "session_start_dispatch_during_composer_creation",
+      "byte_offset_zero_based": 30964373,
+      "snippet_utf8": "this.cursorHooksService.executeHookForStep(Lu.sessionStart,{conversation_id:g,generation_id:\"\",model:N,...O,is_background_agent:A,composer_mode:E.unifiedMode});if(F?.env&&Object.keys(F.env).length>0&&this.cursorHooksService.setSessionEnvironment(g,F.env),F?.additional_context){const H=this.composerDataService.getHandleIfLoaded(g);H&&this.updateComposer(H,{hooksAdditionalContext:F.additional_context})}}catch(N){this._composerLogService.error(\"[composer] Error executing sessionStart hook:\",N)}})();let R;try{R=await this.composerDataServ"
+    },
+    {
+      "meaning": "stop_hook_at_turn_end",
+      "byte_offset_zero_based": 18614241,
+      "snippet_utf8": "async triggerStopHook(e,t){this._mcpProviderService.notifyTurnEnded({conversationId:e.composerId});try{if(!this._cursorHooksService.hasHookForStep(Lu.stop))return;const n=e.composerId,i=this._composerDataService.getComposerData(e);if(!i)return;const r=i.stopHookLoopCount??0,s=i.turnTokenUsage,o=i.modelConfig,a=this._modelConfigService.getHookModelString(o),c=this._modelConfigService.getHookModelFields(o),l=await this._cursorHooksService.executeHookForStep(Lu.stop,{conversation_id:n,generation_id:i.chatGenerationUUID||i.latestChatGenerationUUID||zn(),model:a,...c,status:t,loop_count:r,input_tokens:s?.inputTokens,output_tokens:s?.outputTokens,cache_read_tokens:s?.cacheReadTokens,cache_write_tokens:s?.cacheWriteTokens});if(l&&typeof l.followup_message==\"string\"&&l.followup_message.trim().length>0){const u=l.followup_message;this._composerDat"
+    },
+    {
+      "meaning": "stop_followup_may_submit_another_turn",
+      "byte_offset_zero_based": 18615146,
+      "snippet_utf8": "this.submitChatMaybeAbortCurrent(n,u,{skipClearInput:!0,skipFocusAfterSubmission:!0,isAutoFollowupFromStopHook:!0}).catch(h=>{this._composerLogService.error(\"[c"
+    },
+    {
+      "meaning": "closing_chat_dispatches_session_end",
+      "byte_offset_zero_based": 30956722,
+      "snippet_utf8": "fireSessionEndHook(e,\"user_close\"),!t?.skipOpenComposer){if(this.composerDataService.selectedComposerIds.length===1){const o=this.composerViewsService.getCompos"
+    },
+    {
+      "meaning": "hooks_output_channel_label",
+      "byte_offset_zero_based": 31572673,
+      "snippet_utf8": "label:\"Hooks\",log:!1,workspaceId:this.getWorkspaceId?.()}),this.outputChannelReg"
+    }
+  ],
+  "source_supported_interpretation": {
+    "sessionStart": "New Chat Tab creates a composer and its creation path dispatches sessionStart before explicit model submission; offline onboarding accessibility was not demonstrated.",
+    "stop": "triggerStopHook is tied to a model turn ending (completed, aborted or error), not closing the window. No permitted offline UI operation was established to deliver this event.",
+    "sessionEnd": "Closing a chat dispatches sessionEnd, a distinct event not configured as the pilot stop hook.",
+    "followup_message": "The generated hook returns this field; Cursor stop handling may submit it as another model turn. Do not invoke a model turn under current restrictions."
+  },
+  "possible_start_only_owner_steps": [
+    "Use only the approved isolated disposable pilot window.",
+    "Cmd+Shift+P -> New Chat Tab; leave prompt empty and do not submit.",
+    "View -> Output -> Hooks.",
+    "Stop at any sign-in, keychain or provider gate; do not change account/keychain/network settings."
+  ],
+  "required_actual_receipt": {
+    "event": "sessionStart or stop, each separately",
+    "command": "Exact matching generated script in the disposable pilot .cursor/hooks directory",
+    "execution": "Actual command execution with exit code 0; input includes correct hook_event_name, Cursor version, conversation/session identity and disposable workspace_roots",
+    "output": "Successful additional_context and followup_message containing the canonical bound NEXT output",
+    "insufficient": [
+      "Loaded hooks configuration",
+      "Hook event requested without command success/output",
+      "workspaceOpen",
+      "Closing a chat or window"
+    ]
+  },
+  "observed_acceptance": {
+    "sessionStart": "not demonstrated",
+    "stop": "not demonstrated"
+  },
+  "no_app_launch_or_source_change_in_static_inspection": true
+}

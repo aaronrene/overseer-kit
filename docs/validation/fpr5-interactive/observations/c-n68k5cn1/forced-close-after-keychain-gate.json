@@ -1,0 +1,10 @@
+{
+  "kind": "Bounded cleanup of modal-blocked disposable Cursor",
+  "pid": 38573,
+  "signals_sent": [
+    "SIGKILL verified disposable process group only"
+  ],
+  "remaining_group": "",
+  "normal_quit_and_SIGTERM_already_attempted": true,
+  "keychain_or_privacy_settings_changed": false
+}

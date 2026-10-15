@@ -1,0 +1,32 @@
+Repository lanes — select --lane L before action.
+product: valid
+
+## CURRENT NEXT — paste this
+```text
+Repository: /private/tmp/overseer-fpr5-integrated-pilot-20261015/project
+Repository ID: 20dd0872-c7a4-5fdf-81a5-27eefa0acc2e
+Branch: pilot/fpr5-integrated-20261015
+Lane: product
+Model: GPT-6 Astra
+Action ID: PILOT-LOCAL-CLOSE-product
+Action kind: stop
+
+Local disposable author workflow completed. Preserve this project and its evidence. Required native host lifecycle, native GUI/platform acceptance, remaining matrix evidence, independent final adjudication and owner release decision remain unresolved. No external operations are authorized.
+Selected work stream is product.
+```
+
+validation: valid
+
+## CURRENT NEXT — paste this
+```text
+Repository: /private/tmp/overseer-fpr5-integrated-pilot-20261015/project
+Repository ID: 20dd0872-c7a4-5fdf-81a5-27eefa0acc2e
+Branch: pilot/fpr5-integrated-20261015
+Lane: validation
+Model: GPT-6 Astra
+Action ID: PILOT-LOCAL-CLOSE-validation
+Action kind: stop
+
+Local disposable author workflow completed. Preserve this project and its evidence. Required native host lifecycle, native GUI/platform acceptance, remaining matrix evidence, independent final adjudication and owner release decision remain unresolved. No external operations are authorized.
+Selected work stream is validation.
+```

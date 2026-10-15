@@ -1,0 +1,35 @@
+2026-10-15 04:38:39.915 [trace] PolicyConfiguration#initialize
+[REDACTED credential-related diagnostic line 2; original retained locally]
+2026-10-15 04:38:39.915 [trace] PolicyConfiguration#update ["update.mode","cursor.agentHost.updateMode"]
+2026-10-15 04:38:39.915 [trace] PolicyConfiguration#updatePolicyDefinitions ["update.enableWindowsBackgroundUpdates"]
+2026-10-15 04:38:39.915 [trace] PolicyConfiguration#update []
+[REDACTED credential-related diagnostic line 6; original retained locally]
+2026-10-15 04:38:39.923 [trace] Started scanning system extensions
+2026-10-15 04:38:39.923 [trace] Started scanning user extensions {"$mid":1,"external":"vscode-userdata:/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/extensions/extensions.json","path":"/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/extensions/extensions.json","scheme":"vscode-userdata"}
+2026-10-15 04:38:39.923 [trace] ExtensionManagementService#cleanUp
+2026-10-15 04:38:39.923 [trace] ExtensionManagementService#removeTempDeleteFolders
+2026-10-15 04:38:39.923 [trace] ExtensionManagementService.updateControlCache
+2026-10-15 04:38:39.923 [info] Getting extensions control
+2026-10-15 04:38:39.923 [debug] Writing language packs {}
+2026-10-15 04:38:39.923 [trace] Extension VSIX downloads cache dir does not exist
+2026-10-15 04:38:39.925 [debug] No extensions are marked as removed.
+2026-10-15 04:38:39.929 [trace] [File Watcher (node.js)] Request to start watching: /private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/extensions (excludes: <none>, includes: <all>, filter: <none>, correlationId: <none>)
+2026-10-15 04:38:39.929 [debug] Error while reading the extension cache file: /private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/CachedProfilesData/__default__profile__/extensions.builtin.cache Unable to read file 'vscode-userdata:/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/CachedProfilesData/__default__profile__/extensions.builtin.cache' (Error: Unable to resolve nonexistent file 'vscode-userdata:/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/CachedProfilesData/__default__profile__/extensions.builtin.cache')
+2026-10-15 04:38:39.929 [trace] [File Watcher (node.js)] Started watching: '/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/extensions'
+2026-10-15 04:38:39.931 [info] Started initializing default profile extensions in extensions installation folder. file:///private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/extensions
+2026-10-15 04:38:39.940 [debug] ComputeTargetPlatform: darwin-arm64
+2026-10-15 04:38:39.951 [info] Completed initializing default profile extensions in extensions installation folder. file:///private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/extensions
+2026-10-15 04:38:39.956 [trace] Scanned user extensions: 0
+2026-10-15 04:38:39.956 [trace] [File Watcher (node.js)] [raw] ["rename"] extensions.json.vsctmp
+2026-10-15 04:38:39.957 [trace] [File Watcher (node.js)] [raw] ["rename"] extensions.json
+2026-10-15 04:38:39.963 [trace] Scanned system extensions: 116
+2026-10-15 04:38:39.974 [debug] Writing language packs {}
+2026-10-15 04:38:40.058 [trace] [File Watcher (node.js)] [ADDED] /private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/extensions/extensions.json
+2026-10-15 04:38:40.058 [trace] [File Watcher (node.js)] [DELETED] /private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/extensions/extensions.json.vsctmp
+2026-10-15 04:38:40.135 [trace] [File Watcher (node.js)]  >> normalized [DELETED] /private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/extensions/extensions.json.vsctmp
+2026-10-15 04:38:40.135 [trace] [File Watcher (node.js)]  >> normalized [ADDED] /private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/extensions/extensions.json
+2026-10-15 04:38:40.187 [debug] User data changed
+2026-10-15 04:38:40.297 [trace] Started scanning user extensions {"$mid":1,"external":"vscode-userdata:/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/extensions/extensions.json","path":"/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/extensions/extensions.json","scheme":"vscode-userdata"}
+2026-10-15 04:38:40.298 [trace] Scanned user extensions: 0
+2026-10-15 04:38:40.686 [trace] PolicyConfiguration#onDidChangePolicies []
+2026-10-15 04:38:40.686 [trace] PolicyConfiguration#update []

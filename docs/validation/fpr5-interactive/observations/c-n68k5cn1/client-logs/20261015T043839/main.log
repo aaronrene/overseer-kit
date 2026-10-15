@@ -1,0 +1,127 @@
+2026-10-15 04:38:39.490 [trace] PolicyConfiguration#initialize
+[REDACTED credential-related diagnostic line 2; original retained locally]
+2026-10-15 04:38:39.490 [trace] NativePolicyService#_updatePolicyDefinitions - Found 2 policy definitions
+2026-10-15 04:38:39.490 [trace] NativePolicyService#_onDidPolicyChange - Updated policy values: {}
+2026-10-15 04:38:39.490 [trace] PolicyConfiguration#update ["update.mode","cursor.agentHost.updateMode"]
+2026-10-15 04:38:39.490 [trace] PolicyConfiguration#updatePolicyDefinitions ["update.enableWindowsBackgroundUpdates","cursor.experimental.startupConnectTransport"]
+2026-10-15 04:38:39.490 [trace] PolicyConfiguration#update []
+2026-10-15 04:38:39.494 [trace] [File Watcher (node.js)] Request to start watching: /private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/User (excludes: <none>, includes: <all>, filter: <none>, correlationId: <none>),/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/User/settings.json (excludes: <none>, includes: <all>, filter: <none>, correlationId: <none>)
+2026-10-15 04:38:39.494 [debug] Starting VS Code
+2026-10-15 04:38:39.494 [debug] from: /Applications/Cursor.app/Contents/Resources/app
+[REDACTED credential-related diagnostic line 11; original retained locally]
+2026-10-15 04:38:39.494 [trace] Resolving machine identifier...
+2026-10-15 04:38:39.494 [error] Error: Home directory not found
+    at getDirectory (/Applications/Cursor.app/Contents/Resources/app/node_modules/@vscode/deviceid/dist/storage.js:40:15)
+    at Object.setDeviceId (/Applications/Cursor.app/Contents/Resources/app/node_modules/@vscode/deviceid/dist/storage.js:76:28)
+    at Module.getDeviceId (/Applications/Cursor.app/Contents/Resources/app/node_modules/@vscode/deviceid/dist/devdeviceid.js:46:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async X7 (file:///Applications/Cursor.app/Contents/Resources/app/out/main.js:66:754)
+    at async u_e (file:///Applications/Cursor.app/Contents/Resources/app/out/main.js:187:70156)
+    at async eet (file:///Applications/Cursor.app/Contents/Resources/app/out/main.js:187:70501)
+    at async Promise.all (index 3)
+    at async tm.startup (file:///Applications/Cursor.app/Contents/Resources/app/out/main.js:335:6529)
+    at async D9e.startup (file:///Applications/Cursor.app/Contents/Resources/app/out/main.js:375:56811)
+2026-10-15 04:38:39.494 [trace] Resolved machine identifier: 3f2d1b70dabd5789ac13cdbb2c659c85a4da1cb35fab4b02024a796076766438
+2026-10-15 04:38:39.494 [trace] Main->SharedProcess#connect
+2026-10-15 04:38:39.494 [trace] PolicyConfiguration#updatePolicyDefinitions ["terminal.integrated.automationProfile.linux","terminal.integrated.automationProfile.osx","terminal.integrated.automationProfile.windows","terminal.integrated.profiles.windows","terminal.integrated.profiles.osx","terminal.integrated.profiles.linux","terminal.integrated.useWslProfiles","terminal.integrated.inheritEnv","terminal.integrated.persistentSessionScrollback","terminal.integrated.showLinkHover","terminal.integrated.ignoreProcessNames"]
+2026-10-15 04:38:39.494 [trace] PolicyConfiguration#updatePolicyDefinitions ["terminal.integrated.defaultProfile.linux","terminal.integrated.defaultProfile.osx","terminal.integrated.defaultProfile.windows"]
+2026-10-15 04:38:39.494 [trace] PolicyConfiguration#update []
+2026-10-15 04:38:39.494 [trace] PolicyConfiguration#update []
+2026-10-15 04:38:39.494 [trace] StorageMainService: creating application storage
+2026-10-15 04:38:39.494 [trace] [EncryptionMainService] setting usePlainTextEncryption to true...
+2026-10-15 04:38:39.494 [trace] [EncryptionMainService] set usePlainTextEncryption to true
+2026-10-15 04:38:39.494 [debug] [CursorProclistService] Native module loaded successfully
+2026-10-15 04:38:39.494 [debug] TracingService: created transport
+2026-10-15 04:38:39.494 [debug] ContinuousProfilingMainService: initialized in main process
+2026-10-15 04:38:39.494 [info] [AgentHostUpdater] not started: cursor.agentHost.updateMode=default follows update.mode=none; the agent host stays packed into this client
+2026-10-15 04:38:39.494 [trace] ElectronURLListener: waiting for window to be ready to handle URLs...
+2026-10-15 04:38:39.494 [trace] lifecycle (main): phase changed (value: 2)
+2026-10-15 04:38:39.494 [trace] [SharedProcess] preWarm enabled: will spawn on first window create
+2026-10-15 04:38:39.494 [trace] windowsManager#open
+2026-10-15 04:38:39.495 [trace] windowsManager#open pathsToOpen [{"workspace":{"id":"7b1abe362a580104b48521ddb7305f8f","uri":{"$mid":1,"fsPath":"/private/tmp/overseer-fpr5-integrated-pilot-20261015/project","path":"/private/tmp/overseer-fpr5-integrated-pilot-20261015/project","scheme":"file"}},"type":2,"exists":true}]
+2026-10-15 04:38:39.498 [trace] [File Watcher (node.js)] Started watching: '/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/User'
+2026-10-15 04:38:39.499 [trace] [File Watcher (node.js)] Started watching: '/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/User/settings.json'
+2026-10-15 04:38:39.502 [trace] windowsManager#doOpenFolderOrWorkspace {"folderOrWorkspace":{"workspace":{"id":"7b1abe362a580104b48521ddb7305f8f","uri":{"$mid":1,"fsPath":"/private/tmp/overseer-fpr5-integrated-pilot-20261015/project","external":"file:///private/tmp/overseer-fpr5-integrated-pilot-20261015/project","path":"/private/tmp/overseer-fpr5-integrated-pilot-20261015/project","scheme":"file"}},"type":2,"exists":true}}
+2026-10-15 04:38:39.503 [trace] IPC Object URL: Registered new channel vscode:10435619-6ff8-4d14-b62d-efc622a9d924.
+2026-10-15 04:38:39.503 [trace] window#validateWindowState: validating window state on 1 display(s) {"width":1280,"height":800,"mode":1,"x":108,"y":84,"hasDefaultState":true}
+2026-10-15 04:38:39.503 [trace] window#validateWindowState: single monitor working area {"x":0,"y":34,"width":1496,"height":933}
+2026-10-15 04:38:39.503 [trace] window#ctor: using window state {"width":1280,"height":800,"mode":1,"x":108,"y":84,"hasDefaultState":true}
+2026-10-15 04:38:39.553 [trace] [SharedProcess] preWarm: starting early spawn before first window connection
+2026-10-15 04:38:39.554 [trace] [SharedProcess] createUtilityProcess: spawning utility process
+2026-10-15 04:38:39.554 [trace] [UtilityProcess type: shared-process, pid: <none>]: creating new...
+2026-10-15 04:38:39.554 [trace] [UtilityProcess type: shared-process, pid: <none>]: payload sent via postMessage()
+2026-10-15 04:38:39.554 [trace] window#load: attempt to load window (id: 1)
+2026-10-15 04:38:39.564 [trace] StorageMainService: creating workspace storage (7b1abe362a580104b48521ddb7305f8f)
+2026-10-15 04:38:39.564 [trace] windowsManager#open used window count 1 (workspacesToOpen: 0, foldersToOpen: 1, emptyToRestore: 0, maybeOpenEmptyWindow: false)
+2026-10-15 04:38:39.564 [trace] lifecycle (main): phase changed (value: 3)
+2026-10-15 04:38:39.565 [trace] resolveShellEnv(): running (macOS/Linux)
+2026-10-15 04:38:39.565 [trace] getUnixShellEnvironment#runAsNode undefined
+2026-10-15 04:38:39.565 [trace] getUnixShellEnvironment#noAttach undefined
+2026-10-15 04:38:39.565 [trace] getUnixShellEnvironment#env {"PATH":"/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin","TMPDIR":"/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/temp/","LANG":"en_US.UTF-8","__CF_USER_TEXT_ENCODING":"0x1F6:0:0","VSCODE_CWD":"/private/tmp/overseer-fpr5-integrated-pilot-20261015/project","VSCODE_NLS_CONFIG":"{\"userLocale\":\"en-us\",\"osLocale\":\"en-us\",\"resolvedLanguage\":\"en\",\"defaultMessagesFile\":\"/Applications/Cursor.app/Contents/Resources/app/out/nls.messages.json\",\"locale\":\"en-us\",\"availableLanguages\":{}}","VSCODE_CODE_CACHE_PATH":"/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/CachedData/be4c9e5350d77747b42cd467cbd3370a753d4640","VSCODE_IPC_HOOK":"/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/3.24-main.sock","VSCODE_PID":"38573","ELECTRON_RUN_AS_NODE":"1","ELECTRON_NO_ATTACH_CONSOLE":"1","VSCODE_RESOLVING_ENVIRONMENT":"1"}
+2026-10-15 04:38:39.565 [debug] [desktop bridge] Not starting because desktop_bridge feature gate and/or user setting is disabled
+2026-10-15 04:38:39.565 [trace] getUnixShellEnvironment#shell /bin/zsh
+2026-10-15 04:38:39.565 [trace] getUnixShellEnvironment#spawn ["-i","-l","-c"] '/Applications/Cursor.app/Contents/MacOS/Cursor'  -p '"aefe80791214" + JSON.stringify(process.env) + "aefe80791214"'
+2026-10-15 04:38:39.567 [info] update#setState disabled
+2026-10-15 04:38:39.567 [info] update#ctor - updates are disabled by the environment
+2026-10-15 04:38:39.567 [info] [UpdateSupervisor] Cached gate startup (enabled=false)
+2026-10-15 04:38:39.696 [trace] [UtilityProcess type: shared-process, pid: 38581]: successfully created
+2026-10-15 04:38:39.704 [error] Error: Unable to read file '/Users/aaronrenecarvajal/.cursor/argv.json' (NoPermissions (FileSystemError): Error: EPERM: operation not permitted, stat '/Users/aaronrenecarvajal/.cursor/argv.json')
+    at nm.restoreReadError (file:///Applications/Cursor.app/Contents/Resources/app/out/main.js:362:9470)
+    at nm.doReadFileStream (file:///Applications/Cursor.app/Contents/Resources/app/out/main.js:362:9251)
+    at async nm.doReadFile (file:///Applications/Cursor.app/Contents/Resources/app/out/main.js:362:8501)
+    at async tm.updateCrashReporterEnablement (file:///Applications/Cursor.app/Contents/Resources/app/out/main.js:335:27014)
+2026-10-15 04:38:39.704 [trace] getUnixShellEnvironment#raw aefe80791214{"PATH":"/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/opt/homebrew/bin","TMPDIR":"/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/temp/","LANG":"en_US.UTF-8","__CF_USER_TEXT_ENCODING":"0x1F6:0:0","VSCODE_CWD":"/private/tmp/overseer-fpr5-integrated-pilot-20261015/project","VSCODE_NLS_CONFIG":"{\"userLocale\":\"en-us\",\"osLocale\":\"en-us\",\"resolvedLanguage\":\"en\",\"defaultMessagesFile\":\"/Applications/Cursor.app/Contents/Resources/app/out/nls.messages.json\",\"locale\":\"en-us\",\"availableLanguages\":{}}","VSCODE_CODE_CACHE_PATH":"/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/CachedData/be4c9e5350d77747b42cd467cbd3370a753d4640","VSCODE_IPC_HOOK":"/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/3.24-main.sock","VSCODE_PID":"38573","ELECTRON_RUN_AS_NODE":"1","ELECTRON_NO_ATTACH_CONSOLE":"1","VSCODE_RESOLVING_ENVIRONMENT":"1","HOME":"/Users/aaronrenecarvajal","LOGNAME":"root","SHLVL":"0","PWD":"/private/tmp/overseer-fpr5-integrated-pilot-20261015/project","OLDPWD":"/private/tmp/overseer-fpr5-integrated-pilot-20261015/project","_":"/Applications/Cursor.app/Contents/MacOS/Cursor"}aefe80791214
+
+2026-10-15 04:38:39.705 [trace] getUnixShellEnvironment#result {"PATH":"/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/opt/homebrew/bin","TMPDIR":"/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/temp/","LANG":"en_US.UTF-8","__CF_USER_TEXT_ENCODING":"0x1F6:0:0","VSCODE_CWD":"/private/tmp/overseer-fpr5-integrated-pilot-20261015/project","VSCODE_NLS_CONFIG":"{\"userLocale\":\"en-us\",\"osLocale\":\"en-us\",\"resolvedLanguage\":\"en\",\"defaultMessagesFile\":\"/Applications/Cursor.app/Contents/Resources/app/out/nls.messages.json\",\"locale\":\"en-us\",\"availableLanguages\":{}}","VSCODE_CODE_CACHE_PATH":"/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/CachedData/be4c9e5350d77747b42cd467cbd3370a753d4640","VSCODE_IPC_HOOK":"/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/3.24-main.sock","VSCODE_PID":"38573","HOME":"/Users/aaronrenecarvajal","LOGNAME":"root","SHLVL":"0","PWD":"/private/tmp/overseer-fpr5-integrated-pilot-20261015/project","OLDPWD":"/private/tmp/overseer-fpr5-integrated-pilot-20261015/project","_":"/Applications/Cursor.app/Contents/MacOS/Cursor"}
+2026-10-15 04:38:39.713 [trace] resolveShellEnv(): running (macOS/Linux)
+2026-10-15 04:38:39.904 [trace] [SharedProcess] IPC ready
+2026-10-15 04:38:39.904 [trace] Main->SharedProcess#connect: connection established
+2026-10-15 04:38:39.916 [trace] [File Watcher (node.js)] Request to start watching: /private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/User (excludes: <none>, includes: <all>, filter: <none>, correlationId: <none>),/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/User/settings.json (excludes: <none>, includes: <all>, filter: <none>, correlationId: <none>)
+2026-10-15 04:38:39.917 [trace] [File Watcher (node.js)] Started watching: '/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/User'
+2026-10-15 04:38:39.917 [trace] [File Watcher (node.js)] Started watching: '/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/User/settings.json'
+2026-10-15 04:38:39.921 [trace] [SharedProcess] Overall ready
+2026-10-15 04:38:39.955 [trace] [File Watcher (node.js)] Request to start watching: /private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/extensions (excludes: <none>, includes: <all>, filter: <none>, correlationId: <none>),/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/extensions/extensions.json (excludes: <none>, includes: <all>, filter: <none>, correlationId: <none>)
+2026-10-15 04:38:39.955 [trace] [File Watcher (node.js)] Started watching: '/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/extensions'
+2026-10-15 04:38:39.955 [trace] [File Watcher (node.js)] Started watching: '/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/extensions/extensions.json'
+2026-10-15 04:38:40.008 [trace] [File Watcher (node.js)] [raw] ["rename"] extensions.json.vsctmp
+2026-10-15 04:38:40.008 [trace] [File Watcher (node.js)] [raw] ["rename"] extensions.json
+2026-10-15 04:38:40.109 [trace] [File Watcher (node.js)] [DELETED] /private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/extensions/extensions.json.vsctmp
+2026-10-15 04:38:40.109 [trace] [File Watcher (node.js)] [CHANGED] /private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/extensions/extensions.json
+2026-10-15 04:38:40.186 [trace] [File Watcher (node.js)]  >> normalized [DELETED] /private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/extensions/extensions.json.vsctmp
+2026-10-15 04:38:40.186 [trace] [File Watcher (node.js)]  >> normalized [CHANGED] /private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/extensions/extensions.json
+2026-10-15 04:38:40.685 [trace] NativePolicyService#_updatePolicyDefinitions - Found 15 policy definitions
+2026-10-15 04:38:40.686 [trace] NativePolicyService#_onDidPolicyChange - Updated policy values: {}
+2026-10-15 04:38:40.686 [trace] PolicyConfiguration#onDidChangePolicies []
+2026-10-15 04:38:40.686 [trace] PolicyConfiguration#update []
+2026-10-15 04:38:40.688 [trace] [File Watcher (node.js)] Request to start watching: /private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/User (excludes: <none>, includes: <all>, filter: <none>, correlationId: <none>),/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/User/settings.json (excludes: <none>, includes: <all>, filter: <none>, correlationId: <none>)
+2026-10-15 04:38:40.689 [trace] [File Watcher (node.js)] Started watching: '/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/User'
+2026-10-15 04:38:40.689 [trace] [File Watcher (node.js)] Started watching: '/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/User/settings.json'
+2026-10-15 04:38:40.690 [trace] [File Watcher (node.js)] Request to start watching: /private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode (excludes: <none>, includes: <all>, filter: <none>, correlationId: <none>),/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode/settings.json (excludes: <none>, includes: <all>, filter: <none>, correlationId: <none>),/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode/tasks.json (excludes: <none>, includes: <all>, filter: <none>, correlationId: <none>),/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode/launch.json (excludes: <none>, includes: <all>, filter: <none>, correlationId: <none>),/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode/mcp.json (excludes: <none>, includes: <all>, filter: <none>, correlationId: <none>)
+2026-10-15 04:38:40.690 [trace] [File Watcher (node.js)] ignoring a path for watching who's stat info failed to resolve: /private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode (error: Error: ENOENT: no such file or directory, stat '/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode')
+2026-10-15 04:38:40.691 [trace] [File Watcher (node.js)] starting fs.watchFile() on /private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode (correlationId: undefined)
+2026-10-15 04:38:40.691 [trace] [File Watcher (node.js)] ignoring a path for watching who's stat info failed to resolve: /private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode/settings.json (error: Error: ENOENT: no such file or directory, stat '/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode/settings.json')
+2026-10-15 04:38:40.691 [trace] [File Watcher (node.js)] starting fs.watchFile() on /private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode/settings.json (correlationId: undefined)
+2026-10-15 04:38:40.691 [trace] [File Watcher (node.js)] ignoring a path for watching who's stat info failed to resolve: /private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode/tasks.json (error: Error: ENOENT: no such file or directory, stat '/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode/tasks.json')
+2026-10-15 04:38:40.691 [trace] [File Watcher (node.js)] starting fs.watchFile() on /private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode/tasks.json (correlationId: undefined)
+2026-10-15 04:38:40.691 [trace] [File Watcher (node.js)] ignoring a path for watching who's stat info failed to resolve: /private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode/launch.json (error: Error: ENOENT: no such file or directory, stat '/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode/launch.json')
+2026-10-15 04:38:40.691 [trace] [File Watcher (node.js)] starting fs.watchFile() on /private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode/launch.json (correlationId: undefined)
+2026-10-15 04:38:40.691 [trace] [File Watcher (node.js)] ignoring a path for watching who's stat info failed to resolve: /private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode/mcp.json (error: Error: ENOENT: no such file or directory, stat '/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode/mcp.json')
+2026-10-15 04:38:40.691 [trace] [File Watcher (node.js)] starting fs.watchFile() on /private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode/mcp.json (correlationId: undefined)
+2026-10-15 04:38:40.737 [info] TracingService: private inference lockdown disabled
+2026-10-15 04:38:40.737 [debug] TracingService: fired process config update {"enabled":true,"allowCrashReportsWhenDisabled":false,"loggerSampleRate":1,"profilesSampleRate":0,"jsonStringifySampleRate":0,"replaysSessionSampleRate":0,"isInternalUser":false}
+2026-10-15 04:38:40.738 [debug] TracingService: set session replay config to {"replaysSessionSampleRate":0}, isInternalUser=false
+2026-10-15 04:38:40.738 [debug] TracingService: fired process config update {"enabled":true,"allowCrashReportsWhenDisabled":false,"loggerSampleRate":1,"profilesSampleRate":0,"jsonStringifySampleRate":0,"replaysSessionSampleRate":0,"isInternalUser":false}
+2026-10-15 04:38:40.738 [debug] TracingService: flushing buffer with 1 items
+2026-10-15 04:38:40.738 [debug] TracingService: dropping non-event envelope due to privacy policy
+2026-10-15 04:38:40.738 [debug] TracingService: set is legacy privacy mode to true
+2026-10-15 04:38:40.738 [debug] TracingService: fired process config update {"enabled":false,"allowCrashReportsWhenDisabled":true,"loggerSampleRate":0,"profilesSampleRate":0,"jsonStringifySampleRate":0,"replaysSessionSampleRate":0,"isInternalUser":false}
+2026-10-15 04:38:40.854 [trace] [Tray] Resources root: /Applications/Cursor.app/Contents/Resources/app/resources, isPackaged: true
+2026-10-15 04:38:40.854 [trace] [Tray] Resources root: /Applications/Cursor.app/Contents/Resources/app/resources, isPackaged: true
+2026-10-15 04:38:40.855 [info] [Tray] getMacOSIconPath: hasNotifications: false
+2026-10-15 04:38:40.855 [trace] [Tray] Using icon: /Applications/Cursor.app/Contents/Resources/app/resources/darwin/trayTemplate@2x.png
+2026-10-15 04:38:40.861 [trace] [Tray] Resources root: /Applications/Cursor.app/Contents/Resources/app/resources, isPackaged: true
+2026-10-15 04:38:40.861 [info] [Tray] getMacOSIconPath: hasNotifications: false
+2026-10-15 04:38:40.861 [trace] [Tray] Using icon: /Applications/Cursor.app/Contents/Resources/app/resources/darwin/trayTemplate@2x.png
+2026-10-15 04:38:40.864 [trace] window#load: window reported ready (id: 1)
+2026-10-15 04:38:40.864 [trace] ElectronURLListener#flush(): flushing URLs
+2026-10-15 04:38:40.865 [trace] [EncryptionMainService] Checking if encryption is available...

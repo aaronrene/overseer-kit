@@ -1,0 +1,12 @@
+{
+  "original_helper": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/docs/validation/fpr5-acceptance/host-platform/owner_observe.py",
+  "original_sha256": "0c906888bca6b9435af12c6e1f71a1fc835191560cd35c6515d7fc788a8a9d6b",
+  "new_helper": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-desktop-600-preparation-ne7i2ulw/owner_observe_600.py",
+  "new_sha256": "2cbe0dbedef59337b4c821098073d2d3f1833686448cc66f4686fb0774dddeae",
+  "only_change": "observation timeout and matching displayed metadata from180to600 seconds",
+  "outer_isolation_policy": "unchanged",
+  "original_observation_preserved": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-observation-desktop-g1lukv03",
+  "user_report": "I saw the test window open, but now it is gone.",
+  "validated_action": "OVERSEER-FPR5-INTERACTIVE-ACCEPTANCE-1",
+  "closing_head": "7ee9a372e478ad251c17d8e8fd1a4118811c01b2"
+}

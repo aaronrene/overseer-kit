@@ -1,0 +1,20 @@
+{
+  "kind": "Owner-assisted observation closeout; not independent adjudication",
+  "parent_commit": "7ee9a372e478ad251c17d8e8fd1a4118811c01b2",
+  "closing_commit_rule": "single local commit with sole parent above; verify clean state and bound NEXT afterward",
+  "runtime_sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774",
+  "source_changes": false,
+  "new_matrix_execution": false,
+  "basis": "Unchanged production/native/test/requirements source and prior exact acceptance evidence; new owner-observed UI evidence only",
+  "desktop_rendered_next": "PASS with screenshot plus two exact canonical action-block comparisons",
+  "cursor_sessionStart": "BLOCKED; no actual receipt",
+  "cursor_stop": "BLOCKED; no actual receipt",
+  "cursor_cleanup": "normal quit and SIGTERM attempted, then exact verified group SIGKILL; group empty",
+  "keychain_privacy_account_network_permissions_changed": false,
+  "prior_evidence_paths_preserved": 820,
+  "nested_observation_files_verified": 40,
+  "next_sha256": "eb82daa7c5879b66a69b16b3acbe78693f50387e462d022675de1d101b33a18f",
+  "final_adjudication_ready": false,
+  "release_ready": false,
+  "no_claim_of_independence": true
+}

@@ -24,7 +24,7 @@ The former sole-writer/NXR-GSR chain remains historical and is not the living NE
 | FPR-4 — combined validation | Local matrix, bounded repairs, package and rollback evidence recorded; missing Python 3.11 cell now has complete passing coverage in the acceptance record; selected interactive acceptance remains open |
 | FPR-5 — independent final review | Complete — original **FINDINGS** verdict and evidence preserved in [the review](reviews/FPR-5-REVIEW.md) |
 | FPR-5 bounded repairs | All six implemented; 1,361 selected cases have passing evidence across the new combined run and affected rerun; [author evidence](validation/FPR-5-REPAIRS.md) |
-| Remaining acceptance, final adjudication and release decision | **Blocked on two interactive observations** — 1,196 Python 3.11 cases have passing evidence, disposable local workflow passed, and native startup repaired. Actual desktop content/NEXT and Cursor 3.24.18 start/stop delivery remain unaccepted; [acceptance record](validation/FPR-5-ACCEPTANCE.md). Then one final independent adjudication and a separate owner release decision |
+| Remaining acceptance, final adjudication and release decision | **Blocked on Cursor lifecycle** — complete Python 3.11 coverage, disposable local workflow and owner-observed desktop content/NEXT have passing evidence. Actual Cursor 3.24.18 start/stop remain unverified after an isolated keychain gate; [owner observations](validation/FPR-5-INTERACTIVE.md). Resolve the test environment/owner decision, then complete required evidence, one final independent adjudication and a separate owner release decision |
 
 The exact current action lives only in `docs/NEXT.md`; use `ok -C ROOT next`.
 Update this summary and HANDOVER together. No release or remote operation is

@@ -1,0 +1,60 @@
+{
+  "ok": true,
+  "repository": {
+    "name": "overseer-fpr5-integrated-pilot-20261015",
+    "root_relative_docs": "docs",
+    "id": "20dd0872-c7a4-5fdf-81a5-27eefa0acc2e",
+    "root": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project"
+  },
+  "branch": "pilot/fpr5-integrated-20261015",
+  "head": "4e394520262e1447ae8b5415ae36dc75dc05197e",
+  "runtime": {
+    "root": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/installation",
+    "version": "1.0.0.dev1",
+    "sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774"
+  },
+  "vcs": "git",
+  "source_id": null,
+  "publication": "not_checked_offline",
+  "lanes": {
+    "product": {
+      "ok": true,
+      "next": {
+        "repo_id": "20dd0872-c7a4-5fdf-81a5-27eefa0acc2e",
+        "repo_root": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+        "vcs": "git",
+        "source_id": null,
+        "branch": "pilot/fpr5-integrated-20261015",
+        "base_head": "6accf73f0020b0413836964bf1460889c8e4c0ad",
+        "model": "GPT-6 Astra",
+        "action_id": "PILOT-LOCAL-CLOSE-product",
+        "action_kind": "stop",
+        "prompt_sha256": "7bb65db4ec34d3ee2ec9b359382fa33ea78d4ee59350bb33dc126be9ecb3343b",
+        "schema": 3,
+        "lane": "product"
+      },
+      "prompt": "Local disposable author workflow completed. Preserve this project and its evidence. Required native host lifecycle, native GUI/platform acceptance, remaining matrix evidence, independent final adjudication and owner release decision remain unresolved. No external operations are authorized.\nSelected work stream is product.\n"
+    },
+    "validation": {
+      "ok": true,
+      "next": {
+        "repo_id": "20dd0872-c7a4-5fdf-81a5-27eefa0acc2e",
+        "repo_root": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+        "vcs": "git",
+        "source_id": null,
+        "branch": "pilot/fpr5-integrated-20261015",
+        "base_head": "6accf73f0020b0413836964bf1460889c8e4c0ad",
+        "model": "GPT-6 Astra",
+        "action_id": "PILOT-LOCAL-CLOSE-validation",
+        "action_kind": "stop",
+        "prompt_sha256": "5283861a0d844989fdc1319d32c9caff1335f6f209789a38494c43997db76c8a",
+        "schema": 3,
+        "lane": "validation"
+      },
+      "prompt": "Local disposable author workflow completed. Preserve this project and its evidence. Required native host lifecycle, native GUI/platform acceptance, remaining matrix evidence, independent final adjudication and owner release decision remain unresolved. No external operations are authorized.\nSelected work stream is validation.\n"
+    }
+  },
+  "selection_required": true,
+  "next_sha256": "489ded7be7f530ea242e1ed5dbdce96037ec752cc63c9359eaa778aa483ba055",
+  "rendered": "Repository lanes \u2014 select --lane L before action.\nproduct: valid\n## CURRENT NEXT \u2014 paste this\n\n```text\nRepository: /private/tmp/overseer-fpr5-integrated-pilot-20261015/project\nRepository ID: 20dd0872-c7a4-5fdf-81a5-27eefa0acc2e\nBranch: pilot/fpr5-integrated-20261015\nLane: product\nModel: GPT-6 Astra\nAction ID: PILOT-LOCAL-CLOSE-product\nAction kind: stop\n\nLocal disposable author workflow completed. Preserve this project and its evidence. Required native host lifecycle, native GUI/platform acceptance, remaining matrix evidence, independent final adjudication and owner release decision remain unresolved. No external operations are authorized.\nSelected work stream is product.\n```\nvalidation: valid\n## CURRENT NEXT \u2014 paste this\n\n```text\nRepository: /private/tmp/overseer-fpr5-integrated-pilot-20261015/project\nRepository ID: 20dd0872-c7a4-5fdf-81a5-27eefa0acc2e\nBranch: pilot/fpr5-integrated-20261015\nLane: validation\nModel: GPT-6 Astra\nAction ID: PILOT-LOCAL-CLOSE-validation\nAction kind: stop\n\nLocal disposable author workflow completed. Preserve this project and its evidence. Required native host lifecycle, native GUI/platform acceptance, remaining matrix evidence, independent final adjudication and owner release decision remain unresolved. No external operations are authorized.\nSelected work stream is validation.\n```\n"
+}

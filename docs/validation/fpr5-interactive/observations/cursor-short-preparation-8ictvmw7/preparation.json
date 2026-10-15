@@ -1,0 +1,11 @@
+{
+  "prior_helper": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-desktop-600-preparation-ne7i2ulw/owner_observe_600.py",
+  "prior_sha256": "2cbe0dbedef59337b4c821098073d2d3f1833686448cc66f4686fb0774dddeae",
+  "corrected_helper": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-short-preparation-8ictvmw7/owner_observe_short.py",
+  "corrected_sha256": "b7e38c0dc86f5cba4e607b334df26193d80037db84ba62030e840b4dc7e6dbb9",
+  "only_change": "shorter new observation directory prefix so Cursor Unix socket path fits103byte limit",
+  "predicted_socket_bytes": 92,
+  "original_failed_run": "owner-observation-cursor-p7_1rhzy",
+  "outer_sandbox_network_and_profile_restrictions": "unchanged",
+  "limit_seconds": 600
+}

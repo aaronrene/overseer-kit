@@ -1,0 +1,102 @@
+[REDACTED credential-related diagnostic line 1; original retained locally]
+2026-10-15 04:38:40.686 [trace] PolicyConfiguration#initialize
+[REDACTED credential-related diagnostic line 3; original retained locally]
+2026-10-15 04:38:40.686 [trace] AccountPolicyService#_updatePolicyDefinitions: Got 15 policy definitions
+2026-10-15 04:38:40.687 [trace] PolicyConfiguration#update ["extensions.gallery.serviceUrl","extensions.allowed","update.mode","cursor.agent.remoteWorkspaceAuthorities","cursor.general.disableHttp2","cursor.general.indexRepositoriesForInstantGrep","cursorAuth.allowedTeamId","cursorAuth.signInEnforcement","cursorAuth.allowedOrganizationIds","cursorAuth.allowedTeamIds","cursorAuth.allowedLoginEmails","cursorAuth.allowedLoginDomains","cursorAuth.xaiIdentity.enabled","security.workspace.trust.enabled","cursor.agentHost.updateMode"]
+2026-10-15 04:38:40.687 [trace] PolicyConfiguration#updatePolicyDefinitions ["editor.selectionClipboard","cursor.experimental.startupConnectTransport","window.menuBarVisibility","window.enableMenuBarMnemonics","window.customMenuBarAltFocus","extensions.autoRestart","update.enableWindowsBackgroundUpdates","window.controlsStyle","keyboard.mapAltGrToCtrlAlt"]
+2026-10-15 04:38:40.687 [trace] PolicyConfiguration#update []
+2026-10-15 04:38:40.689 [trace] Error while resolving configuration file 'file:///private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode/settings.json': Unable to read file '/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode/settings.json' (Error: Unable to resolve nonexistent file '/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode/settings.json')
+2026-10-15 04:38:40.689 [trace] Error while resolving configuration file 'file:///private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode/launch.json': Unable to read file '/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode/launch.json' (Error: Unable to resolve nonexistent file '/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode/launch.json')
+2026-10-15 04:38:40.689 [trace] Error while resolving configuration file 'file:///private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode/tasks.json': Unable to read file '/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode/tasks.json' (Error: Unable to resolve nonexistent file '/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode/tasks.json')
+2026-10-15 04:38:40.689 [trace] Error while resolving configuration file 'file:///private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode/mcp.json': Unable to read file '/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode/mcp.json' (Error: Unable to resolve nonexistent file '/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.vscode/mcp.json')
+2026-10-15 04:38:40.863 [trace] [lifecycle] starting up (startup kind: 1)
+2026-10-15 04:38:40.863 [trace] lifecycle: phase changed (value: 2)
+2026-10-15 04:38:40.863 [info] [CursorExtensionIsolationService] Extension isolation is enabled
+2026-10-15 04:38:40.863 [trace] Renderer->SharedProcess#connect
+2026-10-15 04:38:40.863 [warning] Missing property "alwaysKeepComposerInBound" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.863 [warning] Missing property "defaultCapabilities" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "autoApplyFilesOutsideContext" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "yoloCommandAllowlist" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "yoloCommandDenylist" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "smartAllowlistDenylist" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "yoloMcpToolsDisabled" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "doNotShowYoloModeWarningAgain" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "doNotShowFullYoloModeWarningAgain" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "selectedFakeStreamerId" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "yoloDeleteFileDisabled" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "yoloOutsideWorkspaceDisabled" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "yoloEnableRunEverything" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "enableSmartAuto" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "isWebSearchToolEnabled" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "isWebSearchToolEnabled2" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "isWebSearchToolEnabled3" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "autoAcceptWebSearchTool" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "isWebFetchToolEnabled" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "webFetchDomainAllowlist" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "autoApproveModeTransitions" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "mcpAuthBlocking" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "autoApprovedModeTransitions" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "autoRejectedModeTransitions" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "backgroundComposerEnv" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "useLegacyTerminalTool" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "modes4" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "codeBlockDisplayPreference" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "thinkingLevel" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "composerMigrationVersion" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "mcpServers" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "mcpDisabledTools" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "featureModelConfigs" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "backgroundComposerState" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "dialogDontAskAgainPreferences" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "cursorIgnore" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "teamAdminSettings" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "shouldShowViewZoneWhenPreviewBoxIsClipped6" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "cppModelsState" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "aiSettings" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "authenticationSettings" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "websiteUrl" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "backendUrl" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "authClientId" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "authDomain" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "repoBackendUrl" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "telemBackendUrl" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "cmdkBackendUrl" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "geoCppBackendUrl" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "cppConfigBackendUrl" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "originBackendUrl" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "bcProxyUrl" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "agentBackendUrlPrivacy" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "agentBackendUrlNonPrivacy" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+[REDACTED credential-related diagnostic line 70; original retained locally]
+2026-10-15 04:38:40.864 [warning] Missing property "cmdLineHookState" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "shouldOnlyImportOnAccept" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "cppAutoImportDecorationStyle" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "newUserData" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "azureState" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "personalDocs" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "cppInCmdF" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "cppTriggerInComments" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "cppShowWhitespaceOnlyChanges" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "cppConfig" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "haveNotImportedFromVSC" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "shouldAutoParseCmdKLinks" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "isFileSyncClientEnabled" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "membershipType" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "fastApplyModelType" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "explicitlyEnableSemanticSearch" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "backgroundComposerEnv" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "preferredEmbeddingModel" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "oneTimeSettings" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "eligibleForSnippetLearning" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "goneThroughCodeSnippetOnboarding" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "goneThroughCodeSnippetChangeManagement" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "hasResetModelOnce" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [warning] Missing property "rpcFileLoggerEnabled" in oldValue. Filling with value from initValue. Please add a migration if necessary.
+2026-10-15 04:38:40.864 [info] [CursorAgentHostEnablementService] cursor_agent_host gate is disabled, private inference is disabled, remote-workspace policy is allowed, effective agent-host topology is disabled
+2026-10-15 04:38:40.864 [info] [PushRequestContextService] push request context is disabled (killswitchActive=false, instantGrepEnabled=false, indexingGrepEnabled=true, agentHostEnabled=false, agentHostForcePush=false)
+2026-10-15 04:38:40.864 [debug] [LegacyAgentHostService] initialized
+2026-10-15 04:38:40.864 [info] [AgentHostService] using legacy implementation
+2026-10-15 04:38:40.864 [trace] PolicyConfiguration#updatePolicyDefinitions []
+2026-10-15 04:38:40.864 [trace] TimelineService#registerTimelineProvider: id=timeline.localHistory
+2026-10-15 04:38:40.864 [trace] Renderer->McpProcess#connect
+2026-10-15 04:38:40.864 [trace] Layout#layout, height: 800, width: 1280

@@ -1,0 +1,7 @@
+{
+  "kind": "Normal quit after successful owner observation",
+  "pid": 37738,
+  "process_checked": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/candidate/overseer-kit-desktop-candidate",
+  "normal_quit_accepted": true,
+  "signals_sent": false
+}

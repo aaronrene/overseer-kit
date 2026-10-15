@@ -1,0 +1,26 @@
+{
+  "kind": "Owner-observed isolated Cursor keychain gate; no acceptance claim",
+  "outcome": "BLOCKED",
+  "screenshot": {
+    "path": "/Users/aaronrenecarvajal/Desktop/Screenshot 2026-10-15 at 4.40.02\u202fAM.png",
+    "sha256": "5c7ff656bf665474111ca3c1dfcb8b5c88753775e61da857fc8a5f0a2785b4b0",
+    "bytes": 1310609,
+    "durable_copy": false,
+    "reason": "Unrelated background windows remain outside committed evidence"
+  },
+  "visible_dialog": {
+    "title": "Keychain Not Found",
+    "message": "A keychain cannot be found to store \u201cCursor Key.\u201d",
+    "buttons": [
+      "Cancel",
+      "Reset To Defaults"
+    ]
+  },
+  "boundary": "Pinned sandbox denies real home/account reads and securityd/security.agent lookup; no relaxation authorized",
+  "instruction_to_owner": "Cancel; do not reset keychain defaults",
+  "interpretation": "Observed gate in isolated test; not evidence that the normal user keychain is missing or damaged",
+  "sessionStart": "not demonstrated",
+  "stop": "not demonstrated; requires actual model-turn event",
+  "desktop_rendered_next": "passed separately with owner screenshot and exact action-block comparison",
+  "release_ready": false
+}

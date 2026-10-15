@@ -1,0 +1,8 @@
+{
+  "exit": 0,
+  "normal_quit_requested": false,
+  "fallback_signal": false,
+  "remaining_group_before_fallback": "",
+  "next_unchanged": true,
+  "acceptance_verdict": "not_automatically_adjudicated"
+}

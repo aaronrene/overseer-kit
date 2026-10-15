@@ -8,7 +8,7 @@ Active implementation: `overseer-kit-v1-recovery-20261014`, branch
 `feat/overseer-v1-recovery-20261014`, reconciled base `d47291d`.
 Both older dirty worktrees remain untouched.
 
-**Current stop: two interactive acceptance observations.** The owner selected
+**Current stop: actual Cursor lifecycle acceptance.** The owner selected
 Cursor 3.24.18 on macOS 15.7.2 arm64, retained the complete Python 3.11/3.14 and
 three-authority requirements, and explicitly approved the pinned package
 download and new disposable local pilot. Other network/release restrictions
@@ -18,10 +18,14 @@ All 1,196 Python 3.11 cases have passing evidence across the original
 rerun; raw failures remain. The new disposable pilot's local workflow passed.
 One native startup crash was repaired by disabling duplicate automatic window
 creation; actual window creation and normal app/child shutdown passed.
-Actual rendered desktop content/NEXT and Cursor sessionStart/stop delivery
-remain blocked. Prepared owner-assisted observation commands preserve the
-existing restrictions. No independent adjudication or release decision is
-claimed. Canonical NEXT is published only through bound `next-write`.
+The owner has now confirmed actual desktop rendering and copied both NEXT
+action blocks; exact comparison passed and the app exited normally. The isolated
+Cursor attempt reached a keychain gate and demonstrated neither sessionStart nor
+stop. It was closed without changing keychain/privacy settings or allowing
+account/provider access. See [owner observations](validation/FPR-5-INTERACTIVE.md).
+Resolve an approved lifecycle-test environment or an explicit owner decision
+before changing any restriction or requirement. No independent adjudication or
+release decision is claimed. Canonical NEXT uses only bound `next-write`.
 The owner-appointed [FPR-5 review](reviews/FPR-5-REVIEW.md) is complete with its
 original **FINDINGS** verdict preserved. This owner-directed repair implements
 all six findings; [author evidence](validation/FPR-5-REPAIRS.md) records failing
@@ -43,8 +47,8 @@ the bound services; installed hooks remain disabled.
 
 Owner choices and the new pilot authorization are now explicit in the acceptance
 record; the complete pinned Python 3.11 cell is now supported by exact case
-reconciliation. The two interactive observations keep selected host/platform
-and full integrated-pilot acceptance open. The
+reconciliation. Actual Cursor lifecycle delivery keeps selected host and full
+integrated-pilot acceptance open; the desktop observation has passed. The
 completed review is not pending again. After complete repaired-source and
 acceptance evidence, reserve one final independent adjudication, then one
 separate owner release decision. Repair authors cannot certify that adjudication.
