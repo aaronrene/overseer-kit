@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "node",
+    "docs/validation/fpr5-restore-repro/reproduce.mjs"
+  ],
+  "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+  "started_at": "2026-10-15T15:49:07.979225+00:00",
+  "finished_at": "2026-10-15T15:49:09.990278+00:00",
+  "exit_code": 0,
+  "stdout_path": "reproduction-result.json",
+  "stderr_path": "reproduction-stderr.txt",
+  "stdout_sha256": "9eb879065325438787e7474dd3dd7922215c4cb6ae64ade77395b57ce501c6e4",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "execution_count": 1
+}

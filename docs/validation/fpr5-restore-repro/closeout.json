@@ -1,0 +1,55 @@
+{
+  "kind": "Author capture closeout; not independent adjudication",
+  "opening_head": "9653a4b43f14a7b918b8162f17e46274f46d7ba6",
+  "closing_commit_rule": "one documentation/evidence commit with opening HEAD as sole parent",
+  "source_groups_verified": {
+    "runtime_files": 295,
+    "test_sources": 440,
+    "native_sources": 40,
+    "packaging_sources": 10,
+    "validation_scripts": 4,
+    "requirements": 2
+  },
+  "runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774"
+  },
+  "prior_investigation_unchanged": true,
+  "tracked_original_validation_reviews_tests_unchanged": true,
+  "protected_refs_verified": 144,
+  "installed_excerpts_verified": 100,
+  "captured_events": 54,
+  "experiment_executions": 1,
+  "persistence_restore_cycles": 1,
+  "convergence_before_navigation": false,
+  "natural_workspace_task_mismatch": false,
+  "injected_mismatch_reached_outgoing_resume": true,
+  "backend_acceptance_effective_permissions_turns_tools": "NOT OBSERVED",
+  "historical_cause_established": false,
+  "historical_incident_cleared": false,
+  "ops1_qualification_blocker": true,
+  "cursor_sessionStart": "owner-postponed NOT VERIFIED",
+  "cursor_stop": "owner-postponed NOT VERIFIED",
+  "legacy_cli_repair_applied": false,
+  "final_adjudication_authorized": false,
+  "release_authorized": false,
+  "new_experiment_or_review_scheduled": false,
+  "checks": [
+    "source/runtime and installed excerpt hashes",
+    "preserved investigation and tracked original evidence",
+    "54 captured events and result consistency",
+    "new JSON parsing and relative links",
+    "whitespace",
+    "paired summary-only lock changes",
+    "bound explicit-context NEXT readback"
+  ],
+  "next_sha256": "49c230766547db7ff940e538425fd64cf552696cdb99fdcd75b6cc1635c6f77f",
+  "successor": "OVERSEER-FPR5-OPS1-RESTORE-STOP-1",
+  "runtime_source_dependencies_hooks_or_installed_client_mutated": false,
+  "unexpected_changes": [],
+  "preparation_corrections": [
+    "Read-only renderer extraction used Python character offsets with JavaScript UTF-16 offsets; corrected to AST method-text matching before source behavior execution.",
+    "Read-only lock preflight initially parsed YAML as JSON and failed before sync; corrected to YAML. No second experiment or extra sync occurred."
+  ]
+}

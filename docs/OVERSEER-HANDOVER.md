@@ -8,29 +8,30 @@ Active implementation: `overseer-kit-v1-recovery-20261014`, branch
 `feat/overseer-v1-recovery-20261014`, reconciled base `d47291d`.
 Both older dirty worktrees remain untouched.
 
-**Acceptance packet and bounded investigation complete; restoration cause unresolved.**
-The [packet](validation/FPR-5-ACCEPTANCE-PACKET.md) maps the exact candidate,
-all maintained commands, section-9 requirements, six repairs and open issues to
-existing evidence. Source comparison covers 791 runtime/test/native/package/
-driver/requirements entries without differences; all 20 historical command names
-are registered. These are coordination checks, not independent certification.
-No completed suite, review, pilot or isolated launch was repeated. The
-[handoff reliability report](validation/FPR-5-HANDOFF-RELIABILITY.md) adds an
-offline reproduction using seven saved source excerpts, synthetic routes and two
-temporary empty directories. A seeded shared URI resolves in both mock windows;
-cwd arbitration can retain the other project's task root and owner discovery
-does not carry workspace identity. This is propagation evidence, not a
-reproduction of the unknown historical selection trigger or proof of wrong-root
-execution. Production source/runtime and original evidence remain unchanged.
+**One authorized restoration capture complete; historical cause unresolved.**
+The [acceptance packet](validation/FPR-5-ACCEPTANCE-PACKET.md) and completed
+[prior investigation](validation/FPR-5-HANDOFF-RELIABILITY.md), including its
+seeded propagation reproduction, are preserved unchanged. The new
+[distinct-route capture](validation/FPR-5-RESTORE-REPRO.md) ran once through actual
+installed custom-editor serialization, workspace persistence, selection,
+restoration and renderer resume preparation in an offline host-API harness.
+Two synthetic repositories/threads retained distinct routes before navigation.
+A labelled membership-drift probe then kept thread B while window B's workspace
+input became A: actual client code assigned owner and sent `thread/resume` with
+cwd B. The stub stopped at the request boundary; backend acceptance, effective
+permissions, turn admission and tool execution remain unobserved. This is no
+proof of the historical selection trigger, wrong-root execution or incident
+clearance. Production source/runtime and original evidence remain unchanged.
 
-The owner-postponed Cursor start/stop checks remain **NOT VERIFIED**; do not ask
-again or turn them into a pass. Full automatic-host/integrated-pilot acceptance
-and final-adjudication readiness remain unestablished. FPR-OPS-1 remains an open
-qualification blocker. The report delivers a confined host/owner mismatch guard
-proposal and a minimal further capture starting with two distinct routes. NEXT
-stops pending separate scope for that new disposable client capture or repair;
-do not repeat this investigation, packet preparation or general reviews. All
-restrictions remain in force.
+The report supplies one confined host/owner repository-binding admission guard
+recommendation. No repair was applied. NEXT stops with no further experiment,
+repair or review scheduled or authorized. Cursor sessionStart/stop remain
+**owner-postponed NOT VERIFIED**. Full automatic-host qualification and
+final-adjudication readiness remain unestablished; FPR-OPS-1 remains an open
+qualification blocker. Final non-author adjudication and separate owner release
+remain unauthorized. No completed test, review, pilot or failed launch was
+repeated; no installed source, profile/account, global/consumer or hook mutation
+occurred. All restrictions remain in force.
 
 The owner did **not** deliberately open the same conversation or duplicate project
 windows. Logs establish shared display, not how it was selected or restored. The

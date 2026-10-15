@@ -1,0 +1,12 @@
+Reasoning: Max
+Role: Owner scope checkpoint; not independent adjudicator
+
+Read docs/validation/FPR-5-RESTORE-REPRO.md and preserve the prior investigation.
+Stop here. No further experiment, repair, review or release is authorized.
+The historical restoration cause remains unresolved; a negative synthetic result
+does not clear it. Keep FPR-OPS-2's legacy CLI repair plan separate and unapplied.
+Cursor sessionStart/stop remain owner-postponed NOT VERIFIED.
+Preserve original findings/failures, old worktrees, protected refs and Muse history.
+No profiles/accounts, permission changes, installed/global/consumer mutations,
+hooks, network/providers, export/delivery, fetch/push, main merge, tags, signing
+or deployment. Final non-author adjudication and owner release remain unauthorized.

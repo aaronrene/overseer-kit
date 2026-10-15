@@ -1,0 +1,126 @@
+{
+  "sources": {
+    "extension": {
+      "path": "/Users/aaronrenecarvajal/.cursor/extensions/openai.chatgpt-26.908.40401-darwin-arm64/out/extension.js",
+      "sha256": "820691c93be40e73f0929b633cddc694b41775050cd72283faba283e53941f4f",
+      "bytes": 2062793
+    },
+    "renderer_ui": {
+      "path": "/Users/aaronrenecarvajal/.cursor/extensions/openai.chatgpt-26.908.40401-darwin-arm64/webview/assets/app-initial-a190b16fc630.js",
+      "sha256": "50b1a443400ba2f7ac0be53c56536a3e145bccfff0e2f456f100850133a01683",
+      "bytes": 4527455
+    }
+  },
+  "excerpts": {
+    "E1": {
+      "file": "extension",
+      "byte_start": 1841212,
+      "byte_end_exclusive": 1841541,
+      "line": 985,
+      "sha256": "4cce9cb42020deeb869757aa235347a50eabdf456b25b8086a90415eb414dcc8",
+      "text": "async ensureRestoredConversationTabsResolved(){for(let e of Ie.window.tabGroups.all)for(let r of e.tabs){let n=r.input,o=null;n instanceof Ie.TabInputCustom||n instanceof Ie.TabInputText?o=n.uri:o=null,o?.scheme===ph&&Ie.commands.executeCommand(\"vscode.openWith\",o,t.customEditorViewType,{preserveFocus:!0,preview:r.isPreview})}}",
+      "supports": "Reopens restored openai-codex tab URIs via vscode.openWith without workspace comparison in this method."
+    },
+    "E2": {
+      "file": "extension",
+      "byte_start": 1687727,
+      "byte_end_exclusive": 1688006,
+      "line": 931,
+      "sha256": "4d059f05dde40d43a317f7b0675b4c5dbfc4289a2f743e520831e029a399f360",
+      "text": "function dI(t){let{scheme:e,authority:r,path:n}=t;if(e!==ph)return null;if(r!==oPe)return null;let i=(n.startsWith(\"/\")?n.slice(1):n).split(\"/\"),s=null;return i.length>=2&&(i[0]===\"local\"||i[0]===\"remote\")&&(s=i[1]),{path:`${n}${t.query===\"\"?\"\":`?${t.query}`}`,conversationId:s}}",
+      "supports": "Conversation URI parser accepts scheme/authority/path; no repository field."
+    },
+    "E3": {
+      "file": "extension",
+      "byte_start": 1815147,
+      "byte_end_exclusive": 1816274,
+      "line": 947,
+      "sha256": "65488bc57dab2dce0c2408d5aa38e58dc50260301e7e618aa0bcf5b2f305a7d1",
+      "text": "async resolveCustomEditor(e,r,n){let o=dI(e.uri);if(o==null)throw new Error(`Invalid Codex conversation URI: ${e.uri.toString()}`);let{conversationId:i}=o,s=null,a=null;if(i!=null)try{let{summary:c}=await this.conversationSummaryProvider.getConversationSummary(i);s=c.preview,a=c.modelProvider}catch(c){this.logger.error(\"Error fetching conversation summary\",{safe:{error:c},sensitive:{}})}r.title=Uke(s),r.iconPath={light:Ie.Uri.joinPath(this.extensionUri,\"resources\",\"blossom-black.svg\"),dark:Ie.Uri.joinPath(this.extensionUri,\"resources\",\"blossom-white.svg\")},i!=null&&this.chatSessionItemProvider?.registerPendingConversation({conversationId:i,resource:e.uri,label:s??void 0,modelProvider:a},{markInProgress:!1,onlyIfMissing:!0}),this.editorPanels.set(r,{ready:!1,pendingMessages:[],initialRoute:i==null||o.path.startsWith(\"/local/\")?o.path:`/local/${i}`}),i!=null&&this.registerOnDidDisposeForWebviewPanel(r,i),await this.initializeWebview(r.webview,\"panel\",r.onDidDispose,()=>{this.onPanelReady(r)}),i!=null&&this.previewLoader.fetchConversationPreviews().then(c=>{let l=c.get(i);this.isPanelAlive(r)&&(r.title=Uke(l))})}",
+      "supports": "Conversation ID becomes initialRoute; no workspace validation in resolver."
+    },
+    "E4": {
+      "file": "extension",
+      "byte_start": 1837340,
+      "byte_end_exclusive": 1837477,
+      "line": 985,
+      "sha256": "6f661e532f9c02c22553cf997709cd4dba85c9dcc4c1c06d637a52346bf0dd4b",
+      "text": "initialRouteMetaTag(e){let n=this.editorPanels.get(e)?.initialRoute??null;return n?`<meta name=\"initial-route\" content=\"${Wd(n)}\">`:null}",
+      "supports": "The editor route is put in initial-route metadata."
+    },
+    "E7": {
+      "file": "extension",
+      "byte_start": 1699811,
+      "byte_end_exclusive": 1700013,
+      "line": 931,
+      "sha256": "e4d9f59a0a40fb3cd2d4ca1d036693faad150a14dc32242e05e467c04b0b9e7e",
+      "text": "function aS(){let t=fPe.workspace.workspaceFolders?.filter(({uri:r})=>(r.fsPath!==\"/\"||r.scheme===\"file\"||r.scheme===\"vscode-remote\")&&pm(r.fsPath)).map(({uri:r})=>r.fsPath)??[];return hr()?t.map(dr):t}",
+      "supports": "Host API provides window workspace folders."
+    },
+    "E8": {
+      "file": "extension",
+      "byte_start": 1515255,
+      "byte_end_exclusive": 1515591,
+      "line": 920,
+      "sha256": "6031e4820eff576aa3479e39d05046b61d100e6832a46f2696a4887809a7398f",
+      "text": "async findThreadOwner({hostId:r,conversationId:n}){let o=await eI(this.ipcClient,this.ownerDiscoveryTimeoutMs),i=await this.ipcClient.sendRequest(\"thread-owner-discovery\",{hostId:r,conversationId:n},{timeoutMs:o});if(i.resultType===\"error\"){if(i.error===\"no-client-found\")return null;throw new Error(i.error)}return i.handledByClientId}",
+      "supports": "Owner discovery request carries hostId/conversationId, not repository/window identity."
+    },
+    "U1": {
+      "file": "renderer_ui",
+      "byte_start": 806362,
+      "byte_end_exclusive": 806604,
+      "line": 711,
+      "sha256": "cf841c523ab2812e63984c7d4fbad4233ac6b99e3121254cc8a35d35d7691ea4",
+      "text": "function kst(){let e=document.querySelector(`meta[name=\"initial-route\"]`);if(e?.content?.trim())return e.content.trim();let t=new URL(window.location.href).searchParams.get(`initialRoute`);return t?t.trim():null}var TA,EA=e((()=>{TA=kst()}));",
+      "supports": "Renderer initial route reads injected metadata then URL."
+    },
+    "E12": {
+      "file": "extension",
+      "byte_start": 1508749,
+      "byte_end_exclusive": 1508877,
+      "line": 920,
+      "sha256": "c635db8c73538099c62a36324db1adb9ae9d6cb5e7809182e47ed43c45cd87c3",
+      "text": "async function eI(t,e){let r=e??ui,n=Date.now();return await t.waitUntilInitialized({timeoutMs:r}),Math.max(0,r-(Date.now()-n))}"
+    },
+    "E13": {
+      "file": "extension",
+      "byte_start": 1841591,
+      "byte_end_exclusive": 1841732,
+      "line": 985,
+      "sha256": "5162fcd64392406af9a130482644320db930ec3660ecb8259d7da2e9fe1757ac",
+      "text": "function Wd(t){return t.replace(/[\"<&]/g,e=>{switch(e){case'\"':return\"&quot;\";case\"<\":return\"&lt;\";case\"&\":return\"&amp;\";default:return e}})}"
+    },
+    "E14": {
+      "file": "extension",
+      "byte_start": 1841732,
+      "byte_end_exclusive": 1841804,
+      "line": 985,
+      "sha256": "4b9686ea586c9d66611e936a989490bb3abe2ffe9a5df5f6f4d6edf8158c8827",
+      "text": "function Uke(t){return t?t.length>Bke?t.substring(0,Bke)+\"\\u2026\":t:qke}"
+    },
+    "E15": {
+      "file": "extension",
+      "byte_start": 372924,
+      "byte_end_exclusive": 372999,
+      "line": 65,
+      "sha256": "3c5d16de0fd0c33d3a49a70122bbcd7f63ddb413318a4de78875a88aadf73c5f",
+      "text": "function pm(t){return t.startsWith(\"/\")&&!t.startsWith(\"//\")||rE(t)||Fy(t)}"
+    },
+    "E16": {
+      "file": "extension",
+      "byte_start": 1540376,
+      "byte_end_exclusive": 1540462,
+      "line": 922,
+      "sha256": "408958e8299d5ebb4bfad6bc984869290a3996ca19cbeb14120857b3795a0104",
+      "text": "function hr(){return mn(\"runCodexInWindowsSubsystemForLinux\",!1)?Ha()!=null&&!di():!1}"
+    }
+  },
+  "constants": {
+    "ph": "openai-codex",
+    "oPe": "route",
+    "Bke": 30,
+    "qke": "Codex"
+  },
+  "source_constant_anchor": "var nPe=B(require(\"vscode\")),ph=\"openai-codex\",oPe=\"route\"; and Bke=30,$ke=Vre(GE),qke=\"Codex\""
+}
