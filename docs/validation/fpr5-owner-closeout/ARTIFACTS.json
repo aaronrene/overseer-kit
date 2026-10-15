@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "kind": "Owner decision and local incident observations; excludes this inventory itself",
+  "parent_commit": "829dc3352c6510cd5623afa72a032de868a05f3f",
+  "files": {
+    "bound-next-precommit.json": {
+      "sha256": "cc70d91534001bfe858a7dc4c089f263827c5c85dd9b6864110e59f66efe09f5",
+      "bytes": 6526,
+      "mode": 420
+    },
+    "closeout.json": {
+      "sha256": "87cf12e7d4f91f3fdc89ea4b4771843f684e23b84dd82f879981184d032df77f",
+      "bytes": 1505,
+      "mode": 420
+    },
+    "local-observations.json": {
+      "sha256": "5b7454e15996e86491ca463eb1f034c3bd5c313c399e6a19f609f9624455673c",
+      "bytes": 8394,
+      "mode": 420
+    },
+    "next-prompt.txt": {
+      "sha256": "d70ed9b1aa0cd37c231cbe9523cc10e6f95ac225731e54b857585c181d18b89f",
+      "bytes": 2060,
+      "mode": 420
+    },
+    "next-publication.json": {
+      "sha256": "c85c00a5257e2a100ae4e22aa55aaf4862311bfcf7483481fbba735522f82e52",
+      "bytes": 910,
+      "mode": 420
+    },
+    "summary-lock-refresh.json": {
+      "sha256": "35e7e9be58d45844ce16eb5a082ddcf5b635a5c3016f646c2e4bd04bdea14339",
+      "bytes": 1876,
+      "mode": 420
+    },
+    "verification.json": {
+      "sha256": "99f31a19cf17f6b4c500426c93049ae3c24f71f0d181370b43647393a0d8041e",
+      "bytes": 27468,
+      "mode": 420
+    }
+  },
+  "companion_files": {
+    ".overseer/version.lock": {
+      "sha256": "705a06852bc5be66123f9cdfac1b3070723ecaf4abe7c7d5d517b93cb12de325",
+      "bytes": 8498,
+      "mode": 420
+    },
+    "docs/NEXT.md": {
+      "sha256": "ee86103ff11d977b17ebd27011c9282096f270cfaa80d9e9fbcbd6df537b47ae",
+      "bytes": 2484,
+      "mode": 420
+    },
+    "docs/OVERSEER-HANDOVER.md": {
+      "sha256": "65e23dc2b261c84ca14624689d7d162ea4ae51fb1df1a75710ef6ed064f272bd",
+      "bytes": 16978,
+      "mode": 420
+    },
+    "docs/ROADMAP.md": {
+      "sha256": "0c41cdd735cb56d1eef9f6fe8738e9921ca99375b9ec8a3fb5c61dc43038ce3f",
+      "bytes": 15647,
+      "mode": 420
+    },
+    "docs/decisions/FPR-5-OWNER-CLOSEOUT.md": {
+      "sha256": "013730c1631e324a402f5fe3e4ed1f87ab67ee698b0cab61a5e3dac2adb6615e",
+      "bytes": 9567,
+      "mode": 420
+    }
+  },
+  "runtime_sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774",
+  "independent_adjudication_ready": false,
+  "release_ready": false
+}

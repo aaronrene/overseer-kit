@@ -8,7 +8,25 @@ Active implementation: `overseer-kit-v1-recovery-20261014`, branch
 `feat/overseer-v1-recovery-20261014`, reconciled base `d47291d`.
 Both older dirty worktrees remain untouched.
 
-**Current stop: actual Cursor lifecycle acceptance.** The owner selected
+**Current task: acceptance closeout preparation.** The owner explicitly postponed
+the two actual Cursor checks: both remain **NOT VERIFIED**, with no repeat tests
+or expanded security/network permissions. The [owner closeout](decisions/FPR-5-OWNER-CLOSEOUT.md)
+records that decision; do not ask for it again. Prepare one source/claim/evidence
+packet and dispose of open reliability/evidence issues before asserting readiness
+for final independent adjudication. No adjudication or release is authorized here.
+
+The owner did **not** deliberately open the same conversation or duplicate project
+windows. Logs establish shared display, not how it was selected or restored. The
+earlier explanation overstated the cause. FPR-OPS-1 tracks investigation and
+workspace/task mismatch prevention; changing visible chats was mitigation only.
+FPR-OPS-2 tracks the separately confirmed shared legacy `ok` failure: its venv
+lacks `cryptography`; no repair is applied. FPR-EVID-1 tracks missing external
+temporary originals/screenshots while committed curated evidence remains intact.
+Neither restart nor recent-repair causation is proven. See the owner record for
+evidence and scheduling boundaries. Existing consumers, profiles and global
+launchers stay untouched by this closeout.
+
+The owner selected
 Cursor 3.24.18 on macOS 15.7.2 arm64, retained the complete Python 3.11/3.14 and
 three-authority requirements, and explicitly approved the pinned package
 download and new disposable local pilot. Other network/release restrictions
@@ -23,9 +41,9 @@ action blocks; exact comparison passed and the app exited normally. The isolated
 Cursor attempt reached a keychain gate and demonstrated neither sessionStart nor
 stop. It was closed without changing keychain/privacy settings or allowing
 account/provider access. See [owner observations](validation/FPR-5-INTERACTIVE.md).
-Resolve an approved lifecycle-test environment or an explicit owner decision
-before changing any restriction or requirement. No independent adjudication or
-release decision is claimed. Canonical NEXT uses only bound `next-write`.
+The subsequent postponement supersedes that checkpoint's pending-decision
+instruction; it does not turn either event into a pass. No independent adjudication
+or release decision is claimed. Canonical NEXT uses only bound `next-write`.
 The owner-appointed [FPR-5 review](reviews/FPR-5-REVIEW.md) is complete with its
 original **FINDINGS** verdict preserved. This owner-directed repair implements
 all six findings; [author evidence](validation/FPR-5-REPAIRS.md) records failing
@@ -47,8 +65,9 @@ the bound services; installed hooks remain disabled.
 
 Owner choices and the new pilot authorization are now explicit in the acceptance
 record; the complete pinned Python 3.11 cell is now supported by exact case
-reconciliation. Actual Cursor lifecycle delivery keeps selected host and full
-integrated-pilot acceptance open; the desktop observation has passed. The
+reconciliation. Actual Cursor lifecycle delivery is postponed/not verified;
+the automatic host claim and dependent full integrated-pilot acceptance remain
+unaccepted. The desktop observation has passed. The
 completed review is not pending again. After complete repaired-source and
 acceptance evidence, reserve one final independent adjudication, then one
 separate owner release decision. Repair authors cannot certify that adjudication.

@@ -1,0 +1,411 @@
+{
+  "opening_head": "829dc3352c6510cd5623afa72a032de868a05f3f",
+  "opening_parent": "7ee9a372e478ad251c17d8e8fd1a4118811c01b2",
+  "branch": "feat/overseer-v1-recovery-20261014",
+  "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+  "opening_next_sha256": "eb82daa7c5879b66a69b16b3acbe78693f50387e462d022675de1d101b33a18f",
+  "inventories": {
+    "fpr5-repairs": {
+      "inventory_sha256": "72a48127b26bd1860e7ab4006c46a083e09a08d0bce2aa6d83be98e298ccadc5",
+      "entries_checked": 133
+    },
+    "fpr5-acceptance": {
+      "inventory_sha256": "9e0c4b8fc17a14d3ca84b622357c7af60b821ef4f88f12b9475643ea29b4016f",
+      "entries_checked": 215
+    },
+    "fpr5-interactive": {
+      "inventory_sha256": "45a01dc3b95b5ad9832ecc5e4eede615a73bc9c2117df563a1bfc1263af6b626",
+      "entries_checked": 54
+    }
+  },
+  "errors": [],
+  "repaired_source_files_checked": 8,
+  "native_source_files_checked": 40,
+  "runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774"
+  },
+  "repository": {
+    "name": "overseer-kit",
+    "id": "6988dc4a-5f22-454b-9d68-ac5905b383bf",
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "root_relative_docs": "docs"
+  },
+  "source_readiness": {
+    "authority": "bound",
+    "remote": "not_checked_offline",
+    "release": "not_certified"
+  },
+  "external_observations": {
+    "externally_retained_selected_originals": [
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-observation-desktop-g1lukv03/host.log",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-observation-desktop-g1lukv03/launch.json",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "adb2fae73395ce9f07082ff3874fa60ef1b0e3aa929c466b6eeafd27f41ba9c8"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-observation-desktop-g1lukv03/observation-context.json",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "c51838f2af8f7dae77e1246ecc72a1664b0bb3b1e033a581f95b31c125f753e3"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-observation-desktop-g1lukv03/result.json",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "518d663383f48210ea38ecdb2d6e14f63101bc3c930a30bfb84b032e0913a820"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-observation-desktop-0pkcm8sj/bound-next-at-observation.json",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "d2159c8528863ba84a8bf1945ae8be8b4c814f493fd87ceb3b7550ce4a2140cd"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-observation-desktop-0pkcm8sj/host.log",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-observation-desktop-0pkcm8sj/launch.json",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "9de3dbdb16f409e09a1e72ce3e021b25eed1343a468a79e0378ac1fbcea69e8d"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-observation-desktop-0pkcm8sj/quit-after-owner-observation.json",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "51ba794120bcbf991f940cb74ebcb7a17d5acb36e345ed00c1ad0519bca94088"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-observation-desktop-0pkcm8sj/result.json",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "8f4340c85d904532d1f67dddb2c55a1c99a10442e3824873267fe95fd675c4b3"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-observation-desktop-0pkcm8sj/user-desktop-next.txt",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "1fdf2699901617283449c1807f8bef859f0a6579c68872aeb1802ec342305eb1"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-observation-desktop-0pkcm8sj/user-observation.json",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "6a4f7ce18dadc3f0332aadeb17be8b9e11532622896f77f9024a4aeca7916b13"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-observation-cursor-p7_1rhzy/host.log",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "71777a400a387094827115589a822ffcd80ce7b125e15378354df71420dce485"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-observation-cursor-p7_1rhzy/launch.json",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "6002ff93d2a5c229e1fa0a8136e176e527c5e70ee38c4cc994023998600f7e1c"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-observation-cursor-p7_1rhzy/result.json",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "34b4c1c3d84947369a59eb7257ab215ab03d6b6de538197cd48916318db5f7b0"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/close-after-keychain-gate.json",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "cfecd6ffdef8846f4e7a203cba2c74801421c26645ca386320579a3471382a29"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/forced-close-after-keychain-gate.json",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "af8ebc2c6f31e1ce41f5c097e21aa9e1625e944308f7ca713e7c33b81810fcb8"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/host.log",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "59b10a10756a3190cb6be222a0b016381bca9ed0a4b3cc9147fa7864eea8c5c7"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/launch.json",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "3c75119ea189e6bd86f64da9c823886f69426bb2fafb43fc7d3aeee2fddf6d3e"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/result.json",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "4ff83ea17f9a4f882cfd97573b1a54b3772c23dcffcb365d9f03a9c50202bfb9"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/user-observation.json",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "adf56d44ebcd430a4971901b295446941878f8e68307834064d72f15c441d32f"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-desktop-600-preparation-ne7i2ulw/owner_observe_600.py",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "2cbe0dbedef59337b4c821098073d2d3f1833686448cc66f4686fb0774dddeae"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-desktop-600-preparation-ne7i2ulw/preparation.json",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "5b3a663ee04eba67341d5a9cb4a74581deb0ba33eb371e47596950fbf42a783b"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-short-preparation-8ictvmw7/owner_observe_short.py",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "b7e38c0dc86f5cba4e607b334df26193d80037db84ba62030e840b4dc7e6dbb9"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-short-preparation-8ictvmw7/preparation.json",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "12d16f0799933551ba0333cb6b6ec3f844904a8360cc00fdd2c0d55e7196b155"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/logs/20261015T043839/composer.log",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/logs/20261015T043839/conversationSearch.log",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/logs/20261015T043839/main.log",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "5b79f3e57b71826d6b51193693440826d00c273d02689056038bbcd5d7ced320"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/logs/20261015T043839/mcpprocess.log",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/logs/20261015T043839/network-shared.log",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "da691ae14a9268a0707989fa0e636f040d587250bb2e990404623fc0899661a3"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/logs/20261015T043839/remoteTunnelService.log",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/logs/20261015T043839/sharedprocess.log",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "63de890387f1d5b404648cba589bc4d30d90bb1734b5bc54016031f94aa414a3"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/logs/20261015T043839/window1/renderer.log",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "892206519587438b44696a4ed68bb45de9c2802620fbc39910791056cedb5910"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/logs/20261015T043839/window1/views.log",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner_observe.py",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "0c906888bca6b9435af12c6e1f71a1fc835191560cd35c6515d7fc788a8a9d6b"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-observe-script-validation.json",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "8471dd91c8999b38d650284c74d683129ca448c92fb63e41a0557be9bc86625b"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-interactive-curation-rs9wtlw9/cursor-source-notes.json",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "0af0304b7eee9961da4d6a3f2e47fbe0515df7a248efde3e4a2afd337c66c0f2"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-interactive-curation-rs9wtlw9/cursor-log-scan.json",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "3d6a98a53d7d17404589c9ce6e43d2353967ab1a8b3db4b3209d26c03c24e4b8"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-interactive-curation-rs9wtlw9/desktop-text-comparison.json",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "bdeb14056bd640c78b9cfdb9ce7cddc6353aaf627fc2c7ff747c0a2561a49afb"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-interactive-curation-rs9wtlw9/curation-checks.json",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "ab5b0236b0241966c435565adbf5cbec7014569cc3541e3decc81ce610c8de0f"
+      },
+      {
+        "path": "/private/tmp/overseer-fpr5-interactive-curation-rs9wtlw9/curate.py",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "31c77b44b4436b4558540f665e9ead71e3c487ef12b03f0fddb2181c3257962d"
+      }
+    ],
+    "externally_retained_screenshots": [
+      {
+        "path": "/Users/aaronrenecarvajal/Desktop/Screenshot 2026-10-15 at 4.33.53\u202fAM.png",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "3c292faf794e12e20a3d1a3c49f0cd05ad3bab410ce23d5e10751953fe04116e"
+      },
+      {
+        "path": "/Users/aaronrenecarvajal/Desktop/Screenshot 2026-10-15 at 4.40.02\u202fAM.png",
+        "exists_at_recorded_path": false,
+        "expected_sha256": "5c7ff656bf665474111ca3c1dfcb8b5c88753775e61da857fc8a5f0a2785b4b0"
+      }
+    ]
+  },
+  "temporary_roots": {
+    "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project": false,
+    "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22": false,
+    "/private/tmp/overseer-fpr5-interactive-curation-rs9wtlw9": false
+  },
+  "refs_before": {
+    "refs/heads/build/landing-access-clarity": "410292be04e019485fecadc53e87be4f1bbf0ec2",
+    "refs/heads/build/track-q-q4b-ui-redesign": "57ab4cb8edb5e3ee8dd4be7cf13f4920251b72c5",
+    "refs/heads/docs/consumer-public-path-honesty": "f5b614d677467b7d37acf03e821f46e76eb3c538",
+    "refs/heads/docs/k9-layered-honesty-vision": "52b7e6e90b71843380c42038e2b4733a960d4a0c",
+    "refs/heads/docs/queue-board-identity-followups": "c335b5f0f8b6ac4dd38e9efea3649044ed41b2bf",
+    "refs/heads/feat/9a5-governance-hygiene-agent": "e75aea03508ddfddc7fc996784001f75906cafcc",
+    "refs/heads/feat/adversarial-freeze-honesty-gate": "682db94d440bfc1f22c82c7924da4f66969b0d97",
+    "refs/heads/feat/check-if-ok": "d1bd826985803540b3362e78df1451498893ddfb",
+    "refs/heads/feat/contributor": "793c7f81b351f6f3c43014695ac44834eca6c6e3",
+    "refs/heads/feat/freeze-review-verdict-integrity": "03cefd49b858435718e79b3bb8c591d246edffbe",
+    "refs/heads/feat/gfg-d2-muse-id-space": "27f7c17262a0da9ce5458b57bd5655127b3efeb3",
+    "refs/heads/feat/governance-freshness-gate": "cca6c2e4f8f8ca1ca6e73a7153a258cc7b3f1057",
+    "refs/heads/feat/governance-sync-2026-07-30": "03150efe0a4488525ed2127bc7f14d188af4c049",
+    "refs/heads/feat/governance-sync-2026-07-31": "f84db70b95fdd04dfebcaf73e3ec905b1c437a9e",
+    "refs/heads/feat/governance-sync-2026-07-31-2": "72671fcd7882ac9f566f8bda149fc3ee5c9ea113",
+    "refs/heads/feat/governance-sync-2026-08-04": "da25f04e6f34dbef5c1823d83d86567d187a52dd",
+    "refs/heads/feat/governance-sync-2026-08-04-2": "73e5331e249fe46523fa075882c19c010f77e967",
+    "refs/heads/feat/governance-sync-2026-08-04-3": "ca2dbd5c7efe65034e22098388662f014aa8c3d8",
+    "refs/heads/feat/governance-sync-2026-08-04-4": "f09467279926b050b4a0591086daa913551cade1",
+    "refs/heads/feat/governance-sync-2026-08-12": "e96cde849855006d6e01500b072273d0b278d212",
+    "refs/heads/feat/governance-sync-2026-08-12-2": "e96cde849855006d6e01500b072273d0b278d212",
+    "refs/heads/feat/governance-sync-2026-08-12-3": "e96cde849855006d6e01500b072273d0b278d212",
+    "refs/heads/feat/governance-sync-2026-08-12-public-done": "e96cde849855006d6e01500b072273d0b278d212",
+    "refs/heads/feat/governance-sync-2026-09-02": "1e6ad16a6a2f2c0e48d53681cbf2e6664030fbda",
+    "refs/heads/feat/governance-sync-2026-09-02-2": "1e6ad16a6a2f2c0e48d53681cbf2e6664030fbda",
+    "refs/heads/feat/governance-sync-2026-09-04": "940c3b4a92ee6be8c39356f388266b378c7d083f",
+    "refs/heads/feat/governance-sync-2026-09-05": "1e1582ce57d8d71e91e29e01e50207c9b2f88ac3",
+    "refs/heads/feat/governance-sync-2026-09-05-2": "1e1582ce57d8d71e91e29e01e50207c9b2f88ac3",
+    "refs/heads/feat/governance-sync-2026-09-05-3": "bdf1f20dc94b6b30ae83734195a7e634adf251a2",
+    "refs/heads/feat/governance-sync-2026-09-05-4": "8358f968155a66b2e45bf68237bb324fb2de7601",
+    "refs/heads/feat/governance-sync-2026-09-05-tip": "1e1582ce57d8d71e91e29e01e50207c9b2f88ac3",
+    "refs/heads/feat/governance-sync-2026-09-12": "a17af916cea50b9fce523c4eeb02380d9600561f",
+    "refs/heads/feat/governance-sync-2026-09-12-2": "b521296380f990c48fc71a388843b9acd023f04b",
+    "refs/heads/feat/gs-paste-ready-regen": "51aa27d89e67a90afd7b794ac7a3ab3fcf93989d",
+    "refs/heads/feat/gsb-branch-collision": "d5ba907ce8719b20c70dc42ee84cc4aca50bd3ff",
+    "refs/heads/feat/gsw-fix-governance-sync-write-path": "f81a4d2243396ad3dbb7a0572c2665443e9fe0ad",
+    "refs/heads/feat/hosted-governance-dashboard-build": "49882fac5898421f18c6ecee7d0ef59e46253a0b",
+    "refs/heads/feat/hosted-governance-dashboard-freeze": "8e6989f99da4ac3b170b48018baad5968264872a",
+    "refs/heads/feat/isr-independent-second-reviewer": "1e6ad16a6a2f2c0e48d53681cbf2e6664030fbda",
+    "refs/heads/feat/k13-multi-repo-workspace-lanes": "0b1dc450ad4faac7c221723237e9a7df80e55a74",
+    "refs/heads/feat/k4-vendoring-cli": "205198d050c116304c64e9f61ebd9cbb86278890",
+    "refs/heads/feat/k5-freeze-reviewer-contract": "1a6b030ceaa90b3688e0ebf988e8e190e7111750",
+    "refs/heads/feat/k6-pilot-install": "2df7beff92af20ffba5f4aa10b6d9624b0a78bc1",
+    "refs/heads/feat/k7-muse-git-mirror-dogfood": "98cf55da680da1d7cf5e227a738ab2dea13f1867",
+    "refs/heads/feat/k8-multi-lane-and-vf-prep": "fe9ed7bc4a55a591b0b19ff2a5ab5fe1aa736b01",
+    "refs/heads/feat/kh2-muse-sync-hard-gate": "4ec24a433c3e817d14c3eba540fe0878d84c6e6a",
+    "refs/heads/feat/landing-clarity-pass": "669dae3c24544249d1dc9c60633bbf4e41c6a428",
+    "refs/heads/feat/landing-musehub-band": "0756031ab37cfff77e1674eea788a2cd0ccd8e3e",
+    "refs/heads/feat/loop-tightening": "79abaef7dfb844e57c2051e6387794856a33b111",
+    "refs/heads/feat/nxp-next-provenance": "0eca4891654bb4cf03ca05107fec476b8c44cb10",
+    "refs/heads/feat/ons-operator-next-surfacing": "e96cde849855006d6e01500b072273d0b278d212",
+    "refs/heads/feat/overseer-context-isolation": "e9be0c4b3cafb149b9f3b7af2ab060f01bbfa504",
+    "refs/heads/feat/overseer-v1-recovery": "32254cd939885d9d6f40634997ea5b9c37ea776c",
+    "refs/heads/feat/overseer-v1-recovery-20261014": "829dc3352c6510cd5623afa72a032de868a05f3f",
+    "refs/heads/feat/pls-a": "7c2706c9b0a91bff07b30125ba48c0f7d77440b0",
+    "refs/heads/feat/post-merge-handover-freshness": "51dae92fc01da75eb36f55997652e8d2d9bbb1aa",
+    "refs/heads/feat/preserve-shared-assets": "08f2befdcfa0e4cfc985445ff9f5283b3ea71d7a",
+    "refs/heads/feat/public-docs-housekeeping": "ec5396f963d7d7e9a2547673e2eed519268aa1aa",
+    "refs/heads/feat/q3-release-desktop-installers-build": "9798ba52ed9f7f33c86f71f8b03c8102f9c7cf90",
+    "refs/heads/feat/q3-release-desktop-installers-freeze": "926badcdf01a213d9267080cc9bdef45f0553d46",
+    "refs/heads/feat/track-o-o0-normie-custody-freeze": "52128171ed3f745d27fe3ac5d82064d452cdf2b3",
+    "refs/heads/feat/track-o-o1-normie-custody-contracts": "52b5defc8c63a340542db07ad950f5b2df637aaa",
+    "refs/heads/feat/track-o-o2-stage3-upgrade-ceremony-freeze": "f4e18318f9cd791430453c21b024882b0a11192b",
+    "refs/heads/feat/track-o-o3-upgrade-regime": "ac772ffe4be52a7d23be960ca1bb0001f752aaf2",
+    "refs/heads/feat/track-p-cost-freeze": "1aa63d282842ba9aaea271530779cf6ea9e16953",
+    "refs/heads/feat/track-p-evidence-freeze": "0654e44d0d49af58c435788b0107f99e6e9f4f89",
+    "refs/heads/feat/track-p-p-deploy-build": "b70e44107f4c975f9d87cc6cd5daa8e508f69504",
+    "refs/heads/feat/track-p-p-deploy-freeze": "56d38aa90a68a5eb322be458c6ad77489814fb81",
+    "refs/heads/feat/track-p-route-build": "16e3006e8f8c6b84b51db1fc1b5add7a313516f8",
+    "refs/heads/feat/track-p-route-freeze": "4eb6d26e4e318dea8fb791a14e7ef64848256c6c",
+    "refs/heads/feat/track-q-desktop-complete": "e9f5208a9b10d176bcbb6bc879130b4bc362e5b0",
+    "refs/heads/feat/track-q-q0-overseer-app-freeze": "a77b5f4f7dd806bb189168189cb40f3323cbeb81",
+    "refs/heads/feat/track-q-q2a-ok-cli-freeze": "0c83c2d7d587fc16ecbc33843f5ef5596f16d0c7",
+    "refs/heads/fix/k4a-freeze-review": "aa9c3a006cfb69d83018f3be9d8526afebdb7f61",
+    "refs/heads/fix/k5b-r-findings": "cdd669f9c3975e4f34a17d592563d8a370a6f17e",
+    "refs/heads/fix/muse-only-branch-detection": "5294882efa58e0cff357b6e11ae8d17d1349d50a",
+    "refs/heads/fix/muse-only-branch-detection-2026-09-10": "73721efc0b3cfa9a60dbb7fbfcc3847803f94ab0",
+    "refs/heads/fix/remove-misplaced-freeze-review-workflow": "3a732aa01c122bbfbbbf2ed94c1c75d7be74363a",
+    "refs/heads/fix/session-start-hook-multi-lane": "c874c15f51b54a576583c5bbcb24809953fd57f6",
+    "refs/heads/main": "d47291d5d9030de5ebef713da95efa978c4d8c6e",
+    "refs/heads/release/overseer-v1.0.0": "06f988e5a078ede81c9dc664520833980a9a19a3",
+    "refs/heads/thinking/landing-access-clarity": "7e1c97f61921b9d6200df5089492735f1edfccdc",
+    "refs/remotes/origin/HEAD": "d47291d5d9030de5ebef713da95efa978c4d8c6e",
+    "refs/remotes/origin/build/landing-access-clarity": "410292be04e019485fecadc53e87be4f1bbf0ec2",
+    "refs/remotes/origin/build/track-q-q4b-ui-redesign": "57ab4cb8edb5e3ee8dd4be7cf13f4920251b72c5",
+    "refs/remotes/origin/docs/consumer-public-path-honesty": "0991c2fc0e73014621e8b8e2930161dbdad8d8b6",
+    "refs/remotes/origin/docs/k9-layered-honesty-vision": "52b7e6e90b71843380c42038e2b4733a960d4a0c",
+    "refs/remotes/origin/docs/queue-board-identity-followups": "c335b5f0f8b6ac4dd38e9efea3649044ed41b2bf",
+    "refs/remotes/origin/feat/9a5-governance-hygiene-agent": "e75aea03508ddfddc7fc996784001f75906cafcc",
+    "refs/remotes/origin/feat/check-if-ok": "d1bd826985803540b3362e78df1451498893ddfb",
+    "refs/remotes/origin/feat/close-ritual-land-check": "cbcc788e1790fca9fccbebc4d77814ef389e1567",
+    "refs/remotes/origin/feat/gfg-d2-muse-id-space": "27f7c17262a0da9ce5458b57bd5655127b3efeb3",
+    "refs/remotes/origin/feat/governance-freshness-gate": "cca6c2e4f8f8ca1ca6e73a7153a258cc7b3f1057",
+    "refs/remotes/origin/feat/governance-sync-2026-07-31": "f84db70b95fdd04dfebcaf73e3ec905b1c437a9e",
+    "refs/remotes/origin/feat/governance-sync-2026-07-31-2": "72671fcd7882ac9f566f8bda149fc3ee5c9ea113",
+    "refs/remotes/origin/feat/governance-sync-2026-08-12": "e96cde849855006d6e01500b072273d0b278d212",
+    "refs/remotes/origin/feat/governance-sync-2026-08-12-2": "e96cde849855006d6e01500b072273d0b278d212",
+    "refs/remotes/origin/feat/governance-sync-2026-09-01": "985c66f596a99bbdb626a7c4e7c41524088cc844",
+    "refs/remotes/origin/feat/governance-sync-2026-09-02": "1e6ad16a6a2f2c0e48d53681cbf2e6664030fbda",
+    "refs/remotes/origin/feat/governance-sync-2026-09-02-2": "1e6ad16a6a2f2c0e48d53681cbf2e6664030fbda",
+    "refs/remotes/origin/feat/governance-sync-2026-09-04": "940c3b4a92ee6be8c39356f388266b378c7d083f",
+    "refs/remotes/origin/feat/governance-sync-2026-09-05": "1e1582ce57d8d71e91e29e01e50207c9b2f88ac3",
+    "refs/remotes/origin/feat/governance-sync-2026-09-05-2": "1e1582ce57d8d71e91e29e01e50207c9b2f88ac3",
+    "refs/remotes/origin/feat/governance-sync-2026-09-05-3": "bdf1f20dc94b6b30ae83734195a7e634adf251a2",
+    "refs/remotes/origin/feat/governance-sync-2026-09-05-4": "8358f968155a66b2e45bf68237bb324fb2de7601",
+    "refs/remotes/origin/feat/governance-sync-2026-09-12": "a17af916cea50b9fce523c4eeb02380d9600561f",
+    "refs/remotes/origin/feat/governance-sync-2026-09-12-2": "b521296380f990c48fc71a388843b9acd023f04b",
+    "refs/remotes/origin/feat/gs-paste-ready-regen": "51aa27d89e67a90afd7b794ac7a3ab3fcf93989d",
+    "refs/remotes/origin/feat/gsb-branch-collision": "d5ba907ce8719b20c70dc42ee84cc4aca50bd3ff",
+    "refs/remotes/origin/feat/gsw-fix-governance-sync-write-path": "f81a4d2243396ad3dbb7a0572c2665443e9fe0ad",
+    "refs/remotes/origin/feat/hosted-governance-dashboard-build": "49882fac5898421f18c6ecee7d0ef59e46253a0b",
+    "refs/remotes/origin/feat/k13-multi-repo-workspace-lanes": "0b1dc450ad4faac7c221723237e9a7df80e55a74",
+    "refs/remotes/origin/feat/k4-vendoring-cli": "205198d050c116304c64e9f61ebd9cbb86278890",
+    "refs/remotes/origin/feat/k5-freeze-reviewer-contract": "1a6b030ceaa90b3688e0ebf988e8e190e7111750",
+    "refs/remotes/origin/feat/k6-pilot-install": "2df7beff92af20ffba5f4aa10b6d9624b0a78bc1",
+    "refs/remotes/origin/feat/k7-muse-git-mirror-dogfood": "a7a21e78792b4edb07c68b986b403908f048094c",
+    "refs/remotes/origin/feat/k8-multi-lane-and-vf-prep": "fe9ed7bc4a55a591b0b19ff2a5ab5fe1aa736b01",
+    "refs/remotes/origin/feat/kh2-muse-sync-hard-gate": "4ec24a433c3e817d14c3eba540fe0878d84c6e6a",
+    "refs/remotes/origin/feat/landing-clarity-pass": "669dae3c24544249d1dc9c60633bbf4e41c6a428",
+    "refs/remotes/origin/feat/landing-musehub-band": "0756031ab37cfff77e1674eea788a2cd0ccd8e3e",
+    "refs/remotes/origin/feat/loop-tightening": "79abaef7dfb844e57c2051e6387794856a33b111",
+    "refs/remotes/origin/feat/nxp-next-provenance": "410ddc1636bce49725fe3add89bea828bc24d746",
+    "refs/remotes/origin/feat/ons-operator-next-surfacing": "e96cde849855006d6e01500b072273d0b278d212",
+    "refs/remotes/origin/feat/pls-a": "7c2706c9b0a91bff07b30125ba48c0f7d77440b0",
+    "refs/remotes/origin/feat/post-merge-handover-freshness": "51dae92fc01da75eb36f55997652e8d2d9bbb1aa",
+    "refs/remotes/origin/feat/pr-land-after-checks": "66e194630262db4b59dd10ef18dcb82c9c72c0b0",
+    "refs/remotes/origin/feat/preserve-shared-assets": "08f2befdcfa0e4cfc985445ff9f5283b3ea71d7a",
+    "refs/remotes/origin/feat/public-docs-housekeeping": "ec5396f963d7d7e9a2547673e2eed519268aa1aa",
+    "refs/remotes/origin/feat/q3-release-desktop-installers-build": "9798ba52ed9f7f33c86f71f8b03c8102f9c7cf90",
+    "refs/remotes/origin/feat/track-o-o0-normie-custody-freeze": "52128171ed3f745d27fe3ac5d82064d452cdf2b3",
+    "refs/remotes/origin/feat/track-o-o1-normie-custody-contracts": "52b5defc8c63a340542db07ad950f5b2df637aaa",
+    "refs/remotes/origin/feat/track-p-evidence-freeze": "0654e44d0d49af58c435788b0107f99e6e9f4f89",
+    "refs/remotes/origin/feat/track-p-p-deploy-build": "b70e44107f4c975f9d87cc6cd5daa8e508f69504",
+    "refs/remotes/origin/feat/track-p-route-build": "16e3006e8f8c6b84b51db1fc1b5add7a313516f8",
+    "refs/remotes/origin/feat/track-p-route-freeze": "4eb6d26e4e318dea8fb791a14e7ef64848256c6c",
+    "refs/remotes/origin/feat/track-q-desktop-complete": "e9f5208a9b10d176bcbb6bc879130b4bc362e5b0",
+    "refs/remotes/origin/fix/k4a-freeze-review": "aa9c3a006cfb69d83018f3be9d8526afebdb7f61",
+    "refs/remotes/origin/fix/k5b-r-findings": "b06ce17a52719f46b700996660498a6919a44c69",
+    "refs/remotes/origin/fix/remove-misplaced-freeze-review-workflow": "3a732aa01c122bbfbbbf2ed94c1c75d7be74363a",
+    "refs/remotes/origin/main": "d47291d5d9030de5ebef713da95efa978c4d8c6e",
+    "refs/remotes/origin/muse-mirror": "3e21496f7c4eab64b6d9ab3f868c5cdcaf8cfcde",
+    "refs/remotes/origin/thinking/landing-access-clarity": "7e1c97f61921b9d6200df5089492735f1edfccdc",
+    "refs/stash": "3b7598bc3224f0a6a7eff2aeb736d4ec1139ea9e",
+    "refs/tags/v0.1.0": "25f3ad961fe7dfa6102065074bf5e30a1cf14cab"
+  },
+  "opening_tracked_changes": "",
+  "record_kind": "Read-only preservation and availability check; not test execution or independent certification",
+  "recorded_at": "2026-10-15T14:09:26.409354+00:00",
+  "completed_tests_repeated": false
+}

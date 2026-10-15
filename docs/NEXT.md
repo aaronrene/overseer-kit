@@ -3,31 +3,41 @@ schema: 1
 repo_id: 6988dc4a-5f22-454b-9d68-ac5905b383bf
 repo_root: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014
 branch: feat/overseer-v1-recovery-20261014
-base_head: 7ee9a372e478ad251c17d8e8fd1a4118811c01b2
+base_head: 829dc3352c6510cd5623afa72a032de868a05f3f
 lane: product
 model: GPT-6 Astra
-action_id: OVERSEER-FPR5-CURSOR-ACCEPTANCE-DECISION-1
-action_kind: stop
-prompt_sha256: 87431bef8952f81f16eaf14516843cf3f91216bbfb138599feea06f622a89d48
+action_id: OVERSEER-FPR5-ACCEPTANCE-CLOSEOUT-1
+action_kind: maintain
+prompt_sha256: d70ed9b1aa0cd37c231cbe9523cc10e6f95ac225731e54b857585c181d18b89f
 ---
 Reasoning: Max
 Role: Acceptance coordinator; not independent adjudicator
 
-Read AGENTS.md and docs/validation/FPR-5-INTERACTIVE.md with its inventories.
-Verify bound root/name/UUID, branch, clean state and unchanged source hashes;
-the observation closing commit has sole parent 7ee9a372e478ad251c17d8e8fd1a4118811c01b2.
-Stop on unexplained differences.
+Read AGENTS.md, docs/decisions/FPR-5-OWNER-CLOSEOUT.md and the FPR-5 source/evidence
+inventories. Verify physical/Git root, configured name/UUID, branch, clean state,
+unchanged runtime cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774
+and the decision closing commit whose sole parent is
+829dc3352c6510cd5623afa72a032de868a05f3f. Stop on unexplained differences.
 
-The desktop observation passed. Actual Cursor 3.24.18 sessionStart and stop
-remain blocked. Resolve an approved environment for those events or obtain an
-explicit owner decision before any permission or acceptance-scope change.
-Do not repeat completed tests/reviews/pilots or the unsuccessful isolated launch.
-Do not reset or enable keychain access, change privacy settings, use real profiles,
-or access external accounts/providers/network under the current authorization.
+Prepare one final acceptance closeout packet mapping the exact source and proposed
+claim to existing evidence, owner decisions, exclusions and unresolved requirements.
+The owner already postponed actual Cursor 3.24.18 sessionStart and stop: record
+both as NOT VERIFIED. Do not ask again or count postponement as a pass or release.
+Do not repeat completed tests, reviews, pilots or the unsuccessful isolated launch.
 
-Preserve raw failures, older worktrees, protected refs and Muse history. No live
-delivery/export, fetch/push, main merge, tags, signing or deployment. Publish
-successors only through bound next-write with explicit context and current
-expected digest; update ROADMAP and HANDOVER together.
-After all required evidence: one final independent adjudication by a non-author,
-then a separate owner release decision. Neither is authorized by this stop.
+The owner did not deliberately open duplicate conversations. FPR-OPS-1's restoration
+cause is unknown; changing visible chats was mitigation only. Include its bounded
+investigation and mismatch-prevention plan, the confirmed unrepaired legacy CLI
+dependency issue FPR-OPS-2, and unavailable external originals FPR-EVID-1. Distinguish
+pre-release blockers from explicit claim limitations without silently narrowing
+scope. If required evidence remains insufficient, identify the smallest follow-up;
+do not assert readiness or initiate another general review cycle.
+
+Preserve original FINDINGS, raw failures, old worktrees, protected refs and Muse
+history. No real-profile/account/keychain/privacy changes, consumer mutations/hooks,
+global launcher edits, external providers/network, live delivery/export, fetch/push,
+main merge, tags, signing or deployment. Only bound next-write may publish a
+successor with explicit context and current expected digest; update ROADMAP and
+HANDOVER together. After complete required evidence and explicit dispositions:
+one final independent adjudication by a non-author, then a separate owner release
+decision. Neither is authorized by this preparation task.

@@ -1,0 +1,48 @@
+{
+  "argv": [
+    "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.overseer/bin/ok",
+    "-C",
+    "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "sync",
+    "--only",
+    "launcher",
+    "--json"
+  ],
+  "exit_code": 0,
+  "result": {
+    "ok": true,
+    "repository": {
+      "name": "overseer-kit",
+      "id": "6988dc4a-5f22-454b-9d68-ac5905b383bf",
+      "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "root_relative_docs": "docs"
+    },
+    "changed": [
+      ".overseer/version.lock"
+    ],
+    "classification": [
+      {
+        "path": ".overseer/bin/ok",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4",
+        "after": "1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4"
+      }
+    ],
+    "preserved": [],
+    "dry_run": false,
+    "diff": {},
+    "next": "preserved"
+  },
+  "stderr": "",
+  "before_sha256": "835dc7f751c3a75525fa7a647660d946c80074c4170f29fc2c3d4fb2d2e87919",
+  "after_sha256": "705a06852bc5be66123f9cdfac1b3070723ecaf4abe7c7d5d517b93cb12de325",
+  "preserved": {
+    ".overseer/config.yaml": "d3461fba4c20d84f506c0cad0cf0ba110eba9114d39db1e1abd0c111c08e1e14",
+    ".overseer/bin/ok": "1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4",
+    "docs/NEXT.md": "eb82daa7c5879b66a69b16b3acbe78693f50387e462d022675de1d101b33a18f",
+    ".cursor/hooks.json": "2f3f0de72a829aa7ad28055c884127a5db5660c5c78556ac7b8aea8dd2e2ac0e"
+  },
+  "purpose": "Refresh preserved ROADMAP/HANDOVER hashes only; unrelated footprint drift remains",
+  "coordinator_preflight_error": "First helper parsed YAML as JSON and failed before invoking sync; corrected to YAML parsing. No product/test failure or mutation occurred in that first helper."
+}

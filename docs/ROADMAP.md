@@ -24,9 +24,20 @@ The former sole-writer/NXR-GSR chain remains historical and is not the living NE
 | FPR-4 — combined validation | Local matrix, bounded repairs, package and rollback evidence recorded; missing Python 3.11 cell now has complete passing coverage in the acceptance record; selected interactive acceptance remains open |
 | FPR-5 — independent final review | Complete — original **FINDINGS** verdict and evidence preserved in [the review](reviews/FPR-5-REVIEW.md) |
 | FPR-5 bounded repairs | All six implemented; 1,361 selected cases have passing evidence across the new combined run and affected rerun; [author evidence](validation/FPR-5-REPAIRS.md) |
-| Remaining acceptance, final adjudication and release decision | **Blocked on Cursor lifecycle** — complete Python 3.11 coverage, disposable local workflow and owner-observed desktop content/NEXT have passing evidence. Actual Cursor 3.24.18 start/stop remain unverified after an isolated keychain gate; [owner observations](validation/FPR-5-INTERACTIVE.md). Resolve the test environment/owner decision, then complete required evidence, one final independent adjudication and a separate owner release decision |
+| Remaining acceptance, final adjudication and release decision | **Acceptance closeout in progress** — owner postponed actual Cursor 3.24.18 start/stop; both remain **NOT VERIFIED**. Preserve matrix, local pilot workflow and desktop evidence. Prepare one exact claim/evidence packet with all limitations, then one final independent adjudication when ready and a separate owner release decision; [current owner record](decisions/FPR-5-OWNER-CLOSEOUT.md) |
+| FPR-OPS-1 — unexplained cross-window conversation restoration | **Open investigation** — owner did not deliberately open duplicates. Logs establish shared display, not its cause. Navigation was mitigation only. Investigate restoration/context selection and a workspace/task mismatch guard before automatic multi-window handoff or consumer rollout claims |
+| FPR-OPS-2 — broken shared legacy `ok` environment | **Confirmed; unrepaired** — legacy shim selects its own venv without `cryptography`. Separate from mirroring. Prepare a bounded runtime/dependency repair plan before relying on consumer handoffs; no global/consumer install mutation in this documentation action |
+| FPR-EVID-1 — external temporary originals unavailable | **Open evidence disposition** — committed curated records verify; temporary pilot/host roots, 40 selected external originals and two screenshots are absent at recorded paths. Assess sufficiency before final-adjudication readiness; no fabricated originals or repeated completed tests |
 
 The exact current action lives only in `docs/NEXT.md`; use `ok -C ROOT next`.
+The next deliverable is the acceptance closeout packet, not another host launch,
+general test run or review. Cursor postponement is recorded and needs no repeat
+approval; it establishes neither an automatic-host pass nor a full-product
+release. The [owner correction and issue plan](decisions/FPR-5-OWNER-CLOSEOUT.md)
+govern current work. Restart/full-disk causation and deliberate duplicate opening
+are not established. Visible-chat selection is not a permanent repair. Dispose
+of open issues explicitly for the proposed claim before final adjudication and
+the separate owner release decision.
 Update this summary and HANDOVER together. No release or remote operation is
 authorized. See `docs/validation/V1-RECOVERY.md` for the bounded test matrix and
 results; historical suites are not silently treated as passing.

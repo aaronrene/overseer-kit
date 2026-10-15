@@ -1,0 +1,30 @@
+{
+  "kind": "Documentation closeout; no independent adjudication",
+  "opening_head": "829dc3352c6510cd5623afa72a032de868a05f3f",
+  "closing_commit_rule": "one local commit with opening HEAD as sole parent",
+  "source_tests_dependencies_changed": false,
+  "repeated_tests_reviews_pilots": false,
+  "prior_durable_artifacts_rechecked": 396,
+  "refs_before_closing_commit_preserved": 144,
+  "changed_prior_tracked_paths": [
+    ".overseer/version.lock",
+    "docs/NEXT.md",
+    "docs/OVERSEER-HANDOVER.md",
+    "docs/ROADMAP.md"
+  ],
+  "runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774"
+  },
+  "next_sha256": "ee86103ff11d977b17ebd27011c9282096f270cfaa80d9e9fbcbd6df537b47ae",
+  "cursor_sessionStart": "POSTPONED / NOT VERIFIED by owner",
+  "cursor_stop": "POSTPONED / NOT VERIFIED by owner",
+  "restoration_cause": "UNKNOWN; owner denies deliberate duplicate opening",
+  "legacy_shared_cli": "CONFIRMED FAILURE; NOT REPAIRED",
+  "missing_external_originals": "OPEN sufficiency disposition; see verification.json",
+  "independent_adjudication_ready": false,
+  "release_ready": false,
+  "checks": "preservation, source/runtime hashes, relative links and explicit-context bound NEXT; no completed tests rerun",
+  "limitations": "Window navigation is mitigation only. No production fix, consumer/global install update, permission change or release."
+}
