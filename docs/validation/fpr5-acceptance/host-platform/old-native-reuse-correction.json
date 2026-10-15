@@ -1,0 +1,18 @@
+{
+  "prior_observation": "old-native-reuse-refusal.json",
+  "resolution": "Actual optional old binary matches recorded repaired-tag build, which superseded earlier final-tag build. Difference is explained; not an unexplained protected-artifact drift. Original observation retained.",
+  "matching_evidence": [
+    {
+      "evidence": "docs/validation/fpr4/distribution-summary.json",
+      "expected_binary_sha256": "0eca7f90280274afa114ee4563db1dcf6d722c3f82f0a6d8f01b64847fb6a6c7",
+      "match": true
+    },
+    {
+      "evidence": "docs/validation/fpr4/distribution-repaired-native-3.14-results.json",
+      "expected_binary_sha256": "0eca7f90280274afa114ee4563db1dcf6d722c3f82f0a6d8f01b64847fb6a6c7",
+      "match": true
+    }
+  ],
+  "binary_reused": false,
+  "fresh_build_now_completed": true
+}

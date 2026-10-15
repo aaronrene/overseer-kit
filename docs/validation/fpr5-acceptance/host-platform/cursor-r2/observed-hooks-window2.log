@@ -1,0 +1,21 @@
+[2026-10-15T10:53:13.668Z] Initializing Cursor Hooks Service...
+[2026-10-15T10:53:13.669Z] Claude user config path: /Users/aaronrenecarvajal/.claude/settings.json
+[2026-10-15T10:53:13.669Z] Project config path (project): /private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.cursor/hooks.json
+[2026-10-15T10:53:13.669Z] Claude project config path (project): /private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.claude/settings.json
+[2026-10-15T10:53:13.669Z] Claude project local config path (project): /private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.claude/settings.local.json
+[2026-10-15T10:53:13.669Z] User config path: /Users/aaronrenecarvajal/.cursor/hooks.json
+[2026-10-15T10:53:13.669Z] Enterprise config path: file:///Library/Application%20Support/Cursor/hooks.json
+[2026-10-15T10:53:13.669Z] Reloading hooks configuration...
+[2026-10-15T10:53:13.669Z] Refreshing team hooks...
+[2026-10-15T10:53:13.755Z] No Claude user settings found
+[2026-10-15T10:53:13.755Z] No enterprise hooks configuration found
+[2026-10-15T10:53:13.779Z] No user hooks configuration found
+[2026-10-15T10:53:13.825Z] Loaded 2 project hook(s) for steps: sessionStart, stop
+[2026-10-15T10:53:15.072Z] Reloading hooks configuration...
+[2026-10-15T10:53:15.072Z] Cursor Hooks Service initialized successfully
+[2026-10-15T10:53:15.072Z] Hook step requested: workspaceOpen
+[2026-10-15T10:53:15.073Z] Hook step requested: workspaceOpen
+[2026-10-15T10:53:15.074Z] No Claude user settings found
+[2026-10-15T10:53:15.074Z] No enterprise hooks configuration found
+[2026-10-15T10:53:15.075Z] No user hooks configuration found
+[2026-10-15T10:53:15.076Z] Loaded 2 project hook(s) for steps: sessionStart, stop

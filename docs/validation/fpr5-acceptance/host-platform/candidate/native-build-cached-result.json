@@ -1,0 +1,11 @@
+{
+  "exit": 0,
+  "reason": "completed",
+  "elapsed_seconds": 10.385104894638062,
+  "minimum_free_bytes": 1059745792,
+  "free_after_bytes": 952344576,
+  "old_cache_byte_mode_membership_unchanged": true,
+  "candidate_binary": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/candidate/overseer-kit-desktop-candidate",
+  "candidate_binary_sha256": "a515148a94ffebb88e7520fb194bc0287967484896c44900e6d7ab4e7b364551",
+  "binary_size": 24334120
+}

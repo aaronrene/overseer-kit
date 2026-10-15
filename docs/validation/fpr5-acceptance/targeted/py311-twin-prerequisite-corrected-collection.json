@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "pytest": "9.1.1",
+  "cases": [
+    {
+      "nodeid": "tests/security/test_p_deploy_security.py::test_twin_skill_paths_exist",
+      "node_sha256": "608970285df9b79367de906b9d8c5f27ab38c6c80ad587942d7e9f6a60ca0312",
+      "junit": [
+        "tests.security.test_p_deploy_security",
+        "test_twin_skill_paths_exist"
+      ]
+    }
+  ]
+}

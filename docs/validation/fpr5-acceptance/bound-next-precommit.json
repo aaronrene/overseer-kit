@@ -1,0 +1,34 @@
+{
+  "ok": true,
+  "repository": {
+    "name": "overseer-kit",
+    "id": "6988dc4a-5f22-454b-9d68-ac5905b383bf",
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "root_relative_docs": "docs"
+  },
+  "branch": "feat/overseer-v1-recovery-20261014",
+  "head": "2e8ec694def9be4a0faa4a994bf2fff3f212ab23",
+  "runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774"
+  },
+  "vcs": "git",
+  "source_id": null,
+  "publication": "not_checked_offline",
+  "next": {
+    "schema": 1,
+    "repo_id": "6988dc4a-5f22-454b-9d68-ac5905b383bf",
+    "repo_root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "branch": "feat/overseer-v1-recovery-20261014",
+    "base_head": "2e8ec694def9be4a0faa4a994bf2fff3f212ab23",
+    "lane": "product",
+    "model": "GPT-6 Astra",
+    "action_id": "OVERSEER-FPR5-INTERACTIVE-ACCEPTANCE-1",
+    "action_kind": "stop",
+    "prompt_sha256": "822da02b7f0c123b21415b564be82dc2884bd02fae72a1e0e5966806b0b4cb69"
+  },
+  "prompt": "Reasoning: Max\nRole: Acceptance coordinator; not independent adjudicator\n\nRead AGENTS.md and docs/validation/FPR-5-ACCEPTANCE.md with its inventories.\nVerify the bound root/name/UUID, branch, clean state, source hashes and acceptance\nclosing commit whose sole parent is 2e8ec694def9be4a0faa4a994bf2fff3f212ab23.\nStop on unexplained differences.\n\nCoordinate owner-assisted completion of the two remaining observations in the\nexisting disposable pilot: rendered desktop content/canonical NEXT, and actual\nCursor 3.24.18 sessionStart/stop delivery. Follow the recorded safe launch\ninstructions. Keep both requirements explicit if either cannot be observed.\nDo not repeat completed matrices, the original FINDINGS review or old pilot.\n\nPreserve all original failures, older worktrees, protected refs and Muse history.\nThe pinned package is already local; no further download or external network,\nreal-profile/consumer access, live delivery/export, fetch/push, main merge,\ntags, signing or deployment is authorized. Do not change host privacy permissions.\nPublish successors only through bound next-write with explicit context and the\ncurrent expected digest; update ROADMAP and HANDOVER together.\n\nOnly after all required evidence is complete: one final independent adjudication\nby a reviewer who authored none of these repairs, then a separate owner release\ndecision. This action grants neither adjudication nor release authority.\n",
+  "next_sha256": "e02171ecc08a485ddc365870e3a64c657c17b283f4840bd87ece59dd2f47a00f",
+  "rendered": "## CURRENT NEXT \u2014 paste this\n\n```text\nRepository: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014\nRepository ID: 6988dc4a-5f22-454b-9d68-ac5905b383bf\nBranch: feat/overseer-v1-recovery-20261014\nLane: product\nModel: GPT-6 Astra\nAction ID: OVERSEER-FPR5-INTERACTIVE-ACCEPTANCE-1\nAction kind: stop\n\nReasoning: Max\nRole: Acceptance coordinator; not independent adjudicator\n\nRead AGENTS.md and docs/validation/FPR-5-ACCEPTANCE.md with its inventories.\nVerify the bound root/name/UUID, branch, clean state, source hashes and acceptance\nclosing commit whose sole parent is 2e8ec694def9be4a0faa4a994bf2fff3f212ab23.\nStop on unexplained differences.\n\nCoordinate owner-assisted completion of the two remaining observations in the\nexisting disposable pilot: rendered desktop content/canonical NEXT, and actual\nCursor 3.24.18 sessionStart/stop delivery. Follow the recorded safe launch\ninstructions. Keep both requirements explicit if either cannot be observed.\nDo not repeat completed matrices, the original FINDINGS review or old pilot.\n\nPreserve all original failures, older worktrees, protected refs and Muse history.\nThe pinned package is already local; no further download or external network,\nreal-profile/consumer access, live delivery/export, fetch/push, main merge,\ntags, signing or deployment is authorized. Do not change host privacy permissions.\nPublish successors only through bound next-write with explicit context and the\ncurrent expected digest; update ROADMAP and HANDOVER together.\n\nOnly after all required evidence is complete: one final independent adjudication\nby a reviewer who authored none of these repairs, then a separate owner release\ndecision. This action grants neither adjudication nor release authority.\n```\n"
+}

@@ -1,0 +1,23 @@
+{
+  "own_windows": [
+    {
+      "pid": 9766,
+      "window_id": 2008
+    }
+  ],
+  "accessibility_trusted": false,
+  "screenshots": [
+    {
+      "argv": [
+        "/usr/sbin/screencapture",
+        "-x",
+        "-l",
+        "2008",
+        "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/candidate/native-window-2008.png"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": "could not create image from window\n"
+    }
+  ]
+}

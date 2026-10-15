@@ -1,0 +1,62 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "/usr/bin/sw_vers"
+      ],
+      "exit": 0,
+      "stdout": "ProductName:\t\tmacOS\nProductVersion:\t\t15.7.2\nBuildVersion:\t\t24G325\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/uname",
+        "-m"
+      ],
+      "exit": 0,
+      "stdout": "arm64\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/Users/aaronrenecarvajal/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/rustc",
+        "--version"
+      ],
+      "exit": 0,
+      "stdout": "rustc 1.88.0 (6b00bc388 2025-06-23)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/Users/aaronrenecarvajal/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo",
+        "--version"
+      ],
+      "exit": 0,
+      "stdout": "cargo 1.88.0 (873a06493 2025-05-10)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/xcodebuild",
+        "-version"
+      ],
+      "exit": 0,
+      "stdout": "Xcode 26.2\nBuild version 17C52\n",
+      "stderr": ""
+    }
+  ],
+  "cursor_version": "3.24.18",
+  "cursor_build": "3.24.18",
+  "cursor_executable_sha256": "1501bd18c3cb06d7fe0983669dc689e57e63432bf44816e350f011a4960dfae7",
+  "native_source_hashes": {
+    "desktop/src-tauri/src/lib.rs": "8e5e038105371c57942d685b2ad475b3632f6d511fdb55720c26d89e8d50910d",
+    "desktop/src-tauri/src/launcher.rs": "b8385b72d2b0dec63da38bf24d3e7d98d9413c492f2e95cb987f2354f6112b83",
+    "desktop/src-tauri/src/main.rs": "1ba82b07fc7016a74e80ee4bee7cfc81de3bd75b0873329a6967be85985700ce",
+    "desktop/src-tauri/build.rs": "487059eaf8a947b80f20a9aacac038a5047b2ad69d2401b827376c67d6fe847f",
+    "desktop/src-tauri/Cargo.lock": "9b61ad01c7461687061f10c8b69ba15700b997c280e6a7cb0eb4a02786461706",
+    "desktop/src-tauri/Cargo.toml": "53e374be6a6074bcb2c0c632a803a1c85926c29dcf6bb0c89764be0139e69ee2",
+    "desktop/src-tauri/tauri.conf.json": "d834a532c7e67eaf9c7a21c9e80d52a31a7160d6aaad88ee9903078132ef42be",
+    "desktop/src-tauri/rust-toolchain.toml": "fdaf5c39586fd9584852826851a351483d1392a08014fb0925fb1b23da758cd6"
+  },
+  "first_cursor_process_group_after_exit": "ps -g 39798 -o pid=,pgid=,comm=; exit1, empty stdout; no process remained"
+}

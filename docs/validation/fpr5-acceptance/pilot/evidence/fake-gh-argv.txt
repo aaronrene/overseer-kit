@@ -1,0 +1,2 @@
+pr view 17 --json number,state,url,mergeable,mergeStateStatus --repo github.com/pilot-fixture/overseer-integrated
+pr checks 17 --repo github.com/pilot-fixture/overseer-integrated

@@ -1,0 +1,10 @@
+{
+  "stage": "03-surfaces",
+  "scope": "Author acceptance; not independent adjudication",
+  "commands_and_operations": [
+    {
+      "kind": "surface_attempt_failure",
+      "exception": "PermissionError(1, 'Operation not permitted')"
+    }
+  ]
+}

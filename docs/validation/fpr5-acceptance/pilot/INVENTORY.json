@@ -1,0 +1,269 @@
+{
+  "schema": 1,
+  "kind": "Durable safe subset of completed disposable integrated-pilot author evidence; excludes this inventory itself",
+  "original_artifact_root": "/private/tmp/overseer-fpr5-integrated-pilot-20261015",
+  "original_inventory": "ARTIFACTS.json",
+  "original_inventory_sha256": "a102179634069659174d52b1c6d0312186db643ca4a36455e84073c050f6c197",
+  "original_inventory_entries_verified": 47,
+  "copied_file_count": 28,
+  "files": {
+    "01-migration.py": {
+      "sha256": "fc820de51acbad5de7ed499889fc474c75323b1df0e7a609128de5b645d78984",
+      "bytes": 4534,
+      "mode": 420
+    },
+    "01b-publish-start.py": {
+      "sha256": "66f0194f452fc3e7cc63ef5df8e60f66b091513c420d43fb0031572f5459bfb3",
+      "bytes": 1210,
+      "mode": 420
+    },
+    "01c-publish-start.py": {
+      "sha256": "b70e2f50265f7e0f5d812d47f961067e41cd5fc053ba00407b1241af7db5e7cf",
+      "bytes": 1143,
+      "mode": 420
+    },
+    "01d-publish-start.py": {
+      "sha256": "9b845e512b405abd272e0a3e4afab10f190222d7a945f4a28a0d7c0bfc9277b2",
+      "bytes": 1180,
+      "mode": 420
+    },
+    "02-workflow.py": {
+      "sha256": "59122f7ec3f79dfe32db91d47d3d0ded45fab6116d5f66768b67a6933c247ba7",
+      "bytes": 5511,
+      "mode": 420
+    },
+    "02b-workflow.py": {
+      "sha256": "6773b740acb8e61db5778ada2d8e2ddd59ff151e20692ce6f0e89055a0732476",
+      "bytes": 630,
+      "mode": 420
+    },
+    "03-surfaces.py": {
+      "sha256": "db976215b466e2caf21ad37b5fe416d1b33f9f18f11effdc6acef256068dcc73",
+      "bytes": 4650,
+      "mode": 420
+    },
+    "04-simulated-landing-close.py": {
+      "sha256": "c3a8843993565358f3e20b3c0f2ddf6dd35fb2f123fec14a08729580490b6991",
+      "bytes": 3878,
+      "mode": 420
+    },
+    "05-rollback.py": {
+      "sha256": "7044d1b73c18278b090e6a4be833d6a2740325c70cf80e620373f116add96d9c",
+      "bytes": 4383,
+      "mode": 420
+    },
+    "06-finalize.py": {
+      "sha256": "04fa5dee0c7a266a3b080790f82715e0b9c5695703d99afc727e4dba4cd97bbf",
+      "bytes": 7420,
+      "mode": 420
+    },
+    "ARTIFACTS.json": {
+      "sha256": "a102179634069659174d52b1c6d0312186db643ca4a36455e84073c050f6c197",
+      "bytes": 8496,
+      "mode": 420
+    },
+    "RESULTS.json": {
+      "sha256": "41d32b3af312e88d8917c05e3a8041be41f0850ff1c8a7e06b1e629aa14e9e47",
+      "bytes": 10943,
+      "mode": 420
+    },
+    "evidence/00-bootstrap.json": {
+      "sha256": "25c68045df401986205897dfaab30df7cdb69cd5250a39b62b32ba2c4514704b",
+      "bytes": 4136,
+      "mode": 420
+    },
+    "evidence/01-migration.json": {
+      "sha256": "275ad9000aa3027b856b30b2f3f966b0e9af8ba62862adb790de4c03fd7ce72a",
+      "bytes": 217163,
+      "mode": 420
+    },
+    "evidence/01b-publish-start.json": {
+      "sha256": "6f9c13f7ed09a6e58da2685615ee1a20e2dfd0b3246bc996fd2ffa7f25c78884",
+      "bytes": 35146,
+      "mode": 420
+    },
+    "evidence/01c-publish-start.json": {
+      "sha256": "9dc4bdcdd0b622d193d35dd1a7677966900a795cd1ed1c7957fd33b841b8695d",
+      "bytes": 399,
+      "mode": 420
+    },
+    "evidence/01d-publish-start.json": {
+      "sha256": "8e12e045e94f792b3010bde00ba3023309efdfb7563f558aca5bb14d59dd9336",
+      "bytes": 83715,
+      "mode": 420
+    },
+    "evidence/02-workflow.json": {
+      "sha256": "9254760798d6283578f580cea5255b5c13d805b1547b1fb1e84660d19b0826a3",
+      "bytes": 131490,
+      "mode": 420
+    },
+    "evidence/02b-workflow.json": {
+      "sha256": "2e51ce96dc43fc962988f53897b6917e15a02fd7fdc21bbd627f6618e74d022c",
+      "bytes": 12344,
+      "mode": 420
+    },
+    "evidence/03-surfaces.json": {
+      "sha256": "0a40946246bf7dfb4c68e99ba9e39cb08408a25cde027ce5e6165ea126f99c5f",
+      "bytes": 247,
+      "mode": 420
+    },
+    "evidence/03b-surfaces-loopback.json": {
+      "sha256": "5a751b7e1778ef4dbecf920f3e5e0a6879d6f57cafd386c025d20d79b1adf07c",
+      "bytes": 62154,
+      "mode": 420
+    },
+    "evidence/03c-surfaces-correct-method.json": {
+      "sha256": "8578cced67237f817cbdeec334cead17102b4b387dce7cb74282ec368ef5c7f1",
+      "bytes": 69716,
+      "mode": 420
+    },
+    "evidence/04-simulated-landing-close.json": {
+      "sha256": "7636c006b347f3e722c4b098807dcd8b67f4c2d34fa97ffcc09d8ff32046febe",
+      "bytes": 97429,
+      "mode": 420
+    },
+    "evidence/05-rollback.json": {
+      "sha256": "db4105ff1d1e2cddd119ce98730c3064667ed7adecf4bbc9502463c29412684e",
+      "bytes": 245279,
+      "mode": 420
+    },
+    "evidence/06-final-readback.json": {
+      "sha256": "6bd4b786a1aab0c25e10bd7896e758573f9dd4d7cef63abe932af7333a89ed2e",
+      "bytes": 47574,
+      "mode": 420
+    },
+    "evidence/fake-gh-argv.txt": {
+      "sha256": "750da12f0f5c5d6e46a64ee98a1c9bafd2c07f2b9a0ab67bd23a9c0d5c3caf09",
+      "bytes": 179,
+      "mode": 420
+    },
+    "fake-gh.sh": {
+      "sha256": "69282002fce0c5d1d2389c3e4ac2a5b57dd29569f2f3ff4a8fa679574227a9be",
+      "bytes": 405,
+      "mode": 493
+    },
+    "pilotlib.py": {
+      "sha256": "a1c5d20806a36bd52057324bfa0d0e2cf19f6e20ed135d18a9745a3a292d1917",
+      "bytes": 3828,
+      "mode": 420
+    }
+  },
+  "externally_retained_backups": {
+    "backups/current-compatible/project/.overseer/config.yaml": {
+      "sha256": "f7a7deb2ca9eb204015879143101bf26bd5e02b62f8a69f1ebdfe7030c41f320",
+      "bytes": 2102,
+      "mode": 384
+    },
+    "backups/current-compatible/project/.overseer/version.lock": {
+      "sha256": "8fc838ae37c87bf044738402ce06c445e5eb311bd4b0e2f955694cb69465d872",
+      "bytes": 8286,
+      "mode": 420
+    },
+    "backups/current-compatible/source/cli/commands/verify_step.py": {
+      "sha256": "4b74e6c9c40173be1976680e7e7e1ff35ccbf465ede85451fec64a7747528783",
+      "bytes": 3930,
+      "mode": 420
+    },
+    "backups/current-compatible/source/cli/product_migration.py": {
+      "sha256": "30c29f72e24cbfd77048901223ae6063b22b009de825ac74dd9e80605eed5467",
+      "bytes": 33086,
+      "mode": 420
+    },
+    "backups/current-compatible/source/cli/product_service.py": {
+      "sha256": "9727c6f0e40749e93060423c9c1b370bb23bcf621d713512af8c418b7e03b3ce",
+      "bytes": 11552,
+      "mode": 420
+    },
+    "backups/current-compatible/source/cli/v1.py": {
+      "sha256": "81d2d6686d9dff330e5d40c55626054abe7abcf6d938a6ce6ecf3270690e4e71",
+      "bytes": 24321,
+      "mode": 420
+    },
+    "backups/current-compatible/source/tools/checkpoints/orchestrator.py": {
+      "sha256": "97b499ae2bc0476228a1213f6e80f1a86e52c0175df5c8a7b5f001ffa3f800bd",
+      "bytes": 20216,
+      "mode": 420
+    },
+    "backups/current-compatible/source/tools/checkpoints/types.py": {
+      "sha256": "53af65d39ca7cacb97f4972f38ecdc4f4976045bb83e18578f1b9f40adae3b31",
+      "bytes": 2184,
+      "mode": 420
+    },
+    "backups/current-compatible/source/tools/ci/source_package.py": {
+      "sha256": "9386f14e5a1e84da2118f66dd2e78b330e9e50aa7cadcef91e1fdc6c834c6b1e",
+      "bytes": 16855,
+      "mode": 420
+    },
+    "backups/current-compatible/source/tools/hosted_dashboard/http_client.py": {
+      "sha256": "525fac38f7d2813a442ba74be075e1ea76fa69158b7555acaa1c43ec2c0c3bba",
+      "bytes": 5447,
+      "mode": 420
+    },
+    "backups/previous-compatible/cli/commands/verify_step.py": {
+      "sha256": "28d3cd172e5c8b42d471a7089b6c6b3d3748dc364eb0334fd92552b600272bf5",
+      "bytes": 3890,
+      "mode": 420
+    },
+    "backups/previous-compatible/cli/product_migration.py": {
+      "sha256": "4e3a6b4aedaea755d0bb93cf5680a904e6d3aabadc84aa38b2a9aaf98a1cd1a4",
+      "bytes": 30274,
+      "mode": 420
+    },
+    "backups/previous-compatible/cli/product_service.py": {
+      "sha256": "37c15e436c5d44dfe8bbbebddcbb0d98484dd07fd873375f60bc16c5a40fd104",
+      "bytes": 6873,
+      "mode": 420
+    },
+    "backups/previous-compatible/cli/v1.py": {
+      "sha256": "a5f1b2300e592b78ac2794929c9943fae4457874c75974660ee0d53a1a3b5e8d",
+      "bytes": 23974,
+      "mode": 420
+    },
+    "backups/previous-compatible/project/.overseer/config.yaml": {
+      "sha256": "2e6329f3dcb9f927f42f086da6b8cfba098cfed293433958c33428c884ca1f4e",
+      "bytes": 2102,
+      "mode": 384
+    },
+    "backups/previous-compatible/project/.overseer/version.lock": {
+      "sha256": "6022fe0770eb51aa4292c289d7f3c1a3ebb96d927450e02630b442c54dae5a67",
+      "bytes": 8286,
+      "mode": 420
+    },
+    "backups/previous-compatible/tools/checkpoints/orchestrator.py": {
+      "sha256": "e404800fe06e118144a3d92b3f8755f799b2eb9556119838e4fc015444de36f0",
+      "bytes": 18834,
+      "mode": 420
+    },
+    "backups/previous-compatible/tools/checkpoints/types.py": {
+      "sha256": "022319feddf74167f74d9a73d86ea3137dddf61ec9fda9b03009547489c72d5e",
+      "bytes": 2045,
+      "mode": 420
+    },
+    "backups/previous-compatible/tools/ci/source_package.py": {
+      "sha256": "6a665a6793920842b276717a66ffe1937eb13fc800a14c621dc8b0255281afc4",
+      "bytes": 7440,
+      "mode": 420
+    },
+    "backups/previous-compatible/tools/hosted_dashboard/http_client.py": {
+      "sha256": "68173d6a1f3261c1c2ae5c22066cd5c0cc9e811aa220ea027e4d8bd23b77ca68",
+      "bytes": 5032,
+      "mode": 420
+    }
+  },
+  "externally_retained_backup_count": 20,
+  "omitted_fixture_trees": [
+    "installation/",
+    "project/",
+    "project/.git/"
+  ],
+  "privacy": "No real session credentials, keys, host profiles or fixture Git config copied. HTTP authentication values are redacted; hosted/fake-gh fixture values are synthetic.",
+  "raw_failures": "Preserved byte-for-byte, including ENOSPC-truncated evidence/01c-publish-start.json; it is intentionally not valid JSON.",
+  "source_boundary": {
+    "commit": "2e8ec694def9be4a0faa4a994bf2fff3f212ab23",
+    "archive_sha256": "de8cd9222df8cf6c5fe3f4d858e561018baa0dc6d61df1f0ac423928adaed47f",
+    "runtime_sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774",
+    "pilot_closing_head": "4e394520262e1447ae8b5415ae36dc75dc05197e",
+    "pilot_next_sha256": "489ded7be7f530ea242e1ed5dbdce96037ec752cc63c9359eaa778aa483ba055"
+  },
+  "interpretation": "Historical exact-source author pilot records. Local workflow passes do not establish complete integrated-pilot acceptance or independent adjudication. Later native duplicate-window candidate evidence is separate and cannot retroactively turn this source-bound pilot into a native-GUI or native-lifecycle pass."
+}

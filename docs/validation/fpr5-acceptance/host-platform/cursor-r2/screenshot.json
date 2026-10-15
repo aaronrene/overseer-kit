@@ -1,0 +1,1 @@
+{"method": "Page.captureScreenshot", "params": {"format": "png"}, "output": "cdp-screenshot.json"}

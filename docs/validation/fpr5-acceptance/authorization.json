@@ -1,0 +1,10 @@
+{
+  "owner_instruction": "Approve the pinned package download and the disposable local pilot. Continue here with your recommended acceptance plan. Keep all other network and release restrictions.",
+  "network_exception": [
+    "https://pypi.org/pypi/cffi/2.1.0/json",
+    "only compatible cffi 2.1.0 cp311 macOS arm64 wheel on files.pythonhosted.org"
+  ],
+  "source_head": "2e8ec694def9be4a0faa4a994bf2fff3f212ab23",
+  "runtime_sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774",
+  "other_network_and_release_prohibited": true
+}

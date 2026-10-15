@@ -1,0 +1,48 @@
+{
+  "role": "author acceptance evidence, not independent adjudication",
+  "baseline_report": "../host-platform-report.json (preserved unmodified)",
+  "change": {
+    "path": "desktop/src-tauri/tauri.conf.json",
+    "before_sha256": "d834a532c7e67eaf9c7a21c9e80d52a31a7160d6aaad88ee9903078132ef42be",
+    "after_sha256": "d65242ef9ca4be228e791d7596bd2a60ff90ba200445c0d5dbf58229c5eecab6",
+    "behavior": "create:false prevents automatic main webview creation; existing Rust setup creates the single authenticated webview",
+    "runtime_sha256_unchanged": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774",
+    "all_1483_base_source_members_present": true,
+    "only_source_member_changed": "desktop/src-tauri/tauri.conf.json"
+  },
+  "build": {
+    "outcome": "PASS",
+    "candidate_binary_sha256": "a515148a94ffebb88e7520fb194bc0287967484896c44900e6d7ab4e7b364551",
+    "candidate_binary_bytes": 24334120,
+    "fresh_reduced_debug_attempt": "Interrupted at650MiB free-space floor before a binary; raw failure and cleanup retained.",
+    "successful_attempt": "Verified prior locked dependency cache APFS-cloned into new target; every cloned application crate/build-script/resource output removed; candidate recompiled offline with Rust1.88 and prior matching dev profile.",
+    "old_cache_validation": "All inventoried regular files byte/mode/size identical before and after; old target never written. Original application binary not executed; new candidate binary hash differs.",
+    "new_target_cleaned_after_preserving_binary": true
+  },
+  "checks": {
+    "existing_affected_tests": "2 passed: actual current-contract bound desktop child/ambient-refusal and manifest validation",
+    "resource_verification": "PASS,1483 approved resource source members",
+    "actual_native_window_creation": "PASS, one OS-enumerated window2008 owned by native PID9766; no duplicate-main crash",
+    "normal_native_exit": "PASS, exit0 after normal NSRunningApplication termination request",
+    "native_child_shutdown": "Native+Python child observed before quit; both gone before fallback; no signals sent. Immediate plain bind failed and raw result retains false. Subsequent connect_ex61 refused and SO_REUSEADDR bind succeeded, showing no remaining listener.",
+    "rendered_content_readback": "BLOCKED: own-window screenshot refused and AXIsProcessTrusted=false; actual displayed app/NEXT content not established.",
+    "cursor_required_bookends": "BLOCKED unchanged: sessionStart/stop configuration recognized, no required event delivery"
+  },
+  "pilot": {
+    "head": "4e394520262e1447ae8b5415ae36dc75dc05197e",
+    "next_sha256": "489ded7be7f530ea242e1ed5dbdce96037ec752cc63c9359eaa778aa483ba055",
+    "next_unchanged": true
+  },
+  "isolation": {
+    "outer_profile_unchanged": true,
+    "external_network_denied": true,
+    "actual_home_account_reads_denied": true,
+    "temporary_native_caches": "CFFIXED_USER_HOME points to new owned tmp directory; actual HOME variable never repurposed.",
+    "release_signing_publication": false
+  },
+  "required_remaining": [
+    "Owner-assisted observation of actual native rendered application/readback on selected macOS platform.",
+    "Actual Cursor3.24.18 sessionStart and stop delivery, canonical NEXT text/digest equality, and read-only behavior. Account/provider prerequisite is unknown; no network exception is recommended."
+  ],
+  "final_independent_adjudication_ready": false
+}

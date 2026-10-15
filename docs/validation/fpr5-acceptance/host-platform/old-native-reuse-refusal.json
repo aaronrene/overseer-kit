@@ -1,0 +1,534 @@
+{
+  "recorded_evidence": "docs/validation/fpr4/distribution-final-native-3.14-results.json",
+  "binary_path": "/private/tmp/overseer-fpr4-distribution-20261014-2/native-target/debug/overseer-kit-desktop",
+  "recorded_binary_sha256": "156980876d0fc087639b8731d999f59bcea0b8ffc8ea732bf69f9fa39ef00d14",
+  "observed_binary_sha256": "0eca7f90280274afa114ee4563db1dcf6d722c3f82f0a6d8f01b64847fb6a6c7",
+  "source_comparisons": {
+    "desktop/.gitignore": {
+      "recorded": {
+        "sha256": "fe718e7babb14f3cbad2d97f08889b9ce5215ed3fe0e43b2b8cfbfb3b9b844e8",
+        "size": 253,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "fe718e7babb14f3cbad2d97f08889b9ce5215ed3fe0e43b2b8cfbfb3b9b844e8",
+        "size": 253,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/.vscode/extensions.json": {
+      "recorded": {
+        "sha256": "8988c707a30230dcaa815dc690caab61f43c57b13fb42e2d632e06a794b58454",
+        "size": 80,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "8988c707a30230dcaa815dc690caab61f43c57b13fb42e2d632e06a794b58454",
+        "size": 80,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/README.md": {
+      "recorded": {
+        "sha256": "dd07764601c048146a45d9c16bc7324451bb30c5f3a4def858907b2b9cadfccf",
+        "size": 1630,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "d4dd09c3f71e42b26e79bc04b9c1bbfff77ac59c40953ce7559ea3807ed21855",
+        "size": 2326,
+        "mode": "0644"
+      },
+      "equal": false
+    },
+    "desktop/app-icon.png": {
+      "recorded": {
+        "sha256": "1b43d0e983b20b8637aab8564f447ab2ed322268e09a8a7b76a63bdf2ed3c334",
+        "size": 71087,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "1b43d0e983b20b8637aab8564f447ab2ed322268e09a8a7b76a63bdf2ed3c334",
+        "size": 71087,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/keys/README.md": {
+      "recorded": {
+        "sha256": "4a095c352ad696e6d51ed028c5be65e32805dbb6c433b4d2d25532eeed666c83",
+        "size": 819,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "4a095c352ad696e6d51ed028c5be65e32805dbb6c433b4d2d25532eeed666c83",
+        "size": 819,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/keys/release.minisign.pub": {
+      "recorded": {
+        "sha256": "39a00aad6aa5b8218151acabb754951ac8c160023780ed030cc628c123ec855d",
+        "size": 195,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "39a00aad6aa5b8218151acabb754951ac8c160023780ed030cc628c123ec855d",
+        "size": 195,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/package-lock.json": {
+      "recorded": {
+        "sha256": "e904fcab7ce74f25e2783132b1ecf7eefe2a509c9565acd080e28b3ce35c74a9",
+        "size": 7256,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "e904fcab7ce74f25e2783132b1ecf7eefe2a509c9565acd080e28b3ce35c74a9",
+        "size": 7256,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/package.json": {
+      "recorded": {
+        "sha256": "ba0d2e508e433cddacf28eae9ec9626983e0e80976e12a898933372d2dffac93",
+        "size": 279,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "ba0d2e508e433cddacf28eae9ec9626983e0e80976e12a898933372d2dffac93",
+        "size": 279,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src-tauri/.gitignore": {
+      "recorded": {
+        "sha256": "88707cda7ba4226eda3ffa91d8284f1a0d12b827f06fb9bc48425cc0d4af04af",
+        "size": 166,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "88707cda7ba4226eda3ffa91d8284f1a0d12b827f06fb9bc48425cc0d4af04af",
+        "size": 166,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src-tauri/Cargo.lock": {
+      "recorded": {
+        "sha256": "9b61ad01c7461687061f10c8b69ba15700b997c280e6a7cb0eb4a02786461706",
+        "size": 106997,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "9b61ad01c7461687061f10c8b69ba15700b997c280e6a7cb0eb4a02786461706",
+        "size": 106997,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src-tauri/Cargo.toml": {
+      "recorded": {
+        "sha256": "53e374be6a6074bcb2c0c632a803a1c85926c29dcf6bb0c89764be0139e69ee2",
+        "size": 454,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "53e374be6a6074bcb2c0c632a803a1c85926c29dcf6bb0c89764be0139e69ee2",
+        "size": 454,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src-tauri/build.rs": {
+      "recorded": {
+        "sha256": "487059eaf8a947b80f20a9aacac038a5047b2ad69d2401b827376c67d6fe847f",
+        "size": 39,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "487059eaf8a947b80f20a9aacac038a5047b2ad69d2401b827376c67d6fe847f",
+        "size": 39,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src-tauri/capabilities/default.json": {
+      "recorded": {
+        "sha256": "1701bb40d2d856a36c4c3d788724cc48613f662edf4f80c4c0b07f242785bf3d",
+        "size": 205,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "1701bb40d2d856a36c4c3d788724cc48613f662edf4f80c4c0b07f242785bf3d",
+        "size": 205,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src-tauri/icons/128x128.png": {
+      "recorded": {
+        "sha256": "e17c60f04cc858a6bfdbe65d097c889387617827bc2cda78ba8df044e589a76a",
+        "size": 7449,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "e17c60f04cc858a6bfdbe65d097c889387617827bc2cda78ba8df044e589a76a",
+        "size": 7449,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src-tauri/icons/128x128@2x.png": {
+      "recorded": {
+        "sha256": "ca01b747460bb4ad53a16c14f63ffccae99f87aee7ebeb08bc9cce2f2efa5e7d",
+        "size": 14985,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "ca01b747460bb4ad53a16c14f63ffccae99f87aee7ebeb08bc9cce2f2efa5e7d",
+        "size": 14985,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src-tauri/icons/32x32.png": {
+      "recorded": {
+        "sha256": "9bd70c640173c012e30d1597d19fbc28dbf5222cebad5891317d5968820d8984",
+        "size": 1708,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "9bd70c640173c012e30d1597d19fbc28dbf5222cebad5891317d5968820d8984",
+        "size": 1708,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src-tauri/icons/64x64.png": {
+      "recorded": {
+        "sha256": "2e35b058cd9e7a1b720efdfe62d8f16747b2536251636036979c35d0f1c33ae7",
+        "size": 3665,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "2e35b058cd9e7a1b720efdfe62d8f16747b2536251636036979c35d0f1c33ae7",
+        "size": 3665,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src-tauri/icons/Square107x107Logo.png": {
+      "recorded": {
+        "sha256": "2e00267463ed186b499aaa7378fb4f966c676a7fc93d8a80e5def9956c06a45a",
+        "size": 6252,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "2e00267463ed186b499aaa7378fb4f966c676a7fc93d8a80e5def9956c06a45a",
+        "size": 6252,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src-tauri/icons/Square142x142Logo.png": {
+      "recorded": {
+        "sha256": "9273c6801ed2ee06995d4457e8193b2f1ee3109dcb1ddfba0833ff0191852b5a",
+        "size": 8218,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "9273c6801ed2ee06995d4457e8193b2f1ee3109dcb1ddfba0833ff0191852b5a",
+        "size": 8218,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src-tauri/icons/Square150x150Logo.png": {
+      "recorded": {
+        "sha256": "f929d73991cd70535733805f9b00d97ce71005573be71d5d653f54ba7f1f1f1a",
+        "size": 8692,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "f929d73991cd70535733805f9b00d97ce71005573be71d5d653f54ba7f1f1f1a",
+        "size": 8692,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src-tauri/icons/Square284x284Logo.png": {
+      "recorded": {
+        "sha256": "aecf7e94383cd0128c4c70ea233c095af6ed52f8f744043f0e4743d5cfd7b1da",
+        "size": 16705,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "aecf7e94383cd0128c4c70ea233c095af6ed52f8f744043f0e4743d5cfd7b1da",
+        "size": 16705,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src-tauri/icons/Square30x30Logo.png": {
+      "recorded": {
+        "sha256": "908902a9e7ed177fb71213f6653155dd08647749e7a5ab8b51d5d0f35766b876",
+        "size": 1652,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "908902a9e7ed177fb71213f6653155dd08647749e7a5ab8b51d5d0f35766b876",
+        "size": 1652,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src-tauri/icons/Square310x310Logo.png": {
+      "recorded": {
+        "sha256": "c9f6b3234313952fc614870ee8d64030526c6d10d0013c792038ed29cfd68341",
+        "size": 18102,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "c9f6b3234313952fc614870ee8d64030526c6d10d0013c792038ed29cfd68341",
+        "size": 18102,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src-tauri/icons/Square44x44Logo.png": {
+      "recorded": {
+        "sha256": "b706d6ab1919f400d6ea3e32161a1a0a4bffd7e68d94f7356ebe50b7871db0a7",
+        "size": 2555,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "b706d6ab1919f400d6ea3e32161a1a0a4bffd7e68d94f7356ebe50b7871db0a7",
+        "size": 2555,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src-tauri/icons/Square71x71Logo.png": {
+      "recorded": {
+        "sha256": "529286f6044d8f3f77053da00351efb905ed3bf6c3618668a61d79cc542a86f4",
+        "size": 4085,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "529286f6044d8f3f77053da00351efb905ed3bf6c3618668a61d79cc542a86f4",
+        "size": 4085,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src-tauri/icons/Square89x89Logo.png": {
+      "recorded": {
+        "sha256": "0a8ca8d00d23c732df2d5519d29a84a1f77ee2a8eaede235a74146313b64eadc",
+        "size": 5022,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "0a8ca8d00d23c732df2d5519d29a84a1f77ee2a8eaede235a74146313b64eadc",
+        "size": 5022,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src-tauri/icons/StoreLogo.png": {
+      "recorded": {
+        "sha256": "a69cf5513ead9dd6da4bb12e44780ecbd180c4af3117cf1d1fa31d9033ef00aa",
+        "size": 2898,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "a69cf5513ead9dd6da4bb12e44780ecbd180c4af3117cf1d1fa31d9033ef00aa",
+        "size": 2898,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src-tauri/icons/icon.icns": {
+      "recorded": {
+        "sha256": "3c76132825844b6c10e4f0b94a80e864e0c55603f0b8e923fc6ea985e4d3291b",
+        "size": 150845,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "3c76132825844b6c10e4f0b94a80e864e0c55603f0b8e923fc6ea985e4d3291b",
+        "size": 150845,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src-tauri/icons/icon.ico": {
+      "recorded": {
+        "sha256": "8cb9d92aeae771a5073d9e6695aa5326b02141edb09f62f1314fa0762e1e413f",
+        "size": 26832,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "8cb9d92aeae771a5073d9e6695aa5326b02141edb09f62f1314fa0762e1e413f",
+        "size": 26832,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src-tauri/icons/icon.png": {
+      "recorded": {
+        "sha256": "96e64e142a5ac374005620da2effbe95ab08f339f6ef1914334b855be3918b85",
+        "size": 32316,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "96e64e142a5ac374005620da2effbe95ab08f339f6ef1914334b855be3918b85",
+        "size": 32316,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src-tauri/rust-toolchain.toml": {
+      "recorded": {
+        "sha256": "fdaf5c39586fd9584852826851a351483d1392a08014fb0925fb1b23da758cd6",
+        "size": 31,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "fdaf5c39586fd9584852826851a351483d1392a08014fb0925fb1b23da758cd6",
+        "size": 31,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src-tauri/src/launcher.rs": {
+      "recorded": {
+        "sha256": "b8385b72d2b0dec63da38bf24d3e7d98d9413c492f2e95cb987f2354f6112b83",
+        "size": 7641,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "b8385b72d2b0dec63da38bf24d3e7d98d9413c492f2e95cb987f2354f6112b83",
+        "size": 7641,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src-tauri/src/lib.rs": {
+      "recorded": {
+        "sha256": "8e5e038105371c57942d685b2ad475b3632f6d511fdb55720c26d89e8d50910d",
+        "size": 1874,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "8e5e038105371c57942d685b2ad475b3632f6d511fdb55720c26d89e8d50910d",
+        "size": 1874,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src-tauri/src/main.rs": {
+      "recorded": {
+        "sha256": "1ba82b07fc7016a74e80ee4bee7cfc81de3bd75b0873329a6967be85985700ce",
+        "size": 195,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "1ba82b07fc7016a74e80ee4bee7cfc81de3bd75b0873329a6967be85985700ce",
+        "size": 195,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src-tauri/tauri.conf.json": {
+      "recorded": {
+        "sha256": "d834a532c7e67eaf9c7a21c9e80d52a31a7160d6aaad88ee9903078132ef42be",
+        "size": 1118,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "d834a532c7e67eaf9c7a21c9e80d52a31a7160d6aaad88ee9903078132ef42be",
+        "size": 1118,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src/assets/javascript.svg": {
+      "recorded": {
+        "sha256": "8dac53799104214c30769aa44c25a16b3c8c86f7c6c6e46fb1996e63ab5d828e",
+        "size": 995,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "8dac53799104214c30769aa44c25a16b3c8c86f7c6c6e46fb1996e63ab5d828e",
+        "size": 995,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src/assets/tauri.svg": {
+      "recorded": {
+        "sha256": "e5d2738bbaa5543c4684001a558dc53165da9b636144827b28db1dcfacf81aa8",
+        "size": 2599,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "e5d2738bbaa5543c4684001a558dc53165da9b636144827b28db1dcfacf81aa8",
+        "size": 2599,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src/index.html": {
+      "recorded": {
+        "sha256": "3ee07ded6caaacb00583a1ddadfeeeb36d86f08f8ad21bff31cbc480d7b57025",
+        "size": 140,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "3ee07ded6caaacb00583a1ddadfeeeb36d86f08f8ad21bff31cbc480d7b57025",
+        "size": 140,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src/main.js": {
+      "recorded": {
+        "sha256": "3aab7ecfbd72220c97eb3989be25903fa3f1fa6d84a9c5ee0f23166d79377c93",
+        "size": 551,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "3aab7ecfbd72220c97eb3989be25903fa3f1fa6d84a9c5ee0f23166d79377c93",
+        "size": 551,
+        "mode": "0644"
+      },
+      "equal": true
+    },
+    "desktop/src/styles.css": {
+      "recorded": {
+        "sha256": "9f0fb12fdf51d9a8b3f61e73e3408b61b52fde21a48ab5793db9722cc9002a1a",
+        "size": 1679,
+        "mode": "0644"
+      },
+      "current": {
+        "sha256": "9f0fb12fdf51d9a8b3f61e73e3408b61b52fde21a48ab5793db9722cc9002a1a",
+        "size": 1679,
+        "mode": "0644"
+      },
+      "equal": true
+    }
+  },
+  "native_executable_inputs_equal": true,
+  "only_desktop_documentation_difference": "desktop/README.md",
+  "binary_copied": false,
+  "binary_executed": false,
+  "reuse_refused": true,
+  "reason": "Observed optional old binary differs from recorded binary; no reuse or modification; no current-source drift inferred"
+}

@@ -1,0 +1,73 @@
+{
+  "archive_sha256": "de8cd9222df8cf6c5fe3f4d858e561018baa0dc6d61df1f0ac423928adaed47f",
+  "commands": [
+    {
+      "argv": [
+        "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.venv/bin/python3",
+        "-B",
+        "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/tools/ci/source_package.py",
+        "verify",
+        "--archive",
+        "/private/tmp/overseer-fpr5-acceptance-preparation-w580lsq4/source.tar.gz"
+      ],
+      "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "exit_code": 0,
+      "stdout": "{\"ok\": true, \"files\": 1483}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.venv/bin/python3",
+        "-B",
+        "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/tools/ci/source_package.py",
+        "unpack",
+        "--archive",
+        "/private/tmp/overseer-fpr5-acceptance-preparation-w580lsq4/source.tar.gz",
+        "--destination",
+        "/private/tmp/overseer-fpr5-integrated-pilot-20261015/installation"
+      ],
+      "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "exit_code": 0,
+      "stdout": "{\"ok\": true, \"destination\": \"/private/tmp/overseer-fpr5-integrated-pilot-20261015/installation\"}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.venv/bin/python3",
+        "-B",
+        "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/tools/ci/source_package.py",
+        "provision-runtime",
+        "--directory",
+        "/private/tmp/overseer-fpr5-integrated-pilot-20261015/installation"
+      ],
+      "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "exit_code": 0,
+      "stdout": "{\"ok\": true, \"dependencies\": {\"PyYAML\": \"6.0.3\", \"cryptography\": \"49.0.0\", \"cffi\": \"2.1.0\", \"pycparser\": \"3.0\"}, \"interpreter\": {\"path\": \"/opt/homebrew/Cellar/python@3.14/3.14.4_1/Frameworks/Python.framework/Versions/3.14/bin/python3.14\", \"sha256\": \"9d8a576754c7fa953404cfe209f94b649aa0f723421fa196e42e081939eae7bb\", \"version\": [3, 14, 4]}, \"entries\": 230}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.venv/bin/python3",
+        "-B",
+        "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/tools/ci/source_package.py",
+        "verify-tree",
+        "--directory",
+        "/private/tmp/overseer-fpr5-integrated-pilot-20261015/installation"
+      ],
+      "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "exit_code": 0,
+      "stdout": "{\"ok\": true, \"files\": 1483}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/private/tmp/overseer-fpr5-integrated-pilot-20261015/installation/cli/ok",
+        "--help"
+      ],
+      "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "exit_code": 0,
+      "stdout": "usage: ok [-h] [-C REPO] [--config CONFIG] [--json] [-q] [-v] [--no-color]\n          [--version]\n          {adopt,app,check-if-ok,check-ok,governance-sync,handover-compact,honesty-status,hook,hosted-dashboard,init,land-check,land-closeout,ledger,mirror,next,next-write,pr-land,review,route,status,sync,upgrade-regime,verify-step,workspace} ...\n\nRepository-bound Overseer product; local changes, remote transport and release\nare separate\n\npositional arguments:\n  {adopt,app,check-if-ok,check-ok,governance-sync,handover-compact,honesty-status,hook,hosted-dashboard,init,land-check,land-closeout,ledger,mirror,next,next-write,pr-land,review,route,status,sync,upgrade-regime,verify-step,workspace}\n\noptions:\n  -h, --help            show this help message and exit\n  -C, --repo REPO\n  --config CONFIG\n  --json\n  -q, --quiet\n  -v, --verbose\n  --no-color\n  --version             show program's version number and exit\n",
+      "stderr": ""
+    }
+  ]
+}

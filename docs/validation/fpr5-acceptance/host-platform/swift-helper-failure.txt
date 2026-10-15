@@ -1,0 +1,4 @@
+xcrun swiftc -module-cache-path /private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/swift-module-cache /private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/window_inventory.swift -o /private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/window_inventory
+exit 1
+<unknown>:0: error: unable to open output file .../_DarwinFoundation3-2NSGASPTSNBVQ.pcm: No space left on device
+CoreGraphics window inventory helper was not built. Tool transcript retains complete stderr.

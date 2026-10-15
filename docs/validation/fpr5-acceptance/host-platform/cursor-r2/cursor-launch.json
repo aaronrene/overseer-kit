@@ -1,0 +1,37 @@
+{
+  "argv": [
+    "/usr/bin/sandbox-exec",
+    "-f",
+    "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/isolated-cursor.sb",
+    "/Applications/Cursor.app/Contents/MacOS/Cursor",
+    "--user-data-dir",
+    "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-r2/cursor-profile",
+    "--extensions-dir",
+    "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-r2/cursor-extensions",
+    "--new-window",
+    "--no-sandbox",
+    "--disable-gpu",
+    "--disable-extensions",
+    "--disable-updates",
+    "--disable-telemetry",
+    "--disable-crash-reporter",
+    "--skip-welcome",
+    "--skip-release-notes",
+    "--password-store=basic",
+    "--log",
+    "trace",
+    "--remote-debugging-address=127.0.0.1",
+    "--remote-debugging-port=53498",
+    "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project"
+  ],
+  "environment": {
+    "PATH": "/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin",
+    "TMPDIR": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-r2/cursor-temp/",
+    "LANG": "en_US.UTF-8",
+    "ELECTRON_ENABLE_LOGGING": "1"
+  },
+  "pid": 56121,
+  "port": 53498,
+  "started_at": 1792061474.4231591,
+  "next_before_exit": 0
+}

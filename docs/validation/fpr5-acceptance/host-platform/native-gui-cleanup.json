@@ -1,0 +1,7 @@
+{
+  "port8765_rebind_after_process_cleanup": "success",
+  "pilot_git_status_exit": 0,
+  "pilot_git_status_stdout": "",
+  "pilot_git_status_stderr": "",
+  "source_changed": false
+}

@@ -1,0 +1,182 @@
+{
+  "schema": 1,
+  "pytest": "9.1.1",
+  "cases": [
+    {
+      "nodeid": "tests/v1/test_adoption.py::test_git_without_muse_and_no_automatic_conversion",
+      "node_sha256": "2c5cfee2c970a51516cdf9b005cc28459776d10f094fc8352ba1882ee2f73048",
+      "junit": [
+        "tests.v1.test_adoption",
+        "test_git_without_muse_and_no_automatic_conversion"
+      ]
+    },
+    {
+      "nodeid": "tests/v1/test_adoption.py::test_mixed_init_requires_explicit_selection",
+      "node_sha256": "3b006b296316212625962e3ba103e89bb43949af8794cbbf63f6d6f7089148b8",
+      "junit": [
+        "tests.v1.test_adoption",
+        "test_mixed_init_requires_explicit_selection"
+      ]
+    },
+    {
+      "nodeid": "tests/v1/test_adoption.py::test_nearest_muse_boundary_cannot_use_parent_git",
+      "node_sha256": "1afece8323a178e6993f5408995e19698693c2db4a9b84b5f9c3b4d40dfdaa84",
+      "junit": [
+        "tests.v1.test_adoption",
+        "test_nearest_muse_boundary_cannot_use_parent_git"
+      ]
+    },
+    {
+      "nodeid": "tests/v1/test_adoption.py::test_schema_one_explicit_upgrade_and_exact_config_rollback",
+      "node_sha256": "3aa882a892d7f82f4437fd12eb1b38bce6ccae2da33772bbb59ea4097bb9c90e",
+      "junit": [
+        "tests.v1.test_adoption",
+        "test_schema_one_explicit_upgrade_and_exact_config_rollback"
+      ]
+    },
+    {
+      "nodeid": "tests/v1/test_adoption.py::test_adoption_expected_context_and_cas[change0]",
+      "node_sha256": "970b15fe3a66eed950bc53abb8ac37be83fb293da285077c170b3ce622bf273b",
+      "junit": [
+        "tests.v1.test_adoption",
+        "test_adoption_expected_context_and_cas[change0]"
+      ]
+    },
+    {
+      "nodeid": "tests/v1/test_adoption.py::test_adoption_expected_context_and_cas[change1]",
+      "node_sha256": "3b1a2df751995d9a87f945f8fb8cb0a60dae5954865bded07b4ac5c5a5274e5d",
+      "junit": [
+        "tests.v1.test_adoption",
+        "test_adoption_expected_context_and_cas[change1]"
+      ]
+    },
+    {
+      "nodeid": "tests/v1/test_adoption.py::test_adoption_expected_context_and_cas[change2]",
+      "node_sha256": "eecc528575b04fbba837cca6882319c180e23cbca68d230080877fbb2f357174",
+      "junit": [
+        "tests.v1.test_adoption",
+        "test_adoption_expected_context_and_cas[change2]"
+      ]
+    },
+    {
+      "nodeid": "tests/v1/test_adoption.py::test_adoption_expected_context_and_cas[change3]",
+      "node_sha256": "db05d4ff717d4c7d71fc062ee0c0d56e0e625c77cd26834c913ea5082a6fd4ea",
+      "junit": [
+        "tests.v1.test_adoption",
+        "test_adoption_expected_context_and_cas[change3]"
+      ]
+    },
+    {
+      "nodeid": "tests/v1/test_adoption.py::test_adoption_expected_context_and_cas[change4]",
+      "node_sha256": "51561ad1f0a57dd9e1f4542b90b6cebffc9af8cd957cf9a3f8593d6886c05744",
+      "junit": [
+        "tests.v1.test_adoption",
+        "test_adoption_expected_context_and_cas[change4]"
+      ]
+    },
+    {
+      "nodeid": "tests/v1/test_adoption.py::test_adoption_expected_context_and_cas[change5]",
+      "node_sha256": "88880dffb31812d27d7cea163b380cc3a1cb39fc90c33b6f4abe157c7f910a17",
+      "junit": [
+        "tests.v1.test_adoption",
+        "test_adoption_expected_context_and_cas[change5]"
+      ]
+    },
+    {
+      "nodeid": "tests/v1/test_adoption.py::test_tracked_local_files_are_reported_without_untracking",
+      "node_sha256": "ed179760650923f0e3e62b65c6fd77524e219a8b731228320e13ef7773fe9c82",
+      "junit": [
+        "tests.v1.test_adoption",
+        "test_tracked_local_files_are_reported_without_untracking"
+      ]
+    },
+    {
+      "nodeid": "tests/v1/test_adoption.py::test_adoption_failure_before_config_keeps_old_binding",
+      "node_sha256": "d81902b62d0290fe3bb40968dd7bae8bad022de4ead1b5286ac745e9f1da1c3c",
+      "junit": [
+        "tests.v1.test_adoption",
+        "test_adoption_failure_before_config_keeps_old_binding"
+      ]
+    },
+    {
+      "nodeid": "tests/v1/test_adoption.py::test_adoption_does_not_overwrite_concurrent_config_edit",
+      "node_sha256": "dab202ea915508106a818967144bc2eaf99d2ffc5c53818c91c1059f8e859db3",
+      "junit": [
+        "tests.v1.test_adoption",
+        "test_adoption_does_not_overwrite_concurrent_config_edit"
+      ]
+    },
+    {
+      "nodeid": "tests/v1/test_adoption.py::test_ignore_policy_preserves_rules_comments_and_templates",
+      "node_sha256": "dcf821bdead0c51ea88ef82a5383a11eef031288751bb8397884fcf9cb5e893f",
+      "junit": [
+        "tests.v1.test_adoption",
+        "test_ignore_policy_preserves_rules_comments_and_templates"
+      ]
+    },
+    {
+      "nodeid": "tests/v1/test_adoption.py::test_invalid_or_forced_local_museignore_refuses_without_changes[not valid toml]",
+      "node_sha256": "5bd93b8d5536199553f460d1affd09a5caab828ef030114e27803fcb6626e5c5",
+      "junit": [
+        "tests.v1.test_adoption",
+        "test_invalid_or_forced_local_museignore_refuses_without_changes[not valid toml]"
+      ]
+    },
+    {
+      "nodeid": "tests/v1/test_adoption.py::test_invalid_or_forced_local_museignore_refuses_without_changes[[global]\\npatterns = \"bad\"]",
+      "node_sha256": "4767c13de66f1ce280b70f6ac23e8c345aa953148d97417bbb086c5670463499",
+      "junit": [
+        "tests.v1.test_adoption",
+        "test_invalid_or_forced_local_museignore_refuses_without_changes[[global]\\npatterns = \"bad\"]"
+      ]
+    },
+    {
+      "nodeid": "tests/v1/test_adoption.py::test_invalid_or_forced_local_museignore_refuses_without_changes[[force_track]\\npaths=[\"docs/NEXT.md\"]]",
+      "node_sha256": "0d7c8833b80cbbd95855a2a759481eb553ef511e344a3f0d20994abcdac13b6f",
+      "junit": [
+        "tests.v1.test_adoption",
+        "test_invalid_or_forced_local_museignore_refuses_without_changes[[force_track]\\npaths=[\"docs/NEXT.md\"]]"
+      ]
+    },
+    {
+      "nodeid": "tests/v1/test_adoption.py::test_bad_muse_response_has_no_git_fallback[]",
+      "node_sha256": "937732081941805873fc3b0e1450aedf26bf66523d9dbce7838411e407545bfd",
+      "junit": [
+        "tests.v1.test_adoption",
+        "test_bad_muse_response_has_no_git_fallback[]"
+      ]
+    },
+    {
+      "nodeid": "tests/v1/test_adoption.py::test_bad_muse_response_has_no_git_fallback[not json]",
+      "node_sha256": "b38574b8263cbbae13eef02ea44ca5e5034a39a66fafeaad50291503f7701e9c",
+      "junit": [
+        "tests.v1.test_adoption",
+        "test_bad_muse_response_has_no_git_fallback[not json]"
+      ]
+    },
+    {
+      "nodeid": "tests/v1/test_adoption.py::test_bad_muse_response_has_no_git_fallback[{}]",
+      "node_sha256": "bc3ed905f49922b1d71a83ede9d8a99cc6c54066de997cf5d042961c31d18f3e",
+      "junit": [
+        "tests.v1.test_adoption",
+        "test_bad_muse_response_has_no_git_fallback[{}]"
+      ]
+    },
+    {
+      "nodeid": "tests/v1/test_adoption.py::test_bad_muse_response_has_no_git_fallback[[]]",
+      "node_sha256": "5cc776a0fb915a944bb1692637b61a16cf4c4e28c623a8c0f656ab78924bdea2",
+      "junit": [
+        "tests.v1.test_adoption",
+        "test_bad_muse_response_has_no_git_fallback[[]]"
+      ]
+    },
+    {
+      "nodeid": "tests/v1/test_adoption.py::test_bad_muse_response_has_no_git_fallback[{\"root\":\"a\",\"root\":\"b\"}]",
+      "node_sha256": "0243a1dbb6490c85c6b7ee513b4da7921ef612940ab50248a65f91245980b591",
+      "junit": [
+        "tests.v1.test_adoption",
+        "test_bad_muse_response_has_no_git_fallback[{\"root\":\"a\",\"root\":\"b\"}]"
+      ]
+    },
+    {
+      "nodeid": 

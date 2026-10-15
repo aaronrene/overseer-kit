@@ -1,0 +1,126 @@
+{
+  "schema": 1,
+  "pytest": "9.1.1",
+  "cases": [
+    {
+      "nodeid": "tests/fpr2/test_lanes.py::test_collection_missing_selection_stale_and_bookends",
+      "node_sha256": "80bcc0ff944966580e2390de5bfbff85069dca697820926f4eab5404f2c80f4b",
+      "junit": [
+        "tests.fpr2.test_lanes",
+        "test_collection_missing_selection_stale_and_bookends"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr2/test_lanes.py::test_two_repositories_lane_ownership_and_no_fallback",
+      "node_sha256": "67b7ccfc074ed14934933ed387cd748a0cf60d7ba7d0d013c5dd11c9ac6f7ec7",
+      "junit": [
+        "tests.fpr2.test_lanes",
+        "test_two_repositories_lane_ownership_and_no_fallback"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr2/test_lanes.py::test_concurrent_lane_updates_whole_file_cas",
+      "node_sha256": "c903af97afd38c2189f01106a8b18126e01b594bfe4fdcc3c8ff7f23aea56535",
+      "junit": [
+        "tests.fpr2.test_lanes",
+        "test_concurrent_lane_updates_whole_file_cas"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr2/test_lanes.py::test_entire_collection_validated_before_selected_output[extra_body]",
+      "node_sha256": "956ea37ed087f9c458c3457c6fa765d92aaeee7b23fcd256bf5f0b2567a2e959",
+      "junit": [
+        "tests.fpr2.test_lanes",
+        "test_entire_collection_validated_before_selected_output[extra_body]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr2/test_lanes.py::test_entire_collection_validated_before_selected_output[digest]",
+      "node_sha256": "75ed195bce45021ca67679c8ceb4798768dddcd765426c7951c443be88bfd83b",
+      "junit": [
+        "tests.fpr2.test_lanes",
+        "test_entire_collection_validated_before_selected_output[digest]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr2/test_lanes.py::test_entire_collection_validated_before_selected_output[undeclared]",
+      "node_sha256": "f662956df3052eada0dbe6adde94b1207616e9de6e3c1b7fb9411080b63d3e70",
+      "junit": [
+        "tests.fpr2.test_lanes",
+        "test_entire_collection_validated_before_selected_output[undeclared]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr2/test_lanes.py::test_entire_collection_validated_before_selected_output[missing_body]",
+      "node_sha256": "f629d7a92fef8272946dd78e49700444dee8f4c54f0994521995c6cbedf07254",
+      "junit": [
+        "tests.fpr2.test_lanes",
+        "test_entire_collection_validated_before_selected_output[missing_body]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr2/test_lanes.py::test_explicit_batch_updates_only_selected_lanes_with_one_cas",
+      "node_sha256": "2c8b7fcf89b1a0975fc34185cbc1c4039a6316b4f2e6a817ff7f81b085fd4db3",
+      "junit": [
+        "tests.fpr2.test_lanes",
+        "test_explicit_batch_updates_only_selected_lanes_with_one_cas"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr2/test_lanes.py::test_duplicate_authority_and_publication_selectors_refuse[--vcs]",
+      "node_sha256": "7acfd4916951b3547c9bea1bb09527673d4f193795ceeb477d65f3c3439dfcf8",
+      "junit": [
+        "tests.fpr2.test_lanes",
+        "test_duplicate_authority_and_publication_selectors_refuse[--vcs]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr2/test_lanes.py::test_duplicate_authority_and_publication_selectors_refuse[--base-head]",
+      "node_sha256": "76e5d104ee172988e84ac66586f32731eb44e25eb5da61194875f919999b7e67",
+      "junit": [
+        "tests.fpr2.test_lanes",
+        "test_duplicate_authority_and_publication_selectors_refuse[--base-head]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr2/test_lanes.py::test_duplicate_authority_and_publication_selectors_refuse[--action-id]",
+      "node_sha256": "d9e843e72fc16b4e8e465787848c0009b6984c8dbae1ea1ea7077defacb81363",
+      "junit": [
+        "tests.fpr2.test_lanes",
+        "test_duplicate_authority_and_publication_selectors_refuse[--action-id]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr2/test_lanes.py::test_duplicate_authority_and_publication_selectors_refuse[--action-kind]",
+      "node_sha256": "f09b4be7ab74bf12b5f9d4a347511210e0749f2a1cad56c3f25a0fb9da04568c",
+      "junit": [
+        "tests.fpr2.test_lanes",
+        "test_duplicate_authority_and_publication_selectors_refuse[--action-kind]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr2/test_lanes.py::test_duplicate_authority_and_publication_selectors_refuse[--batch-file]",
+      "node_sha256": "d705ca11fb3d716c4d578e91db2a31092ccfc52266593408a325c67d3189adc4",
+      "junit": [
+        "tests.fpr2.test_lanes",
+        "test_duplicate_authority_and_publication_selectors_refuse[--batch-file]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr2/test_lanes.py::test_git_preserves_inactive_muse_settings_without_using_them",
+      "node_sha256": "45a6c0d6e7c36e7c188e97c88daa98f92902f4fc348d50859a2e2a78c22f808f",
+      "junit": [
+        "tests.fpr2.test_lanes",
+        "test_git_preserves_inactive_muse_settings_without_using_them"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr2/test_sync_boundary.py::test_sync_rechecks_physical_git_boundary_after_fsync",
+      "node_sha256": "75cddbe8f0489d729ce8883fa5d90bcb5faddb852495f0db35a11930ac51f24a",
+      "junit": [
+        "tests.fpr2.test_sync_boundary",
+        "test_sync_rechecks_physical_git_boundary_after_fsync"
+      ]
+    }
+  ]
+}

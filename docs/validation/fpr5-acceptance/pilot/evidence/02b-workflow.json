@@ -1,0 +1,236 @@
+{
+  "stage": "02b-workflow",
+  "scope": "Author acceptance; not independent adjudication",
+  "commands_and_operations": [
+    {
+      "kind": "human_fallback",
+      "observed_exit": 8,
+      "verdict": "blocked",
+      "reason": "mode_human",
+      "interpretation": "Expected explicit human escalation, not a product failure or independent pass. Initial driver assumed a generic nonpass code; exact result is retained in02-workflow.json. Continue remaining steps without relabelling."
+    },
+    {
+      "kind": "local_project_write",
+      "path": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/pilot-assignment.json",
+      "sha256": "a11c83701c950e5b3928b4f7fcb8bed82cd7ca87634713bd2f790dbb16e31e1c",
+      "bytes": 302,
+      "mode": "0o644"
+    },
+    {
+      "kind": "command",
+      "argv": [
+        "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.overseer/bin/ok",
+        "-C",
+        "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+        "ledger",
+        "append",
+        "--kind",
+        "task_assigned",
+        "--file",
+        "pilot-assignment.json",
+        "--json"
+      ],
+      "cwd": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+      "exit_code": 0,
+      "stdout": "{\"ok\": true, \"exit_code\": 0, \"messages\": []}\n",
+      "stderr": "",
+      "seconds": 0.7234172821044922
+    },
+    {
+      "kind": "local_project_write",
+      "path": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/policy/pilot-checkpoints.yaml",
+      "sha256": "8328a0a655209568874487dba955e4eb9718cdf99667c7a59dbd595774ebb248",
+      "bytes": 319,
+      "mode": "0o644"
+    },
+    {
+      "kind": "local_project_write",
+      "path": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/manifests/pilot.yaml",
+      "sha256": "bacbe4bbbfe02989b893d0f50c556a50e2a516759092e62d14b1b6f85ac6037a",
+      "bytes": 237,
+      "mode": "0o644"
+    },
+    {
+      "kind": "local_project_write",
+      "path": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/scripts/verify-pilot.sh",
+      "sha256": "88406e624363245cd29e48653de4d425825180a7a7cf9ea86c27128d070abf28",
+      "bytes": 336,
+      "mode": "0o755"
+    },
+    {
+      "kind": "command",
+      "argv": [
+        "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.overseer/bin/ok",
+        "-C",
+        "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+        "verify-step",
+        "--step",
+        "owner-preservation",
+        "--dry-run",
+        "--json"
+      ],
+      "cwd": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+      "exit_code": 0,
+      "stdout": "{\"ok\": true, \"exit_code\": 0, \"command\": \"verify-step\", \"mode\": \"step\", \"dry_run\": true, \"manifest\": \"manifests/pilot.yaml\", \"steps\": [{\"id\": \"owner-preservation\", \"verified\": false, \"artifact_sha256\": null}], \"error\": null}\n",
+      "stderr": "",
+      "seconds": 0.5307648181915283
+    },
+    {
+      "kind": "command",
+      "argv": [
+        "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.overseer/bin/ok",
+        "-C",
+        "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+        "verify-step",
+        "--step",
+        "owner-preservation",
+        "--json"
+      ],
+      "cwd": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+      "exit_code": 0,
+      "stdout": "{\"ok\": true, \"exit_code\": 0, \"command\": \"verify-step\", \"mode\": \"step\", \"dry_run\": false, \"manifest\": \"manifests/pilot.yaml\", \"steps\": [{\"id\": \"owner-preservation\", \"verified\": true, \"artifact_sha256\": null}], \"error\": null}\n",
+      "stderr": "",
+      "seconds": 1.098499059677124
+    },
+    {
+      "kind": "local_project_write",
+      "path": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/docs/validation/pilot-verification.json",
+      "sha256": "ea2d60606023bd8a5c2163a4c597a41d6651e9830da2985cd24e74210217b549",
+      "bytes": 274,
+      "mode": "0o644"
+    },
+    {
+      "kind": "local_project_write",
+      "path": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/pilot-ruling.json",
+      "sha256": "7a23d74e246997f02ac400e65cec3263a17abac1f8d6916d73bfe26f6d6abf31",
+      "bytes": 387,
+      "mode": "0o644"
+    },
+    {
+      "kind": "command",
+      "argv": [
+        "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.overseer/bin/ok",
+        "-C",
+        "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+        "ledger",
+        "append",
+        "--kind",
+        "overseer_ruling",
+        "--file",
+        "pilot-ruling.json",
+        "--json"
+      ],
+      "cwd": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+      "exit_code": 0,
+      "stdout": "{\"ok\": true, \"exit_code\": 0, \"messages\": []}\n",
+      "stderr": "",
+      "seconds": 0.724553108215332
+    },
+    {
+      "kind": "command",
+      "argv": [
+        "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.overseer/bin/ok",
+        "-C",
+        "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+        "ledger",
+        "verify",
+        "--json"
+      ],
+      "cwd": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+      "exit_code": 0,
+      "stdout": "{\"ok\": true, \"exit_code\": 0, \"messages\": []}\n",
+      "stderr": "",
+      "seconds": 0.5441358089447021
+    },
+    {
+      "kind": "command",
+      "argv": [
+        "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.overseer/bin/ok",
+        "-C",
+        "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+        "ledger",
+        "show",
+        "--last",
+        "3",
+        "--json"
+      ],
+      "cwd": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+      "exit_code": 0,
+      "stdout": "{\"entries\": [{\"entry_hash\": \"5528baa6d9c6881360439d5fdc1f8ee114b4e491a095ce5f864effca34165b9a\", \"kind\": \"genesis\", \"prev_hash\": \"368646f427571067ec853ef0c3d4cce9ecfa3fb3e003dd1252cd5d02f111e513\", \"ts\": \"2026-10-15T10:49:18Z\", \"v\": 1}, {\"actor_role\": \"overseer\", \"actor_session_id\": \"fpr5-disposable-pilot-author-20261015\", \"assignment\": {\"independent_adjudication\": false, \"scope\": \"Owner-approved local integrated pilot\", \"verification\": \"Check preserved owner policy/rule and bound NEXT with confined script\"}, \"entry_hash\": \"dbb0c9c9fadd6a049301ddfc19b5ba4534820b0d5b7b5e92bf27b3d743b74446\", \"kind\": \"task_assigned\", \"prev_hash\": \"5528baa6d9c6881360439d5fdc1f8ee114b4e491a095ce5f864effca34165b9a\", \"ts\": \"2026-10-15T10:49:18Z\", \"v\": 1}, {\"actor_role\": \"overseer\", \"actor_session_id\": \"fpr5-disposable-pilot-author-20261015\", \"entry_hash\": \"21fd93145780c81c658656c827085cb93d3555b83ef669a9c24bd0d523dd2563\", \"evidence_path\": \"docs/validation/pilot-verification.json\", \"evidence_sha256\": \"ea2d60606023bd8a5c2163a4c597a41d6651e9830da2985cd24e74210217b549\", \"kind\": \"overseer_ruling\", \"prev_hash\": \"dbb0c9c9fadd6a049301ddfc19b5ba4534820b0d5b7b5e92bf27b3d743b74446\", \"ruling\": \"The confined local owner-preservation checkpoint executed successfully. This author observation is not an independent verdict.\", \"ts\": \"2026-10-15T10:49:20Z\", \"v\": 1}], \"ok\": true, \"exit_code\": 0}\n",
+      "stderr": "",
+      "seconds": 0.5449731349945068
+    },
+    {
+      "kind": "command",
+      "argv": [
+        "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.overseer/bin/ok",
+        "-C",
+        "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+        "honesty-status",
+        "--hook",
+        "handoff",
+        "--artifact",
+        "docs/reviews/pilot-local.md",
+        "--json"
+      ],
+      "cwd": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+      "exit_code": 20,
+      "stdout": "{\"ok\": false, \"exit_code\": 20, \"command\": \"honesty-status\", \"hook\": \"handoff\", \"artifact\": \"docs/reviews/pilot-local.md\", \"artifact_sha256\": \"6f67472c1fdc08641e1e9ca05587f19ceea00d4e32ca8cbbb1fe7693b7332fca\", \"producer_session\": null, \"matched_verdict_hash\": null, \"error\": \"missing_verdict\"}\n",
+      "stderr": "",
+      "seconds": 0.5467913150787354
+    },
+    {
+      "kind": "command",
+      "argv": [
+        "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.overseer/bin/ok",
+        "-C",
+        "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+        "route",
+        "--validate",
+        "--json"
+      ],
+      "cwd": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+      "exit_code": 0,
+      "stdout": "{\"valid\": true, \"policy\": \"policy/model-routing.yaml\", \"violation\": null, \"ok\": true, \"exit_code\": 0}\n",
+      "stderr": "",
+      "seconds": 0.5752758979797363
+    },
+    {
+      "kind": "command",
+      "argv": [
+        "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.overseer/bin/ok",
+        "-C",
+        "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+        "land-closeout",
+        "--json"
+      ],
+      "cwd": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+      "exit_code": 0,
+      "stdout": "{\"ok\": true, \"exit_code\": 0, \"mode\": \"verify_landed\", \"auto_merge\": false, \"remote\": \"not_checked_offline\", \"landed\": false, \"paths\": [], \"next\": {\"lanes\": {\"product\": {\"ok\": true, \"next\": {\"repo_id\": \"20dd0872-c7a4-5fdf-81a5-27eefa0acc2e\", \"repo_root\": \"/private/tmp/overseer-fpr5-integrated-pilot-20261015/project\", \"vcs\": \"git\", \"source_id\": null, \"branch\": \"pilot/fpr5-integrated-20261015\", \"base_head\": \"6accf73f0020b0413836964bf1460889c8e4c0ad\", \"model\": \"GPT-6 Astra\", \"action_id\": \"PILOT-WORK-product\", \"action_kind\": \"implement\", \"prompt_sha256\": \"7efdb16fc25295f9434af003b73872a22f433f7d77fd3644b437613424e57416\", \"schema\": 3, \"lane\": \"product\"}, \"prompt\": \"Complete the authorized local checks, application readback and rollback. Preserve author evidence; native lifecycle and final independent adjudication remain separate.\\nSelected work stream is product.\\n\"}, \"validation\": {\"ok\": true, \"next\": {\"repo_id\": \"20dd0872-c7a4-5fdf-81a5-27eefa0acc2e\", \"repo_root\": \"/private/tmp/overseer-fpr5-integrated-pilot-20261015/project\", \"vcs\": \"git\", \"source_id\": null, \"branch\": \"pilot/fpr5-integrated-20261015\", \"base_head\": \"6accf73f0020b0413836964bf1460889c8e4c0ad\", \"model\": \"GPT-6 Astra\", \"action_id\": \"PILOT-WORK-validation\", \"action_kind\": \"implement\", \"prompt_sha256\": \"80713be34c85d93ab259a5ab82019caa2623582794aa210878ef3d70c2db0296\", \"schema\": 3, \"lane\": \"validation\"}, \"prompt\": \"Complete the authorized local checks, application readback and rollback. Preserve author evidence; native lifecycle and final independent adjudication remain separate.\\nSelected work stream is validation.\\n\"}}, \"selection_required\": true}, \"state\": \"current_handoff\", \"local_governance\": {\"lane\": \"product\", \"authority\": \"git\", \"branch\": \"pilot/fpr5-integrated-20261015\", \"revision\": \"6accf73f0020b0413836964bf1460889c8e4c0ad\", \"local_main\": \"c8253284e3964f83b3f5d2b50cf471aa5b8c1d23\", \"remote\": \"not_checked_offline\", \"claimed_github_main\": null, \"remote_drift\": \"unknown_offline\", \"cached_remote_main\": null, \"drift\": {\"d1_handover_vs_git\": \"unreadable\", \"d2_anchor_vs_canonical\": \"aligned\", \"d3_queue_vs_merged\": \"unknown_offline\", \"details\": {}}, \"realignment\": \"not_applicable\", \"canonical_next\": \"docs/NEXT.md\"}, \"merge_completion\": \"not_inferred_from_documents\"}\n",
+      "stderr": "",
+      "seconds": 0.5853979587554932
+    },
+    {
+      "kind": "workflow_complete",
+      "verification": {
+        "ok": true,
+        "exit_code": 0,
+        "command": "verify-step",
+        "mode": "step",
+        "dry_run": false,
+        "manifest": "manifests/pilot.yaml",
+        "steps": [
+          {
+            "id": "owner-preservation",
+            "verified": true,
+            "artifact_sha256": null
+          }
+        ],
+        "error": null
+      },
+      "ledger_entries": 3,
+      "local_mechanical_review_only": true,
+      "native_lifecycle": "blocked"
+    }
+  ]
+}

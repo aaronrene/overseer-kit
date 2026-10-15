@@ -1,0 +1,699 @@
+{
+  "kind": "Prerequisite-corrected and affected final-candidate Python3.11 evidence",
+  "author_validation": true,
+  "independent_adjudication": false,
+  "original_run_relabelled": false,
+  "original_source_head": "2e8ec694def9be4a0faa4a994bf2fff3f212ab23",
+  "runtime_sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774",
+  "no_new_requirement_waivers": true,
+  "commands": [
+    {
+      "tag": "fixture-init-dry-run",
+      "argv": [
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/cli/ok",
+        "-C",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation",
+        "init",
+        "--vcs",
+        "git",
+        "--repo-name",
+        "fpr5-python311-acceptance",
+        "--lane",
+        "product",
+        "--model",
+        "GPT-6 Astra",
+        "--non-interactive",
+        "--json",
+        "--dry-run"
+      ],
+      "cwd": "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation",
+      "exit_code": 0,
+      "stdout": "{\"ok\": true, \"repository\": {\"name\": \"fpr5-python311-acceptance\", \"id\": \"5662a3cc-23e1-488b-b456-6e20d112596b\", \"root\": \"/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation\", \"root_relative_docs\": \"docs\"}, \"initialized\": false, \"dry_run\": true, \"changed\": [\".overseer/bin/ok\", \".claude/skills/adversarial-freeze-review/SKILL.md\", \".claude/skills/build-verification-review/SKILL.md\", \".claude/skills/check-ok/SIDE-CHECK-TEMPLATE.md\", \".claude/skills/check-ok/SKILL.md\", \".claude/skills/deploy-verification-review/SKILL.md\", \".claude/skills/freeze-review-loop/SKILL.md\", \".claude/skills/freeze-review/SKILL.md\", \".claude/skills/governance-sync/SKILL.md\", \".claude/skills/independent-second-reviewer/SKILL.md\", \".claude/skills/print-next/SKILL.md\", \".claude/skills/workspace-status/SKILL.md\", \".cursor/rules/build-verification-required.mdc\", \".cursor/rules/check-ok-thinking.mdc\", \".cursor/rules/governance-sync.mdc\", \".cursor/rules/l1-checkpoints-consumer-owned.mdc\", \".cursor/rules/no-docs-only-pr-to-main.mdc\", \".cursor/rules/orchestrator.mdc\", \".cursor/rules/print-next-closeout.mdc\", \".cursor/rules/tier-authority.mdc\", \".cursor/rules/workspace-authority.mdc\", \".cursor/skills/adversarial-freeze-review/SKILL.md\", \".cursor/skills/build-verification-review/SKILL.md\", \".cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md\", \".cursor/skills/check-ok/SKILL.md\", \".cursor/skills/deploy-verification-review/SKILL.md\", \".cursor/skills/freeze-review-loop/SKILL.md\", \".cursor/skills/freeze-review/SKILL.md\", \".cursor/skills/governance-sync/SKILL.md\", \".cursor/skills/independent-second-reviewer/SKILL.md\", \".cursor/skills/print-next/SKILL.md\", \".cursor/skills/workspace-status/SKILL.md\", \".overseer/STANDING-DECISIONS.reference.md\", \".overseer/policy/model-labels.yaml\", \".overseer/policy/model-routing.yaml\", \".overseer/policy/test-tiers.yaml\", \".overseer/policy/tiers.yaml\", \".overseer/version.lock\", \".overseer/config.yaml\"]}\n",
+      "stderr": ""
+    },
+    {
+      "tag": "fixture-init-apply",
+      "argv": [
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/cli/ok",
+        "-C",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation",
+        "init",
+        "--vcs",
+        "git",
+        "--repo-name",
+        "fpr5-python311-acceptance",
+        "--lane",
+        "product",
+        "--model",
+        "GPT-6 Astra",
+        "--non-interactive",
+        "--json"
+      ],
+      "cwd": "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation",
+      "exit_code": 0,
+      "stdout": "{\"ok\": true, \"repository\": {\"name\": \"fpr5-python311-acceptance\", \"id\": \"b0e31bcf-6c6b-40be-8c32-e41601fa4dc0\", \"root\": \"/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation\", \"root_relative_docs\": \"docs\"}, \"initialized\": true, \"dry_run\": false, \"changed\": [\".overseer/bin/ok\", \".claude/skills/adversarial-freeze-review/SKILL.md\", \".claude/skills/build-verification-review/SKILL.md\", \".claude/skills/check-ok/SIDE-CHECK-TEMPLATE.md\", \".claude/skills/check-ok/SKILL.md\", \".claude/skills/deploy-verification-review/SKILL.md\", \".claude/skills/freeze-review-loop/SKILL.md\", \".claude/skills/freeze-review/SKILL.md\", \".claude/skills/governance-sync/SKILL.md\", \".claude/skills/independent-second-reviewer/SKILL.md\", \".claude/skills/print-next/SKILL.md\", \".claude/skills/workspace-status/SKILL.md\", \".cursor/rules/build-verification-required.mdc\", \".cursor/rules/check-ok-thinking.mdc\", \".cursor/rules/governance-sync.mdc\", \".cursor/rules/l1-checkpoints-consumer-owned.mdc\", \".cursor/rules/no-docs-only-pr-to-main.mdc\", \".cursor/rules/orchestrator.mdc\", \".cursor/rules/print-next-closeout.mdc\", \".cursor/rules/tier-authority.mdc\", \".cursor/rules/workspace-authority.mdc\", \".cursor/skills/adversarial-freeze-review/SKILL.md\", \".cursor/skills/build-verification-review/SKILL.md\", \".cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md\", \".cursor/skills/check-ok/SKILL.md\", \".cursor/skills/deploy-verification-review/SKILL.md\", \".cursor/skills/freeze-review-loop/SKILL.md\", \".cursor/skills/freeze-review/SKILL.md\", \".cursor/skills/governance-sync/SKILL.md\", \".cursor/skills/independent-second-reviewer/SKILL.md\", \".cursor/skills/print-next/SKILL.md\", \".cursor/skills/workspace-status/SKILL.md\", \".overseer/STANDING-DECISIONS.reference.md\", \".overseer/policy/model-labels.yaml\", \".overseer/policy/model-routing.yaml\", \".overseer/policy/test-tiers.yaml\", \".overseer/policy/tiers.yaml\", \".overseer/version.lock\", \".overseer/config.yaml\"]}\n",
+      "stderr": ""
+    },
+    {
+      "tag": "bound-status",
+      "argv": [
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/.overseer/bin/ok",
+        "-C",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation",
+        "status",
+        "--json"
+      ],
+      "cwd": "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation",
+      "exit_code": 0,
+      "stdout": "{\"ok\": true, \"repository\": {\"name\": \"fpr5-python311-acceptance\", \"id\": \"b0e31bcf-6c6b-40be-8c32-e41601fa4dc0\", \"root\": \"/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation\", \"root_relative_docs\": \"docs\"}, \"branch\": \"acceptance/fpr5-python311\", \"head\": \"6dadfc7f857b862b56867ba9bcca1fc8cc3a01df\", \"runtime\": {\"root\": \"/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation\", \"version\": \"1.0.0.dev1\", \"sha256\": \"cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774\"}, \"vcs\": \"git\", \"source_id\": null, \"publication\": \"not_checked_offline\", \"next\": {\"schema\": 1, \"repo_id\": \"b0e31bcf-6c6b-40be-8c32-e41601fa4dc0\", \"repo_root\": \"/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation\", \"branch\": \"acceptance/fpr5-python311\", \"base_head\": \"6dadfc7f857b862b56867ba9bcca1fc8cc3a01df\", \"lane\": \"product\", \"model\": \"GPT-6 Astra\", \"action_id\": \"SETUP\", \"action_kind\": \"plan\", \"prompt_sha256\": \"786003558c1a6c5bd1871eb2546576f05fa215a48569e4b9813172ff694c36fb\"}, \"prompt\": \"Choose the first task for this repository.\\n\", \"next_sha256\": \"a1ec4c3b60856dcf09cdaaca98e80de184948066c3d077df34054db79c907204\", \"configuration\": {\"vcs\": {\"regime\": \"git-only\", \"canonical\": \"git\", \"git\": {\"remote\": \"origin\", \"main_branch\": \"main\", \"mirror_branch\": null, \"feature_branch_pattern\": \"feat/{slug}\"}, \"muse\": {\"staging_remote\": null, \"main_branch\": null, \"working_dir\": null}}, \"docs\": {\"handover\": \"OVERSEER-HANDOVER.md\", \"roadmap\": \"ROADMAP.md\", \"coordination\": null, \"standing_decisions\": \"ROADMAP.md\", \"handover_title\": \"Overseer Handover\", \"roadmap_title\": \"Roadmap\", \"canonical_next\": \"docs/NEXT.md\", \"default_lane\": \"product\", \"lanes\": {\"product\": {\"handover\": \"OVERSEER-HANDOVER.md\", \"roadmap\": \"ROADMAP.md\", \"handover_title\": \"Overseer Handover\", \"roadmap_title\": \"Roadmap\", \"repo_id\": \"b0e31bcf-6c6b-40be-8c32-e41601fa4dc0\"}}}, \"thresholds\": {\"realign_max_commits\": 50, \"drift_warn_only\": true}, \"freeze_contract\": {\"enabled\": true, \"reviewer\": \"agent\", \"human_escalation\": [\"security\"]}, \"repo\": {\"name\": \"fpr5-python311-acceptance\", \"id\": \"b0e31bcf-6c6b-40be-8c32-e41601fa4dc0\", \"root\": \"/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation\", \"root_relative_docs\": \"docs\"}, \"context\": {\"lane\": \"product\", \"model\": \"GPT-6 Astra\"}, \"runtime\": {\"root\": \"/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation\", \"version\": \"1.0.0.dev1\", \"sha256\": \"cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774\"}, \"schema\": 3}, \"source_schema\": \"schema-3\", \"migration_required\": false, \"diagnostics\": [\"legacy_reviewer_model_preserved: thinking-high\"], \"authority\": \"git\", \"assets\": [{\"path\": \".claude/skills/adversarial-freeze-review/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044\", \"after\": \"7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044\"}, {\"path\": \".claude/skills/build-verification-review/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c\", \"after\": \"f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c\"}, {\"path\": \".claude/skills/check-ok/SIDE-CHECK-TEMPLATE.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c\", \"after\": \"0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c\"}, {\"path\": \".claude/skills/check-ok/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a\", \"after\": \"3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a\"}, {\"path\": \".claude/skills/deploy-verification-review/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b\", \"after\": \"a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b\"}, {\"path\": \".claude/skills/freeze-review-loop/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f\", \"after\": \"355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f\"}, {\"path\": \".claude/skills/freeze-review/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b\", \"after\": \"620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b\"}, {\"path\": \".claude/skills/governance-sync/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14\", \"after\": \"06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14\"}, {\"path\": \".claude/skills/independent-second-reviewer/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837\", \"after\": \"994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837\"}, {\"path\": \".claude/skills/print-next/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff\", \"after\": \"de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff\"}, {\"path\": \".claude/skills/workspace-status/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25\", \"after\": \"a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25\"}, {\"path\": \".cursor/rules/build-verification-required.mdc\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"b0fdb1a1e0a01d23b4b70cb5b4bb987eb11b9fdba1a8a77af54e90f47d832065\", \"after\": \"b0fdb1a1e0a01d23b4b70cb5b4bb987eb11b9fdba1a8a77af54e90f47d832065\"}, {\"path\": \".cursor/rules/check-ok-thinking.mdc\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"a75697f0f8b6fb1ee424aa198dd5e4a6648e33b3707482964494287196729739\", \"after\": \"a75697f0f8b6fb1ee424aa198dd5e4a6648e33b3707482964494287196729739\"}, {\"path\": \".cursor/rules/governance-sync.mdc\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"97414e26682f3ccefb3c442a05d73c7dbb998fd78e5a6d286e4ef625d4405fb6\", \"after\": \"97414e26682f3ccefb3c442a05d73c7dbb998fd78e5a6d286e4ef625d4405fb6\"}, {\"path\": \".cursor/rules/l1-checkpoints-consumer-owned.mdc\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"6eebc8126cee6c7ee1d2de1180faec15e2822448b2bfeffb56495991fd21a037\", \"after\": \"6eebc8126cee6c7ee1d2de1180faec15e2822448b2bfeffb56495991fd21a037\"}, {\"path\": \".cursor/rules/no-docs-only-pr-to-main.mdc\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"c040517845d72aa9f40cc802db00e39dc67cd4d66a9f4dd1ac89d8bb680dd610\", \"after\": \"c040517845d72aa9f40cc802db00e39dc67cd4d66a9f4dd1ac89d8bb680dd610\"}, {\"path\": \".cursor/rules/orchestrator.mdc\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"98b8df26c0f5abc71d203d2bcf457e23dea29e7c0e242bbe3cadeb711064e5c3\", \"after\": \"98b8df26c0f5abc71d203d2bcf457e23dea29e7c0e242bbe3cadeb711064e5c3\"}, {\"path\": \".cursor/rules/print-next-closeout.mdc\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"c45ae41918dabb9b1afb3f180924039ff02df661a6c77f1c97c1a119b77f62bb\", \"after\": \"c45ae41918dabb9b1afb3f180924039ff02df661a6c77f1c97c1a119b77f62bb\"}, {\"path\": \".cursor/rules/tier-authority.mdc\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"e685afdd9a6368bac11127bebb0ca9883ac7523f15f65ceb3d9efdf239fb9f2a\", \"after\": \"e685afdd9a6368bac11127bebb0ca9883ac7523f15f65ceb3d9efdf239fb9f2a\"}, {\"path\": \".cursor/rules/workspace-authority.mdc\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"438b69c1bae0e413e6ad953cbec3173162282625d4bee04066e482db72a8aff0\", \"after\": \"438b69c1bae0e413e6ad953cbec3173162282625d4bee04066e482db72a8aff0\"}, {\"path\": \".cursor/skills/adversarial-freeze-review/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044\", \"after\": \"7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044\"}, {\"path\": \".cursor/skills/build-verification-review/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c\", \"after\": \"f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c\"}, {\"path\": \".cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c\", \"after\": \"0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c\"}, {\"path\": \".cursor/skills/check-ok/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a\", \"after\": \"3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a\"}, {\"path\": \".cursor/skills/deploy-verification-review/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b\", \"after\": \"a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b\"}, {\"path\": \".cursor/skills/freeze-review-loop/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f\", \"after\": \"355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f\"}, {\"path\": \".cursor/skills/freeze-review/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b\", \"after\": \"620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b\"}, {\"path\": \".cursor/skills/governance-sync/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14\", \"after\": \"06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14\"}, {\"path\": \".cursor/skills/independent-second-reviewer/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837\", \"after\": \"994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837\"}, {\"path\": \".cursor/skills/print-next/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff\", \"after\": \"de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff\"}, {\"path\": \".cursor/skills/workspace-status/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25\", \"after\": \"a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25\"}, {\"path\": \".overseer/STANDING-DECISIONS.reference.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"cd5ece2e1aa569c3fa1e079fa984521e9ec447b5863583920ca739f0953bd53e\", \"after\": \"cd5ece2e1aa569c3fa1e079fa984521e9ec447b5863583920ca739f0953bd53e\"}, {\"path\": \".overseer/bin/ok\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"5a6e0f1a5ea956848e299f41d6180b7596427083b7a4e0874d39d4f92a68add1\", \"after\": \"5a6e0f1a5ea956848e299f41d6180b7596427083b7a4e0874d39d4f92a68add1\"}, {\"path\": \".overseer/policy/model-labels.yaml\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"db95732401de452223d750c68172b6c1bb28b3b574c6368132678309b8c801e0\", \"after\": \"db95732401de452223d750c68172b6c1bb28b3b574c6368132678309b8c801e0\"}, {\"path\": \".overseer/policy/model-routing.yaml\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63\", \"after\": \"52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63\"}, {\"path\": \".overseer/policy/test-tiers.yaml\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"55b337e9399ccd26f4c70dba9f6f57c1359fab930a522e605cbe52d3533238d8\", \"after\": \"55b337e9399ccd26f4c70dba9f6f57c1359fab930a522e605cbe52d3533238d8\"}, {\"path\": \".overseer/policy/tiers.yaml\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"92920331f4e35bad9191a101b8b5d211ef31f069b2ba1cf4446ceb3796894776\", \"after\": \"92920331f4e35bad9191a101b8b5d211ef31f069b2ba1cf4446ceb3796894776\"}, {\"path\": \"policy/model-routing.yaml\", \"classification\": \"preserved\", \"origin\": \"preserved\", \"before\": \"52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63\", \"after\": \"52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63\"}], \"preserved_inventory\": [{\"path\": \".claude/skills/adversarial-freeze-review/SKILL.md\", \"sha256\": \"7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044\", \"mode\": 420}, {\"path\": \".claude/skills/build-verification-review/SKILL.md\", \"sha256\": \"f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c\", \"mode\": 420}, {\"path\": \".claude/skills/check-ok/SIDE-CHECK-TEMPLATE.md\", \"sha256\": \"0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c\", \"mode\": 420}, {\"path\": \".claude/skills/check-ok/SKILL.md\", \"sha256\": \"3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a\", \"mode\": 420}, {\"path\": \".claude/skills/deploy-verification-review/SKILL.md\", \"sha256\": \"a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b\", \"mode\": 420}, {\"path\": \".claude/skills/freeze-review-loop/SKILL.md\", \"sha256\": \"355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f\", \"mode\": 420}, {\"path\": \".claude/skills/freeze-review/SKILL.md\", \"sha256\": \"620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b\", \"mode\": 420}, {\"path\": \".claude/skills/governance-sync/SKILL.md\", \"sha256\": \"06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14\", \"mode\": 420}, {\"path\": \".claude/skills/independent-second-reviewer/SKILL.md\", \"sha256\": \"994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837\", \"mode\": 420}, {\"path\": \".claude/skills/print-next/SKILL.md\", \"sha256\": \"de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff\", \"mode\": 420}, {\"path\": \".claude/skills/workspace-status/SKILL.md\", \"sha256\": \"a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25\", \"mode\": 420}, {\"path\": \".cursor/rules/build-verification-required.mdc\", \"sha256\": \"b0fdb1a1e0a01d23b4b70cb5b4bb987eb11b9fdba1a8a77af54e90f47d832065\", \"mode\": 420}, {\"path\": \".cursor/rules/check-ok-thinking.mdc\", \"sha256\": \"a75697f0f8b6fb1ee424aa198dd5e4a6648e33b3707482964494287196729739\", \"mode\": 420}, {\"path\": \".cursor/rules/governance-sync.mdc\", \"sha256\": \"97414e26682f3ccefb3c442a05d73c7dbb998fd78e5a6d286e4ef625d4405fb6\", \"mode\": 420}, {\"path\": \".cursor/rules/l1-checkpoints-consumer-owned.mdc\", \"sha256\": \"6eebc8126cee6c7ee1d2de1180faec15e2822448b2bfeffb56495991fd21a037\", \"mode\": 420}, {\"path\": \".cursor/rules/no-docs-only-pr-to-main.mdc\", \"sha256\": \"c040517845d72aa9f40cc802db00e39dc67cd4d66a9f4dd1ac89d8bb680dd610\", \"mode\": 420}, {\"path\": \".cursor/rules/orchestrator.mdc\", \"sha256\": \"98b8df26c0f5abc71d203d2bcf457e23dea29e7c0e242bbe3cadeb711064e5c3\", \"mode\": 420}, {\"path\": \".cursor/rules/print-next-closeout.mdc\", \"sha256\": \"c45ae41918dabb9b1afb3f180924039ff02df661a6c77f1c97c1a119b77f62bb\", \"mode\": 420}, {\"path\": \".cursor/rules/tier-authority.mdc\", \"sha256\": \"e685afdd9a6368bac11127bebb0ca9883ac7523f15f65ceb3d9efdf239fb9f2a\", \"mode\": 420}, {\"path\": \".cursor/rules/workspace-authority.mdc\", \"sha256\": \"438b69c1bae0e413e6ad953cbec3173162282625d4bee04066e482db72a8aff0\", \"mode\": 420}, {\"path\": \".cursor/skills/adversarial-freeze-review/SKILL.md\", \"sha256\": \"7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044\", \"mode\": 420}, {\"path\": \".cursor/skills/build-verification-review/SKILL.md\", \"sha256\": \"f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c\", \"mode\": 420}, {\"path\": \".cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md\", \"sha256\": \"0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c\", \"mode\": 420}, {\"path\": \".cursor/skills/check-ok/SKILL.md\", \"sha256\": \"3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a\", \"mode\": 420}, {\"path\": \".cursor/skills/deploy-verification-review/SKILL.md\", \"sha256\": \"a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b\", \"mode\": 420}, {\"path\": \".cursor/skills/freeze-review-loop/SKILL.md\", \"sha256\": \"355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f\", \"mode\": 420}, {\"path\": \".cursor/skills/freeze-review/SKILL.md\", \"sha256\": \"620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b\", \"mode\": 420}, {\"path\": \".cursor/skills/governance-sync/SKILL.md\", \"sha256\": \"06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14\", \"mode\": 420}, {\"path\": \".cursor/skills/independent-second-reviewer/SKILL.md\", \"sha256\": \"994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837\", \"mode\": 420}, {\"path\": \".cursor/skills/print-next/SKILL.md\", \"sha256\": \"de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff\", \"mode\": 420}, {\"path\": \".cursor/skills/workspace-status/SKILL.md\", \"sha256\": \"a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25\", \"mode\": 420}, {\"path\": \".overseer/STANDING-DECISIONS.reference.md\", \"sha256\": \"cd5ece2e1aa569c3fa1e079fa984521e9ec447b5863583920ca739f0953bd53e\", \"mode\": 420}, {\"path\": \".overseer/bin/ok\", \"sha256\": \"5a6e0f1a5ea956848e299f41d6180b7596427083b7a4e0874d39d4f92a68add1\", \"mode\": 493}, {\"path\": \".overseer/ledger.jsonl\", \"sha256\": \"absent\", \"mode\": null}, {\"path\": \".overseer/policy/model-labels.yaml\", \"sha256\": \"db95732401de452223d750c68172b6c1bb28b3b574c6368132678309b8c801e0\", \"mode\": 420}, {\"path\": \".overseer/policy/model-routing.yaml\", \"sha256\": \"52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63\", \"mode\": 420}, {\"path\": \".overseer/policy/test-tiers.yaml\", \"sha256\": \"55b337e9399ccd26f4c70dba9f6f57c1359fab930a522e605cbe52d3533238d8\", \"mode\": 420}, {\"path\": \".overseer/policy/tiers.yaml\", \"sha256\": \"92920331f4e35bad9191a101b8b5d211ef31f069b2ba1cf4446ceb3796894776\", \"mode\": 420}, {\"path\": \".overseer/version.lock\", \"sha256\": \"dc17aeacf02952b0e4f9847fb0156cf903ec2bb318937c9e43bbac8561a73b95\", \"mode\": 420}, {\"path\": \"docs/NEXT.md\", \"sha256\": \"a1ec4c3b60856dcf09cdaaca98e80de184948066c3d077df34054db79c907204\", \"mode\": 420}, {\"path\": \"docs/OVERSEER-HANDOVER.md\", \"sha256\": \"bde1c01e58881b1f36cc090620b59da24cbd99e3b4dc7ffa8928cb49f2210c6b\", \"mode\": 420}, {\"path\": \"docs/ROADMAP.md\", \"sha256\": \"9efefb2279f5950057a6b28c3b6b38f8ef1ca1cfc68480cfad31b8c6e52a58aa\", \"mode\": 420}, {\"path\": \"policy/model-routing.yaml\", \"sha256\": \"52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63\", \"mode\": 420}], \"dirty\": true, \"tracked_local\": [], \"substrate\": {\"ok\": true, \"state\": \"bound_git\", \"source_id\": null}, \"muse_sync\": {\"state\": \"not_applicable\", \"mirror_correspondence\": \"use_explicit_mirror_verify\"}, \"footprint_integrity\": {\"ok\": true, \"paths_requiring_attention\": []}, \"footprint_coverage\": {\"ok\": true, \"missing_records\": []}, \"drift\": {\"status\": \"current\", \"changed_files\": []}, \"lock\": {\"lock_version\": 1, \"kit_version\": \"1.0.0.dev1\", \"config_version\": 3, \"installed_at\": \"unrecorded\", \"synced_at\": \"unrecorded\", \"footprint_digest\": \"sha256:42cf3567e24c9191c94c5a919d242b1a5fd5d15454c6eeb50ed7d6df7cbd0834\", \"footprint\": [{\"path\": \".claude/skills/adversarial-freeze-review/SKILL.md\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044\", \"origin\": \"kit\"}, {\"path\": \".claude/skills/build-verification-review/SKILL.md\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c\", \"origin\": \"kit\"}, {\"path\": \".claude/skills/check-ok/SIDE-CHECK-TEMPLATE.md\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c\", \"origin\": \"kit\"}, {\"path\": \".claude/skills/check-ok/SKILL.md\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a\", \"origin\": \"kit\"}, {\"path\": \".claude/skills/deploy-verification-review/SKILL.md\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b\", \"origin\": \"kit\"}, {\"path\": \".claude/skills/freeze-review-loop/SKILL.md\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f\", \"origin\": \"kit\"}, {\"path\": \".claude/skills/freeze-review/SKILL.md\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b\", \"origin\": \"kit\"}, {\"path\": \".claude/skills/governance-sync/SKILL.md\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14\", \"origin\": \"kit\"}, {\"path\": \".claude/skills/independent-second-reviewer/SKILL.md\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837\", \"origin\": \"kit\"}, {\"path\": \".claude/skills/print-next/SKILL.md\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff\", \"origin\": \"kit\"}, {\"path\": \".claude/skills/workspace-status/SKILL.md\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25\", \"origin\": \"kit\"}, {\"path\": \".cursor/rules/build-verification-required.mdc\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:b0fdb1a1e0a01d23b4b70cb5b4bb987eb11b9fdba1a8a77af54e90f47d832065\", \"origin\": \"kit\"}, {\"path\": \".cursor/rules/check-ok-thinking.mdc\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:a75697f0f8b6fb1ee424aa198dd5e4a6648e33b3707482964494287196729739\", \"origin\": \"kit\"}, {\"path\": \".cursor/rules/governance-sync.mdc\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:97414e26682f3ccefb3c442a05d73c7dbb998fd78e5a6d286e4ef625d4405fb6\", \"origin\": \"kit\"}, {\"path\": \".cursor/rules/l1-checkpoints-consumer-owned.mdc\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:6eebc8126cee6c7ee1d2de1180faec15e2822448b2bfeffb56495991fd21a037\", \"origin\": \"kit\"}, {\"path\": \".cursor/rules/no-docs-only-pr-to-main.mdc\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:c040517845d72aa9f40cc802db00e39dc67cd4d66a9f4dd1ac89d8bb680dd610\", \"origin\": \"kit\"}, {\"path\": \".cursor/rules/orchestrator.mdc\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:98b8df26c0f5abc71d203d2bcf457e23dea29e7c0e242bbe3cadeb711064e5c3\", \"origin\": \"kit\"}, {\"path\": \".cursor/rules/print-next-closeout.mdc\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:c45ae41918dabb9b1afb3f180924039ff02df661a6c77f1c97c1a119b77f62bb\", \"origin\": \"kit\"}, {\"path\": \".cursor/rules/tier-authority.mdc\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:e685afdd9a6368bac11127bebb0ca9883ac7523f15f65ceb3d9efdf239fb9f2a\", \"origin\": \"kit\"}, {\"path\": \".cursor/rules/workspace-authority.mdc\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:438b69c1bae0e413e6ad953cbec3173162282625d4bee04066e482db72a8aff0\", \"origin\": \"kit\"}, {\"path\": \".cursor/skills/adversarial-freeze-review/SKILL.md\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044\", \"origin\": \"kit\"}, {\"path\": \".cursor/skills/build-verification-review/SKILL.md\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c\", \"origin\": \"kit\"}, {\"path\": \".cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c\", \"origin\": \"kit\"}, {\"path\": \".cursor/skills/check-ok/SKILL.md\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a\", \"origin\": \"kit\"}, {\"path\": \".cursor/skills/deploy-verification-review/SKILL.md\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b\", \"origin\": \"kit\"}, {\"path\": \".cursor/skills/freeze-review-loop/SKILL.md\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f\", \"origin\": \"kit\"}, {\"path\": \".cursor/skills/freeze-review/SKILL.md\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b\", \"origin\": \"kit\"}, {\"path\": \".cursor/skills/governance-sync/SKILL.md\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14\", \"origin\": \"kit\"}, {\"path\": \".cursor/skills/independent-second-reviewer/SKILL.md\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837\", \"origin\": \"kit\"}, {\"path\": \".cursor/skills/print-next/SKILL.md\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff\", \"origin\": \"kit\"}, {\"path\": \".cursor/skills/workspace-status/SKILL.md\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25\", \"origin\": \"kit\"}, {\"path\": \".overseer/STANDING-DECISIONS.reference.md\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:cd5ece2e1aa569c3fa1e079fa984521e9ec447b5863583920ca739f0953bd53e\", \"origin\": \"kit\"}, {\"path\": \".overseer/bin/ok\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:5a6e0f1a5ea956848e299f41d6180b7596427083b7a4e0874d39d4f92a68add1\", \"origin\": \"kit\"}, {\"path\": \".overseer/policy/model-labels.yaml\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:db95732401de452223d750c68172b6c1bb28b3b574c6368132678309b8c801e0\", \"origin\": \"kit\"}, {\"path\": \".overseer/policy/model-routing.yaml\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63\", \"origin\": \"kit\"}, {\"path\": \".overseer/policy/test-tiers.yaml\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:55b337e9399ccd26f4c70dba9f6f57c1359fab930a522e605cbe52d3533238d8\", \"origin\": \"kit\"}, {\"path\": \".overseer/policy/tiers.yaml\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:92920331f4e35bad9191a101b8b5d211ef31f069b2ba1cf4446ceb3796894776\", \"origin\": \"kit\"}, {\"path\": \"docs/OVERSEER-HANDOVER.md\", \"source\": \"consumer\", \"sha256\": \"sha256:bde1c01e58881b1f36cc090620b59da24cbd99e3b4dc7ffa8928cb49f2210c6b\", \"origin\": \"preserved\"}, {\"path\": \"docs/ROADMAP.md\", \"source\": \"consumer\", \"sha256\": \"sha256:9efefb2279f5950057a6b28c3b6b38f8ef1ca1cfc68480cfad31b8c6e52a58aa\", \"origin\": \"preserved\"}, {\"path\": \"policy/model-routing.yaml\", \"source\": \"consumer\", \"sha256\": \"sha256:52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63\", \"origin\": \"preserved\"}]}, \"governance\": {\"lane\": \"product\", \"authority\": \"git\", \"branch\": \"acceptance/fpr5-python311\", \"revision\": \"6dadfc7f857b862b56867ba9bcca1fc8cc3a01df\", \"local_main\": null, \"remote\": \"not_checked_offline\", \"claimed_github_main\": null, \"remote_drift\": \"unknown_offline\", \"cached_remote_main\": null, \"drift\": {\"d1_handover_vs_git\": \"unreadable\", \"d2_anchor_vs_canonical\": \"unreadable\", \"d3_queue_vs_merged\": \"unknown_offline\", \"details\": {}}, \"realignment\": \"not_applicable\", \"canonical_next\": \"docs/NEXT.md\"}, \"governance_gates\": {\"enabled\": true, \"suppressed\": false, \"pending\": [], \"active_phases\": []}, \"model_routing\": {\"enabled\": false}, \"cost_awareness\": {\"enabled\": false}, \"optional_feature_tips\": {\"tips\": [\"tip: session_bookends off \\u2014 set session_bookends.enabled: true in .overseer/config.yaml then ok sync for Cursor session start/end nudges (cursor/hooks/README.md)\", \"tip: honesty off \\u2014 set honesty.enabled: true in .overseer/config.yaml for verification-evidence and independent-second-reviewer reminders (require_verification_evidence / require_independent_second_reviewer: warn|require; docs/INDEPENDENT-SECOND-REVIEWER.md)\"]}, \"verification_evidence_gate\": null, \"independent_second_reviewer_gate\": null, \"adversarial_freeze_gate\": null, \"readiness\": {\"authority\": \"bound\", \"remote\": \"not_checked_offline\", \"release\": \"not_certified\"}}\n",
+      "stderr": ""
+    },
+    {
+      "tag": "bound-next",
+      "argv": [
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/.overseer/bin/ok",
+        "-C",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation",
+        "next",
+        "--json"
+      ],
+      "cwd": "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation",
+      "exit_code": 0,
+      "stdout": "{\"ok\": true, \"repository\": {\"name\": \"fpr5-python311-acceptance\", \"id\": \"b0e31bcf-6c6b-40be-8c32-e41601fa4dc0\", \"root\": \"/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation\", \"root_relative_docs\": \"docs\"}, \"branch\": \"acceptance/fpr5-python311\", \"head\": \"6dadfc7f857b862b56867ba9bcca1fc8cc3a01df\", \"runtime\": {\"root\": \"/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation\", \"version\": \"1.0.0.dev1\", \"sha256\": \"cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774\"}, \"vcs\": \"git\", \"source_id\": null, \"publication\": \"not_checked_offline\", \"next\": {\"schema\": 1, \"repo_id\": \"b0e31bcf-6c6b-40be-8c32-e41601fa4dc0\", \"repo_root\": \"/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation\", \"branch\": \"acceptance/fpr5-python311\", \"base_head\": \"6dadfc7f857b862b56867ba9bcca1fc8cc3a01df\", \"lane\": \"product\", \"model\": \"GPT-6 Astra\", \"action_id\": \"SETUP\", \"action_kind\": \"plan\", \"prompt_sha256\": \"786003558c1a6c5bd1871eb2546576f05fa215a48569e4b9813172ff694c36fb\"}, \"prompt\": \"Choose the first task for this repository.\\n\", \"next_sha256\": \"a1ec4c3b60856dcf09cdaaca98e80de184948066c3d077df34054db79c907204\", \"rendered\": \"## CURRENT NEXT \\u2014 paste this\\n\\n```text\\nRepository: /private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation\\nRepository ID: b0e31bcf-6c6b-40be-8c32-e41601fa4dc0\\nBranch: acceptance/fpr5-python311\\nLane: product\\nModel: GPT-6 Astra\\nAction ID: SETUP\\nAction kind: plan\\n\\nChoose the first task for this repository.\\n```\\n\"}\n",
+      "stderr": ""
+    },
+    {
+      "tag": "bound-init-idempotent",
+      "argv": [
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/.overseer/bin/ok",
+        "-C",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation",
+        "init",
+        "--vcs",
+        "git",
+        "--json"
+      ],
+      "cwd": "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation",
+      "exit_code": 0,
+      "stdout": "{\"ok\": true, \"repository\": {\"name\": \"fpr5-python311-acceptance\", \"id\": \"b0e31bcf-6c6b-40be-8c32-e41601fa4dc0\", \"root\": \"/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation\", \"root_relative_docs\": \"docs\"}, \"initialized\": true, \"dry_run\": false, \"changed\": []}\n",
+      "stderr": ""
+    }
+  ],
+  "reruns": [
+    {
+      "name": "py311-twin-prerequisite-corrected",
+      "nodeid": "tests/security/test_p_deploy_security.py::test_twin_skill_paths_exist",
+      "argv": [
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/.venv/bin/python",
+        "-I",
+        "-B",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/scripts/fpr4_run.py",
+        "--name",
+        "py311-twin-prerequisite-corrected",
+        "--selection",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/targeted/py311-twin-prerequisite-corrected-selection.json",
+        "--evidence-dir",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/targeted"
+      ],
+      "free_before": 1384226816,
+      "exit_code": 0,
+      "record": "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/targeted/py311-twin-prerequisite-corrected.json",
+      "result": {
+        "ok": true,
+        "results": {
+          "tests": 1,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "passed": 1
+        },
+        "boundary_unchanged": true,
+        "exact_collection_executed_once": true,
+        "nonpassing": []
+      },
+      "passing_fixture_reclaimed": "/private/tmp/overseer-fpr4-py311-twin-prerequisite-corrected-s8gzw7x_",
+      "free_after": 1383919616
+    },
+    {
+      "name": "py311-finalcandidate-package-1",
+      "nodeid": "tests/fpr3/test_package.py::test_actual_package_deterministic_manifest_modes_and_resource_bundle",
+      "argv": [
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/.venv/bin/python",
+        "-I",
+        "-B",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/scripts/fpr4_run.py",
+        "--name",
+        "py311-finalcandidate-package-1",
+        "--selection",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/targeted/py311-finalcandidate-package-1-selection.json",
+        "--evidence-dir",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/targeted"
+      ],
+      "free_before": 1382506496,
+      "exit_code": 0,
+      "record": "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/targeted/py311-finalcandidate-package-1.json",
+      "result": {
+        "ok": true,
+        "results": {
+          "tests": 1,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "passed": 1
+        },
+        "boundary_unchanged": true,
+        "exact_collection_executed_once": true,
+        "nonpassing": []
+      },
+      "passing_fixture_reclaimed": "/private/tmp/overseer-fpr4-py311-finalcandidate-package-1-j0qw23t5",
+      "free_after": 1385336832
+    },
+    {
+      "name": "py311-finalcandidate-package-2",
+      "nodeid": "tests/fpr5/test_resource_repairs.py::test_provisioned_runtime_and_actual_packaged_entrypoints",
+      "argv": [
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/.venv/bin/python",
+        "-I",
+        "-B",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/scripts/fpr4_run.py",
+        "--name",
+        "py311-finalcandidate-package-2",
+        "--selection",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/targeted/py311-finalcandidate-package-2-selection.json",
+        "--evidence-dir",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/targeted"
+      ],
+      "free_before": 1385336832,
+      "exit_code": 0,
+      "record": "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/targeted/py311-finalcandidate-package-2.json",
+      "result": {
+        "ok": true,
+        "results": {
+          "tests": 1,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "passed": 1
+        },
+        "boundary_unchanged": true,
+        "exact_collection_executed_once": true,
+        "nonpassing": []
+      },
+      "passing_fixture_reclaimed": "/private/tmp/overseer-fpr4-py311-finalcandidate-package-2-13smfcr4",
+      "free_after": 1383464960
+    }
+  ],
+  "disk_minimum_before_bytes": 524288000,
+  "disk_floor_during_bytes": 262144000,
+  "original_serial_sha256": "061790a7c226615b3c7d4489cd063bdadc6f4a6effc35facf5e1a9445476af79",
+  "original_serial_ok": false,
+  "original_collection_count": 1196,
+  "fixture_initialization": {
+    "preview": {
+      "ok": true,
+      "repository": {
+        "name": "fpr5-python311-acceptance",
+        "id": "5662a3cc-23e1-488b-b456-6e20d112596b",
+        "root": "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation",
+        "root_relative_docs": "docs"
+      },
+      "initialized": false,
+      "dry_run": true,
+      "changed": [
+        ".overseer/bin/ok",
+        ".claude/skills/adversarial-freeze-review/SKILL.md",
+        ".claude/skills/build-verification-review/SKILL.md",
+        ".claude/skills/check-ok/SIDE-CHECK-TEMPLATE.md",
+        ".claude/skills/check-ok/SKILL.md",
+        ".claude/skills/deploy-verification-review/SKILL.md",
+        ".claude/skills/freeze-review-loop/SKILL.md",
+        ".claude/skills/freeze-review/SKILL.md",
+        ".claude/skills/governance-sync/SKILL.md",
+        ".claude/skills/independent-second-reviewer/SKILL.md",
+        ".claude/skills/print-next/SKILL.md",
+        ".claude/skills/workspace-status/SKILL.md",
+        ".cursor/rules/build-verification-required.mdc",
+        ".cursor/rules/check-ok-thinking.mdc",
+        ".cursor/rules/governance-sync.mdc",
+        ".cursor/rules/l1-checkpoints-consumer-owned.mdc",
+        ".cursor/rules/no-docs-only-pr-to-main.mdc",
+        ".cursor/rules/orchestrator.mdc",
+        ".cursor/rules/print-next-closeout.mdc",
+        ".cursor/rules/tier-authority.mdc",
+        ".cursor/rules/workspace-authority.mdc",
+        ".cursor/skills/adversarial-freeze-review/SKILL.md",
+        ".cursor/skills/build-verification-review/SKILL.md",
+        ".cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md",
+        ".cursor/skills/check-ok/SKILL.md",
+        ".cursor/skills/deploy-verification-review/SKILL.md",
+        ".cursor/skills/freeze-review-loop/SKILL.md",
+        ".cursor/skills/freeze-review/SKILL.md",
+        ".cursor/skills/governance-sync/SKILL.md",
+        ".cursor/skills/independent-second-reviewer/SKILL.md",
+        ".cursor/skills/print-next/SKILL.md",
+        ".cursor/skills/workspace-status/SKILL.md",
+        ".overseer/STANDING-DECISIONS.reference.md",
+        ".overseer/policy/model-labels.yaml",
+        ".overseer/policy/model-routing.yaml",
+        ".overseer/policy/test-tiers.yaml",
+        ".overseer/policy/tiers.yaml",
+        ".overseer/version.lock",
+        ".overseer/config.yaml"
+      ]
+    },
+    "applied": {
+      "ok": true,
+      "repository": {
+        "name": "fpr5-python311-acceptance",
+        "id": "b0e31bcf-6c6b-40be-8c32-e41601fa4dc0",
+        "root": "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation",
+        "root_relative_docs": "docs"
+      },
+      "initialized": true,
+      "dry_run": false,
+      "changed": [
+        ".overseer/bin/ok",
+        ".claude/skills/adversarial-freeze-review/SKILL.md",
+        ".claude/skills/build-verification-review/SKILL.md",
+        ".claude/skills/check-ok/SIDE-CHECK-TEMPLATE.md",
+        ".claude/skills/check-ok/SKILL.md",
+        ".claude/skills/deploy-verification-review/SKILL.md",
+        ".claude/skills/freeze-review-loop/SKILL.md",
+        ".claude/skills/freeze-review/SKILL.md",
+        ".claude/skills/governance-sync/SKILL.md",
+        ".claude/skills/independent-second-reviewer/SKILL.md",
+        ".claude/skills/print-next/SKILL.md",
+        ".claude/skills/workspace-status/SKILL.md",
+        ".cursor/rules/build-verification-required.mdc",
+        ".cursor/rules/check-ok-thinking.mdc",
+        ".cursor/rules/governance-sync.mdc",
+        ".cursor/rules/l1-checkpoints-consumer-owned.mdc",
+        ".cursor/rules/no-docs-only-pr-to-main.mdc",
+        ".cursor/rules/orchestrator.mdc",
+        ".cursor/rules/print-next-closeout.mdc",
+        ".cursor/rules/tier-authority.mdc",
+        ".cursor/rules/workspace-authority.mdc",
+        ".cursor/skills/adversarial-freeze-review/SKILL.md",
+        ".cursor/skills/build-verification-review/SKILL.md",
+        ".cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md",
+        ".cursor/skills/check-ok/SKILL.md",
+        ".cursor/skills/deploy-verification-review/SKILL.md",
+        ".cursor/skills/freeze-review-loop/SKILL.md",
+        ".cursor/skills/freeze-review/SKILL.md",
+        ".cursor/skills/governance-sync/SKILL.md",
+        ".cursor/skills/independent-second-reviewer/SKILL.md",
+        ".cursor/skills/print-next/SKILL.md",
+        ".cursor/skills/workspace-status/SKILL.md",
+        ".overseer/STANDING-DECISIONS.reference.md",
+        ".overseer/policy/model-labels.yaml",
+        ".overseer/policy/model-routing.yaml",
+        ".overseer/policy/test-tiers.yaml",
+        ".overseer/policy/tiers.yaml",
+        ".overseer/version.lock",
+        ".overseer/config.yaml"
+      ]
+    },
+    "hooks_requested": false
+  },
+  "fixture_source_test_runtime_dependencies_head_refs_identical": true,
+  "fixture_source_member_count": 1483,
+  "fixture_added_members": {
+    ".claude/skills": {
+      "kind": "directory",
+      "mode": 493
+    },
+    ".claude/skills/adversarial-freeze-review": {
+      "kind": "directory",
+      "mode": 493
+    },
+    ".claude/skills/adversarial-freeze-review/SKILL.md": {
+      "kind": "file",
+      "sha256": "7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044",
+      "mode": 420,
+      "size": 2787
+    },
+    ".claude/skills/build-verification-review": {
+      "kind": "directory",
+      "mode": 493
+    },
+    ".claude/skills/build-verification-review/SKILL.md": {
+      "kind": "file",
+      "sha256": "f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c",
+      "mode": 420,
+      "size": 7622
+    },
+    ".claude/skills/check-ok": {
+      "kind": "directory",
+      "mode": 493
+    },
+    ".claude/skills/check-ok/SIDE-CHECK-TEMPLATE.md": {
+      "kind": "file",
+      "sha256": "0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c",
+      "mode": 420,
+      "size": 1396
+    },
+    ".claude/skills/check-ok/SKILL.md": {
+      "kind": "file",
+      "sha256": "3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a",
+      "mode": 420,
+      "size": 4245
+    },
+    ".claude/skills/deploy-verification-review": {
+      "kind": "directory",
+      "mode": 493
+    },
+    ".claude/skills/deploy-verification-review/SKILL.md": {
+      "kind": "file",
+      "sha256": "a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b",
+      "mode": 420,
+      "size": 6317
+    },
+    ".claude/skills/freeze-review": {
+      "kind": "directory",
+      "mode": 493
+    },
+    ".claude/skills/freeze-review-loop": {
+      "kind": "directory",
+      "mode": 493
+    },
+    ".claude/skills/freeze-review-loop/SKILL.md": {
+      "kind": "file",
+      "sha256": "355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f",
+      "mode": 420,
+      "size": 4616
+    },
+    ".claude/skills/freeze-review/SKILL.md": {
+      "kind": "file",
+      "sha256": "620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b",
+      "mode": 420,
+      "size": 3338
+    },
+    ".claude/skills/governance-sync": {
+      "kind": "directory",
+      "mode": 493
+    },
+    ".claude/skills/governance-sync/SKILL.md": {
+      "kind": "file",
+      "sha256": "06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14",
+      "mode": 420,
+      "size": 1064
+    },
+    ".claude/skills/independent-second-reviewer": {
+      "kind": "directory",
+      "mode": 493
+    },
+    ".claude/skills/independent-second-reviewer/SKILL.md": {
+      "kind": "file",
+      "sha256": "994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837",
+      "mode": 420,
+      "size": 2440
+    },
+    ".claude/skills/print-next": {
+      "kind": "directory",
+      "mode": 493
+    },
+    ".claude/skills/print-next/SKILL.md": {
+      "kind": "file",
+      "sha256": "de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff",
+      "mode": 420,
+      "size": 1700
+    },
+    ".claude/skills/workspace-status": {
+      "kind": "directory",
+      "mode": 493
+    },
+    ".claude/skills/workspace-status/SKILL.md": {
+      "kind": "file",
+      "sha256": "a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25",
+      "mode": 420,
+      "size": 747
+    },
+    ".cursor/rules": {
+      "kind": "directory",
+      "mode": 493
+    },
+    ".cursor/rules/build-verification-required.mdc": {
+      "kind": "file",
+      "sha256": "b0fdb1a1e0a01d23b4b70cb5b4bb987eb11b9fdba1a8a77af54e90f47d832065",
+      "mode": 420,
+      "size": 650
+    },
+    ".cursor/rules/check-ok-thinking.mdc": {
+      "kind": "file",
+      "sha256": "a75697f0f8b6fb1ee424aa198dd5e4a6648e33b3707482964494287196729739",
+      "mode": 420,
+      "size": 789
+    },
+    ".cursor/rules/governance-sync.mdc": {
+      "kind": "file",
+      "sha256": "97414e26682f3ccefb3c442a05d73c7dbb998fd78e5a6d286e4ef625d4405fb6",
+      "mode": 420,
+      "size": 572
+    },
+    ".cursor/rules/l1-checkpoints-consumer-owned.mdc": {
+      "kind": "file",
+      "sha256": "6eebc8126cee6c7ee1d2de1180faec15e2822448b2bfeffb56495991fd21a037",
+      "mode": 420,
+      "size": 549
+    },
+    ".cursor/rules/no-docs-only-pr-to-main.mdc": {
+      "kind": "file",
+      "sha256": "c040517845d72aa9f40cc802db00e39dc67cd4d66a9f4dd1ac89d8bb680dd610",
+      "mode": 420,
+      "size": 413
+    },
+    ".cursor/rules/orchestrator.mdc": {
+      "kind": "file",
+      "sha256": "98b8df26c0f5abc71d203d2bcf457e23dea29e7c0e242bbe3cadeb711064e5c3",
+      "mode": 420,
+      "size": 1102
+    },
+    ".cursor/rules/print-next-closeout.mdc": {
+      "kind": "file",
+      "sha256": "c45ae41918dabb9b1afb3f180924039ff02df661a6c77f1c97c1a119b77f62bb",
+      "mode": 420,
+      "size": 581
+    },
+    ".cursor/rules/tier-authority.mdc": {
+      "kind": "file",
+      "sha256": "e685afdd9a6368bac11127bebb0ca9883ac7523f15f65ceb3d9efdf239fb9f2a",
+      "mode": 420,
+      "size": 571
+    },
+    ".cursor/rules/workspace-authority.mdc": {
+      "kind": "file",
+      "sha256": "438b69c1bae0e413e6ad953cbec3173162282625d4bee04066e482db72a8aff0",
+      "mode": 420,
+      "size": 561
+    },
+    ".cursor/skills": {
+      "kind": "directory",
+      "mode": 493
+    },
+    ".cursor/skills/adversarial-freeze-review": {
+      "kind": "directory",
+      "mode": 493
+    },
+    ".cursor/skills/adversarial-freeze-review/SKILL.md": {
+      "kind": "file",
+      "sha256": "7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044",
+      "mode": 420,
+      "size": 2787
+    },
+    ".cursor/skills/build-verification-review": {
+      "kind": "directory",
+      "mode": 493
+    },
+    ".cursor/skills/build-verification-review/SKILL.md": {
+      "kind": "file",
+      "sha256": "f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c",
+      "mode": 420,
+      "size": 7622
+    },
+    ".cursor/skills/check-ok": {
+      "kind": "directory",
+      "mode": 493
+    },
+    ".cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md": {
+      "kind": "file",
+      "sha256": "0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c",
+      "mode": 420,
+      "size": 1396
+    },
+    ".cursor/skills/check-ok/SKILL.md": {
+      "kind": "file",
+      "sha256": "3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a",
+      "mode": 420,
+      "size": 4245
+    },
+    ".cursor/skills/deploy-verification-review": {
+      "kind": "directory",
+      "mode": 493
+    },
+    ".cursor/skills/deploy-verification-review/SKILL.md": {
+      "kind": "file",
+      "sha256": "a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b",
+      "mode": 420,
+      "size": 6317
+    },
+    ".cursor/skills/freeze-review": {
+      "kind": "directory",
+      "mode": 493
+    },
+    ".cursor/skills/freeze-review-loop": {
+      "kind": "directory",
+      "mode": 493
+    },
+    ".cursor/skills/freeze-review-loop/SKILL.md": {
+      "kind": "file",
+      "sha256": "355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f",
+      "mode": 420,
+      "size": 4616
+    },
+    ".cursor/skills/freeze-review/SKILL.md": {
+      "kind": "file",
+      "sha256": "620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b",
+      "mode": 420,
+      "size": 3338
+    },
+    ".cursor/skills/governance-sync": {
+      "kind": "directory",
+      "mode": 493
+    },
+    ".cursor/skills/governance-sync/SKILL.md": {
+      "kind": "file",
+      "sha256": "06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14",
+      "mode": 420,
+      "size": 1064
+    },
+    ".cursor/skills/independent-second-reviewer": {
+      "kind": "directory",
+      "mode": 493
+    },
+    ".cursor/skills/independent-second-reviewer/SKILL.md": {
+      "kind": "file",
+      "sha256": "994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837",
+      "mode": 420,
+      "size": 2440
+    },
+    ".cursor/skills/print-next": {
+      "kind": "directory",
+      "mode": 493
+    },
+    ".cursor/skills/print-next/SKILL.md": {
+      "kind": "file",
+      "sha256": "de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff",
+      "mode": 420,
+      "size": 1700
+    },
+    ".cursor/skills/workspace-status": {
+      "kind": "directory",
+      "mode": 493
+    },
+    ".cursor/skills/workspace-status/SKILL.md": {
+      "kind": "file",
+      "sha256": "a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25",
+      "mode": 420,
+      "size": 747
+    },
+    ".overseer/STANDING-DECISIONS.reference.md": {
+      "kind": "file",
+      "sha256": "cd5ece2e1aa569c3fa1e079fa984521e9ec447b5863583920ca739f0953bd53e",
+      "mode": 420,
+      "size": 613
+    },
+    ".overseer/bin": {
+      "kind": "directory",
+      "mode": 493
+    },
+    ".overseer/bin/ok": {
+      "kind": "file",
+      "sha256": "5a6e0f1a5ea956848e299f41d6180b7596427083b7a4e0874d39d4f92a68add1",
+      "mode": 493,
+      "size": 434
+    },
+    ".overseer/config.yaml": {
+      "kind": "file",
+      "sha256": "e09882bc4a5dd704a74911057465df6e7bdfcc6e93be78e88efe9c65ee64f3ce",
+      "mode": 420,
+      "size": 1243
+    },
+    ".overseer/policy": {
+      "kind": "directory",
+      "mode": 493
+    },
+    ".overseer/policy/model-labels.yaml": {
+      "kind": "file",
+      "sha256": "db95732401de452223d750c68172b6c1bb28b3b574c6368132678309b8c801e0",
+      "mode": 420,
+      "size": 3425
+    },
+    ".overseer/policy/model-routing.yaml": {
+      "kind": "file",
+      "sha256": "52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63",
+      "mode": 420,
+      "size": 1088
+    },
+    ".overseer/policy/test-tiers.yaml": {
+      "kind": "file",
+      "sha256": "55b337e9399ccd26f4c70dba9f6f57c1359fab930a522e605cbe52d3533238d8",
+      "mode": 420,
+      "size": 1990
+    },
+    ".overseer/policy/tiers.yaml": {
+      "kind": "file",
+      "sha256": "92920331f4e35bad9191a101b8b5d211ef31f069b2ba1cf4446ceb3796894776",
+      "mode": 420,
+      "size": 4333
+    },
+    ".overseer/version.lock": {
+      "kind": "file",
+      "sha256": "dc17aeacf02952b0e4f9847fb0156cf903ec2bb318937c9e43bbac8561a73b95",
+      "mode": 420,
+      "size": 7153
+    },
+    "docs/NEXT.md": {
+      "kind": "file",
+      "sha256": "a1ec4c3b60856dcf09cdaaca98e80de184948066c3d077df34054db79c907204",
+      "mode": 420,
+      "size": 423
+    }
+  },
+  "final_candidate_delta": {
+    "source_member_count": 1483,
+    "only_changed_source_member": "desktop/src-tauri/tauri.conf.json",
+    "before": {
+      "kind": "file",
+      "sha256": "d834a532c7e67eaf9c7a21c9e80d52a31a7160d6aaad88ee9903078132ef42be",
+      "mode": 420,
+      "size": 1118
+    },
+    "after": {
+      "kind": "file",
+      "sha256": "d65242ef9ca4be228e791d7596bd2a60ff90ba200445c0d5dbf58229c5eecab6",
+      "mode": 420,
+      "size": 1143
+    },
+    "matches_authorized_root_config_sha256": true,
+    "manifest_before_sha256": "044ed9bea6a61220604252372b37186584b15e66dd4efbccde1d9901e485134d",
+    "manifest_after_sha256": "4d74f440f71e3c5d3711c60370edadbef9ee3605748f332f750f21cb103268b2",
+    "runtime_tests_dependencies_head_refs_unchanged": true
+  },
+  "coverage": {
+    "expected_distinct_cases": 1196,
+    "original_outcomes": {
+      "passed": 1195,
+      "nonpassing": 1
+    },
+    "original_nonpassing_nodeids": [
+      "tests/security/test_p_deploy_security.py::test_twin_skill_paths_exist"
+    ],
+    "distinct_reconciled_outcomes": {
+      "passed": 1196
+    },
+    "unresolved_nodeids": [],
+    "complete_distinct_passing_coverage": true,
+    "basis": "Original immutable repaired-source partitions plus prerequisite-corrected twin case and two affected final-candidate package cases; original failures retained."
+  },
+  "ok": true
+}

@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "/usr/bin/sandbox-exec",
+    "-f",
+    "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/isolated-cursor.sb",
+    "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/candidate/overseer-kit-desktop-candidate",
+    "--kit-root",
+    "/private/tmp/overseer-fpr5-integrated-pilot-20261015/installation",
+    "--repo",
+    "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project"
+  ],
+  "env": {
+    "PATH": "/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin",
+    "TMPDIR": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/candidate/gui-clean-exit-r2/temp/",
+    "LANG": "en_US.UTF-8",
+    "RUST_BACKTRACE": "1",
+    "CFFIXED_USER_HOME": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/candidate/gui-clean-exit-r2/cache-home"
+  },
+  "pid": 16477,
+  "candidate_binary_sha256": "a515148a94ffebb88e7520fb194bc0287967484896c44900e6d7ab4e7b364551"
+}

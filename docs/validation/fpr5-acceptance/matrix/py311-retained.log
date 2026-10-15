@@ -1,0 +1,26 @@
+........................................................................ [ 11%]
+........................................................................ [ 23%]
+......F................................................................. [ 35%]
+........................................................................ [ 47%]
+........................................................................ [ 58%]
+........................................................................ [ 70%]
+........................................................................ [ 82%]
+........................................................................ [ 94%]
+...................................                                      [100%]
+=================================== FAILURES ===================================
+_________________________ test_twin_skill_paths_exist __________________________
+
+    def test_twin_skill_paths_exist() -> None:
+        root = Path(__file__).resolve().parents[2]
+        vendored = root / "cursor" / "skills" / "deploy-verification-review" / "SKILL.md"
+        local = root / ".cursor" / "skills" / "deploy-verification-review" / "SKILL.md"
+        assert vendored.is_file()
+>       assert local.is_file()
+E       AssertionError: assert False
+E        +  where False = is_file()
+E        +    where is_file = PosixPath('/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/.cursor/skills/deploy-verification-review/SKILL.md').is_file
+
+tests/security/test_p_deploy_security.py:97: AssertionError
+=========================== short test summary info ============================
+FAILED tests/security/test_p_deploy_security.py::test_twin_skill_paths_exist
+1 failed, 610 passed, 2 deselected in 13.47s

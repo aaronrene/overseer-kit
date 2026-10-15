@@ -8,7 +8,20 @@ Active implementation: `overseer-kit-v1-recovery-20261014`, branch
 `feat/overseer-v1-recovery-20261014`, reconciled base `d47291d`.
 Both older dirty worktrees remain untouched.
 
-**Current successor: resolve acceptance inputs before dependent work.**
+**Current stop: two interactive acceptance observations.** The owner selected
+Cursor 3.24.18 on macOS 15.7.2 arm64, retained the complete Python 3.11/3.14 and
+three-authority requirements, and explicitly approved the pinned package
+download and new disposable local pilot. Other network/release restrictions
+remain. See [acceptance decisions and evidence](validation/FPR-5-ACCEPTANCE.md).
+All 1,196 Python 3.11 cases have passing evidence across the original
+1,195-pass/one-installation-setup-failure run and the corrected-prerequisite
+rerun; raw failures remain. The new disposable pilot's local workflow passed.
+One native startup crash was repaired by disabling duplicate automatic window
+creation; actual window creation and normal app/child shutdown passed.
+Actual rendered desktop content/NEXT and Cursor sessionStart/stop delivery
+remain blocked. Prepared owner-assisted observation commands preserve the
+existing restrictions. No independent adjudication or release decision is
+claimed. Canonical NEXT is published only through bound `next-write`.
 The owner-appointed [FPR-5 review](reviews/FPR-5-REVIEW.md) is complete with its
 original **FINDINGS** verdict preserved. This owner-directed repair implements
 all six findings; [author evidence](validation/FPR-5-REPAIRS.md) records failing
@@ -28,13 +41,17 @@ unchanged. No old worktree, Muse history, completed pilot or protected ref was
 used as a test target. Runtime refresh and canonical successor publication use
 the bound services; installed hooks remain disabled.
 
-Python 3.11, named automatic host/version acceptance, platform/distribution
-choices and the separately authorized new integrated pilot remain open. The
+Owner choices and the new pilot authorization are now explicit in the acceptance
+record; the complete pinned Python 3.11 cell is now supported by exact case
+reconciliation. The two interactive observations keep selected host/platform
+and full integrated-pilot acceptance open. The
 completed review is not pending again. After complete repaired-source and
 acceptance evidence, reserve one final independent adjudication, then one
 separate owner release decision. Repair authors cannot certify that adjudication.
 
-The following FPR-4 results remain historical evidence for their recorded source.
+The following FPR-4 results and then-pending prerequisites remain historical
+evidence for their recorded source. Current decisions/results are above and in
+the acceptance record; historical statements below are not current blockers.
 Opening FPR-4 HEAD was `6289d2823184a63e2968d2c5f6a76abab5818368`, the single
 FPR-3 feature closing commit whose sole predecessor is
 `695444fb5f8261391f5c273807129c13dc8db1fd`. Identity, clean state and all pinned

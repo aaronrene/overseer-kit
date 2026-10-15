@@ -1,0 +1,309 @@
+[1015/034705.653055:ERROR:third_party/crashpad/crashpad/client/crash_report_database_mac.mm:90] stat /Users/aaronrenecarvajal/Library/Application Support/Cursor/Crashpad: Operation not permitted (1)
+[39798:1015/034705.653774:ERROR:third_party/crashpad/crashpad/util/file/file_io.cc:103] ReadExactly: expected 8, observed 0
+[39798:1015/034705.653967:ERROR:third_party/crashpad/crashpad/client/crash_report_database_mac.mm:90] stat /Users/aaronrenecarvajal/Library/Application Support/Cursor/Crashpad: Operation not permitted (1)
+Unable to read argv.json configuration file in /Users/aaronrenecarvajal/.cursor/argv.json, falling back to defaults (Error: EPERM: operation not permitted, open '/Users/aaronrenecarvajal/.cursor/argv.json')
+(node:39798) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `Cursor --trace-deprecation ...` to show where the warning was created)
+
+DevTools listening on ws://127.0.0.1:53066/devtools/browser/8c97ec5f-842d-48b7-8d29-4d569d4bb88d
+sandbox initialization failed: Operation not permitted
+Failed to initialize sandbox.sandbox initialization failed: Operation not permitted
+Failed to initialize sandbox.Warning: 'remote-debugging-address' is not in the list of known options, but still passed to Electron/Chromium.
+Warning: 'remote-debugging-port' is not in the list of known options, but still passed to Electron/Chromium.
+[90m[main 2026-10-15T10:47:05.780Z][0m PolicyConfiguration#initialize
+[90m[main 2026-10-15T10:47:05.780Z][0m PolicyConfiguration#updatePolicyDefinitions [
+  'update.mode',
+  'update.channel',
+  'update.releaseTrack',
+  'update.releaseTrackOverride',
+  'cursor.agentHost.updateMode',
+  'http.useLocalProxyConfiguration',
+  'http.electronFetch',
+  'http.proxy',
+  'http.proxyStrictSSL',
+  'http.proxyKerberosServicePrincipal',
+  'http.noProxy',
+[REDACTED credential-related diagnostic line 26; original retained locally]
+  'http.proxySupport',
+  'http.systemCertificates',
+  'http.experimental.systemCertificatesV2',
+  'http.fetchAdditionalSupport',
+  'crashReporting.enabled',
+  'telemetry.enableTelemetry'
+]
+[90m[main 2026-10-15T10:47:05.780Z][0m NativePolicyService#_updatePolicyDefinitions - Found 2 policy definitions
+[90m[main 2026-10-15T10:47:05.799Z][0m NativePolicyService#_onDidPolicyChange - Updated policy values: {}
+[90m[main 2026-10-15T10:47:05.799Z][0m PolicyConfiguration#update [ 'update.mode', 'cursor.agentHost.updateMode' ]
+[90m[main 2026-10-15T10:47:05.799Z][0m PolicyConfiguration#updatePolicyDefinitions [
+  'update.enableWindowsBackgroundUpdates',
+  'cursor.experimental.startupConnectTransport'
+]
+[90m[main 2026-10-15T10:47:05.799Z][0m PolicyConfiguration#update []
+[90m[main 2026-10-15T10:47:05.799Z][0m [File Watcher (node.js)] Request to start watching: /private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-profile/User (excludes: <none>, includes: <all>, filter: <none>, correlationId: <none>),/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-profile/User/settings.json (excludes: <none>, includes: <all>, filter: <none>, correlationId: <none>)
+[90m[main 2026-10-15T10:47:05.804Z][0m Starting VS Code
+[90m[main 2026-10-15T10:47:05.804Z][0m from: /Applications/Cursor.app/Contents/Resources/app
+[90m[main 2026-10-15T10:47:05.804Z][0m args: {
+  _: [ '/private/tmp/overseer-fpr5-integrated-pilot-20261015/project' ],
+  diff: false,
+  merge: false,
+  add: false,
+  remove: false,
+  goto: false,
+  'new-window': true,
+  'reuse-window': false,
+  'suppress-popups-on-startup': false,
+  'web-worker-exthost': false,
+  glass: false,
+  classic: false,
+  wait: false,
+  'user-data-dir': '/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-profile',
+  help: false,
+  'extensions-dir': '/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-extensions',
+  'list-extensions': false,
+  'show-versions': false,
+  'pre-release': false,
+  'update-extensions': false,
+  version: false,
+  verbose: false,
+  log: [ 'trace' ],
+  status: false,
+  'prof-startup': false,
+  'no-cached-data': false,
+  'prof-v8-extensions': false,
+  'disable-extensions': true,
+  'disable-lcd-text': false,
+  'disable-gpu': false,
+  'disable-chromium-sandbox': false,
+  sandbox: false,
+  telemetry: false,
+  debugRenderer: false,
+  'enable-smoke-test-driver': false,
+  'smoke-test-use-real-agent-http': false,
+  'smoke-test-nal-endless-retries': false,
+  headless: false,
+  logExtensionHostCommunication: false,
+  'skip-release-notes': true,
+  'skip-welcome': true,
+  'skip-onboarding': false,
+  'disable-telemetry': true,
+  'disable-updates': true,
+  'agent-harness-trust-dev-key': false,
+[REDACTED credential-related diagnostic line 91; original retained locally]
+[REDACTED credential-related diagnostic line 92; original retained locally]
+  'disable-workspace-trust': false,
+  'disable-crash-reporter': true,
+  'skip-add-to-recently-opened': false,
+  'open-url': false,
+  'file-write': false,
+  'file-chmod': false,
+  force: false,
+  'do-not-sync': false,
+  'do-not-include-pack-dependencies': false,
+  trace: false,
+  'trace-memory-infra': false,
+  'preserve-env': false,
+  'force-user-env': false,
+  'force-disable-user-env': false,
+  'open-devtools': false,
+  'enable-react-devtools': false,
+  'disable-react-devtools': false,
+  'react-production-bundles': false,
+  'react-performance-tracks': false,
+  'is-vm-daemon-parallel-process': false,
+  'disable-gpu-sandbox': false,
+  '__enable-file-policy': false,
+  'enable-coi': false,
+  'no-proxy-server': false,
+  'no-sandbox': false,
+  nolazy: false,
+  'force-renderer-accessibility': false,
+  'ignore-certificate-errors': false,
+  'allow-insecure-localhost': false,
+  'disable-dev-shm-usage': false,
+  'profile-temp': false,
+  hmr: false,
+  chat: false,
+  logsPath: '/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-profile/logs/20261015T034705'
+}
+[90m[main 2026-10-15T10:47:05.804Z][0m Resolving machine identifier...
+[91m[main 2026-10-15T10:47:05.840Z][0m Error: Home directory not found
+    at getDirectory (/Applications/Cursor.app/Contents/Resources/app/node_modules/@vscode/deviceid/dist/storage.js:40:15)
+    at Object.setDeviceId (/Applications/Cursor.app/Contents/Resources/app/node_modules/@vscode/deviceid/dist/storage.js:76:28)
+    at Module.getDeviceId (/Applications/Cursor.app/Contents/Resources/app/node_modules/@vscode/deviceid/dist/devdeviceid.js:46:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async X7 (file:///Applications/Cursor.app/Contents/Resources/app/out/main.js:66:754)
+    at async u_e (file:///Applications/Cursor.app/Contents/Resources/app/out/main.js:187:70156)
+    at async eet (file:///Applications/Cursor.app/Contents/Resources/app/out/main.js:187:70501)
+    at async Promise.all (index 3)
+    at async tm.startup (file:///Applications/Cursor.app/Contents/Resources/app/out/main.js:335:6529)
+    at async D9e.startup (file:///Applications/Cursor.app/Contents/Resources/app/out/main.js:375:56811)
+[90m[main 2026-10-15T10:47:05.840Z][0m Resolved machine identifier: 3f2d1b70dabd5789ac13cdbb2c659c85a4da1cb35fab4b02024a796076766438
+[90m[main 2026-10-15T10:47:05.840Z][0m Main->SharedProcess#connect
+[90m[main 2026-10-15T10:47:05.841Z][0m PolicyConfiguration#updatePolicyDefinitions [
+  'terminal.integrated.automationProfile.linux',
+  'terminal.integrated.automationProfile.osx',
+  'terminal.integrated.automationProfile.windows',
+  'terminal.integrated.profiles.windows',
+  'terminal.integrated.profiles.osx',
+  'terminal.integrated.profiles.linux',
+  'terminal.integrated.useWslProfiles',
+  'terminal.integrated.inheritEnv',
+  'terminal.integrated.persistentSessionScrollback',
+  'terminal.integrated.showLinkHover',
+  'terminal.integrated.ignoreProcessNames'
+]
+[90m[main 2026-10-15T10:47:05.841Z][0m PolicyConfiguration#updatePolicyDefinitions [
+  'terminal.integrated.defaultProfile.linux',
+  'terminal.integrated.defaultProfile.osx',
+  'terminal.integrated.defaultProfile.windows'
+]
+[90m[main 2026-10-15T10:47:05.842Z][0m PolicyConfiguration#update []
+[90m[main 2026-10-15T10:47:05.842Z][0m PolicyConfiguration#update []
+[90m[main 2026-10-15T10:47:05.842Z][0m StorageMainService: creating application storage
+[90m[main 2026-10-15T10:47:05.842Z][0m [EncryptionMainService] setting usePlainTextEncryption to true...
+[90m[main 2026-10-15T10:47:05.842Z][0m [EncryptionMainService] set usePlainTextEncryption to true
+[90m[main 2026-10-15T10:47:05.854Z][0m [CursorProclistService] Native module loaded successfully
+[90m[main 2026-10-15T10:47:05.855Z][0m TracingService: created transport
+[90m[main 2026-10-15T10:47:05.855Z][0m ContinuousProfilingMainService: initialized in main process
+[90m[main 2026-10-15T10:47:05.856Z][0m [AgentHostUpdater] not started: cursor.agentHost.updateMode=default follows update.mode=none; the agent host stays packed into this client
+[90m[main 2026-10-15T10:47:05.877Z][0m ElectronURLListener: waiting for window to be ready to handle URLs...
+[90m[main 2026-10-15T10:47:05.878Z][0m lifecycle (main): phase changed (value: 2)
+[90m[main 2026-10-15T10:47:05.879Z][0m [SharedProcess] preWarm enabled: will spawn on first window create
+[90m[main 2026-10-15T10:47:05.880Z][0m windowsManager#open
+[90m[main 2026-10-15T10:47:05.886Z][0m [File Watcher (node.js)] Started watching: '/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-profile/User'
+[90m[main 2026-10-15T10:47:05.886Z][0m windowsManager#open pathsToOpen [
+  {
+    workspace: { id: '7b1abe362a580104b48521ddb7305f8f', uri: [nc] },
+    type: 2,
+    exists: true
+  }
+]
+[90m[main 2026-10-15T10:47:05.916Z][0m [File Watcher (node.js)] Started watching: '/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-profile/User/settings.json'
+[39798:1015/034705.920854:ERROR:content/browser/network_service_instance_impl.cc:703] Network service crashed or was terminated, restarting service.
+[90m[main 2026-10-15T10:47:05.924Z][0m windowsManager#doOpenFolderOrWorkspace {
+  folderOrWorkspace: {
+    workspace: { id: '7b1abe362a580104b48521ddb7305f8f', uri: [nc] },
+    type: 2,
+    exists: true
+  },
+  filesToOpen: undefined
+}
+[90m[main 2026-10-15T10:47:05.925Z][0m IPC Object URL: Registered new channel vscode:5ce4a685-49cc-4926-a7b2-5fa1905e4201.
+[90m[main 2026-10-15T10:47:05.925Z][0m window#validateWindowState: validating window state on 1 display(s) {
+  width: 1280,
+  height: 800,
+  mode: 1,
+  x: 108,
+  y: 84,
+  hasDefaultState: true
+}
+[90m[main 2026-10-15T10:47:05.925Z][0m window#validateWindowState: single monitor working area { x: 0, y: 34, width: 1496, height: 933 }
+[90m[main 2026-10-15T10:47:05.925Z][0m window#ctor: using window state {
+  width: 1280,
+  height: 800,
+  mode: 1,
+  x: 108,
+  y: 84,
+  hasDefaultState: true
+}
+sandbox initialization failed: Operation not permitted
+Failed to initialize sandbox.[90m[main 2026-10-15T10:47:05.973Z][0m [SharedProcess] preWarm: starting early spawn before first window connection
+[90m[main 2026-10-15T10:47:05.974Z][0m [SharedProcess] createUtilityProcess: spawning utility process
+[90m[main 2026-10-15T10:47:05.974Z][0m [UtilityProcess type: shared-process, pid: <none>]: creating new...
+[90m[main 2026-10-15T10:47:05.975Z][0m [UtilityProcess type: shared-process, pid: <none>]: payload sent via postMessage()
+[90m[main 2026-10-15T10:47:05.975Z][0m window#load: attempt to load window (id: 1)
+[90m[main 2026-10-15T10:47:05.978Z][0m StorageMainService: creating workspace storage (7b1abe362a580104b48521ddb7305f8f)
+[90m[main 2026-10-15T10:47:05.978Z][0m windowsManager#open used window count 1 (workspacesToOpen: 0, foldersToOpen: 1, emptyToRestore: 0, maybeOpenEmptyWindow: false)
+[90m[main 2026-10-15T10:47:05.978Z][0m lifecycle (main): phase changed (value: 3)
+[90m[main 2026-10-15T10:47:05.979Z][0m resolveShellEnv(): running (macOS/Linux)
+[90m[main 2026-10-15T10:47:05.979Z][0m getUnixShellEnvironment#runAsNode undefined
+[90m[main 2026-10-15T10:47:05.979Z][0m getUnixShellEnvironment#noAttach undefined
+[90m[main 2026-10-15T10:47:05.979Z][0m getUnixShellEnvironment#env {
+  PATH: '/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin',
+  TMPDIR: '/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-temp/',
+  LANG: 'en_US.UTF-8',
+  ELECTRON_ENABLE_LOGGING: '1',
+  __CF_USER_TEXT_ENCODING: '0x1F6:0:0',
+  VSCODE_CWD: '/private/tmp/overseer-fpr5-integrated-pilot-20261015/project',
+  VSCODE_NLS_CONFIG: '{"userLocale":"en-us","osLocale":"en-us","resolvedLanguage":"en","defaultMessagesFile":"/Applications/Cursor.app/Contents/Resources/app/out/nls.messages.json","locale":"en-us","availableLanguages":{}}',
+  VSCODE_CODE_CACHE_PATH: '/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-profile/CachedData/be4c9e5350d77747b42cd467cbd3370a753d4640',
+  VSCODE_IPC_HOOK: '/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-profile/3.24-main.sock',
+  VSCODE_PID: '39798',
+  ELECTRON_RUN_AS_NODE: '1',
+  ELECTRON_NO_ATTACH_CONSOLE: '1',
+  VSCODE_RESOLVING_ENVIRONMENT: '1'
+}
+[90m[main 2026-10-15T10:47:05.979Z][0m [desktop bridge] Not starting because desktop_bridge feature gate and/or user setting is disabled
+[90m[main 2026-10-15T10:47:05.979Z][0m getUnixShellEnvironment#shell /bin/zsh
+[90m[main 2026-10-15T10:47:05.979Z][0m getUnixShellEnvironment#spawn ["-i","-l","-c"] '/Applications/Cursor.app/Contents/MacOS/Cursor'  -p '"b1a8401bb252" + JSON.stringify(process.env) + "b1a8401bb252"'
+[90m[main 2026-10-15T10:47:05.982Z][0m update#setState disabled
+[90m[main 2026-10-15T10:47:05.982Z][0m update#ctor - updates are disabled by the environment
+[90m[main 2026-10-15T10:47:05.982Z][0m [UpdateSupervisor] Cached gate startup (enabled=false)
+Failed to initialize sandbox.[90m[main 2026-10-15T10:47:06.599Z][0m [UtilityProcess type: shared-process, pid: 39807]: successfully created
+[39798:1015/034706.601484:ERROR:content/browser/gpu/gpu_process_host.cc:1017] GPU process exited unexpectedly: exit_code=6
+[39798:1015/034706.601506:WARNING:content/browser/gpu/gpu_process_host.cc:1467] The GPU process has crashed 1 time(s)
+[90m[main 2026-10-15T10:47:06.602Z][0m [SharedProcess] IPC ready
+[90m[main 2026-10-15T10:47:06.602Z][0m Main->SharedProcess#connect: connection established
+[39798:1015/034706.603559:ERROR:content/browser/network_service_instance_impl.cc:703] Network service crashed or was terminated, restarting service.
+[91m[main 2026-10-15T10:47:06.605Z][0m gr [Error]: Unable to read file '/Users/aaronrenecarvajal/.cursor/argv.json' (NoPermissions (FileSystemError): Error: EPERM: operation not permitted, stat '/Users/aaronrenecarvajal/.cursor/argv.json')
+    at nm.restoreReadError (file:///Applications/Cursor.app/Contents/Resources/app/out/main.js:362:9470)
+    at nm.doReadFileStream (file:///Applications/Cursor.app/Contents/Resources/app/out/main.js:362:9251)
+    at async nm.doReadFile (file:///Applications/Cursor.app/Contents/Resources/app/out/main.js:362:8501)
+    at async tm.updateCrashReporterEnablement (file:///Applications/Cursor.app/Contents/Resources/app/out/main.js:335:27014) {
+  fileOperationResult: 6,
+  options: { preferUnbuffered: true }
+}
+[90m[main 2026-10-15T10:47:06.606Z][0m getUnixShellEnvironment#raw b1a8401bb252{"PATH":"/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/opt/homebrew/bin","TMPDIR":"/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-temp/","LANG":"en_US.UTF-8","ELECTRON_ENABLE_LOGGING":"1","__CF_USER_TEXT_ENCODING":"0x1F6:0:0","VSCODE_CWD":"/private/tmp/overseer-fpr5-integrated-pilot-20261015/project","VSCODE_NLS_CONFIG":"{\"userLocale\":\"en-us\",\"osLocale\":\"en-us\",\"resolvedLanguage\":\"en\",\"defaultMessagesFile\":\"/Applications/Cursor.app/Contents/Resources/app/out/nls.messages.json\",\"locale\":\"en-us\",\"availableLanguages\":{}}","VSCODE_CODE_CACHE_PATH":"/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-profile/CachedData/be4c9e5350d77747b42cd467cbd3370a753d4640","VSCODE_IPC_HOOK":"/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-profile/3.24-main.sock","VSCODE_PID":"39798","ELECTRON_RUN_AS_NODE":"1","ELECTRON_NO_ATTACH_CONSOLE":"1","VSCODE_RESOLVING_ENVIRONMENT":"1","HOME":"/Users/aaronrenecarvajal","LOGNAME":"root","SHLVL":"0","PWD":"/private/tmp/overseer-fpr5-integrated-pilot-20261015/project","OLDPWD":"/private/tmp/overseer-fpr5-integrated-pilot-20261015/project","_":"/Applications/Cursor.app/Contents/MacOS/Cursor"}b1a8401bb252
+
+[90m[main 2026-10-15T10:47:06.606Z][0m getUnixShellEnvironment#result {
+  PATH: '/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/opt/homebrew/bin',
+  TMPDIR: '/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-temp/',
+  LANG: 'en_US.UTF-8',
+  ELECTRON_ENABLE_LOGGING: '1',
+  __CF_USER_TEXT_ENCODING: '0x1F6:0:0',
+  VSCODE_CWD: '/private/tmp/overseer-fpr5-integrated-pilot-20261015/project',
+  VSCODE_NLS_CONFIG: '{"userLocale":"en-us","osLocale":"en-us","resolvedLanguage":"en","defaultMessagesFile":"/Applications/Cursor.app/Contents/Resources/app/out/nls.messages.json","locale":"en-us","availableLanguages":{}}',
+  VSCODE_CODE_CACHE_PATH: '/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-profile/CachedData/be4c9e5350d77747b42cd467cbd3370a753d4640',
+  VSCODE_IPC_HOOK: '/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-profile/3.24-main.sock',
+  VSCODE_PID: '39798',
+  HOME: '/Users/aaronrenecarvajal',
+  LOGNAME: 'root',
+  SHLVL: '0',
+  PWD: '/private/tmp/overseer-fpr5-integrated-pilot-20261015/project',
+  OLDPWD: '/private/tmp/overseer-fpr5-integrated-pilot-20261015/project',
+  _: '/Applications/Cursor.app/Contents/MacOS/Cursor'
+}
+Renderer process crashed - see https://www.electronjs.org/docs/tutorial/application-debugging for potential debugging information.
+[91m[main 2026-10-15T10:47:06.607Z][0m CodeWindow: renderer process gone (reason: crashed, code: 6)
+sandbox initialization failed: Operation not permitted
+sandbox initialization failed: Operation not permitted
+Failed to initialize sandbox.Failed to initialize sandbox.[39798:1015/034706.908564:ERROR:content/browser/gpu/gpu_process_host.cc:1017] GPU process exited unexpectedly: exit_code=6
+[39798:1015/034706.908589:WARNING:content/browser/gpu/gpu_process_host.cc:1467] The GPU process has crashed 2 time(s)
+[90m[main 2026-10-15T10:47:06.916Z][0m [File Watcher (node.js)] Request to start watching: /private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-profile/User (excludes: <none>, includes: <all>, filter: <none>, correlationId: <none>),/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-profile/User/settings.json (excludes: <none>, includes: <all>, filter: <none>, correlationId: <none>)
+[90m[main 2026-10-15T10:47:06.917Z][0m [File Watcher (node.js)] Started watching: '/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-profile/User'
+[90m[main 2026-10-15T10:47:06.917Z][0m [File Watcher (node.js)] Started watching: '/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-profile/User/settings.json'
+[90m[main 2026-10-15T10:47:06.922Z][0m [SharedProcess] Overall ready
+sandbox initialization failed: Operation not permitted
+Failed to initialize sandbox.[90m[main 2026-10-15T10:47:06.944Z][0m [File Watcher (node.js)] Request to start watching: /private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-extensions (excludes: <none>, includes: <all>, filter: <none>, correlationId: <none>),/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-extensions/extensions.json (excludes: <none>, includes: <all>, filter: <none>, correlationId: <none>)
+[90m[main 2026-10-15T10:47:06.944Z][0m [File Watcher (node.js)] Started watching: '/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-extensions'
+[90m[main 2026-10-15T10:47:06.944Z][0m [File Watcher (node.js)] Started watching: '/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-extensions/extensions.json'
+[39798:1015/034707.039740:ERROR:content/browser/network_service_instance_impl.cc:703] Network service crashed or was terminated, restarting service.
+sandbox initialization failed: Operation not permitted
+Failed to initialize sandbox.[39798:1015/034707.244039:ERROR:content/browser/gpu/gpu_process_host.cc:1017] GPU process exited unexpectedly: exit_code=6
+[39798:1015/034707.244063:WARNING:content/browser/gpu/gpu_process_host.cc:1467] The GPU process has crashed 3 time(s)
+sandbox initialization failed: Operation not permitted
+Failed to initialize sandbox.[39798:1015/034707.448159:ERROR:content/browser/network_service_instance_impl.cc:703] Network service crashed or was terminated, restarting service.
+sandbox initialization failed: Operation not permitted
+Failed to initialize sandbox.[39798:1015/034707.649059:ERROR:content/browser/gpu/gpu_process_host.cc:1017] GPU process exited unexpectedly: exit_code=6
+[39798:1015/034707.649085:WARNING:content/browser/gpu/gpu_process_host.cc:1467] The GPU process has crashed 4 time(s)
+sandbox initialization failed: Operation not permitted
+Failed to initialize sandbox.[39798:1015/034707.852618:ERROR:content/browser/network_service_instance_impl.cc:703] Network service crashed or was terminated, restarting service.
+sandbox initialization failed: Operation not permitted
+Failed to initialize sandbox.[39798:1015/034708.058864:ERROR:content/browser/gpu/gpu_process_host.cc:1017] GPU process exited unexpectedly: exit_code=6
+[39798:1015/034708.058888:WARNING:content/browser/gpu/gpu_process_host.cc:1467] The GPU process has crashed 5 time(s)
+sandbox initialization failed: Operation not permitted
+Failed to initialize sandbox.[39798:1015/034708.260302:ERROR:content/browser/network_service_instance_impl.cc:703] Network service crashed or was terminated, restarting service.
+sandbox initialization failed: Operation not permitted
+Failed to initialize sandbox.[39798:1015/034708.463535:ERROR:content/browser/gpu/gpu_process_host.cc:1017] GPU process exited unexpectedly: exit_code=6
+[39798:1015/034708.463567:WARNING:content/browser/gpu/gpu_process_host.cc:1467] The GPU process has crashed 6 time(s)
+[39798:1015/034708.463579:FATAL:content/browser/gpu/gpu_data_manager_impl_private.cc:418] GPU process isn't usable. Goodbye.

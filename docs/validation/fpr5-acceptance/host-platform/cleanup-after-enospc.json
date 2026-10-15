@@ -1,0 +1,15 @@
+{
+  "failure": "native cargo link failed errno28; Swift compilation failed No space left on device",
+  "cargo_target_kib": 1919388,
+  "swift_module_cache_kib": 2028,
+  "removed_only_new_rebuildable_targets": [
+    "cargo-target",
+    "swift-module-cache"
+  ],
+  "raw_native_log_preserved": true,
+  "initial_cleanup_heredoc_refused": "zsh: cannot create temp file for here document: no space left on device",
+  "cleanup_python_c_exit": 0,
+  "free_bytes_immediately_after": 1585455104,
+  "current_disk_free_bytes": 1579089920,
+  "native_build_retried": false
+}

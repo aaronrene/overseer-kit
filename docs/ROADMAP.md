@@ -21,10 +21,10 @@ The former sole-writer/NXR-GSR chain remains historical and is not the living NE
 | FPR-1 — unified foundation and automatic handoff | Complete locally — unified dispatcher/schema-3 migration, preserved bindings/settings, canonical Cursor fixture bookends; [focused evidence](validation/FPR-1-FOUNDATION.md) |
 | FPR-2 — Muse authority, mirror and repository lanes | Complete locally — selected authority, controlled mirrors, explicit adoption/rollback and canonical lane collection; [focused evidence](validation/FPR-2-AUTHORITY.md) |
 | FPR-3 — complete product surface | Complete locally — unified maintained commands, bound app/desktop/hosted surfaces, full footprint and local source packaging; [focused evidence](validation/FPR-3-SURFACES.md) |
-| FPR-4 — combined validation | Local matrix, bounded repairs, package and rollback evidence recorded; required Python 3.11 and owner-selected acceptance cells remain open |
+| FPR-4 — combined validation | Local matrix, bounded repairs, package and rollback evidence recorded; missing Python 3.11 cell now has complete passing coverage in the acceptance record; selected interactive acceptance remains open |
 | FPR-5 — independent final review | Complete — original **FINDINGS** verdict and evidence preserved in [the review](reviews/FPR-5-REVIEW.md) |
 | FPR-5 bounded repairs | All six implemented; 1,361 selected cases have passing evidence across the new combined run and affected rerun; [author evidence](validation/FPR-5-REPAIRS.md) |
-| Remaining acceptance, final adjudication and release decision | **Pending acceptance inputs** — Python 3.11, named hosts/versions, platform/distribution choices and separately authorized new pilot; then one final independent adjudication and a separate owner release decision |
+| Remaining acceptance, final adjudication and release decision | **Blocked on two interactive observations** — 1,196 Python 3.11 cases have passing evidence, disposable local workflow passed, and native startup repaired. Actual desktop content/NEXT and Cursor 3.24.18 start/stop delivery remain unaccepted; [acceptance record](validation/FPR-5-ACCEPTANCE.md). Then one final independent adjudication and a separate owner release decision |
 
 The exact current action lives only in `docs/NEXT.md`; use `ok -C ROOT next`.
 Update this summary and HANDOVER together. No release or remote operation is
@@ -50,10 +50,11 @@ operator-controlled Muse mirroring. Three implementation waves lead to one
 combined FPR-4 matrix and one independent FPR-5 review, bounded repairs if needed,
 one final adjudication and one owner release decision.
 
-Owner choices still concern automatic chat-client versions beyond the preserved
-Cursor contract, any expanded Muse transport scope, platform/packaging/remote
-validation claims, and the integrated pilot/reviewer. They are detailed in the
-plan; none authorizes remote operations or implementation during FPR-0.
+The FPR-0 plan recorded owner choices about hosts, platform/distribution claims
+and the integrated pilot. The current acceptance record resolves those choices
+within the explicitly selected local scope; actual acceptance evidence remains
+required. Expanded Muse transport and other external operations remain outside
+authorization.
 
 To avoid another long chain of reviews, the restoration uses one high-reasoning
 architecture analysis, focused mechanical checks during three implementation

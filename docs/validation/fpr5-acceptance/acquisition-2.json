@@ -1,0 +1,126 @@
+{
+  "kind": "Pinned prerequisite acquisition only",
+  "metadata_url": "https://pypi.org/pypi/cffi/2.1.0/json",
+  "metadata_response": {
+    "status": 200,
+    "url": "https://pypi.org/pypi/cffi/2.1.0/json",
+    "headers": {
+      "Connection": "close",
+      "Content-Length": "89333",
+      "etag": "\"bzbUx2TqNvFQICcTkcXCSw\"",
+      "content-type": "application/json",
+      "server": "gunicorn",
+      "access-control-allow-origin": "*",
+      "access-control-allow-headers": "Content-Type, If-Match, If-Modified-Since, If-None-Match, If-Unmodified-Since",
+      "referrer-policy": "origin-when-cross-origin",
+      "access-control-expose-headers": "X-PyPI-Last-Serial",
+      "access-control-max-age": "86400",
+      "cache-control": "max-age=900, public",
+      "content-security-policy": "base-uri 'self'; connect-src 'self' https://api.github.com/repos/ https://api.github.com/search/issues https://gitlab.com/api/ https://analytics.python.org *.ethicalads.io https://api.pwnedpasswords.com https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/sre/mathmaps/ https://2p66nmmycsj3.statuspage.io; default-src 'none'; font-src 'self'; form-action 'self' https://checkout.stripe.com https://billing.stripe.com; frame-ancestors 'none'; frame-src 'none'; img-src 'self' https://pypi-camo.freetls.fastly.net/ *.ethicalads.io ethicalads.blob.core.windows.net; script-src 'self' https://analytics.python.org *.ethicalads.io 'sha256-U3hKDidudIaxBDEzwGJApJgPEf2mWk6cfMWghrAa6i0=' https://cdn.jsdelivr.net/npm/mathjax@3.2.2/ 'sha256-1CldwzdEg2k1wTmf7s5RWVd7NMXI/7nxxjJM2C4DqII='; style-src 'self' *.ethicalads.io 'sha256-2YHqZokjiizkHi1Zt+6ar0XJ0OeEy/egBnlm+MDMtrM=' 'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=' 'sha256-JLEjeN9e5dGsz5475WyRaoA4eQOdNPxDIeUhclnJDCE=' 'sha256-mQyxHEuwZJqpxCw3SLmc4YOySNKXunyu2Oiz1r3/wAE=' 'sha256-OCf+kv5Asiwp++8PIevKBYSgnNLNUZvxAp4a7wMLuKA=' 'sha256-h5LOiLhk6wiJrGsG5ItM0KimwzWQH/yAcmoJDJL//bY='",
+      "access-control-allow-methods": "GET",
+      "x-pypi-last-serial": "39662188",
+      "Accept-Ranges": "bytes",
+      "Date": "Thu, 15 Oct 2026 10:42:23 GMT",
+      "X-Served-By": "cache-iad-kiad7000054-IAD, cache-iad-kiad7000054-IAD, cache-iad-kiad7000153-IAD, cache-pao-kpao1770034-PAO",
+      "X-Cache": "MISS, HIT, HIT",
+      "X-Cache-Hits": "0, 1275, 0",
+      "X-Timer": "S1792060944.743067,VS0,VE1",
+      "Vary": "Accept-Encoding",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+      "X-Frame-Options": "deny",
+      "X-XSS-Protection": "1; mode=block",
+      "X-Content-Type-Options": "nosniff",
+      "X-Permitted-Cross-Domain-Policies": "none",
+      "Permissions-Policy": "publickey-credentials-create=(self),publickey-credentials-get=(self),accelerometer=(),ambient-light-sensor=(),autoplay=(),battery=(),camera=(),display-capture=(),document-domain=(),encrypted-media=(),execution-while-not-rendered=(),execution-while-out-of-viewport=(),fullscreen=(),gamepad=(),geolocation=(),gyroscope=(),hid=(),identity-credentials-get=(),idle-detection=(),local-fonts=(),magnetometer=(),microphone=(),midi=(),otp-credentials=(),payment=(),picture-in-picture=(),screen-wake-lock=(),serial=(),speaker-selection=(),storage-access=(),usb=(),web-share=(),xr-spatial-tracking=()"
+    }
+  },
+  "compatible_candidates": [
+    {
+      "comment_text": null,
+      "core-metadata": {
+        "sha256": "a35079b9bb45bc0558e6e6b20b2eea49b9ebce2f87a7264b95574a1b741b5611"
+      },
+      "digests": {
+        "blake2b_256": "eadde3b0baa2d3d6a857ac72b7efbf18e32e487c9cdafcc13049ad765495b15e",
+        "md5": "7416a7ad2f8f5341a37909a492e6f0ba",
+        "sha256": "f5bce581e6b8c235e566a14768a943b172ada3ed73537bb0c0be1edee312d4e7"
+      },
+      "downloads": -1,
+      "filename": "cffi-2.1.0-cp311-cp311-macosx_11_0_arm64.whl",
+      "has_sig": false,
+      "md5_digest": "7416a7ad2f8f5341a37909a492e6f0ba",
+      "packagetype": "bdist_wheel",
+      "python_version": "cp311",
+      "requires_python": ">=3.10",
+      "size": 184186,
+      "upload_time": "2026-07-06T21:32:28",
+      "upload_time_iso_8601": "2026-07-06T21:32:28.025352Z",
+      "url": "https://files.pythonhosted.org/packages/ea/dd/e3b0baa2d3d6a857ac72b7efbf18e32e487c9cdafcc13049ad765495b15e/cffi-2.1.0-cp311-cp311-macosx_11_0_arm64.whl",
+      "yanked": false,
+      "yanked_reason": null
+    }
+  ],
+  "selected": {
+    "comment_text": null,
+    "core-metadata": {
+      "sha256": "a35079b9bb45bc0558e6e6b20b2eea49b9ebce2f87a7264b95574a1b741b5611"
+    },
+    "digests": {
+      "blake2b_256": "eadde3b0baa2d3d6a857ac72b7efbf18e32e487c9cdafcc13049ad765495b15e",
+      "md5": "7416a7ad2f8f5341a37909a492e6f0ba",
+      "sha256": "f5bce581e6b8c235e566a14768a943b172ada3ed73537bb0c0be1edee312d4e7"
+    },
+    "downloads": -1,
+    "filename": "cffi-2.1.0-cp311-cp311-macosx_11_0_arm64.whl",
+    "has_sig": false,
+    "md5_digest": "7416a7ad2f8f5341a37909a492e6f0ba",
+    "packagetype": "bdist_wheel",
+    "python_version": "cp311",
+    "requires_python": ">=3.10",
+    "size": 184186,
+    "upload_time": "2026-07-06T21:32:28",
+    "upload_time_iso_8601": "2026-07-06T21:32:28.025352Z",
+    "url": "https://files.pythonhosted.org/packages/ea/dd/e3b0baa2d3d6a857ac72b7efbf18e32e487c9cdafcc13049ad765495b15e/cffi-2.1.0-cp311-cp311-macosx_11_0_arm64.whl",
+    "yanked": false,
+    "yanked_reason": null
+  },
+  "ok": true,
+  "artifact_response": {
+    "status": 200,
+    "url": "https://files.pythonhosted.org/packages/ea/dd/e3b0baa2d3d6a857ac72b7efbf18e32e487c9cdafcc13049ad765495b15e/cffi-2.1.0-cp311-cp311-macosx_11_0_arm64.whl",
+    "headers": {
+      "Connection": "close",
+      "Content-Length": "184186",
+      "Server": "nginx",
+      "Content-Type": "application/octet-stream",
+      "Last-Modified": "Mon, 06 Jul 2026 21:32:30 GMT",
+      "ETag": "\"7416a7ad2f8f5341a37909a492e6f0ba\"",
+      "x-amz-request-id": "1c250af9c42b094f",
+      "x-amz-id-2": "aNxljTDFpNlNmVTEVMLNkU2bgYwQwljh9",
+      "x-amz-version-id": "4_z179c51e67f11a0ad8f6c0018_f1053b052a8a28d61_d20260706_m213230_c005_v0501046_t0038_u01783373550210",
+      "Cache-Control": "max-age=365000000, immutable, public",
+      "Accept-Ranges": "bytes",
+      "Age": "259031",
+      "Date": "Thu, 15 Oct 2026 10:42:23 GMT",
+      "X-Served-By": "cache-iad-khef600060-IAD, cache-sjc1000115-SJC",
+      "X-Cache": "HIT, HIT",
+      "X-Cache-Hits": "1578, 0",
+      "X-Timer": "S1792060944.896263,VS0,VE1",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+      "X-Frame-Options": "deny",
+      "X-XSS-Protection": "1; mode=block",
+      "X-Content-Type-Options": "nosniff",
+      "X-Robots-Header": "noindex",
+      "Access-Control-Allow-Methods": "GET, OPTIONS",
+      "Access-Control-Allow-Headers": "Range",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Expose-Headers": "Content-Length, Content-Range, Accept-Ranges",
+      "x-pypi-file-python-version": "cp311",
+      "x-pypi-file-version": "2.1.0",
+      "x-pypi-file-package-type": "bdist_wheel",
+      "x-pypi-file-project": "cffi"
+    }
+  },
+  "verified_sha256": "f5bce581e6b8c235e566a14768a943b172ada3ed73537bb0c0be1edee312d4e7",
+  "artifact": "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/cffi-2.1.0-cp311-cp311-macosx_11_0_arm64.whl"
+}

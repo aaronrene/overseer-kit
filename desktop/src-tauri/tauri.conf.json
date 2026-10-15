@@ -12,6 +12,7 @@
     "windows": [
       {
         "label": "main",
+        "create": false,
         "title": "Overseer Kit",
         "width": 1200,
         "height": 800,

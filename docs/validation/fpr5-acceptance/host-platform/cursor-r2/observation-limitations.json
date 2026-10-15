@@ -1,0 +1,55 @@
+{
+  "loopback_debugger_attempts": [
+    {
+      "attempt": 1,
+      "result": "HTTP /json/list timed out after5s"
+    },
+    {
+      "attempt": 2,
+      "result": "HTTP /json/list timed out after5s"
+    }
+  ],
+  "renderer_log": "window reported ready (id:1); latest main message Checking if encryption is available",
+  "window_enumeration": [
+    {
+      "pid": 56121,
+      "window_id": 1958
+    }
+  ],
+  "window_screenshot": {
+    "argv": [
+      "/usr/sbin/screencapture",
+      "-x",
+      "-l",
+      "1958",
+      "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cursor-r2/cursor-window.png"
+    ],
+    "exit": 1,
+    "stderr": "could not create image from window\n"
+  },
+  "native_session_start_evidence": false,
+  "native_stop_evidence": false,
+  "outer_sandbox_unchanged": true,
+  "default_profile_access": false,
+  "provider_use_authorized": false,
+  "visual_state_not_observed": true,
+  "native_host_loaded_project_hooks": [
+    "sessionStart",
+    "stop"
+  ],
+  "native_host_requested_events": [
+    "workspaceOpen"
+  ],
+  "required_bookends_delivered": false,
+  "process_group_after_shutdown": {
+    "argv": [
+      "ps",
+      "-g",
+      "56121",
+      "-o",
+      "pid=,pgid=,comm="
+    ],
+    "exit": 1,
+    "stdout": ""
+  }
+}
