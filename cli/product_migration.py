@@ -90,9 +90,10 @@ def _same(root, row):
     return _snapshot(root, row["path"]) == row
 
 
-def _lock_entries(root):
+def _lock_entries(root, *, raw=None):
     from cli.v1 import decode
-    raw = read(root, LOCK, missing=True)
+    if raw is None:
+        raw = read(root, LOCK, missing=True)
     if raw is None:
         return {}
     value = decode(raw)
@@ -126,18 +127,19 @@ def _bounded_hook_assets(root):
             }}, indent=2) + "\n").encode()}
 
 
-def classify_assets(root, mapping, config):
+def classify_assets(root, mapping, config, *, read_asset=None, lock_entries=None):
     """D's three-way classification, with confined reads and preserved origins.
 
     Full legacy footprint rows remain visible; this wave only updates its
     explicitly requested launcher/bookend assets. Unknown assets stay owned by
     the repository. Living documents are never update candidates here.
     """
-    entries = _lock_entries(root)
+    entries = _lock_entries(root) if lock_entries is None else lock_entries
+    read_asset = read_asset or (lambda path: read(root, path, missing=True))
     bounded_hooks = _bounded_hook_assets(root) if any(path in HOOKS for path in mapping) else {}
     rows = []
     for path, body in sorted(mapping.items()):
-        old = read(root, path, missing=True)
+        old = read_asset(path)
         entry = entries.get(path, {})
         baseline = entry.get("sha256", "").removeprefix("sha256:")
         current = "absent" if old is None else digest(old)
@@ -159,6 +161,30 @@ def classify_assets(root, mapping, config):
                      "origin": entry.get("origin", "unrecorded"),
                      "before": current, "after": after})
     return rows
+
+
+def _migration_assets(root, config, mapping, classifications):
+    """Keep owner collisions active and record their ownership for later sync."""
+    from cli.product_footprint import with_lock
+    preserved = []
+    mapping = dict(mapping)
+    for row in classifications:
+        if row["classification"] == "missing":
+            continue
+        owner = (row["origin"] == "unrecorded" or
+                 row["classification"] in ("preserved", "consumer-modified", "both-changed") or
+                 (row["classification"] == "unchanged" and
+                  bool(_updates(root, {row["path"]: mapping[row["path"]]}))))
+        if row["path"] == LAUNCHER:
+            # Exact operational bindings may be adopted; custom launchers and
+            # preserved nonexecutable launchers still require explicit resolution.
+            owner = row["classification"] == "preserved"
+            if owner and _updates(root, {LAUNCHER: mapping[LAUNCHER]}):
+                raise Refusal("migration_preserved_asset_requires_resolution: " + LAUNCHER)
+        if owner:
+            preserved.append(row["path"])
+            mapping.pop(row["path"])
+    return with_lock(root, mapping, config, preserved=preserved), preserved
 
 
 def _document_paths(config):
@@ -334,14 +360,15 @@ def build_plan(root, args):
     mapping = v1.assets(root, config, False) if available else {}
     if getattr(args, "hooks", False):
         raise Refusal("migration_does_not_install_existing_repository_hooks")
+    classifications = classify_assets(root, mapping, config)
+    preserved = []
+    if available:
+        mapping, preserved = _migration_assets(root, config, mapping, classifications)
     mapping[CONFIG] = v1.encode(config)
     updates = _updates(root, mapping)
     updated_paths = {row["path"] for row in updates}
-    classifications = classify_assets(root, {k: v for k, v in mapping.items() if k != CONFIG}, config)
-    for row in classifications:
-        if row["classification"] == "preserved" and row["path"] in updated_paths:
-            raise Refusal("migration_preserved_asset_requires_resolution: " + row["path"])
     protected_map = {row["path"]: row for row in inventory(root, config)}
+    protected_map.update({path: _snapshot(root, path) for path in preserved})
     protected_map.update({path: _snapshot(root, path) for path in mapping if path not in updated_paths})
     protected = [row for path, row in sorted(protected_map.items()) if path not in updated_paths]
     plan = {"plan_version": 1, "operation": "schema-3-migration", "source_schema": model.source_schema,
@@ -403,10 +430,38 @@ def _apply_plan(root, args, plan):
     target = proposed
     if getattr(args, "bound_id", None) not in (None, target["repo"]["id"]):
         raise Refusal("launcher_identity_mismatch")
-    approved = dict(v1.assets(root, target, False), **{CONFIG: v1.encode(target)})
     rows = plan["assets"]
     if not isinstance(rows, list) or len({row["path"] for row in rows}) != len(rows):
         raise Refusal("migration_asset_plan_invalid")
+    snapshots = {row["path"]: row["before"] for row in rows}
+    for row in plan["protected"]:
+        if row["path"] in snapshots:
+            raise Refusal("migration_asset_plan_invalid")
+        snapshots[row["path"]] = row
+
+    def before_asset(path):
+        captured = snapshots.get(path)
+        if captured is None:
+            raise Refusal("migration_asset_plan_incomplete")
+        if captured["sha256"] == "absent":
+            return None
+        data = read(root, backup + "/files/" + path, missing=True) if resume else None
+        if data is None:
+            data = read(root, path, missing=True)
+        if data is None or digest(data) != captured["sha256"]:
+            raise Refusal("migration_backup_missing_original: " + path)
+        return data
+
+    # Recompute ownership from the reviewed originals, including after a partial
+    # apply has installed its new lock. A plan cannot relabel an owner collision.
+    original_lock = before_asset(LOCK)
+    entries = {} if original_lock is None else _lock_entries(root, raw=original_lock)
+    generated = v1.assets(root, target, False)
+    classifications = classify_assets(root, generated, target, read_asset=before_asset, lock_entries=entries)
+    if classifications != plan["classification"]:
+        raise Refusal("migration_classification_plan_changed")
+    approved, preserved = _migration_assets(root, target, generated, classifications)
+    approved[CONFIG] = v1.encode(target)
     for row in rows:
         if (row["path"] not in approved or row["before"]["path"] != row["path"] or
                 base64.b64decode(row["content_b64"], validate=True) != approved[row["path"]] or
@@ -446,6 +501,7 @@ def _apply_plan(root, args, plan):
     if existing_manifest is not None and existing_manifest != manifest:
         raise Refusal("migration_backup_manifest_mismatch")
     backup_rows = list(rows)
+    backup_rows.extend({"path": path, "before": snapshots[path]} for path in preserved)
     if CONFIG not in {row["path"] for row in rows}:
         backup_rows.append({"path": CONFIG, "before": _snapshot(root, CONFIG)})
     backups = {}

@@ -1,0 +1,1101 @@
+{
+  "role": "bounded repair author; not independent adjudicator",
+  "findings": [
+    "FPR5-R3",
+    "FPR5-R5"
+  ],
+  "initial_head": "4c62c17cff6c606a5e1ddf565e12353973b3bcad",
+  "runs": {
+    "before": {
+      "counts": {
+        "failure": 16,
+        "passed": 2
+      },
+      "total": 18,
+      "by_file": {
+        "tests/fpr5/test_foundation_repairs.py": {
+          "failure": 16,
+          "passed": 2
+        }
+      },
+      "cases": [
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_migration_preserves_colliding_owner_asset_and_repeat_sync[unrecorded]",
+          "status": "failure",
+          "seconds": "2.690"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_migration_preserves_colliding_owner_asset_and_repeat_sync[consumer-modified]",
+          "status": "failure",
+          "seconds": "2.565"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_migration_preserves_colliding_owner_asset_and_repeat_sync[both-changed]",
+          "status": "failure",
+          "seconds": "2.594"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_migration_preserves_colliding_owner_asset_and_repeat_sync[preserved]",
+          "status": "failure",
+          "seconds": "0.303"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_migration_preserves_colliding_owner_asset_and_repeat_sync[unrecorded-identical]",
+          "status": "failure",
+          "seconds": "2.619"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_collision_partial_apply_preserves_backup_and_resumes_config_last",
+          "status": "failure",
+          "seconds": "2.409"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_collision_drift_refuses_before_backup_or_apply[bytes]",
+          "status": "passed",
+          "seconds": "0.548"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_collision_drift_refuses_before_backup_or_apply[mode]",
+          "status": "passed",
+          "seconds": "0.553"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_repeat_init_preserves_present_lanes_and_missing_visibility[selection0-False-1]",
+          "status": "failure",
+          "seconds": "2.902"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_repeat_init_preserves_present_lanes_and_missing_visibility[selection0-False-3]",
+          "status": "failure",
+          "seconds": "3.095"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_repeat_init_preserves_present_lanes_and_missing_visibility[selection0-True-1]",
+          "status": "failure",
+          "seconds": "2.764"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_repeat_init_preserves_present_lanes_and_missing_visibility[selection0-True-3]",
+          "status": "failure",
+          "seconds": "3.093"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_repeat_init_preserves_present_lanes_and_missing_visibility[selection1-False-1]",
+          "status": "failure",
+          "seconds": "2.688"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_repeat_init_preserves_present_lanes_and_missing_visibility[selection1-False-3]",
+          "status": "failure",
+          "seconds": "3.277"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_repeat_init_preserves_present_lanes_and_missing_visibility[selection1-True-1]",
+          "status": "failure",
+          "seconds": "2.893"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_repeat_init_preserves_present_lanes_and_missing_visibility[selection1-True-3]",
+          "status": "failure",
+          "seconds": "3.089"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_repeat_init_validates_unselected_present_lane[False]",
+          "status": "failure",
+          "seconds": "3.221"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_repeat_init_validates_unselected_present_lane[True]",
+          "status": "failure",
+          "seconds": "3.100"
+        }
+      ],
+      "exit_code": 1,
+      "runtime_start": {
+        "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+        "version": "1.0.0.dev1",
+        "sha256": "bdbfdae4599ca0bd1b096d5ed2c84019df3b83ed24972c202319ea5507cf09ec"
+      },
+      "runtime_end": {
+        "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+        "version": "1.0.0.dev1",
+        "sha256": "bdbfdae4599ca0bd1b096d5ed2c84019df3b83ed24972c202319ea5507cf09ec"
+      }
+    },
+    "candidate-after": {
+      "counts": {
+        "passed": 17,
+        "failure": 1
+      },
+      "total": 18,
+      "by_file": {
+        "tests/fpr5/test_foundation_repairs.py": {
+          "passed": 17,
+          "failure": 1
+        }
+      },
+      "cases": [
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_migration_preserves_colliding_owner_asset_and_repeat_sync[unrecorded]",
+          "status": "passed",
+          "seconds": "4.641"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_migration_preserves_colliding_owner_asset_and_repeat_sync[consumer-modified]",
+          "status": "passed",
+          "seconds": "4.741"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_migration_preserves_colliding_owner_asset_and_repeat_sync[both-changed]",
+          "status": "failure",
+          "seconds": "2.327"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_migration_preserves_colliding_owner_asset_and_repeat_sync[preserved]",
+          "status": "passed",
+          "seconds": "4.713"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_migration_preserves_colliding_owner_asset_and_repeat_sync[unrecorded-identical]",
+          "status": "passed",
+          "seconds": "4.628"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_collision_partial_apply_preserves_backup_and_resumes_config_last",
+          "status": "passed",
+          "seconds": "3.498"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_collision_drift_refuses_before_backup_or_apply[bytes]",
+          "status": "passed",
+          "seconds": "0.627"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_collision_drift_refuses_before_backup_or_apply[mode]",
+          "status": "passed",
+          "seconds": "0.720"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_repeat_init_preserves_present_lanes_and_missing_visibility[selection0-False-1]",
+          "status": "passed",
+          "seconds": "3.324"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_repeat_init_preserves_present_lanes_and_missing_visibility[selection0-False-3]",
+          "status": "passed",
+          "seconds": "3.724"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_repeat_init_preserves_present_lanes_and_missing_visibility[selection0-True-1]",
+          "status": "passed",
+          "seconds": "3.196"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_repeat_init_preserves_present_lanes_and_missing_visibility[selection0-True-3]",
+          "status": "passed",
+          "seconds": "3.674"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_repeat_init_preserves_present_lanes_and_missing_visibility[selection1-False-1]",
+          "status": "passed",
+          "seconds": "3.274"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_repeat_init_preserves_present_lanes_and_missing_visibility[selection1-False-3]",
+          "status": "passed",
+          "seconds": "3.783"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_repeat_init_preserves_present_lanes_and_missing_visibility[selection1-True-1]",
+          "status": "passed",
+          "seconds": "3.298"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_repeat_init_preserves_present_lanes_and_missing_visibility[selection1-True-3]",
+          "status": "passed",
+          "seconds": "3.850"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_repeat_init_validates_unselected_present_lane[False]",
+          "status": "passed",
+          "seconds": "3.644"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_repeat_init_validates_unselected_present_lane[True]",
+          "status": "passed",
+          "seconds": "3.413"
+        }
+      ],
+      "exit_code": 1,
+      "runtime_start": {
+        "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+        "version": "1.0.0.dev1",
+        "sha256": "4c08687841c27e77a7ad66b4e1eae6c021f128d0bbc6444bc3475262f974d342"
+      },
+      "runtime_end": {
+        "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+        "version": "1.0.0.dev1",
+        "sha256": "64a075b0eea2ca53beb8d18935c0a65630e1466388c00e1465293c8763b6de8d"
+      }
+    },
+    "candidate-portability": {
+      "counts": {
+        "passed": 2,
+        "failure": 3
+      },
+      "total": 5,
+      "by_file": {
+        "tests/fpr5/test_foundation_repairs.py": {
+          "passed": 2,
+          "failure": 3
+        }
+      },
+      "cases": [
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_portable_collisions_and_owner_mode_only_change_stay_protected[.claude/skills/print-next/SKILL.md-unrecorded]",
+          "status": "passed",
+          "seconds": "3.594"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_portable_collisions_and_owner_mode_only_change_stay_protected[.overseer/policy/model-routing.yaml-unrecorded]",
+          "status": "passed",
+          "seconds": "3.559"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_portable_collisions_and_owner_mode_only_change_stay_protected[policy/model-routing.yaml-unrecorded]",
+          "status": "failure",
+          "seconds": "0.498"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_portable_collisions_and_owner_mode_only_change_stay_protected[.overseer/STANDING-DECISIONS.reference.md-unrecorded]",
+          "status": "failure",
+          "seconds": "0.509"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_portable_collisions_and_owner_mode_only_change_stay_protected[.cursor/rules/build-verification-required.mdc-recorded-mode-only]",
+          "status": "failure",
+          "seconds": "0.509"
+        }
+      ],
+      "exit_code": 1,
+      "runtime_start": {
+        "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+        "version": "1.0.0.dev1",
+        "sha256": "64a075b0eea2ca53beb8d18935c0a65630e1466388c00e1465293c8763b6de8d"
+      },
+      "runtime_end": {
+        "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+        "version": "1.0.0.dev1",
+        "sha256": "64a075b0eea2ca53beb8d18935c0a65630e1466388c00e1465293c8763b6de8d"
+      }
+    },
+    "after-integrated": {
+      "counts": {
+        "passed": 150,
+        "failure": 1
+      },
+      "total": 151,
+      "by_file": {
+        "tests/fpr5/test_foundation_repairs.py": {
+          "passed": 23
+        },
+        "tests/fpr1/test_migration.py": {
+          "passed": 36
+        },
+        "tests/fpr2/test_lanes.py": {
+          "passed": 14
+        },
+        "tests/fpr4/test_init_preservation.py": {
+          "passed": 14
+        },
+        "tests/v1/test_context.py": {
+          "passed": 20
+        },
+        "tests/v1/test_commands.py": {
+          "passed": 43,
+          "failure": 1
+        }
+      },
+      "cases": [
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_migration_preserves_colliding_owner_asset_and_repeat_sync[unrecorded]",
+          "status": "passed",
+          "seconds": "4.578"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_migration_preserves_colliding_owner_asset_and_repeat_sync[consumer-modified]",
+          "status": "passed",
+          "seconds": "4.649"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_migration_preserves_colliding_owner_asset_and_repeat_sync[both-changed]",
+          "status": "passed",
+          "seconds": "4.669"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_migration_preserves_colliding_owner_asset_and_repeat_sync[preserved]",
+          "status": "passed",
+          "seconds": "4.688"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_migration_preserves_colliding_owner_asset_and_repeat_sync[unrecorded-identical]",
+          "status": "passed",
+          "seconds": "4.528"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_collision_partial_apply_preserves_backup_and_resumes_config_last",
+          "status": "passed",
+          "seconds": "3.600"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_portable_collisions_and_owner_mode_only_change_stay_protected[.claude/skills/print-next/SKILL.md-unrecorded]",
+          "status": "passed",
+          "seconds": "3.492"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_portable_collisions_and_owner_mode_only_change_stay_protected[.overseer/policy/model-routing.yaml-unrecorded]",
+          "status": "passed",
+          "seconds": "3.457"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_portable_collisions_and_owner_mode_only_change_stay_protected[policy/model-routing.yaml-unrecorded]",
+          "status": "passed",
+          "seconds": "3.462"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_portable_collisions_and_owner_mode_only_change_stay_protected[.overseer/STANDING-DECISIONS.reference.md-unrecorded]",
+          "status": "passed",
+          "seconds": "3.535"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_portable_collisions_and_owner_mode_only_change_stay_protected[.cursor/rules/build-verification-required.mdc-recorded-mode-only]",
+          "status": "passed",
+          "seconds": "3.557"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_collision_drift_refuses_before_backup_or_apply[bytes]",
+          "status": "passed",
+          "seconds": "0.648"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_collision_drift_refuses_before_backup_or_apply[mode]",
+          "status": "passed",
+          "seconds": "0.751"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_repeat_init_preserves_present_lanes_and_missing_visibility[selection0-False-1]",
+          "status": "passed",
+          "seconds": "3.414"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_repeat_init_preserves_present_lanes_and_missing_visibility[selection0-False-3]",
+          "status": "passed",
+          "seconds": "3.830"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_repeat_init_preserves_present_lanes_and_missing_visibility[selection0-True-1]",
+          "status": "passed",
+          "seconds": "3.238"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_repeat_init_preserves_present_lanes_and_missing_visibility[selection0-True-3]",
+          "status": "passed",
+          "seconds": "3.961"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_repeat_init_preserves_present_lanes_and_missing_visibility[selection1-False-1]",
+          "status": "passed",
+          "seconds": "3.390"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_repeat_init_preserves_present_lanes_and_missing_visibility[selection1-False-3]",
+          "status": "passed",
+          "seconds": "3.942"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_repeat_init_preserves_present_lanes_and_missing_visibility[selection1-True-1]",
+          "status": "passed",
+          "seconds": "3.377"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_repeat_init_preserves_present_lanes_and_missing_visibility[selection1-True-3]",
+          "status": "passed",
+          "seconds": "3.814"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_repeat_init_validates_unselected_present_lane[False]",
+          "status": "passed",
+          "seconds": "3.654"
+        },
+        {
+          "node_id": "tests/fpr5/test_foundation_repairs.py::test_repeat_init_validates_unselected_present_lane[True]",
+          "status": "passed",
+          "seconds": "3.443"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_legacy_plan_is_read_only_deterministic_and_lossless",
+          "status": "passed",
+          "seconds": "4.111"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_bounded_migration_preserves_uuid_next_and_launch_binding",
+          "status": "passed",
+          "seconds": "4.196"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_plan_drift_refuses_before_mutation[config]",
+          "status": "passed",
+          "seconds": "0.414"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_plan_drift_refuses_before_mutation[living]",
+          "status": "passed",
+          "seconds": "0.505"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_plan_drift_refuses_before_mutation[mode]",
+          "status": "passed",
+          "seconds": "0.510"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_plan_drift_refuses_before_mutation[head]",
+          "status": "passed",
+          "seconds": "0.598"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_partial_replacement_keeps_old_config_and_resumes",
+          "status": "passed",
+          "seconds": "3.243"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_after_lock_context_change_refuses_without_replacement",
+          "status": "passed",
+          "seconds": "0.521"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_before_replace_context_change_refuses_candidate",
+          "status": "passed",
+          "seconds": "0.668"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_symlink_preflight_does_not_start_backup",
+          "status": "passed",
+          "seconds": "0.491"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_legacy_prompt_is_exact_draft_only_and_conflicts_refuse",
+          "status": "passed",
+          "seconds": "0.534"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_unknown_setting_and_hook_install_refuse",
+          "status": "passed",
+          "seconds": "0.322"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_preserved_origin_and_custom_assets_are_classified_without_takeover",
+          "status": "passed",
+          "seconds": "0.059"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_expected_plan_digest_refuses_tampered_document",
+          "status": "passed",
+          "seconds": "0.414"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_custom_launcher_is_not_taken_over",
+          "status": "passed",
+          "seconds": "0.452"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_referenced_optional_assets_are_in_the_digest_plan",
+          "status": "passed",
+          "seconds": "0.559"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_runtime_refresh_is_explicit_and_sync_does_not_migrate_schema",
+          "status": "passed",
+          "seconds": "4.048"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_october_muse_plan_preserves_authority_and_never_calls_git_revision",
+          "status": "passed",
+          "seconds": "0.138"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_sync_partial_asset_failure_is_explicit",
+          "status": "passed",
+          "seconds": "3.343"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_unchanged_launcher_mode_remains_in_preflight",
+          "status": "passed",
+          "seconds": "3.417"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_malformed_reviewed_plan_refuses_without_traceback[<lambda>0]",
+          "status": "passed",
+          "seconds": "0.410"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_malformed_reviewed_plan_refuses_without_traceback[<lambda>1]",
+          "status": "passed",
+          "seconds": "0.409"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_malformed_reviewed_plan_refuses_without_traceback[<lambda>2]",
+          "status": "passed",
+          "seconds": "0.426"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_malformed_reviewed_plan_refuses_without_traceback[<lambda>3]",
+          "status": "passed",
+          "seconds": "0.406"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_canonical_json_plan_order_does_not_change_yaml_candidate",
+          "status": "passed",
+          "seconds": "2.858"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_preserved_launcher_mode_is_not_promoted_by_migration",
+          "status": "passed",
+          "seconds": "0.453"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_explicit_sync_upgrades_exact_bounded_hooks_only",
+          "status": "passed",
+          "seconds": "3.565"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_plan_input_is_strict_finite_unique_json[plan:\\n  context: 2026-10-14\\n]",
+          "status": "passed",
+          "seconds": "0.402"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_plan_input_is_strict_finite_unique_json[{\"plan\": {}, \"plan\": {}}]",
+          "status": "passed",
+          "seconds": "0.398"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_plan_input_is_strict_finite_unique_json[{\"plan\": NaN}]",
+          "status": "passed",
+          "seconds": "0.412"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_sync_glob_selects_only_available_scripts_with_read_only_diff",
+          "status": "passed",
+          "seconds": "3.830"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_sync_hook_glob_requires_explicit_hook_selection[.cursor/hooks/*.sh]",
+          "status": "passed",
+          "seconds": "3.130"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_sync_hook_glob_requires_explicit_hook_selection[.overseer/instructions/*]",
+          "status": "passed",
+          "seconds": "3.310"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_sync_hook_glob_requires_explicit_hook_selection[*]",
+          "status": "passed",
+          "seconds": "3.214"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_sync_unmatched_selection_refuses_before_runtime_refresh",
+          "status": "passed",
+          "seconds": "3.218"
+        },
+        {
+          "node_id": "tests/fpr1/test_migration.py::test_sync_glob_preserves_origin_and_explicit_custom_settings",
+          "status": "passed",
+          "seconds": "3.605"
+        },
+        {
+          "node_id": "tests/fpr2/test_lanes.py::test_collection_missing_selection_stale_and_bookends",
+          "status": "passed",
+          "seconds": "6.058"
+        },
+        {
+          "node_id": "tests/fpr2/test_lanes.py::test_two_repositories_lane_ownership_and_no_fallback",
+          "status": "passed",
+          "seconds": "7.354"
+        },
+        {
+          "node_id": "tests/fpr2/test_lanes.py::test_concurrent_lane_updates_whole_file_cas",
+          "status": "passed",
+          "seconds": "3.772"
+        },
+        {
+          "node_id": "tests/fpr2/test_lanes.py::test_entire_collection_validated_before_selected_output[extra_body]",
+          "status": "passed",
+          "seconds": "3.661"
+        },
+        {
+          "node_id": "tests/fpr2/test_lanes.py::test_entire_collection_validated_before_selected_output[digest]",
+          "status": "passed",
+          "seconds": "3.628"
+        },
+        {
+          "node_id": "tests/fpr2/test_lanes.py::test_entire_collection_validated_before_selected_output[undeclared]",
+          "status": "passed",
+          "seconds": "3.623"
+        },
+        {
+          "node_id": "tests/fpr2/test_lanes.py::test_entire_collection_validated_before_selected_output[missing_body]",
+          "status": "passed",
+          "seconds": "3.633"
+        },
+        {
+          "node_id": "tests/fpr2/test_lanes.py::test_explicit_batch_updates_only_selected_lanes_with_one_cas",
+          "status": "passed",
+          "seconds": "3.821"
+        },
+        {
+          "node_id": "tests/fpr2/test_lanes.py::test_duplicate_authority_and_publication_selectors_refuse[--vcs]",
+          "status": "passed",
+          "seconds": "3.024"
+        },
+        {
+          "node_id": "tests/fpr2/test_lanes.py::test_duplicate_authority_and_publication_selectors_refuse[--base-head]",
+          "status": "passed",
+          "seconds": "3.037"
+        },
+        {
+          "node_id": "tests/fpr2/test_lanes.py::test_duplicate_authority_and_publication_selectors_refuse[--action-id]",
+          "status": "passed",
+          "seconds": "3.113"
+        },
+        {
+          "node_id": "tests/fpr2/test_lanes.py::test_duplicate_authority_and_publication_selectors_refuse[--action-kind]",
+          "status": "passed",
+          "seconds": "3.034"
+        },
+        {
+          "node_id": "tests/fpr2/test_lanes.py::test_duplicate_authority_and_publication_selectors_refuse[--batch-file]",
+          "status": "passed",
+          "seconds": "3.008"
+        },
+        {
+          "node_id": "tests/fpr2/test_lanes.py::test_git_preserves_inactive_muse_settings_without_using_them",
+          "status": "passed",
+          "seconds": "3.683"
+        },
+        {
+          "node_id": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.claude/skills/print-next/SKILL.md-493]",
+          "status": "passed",
+          "seconds": "4.074"
+        },
+        {
+          "node_id": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.cursor/skills/print-next/SKILL.md-384]",
+          "status": "passed",
+          "seconds": "4.064"
+        },
+        {
+          "node_id": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.cursor/rules/orchestrator.mdc-416]",
+          "status": "passed",
+          "seconds": "4.054"
+        },
+        {
+          "node_id": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.overseer/policy/model-routing.yaml-384]",
+          "status": "passed",
+          "seconds": "4.075"
+        },
+        {
+          "node_id": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[policy/model-routing.yaml-493]",
+          "status": "passed",
+          "seconds": "4.133"
+        },
+        {
+          "node_id": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.overseer/STANDING-DECISIONS.reference.md-416]",
+          "status": "passed",
+          "seconds": "4.072"
+        },
+        {
+          "node_id": "tests/fpr4/test_init_preservation.py::test_fresh_init_still_refuses_unmanaged_operational_binding[.overseer/bin/ok]",
+          "status": "passed",
+          "seconds": "0.218"
+        },
+        {
+          "node_id": "tests/fpr4/test_init_preservation.py::test_fresh_init_still_refuses_unmanaged_operational_binding[.cursor/hooks/session-start-next.sh]",
+          "status": "passed",
+          "seconds": "0.227"
+        },
+        {
+          "node_id": "tests/fpr4/test_init_preservation.py::test_fresh_init_still_refuses_unmanaged_operational_binding[.cursor/hooks.json]",
+          "status": "passed",
+          "seconds": "0.222"
+        },
+        {
+          "node_id": "tests/fpr4/test_init_preservation.py::test_fresh_init_still_refuses_unmanaged_operational_binding[.overseer/instructions/bookends.md]",
+          "status": "passed",
+          "seconds": "0.242"
+        },
+        {
+          "node_id": "tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace[bytes-after_lock]",
+          "status": "passed",
+          "seconds": "0.163"
+        },
+        {
+          "node_id": "tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace[bytes-before_replace]",
+          "status": "passed",
+          "seconds": "0.210"
+        },
+        {
+          "node_id": "tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace[mode-after_lock]",
+          "status": "passed",
+          "seconds": "0.150"
+        },
+        {
+          "node_id": "tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace[mode-before_replace]",
+          "status": "passed",
+          "seconds": "0.210"
+        },
+        {
+          "node_id": "tests/v1/test_context.py::test_writer_rechecks_context_after_real_lock_wait[branch]",
+          "status": "passed",
+          "seconds": "3.930"
+        },
+        {
+          "node_id": "tests/v1/test_context.py::test_writer_rechecks_context_after_real_lock_wait[head]",
+          "status": "passed",
+          "seconds": "3.947"
+        },
+        {
+          "node_id": "tests/v1/test_context.py::test_writer_rechecks_context_after_real_lock_wait[config]",
+          "status": "passed",
+          "seconds": "4.181"
+        },
+        {
+          "node_id": "tests/v1/test_context.py::test_writer_rechecks_context_after_real_lock_wait[runtime]",
+          "status": "passed",
+          "seconds": "3.906"
+        },
+        {
+          "node_id": "tests/v1/test_context.py::test_reader_cannot_mix_parent_and_blob_revisions",
+          "status": "passed",
+          "seconds": "5.702"
+        },
+        {
+          "node_id": "tests/v1/test_context.py::test_reader_rechecks_context_before_output[branch-next]",
+          "status": "passed",
+          "seconds": "3.871"
+        },
+        {
+          "node_id": "tests/v1/test_context.py::test_reader_rechecks_context_before_output[branch-status]",
+          "status": "passed",
+          "seconds": "3.995"
+        },
+        {
+          "node_id": "tests/v1/test_context.py::test_reader_rechecks_context_before_output[branch-hook]",
+          "status": "passed",
+          "seconds": "3.997"
+        },
+        {
+          "node_id": "tests/v1/test_context.py::test_reader_rechecks_context_before_output[head-next]",
+          "status": "passed",
+          "seconds": "3.967"
+        },
+        {
+          "node_id": "tests/v1/test_context.py::test_reader_rechecks_context_before_output[head-status]",
+          "status": "passed",
+          "seconds": "4.110"
+        },
+        {
+          "node_id": "tests/v1/test_context.py::test_reader_rechecks_context_before_output[head-hook]",
+          "status": "passed",
+          "seconds": "4.010"
+        },
+        {
+          "node_id": "tests/v1/test_context.py::test_reader_rechecks_context_before_output[config-next]",
+          "status": "passed",
+          "seconds": "3.968"
+        },
+        {
+          "node_id": "tests/v1/test_context.py::test_reader_rechecks_context_before_output[config-status]",
+          "status": "passed",
+          "seconds": "4.028"
+        },
+        {
+          "node_id": "tests/v1/test_context.py::test_reader_rechecks_context_before_output[config-hook]",
+          "status": "passed",
+          "seconds": "3.916"
+        },
+        {
+          "node_id": "tests/v1/test_context.py::test_reader_rechecks_context_before_output[runtime-next]",
+          "status": "passed",
+          "seconds": "3.944"
+        },
+        {
+          "node_id": "tests/v1/test_context.py::test_reader_rechecks_context_before_output[runtime-status]",
+          "status": "passed",
+          "seconds": "4.017"
+        },
+        {
+          "node_id": "tests/v1/test_context.py::test_reader_rechecks_context_before_output[runtime-hook]",
+          "status": "passed",
+          "seconds": "4.159"
+        },
+        {
+          "node_id": "tests/v1/test_context.py::test_writer_rechecks_context_after_candidate_fsync[branch]",
+          "status": "passed",
+          "seconds": "4.065"
+        },
+        {
+          "node_id": "tests/v1/test_context.py::test_writer_rechecks_context_after_candidate_fsync[head]",
+          "status": "passed",
+          "seconds": "4.150"
+        },
+        {
+          "node_id": "tests/v1/test_context.py::test_context_checks_keep_successful_reads_read_only",
+          "status": "passed",
+          "seconds": "5.049"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_status_init_sync_and_persistent_identity",
+          "status": "passed",
+          "seconds": "6.832"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_init_preserves_living_docs",
+          "status": "passed",
+          "seconds": "2.671"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_canonical_next_ignores_old_handover_and_roadmap",
+          "status": "passed",
+          "seconds": "3.214"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_sync_preserves_next_and_living_docs",
+          "status": "passed",
+          "seconds": "4.377"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_writer_cas_rejects_stale_and_wrong_context",
+          "status": "passed",
+          "seconds": "5.439"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_writer_binding_checks[repo_id-00000000-0000-0000-0000-000000000000]",
+          "status": "passed",
+          "seconds": "3.742"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_writer_binding_checks[branch-other]",
+          "status": "passed",
+          "seconds": "3.727"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_writer_binding_checks[lane-other]",
+          "status": "passed",
+          "seconds": "3.778"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_writer_binding_checks[model-Other Model]",
+          "status": "passed",
+          "seconds": "3.709"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_writer_binding_checks[action_id-bad/action]",
+          "status": "passed",
+          "seconds": "3.791"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_writer_binding_checks[action_kind-deploy]",
+          "status": "passed",
+          "seconds": "3.705"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_reader_expectations_fail_without_prompt[repo-id-00000000-0000-0000-0000-000000000000]",
+          "status": "passed",
+          "seconds": "2.884"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_reader_expectations_fail_without_prompt[branch-other]",
+          "status": "passed",
+          "seconds": "2.839"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_reader_expectations_fail_without_prompt[lane-other]",
+          "status": "passed",
+          "seconds": "2.883"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_reader_expectations_fail_without_prompt[model-Other Model]",
+          "status": "passed",
+          "seconds": "2.962"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_reader_expectations_fail_without_prompt[action-id-OTHER]",
+          "status": "passed",
+          "seconds": "2.823"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_reader_expectations_fail_without_prompt[action-kind-review]",
+          "status": "passed",
+          "seconds": "2.887"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_reader_expectations_fail_without_prompt[expect-next-0000000000000000000000000000000000000000000000000000000000000000]",
+          "status": "passed",
+          "seconds": "2.864"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_missing_next_is_not_regenerated",
+          "status": "passed",
+          "seconds": "3.729"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_malformed_next_fails_closed[not frontmatter]",
+          "status": "passed",
+          "seconds": "2.857"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_malformed_next_fails_closed[---\\nrepo_id: [broken\\n---\\nbody]",
+          "status": "passed",
+          "seconds": "2.859"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_malformed_next_fails_closed[---\\nschema: 1\\nschema: 1\\n---\\nprompt]",
+          "status": "passed",
+          "seconds": "2.886"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_malformed_next_fails_closed[---\\n{}\\n---\\nprompt]",
+          "status": "passed",
+          "seconds": "2.932"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_malformed_next_fails_closed[]",
+          "status": "passed",
+          "seconds": "2.812"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_hand_edit_of_prompt_detected",
+          "status": "passed",
+          "seconds": "2.954"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_branch_and_head_freshness",
+          "status": "passed",
+          "seconds": "3.394"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_detached_head_refused",
+          "status": "passed",
+          "seconds": "2.856"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_prompt_fences_are_contained",
+          "status": "passed",
+          "seconds": "3.862"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_prompt_cannot_introduce_contradictory_binding",
+          "status": "passed",
+          "seconds": "4.514"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_required_writer_arguments",
+          "status": "passed",
+          "seconds": "2.821"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_runtime_hash_change_requires_explicit_sync",
+          "status": "passed",
+          "seconds": "4.161"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_source_and_compat_launcher",
+          "status": "passed",
+          "seconds": "3.839"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_unsupported_commands_cannot_run",
+          "status": "failure",
+          "seconds": "3.229"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_unborn_repository_first_commit_is_supported",
+          "status": "passed",
+          "seconds": "3.262"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_git_worktree_supported",
+          "status": "passed",
+          "seconds": "6.941"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_malformed_config_refused[repo-id-bad]",
+          "status": "passed",
+          "seconds": "2.787"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_malformed_config_refused[context-lane-bad/lane]",
+          "status": "passed",
+          "seconds": "2.775"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_malformed_config_refused[context-model-]",
+          "status": "passed",
+          "seconds": "2.779"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_malformed_config_refused[runtime-version-wrong]",
+          "status": "passed",
+          "seconds": "2.743"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_duplicate_config_key_refused",
+          "status": "passed",
+          "seconds": "2.865"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_bad_hook_event_refuses_cleanly",
+          "status": "passed",
+          "seconds": "3.603"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_sync_dry_run_plans_missing_launcher_without_writes",
+          "status": "passed",
+          "seconds": "3.834"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_sync_repairs_executable_modes_and_dry_run_preserves_them",
+          "status": "passed",
+          "seconds": "3.889"
+        },
+        {
+          "node_id": "tests/v1/test_commands.py::test_different_freshness_and_action_requirements_fail_closed",
+          "status": "passed",
+          "seconds": "3.304"
+        }
+      ],
+      "exit_code": 1,
+      "runtime_start": {
+        "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+        "version": "1.0.0.dev1",
+        "sha256": "0e0260d272063e4572cabe8bda19f3bafd7d23500936ab1a879024cbdc8143a5"
+      },
+      "runtime_end": {
+        "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+        "version": "1.0.0.dev1",
+        "sha256": "0e0260d272063e4572cabe8bda19f3bafd7d23500936ab1a879024cbdc8143a5"
+      }
+    }
+  },
+  "accounting": "Runs overlap; counts are not summed. All 23 new regressions pass in after-integrated. Sole after-integrated failure is the preserved unsupported-command expectation already superseded under FPR-4; root combined current-contract run applies the documented replacement.",
+  "owned_sha256": {
+    "cli/product_migration.py": "30c29f72e24cbfd77048901223ae6063b22b009de825ac74dd9e80605eed5467",
+    "cli/v1.py": "81d2d6686d9dff330e5d40c55626054abe7abcf6d938a6ce6ecf3270690e4e71",
+    "tests/fpr5/test_foundation_repairs.py": "101b76c0cb852c16153201b6d9cf7abdaf3714c449dd6e38f00675911bcc1c84"
+  },
+  "limitations": [
+    "Python3.14.4 conventional venv; Python3.11 cell remains open",
+    "No native host/version or platform/distribution acceptance",
+    "No new pilot, external network/provider, consumer hooks, delivery or release",
+    "Final root runtime and combined validation recorded separately after final transport correction"
+  ]
+}

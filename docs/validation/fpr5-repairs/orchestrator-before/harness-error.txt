@@ -1,0 +1,7 @@
+No tests ran. Initial evidence-driver setup failed before writing command metadata:
+  File "scripts/fpr5_checks.py", line 22, in boundary
+    str(p.relative_to(ROOT))
+AttributeError: 'str' object has no attribute 'relative_to'
+
+runtime_files() returns repository-relative strings. The driver was corrected to
+read ROOT / p; production code was unchanged. The next attempt has a fresh path.

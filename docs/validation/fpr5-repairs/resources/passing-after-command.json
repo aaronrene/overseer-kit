@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.venv/bin/python",
+    "-B",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "tests/fpr5/test_resource_repairs.py",
+    "--basetemp",
+    "/private/tmp/overseer-fpr5-resources-after-eiwtqdq1/pytest",
+    "--junitxml",
+    "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/docs/validation/fpr5-repairs/resources/passing-after.xml"
+  ],
+  "fixture": "/private/tmp/overseer-fpr5-resources-after-eiwtqdq1",
+  "head": "4c62c17cff6c606a5e1ddf565e12353973b3bcad",
+  "runtime_before": "64a075b0eea2ca53beb8d18935c0a65630e1466388c00e1465293c8763b6de8d",
+  "source_package_sha256": "9386f14e5a1e84da2118f66dd2e78b330e9e50aa7cadcef91e1fdc6c834c6b1e",
+  "test_sha256": "8ade2f0a29fcf159714ff43af60b561c3dd31b5b86574cbc84ee738da3ae4c0f",
+  "python": "3.14.4 (main, Apr  7 2026, 13:13:20) [Clang 17.0.0 (clang-1700.6.4.2)]",
+  "exit_code": 0,
+  "runtime_after": "64a075b0eea2ca53beb8d18935c0a65630e1466388c00e1465293c8763b6de8d"
+}

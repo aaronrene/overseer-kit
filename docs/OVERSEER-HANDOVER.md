@@ -8,7 +8,33 @@ Active implementation: `overseer-kit-v1-recovery-20261014`, branch
 `feat/overseer-v1-recovery-20261014`, reconciled base `d47291d`.
 Both older dirty worktrees remain untouched.
 
-**Current successor: FPR-5, awaiting owner acceptance and independent reviewer appointment.**
+**Current successor: resolve acceptance inputs before dependent work.**
+The owner-appointed [FPR-5 review](reviews/FPR-5-REVIEW.md) is complete with its
+original **FINDINGS** verdict preserved. This owner-directed repair implements
+all six findings; [author evidence](validation/FPR-5-REPAIRS.md) records failing
+original-source cases, repairs and affected validation. The new combined run
+recorded **1,360 passed / one archive-scheduling failure**. A corrected isolated
+two-case archive rerun passed on unchanged production/tests/dependencies.
+All **1,361 selected cases**, including 152 new regressions, have passing evidence
+across those runs; this is not a relabelled all-green combined execution.
+
+Repaired runtime: `1.0.0.dev1`,
+`cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774`.
+The repair closing commit has sole parent
+`4c62c17cff6c606a5e1ddf565e12353973b3bcad`; the source map and integrated records
+identify the exact repaired files. All 48 original review/evidence files,
+393 historical test/support files and 420 prior tracked evidence files remain
+unchanged. No old worktree, Muse history, completed pilot or protected ref was
+used as a test target. Runtime refresh and canonical successor publication use
+the bound services; installed hooks remain disabled.
+
+Python 3.11, named automatic host/version acceptance, platform/distribution
+choices and the separately authorized new integrated pilot remain open. The
+completed review is not pending again. After complete repaired-source and
+acceptance evidence, reserve one final independent adjudication, then one
+separate owner release decision. Repair authors cannot certify that adjudication.
+
+The following FPR-4 results remain historical evidence for their recorded source.
 Opening FPR-4 HEAD was `6289d2823184a63e2968d2c5f6a76abab5818368`, the single
 FPR-3 feature closing commit whose sole predecessor is
 `695444fb5f8261391f5c273807129c13dc8db1fd`. Identity, clean state and all pinned
@@ -37,19 +63,21 @@ Fresh packaged Python 3.14.4 CLI/app/desktop-child checks and the macOS arm64
 Rust 1.88 locked/offline native build passed. The complete Python 3.11 cell is
 unresolved because pinned cffi 2.1.0 for cp311 is unavailable locally. Named
 automatic host/version and platform/distribution acceptance, authorization for
-the separate new integrated pilot, and appointment of an independent reviewer
-remain pending. The new pilot was not run; the completed bounded pilot and its
-certification were preserved. Native GUI, native host lifecycle delivery, signed
+the separate new integrated pilot remain pending. The original FPR-5 reviewer
+appointment is satisfied and that review is complete. The new pilot was not run;
+the completed bounded pilot and its certification were preserved. Native GUI,
+native host lifecycle delivery, signed
 installers and live providers remain unverified.
 
 All 393 original test/support files and the historical **1,391 passed / 104 failed**
 record remain unchanged. The final disposition maps every historical failure to
 retained or explicit successor coverage. Author checks do not count as independent
-review. The sole successor is **FPR-5**, pending owner acceptance and appointment
-of an independent reviewer, with GPT-6 Astra and Max reasoning. Required evidence
-gaps prevent a release-readiness claim. One independent final review, bounded
-repairs if required, final adjudication and a separate owner release decision
-remain; no intervening review-only handoff or release authority is introduced.
+review. FPR-5 and its bounded author repairs are now complete; the current
+successor concerns unresolved acceptance inputs, with GPT-6 Astra and Max
+reasoning. Required evidence gaps prevent a release-readiness claim. One final
+independent adjudication of complete repaired-source/acceptance evidence and a
+separate owner release decision remain. No additional review cycle or release
+authority is introduced.
 
 FPR-3 focused evidence remains distinct: 70 final surface/artifact/native checks,
 314 retained engine/security checks and 73 closing hosted/parser checks; 529
@@ -88,7 +116,8 @@ if needed, one final adjudication and one owner release decision. Do not create
 a review cycle for every wave. Outstanding owner choices are automatic client
 versions beyond the preserved Cursor contract, expanded Muse transport scope if
 required, platform/packaging/remote-validation claims, and the integrated pilot
-and independent reviewer. The plan states defaults and blockers explicitly.
+and the final independent adjudicator. The original reviewer appointment and
+review are complete; the plan states the remaining blockers explicitly.
 The exact pending action prompt lives only in `docs/NEXT.md`.
 
 Preservation and local Muse/base reconciliation are complete. The independent
@@ -163,16 +192,18 @@ versions, broader Muse transport if required, platform/distribution claims and
 the integrated pilot/independent reviewer. The accepted FPR-3 action authorized its
 local implementation and focused checks. FPR-3 closed with one coherent feature
 commit and a bound FPR-4 successor. The accepted FPR-4 action authorized local
-combined validation and bounded repairs. Its closing commit publishes only FPR-5;
-acceptance and independent reviewer appointment remain pending. It authorizes no
-real consumers/hooks, providers/network, live mirror, merge, push, publication or
-deployment. Open matrix cells and independent final review remain required before
+combined validation and bounded repairs. Its historical closing commit published
+FPR-5; owner appointment, the review and subsequent bounded repairs are now
+complete. Remaining acceptance and final adjudication are described above. No
+authority is granted for real consumers/hooks, providers/network, live mirror,
+merge, push, publication or deployment. Open matrix cells and final independent
+adjudication remain required before
 a release-readiness claim.
 
 Read the exact current action with `./cli/ok -C . next`. Only `next-write` publishes
 canonical `docs/NEXT.md`; do not regenerate a prompt from this summary or ROADMAP.
 At turn start verify physical cwd, Git root, branch, HEAD and configured name.
 Use disposable repositories for all isolation tests. Current user repository
-scope overrides inherited handoffs. Current combined validation is in
-`docs/validation/FPR-4-COMBINED.md`; preserve the bounded `V1-RECOVERY.md` evidence
-and update this handover and ROADMAP together.
+scope overrides inherited handoffs. Current repair validation is in
+`docs/validation/FPR-5-REPAIRS.md`; preserve FPR-4 and bounded `V1-RECOVERY.md`
+evidence and update this handover and ROADMAP together.

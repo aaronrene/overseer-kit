@@ -151,12 +151,14 @@ def main():
     p.add_argument('--name', required=True)
     p.add_argument('--selection', type=Path, required=True)
     p.add_argument('--muse-python')
+    p.add_argument('--evidence-dir', type=Path, default=ROOT / 'docs/validation/fpr4',
+                   help='New evidence destination; existing runs are never overwritten.')
     args = p.parse_args()
     if Path(sys.prefix).resolve() != ROOT / '.venv':
         p.error("use this installation's conventional .venv")
     if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]{0,100}', args.name):
         p.error('name must be a simple evidence basename')
-    evidence = ROOT / 'docs/validation/fpr4'
+    evidence = args.evidence_dir.resolve()
     evidence.mkdir(parents=True, exist_ok=True)
     paths = {kind: evidence / (args.name + suffix) for kind, suffix in
              [('record', '.json'), ('log', '.log'), ('xml', '.xml'), ('collection', '-collection.json')]}

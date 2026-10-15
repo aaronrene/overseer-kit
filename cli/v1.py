@@ -432,7 +432,13 @@ def initialize(root, args):
     config_data = encode(config) if existing is None else existing
     current = read(root, NEXT, missing=True)
     if current is not None:
-        validate_next(root, config, current, argparse.Namespace(), context=observed, freshness=False)
+        meta, _ = parse_next(current)
+        present = meta["entries"] if meta["schema"] == 3 else (meta["lane"],)
+        # Initialization validates existing entries without selecting a task or
+        # creating missing lanes. NEXT retains its separate freshness/read policy.
+        for lane in present:
+            validate_next(root, config, current, argparse.Namespace(lane=lane),
+                          context=observed, freshness=False)
     ignore_expected = {}
     mapping = assets(root, config, args.hooks)
     if existing is None and config['vcs']['canonical'] == 'muse':

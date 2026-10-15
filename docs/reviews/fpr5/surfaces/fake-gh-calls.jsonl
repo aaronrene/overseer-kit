@@ -1,0 +1,6 @@
+{"argv": ["pr", "view", "https://github.com/foreign/repo/pull/7", "--json", "number,state,url,mergeable,mergeStateStatus"], "GH_REPO": "github.com/fixture/bound"}
+{"argv": ["pr", "checks", "https://github.com/foreign/repo/pull/7"], "GH_REPO": "github.com/fixture/bound"}
+{"argv": ["pr", "merge", "https://github.com/foreign/repo/pull/7", "--squash"], "GH_REPO": "github.com/fixture/bound"}
+{"argv": ["pr", "view", "--repo=foreign/repo", "--json", "number,state,url,mergeable,mergeStateStatus"], "GH_REPO": "github.com/fixture/bound"}
+{"argv": ["pr", "checks", "--repo=foreign/repo"], "GH_REPO": "github.com/fixture/bound"}
+{"argv": ["pr", "merge", "--repo=foreign/repo", "--squash"], "GH_REPO": "github.com/fixture/bound"}

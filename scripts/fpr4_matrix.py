@@ -22,7 +22,10 @@ from scripts.fpr4_run import (BOUNDARY_KEYS, COLLECTION_ENV, collection_counts,
                              junit_identities, junit_results, runner_environment, snapshot)
 
 EVIDENCE = ROOT / 'docs/validation/fpr4'
-PACKAGE = 'tests/fpr3/test_package.py::test_actual_package_deterministic_manifest_modes_and_resource_bundle'
+PACKAGES = (
+    'tests/fpr3/test_package.py::test_actual_package_deterministic_manifest_modes_and_resource_bundle',
+    'tests/fpr5/test_resource_repairs.py::test_provisioned_runtime_and_actual_packaged_entrypoints',
+)
 LATENCY_FILE = 'tests/fpr4/test_disposition_contracts.py'
 
 
@@ -71,11 +74,15 @@ def simple_counter(counter):
 
 
 def main():
+    global EVIDENCE
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--name', required=True)
     parser.add_argument('--selection', type=Path, required=True)
     parser.add_argument('--muse-python', required=True)
+    parser.add_argument('--evidence-dir', type=Path, default=EVIDENCE,
+                        help='New evidence destination; existing runs are never overwritten.')
     args = parser.parse_args()
+    EVIDENCE = args.evidence_dir.resolve()
     if Path(sys.prefix).resolve() != ROOT / '.venv':
         parser.error("use this installation's conventional .venv")
     if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]{0,80}', args.name):
@@ -119,8 +126,10 @@ def main():
         target.write_text(json.dumps(record, indent=2) + '\n')
         print(record['evidence_error'], flush=True)
         return 1
-    defer_package = PACKAGE in nodes
-    record['deferred_package_case'] = PACKAGE if defer_package else None
+    # These cases archive the live source, including evidence. They must wait
+    # until every concurrent evidence writer has finished before capturing it.
+    deferred_packages = [case for case in PACKAGES if case in nodes]
+    record['deferred_package_cases'] = deferred_packages
     handles = []
 
     def launch(label, group_selected, *, deferred=False):
@@ -129,11 +138,12 @@ def main():
         name = args.name + '-' + label
         plan = EVIDENCE / (name + '-selection.json')
         group_deselected = [] if deferred else list(deselected)
-        if defer_package and not deferred:
-            group_deselected.append(PACKAGE)
+        if not deferred:
+            group_deselected.extend(deferred_packages)
         with plan.open('x') as stream:
             stream.write(json.dumps({'selected': group_selected, 'deselected': group_deselected}, indent=2) + '\n')
-        command = [sys.executable, '-B', str(ROOT / 'scripts/fpr4_run.py'), '--name', name, '--selection', str(plan)]
+        command = [sys.executable, '-B', str(ROOT / 'scripts/fpr4_run.py'), '--name', name,
+                   '--selection', str(plan), '--evidence-dir', str(EVIDENCE)]
         if any(s.partition('::')[0] == 'tests/muse' or s.startswith('tests/muse/') for s in group_selected):
             command += ['--muse-python', args.muse_python]
         log = (EVIDENCE / (name + '-driver.log')).open('xb')
@@ -151,8 +161,8 @@ def main():
         for label, group_selected in buckets.items():
             if label == 'latency':
                 continue
-            # Avoid a zero-case run if the package case is the group's only item.
-            if defer_package and group_selected == [PACKAGE]:
+            # Avoid a zero-case run when all explicit items are deferred.
+            if group_selected and all(case in deferred_packages for case in group_selected):
                 continue
             launch(label, group_selected)
         for process, log, row in handles:
@@ -164,9 +174,9 @@ def main():
             process, log, row = handles[-1]
             row['exit_code'] = process.wait()
             log.close()
-        if defer_package:
-            print('Disjoint groups finished; running the deferred archive case.', flush=True)
-            launch('package', [PACKAGE], deferred=True)
+        if deferred_packages:
+            print('Disjoint groups finished; running the deferred archive cases.', flush=True)
+            launch('package', deferred_packages, deferred=True)
             process, log, row = handles[-1]
             row['exit_code'] = process.wait()
             log.close()

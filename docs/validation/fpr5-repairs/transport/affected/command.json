@@ -1,0 +1,79 @@
+{
+  "argv": [
+    "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.venv/bin/python",
+    "-B",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=/private/tmp/overseer-fpr5-transport-qun9ih48/fixtures",
+    "--junitxml=/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/docs/validation/fpr5-repairs/transport/affected/results.xml",
+    "tests/unit/test_hosted_dashboard_unit.py",
+    "tests/security/test_hosted_dashboard_security.py",
+    "tests/integration/test_hosted_dashboard_integration.py",
+    "tests/e2e/test_hosted_dashboard_e2e.py",
+    "tests/data_integrity/test_hosted_dashboard_integrity.py",
+    "tests/stress/test_hosted_dashboard_stress.py",
+    "tests/performance/test_hosted_dashboard_performance.py",
+    "tests/unit/test_close_ritual_pr_land.py",
+    "tests/unit/test_post_land_sync_unit.py",
+    "tests/security/test_post_land_sync_security.py",
+    "tests/integration/test_post_land_sync_integration.py",
+    "tests/e2e/test_post_land_sync_cycle.py",
+    "tests/data_integrity/test_post_land_sync_integrity.py",
+    "tests/stress/test_post_land_sync_stress.py",
+    "tests/performance/test_post_land_sync_bounded.py",
+    "tests/fpr3/test_engines.py",
+    "tests/fpr3/test_surfaces.py"
+  ],
+  "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+  "environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "GIT_CONFIG_GLOBAL": "/dev/null",
+    "GIT_CONFIG_NOSYSTEM": "1",
+    "GIT_OPTIONAL_LOCKS": "0"
+  },
+  "fixtures": "/private/tmp/overseer-fpr5-transport-qun9ih48",
+  "before": {
+    "head": "4c62c17cff6c606a5e1ddf565e12353973b3bcad",
+    "branch": "feat/overseer-v1-recovery-20261014",
+    "runtime": {
+      "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "version": "1.0.0.dev1",
+      "sha256": "0e0260d272063e4572cabe8bda19f3bafd7d23500936ab1a879024cbdc8143a5"
+    },
+    "owned_sha256": {
+      "tools/hosted_dashboard/http_client.py": "525fac38f7d2813a442ba74be075e1ea76fa69158b7555acaa1c43ec2c0c3bba",
+      "cli/product_service.py": "f6c77b4487750ab95e5ee79c0af31734bcc12b0619a5efd2114031d1e472ca1f",
+      "tools/close_ritual/pr_land.py": "e71310051d84a46a28776182b63f879062e0c49ee3e88ff350d7606a96783a34",
+      "tests/fpr5/test_transport_repairs.py": "66a0fa9a71c1a9561e52fff802f6de328d1d61e8f9c1ef86542f205151d6a48a",
+      "tests/fpr3/test_engines.py": "bf5eedd2ab1492d6cf3f8a6786ace78042c8fbced64b3cbb12c0e8c0d484601e"
+    },
+    "worktree_status": " M cli/commands/verify_step.py\n M cli/product_migration.py\n M cli/product_service.py\n M cli/v1.py\n M desktop/README.md\n M docs/FPR-3-PRODUCT-SURFACES.md\n M docs/SOURCE-DISTRIBUTION.md\n M scripts/fpr4_matrix.py\n M scripts/fpr4_run.py\n M tests/fpr3/test_engines.py\n M tools/checkpoints/orchestrator.py\n M tools/checkpoints/types.py\n M tools/ci/source_package.py\n M tools/hosted_dashboard/http_client.py\n?? docs/reviews/FPR-5-REVIEW.md\n?? docs/reviews/fpr5/\n?? docs/validation/fpr5-repairs/\n?? scripts/fpr5_checks.py\n?? scripts/fpr5_preservation.py\n?? tests/fpr5/\n"
+  },
+  "python": "3.14.4 (main, Apr  7 2026, 13:13:20) [Clang 17.0.0 (clang-1700.6.4.2)]",
+  "boundary": "Synthetic HTTP and fake gh only; pytest loopback fixtures may bind locally when selected. No external provider.",
+  "exit_code": 1,
+  "after": {
+    "head": "4c62c17cff6c606a5e1ddf565e12353973b3bcad",
+    "branch": "feat/overseer-v1-recovery-20261014",
+    "runtime": {
+      "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "version": "1.0.0.dev1",
+      "sha256": "0e0260d272063e4572cabe8bda19f3bafd7d23500936ab1a879024cbdc8143a5"
+    },
+    "owned_sha256": {
+      "tools/hosted_dashboard/http_client.py": "525fac38f7d2813a442ba74be075e1ea76fa69158b7555acaa1c43ec2c0c3bba",
+      "cli/product_service.py": "f6c77b4487750ab95e5ee79c0af31734bcc12b0619a5efd2114031d1e472ca1f",
+      "tools/close_ritual/pr_land.py": "e71310051d84a46a28776182b63f879062e0c49ee3e88ff350d7606a96783a34",
+      "tests/fpr5/test_transport_repairs.py": "66a0fa9a71c1a9561e52fff802f6de328d1d61e8f9c1ef86542f205151d6a48a",
+      "tests/fpr3/test_engines.py": "bf5eedd2ab1492d6cf3f8a6786ace78042c8fbced64b3cbb12c0e8c0d484601e"
+    },
+    "worktree_status": " M cli/commands/verify_step.py\n M cli/product_migration.py\n M cli/product_service.py\n M cli/v1.py\n M desktop/README.md\n M docs/FPR-3-PRODUCT-SURFACES.md\n M docs/SOURCE-DISTRIBUTION.md\n M scripts/fpr4_matrix.py\n M scripts/fpr4_run.py\n M tests/fpr3/test_engines.py\n M tools/checkpoints/orchestrator.py\n M tools/checkpoints/types.py\n M tools/ci/source_package.py\n M tools/hosted_dashboard/http_client.py\n?? docs/reviews/FPR-5-REVIEW.md\n?? docs/reviews/fpr5/\n?? docs/validation/fpr5-repairs/\n?? scripts/fpr5_checks.py\n?? scripts/fpr5_preservation.py\n?? tests/fpr5/\n"
+  },
+  "artifacts": {
+    "results.log": "26af81229652424d10655bf04014d96db267a125c2b65c72b1caf5c32748b94e",
+    "results.xml": "fd74aadbca0e6647c4000aafe4ce2c1d5a8cd78a9c4a057ef4ed87d9d6833c5f"
+  }
+}

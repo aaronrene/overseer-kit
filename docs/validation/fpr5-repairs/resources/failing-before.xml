@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="17" skipped="0" tests="18" time="1.929" timestamp="2026-10-15T02:23:46.674478-07:00" hostname="Carloss-MacBook-Pro.local"><testcase classname="tests.fpr5.test_resource_repairs" name="test_clean_source_resource_is_accepted" time="0.001" /><testcase classname="tests.fpr5.test_resource_repairs" name="test_unmanifested_resource_file_is_rejected[.overseer/config.yaml]" time="0.001"><failure message="Failed: DID NOT RAISE ValueError">resource = PosixPath('/private/tmp/overseer-fpr5-resources-before-n97jvr9x/pytest/test_unmanifested_resource_fil0/resources')
+relative = '.overseer/config.yaml'
+
+    @pytest.mark.parametrize('relative', [
+        '.overseer/config.yaml', 'docs/NEXT.md', 'tools/.env', 'tools/extra.py',
+        'tools/.hidden', '.venv/lib/python3.14/site-packages/unapproved.py',
+    ])
+    def test_unmanifested_resource_file_is_rejected(resource, relative):
+        path = resource / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text('synthetic owner data\n')
+&gt;       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/fpr5/test_resource_repairs.py:40: Failed</failure></testcase><testcase classname="tests.fpr5.test_resource_repairs" name="test_unmanifested_resource_file_is_rejected[docs/NEXT.md]" time="0.001"><failure message="Failed: DID NOT RAISE ValueError">resource = PosixPath('/private/tmp/overseer-fpr5-resources-before-n97jvr9x/pytest/test_unmanifested_resource_fil1/resources')
+relative = 'docs/NEXT.md'
+
+    @pytest.mark.parametrize('relative', [
+        '.overseer/config.yaml', 'docs/NEXT.md', 'tools/.env', 'tools/extra.py',
+        'tools/.hidden', '.venv/lib/python3.14/site-packages/unapproved.py',
+    ])
+    def test_unmanifested_resource_file_is_rejected(resource, relative):
+        path = resource / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text('synthetic owner data\n')
+&gt;       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/fpr5/test_resource_repairs.py:40: Failed</failure></testcase><testcase classname="tests.fpr5.test_resource_repairs" name="test_unmanifested_resource_file_is_rejected[tools/.env]" time="0.001"><failure message="Failed: DID NOT RAISE ValueError">resource = PosixPath('/private/tmp/overseer-fpr5-resources-before-n97jvr9x/pytest/test_unmanifested_resource_fil2/resources')
+relative = 'tools/.env'
+
+    @pytest.mark.parametrize('relative', [
+        '.overseer/config.yaml', 'docs/NEXT.md', 'tools/.env', 'tools/extra.py',
+        'tools/.hidden', '.venv/lib/python3.14/site-packages/unapproved.py',
+    ])
+    def test_unmanifested_resource_file_is_rejected(resource, relative):
+        path = resource / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text('synthetic owner data\n')
+&gt;       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/fpr5/test_resource_repairs.py:40: Failed</failure></testcase><testcase classname="tests.fpr5.test_resource_repairs" name="test_unmanifested_resource_file_is_rejected[tools/extra.py]" time="0.001"><failure message="Failed: DID NOT RAISE ValueError">resource = PosixPath('/private/tmp/overseer-fpr5-resources-before-n97jvr9x/pytest/test_unmanifested_resource_fil3/resources')
+relative = 'tools/extra.py'
+
+    @pytest.mark.parametrize('relative', [
+        '.overseer/config.yaml', 'docs/NEXT.md', 'tools/.env', 'tools/extra.py',
+        'tools/.hidden', '.venv/lib/python3.14/site-packages/unapproved.py',
+    ])
+    def test_unmanifested_resource_file_is_rejected(resource, relative):
+        path = resource / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text('synthetic owner data\n')
+&gt;       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/fpr5/test_resource_repairs.py:40: Failed</failure></testcase><testcase classname="tests.fpr5.test_resource_repairs" name="test_unmanifested_resource_file_is_rejected[tools/.hidden]" time="0.001"><failure message="Failed: DID NOT RAISE ValueError">resource = PosixPath('/private/tmp/overseer-fpr5-resources-before-n97jvr9x/pytest/test_unmanifested_resource_fil4/resources')
+relative = 'tools/.hidden'
+
+    @pytest.mark.parametrize('relative', [
+        '.overseer/config.yaml', 'docs/NEXT.md', 'tools/.env', 'tools/extra.py',
+        'tools/.hidden', '.venv/lib/python3.14/site-packages/unapproved.py',
+    ])
+    def test_unmanifested_resource_file_is_rejected(resource, relative):
+        path = resource / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text('synthetic owner data\n')
+&gt;       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/fpr5/test_resource_repairs.py:40: Failed</failure></testcase><testcase classname="tests.fpr5.test_resource_repairs" name="test_unmanifested_resource_file_is_rejected[.venv/lib/python3.14/site-packages/unapproved.py]" time="0.001"><failure message="Failed: DID NOT RAISE ValueError">resource = PosixPath('/private/tmp/overseer-fpr5-resources-before-n97jvr9x/pytest/test_unmanifested_resource_fil5/resources')
+relative = '.venv/lib/python3.14/site-packages/unapproved.py'
+
+    @pytest.mark.parametrize('relative', [
+        '.overseer/config.yaml', 'docs/NEXT.md', 'tools/.env', 'tools/extra.py',
+        'tools/.hidden', '.venv/lib/python3.14/site-packages/unapproved.py',
+    ])
+    def test_unmanifested_resource_file_is_rejected(resource, relative):
+        path = resource / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text('synthetic owner data\n')
+&gt;       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/fpr5/test_resource_repairs.py:40: Failed</failure></testcase><testcase classname="tests.fpr5.test_resource_repairs" name="test_unapproved_empty_directory_is_rejected[.overseer]" time="0.001"><failure message="Failed: DID NOT RAISE ValueError">resource = PosixPath('/private/tmp/overseer-fpr5-resources-before-n97jvr9x/pytest/test_unapproved_empty_director0/resources')
+relative = '.overseer'
+
+    @pytest.mark.parametrize('relative', ['.overseer', 'tools/empty-extra', '.venv'])
+    def test_unapproved_empty_directory_is_rejected(resource, relative):
+        (resource / relative).mkdir(parents=True)
+&gt;       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/fpr5/test_resource_repairs.py:47: Failed</failure></testcase><testcase classname="tests.fpr5.test_resource_repairs" name="test_unapproved_empty_directory_is_rejected[tools/empty-extra]" time="0.001"><failure message="Failed: DID NOT RAISE ValueError">resource = PosixPath('/private/tmp/overseer-fpr5-resources-before-n97jvr9x/pytest/test_unapproved_empty_director1/resources')
+relative = 'tools/empty-extra'
+
+    @pytest.mark.parametrize('relative', ['.overseer', 'tools/empty-extra', '.venv'])
+    def test_unapproved_empty_directory_is_rejected(resource, relative):
+        (resource / relative).mkdir(parents=True)
+&gt;       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/fpr5/test_resource_repairs.py:47: Failed</failure></testcase><testcase classname="tests.fpr5.test_resource_repairs" name="test_unapproved_empty_directory_is_rejected[.venv]" time="0.001"><failure message="Failed: DID NOT RAISE ValueError">resource = PosixPath('/private/tmp/overseer-fpr5-resources-before-n97jvr9x/pytest/test_unapproved_empty_director2/resources')
+relative = '.venv'
+
+    @pytest.mark.parametrize('relative', ['.overseer', 'tools/empty-extra', '.venv'])
+    def test_unapproved_empty_directory_is_rejected(resource, relative):
+        (resource / relative).mkdir(parents=True)
+&gt;       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/fpr5/test_resource_repairs.py:47: Failed</failure></testcase><testcase classname="tests.fpr5.test_resource_repairs" name="test_unmanifested_symlink_is_rejected[cli/ok]" time="0.001"><failure message="Failed: DID NOT RAISE ValueError">resource = PosixPath('/private/tmp/overseer-fpr5-resources-before-n97jvr9x/pytest/test_unmanifested_symlink_is_r0/resources')
+target = 'cli/ok'
+
+    @pytest.mark.parametrize('target', ['cli/ok', 'cli', '/nonexistent/resource-fixture'])
+    def test_unmanifested_symlink_is_rejected(resource, target):
+        (resource / 'extra-link').symlink_to(target)
+&gt;       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/fpr5/test_resource_repairs.py:54: Failed</failure></testcase><testcase classname="tests.fpr5.test_resource_repairs" name="test_unmanifested_symlink_is_rejected[cli]" time="0.001"><failure message="Failed: DID NOT RAISE ValueError">resource = PosixPath('/private/tmp/overseer-fpr5-resources-before-n97jvr9x/pytest/test_unmanifested_symlink_is_r1/resources')
+target = 'cli'
+
+    @pytest.mark.parametrize('target', ['cli/ok', 'cli', '/nonexistent/resource-fixture'])
+    def test_unmanifested_symlink_is_rejected(resource, target):
+        (resource / 'extra-link').symlink_to(target)
+&gt;       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/fpr5/test_resource_repairs.py:54: Failed</failure></testcase><testcase classname="tests.fpr5.test_resource_repairs" name="test_unmanifested_symlink_is_rejected[/nonexistent/resource-fixture]" time="0.001"><failure message="Failed: DID NOT RAISE ValueError">resource = PosixPath('/private/tmp/overseer-fpr5-resources-before-n97jvr9x/pytest/test_unmanifested_symlink_is_r2/resources')
+target = '/nonexistent/resource-fixture'
+
+    @pytest.mark.parametrize('target', ['cli/ok', 'cli', '/nonexistent/resource-fixture'])
+    def test_unmanifested_symlink_is_rejected(resource, target):
+        (resource / 'extra-link').symlink_to(target)
+&gt;       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/fpr5/test_resource_repairs.py:54: Failed</failure></testcase><testcase classname="tests.fpr5.test_resource_repairs" name="test_manifest_symlink_is_rejected" time="0.001"><failure message="Failed: DID NOT RAISE ValueError">resource = PosixPath('/private/tmp/overseer-fpr5-resources-before-n97jvr9x/pytest/test_manifest_symlink_is_rejec0/resources')
+tmp_path = PosixPath('/private/tmp/overseer-fpr5-resources-before-n97jvr9x/pytest/test_manifest_symlink_is_rejec0')
+
+    def test_manifest_symlink_is_rejected(resource, tmp_path):
+        original = resource / package.MANIFEST
+        saved = tmp_path / 'manifest.json'
+        original.rename(saved)
+        original.symlink_to(saved)
+&gt;       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/fpr5/test_resource_repairs.py:63: Failed</failure></testcase><testcase classname="tests.fpr5.test_resource_repairs" name="test_unmanifested_special_file_is_rejected" time="0.001"><failure message="Failed: DID NOT RAISE ValueError">resource = PosixPath('/private/tmp/overseer-fpr5-resources-before-n97jvr9x/pytest/test_unmanifested_special_file0/resources')
+
+    def test_unmanifested_special_file_is_rejected(resource):
+        os.mkfifo(resource / 'pipe')
+&gt;       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/fpr5/test_resource_repairs.py:69: Failed</failure></testcase><testcase classname="tests.fpr5.test_resource_repairs" name="test_resource_size_tamper_is_rejected" time="0.001"><failure message="Failed: DID NOT RAISE ValueError">resource = PosixPath('/private/tmp/overseer-fpr5-resources-before-n97jvr9x/pytest/test_resource_size_tamper_is_r0/resources')
+
+    def test_resource_size_tamper_is_rejected(resource):
+        path = resource / package.MANIFEST
+        manifest = json.loads(path.read_text())
+        manifest['files']['cli/ok']['size'] += 1
+        path.write_text(json.dumps(manifest))
+&gt;       with pytest.raises(ValueError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/fpr5/test_resource_repairs.py:78: Failed</failure></testcase><testcase classname="tests.fpr5.test_resource_repairs" name="test_provisioned_runtime_and_actual_packaged_entrypoints" time="1.856"><failure message="AttributeError: module 'tools.ci.source_package' has no attribute 'provision_runtime'">tmp_path = PosixPath('/private/tmp/overseer-fpr5-resources-before-n97jvr9x/pytest/test_provisioned_runtime_and_a0')
+
+    def test_provisioned_runtime_and_actual_packaged_entrypoints(tmp_path):
+        archive = tmp_path / 'source.tar.gz'
+        package.build(KIT, archive)
+        root = tmp_path / 'resources'
+        package.unpack(archive, root)
+&gt;       report = package.provision_runtime(root)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'tools.ci.source_package' has no attribute 'provision_runtime'
+
+tests/fpr5/test_resource_repairs.py:87: AttributeError</failure></testcase><testcase classname="tests.fpr5.test_resource_repairs" name="test_existing_unapproved_venv_is_not_enrolled" time="0.001"><failure message="AttributeError: module 'tools.ci.source_package' has no attribute 'provision_runtime'">resource = PosixPath('/private/tmp/overseer-fpr5-resources-before-n97jvr9x/pytest/test_existing_unapproved_venv_0/resources')
+
+    def test_existing_unapproved_venv_is_not_enrolled(resource):
+        (resource / '.venv').mkdir()
+        (resource / '.venv/.env').write_text('FAKE_TOKEN=fixture\n')
+        with pytest.raises(ValueError):
+&gt;           package.provision_runtime(resource)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'tools.ci.source_package' has no attribute 'provision_runtime'
+
+tests/fpr5/test_resource_repairs.py:123: AttributeError</failure></testcase></testsuite></testsuites>

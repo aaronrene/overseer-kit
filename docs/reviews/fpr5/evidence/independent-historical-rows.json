@@ -1,0 +1,1674 @@
+[
+  {
+    "historical_node": "tests.data_integrity.test_atomic_writes::test_no_half_written_file_on_failure",
+    "category": "missing_path_or_fixture",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-foundation-fpr1:51dfc59e96b36205749158f547dbd84bc93592753b4737a7e40a2014b4802777",
+      "combined-final-foundation-v1:4a54e8494d8851761fa7be47a44c350cda057ac1d2435b9318ed524997faee1e",
+      "combined-final-foundation-v1:6413349cb488beb7a2c4abd9b62fbdd32c4f9030ac8cc936c61a8f25abda70c8",
+      "combined-final-surfaces:190d346387dbf4b6083b1f74d7c5f159181baefb24a278544012ede33d9336b2"
+    ],
+    "successor_nodes": [
+      "tests/fpr1/test_migration.py::test_partial_replacement_keeps_old_config_and_resumes",
+      "tests/fpr3/test_commands.py::test_engine_write_rechecks_context_and_file_cas",
+      "tests/v1/test_integrity.py::test_atomic_failure_preserves_old_bytes_and_removes_temp"
+    ],
+    "contract_reason": "Generic force-promotion/overwrite is refused. Living docs and consumer-modified assets are preserved or require explicit resolution; schema migration uses reviewed digest plans. Missing historical fixture files are replaced by real initialized fixtures."
+  },
+  {
+    "historical_node": "tests.data_integrity.test_hosted_dashboard_integrity::test_twin_fetch_identical_sha256",
+    "category": "sandbox_socket_denial",
+    "original_selected": true,
+    "verified_case_ids": [
+      "combined-final-retained:2a95f165130344617fb490f401ad708d130c2c0f8fc8766e65c16141682e3d39",
+      "combined-final-retained:86dd161a566dbd2c4c227cd02851904f5b8cfd59a8e598863f7799b05c9c55ae",
+      "combined-final-retained:e047ae071753ccb57d6122d5c5d1fd3516abeab3ddbacdf09a97e9834a7aeddd",
+      "combined-final-surfaces:e71d0518036874b6a7d04eba57771cfe7b553765d17196adb4ff97071825e10e"
+    ],
+    "successor_nodes": [
+      "tests/data_integrity/test_hosted_dashboard_integrity.py::test_twin_fetch_identical_sha256",
+      "tests/fpr3/test_surfaces.py::test_hosted_allowlists_canonical_display_and_write_refusal",
+      "tests/integration/test_hosted_dashboard_integration.py::test_org_summary_and_docs_envelope",
+      "tests/stress/test_hosted_dashboard_stress.py::test_bounded_concurrent_gets"
+    ],
+    "contract_reason": "Remote documents are display-only; every repository route now enforces its configured allowlist. Real loopback sockets with fake upstreams are required."
+  },
+  {
+    "historical_node": "tests.data_integrity.test_hosted_dashboard_integrity::test_cache_refresh_and_no_secrets_in_result",
+    "category": "sandbox_socket_denial",
+    "original_selected": true,
+    "verified_case_ids": [
+      "combined-final-retained:17a5397925c3bd46b4496965dae1e1364f1fdb1a4184109dfa283bb4ee1c56ab",
+      "combined-final-retained:86dd161a566dbd2c4c227cd02851904f5b8cfd59a8e598863f7799b05c9c55ae",
+      "combined-final-retained:e047ae071753ccb57d6122d5c5d1fd3516abeab3ddbacdf09a97e9834a7aeddd",
+      "combined-final-surfaces:e71d0518036874b6a7d04eba57771cfe7b553765d17196adb4ff97071825e10e"
+    ],
+    "successor_nodes": [
+      "tests/data_integrity/test_hosted_dashboard_integrity.py::test_cache_refresh_and_no_secrets_in_result",
+      "tests/fpr3/test_surfaces.py::test_hosted_allowlists_canonical_display_and_write_refusal",
+      "tests/integration/test_hosted_dashboard_integration.py::test_org_summary_and_docs_envelope",
+      "tests/stress/test_hosted_dashboard_stress.py::test_bounded_concurrent_gets"
+    ],
+    "contract_reason": "Remote documents are display-only; every repository route now enforces its configured allowlist. Real loopback sockets with fake upstreams are required."
+  },
+  {
+    "historical_node": "tests.data_integrity.test_migrate_idempotency::test_promote_then_hand_edit_flips_integrity",
+    "category": "other_product_or_test_failure",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:8a6208d3bc01095c7f58d85d765f25e7b42be9489ff54ded5564ae7afb0a41e0",
+      "combined-final-surfaces:19f8dbe61d97b70fd71d3d5d8c32b9e31729efa3c7d648637ae0dfacc3e02620"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_engines.py::test_full_footprint_preserves_settings_origins_and_next",
+      "tests/fpr4/test_disposition_contracts.py::test_sync_force_cannot_overwrite_consumer_edits"
+    ],
+    "contract_reason": "Generic force-promotion/overwrite is refused. Living docs and consumer-modified assets are preserved or require explicit resolution; schema migration uses reviewed digest plans. Missing historical fixture files are replaced by real initialized fixtures."
+  },
+  {
+    "historical_node": "tests.data_integrity.test_q1_app_integrity::test_governance_sync_dry_run_idempotent",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:0c11b6f8da5808bec620707cd2b9875e0e8fe93aa514d4557b87b578fc5d093d",
+      "combined-final-latency:3f8a696db9be33aad292e0084f4667f9e5ba7a3a437975ea62b8367c7658cf70",
+      "combined-final-surfaces:2d7054c922ec7d0929a2b017ddaa4a2a7f41869a0f49d3d904b1b720493cf1f4"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_loopback_real_service_auth_csrf_origin_next_and_paths",
+      "tests/fpr4/test_disposition_contracts.py::test_app_concurrent_reads_forbidden_routes_size_bounds_and_no_secret_files",
+      "tests/fpr4/test_disposition_contracts.py::test_bound_app_preserves_original_document_and_static_latency_bounds"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.data_integrity.test_q1_app_integrity::test_session_credential_not_written_to_repo",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:0c11b6f8da5808bec620707cd2b9875e0e8fe93aa514d4557b87b578fc5d093d",
+      "combined-final-latency:3f8a696db9be33aad292e0084f4667f9e5ba7a3a437975ea62b8367c7658cf70",
+      "combined-final-surfaces:2d7054c922ec7d0929a2b017ddaa4a2a7f41869a0f49d3d904b1b720493cf1f4"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_loopback_real_service_auth_csrf_origin_next_and_paths",
+      "tests/fpr4/test_disposition_contracts.py::test_app_concurrent_reads_forbidden_routes_size_bounds_and_no_secret_files",
+      "tests/fpr4/test_disposition_contracts.py::test_bound_app_preserves_original_document_and_static_latency_bounds"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.data_integrity.test_q2_ok_cli_integrity::test_ok_status_json_is_idempotent",
+    "category": "launcher_missing_cryptography",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-foundation-fpr1:0c0e4a7248985b812004ad0d336653906c2aed6df67021c7c1074caa93edcc0b",
+      "combined-final-foundation-v1:3bbde1c3524a2af4d144d221b9a6edd74ac239f986f472e8673dfcc0f56a6027",
+      "combined-final-foundation-v1:847f556176e43871848cf7dac5581a6726b5a39baca455c8afafd06b638fb30e",
+      "combined-final-latency:c158d76019b5da809d5d2473e3f270e3185ce388db5cd641ca7a2cea22eb1296"
+    ],
+    "successor_nodes": [
+      "tests/fpr1/test_dispatch.py::test_all_launchers_share_dispatcher_and_global_options",
+      "tests/fpr4/test_disposition_contracts.py::test_actual_shims_preserve_json_alias_and_literal_arguments",
+      "tests/v1/test_isolation.py::test_source_shim_copied_without_runtime_does_not_fall_back"
+    ],
+    "contract_reason": "CLI context injection is engine-only. Explicit physical bindings and conventional venv replace ambient engine selection; cryptography is declared and locally pinned. cli/overseer is now a quiet compatibility spelling; the old warning-per-process requirement is explicitly superseded, while JSON and literal argument forwarding remain tested."
+  },
+  {
+    "historical_node": "tests.data_integrity.test_q3_desktop_integrity::test_launch_stop_twice_yields_same_health_shape",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:d5436b42ae0a23dcde1983be2bd627cad05ec19d462efc0373fe3c0ef7bb0060",
+      "combined-final-package:6c576be3614128e87a7dfca88d112b343ca6cd1c6e5394d281779d85e47eeb28",
+      "combined-final-surfaces:1a6c02ce50f01c781ee10d1965d9dd2a3872ec4eba5243d8cc2f5e087327bcf5",
+      "combined-final-surfaces:58e5903b47f2ba069ae408c7176c5360aa03ec063ab61ba4bae79e839af86f9a"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_package.py::test_actual_package_deterministic_manifest_modes_and_resource_bundle",
+      "tests/fpr3/test_surfaces.py::test_desktop_real_launcher_identity_and_ambient_refusal",
+      "tests/fpr4/test_bundle_repeatability.py::test_repeated_resource_bundle_reserves_distinct_private_archives",
+      "tests/fpr4/test_disposition_contracts.py::test_desktop_repeated_bound_launch_stop_identity_and_no_secret_files"
+    ],
+    "contract_reason": "Ambient root discovery and old signed-download/workflow assertions are replaced by explicit bound roots, source resources and manual-only CI. Native compile evidence is separately required; publication/signing is outside FPR-3."
+  },
+  {
+    "historical_node": "tests.e2e.test_cost_awareness_e2e::test_e2e_thinking_freeze_slice_paid_high",
+    "category": "other_product_or_test_failure",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-retained:6f78fe1625ddcb9673b05e03365f693b38f33955e87d3a6a3d09311aaa97266b",
+      "combined-final-retained:e7bc6138e521d69e6249efb673a2257b1ecf8320791885de054461bdc8e41d73",
+      "combined-final-retained:fa233e68661d9b2a34c4e18c87d269f88de0ec6ed76561ae083f66a420ca6cf5",
+      "combined-final-surfaces:7c31249f48741a05bc8cab85f4621bf62c0a633ec7d2fee1476671028fc14bc7"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_commands.py::test_status_route_full_assets_read_only",
+      "tests/unit/test_cost_awareness_unit.py::test_derivation_is_pure_no_io",
+      "tests/unit/test_model_routing_unit.py::test_defaults_fallthrough",
+      "tests/unit/test_model_routing_unit.py::test_selector_wildcard_and_first_match"
+    ],
+    "contract_reason": "Owner-selected labels remain policy values; fixture assumptions about automatic thinking/deep-reasoning model upgrades do not change owner selection. FPR-4 retains owner-selected model labels; it does not restore automatic escalation to deep-reasoning from free-text thinking labels."
+  },
+  {
+    "historical_node": "tests.e2e.test_hosted_dashboard_e2e::test_authenticated_flow_org_docs_gates",
+    "category": "sandbox_socket_denial",
+    "original_selected": true,
+    "verified_case_ids": [
+      "combined-final-retained:86dd161a566dbd2c4c227cd02851904f5b8cfd59a8e598863f7799b05c9c55ae",
+      "combined-final-retained:c1519005e33b7437bccf732d7a3cc2248626085bf489cc82df8cc6da5099c6cf",
+      "combined-final-retained:e047ae071753ccb57d6122d5c5d1fd3516abeab3ddbacdf09a97e9834a7aeddd",
+      "combined-final-surfaces:e71d0518036874b6a7d04eba57771cfe7b553765d17196adb4ff97071825e10e"
+    ],
+    "successor_nodes": [
+      "tests/e2e/test_hosted_dashboard_e2e.py::test_authenticated_flow_org_docs_gates",
+      "tests/fpr3/test_surfaces.py::test_hosted_allowlists_canonical_display_and_write_refusal",
+      "tests/integration/test_hosted_dashboard_integration.py::test_org_summary_and_docs_envelope",
+      "tests/stress/test_hosted_dashboard_stress.py::test_bounded_concurrent_gets"
+    ],
+    "contract_reason": "Remote documents are display-only; every repository route now enforces its configured allowlist. Real loopback sockets with fake upstreams are required."
+  },
+  {
+    "historical_node": "tests.e2e.test_hosted_dashboard_e2e::test_cli_preview_sigint_exit_zero_no_vcs_mutation",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:f81864bbfaa126629750e69fcf5027ed1a25dac1b7c7762d383e77ae60ffcb41"
+    ],
+    "successor_nodes": [
+      "tests/fpr4/test_disposition_contracts.py::test_actual_client_cli_sigint_shutdown_is_read_only[hosted-dashboard]"
+    ],
+    "contract_reason": "Current bound hosted CLI startup requires an explicit configured allowlist and allow-network flag. The successor requests static / only and SIGINT; configured upstream is never requested. Real remote projection remains simulated by FixtureUpstream in separate cases."
+  },
+  {
+    "historical_node": "tests.e2e.test_lac_e2e::test_connect_collapses_auth_and_shows_bound_path_and_playbook",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:0c11b6f8da5808bec620707cd2b9875e0e8fe93aa514d4557b87b578fc5d093d",
+      "combined-final-latency:f243e576977fc2ec8424928e36e83d641cb6323f621d641a6597c8b0c9b33082",
+      "combined-final-surfaces:2d7054c922ec7d0929a2b017ddaa4a2a7f41869a0f49d3d904b1b720493cf1f4"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_loopback_real_service_auth_csrf_origin_next_and_paths",
+      "tests/fpr4/test_disposition_contracts.py::test_app_concurrent_reads_forbidden_routes_size_bounds_and_no_secret_files",
+      "tests/fpr4/test_disposition_contracts.py::test_app_installation_copy_uses_explicit_root_and_current_source_distribution"
+    ],
+    "contract_reason": "FPR-3 categorized this LAC file as source-site only, but the failing node also exercises bound app behavior. The FPR-4 mapping explicitly covers app security/concurrency and current install copy."
+  },
+  {
+    "historical_node": "tests.e2e.test_lac_e2e::test_ok_app_sigint_exit_zero",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:0123dff53f7f9ef38dbf08efd8c514e7c620d275b6480a7429ba500723125cb7"
+    ],
+    "successor_nodes": [
+      "tests/fpr4/test_disposition_contracts.py::test_actual_client_cli_sigint_shutdown_is_read_only[app]"
+    ],
+    "contract_reason": "FPR-3 categorized this LAC file as source-site only, but the failing node also exercises bound app behavior. The FPR-4 mapping explicitly covers app security/concurrency and current install copy."
+  },
+  {
+    "historical_node": "tests.e2e.test_lt_e2e::test_warn_mode_done_without_ledger_status_exit_0",
+    "category": "other_product_or_test_failure",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-retained:437529a13bfc9e82fdd3ebd32596c70816316911c6ad5f11b767b59e343b9be8",
+      "combined-final-surfaces:7c31249f48741a05bc8cab85f4621bf62c0a633ec7d2fee1476671028fc14bc7",
+      "combined-final-surfaces:df822c65e89b18e877485d00783cccfe30d1e716bdd851c430cca3cfaae7906c"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_commands.py::test_ledger_append_verify_show_and_honesty",
+      "tests/fpr3/test_commands.py::test_status_route_full_assets_read_only",
+      "tests/integration/test_isr_integration.py::test_mode_d_warn_missing_exit_0_with_warning"
+    ],
+    "contract_reason": "No automatic second prompt or review chain. Compaction preserves canonical NEXT; explicit lane collection preserves other entries without refreshing them."
+  },
+  {
+    "historical_node": "tests.e2e.test_q1_app_e2e::test_full_operator_flow",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:0c11b6f8da5808bec620707cd2b9875e0e8fe93aa514d4557b87b578fc5d093d",
+      "combined-final-latency:3f8a696db9be33aad292e0084f4667f9e5ba7a3a437975ea62b8367c7658cf70",
+      "combined-final-surfaces:2d7054c922ec7d0929a2b017ddaa4a2a7f41869a0f49d3d904b1b720493cf1f4"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_loopback_real_service_auth_csrf_origin_next_and_paths",
+      "tests/fpr4/test_disposition_contracts.py::test_app_concurrent_reads_forbidden_routes_size_bounds_and_no_secret_files",
+      "tests/fpr4/test_disposition_contracts.py::test_bound_app_preserves_original_document_and_static_latency_bounds"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.e2e.test_q2_ok_cli_e2e::test_ok_shim_fail_closed_remediation_then_status_and_review_dry_run",
+    "category": "launcher_missing_cryptography",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-foundation-fpr1:0c0e4a7248985b812004ad0d336653906c2aed6df67021c7c1074caa93edcc0b",
+      "combined-final-foundation-v1:3bbde1c3524a2af4d144d221b9a6edd74ac239f986f472e8673dfcc0f56a6027",
+      "combined-final-foundation-v1:847f556176e43871848cf7dac5581a6726b5a39baca455c8afafd06b638fb30e",
+      "combined-final-latency:c158d76019b5da809d5d2473e3f270e3185ce388db5cd641ca7a2cea22eb1296"
+    ],
+    "successor_nodes": [
+      "tests/fpr1/test_dispatch.py::test_all_launchers_share_dispatcher_and_global_options",
+      "tests/fpr4/test_disposition_contracts.py::test_actual_shims_preserve_json_alias_and_literal_arguments",
+      "tests/v1/test_isolation.py::test_source_shim_copied_without_runtime_does_not_fall_back"
+    ],
+    "contract_reason": "CLI context injection is engine-only. Explicit physical bindings and conventional venv replace ambient engine selection; cryptography is declared and locally pinned. cli/overseer is now a quiet compatibility spelling; the old warning-per-process requirement is explicitly superseded, while JSON and literal argument forwarding remain tested."
+  },
+  {
+    "historical_node": "tests.e2e.test_q3_desktop_e2e::test_desktop_operator_flow_matches_q1_surface",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:d5436b42ae0a23dcde1983be2bd627cad05ec19d462efc0373fe3c0ef7bb0060",
+      "combined-final-package:6c576be3614128e87a7dfca88d112b343ca6cd1c6e5394d281779d85e47eeb28",
+      "combined-final-surfaces:1a6c02ce50f01c781ee10d1965d9dd2a3872ec4eba5243d8cc2f5e087327bcf5",
+      "combined-final-surfaces:58e5903b47f2ba069ae408c7176c5360aa03ec063ab61ba4bae79e839af86f9a"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_package.py::test_actual_package_deterministic_manifest_modes_and_resource_bundle",
+      "tests/fpr3/test_surfaces.py::test_desktop_real_launcher_identity_and_ambient_refusal",
+      "tests/fpr4/test_bundle_repeatability.py::test_repeated_resource_bundle_reserves_distinct_private_archives",
+      "tests/fpr4/test_disposition_contracts.py::test_desktop_repeated_bound_launch_stop_identity_and_no_secret_files"
+    ],
+    "contract_reason": "Ambient root discovery and old signed-download/workflow assertions are replaced by explicit bound roots, source resources and manual-only CI. Native compile evidence is separately required; publication/signing is outside FPR-3."
+  },
+  {
+    "historical_node": "tests.e2e.test_q4b_ui_e2e::test_overview_structure_status_roadmap_actions",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:3f8a696db9be33aad292e0084f4667f9e5ba7a3a437975ea62b8367c7658cf70",
+      "combined-final-latency:f243e576977fc2ec8424928e36e83d641cb6323f621d641a6597c8b0c9b33082"
+    ],
+    "successor_nodes": [
+      "tests/fpr4/test_disposition_contracts.py::test_app_installation_copy_uses_explicit_root_and_current_source_distribution",
+      "tests/fpr4/test_disposition_contracts.py::test_bound_app_preserves_original_document_and_static_latency_bounds"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.e2e.test_q4b_ui_e2e::test_ok_app_sigint_exit_zero",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:0123dff53f7f9ef38dbf08efd8c514e7c620d275b6480a7429ba500723125cb7"
+    ],
+    "successor_nodes": [
+      "tests/fpr4/test_disposition_contracts.py::test_actual_client_cli_sigint_shutdown_is_read_only[app]"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.e2e.test_workspace_cycle::test_s1_s2_stale_then_refresh",
+    "category": "launcher_missing_cryptography",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:1774573757e9e0b9660b293e19c669018691d16adf34c3e7d2f1505bd0947d43",
+      "combined-final-surfaces:67b7ccfc074ed14934933ed387cd748a0cf60d7ba7d0d013c5dd11c9ac6f7ec7",
+      "combined-final-surfaces:f9289ab65134b454e692f394e86767d6139fc1dbf187db2e089244b4a30df31c"
+    ],
+    "successor_nodes": [
+      "tests/fpr2/test_lanes.py::test_two_repositories_lane_ownership_and_no_fallback",
+      "tests/fpr3/test_surfaces.py::test_workspace_canonical_members_stale_pin_and_no_ambient_scan",
+      "tests/fpr4/test_disposition_contracts.py::test_workspace_optional_required_members_and_identity_collision"
+    ],
+    "contract_reason": "Ambient member discovery and HANDOVER relay markers become explicit roots and canonical whole-file pins."
+  },
+  {
+    "historical_node": "tests.e2e.test_workspace_cycle::test_s3_archived_not_selected",
+    "category": "launcher_missing_cryptography",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:1774573757e9e0b9660b293e19c669018691d16adf34c3e7d2f1505bd0947d43",
+      "combined-final-surfaces:67b7ccfc074ed14934933ed387cd748a0cf60d7ba7d0d013c5dd11c9ac6f7ec7",
+      "combined-final-surfaces:f9289ab65134b454e692f394e86767d6139fc1dbf187db2e089244b4a30df31c"
+    ],
+    "successor_nodes": [
+      "tests/fpr2/test_lanes.py::test_two_repositories_lane_ownership_and_no_fallback",
+      "tests/fpr3/test_surfaces.py::test_workspace_canonical_members_stale_pin_and_no_ambient_scan",
+      "tests/fpr4/test_disposition_contracts.py::test_workspace_optional_required_members_and_identity_collision"
+    ],
+    "contract_reason": "Ambient member discovery and HANDOVER relay markers become explicit roots and canonical whole-file pins. Successor explicitly inserts a historical NEXT SESSION block into HANDOVER and proves that canonical member results do not ingest it."
+  },
+  {
+    "historical_node": "tests.e2e.test_workspace_cycle::test_s4_s12_distinct_basenames_and_doctor",
+    "category": "other_product_or_test_failure",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:1774573757e9e0b9660b293e19c669018691d16adf34c3e7d2f1505bd0947d43",
+      "combined-final-surfaces:67b7ccfc074ed14934933ed387cd748a0cf60d7ba7d0d013c5dd11c9ac6f7ec7",
+      "combined-final-surfaces:f9289ab65134b454e692f394e86767d6139fc1dbf187db2e089244b4a30df31c"
+    ],
+    "successor_nodes": [
+      "tests/fpr2/test_lanes.py::test_two_repositories_lane_ownership_and_no_fallback",
+      "tests/fpr3/test_surfaces.py::test_workspace_canonical_members_stale_pin_and_no_ambient_scan",
+      "tests/fpr4/test_disposition_contracts.py::test_workspace_optional_required_members_and_identity_collision"
+    ],
+    "contract_reason": "Ambient member discovery and HANDOVER relay markers become explicit roots and canonical whole-file pins. Current doctor returns member errors and exit 35 for strict naming rather than the historical findings array and exit 0."
+  },
+  {
+    "historical_node": "tests.e2e.test_workspace_cycle::test_s6_lane_tip_non_primary",
+    "category": "launcher_missing_cryptography",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:1774573757e9e0b9660b293e19c669018691d16adf34c3e7d2f1505bd0947d43",
+      "combined-final-surfaces:67b7ccfc074ed14934933ed387cd748a0cf60d7ba7d0d013c5dd11c9ac6f7ec7",
+      "combined-final-surfaces:f9289ab65134b454e692f394e86767d6139fc1dbf187db2e089244b4a30df31c"
+    ],
+    "successor_nodes": [
+      "tests/fpr2/test_lanes.py::test_two_repositories_lane_ownership_and_no_fallback",
+      "tests/fpr3/test_surfaces.py::test_workspace_canonical_members_stale_pin_and_no_ambient_scan",
+      "tests/fpr4/test_disposition_contracts.py::test_workspace_optional_required_members_and_identity_collision"
+    ],
+    "contract_reason": "Ambient member discovery and HANDOVER relay markers become explicit roots and canonical whole-file pins."
+  },
+  {
+    "historical_node": "tests.e2e.test_workspace_cycle::test_s7_optional_brain_absent",
+    "category": "other_product_or_test_failure",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:1774573757e9e0b9660b293e19c669018691d16adf34c3e7d2f1505bd0947d43",
+      "combined-final-surfaces:67b7ccfc074ed14934933ed387cd748a0cf60d7ba7d0d013c5dd11c9ac6f7ec7",
+      "combined-final-surfaces:f9289ab65134b454e692f394e86767d6139fc1dbf187db2e089244b4a30df31c"
+    ],
+    "successor_nodes": [
+      "tests/fpr2/test_lanes.py::test_two_repositories_lane_ownership_and_no_fallback",
+      "tests/fpr3/test_surfaces.py::test_workspace_canonical_members_stale_pin_and_no_ambient_scan",
+      "tests/fpr4/test_disposition_contracts.py::test_workspace_optional_required_members_and_identity_collision"
+    ],
+    "contract_reason": "Ambient member discovery and HANDOVER relay markers become explicit roots and canonical whole-file pins."
+  },
+  {
+    "historical_node": "tests.e2e.test_workspace_cycle::test_s8_external_two_repo",
+    "category": "launcher_missing_cryptography",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:1774573757e9e0b9660b293e19c669018691d16adf34c3e7d2f1505bd0947d43",
+      "combined-final-surfaces:67b7ccfc074ed14934933ed387cd748a0cf60d7ba7d0d013c5dd11c9ac6f7ec7",
+      "combined-final-surfaces:f9289ab65134b454e692f394e86767d6139fc1dbf187db2e089244b4a30df31c"
+    ],
+    "successor_nodes": [
+      "tests/fpr2/test_lanes.py::test_two_repositories_lane_ownership_and_no_fallback",
+      "tests/fpr3/test_surfaces.py::test_workspace_canonical_members_stale_pin_and_no_ambient_scan",
+      "tests/fpr4/test_disposition_contracts.py::test_workspace_optional_required_members_and_identity_collision"
+    ],
+    "contract_reason": "Ambient member discovery and HANDOVER relay markers become explicit roots and canonical whole-file pins."
+  },
+  {
+    "historical_node": "tests.e2e.test_workspace_cycle::test_s10_s11_product_relay",
+    "category": "launcher_missing_cryptography",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:1774573757e9e0b9660b293e19c669018691d16adf34c3e7d2f1505bd0947d43",
+      "combined-final-surfaces:67b7ccfc074ed14934933ed387cd748a0cf60d7ba7d0d013c5dd11c9ac6f7ec7",
+      "combined-final-surfaces:f9289ab65134b454e692f394e86767d6139fc1dbf187db2e089244b4a30df31c"
+    ],
+    "successor_nodes": [
+      "tests/fpr2/test_lanes.py::test_two_repositories_lane_ownership_and_no_fallback",
+      "tests/fpr3/test_surfaces.py::test_workspace_canonical_members_stale_pin_and_no_ambient_scan",
+      "tests/fpr4/test_disposition_contracts.py::test_workspace_optional_required_members_and_identity_collision"
+    ],
+    "contract_reason": "Ambient member discovery and HANDOVER relay markers become explicit roots and canonical whole-file pins."
+  },
+  {
+    "historical_node": "tests.e2e.test_workspace_cycle::test_e2e_init_prefixed_defaults",
+    "category": "launcher_missing_cryptography",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:1774573757e9e0b9660b293e19c669018691d16adf34c3e7d2f1505bd0947d43",
+      "combined-final-surfaces:67b7ccfc074ed14934933ed387cd748a0cf60d7ba7d0d013c5dd11c9ac6f7ec7",
+      "combined-final-surfaces:f9289ab65134b454e692f394e86767d6139fc1dbf187db2e089244b4a30df31c"
+    ],
+    "successor_nodes": [
+      "tests/fpr2/test_lanes.py::test_two_repositories_lane_ownership_and_no_fallback",
+      "tests/fpr3/test_surfaces.py::test_workspace_canonical_members_stale_pin_and_no_ambient_scan",
+      "tests/fpr4/test_disposition_contracts.py::test_workspace_optional_required_members_and_identity_collision"
+    ],
+    "contract_reason": "Ambient member discovery and HANDOVER relay markers become explicit roots and canonical whole-file pins. Automatic prefixed default filenames were replaced by UUID-bound configured doc paths; full legacy custom names/paths survive migration. This does not claim the old filename assertion passed."
+  },
+  {
+    "historical_node": "tests.integration.test_cli_init_sync_status::test_init_full_footprint_per_regime[config-muse-only.yaml-<lambda>]",
+    "category": "other_product_or_test_failure",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-native-other:10e3cb869a5021b2ca58c7332ed9e11c71e0b10c6d554cfe76941cff04cffe8c",
+      "combined-final-native-other:e44b726f3dc9e3f3f9ea2304f2bee8307faf62ea427d8c3f2cedd42fba8f43da"
+    ],
+    "successor_nodes": [
+      "tests/muse/test_product.py::test_fresh_mirror_mode_uses_explicit_native_selection",
+      "tests/muse/test_surfaces.py::test_native_product_status_review_hygiene_and_local_commit"
+    ],
+    "contract_reason": "CLI context injection is engine-only. Explicit physical bindings and conventional venv replace ambient engine selection; cryptography is declared and locally pinned. Native pinned Muse fixtures replace fake-Muse/Git-revision assumptions; Muse-only uses no Git initialization."
+  },
+  {
+    "historical_node": "tests.integration.test_cli_review_freeze::test_review_freeze_per_regime[config-muse-only.yaml-<lambda>]",
+    "category": "other_product_or_test_failure",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-native-other:10e3cb869a5021b2ca58c7332ed9e11c71e0b10c6d554cfe76941cff04cffe8c",
+      "combined-final-native-other:e44b726f3dc9e3f3f9ea2304f2bee8307faf62ea427d8c3f2cedd42fba8f43da"
+    ],
+    "successor_nodes": [
+      "tests/muse/test_product.py::test_fresh_mirror_mode_uses_explicit_native_selection",
+      "tests/muse/test_surfaces.py::test_native_product_status_review_hygiene_and_local_commit"
+    ],
+    "contract_reason": "Mechanical local evidence is not independent review. API use requires explicit opt-in; test injection remains at provider/engine seams and every production call has a captured context. Native pinned Muse fixtures replace fake-Muse/Git-revision assumptions; Muse-only uses no Git initialization."
+  },
+  {
+    "historical_node": "tests.integration.test_cli_workspace::test_workspace_status_json_basenames",
+    "category": "launcher_missing_cryptography",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:1774573757e9e0b9660b293e19c669018691d16adf34c3e7d2f1505bd0947d43",
+      "combined-final-surfaces:67b7ccfc074ed14934933ed387cd748a0cf60d7ba7d0d013c5dd11c9ac6f7ec7",
+      "combined-final-surfaces:f9289ab65134b454e692f394e86767d6139fc1dbf187db2e089244b4a30df31c"
+    ],
+    "successor_nodes": [
+      "tests/fpr2/test_lanes.py::test_two_repositories_lane_ownership_and_no_fallback",
+      "tests/fpr3/test_surfaces.py::test_workspace_canonical_members_stale_pin_and_no_ambient_scan",
+      "tests/fpr4/test_disposition_contracts.py::test_workspace_optional_required_members_and_identity_collision"
+    ],
+    "contract_reason": "Ambient member discovery and HANDOVER relay markers become explicit roots and canonical whole-file pins."
+  },
+  {
+    "historical_node": "tests.integration.test_cli_workspace::test_check_next_exit_codes",
+    "category": "launcher_missing_cryptography",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:1774573757e9e0b9660b293e19c669018691d16adf34c3e7d2f1505bd0947d43",
+      "combined-final-surfaces:67b7ccfc074ed14934933ed387cd748a0cf60d7ba7d0d013c5dd11c9ac6f7ec7",
+      "combined-final-surfaces:f9289ab65134b454e692f394e86767d6139fc1dbf187db2e089244b4a30df31c"
+    ],
+    "successor_nodes": [
+      "tests/fpr2/test_lanes.py::test_two_repositories_lane_ownership_and_no_fallback",
+      "tests/fpr3/test_surfaces.py::test_workspace_canonical_members_stale_pin_and_no_ambient_scan",
+      "tests/fpr4/test_disposition_contracts.py::test_workspace_optional_required_members_and_identity_collision"
+    ],
+    "contract_reason": "Ambient member discovery and HANDOVER relay markers become explicit roots and canonical whole-file pins."
+  },
+  {
+    "historical_node": "tests.integration.test_cli_workspace::test_status_workspace_does_not_imply_ok_on_green_single_repo",
+    "category": "launcher_missing_cryptography",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:1774573757e9e0b9660b293e19c669018691d16adf34c3e7d2f1505bd0947d43",
+      "combined-final-surfaces:67b7ccfc074ed14934933ed387cd748a0cf60d7ba7d0d013c5dd11c9ac6f7ec7",
+      "combined-final-surfaces:f9289ab65134b454e692f394e86767d6139fc1dbf187db2e089244b4a30df31c"
+    ],
+    "successor_nodes": [
+      "tests/fpr2/test_lanes.py::test_two_repositories_lane_ownership_and_no_fallback",
+      "tests/fpr3/test_surfaces.py::test_workspace_canonical_members_stale_pin_and_no_ambient_scan",
+      "tests/fpr4/test_disposition_contracts.py::test_workspace_optional_required_members_and_identity_collision"
+    ],
+    "contract_reason": "Ambient member discovery and HANDOVER relay markers become explicit roots and canonical whole-file pins."
+  },
+  {
+    "historical_node": "tests.integration.test_cli_workspace::test_doctor_board_name_violation",
+    "category": "launcher_missing_cryptography",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:1774573757e9e0b9660b293e19c669018691d16adf34c3e7d2f1505bd0947d43",
+      "combined-final-surfaces:67b7ccfc074ed14934933ed387cd748a0cf60d7ba7d0d013c5dd11c9ac6f7ec7",
+      "combined-final-surfaces:f9289ab65134b454e692f394e86767d6139fc1dbf187db2e089244b4a30df31c"
+    ],
+    "successor_nodes": [
+      "tests/fpr2/test_lanes.py::test_two_repositories_lane_ownership_and_no_fallback",
+      "tests/fpr3/test_surfaces.py::test_workspace_canonical_members_stale_pin_and_no_ambient_scan",
+      "tests/fpr4/test_disposition_contracts.py::test_workspace_optional_required_members_and_identity_collision"
+    ],
+    "contract_reason": "Ambient member discovery and HANDOVER relay markers become explicit roots and canonical whole-file pins. Current doctor returns member errors and exit 35 for strict naming rather than the historical findings array and exit 0."
+  },
+  {
+    "historical_node": "tests.integration.test_hosted_dashboard_integration::test_health_body_unauthenticated",
+    "category": "sandbox_socket_denial",
+    "original_selected": true,
+    "verified_case_ids": [
+      "combined-final-retained:6df05e39c572d41ba2c8d079140f001b5e89131d0cb9e5031ba024741222dd08",
+      "combined-final-retained:86dd161a566dbd2c4c227cd02851904f5b8cfd59a8e598863f7799b05c9c55ae",
+      "combined-final-retained:e047ae071753ccb57d6122d5c5d1fd3516abeab3ddbacdf09a97e9834a7aeddd",
+      "combined-final-surfaces:e71d0518036874b6a7d04eba57771cfe7b553765d17196adb4ff97071825e10e"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_hosted_allowlists_canonical_display_and_write_refusal",
+      "tests/integration/test_hosted_dashboard_integration.py::test_health_body_unauthenticated",
+      "tests/integration/test_hosted_dashboard_integration.py::test_org_summary_and_docs_envelope",
+      "tests/stress/test_hosted_dashboard_stress.py::test_bounded_concurrent_gets"
+    ],
+    "contract_reason": "Remote documents are display-only; every repository route now enforces its configured allowlist. Real loopback sockets with fake upstreams are required."
+  },
+  {
+    "historical_node": "tests.integration.test_hosted_dashboard_integration::test_org_summary_and_docs_envelope",
+    "category": "sandbox_socket_denial",
+    "original_selected": true,
+    "verified_case_ids": [
+      "combined-final-retained:86dd161a566dbd2c4c227cd02851904f5b8cfd59a8e598863f7799b05c9c55ae",
+      "combined-final-retained:e047ae071753ccb57d6122d5c5d1fd3516abeab3ddbacdf09a97e9834a7aeddd",
+      "combined-final-surfaces:e71d0518036874b6a7d04eba57771cfe7b553765d17196adb4ff97071825e10e"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_hosted_allowlists_canonical_display_and_write_refusal",
+      "tests/integration/test_hosted_dashboard_integration.py::test_org_summary_and_docs_envelope",
+      "tests/stress/test_hosted_dashboard_stress.py::test_bounded_concurrent_gets"
+    ],
+    "contract_reason": "Remote documents are display-only; every repository route now enforces its configured allowlist. Real loopback sockets with fake upstreams are required."
+  },
+  {
+    "historical_node": "tests.integration.test_hosted_dashboard_integration::test_missing_doc_not_found",
+    "category": "sandbox_socket_denial",
+    "original_selected": true,
+    "verified_case_ids": [
+      "combined-final-retained:85049cfec8e243dbbb3a0b870f478220af84665c25ffaa9e713711772b311493",
+      "combined-final-retained:86dd161a566dbd2c4c227cd02851904f5b8cfd59a8e598863f7799b05c9c55ae",
+      "combined-final-retained:e047ae071753ccb57d6122d5c5d1fd3516abeab3ddbacdf09a97e9834a7aeddd",
+      "combined-final-surfaces:e71d0518036874b6a7d04eba57771cfe7b553765d17196adb4ff97071825e10e"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_hosted_allowlists_canonical_display_and_write_refusal",
+      "tests/integration/test_hosted_dashboard_integration.py::test_missing_doc_not_found",
+      "tests/integration/test_hosted_dashboard_integration.py::test_org_summary_and_docs_envelope",
+      "tests/stress/test_hosted_dashboard_stress.py::test_bounded_concurrent_gets"
+    ],
+    "contract_reason": "Remote documents are display-only; every repository route now enforces its configured allowlist. Real loopback sockets with fake upstreams are required."
+  },
+  {
+    "historical_node": "tests.integration.test_hosted_dashboard_integration::test_write_scope_route_refuse",
+    "category": "sandbox_socket_denial",
+    "original_selected": true,
+    "verified_case_ids": [
+      "combined-final-retained:2a8fdc7d632680ad66b4c0bb388d35efb6d6a41f5eb50b9c39b6f1f8fef60ac2",
+      "combined-final-retained:86dd161a566dbd2c4c227cd02851904f5b8cfd59a8e598863f7799b05c9c55ae",
+      "combined-final-retained:e047ae071753ccb57d6122d5c5d1fd3516abeab3ddbacdf09a97e9834a7aeddd",
+      "combined-final-surfaces:e71d0518036874b6a7d04eba57771cfe7b553765d17196adb4ff97071825e10e"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_hosted_allowlists_canonical_display_and_write_refusal",
+      "tests/integration/test_hosted_dashboard_integration.py::test_org_summary_and_docs_envelope",
+      "tests/integration/test_hosted_dashboard_integration.py::test_write_scope_route_refuse",
+      "tests/stress/test_hosted_dashboard_stress.py::test_bounded_concurrent_gets"
+    ],
+    "contract_reason": "Remote documents are display-only; every repository route now enforces its configured allowlist. Real loopback sockets with fake upstreams are required."
+  },
+  {
+    "historical_node": "tests.integration.test_hosted_dashboard_integration::test_cors_deny_non_allowlisted_origin",
+    "category": "sandbox_socket_denial",
+    "original_selected": true,
+    "verified_case_ids": [
+      "combined-final-retained:4909a45b62dd4010e54a56af2a8512ee82c5ce0f37ddb15ba63c8a38d3a07a2a",
+      "combined-final-retained:86dd161a566dbd2c4c227cd02851904f5b8cfd59a8e598863f7799b05c9c55ae",
+      "combined-final-retained:e047ae071753ccb57d6122d5c5d1fd3516abeab3ddbacdf09a97e9834a7aeddd",
+      "combined-final-surfaces:e71d0518036874b6a7d04eba57771cfe7b553765d17196adb4ff97071825e10e"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_hosted_allowlists_canonical_display_and_write_refusal",
+      "tests/integration/test_hosted_dashboard_integration.py::test_cors_deny_non_allowlisted_origin",
+      "tests/integration/test_hosted_dashboard_integration.py::test_org_summary_and_docs_envelope",
+      "tests/stress/test_hosted_dashboard_stress.py::test_bounded_concurrent_gets"
+    ],
+    "contract_reason": "Remote documents are display-only; every repository route now enforces its configured allowlist. Real loopback sockets with fake upstreams are required."
+  },
+  {
+    "historical_node": "tests.integration.test_hosted_dashboard_integration::test_track_q_paths_not_registered",
+    "category": "sandbox_socket_denial",
+    "original_selected": true,
+    "verified_case_ids": [
+      "combined-final-retained:86dd161a566dbd2c4c227cd02851904f5b8cfd59a8e598863f7799b05c9c55ae",
+      "combined-final-retained:e047ae071753ccb57d6122d5c5d1fd3516abeab3ddbacdf09a97e9834a7aeddd",
+      "combined-final-retained:f62a33f1c4b0175d721b2344298d792b01ff0f95afb99422e1e7cb3ec31d4017",
+      "combined-final-surfaces:e71d0518036874b6a7d04eba57771cfe7b553765d17196adb4ff97071825e10e"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_hosted_allowlists_canonical_display_and_write_refusal",
+      "tests/integration/test_hosted_dashboard_integration.py::test_org_summary_and_docs_envelope",
+      "tests/integration/test_hosted_dashboard_integration.py::test_track_q_paths_not_registered",
+      "tests/stress/test_hosted_dashboard_stress.py::test_bounded_concurrent_gets"
+    ],
+    "contract_reason": "Remote documents are display-only; every repository route now enforces its configured allowlist. Real loopback sockets with fake upstreams are required."
+  },
+  {
+    "historical_node": "tests.integration.test_hosted_dashboard_integration::test_empty_allowlist_zero_repos",
+    "category": "sandbox_socket_denial",
+    "original_selected": true,
+    "verified_case_ids": [
+      "combined-final-retained:246e5237db79044c6686cd52785c01db23fc8945ae421a890bc0b17778b9d832",
+      "combined-final-retained:86dd161a566dbd2c4c227cd02851904f5b8cfd59a8e598863f7799b05c9c55ae",
+      "combined-final-retained:e047ae071753ccb57d6122d5c5d1fd3516abeab3ddbacdf09a97e9834a7aeddd",
+      "combined-final-surfaces:e71d0518036874b6a7d04eba57771cfe7b553765d17196adb4ff97071825e10e"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_hosted_allowlists_canonical_display_and_write_refusal",
+      "tests/integration/test_hosted_dashboard_integration.py::test_empty_allowlist_zero_repos",
+      "tests/integration/test_hosted_dashboard_integration.py::test_org_summary_and_docs_envelope",
+      "tests/stress/test_hosted_dashboard_stress.py::test_bounded_concurrent_gets"
+    ],
+    "contract_reason": "Remote documents are display-only; every repository route now enforces its configured allowlist. Real loopback sockets with fake upstreams are required."
+  },
+  {
+    "historical_node": "tests.integration.test_hosted_dashboard_integration::test_unknown_query_400",
+    "category": "sandbox_socket_denial",
+    "original_selected": true,
+    "verified_case_ids": [
+      "combined-final-retained:700df6ee3cb7428ab4ca88d36874b0463efa327f2a19b2c2bfc26bded335e146",
+      "combined-final-retained:86dd161a566dbd2c4c227cd02851904f5b8cfd59a8e598863f7799b05c9c55ae",
+      "combined-final-retained:e047ae071753ccb57d6122d5c5d1fd3516abeab3ddbacdf09a97e9834a7aeddd",
+      "combined-final-surfaces:e71d0518036874b6a7d04eba57771cfe7b553765d17196adb4ff97071825e10e"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_hosted_allowlists_canonical_display_and_write_refusal",
+      "tests/integration/test_hosted_dashboard_integration.py::test_org_summary_and_docs_envelope",
+      "tests/integration/test_hosted_dashboard_integration.py::test_unknown_query_400",
+      "tests/stress/test_hosted_dashboard_stress.py::test_bounded_concurrent_gets"
+    ],
+    "contract_reason": "Remote documents are display-only; every repository route now enforces its configured allowlist. Real loopback sockets with fake upstreams are required."
+  },
+  {
+    "historical_node": "tests.integration.test_lac_integration::test_api_health_returns_repo_root_with_bearer",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:0c11b6f8da5808bec620707cd2b9875e0e8fe93aa514d4557b87b578fc5d093d",
+      "combined-final-latency:f243e576977fc2ec8424928e36e83d641cb6323f621d641a6597c8b0c9b33082",
+      "combined-final-surfaces:2d7054c922ec7d0929a2b017ddaa4a2a7f41869a0f49d3d904b1b720493cf1f4"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_loopback_real_service_auth_csrf_origin_next_and_paths",
+      "tests/fpr4/test_disposition_contracts.py::test_app_concurrent_reads_forbidden_routes_size_bounds_and_no_secret_files",
+      "tests/fpr4/test_disposition_contracts.py::test_app_installation_copy_uses_explicit_root_and_current_source_distribution"
+    ],
+    "contract_reason": "FPR-3 categorized this LAC file as source-site only, but the failing node also exercises bound app behavior. The FPR-4 mapping explicitly covers app security/concurrency and current install copy."
+  },
+  {
+    "historical_node": "tests.integration.test_lac_integration::test_path_b_static_still_serves",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:0c11b6f8da5808bec620707cd2b9875e0e8fe93aa514d4557b87b578fc5d093d",
+      "combined-final-latency:f243e576977fc2ec8424928e36e83d641cb6323f621d641a6597c8b0c9b33082",
+      "combined-final-surfaces:2d7054c922ec7d0929a2b017ddaa4a2a7f41869a0f49d3d904b1b720493cf1f4"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_loopback_real_service_auth_csrf_origin_next_and_paths",
+      "tests/fpr4/test_disposition_contracts.py::test_app_concurrent_reads_forbidden_routes_size_bounds_and_no_secret_files",
+      "tests/fpr4/test_disposition_contracts.py::test_app_installation_copy_uses_explicit_root_and_current_source_distribution"
+    ],
+    "contract_reason": "FPR-3 categorized this LAC file as source-site only, but the failing node also exercises bound app behavior. The FPR-4 mapping explicitly covers app security/concurrency and current install copy."
+  },
+  {
+    "historical_node": "tests.integration.test_lac_integration::test_unknown_api_still_rejected",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:0c11b6f8da5808bec620707cd2b9875e0e8fe93aa514d4557b87b578fc5d093d",
+      "combined-final-latency:f243e576977fc2ec8424928e36e83d641cb6323f621d641a6597c8b0c9b33082",
+      "combined-final-surfaces:2d7054c922ec7d0929a2b017ddaa4a2a7f41869a0f49d3d904b1b720493cf1f4"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_loopback_real_service_auth_csrf_origin_next_and_paths",
+      "tests/fpr4/test_disposition_contracts.py::test_app_concurrent_reads_forbidden_routes_size_bounds_and_no_secret_files",
+      "tests/fpr4/test_disposition_contracts.py::test_app_installation_copy_uses_explicit_root_and_current_source_distribution"
+    ],
+    "contract_reason": "FPR-3 categorized this LAC file as source-site only, but the failing node also exercises bound app behavior. The FPR-4 mapping explicitly covers app security/concurrency and current install copy."
+  },
+  {
+    "historical_node": "tests.integration.test_q1_app_integration::test_static_ui_served",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:3f8a696db9be33aad292e0084f4667f9e5ba7a3a437975ea62b8367c7658cf70",
+      "combined-final-latency:f243e576977fc2ec8424928e36e83d641cb6323f621d641a6597c8b0c9b33082"
+    ],
+    "successor_nodes": [
+      "tests/fpr4/test_disposition_contracts.py::test_app_installation_copy_uses_explicit_root_and_current_source_distribution",
+      "tests/fpr4/test_disposition_contracts.py::test_bound_app_preserves_original_document_and_static_latency_bounds"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.integration.test_q1_app_integration::test_status_exit_code_matches_cli",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:0c11b6f8da5808bec620707cd2b9875e0e8fe93aa514d4557b87b578fc5d093d",
+      "combined-final-latency:3f8a696db9be33aad292e0084f4667f9e5ba7a3a437975ea62b8367c7658cf70",
+      "combined-final-surfaces:2d7054c922ec7d0929a2b017ddaa4a2a7f41869a0f49d3d904b1b720493cf1f4"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_loopback_real_service_auth_csrf_origin_next_and_paths",
+      "tests/fpr4/test_disposition_contracts.py::test_app_concurrent_reads_forbidden_routes_size_bounds_and_no_secret_files",
+      "tests/fpr4/test_disposition_contracts.py::test_bound_app_preserves_original_document_and_static_latency_bounds"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.integration.test_q1_app_integration::test_docs_endpoints_return_text",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:0c11b6f8da5808bec620707cd2b9875e0e8fe93aa514d4557b87b578fc5d093d",
+      "combined-final-latency:3f8a696db9be33aad292e0084f4667f9e5ba7a3a437975ea62b8367c7658cf70",
+      "combined-final-surfaces:2d7054c922ec7d0929a2b017ddaa4a2a7f41869a0f49d3d904b1b720493cf1f4"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_loopback_real_service_auth_csrf_origin_next_and_paths",
+      "tests/fpr4/test_disposition_contracts.py::test_app_concurrent_reads_forbidden_routes_size_bounds_and_no_secret_files",
+      "tests/fpr4/test_disposition_contracts.py::test_bound_app_preserves_original_document_and_static_latency_bounds"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.integration.test_q1_app_integration::test_gates_slice_matches_status",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:0c11b6f8da5808bec620707cd2b9875e0e8fe93aa514d4557b87b578fc5d093d",
+      "combined-final-latency:3f8a696db9be33aad292e0084f4667f9e5ba7a3a437975ea62b8367c7658cf70",
+      "combined-final-surfaces:2d7054c922ec7d0929a2b017ddaa4a2a7f41869a0f49d3d904b1b720493cf1f4"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_loopback_real_service_auth_csrf_origin_next_and_paths",
+      "tests/fpr4/test_disposition_contracts.py::test_app_concurrent_reads_forbidden_routes_size_bounds_and_no_secret_files",
+      "tests/fpr4/test_disposition_contracts.py::test_bound_app_preserves_original_document_and_static_latency_bounds"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.integration.test_q1_app_integration::test_review_freeze_dry_run",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:0c11b6f8da5808bec620707cd2b9875e0e8fe93aa514d4557b87b578fc5d093d",
+      "combined-final-latency:3f8a696db9be33aad292e0084f4667f9e5ba7a3a437975ea62b8367c7658cf70",
+      "combined-final-surfaces:2d7054c922ec7d0929a2b017ddaa4a2a7f41869a0f49d3d904b1b720493cf1f4"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_loopback_real_service_auth_csrf_origin_next_and_paths",
+      "tests/fpr4/test_disposition_contracts.py::test_app_concurrent_reads_forbidden_routes_size_bounds_and_no_secret_files",
+      "tests/fpr4/test_disposition_contracts.py::test_bound_app_preserves_original_document_and_static_latency_bounds"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.integration.test_q1_app_integration::test_governance_sync_dry_run",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:0c11b6f8da5808bec620707cd2b9875e0e8fe93aa514d4557b87b578fc5d093d",
+      "combined-final-latency:3f8a696db9be33aad292e0084f4667f9e5ba7a3a437975ea62b8367c7658cf70",
+      "combined-final-surfaces:2d7054c922ec7d0929a2b017ddaa4a2a7f41869a0f49d3d904b1b720493cf1f4"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_loopback_real_service_auth_csrf_origin_next_and_paths",
+      "tests/fpr4/test_disposition_contracts.py::test_app_concurrent_reads_forbidden_routes_size_bounds_and_no_secret_files",
+      "tests/fpr4/test_disposition_contracts.py::test_bound_app_preserves_original_document_and_static_latency_bounds"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.integration.test_q2_ok_cli_integration::test_ok_and_overseer_shims_emit_equivalent_status_json",
+    "category": "launcher_missing_cryptography",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-foundation-fpr1:0c0e4a7248985b812004ad0d336653906c2aed6df67021c7c1074caa93edcc0b",
+      "combined-final-foundation-v1:3bbde1c3524a2af4d144d221b9a6edd74ac239f986f472e8673dfcc0f56a6027",
+      "combined-final-foundation-v1:847f556176e43871848cf7dac5581a6726b5a39baca455c8afafd06b638fb30e",
+      "combined-final-latency:c158d76019b5da809d5d2473e3f270e3185ce388db5cd641ca7a2cea22eb1296"
+    ],
+    "successor_nodes": [
+      "tests/fpr1/test_dispatch.py::test_all_launchers_share_dispatcher_and_global_options",
+      "tests/fpr4/test_disposition_contracts.py::test_actual_shims_preserve_json_alias_and_literal_arguments",
+      "tests/v1/test_isolation.py::test_source_shim_copied_without_runtime_does_not_fall_back"
+    ],
+    "contract_reason": "CLI context injection is engine-only. Explicit physical bindings and conventional venv replace ambient engine selection; cryptography is declared and locally pinned. cli/overseer is now a quiet compatibility spelling; the old warning-per-process requirement is explicitly superseded, while JSON and literal argument forwarding remain tested."
+  },
+  {
+    "historical_node": "tests.integration.test_q3_desktop_integration::test_desktop_launcher_starts_ok_app_and_serves_ui",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:d5436b42ae0a23dcde1983be2bd627cad05ec19d462efc0373fe3c0ef7bb0060",
+      "combined-final-package:6c576be3614128e87a7dfca88d112b343ca6cd1c6e5394d281779d85e47eeb28",
+      "combined-final-surfaces:1a6c02ce50f01c781ee10d1965d9dd2a3872ec4eba5243d8cc2f5e087327bcf5",
+      "combined-final-surfaces:58e5903b47f2ba069ae408c7176c5360aa03ec063ab61ba4bae79e839af86f9a"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_package.py::test_actual_package_deterministic_manifest_modes_and_resource_bundle",
+      "tests/fpr3/test_surfaces.py::test_desktop_real_launcher_identity_and_ambient_refusal",
+      "tests/fpr4/test_bundle_repeatability.py::test_repeated_resource_bundle_reserves_distinct_private_archives",
+      "tests/fpr4/test_disposition_contracts.py::test_desktop_repeated_bound_launch_stop_identity_and_no_secret_files"
+    ],
+    "contract_reason": "Ambient root discovery and old signed-download/workflow assertions are replaced by explicit bound roots, source resources and manual-only CI. Native compile evidence is separately required; publication/signing is outside FPR-3."
+  },
+  {
+    "historical_node": "tests.integration.test_q3_desktop_integration::test_launch_argv_matches_canonical_shim",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:d5436b42ae0a23dcde1983be2bd627cad05ec19d462efc0373fe3c0ef7bb0060",
+      "combined-final-package:6c576be3614128e87a7dfca88d112b343ca6cd1c6e5394d281779d85e47eeb28",
+      "combined-final-surfaces:1a6c02ce50f01c781ee10d1965d9dd2a3872ec4eba5243d8cc2f5e087327bcf5",
+      "combined-final-surfaces:58e5903b47f2ba069ae408c7176c5360aa03ec063ab61ba4bae79e839af86f9a"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_package.py::test_actual_package_deterministic_manifest_modes_and_resource_bundle",
+      "tests/fpr3/test_surfaces.py::test_desktop_real_launcher_identity_and_ambient_refusal",
+      "tests/fpr4/test_bundle_repeatability.py::test_repeated_resource_bundle_reserves_distinct_private_archives",
+      "tests/fpr4/test_disposition_contracts.py::test_desktop_repeated_bound_launch_stop_identity_and_no_secret_files"
+    ],
+    "contract_reason": "Ambient root discovery and old signed-download/workflow assertions are replaced by explicit bound roots, source resources and manual-only CI. Native compile evidence is separately required; publication/signing is outside FPR-3."
+  },
+  {
+    "historical_node": "tests.integration.test_q3_desktop_integration::test_auth_bootstrap_script_is_non_persisting",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:d5436b42ae0a23dcde1983be2bd627cad05ec19d462efc0373fe3c0ef7bb0060",
+      "combined-final-package:6c576be3614128e87a7dfca88d112b343ca6cd1c6e5394d281779d85e47eeb28",
+      "combined-final-surfaces:1a6c02ce50f01c781ee10d1965d9dd2a3872ec4eba5243d8cc2f5e087327bcf5",
+      "combined-final-surfaces:58e5903b47f2ba069ae408c7176c5360aa03ec063ab61ba4bae79e839af86f9a"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_package.py::test_actual_package_deterministic_manifest_modes_and_resource_bundle",
+      "tests/fpr3/test_surfaces.py::test_desktop_real_launcher_identity_and_ambient_refusal",
+      "tests/fpr4/test_bundle_repeatability.py::test_repeated_resource_bundle_reserves_distinct_private_archives",
+      "tests/fpr4/test_disposition_contracts.py::test_desktop_repeated_bound_launch_stop_identity_and_no_secret_files"
+    ],
+    "contract_reason": "Ambient root discovery and old signed-download/workflow assertions are replaced by explicit bound roots, source resources and manual-only CI. Native compile evidence is separately required; publication/signing is outside FPR-3."
+  },
+  {
+    "historical_node": "tests.integration.test_q3_desktop_integration::test_desktop_launcher_stop_is_idempotent",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:d5436b42ae0a23dcde1983be2bd627cad05ec19d462efc0373fe3c0ef7bb0060",
+      "combined-final-package:6c576be3614128e87a7dfca88d112b343ca6cd1c6e5394d281779d85e47eeb28",
+      "combined-final-surfaces:1a6c02ce50f01c781ee10d1965d9dd2a3872ec4eba5243d8cc2f5e087327bcf5",
+      "combined-final-surfaces:58e5903b47f2ba069ae408c7176c5360aa03ec063ab61ba4bae79e839af86f9a"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_package.py::test_actual_package_deterministic_manifest_modes_and_resource_bundle",
+      "tests/fpr3/test_surfaces.py::test_desktop_real_launcher_identity_and_ambient_refusal",
+      "tests/fpr4/test_bundle_repeatability.py::test_repeated_resource_bundle_reserves_distinct_private_archives",
+      "tests/fpr4/test_disposition_contracts.py::test_desktop_repeated_bound_launch_stop_identity_and_no_secret_files"
+    ],
+    "contract_reason": "Ambient root discovery and old signed-download/workflow assertions are replaced by explicit bound roots, source resources and manual-only CI. Native compile evidence is separately required; publication/signing is outside FPR-3."
+  },
+  {
+    "historical_node": "tests.integration.test_q3_release_desktop_integration::test_release_workflow_parses_and_contracts",
+    "category": "missing_path_or_fixture",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:35b2773bcf819d7cdddb9d453d2fa35273c2f02a941c61236045090482529faf",
+      "combined-final-package:6c576be3614128e87a7dfca88d112b343ca6cd1c6e5394d281779d85e47eeb28",
+      "combined-final-surfaces:1a6c02ce50f01c781ee10d1965d9dd2a3872ec4eba5243d8cc2f5e087327bcf5"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_package.py::test_actual_package_deterministic_manifest_modes_and_resource_bundle",
+      "tests/fpr4/test_bundle_repeatability.py::test_repeated_resource_bundle_reserves_distinct_private_archives",
+      "tests/fpr4/test_disposition_contracts.py::test_manual_workflow_has_no_publish_permissions_or_secret_literals"
+    ],
+    "contract_reason": "Historical signed-release YAML does not exist in the active source-only contract. The manual-only workflow, read-only permissions, no publish steps, secret scan and actual source manifest replace those assertions; signing/release delivery is not claimed."
+  },
+  {
+    "historical_node": "tests.integration.test_q3_release_desktop_integration::test_smoke_workflow_no_release_publish",
+    "category": "missing_path_or_fixture",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:35b2773bcf819d7cdddb9d453d2fa35273c2f02a941c61236045090482529faf",
+      "combined-final-package:6c576be3614128e87a7dfca88d112b343ca6cd1c6e5394d281779d85e47eeb28",
+      "combined-final-surfaces:1a6c02ce50f01c781ee10d1965d9dd2a3872ec4eba5243d8cc2f5e087327bcf5"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_package.py::test_actual_package_deterministic_manifest_modes_and_resource_bundle",
+      "tests/fpr4/test_bundle_repeatability.py::test_repeated_resource_bundle_reserves_distinct_private_archives",
+      "tests/fpr4/test_disposition_contracts.py::test_manual_workflow_has_no_publish_permissions_or_secret_literals"
+    ],
+    "contract_reason": "Historical signed-release YAML does not exist in the active source-only contract. The manual-only workflow, read-only permissions, no publish steps, secret scan and actual source manifest replace those assertions; signing/release delivery is not claimed."
+  },
+  {
+    "historical_node": "tests.integration.test_q4b_ui_integration::test_redesigned_static_and_diagrams_served",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:3f8a696db9be33aad292e0084f4667f9e5ba7a3a437975ea62b8367c7658cf70"
+    ],
+    "successor_nodes": [
+      "tests/fpr4/test_disposition_contracts.py::test_bound_app_preserves_original_document_and_static_latency_bounds"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.performance.test_hosted_dashboard_performance::test_single_repo_doc_fetch_bound",
+    "category": "sandbox_socket_denial",
+    "original_selected": true,
+    "verified_case_ids": [
+      "combined-final-latency:d038c5956eb119148728dce29d0ddfe3a310144489b4106e0ab34fc7cd3ddb3d",
+      "combined-final-retained:86dd161a566dbd2c4c227cd02851904f5b8cfd59a8e598863f7799b05c9c55ae",
+      "combined-final-retained:e047ae071753ccb57d6122d5c5d1fd3516abeab3ddbacdf09a97e9834a7aeddd",
+      "combined-final-surfaces:e71d0518036874b6a7d04eba57771cfe7b553765d17196adb4ff97071825e10e"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_hosted_allowlists_canonical_display_and_write_refusal",
+      "tests/integration/test_hosted_dashboard_integration.py::test_org_summary_and_docs_envelope",
+      "tests/performance/test_hosted_dashboard_performance.py::test_single_repo_doc_fetch_bound",
+      "tests/stress/test_hosted_dashboard_stress.py::test_bounded_concurrent_gets"
+    ],
+    "contract_reason": "Remote documents are display-only; every repository route now enforces its configured allowlist. Real loopback sockets with fake upstreams are required."
+  },
+  {
+    "historical_node": "tests.performance.test_hosted_dashboard_performance::test_startup_listen_bound",
+    "category": "sandbox_socket_denial",
+    "original_selected": true,
+    "verified_case_ids": [
+      "combined-final-latency:c6da366da0666d956bd0aed9f1ffee0a155ffe0f4232bc0d326dcd2c298dbe95",
+      "combined-final-retained:86dd161a566dbd2c4c227cd02851904f5b8cfd59a8e598863f7799b05c9c55ae",
+      "combined-final-retained:e047ae071753ccb57d6122d5c5d1fd3516abeab3ddbacdf09a97e9834a7aeddd",
+      "combined-final-surfaces:e71d0518036874b6a7d04eba57771cfe7b553765d17196adb4ff97071825e10e"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_hosted_allowlists_canonical_display_and_write_refusal",
+      "tests/integration/test_hosted_dashboard_integration.py::test_org_summary_and_docs_envelope",
+      "tests/performance/test_hosted_dashboard_performance.py::test_startup_listen_bound",
+      "tests/stress/test_hosted_dashboard_stress.py::test_bounded_concurrent_gets"
+    ],
+    "contract_reason": "Remote documents are display-only; every repository route now enforces its configured allowlist. Real loopback sockets with fake upstreams are required."
+  },
+  {
+    "historical_node": "tests.performance.test_k7_footprint_check::test_check_footprint_bounded_with_bridge_files",
+    "category": "other_product_or_test_failure",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-foundation-fpr1:51dfc59e96b36205749158f547dbd84bc93592753b4737a7e40a2014b4802777",
+      "combined-final-foundation-fpr1:5814d8dbd3df697c4fd2b40d4cc21cfcd47e94ce2c50ee2be7a082e846686fb2",
+      "combined-final-latency:8a6208d3bc01095c7f58d85d765f25e7b42be9489ff54ded5564ae7afb0a41e0",
+      "combined-final-surfaces:19f8dbe61d97b70fd71d3d5d8c32b9e31729efa3c7d648637ae0dfacc3e02620"
+    ],
+    "successor_nodes": [
+      "tests/fpr1/test_migration.py::test_legacy_plan_is_read_only_deterministic_and_lossless",
+      "tests/fpr1/test_migration.py::test_partial_replacement_keeps_old_config_and_resumes",
+      "tests/fpr3/test_engines.py::test_full_footprint_preserves_settings_origins_and_next",
+      "tests/fpr4/test_disposition_contracts.py::test_sync_force_cannot_overwrite_consumer_edits"
+    ],
+    "contract_reason": "Generic force-promotion/overwrite is refused. Living docs and consumer-modified assets are preserved or require explicit resolution; schema migration uses reviewed digest plans. Missing historical fixture files are replaced by real initialized fixtures."
+  },
+  {
+    "historical_node": "tests.performance.test_lac_performance::test_health_additive_no_full_repo_walk",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:3f8a696db9be33aad292e0084f4667f9e5ba7a3a437975ea62b8367c7658cf70",
+      "combined-final-surfaces:2d7054c922ec7d0929a2b017ddaa4a2a7f41869a0f49d3d904b1b720493cf1f4"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_loopback_real_service_auth_csrf_origin_next_and_paths",
+      "tests/fpr4/test_disposition_contracts.py::test_bound_app_preserves_original_document_and_static_latency_bounds"
+    ],
+    "contract_reason": "FPR-3 categorized this LAC file as source-site only, but the failing node also exercises bound app behavior. The FPR-4 mapping explicitly covers app security/concurrency and current install copy. The former unvalidated sub-millisecond health-path budget is superseded by required repository/runtime revalidation; no claim that its old 200-call/0.25s threshold passed."
+  },
+  {
+    "historical_node": "tests.performance.test_q1_app_performance::test_startup_listen_within_bound",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:3f8a696db9be33aad292e0084f4667f9e5ba7a3a437975ea62b8367c7658cf70"
+    ],
+    "successor_nodes": [
+      "tests/fpr4/test_disposition_contracts.py::test_bound_app_preserves_original_document_and_static_latency_bounds"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.performance.test_q1_app_performance::test_status_within_bound",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:3f8a696db9be33aad292e0084f4667f9e5ba7a3a437975ea62b8367c7658cf70"
+    ],
+    "successor_nodes": [
+      "tests/fpr4/test_disposition_contracts.py::test_bound_app_preserves_original_document_and_static_latency_bounds"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.performance.test_q1_app_performance::test_doc_read_within_bound",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:3f8a696db9be33aad292e0084f4667f9e5ba7a3a437975ea62b8367c7658cf70"
+    ],
+    "successor_nodes": [
+      "tests/fpr4/test_disposition_contracts.py::test_bound_app_preserves_original_document_and_static_latency_bounds"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.performance.test_q2_ok_cli_performance::test_ok_shim_status_json_within_existing_budget",
+    "category": "launcher_missing_cryptography",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-foundation-fpr1:0c0e4a7248985b812004ad0d336653906c2aed6df67021c7c1074caa93edcc0b",
+      "combined-final-foundation-v1:3bbde1c3524a2af4d144d221b9a6edd74ac239f986f472e8673dfcc0f56a6027",
+      "combined-final-foundation-v1:847f556176e43871848cf7dac5581a6726b5a39baca455c8afafd06b638fb30e",
+      "combined-final-latency:c158d76019b5da809d5d2473e3f270e3185ce388db5cd641ca7a2cea22eb1296"
+    ],
+    "successor_nodes": [
+      "tests/fpr1/test_dispatch.py::test_all_launchers_share_dispatcher_and_global_options",
+      "tests/fpr4/test_disposition_contracts.py::test_actual_shims_preserve_json_alias_and_literal_arguments",
+      "tests/v1/test_isolation.py::test_source_shim_copied_without_runtime_does_not_fall_back"
+    ],
+    "contract_reason": "CLI context injection is engine-only. Explicit physical bindings and conventional venv replace ambient engine selection; cryptography is declared and locally pinned. cli/overseer is now a quiet compatibility spelling; the old warning-per-process requirement is explicitly superseded, while JSON and literal argument forwarding remain tested."
+  },
+  {
+    "historical_node": "tests.performance.test_q3_desktop_performance::test_desktop_launcher_startup_within_budget",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:d5436b42ae0a23dcde1983be2bd627cad05ec19d462efc0373fe3c0ef7bb0060",
+      "combined-final-package:6c576be3614128e87a7dfca88d112b343ca6cd1c6e5394d281779d85e47eeb28",
+      "combined-final-surfaces:1a6c02ce50f01c781ee10d1965d9dd2a3872ec4eba5243d8cc2f5e087327bcf5",
+      "combined-final-surfaces:58e5903b47f2ba069ae408c7176c5360aa03ec063ab61ba4bae79e839af86f9a"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_package.py::test_actual_package_deterministic_manifest_modes_and_resource_bundle",
+      "tests/fpr3/test_surfaces.py::test_desktop_real_launcher_identity_and_ambient_refusal",
+      "tests/fpr4/test_bundle_repeatability.py::test_repeated_resource_bundle_reserves_distinct_private_archives",
+      "tests/fpr4/test_disposition_contracts.py::test_desktop_repeated_bound_launch_stop_identity_and_no_secret_files"
+    ],
+    "contract_reason": "Ambient root discovery and old signed-download/workflow assertions are replaced by explicit bound roots, source resources and manual-only CI. Native compile evidence is separately required; publication/signing is outside FPR-3."
+  },
+  {
+    "historical_node": "tests.performance.test_q3_release_desktop_performance::test_secret_scan_bounded_to_release_workflow_paths",
+    "category": "other_product_or_test_failure",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:35b2773bcf819d7cdddb9d453d2fa35273c2f02a941c61236045090482529faf",
+      "combined-final-package:6c576be3614128e87a7dfca88d112b343ca6cd1c6e5394d281779d85e47eeb28",
+      "combined-final-surfaces:1a6c02ce50f01c781ee10d1965d9dd2a3872ec4eba5243d8cc2f5e087327bcf5"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_package.py::test_actual_package_deterministic_manifest_modes_and_resource_bundle",
+      "tests/fpr4/test_bundle_repeatability.py::test_repeated_resource_bundle_reserves_distinct_private_archives",
+      "tests/fpr4/test_disposition_contracts.py::test_manual_workflow_has_no_publish_permissions_or_secret_literals"
+    ],
+    "contract_reason": "Historical signed-release YAML does not exist in the active source-only contract. The manual-only workflow, read-only permissions, no publish steps, secret scan and actual source manifest replace those assertions; signing/release delivery is not claimed."
+  },
+  {
+    "historical_node": "tests.performance.test_q4b_ui_performance::test_index_and_diagrams_within_bound",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:3f8a696db9be33aad292e0084f4667f9e5ba7a3a437975ea62b8367c7658cf70"
+    ],
+    "successor_nodes": [
+      "tests/fpr4/test_disposition_contracts.py::test_bound_app_preserves_original_document_and_static_latency_bounds"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.security.test_hosted_dashboard_security::test_mutating_methods_on_api",
+    "category": "sandbox_socket_denial",
+    "original_selected": true,
+    "verified_case_ids": [
+      "combined-final-retained:86dd161a566dbd2c4c227cd02851904f5b8cfd59a8e598863f7799b05c9c55ae",
+      "combined-final-retained:a9436ba472bcea8f7a6b59bf56c1510e4bcd825898a5743680feecaccd0fca2e",
+      "combined-final-retained:e047ae071753ccb57d6122d5c5d1fd3516abeab3ddbacdf09a97e9834a7aeddd",
+      "combined-final-surfaces:e71d0518036874b6a7d04eba57771cfe7b553765d17196adb4ff97071825e10e"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_hosted_allowlists_canonical_display_and_write_refusal",
+      "tests/integration/test_hosted_dashboard_integration.py::test_org_summary_and_docs_envelope",
+      "tests/security/test_hosted_dashboard_security.py::test_mutating_methods_on_api",
+      "tests/stress/test_hosted_dashboard_stress.py::test_bounded_concurrent_gets"
+    ],
+    "contract_reason": "Remote documents are display-only; every repository route now enforces its configured allowlist. Real loopback sockets with fake upstreams are required."
+  },
+  {
+    "historical_node": "tests.security.test_hosted_dashboard_security::test_path_traversal_in_params_refused",
+    "category": "sandbox_socket_denial",
+    "original_selected": true,
+    "verified_case_ids": [
+      "combined-final-retained:86dd161a566dbd2c4c227cd02851904f5b8cfd59a8e598863f7799b05c9c55ae",
+      "combined-final-retained:e047ae071753ccb57d6122d5c5d1fd3516abeab3ddbacdf09a97e9834a7aeddd",
+      "combined-final-retained:e7dce5987fcec5bb2f47ebeda6b0fd7087877db60577ec2ca21ab963c23b9d92",
+      "combined-final-surfaces:e71d0518036874b6a7d04eba57771cfe7b553765d17196adb4ff97071825e10e"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_hosted_allowlists_canonical_display_and_write_refusal",
+      "tests/integration/test_hosted_dashboard_integration.py::test_org_summary_and_docs_envelope",
+      "tests/security/test_hosted_dashboard_security.py::test_path_traversal_in_params_refused",
+      "tests/stress/test_hosted_dashboard_stress.py::test_bounded_concurrent_gets"
+    ],
+    "contract_reason": "Remote documents are display-only; every repository route now enforces its configured allowlist. Real loopback sockets with fake upstreams are required."
+  },
+  {
+    "historical_node": "tests.security.test_hosted_dashboard_security::test_missing_auth_401_except_health",
+    "category": "sandbox_socket_denial",
+    "original_selected": true,
+    "verified_case_ids": [
+      "combined-final-retained:5381a1661fbf16ad16b6cfac010909f4586dc8cd1d1223e88be30fa7a8d993ae",
+      "combined-final-retained:86dd161a566dbd2c4c227cd02851904f5b8cfd59a8e598863f7799b05c9c55ae",
+      "combined-final-retained:e047ae071753ccb57d6122d5c5d1fd3516abeab3ddbacdf09a97e9834a7aeddd",
+      "combined-final-surfaces:e71d0518036874b6a7d04eba57771cfe7b553765d17196adb4ff97071825e10e"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_hosted_allowlists_canonical_display_and_write_refusal",
+      "tests/integration/test_hosted_dashboard_integration.py::test_org_summary_and_docs_envelope",
+      "tests/security/test_hosted_dashboard_security.py::test_missing_auth_401_except_health",
+      "tests/stress/test_hosted_dashboard_stress.py::test_bounded_concurrent_gets"
+    ],
+    "contract_reason": "Remote documents are display-only; every repository route now enforces its configured allowlist. Real loopback sockets with fake upstreams are required."
+  },
+  {
+    "historical_node": "tests.security.test_hosted_dashboard_security::test_deploy_route_not_registered",
+    "category": "sandbox_socket_denial",
+    "original_selected": true,
+    "verified_case_ids": [
+      "combined-final-retained:409341396be3470e9532b18b3102d300b71c31cadf0cac05e5a877fc4e8eaca5",
+      "combined-final-retained:86dd161a566dbd2c4c227cd02851904f5b8cfd59a8e598863f7799b05c9c55ae",
+      "combined-final-retained:e047ae071753ccb57d6122d5c5d1fd3516abeab3ddbacdf09a97e9834a7aeddd",
+      "combined-final-surfaces:e71d0518036874b6a7d04eba57771cfe7b553765d17196adb4ff97071825e10e"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_hosted_allowlists_canonical_display_and_write_refusal",
+      "tests/integration/test_hosted_dashboard_integration.py::test_org_summary_and_docs_envelope",
+      "tests/security/test_hosted_dashboard_security.py::test_deploy_route_not_registered",
+      "tests/stress/test_hosted_dashboard_stress.py::test_bounded_concurrent_gets"
+    ],
+    "contract_reason": "Remote documents are display-only; every repository route now enforces its configured allowlist. Real loopback sockets with fake upstreams are required."
+  },
+  {
+    "historical_node": "tests.security.test_lac_security::test_repo_root_only_on_authenticated_health",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:0c11b6f8da5808bec620707cd2b9875e0e8fe93aa514d4557b87b578fc5d093d",
+      "combined-final-latency:f243e576977fc2ec8424928e36e83d641cb6323f621d641a6597c8b0c9b33082",
+      "combined-final-surfaces:2d7054c922ec7d0929a2b017ddaa4a2a7f41869a0f49d3d904b1b720493cf1f4"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_loopback_real_service_auth_csrf_origin_next_and_paths",
+      "tests/fpr4/test_disposition_contracts.py::test_app_concurrent_reads_forbidden_routes_size_bounds_and_no_secret_files",
+      "tests/fpr4/test_disposition_contracts.py::test_app_installation_copy_uses_explicit_root_and_current_source_distribution"
+    ],
+    "contract_reason": "FPR-3 categorized this LAC file as source-site only, but the failing node also exercises bound app behavior. The FPR-4 mapping explicitly covers app security/concurrency and current install copy."
+  },
+  {
+    "historical_node": "tests.security.test_q1_app_security::test_missing_bearer_returns_401",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:0c11b6f8da5808bec620707cd2b9875e0e8fe93aa514d4557b87b578fc5d093d",
+      "combined-final-latency:3f8a696db9be33aad292e0084f4667f9e5ba7a3a437975ea62b8367c7658cf70",
+      "combined-final-surfaces:2d7054c922ec7d0929a2b017ddaa4a2a7f41869a0f49d3d904b1b720493cf1f4"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_loopback_real_service_auth_csrf_origin_next_and_paths",
+      "tests/fpr4/test_disposition_contracts.py::test_app_concurrent_reads_forbidden_routes_size_bounds_and_no_secret_files",
+      "tests/fpr4/test_disposition_contracts.py::test_bound_app_preserves_original_document_and_static_latency_bounds"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.security.test_q1_app_security::test_bad_csrf_on_post_returns_403",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:0c11b6f8da5808bec620707cd2b9875e0e8fe93aa514d4557b87b578fc5d093d",
+      "combined-final-latency:3f8a696db9be33aad292e0084f4667f9e5ba7a3a437975ea62b8367c7658cf70",
+      "combined-final-surfaces:2d7054c922ec7d0929a2b017ddaa4a2a7f41869a0f49d3d904b1b720493cf1f4"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_loopback_real_service_auth_csrf_origin_next_and_paths",
+      "tests/fpr4/test_disposition_contracts.py::test_app_concurrent_reads_forbidden_routes_size_bounds_and_no_secret_files",
+      "tests/fpr4/test_disposition_contracts.py::test_bound_app_preserves_original_document_and_static_latency_bounds"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.security.test_q1_app_security::test_disallowed_origin_returns_403",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:0c11b6f8da5808bec620707cd2b9875e0e8fe93aa514d4557b87b578fc5d093d",
+      "combined-final-latency:3f8a696db9be33aad292e0084f4667f9e5ba7a3a437975ea62b8367c7658cf70",
+      "combined-final-surfaces:2d7054c922ec7d0929a2b017ddaa4a2a7f41869a0f49d3d904b1b720493cf1f4"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_loopback_real_service_auth_csrf_origin_next_and_paths",
+      "tests/fpr4/test_disposition_contracts.py::test_app_concurrent_reads_forbidden_routes_size_bounds_and_no_secret_files",
+      "tests/fpr4/test_disposition_contracts.py::test_bound_app_preserves_original_document_and_static_latency_bounds"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.security.test_q1_app_security::test_forbidden_routes_not_present[/api/init]",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:0c11b6f8da5808bec620707cd2b9875e0e8fe93aa514d4557b87b578fc5d093d",
+      "combined-final-latency:3f8a696db9be33aad292e0084f4667f9e5ba7a3a437975ea62b8367c7658cf70",
+      "combined-final-surfaces:2d7054c922ec7d0929a2b017ddaa4a2a7f41869a0f49d3d904b1b720493cf1f4"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_loopback_real_service_auth_csrf_origin_next_and_paths",
+      "tests/fpr4/test_disposition_contracts.py::test_app_concurrent_reads_forbidden_routes_size_bounds_and_no_secret_files",
+      "tests/fpr4/test_disposition_contracts.py::test_bound_app_preserves_original_document_and_static_latency_bounds"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.security.test_q1_app_security::test_forbidden_routes_not_present[/api/sync]",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:0c11b6f8da5808bec620707cd2b9875e0e8fe93aa514d4557b87b578fc5d093d",
+      "combined-final-latency:3f8a696db9be33aad292e0084f4667f9e5ba7a3a437975ea62b8367c7658cf70",
+      "combined-final-surfaces:2d7054c922ec7d0929a2b017ddaa4a2a7f41869a0f49d3d904b1b720493cf1f4"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_loopback_real_service_auth_csrf_origin_next_and_paths",
+      "tests/fpr4/test_disposition_contracts.py::test_app_concurrent_reads_forbidden_routes_size_bounds_and_no_secret_files",
+      "tests/fpr4/test_disposition_contracts.py::test_bound_app_preserves_original_document_and_static_latency_bounds"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.security.test_q1_app_security::test_forbidden_routes_not_present[/api/verify-step]",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:0c11b6f8da5808bec620707cd2b9875e0e8fe93aa514d4557b87b578fc5d093d",
+      "combined-final-latency:3f8a696db9be33aad292e0084f4667f9e5ba7a3a437975ea62b8367c7658cf70",
+      "combined-final-surfaces:2d7054c922ec7d0929a2b017ddaa4a2a7f41869a0f49d3d904b1b720493cf1f4"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_loopback_real_service_auth_csrf_origin_next_and_paths",
+      "tests/fpr4/test_disposition_contracts.py::test_app_concurrent_reads_forbidden_routes_size_bounds_and_no_secret_files",
+      "tests/fpr4/test_disposition_contracts.py::test_bound_app_preserves_original_document_and_static_latency_bounds"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.security.test_q1_app_security::test_forbidden_routes_not_present[/api/route]",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:0c11b6f8da5808bec620707cd2b9875e0e8fe93aa514d4557b87b578fc5d093d",
+      "combined-final-latency:3f8a696db9be33aad292e0084f4667f9e5ba7a3a437975ea62b8367c7658cf70",
+      "combined-final-surfaces:2d7054c922ec7d0929a2b017ddaa4a2a7f41869a0f49d3d904b1b720493cf1f4"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_loopback_real_service_auth_csrf_origin_next_and_paths",
+      "tests/fpr4/test_disposition_contracts.py::test_app_concurrent_reads_forbidden_routes_size_bounds_and_no_secret_files",
+      "tests/fpr4/test_disposition_contracts.py::test_bound_app_preserves_original_document_and_static_latency_bounds"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.security.test_q1_app_security::test_forbidden_routes_not_present[/api/merge]",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:0c11b6f8da5808bec620707cd2b9875e0e8fe93aa514d4557b87b578fc5d093d",
+      "combined-final-latency:3f8a696db9be33aad292e0084f4667f9e5ba7a3a437975ea62b8367c7658cf70",
+      "combined-final-surfaces:2d7054c922ec7d0929a2b017ddaa4a2a7f41869a0f49d3d904b1b720493cf1f4"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_loopback_real_service_auth_csrf_origin_next_and_paths",
+      "tests/fpr4/test_disposition_contracts.py::test_app_concurrent_reads_forbidden_routes_size_bounds_and_no_secret_files",
+      "tests/fpr4/test_disposition_contracts.py::test_bound_app_preserves_original_document_and_static_latency_bounds"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.security.test_q1_app_security::test_doc_path_traversal_refused",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:0c11b6f8da5808bec620707cd2b9875e0e8fe93aa514d4557b87b578fc5d093d",
+      "combined-final-latency:3f8a696db9be33aad292e0084f4667f9e5ba7a3a437975ea62b8367c7658cf70",
+      "combined-final-surfaces:2d7054c922ec7d0929a2b017ddaa4a2a7f41869a0f49d3d904b1b720493cf1f4"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_loopback_real_service_auth_csrf_origin_next_and_paths",
+      "tests/fpr4/test_disposition_contracts.py::test_app_concurrent_reads_forbidden_routes_size_bounds_and_no_secret_files",
+      "tests/fpr4/test_disposition_contracts.py::test_bound_app_preserves_original_document_and_static_latency_bounds"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.security.test_q2_ok_cli_security::test_overseer_json_stdout_is_single_object_deprecation_on_stderr",
+    "category": "other_product_or_test_failure",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-foundation-fpr1:0c0e4a7248985b812004ad0d336653906c2aed6df67021c7c1074caa93edcc0b",
+      "combined-final-foundation-v1:3bbde1c3524a2af4d144d221b9a6edd74ac239f986f472e8673dfcc0f56a6027",
+      "combined-final-foundation-v1:847f556176e43871848cf7dac5581a6726b5a39baca455c8afafd06b638fb30e",
+      "combined-final-latency:c158d76019b5da809d5d2473e3f270e3185ce388db5cd641ca7a2cea22eb1296"
+    ],
+    "successor_nodes": [
+      "tests/fpr1/test_dispatch.py::test_all_launchers_share_dispatcher_and_global_options",
+      "tests/fpr4/test_disposition_contracts.py::test_actual_shims_preserve_json_alias_and_literal_arguments",
+      "tests/v1/test_isolation.py::test_source_shim_copied_without_runtime_does_not_fall_back"
+    ],
+    "contract_reason": "CLI context injection is engine-only. Explicit physical bindings and conventional venv replace ambient engine selection; cryptography is declared and locally pinned. cli/overseer is now a quiet compatibility spelling; the old warning-per-process requirement is explicitly superseded, while JSON and literal argument forwarding remain tested."
+  },
+  {
+    "historical_node": "tests.security.test_q2_ok_cli_security::test_shims_forward_args_without_shell_expansion",
+    "category": "launcher_missing_cryptography",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-foundation-fpr1:0c0e4a7248985b812004ad0d336653906c2aed6df67021c7c1074caa93edcc0b",
+      "combined-final-foundation-v1:3bbde1c3524a2af4d144d221b9a6edd74ac239f986f472e8673dfcc0f56a6027",
+      "combined-final-foundation-v1:847f556176e43871848cf7dac5581a6726b5a39baca455c8afafd06b638fb30e",
+      "combined-final-latency:c158d76019b5da809d5d2473e3f270e3185ce388db5cd641ca7a2cea22eb1296"
+    ],
+    "successor_nodes": [
+      "tests/fpr1/test_dispatch.py::test_all_launchers_share_dispatcher_and_global_options",
+      "tests/fpr4/test_disposition_contracts.py::test_actual_shims_preserve_json_alias_and_literal_arguments",
+      "tests/v1/test_isolation.py::test_source_shim_copied_without_runtime_does_not_fall_back"
+    ],
+    "contract_reason": "CLI context injection is engine-only. Explicit physical bindings and conventional venv replace ambient engine selection; cryptography is declared and locally pinned. cli/overseer is now a quiet compatibility spelling; the old warning-per-process requirement is explicitly superseded, while JSON and literal argument forwarding remain tested."
+  },
+  {
+    "historical_node": "tests.security.test_q3_desktop_security::test_desktop_launcher_does_not_write_secrets_to_repo",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:d5436b42ae0a23dcde1983be2bd627cad05ec19d462efc0373fe3c0ef7bb0060",
+      "combined-final-package:6c576be3614128e87a7dfca88d112b343ca6cd1c6e5394d281779d85e47eeb28",
+      "combined-final-surfaces:1a6c02ce50f01c781ee10d1965d9dd2a3872ec4eba5243d8cc2f5e087327bcf5",
+      "combined-final-surfaces:58e5903b47f2ba069ae408c7176c5360aa03ec063ab61ba4bae79e839af86f9a"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_package.py::test_actual_package_deterministic_manifest_modes_and_resource_bundle",
+      "tests/fpr3/test_surfaces.py::test_desktop_real_launcher_identity_and_ambient_refusal",
+      "tests/fpr4/test_bundle_repeatability.py::test_repeated_resource_bundle_reserves_distinct_private_archives",
+      "tests/fpr4/test_disposition_contracts.py::test_desktop_repeated_bound_launch_stop_identity_and_no_secret_files"
+    ],
+    "contract_reason": "Ambient root discovery and old signed-download/workflow assertions are replaced by explicit bound roots, source resources and manual-only CI. Native compile evidence is separately required; publication/signing is outside FPR-3."
+  },
+  {
+    "historical_node": "tests.security.test_q3_release_desktop_security::test_no_secret_literals_in_workflows",
+    "category": "missing_path_or_fixture",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:35b2773bcf819d7cdddb9d453d2fa35273c2f02a941c61236045090482529faf",
+      "combined-final-package:6c576be3614128e87a7dfca88d112b343ca6cd1c6e5394d281779d85e47eeb28",
+      "combined-final-surfaces:1a6c02ce50f01c781ee10d1965d9dd2a3872ec4eba5243d8cc2f5e087327bcf5"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_package.py::test_actual_package_deterministic_manifest_modes_and_resource_bundle",
+      "tests/fpr4/test_bundle_repeatability.py::test_repeated_resource_bundle_reserves_distinct_private_archives",
+      "tests/fpr4/test_disposition_contracts.py::test_manual_workflow_has_no_publish_permissions_or_secret_literals"
+    ],
+    "contract_reason": "Historical signed-release YAML does not exist in the active source-only contract. The manual-only workflow, read-only permissions, no publish steps, secret scan and actual source manifest replace those assertions; signing/release delivery is not claimed."
+  },
+  {
+    "historical_node": "tests.security.test_q3_release_desktop_security::test_release_workflow_does_not_echo_secrets",
+    "category": "missing_path_or_fixture",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:35b2773bcf819d7cdddb9d453d2fa35273c2f02a941c61236045090482529faf",
+      "combined-final-package:6c576be3614128e87a7dfca88d112b343ca6cd1c6e5394d281779d85e47eeb28",
+      "combined-final-surfaces:1a6c02ce50f01c781ee10d1965d9dd2a3872ec4eba5243d8cc2f5e087327bcf5"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_package.py::test_actual_package_deterministic_manifest_modes_and_resource_bundle",
+      "tests/fpr4/test_bundle_repeatability.py::test_repeated_resource_bundle_reserves_distinct_private_archives",
+      "tests/fpr4/test_disposition_contracts.py::test_manual_workflow_has_no_publish_permissions_or_secret_literals"
+    ],
+    "contract_reason": "Historical signed-release YAML does not exist in the active source-only contract. The manual-only workflow, read-only permissions, no publish steps, secret scan and actual source manifest replace those assertions; signing/release delivery is not claimed."
+  },
+  {
+    "historical_node": "tests.security.test_q3_release_desktop_security::test_pull_request_cannot_publish_releases",
+    "category": "missing_path_or_fixture",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:35b2773bcf819d7cdddb9d453d2fa35273c2f02a941c61236045090482529faf",
+      "combined-final-package:6c576be3614128e87a7dfca88d112b343ca6cd1c6e5394d281779d85e47eeb28",
+      "combined-final-surfaces:1a6c02ce50f01c781ee10d1965d9dd2a3872ec4eba5243d8cc2f5e087327bcf5"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_package.py::test_actual_package_deterministic_manifest_modes_and_resource_bundle",
+      "tests/fpr4/test_bundle_repeatability.py::test_repeated_resource_bundle_reserves_distinct_private_archives",
+      "tests/fpr4/test_disposition_contracts.py::test_manual_workflow_has_no_publish_permissions_or_secret_literals"
+    ],
+    "contract_reason": "Historical signed-release YAML does not exist in the active source-only contract. The manual-only workflow, read-only permissions, no publish steps, secret scan and actual source manifest replace those assertions; signing/release delivery is not claimed."
+  },
+  {
+    "historical_node": "tests.security.test_q3_release_desktop_security::test_permissions_least_privilege",
+    "category": "missing_path_or_fixture",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:35b2773bcf819d7cdddb9d453d2fa35273c2f02a941c61236045090482529faf",
+      "combined-final-package:6c576be3614128e87a7dfca88d112b343ca6cd1c6e5394d281779d85e47eeb28",
+      "combined-final-surfaces:1a6c02ce50f01c781ee10d1965d9dd2a3872ec4eba5243d8cc2f5e087327bcf5"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_package.py::test_actual_package_deterministic_manifest_modes_and_resource_bundle",
+      "tests/fpr4/test_bundle_repeatability.py::test_repeated_resource_bundle_reserves_distinct_private_archives",
+      "tests/fpr4/test_disposition_contracts.py::test_manual_workflow_has_no_publish_permissions_or_secret_literals"
+    ],
+    "contract_reason": "Historical signed-release YAML does not exist in the active source-only contract. The manual-only workflow, read-only permissions, no publish steps, secret scan and actual source manifest replace those assertions; signing/release delivery is not claimed."
+  },
+  {
+    "historical_node": "tests.security.test_q4b_ui_security::test_no_new_endpoints_or_auth_disable",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:0c11b6f8da5808bec620707cd2b9875e0e8fe93aa514d4557b87b578fc5d093d",
+      "combined-final-latency:3f8a696db9be33aad292e0084f4667f9e5ba7a3a437975ea62b8367c7658cf70",
+      "combined-final-surfaces:2d7054c922ec7d0929a2b017ddaa4a2a7f41869a0f49d3d904b1b720493cf1f4"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_loopback_real_service_auth_csrf_origin_next_and_paths",
+      "tests/fpr4/test_disposition_contracts.py::test_app_concurrent_reads_forbidden_routes_size_bounds_and_no_secret_files",
+      "tests/fpr4/test_disposition_contracts.py::test_bound_app_preserves_original_document_and_static_latency_bounds"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.security.test_q4b_ui_security::test_diagram_path_escape_refused",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:0c11b6f8da5808bec620707cd2b9875e0e8fe93aa514d4557b87b578fc5d093d",
+      "combined-final-latency:3f8a696db9be33aad292e0084f4667f9e5ba7a3a437975ea62b8367c7658cf70",
+      "combined-final-surfaces:2d7054c922ec7d0929a2b017ddaa4a2a7f41869a0f49d3d904b1b720493cf1f4"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_loopback_real_service_auth_csrf_origin_next_and_paths",
+      "tests/fpr4/test_disposition_contracts.py::test_app_concurrent_reads_forbidden_routes_size_bounds_and_no_secret_files",
+      "tests/fpr4/test_disposition_contracts.py::test_bound_app_preserves_original_document_and_static_latency_bounds"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.stress.test_hosted_dashboard_stress::test_bounded_concurrent_gets",
+    "category": "sandbox_socket_denial",
+    "original_selected": true,
+    "verified_case_ids": [
+      "combined-final-retained:86dd161a566dbd2c4c227cd02851904f5b8cfd59a8e598863f7799b05c9c55ae",
+      "combined-final-retained:e047ae071753ccb57d6122d5c5d1fd3516abeab3ddbacdf09a97e9834a7aeddd",
+      "combined-final-surfaces:e71d0518036874b6a7d04eba57771cfe7b553765d17196adb4ff97071825e10e"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_hosted_allowlists_canonical_display_and_write_refusal",
+      "tests/integration/test_hosted_dashboard_integration.py::test_org_summary_and_docs_envelope",
+      "tests/stress/test_hosted_dashboard_stress.py::test_bounded_concurrent_gets"
+    ],
+    "contract_reason": "Remote documents are display-only; every repository route now enforces its configured allowlist. Real loopback sockets with fake upstreams are required."
+  },
+  {
+    "historical_node": "tests.stress.test_hosted_dashboard_stress::test_large_doc_bounded_and_org_cap",
+    "category": "sandbox_socket_denial",
+    "original_selected": true,
+    "verified_case_ids": [
+      "combined-final-retained:86dd161a566dbd2c4c227cd02851904f5b8cfd59a8e598863f7799b05c9c55ae",
+      "combined-final-retained:e047ae071753ccb57d6122d5c5d1fd3516abeab3ddbacdf09a97e9834a7aeddd",
+      "combined-final-retained:ffd77c9ae0ae857c2deae4cb69babbb740a471ba88a0993c44e636f39e2d14f6",
+      "combined-final-surfaces:e71d0518036874b6a7d04eba57771cfe7b553765d17196adb4ff97071825e10e"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_hosted_allowlists_canonical_display_and_write_refusal",
+      "tests/integration/test_hosted_dashboard_integration.py::test_org_summary_and_docs_envelope",
+      "tests/stress/test_hosted_dashboard_stress.py::test_bounded_concurrent_gets",
+      "tests/stress/test_hosted_dashboard_stress.py::test_large_doc_bounded_and_org_cap"
+    ],
+    "contract_reason": "Remote documents are display-only; every repository route now enforces its configured allowlist. Real loopback sockets with fake upstreams are required."
+  },
+  {
+    "historical_node": "tests.stress.test_lac_stress::test_concurrent_landing_svgs_and_health_do_not_leak_credentials",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:0c11b6f8da5808bec620707cd2b9875e0e8fe93aa514d4557b87b578fc5d093d",
+      "combined-final-latency:f243e576977fc2ec8424928e36e83d641cb6323f621d641a6597c8b0c9b33082",
+      "combined-final-surfaces:2d7054c922ec7d0929a2b017ddaa4a2a7f41869a0f49d3d904b1b720493cf1f4"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_loopback_real_service_auth_csrf_origin_next_and_paths",
+      "tests/fpr4/test_disposition_contracts.py::test_app_concurrent_reads_forbidden_routes_size_bounds_and_no_secret_files",
+      "tests/fpr4/test_disposition_contracts.py::test_app_installation_copy_uses_explicit_root_and_current_source_distribution"
+    ],
+    "contract_reason": "FPR-3 categorized this LAC file as source-site only, but the failing node also exercises bound app behavior. The FPR-4 mapping explicitly covers app security/concurrency and current install copy."
+  },
+  {
+    "historical_node": "tests.stress.test_q1_app_stress::test_concurrent_status_reads",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:0c11b6f8da5808bec620707cd2b9875e0e8fe93aa514d4557b87b578fc5d093d",
+      "combined-final-latency:3f8a696db9be33aad292e0084f4667f9e5ba7a3a437975ea62b8367c7658cf70",
+      "combined-final-surfaces:2d7054c922ec7d0929a2b017ddaa4a2a7f41869a0f49d3d904b1b720493cf1f4"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_loopback_real_service_auth_csrf_origin_next_and_paths",
+      "tests/fpr4/test_disposition_contracts.py::test_app_concurrent_reads_forbidden_routes_size_bounds_and_no_secret_files",
+      "tests/fpr4/test_disposition_contracts.py::test_bound_app_preserves_original_document_and_static_latency_bounds"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.stress.test_q1_app_stress::test_large_doc_read_bounded",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:3f8a696db9be33aad292e0084f4667f9e5ba7a3a437975ea62b8367c7658cf70"
+    ],
+    "successor_nodes": [
+      "tests/fpr4/test_disposition_contracts.py::test_bound_app_preserves_original_document_and_static_latency_bounds"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.stress.test_q2_ok_cli_stress::test_overseer_shim_deprecation_is_one_line_per_process",
+    "category": "launcher_missing_cryptography",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-foundation-fpr1:0c0e4a7248985b812004ad0d336653906c2aed6df67021c7c1074caa93edcc0b",
+      "combined-final-foundation-v1:3bbde1c3524a2af4d144d221b9a6edd74ac239f986f472e8673dfcc0f56a6027",
+      "combined-final-foundation-v1:847f556176e43871848cf7dac5581a6726b5a39baca455c8afafd06b638fb30e",
+      "combined-final-latency:c158d76019b5da809d5d2473e3f270e3185ce388db5cd641ca7a2cea22eb1296"
+    ],
+    "successor_nodes": [
+      "tests/fpr1/test_dispatch.py::test_all_launchers_share_dispatcher_and_global_options",
+      "tests/fpr4/test_disposition_contracts.py::test_actual_shims_preserve_json_alias_and_literal_arguments",
+      "tests/v1/test_isolation.py::test_source_shim_copied_without_runtime_does_not_fall_back"
+    ],
+    "contract_reason": "CLI context injection is engine-only. Explicit physical bindings and conventional venv replace ambient engine selection; cryptography is declared and locally pinned. cli/overseer is now a quiet compatibility spelling; the old warning-per-process requirement is explicitly superseded, while JSON and literal argument forwarding remain tested."
+  },
+  {
+    "historical_node": "tests.stress.test_q3_desktop_stress::test_repeated_launch_stop_cycles_leave_no_tmp_artifacts",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:d5436b42ae0a23dcde1983be2bd627cad05ec19d462efc0373fe3c0ef7bb0060",
+      "combined-final-package:6c576be3614128e87a7dfca88d112b343ca6cd1c6e5394d281779d85e47eeb28",
+      "combined-final-surfaces:1a6c02ce50f01c781ee10d1965d9dd2a3872ec4eba5243d8cc2f5e087327bcf5",
+      "combined-final-surfaces:58e5903b47f2ba069ae408c7176c5360aa03ec063ab61ba4bae79e839af86f9a"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_package.py::test_actual_package_deterministic_manifest_modes_and_resource_bundle",
+      "tests/fpr3/test_surfaces.py::test_desktop_real_launcher_identity_and_ambient_refusal",
+      "tests/fpr4/test_bundle_repeatability.py::test_repeated_resource_bundle_reserves_distinct_private_archives",
+      "tests/fpr4/test_disposition_contracts.py::test_desktop_repeated_bound_launch_stop_identity_and_no_secret_files"
+    ],
+    "contract_reason": "Ambient root discovery and old signed-download/workflow assertions are replaced by explicit bound roots, source resources and manual-only CI. Native compile evidence is separately required; publication/signing is outside FPR-3."
+  },
+  {
+    "historical_node": "tests.stress.test_q4b_ui_stress::test_concurrent_diagrams_and_status",
+    "category": "sandbox_socket_denial",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:0c11b6f8da5808bec620707cd2b9875e0e8fe93aa514d4557b87b578fc5d093d",
+      "combined-final-latency:3f8a696db9be33aad292e0084f4667f9e5ba7a3a437975ea62b8367c7658cf70",
+      "combined-final-surfaces:2d7054c922ec7d0929a2b017ddaa4a2a7f41869a0f49d3d904b1b720493cf1f4"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_surfaces.py::test_loopback_real_service_auth_csrf_origin_next_and_paths",
+      "tests/fpr4/test_disposition_contracts.py::test_app_concurrent_reads_forbidden_routes_size_bounds_and_no_secret_files",
+      "tests/fpr4/test_disposition_contracts.py::test_bound_app_preserves_original_document_and_static_latency_bounds"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.unit.test_q1_app_unit::test_occupied_default_port_reports_busy",
+    "category": "sandbox_socket_denial",
+    "original_selected": true,
+    "verified_case_ids": [
+      "combined-final-retained:868b1adbf2206ce81d22b0ab0a1afc94ba511229c11bcf18ac4011e7875f23a3"
+    ],
+    "successor_nodes": [
+      "tests/unit/test_q1_app_unit.py::test_occupied_default_port_reports_busy"
+    ],
+    "contract_reason": "Old unbound/injected CLI fixture calls are replaced with initialized disposable repositories and the same services as cli/ok; UI reads canonical NEXT."
+  },
+  {
+    "historical_node": "tests.unit.test_q3_release_desktop_unit::test_secret_scanner_flags_pem_and_passes_clean_workflow",
+    "category": "missing_path_or_fixture",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:35b2773bcf819d7cdddb9d453d2fa35273c2f02a941c61236045090482529faf",
+      "combined-final-package:6c576be3614128e87a7dfca88d112b343ca6cd1c6e5394d281779d85e47eeb28",
+      "combined-final-surfaces:1a6c02ce50f01c781ee10d1965d9dd2a3872ec4eba5243d8cc2f5e087327bcf5"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_package.py::test_actual_package_deterministic_manifest_modes_and_resource_bundle",
+      "tests/fpr4/test_bundle_repeatability.py::test_repeated_resource_bundle_reserves_distinct_private_archives",
+      "tests/fpr4/test_disposition_contracts.py::test_manual_workflow_has_no_publish_permissions_or_secret_literals"
+    ],
+    "contract_reason": "Historical signed-release YAML does not exist in the active source-only contract. The manual-only workflow, read-only permissions, no publish steps, secret scan and actual source manifest replace those assertions; signing/release delivery is not claimed."
+  },
+  {
+    "historical_node": "tests.unit.test_sync::test_sync_refuse_consumer_modified",
+    "category": "missing_path_or_fixture",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:8a6208d3bc01095c7f58d85d765f25e7b42be9489ff54ded5564ae7afb0a41e0",
+      "combined-final-surfaces:19f8dbe61d97b70fd71d3d5d8c32b9e31729efa3c7d648637ae0dfacc3e02620"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_engines.py::test_full_footprint_preserves_settings_origins_and_next",
+      "tests/fpr4/test_disposition_contracts.py::test_sync_force_cannot_overwrite_consumer_edits"
+    ],
+    "contract_reason": "Generic force-promotion/overwrite is refused. Living docs and consumer-modified assets are preserved or require explicit resolution; schema migration uses reviewed digest plans. Missing historical fixture files are replaced by real initialized fixtures."
+  },
+  {
+    "historical_node": "tests.unit.test_sync::test_sync_force_applies",
+    "category": "other_product_or_test_failure",
+    "original_selected": false,
+    "verified_case_ids": [
+      "combined-final-latency:8a6208d3bc01095c7f58d85d765f25e7b42be9489ff54ded5564ae7afb0a41e0",
+      "combined-final-surfaces:19f8dbe61d97b70fd71d3d5d8c32b9e31729efa3c7d648637ae0dfacc3e02620"
+    ],
+    "successor_nodes": [
+      "tests/fpr3/test_engines.py::test_full_footprint_preserves_settings_origins_and_next",
+      "tests/fpr4/test_disposition_contracts.py::test_sync_force_cannot_overwrite_consumer_edits"
+    ],
+    "contract_reason": "Generic force-promotion/overwrite is refused. Living docs and consumer-modified assets are preserved or require explicit resolution; schema migration uses reviewed digest plans. Missing historical fixture files are replaced by real initialized fixtures."
+  }
+]

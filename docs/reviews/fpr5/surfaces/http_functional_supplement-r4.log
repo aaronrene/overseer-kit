@@ -1,0 +1,103 @@
+{
+  "result": "PASS",
+  "checks": [
+    {
+      "name": "CLI init succeeds",
+      "passed": true
+    },
+    {
+      "name": "configured review provider is local",
+      "passed": true
+    },
+    {
+      "name": "synthetic artifact bytes verified",
+      "passed": true
+    },
+    {
+      "name": "CLI ledger succeeds",
+      "passed": true
+    },
+    {
+      "name": "CLI check-ok succeeds",
+      "passed": true
+    },
+    {
+      "name": "CLI ledger succeeds",
+      "passed": true
+    },
+    {
+      "name": "CLI honesty-status succeeds",
+      "passed": true
+    },
+    {
+      "name": "CLI status succeeds",
+      "passed": true
+    },
+    {
+      "name": "/api/status returns HTTP 200 and successful engine envelope",
+      "passed": true
+    },
+    {
+      "name": "HTTP status exactly equals actual CLI status",
+      "passed": true
+    },
+    {
+      "name": "HTTP status is current with bound identity runtime and lanes",
+      "passed": true
+    },
+    {
+      "name": "/api/gates returns HTTP 200 and successful engine envelope",
+      "passed": true
+    },
+    {
+      "name": "HTTP gates equal status governance_gates",
+      "passed": true
+    },
+    {
+      "name": "/api/review/freeze returns HTTP 200 and successful engine envelope",
+      "passed": true
+    },
+    {
+      "name": "review dry-run result marks dry_run",
+      "passed": true
+    },
+    {
+      "name": "/api/ledger/show?last=20 returns HTTP 200 and successful engine envelope",
+      "passed": true
+    },
+    {
+      "name": "HTTP ledger equals real CLI ledger entries",
+      "passed": true
+    },
+    {
+      "name": "ledger contains genesis and fixture verdict",
+      "passed": true
+    },
+    {
+      "name": "/api/ledger/verify returns HTTP 200 and successful engine envelope",
+      "passed": true
+    },
+    {
+      "name": "HTTP ledger verification engine exits zero",
+      "passed": true
+    },
+    {
+      "name": "/api/honesty-status returns HTTP 200 and successful engine envelope",
+      "passed": true
+    },
+    {
+      "name": "HTTP honesty equals CLI matched evidence",
+      "passed": true
+    },
+    {
+      "name": "HTTP honesty matched exact synthetic verdict",
+      "passed": true
+    },
+    {
+      "name": "all HTTP functional operations preserve fixture bytes modes mtimes",
+      "passed": true
+    }
+  ],
+  "request_count": 6,
+  "error": null
+}

@@ -1,0 +1,26 @@
+{
+  "init --dry-run": {
+    "exit_code": 2,
+    "stderr": "refused: next_lane_selection_required\n",
+    "next_unchanged": true
+  },
+  "init --dry-run --lane product": {
+    "exit_code": 2,
+    "stderr": "refused: next_lane_selection_required\n",
+    "next_unchanged": true
+  },
+  "migration_owner_asset": {
+    "path": ".cursor/rules/build-verification-required.mdc",
+    "classification": {
+      "path": ".cursor/rules/build-verification-required.mdc",
+      "classification": "both-changed",
+      "origin": "unrecorded",
+      "before": "48c98454e6da0b477e0a54eae161f918af34743cd9c3d9ded2ce5749ad46b152",
+      "after": "b0fdb1a1e0a01d23b4b70cb5b4bb987eb11b9fdba1a8a77af54e90f47d832065"
+    },
+    "apply_exit": 0,
+    "owner_content_preserved": false,
+    "backup_contains_owner_bytes": true,
+    "stderr": ""
+  }
+}

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="5" time="8.736" timestamp="2026-10-15T02:31:04.840865-07:00" hostname="Carloss-MacBook-Pro.local"><testcase classname="tests.fpr5.test_foundation_repairs" name="test_portable_collisions_and_owner_mode_only_change_stay_protected[.claude/skills/print-next/SKILL.md-unrecorded]" time="3.594" /><testcase classname="tests.fpr5.test_foundation_repairs" name="test_portable_collisions_and_owner_mode_only_change_stay_protected[.overseer/policy/model-routing.yaml-unrecorded]" time="3.559" /><testcase classname="tests.fpr5.test_foundation_repairs" name="test_portable_collisions_and_owner_mode_only_change_stay_protected[policy/model-routing.yaml-unrecorded]" time="0.498"><failure message="AssertionError: assert 'policy/model-routing.yaml' in {'.overseer/ledger.jsonl', 'QUEUE_HANDOVER.md', 'QUEUE_ROADMAP.md', 'docs/NEXT.md', 'videos/_active/HANDOVER.md', 'videos/_active/ROADMAP.md'}">tmp_path = PosixPath('/private/tmp/overseer-fpr5-foundation-supplement.iiq2vwsl/pytest/test_portable_collisions_and_o2')
+path = 'policy/model-routing.yaml', origin = 'unrecorded'
+
+    @pytest.mark.parametrize("path,origin", [
+        (".claude/skills/print-next/SKILL.md", "unrecorded"),
+        (".overseer/policy/model-routing.yaml", "unrecorded"),
+        ("policy/model-routing.yaml", "unrecorded"),
+        (".overseer/STANDING-DECISIONS.reference.md", "unrecorded"),
+        (COLLISION, "recorded-mode-only"),
+    ])
+    def test_portable_collisions_and_owner_mode_only_change_stay_protected(tmp_path, path, origin):
+        root = legacy_collision(tmp_path, origin, path)
+        before = snapshot(root / path)
+        document = prepare(root)
+&gt;       assert path in {row["path"] for row in document["plan"]["protected"]}
+E       AssertionError: assert 'policy/model-routing.yaml' in {'.overseer/ledger.jsonl', 'QUEUE_HANDOVER.md', 'QUEUE_ROADMAP.md', 'docs/NEXT.md', 'videos/_active/HANDOVER.md', 'videos/_active/ROADMAP.md'}
+
+tests/fpr5/test_foundation_repairs.py:146: AssertionError</failure></testcase><testcase classname="tests.fpr5.test_foundation_repairs" name="test_portable_collisions_and_owner_mode_only_change_stay_protected[.overseer/STANDING-DECISIONS.reference.md-unrecorded]" time="0.509"><failure message="AssertionError: assert '.overseer/STANDING-DECISIONS.reference.md' in {'.overseer/ledger.jsonl', 'QUEUE_HANDOVER.md', 'QUEUE_ROADMAP.md', 'docs/NEXT.md', 'videos/_active/HANDOVER.md', 'videos/_active/ROADMAP.md'}">tmp_path = PosixPath('/private/tmp/overseer-fpr5-foundation-supplement.iiq2vwsl/pytest/test_portable_collisions_and_o3')
+path = '.overseer/STANDING-DECISIONS.reference.md', origin = 'unrecorded'
+
+    @pytest.mark.parametrize("path,origin", [
+        (".claude/skills/print-next/SKILL.md", "unrecorded"),
+        (".overseer/policy/model-routing.yaml", "unrecorded"),
+        ("policy/model-routing.yaml", "unrecorded"),
+        (".overseer/STANDING-DECISIONS.reference.md", "unrecorded"),
+        (COLLISION, "recorded-mode-only"),
+    ])
+    def test_portable_collisions_and_owner_mode_only_change_stay_protected(tmp_path, path, origin):
+        root = legacy_collision(tmp_path, origin, path)
+        before = snapshot(root / path)
+        document = prepare(root)
+&gt;       assert path in {row["path"] for row in document["plan"]["protected"]}
+E       AssertionError: assert '.overseer/STANDING-DECISIONS.reference.md' in {'.overseer/ledger.jsonl', 'QUEUE_HANDOVER.md', 'QUEUE_ROADMAP.md', 'docs/NEXT.md', 'videos/_active/HANDOVER.md', 'videos/_active/ROADMAP.md'}
+
+tests/fpr5/test_foundation_repairs.py:146: AssertionError</failure></testcase><testcase classname="tests.fpr5.test_foundation_repairs" name="test_portable_collisions_and_owner_mode_only_change_stay_protected[.cursor/rules/build-verification-required.mdc-recorded-mode-only]" time="0.509"><failure message="AssertionError: assert '.cursor/rules/build-verification-required.mdc' in {'.overseer/ledger.jsonl', 'QUEUE_HANDOVER.md', 'QUEUE_ROADMAP.md', 'docs/NEXT.md', 'videos/_active/HANDOVER.md', 'videos/_active/ROADMAP.md'}">tmp_path = PosixPath('/private/tmp/overseer-fpr5-foundation-supplement.iiq2vwsl/pytest/test_portable_collisions_and_o4')
+path = '.cursor/rules/build-verification-required.mdc'
+origin = 'recorded-mode-only'
+
+    @pytest.mark.parametrize("path,origin", [
+        (".claude/skills/print-next/SKILL.md", "unrecorded"),
+        (".overseer/policy/model-routing.yaml", "unrecorded"),
+        ("policy/model-routing.yaml", "unrecorded"),
+        (".overseer/STANDING-DECISIONS.reference.md", "unrecorded"),
+        (COLLISION, "recorded-mode-only"),
+    ])
+    def test_portable_collisions_and_owner_mode_only_change_stay_protected(tmp_path, path, origin):
+        root = legacy_collision(tmp_path, origin, path)
+        before = snapshot(root / path)
+        document = prepare(root)
+&gt;       assert path in {row["path"] for row in document["plan"]["protected"]}
+E       AssertionError: assert '.cursor/rules/build-verification-required.mdc' in {'.overseer/ledger.jsonl', 'QUEUE_HANDOVER.md', 'QUEUE_ROADMAP.md', 'docs/NEXT.md', 'videos/_active/HANDOVER.md', 'videos/_active/ROADMAP.md'}
+
+tests/fpr5/test_foundation_repairs.py:146: AssertionError</failure></testcase></testsuite></testsuites>

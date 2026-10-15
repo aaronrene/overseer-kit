@@ -1,0 +1,23 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_ test_pr_matching_identity_pins_every_transport_and_ignores_ambient_target[unicode-digit-branch] _
+
+pr_fixture = (PosixPath('/private/tmp/overseer-fpr5-transport-dln4t45k/fixtures/test_pr_matching_identity_pins0/bound'), PosixPath(...view.json'), <function pr_fixture.<locals>.invoke at 0x107d237f0>, <function pr_fixture.<locals>.calls at 0x107d235e0>)
+selector = '٧'
+
+    @pytest.mark.parametrize("selector", ["7", "https://github.com/fixture/bound/pull/7", "feature/topic",
+                                          pytest.param("٧", id="unicode-digit-branch")])
+    def test_pr_matching_identity_pins_every_transport_and_ignores_ambient_target(pr_fixture, selector):
+        root, _, invoke, calls = pr_fixture
+        before = (root / "docs/NEXT.md").read_bytes()
+        result = invoke(selector, env={"GH_REPO": "foreign/repo", "GH_HOST": "foreign.invalid"})
+>       assert result.returncode == 0, result.stdout + result.stderr
+E       AssertionError: refused: gh_pr_identity_mismatch
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...--authorized', 'disposable fake transport only'], returncode=2, stdout='', stderr='refused: gh_pr_identity_mismatch\n').returncode
+
+tests/fpr5/test_transport_repairs.py:145: AssertionError
+=========================== short test summary info ============================
+FAILED tests/fpr5/test_transport_repairs.py::test_pr_matching_identity_pins_every_transport_and_ignores_ambient_target[unicode-digit-branch]
+1 failed in 3.78s

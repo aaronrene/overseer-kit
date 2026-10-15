@@ -47,7 +47,7 @@ def test_fake_pr_transport_requires_explicit_authorization_and_preserves_context
     git(repo, 'remote', 'add', 'origin', 'https://github.com/fixture/bound.git')
     before=(repo/'docs/NEXT.md').read_bytes()
     gh=repo/'fake-gh'
-    gh.write_text('#!/bin/sh\ncase "$2" in\nview) echo \'{"state":"OPEN"}\';;\nchecks) printf "ci\\tpass\\t0s\\tfixture\\n";;\nmerge) exit 77;;\nesac\n')
+    gh.write_text('#!/bin/sh\ncase "$2" in\nview) echo \'{"number":1,"state":"OPEN","url":"https://github.com/fixture/bound/pull/1"}\';;\nchecks) printf "ci\\tpass\\t0s\\tfixture\\n";;\nmerge) exit 77;;\nesac\n')
     gh.chmod(0o755)
     p=command('-C',repo,'pr-land','--pr','1','--authorized','disposable fixture','--allow-network','--gh',gh,'--dry-run','--json')
     assert p.returncode==0,p.stderr+p.stdout

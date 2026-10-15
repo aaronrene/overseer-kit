@@ -1,0 +1,20 @@
+.E................................                                       [100%]
+==================================== ERRORS ====================================
+_ ERROR at setup of test_override_preview_returns_plan_without_execution[False-selection1-step] _
+
+tmp_path = PosixPath('/private/tmp/overseer-fpr5-repair-yj20abvd/tests/test_override_preview_returns_1')
+
+    @pytest.fixture
+    def override_repo(tmp_path):
+        root = seed(tmp_path / 'override-fixture')
+        result = command('-C', root, 'init')
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: partial_asset_update: .overseer/bin/ok,.claude/skills/adversarial-freeze-review/SKILL.md,.claude/skills/build-verification-review/SKILL.md,.claude/skills/check-ok/SIDE-CHECK-TEMPLATE.md,.claude/skills/check-ok/SKILL.md,.claude/skills/deploy-verification-review/SKILL.md,.claude/skills/freeze-review-l
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...,.claude/skills/check-ok/SKILL.md,.claude/skills/deploy-verification-review/SKILL.md,.claude/skills/freeze-review-l\n').returncode
+
+tests/fpr5/test_orchestrator_repairs.py:17: AssertionError
+=========================== short test summary info ============================
+ERROR tests/fpr5/test_orchestrator_repairs.py::test_override_preview_returns_plan_without_execution[False-selection1-step]
+33 passed, 1 error in 39.58s

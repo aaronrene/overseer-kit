@@ -1,0 +1,40 @@
+Previously completed FPR-5 surface probes; root assesses final severity/verdict.
+No new security or transport tests followed root's final direction.
+
+1. Suggested P1: hosted upstream redirect escapes host allowlist and forwards token.
+Source: tools/hosted_dashboard/http_client.py:80-92 checks only initial URL, adds
+Authorization, calls default transport. :39-45 uses urllib.request.urlopen with default
+redirect handling. Real urllib redirect handler, with an in-process fixture HTTPS
+handler replacing sockets, follows 302 from allowed https://api.github.com/repos/acme/demo
+to disallowed https://not-allowlisted.invalid/stolen with Bearer FAKE-REVIEW-TOKEN.
+No network or real credentials used. Required host/credential boundary: full-product
+plan section 4 hosted dashboard and section 8 FPR-3 app/hosted security acceptance;
+FPR-3 surface contract says hosted routes honor explicit host/org/repository allowlists.
+Expected: reject redirect or validate every destination before transport and constrain
+credential forwarding to its approved origin. Raw repro: repro_redirect.py and
+repro_redirect.log. Harness exited 0 after asserting observed forbidden second request;
+that is successful reproduction of a defect, not a passing product boundary test.
+
+2. Suggested P1: pr-land's PR selector overrides configured repository transport pin.
+Source: cli/product_service.py:81-97 validates bound remote and pins GH_REPO but forwards
+argv unchanged. tools/close_ritual/pr_land.py:147-177 passes unchecked selector directly
+to view/checks/merge, and later state handling does not verify returned PR URL repository.
+Actual CLI against new fixture origin=https://github.com/fixture/bound.git accepted
+--pr=https://github.com/foreign/repo/pull/7 and --pr=--repo=foreign/repo. A fake physical
+gh logged all view/checks/merge requests carrying those foreign selectors while GH_REPO
+was github.com/fixture/bound; both command responses were exit 0, merged=true. No real
+gh transport/merge occurred. Installed gh read-only --help confirms URL selector and
+inherited --repo are valid repository-selecting CLI inputs. Required boundary: plan
+sections 6 and 9 repository/effects isolation; FPR-3 surface contract says GitHub
+transport is pinned to configured remote. Expected: reject option-shaped selectors,
+resolve/canonicalize allowed same-repository identifiers, validate fetched target, and
+forward an unambiguous pinned PR number/repository. Raw repro: repro_cli.py,
+repro_cli.log, repro_cli_result.json, fake-gh-calls.jsonl. Synthetic results establish
+actual dispatcher forwarding and lack of target check, not live GitHub behavior.
+
+3. Suggested P2 configured checkpoint orchestrator dry-run failure: detailed in
+coverage-notes.txt. The original failing exit 2/stderr is preserved in repro_cli.log.
+
+Limits: no standalone final verdict, repairs, pilot, host acceptance or release claim;
+no new combined matrix execution by this subreview. The existing reports/test files
+were read as evidence, not represented as newly passing reviewer runs.

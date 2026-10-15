@@ -1,0 +1,49 @@
+{
+  "files": {
+    "README.md": {
+      "sha256": "3b28736a66f3ac6bcc49ac25886ac8e3dbcf953a0df11e9a47526a3b10b14f9a",
+      "size": 4723
+    },
+    "failing-before-command.json": {
+      "sha256": "21d606f06e021c36feac0d52b9eb02a7038fce57ec35e49096bdbc2f44779fce",
+      "size": 1058
+    },
+    "failing-before.log": {
+      "sha256": "84b07d386b0dbc059cb69a3ac3f6e930e70ae86f048b936c4dddfccd41136870",
+      "size": 13771
+    },
+    "failing-before.xml": {
+      "sha256": "c721371e6e903c91acc3220560549b0db85c494cd831c3c113af21304398b4a5",
+      "size": 14376
+    },
+    "frozen-source-identity.json": {
+      "sha256": "59dedee388222c874f482b33349ee8b228b73797e63ea061b8903a62c575fb4c",
+      "size": 672
+    },
+    "integrated-command.json": {
+      "sha256": "c55ec649df305a71e73721148d1b8beddae8d2010d0c50aabb893e76a843065d",
+      "size": 1475
+    },
+    "integrated.log": {
+      "sha256": "c2b742523d2e10b2b1a2dc7ad2433aac6a81f31126995c4d94a607b8c61ec931",
+      "size": 99
+    },
+    "integrated.xml": {
+      "sha256": "40183be1eea4f4bc1b898e554897cd00e6cf6c9a0161cda840a0749ec7effb74",
+      "size": 896
+    },
+    "passing-after-command.json": {
+      "sha256": "e9208d3b05ef2a3bab9928c27edca6b9b31c35c0b35eaa23dcc1cb35c940a813",
+      "size": 1055
+    },
+    "passing-after.log": {
+      "sha256": "85129e12ea0b393b21e520d8df0c89b377e15e17cc3674979d54b6b122c4b68d",
+      "size": 99
+    },
+    "passing-after.xml": {
+      "sha256": "68cc12466eb7f5fe01fd45c6c24371aad7e90e09f335e103ef99c4fda971f3ed",
+      "size": 2626
+    }
+  },
+  "schema": 1
+}

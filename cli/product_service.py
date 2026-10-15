@@ -78,6 +78,102 @@ class BoundRunner:
         raise Refusal('engine_transport_not_authorized')
 
 
+def _github_repository(boundary):
+    """Capture the configured remote once, then refuse target changes mid-call."""
+    remote = boundary.context.config['vcs']['git']['remote']
+    url = v1.git(boundary.context.root, 'remote', 'get-url', remote, optional=True)
+    match = re.fullmatch(r'(?:https://github\.com/|git@github\.com:)([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+?)(?:\.git)?', url)
+    if not match:
+        raise Refusal('gh_requires_bound_github_remote')
+    target = (remote, url, 'github.com/' + match[1])
+    prior = getattr(boundary, '_github_target', target)
+    if prior != target:
+        raise Refusal('gh_bound_remote_changed')
+    boundary._github_target = target
+    return target[2]
+
+
+def _pr_url_number(value, repository):
+    if not isinstance(value, str):
+        raise Refusal('gh_pr_identity_invalid')
+    match = re.fullmatch(r'https://github\.com/([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+)/pull/([1-9][0-9]*)', value, re.IGNORECASE)
+    if not match or ('github.com/' + match[1]).lower() != repository.lower():
+        raise Refusal('gh_pr_repository_mismatch')
+    return match[2]
+
+
+def _pr_selector(value, repository, root):
+    """Keep number, matching URL and Git branch selectors; reject argv options."""
+    if not isinstance(value, str) or not value or value.startswith('-'):
+        raise Refusal('gh_pr_selector_invalid')
+    if '://' in value:
+        return _pr_url_number(value, repository)
+    if re.fullmatch(r'[0-9]+', value):
+        if not re.fullmatch(r'[1-9][0-9]*', value):
+            raise Refusal('gh_pr_selector_invalid')
+        return value
+    # Use the bound local Git validator rather than narrowing its branch grammar.
+    # Reject expressions before Git can expand them against checkout history.
+    if ('\0' in value or '@{' in value or
+            not v1.git(root, 'check-ref-format', '--branch', value, optional=True, raw=True)):
+        raise Refusal('gh_pr_selector_invalid')
+    return value
+
+
+def _github_arguments(boundary, argv, repository):
+    """Constrain retained PR operations before any transport sees caller argv."""
+    if len(argv) < 3 or argv[:2] != ['gh', 'pr']:
+        raise Refusal('gh_command_not_supported')
+    operation = argv[2]
+    args = list(argv)
+    if operation == 'list':
+        # The maintained callers request recent merged PR enrichment only.
+        pairs = args[3:]
+        if len(pairs) != 6 or pairs[::2] != ['--state', '--limit', '--json'] or pairs[1] != 'merged' or not re.fullmatch(r'[1-9][0-9]*', pairs[3]):
+            raise Refusal('gh_pr_arguments_invalid')
+    else:
+        valid = (operation == 'view' and len(args) == 6 and args[4] == '--json' or
+                 operation == 'checks' and len(args) == 4 or
+                 operation == 'merge' and len(args) == 5 and args[4] in {'--squash', '--merge', '--rebase'})
+        if not valid:
+            raise Refusal('gh_pr_arguments_invalid')
+        selector = _pr_selector(args[3], repository, boundary.context.root)
+        if operation == 'view':
+            args[3] = selector
+        else:
+            resolved = getattr(boundary, '_github_pr_resolutions', {}).get(selector)
+            if resolved is None:
+                raise Refusal('gh_pr_identity_not_resolved')
+            args[3] = resolved
+    if operation in {'view', 'list'}:
+        fields = args[-1].split(',')
+        if not fields or any(not re.fullmatch(r'[A-Za-z][A-Za-z0-9]*', field) for field in fields):
+            raise Refusal('gh_pr_arguments_invalid')
+        if operation == 'view':
+            args[-1] = ','.join(dict.fromkeys([*fields, 'number', 'url']))
+    if operation == 'merge' and (not getattr(boundary.args, 'authorized', '').strip() or getattr(boundary.args, 'dry_run', False)):
+        raise Refusal('gh_pr_merge_not_authorized')
+    return args + ['--repo', repository]
+
+
+def _remember_pr_identity(boundary, selector, response, repository):
+    from cli.v1_revision import unique_json
+    try:
+        value = json.loads(response.stdout, object_pairs_hook=unique_json)
+    except (ValueError, TypeError):
+        raise Refusal('gh_pr_identity_invalid') from None
+    if not isinstance(value, dict) or type(value.get('number')) is not int or value['number'] <= 0:
+        raise Refusal('gh_pr_identity_invalid')
+    number = _pr_url_number(value.get('url'), repository)
+    if number != str(value['number']) or (re.fullmatch(r'[1-9][0-9]*', selector) and selector != number):
+        raise Refusal('gh_pr_identity_mismatch')
+    identities = getattr(boundary, '_github_pr_resolutions', {})
+    if selector in identities and identities[selector] != number:
+        raise Refusal('gh_pr_identity_changed')
+    identities[selector] = number
+    boundary._github_pr_resolutions = identities
+
+
 def gh_run(boundary, argv):
     executable = getattr(boundary.args, 'gh', None)
     if not getattr(boundary.args, 'allow_network', False) or not executable:
@@ -86,15 +182,17 @@ def gh_run(boundary, argv):
     if not path.is_absolute() or path.resolve() != path or not path.is_file():
         raise Refusal('gh_executable_must_be_physical')
     boundary.recheck()
-    remote = boundary.context.config['vcs']['git']['remote']
-    url = v1.git(boundary.context.root, 'remote', 'get-url', remote, optional=True)
-    match = re.fullmatch(r'(?:https://github\.com/|git@github\.com:)([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+?)(?:\.git)?', url)
-    if not match:
-        raise Refusal('gh_requires_bound_github_remote')
+    repository = _github_repository(boundary)
+    argv = _github_arguments(boundary, argv, repository)
     env = {k: v for k, v in os.environ.items() if not k.startswith('GIT_') and k not in ('GH_REPO', 'GH_HOST')}
-    env.update(GH_REPO='github.com/' + match[1], GH_HOST='github.com', GH_PROMPT_DISABLED='1')
-    return subprocess.run([str(path), *argv[1:]], cwd=boundary.context.root,
-                          env=env, capture_output=True, text=True, timeout=60)
+    env.update(GH_REPO=repository, GH_HOST='github.com', GH_PROMPT_DISABLED='1')
+    result = subprocess.run([str(path), *argv[1:]], cwd=boundary.context.root,
+                            env=env, capture_output=True, text=True, timeout=60)
+    boundary.recheck()
+    _github_repository(boundary)
+    if argv[2] == 'view' and result.returncode == 0:
+        _remember_pr_identity(boundary, argv[3], result, repository)
+    return result
 
 
 def mutates(args):

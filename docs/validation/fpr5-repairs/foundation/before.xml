@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="16" skipped="0" tests="18" time="44.517" timestamp="2026-10-15T02:24:37.927154-07:00" hostname="Carloss-MacBook-Pro.local"><testcase classname="tests.fpr5.test_foundation_repairs" name="test_migration_preserves_colliding_owner_asset_and_repeat_sync[unrecorded]" time="2.690"><failure message="AssertionError: schema migration must retain active owner bytes, mode and mtime&#10;assert (b&quot;---\ndescr...6279357144821) == (b'---\nalway...6278151261918)&#10;  &#10;  At index 0 diff: b&quot;---\ndescription: Record verification evidence within the accepted task scope\nalwaysApply: true\n---\n\nUse configured checkpoints/evidence gates before claiming their requirements pass.\nRun the appropriate focused checks and retain failures and missing prerequisites.\nA mechanical result, author check, combined validation and independent review are\ndifferent evidence. Do not claim one from another or invent additional review\ncycles. Preserve the accepted action's scope and the configured optional settings.\nKeep paired summaries honest and publis...&#10;  &#10;  ...Full output truncated (2 lines hidden), use '-vv' to show">tmp_path = PosixPath('/private/tmp/overseer-fpr5-foundation-before.9x9zcczi/pytest/test_migration_preserves_colli0')
+origin = 'unrecorded'
+
+    @pytest.mark.parametrize("origin", ["unrecorded", "consumer-modified", "both-changed", "preserved",
+                                      "unrecorded-identical"])
+    def test_migration_preserves_colliding_owner_asset_and_repeat_sync(tmp_path, origin):
+        root = legacy_collision(tmp_path, origin)
+        asset = root / COLLISION
+        before = snapshot(asset)
+        config_before = snapshot(root / migration.CONFIG)
+        lock_before = snapshot(root / migration.LOCK) if (root / migration.LOCK).exists() else None
+        document = prepare(root)
+        assert snapshot(asset) == before
+        result = apply(root, document)
+        assert result.returncode == 0, result.stderr + result.stdout
+&gt;       assert snapshot(asset) == before, "schema migration must retain active owner bytes, mode and mtime"
+E       AssertionError: schema migration must retain active owner bytes, mode and mtime
+E       assert (b"---\ndescr...6279357144821) == (b'---\nalway...6278151261918)
+E         
+E         At index 0 diff: b"---\ndescription: Record verification evidence within the accepted task scope\nalwaysApply: true\n---\n\nUse configured checkpoints/evidence gates before claiming their requirements pass.\nRun the appropriate focused checks and retain failures and missing prerequisites.\nA mechanical result, author check, combined validation and independent review are\ndifferent evidence. Do not claim one from another or invent additional review\ncycles. Preserve the accepted action's scope and the configured optional settings.\nKeep paired summaries honest and publis...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/fpr5/test_foundation_repairs.py:84: AssertionError</failure></testcase><testcase classname="tests.fpr5.test_foundation_repairs" name="test_migration_preserves_colliding_owner_asset_and_repeat_sync[consumer-modified]" time="2.565"><failure message="AssertionError: schema migration must retain active owner bytes, mode and mtime&#10;assert (b&quot;---\ndescr...6281942893465) == (b'---\nalway...6280841863590)&#10;  &#10;  At index 0 diff: b&quot;---\ndescription: Record verification evidence within the accepted task scope\nalwaysApply: true\n---\n\nUse configured checkpoints/evidence gates before claiming their requirements pass.\nRun the appropriate focused checks and retain failures and missing prerequisites.\nA mechanical result, author check, combined validation and independent review are\ndifferent evidence. Do not claim one from another or invent additional review\ncycles. Preserve the accepted action's scope and the configured optional settings.\nKeep paired summaries honest and publis...&#10;  &#10;  ...Full output truncated (2 lines hidden), use '-vv' to show">tmp_path = PosixPath('/private/tmp/overseer-fpr5-foundation-before.9x9zcczi/pytest/test_migration_preserves_colli1')
+origin = 'consumer-modified'
+
+    @pytest.mark.parametrize("origin", ["unrecorded", "consumer-modified", "both-changed", "preserved",
+                                      "unrecorded-identical"])
+    def test_migration_preserves_colliding_owner_asset_and_repeat_sync(tmp_path, origin):
+        root = legacy_collision(tmp_path, origin)
+        asset = root / COLLISION
+        before = snapshot(asset)
+        config_before = snapshot(root / migration.CONFIG)
+        lock_before = snapshot(root / migration.LOCK) if (root / migration.LOCK).exists() else None
+        document = prepare(root)
+        assert snapshot(asset) == before
+        result = apply(root, document)
+        assert result.returncode == 0, result.stderr + result.stdout
+&gt;       assert snapshot(asset) == before, "schema migration must retain active owner bytes, mode and mtime"
+E       AssertionError: schema migration must retain active owner bytes, mode and mtime
+E       assert (b"---\ndescr...6281942893465) == (b'---\nalway...6280841863590)
+E         
+E         At index 0 diff: b"---\ndescription: Record verification evidence within the accepted task scope\nalwaysApply: true\n---\n\nUse configured checkpoints/evidence gates before claiming their requirements pass.\nRun the appropriate focused checks and retain failures and missing prerequisites.\nA mechanical result, author check, combined validation and independent review are\ndifferent evidence. Do not claim one from another or invent additional review\ncycles. Preserve the accepted action's scope and the configured optional settings.\nKeep paired summaries honest and publis...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/fpr5/test_foundation_repairs.py:84: AssertionError</failure></testcase><testcase classname="tests.fpr5.test_foundation_repairs" name="test_migration_preserves_colliding_owner_asset_and_repeat_sync[both-changed]" time="2.594"><failure message="AssertionError: schema migration must retain active owner bytes, mode and mtime&#10;assert (b&quot;---\ndescr...6284520641184) == (b'---\nalway...6283403683085)&#10;  &#10;  At index 0 diff: b&quot;---\ndescription: Record verification evidence within the accepted task scope\nalwaysApply: true\n---\n\nUse configured checkpoints/evidence gates before claiming their requirements pass.\nRun the appropriate focused checks and retain failures and missing prerequisites.\nA mechanical result, author check, combined validation and independent review are\ndifferent evidence. Do not claim one from another or invent additional review\ncycles. Preserve the accepted action's scope and the configured optional settings.\nKeep paired summaries honest and publis...&#10;  &#10;  ...Full output truncated (2 lines hidden), use '-vv' to show">tmp_path = PosixPath('/private/tmp/overseer-fpr5-foundation-before.9x9zcczi/pytest/test_migration_preserves_colli2')
+origin = 'both-changed'
+
+    @pytest.mark.parametrize("origin", ["unrecorded", "consumer-modified", "both-changed", "preserved",
+                                      "unrecorded-identical"])
+    def test_migration_preserves_colliding_owner_asset_and_repeat_sync(tmp_path, origin):
+        root = legacy_collision(tmp_path, origin)
+        asset = root / COLLISION
+        before = snapshot(asset)
+        config_before = snapshot(root / migration.CONFIG)
+        lock_before = snapshot(root / migration.LOCK) if (root / migration.LOCK).exists() else None
+        document = prepare(root)
+        assert snapshot(asset) == before
+        result = apply(root, document)
+        assert result.returncode == 0, result.stderr + result.stdout
+&gt;       assert snapshot(asset) == before, "schema migration must retain active owner bytes, mode and mtime"
+E       AssertionError: schema migration must retain active owner bytes, mode and mtime
+E       assert (b"---\ndescr...6284520641184) == (b'---\nalway...6283403683085)
+E         
+E         At index 0 diff: b"---\ndescription: Record verification evidence within the accepted task scope\nalwaysApply: true\n---\n\nUse configured checkpoints/evidence gates before claiming their requirements pass.\nRun the appropriate focused checks and retain failures and missing prerequisites.\nA mechanical result, author check, combined validation and independent review are\ndifferent evidence. Do not claim one from another or invent additional review\ncycles. Preserve the accepted action's scope and the configured optional settings.\nKeep paired summaries honest and publis...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/fpr5/test_foundation_repairs.py:84: AssertionError</failure></testcase><testcase classname="tests.fpr5.test_foundation_repairs" name="test_migration_preserves_colliding_owner_asset_and_repeat_sync[preserved]" time="0.303"><failure message="AssertionError: refused: migration_preserved_asset_requires_resolution: .cursor/rules/build-verification-required.mdc&#10;  &#10;assert 2 == 0&#10; +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...t='', stderr='refused: migration_preserved_asset_requires_resolution: .cursor/rules/build-verification-required.mdc\n').returncode">tmp_path = PosixPath('/private/tmp/overseer-fpr5-foundation-before.9x9zcczi/pytest/test_migration_preserves_colli3')
+origin = 'preserved'
+
+    @pytest.mark.parametrize("origin", ["unrecorded", "consumer-modified", "both-changed", "preserved",
+                                      "unrecorded-identical"])
+    def test_migration_preserves_colliding_owner_asset_and_repeat_sync(tmp_path, origin):
+        root = legacy_collision(tmp_path, origin)
+        asset = root / COLLISION
+        before = snapshot(asset)
+        config_before = snapshot(root / migration.CONFIG)
+        lock_before = snapshot(root / migration.LOCK) if (root / migration.LOCK).exists() else None
+&gt;       document = prepare(root)
+                   ^^^^^^^^^^^^^
+
+tests/fpr5/test_foundation_repairs.py:80: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/overseer-fpr5-foundation-before.9x9zcczi/pytest/test_migration_preserves_colli3/consumer')
+
+    def prepare(root):
+        result = command(root, "init", "--migrate", "--dry-run", "--json")
+&gt;       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: migration_preserved_asset_requires_resolution: .cursor/rules/build-verification-required.mdc
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...t='', stderr='refused: migration_preserved_asset_requires_resolution: .cursor/rules/build-verification-required.mdc\n').returncode
+
+tests/fpr5/test_foundation_repairs.py:60: AssertionError</failure></testcase><testcase classname="tests.fpr5.test_foundation_repairs" name="test_migration_preserves_colliding_owner_asset_and_repeat_sync[unrecorded-identical]" time="2.619"><failure message="AssertionError: schema migration must retain active owner bytes, mode and mtime&#10;assert (b&quot;---\ndescr...6287416360724) == (b&quot;---\ndescr...6286315193598)&#10;  &#10;  At index 1 diff: 420 != 488&#10;  Use -v to get more diff">tmp_path = PosixPath('/private/tmp/overseer-fpr5-foundation-before.9x9zcczi/pytest/test_migration_preserves_colli4')
+origin = 'unrecorded-identical'
+
+    @pytest.mark.parametrize("origin", ["unrecorded", "consumer-modified", "both-changed", "preserved",
+                                      "unrecorded-identical"])
+    def test_migration_preserves_colliding_owner_asset_and_repeat_sync(tmp_path, origin):
+        root = legacy_collision(tmp_path, origin)
+        asset = root / COLLISION
+        before = snapshot(asset)
+        config_before = snapshot(root / migration.CONFIG)
+        lock_before = snapshot(root / migration.LOCK) if (root / migration.LOCK).exists() else None
+        document = prepare(root)
+        assert snapshot(asset) == before
+        result = apply(root, document)
+        assert result.returncode == 0, result.stderr + result.stdout
+&gt;       assert snapshot(asset) == before, "schema migration must retain active owner bytes, mode and mtime"
+E       AssertionError: schema migration must retain active owner bytes, mode and mtime
+E       assert (b"---\ndescr...6287416360724) == (b"---\ndescr...6286315193598)
+E         
+E         At index 1 diff: 420 != 488
+E         Use -v to get more diff
+
+tests/fpr5/test_foundation_repairs.py:84: AssertionError</failure></testcase><testcase classname="tests.fpr5.test_foundation_repairs" name="test_collision_partial_apply_preserves_backup_and_resumes_config_last" time="2.409"><failure message="assert (b&quot;---\ndescr...6289986514525) == (b'---\nalway...6288940502367)&#10;  &#10;  At index 0 diff: b&quot;---\ndescription: Record verification evidence within the accepted task scope\nalwaysApply: true\n---\n\nUse configured checkpoints/evidence gates before claiming their requirements pass.\nRun the appropriate focused checks and retain failures and missing prerequisites.\nA mechanical result, author check, combined validation and independent review are\ndifferent evidence. Do not claim one from another or invent additional review\ncycles. Preserve the accepted action's scope and the configured optional settings.\nKeep paired summaries honest and publis...&#10;  &#10;  ...Full output truncated (2 lines hidden), use '-vv' to show">tmp_path = PosixPath('/private/tmp/overseer-fpr5-foundation-before.9x9zcczi/pytest/test_collision_partial_apply_p0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x1041935c0&gt;
+
+    def test_collision_partial_apply_preserves_backup_and_resumes_config_last(tmp_path, monkeypatch):
+        root = legacy_collision(tmp_path, "both-changed")
+        before = snapshot(root / COLLISION)
+        original_config = (root / migration.CONFIG).read_bytes()
+        document = prepare(root)
+        args = Namespace(dry_run=False, apply_plan="migration-plan.json", resume=False,
+                         expect_plan=document["plan_sha256"],
+                         expect_config=document["plan"]["source_config_sha256"])
+        actual = migration.atomic
+    
+        def fail_config(root, path, data, **kwargs):
+            if path == migration.CONFIG:
+                raise OSError("injected config replacement failure")
+            return actual(root, path, data, **kwargs)
+    
+        monkeypatch.setattr(migration, "atomic", fail_config)
+        result = migration.migrate(root, args)
+        assert result["ok"] is False and result["partial"] is True
+        assert (root / migration.CONFIG).read_bytes() == original_config
+&gt;       assert snapshot(root / COLLISION) == before
+E       assert (b"---\ndescr...6289986514525) == (b'---\nalway...6288940502367)
+E         
+E         At index 0 diff: b"---\ndescription: Record verification evidence within the accepted task scope\nalwaysApply: true\n---\n\nUse configured checkpoints/evidence gates before claiming their requirements pass.\nRun the appropriate focused checks and retain failures and missing prerequisites.\nA mechanical result, author check, combined validation and independent review are\ndifferent evidence. Do not claim one from another or invent additional review\ncycles. Preserve the accepted action's scope and the configured optional settings.\nKeep paired summaries honest and publis...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/fpr5/test_foundation_repairs.py:126: AssertionError</failure></testcase><testcase classname="tests.fpr5.test_foundation_repairs" name="test_collision_drift_refuses_before_backup_or_apply[bytes]" time="0.548" /><testcase classname="tests.fpr5.test_foundation_repairs" name="test_collision_drift_refuses_before_backup_or_apply[mode]" time="0.553" /><testcase classname="tests.fpr5.test_foundation_repairs" name="test_repeat_init_preserves_present_lanes_and_missing_visibility[selection0-False-1]" time="2.902"><failure message="AssertionError: refused: next_lane_selection_required&#10;  &#10;assert 2 == 0&#10; +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...preserves_pre0/consumer', 'init', '--json'], returncode=2, stdout='', stderr='refused: next_lane_selection_required\n').returncode">tmp_path = PosixPath('/private/tmp/overseer-fpr5-foundation-before.9x9zcczi/pytest/test_repeat_init_preserves_pre0')
+schema = 1, preview = False, selection = ()
+
+    @pytest.mark.parametrize("schema", [1, 3])
+    @pytest.mark.parametrize("preview", [False, True])
+    @pytest.mark.parametrize("selection", [(), ("--lane", "product")])
+    def test_repeat_init_preserves_present_lanes_and_missing_visibility(tmp_path, schema, preview, selection):
+        root = multi_lane(tmp_path, schema)
+        before = {path: snapshot(root / path) for path in (migration.NEXT, migration.CONFIG,
+            "docs/ROADMAP.md", "docs/OVERSEER-HANDOVER.md")}
+        result = command(root, "init", "--json", *(('--dry-run',) if preview else ()), *selection)
+&gt;       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: next_lane_selection_required
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...preserves_pre0/consumer', 'init', '--json'], returncode=2, stdout='', stderr='refused: next_lane_selection_required\n').returncode
+
+tests/fpr5/test_foundation_repairs.py:181: AssertionError</failure></testcase><testcase classname="tests.fpr5.test_foundation_repairs" name="test_repeat_init_preserves_present_lanes_and_missing_visibility[selection0-False-3]" time="3.095"><failure message="AssertionError: refused: next_lane_selection_required&#10;  &#10;assert 2 == 0&#10; +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...preserves_pre1/consumer', 'init', '--json'], returncode=2, stdout='', stderr='refused: next_lane_selection_required\n').returncode">tmp_path = PosixPath('/private/tmp/overseer-fpr5-foundation-before.9x9zcczi/pytest/test_repeat_init_preserves_pre1')
+schema = 3, preview = False, selection = ()
+
+    @pytest.mark.parametrize("schema", [1, 3])
+    @pytest.mark.parametrize("preview", [False, True])
+    @pytest.mark.parametrize("selection", [(), ("--lane", "product")])
+    def test_repeat_init_preserves_present_lanes_and_missing_visibility(tmp_path, schema, preview, selection):
+        root = multi_lane(tmp_path, schema)
+        before = {path: snapshot(root / path) for path in (migration.NEXT, migration.CONFIG,
+            "docs/ROADMAP.md", "docs/OVERSEER-HANDOVER.md")}
+        result = command(root, "init", "--json", *(('--dry-run',) if preview else ()), *selection)
+&gt;       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: next_lane_selection_required
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...preserves_pre1/consumer', 'init', '--json'], returncode=2, stdout='', stderr='refused: next_lane_selection_required\n').returncode
+
+tests/fpr5/test_foundation_repairs.py:181: AssertionError</failure></testcase><testcase classname="tests.fpr5.test_foundation_repairs" name="test_repeat_init_preserves_present_lanes_and_missing_visibility[selection0-True-1]" time="2.764"><failure message="AssertionError: refused: next_lane_selection_required&#10;  &#10;assert 2 == 0&#10; +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...2/consumer', 'init', '--json', '--dry-run'], returncode=2, stdout='', stderr='refused: next_lane_selection_required\n').returncode">tmp_path = PosixPath('/private/tmp/overseer-fpr5-foundation-before.9x9zcczi/pytest/test_repeat_init_preserves_pre2')
+schema = 1, preview = True, selection = ()
+
+    @pytest.mark.parametrize("schema", [1, 3])
+    @pytest.mark.parametrize("preview", [False, True])
+    @pytest.mark.parametrize("selection", [(), ("--lane", "product")])
+    def test_repeat_init_preserves_present_lanes_and_missing_visibility(tmp_path, schema, preview, selection):
+        root = multi_lane(tmp_path, schema)
+        before = {path: snapshot(root / path) for path in (migration.NEXT, migration.CONFIG,
+            "docs/ROADMAP.md", "docs/OVERSEER-HANDOVER.md")}
+        result = command(root, "init", "--json", *(('--dry-run',) if preview else ()), *selection)
+&gt;       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: next_lane_selection_required
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...2/consumer', 'init', '--json', '--dry-run'], returncode=2, stdout='', stderr='refused: next_lane_selection_required\n').returncode
+
+tests/fpr5/test_foundation_repairs.py:181: AssertionError</failure></testcase><testcase classname="tests.fpr5.test_foundation_repairs" name="test_repeat_init_preserves_present_lanes_and_missing_visibility[selection0-True-3]" time="3.093"><failure message="AssertionError: refused: next_lane_selection_required&#10;  &#10;assert 2 == 0&#10; +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...3/consumer', 'init', '--json', '--dry-run'], returncode=2, stdout='', stderr='refused: next_lane_selection_required\n').returncode">tmp_path = PosixPath('/private/tmp/overseer-fpr5-foundation-before.9x9zcczi/pytest/test_repeat_init_preserves_pre3')
+schema = 3, preview = True, selection = ()
+
+    @pytest.mark.parametrize("schema", [1, 3])
+    @pytest.mark.parametrize("preview", [False, True])
+    @pytest.mark.parametrize("selection", [(), ("--lane", "product")])
+    def test_repeat_init_preserves_present_lanes_and_missing_visibility(tmp_path, schema, preview, selection):
+        root = multi_lane(tmp_path, schema)
+        before = {path: snapshot(root / path) for path in (migration.NEXT, migration.CONFIG,
+            "docs/ROADMAP.md", "docs/OVERSEER-HANDOVER.md")}
+        result = command(root, "init", "--json", *(('--dry-run',) if preview else ()), *selection)
+&gt;       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: next_lane_selection_required
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...3/consumer', 'init', '--json', '--dry-run'], returncode=2, stdout='', stderr='refused: next_lane_selection_required\n').returncode
+
+tests/fpr5/test_foundation_repairs.py:181: AssertionError</failure></testcase><testcase classname="tests.fpr5.test_foundation_repairs" name="test_repeat_init_preserves_present_lanes_and_missing_visibility[selection1-False-1]" time="2.688"><failure message="AssertionError: refused: next_lane_selection_required&#10;  &#10;assert 2 == 0&#10; +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...er', 'init', '--json', '--lane', 'product'], returncode=2, stdout='', stderr='refused: next_lane_selection_required\n').returncode">tmp_path = PosixPath('/private/tmp/overseer-fpr5-foundation-before.9x9zcczi/pytest/test_repeat_init_preserves_pre4')
+schema = 1, preview = False, selection = ('--lane', 'product')
+
+    @pytest.mark.parametrize("schema", [1, 3])
+    @pytest.mark.parametrize("preview", [False, True])
+    @pytest.mark.parametrize("selection", [(), ("--lane", "product")])
+    def test_repeat_init_preserves_present_lanes_and_missing_visibility(tmp_path, schema, preview, selection):
+        root = multi_lane(tmp_path, schema)
+        before = {path: snapshot(root / path) for path in (migration.NEXT, migration.CONFIG,
+            "docs/ROADMAP.md", "docs/OVERSEER-HANDOVER.md")}
+        result = command(root, "init", "--json", *(('--dry-run',) if preview else ()), *selection)
+&gt;       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: next_lane_selection_required
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...er', 'init', '--json', '--lane', 'product'], returncode=2, stdout='', stderr='refused: next_lane_selection_required\n').returncode
+
+tests/fpr5/test_foundation_repairs.py:181: AssertionError</failure></testcase><testcase classname="tests.fpr5.test_foundation_repairs" name="test_repeat_init_preserves_present_lanes_and_missing_visibility[selection1-False-3]" time="3.277"><failure message="AssertionError: refused: next_lane_selection_required&#10;  &#10;assert 2 == 0&#10; +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...er', 'init', '--json', '--lane', 'product'], returncode=2, stdout='', stderr='refused: next_lane_selection_required\n').returncode">tmp_path = PosixPath('/private/tmp/overseer-fpr5-foundation-before.9x9zcczi/pytest/test_repeat_init_preserves_pre5')
+schema = 3, preview = False, selection = ('--lane', 'product')
+
+    @pytest.mark.parametrize("schema", [1, 3])
+    @pytest.mark.parametrize("preview", [False, True])
+    @pytest.mark.parametrize("selection", [(), ("--lane", "product")])
+    def test_repeat_init_preserves_present_lanes_and_missing_visibility(tmp_path, schema, preview, selection):
+        root = multi_lane(tmp_path, schema)
+        before = {path: snapshot(root / path) for path in (migration.NEXT, migration.CONFIG,
+            "docs/ROADMAP.md", "docs/OVERSEER-HANDOVER.md")}
+        result = command(root, "init", "--json", *(('--dry-run',) if preview else ()), *selection)
+&gt;       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: next_lane_selection_required
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...er', 'init', '--json', '--lane', 'product'], returncode=2, stdout='', stderr='refused: next_lane_selection_required\n').returncode
+
+tests/fpr5/test_foundation_repairs.py:181: AssertionError</failure></testcase><testcase classname="tests.fpr5.test_foundation_repairs" name="test_repeat_init_preserves_present_lanes_and_missing_visibility[selection1-True-1]" time="2.893"><failure message="AssertionError: refused: next_lane_selection_required&#10;  &#10;assert 2 == 0&#10; +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...'--json', '--dry-run', '--lane', 'product'], returncode=2, stdout='', stderr='refused: next_lane_selection_required\n').returncode">tmp_path = PosixPath('/private/tmp/overseer-fpr5-foundation-before.9x9zcczi/pytest/test_repeat_init_preserves_pre6')
+schema = 1, preview = True, selection = ('--lane', 'product')
+
+    @pytest.mark.parametrize("schema", [1, 3])
+    @pytest.mark.parametrize("preview", [False, True])
+    @pytest.mark.parametrize("selection", [(), ("--lane", "product")])
+    def test_repeat_init_preserves_present_lanes_and_missing_visibility(tmp_path, schema, preview, selection):
+        root = multi_lane(tmp_path, schema)
+        before = {path: snapshot(root / path) for path in (migration.NEXT, migration.CONFIG,
+            "docs/ROADMAP.md", "docs/OVERSEER-HANDOVER.md")}
+        result = command(root, "init", "--json", *(('--dry-run',) if preview else ()), *selection)
+&gt;       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: next_lane_selection_required
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...'--json', '--dry-run', '--lane', 'product'], returncode=2, stdout='', stderr='refused: next_lane_selection_required\n').returncode
+
+tests/fpr5/test_foundation_repairs.py:181: AssertionError</failure></testcase><testcase classname="tests.fpr5.test_foundation_repairs" name="test_repeat_init_preserves_present_lanes_and_missing_visibility[selection1-True-3]" time="3.089"><failure message="AssertionError: refused: next_lane_selection_required&#10;  &#10;assert 2 == 0&#10; +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...'--json', '--dry-run', '--lane', 'product'], returncode=2, stdout='', stderr='refused: next_lane_selection_required\n').returncode">tmp_path = PosixPath('/private/tmp/overseer-fpr5-foundation-before.9x9zcczi/pytest/test_repeat_init_preserves_pre7')
+schema = 3, preview = True, selection = ('--lane', 'product')
+
+    @pytest.mark.parametrize("schema", [1, 3])
+    @pytest.mark.parametrize("preview", [False, True])
+    @pytest.mark.parametrize("selection", [(), ("--lane", "product")])
+    def test_repeat_init_preserves_present_lanes_and_missing_visibility(tmp_path, schema, preview, selection):
+        root = multi_lane(tmp_path, schema)
+        before = {path: snapshot(root / path) for path in (migration.NEXT, migration.CONFIG,
+            "docs/ROADMAP.md", "docs/OVERSEER-HANDOVER.md")}
+        result = command(root, "init", "--json", *(('--dry-run',) if preview else ()), *selection)
+&gt;       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: next_lane_selection_required
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...'--json', '--dry-run', '--lane', 'product'], returncode=2, stdout='', stderr='refused: next_lane_selection_required\n').returncode
+
+tests/fpr5/test_foundation_repairs.py:181: AssertionError</failure></testcase><testcase classname="tests.fpr5.test_foundation_repairs" name="test_repeat_init_validates_unselected_present_lane[False]" time="3.221"><failure message="AssertionError: assert (2 == 2 and 'next_branch_mismatch' in 'refused: next_lane_selection_required\n')&#10; +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...ns0/consumer', 'init', '--lane', 'product'], returncode=2, stdout='', stderr='refused: next_lane_selection_required\n').returncode&#10; +  and   'refused: next_lane_selection_required\n' = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...ns0/consumer', 'init', '--lane', 'product'], returncode=2, stdout='', stderr='refused: next_lane_selection_required\n').stderr">tmp_path = PosixPath('/private/tmp/overseer-fpr5-foundation-before.9x9zcczi/pytest/test_repeat_init_validates_uns0')
+preview = False
+
+    @pytest.mark.parametrize("preview", [False, True])
+    def test_repeat_init_validates_unselected_present_lane(tmp_path, preview):
+        root = multi_lane(tmp_path, 3)
+        path = root / migration.NEXT
+        data = path.read_bytes().replace(b"architecture:\n    branch: main", b"architecture:\n    branch: foreign")
+        assert data != path.read_bytes()
+        path.write_bytes(data)
+        before = snapshot(path)
+        result = command(root, "init", "--lane", "product", *(('--dry-run',) if preview else ()))
+&gt;       assert result.returncode == 2 and "next_branch_mismatch" in result.stderr
+E       AssertionError: assert (2 == 2 and 'next_branch_mismatch' in 'refused: next_lane_selection_required\n')
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...ns0/consumer', 'init', '--lane', 'product'], returncode=2, stdout='', stderr='refused: next_lane_selection_required\n').returncode
+E        +  and   'refused: next_lane_selection_required\n' = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...ns0/consumer', 'init', '--lane', 'product'], returncode=2, stdout='', stderr='refused: next_lane_selection_required\n').stderr
+
+tests/fpr5/test_foundation_repairs.py:203: AssertionError</failure></testcase><testcase classname="tests.fpr5.test_foundation_repairs" name="test_repeat_init_validates_unselected_present_lane[True]" time="3.100"><failure message="AssertionError: assert (2 == 2 and 'next_branch_mismatch' in 'refused: next_lane_selection_required\n')&#10; +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva..., 'init', '--lane', 'product', '--dry-run'], returncode=2, stdout='', stderr='refused: next_lane_selection_required\n').returncode&#10; +  and   'refused: next_lane_selection_required\n' = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva..., 'init', '--lane', 'product', '--dry-run'], returncode=2, stdout='', stderr='refused: next_lane_selection_required\n').stderr">tmp_path = PosixPath('/private/tmp/overseer-fpr5-foundation-before.9x9zcczi/pytest/test_repeat_init_validates_uns1')
+preview = True
+
+    @pytest.mark.parametrize("preview", [False, True])
+    def test_repeat_init_validates_unselected_present_lane(tmp_path, preview):
+        root = multi_lane(tmp_path, 3)
+        path = root / migration.NEXT
+        data = path.read_bytes().replace(b"architecture:\n    branch: main", b"architecture:\n    branch: foreign")
+        assert data != path.read_bytes()
+        path.write_bytes(data)
+        before = snapshot(path)
+        result = command(root, "init", "--lane", "product", *(('--dry-run',) if preview else ()))
+&gt;       assert result.returncode == 2 and "next_branch_mismatch" in result.stderr
+E       AssertionError: assert (2 == 2 and 'next_branch_mismatch' in 'refused: next_lane_selection_required\n')
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva..., 'init', '--lane', 'product', '--dry-run'], returncode=2, stdout='', stderr='refused: next_lane_selection_required\n').returncode
+E        +  and   'refused: next_lane_selection_required\n' = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva..., 'init', '--lane', 'product', '--dry-run'], returncode=2, stdout='', stderr='refused: next_lane_selection_required\n').stderr
+
+tests/fpr5/test_foundation_repairs.py:203: AssertionError</failure></testcase></testsuite></testsuites>

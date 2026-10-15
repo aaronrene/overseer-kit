@@ -22,7 +22,9 @@ The former sole-writer/NXR-GSR chain remains historical and is not the living NE
 | FPR-2 — Muse authority, mirror and repository lanes | Complete locally — selected authority, controlled mirrors, explicit adoption/rollback and canonical lane collection; [focused evidence](validation/FPR-2-AUTHORITY.md) |
 | FPR-3 — complete product surface | Complete locally — unified maintained commands, bound app/desktop/hosted surfaces, full footprint and local source packaging; [focused evidence](validation/FPR-3-SURFACES.md) |
 | FPR-4 — combined validation | Local matrix, bounded repairs, package and rollback evidence recorded; required Python 3.11 and owner-selected acceptance cells remain open |
-| FPR-5 — independent final review and release decision | **NEXT, awaiting owner acceptance and reviewer appointment** — one independent review of the fixed build and explicit evidence limits; release decision remains separate |
+| FPR-5 — independent final review | Complete — original **FINDINGS** verdict and evidence preserved in [the review](reviews/FPR-5-REVIEW.md) |
+| FPR-5 bounded repairs | All six implemented; 1,361 selected cases have passing evidence across the new combined run and affected rerun; [author evidence](validation/FPR-5-REPAIRS.md) |
+| Remaining acceptance, final adjudication and release decision | **Pending acceptance inputs** — Python 3.11, named hosts/versions, platform/distribution choices and separately authorized new pilot; then one final independent adjudication and a separate owner release decision |
 
 The exact current action lives only in `docs/NEXT.md`; use `ok -C ROOT next`.
 Update this summary and HANDOVER together. No release or remote operation is
@@ -147,22 +149,36 @@ Fresh packaged Python 3.14.4 CLI/app/desktop-child checks and the macOS arm64
 Rust 1.88 locked/offline native build passed. The complete Python 3.11 cell is
 unresolved because pinned cffi 2.1.0 for cp311 is unavailable locally. Named
 automatic host/version and platform/distribution acceptance, authorization for
-the separate new integrated pilot, and appointment of an independent reviewer
-remain pending. The new pilot was not run; the completed bounded pilot and its
-certification were preserved. Native GUI, native host lifecycle delivery, signed
+the separate new integrated pilot remain pending. The original FPR-5 reviewer
+appointment is satisfied and that review is complete. The new pilot was not run;
+the completed bounded pilot and its certification were preserved. Native GUI,
+native host lifecycle delivery, signed
 installers and live providers remain unverified.
 
 All 393 original test/support files and the historical **1,391 passed / 104 failed**
 record remain unchanged. The final disposition maps every historical failure to
 retained or explicit successor coverage. Author checks do not count as independent
-review. The sole successor is **FPR-5**, pending owner acceptance and appointment
-of an independent reviewer, with GPT-6 Astra and Max reasoning. Required evidence
-gaps prevent a release-readiness claim. One independent final review, bounded
-repairs if required, final adjudication and a separate owner release decision
-remain; no intervening review-only handoff or release authority is introduced.
+review. FPR-5 and its bounded author repairs are now complete; the current
+successor concerns unresolved acceptance inputs, with GPT-6 Astra and Max
+reasoning. Required evidence gaps prevent a release-readiness claim. One final
+independent adjudication of complete repaired-source/acceptance evidence and a
+separate owner release decision remain. No additional review cycle or release
+authority is introduced.
 
 FPR-2 focused evidence covers 559 distinct maintained passing cases across
 recorded runs. Final affected reruns passed 169 Git/config/lane and 41 native
 cases; the complete mirror/reconciliation run passed 102. One unchanged historical
 native-export/automatic-push assertion is explicitly superseded by real controlled
 wrapper checks. This is not one combined final-product run or release validation.
+
+FPR-5 repairs (2026-10-15) close the six implementation findings within the
+existing architecture: hosted redirect refusal, configured PR identity binding,
+owner collision preservation, exact desktop resource membership, repeat init for
+multi-lane NEXT, and no-execution configured orchestrator plans. Repaired runtime
+is `cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774`.
+The single repair closing commit has sole parent
+`4c62c17cff6c606a5e1ddf565e12353973b3bcad`. Its combined run is 1,360 passes/one
+preserved scheduling failure; the separate two-pass affected rerun completes
+passing coverage of all 1,361 selected cases. See the repair record for exact
+source hashes, raw failures and open acceptance requirements. This is author
+validation, not independent certification or an owner release decision.

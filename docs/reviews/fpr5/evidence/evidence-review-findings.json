@@ -1,0 +1,49 @@
+{
+  "scope": "Evidence/disposition subreview findings for integration into the root single FPR-5 verdict. No standalone verdict.",
+  "findings": [
+    {
+      "id": "EVIDENCE-HTTP-OUTCOMES",
+      "severity": "P2",
+      "title": "Historical local-app flow mappings omit maintained HTTP outcomes",
+      "location": "docs/validation/fpr4/disposition-audit.json:3413",
+      "requirement": [
+        "docs/decisions/FULL-PRODUCT-RESTORATION-PLAN.md:520",
+        "docs/decisions/FULL-PRODUCT-RESTORATION-PLAN.md:550",
+        "docs/decisions/FULL-PRODUCT-RESTORATION-PLAN.md:657"
+      ],
+      "problem": "The audit marks the original app gates/review/full-flow failures as successor-covered, but their successors never execute the maintained successful HTTP outcomes. The selected sources exercise /api/review/freeze only with ../outside.md (refusal), /api/ledger/show only with an invalid limit (request rejection), and no /api/gates, /api/ledger/verify or /api/honesty-status success path. CLI review/ledger/honesty tests do not exercise the request-body-to-argv conversion, route dispatch or HTTP result envelope of those app operations.",
+      "exact_historical_rows": [
+        "tests.integration.test_q1_app_integration::test_gates_slice_matches_status",
+        "tests.integration.test_q1_app_integration::test_review_freeze_dry_run",
+        "tests.e2e.test_q1_app_e2e::test_full_operator_flow",
+        "tests.e2e.test_q4b_ui_e2e::test_overview_structure_status_roadmap_actions"
+      ],
+      "source_evidence": [
+        "tests/integration/test_q1_app_integration.py:80",
+        "tests/integration/test_q1_app_integration.py:91",
+        "tests/e2e/test_q1_app_e2e.py:25",
+        "tests/fpr3/test_surfaces.py:37",
+        "tests/fpr4/test_disposition_contracts.py:32",
+        "tests/fpr4/test_disposition_contracts.py:140",
+        "tools/app/engine.py:117",
+        "tools/app/server.py:145"
+      ],
+      "raw_evidence": [
+        "docs/validation/fpr4/combined-final-surfaces.xml",
+        "docs/validation/fpr4/combined-final-latency.xml",
+        "docs/validation/fpr4/disposition-closeout-collection.json"
+      ],
+      "independent_artifact": "independent-semantic-replacement-map.json",
+      "reproduction": "Run the read-only audit_semantics.py and inspect selected_function_endpoint_occurrences against the original_source and successor_sources for the named historical rows. This enumerates selected function bodies from the lossless 1209-node collection rather than searching unselected historical tests.",
+      "impact": "Passing test identities support the stated numerical coverage, but do not establish all maintained app workflow requirements. This is a validation-completeness finding, not a demonstrated runtime endpoint defect.",
+      "required_resolution": "Add bound local HTTP acceptance cases using disposable fixtures and fake provider outcomes for gates/status parity, valid review dry-run and ledger/honesty results; link their same-production passing outcomes to the affected historical rows and rerun only affected checks."
+    }
+  ],
+  "additional_limits": [
+    "The fifth partial row in the semantic map concerns same-repository HTTP-vs-CLI status exit-code parity; it is included as a narrower coverage limitation rather than another finding.",
+    "Default legacy migration preservation at colliding unrecorded owner rule paths is not exercised by the mapped non-colliding custom fixture or sync --preserve-modified tests. Root owns the reproduced product finding; this subreview supplies supporting source/fixture analysis only.",
+    "Positive PEM scanner detection is not repeated by the new clean-workflow successor; the historical positive assertion preceded the missing-workflow failure. No new positive-scanner execution is claimed.",
+    "Complete Python 3.11 dependencies/Git matrix, named automatic-host lifecycle evidence, owner-selected platform acceptance and new integrated pilot remain unresolved recorded required cells. Appointment alone does not close them.",
+    "No historical full suite, product tests, original pilot or certification was rerun by this subreview."
+  ]
+}

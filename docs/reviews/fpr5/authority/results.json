@@ -1,0 +1,32 @@
+{
+  "suite": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "47",
+    "time": "118.571",
+    "timestamp": "2026-10-14T18:14:32.656802-07:00",
+    "hostname": "Carloss-MacBook-Pro.local"
+  },
+  "groups": {
+    "adoption_config_last_and_concurrent_config": 2,
+    "credential_protocol": 39,
+    "native_adopt_upgrade_projection_reconciliation_delivery": 5,
+    "source_archive_traversal": 1
+  },
+  "runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "bdbfdae4599ca0bd1b096d5ed2c84019df3b83ed24972c202319ea5507cf09ec"
+  },
+  "head": "4c62c17cff6c606a5e1ddf565e12353973b3bcad",
+  "git_status": "",
+  "artifacts": {
+    "focused.xml": "bae178465ac4dda12331a3a65d31d31034e5974b829ea6073eb0036b2e1d78e8",
+    "tauri-resource-path.json": "f42f8dc7cceb5f31a9f9839d46087e374f9ab1a8b2802b632ff9dde64bcede1c",
+    "resource-membership.json": "8bb78550f17b53c7b28cd25ab7a32aa4b9b4abdbf3f19bd8227a17f2abe8f393",
+    "probe_resource_membership.py": "0df581f1fc51e83128dc8cdb11a4b084d2e85c71cd0d11f1d97300c5439f9225",
+    "focused.log": "fb1f8c63e415837ba52708860e3028b975d49582af1039bd842b293b7e6712a6"
+  }
+}

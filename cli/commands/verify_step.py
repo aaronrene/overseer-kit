@@ -100,7 +100,7 @@ def run_verify_step_command(args: Namespace, ctx: CliContext) -> int:
     if result.stderr_extra:
         print(result.stderr_extra, file=sys.stderr)
 
-    if options.emit_json:
+    if options.emit_json or result.json_payload.plan is not None:
         ctx.output.emit_json(result.json_payload.to_dict())
     elif result.exit_code == 4 and not config.checkpoints.enabled:
         ctx.output.error("refused: checkpoints.enabled is false")

@@ -1,0 +1,49 @@
+{
+  "result": "FAIL",
+  "checks": [
+    {
+      "name": "CLI init succeeds",
+      "passed": true
+    },
+    {
+      "name": "configured review provider is local",
+      "passed": true
+    },
+    {
+      "name": "synthetic artifact bytes verified",
+      "passed": true
+    },
+    {
+      "name": "CLI ledger succeeds",
+      "passed": true
+    },
+    {
+      "name": "CLI check-ok succeeds",
+      "passed": true
+    },
+    {
+      "name": "CLI ledger succeeds",
+      "passed": true
+    },
+    {
+      "name": "CLI honesty-status succeeds",
+      "passed": false
+    }
+  ],
+  "request_count": 0,
+  "error": {
+    "type": "AssertionError",
+    "message": "CLI honesty-status succeeds",
+    "traceback": "Traceback (most recent call last):\n  File \"/private/tmp/overseer-fpr5-review.jTlE9P/surfaces/http_functional_supplement-r2.py\", line 48, in <module>\n    cli_honesty=cli(root,'honesty-status','--hook','handoff','--artifact','fixture-artifact.txt','--producer-session','fixture-producer','--json')\n  File \"/private/tmp/overseer-fpr5-review.jTlE9P/surfaces/http_functional_supplement-r2.py\", line 18, in cli\n    check('CLI '+str(args[0])+' succeeds',p.returncode==0)\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/private/tmp/overseer-fpr5-review.jTlE9P/surfaces/http_functional_supplement-r2.py\", line 13, in check\n    assert condition,name\n           ^^^^^^^^^\nAssertionError: CLI honesty-status succeeds\n"
+  }
+}
+Traceback (most recent call last):
+  File "/private/tmp/overseer-fpr5-review.jTlE9P/surfaces/http_functional_supplement-r2.py", line 48, in <module>
+    cli_honesty=cli(root,'honesty-status','--hook','handoff','--artifact','fixture-artifact.txt','--producer-session','fixture-producer','--json')
+  File "/private/tmp/overseer-fpr5-review.jTlE9P/surfaces/http_functional_supplement-r2.py", line 18, in cli
+    check('CLI '+str(args[0])+' succeeds',p.returncode==0)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/overseer-fpr5-review.jTlE9P/surfaces/http_functional_supplement-r2.py", line 13, in check
+    assert condition,name
+           ^^^^^^^^^
+AssertionError: CLI honesty-status succeeds

@@ -15,11 +15,19 @@ Prepare a fresh portable engine bundle with:
 
 ```sh
 scripts/bundle-desktop-kit.sh /absolute/new-resource-kit
+.venv/bin/python -B tools/ci/source_package.py provision-runtime --directory /absolute/new-resource-kit
+.venv/bin/python -B tools/ci/source_package.py verify-tree --directory /absolute/new-resource-kit
 ```
 
-The bundle includes cli, adapters, tools, app assets, policies and templates with
-a hash/mode manifest. It excludes virtual environments and local repository
-bindings. The Rust/Tauri shell requires the pinned Cargo lock and local toolchain
+The source bundle includes cli, adapters, tools, app assets, policies and templates
+with a hash/mode manifest. It excludes virtual environments and local repository
+bindings. Explicit runtime provisioning then copies the exact pinned local
+dependencies into a new conventional `.venv` and records its separate inventory.
+The pre-build check rejects every unapproved resource entry, including hidden
+files and arbitrary `.venv` extras; see [the resource contract](../docs/SOURCE-DISTRIBUTION.md).
+This local provisioned runtime uses the selected platform's existing interpreter;
+it does not establish a portable interpreter bundle or native installer acceptance.
+The Rust/Tauri shell requires the pinned Cargo lock and local toolchain
 cache; use the explicitly selected compatible local Rust toolchain with `cargo build --offline --locked` from `desktop/src-tauri`. The locked dependency set needs Rust 1.88 or later. No automatic
 installer or dependency fetch is part of local preparation. Native installer
 platforms, signing/notarization and publication require later owner choices.

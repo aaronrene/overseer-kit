@@ -34,7 +34,10 @@ artifact and uses the same reviewer; `--scaffold-only` only creates the artifact
 while `--dry-run` writes nothing. The deprecated alias shares this implementation.
 
 `verify-step --step ID`, `--through current` or `--all` uses configured consumer
-scripts; `--dry-run` plans without execution. Scripts are explicit local code,
+scripts; `--dry-run` plans without execution. A configured orchestrator returns
+its confined argv, working directory and explicit environment without invoking
+an executor or marking steps verified; selected manifest/policy paths remain
+confined for both preview and execution. Scripts are explicit local code,
 confined to the selected repository, and run with captured context. Their own
 external effects remain the owner's responsibility. Missing prerequisites and
 nonzero exits never become PASS. `honesty-status` reads configured verdict,
@@ -54,7 +57,7 @@ labelled separately from pinned relays. No member write is reachable.
 `land-closeout` is read-only and defaults offline. Remote enrichment is opt-in.
 `pr-land` requires an authorization reason, `--allow-network` and explicit `--gh`;
 its dry-run still reads the remote. Configured post-land synchronization is clean,
-ff-only, requires the additional `--post-land-sync` authorization and remains separate from NEXT publication. GitHub transport is pinned to the configured GitHub remote, not ambient GH_REPO. Release/signing/deployment are not
+ff-only, requires the additional `--post-land-sync` authorization and remains separate from NEXT publication. GitHub transport explicitly pins every invocation to the configured GitHub remote. PR selectors and resolved URL/number identities must match that repository; option-shaped selectors and target drift refuse before further transport. Release/signing/deployment are not
 part of these commands or session hooks.
 
 The loopback app exposes status, selected-lane documents, canonical `/api/next`,
@@ -63,4 +66,6 @@ process-local, mutations require CSRF, origins are checked and paths confined.
 The startup banner is emitted after binding succeeds. Desktop uses that same
 launcher and checks health identity. Hosted routes accept only read verbs and
 explicit host/org/repository allowlists; remote NEXT is display-only and cannot
-authorize local work. No hosted endpoint can invoke a local mutator.
+authorize local work. Hosted upstream HTTP redirects refuse before a second
+request, so redirects cannot forward credentials outside the original request.
+No hosted endpoint can invoke a local mutator.

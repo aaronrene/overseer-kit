@@ -1,0 +1,29 @@
+{
+  "case": "redirect",
+  "head": "4c62c17cff6c606a5e1ddf565e12353973b3bcad",
+  "runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "bdbfdae4599ca0bd1b096d5ed2c84019df3b83ed24972c202319ea5507cf09ec"
+  },
+  "repo": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+  "output": "/private/tmp/overseer-fpr5-reproduce-_fy9p0f4",
+  "worktree_status": "?? docs/reviews/FPR-5-REVIEW.md\n?? docs/reviews/fpr5/\n",
+  "commands": [
+    {
+      "argv": [
+        "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.venv/bin/python3",
+        "-I",
+        "-B",
+        "-c",
+        "import runpy,sys; sys.path.insert(0,sys.argv[1]); p=sys.argv[2]; sys.argv=[p]+sys.argv[3:]; runpy.run_path(p,run_name=\"__main__\")",
+        "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+        "/private/tmp/overseer-fpr5-reproduce-_fy9p0f4/scripts/repro_redirect.py"
+      ],
+      "log": "/private/tmp/overseer-fpr5-reproduce-_fy9p0f4/repro_redirect.log",
+      "exit_code": 0
+    }
+  ],
+  "note": "New reproduction, separate from the preserved original review evidence.",
+  "exit_code": 0
+}

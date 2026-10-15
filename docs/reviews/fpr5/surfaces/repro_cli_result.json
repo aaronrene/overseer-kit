@@ -1,0 +1,51 @@
+[
+  {
+    "argv": [
+      "init"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"ok\": true,\n  \"repository\": {\n    \"name\": \"command-fixture\",\n    \"id\": \"32701b34-26a9-4b4f-8938-35cd013bd971\",\n    \"root\": \"/private/tmp/overseer-fpr5-review.jTlE9P/surfaces/command-fixture\",\n    \"root_relative_docs\": \"docs\"\n  },\n  \"initialized\": true,\n  \"dry_run\": false,\n  \"changed\": [\n    \".overseer/bin/ok\",\n    \".claude/skills/adversarial-freeze-review/SKILL.md\",\n    \".claude/skills/build-verification-review/SKILL.md\",\n    \".claude/skills/check-ok/SIDE-CHECK-TEMPLATE.md\",\n    \".claude/skills/check-ok/SKILL.md\",\n    \".claude/skills/deploy-verification-review/SKILL.md\",\n    \".claude/skills/freeze-review-loop/SKILL.md\",\n    \".claude/skills/freeze-review/SKILL.md\",\n    \".claude/skills/governance-sync/SKILL.md\",\n    \".claude/skills/independent-second-reviewer/SKILL.md\",\n    \".claude/skills/print-next/SKILL.md\",\n    \".claude/skills/workspace-status/SKILL.md\",\n    \".cursor/rules/build-verification-required.mdc\",\n    \".cursor/rules/check-ok-thinking.mdc\",\n    \".cursor/rules/governance-sync.mdc\",\n    \".cursor/rules/l1-checkpoints-consumer-owned.mdc\",\n    \".cursor/rules/no-docs-only-pr-to-main.mdc\",\n    \".cursor/rules/orchestrator.mdc\",\n    \".cursor/rules/print-next-closeout.mdc\",\n    \".cursor/rules/tier-authority.mdc\",\n    \".cursor/rules/workspace-authority.mdc\",\n    \".cursor/skills/adversarial-freeze-review/SKILL.md\",\n    \".cursor/skills/build-verification-review/SKILL.md\",\n    \".cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md\",\n    \".cursor/skills/check-ok/SKILL.md\",\n    \".cursor/skills/deploy-verification-review/SKILL.md\",\n    \".cursor/skills/freeze-review-loop/SKILL.md\",\n    \".cursor/skills/freeze-review/SKILL.md\",\n    \".cursor/skills/governance-sync/SKILL.md\",\n    \".cursor/skills/independent-second-reviewer/SKILL.md\",\n    \".cursor/skills/print-next/SKILL.md\",\n    \".cursor/skills/workspace-status/SKILL.md\",\n    \".overseer/STANDING-DECISIONS.reference.md\",\n    \".overseer/policy/model-labels.yaml\",\n    \".overseer/policy/model-routing.yaml\",\n    \".overseer/policy/test-tiers.yaml\",\n    \".overseer/policy/tiers.yaml\",\n    \"policy/model-routing.yaml\",\n    \"docs/ROADMAP.md\",\n    \"docs/OVERSEER-HANDOVER.md\",\n    \".overseer/version.lock\",\n    \".overseer/config.yaml\"\n  ]\n}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "verify-step",
+      "--all",
+      "--dry-run",
+      "--json"
+    ],
+    "exit": 2,
+    "stdout": "",
+    "stderr": "refused: script_execution_requires_explicit_bound_mutation\n"
+  },
+  {
+    "argv": [
+      "pr-land",
+      "--pr=https://github.com/foreign/repo/pull/7",
+      "--authorized",
+      "fixture only",
+      "--allow-network",
+      "--gh",
+      "/private/tmp/overseer-fpr5-review.jTlE9P/surfaces/fake-gh",
+      "--json"
+    ],
+    "exit": 0,
+    "stdout": "{\"exit_code\": 0, \"pr\": \"https://github.com/foreign/repo/pull/7\", \"authorized\": true, \"authorization\": \"fixture only\", \"merged\": true, \"already_merged\": false, \"checks\": [{\"name\": \"ci\", \"state\": \"pass\", \"elapsed\": \"0s\", \"url\": \"fixture\", \"description\": \"\"}], \"failing\": [], \"pending\": [], \"messages\": [\"authorized: fixture only\", \"pr-land start pr=https://github.com/foreign/repo/pull/7 method=squash dry_run=False\", \"all checks passed (1)\", \"merged PR https://github.com/foreign/repo/pull/7 via squash\"], \"merge_method\": \"squash\", \"recorded_at\": \"2026-10-15T01:15:50Z\", \"auto_merge\": false, \"post_land_sync\": {\"status\": \"disabled\", \"remote\": \"\", \"main_branch\": \"\", \"messages\": []}, \"ok\": true}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "pr-land",
+      "--pr=--repo=foreign/repo",
+      "--authorized",
+      "fixture only",
+      "--allow-network",
+      "--gh",
+      "/private/tmp/overseer-fpr5-review.jTlE9P/surfaces/fake-gh",
+      "--json"
+    ],
+    "exit": 0,
+    "stdout": "{\"exit_code\": 0, \"pr\": \"--repo=foreign/repo\", \"authorized\": true, \"authorization\": \"fixture only\", \"merged\": true, \"already_merged\": false, \"checks\": [{\"name\": \"ci\", \"state\": \"pass\", \"elapsed\": \"0s\", \"url\": \"fixture\", \"description\": \"\"}], \"failing\": [], \"pending\": [], \"messages\": [\"authorized: fixture only\", \"pr-land start pr=--repo=foreign/repo method=squash dry_run=False\", \"all checks passed (1)\", \"merged PR --repo=foreign/repo via squash\"], \"merge_method\": \"squash\", \"recorded_at\": \"2026-10-15T01:15:51Z\", \"auto_merge\": false, \"post_land_sync\": {\"status\": \"disabled\", \"remote\": \"\", \"main_branch\": \"\", \"messages\": []}, \"ok\": true}\n",
+    "stderr": ""
+  }
+]

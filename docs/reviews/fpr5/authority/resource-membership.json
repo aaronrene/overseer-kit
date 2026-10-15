@@ -1,0 +1,25 @@
+{
+  "baseline_manifested_files": 1306,
+  "fixture": "/private/tmp/overseer-fpr5-review.jTlE9P/authority/resource-fixture",
+  "extra_file_results": [
+    {
+      "extra": ".overseer/config.yaml",
+      "archive_eligible": false,
+      "manifested": false,
+      "rejected": false
+    },
+    {
+      "extra": "docs/NEXT.md",
+      "archive_eligible": false,
+      "manifested": false,
+      "rejected": false
+    },
+    {
+      "extra": "tools/.env",
+      "archive_eligible": false,
+      "manifested": false,
+      "rejected": false
+    }
+  ],
+  "source_manifest_sha256": "6e7acc8f16c32536eb7a529774cf7d1bc3fff802e149e6573f9a5815f5509503"
+}

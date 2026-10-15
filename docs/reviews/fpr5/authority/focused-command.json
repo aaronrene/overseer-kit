@@ -1,0 +1,41 @@
+{
+  "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+  "argv": [
+    ".venv/bin/python",
+    "-B",
+    "-m",
+    "pytest",
+    "-p",
+    "no:cacheprovider",
+    "-q",
+    "--basetemp",
+    "/private/tmp/overseer-fpr5-review.jTlE9P/authority/pytest",
+    "--junitxml",
+    "/private/tmp/overseer-fpr5-review.jTlE9P/authority/focused.xml",
+    "--muse-python",
+    "/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python",
+    "tests/v1/test_adoption.py::test_adoption_failure_before_config_keeps_old_binding",
+    "tests/v1/test_adoption.py::test_adoption_does_not_overwrite_concurrent_config_edit",
+    "tests/v1/test_mirror_credentials.py",
+    "tests/muse/test_handoffs.py::test_explicit_adoption_preserves_identity_docs_edits_and_rollback",
+    "tests/muse/test_product.py::test_upgrade_controlled_plan_preserves_settings_and_never_exports",
+    "tests/muse/test_mirror.py::test_projection_modes_mapping_and_offline_retry",
+    "tests/muse/test_reconciliation.py::test_exact_110_path_delta_divergent_histories_modes_and_exclusions",
+    "tests/muse/test_reconciliation.py::test_reconciled_delivery_retry_and_later_single_parent",
+    "tests/fpr3/test_package.py::test_package_traversal_and_tamper_refused"
+  ],
+  "environment": {
+    "policy": "Inherited execution-tool shell environment; no environment variable assignments or overrides in the invocation. Fixtures sanitize their Git/Muse/credential subprocess environments as implemented in the reviewed tests.",
+    "explicit_overrides": {}
+  },
+  "shell": "zsh, exec_command default login semantics",
+  "stdout_file": "/private/tmp/overseer-fpr5-review.jTlE9P/authority/focused.log",
+  "stderr": "redirected to stdout with 2>&1",
+  "fixture_basetemp": "/private/tmp/overseer-fpr5-review.jTlE9P/authority/pytest",
+  "preparation": [
+    "mkdir -p /private/tmp/overseer-fpr5-review.jTlE9P/authority"
+  ],
+  "exit_code": 0,
+  "rerun": false,
+  "note": "Recorded after completion from the exact executed tool command. No rerun performed. Do not reuse occupied basetemp or overwrite preserved evidence for a later run."
+}

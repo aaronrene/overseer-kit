@@ -25,6 +25,35 @@ and separately bound to the reviewed rc5 package. `tools/ci/muse_artifact.py` an
 its manifests verify the exact optional recovery wheel/source. A missing wheel,
 Python, dependency or desktop toolchain is a missing prerequisite, not a skip.
 
+Prepared desktop resources use the same manifest but a stricter complete-tree
+check: `verify-tree` enumerates every file, directory and symlink, including hidden
+entries. Only source-manifest files and their necessary parent directories are
+accepted. Excluded files, unapproved empty directories, links and special files
+refuse even when the approved source files still match. Keep the resource tree
+quiescent between this check and local packaging.
+
+The sole additional resource allowance is an explicitly provisioned conventional
+`.venv`, recorded in `RESOURCE-RUNTIME.json`. From this installation's venv, use:
+
+```sh
+.venv/bin/python -B tools/ci/source_package.py provision-runtime --directory /absolute/new-resource-kit
+.venv/bin/python -B tools/ci/source_package.py verify-tree --directory /absolute/new-resource-kit
+```
+
+Provisioning requires a clean verified source tree without an existing `.venv`.
+It copies only the exact pinned distributions in that resource's manifested
+`requirements-v1.txt` from this interpreter's installed local prerequisites. It
+copies no pip, development dependencies, activation scripts, bytecode, ambient
+`.pth` files or credentials. The resulting `.venv` retains its `pyvenv.cfg`, normal
+interpreter links and declared packages. The separate inventory records bytes,
+modes, link targets and interpreter identity; verification recomputes allowed
+dependency files from the matching pinned local prerequisites rather than letting
+arbitrary files enroll through that inventory. All other `.venv` entries refuse.
+Verification requires the same interpreter and pinned local prerequisite bytes
+used for provisioning. This is same-platform local preparation, not a portable
+Python interpreter bundle, native installer acceptance or release. The complete
+Python 3.11 cell and owner platform/distribution decisions remain open.
+
 For an existing checkout, quiesce commands and back up the exact installation,
 configuration, owned assets and living documents first. Keep the installation at
 its same physical root. Replace source with the reviewed archive, verify its
