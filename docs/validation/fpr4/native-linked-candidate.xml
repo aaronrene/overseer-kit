@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="25.639" timestamp="2026-10-14T16:31:21.621933-07:00" hostname="Carloss-MacBook-Pro.local"><testcase classname="tests.muse.test_handoffs" name="test_native_linked_worktree_own_branch_and_checkout_identity" time="25.518"><failure message="assert True is False">muse_root = PosixPath('/private/tmp/overseer-fpr4-native-linked-candidate/test_native_linked_worktree_ow0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = &lt;function muse.&lt;locals&gt;.run at 0x1120805c0&gt;
+tmp_path = PosixPath('/private/tmp/overseer-fpr4-native-linked-candidate/test_native_linked_worktree_ow0')
+
+    def test_native_linked_worktree_own_branch_and_checkout_identity(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+        init(root, muse_python)
+        commit(root, muse)
+        assert publish(root).returncode == 0
+        linked = (tmp_path / 'linked').resolve()
+        muse(root, 'worktree', 'add', 'linked', 'main', '-b', 'lane-two', '--path', str(linked), '--json')
+        original = inventory(root)
+        other = init(linked, muse_python, '--lane', 'architecture')
+        assert other['branch'] == 'lane-two'
+        assert other['source_id'] == status(root)['source_id']
+        assert other['repository']['id'] != status(root)['repository']['id']
+&gt;       assert status(linked)['dirty'] is False
+E       assert True is False
+
+tests/muse/test_handoffs.py:113: AssertionError</failure></testcase></testsuite></testsuites>

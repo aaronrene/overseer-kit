@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "pytest": "9.1.1",
+  "cases": [
+    {
+      "nodeid": "::test_skip",
+      "node_sha256": "a256282d7a84bfb1a9fde34df3995d30e962cc50fea865a33505713bdbc07b71",
+      "junit": [
+        "",
+        "test_skip"
+      ]
+    }
+  ]
+}

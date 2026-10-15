@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "pytest": "9.1.1",
+  "cases": [
+    {
+      "nodeid": "tests/performance/test_model_routing_performance.py::test_route_validate_bounded",
+      "node_sha256": "d7b571a15b40fc52a3f8da3257ae0419d59e9b91c77b35a458dcf2e9a48a0dc2",
+      "junit": [
+        "tests.performance.test_model_routing_performance",
+        "test_route_validate_bounded"
+      ]
+    }
+  ]
+}

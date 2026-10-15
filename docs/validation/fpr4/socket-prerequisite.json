@@ -1,0 +1,5 @@
+{
+  "ok": false,
+  "type": "PermissionError",
+  "error": "[Errno 1] Operation not permitted"
+}

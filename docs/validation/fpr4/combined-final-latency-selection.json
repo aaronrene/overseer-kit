@@ -1,0 +1,28 @@
+{
+  "selected": [
+    "tests/fpr4/test_disposition_contracts.py",
+    "tests/performance/test_check_ok_perf.py",
+    "tests/performance/test_checkpoints_bounded.py",
+    "tests/performance/test_frv_perf.py",
+    "tests/performance/test_governance_gates_bounded.py",
+    "tests/performance/test_honesty_bounded.py",
+    "tests/performance/test_hosted_dashboard_performance.py",
+    "tests/performance/test_isr_perf.py",
+    "tests/performance/test_p_deploy_performance.py",
+    "tests/performance/test_p_evidence_performance.py",
+    "tests/performance/test_post_land_sync_bounded.py",
+    "tests/performance/test_provenance_performance.py",
+    "tests/performance/test_cost_awareness_performance.py::test_active_slice_surface_bounded",
+    "tests/performance/test_footprint_integrity_performance.py::test_passing_precomputed_lock_avoids_a_second_disk_read",
+    "tests/performance/test_model_routing_performance.py::test_route_validate_bounded"
+  ],
+  "deselected": [
+    "tests/v1/test_commands.py::test_unsupported_commands_cannot_run",
+    "tests/v1/test_adoption.py::test_fresh_standalone_git_install_without_muse",
+    "tests/muse/test_handoffs.py::test_native_linked_worktree_own_branch_and_checkout_identity",
+    "tests/muse/test_mirror.py::test_add_change_delete_and_no_content_source_commit",
+    "tests/unit/test_k7_footprint.py::test_rendered_deploy_script_safety_invariants",
+    "tests/unit/test_skills_footprint.py::test_footprint_includes_orchestrator_rule",
+    "tests/fpr3/test_package.py::test_actual_package_deterministic_manifest_modes_and_resource_bundle"
+  ]
+}

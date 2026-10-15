@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="18.044" timestamp="2026-10-14T16:41:12.296846-07:00" hostname="Carloss-MacBook-Pro.local"><testcase classname="tests.muse.test_mirror" name="test_add_change_delete_and_no_content_source_commit" time="17.952"><failure message="AssertionError: assert ('prepared' == 'mapped_no_content_change'&#10;  &#10;  - mapped_no_content_change&#10;  + prepared)">case = (PosixPath('/private/tmp/overseer-fpr4-mirror-delta-before/test_add_change_delete_and_no_0/muse-only'), {'schema': 1, ...n', ...}, 'target': '/private/tmp/overseer-fpr4-mirror-delta-before/test_add_change_delete_and_no_0/bare-mirror', ...})
+muse = &lt;function muse.&lt;locals&gt;.run at 0x107ddf060&gt;
+
+    def test_add_change_delete_and_no_content_source_commit(case, muse):
+        root, plan = case
+        first = prepared(case)
+        (root/'data.bin').unlink()
+        (root/'app.py').write_text('value = 2\n')
+        (root/'new.txt').write_text('addition\n')
+        muse(root, 'code', 'add', '.')
+        muse(root, 'commit', '-m', 'approved second snapshot', '--json')
+        config = yaml.safe_load((root/'.overseer/config.yaml').read_bytes())
+        plan['source']['revision'] = muse_read(root, config['vcs']['muse']['binding']['runtime']['python'])['head']
+        plan['expected_target'] = first['git_head']
+        plan['destination']['expected_head'] = first['git_head']
+        second = prepared(case)
+        paths = mirror.git(Path(plan['target']), 'ls-tree', '-r', '--name-only', 'HEAD').decode().splitlines()
+        assert 'data.bin' not in paths and 'new.txt' in paths
+        transport = Delivery(plan); transport.fail_push = 'before'
+        assert not execute(case, 'deliver', transport)['ok']
+        transport.fail_push = None
+        assert execute(case, 'deliver', transport)['ok']
+        # New approval with the same bytes retains correspondence through an empty commit.
+        muse(root, 'commit', '--allow-empty', '-m', 'new approved source; same projection', '--json')
+        plan['source']['revision'] = muse_read(root, config['vcs']['muse']['binding']['runtime']['python'])['head']
+        plan['expected_target'] = second['git_head']
+        plan['destination']['expected_head'] = second['git_head']
+        third = prepared(case)
+&gt;       assert third['export'] == 'mapped_no_content_change' and third['git_head'] != second['git_head']
+E       AssertionError: assert ('prepared' == 'mapped_no_content_change'
+E         
+E         - mapped_no_content_change
+E         + prepared)
+
+tests/muse/test_mirror.py:369: AssertionError</failure></testcase></testsuite></testsuites>

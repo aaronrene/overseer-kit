@@ -1,0 +1,23 @@
+{
+  "driver_command": [
+    ".venv/bin/python",
+    "scripts/fpr4_distribution_matrix.py",
+    "--output",
+    "/private/tmp/overseer-fpr4-distribution-final-20261014",
+    "--evidence-tag",
+    "final",
+    "--expected-runtime",
+    "bdbfdae4599ca0bd1b096d5ed2c84019df3b83ed24972c202319ea5507cf09ec",
+    "--phase",
+    "native",
+    "--native-target",
+    "/private/tmp/overseer-fpr4-distribution-20261014-2/native-target"
+  ],
+  "explicit_environment": {
+    "TMPDIR": "/private/tmp/overseer-fpr4-distribution-final-20261014/native-temp"
+  },
+  "driver_exit": 0,
+  "reason": "BSD mktemp -u with nonterminal Xs generated a literal archive basename already occupied by the initial run. A new task-local TMPDIR allowed resource preparation without deleting prior artifacts or modifying frozen sources. The repeat-invocation defect remains separately reported for repair/disposition.",
+  "initial_failure_evidence": "distribution-final-native-initial-results.json",
+  "final_evidence": "distribution-final-native-3.14-results.json"
+}

@@ -1,0 +1,158 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+__ test_git_full_status_clean_bootstrap_is_offline_without_native_muse[local] __
+
+tmp_path = PosixPath('/private/tmp/overseer-fpr4-import-boundary-candidate-first/test_git_full_status_clean_boo0')
+reviewer = 'local'
+
+    @pytest.mark.parametrize('reviewer', ['local', 'api'])
+    def test_git_full_status_clean_bootstrap_is_offline_without_native_muse(tmp_path, reviewer):
+        root = tmp_path/'git-only product'
+        root.mkdir()
+        env = dict(os.environ, PYTHONDONTWRITEBYTECODE='1', GIT_OPTIONAL_LOCKS='0',
+                   GIT_CONFIG_GLOBAL='/dev/null', GIT_CONFIG_NOSYSTEM='1',
+                   OVERSEER_REVIEW_API_KEY='fake-fpr4-key',
+                   OVERSEER_REVIEW_API_URL='https://review.fixture.invalid')
+        for args in (['init', '-b', 'main'], ['config', 'user.name', 'Fixture'],
+                     ['config', 'user.email', 'fixture@example.invalid'],
+                     ['-c', 'core.hooksPath=/dev/null', 'commit', '--allow-empty', '-m', 'seed']):
+            subprocess.run(['/usr/bin/git', '-C', str(root), *args], env=env,
+                           check=True, capture_output=True, text=True)
+        initialized = subprocess.run([str(KIT/'cli/ok'), '-C', str(root), 'init'],
+                                     env=env, capture_output=True, text=True, timeout=30)
+        assert initialized.returncode == 0, initialized.stderr
+        config_path = root/'.overseer/config.yaml'
+        config = yaml.safe_load(config_path.read_bytes())
+        config['freeze_contract']['reviewer'] = dict(mode='agent', provider=reviewer,
+                                                   model='thinking-high', fallback='human')
+        config_path.write_text(yaml.safe_dump(config, sort_keys=False))
+        head = subprocess.check_output(['/usr/bin/git', '-C', str(root), 'rev-parse', 'HEAD'],
+                                       env=env, text=True).strip()
+        before = _inventory(root)
+        completed = subprocess.run([str(KIT/'.venv/bin/python'), '-I', '-B', '-c', PROBE,
+                                    str(KIT), str(root)], cwd=tmp_path, env=env,
+                                   capture_output=True, text=True, timeout=30)
+>       assert completed.returncode == 0, completed.stderr + completed.stdout
+E       AssertionError: Traceback (most recent call last):
+E           File "<string>", line 62, in <module>
+E             result = bootstrap['run']()
+E           File "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/bootstrap.py", line 29, in run
+E             return main()
+E           File "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/main.py", line 309, in main
+E             result = _read(context, args)
+E           File "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/main.py", line 255, in _read
+E             result.update(sections(context, args))
+E                           ~~~~~~~~^^^^^^^^^^^^^^^
+E           File "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/product_status.py", line 11, in sections
+E             from cli.commands.route import routing_policy_status
+E           File "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/commands/route.py", line 10, in <module>
+E             from cli.context import CliContext
+E           File "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/context.py", line 13, in <module>
+E             from tools.freeze_reviewer.providers.base import ReviewProvider
+E           File "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/tools/freeze_reviewer/providers/__init__.py", line 3, in <module>
+E             from tools.freeze_reviewer.providers.api_client import (
+E             ...<2 lines>...
+E             )
+E           File "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/tools/freeze_reviewer/providers/api_client.py", line 51, in <module>
+E             @dataclass
+E              ^^^^^^^^^
+E           File "/opt/homebrew/Cellar/python@3.14/3.14.4_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/dataclasses.py", line 1442, in dataclass
+E             return wrap(cls)
+E           File "/opt/homebrew/Cellar/python@3.14/3.14.4_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/dataclasses.py", line 1432, in wrap
+E             return _process_class(cls, init, repr, eq, order, unsafe_hash,
+E                                   frozen, match_args, kw_only, slots,
+E                                   weakref_slot)
+E           File "/opt/homebrew/Cellar/python@3.14/3.14.4_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/dataclasses.py", line 1215, in _process_class
+E             func_builder.add_fns_to_class(cls)
+E             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+E           File "/opt/homebrew/Cellar/python@3.14/3.14.4_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/dataclasses.py", line 507, in add_fns_to_class
+E             fns = ns['__create_fn__'](**self.locals)
+E           File "<string>", line 1, in __create_fn__
+E           File "<string>", line 34, in no_provider_actions
+E             raise AssertionError('provider action attempted: ' + provider_calls[-1])
+E         AssertionError: provider action attempted: tools.freeze_reviewer.providers.api_client.__create_fn__
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.venv/bin/python', '-I...der_calls[-1])\nAssertionError: provider action attempted: tools.freeze_reviewer.providers.api_client.__create_fn__\n').returncode
+
+/private/tmp/overseer-fpr4-import-candidate/test_import_boundary.py:123: AssertionError
+___ test_git_full_status_clean_bootstrap_is_offline_without_native_muse[api] ___
+
+tmp_path = PosixPath('/private/tmp/overseer-fpr4-import-boundary-candidate-first/test_git_full_status_clean_boo1')
+reviewer = 'api'
+
+    @pytest.mark.parametrize('reviewer', ['local', 'api'])
+    def test_git_full_status_clean_bootstrap_is_offline_without_native_muse(tmp_path, reviewer):
+        root = tmp_path/'git-only product'
+        root.mkdir()
+        env = dict(os.environ, PYTHONDONTWRITEBYTECODE='1', GIT_OPTIONAL_LOCKS='0',
+                   GIT_CONFIG_GLOBAL='/dev/null', GIT_CONFIG_NOSYSTEM='1',
+                   OVERSEER_REVIEW_API_KEY='fake-fpr4-key',
+                   OVERSEER_REVIEW_API_URL='https://review.fixture.invalid')
+        for args in (['init', '-b', 'main'], ['config', 'user.name', 'Fixture'],
+                     ['config', 'user.email', 'fixture@example.invalid'],
+                     ['-c', 'core.hooksPath=/dev/null', 'commit', '--allow-empty', '-m', 'seed']):
+            subprocess.run(['/usr/bin/git', '-C', str(root), *args], env=env,
+                           check=True, capture_output=True, text=True)
+        initialized = subprocess.run([str(KIT/'cli/ok'), '-C', str(root), 'init'],
+                                     env=env, capture_output=True, text=True, timeout=30)
+        assert initialized.returncode == 0, initialized.stderr
+        config_path = root/'.overseer/config.yaml'
+        config = yaml.safe_load(config_path.read_bytes())
+        config['freeze_contract']['reviewer'] = dict(mode='agent', provider=reviewer,
+                                                   model='thinking-high', fallback='human')
+        config_path.write_text(yaml.safe_dump(config, sort_keys=False))
+        head = subprocess.check_output(['/usr/bin/git', '-C', str(root), 'rev-parse', 'HEAD'],
+                                       env=env, text=True).strip()
+        before = _inventory(root)
+        completed = subprocess.run([str(KIT/'.venv/bin/python'), '-I', '-B', '-c', PROBE,
+                                    str(KIT), str(root)], cwd=tmp_path, env=env,
+                                   capture_output=True, text=True, timeout=30)
+>       assert completed.returncode == 0, completed.stderr + completed.stdout
+E       AssertionError: Traceback (most recent call last):
+E           File "<string>", line 62, in <module>
+E             result = bootstrap['run']()
+E           File "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/bootstrap.py", line 29, in run
+E             return main()
+E           File "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/main.py", line 309, in main
+E             result = _read(context, args)
+E           File "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/main.py", line 255, in _read
+E             result.update(sections(context, args))
+E                           ~~~~~~~~^^^^^^^^^^^^^^^
+E           File "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/product_status.py", line 11, in sections
+E             from cli.commands.route import routing_policy_status
+E           File "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/commands/route.py", line 10, in <module>
+E             from cli.context import CliContext
+E           File "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/context.py", line 13, in <module>
+E             from tools.freeze_reviewer.providers.base import ReviewProvider
+E           File "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/tools/freeze_reviewer/providers/__init__.py", line 3, in <module>
+E             from tools.freeze_reviewer.providers.api_client import (
+E             ...<2 lines>...
+E             )
+E           File "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/tools/freeze_reviewer/providers/api_client.py", line 51, in <module>
+E             @dataclass
+E              ^^^^^^^^^
+E           File "/opt/homebrew/Cellar/python@3.14/3.14.4_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/dataclasses.py", line 1442, in dataclass
+E             return wrap(cls)
+E           File "/opt/homebrew/Cellar/python@3.14/3.14.4_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/dataclasses.py", line 1432, in wrap
+E             return _process_class(cls, init, repr, eq, order, unsafe_hash,
+E                                   frozen, match_args, kw_only, slots,
+E                                   weakref_slot)
+E           File "/opt/homebrew/Cellar/python@3.14/3.14.4_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/dataclasses.py", line 1215, in _process_class
+E             func_builder.add_fns_to_class(cls)
+E             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+E           File "/opt/homebrew/Cellar/python@3.14/3.14.4_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/dataclasses.py", line 507, in add_fns_to_class
+E             fns = ns['__create_fn__'](**self.locals)
+E           File "<string>", line 1, in __create_fn__
+E           File "<string>", line 34, in no_provider_actions
+E             raise AssertionError('provider action attempted: ' + provider_calls[-1])
+E         AssertionError: provider action attempted: tools.freeze_reviewer.providers.api_client.__create_fn__
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.venv/bin/python', '-I...der_calls[-1])\nAssertionError: provider action attempted: tools.freeze_reviewer.providers.api_client.__create_fn__\n').returncode
+
+/private/tmp/overseer-fpr4-import-candidate/test_import_boundary.py:123: AssertionError
+=========================== short test summary info ============================
+FAILED ../../../../private/tmp/overseer-fpr4-import-candidate/test_import_boundary.py::test_git_full_status_clean_bootstrap_is_offline_without_native_muse[local]
+FAILED ../../../../private/tmp/overseer-fpr4-import-candidate/test_import_boundary.py::test_git_full_status_clean_bootstrap_is_offline_without_native_muse[api]
+2 failed in 6.70s

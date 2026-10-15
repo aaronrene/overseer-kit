@@ -1,0 +1,1494 @@
+{
+  "schema": 1,
+  "scope": "FPR-4 author validation; all initial combined failures retained, not FPR-5 review or release certification",
+  "opening_head": "6289d2823184a63e2968d2c5f6a76abab5818368",
+  "initial_combined": {
+    "record": "docs/validation/fpr4/combined-first.json",
+    "xml": "docs/validation/fpr4/combined-first.xml",
+    "exact_command_field": "command",
+    "results": {
+      "tests": 1170,
+      "failed": 11,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 1159
+    },
+    "exit_code": 1,
+    "driver_seconds": 2835.5020267500004,
+    "runtime": {
+      "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "version": "1.0.0.dev1",
+      "sha256": "7d38764f026848d7d89d81abedfc62f1de5eefde6443d0032d770c2ff09a20d1"
+    },
+    "runtime_unchanged": true,
+    "selection_sha256": "b94e2a6eb08133ea5d4b225de188d7fdfcf2622467869706fba248c12486d25f"
+  },
+  "focused_final": {
+    "record": "docs/validation/fpr4/affected-final.json",
+    "xml": "docs/validation/fpr4/affected-final.xml",
+    "exact_command_field": "command",
+    "results": {
+      "tests": 32,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 32
+    },
+    "exit_code": 0,
+    "driver_seconds": 124.41559516700363,
+    "runtime": {
+      "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "version": "1.0.0.dev1",
+      "sha256": "bdbfdae4599ca0bd1b096d5ed2c84019df3b83ed24972c202319ea5507cf09ec"
+    },
+    "exact_collection_executed_once": true,
+    "boundary_unchanged": true
+  },
+  "tail_final": {
+    "record": "docs/validation/fpr4/disposition-results.json",
+    "run_name": "disposition-tail-final",
+    "xml": "docs/validation/fpr4/disposition-tail-final.xml",
+    "results": {
+      "passed": 8,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "xml_seconds": 3.072
+  },
+  "summary": {
+    "initial_failures": 11,
+    "unchanged_originals_retained": 5,
+    "explicit_successors": 6,
+    "all_have_observed_passing_successor_or_original": true,
+    "final_combined_pending": false,
+    "all_initial_failures_have_passing_final_selected_evidence": true
+  },
+  "failures": [
+    {
+      "initial_node": "tests/v1/test_adoption.py::test_fresh_standalone_git_install_without_muse",
+      "initial_outcome": "failed",
+      "initial_seconds": 3.424,
+      "initial_message": "AssertionError: Traceback (most recent call last):\n    File \"/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/cli/bootstrap.py\", line 33, in <module>\n      raise SystemExit(run())\n                       ~~~^^\n    File \"/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/cli/bootstrap.py\", line 29, in run\n      return main()\n    File \"/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/cli/main.py\", line 309, in main\n      result = _read(context, args)\n    File \"/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/cli/main.py\", line 255, in _read\n      result.update(sections(context, args))\n                    ~~~~~~~~^^^^^^^^^^^^^^^\n    File \"/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/cli/product_status.py\", line 11, in sections\n      from cli.commands.route import routing_policy_status\n    File \"/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/cli/commands/route.py\", line 13, in <module>\n      from tools.cost_awareness.derive import derive_cost_view\n    File \"/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/tools/cost_awareness/__init__.py\", line 4, in <module>\n      from tools.cost_awareness.format import format_cost_awareness_lines\n    File \"/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/tools/cost_awareness/format.py\", line 5, in <module>\n      from tools.cost_awareness.surface import CostAwarenessReport, CostSlice\n    File \"/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/tools/cost_awareness/surface.py\", line 12, in <module>\n      from tools.governance_gates import scan_governance_gates\n    File \"/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/tools/governance_gates/__init__.py\", line 10, in __getattr__\n      from tools.governance_gates.scan import scan_governance_gates\n    File \"/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/tools/governance_gates/scan.py\", line 9, in <module>\n      from tools.freeze_authorization.resolve import freeze_authorization_state\n    File \"/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/tools/freeze_authorization/__init__.py\", line 5, in <module>\n      from tools.freeze_authorization.resolve import (\n      ...<5 lines>...\n      )\n    File \"/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/tools/freeze_authorization/resolve.py\", line 16, in <module>\n      from tools.honesty.gate import honesty_module_disabled\n    File \"/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/tools/honesty/__init__.py\", line 3, in <module>\n      from tools.honesty.ledger import append_entry, show_entries, verify_chain\n    File \"/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/tools/honesty/ledger.py\", line 21, in <module>\n      from tools.honesty.provenance import (\n      ...<4 lines>...\n      )\n    File \"/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/tools/honesty/provenance.py\", line 7, in <module>\n      from tools.honesty.ed25519_util import verify_ed25519_signature\n    File \"/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/tools/honesty/ed25519_util.py\", line 11, in <module>\n      from cryptography.exceptions import InvalidSignature\n  ModuleNotFoundError: No module named 'cryptography'\n  \nassert 1 == 0\n +  where 1 = CompletedProcess(args=['/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-...e>\\n    from cryptography.exceptions import InvalidSignature\\nModuleNotFoundError: No module named \\'cryptography\\'\\n').returncode",
+      "classification": "fixture_dependencies_changed",
+      "cause_and_resolution": "Bounded standalone fixture installs only PyYAML. Restored status imports the declared cryptography dependency; the complete offline dependency successor also exercises native Ed25519 and proves Muse remains absent.",
+      "product_files_changed": [],
+      "original_test_preserved": true,
+      "original_test_sha256": "73365873fc47763d5504eab7a868464ee23fc93deb73cf557f6a664b90653d29",
+      "final_selection_disposition": "explicit_deselection_with_successor",
+      "successor_nodes": [
+        "tests/fpr4/test_standalone_dependencies.py::test_fresh_full_dependency_git_install_without_muse"
+      ],
+      "passing_focused_or_opening_evidence": [
+        {
+          "selector": "tests/fpr4/test_standalone_dependencies.py::test_fresh_full_dependency_git_install_without_muse",
+          "observations": [
+            {
+              "node": "tests/fpr4/test_standalone_dependencies.py::test_fresh_full_dependency_git_install_without_muse",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 6.045
+            }
+          ]
+        }
+      ],
+      "supporting_evidence": [
+        "docs/validation/fpr4/standalone-results.json"
+      ],
+      "final_combined_outcome": "selected_successor_passed_original_retained_as_failure",
+      "final_raw_combined_evidence": [
+        {
+          "selector": "tests/fpr4/test_standalone_dependencies.py::test_fresh_full_dependency_git_install_without_muse",
+          "counts": {
+            "tests": 1,
+            "passed": 1,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "case_ids": [
+            "combined-final-surfaces:84cfb39e674b174290bbd90a4c85af904b19e7c558adf96a4dad763e5d983e6c"
+          ]
+        }
+      ]
+    },
+    {
+      "initial_node": "tests/v1/test_commands.py::test_unsupported_commands_cannot_run",
+      "initial_outcome": "failed",
+      "initial_seconds": 3.422,
+      "initial_message": "assert (0 != 0)\n +  where 0 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...ved; republish explicitly after a work commit\",\\n  \"remote\": \"not_checked_offline\",\\n  \"exit_code\": 0\\n}\\n', stderr='').returncode",
+      "classification": "supported_command_contract_changed",
+      "cause_and_resolution": "The former five-command contract rejects governance-sync/app/upgrade-regime/pr-land unconditionally. Restored commands are supported and must instead honor their explicit effects and context controls.",
+      "product_files_changed": [],
+      "original_test_preserved": true,
+      "original_test_sha256": "34ce3467e90e28cc3f9acae2aa0c93d3944a6549afed590d62a10f0946ade1bb",
+      "final_selection_disposition": "explicit_deselection_with_successor",
+      "successor_nodes": [
+        "tests/fpr3/test_commands.py::test_actual_command_help",
+        "tests/fpr3/test_commands.py::test_registry_covers_all_historical_commands_and_subcommands",
+        "tests/fpr3/test_commands.py::test_contradictions_refuse_before_execution"
+      ],
+      "passing_focused_or_opening_evidence": [
+        {
+          "selector": "tests/fpr3/test_commands.py::test_actual_command_help",
+          "observations": [
+            {
+              "node": "tests/fpr3/test_commands.py::test_actual_command_help[adopt]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 0.079
+            },
+            {
+              "node": "tests/fpr3/test_commands.py::test_actual_command_help[app]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 0.103
+            },
+            {
+              "node": "tests/fpr3/test_commands.py::test_actual_command_help[check-if-ok]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 0.101
+            },
+            {
+              "node": "tests/fpr3/test_commands.py::test_actual_command_help[check-ok]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 0.094
+            },
+            {
+              "node": "tests/fpr3/test_commands.py::test_actual_command_help[governance-sync]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 0.08
+            },
+            {
+              "node": "tests/fpr3/test_commands.py::test_actual_command_help[handover-compact]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 0.08
+            },
+            {
+              "node": "tests/fpr3/test_commands.py::test_actual_command_help[honesty-status]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 0.077
+            },
+            {
+              "node": "tests/fpr3/test_commands.py::test_actual_command_help[hook]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 0.078
+            },
+            {
+              "node": "tests/fpr3/test_commands.py::test_actual_command_help[hosted-dashboard]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 0.076
+            },
+            {
+              "node": "tests/fpr3/test_commands.py::test_actual_command_help[init]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 0.078
+            },
+            {
+              "node": "tests/fpr3/test_commands.py::test_actual_command_help[land-check]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 0.077
+            },
+            {
+              "node": "tests/fpr3/test_commands.py::test_actual_command_help[land-closeout]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 0.077
+            },
+            {
+              "node": "tests/fpr3/test_commands.py::test_actual_command_help[ledger]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 0.073
+            },
+            {
+              "node": "tests/fpr3/test_commands.py::test_actual_command_help[mirror]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 0.077
+            },
+            {
+              "node": "tests/fpr3/test_commands.py::test_actual_command_help[next]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 0.077
+            },
+            {
+              "node": "tests/fpr3/test_commands.py::test_actual_command_help[next-write]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 0.078
+            },
+            {
+              "node": "tests/fpr3/test_commands.py::test_actual_command_help[pr-land]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 0.075
+            },
+            {
+              "node": "tests/fpr3/test_commands.py::test_actual_command_help[review]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 0.075
+            },
+            {
+              "node": "tests/fpr3/test_commands.py::test_actual_command_help[route]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 0.075
+            },
+            {
+              "node": "tests/fpr3/test_commands.py::test_actual_command_help[status]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 0.074
+            },
+            {
+              "node": "tests/fpr3/test_commands.py::test_actual_command_help[sync]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 0.075
+            },
+            {
+              "node": "tests/fpr3/test_commands.py::test_actual_command_help[upgrade-regime]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 0.077
+            },
+            {
+              "node": "tests/fpr3/test_commands.py::test_actual_command_help[verify-step]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 0.076
+            },
+            {
+              "node": "tests/fpr3/test_commands.py::test_actual_command_help[workspace]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 0.073
+            }
+          ]
+        },
+        {
+          "selector": "tests/fpr3/test_commands.py::test_registry_covers_all_historical_commands_and_subcommands",
+          "observations": [
+            {
+              "node": "tests/fpr3/test_commands.py::test_registry_covers_all_historical_commands_and_subcommands",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 0.455
+            }
+          ]
+        },
+        {
+          "selector": "tests/fpr3/test_commands.py::test_contradictions_refuse_before_execution",
+          "observations": [
+            {
+              "node": "tests/fpr3/test_commands.py::test_contradictions_refuse_before_execution[argv0]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 3.094
+            },
+            {
+              "node": "tests/fpr3/test_commands.py::test_contradictions_refuse_before_execution[argv1]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 2.985
+            },
+            {
+              "node": "tests/fpr3/test_commands.py::test_contradictions_refuse_before_execution[argv2]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 3.087
+            },
+            {
+              "node": "tests/fpr3/test_commands.py::test_contradictions_refuse_before_execution[argv3]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 3.103
+            },
+            {
+              "node": "tests/fpr3/test_commands.py::test_contradictions_refuse_before_execution[argv4]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 3.061
+            },
+            {
+              "node": "tests/fpr3/test_commands.py::test_contradictions_refuse_before_execution[argv5]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 3.444
+            },
+            {
+              "node": "tests/fpr3/test_commands.py::test_contradictions_refuse_before_execution[argv6]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 3.281
+            },
+            {
+              "node": "tests/fpr3/test_commands.py::test_contradictions_refuse_before_execution[argv7]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 3.234
+            }
+          ]
+        }
+      ],
+      "supporting_evidence": [
+        "docs/validation/fpr4/disposition-final-selection.json"
+      ],
+      "final_combined_outcome": "selected_successor_passed_original_retained_as_failure",
+      "final_raw_combined_evidence": [
+        {
+          "selector": "tests/fpr3/test_commands.py::test_actual_command_help",
+          "counts": {
+            "tests": 24,
+            "passed": 24,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "case_ids": [
+            "combined-final-surfaces:e353524a2a55725e7babe5b40c03d3cb4530cfad299147d446301018ffe21c2e",
+            "combined-final-surfaces:29a3b609d34af8ed09d8aa79bce240667d53dcb40d6fa3292e72c91e018ed46a",
+            "combined-final-surfaces:48960b558c3d123c7293b8169f6d62ab06d618a54bfd1269aefd448a33008418",
+            "combined-final-surfaces:c4b38564b6fbd413659f76e260d151948a46fce508a993d226621657fced3374",
+            "combined-final-surfaces:7b31a6a27e045f7525a8085ba12c2c8467b4a41c6b964efe80de819189a75aab",
+            "combined-final-surfaces:336adf197c9783c92c3fb47afae71eac71a59210b3f3b3e4b149040adead42d5",
+            "combined-final-surfaces:3b5e4a4b21311d4b8922b4ea2c5f93fabcf9b0fd5caaa912adff25d1b55334e2",
+            "combined-final-surfaces:ec8cfd18c78494a4f66d3eddc674ccb97820039dd268455e1b78b7345f1f1543",
+            "combined-final-surfaces:cb515255ebeca73d914c30c9cbd3a9b20fb3d2ae8946ebbeb5cb887f406bd290",
+            "combined-final-surfaces:a39a2b6d5429aaf26dca4aa203bb6649cd12f2a9aec6775bf5d09a2564d6026a",
+            "combined-final-surfaces:c134c5db3413939e4b6226a79afacf5b0b94d0b6a3f4aada4453f7fd6392cb06",
+            "combined-final-surfaces:827244146f809a62d54bdaf964ad9440b07ca72304a42aff4f6b62e0a8101d4c",
+            "combined-final-surfaces:3fff2bf91eb9246cdb1fad2fd9bbea39e4a1c2b3ec52d6a6a08047905616a22e",
+            "combined-final-surfaces:b554722d534a9a22dd76f22e0b16675e3e3b40573893e47b1b050658f37ce6d1",
+            "combined-final-surfaces:bd992dc2d35184e40a6481230c8960cb0f60d51ba6ea7866fb090dd3df6959d3",
+            "combined-final-surfaces:2c7b887c10541fe1839f2d422cfc58cb65516419056057bbd6ea169d9957d256",
+            "combined-final-surfaces:96269ecbfc010f15df5b3c42846e34a53adb99c020fea4eb70620512b8df0071",
+            "combined-final-surfaces:717f9d37b23f9ef2084cc4bad768232bee55e1e8abdaadb4dce475844a77a1d3",
+            "combined-final-surfaces:a687da97236cd4e4429ab50c4ff76fb9ffb99e7855904858c21aa7ee57a35ad8",
+            "combined-final-surfaces:e157bf9a88c7dd42bc86e9b53afa7ff6b877fc34a1a37040964070230363c219",
+            "combined-final-surfaces:83b612e0ee574ba83d1f6961f473192dcb9a6887ad554731b0e8889d2d6d2000",
+            "combined-final-surfaces:a5bb794b4154a542130cb718303a63144eb695b88dc0bf14f7fa3b9f7b30a237",
+            "combined-final-surfaces:72d548263aecce64c087c1cccda418ce88fab26cd8da3f4b892abc49b88ceca5",
+            "combined-final-surfaces:a0e61d6cf4bca02968c0e2721efd48e91c9bbe9c53ed3580cb1d0b97aa47879b"
+          ]
+        },
+        {
+          "selector": "tests/fpr3/test_commands.py::test_registry_covers_all_historical_commands_and_subcommands",
+          "counts": {
+            "tests": 1,
+            "passed": 1,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "case_ids": [
+            "combined-final-surfaces:1f6a889a68a420ad78225ab88f2b4092e92055f22fda56c0800c18602576640a"
+          ]
+        },
+        {
+          "selector": "tests/fpr3/test_commands.py::test_contradictions_refuse_before_execution",
+          "counts": {
+            "tests": 8,
+            "passed": 8,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "case_ids": [
+            "combined-final-surfaces:4fa84cf0366847e619d2ec97377691b5245d63de15772ffc99370f1c2ba7eae1",
+            "combined-final-surfaces:32ed8776906151f402d61303cb5fa5fae9daafe4356b12046c445c8396f971d8",
+            "combined-final-surfaces:6fd9c0a2a6937d439302d0e3105536525760586a4f4cd856d10c7e5ca5c64e9b",
+            "combined-final-surfaces:305dbfa4b93aa14a898f4117610f27e1bc6f47e991464f88f9d8ee8f754cb263",
+            "combined-final-surfaces:3700132dbd7d8dcba2cd16eeb953893e7c28073467e18909cd02d5dc54569d3f",
+            "combined-final-surfaces:84936577a7a3be60b2dfbc24c16f957c9ccdd969ce25bcb0cf49879bcfb8c909",
+            "combined-final-surfaces:a506cd4fe6f95d9afd459d529d737c63ba97b572aa1e742dc175bc4110128f7d",
+            "combined-final-surfaces:151e3ca3bbff0c6e14970d8e2d60b741344c4e35fb4d97ce731f67f1bb4b15b1"
+          ]
+        }
+      ]
+    },
+    {
+      "initial_node": "tests/fpr1/test_bookends.py::test_generated_commands_handle_spaces_and_do_not_overwrite_host_instructions",
+      "initial_outcome": "failed",
+      "initial_seconds": 0.208,
+      "initial_message": "AssertionError: refused: init_asset_exists: .claude/skills/print-next/SKILL.md\n  \nassert 2 == 0\n +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', \"/priva...'init', '--hooks'], returncode=2, stdout='', stderr='refused: init_asset_exists: .claude/skills/print-next/SKILL.md\\n').returncode",
+      "classification": "product_init_preservation_regression",
+      "cause_and_resolution": "Fresh init refused pre-existing portable host instructions introduced into the restored full footprint. Init now preserves exact bytes/modes, records preserved origins, and rechecks drift before writes while operational binding collisions still refuse.",
+      "product_files_changed": [
+        "cli/v1.py"
+      ],
+      "original_test_preserved": true,
+      "original_test_sha256": "d4998dfd53eb30af3f37eb4e5226c944e47fb5b77fe19cfc5d4f970492cd7fe8",
+      "final_selection_disposition": "unchanged_original_retained",
+      "successor_nodes": [],
+      "passing_focused_or_opening_evidence": [
+        {
+          "selector": "tests/fpr1/test_bookends.py::test_generated_commands_handle_spaces_and_do_not_overwrite_host_instructions",
+          "observations": [
+            {
+              "node": "tests/fpr1/test_bookends.py::test_generated_commands_handle_spaces_and_do_not_overwrite_host_instructions",
+              "outcome": "failed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 0.208
+            },
+            {
+              "node": "tests/fpr1/test_bookends.py::test_generated_commands_handle_spaces_and_do_not_overwrite_host_instructions",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 3.471
+            }
+          ]
+        },
+        {
+          "selector": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode",
+          "observations": [
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.claude/skills/print-next/SKILL.md-493]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 3.688
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.cursor/skills/print-next/SKILL.md-384]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 3.583
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.cursor/rules/orchestrator.mdc-416]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 3.64
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.overseer/policy/model-routing.yaml-384]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 3.665
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[policy/model-routing.yaml-493]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 3.697
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.overseer/STANDING-DECISIONS.reference.md-416]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 3.852
+            }
+          ]
+        },
+        {
+          "selector": "tests/fpr4/test_init_preservation.py::test_fresh_init_still_refuses_unmanaged_operational_binding",
+          "observations": [
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_still_refuses_unmanaged_operational_binding[.overseer/bin/ok]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.199
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_still_refuses_unmanaged_operational_binding[.cursor/hooks/session-start-next.sh]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.205
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_still_refuses_unmanaged_operational_binding[.cursor/hooks.json]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.2
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_still_refuses_unmanaged_operational_binding[.overseer/instructions/bookends.md]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.2
+            }
+          ]
+        },
+        {
+          "selector": "tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace",
+          "observations": [
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace[bytes-after_lock]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.154
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace[bytes-before_replace]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.209
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace[mode-after_lock]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.142
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace[mode-before_replace]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.191
+            }
+          ]
+        }
+      ],
+      "supporting_evidence": [
+        "docs/validation/fpr4/init-preservation-candidate-results.json"
+      ],
+      "final_combined_outcome": "unchanged_original_passed_after_repair",
+      "final_raw_combined_evidence": [
+        {
+          "selector": "tests/fpr1/test_bookends.py::test_generated_commands_handle_spaces_and_do_not_overwrite_host_instructions",
+          "counts": {
+            "tests": 1,
+            "passed": 1,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "case_ids": [
+            "combined-final-foundation-fpr1:c89e684dbf8c7f9bb9c51d1a4c70d833aacb76540bc3379bc8fec36afa0852b4"
+          ]
+        }
+      ]
+    },
+    {
+      "initial_node": "tests/muse/test_handoffs.py::test_native_linked_worktree_own_branch_and_checkout_identity",
+      "initial_outcome": "failed",
+      "initial_seconds": 16.496,
+      "initial_message": "AssertionError: refused: init_asset_exists: .claude/skills/adversarial-freeze-review/SKILL.md\n  \nassert 2 == 0\n +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...e'], returncode=2, stdout='', stderr='refused: init_asset_exists: .claude/skills/adversarial-freeze-review/SKILL.md\\n').returncode",
+      "classification": "product_init_regression_then_changed_dirty_expectation",
+      "cause_and_resolution": "Initial failure is the same real portable-asset init refusal, repaired in cli/v1.py. After repair the original reaches an obsolete dirty=False expectation: tracked .overseer/version.lock legitimately changes for the linked root launcher digest and inherited preserved origins. The explicit successor proves that sole portable delta, truthful dirty=True, identity/source/branch isolation and freshness.",
+      "product_files_changed": [
+        "cli/v1.py"
+      ],
+      "original_test_preserved": true,
+      "original_test_sha256": "2f3773558d3919e2520906a2b12661bf6f76faa961abe74ce7ef14f322509a80",
+      "final_selection_disposition": "explicit_deselection_with_successor",
+      "successor_nodes": [
+        "tests/fpr4/test_native_linked_footprint.py::test_native_linked_checkout_reports_tracked_footprint_change_and_keeps_identity"
+      ],
+      "passing_focused_or_opening_evidence": [
+        {
+          "selector": "tests/fpr4/test_native_linked_footprint.py::test_native_linked_checkout_reports_tracked_footprint_change_and_keeps_identity",
+          "observations": [
+            {
+              "node": "tests/fpr4/test_native_linked_footprint.py::test_native_linked_checkout_reports_tracked_footprint_change_and_keeps_identity",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 31.084
+            }
+          ]
+        },
+        {
+          "selector": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode",
+          "observations": [
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.claude/skills/print-next/SKILL.md-493]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 3.688
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.cursor/skills/print-next/SKILL.md-384]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 3.583
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.cursor/rules/orchestrator.mdc-416]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 3.64
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.overseer/policy/model-routing.yaml-384]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 3.665
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[policy/model-routing.yaml-493]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 3.697
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.overseer/STANDING-DECISIONS.reference.md-416]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 3.852
+            }
+          ]
+        },
+        {
+          "selector": "tests/fpr4/test_init_preservation.py::test_fresh_init_still_refuses_unmanaged_operational_binding",
+          "observations": [
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_still_refuses_unmanaged_operational_binding[.overseer/bin/ok]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.199
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_still_refuses_unmanaged_operational_binding[.cursor/hooks/session-start-next.sh]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.205
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_still_refuses_unmanaged_operational_binding[.cursor/hooks.json]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.2
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_still_refuses_unmanaged_operational_binding[.overseer/instructions/bookends.md]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.2
+            }
+          ]
+        },
+        {
+          "selector": "tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace",
+          "observations": [
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace[bytes-after_lock]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.154
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace[bytes-before_replace]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.209
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace[mode-after_lock]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.142
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace[mode-before_replace]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.191
+            }
+          ]
+        }
+      ],
+      "supporting_evidence": [
+        "docs/validation/fpr4/native-init-followup-results.json",
+        "docs/validation/fpr4/native-linked-candidate-diff.json"
+      ],
+      "final_combined_outcome": "selected_successor_passed_original_retained_as_failure",
+      "final_raw_combined_evidence": [
+        {
+          "selector": "tests/fpr4/test_native_linked_footprint.py::test_native_linked_checkout_reports_tracked_footprint_change_and_keeps_identity",
+          "counts": {
+            "tests": 1,
+            "passed": 1,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "case_ids": [
+            "combined-final-surfaces:3642c924f04758f2877c50a4d161f245d5980968382b49124563e95ce440bcce"
+          ]
+        }
+      ]
+    },
+    {
+      "initial_node": "tests/muse/test_handoffs.py::test_committed_git_baseline_import_isolated_from_owner_edits",
+      "initial_outcome": "failed",
+      "initial_seconds": 4.661,
+      "initial_message": "AssertionError: refused: init_asset_exists: .claude/skills/adversarial-freeze-review/SKILL.md\n  \nassert 2 == 0\n +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...n'], returncode=2, stdout='', stderr='refused: init_asset_exists: .claude/skills/adversarial-freeze-review/SKILL.md\\n').returncode",
+      "classification": "product_init_preservation_regression",
+      "cause_and_resolution": "An isolated native import includes committed portable footprint assets. Fresh init refused them; preserving those assets repairs initialization while the original committed-baseline/owner-edit isolation assertions remain unchanged.",
+      "product_files_changed": [
+        "cli/v1.py"
+      ],
+      "original_test_preserved": true,
+      "original_test_sha256": "2f3773558d3919e2520906a2b12661bf6f76faa961abe74ce7ef14f322509a80",
+      "final_selection_disposition": "unchanged_original_retained",
+      "successor_nodes": [],
+      "passing_focused_or_opening_evidence": [
+        {
+          "selector": "tests/muse/test_handoffs.py::test_committed_git_baseline_import_isolated_from_owner_edits",
+          "observations": [
+            {
+              "node": "tests/muse/test_handoffs.py::test_committed_git_baseline_import_isolated_from_owner_edits",
+              "outcome": "failed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 4.661
+            },
+            {
+              "node": "tests/muse/test_handoffs.py::test_committed_git_baseline_import_isolated_from_owner_edits",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 9.361
+            }
+          ]
+        },
+        {
+          "selector": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode",
+          "observations": [
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.claude/skills/print-next/SKILL.md-493]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 3.688
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.cursor/skills/print-next/SKILL.md-384]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 3.583
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.cursor/rules/orchestrator.mdc-416]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 3.64
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.overseer/policy/model-routing.yaml-384]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 3.665
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[policy/model-routing.yaml-493]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 3.697
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.overseer/STANDING-DECISIONS.reference.md-416]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 3.852
+            }
+          ]
+        },
+        {
+          "selector": "tests/fpr4/test_init_preservation.py::test_fresh_init_still_refuses_unmanaged_operational_binding",
+          "observations": [
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_still_refuses_unmanaged_operational_binding[.overseer/bin/ok]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.199
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_still_refuses_unmanaged_operational_binding[.cursor/hooks/session-start-next.sh]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.205
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_still_refuses_unmanaged_operational_binding[.cursor/hooks.json]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.2
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_still_refuses_unmanaged_operational_binding[.overseer/instructions/bookends.md]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.2
+            }
+          ]
+        },
+        {
+          "selector": "tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace",
+          "observations": [
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace[bytes-after_lock]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.154
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace[bytes-before_replace]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.209
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace[mode-after_lock]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.142
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace[mode-before_replace]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.191
+            }
+          ]
+        }
+      ],
+      "supporting_evidence": [
+        "docs/validation/fpr4/native-init-followup-results.json"
+      ],
+      "final_combined_outcome": "unchanged_original_passed_after_repair",
+      "final_raw_combined_evidence": [
+        {
+          "selector": "tests/muse/test_handoffs.py::test_committed_git_baseline_import_isolated_from_owner_edits",
+          "counts": {
+            "tests": 1,
+            "passed": 1,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "case_ids": [
+            "combined-final-native-other:0c23f5f95a463e5eacf06fe1185cb7d38499145393f3201294c73b54998b461f"
+          ]
+        }
+      ]
+    },
+    {
+      "initial_node": "tests/muse/test_mirror.py::test_add_change_delete_and_no_content_source_commit",
+      "initial_outcome": "failed",
+      "initial_seconds": 18.213,
+      "initial_message": "AssertionError: assert ('prepared' == 'mapped_no_content_change'\n  \n  - mapped_no_content_change\n  + prepared)",
+      "classification": "fixture_hidden_file_staging_correction",
+      "cause_and_resolution": "Muse rc5 code add . omits hidden directories. The supposed no-content commit adds 17 hidden portable assets, changing native snapshot and Git tree, so prepared is correct. Successor stages the full footprint before first approval and proves actual no-content snapshot/tree equality while retaining delta and fake-delivery retry assertions.",
+      "product_files_changed": [],
+      "original_test_preserved": true,
+      "original_test_sha256": "bab954eea76662e46634d09257273a41e60302f2385060ccaa4527304fccd57d",
+      "final_selection_disposition": "explicit_deselection_with_successor",
+      "successor_nodes": [
+        "tests/fpr4/test_mirror_full_footprint.py::test_full_footprint_mirror_delta_and_identical_native_snapshot"
+      ],
+      "passing_focused_or_opening_evidence": [
+        {
+          "selector": "tests/fpr4/test_mirror_full_footprint.py::test_full_footprint_mirror_delta_and_identical_native_snapshot",
+          "observations": [
+            {
+              "node": "tests/fpr4/test_mirror_full_footprint.py::test_full_footprint_mirror_delta_and_identical_native_snapshot",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 25.539
+            }
+          ]
+        }
+      ],
+      "supporting_evidence": [
+        "docs/validation/fpr4/mirror-delta-results.json",
+        "docs/validation/fpr4/mirror-delta-before-diff.json"
+      ],
+      "final_combined_outcome": "selected_successor_passed_original_retained_as_failure",
+      "final_raw_combined_evidence": [
+        {
+          "selector": "tests/fpr4/test_mirror_full_footprint.py::test_full_footprint_mirror_delta_and_identical_native_snapshot",
+          "counts": {
+            "tests": 1,
+            "passed": 1,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "case_ids": [
+            "combined-final-surfaces:be01cee776c7801a3b9322fec66dce8841bcdb7f246dfba8a2366216bbd18ca8"
+          ]
+        }
+      ]
+    },
+    {
+      "initial_node": "tests/muse/test_product.py::test_shared_native_stage_is_readonly_and_visible_in_linked_checkout",
+      "initial_outcome": "failed",
+      "initial_seconds": 14.098,
+      "initial_message": "AssertionError: refused: init_asset_exists: .claude/skills/adversarial-freeze-review/SKILL.md\n  \nassert 2 == 0\n +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...n'], returncode=2, stdout='', stderr='refused: init_asset_exists: .claude/skills/adversarial-freeze-review/SKILL.md\\n').returncode",
+      "classification": "product_init_preservation_regression",
+      "cause_and_resolution": "Linked checkout setup inherited portable assets and failed at the same fresh-init refusal. The preservation repair allows the unchanged original shared-stage visibility and read-only assertions to run.",
+      "product_files_changed": [
+        "cli/v1.py"
+      ],
+      "original_test_preserved": true,
+      "original_test_sha256": "c15722064c2721116336b2825850f3d910908ca679140162e6ce470a930a7f20",
+      "final_selection_disposition": "unchanged_original_retained",
+      "successor_nodes": [],
+      "passing_focused_or_opening_evidence": [
+        {
+          "selector": "tests/muse/test_product.py::test_shared_native_stage_is_readonly_and_visible_in_linked_checkout",
+          "observations": [
+            {
+              "node": "tests/muse/test_product.py::test_shared_native_stage_is_readonly_and_visible_in_linked_checkout",
+              "outcome": "failed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 14.098
+            },
+            {
+              "node": "tests/muse/test_product.py::test_shared_native_stage_is_readonly_and_visible_in_linked_checkout",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 21.846
+            }
+          ]
+        },
+        {
+          "selector": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode",
+          "observations": [
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.claude/skills/print-next/SKILL.md-493]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 3.688
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.cursor/skills/print-next/SKILL.md-384]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 3.583
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.cursor/rules/orchestrator.mdc-416]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 3.64
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.overseer/policy/model-routing.yaml-384]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 3.665
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[policy/model-routing.yaml-493]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 3.697
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.overseer/STANDING-DECISIONS.reference.md-416]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 3.852
+            }
+          ]
+        },
+        {
+          "selector": "tests/fpr4/test_init_preservation.py::test_fresh_init_still_refuses_unmanaged_operational_binding",
+          "observations": [
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_still_refuses_unmanaged_operational_binding[.overseer/bin/ok]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.199
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_still_refuses_unmanaged_operational_binding[.cursor/hooks/session-start-next.sh]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.205
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_still_refuses_unmanaged_operational_binding[.cursor/hooks.json]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.2
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_fresh_init_still_refuses_unmanaged_operational_binding[.overseer/instructions/bookends.md]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.2
+            }
+          ]
+        },
+        {
+          "selector": "tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace",
+          "observations": [
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace[bytes-after_lock]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.154
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace[bytes-before_replace]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.209
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace[mode-after_lock]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.142
+            },
+            {
+              "node": "tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace[mode-before_replace]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.191
+            }
+          ]
+        }
+      ],
+      "supporting_evidence": [
+        "docs/validation/fpr4/native-init-followup-results.json"
+      ],
+      "final_combined_outcome": "unchanged_original_passed_after_repair",
+      "final_raw_combined_evidence": [
+        {
+          "selector": "tests/muse/test_product.py::test_shared_native_stage_is_readonly_and_visible_in_linked_checkout",
+          "counts": {
+            "tests": 1,
+            "passed": 1,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "case_ids": [
+            "combined-final-native-other:51312a6af1c2e8f8892d026e9c2249c03c0ac1f6846dfec073c9e395f7ac24fd"
+          ]
+        }
+      ]
+    },
+    {
+      "initial_node": "tests/unit/test_k7_footprint.py::test_rendered_deploy_script_safety_invariants",
+      "initial_outcome": "failed",
+      "initial_seconds": 0.002,
+      "initial_message": "assert 'set -euo pipefail' in '#!/bin/sh\\n# Explicit bounded-v1 mirror entry point; preparation never publishes.\\nset -eu\\nPATH=/usr/bin:/bin\\nexpor...ly select Muse with the bounded-v1 runtime\\' >&2\\n  exit 2\\nfi\\nexec \"$ROOT/.overseer/bin/ok\" -C \"$ROOT\" mirror \"$@\"\\n'",
+      "classification": "mirror_export_and_implicit_push_contract_changed",
+      "cause_and_resolution": "Historical assertions require shell pipefail, direct Muse git-export, bridge sentinel and implicit push. Current POSIX wrapper delegates exact arguments to a physical-root-bound mirror service; prepare/reconcile/verify/deliver separate effects. Executable wrapper and native isolated-target/fake-delivery tests cover those semantics.",
+      "product_files_changed": [],
+      "original_test_preserved": true,
+      "original_test_sha256": "408cf491756c9e5cd8680d970e9d0bafdfd94bcfec6a9d0f9fa3783c5e8c19e7",
+      "final_selection_disposition": "explicit_deselection_with_successor",
+      "successor_nodes": [
+        "tests/fpr4/test_disposition_contracts.py::test_rendered_mirror_wrapper_uses_bound_launcher_and_literal_arguments",
+        "tests/muse/test_mirror.py::test_projection_modes_mapping_and_offline_retry",
+        "tests/muse/test_mirror.py::test_targets_are_physical_isolated_and_owned",
+        "tests/muse/test_mirror.py::test_delivery_requires_current_source_and_expected_remote"
+      ],
+      "passing_focused_or_opening_evidence": [
+        {
+          "selector": "tests/fpr4/test_disposition_contracts.py::test_rendered_mirror_wrapper_uses_bound_launcher_and_literal_arguments",
+          "observations": [
+            {
+              "node": "tests/fpr4/test_disposition_contracts.py::test_rendered_mirror_wrapper_uses_bound_launcher_and_literal_arguments",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.264
+            },
+            {
+              "node": "tests/fpr4/test_disposition_contracts.py::test_rendered_mirror_wrapper_uses_bound_launcher_and_literal_arguments",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/disposition-tail-final.xml",
+              "seconds": 0.249
+            }
+          ]
+        },
+        {
+          "selector": "tests/muse/test_mirror.py::test_projection_modes_mapping_and_offline_retry",
+          "observations": [
+            {
+              "node": "tests/muse/test_mirror.py::test_projection_modes_mapping_and_offline_retry",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 11.524
+            }
+          ]
+        },
+        {
+          "selector": "tests/muse/test_mirror.py::test_targets_are_physical_isolated_and_owned",
+          "observations": [
+            {
+              "node": "tests/muse/test_mirror.py::test_targets_are_physical_isolated_and_owned[same]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 8.265
+            },
+            {
+              "node": "tests/muse/test_mirror.py::test_targets_are_physical_isolated_and_owned[child]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 8.254
+            },
+            {
+              "node": "tests/muse/test_mirror.py::test_targets_are_physical_isolated_and_owned[parent]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 8.194
+            },
+            {
+              "node": "tests/muse/test_mirror.py::test_targets_are_physical_isolated_and_owned[dot_parent]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 8.115
+            },
+            {
+              "node": "tests/muse/test_mirror.py::test_targets_are_physical_isolated_and_owned[alias]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 8.097
+            },
+            {
+              "node": "tests/muse/test_mirror.py::test_targets_are_physical_isolated_and_owned[alias_parent]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 8.102
+            },
+            {
+              "node": "tests/muse/test_mirror.py::test_targets_are_physical_isolated_and_owned[git_worktree]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 8.222
+            },
+            {
+              "node": "tests/muse/test_mirror.py::test_targets_are_physical_isolated_and_owned[foreign]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 8.153
+            },
+            {
+              "node": "tests/muse/test_mirror.py::test_targets_are_physical_isolated_and_owned[empty]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 8.075
+            }
+          ]
+        },
+        {
+          "selector": "tests/muse/test_mirror.py::test_delivery_requires_current_source_and_expected_remote",
+          "observations": [
+            {
+              "node": "tests/muse/test_mirror.py::test_delivery_requires_current_source_and_expected_remote[unknown_hub]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 10.425
+            },
+            {
+              "node": "tests/muse/test_mirror.py::test_delivery_requires_current_source_and_expected_remote[unpushed_source]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 10.346
+            },
+            {
+              "node": "tests/muse/test_mirror.py::test_delivery_requires_current_source_and_expected_remote[remote_drift]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 10.845
+            },
+            {
+              "node": "tests/muse/test_mirror.py::test_delivery_requires_current_source_and_expected_remote[source_drift]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 9.527
+            },
+            {
+              "node": "tests/muse/test_mirror.py::test_delivery_requires_current_source_and_expected_remote[target_drift]",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 9.541
+            }
+          ]
+        }
+      ],
+      "supporting_evidence": [
+        "docs/validation/fpr4/disposition-tail-final.xml"
+      ],
+      "final_combined_outcome": "selected_successor_passed_original_retained_as_failure",
+      "final_raw_combined_evidence": [
+        {
+          "selector": "tests/fpr4/test_disposition_contracts.py::test_rendered_mirror_wrapper_uses_bound_launcher_and_literal_arguments",
+          "counts": {
+            "tests": 1,
+            "passed": 1,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "case_ids": [
+            "combined-final-latency:8900a183a85b741fd4a8bd510d2bc2931d64f7adf764f428c773e8807c64f4b4"
+          ]
+        },
+        {
+          "selector": "tests/muse/test_mirror.py::test_projection_modes_mapping_and_offline_retry",
+          "counts": {
+            "tests": 1,
+            "passed": 1,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "case_ids": [
+            "combined-final-native-mirror:f8a82983f37b4395e69d3a00888ffecc77dab452b79778546461bed7c253aa71"
+          ]
+        },
+        {
+          "selector": "tests/muse/test_mirror.py::test_targets_are_physical_isolated_and_owned",
+          "counts": {
+            "tests": 9,
+            "passed": 9,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "case_ids": [
+            "combined-final-native-mirror:ca9c013b70ee81d5d77dbd3c0d81b1e06446b1a41b7983f4a653a167344c1696",
+            "combined-final-native-mirror:396944942f49f171ddbc0815331eb2f716b3947ec97618c78a707360b3cd7997",
+            "combined-final-native-mirror:0468c8a6247257c12418d9dafa7b4164137e9edad570b859be7560557f1c73be",
+            "combined-final-native-mirror:e739dd9e607920f8460b64f3223c8cc1cedda833d47aced18504567cf2e5b7c4",
+            "combined-final-native-mirror:694e13cec7d101d66cf54ae94e0d4514b680aa69d5ff65222207cb1d372e430f",
+            "combined-final-native-mirror:c852193ef4fa54c8ba6ea10e38dd578191f315f84662cafdcafa0746334c2382",
+            "combined-final-native-mirror:d0b3cb504c19604baf9d78b69eb3ad2cc015a6c1c37ac5c11b19418a5fb59192",
+            "combined-final-native-mirror:27f8cd1141982a8dece006ace2e0194055ac5c18e9d8ffd8df487cb4f1e37a6b",
+            "combined-final-native-mirror:fde991ff3f1761c2019c6fcb99f2e26c53501838642f1cc942f899fe08992734"
+          ]
+        },
+        {
+          "selector": "tests/muse/test_mirror.py::test_delivery_requires_current_source_and_expected_remote",
+          "counts": {
+            "tests": 5,
+            "passed": 5,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "case_ids": [
+            "combined-final-native-mirror:7bcf05500320329e8c2a10ab75a6d14314e4b981e470b8e58873b5d44e76c834",
+            "combined-final-native-mirror:543964170a66a7ad2353644ed5a8267ed2d6c8b34225021978ee5826b55767b4",
+            "combined-final-native-mirror:c53b5c5786738dabcd0202706f5a9006d9cd69a5faa7f86d147a08cc32a1d7e3",
+            "combined-final-native-mirror:d885618731dd93d4304aebd181b2050e4d70131c98ffa2e13e8d78f44979b987",
+            "combined-final-native-mirror:e385e85532232c2829e4da2663ed3c96e2053e1aa6656c0df9c56d5ab455597e"
+          ]
+        }
+      ]
+    },
+    {
+      "initial_node": "tests/unit/test_skills_footprint.py::test_footprint_includes_orchestrator_rule",
+      "initial_outcome": "failed",
+      "initial_seconds": 0.003,
+      "initial_message": "AssertionError: assert 'RULE #8' in '---\\ndescription: Bound product context and explicit action authority\\nalwaysApply: true\\n---\\n\\nFollow AGENTS.md and...or tests. No legacy live export or packet,\\nOCI, identity-bridge, native GSR or sole-writer prerequisite is implied.\\n'",
+      "classification": "orchestrator_markers_and_handoff_contract_changed",
+      "cause_and_resolution": "RULE #8, paste-ready handoff text and unresolved docs tokens belong to the former rule contract. The installed canonical NEXT/identity/CAS/effects guidance is verified semantically. Explicit conditional build-verification and opt-in freeze-loop discovery was added without restoring automatic review chains.",
+      "product_files_changed": [
+        "cursor/rules/orchestrator.mdc"
+      ],
+      "original_test_preserved": true,
+      "original_test_sha256": "58b640dcbf6414eb30475e0d383c35d74f5b05733479bc50da52ca27811691be",
+      "final_selection_disposition": "explicit_deselection_with_successor",
+      "successor_nodes": [
+        "tests/fpr4/test_disposition_contracts.py::test_installed_orchestrator_preserves_canonical_authority_and_explicit_review_scope"
+      ],
+      "passing_focused_or_opening_evidence": [
+        {
+          "selector": "tests/fpr4/test_disposition_contracts.py::test_installed_orchestrator_preserves_canonical_authority_and_explicit_review_scope",
+          "observations": [
+            {
+              "node": "tests/fpr4/test_disposition_contracts.py::test_installed_orchestrator_preserves_canonical_authority_and_explicit_review_scope",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 2.756
+            },
+            {
+              "node": "tests/fpr4/test_disposition_contracts.py::test_installed_orchestrator_preserves_canonical_authority_and_explicit_review_scope",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/disposition-tail-final.xml",
+              "seconds": 2.735
+            }
+          ]
+        }
+      ],
+      "supporting_evidence": [
+        "docs/validation/fpr4/disposition-tail-final.xml"
+      ],
+      "final_combined_outcome": "selected_successor_passed_original_retained_as_failure",
+      "final_raw_combined_evidence": [
+        {
+          "selector": "tests/fpr4/test_disposition_contracts.py::test_installed_orchestrator_preserves_canonical_authority_and_explicit_review_scope",
+          "counts": {
+            "tests": 1,
+            "passed": 1,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "case_ids": [
+            "combined-final-latency:98d210d7afc09beefe5fb0daf92540c1db83076f23e556a7265d92865c385e41"
+          ]
+        }
+      ]
+    },
+    {
+      "initial_node": "tests/unit/test_skills_footprint.py::test_rendered_templates_include_build_verification_in_dod",
+      "initial_outcome": "failed",
+      "initial_seconds": 0.002,
+      "initial_message": "AssertionError: assert 'build-verification-review' in '# Overseer Handover\\n\\nRepository: test-git. Keep this summary paired with docs/ROADMAP.md.\\nThe sole action authorit...and release/deployment are separate actions.\\n\\n<!-- overseer:change-log:start -->\\n<!-- overseer:change-log:end -->\\n'",
+      "classification": "product_template_review_guidance_gap",
+      "cause_and_resolution": "Rewritten summaries omitted useful build-verification skill discovery. Conditional accepted-action/configured-gate guidance restores that capability and evidence distinctions; the original test passes unchanged.",
+      "product_files_changed": [
+        "templates/OVERSEER-HANDOVER.template.md",
+        "templates/ROADMAP.template.md"
+      ],
+      "original_test_preserved": true,
+      "original_test_sha256": "58b640dcbf6414eb30475e0d383c35d74f5b05733479bc50da52ca27811691be",
+      "final_selection_disposition": "unchanged_original_retained",
+      "successor_nodes": [],
+      "passing_focused_or_opening_evidence": [
+        {
+          "selector": "tests/unit/test_skills_footprint.py::test_rendered_templates_include_build_verification_in_dod",
+          "observations": [
+            {
+              "node": "tests/unit/test_skills_footprint.py::test_rendered_templates_include_build_verification_in_dod",
+              "outcome": "failed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 0.002
+            },
+            {
+              "node": "tests/unit/test_skills_footprint.py::test_rendered_templates_include_build_verification_in_dod",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.002
+            },
+            {
+              "node": "tests/unit/test_skills_footprint.py::test_rendered_templates_include_build_verification_in_dod",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/disposition-tail-final.xml",
+              "seconds": 0.002
+            }
+          ]
+        }
+      ],
+      "supporting_evidence": [
+        "docs/validation/fpr4/disposition-tail-final.xml"
+      ],
+      "final_combined_outcome": "unchanged_original_passed_after_repair",
+      "final_raw_combined_evidence": [
+        {
+          "selector": "tests/unit/test_skills_footprint.py::test_rendered_templates_include_build_verification_in_dod",
+          "counts": {
+            "tests": 1,
+            "passed": 1,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "case_ids": [
+            "combined-final-retained:9b3d1e6ed2c56d0954b2c85fef12b05fe25954e7c7649094dcd96e908cbfc159"
+          ]
+        }
+      ]
+    },
+    {
+      "initial_node": "tests/unit/test_templating.py::test_render_handover_template",
+      "initial_outcome": "failed",
+      "initial_seconds": 0.002,
+      "initial_message": "AssertionError: assert 'docs/OVERSEER-HANDOVER.md' in '# Overseer Handover\\n\\nRepository: test-git. Keep this summary paired with docs/ROADMAP.md.\\nThe sole action authorit...and release/deployment are separate actions.\\n\\n<!-- overseer:change-log:start -->\\n<!-- overseer:change-log:end -->\\n'",
+      "classification": "product_template_own_path_omission",
+      "cause_and_resolution": "The rewritten HANDOVER summary omitted its configured docs.handover_path. Rendering the current summary path restores configured/custom document-path discoverability; the original test passes unchanged.",
+      "product_files_changed": [
+        "templates/OVERSEER-HANDOVER.template.md"
+      ],
+      "original_test_preserved": true,
+      "original_test_sha256": "05cbe0486e9c5ded85980da06be2752e0b91a5822b41c3538a5a8c2433ea103b",
+      "final_selection_disposition": "unchanged_original_retained",
+      "successor_nodes": [],
+      "passing_focused_or_opening_evidence": [
+        {
+          "selector": "tests/unit/test_templating.py::test_render_handover_template",
+          "observations": [
+            {
+              "node": "tests/unit/test_templating.py::test_render_handover_template",
+              "outcome": "failed",
+              "xml": "docs/validation/fpr4/combined-first.xml",
+              "seconds": 0.002
+            },
+            {
+              "node": "tests/unit/test_templating.py::test_render_handover_template",
+              "outcome": "passed",
+              "xml": "docs/validation/fpr4/affected-final.xml",
+              "seconds": 0.002
+            }
+          ]
+        }
+      ],
+      "supporting_evidence": [
+        "docs/validation/fpr4/template-before.xml"
+      ],
+      "final_combined_outcome": "unchanged_original_passed_after_repair",
+      "final_raw_combined_evidence": [
+        {
+          "selector": "tests/unit/test_templating.py::test_render_handover_template",
+          "counts": {
+            "tests": 1,
+            "passed": 1,
+            "failed": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "case_ids": [
+            "combined-final-retained:a4fb1a068c5e5f2b87d8b54520cf8fd20b3e6621ff90f42a6bf54b34d91a85f3"
+          ]
+        }
+      ]
+    }
+  ],
+  "evidence_sha256": {
+    "docs/validation/fpr4/combined-first.json": "446293620c118bea146cd3ff1698c50ba291479016b594759b5369539992b2b4",
+    "docs/validation/fpr4/combined-first.xml": "7aefad241940fb852b92ee81b97fcb418b192b8296bb8a67bdfcc29b0e481e7c",
+    "docs/validation/fpr4/combined-first.log": "0c89ced40badc4bc9b5b61d6d0f559d87ba8338055f3c60c9c7a270691b4d30c",
+    "docs/validation/fpr4/affected-final.json": "9fd869718522ccaa1a51943477070642a8fea584d4a3b20dda3f1c5508ad14c1",
+    "docs/validation/fpr4/affected-final.xml": "7f86c3a35280886112af22b1172f337a6b9e4c54e242a8d7d75c80a753a87b6c",
+    "docs/validation/fpr4/disposition-tail-final.xml": "22750fda9f6578023c8076e654e54df5aeffea6da627438842618f9c5f0e8057",
+    "docs/validation/fpr4/production-complete.json": "f05fbb8fe2f452b71f3702e24f36e8c5c1bc1fd4e4731a89ae75889cd7cd0960",
+    "docs/validation/fpr4/production-complete.patch": "f9aba5a2eab7b9f38edcae67e4ac4bc2d658850283e70e08a30415ef1a763c57",
+    "docs/validation/fpr4/disposition-final-selection.json": "447fcfbf481559cf7c54432a37abd1056c0b687a26630602ce151a3c5ab9f21b"
+  },
+  "limits": [
+    "Focused evidence remains separate; final raw combined outcomes are now attached for all eleven initial failures.",
+    "The linked-worktree row contains both a genuine initialization repair and a separately justified changed dirty-state assertion.",
+    "App UI stale distribution/root guidance and desktop bundler repeatability were separate targeted discoveries, not additional failures in the initial 11.",
+    "The original 104 historical baseline failures and 1391/104 baseline remain separate preserved records; their current selected-original/successor outcomes are attached in disposition-audit.json."
+  ],
+  "final_outcomes": "docs/validation/fpr4/disposition-final-outcomes.json",
+  "effective_closeout_coverage": {
+    "coverage_record": "docs/validation/fpr4/disposition-closeout-coverage.json",
+    "selection": "docs/validation/fpr4/disposition-closeout-selection.json",
+    "selection_sha256": "49d6f304a305745af688335e9814c9a2665609ee3d1ec38a2cc149eff2f05cc7",
+    "collected_cases": 1209,
+    "passing_raw_cases": 1207,
+    "passing_additive_successor_cases": 2,
+    "exact_passing_execution_union": true,
+    "missing_executions": [],
+    "extra_executions": [],
+    "interpretation": "Effective current-contract coverage across the frozen combined run and one additive same-production affected run; not a claim that the raw 1208-case suite passed."
+  },
+  "operator_retry": {
+    "first_record": "docs/validation/fpr4/import-boundary-final.json",
+    "failure": "Pytest exit 4: --muse-python is registered only by native test conftest, which the standalone successor selection did not load.",
+    "corrected_record": "docs/validation/fpr4/import-boundary-final-rerun.json",
+    "correction": "Use the same pinned Muse interpreter through FPR2_MUSE_PYTHON so the recorder captures its dependency boundary without an unavailable pytest option.",
+    "product_change": false,
+    "original_evidence_preserved": true
+  }
+}

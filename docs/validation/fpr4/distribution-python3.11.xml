@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="10" failures="0" skipped="0" tests="10" time="0.478" timestamp="2026-10-14T16:06:18.283852-07:00" hostname="Carloss-MacBook-Pro.local"><testcase classname="" name="tests.data_integrity.test_cost_awareness_integrity" time="0.000"><error message="collection failure">ImportError while importing test module '/private/tmp/overseer-fpr4-distribution-20261014-2/python3.11/tests/data_integrity/test_cost_awareness_integrity.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/Users/aaronrenecarvajal/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/data_integrity/test_cost_awareness_integrity.py:12: in &lt;module&gt;
+    from tools.cost_awareness.derive import derive_cost_view
+tools/cost_awareness/__init__.py:4: in &lt;module&gt;
+    from tools.cost_awareness.format import format_cost_awareness_lines
+tools/cost_awareness/format.py:5: in &lt;module&gt;
+    from tools.cost_awareness.surface import CostAwarenessReport, CostSlice
+tools/cost_awareness/surface.py:12: in &lt;module&gt;
+    from tools.governance_gates import scan_governance_gates
+tools/governance_gates/__init__.py:10: in __getattr__
+    from tools.governance_gates.scan import scan_governance_gates
+tools/governance_gates/scan.py:9: in &lt;module&gt;
+    from tools.freeze_authorization.resolve import freeze_authorization_state
+tools/freeze_authorization/__init__.py:5: in &lt;module&gt;
+    from tools.freeze_authorization.resolve import (
+tools/freeze_authorization/resolve.py:16: in &lt;module&gt;
+    from tools.honesty.gate import honesty_module_disabled
+tools/honesty/__init__.py:3: in &lt;module&gt;
+    from tools.honesty.ledger import append_entry, show_entries, verify_chain
+tools/honesty/ledger.py:21: in &lt;module&gt;
+    from tools.honesty.provenance import (
+tools/honesty/provenance.py:7: in &lt;module&gt;
+    from tools.honesty.ed25519_util import verify_ed25519_signature
+tools/honesty/ed25519_util.py:11: in &lt;module&gt;
+    from cryptography.exceptions import InvalidSignature
+.venv/lib/python3.11/site-packages/cryptography/exceptions.py:9: in &lt;module&gt;
+    from cryptography.hazmat.bindings._rust import exceptions as rust_exceptions
+E   ModuleNotFoundError: No module named '_cffi_backend'</error></testcase><testcase classname="" name="tests.data_integrity.test_frv_integrity" time="0.000"><error message="collection failure">ImportError while importing test module '/private/tmp/overseer-fpr4-distribution-20261014-2/python3.11/tests/data_integrity/test_frv_integrity.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/Users/aaronrenecarvajal/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/data_integrity/test_frv_integrity.py:11: in &lt;module&gt;
+    from tools.freeze_reviewer.stamp import merge_stamp_mapping
+tools/freeze_reviewer/stamp.py:10: in &lt;module&gt;
+    from tools.freeze_authorization.resolve import resolve_stamp_record
+tools/freeze_authorization/__init__.py:5: in &lt;module&gt;
+    from tools.freeze_authorization.resolve import (
+tools/freeze_authorization/resolve.py:17: in &lt;module&gt;
+    from tools.honesty.ledger import verify_chain
+tools/honesty/__init__.py:3: in &lt;module&gt;
+    from tools.honesty.ledger import append_entry, show_entries, verify_chain
+tools/honesty/ledger.py:21: in &lt;module&gt;
+    from tools.honesty.provenance import (
+tools/honesty/provenance.py:7: in &lt;module&gt;
+    from tools.honesty.ed25519_util import verify_ed25519_signature
+tools/honesty/ed25519_util.py:11: in &lt;module&gt;
+    from cryptography.exceptions import InvalidSignature
+.venv/lib/python3.11/site-packages/cryptography/exceptions.py:9: in &lt;module&gt;
+    from cryptography.hazmat.bindings._rust import exceptions as rust_exceptions
+E   ModuleNotFoundError: No module named '_cffi_backend'</error></testcase><testcase classname="" name="tests.data_integrity.test_review_idempotency" time="0.000"><error message="collection failure">ImportError while importing test module '/private/tmp/overseer-fpr4-distribution-20261014-2/python3.11/tests/data_integrity/test_review_idempotency.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/Users/aaronrenecarvajal/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/data_integrity/test_review_idempotency.py:14: in &lt;module&gt;
+    from tools.freeze_reviewer.stamp import reference_digest, write_stamp
+tools/freeze_reviewer/stamp.py:10: in &lt;module&gt;
+    from tools.freeze_authorization.resolve import resolve_stamp_record
+tools/freeze_authorization/__init__.py:5: in &lt;module&gt;
+    from tools.freeze_authorization.resolve import (
+tools/freeze_authorization/resolve.py:17: in &lt;module&gt;
+    from tools.honesty.ledger import verify_chain
+tools/honesty/__init__.py:3: in &lt;module&gt;
+    from tools.honesty.ledger import append_entry, show_entries, verify_chain
+tools/honesty/ledger.py:21: in &lt;module&gt;
+    from tools.honesty.provenance import (
+tools/honesty/provenance.py:7: in &lt;module&gt;
+    from tools.honesty.ed25519_util import verify_ed25519_signature
+tools/honesty/ed25519_util.py:11: in &lt;module&gt;
+    from cryptography.exceptions import InvalidSignature
+.venv/lib/python3.11/site-packages/cryptography/exceptions.py:9: in &lt;module&gt;
+    from cryptography.hazmat.bindings._rust import exceptions as rust_exceptions
+E   ModuleNotFoundError: No module named '_cffi_backend'</error></testcase><testcase classname="" name="tests.integration.test_isr_integration" time="0.000"><error message="collection failure">ImportError while importing test module '/private/tmp/overseer-fpr4-distribution-20261014-2/python3.11/tests/integration/test_isr_integration.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/Users/aaronrenecarvajal/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/integration/test_isr_integration.py:13: in &lt;module&gt;
+    from tools.honesty.ledger import append_entry, verify_ledger_file
+tools/honesty/__init__.py:3: in &lt;module&gt;
+    from tools.honesty.ledger import append_entry, show_entries, verify_chain
+tools/honesty/ledger.py:21: in &lt;module&gt;
+    from tools.honesty.provenance import (
+tools/honesty/provenance.py:7: in &lt;module&gt;
+    from tools.honesty.ed25519_util import verify_ed25519_signature
+tools/honesty/ed25519_util.py:11: in &lt;module&gt;
+    from cryptography.exceptions import InvalidSignature
+.venv/lib/python3.11/site-packages/cryptography/exceptions.py:9: in &lt;module&gt;
+    from cryptography.hazmat.bindings._rust import exceptions as rust_exceptions
+E   ModuleNotFoundError: No module named '_cffi_backend'</error></testcase><testcase classname="" name="tests.performance.test_cost_awareness_performance" time="0.000"><error message="collection failure">ImportError while importing test module '/private/tmp/overseer-fpr4-distribution-20261014-2/python3.11/tests/performance/test_cost_awareness_performance.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/Users/aaronrenecarvajal/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/performance/test_cost_awareness_performance.py:12: in &lt;module&gt;
+    from tools.cost_awareness.surface import build_cost_awareness_report
+tools/cost_awareness/__init__.py:4: in &lt;module&gt;
+    from tools.cost_awareness.format import format_cost_awareness_lines
+tools/cost_awareness/format.py:5: in &lt;module&gt;
+    from tools.cost_awareness.surface import CostAwarenessReport, CostSlice
+tools/cost_awareness/surface.py:12: in &lt;module&gt;
+    from tools.governance_gates import scan_governance_gates
+tools/governance_gates/__init__.py:10: in __getattr__
+    from tools.governance_gates.scan import scan_governance_gates
+tools/governance_gates/scan.py:9: in &lt;module&gt;
+    from tools.freeze_authorization.resolve import freeze_authorization_state
+tools/freeze_authorization/__init__.py:5: in &lt;module&gt;
+    from tools.freeze_authorization.resolve import (
+tools/freeze_authorization/resolve.py:17: in &lt;module&gt;
+    from tools.honesty.ledger import verify_chain
+tools/honesty/__init__.py:3: in &lt;module&gt;
+    from tools.honesty.ledger import append_entry, show_entries, verify_chain
+tools/honesty/ledger.py:21: in &lt;module&gt;
+    from tools.honesty.provenance import (
+tools/honesty/provenance.py:7: in &lt;module&gt;
+    from tools.honesty.ed25519_util import verify_ed25519_signature
+tools/honesty/ed25519_util.py:11: in &lt;module&gt;
+    from cryptography.exceptions import InvalidSignature
+.venv/lib/python3.11/site-packages/cryptography/exceptions.py:9: in &lt;module&gt;
+    from cryptography.hazmat.bindings._rust import exceptions as rust_exceptions
+E   ModuleNotFoundError: No module named '_cffi_backend'</error></testcase><testcase classname="" name="tests.security.test_cost_awareness_security" time="0.000"><error message="collection failure">ImportError while importing test module '/private/tmp/overseer-fpr4-distribution-20261014-2/python3.11/tests/security/test_cost_awareness_security.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/Users/aaronrenecarvajal/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/security/test_cost_awareness_security.py:16: in &lt;module&gt;
+    from tools import cost_awareness
+tools/cost_awareness/__init__.py:4: in &lt;module&gt;
+    from tools.cost_awareness.format import format_cost_awareness_lines
+tools/cost_awareness/format.py:5: in &lt;module&gt;
+    from tools.cost_awareness.surface import CostAwarenessReport, CostSlice
+tools/cost_awareness/surface.py:12: in &lt;module&gt;
+    from tools.governance_gates import scan_governance_gates
+tools/governance_gates/__init__.py:10: in __getattr__
+    from tools.governance_gates.scan import scan_governance_gates
+tools/governance_gates/scan.py:9: in &lt;module&gt;
+    from tools.freeze_authorization.resolve import freeze_authorization_state
+tools/freeze_authorization/__init__.py:5: in &lt;module&gt;
+    from tools.freeze_authorization.resolve import (
+tools/freeze_authorization/resolve.py:17: in &lt;module&gt;
+    from tools.honesty.ledger import verify_chain
+tools/honesty/__init__.py:3: in &lt;module&gt;
+    from tools.honesty.ledger import append_entry, show_entries, verify_chain
+tools/honesty/ledger.py:21: in &lt;module&gt;
+    from tools.honesty.provenance import (
+tools/honesty/provenance.py:7: in &lt;module&gt;
+    from tools.honesty.ed25519_util import verify_ed25519_signature
+tools/honesty/ed25519_util.py:11: in &lt;module&gt;
+    from cryptography.exceptions import InvalidSignature
+.venv/lib/python3.11/site-packages/cryptography/exceptions.py:9: in &lt;module&gt;
+    from cryptography.hazmat.bindings._rust import exceptions as rust_exceptions
+E   ModuleNotFoundError: No module named '_cffi_backend'</error></testcase><testcase classname="" name="tests.security.test_honesty_security" time="0.000"><error message="collection failure">ImportError while importing test module '/private/tmp/overseer-fpr4-distribution-20261014-2/python3.11/tests/security/test_honesty_security.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/Users/aaronrenecarvajal/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/security/test_honesty_security.py:10: in &lt;module&gt;
+    from tools.honesty.ledger import show_entries
+tools/honesty/__init__.py:3: in &lt;module&gt;
+    from tools.honesty.ledger import append_entry, show_entries, verify_chain
+tools/honesty/ledger.py:21: in &lt;module&gt;
+    from tools.honesty.provenance import (
+tools/honesty/provenance.py:7: in &lt;module&gt;
+    from tools.honesty.ed25519_util import verify_ed25519_signature
+tools/honesty/ed25519_util.py:11: in &lt;module&gt;
+    from cryptography.exceptions import InvalidSignature
+.venv/lib/python3.11/site-packages/cryptography/exceptions.py:9: in &lt;module&gt;
+    from cryptography.hazmat.bindings._rust import exceptions as rust_exceptions
+E   ModuleNotFoundError: No module named '_cffi_backend'</error></testcase><testcase classname="" name="tests.security.test_p_evidence_security" time="0.000"><error message="collection failure">ImportError while importing test module '/private/tmp/overseer-fpr4-distribution-20261014-2/python3.11/tests/security/test_p_evidence_security.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/Users/aaronrenecarvajal/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/security/test_p_evidence_security.py:11: in &lt;module&gt;
+    from tools.honesty.ledger import append_entry
+tools/honesty/__init__.py:3: in &lt;module&gt;
+    from tools.honesty.ledger import append_entry, show_entries, verify_chain
+tools/honesty/ledger.py:21: in &lt;module&gt;
+    from tools.honesty.provenance import (
+tools/honesty/provenance.py:7: in &lt;module&gt;
+    from tools.honesty.ed25519_util import verify_ed25519_signature
+tools/honesty/ed25519_util.py:11: in &lt;module&gt;
+    from cryptography.exceptions import InvalidSignature
+.venv/lib/python3.11/site-packages/cryptography/exceptions.py:9: in &lt;module&gt;
+    from cryptography.hazmat.bindings._rust import exceptions as rust_exceptions
+E   ModuleNotFoundError: No module named '_cffi_backend'</error></testcase><testcase classname="" name="tests.security.test_provenance_security" time="0.000"><error message="collection failure">ImportError while importing test module '/private/tmp/overseer-fpr4-distribution-20261014-2/python3.11/tests/security/test_provenance_security.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/Users/aaronrenecarvajal/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/security/test_provenance_security.py:15: in &lt;module&gt;
+    from tools.honesty import ed25519_util, ledger, provenance, status
+tools/honesty/__init__.py:3: in &lt;module&gt;
+    from tools.honesty.ledger import append_entry, show_entries, verify_chain
+tools/honesty/ledger.py:21: in &lt;module&gt;
+    from tools.honesty.provenance import (
+tools/honesty/provenance.py:7: in &lt;module&gt;
+    from tools.honesty.ed25519_util import verify_ed25519_signature
+tools/honesty/ed25519_util.py:11: in &lt;module&gt;
+    from cryptography.exceptions import InvalidSignature
+.venv/lib/python3.11/site-packages/cryptography/exceptions.py:9: in &lt;module&gt;
+    from cryptography.hazmat.bindings._rust import exceptions as rust_exceptions
+E   ModuleNotFoundError: No module named '_cffi_backend'</error></testcase><testcase classname="" name="tests.unit.test_checklist_exit_precedence" time="0.000"><error message="collection failure">ImportError while importing test module '/private/tmp/overseer-fpr4-distribution-20261014-2/python3.11/tests/unit/test_checklist_exit_precedence.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/Users/aaronrenecarvajal/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/unit/test_checklist_exit_precedence.py:10: in &lt;module&gt;
+    from tools.freeze_reviewer.engine import resolve_exit_code
+tools/freeze_reviewer/engine.py:9: in &lt;module&gt;
+    from tools.freeze_authorization.resolve import resolve_stamp_record
+tools/freeze_authorization/__init__.py:5: in &lt;module&gt;
+    from tools.freeze_authorization.resolve import (
+tools/freeze_authorization/resolve.py:17: in &lt;module&gt;
+    from tools.honesty.ledger import verify_chain
+tools/honesty/__init__.py:3: in &lt;module&gt;
+    from tools.honesty.ledger import append_entry, show_entries, verify_chain
+tools/honesty/ledger.py:21: in &lt;module&gt;
+    from tools.honesty.provenance import (
+tools/honesty/provenance.py:7: in &lt;module&gt;
+    from tools.honesty.ed25519_util import verify_ed25519_signature
+tools/honesty/ed25519_util.py:11: in &lt;module&gt;
+    from cryptography.exceptions import InvalidSignature
+.venv/lib/python3.11/site-packages/cryptography/exceptions.py:9: in &lt;module&gt;
+    from cryptography.hazmat.bindings._rust import exceptions as rust_exceptions
+E   ModuleNotFoundError: No module named '_cffi_backend'</error></testcase></testsuite></testsuites>

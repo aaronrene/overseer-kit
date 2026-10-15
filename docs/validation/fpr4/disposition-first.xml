@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="5" time="22.642" timestamp="2026-10-14T16:04:38.098366-07:00" hostname="Carloss-MacBook-Pro.local"><testcase classname="tests.fpr4.test_disposition_contracts" name="test_app_concurrent_reads_forbidden_routes_size_bounds_and_no_secret_files" time="6.656"><failure message="AssertionError: assert (not False and 'too_large' in 'file_invalid: docs/ROADMAP.md')">repo = PosixPath('/private/tmp/overseer-fpr4-disposition-first/test_app_concurrent_reads_forb0/similar-kit')
+
+    def test_app_concurrent_reads_forbidden_routes_size_bounds_and_no_secret_files(repo):
+        from cli.product_boundary import ENGINE_LIMIT
+        from tools.app.server import build_server_config, start_app_server, STATIC_ROOT
+    
+        before = snapshot(repo)
+        server = start_app_server(build_server_config(
+            repo_root=repo, bind='127.0.0.1', port=0, ctx=bound_ctx(repo),
+            session_credential='session-fixture', csrf_token='csrf-fixture'))
+        try:
+            started = time.monotonic()
+            with ThreadPoolExecutor(max_workers=4) as pool:
+                responses = list(pool.map(lambda _: request(server.base_url + '/api/status'), range(8)))
+            assert time.monotonic() - started &lt; 30
+            assert all(code == 200 and body['ok'] for code, body in responses)
+            assert len({json.dumps(body, sort_keys=True) for _, body in responses}) == 1
+            for path in ('init', 'sync', 'verify-step', 'route', 'merge', 'next-write'):
+                assert request(server.base_url + '/api/' + path)[0] == 404
+            assert request(server.base_url + '/api/governance-sync', method='POST', body={}, csrf='wrong')[0] == 403
+            assert request(server.base_url + '/api/governance-sync', method='POST', body={'padding': 'x' * (128 * 1024)})[0] == 400
+            code, body = request(server.base_url + '/api/governance-sync', method='POST', body={'write': False})
+            assert code == 200 and body['ok'] and body['result']['dry_run']
+            assert snapshot(repo) == before
+            js = (STATIC_ROOT / 'assets/app.js').read_text()
+            assert all(token not in js for token in ('localStorage', 'sessionStorage', 'document.cookie'))
+    
+            roadmap = repo / 'docs/ROADMAP.md'
+            original = roadmap.read_bytes()
+            try:
+                roadmap.write_bytes(b'x' * (ENGINE_LIMIT + 1))
+                _, body = request(server.base_url + '/api/docs/roadmap')
+&gt;               assert not body['ok'] and 'too_large' in body['error']
+E               AssertionError: assert (not False and 'too_large' in 'file_invalid: docs/ROADMAP.md')
+
+tests/fpr4/test_disposition_contracts.py:60: AssertionError</failure></testcase><testcase classname="tests.fpr4.test_disposition_contracts" name="test_actual_shims_preserve_json_deprecation_and_literal_arguments" time="4.426"><failure message="assert '' == &quot;warning: 'ov... commands).\n&quot;&#10;  &#10;  - warning: 'overseer' is deprecated; use 'ok' (same commands).">repo = PosixPath('/private/tmp/overseer-fpr4-disposition-first/test_actual_shims_preserve_jso0/similar-kit')
+
+    def test_actual_shims_preserve_json_deprecation_and_literal_arguments(repo):
+        before = snapshot(repo)
+        normal = command('-C', repo, 'status', '--json')
+        old = command('-C', repo, 'status', '--json', executable=KIT / 'cli/overseer')
+        assert normal.returncode == old.returncode == 0
+        assert json.loads(normal.stdout) == json.loads(old.stdout)
+&gt;       assert old.stderr == "warning: 'overseer' is deprecated; use 'ok' (same commands).\n"
+E       assert '' == "warning: 'ov... commands).\n"
+E         
+E         - warning: 'overseer' is deprecated; use 'ok' (same commands).
+
+tests/fpr4/test_disposition_contracts.py:76: AssertionError</failure></testcase><testcase classname="tests.fpr4.test_disposition_contracts" name="test_actual_app_cli_sigint_shutdown_is_read_only" time="4.324"><failure message="assert (0 == 0 and not '{\n  &quot;ok&quot;: true,\n  &quot;exit_code&quot;: 0,\n  &quot;messages&quot;: []\n}\n')&#10; +  where 0 = &lt;Popen: returncode: 0 args: ['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer...&gt;.returncode">repo = PosixPath('/private/tmp/overseer-fpr4-disposition-first/test_actual_app_cli_sigint_shu0/similar-kit')
+tmp_path = PosixPath('/private/tmp/overseer-fpr4-disposition-first/test_actual_app_cli_sigint_shu0')
+
+    def test_actual_app_cli_sigint_shutdown_is_read_only(repo, tmp_path):
+        before = snapshot(repo)
+        with socket.socket() as sock:
+            sock.bind(('127.0.0.1', 0))
+            port = sock.getsockname()[1]
+        stderr_path = tmp_path / 'app-stderr.log'
+        with stderr_path.open('w+') as stderr:
+            process = subprocess.Popen([str(KIT / 'cli/ok'), '-C', str(repo), 'app', '--port', str(port)],
+                                       cwd=KIT, stdout=subprocess.PIPE, stderr=stderr, text=True)
+            try:
+                deadline = time.monotonic() + 15
+                while time.monotonic() &lt; deadline:
+                    assert process.poll() is None, stderr_path.read_text()
+                    try:
+                        with urllib.request.urlopen(f'http://127.0.0.1:{port}/', timeout=0.5) as response:
+                            if response.status == 200:
+                                break
+                    except (OSError, urllib.error.URLError):
+                        time.sleep(0.05)
+                else:
+                    pytest.fail('app did not listen within 15 seconds')
+                process.send_signal(signal.SIGINT)
+                stdout, _ = process.communicate(timeout=10)
+&gt;               assert process.returncode == 0 and not stdout
+E               assert (0 == 0 and not '{\n  "ok": true,\n  "exit_code": 0,\n  "messages": []\n}\n')
+E                +  where 0 = &lt;Popen: returncode: 0 args: ['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer...&gt;.returncode
+
+tests/fpr4/test_disposition_contracts.py:108: AssertionError</failure></testcase><testcase classname="tests.fpr4.test_disposition_contracts" name="test_workspace_optional_required_members_and_identity_collision" time="7.136"><failure message="AssertionError: assert 2 == 35&#10; +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...review,route,status,sync,upgrade-regime,verify-step,workspace} ...\nok: error: unrecognized arguments: --strict-all\n').returncode&#10; +    where CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...review,route,status,sync,upgrade-regime,verify-step,workspace} ...\nok: error: unrecognized arguments: --strict-all\n') = command('-C', PosixPath('/private/tmp/overseer-fpr4-disposition-first/test_workspace_optional_requir0/similar-kit'), 'workspace', 'check-next', '--strict-all')">repo = PosixPath('/private/tmp/overseer-fpr4-disposition-first/test_workspace_optional_requir0/similar-kit')
+tmp_path = PosixPath('/private/tmp/overseer-fpr4-disposition-first/test_workspace_optional_requir0')
+
+    def test_workspace_optional_required_members_and_identity_collision(repo, tmp_path):
+        other = seed(tmp_path / 'peer')
+        assert command('-C', other, 'init').returncode == 0
+        manifest = {
+            'overseer_workspace_version': 1, 'id': 'disposition', 'product_order_member': 'primary',
+            'members': [
+                {'id': 'primary', 'role': 'product_order', 'root': str(repo), 'required': True, 'relay': False, 'regime': 'git-only'},
+                {'id': 'peer', 'role': 'other', 'root': str(other), 'required': True, 'relay': True, 'regime': 'git-only'},
+                {'id': 'optional', 'role': 'other', 'root': str(tmp_path / 'absent'), 'required': False, 'relay': True, 'regime': 'git-only'},
+            ], 'lanes': [{'id': 'product', 'primary': True, 'owner_member': 'primary'}],
+        }
+        settings(repo, workspace={'constellation_id': 'disposition', 'manifest': '.overseer/workspace.yaml'})
+        path = repo / '.overseer/workspace.yaml'
+        path.write_text(yaml.safe_dump(manifest))
+        before = snapshot(other)
+        result = command('-C', repo, 'workspace', 'check-next', '--json')
+        assert result.returncode == 0, result.stdout + result.stderr
+        assert not json.loads(result.stdout)['members'][2]['ok']
+&gt;       assert command('-C', repo, 'workspace', 'check-next', '--strict-all').returncode == 35
+E       AssertionError: assert 2 == 35
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...review,route,status,sync,upgrade-regime,verify-step,workspace} ...\nok: error: unrecognized arguments: --strict-all\n').returncode
+E        +    where CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...review,route,status,sync,upgrade-regime,verify-step,workspace} ...\nok: error: unrecognized arguments: --strict-all\n') = command('-C', PosixPath('/private/tmp/overseer-fpr4-disposition-first/test_workspace_optional_requir0/similar-kit'), 'workspace', 'check-next', '--strict-all')
+
+tests/fpr4/test_disposition_contracts.py:135: AssertionError</failure></testcase><testcase classname="tests.fpr4.test_disposition_contracts" name="test_manual_workflow_has_no_publish_permissions_or_secret_literals" time="0.010" /></testsuite></testsuites>

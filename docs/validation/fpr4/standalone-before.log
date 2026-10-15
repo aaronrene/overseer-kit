@@ -1,0 +1,80 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________________ test_fresh_standalone_git_install_without_muse ________________
+
+tmp_path = PosixPath('/private/tmp/overseer-fpr4-standalone-before/test_fresh_standalone_git_inst0')
+
+    def test_fresh_standalone_git_install_without_muse(tmp_path):
+        import shutil
+        import venv
+        from tests.v1.conftest import KIT
+        installation = tmp_path/'standalone-kit'
+        for relative in v1.RUNTIME_FILES:
+            target = installation/relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(KIT/relative, target)
+        venv.EnvBuilder(with_pip=False, symlinks=True).create(installation/'.venv')
+        python = installation/'.venv/bin/python3'
+        site = Path(subprocess.check_output([str(python), '-I', '-c',
+            'import sysconfig; print(sysconfig.get_paths()["purelib"])'], text=True).strip())
+        # Seed only the pinned runtime dependency offline; no editable finder or
+        # site packages from the development environment are inherited.
+        shutil.copytree(Path(yaml.__file__).parent, site/'yaml')
+        r = subprocess.run([str(python), '-I', '-c',
+            'import importlib.util; assert importlib.util.find_spec("muse") is None'], capture_output=True)
+        assert r.returncode == 0
+        root = seed(tmp_path/'standalone-project')
+        launcher = installation/'cli/ok'
+        for args in (('init',), ('status',), ('next',), ('sync',)):
+            r = command('-C', root, *args, executable=launcher, env={'PATH':'/usr/bin:/bin'})
+>           assert r.returncode == 0, r.stderr
+E           AssertionError: Traceback (most recent call last):
+E               File "/private/tmp/overseer-fpr4-standalone-before/test_fresh_standalone_git_inst0/standalone-kit/cli/bootstrap.py", line 33, in <module>
+E                 raise SystemExit(run())
+E                                  ~~~^^
+E               File "/private/tmp/overseer-fpr4-standalone-before/test_fresh_standalone_git_inst0/standalone-kit/cli/bootstrap.py", line 29, in run
+E                 return main()
+E               File "/private/tmp/overseer-fpr4-standalone-before/test_fresh_standalone_git_inst0/standalone-kit/cli/main.py", line 309, in main
+E                 result = _read(context, args)
+E               File "/private/tmp/overseer-fpr4-standalone-before/test_fresh_standalone_git_inst0/standalone-kit/cli/main.py", line 255, in _read
+E                 result.update(sections(context, args))
+E                               ~~~~~~~~^^^^^^^^^^^^^^^
+E               File "/private/tmp/overseer-fpr4-standalone-before/test_fresh_standalone_git_inst0/standalone-kit/cli/product_status.py", line 11, in sections
+E                 from cli.commands.route import routing_policy_status
+E               File "/private/tmp/overseer-fpr4-standalone-before/test_fresh_standalone_git_inst0/standalone-kit/cli/commands/route.py", line 13, in <module>
+E                 from tools.cost_awareness.derive import derive_cost_view
+E               File "/private/tmp/overseer-fpr4-standalone-before/test_fresh_standalone_git_inst0/standalone-kit/tools/cost_awareness/__init__.py", line 4, in <module>
+E                 from tools.cost_awareness.format import format_cost_awareness_lines
+E               File "/private/tmp/overseer-fpr4-standalone-before/test_fresh_standalone_git_inst0/standalone-kit/tools/cost_awareness/format.py", line 5, in <module>
+E                 from tools.cost_awareness.surface import CostAwarenessReport, CostSlice
+E               File "/private/tmp/overseer-fpr4-standalone-before/test_fresh_standalone_git_inst0/standalone-kit/tools/cost_awareness/surface.py", line 12, in <module>
+E                 from tools.governance_gates import scan_governance_gates
+E               File "/private/tmp/overseer-fpr4-standalone-before/test_fresh_standalone_git_inst0/standalone-kit/tools/governance_gates/__init__.py", line 10, in __getattr__
+E                 from tools.governance_gates.scan import scan_governance_gates
+E               File "/private/tmp/overseer-fpr4-standalone-before/test_fresh_standalone_git_inst0/standalone-kit/tools/governance_gates/scan.py", line 9, in <module>
+E                 from tools.freeze_authorization.resolve import freeze_authorization_state
+E               File "/private/tmp/overseer-fpr4-standalone-before/test_fresh_standalone_git_inst0/standalone-kit/tools/freeze_authorization/__init__.py", line 5, in <module>
+E                 from tools.freeze_authorization.resolve import (
+E                 ...<5 lines>...
+E                 )
+E               File "/private/tmp/overseer-fpr4-standalone-before/test_fresh_standalone_git_inst0/standalone-kit/tools/freeze_authorization/resolve.py", line 16, in <module>
+E                 from tools.honesty.gate import honesty_module_disabled
+E               File "/private/tmp/overseer-fpr4-standalone-before/test_fresh_standalone_git_inst0/standalone-kit/tools/honesty/__init__.py", line 3, in <module>
+E                 from tools.honesty.ledger import append_entry, show_entries, verify_chain
+E               File "/private/tmp/overseer-fpr4-standalone-before/test_fresh_standalone_git_inst0/standalone-kit/tools/honesty/ledger.py", line 21, in <module>
+E                 from tools.honesty.provenance import (
+E                 ...<4 lines>...
+E                 )
+E               File "/private/tmp/overseer-fpr4-standalone-before/test_fresh_standalone_git_inst0/standalone-kit/tools/honesty/provenance.py", line 7, in <module>
+E                 from tools.honesty.ed25519_util import verify_ed25519_signature
+E               File "/private/tmp/overseer-fpr4-standalone-before/test_fresh_standalone_git_inst0/standalone-kit/tools/honesty/ed25519_util.py", line 11, in <module>
+E                 from cryptography.exceptions import InvalidSignature
+E             ModuleNotFoundError: No module named 'cryptography'
+E             
+E           assert 1 == 0
+E            +  where 1 = CompletedProcess(args=['/private/tmp/overseer-fpr4-standalone-before/test_fresh_standalone_git_inst0/standalone-kit/cl...e>\n    from cryptography.exceptions import InvalidSignature\nModuleNotFoundError: No module named \'cryptography\'\n').returncode
+
+tests/v1/test_adoption.py:219: AssertionError
+=========================== short test summary info ============================
+FAILED tests/v1/test_adoption.py::test_fresh_standalone_git_install_without_muse
+1 failed in 3.42s

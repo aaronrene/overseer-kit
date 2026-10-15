@@ -175,11 +175,11 @@ footprint:
   origin: kit
 - path: docs/OVERSEER-HANDOVER.md
   source: templates/OVERSEER-HANDOVER.template.md
-  sha256: sha256:95218f3eaa7b79ca0e5ed402d09ffa8395ece7ec532bea24331867f4d625c95e
+  sha256: sha256:52b7e6af550b78da1ec26f5a5dc1ca8d9afa432c11b8fb3fe085ea356b99a842
   origin: preserved
 - path: docs/ROADMAP.md
   source: templates/ROADMAP.template.md
-  sha256: sha256:b0de7de5d1edcf465c7e5fd5c3cd3c9e86a92d2afde26fe4061b600d30b17294
+  sha256: sha256:f267ce4f9267155ece888f1200e5a173baf1b6b9b1eec7cf3e1640e890befef0
   origin: preserved
 - path: scripts/muse-bridge-deploy.sh
   source: templates/scripts/muse-bridge-deploy.sh.template

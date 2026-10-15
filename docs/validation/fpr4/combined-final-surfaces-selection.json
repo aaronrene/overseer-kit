@@ -1,0 +1,25 @@
+{
+  "selected": [
+    "tests/fpr2/test_lanes.py",
+    "tests/fpr2/test_sync_boundary.py",
+    "tests/fpr3/test_commands.py",
+    "tests/fpr3/test_engines.py",
+    "tests/fpr3/test_package.py",
+    "tests/fpr3/test_surfaces.py",
+    "tests/fpr4/test_bundle_repeatability.py",
+    "tests/fpr4/test_composition.py",
+    "tests/fpr4/test_init_preservation.py",
+    "tests/fpr4/test_mirror_full_footprint.py",
+    "tests/fpr4/test_native_linked_footprint.py",
+    "tests/fpr4/test_standalone_dependencies.py"
+  ],
+  "deselected": [
+    "tests/v1/test_commands.py::test_unsupported_commands_cannot_run",
+    "tests/v1/test_adoption.py::test_fresh_standalone_git_install_without_muse",
+    "tests/muse/test_handoffs.py::test_native_linked_worktree_own_branch_and_checkout_identity",
+    "tests/muse/test_mirror.py::test_add_change_delete_and_no_content_source_commit",
+    "tests/unit/test_k7_footprint.py::test_rendered_deploy_script_safety_invariants",
+    "tests/unit/test_skills_footprint.py::test_footprint_includes_orchestrator_rule",
+    "tests/fpr3/test_package.py::test_actual_package_deterministic_manifest_modes_and_resource_bundle"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "expected_final_selection": "447fcfbf481559cf7c54432a37abd1056c0b687a26630602ce151a3c5ab9f21b",
+  "verified_final_file": "docs/validation/fpr4/disposition-final-selection.json",
+  "initial_file": "docs/validation/fpr4/disposition-selection.json",
+  "initial_file_sha256": "b94e2a6eb08133ea5d4b225de188d7fdfcf2622467869706fba248c12486d25f",
+  "correction": "The earlier advisory compared the supplied final-selection hash against the initial-selection filename. Both intentional files are unchanged; this is a check-target mistake, not a product/source mismatch."
+}

@@ -1,6 +1,7 @@
 # {{docs.handover_title}}
 
-Repository: {{repo.name}}. Keep this summary paired with {{docs.roadmap_path}}.
+Repository: {{repo.name}}. This summary lives at {{docs.handover_path}}.
+Keep it paired with {{docs.roadmap_path}}.
 The sole action authority is canonical `docs/NEXT.md`; read it through the
 repository-bound `.overseer/bin/ok -C /absolute/repository next`.
 
@@ -8,6 +9,10 @@ repository-bound `.overseer/bin/ok -C /absolute/repository next`.
 
 Record the implemented behavior, validation evidence, failures and prerequisites.
 Link evidence rather than copying an active prompt into this file.
+When the accepted action calls for build verification, use
+`/build-verification-review` and record its evidence and verdict separately from
+author tests. Follow configured review requirements; do not infer an independent
+review from author validation.
 
 ## Completed work
 

@@ -398,7 +398,7 @@ def apply_assets(root, mapping, *, dry_run=False):
 
 def initialize(root, args):
     from cli.product_config import normalize
-    from cli.product_migration import apply_mapping, classify_assets
+    from cli.product_migration import apply_mapping, classify_assets, _snapshot, _same, LAUNCHER, HOOKS
     from cli.product_authority import select, bind_muse, tracked_bindings
     from cli.v1_policy import ignore_assets
     existing = read(root, CONFIG, missing=True)
@@ -446,22 +446,32 @@ def initialize(root, args):
                 mapping.pop(row["path"])
             elif row["classification"] in ("consumer-modified", "both-changed"):
                 raise Refusal("init_asset_modified: " + row["path"])
-    for path in mapping:
+    preserved = {}
+    binding_assets = {LAUNCHER, *HOOKS, "scripts/muse-bridge-deploy.sh"}
+    for path in list(mapping):
         confined(root, path, missing_parents=True)
         old = read(root, path, missing=True)
         if existing is None and old is not None and path not in ('.gitignore', '.museignore'):
-            raise Refusal("init_asset_exists: " + path)
+            if path in binding_assets:
+                raise Refusal("init_asset_exists: " + path)
+            # Existing portable skills, rules, policies and references remain
+            # consumer-owned. Operational bindings still require exact adoption.
+            preserved[path] = _snapshot(root, path)
+            mapping.pop(path)
     for path, body in {"docs/ROADMAP.md": "# Roadmap\n\nCurrent action: docs/NEXT.md.\n",
                        "docs/OVERSEER-HANDOVER.md": "# Handover\n\nRead current action with `ok next`.\n"}.items():
         confined(root, path, missing_parents=True)
         if read(root, path, missing=True) is None:
             mapping[path] = body.encode()
     from cli.product_footprint import with_lock
-    mapping = with_lock(root, mapping, config)
+    mapping = with_lock(root, mapping, config, preserved=preserved)
     if existing is None:
         mapping[CONFIG] = config_data  # Binding is committed after all other assets.
 
     def recheck():
+        for relative, snapshot in preserved.items():
+            if not _same(root, snapshot):
+                raise Refusal("init_preserved_asset_changed: " + relative)
         for relative, expected_digest in ignore_expected.items():
             body = read(root, relative, missing=True)
             if ('absent' if body is None else digest(body)) not in (expected_digest, digest(mapping[relative])):

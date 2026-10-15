@@ -1,0 +1,161 @@
+{
+  "scope": "FPR-4 author validation-driver repair checks; not independent review or new product matrix",
+  "files": {
+    "scripts/fpr4_run.py": "2ac48620bd16dc0a13b4a9087009431eaa1795696abe91110ecc824c7dcee250",
+    "scripts/fpr4_matrix.py": "bc61e4001ebd7068b6246675c4bbe87a2cf368f0b735b956c36c64a98fa49647"
+  },
+  "changes": [
+    "Lossless JSON collection via explicit local pytest plugin; no stdout scraping or arbitrary :: splitting.",
+    "Installed pytest JUnit formatter plus per-case SHA-256 of raw nodeid matches names and exact identities, including huge IDs.",
+    "Reject empty/duplicated collection; missing/extra JUnit or collected nodes reported explicitly.",
+    "Directory selections expand to disjoint file groups; actual global and group collections are compared after execution.",
+    "V1/FPR1/surfaces/native-mirror/native-other/retained run concurrently; performance and disposition latency checks run afterward; deterministic archive case runs last only if selected.",
+    "Before/after and cross-group equality includes runtime, test sources, native desktop files/locks/assets, validation scripts, packaging config/workflows, Git refs/HEAD, Python, dependencies, requirements, and pinned Muse venv Python/dependencies/source hashes.",
+    "No ambient PYTEST_ADDOPTS/PYTEST_PLUGINS/autoload; explicit root/config and no pytest cache.",
+    "Unique evidence filenames prevent replacing prior records.",
+    "Any skip, nonzero pytest, source/dependency change, missing evidence, or collection mismatch prevents matrix ok."
+  ],
+  "checks": [
+    {
+      "record": "docs/validation/fpr4/runner-identifiers-probe.json",
+      "ok": false,
+      "results": null,
+      "exact_collection_executed_once": null,
+      "same_source_runtime_dependencies": null,
+      "collection_exit_code": 3,
+      "notes": "Initial plugin validation exposed helper prefix pytest_environment; renamed helper before successful reruns."
+    },
+    {
+      "record": "docs/validation/fpr4/runner-identifiers-recheck.json",
+      "ok": true,
+      "results": {
+        "tests": 4,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 4
+      },
+      "exact_collection_executed_once": true,
+      "same_source_runtime_dependencies": true,
+      "collection_exit_code": 0,
+      "notes": "Synthetic parameter IDs include ::, brackets, class methods and a 160KB ID; no production test was modified."
+    },
+    {
+      "record": "docs/validation/fpr4/runner-identifiers-grouped.json",
+      "ok": true,
+      "results": {
+        "tests": 4,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 4
+      },
+      "exact_collection_executed_once": true,
+      "same_source_runtime_dependencies": true,
+      "collection_exit_code": 0,
+      "notes": "Synthetic parameter IDs include ::, brackets, class methods and a 160KB ID; no production test was modified."
+    },
+    {
+      "record": "docs/validation/fpr4/runner-identifiers-final.json",
+      "ok": true,
+      "results": {
+        "tests": 4,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 4
+      },
+      "exact_collection_executed_once": true,
+      "same_source_runtime_dependencies": true,
+      "collection_exit_code": 0,
+      "notes": "Synthetic parameter IDs include ::, brackets, class methods and a 160KB ID; no production test was modified."
+    },
+    {
+      "record": "docs/validation/fpr4/runner-mixed-verified.json",
+      "ok": true,
+      "results": {
+        "tests": 12,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 12
+      },
+      "exact_collection_executed_once": true,
+      "same_source_runtime_dependencies": true,
+      "collection_exit_code": 0,
+      "notes": "Synthetic parameter IDs include ::, brackets, class methods and a 160KB ID; no production test was modified."
+    },
+    {
+      "record": "docs/validation/fpr4/runner-skip-verified.json",
+      "ok": false,
+      "results": {
+        "tests": 1,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 1,
+        "passed": 0
+      },
+      "exact_collection_executed_once": true,
+      "same_source_runtime_dependencies": true,
+      "collection_exit_code": 0,
+      "notes": "Intentional synthetic skip; matrix correctly returned exit 1."
+    },
+    {
+      "record": "docs/validation/fpr4/runner-duplicate-verified.json",
+      "ok": true,
+      "results": {
+        "tests": 4,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 4
+      },
+      "exact_collection_executed_once": true,
+      "same_source_runtime_dependencies": true,
+      "collection_exit_code": 0,
+      "notes": "Pytest deduplicated repeated file selectors; each of four cases executed once."
+    },
+    {
+      "record": "docs/validation/fpr4/runner-duplicate-refusal.json",
+      "ok": false,
+      "results": null,
+      "exact_collection_executed_once": null,
+      "same_source_runtime_dependencies": null,
+      "collection_exit_code": 0,
+      "notes": "Synthetic --keep-duplicates created duplicate nodes; driver correctly refused before launching any group."
+    }
+  ],
+  "synthetic_fixture_root": "/private/tmp/overseer-fpr4-runner-probe",
+  "limits": [
+    "Synthetic checks exercise recording and scheduling; they do not replace the final product selection.",
+    "Initial combined-first process loaded its original runner before this repair and retains its original evidence."
+  ],
+  "final_frozen_boundary_extension": {
+    "scope": "Root addition after the recorded synthetic driver probes; final raw combined outcome attached separately.",
+    "change": "packaging_sources now includes all scripts/, covering the repaired desktop bundler outside the product runtime digest.",
+    "files": {
+      "scripts/fpr4_run.py": "bdd73a4343287048a5e99cc4fc7879787eccbadb9671419f4a1ef85e0980ecf0",
+      "scripts/fpr4_matrix.py": "bc61e4001ebd7068b6246675c4bbe87a2cf368f0b735b956c36c64a98fa49647",
+      "scripts/bundle-desktop-kit.sh": "d3fc18a49daca74b036a9fd716d7c0d62f354889c556f8afc745549849d77e56"
+    },
+    "prior_probe_hashes_preserved_in": "files",
+    "final_evidence_pending": false
+  },
+  "final_matrix_validation": {
+    "record": "docs/validation/fpr4/combined-final.json",
+    "raw_results": {
+      "tests": 1208,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 1207
+    },
+    "raw_ok": false,
+    "exact_collection_executed_once": true,
+    "same_source_runtime_dependencies": true,
+    "selection_unchanged": true,
+    "coverage_record": "docs/validation/fpr4/disposition-closeout-coverage.json",
+    "effective_current_contract_cases": 1209,
+    "raw_failure_preserved": true
+  }
+}

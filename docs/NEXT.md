@@ -3,87 +3,80 @@ schema: 1
 repo_id: 6988dc4a-5f22-454b-9d68-ac5905b383bf
 repo_root: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014
 branch: feat/overseer-v1-recovery-20261014
-base_head: 695444fb5f8261391f5c273807129c13dc8db1fd
+base_head: 6289d2823184a63e2968d2c5f6a76abab5818368
 lane: product
 model: GPT-6 Astra
-action_id: OVERSEER-FULL-PRODUCT-RESTORATION-VALIDATION-4
-action_kind: implement
-prompt_sha256: 201f539055c654bb4177b2e775b49e4098224682c8b0622fefeda26d06e788d7
+action_id: OVERSEER-FULL-PRODUCT-RESTORATION-FINAL-REVIEW-5
+action_kind: review
+prompt_sha256: 7c1f47870537f77e0fc36c902f988f98b169866bebdcee64b419b9aa31e3fd3c
 ---
 Reasoning: Max
-Role: Principal integration validation engineer
+Role: Owner-appointed independent final reviewer
 
-Perform FPR-4 only after the owner accepts this prompt. Acceptance authorizes
-local combined validation and necessary bounded repairs for section 9 of
-docs/decisions/FULL-PRODUCT-RESTORATION-PLAN.md. It does not authorize FPR-5,
-remote operations, release or deployment.
+Perform FPR-5 only after owner acceptance and appointment of an independent
+reviewer. FPR-4 authors and author-validation agents cannot certify this work as
+independent. If appointment is still pending, identify that decision; do not
+substitute author self-review. This action authorizes local review under section
+10 of docs/decisions/FULL-PRODUCT-RESTORATION-PLAN.md, not release or deployment.
 
-Verify physical cwd, Git top-level, branch, full HEAD, configured name overseer-kit,
-UUID, product lane, runtime binding and clean state. Validate this NEXT as the
-single FPR-3 feature closing commit whose sole predecessor is
-695444fb5f8261391f5c273807129c13dc8db1fd. Stop on mismatch, unexpected dirt or moved
-source refs. Read AGENTS.md, ROADMAP, HANDOVER, canonical NEXT, the full restoration
-plan, docs/validation/FPR-1-FOUNDATION.md, docs/validation/FPR-2-AUTHORITY.md,
-docs/validation/FPR-3-SURFACES.md and its source/test disposition and results,
-docs/FPR-2-AUTHORITY-AND-LANES.md, docs/FPR-3-PRODUCT-SURFACES.md,
-docs/SOURCE-DISTRIBUTION.md, V1-SCOPE-RESET, V1-CERTIFICATION and tests/README.md.
+Verify physical cwd, Git top-level, branch, full HEAD, configured overseer-kit
+name/UUID, product lane, runtime binding and clean state. Validate canonical NEXT
+against the single FPR-4 closing commit with sole predecessor
+6289d2823184a63e2968d2c5f6a76abab5818368. Match the reviewed source/runtime to the
+final FPR-4 evidence and runtime
+bdbfdae4599ca0bd1b096d5ed2c84019df3b83ed24972c202319ea5507cf09ec. Stop on identity mismatch, unexpected dirt or moved pins.
+Read AGENTS.md, ROADMAP, HANDOVER, canonical NEXT, the complete restoration plan,
+FPR-1/2/3/4 validation reports and detailed FPR-4 artifacts, source/test disposition,
+authority/product/distribution contracts, V1-SCOPE-RESET, V1-CERTIFICATION and
+tests/README.md. Treat NEXT as the only pending prompt.
 
-Keep this branch as integration base. Verify committed sources here:
-feat/overseer-context-isolation at e9be0c4b3cafb149b9f3b7af2ab060f01bbfa504;
-feat/overseer-v1-recovery at 32254cd939885d9d6f40634997ea5b9c37ea776c;
-main at d47291d5d9030de5ebef713da95efa978c4d8c6e; repaired safety source at
-348e0f323a3b17cd5022a1bfd56fa09a6831c51f. Read committed objects without entering
-older worktrees, merging, cherry-picking or wholesale reverting. Preserve other
-refs, Muse history, snapshots, rollback fixtures, completed bounded pilot and
-bounded source-release directory.
+Keep this integration branch. Inspect committed source objects here, preserving
+feat/overseer-context-isolation at e9be0c4b3cafb149b9f3b7af2ab060f01bbfa504,
+feat/overseer-v1-recovery at 32254cd939885d9d6f40634997ea5b9c37ea776c,
+main at d47291d5d9030de5ebef713da95efa978c4d8c6e, and repaired safety source
+348e0f323a3b17cd5022a1bfd56fa09a6831c51f. Do not enter older worktrees, move refs,
+merge/cherry-pick, or alter preserved Muse history, snapshots, bounded review,
+installation/rollback, completed pilot or source-release evidence.
 
-Run one combined section-9 selection against a recorded integrated source/runtime
-and dependency set. Use this installation's conventional venv, pinned local
-prerequisites, disposable repositories under a nonrepository parent and fake
-providers/transports only. Cover all three authority modes; two simultaneous
-repositories with distinct defaults and overlapping lanes; worktrees/nested
-boundaries; lane ownership and workspace; canonical automatic/manual bookends;
-Git closing-commit and native Muse exact-revision freshness; CAS/context races;
-every maintained command and full settings; app/desktop/hosted controls; legacy
-and bounded migrations; controlled mirror reconciliation and credentials; fresh
-source-package installation and advertised entry points; compatible configuration
-upgrade/rollback; and the intended Python 3.11/3.14 and local native-build matrix.
-Preserve tracked Git bindings, explicit authority selection, confined writes,
-captured context, final rechecks, pinned closing reads and whole-file CAS. No
-public path may invoke legacy_main or scrape/regenerate a handoff.
+Assess architecture, implementation, security and completeness together against
+one fixed integrated source/digest. Trace every maintained command and setting
+through real CLI/app boundaries; all three authorities; identity/lane/workspace
+isolation; canonical bookends and exact freshness; captured context, final rechecks
+and whole-file CAS; migrations, compatible rollback and source installation;
+controlled mirrors, reconciliation and scoped credentials. Confirm no public
+legacy_main bypass, competing prompt scrape/regeneration, implicit authority
+switch, untracking or remote action. Reconcile all 104 historical failures with
+the retained disposition and replacements. Preserve raw failures and distinguish
+combined results, affected reruns, fixture corrections and unresolved cells.
+The final raw combined run records 1,207 passed and one preserved changed-contract
+assertion failure; two guarded successor cases passed separately on unchanged
+production. The 1,209-case closeout selection has exact passing coverage across
+those runs, not a second all-green combined execution. Assess each explicit
+replacement against the maintained requirement.
 
-Use the FPR-3 disposition map to include every restored/reachable requirement and
-relevant cross-cutting family, including all 104 historical failures. Preserve
-original tests and historical results; add explicit replacement cases for changed
-contracts. Record commands, exit codes, source/runtime hashes and dependency
-versions. Fix real failures with failing-before/passing-after evidence; rerun only
-affected checks unless shared changes invalidate the combined result. Missing
-prerequisites, sockets, hosts or toolchains remain unresolved evidence, never a
-green skip or an implicit reduction of the promised product.
+The owner has not selected named automatic host/client versions or accepted
+platform/distribution claims, authorized the separate new integrated pilot, or
+appointed the reviewer. The new pilot was not run. Python 3.11 lacks the locally
+available pinned cffi 2.1.0 cp311 prerequisite, so the complete declared Python
+3.11 dependency cell remains unresolved; unaffected passes do not close it.
+Native GUI/lifecycle/provider limitations remain distinct from script, loopback,
+build and fake-transport success. These gaps must remain explicit; review may
+assess the available fixed evidence but cannot declare complete acceptance or
+release readiness while required evidence is missing. Obtain concrete owner
+selections before dependent work; do not infer them or repeat the old pilot.
 
-Obtain the pending owner choices before claiming named automatic host/version or
-platform/distribution acceptance, and before running the separately selected new
-integrated pilot. The proposed pilot is a new noncritical disposable local project
-with selected host/authority and fake remote transports. Continue independent
-fixture work while those choices are pending. Preserve the completed bounded
-pilot and do not repeat its review, installation/rollback or certification process.
-Exercise changed safety behaviors in the new matrix. Record native GUI, host
-lifecycle delivery and provider limitations separately from fixture success.
+Use the conventional venv, pinned local prerequisites and new disposable fixtures
+under a nonrepository /private/tmp parent for necessary focused verification.
+No network/providers, real consumers/hooks, live delivery/export, fetch/push,
+main merge, tags, signing, publication, release or deployment. Do not restore
+excluded OCI/GSR/sole-writer/identity-bridge/packet machinery.
 
-No real consumers/hooks, providers/network, live mirror/export/delivery, fetch,
-push, main merge, tags, publication, signing, release or deployment. Do not restore
-OCI, native/Mach GSR, sole-writer storage, identity bridges or packet prerequisites.
-Keep local mutation, remote transport and release actions explicit. Do not run
-FPR-5 or create an intervening review-only handoff; reserve one independent final
-review of the fixed integrated source and complete evidence for FPR-5.
-
-Close with the combined matrix, source/environment and migration/install/rollback/
-pilot evidence, failures/limits and unresolved owner choices. Update ROADMAP and
-HANDOVER together. Publish one canonical FPR-5 successor through bound next-write
-using current context and expected prior digest; identify the independent-reviewer
-choice without claiming self-review as independent. Refresh this installation's
-runtime binding explicitly if repairs require it, preserving identity/settings/NEXT.
-Make one coherent local FPR-4 feature commit after checks, then validate NEXT from
-disk. Report changes, failures/limits, owner choices, commit and validated successor.
-Do not claim release readiness before combined validation and independent final
-review, and do not infer release authorization from either.
+Produce one independent verdict with reproducible findings, severity, affected
+requirements and evidence references. Preserve it if defects require bounded
+repairs; record failing-before/passing-after evidence and rerun affected integrated
+checks. Reserve one final independent adjudication of the complete repaired
+source/evidence, then one separate owner release decision. An unresolved finding
+blocks release; it does not create additional per-wave review cycles. Return
+architecture/scope expansion decisions to the owner. Report the reviewed commit,
+runtime, evidence limits and outstanding owner choices without claiming release
+authorization from FPR-5 acceptance or its verdict.

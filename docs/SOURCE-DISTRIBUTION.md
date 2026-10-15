@@ -42,9 +42,12 @@ runtime until its matching config is restored. Per-file updates may be partial;
 inspect reported paths/backups before retrying. Relocation is a separate rebind
 decision. A successful rollback does not clear known defects in the older build.
 
-`tools/ci/supported_v1.py` and the manual-only workflow are prepared reusable
-validation drivers. This wave does not run hosted CI or the combined FPR-4
-install/migration/rollback/pilot matrix. The completed bounded exercises and source
-snapshot remain preserved and are not replaced by these prepared full-product
-artifacts. Platforms, native installers, signing, public versions and destinations
-require the later owner decision.
+`tools/ci/supported_v1.py` and the manual-only workflow are reusable validation
+drivers. The full integrated selection and local installation/migration/rollback
+evidence are recorded separately in [FPR-4 validation](validation/FPR-4-COMBINED.md),
+including the unresolved Python 3.11 prerequisite and owner acceptance choices.
+Neither the smaller driver nor a local source archive establishes full matrix or
+release acceptance. The new integrated pilot requires separate owner selection
+and authorization. The completed bounded exercises and source snapshot remain
+preserved. Hosted CI, platforms, native installers, signing, public versions and
+destinations require the owner decision and applicable evidence.

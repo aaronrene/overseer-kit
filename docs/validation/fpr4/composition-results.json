@@ -1,0 +1,69 @@
+{
+  "scope": "FPR-4 author composition fixtures; not independent review, named host delivery or pilot",
+  "source_head": "6289d2823184a63e2968d2c5f6a76abab5818368",
+  "runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "7d38764f026848d7d89d81abedfc62f1de5eefde6443d0032d770c2ff09a20d1"
+  },
+  "test_file": "tests/fpr4/test_composition.py",
+  "test_sha256": "18c2c453b140697197a708ae5b95c4795f922cda6b7cc2dcd11fd71acc79833a",
+  "python": "3.14.4 (main, Apr  7 2026, 13:13:20) [Clang 17.0.0 (clang-1700.6.4.2)]",
+  "platform": "macOS-15.7.2-arm64-arm-64bit-Mach-O",
+  "dependencies": {
+    "pytest": "9.1.1",
+    "PyYAML": "6.0.3",
+    "cryptography": "49.0.0"
+  },
+  "command": "FPR2_MUSE_PYTHON=/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python PYTHONDONTWRITEBYTECODE=1 GIT_OPTIONAL_LOCKS=0 GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_NOSYSTEM=1 .venv/bin/python -B -m pytest -q -p no:cacheprovider tests/fpr4/test_composition.py --basetemp=/private/tmp/overseer-fpr4-composition-first --junitxml=docs/validation/fpr4/composition-first.xml > docs/validation/fpr4/composition-first.log 2>&1",
+  "exit_code": 0,
+  "suites": [
+    {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "5",
+      "time": "128.750",
+      "timestamp": "2026-10-14T16:03:53.480495-07:00",
+      "hostname": "Carloss-MacBook-Pro.local"
+    }
+  ],
+  "cases": [
+    {
+      "name": "test_two_active_repositories_lanes_bookends_cas_and_revision[git-only]",
+      "class": "tests.fpr4.test_composition",
+      "seconds": "20.979"
+    },
+    {
+      "name": "test_two_active_repositories_lanes_bookends_cas_and_revision[muse-only]",
+      "class": "tests.fpr4.test_composition",
+      "seconds": "42.547"
+    },
+    {
+      "name": "test_two_active_repositories_lanes_bookends_cas_and_revision[muse+git-mirror]",
+      "class": "tests.fpr4.test_composition",
+      "seconds": "44.660"
+    },
+    {
+      "name": "test_nested_and_linked_git_checkouts_keep_independent_context",
+      "class": "tests.fpr4.test_composition",
+      "seconds": "16.072"
+    },
+    {
+      "name": "test_full_legacy_settings_preservation_and_explicit_prompt_acceptance",
+      "class": "tests.fpr4.test_composition",
+      "seconds": "4.450"
+    }
+  ],
+  "failures": [],
+  "repairs": [],
+  "original_tests_changed": false,
+  "production_changed": false,
+  "limits": [
+    "Cursor start/stop script adapter contract only; no named client lifecycle delivery",
+    "No separately selected integrated pilot",
+    "No network or real transports",
+    "Focused check supplements rather than substitutes for the combined matrix"
+  ]
+}

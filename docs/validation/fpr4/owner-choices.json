@@ -1,0 +1,27 @@
+{
+  "scope": "Owner accepted FPR-4 local fixture validation and bounded repairs by submitting canonical prompt; FPR-5 and release remain separate.",
+  "choices_requested": true,
+  "automatic_hosts": {
+    "status": "pending owner named client/version selection and actual lifecycle evidence",
+    "fixture_contract": "Cursor sessionStart/stop adapters; exact canonical output and refusals",
+    "codex": "Instruction-triggered entry/closeout only; no native lifecycle claim"
+  },
+  "platform_distribution": {
+    "status": "pending owner acceptance targets",
+    "local_evidence": "macOS arm64 source installation, authenticated app/desktop child and offline native build",
+    "unclaimed": ["native GUI acceptance", "signed installer", "notarization", "Windows", "new hosted CI", "publication"]
+  },
+  "integrated_pilot": {
+    "status": "not run; requires separate owner selection/authorization",
+    "proposal": "New noncritical disposable Git-only project under /private/tmp, instruction-triggered Codex bookends, fake remote transports",
+    "prior_bounded_pilot": "Preserved; not accessed or repeated"
+  },
+  "independent_reviewer": {
+    "status": "pending owner appointment for FPR-5",
+    "constraint": "FPR-4 implementation authors and author-validation collaborators do not count as independent reviewers"
+  },
+  "remote_scope": {
+    "status": "preserved bounded transport contract; no expansion requested or validated",
+    "validation": "fake providers/transports and isolated local fixture objects only; no external network/provider operations"
+  }
+}

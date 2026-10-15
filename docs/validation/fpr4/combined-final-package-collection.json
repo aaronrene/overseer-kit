@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "pytest": "9.1.1",
+  "cases": [
+    {
+      "nodeid": "tests/fpr3/test_package.py::test_actual_package_deterministic_manifest_modes_and_resource_bundle",
+      "node_sha256": "6c576be3614128e87a7dfca88d112b343ca6cd1c6e5394d281779d85e47eeb28",
+      "junit": [
+        "tests.fpr3.test_package",
+        "test_actual_package_deterministic_manifest_modes_and_resource_bundle"
+      ]
+    }
+  ]
+}

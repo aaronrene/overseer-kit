@@ -1,5 +1,23 @@
 # Test disposition: restored full-product requirements
 
+The FPR-4 combined selection, recorded source/dependencies, bounded repairs and
+unresolved acceptance cells are in [combined evidence](../docs/validation/FPR-4-COMBINED.md).
+Use `scripts/fpr4_matrix.py` with the explicit
+`docs/validation/fpr4/disposition-closeout-selection.json` and separate pinned Muse
+interpreter. The runner verifies exact-once execution across disjoint groups on
+unchanged source/dependencies; latency and archive checks run separately. The
+serial `scripts/fpr4_run.py` accepts the same selection. Its disposition audit accounts for all original files and 104
+historical failures. The frozen combined run recorded 1,207 passes and one
+changed-contract import assertion failure; its explicit clean-process successor
+passed two later cases on unchanged production/dependencies. The 1,209-case
+closeout selection is exactly covered by those passing outcomes, not presented
+as a second all-green combined run. Raw selection, hashes and failure remain
+preserved. Changed bounded command/dependency assertions remain
+preserved with concrete successors. Default pytest paths and the earlier
+`tools/ci/supported_v1.py` convenience driver are smaller selections; neither
+substitutes for this combined matrix. Missing Python/platform/host prerequisites
+and the unselected integrated pilot remain unresolved requirements.
+
 FPR-3 restores maintained commands and app/desktop/hosted surfaces through the
 single bound CLI. The complete [test disposition](../docs/validation/fpr3/test-disposition.json)
 records every original family and all 104 historical failures, with retained
@@ -7,8 +25,8 @@ requirements and explicit replacement cases. All 393 original test/support files
 remain byte-identical. Historical failures are not relabelled as passes.
 
 The focused FPR-3 selection and logs are in [surface evidence](../docs/validation/FPR-3-SURFACES.md).
-The combined reusable driver is `tools/ci/supported_v1.py`; running the FPR-4
-combined matrix is a separate successor action. Use this installation's `.venv`
+The earlier reusable driver is `tools/ci/supported_v1.py`; the FPR-4 record above
+defines the expanded combined selection. Use this installation's `.venv`
 and a disposable basetemp under a nonrepository parent. The default testpaths
 are a convenience subset, never the full release/combined matrix.
 

@@ -1,0 +1,251 @@
+{
+  "scope": "Focused author checks; final combined source-digest run is authoritative",
+  "runs": [
+    {
+      "name": "disposition-first",
+      "xml": "docs/validation/fpr4/disposition-first.xml",
+      "result": {
+        "tests": 5,
+        "failures": 4,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 22.642
+      },
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/fpr4/test_disposition_contracts.py",
+        "-q",
+        "--basetemp=/private/tmp/overseer-fpr4-disposition-first",
+        "--junitxml=docs/validation/fpr4/disposition-first.xml"
+      ],
+      "exit_code": 1,
+      "sandbox": "escalated_for_loopback_sockets",
+      "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014"
+    },
+    {
+      "name": "disposition-final",
+      "xml": "docs/validation/fpr4/disposition-final.xml",
+      "result": {
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 28.408
+      },
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/fpr4/test_disposition_contracts.py",
+        "-q",
+        "--basetemp=/private/tmp/overseer-fpr4-disposition-final",
+        "--junitxml=docs/validation/fpr4/disposition-final.xml"
+      ],
+      "exit_code": 0,
+      "sandbox": "escalated_for_loopback_sockets",
+      "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014"
+    },
+    {
+      "name": "disposition-expanded",
+      "xml": "docs/validation/fpr4/disposition-expanded.xml",
+      "result": {
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 43.391
+      },
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/fpr4/test_disposition_contracts.py",
+        "-q",
+        "--basetemp=/private/tmp/overseer-fpr4-disposition-expanded",
+        "--junitxml=docs/validation/fpr4/disposition-expanded.xml"
+      ],
+      "exit_code": 0,
+      "sandbox": "escalated_for_loopback_sockets",
+      "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014"
+    },
+    {
+      "name": "disposition-ui-before",
+      "xml": "docs/validation/fpr4/disposition-ui-before.xml",
+      "result": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 0.082
+      },
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/fpr4/test_disposition_contracts.py::test_app_installation_copy_uses_explicit_root_and_current_source_distribution",
+        "-q",
+        "--basetemp=/private/tmp/overseer-fpr4-disposition-ui-before",
+        "--junitxml=docs/validation/fpr4/disposition-ui-before.xml"
+      ],
+      "exit_code": 1,
+      "sandbox": "workspace_sandbox",
+      "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014"
+    },
+    {
+      "name": "disposition-stress",
+      "xml": "docs/validation/fpr4/disposition-stress.xml",
+      "result": {
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 22.043
+      },
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/fpr4/test_disposition_contracts.py::test_app_concurrent_reads_forbidden_routes_size_bounds_and_no_secret_files",
+        "tests/fpr4/test_disposition_contracts.py::test_actual_shims_preserve_json_alias_and_literal_arguments",
+        "tests/fpr4/test_disposition_contracts.py::test_sync_force_cannot_overwrite_consumer_edits",
+        "tests/fpr4/test_disposition_contracts.py::test_manual_workflow_has_no_publish_permissions_or_secret_literals",
+        "-q",
+        "--basetemp=/private/tmp/overseer-fpr4-disposition-stress",
+        "--junitxml=docs/validation/fpr4/disposition-stress.xml"
+      ],
+      "exit_code": 0,
+      "sandbox": "escalated_for_loopback_sockets",
+      "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014"
+    },
+    {
+      "name": "disposition-workspace",
+      "xml": "docs/validation/fpr4/disposition-workspace.xml",
+      "result": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 11.334
+      },
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/fpr4/test_disposition_contracts.py::test_workspace_optional_required_members_and_identity_collision",
+        "-q",
+        "--basetemp=/private/tmp/overseer-fpr4-disposition-workspace",
+        "--junitxml=docs/validation/fpr4/disposition-workspace.xml"
+      ],
+      "exit_code": 0,
+      "sandbox": "workspace_sandbox",
+      "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014"
+    },
+    {
+      "name": "disposition-tail",
+      "xml": "docs/validation/fpr4/disposition-tail.xml",
+      "result": {
+        "tests": 8,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 3.115
+      },
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/fpr4/test_disposition_contracts.py::test_rendered_mirror_wrapper_uses_bound_launcher_and_literal_arguments",
+        "tests/fpr4/test_disposition_contracts.py::test_installed_orchestrator_preserves_canonical_authority_and_explicit_review_scope",
+        "tests/unit/test_skills_footprint.py::test_rendered_templates_include_build_verification_in_dod",
+        "tests/unit/test_skills_footprint.py::test_footprint_includes_review_loop_skills",
+        "tests/unit/test_skills_footprint.py::test_review_loop_skill_documents_bounded_loop",
+        "tests/unit/test_skills_footprint.py::test_footprint_includes_build_verification_rule",
+        "tests/unit/test_skills_footprint.py::test_build_verification_skill_documents_honesty_gate",
+        "tests/unit/test_skills_footprint.py::test_footprint_includes_workspace_authority_and_skill",
+        "-q",
+        "--basetemp=/private/tmp/overseer-fpr4-disposition-tail",
+        "--junitxml=docs/validation/fpr4/disposition-tail.xml"
+      ],
+      "exit_code": 1,
+      "sandbox": "workspace_sandbox",
+      "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014"
+    },
+    {
+      "name": "disposition-tail-final",
+      "xml": "docs/validation/fpr4/disposition-tail-final.xml",
+      "result": {
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 3.072
+      },
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/fpr4/test_disposition_contracts.py::test_rendered_mirror_wrapper_uses_bound_launcher_and_literal_arguments",
+        "tests/fpr4/test_disposition_contracts.py::test_installed_orchestrator_preserves_canonical_authority_and_explicit_review_scope",
+        "tests/unit/test_skills_footprint.py::test_rendered_templates_include_build_verification_in_dod",
+        "tests/unit/test_skills_footprint.py::test_footprint_includes_review_loop_skills",
+        "tests/unit/test_skills_footprint.py::test_review_loop_skill_documents_bounded_loop",
+        "tests/unit/test_skills_footprint.py::test_footprint_includes_build_verification_rule",
+        "tests/unit/test_skills_footprint.py::test_build_verification_skill_documents_honesty_gate",
+        "tests/unit/test_skills_footprint.py::test_footprint_includes_workspace_authority_and_skill",
+        "-q",
+        "--basetemp=/private/tmp/overseer-fpr4-disposition-tail-final",
+        "--junitxml=docs/validation/fpr4/disposition-tail-final.xml"
+      ],
+      "exit_code": 0,
+      "sandbox": "workspace_sandbox",
+      "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014"
+    }
+  ],
+  "final_file": "tests/fpr4/test_disposition_contracts.py",
+  "notes": [
+    "First run included four incorrect test expectations; corrected after checking documented current contracts without a production change.",
+    "The UI-copy test exposed real stale signed-DMG and ambient-root instructions and remains preserved as failing-before; the parent repair passed in affected-final.xml and the final combined latency group.",
+    "Expanded run exercised hosted CLI static startup/SIGINT only; no upstream endpoint was requested.",
+    "Stress run retained original 24 reads/20 workers and static diagrams, CLI<1s, footprint<5s and workflow scanner<1s bounds.",
+    "Tail original template test passed unchanged after maintained conditional build-verification guidance was restored. Two marker/export-contract successors pass. First semantic-rule assertion failed only on line wrapping; normalizing whitespace fixed that test expectation without a product change."
+  ],
+  "current_test_sha256": "66b02393873dbba63c1c002380725d610f2e2152c4ba620308ca95ec7999bdb6",
+  "final_validation": {
+    "raw_combined_record": "docs/validation/fpr4/combined-final.json",
+    "raw_combined_results": {
+      "tests": 1208,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 1207
+    },
+    "raw_combined_ok": false,
+    "raw_boundary_unchanged": true,
+    "raw_exact_once": true,
+    "successor_record": "docs/validation/fpr4/import-boundary-final-rerun.json",
+    "successor_results": {
+      "tests": 2,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 2
+    },
+    "successor_driver_seconds": 6.974161042002379,
+    "effective_closeout": {
+      "coverage_record": "docs/validation/fpr4/disposition-closeout-coverage.json",
+      "selection": "docs/validation/fpr4/disposition-closeout-selection.json",
+      "selection_sha256": "49d6f304a305745af688335e9814c9a2665609ee3d1ec38a2cc149eff2f05cc7",
+      "collected_cases": 1209,
+      "passing_raw_cases": 1207,
+      "passing_additive_successor_cases": 2,
+      "exact_passing_execution_union": true,
+      "missing_executions": [],
+      "extra_executions": [],
+      "interpretation": "Effective current-contract coverage across the frozen combined run and one additive same-production affected run; not a claim that the raw 1208-case suite passed."
+    },
+    "historical_104_map": "docs/validation/fpr4/disposition-audit.json",
+    "initial_11_map": "docs/validation/fpr4/initial-failure-disposition.json"
+  }
+}

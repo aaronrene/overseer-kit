@@ -1,0 +1,262 @@
+{
+  "portable_changes": {
+    ".overseer/version.lock": {
+      "primary": "cba5b1fd4cce7e8184f1f943110381ab6b3d6d16882ebab5bf41ecc6d3363d5d",
+      "linked": "fa509be22a6a81cfa096a64546900a07f6180da86d06b87e55e51175895b79e3"
+    }
+  },
+  "lock_row_changes": {
+    ".claude/skills/adversarial-freeze-review/SKILL.md": {
+      "primary": {
+        "path": ".claude/skills/adversarial-freeze-review/SKILL.md",
+        "source": "bound-product-assets",
+        "sha256": "sha256:7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044",
+        "origin": "kit"
+      },
+      "linked": {
+        "path": ".claude/skills/adversarial-freeze-review/SKILL.md",
+        "source": "bound-product-assets",
+        "sha256": "sha256:7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044",
+        "origin": "preserved"
+      }
+    },
+    ".claude/skills/build-verification-review/SKILL.md": {
+      "primary": {
+        "path": ".claude/skills/build-verification-review/SKILL.md",
+        "source": "bound-product-assets",
+        "sha256": "sha256:f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c",
+        "origin": "kit"
+      },
+      "linked": {
+        "path": ".claude/skills/build-verification-review/SKILL.md",
+        "source": "bound-product-assets",
+        "sha256": "sha256:f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c",
+        "origin": "preserved"
+      }
+    },
+    ".claude/skills/check-ok/SIDE-CHECK-TEMPLATE.md": {
+      "primary": {
+        "path": ".claude/skills/check-ok/SIDE-CHECK-TEMPLATE.md",
+        "source": "bound-product-assets",
+        "sha256": "sha256:0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c",
+        "origin": "kit"
+      },
+      "linked": {
+        "path": ".claude/skills/check-ok/SIDE-CHECK-TEMPLATE.md",
+        "source": "bound-product-assets",
+        "sha256": "sha256:0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c",
+        "origin": "preserved"
+      }
+    },
+    ".claude/skills/check-ok/SKILL.md": {
+      "primary": {
+        "path": ".claude/skills/check-ok/SKILL.md",
+        "source": "bound-product-assets",
+        "sha256": "sha256:3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a",
+        "origin": "kit"
+      },
+      "linked": {
+        "path": ".claude/skills/check-ok/SKILL.md",
+        "source": "bound-product-assets",
+        "sha256": "sha256:3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a",
+        "origin": "preserved"
+      }
+    },
+    ".claude/skills/deploy-verification-review/SKILL.md": {
+      "primary": {
+        "path": ".claude/skills/deploy-verification-review/SKILL.md",
+        "source": "bound-product-assets",
+        "sha256": "sha256:a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b",
+        "origin": "kit"
+      },
+      "linked": {
+        "path": ".claude/skills/deploy-verification-review/SKILL.md",
+        "source": "bound-product-assets",
+        "sha256": "sha256:a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b",
+        "origin": "preserved"
+      }
+    },
+    ".claude/skills/freeze-review-loop/SKILL.md": {
+      "primary": {
+        "path": ".claude/skills/freeze-review-loop/SKILL.md",
+        "source": "bound-product-assets",
+        "sha256": "sha256:355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f",
+        "origin": "kit"
+      },
+      "linked": {
+        "path": ".claude/skills/freeze-review-loop/SKILL.md",
+        "source": "bound-product-assets",
+        "sha256": "sha256:355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f",
+        "origin": "preserved"
+      }
+    },
+    ".claude/skills/freeze-review/SKILL.md": {
+      "primary": {
+        "path": ".claude/skills/freeze-review/SKILL.md",
+        "source": "bound-product-assets",
+        "sha256": "sha256:620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b",
+        "origin": "kit"
+      },
+      "linked": {
+        "path": ".claude/skills/freeze-review/SKILL.md",
+        "source": "bound-product-assets",
+        "sha256": "sha256:620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b",
+        "origin": "preserved"
+      }
+    },
+    ".claude/skills/governance-sync/SKILL.md": {
+      "primary": {
+        "path": ".claude/skills/governance-sync/SKILL.md",
+        "source": "bound-product-assets",
+        "sha256": "sha256:06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14",
+        "origin": "kit"
+      },
+      "linked": {
+        "path": ".claude/skills/governance-sync/SKILL.md",
+        "source": "bound-product-assets",
+        "sha256": "sha256:06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14",
+        "origin": "preserved"
+      }
+    },
+    ".claude/skills/independent-second-reviewer/SKILL.md": {
+      "primary": {
+        "path": ".claude/skills/independent-second-reviewer/SKILL.md",
+        "source": "bound-product-assets",
+        "sha256": "sha256:994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837",
+        "origin": "kit"
+      },
+      "linked": {
+        "path": ".claude/skills/independent-second-reviewer/SKILL.md",
+        "source": "bound-product-assets",
+        "sha256": "sha256:994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837",
+        "origin": "preserved"
+      }
+    },
+    ".claude/skills/print-next/SKILL.md": {
+      "primary": {
+        "path": ".claude/skills/print-next/SKILL.md",
+        "source": "bound-product-assets",
+        "sha256": "sha256:de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff",
+        "origin": "kit"
+      },
+      "linked": {
+        "path": ".claude/skills/print-next/SKILL.md",
+        "source": "bound-product-assets",
+        "sha256": "sha256:de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff",
+        "origin": "preserved"
+      }
+    },
+    ".claude/skills/workspace-status/SKILL.md": {
+      "primary": {
+        "path": ".claude/skills/workspace-status/SKILL.md",
+        "source": "bound-product-assets",
+        "sha256": "sha256:a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25",
+        "origin": "kit"
+      },
+      "linked": {
+        "path": ".claude/skills/workspace-status/SKILL.md",
+        "source": "bound-product-assets",
+        "sha256": "sha256:a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25",
+        "origin": "preserved"
+      }
+    },
+    ".overseer/STANDING-DECISIONS.reference.md": {
+      "primary": {
+        "path": ".overseer/STANDING-DECISIONS.reference.md",
+        "source": "bound-product-assets",
+        "sha256": "sha256:2970dcdaa409aadb9e181b81ea968b269d9e6fae8b9f293f8a94feb3e61da0d3",
+        "origin": "kit"
+      },
+      "linked": {
+        "path": ".overseer/STANDING-DECISIONS.reference.md",
+        "source": "bound-product-assets",
+        "sha256": "sha256:2970dcdaa409aadb9e181b81ea968b269d9e6fae8b9f293f8a94feb3e61da0d3",
+        "origin": "preserved"
+      }
+    },
+    ".overseer/bin/ok": {
+      "primary": {
+        "path": ".overseer/bin/ok",
+        "source": "bound-product-assets",
+        "sha256": "sha256:1f449482a626d3c17ec9d70bff415ed55fde81773151984b48d51b61b900c7bd",
+        "origin": "kit"
+      },
+      "linked": {
+        "path": ".overseer/bin/ok",
+        "source": "bound-product-assets",
+        "sha256": "sha256:3386204a356347e3ca0cddd9776aae4ef65afbfcf18e1fb1223ce7a42c01d01b",
+        "origin": "kit"
+      }
+    },
+    ".overseer/policy/model-labels.yaml": {
+      "primary": {
+        "path": ".overseer/policy/model-labels.yaml",
+        "source": "bound-product-assets",
+        "sha256": "sha256:db95732401de452223d750c68172b6c1bb28b3b574c6368132678309b8c801e0",
+        "origin": "kit"
+      },
+      "linked": {
+        "path": ".overseer/policy/model-labels.yaml",
+        "source": "bound-product-assets",
+        "sha256": "sha256:db95732401de452223d750c68172b6c1bb28b3b574c6368132678309b8c801e0",
+        "origin": "preserved"
+      }
+    },
+    ".overseer/policy/model-routing.yaml": {
+      "primary": {
+        "path": ".overseer/policy/model-routing.yaml",
+        "source": "bound-product-assets",
+        "sha256": "sha256:52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63",
+        "origin": "kit"
+      },
+      "linked": {
+        "path": ".overseer/policy/model-routing.yaml",
+        "source": "bound-product-assets",
+        "sha256": "sha256:52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63",
+        "origin": "preserved"
+      }
+    },
+    ".overseer/policy/test-tiers.yaml": {
+      "primary": {
+        "path": ".overseer/policy/test-tiers.yaml",
+        "source": "bound-product-assets",
+        "sha256": "sha256:55b337e9399ccd26f4c70dba9f6f57c1359fab930a522e605cbe52d3533238d8",
+        "origin": "kit"
+      },
+      "linked": {
+        "path": ".overseer/policy/test-tiers.yaml",
+        "source": "bound-product-assets",
+        "sha256": "sha256:55b337e9399ccd26f4c70dba9f6f57c1359fab930a522e605cbe52d3533238d8",
+        "origin": "preserved"
+      }
+    },
+    ".overseer/policy/tiers.yaml": {
+      "primary": {
+        "path": ".overseer/policy/tiers.yaml",
+        "source": "bound-product-assets",
+        "sha256": "sha256:92920331f4e35bad9191a101b8b5d211ef31f069b2ba1cf4446ceb3796894776",
+        "origin": "kit"
+      },
+      "linked": {
+        "path": ".overseer/policy/tiers.yaml",
+        "source": "bound-product-assets",
+        "sha256": "sha256:92920331f4e35bad9191a101b8b5d211ef31f069b2ba1cf4446ceb3796894776",
+        "origin": "preserved"
+      }
+    },
+    "policy/model-routing.yaml": {
+      "primary": {
+        "path": "policy/model-routing.yaml",
+        "source": "bound-product-assets",
+        "sha256": "sha256:52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63",
+        "origin": "kit"
+      },
+      "linked": {
+        "path": "policy/model-routing.yaml",
+        "source": "bound-product-assets",
+        "sha256": "sha256:52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63",
+        "origin": "preserved"
+      }
+    }
+  }
+}

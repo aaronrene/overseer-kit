@@ -1,0 +1,734 @@
+{
+  "schema": 1,
+  "pytest": "9.1.1",
+  "cases": [
+    {
+      "nodeid": "tests/fpr2/test_lanes.py::test_collection_missing_selection_stale_and_bookends",
+      "node_sha256": "80bcc0ff944966580e2390de5bfbff85069dca697820926f4eab5404f2c80f4b",
+      "junit": [
+        "tests.fpr2.test_lanes",
+        "test_collection_missing_selection_stale_and_bookends"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr2/test_lanes.py::test_two_repositories_lane_ownership_and_no_fallback",
+      "node_sha256": "67b7ccfc074ed14934933ed387cd748a0cf60d7ba7d0d013c5dd11c9ac6f7ec7",
+      "junit": [
+        "tests.fpr2.test_lanes",
+        "test_two_repositories_lane_ownership_and_no_fallback"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr2/test_lanes.py::test_concurrent_lane_updates_whole_file_cas",
+      "node_sha256": "c903af97afd38c2189f01106a8b18126e01b594bfe4fdcc3c8ff7f23aea56535",
+      "junit": [
+        "tests.fpr2.test_lanes",
+        "test_concurrent_lane_updates_whole_file_cas"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr2/test_lanes.py::test_entire_collection_validated_before_selected_output[extra_body]",
+      "node_sha256": "956ea37ed087f9c458c3457c6fa765d92aaeee7b23fcd256bf5f0b2567a2e959",
+      "junit": [
+        "tests.fpr2.test_lanes",
+        "test_entire_collection_validated_before_selected_output[extra_body]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr2/test_lanes.py::test_entire_collection_validated_before_selected_output[digest]",
+      "node_sha256": "75ed195bce45021ca67679c8ceb4798768dddcd765426c7951c443be88bfd83b",
+      "junit": [
+        "tests.fpr2.test_lanes",
+        "test_entire_collection_validated_before_selected_output[digest]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr2/test_lanes.py::test_entire_collection_validated_before_selected_output[undeclared]",
+      "node_sha256": "f662956df3052eada0dbe6adde94b1207616e9de6e3c1b7fb9411080b63d3e70",
+      "junit": [
+        "tests.fpr2.test_lanes",
+        "test_entire_collection_validated_before_selected_output[undeclared]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr2/test_lanes.py::test_entire_collection_validated_before_selected_output[missing_body]",
+      "node_sha256": "f629d7a92fef8272946dd78e49700444dee8f4c54f0994521995c6cbedf07254",
+      "junit": [
+        "tests.fpr2.test_lanes",
+        "test_entire_collection_validated_before_selected_output[missing_body]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr2/test_lanes.py::test_explicit_batch_updates_only_selected_lanes_with_one_cas",
+      "node_sha256": "2c8b7fcf89b1a0975fc34185cbc1c4039a6316b4f2e6a817ff7f81b085fd4db3",
+      "junit": [
+        "tests.fpr2.test_lanes",
+        "test_explicit_batch_updates_only_selected_lanes_with_one_cas"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr2/test_lanes.py::test_duplicate_authority_and_publication_selectors_refuse[--vcs]",
+      "node_sha256": "7acfd4916951b3547c9bea1bb09527673d4f193795ceeb477d65f3c3439dfcf8",
+      "junit": [
+        "tests.fpr2.test_lanes",
+        "test_duplicate_authority_and_publication_selectors_refuse[--vcs]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr2/test_lanes.py::test_duplicate_authority_and_publication_selectors_refuse[--base-head]",
+      "node_sha256": "76e5d104ee172988e84ac66586f32731eb44e25eb5da61194875f919999b7e67",
+      "junit": [
+        "tests.fpr2.test_lanes",
+        "test_duplicate_authority_and_publication_selectors_refuse[--base-head]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr2/test_lanes.py::test_duplicate_authority_and_publication_selectors_refuse[--action-id]",
+      "node_sha256": "d9e843e72fc16b4e8e465787848c0009b6984c8dbae1ea1ea7077defacb81363",
+      "junit": [
+        "tests.fpr2.test_lanes",
+        "test_duplicate_authority_and_publication_selectors_refuse[--action-id]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr2/test_lanes.py::test_duplicate_authority_and_publication_selectors_refuse[--action-kind]",
+      "node_sha256": "f09b4be7ab74bf12b5f9d4a347511210e0749f2a1cad56c3f25a0fb9da04568c",
+      "junit": [
+        "tests.fpr2.test_lanes",
+        "test_duplicate_authority_and_publication_selectors_refuse[--action-kind]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr2/test_lanes.py::test_duplicate_authority_and_publication_selectors_refuse[--batch-file]",
+      "node_sha256": "d705ca11fb3d716c4d578e91db2a31092ccfc52266593408a325c67d3189adc4",
+      "junit": [
+        "tests.fpr2.test_lanes",
+        "test_duplicate_authority_and_publication_selectors_refuse[--batch-file]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr2/test_lanes.py::test_git_preserves_inactive_muse_settings_without_using_them",
+      "node_sha256": "45a6c0d6e7c36e7c188e97c88daa98f92902f4fc348d50859a2e2a78c22f808f",
+      "junit": [
+        "tests.fpr2.test_lanes",
+        "test_git_preserves_inactive_muse_settings_without_using_them"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr2/test_sync_boundary.py::test_sync_rechecks_physical_git_boundary_after_fsync",
+      "node_sha256": "75cddbe8f0489d729ce8883fa5d90bcb5faddb852495f0db35a11930ac51f24a",
+      "junit": [
+        "tests.fpr2.test_sync_boundary",
+        "test_sync_rechecks_physical_git_boundary_after_fsync"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_actual_command_help[adopt]",
+      "node_sha256": "e353524a2a55725e7babe5b40c03d3cb4530cfad299147d446301018ffe21c2e",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_actual_command_help[adopt]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_actual_command_help[app]",
+      "node_sha256": "29a3b609d34af8ed09d8aa79bce240667d53dcb40d6fa3292e72c91e018ed46a",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_actual_command_help[app]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_actual_command_help[check-if-ok]",
+      "node_sha256": "48960b558c3d123c7293b8169f6d62ab06d618a54bfd1269aefd448a33008418",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_actual_command_help[check-if-ok]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_actual_command_help[check-ok]",
+      "node_sha256": "c4b38564b6fbd413659f76e260d151948a46fce508a993d226621657fced3374",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_actual_command_help[check-ok]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_actual_command_help[governance-sync]",
+      "node_sha256": "7b31a6a27e045f7525a8085ba12c2c8467b4a41c6b964efe80de819189a75aab",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_actual_command_help[governance-sync]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_actual_command_help[handover-compact]",
+      "node_sha256": "336adf197c9783c92c3fb47afae71eac71a59210b3f3b3e4b149040adead42d5",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_actual_command_help[handover-compact]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_actual_command_help[honesty-status]",
+      "node_sha256": "3b5e4a4b21311d4b8922b4ea2c5f93fabcf9b0fd5caaa912adff25d1b55334e2",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_actual_command_help[honesty-status]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_actual_command_help[hook]",
+      "node_sha256": "ec8cfd18c78494a4f66d3eddc674ccb97820039dd268455e1b78b7345f1f1543",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_actual_command_help[hook]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_actual_command_help[hosted-dashboard]",
+      "node_sha256": "cb515255ebeca73d914c30c9cbd3a9b20fb3d2ae8946ebbeb5cb887f406bd290",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_actual_command_help[hosted-dashboard]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_actual_command_help[init]",
+      "node_sha256": "a39a2b6d5429aaf26dca4aa203bb6649cd12f2a9aec6775bf5d09a2564d6026a",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_actual_command_help[init]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_actual_command_help[land-check]",
+      "node_sha256": "c134c5db3413939e4b6226a79afacf5b0b94d0b6a3f4aada4453f7fd6392cb06",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_actual_command_help[land-check]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_actual_command_help[land-closeout]",
+      "node_sha256": "827244146f809a62d54bdaf964ad9440b07ca72304a42aff4f6b62e0a8101d4c",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_actual_command_help[land-closeout]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_actual_command_help[ledger]",
+      "node_sha256": "3fff2bf91eb9246cdb1fad2fd9bbea39e4a1c2b3ec52d6a6a08047905616a22e",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_actual_command_help[ledger]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_actual_command_help[mirror]",
+      "node_sha256": "b554722d534a9a22dd76f22e0b16675e3e3b40573893e47b1b050658f37ce6d1",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_actual_command_help[mirror]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_actual_command_help[next]",
+      "node_sha256": "bd992dc2d35184e40a6481230c8960cb0f60d51ba6ea7866fb090dd3df6959d3",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_actual_command_help[next]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_actual_command_help[next-write]",
+      "node_sha256": "2c7b887c10541fe1839f2d422cfc58cb65516419056057bbd6ea169d9957d256",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_actual_command_help[next-write]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_actual_command_help[pr-land]",
+      "node_sha256": "96269ecbfc010f15df5b3c42846e34a53adb99c020fea4eb70620512b8df0071",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_actual_command_help[pr-land]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_actual_command_help[review]",
+      "node_sha256": "717f9d37b23f9ef2084cc4bad768232bee55e1e8abdaadb4dce475844a77a1d3",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_actual_command_help[review]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_actual_command_help[route]",
+      "node_sha256": "a687da97236cd4e4429ab50c4ff76fb9ffb99e7855904858c21aa7ee57a35ad8",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_actual_command_help[route]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_actual_command_help[status]",
+      "node_sha256": "e157bf9a88c7dd42bc86e9b53afa7ff6b877fc34a1a37040964070230363c219",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_actual_command_help[status]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_actual_command_help[sync]",
+      "node_sha256": "83b612e0ee574ba83d1f6961f473192dcb9a6887ad554731b0e8889d2d6d2000",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_actual_command_help[sync]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_actual_command_help[upgrade-regime]",
+      "node_sha256": "a5bb794b4154a542130cb718303a63144eb695b88dc0bf14f7fa3b9f7b30a237",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_actual_command_help[upgrade-regime]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_actual_command_help[verify-step]",
+      "node_sha256": "72d548263aecce64c087c1cccda418ce88fab26cd8da3f4b892abc49b88ceca5",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_actual_command_help[verify-step]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_actual_command_help[workspace]",
+      "node_sha256": "a0e61d6cf4bca02968c0e2721efd48e91c9bbe9c53ed3580cb1d0b97aa47879b",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_actual_command_help[workspace]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_registry_covers_all_historical_commands_and_subcommands",
+      "node_sha256": "1f6a889a68a420ad78225ab88f2b4092e92055f22fda56c0800c18602576640a",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_registry_covers_all_historical_commands_and_subcommands"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_status_route_full_assets_read_only",
+      "node_sha256": "7c31249f48741a05bc8cab85f4621bf62c0a633ec7d2fee1476671028fc14bc7",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_status_route_full_assets_read_only"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_contradictions_refuse_before_execution[argv0]",
+      "node_sha256": "4fa84cf0366847e619d2ec97377691b5245d63de15772ffc99370f1c2ba7eae1",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_contradictions_refuse_before_execution[argv0]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_contradictions_refuse_before_execution[argv1]",
+      "node_sha256": "32ed8776906151f402d61303cb5fa5fae9daafe4356b12046c445c8396f971d8",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_contradictions_refuse_before_execution[argv1]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_contradictions_refuse_before_execution[argv2]",
+      "node_sha256": "6fd9c0a2a6937d439302d0e3105536525760586a4f4cd856d10c7e5ca5c64e9b",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_contradictions_refuse_before_execution[argv2]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_contradictions_refuse_before_execution[argv3]",
+      "node_sha256": "305dbfa4b93aa14a898f4117610f27e1bc6f47e991464f88f9d8ee8f754cb263",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_contradictions_refuse_before_execution[argv3]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_contradictions_refuse_before_execution[argv4]",
+      "node_sha256": "3700132dbd7d8dcba2cd16eeb953893e7c28073467e18909cd02d5dc54569d3f",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_contradictions_refuse_before_execution[argv4]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_contradictions_refuse_before_execution[argv5]",
+      "node_sha256": "84936577a7a3be60b2dfbc24c16f957c9ccdd969ce25bcb0cf49879bcfb8c909",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_contradictions_refuse_before_execution[argv5]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_contradictions_refuse_before_execution[argv6]",
+      "node_sha256": "a506cd4fe6f95d9afd459d529d737c63ba97b572aa1e742dc175bc4110128f7d",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_contradictions_refuse_before_execution[argv6]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_contradictions_refuse_before_execution[argv7]",
+      "node_sha256": "151e3ca3bbff0c6e14970d8e2d60b741344c4e35fb4d97ce731f67f1bb4b15b1",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_contradictions_refuse_before_execution[argv7]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_check_ok_review_dry_run_stamp_and_confinement",
+      "node_sha256": "26da12ea66df3e9c0b88de68d32ff87619dc58c27a9ed7b2f84c0be8e8ef3ac0",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_check_ok_review_dry_run_stamp_and_confinement"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_governance_print_next_and_local_commit",
+      "node_sha256": "beea2f509925d615b0721f89e7988399b01cba8472e1aab3e736058a38705cab",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_governance_print_next_and_local_commit"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_compaction_uses_bound_atomic_writer",
+      "node_sha256": "47ed292e1550fefa7f36f92d3872c659218b66a6c09c3a898b95300a5c59a16c",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_compaction_uses_bound_atomic_writer"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_ledger_append_verify_show_and_honesty",
+      "node_sha256": "df822c65e89b18e877485d00783cccfe30d1e716bdd851c430cca3cfaae7906c",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_ledger_append_verify_show_and_honesty"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_commands.py::test_engine_write_rechecks_context_and_file_cas",
+      "node_sha256": "190d346387dbf4b6083b1f74d7c5f159181baefb24a278544012ede33d9336b2",
+      "junit": [
+        "tests.fpr3.test_commands",
+        "test_engine_write_rechecks_context_and_file_cas"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_engines.py::test_checkpoint_real_script_dry_run_failure_and_confinement",
+      "node_sha256": "d2978fea5be1890809b70709c0a9d2ae65b9580cff0a92b0ddd8defffc4857ff",
+      "junit": [
+        "tests.fpr3.test_engines",
+        "test_checkpoint_real_script_dry_run_failure_and_confinement"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_engines.py::test_review_fake_provider_human_fallback_never_passes",
+      "node_sha256": "4c409cd5a43745c90e1a760f21e2c74b12c03dfa689975f72e6ca591f4f001bf",
+      "junit": [
+        "tests.fpr3.test_engines",
+        "test_review_fake_provider_human_fallback_never_passes"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_engines.py::test_fake_pr_transport_requires_explicit_authorization_and_preserves_context",
+      "node_sha256": "6f62ce482824f2f36e6a28c748ab7d5fbe954e2c254c79d76ec5af34be6dbe82",
+      "junit": [
+        "tests.fpr3.test_engines",
+        "test_fake_pr_transport_requires_explicit_authorization_and_preserves_context"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_engines.py::test_full_footprint_preserves_settings_origins_and_next",
+      "node_sha256": "19f8dbe61d97b70fd71d3d5d8c32b9e31729efa3c7d648637ae0dfacc3e02620",
+      "junit": [
+        "tests.fpr3.test_engines",
+        "test_full_footprint_preserves_settings_origins_and_next"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_engines.py::test_atomic_reader_reopens_replaced_inode_without_accepting_hardlinks",
+      "node_sha256": "0971c357df8379493a517278c3c545b0efe7124db461dfea3a62e062f9b66b05",
+      "junit": [
+        "tests.fpr3.test_engines",
+        "test_atomic_reader_reopens_replaced_inode_without_accepting_hardlinks"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_engines.py::test_landing_compares_pinned_binary_bytes_and_requires_current_next",
+      "node_sha256": "17b64548de58c8cb687fa2ff8302b53eea56ec0fafef2402b469efcf8f52da43",
+      "junit": [
+        "tests.fpr3.test_engines",
+        "test_landing_compares_pinned_binary_bytes_and_requires_current_next"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_package.py::test_package_traversal_and_tamper_refused",
+      "node_sha256": "13e7fff43c341a7247a8cad507cfe069d7ac9cbac128ee728d931d40b489ac57",
+      "junit": [
+        "tests.fpr3.test_package",
+        "test_package_traversal_and_tamper_refused"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_package.py::test_landing_and_active_handoff_copy",
+      "node_sha256": "763fe4c33bd5a9197271cc36a378523d6b726fe4b1095be267d236a5aedd901b",
+      "junit": [
+        "tests.fpr3.test_package",
+        "test_landing_and_active_handoff_copy"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_surfaces.py::test_loopback_real_service_auth_csrf_origin_next_and_paths",
+      "node_sha256": "2d7054c922ec7d0929a2b017ddaa4a2a7f41869a0f49d3d904b1b720493cf1f4",
+      "junit": [
+        "tests.fpr3.test_surfaces",
+        "test_loopback_real_service_auth_csrf_origin_next_and_paths"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_surfaces.py::test_app_copied_context_and_symlink_docs_refuse",
+      "node_sha256": "f1c7b27d78a70f2a44483783b8cbda26c3fd6e8d647c435de2353d8a9c5f10de",
+      "junit": [
+        "tests.fpr3.test_surfaces",
+        "test_app_copied_context_and_symlink_docs_refuse"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_surfaces.py::test_hosted_allowlists_canonical_display_and_write_refusal",
+      "node_sha256": "e71d0518036874b6a7d04eba57771cfe7b553765d17196adb4ff97071825e10e",
+      "junit": [
+        "tests.fpr3.test_surfaces",
+        "test_hosted_allowlists_canonical_display_and_write_refusal"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_surfaces.py::test_desktop_real_launcher_identity_and_ambient_refusal",
+      "node_sha256": "58e5903b47f2ba069ae408c7176c5360aa03ec063ab61ba4bae79e839af86f9a",
+      "junit": [
+        "tests.fpr3.test_surfaces",
+        "test_desktop_real_launcher_identity_and_ambient_refusal"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_surfaces.py::test_workspace_canonical_members_stale_pin_and_no_ambient_scan",
+      "node_sha256": "f9289ab65134b454e692f394e86767d6139fc1dbf187db2e089244b4a30df31c",
+      "junit": [
+        "tests.fpr3.test_surfaces",
+        "test_workspace_canonical_members_stale_pin_and_no_ambient_scan"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr3/test_surfaces.py::test_hosted_rechecks_binding_before_returning_projection",
+      "node_sha256": "77fee3f8aed2039cce77f59da50b269747192d783b667be438a58294895f98c2",
+      "junit": [
+        "tests.fpr3.test_surfaces",
+        "test_hosted_rechecks_binding_before_returning_projection"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr4/test_bundle_repeatability.py::test_repeated_resource_bundle_reserves_distinct_private_archives",
+      "node_sha256": "1a6c02ce50f01c781ee10d1965d9dd2a3872ec4eba5243d8cc2f5e087327bcf5",
+      "junit": [
+        "tests.fpr4.test_bundle_repeatability",
+        "test_repeated_resource_bundle_reserves_distinct_private_archives"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr4/test_composition.py::test_two_active_repositories_lanes_bookends_cas_and_revision[git-only]",
+      "node_sha256": "05769743ae5a451369faf9b8d8b1b3f416af5a24db16f9834be7e52f33c339a9",
+      "junit": [
+        "tests.fpr4.test_composition",
+        "test_two_active_repositories_lanes_bookends_cas_and_revision[git-only]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr4/test_composition.py::test_two_active_repositories_lanes_bookends_cas_and_revision[muse-only]",
+      "node_sha256": "007b3f23b00be1151c95f9a44dc5740342336ad66fdaa7e7c14dc51aea9ddc1f",
+      "junit": [
+        "tests.fpr4.test_composition",
+        "test_two_active_repositories_lanes_bookends_cas_and_revision[muse-only]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr4/test_composition.py::test_two_active_repositories_lanes_bookends_cas_and_revision[muse+git-mirror]",
+      "node_sha256": "075fe2d2a7ac5b53a838e524a4160a4c8ca39882ab1c08852c2496ef9fe81297",
+      "junit": [
+        "tests.fpr4.test_composition",
+        "test_two_active_repositories_lanes_bookends_cas_and_revision[muse+git-mirror]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr4/test_composition.py::test_nested_and_linked_git_checkouts_keep_independent_context",
+      "node_sha256": "4093e2de9565ab8099bf89830f4ef1ef36e262e71003fa304879dc008caff8dc",
+      "junit": [
+        "tests.fpr4.test_composition",
+        "test_nested_and_linked_git_checkouts_keep_independent_context"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr4/test_composition.py::test_full_legacy_settings_preservation_and_explicit_prompt_acceptance",
+      "node_sha256": "f1aadd9193360bb5e4854e7241fcf3b3de1f67cfc6ed600f3281969c19f0e31c",
+      "junit": [
+        "tests.fpr4.test_composition",
+        "test_full_legacy_settings_preservation_and_explicit_prompt_acceptance"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.claude/skills/print-next/SKILL.md-493]",
+      "node_sha256": "697be1f3bad16c41c0f12571fb25988bfa1e596f1d4dfd50ba4a6f6c48ca20fa",
+      "junit": [
+        "tests.fpr4.test_init_preservation",
+        "test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.claude/skills/print-next/SKILL.md-493]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.cursor/skills/print-next/SKILL.md-384]",
+      "node_sha256": "72d0bbf6454e4c42b07d636f9f5a18dd0d512a0f719f2f3f163922cc8b04061b",
+      "junit": [
+        "tests.fpr4.test_init_preservation",
+        "test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.cursor/skills/print-next/SKILL.md-384]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.cursor/rules/orchestrator.mdc-416]",
+      "node_sha256": "7236cf19526106d87cc345ecff792fa9513410494e5d3801f45057d1c5ae33e5",
+      "junit": [
+        "tests.fpr4.test_init_preservation",
+        "test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.cursor/rules/orchestrator.mdc-416]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.overseer/policy/model-routing.yaml-384]",
+      "node_sha256": "cb63c2b64ffb7211af808aa71bc1634a374b5ceae1a8f056f958f482804af1fe",
+      "junit": [
+        "tests.fpr4.test_init_preservation",
+        "test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.overseer/policy/model-routing.yaml-384]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[policy/model-routing.yaml-493]",
+      "node_sha256": "8bc0914d96b21871070dcef9f7fc07a0a4e240de6c9565387bf4a832c62d5927",
+      "junit": [
+        "tests.fpr4.test_init_preservation",
+        "test_fresh_init_preserves_existing_portable_asset_and_owned_mode[policy/model-routing.yaml-493]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.overseer/STANDING-DECISIONS.reference.md-416]",
+      "node_sha256": "1a11f800eaa9e5ba0fccd999023fec89f5250c6c5daadc04316fc36f67d180da",
+      "junit": [
+        "tests.fpr4.test_init_preservation",
+        "test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.overseer/STANDING-DECISIONS.reference.md-416]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr4/test_init_preservation.py::test_fresh_init_still_refuses_unmanaged_operational_binding[.overseer/bin/ok]",
+      "node_sha256": "53503aa13c2547ac5c9436a4b6a9fdee50563a1895e395b0167edbb38918c583",
+      "junit": [
+        "tests.fpr4.test_init_preservation",
+        "test_fresh_init_still_refuses_unmanaged_operational_binding[.overseer/bin/ok]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr4/test_init_preservation.py::test_fresh_init_still_refuses_unmanaged_operational_binding[.cursor/hooks/session-start-next.sh]",
+      "node_sha256": "b98240fcc1d6b6e40bafbd24d052a3137292c7018607e386efb92d2be4198fc2",
+      "junit": [
+        "tests.fpr4.test_init_preservation",
+        "test_fresh_init_still_refuses_unmanaged_operational_binding[.cursor/hooks/session-start-next.sh]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr4/test_init_preservation.py::test_fresh_init_still_refuses_unmanaged_operational_binding[.cursor/hooks.json]",
+      "node_sha256": "cb0b352616e352d29c2eadb724f318a4565819df958af01d60feac70ae9ea721",
+      "junit": [
+        "tests.fpr4.test_init_preservation",
+        "test_fresh_init_still_refuses_unmanaged_operational_binding[.cursor/hooks.json]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr4/test_init_preservation.py::test_fresh_init_still_refuses_unmanaged_operational_binding[.overseer/instructions/bookends.md]",
+      "node_sha256": "9cbd8cf456e874fbb3f30f8b9e27637849def1961ba334127e658eba0d83137a",
+      "junit": [
+        "tests.fpr4.test_init_preservation",
+        "test_fresh_init_still_refuses_unmanaged_operational_binding[.overseer/instructions/bookends.md]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace[bytes-after_lock]",
+      "node_sha256": "6b4f45dfb154a0d5c8c923afc2fb25fbe9aae9f724c38d25f3a75a54266e8498",
+      "junit": [
+        "tests.fpr4.test_init_preservation",
+        "test_preserved_asset_changes_refuse_after_lock_and_before_replace[bytes-after_lock]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace[bytes-before_replace]",
+      "node_sha256": "bcbdc504b0b2242be1737bde034a22070a0d36b4bd2065fd37c73112d379ac40",
+      "junit": [
+        "tests.fpr4.test_init_preservation",
+        "test_preserved_asset_changes_refuse_after_lock_and_before_replace[bytes-before_replace]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace[mode-after_lock]",
+      "node_sha256": "2c27dff0f5462810ac655948bed73f1af476ef9c8a01c0698a083e1c3b725b3e",
+      "junit": [
+        "tests.fpr4.test_init_preservation",
+        "test_preserved_asset_changes_refuse_after_lock_and_before_replace[mode-after_lock]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace[mode-before_replace]",
+      "node_sha256": "91ba6928d4bf9220a6e35fea5c04715f894446cc076e07058567cad03b565103",
+      "junit": [
+        "tests.fpr4.test_init_preservation",
+        "test_preserved_asset_changes_refuse_after_lock_and_before_replace[mode-before_replace]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr4/test_mirror_full_footprint.py::test_full_footprint_mirror_delta_and_identical_native_snapshot",
+      "node_sha256": "be01cee776c7801a3b9322fec66dce8841bcdb7f246dfba8a2366216bbd18ca8",
+      "junit": [
+        "tests.fpr4.test_mirror_full_footprint",
+        "test_full_footprint_mirror_delta_and_identical_native_snapshot"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr4/test_native_linked_footprint.py::test_native_linked_checkout_reports_tracked_footprint_change_and_keeps_identity",
+      "node_sha256": "3642c924f04758f2877c50a4d161f245d5980968382b49124563e95ce440bcce",
+      "junit": [
+        "tests.fpr4.test_native_linked_footprint",
+        "test_native_linked_checkout_reports_tracked_footprint_change_and_keeps_identity"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr4/test_standalone_dependencies.py::test_fresh_full_dependency_git_install_without_muse",
+      "node_sha256": "84cfb39e674b174290bbd90a4c85af904b19e7c558adf96a4dad763e5d983e6c",
+      "junit": [
+        "tests.fpr4.test_standalone_dependencies",
+        "test_fresh_full_dependency_git_install_without_muse"
+      ]
+    }
+  ]
+}

@@ -8,47 +8,56 @@ Active implementation: `overseer-kit-v1-recovery-20261014`, branch
 `feat/overseer-v1-recovery-20261014`, reconciled base `d47291d`.
 Both older dirty worktrees remain untouched.
 
-**Current successor: FPR-4 combined validation, awaiting owner acceptance.**
-Opening FPR-3 HEAD was `695444fb5f8261391f5c273807129c13dc8db1fd`, the single
-FPR-2 feature closing commit whose sole predecessor is
-`8c2b642336e29a3a5a781f70f25f4769e6899642`. Identity, clean state and pinned
-source refs were verified before implementation.
+**Current successor: FPR-5, awaiting owner acceptance and independent reviewer appointment.**
+Opening FPR-4 HEAD was `6289d2823184a63e2968d2c5f6a76abab5818368`, the single
+FPR-3 feature closing commit whose sole predecessor is
+`695444fb5f8261391f5c273807129c13dc8db1fd`. Identity, clean state and all pinned
+source refs were verified before validation. Other refs, old worktrees/Muse
+history, snapshots and the completed bounded evidence remain preserved.
 
-FPR-3 restores all historical commands/subcommands through the unified dispatcher,
-full status/governance/review/workspace/checkpoints/evidence/ledger/routing/landing/
-compaction, bound loopback app and desktop, read-only hosted projections, full
-owned footprint and truthful guidance. Canonical NEXT remains the sole action
-source. Local mutation, remote transport and release effects are explicit.
-See [FPR-3 focused evidence and source/test disposition](validation/FPR-3-SURFACES.md)
-and [operation notes](FPR-3-PRODUCT-SURFACES.md).
+FPR-4 records the integrated section-9 matrix and bounded repairs in
+[combined evidence](validation/FPR-4-COMBINED.md). The opening run recorded
+**1,159 passed / 11 failed**. The repaired-source combined run recorded
+**1,207 passed / 1 failed, zero errors/skips**; the explicit clean-process successor then passed
+**2 cases** on the same production runtime and dependencies.
+The raw failure, its changed-contract disposition and affected rerun remain
+separate. All selected cases executed exactly once; no skip supplies acceptance.
+The earlier focused repair run passed 32 cases, and the new compatible/bounded
+upgrade and rollback exercise passed 13 checks. These separate runs are not
+summed into a single combined count.
 
-The final focused surface/artifact/native selection passed **70 checks**. The
-retained engine/security selection passed **314 checks**; the closing hosted/parser
-selection passed **73 checks** after restoring its public parser factory. Across recorded focused
-runs, **529 distinct cases have passing latest outcomes**; this is not a combined
-matrix. Initial failures and their fixes remain in the logs, including migration
-record size, an atomic-reader replacement race, full-footprint fixture assertions
-and socket prerequisites. The explicit local Rust 1.88 toolchain built the native
-shell offline. A deterministic resource archive launched the actual CLI/app with
-its own conventional venv and verified UUID/root/runtime health. No native GUI,
-new signed installer, publication or deployment is claimed.
+Repairs preserve existing portable consumer assets during initialization, restore
+configured-path/build-verification guidance, correct app installation guidance,
+and make repeated desktop resource bundling reserve distinct private directories.
+Runtime `bdbfdae4599ca0bd1b096d5ed2c84019df3b83ed24972c202319ea5507cf09ec`
+was explicitly refreshed while preserving identity, all non-runtime settings,
+NEXT and disabled hooks. No full-footprint overwrite was performed.
 
-All 393 original test/support files retain their hashes, and all 104 historical
-failures have an explicit requirement/replacement/mechanism disposition before
-FPR-4. This installation remains Git-only; its explicit runtime refresh preserved
-UUID/root/lane/model, full settings, canonical NEXT and disabled hooks. The retained
-installation footprint still reports old lock/asset drift; no forced full sync or
-hook activation was performed. See the focused closing record for exact paths. Controlled
-Muse tests used only pinned local prerequisites and disposable fixtures. Other
-refs, old worktrees/Muse history, snapshots, rollback fixtures, completed bounded
-pilot and bounded source-release directory are preserved.
+Fresh packaged Python 3.14.4 CLI/app/desktop-child checks and the macOS arm64
+Rust 1.88 locked/offline native build passed. The complete Python 3.11 cell is
+unresolved because pinned cffi 2.1.0 for cp311 is unavailable locally. Named
+automatic host/version and platform/distribution acceptance, authorization for
+the separate new integrated pilot, and appointment of an independent reviewer
+remain pending. The new pilot was not run; the completed bounded pilot and its
+certification were preserved. Native GUI, native host lifecycle delivery, signed
+installers and live providers remain unverified.
 
-The canonical successor is **FPR-4 combined validation**, pending owner acceptance
-of `docs/NEXT.md`, with GPT-6 Astra and Max reasoning. Section 9 of the restoration
-plan defines that matrix. The single independent final review remains FPR-5;
-no intervening review-only handoff is created. Client/host versions, broader remote
-scope, platform/distribution claims, the integrated pilot and final reviewer remain
-explicit owner choices. FPR-3 author checks do not establish release readiness.
+All 393 original test/support files and the historical **1,391 passed / 104 failed**
+record remain unchanged. The final disposition maps every historical failure to
+retained or explicit successor coverage. Author checks do not count as independent
+review. The sole successor is **FPR-5**, pending owner acceptance and appointment
+of an independent reviewer, with GPT-6 Astra and Max reasoning. Required evidence
+gaps prevent a release-readiness claim. One independent final review, bounded
+repairs if required, final adjudication and a separate owner release decision
+remain; no intervening review-only handoff or release authority is introduced.
+
+FPR-3 focused evidence remains distinct: 70 final surface/artifact/native checks,
+314 retained engine/security checks and 73 closing hosted/parser checks; 529
+unique cases had passing latest outcomes across its focused runs. Those are not
+another combined matrix. See [FPR-3 evidence](validation/FPR-3-SURFACES.md) and
+[product contracts](FPR-3-PRODUCT-SURFACES.md). All maintained commands use the
+unified dispatcher; canonical NEXT is the sole action source. Local mutation,
+remote transport and release effects remain explicit.
 
 Continue on this integration branch; certification remains tied to its recorded
 bounded source. The full-product modules are already
@@ -80,7 +89,7 @@ a review cycle for every wave. Outstanding owner choices are automatic client
 versions beyond the preserved Cursor contract, expanded Muse transport scope if
 required, platform/packaging/remote-validation claims, and the integrated pilot
 and independent reviewer. The plan states defaults and blockers explicitly.
-The exact pending implementation prompt lives only in `docs/NEXT.md`.
+The exact pending action prompt lives only in `docs/NEXT.md`.
 
 Preservation and local Muse/base reconciliation are complete. The independent
 architecture/completed-build review of `d8f10d8` against `d47291d` is complete with
@@ -152,16 +161,18 @@ its byte-exact local backup remains available. Only that explicit successor
 publication changed NEXT. Pending owner choices remain actual automatic client
 versions, broader Muse transport if required, platform/distribution claims and
 the integrated pilot/independent reviewer. The accepted FPR-3 action authorized its
-local implementation and focused checks. FPR-3 closes with one coherent feature
-commit and a bound FPR-4 successor awaiting owner acceptance. It does not authorize
-consumers, real-consumer hooks, providers/network, live mirror, merge, push,
-publication or deployment. Combined validation and independent final review
-remain required before a release-readiness claim.
+local implementation and focused checks. FPR-3 closed with one coherent feature
+commit and a bound FPR-4 successor. The accepted FPR-4 action authorized local
+combined validation and bounded repairs. Its closing commit publishes only FPR-5;
+acceptance and independent reviewer appointment remain pending. It authorizes no
+real consumers/hooks, providers/network, live mirror, merge, push, publication or
+deployment. Open matrix cells and independent final review remain required before
+a release-readiness claim.
 
 Read the exact current action with `./cli/ok -C . next`. Only `next-write` publishes
 canonical `docs/NEXT.md`; do not regenerate a prompt from this summary or ROADMAP.
 At turn start verify physical cwd, Git root, branch, HEAD and configured name.
 Use disposable repositories for all isolation tests. Current user repository
-scope overrides inherited handoffs. Current focused validation is in
-`docs/validation/FPR-3-SURFACES.md`; preserve the bounded `V1-RECOVERY.md` evidence
+scope overrides inherited handoffs. Current combined validation is in
+`docs/validation/FPR-4-COMBINED.md`; preserve the bounded `V1-RECOVERY.md` evidence
 and update this handover and ROADMAP together.

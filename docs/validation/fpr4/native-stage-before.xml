@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="14.916" timestamp="2026-10-14T16:43:03.572775-07:00" hostname="Carloss-MacBook-Pro.local"><testcase classname="tests.muse.test_product" name="test_shared_native_stage_is_readonly_and_visible_in_linked_checkout" time="14.803"><failure message="AssertionError: refused: init_asset_exists: .claude/skills/adversarial-freeze-review/SKILL.md&#10;  &#10;assert 2 == 0&#10; +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...n'], returncode=2, stdout='', stderr='refused: init_asset_exists: .claude/skills/adversarial-freeze-review/SKILL.md\n').returncode">muse_root = PosixPath('/private/tmp/overseer-fpr4-native-stage-before/test_shared_native_stage_is_re0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = &lt;function muse.&lt;locals&gt;.run at 0x104ad3b60&gt;
+tmp_path = PosixPath('/private/tmp/overseer-fpr4-native-stage-before/test_shared_native_stage_is_re0')
+
+    def test_shared_native_stage_is_readonly_and_visible_in_linked_checkout(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+        init(root, muse_python)
+        commit(root, muse)
+        linked = (tmp_path/'linked-stage').resolve()
+        muse(root, 'worktree', 'add', 'linked-stage', 'main', '-b', 'linked', '--path', str(linked), '--json')
+&gt;       init(linked, muse_python)
+
+tests/muse/test_product.py:114: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/overseer-fpr4-native-stage-before/test_shared_native_stage_is_re0/linked-stage')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+&gt;       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .claude/skills/adversarial-freeze-review/SKILL.md
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...n'], returncode=2, stdout='', stderr='refused: init_asset_exists: .claude/skills/adversarial-freeze-review/SKILL.md\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError</failure></testcase></testsuite></testsuites>

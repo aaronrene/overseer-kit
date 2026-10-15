@@ -1,0 +1,58 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_________ test_committed_git_baseline_import_isolated_from_owner_edits _________
+
+tmp_path = PosixPath('/private/tmp/overseer-fpr4-native-import-before/test_committed_git_baseline_im0')
+muse = <function muse.<locals>.run at 0x104556090>
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+
+    def test_committed_git_baseline_import_isolated_from_owner_edits(tmp_path, muse, muse_python):
+        source = seed(tmp_path/'git-source')
+        assert command('-C', source, 'init').returncode == 0
+        from cli.v1_policy import ignore_assets
+        for p, body in ignore_assets(source).items():
+            (source/p).write_bytes(body)
+        (source/'app.py').write_text('committed = True\n')
+        for args in (('add', '.'), ('-c', 'core.hooksPath=/dev/null', 'commit', '-m', 'reviewed baseline')):
+            subprocess.run(['/usr/bin/git', '-C', str(source), *args], check=True, capture_output=True)
+        (source/'app.py').write_text('owner dirty edit\n')
+        (source/'untracked.txt').write_text('owner untracked edit\n')
+        before = inventory(source)
+        imported = (tmp_path/'isolated-import').resolve()
+        imported.mkdir()
+        muse(imported, 'bridge', 'git-import', str(source), '--target', str(imported), '--branch', 'main', '--json')
+        # Import creates history, not a populated working tree. Materialize only
+        # the reviewed imported manifest in this disposable destination.
+        manifest = json.loads(muse(imported, 'ls-files', '--json').stdout)['files']
+        paths = [item['path'] for item in manifest]
+        committed = subprocess.check_output(['/usr/bin/git', '-C', str(source), 'ls-files', '-z']).decode().rstrip('\0').split('\0')
+        assert sorted(paths) == sorted(committed)
+        muse(imported, 'restore', '--source', 'main', *paths, '--json')
+        for path in paths:
+            assert (imported/path).read_bytes() == subprocess.check_output(
+                ['/usr/bin/git', '-C', str(source), 'show', 'HEAD:'+path])
+        assert (imported/'app.py').read_text() == 'committed = True\n'
+        assert not (imported/'untracked.txt').exists()
+        assert not (imported/v1.CONFIG).exists() and not (imported/v1.NEXT).exists()
+>       state = init(imported, muse_python)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/muse/test_handoffs.py:293: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/overseer-fpr4-native-import-before/test_committed_git_baseline_im0/isolated-import')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .claude/skills/adversarial-freeze-review/SKILL.md
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...n'], returncode=2, stdout='', stderr='refused: init_asset_exists: .claude/skills/adversarial-freeze-review/SKILL.md\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+=========================== short test summary info ============================
+FAILED tests/muse/test_handoffs.py::test_committed_git_baseline_import_isolated_from_owner_edits
+1 failed in 4.58s

@@ -13,6 +13,9 @@ contains repository identity, lane, model, revision and the accepted action.
 ## Validation and dependencies
 
 Record focused checks, combined validation and independent review separately.
+Build verification: when required by the accepted action or configured gates,
+record `/build-verification-review` evidence and the actual verdict before marking
+the phase complete. Author checks do not supply independent review.
 A missing prerequisite or failed check remains open. A local source package is
 not a published release. Record explicit authority for remote and release actions.
 

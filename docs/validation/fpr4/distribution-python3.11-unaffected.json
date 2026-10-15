@@ -1,0 +1,39 @@
+{
+  "argv": [
+    "/private/tmp/overseer-fpr4-distribution-20261014-2/python3.11/.venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/unit/test_config.py",
+    "tests/unit/test_git_only.py",
+    "tests/unit/test_muse_only.py",
+    "tests/unit/test_muse_git_mirror.py",
+    "tests/unit/test_muse_working_dir.py",
+    "tests/unit/test_path_normalize.py",
+    "tests/unit/test_footprint_digest.py",
+    "tests/unit/test_templating.py",
+    "tests/integration/test_adapter_factory.py",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp",
+    "/private/tmp/overseer-fpr4-distribution-20261014-2/pytest311-unaffected",
+    "--junitxml",
+    "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/docs/validation/fpr4/distribution-python3.11-unaffected.xml"
+  ],
+  "cwd": "/private/tmp/overseer-fpr4-distribution-20261014-2/python3.11",
+  "exit": 1,
+  "selection": [
+    "tests/unit/test_config.py",
+    "tests/unit/test_git_only.py",
+    "tests/unit/test_muse_only.py",
+    "tests/unit/test_muse_git_mirror.py",
+    "tests/unit/test_muse_working_dir.py",
+    "tests/unit/test_path_normalize.py",
+    "tests/unit/test_footprint_digest.py",
+    "tests/unit/test_templating.py",
+    "tests/integration/test_adapter_factory.py"
+  ],
+  "limit": "Unaffected pure algorithm/adapter checks only. Full intended Python3.11 selection and native cryptography prerequisite remain failed/unresolved; no replacement matrix claim.",
+  "stdout": ".......................................................F.......          [100%]\n=================================== FAILURES ===================================\n________________________ test_render_handover_template _________________________\n\ngit_only_config = OverseerConfig(overseer_config_version=1, repo=RepoConfig(name='test-git', root_relative_docs='docs'), vcs=VcsConfig(r...ne, post_land_sync=PostLandSyncConfig(enabled=False, strategy='ff_only', require_clean_worktree=True)), workspace=None)\nrepo_root = PosixPath('/private/tmp/overseer-fpr4-distribution-20261014-2/pytest311-unaffected/test_render_handover_template0')\n\n    def test_render_handover_template(git_only_config, repo_root: Path) -> None:\n        template = (\n            Path(__file__).resolve().parents[2] / \"templates\" / \"OVERSEER-HANDOVER.template.md\"\n        )\n        rendered = render_template(template, git_only_config)\n        assert \"test-git\" in rendered\n        assert \"{{repo.name}}\" not in rendered\n>       assert \"docs/OVERSEER-HANDOVER.md\" in rendered\nE       AssertionError: assert 'docs/OVERSEER-HANDOVER.md' in '# Overseer Handover\\n\\nRepository: test-git. Keep this summary paired with docs/ROADMAP.md.\\nThe sole action authorit...and release/deployment are separate actions.\\n\\n<!-- overseer:change-log:start -->\\n<!-- overseer:change-log:end -->\\n'\n\ntests/unit/test_templating.py:62: AssertionError\n=========================== short test summary info ============================\nFAILED tests/unit/test_templating.py::test_render_handover_template - Asserti...\n1 failed, 62 passed in 0.17s\n",
+  "stderr": ""
+}

@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "pytest": "9.1.1",
+  "cases": [
+    {
+      "nodeid": "tests/fpr4/test_import_boundary.py::test_git_full_status_clean_bootstrap_is_offline_without_native_muse[local]",
+      "node_sha256": "241b79ac57006710e1056eaba34a68d5abe18fdddd72159bae1210bbfab3b403",
+      "junit": [
+        "tests.fpr4.test_import_boundary",
+        "test_git_full_status_clean_bootstrap_is_offline_without_native_muse[local]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr4/test_import_boundary.py::test_git_full_status_clean_bootstrap_is_offline_without_native_muse[api]",
+      "node_sha256": "bb4d098ec333e9c23b8bb5849107c8b947deac3fc09cce2aff5ff3e83b331770",
+      "junit": [
+        "tests.fpr4.test_import_boundary",
+        "test_git_full_status_clean_bootstrap_is_offline_without_native_muse[api]"
+      ]
+    }
+  ]
+}

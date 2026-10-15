@@ -1,0 +1,1329 @@
+{
+  "before_config_sha256": "926d81801fd1f0c941e8bee205c5322324d7ca99fd2be4ffdc90320a1261257f",
+  "before_configuration": {
+    "vcs": {
+      "regime": "git-only",
+      "canonical": "git",
+      "git": {
+        "remote": "origin",
+        "main_branch": "main",
+        "mirror_branch": null,
+        "feature_branch_pattern": "feat/{slug}"
+      },
+      "muse": {
+        "staging_remote": null,
+        "main_branch": null,
+        "working_dir": null
+      }
+    },
+    "docs": {
+      "handover": "OVERSEER-HANDOVER.md",
+      "roadmap": "ROADMAP.md",
+      "coordination": null,
+      "standing_decisions": "ROADMAP.md",
+      "handover_title": "Overseer Handover",
+      "roadmap_title": "Roadmap",
+      "canonical_next": "docs/NEXT.md",
+      "default_lane": "product",
+      "lanes": {
+        "product": {
+          "handover": "OVERSEER-HANDOVER.md",
+          "roadmap": "ROADMAP.md",
+          "handover_title": "Overseer Handover",
+          "roadmap_title": "Roadmap",
+          "repo_id": "6988dc4a-5f22-454b-9d68-ac5905b383bf"
+        }
+      }
+    },
+    "thresholds": {
+      "realign_max_commits": 50,
+      "drift_warn_only": true
+    },
+    "freeze_contract": {
+      "enabled": true,
+      "reviewer": "agent",
+      "human_escalation": [
+        "security"
+      ]
+    },
+    "repo": {
+      "name": "overseer-kit",
+      "id": "6988dc4a-5f22-454b-9d68-ac5905b383bf",
+      "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "root_relative_docs": "docs"
+    },
+    "context": {
+      "lane": "product",
+      "model": "GPT-6 Astra"
+    },
+    "runtime": {
+      "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "version": "1.0.0.dev1",
+      "sha256": "7d38764f026848d7d89d81abedfc62f1de5eefde6443d0032d770c2ff09a20d1"
+    },
+    "schema": 3
+  },
+  "before_next_sha256": "0b6ef939df67ff2a2f5a4321c7787f56a4d0e804e7b433c30eccde162295dfb0",
+  "before_hooks": {
+    ".cursor/hooks.json": [
+      "2f3f0de72a829aa7ad28055c884127a5db5660c5c78556ac7b8aea8dd2e2ac0e",
+      420
+    ],
+    ".cursor/hooks/README.md": [
+      "48e9ee363c5a2292d49765118f54eedac53ec788848ed53774812f55f897a31a",
+      420
+    ],
+    ".cursor/hooks/session-end-closeout.sh": [
+      "af4f2a4ae24cec4e375085e96d5144a7471457460206dbeba6d7a525ea00279a",
+      493
+    ],
+    ".cursor/hooks/session-start-next.sh": [
+      "af4f2a4ae24cec4e375085e96d5144a7471457460206dbeba6d7a525ea00279a",
+      493
+    ],
+    ".cursor/rules/orchestrator.mdc": [
+      "e4d2e9d9ed268086a43a2c3c2b9ba7bef8fb42e544c81182128704e5a26c8d84",
+      420
+    ],
+    ".cursor/rules/governance-sync.mdc": [
+      "97414e26682f3ccefb3c442a05d73c7dbb998fd78e5a6d286e4ef625d4405fb6",
+      420
+    ],
+    ".cursor/rules/tier-authority.mdc": [
+      "e685afdd9a6368bac11127bebb0ca9883ac7523f15f65ceb3d9efdf239fb9f2a",
+      420
+    ],
+    ".cursor/rules/build-verification-required.mdc": [
+      "b0fdb1a1e0a01d23b4b70cb5b4bb987eb11b9fdba1a8a77af54e90f47d832065",
+      420
+    ],
+    ".cursor/rules/print-next-closeout.mdc": [
+      "c45ae41918dabb9b1afb3f180924039ff02df661a6c77f1c97c1a119b77f62bb",
+      420
+    ],
+    ".cursor/rules/workspace-authority.mdc": [
+      "438b69c1bae0e413e6ad953cbec3173162282625d4bee04066e482db72a8aff0",
+      420
+    ],
+    ".cursor/rules/l1-checkpoints-consumer-owned.mdc": [
+      "6eebc8126cee6c7ee1d2de1180faec15e2822448b2bfeffb56495991fd21a037",
+      420
+    ],
+    ".cursor/rules/no-docs-only-pr-to-main.mdc": [
+      "c040517845d72aa9f40cc802db00e39dc67cd4d66a9f4dd1ac89d8bb680dd610",
+      420
+    ],
+    ".cursor/rules/check-ok-thinking.mdc": [
+      "a75697f0f8b6fb1ee424aa198dd5e4a6648e33b3707482964494287196729739",
+      420
+    ],
+    ".cursor/skills/print-next/SKILL.md": [
+      "de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff",
+      420
+    ],
+    ".cursor/skills/build-verification-review/SKILL.md": [
+      "f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c",
+      420
+    ],
+    ".cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md": [
+      "0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c",
+      420
+    ],
+    ".cursor/skills/check-ok/SKILL.md": [
+      "3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a",
+      420
+    ],
+    ".cursor/skills/workspace-status/SKILL.md": [
+      "a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25",
+      420
+    ],
+    ".cursor/skills/adversarial-freeze-review/SKILL.md": [
+      "7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044",
+      420
+    ],
+    ".cursor/skills/governance-sync/SKILL.md": [
+      "06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14",
+      420
+    ],
+    ".cursor/skills/deploy-verification-review/SKILL.md": [
+      "a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b",
+      420
+    ],
+    ".cursor/skills/freeze-review-loop/SKILL.md": [
+      "355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f",
+      420
+    ],
+    ".cursor/skills/freeze-review/SKILL.md": [
+      "620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b",
+      420
+    ],
+    ".cursor/skills/independent-second-reviewer/SKILL.md": [
+      "994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837",
+      420
+    ]
+  },
+  "source_runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "bdbfdae4599ca0bd1b096d5ed2c84019df3b83ed24972c202319ea5507cf09ec"
+  },
+  "commands": [
+    {
+      "argv": [
+        "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.overseer/bin/ok",
+        "-C",
+        "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+        "status",
+        "--json"
+      ],
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "refused: runtime_changed: run this installation's explicit sync\n"
+    },
+    {
+      "argv": [
+        "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.overseer/bin/ok",
+        "-C",
+        "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+        "sync",
+        "--only",
+        ".overseer/bin/ok",
+        "--dry-run",
+        "--json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"ok\": true, \"repository\": {\"name\": \"overseer-kit\", \"id\": \"6988dc4a-5f22-454b-9d68-ac5905b383bf\", \"root\": \"/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014\", \"root_relative_docs\": \"docs\"}, \"changed\": [\".overseer/version.lock\", \".overseer/config.yaml\"], \"classification\": [{\"path\": \".overseer/bin/ok\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4\", \"after\": \"1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4\"}], \"preserved\": [], \"dry_run\": true, \"diff\": {}, \"next\": \"preserved\"}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.overseer/bin/ok",
+        "-C",
+        "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+        "sync",
+        "--only",
+        ".overseer/bin/ok",
+        "--json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"ok\": true, \"repository\": {\"name\": \"overseer-kit\", \"id\": \"6988dc4a-5f22-454b-9d68-ac5905b383bf\", \"root\": \"/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014\", \"root_relative_docs\": \"docs\"}, \"changed\": [\".overseer/version.lock\", \".overseer/config.yaml\"], \"classification\": [{\"path\": \".overseer/bin/ok\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4\", \"after\": \"1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4\"}], \"preserved\": [], \"dry_run\": false, \"diff\": {}, \"next\": \"preserved\"}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.overseer/bin/ok",
+        "-C",
+        "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+        "status",
+        "--json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"ok\": true, \"repository\": {\"name\": \"overseer-kit\", \"id\": \"6988dc4a-5f22-454b-9d68-ac5905b383bf\", \"root\": \"/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014\", \"root_relative_docs\": \"docs\"}, \"branch\": \"feat/overseer-v1-recovery-20261014\", \"head\": \"6289d2823184a63e2968d2c5f6a76abab5818368\", \"runtime\": {\"root\": \"/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014\", \"version\": \"1.0.0.dev1\", \"sha256\": \"bdbfdae4599ca0bd1b096d5ed2c84019df3b83ed24972c202319ea5507cf09ec\"}, \"vcs\": \"git\", \"source_id\": null, \"publication\": \"not_checked_offline\", \"next\": {\"schema\": 1, \"repo_id\": \"6988dc4a-5f22-454b-9d68-ac5905b383bf\", \"repo_root\": \"/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014\", \"branch\": \"feat/overseer-v1-recovery-20261014\", \"base_head\": \"695444fb5f8261391f5c273807129c13dc8db1fd\", \"lane\": \"product\", \"model\": \"GPT-6 Astra\", \"action_id\": \"OVERSEER-FULL-PRODUCT-RESTORATION-VALIDATION-4\", \"action_kind\": \"implement\", \"prompt_sha256\": \"201f539055c654bb4177b2e775b49e4098224682c8b0622fefeda26d06e788d7\"}, \"prompt\": \"Reasoning: Max\\nRole: Principal integration validation engineer\\n\\nPerform FPR-4 only after the owner accepts this prompt. Acceptance authorizes\\nlocal combined validation and necessary bounded repairs for section 9 of\\ndocs/decisions/FULL-PRODUCT-RESTORATION-PLAN.md. It does not authorize FPR-5,\\nremote operations, release or deployment.\\n\\nVerify physical cwd, Git top-level, branch, full HEAD, configured name overseer-kit,\\nUUID, product lane, runtime binding and clean state. Validate this NEXT as the\\nsingle FPR-3 feature closing commit whose sole predecessor is\\n695444fb5f8261391f5c273807129c13dc8db1fd. Stop on mismatch, unexpected dirt or moved\\nsource refs. Read AGENTS.md, ROADMAP, HANDOVER, canonical NEXT, the full restoration\\nplan, docs/validation/FPR-1-FOUNDATION.md, docs/validation/FPR-2-AUTHORITY.md,\\ndocs/validation/FPR-3-SURFACES.md and its source/test disposition and results,\\ndocs/FPR-2-AUTHORITY-AND-LANES.md, docs/FPR-3-PRODUCT-SURFACES.md,\\ndocs/SOURCE-DISTRIBUTION.md, V1-SCOPE-RESET, V1-CERTIFICATION and tests/README.md.\\n\\nKeep this branch as integration base. Verify committed sources here:\\nfeat/overseer-context-isolation at e9be0c4b3cafb149b9f3b7af2ab060f01bbfa504;\\nfeat/overseer-v1-recovery at 32254cd939885d9d6f40634997ea5b9c37ea776c;\\nmain at d47291d5d9030de5ebef713da95efa978c4d8c6e; repaired safety source at\\n348e0f323a3b17cd5022a1bfd56fa09a6831c51f. Read committed objects without entering\\nolder worktrees, merging, cherry-picking or wholesale reverting. Preserve other\\nrefs, Muse history, snapshots, rollback fixtures, completed bounded pilot and\\nbounded source-release directory.\\n\\nRun one combined section-9 selection against a recorded integrated source/runtime\\nand dependency set. Use this installation's conventional venv, pinned local\\nprerequisites, disposable repositories under a nonrepository parent and fake\\nproviders/transports only. Cover all three authority modes; two simultaneous\\nrepositories with distinct defaults and overlapping lanes; worktrees/nested\\nboundaries; lane ownership and workspace; canonical automatic/manual bookends;\\nGit closing-commit and native Muse exact-revision freshness; CAS/context races;\\nevery maintained command and full settings; app/desktop/hosted controls; legacy\\nand bounded migrations; controlled mirror reconciliation and credentials; fresh\\nsource-package installation and advertised entry points; compatible configuration\\nupgrade/rollback; and the intended Python 3.11/3.14 and local native-build matrix.\\nPreserve tracked Git bindings, explicit authority selection, confined writes,\\ncaptured context, final rechecks, pinned closing reads and whole-file CAS. No\\npublic path may invoke legacy_main or scrape/regenerate a handoff.\\n\\nUse the FPR-3 disposition map to include every restored/reachable requirement and\\nrelevant cross-cutting family, including all 104 historical failures. Preserve\\noriginal tests and historical results; add explicit replacement cases for changed\\ncontracts. Record commands, exit codes, source/runtime hashes and dependency\\nversions. Fix real failures with failing-before/passing-after evidence; rerun only\\naffected checks unless shared changes invalidate the combined result. Missing\\nprerequisites, sockets, hosts or toolchains remain unresolved evidence, never a\\ngreen skip or an implicit reduction of the promised product.\\n\\nObtain the pending owner choices before claiming named automatic host/version or\\nplatform/distribution acceptance, and before running the separately selected new\\nintegrated pilot. The proposed pilot is a new noncritical disposable local project\\nwith selected host/authority and fake remote transports. Continue independent\\nfixture work while those choices are pending. Preserve the completed bounded\\npilot and do not repeat its review, installation/rollback or certification process.\\nExercise changed safety behaviors in the new matrix. Record native GUI, host\\nlifecycle delivery and provider limitations separately from fixture success.\\n\\nNo real consumers/hooks, providers/network, live mirror/export/delivery, fetch,\\npush, main merge, tags, publication, signing, release or deployment. Do not restore\\nOCI, native/Mach GSR, sole-writer storage, identity bridges or packet prerequisites.\\nKeep local mutation, remote transport and release actions explicit. Do not run\\nFPR-5 or create an intervening review-only handoff; reserve one independent final\\nreview of the fixed integrated source and complete evidence for FPR-5.\\n\\nClose with the combined matrix, source/environment and migration/install/rollback/\\npilot evidence, failures/limits and unresolved owner choices. Update ROADMAP and\\nHANDOVER together. Publish one canonical FPR-5 successor through bound next-write\\nusing current context and expected prior digest; identify the independent-reviewer\\nchoice without claiming self-review as independent. Refresh this installation's\\nruntime binding explicitly if repairs require it, preserving identity/settings/NEXT.\\nMake one coherent local FPR-4 feature commit after checks, then validate NEXT from\\ndisk. Report changes, failures/limits, owner choices, commit and validated successor.\\nDo not claim release readiness before combined validation and independent final\\nreview, and do not infer release authorization from either.\\n\", \"next_sha256\": \"0b6ef939df67ff2a2f5a4321c7787f56a4d0e804e7b433c30eccde162295dfb0\", \"configuration\": {\"vcs\": {\"regime\": \"git-only\", \"canonical\": \"git\", \"git\": {\"remote\": \"origin\", \"main_branch\": \"main\", \"mirror_branch\": null, \"feature_branch_pattern\": \"feat/{slug}\"}, \"muse\": {\"staging_remote\": null, \"main_branch\": null, \"working_dir\": null}}, \"docs\": {\"handover\": \"OVERSEER-HANDOVER.md\", \"roadmap\": \"ROADMAP.md\", \"coordination\": null, \"standing_decisions\": \"ROADMAP.md\", \"handover_title\": \"Overseer Handover\", \"roadmap_title\": \"Roadmap\", \"canonical_next\": \"docs/NEXT.md\", \"default_lane\": \"product\", \"lanes\": {\"product\": {\"handover\": \"OVERSEER-HANDOVER.md\", \"roadmap\": \"ROADMAP.md\", \"handover_title\": \"Overseer Handover\", \"roadmap_title\": \"Roadmap\", \"repo_id\": \"6988dc4a-5f22-454b-9d68-ac5905b383bf\"}}}, \"thresholds\": {\"realign_max_commits\": 50, \"drift_warn_only\": true}, \"freeze_contract\": {\"enabled\": true, \"reviewer\": \"agent\", \"human_escalation\": [\"security\"]}, \"repo\": {\"name\": \"overseer-kit\", \"id\": \"6988dc4a-5f22-454b-9d68-ac5905b383bf\", \"root\": \"/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014\", \"root_relative_docs\": \"docs\"}, \"context\": {\"lane\": \"product\", \"model\": \"GPT-6 Astra\"}, \"runtime\": {\"root\": \"/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014\", \"version\": \"1.0.0.dev1\", \"sha256\": \"bdbfdae4599ca0bd1b096d5ed2c84019df3b83ed24972c202319ea5507cf09ec\"}, \"schema\": 3}, \"source_schema\": \"schema-3\", \"migration_required\": false, \"diagnostics\": [\"legacy_reviewer_model_preserved: thinking-high\"], \"authority\": \"git\", \"assets\": [{\"path\": \".claude/skills/adversarial-freeze-review/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044\", \"after\": \"7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044\"}, {\"path\": \".claude/skills/build-verification-review/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c\", \"after\": \"f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c\"}, {\"path\": \".claude/skills/check-ok/SIDE-CHECK-TEMPLATE.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c\", \"after\": \"0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c\"}, {\"path\": \".claude/skills/check-ok/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a\", \"after\": \"3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a\"}, {\"path\": \".claude/skills/deploy-verification-review/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b\", \"after\": \"a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b\"}, {\"path\": \".claude/skills/freeze-review-loop/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f\", \"after\": \"355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f\"}, {\"path\": \".claude/skills/freeze-review/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b\", \"after\": \"620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b\"}, {\"path\": \".claude/skills/governance-sync/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14\", \"after\": \"06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14\"}, {\"path\": \".claude/skills/independent-second-reviewer/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837\", \"after\": \"994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837\"}, {\"path\": \".claude/skills/print-next/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff\", \"after\": \"de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff\"}, {\"path\": \".claude/skills/workspace-status/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25\", \"after\": \"a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25\"}, {\"path\": \".cursor/rules/build-verification-required.mdc\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"b0fdb1a1e0a01d23b4b70cb5b4bb987eb11b9fdba1a8a77af54e90f47d832065\", \"after\": \"b0fdb1a1e0a01d23b4b70cb5b4bb987eb11b9fdba1a8a77af54e90f47d832065\"}, {\"path\": \".cursor/rules/check-ok-thinking.mdc\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"a75697f0f8b6fb1ee424aa198dd5e4a6648e33b3707482964494287196729739\", \"after\": \"a75697f0f8b6fb1ee424aa198dd5e4a6648e33b3707482964494287196729739\"}, {\"path\": \".cursor/rules/governance-sync.mdc\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"97414e26682f3ccefb3c442a05d73c7dbb998fd78e5a6d286e4ef625d4405fb6\", \"after\": \"97414e26682f3ccefb3c442a05d73c7dbb998fd78e5a6d286e4ef625d4405fb6\"}, {\"path\": \".cursor/rules/l1-checkpoints-consumer-owned.mdc\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"6eebc8126cee6c7ee1d2de1180faec15e2822448b2bfeffb56495991fd21a037\", \"after\": \"6eebc8126cee6c7ee1d2de1180faec15e2822448b2bfeffb56495991fd21a037\"}, {\"path\": \".cursor/rules/no-docs-only-pr-to-main.mdc\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"c040517845d72aa9f40cc802db00e39dc67cd4d66a9f4dd1ac89d8bb680dd610\", \"after\": \"c040517845d72aa9f40cc802db00e39dc67cd4d66a9f4dd1ac89d8bb680dd610\"}, {\"path\": \".cursor/rules/orchestrator.mdc\", \"classification\": \"both-changed\", \"origin\": \"kit\", \"before\": \"e4d2e9d9ed268086a43a2c3c2b9ba7bef8fb42e544c81182128704e5a26c8d84\", \"after\": \"98b8df26c0f5abc71d203d2bcf457e23dea29e7c0e242bbe3cadeb711064e5c3\"}, {\"path\": \".cursor/rules/print-next-closeout.mdc\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"c45ae41918dabb9b1afb3f180924039ff02df661a6c77f1c97c1a119b77f62bb\", \"after\": \"c45ae41918dabb9b1afb3f180924039ff02df661a6c77f1c97c1a119b77f62bb\"}, {\"path\": \".cursor/rules/tier-authority.mdc\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"e685afdd9a6368bac11127bebb0ca9883ac7523f15f65ceb3d9efdf239fb9f2a\", \"after\": \"e685afdd9a6368bac11127bebb0ca9883ac7523f15f65ceb3d9efdf239fb9f2a\"}, {\"path\": \".cursor/rules/workspace-authority.mdc\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"438b69c1bae0e413e6ad953cbec3173162282625d4bee04066e482db72a8aff0\", \"after\": \"438b69c1bae0e413e6ad953cbec3173162282625d4bee04066e482db72a8aff0\"}, {\"path\": \".cursor/skills/adversarial-freeze-review/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044\", \"after\": \"7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044\"}, {\"path\": \".cursor/skills/build-verification-review/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c\", \"after\": \"f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c\"}, {\"path\": \".cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c\", \"after\": \"0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c\"}, {\"path\": \".cursor/skills/check-ok/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a\", \"after\": \"3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a\"}, {\"path\": \".cursor/skills/deploy-verification-review/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b\", \"after\": \"a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b\"}, {\"path\": \".cursor/skills/freeze-review-loop/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f\", \"after\": \"355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f\"}, {\"path\": \".cursor/skills/freeze-review/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b\", \"after\": \"620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b\"}, {\"path\": \".cursor/skills/governance-sync/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14\", \"after\": \"06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14\"}, {\"path\": \".cursor/skills/independent-second-reviewer/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837\", \"after\": \"994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837\"}, {\"path\": \".cursor/skills/print-next/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff\", \"after\": \"de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff\"}, {\"path\": \".cursor/skills/workspace-status/SKILL.md\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25\", \"after\": \"a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25\"}, {\"path\": \".overseer/STANDING-DECISIONS.reference.md\", \"classification\": \"kit-updated\", \"origin\": \"kit\", \"before\": \"4694e4c48fc9595301629432ddd67861900d1288e097bd5d01232611c9ce18db\", \"after\": \"290117014bcccc199b6802ac86e3c6ecf520542894384187c967c96a13235ccd\"}, {\"path\": \".overseer/bin/ok\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4\", \"after\": \"1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4\"}, {\"path\": \".overseer/policy/model-labels.yaml\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"db95732401de452223d750c68172b6c1bb28b3b574c6368132678309b8c801e0\", \"after\": \"db95732401de452223d750c68172b6c1bb28b3b574c6368132678309b8c801e0\"}, {\"path\": \".overseer/policy/model-routing.yaml\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63\", \"after\": \"52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63\"}, {\"path\": \".overseer/policy/test-tiers.yaml\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"55b337e9399ccd26f4c70dba9f6f57c1359fab930a522e605cbe52d3533238d8\", \"after\": \"55b337e9399ccd26f4c70dba9f6f57c1359fab930a522e605cbe52d3533238d8\"}, {\"path\": \".overseer/policy/tiers.yaml\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"92920331f4e35bad9191a101b8b5d211ef31f069b2ba1cf4446ceb3796894776\", \"after\": \"92920331f4e35bad9191a101b8b5d211ef31f069b2ba1cf4446ceb3796894776\"}, {\"path\": \"policy/model-routing.yaml\", \"classification\": \"unchanged\", \"origin\": \"unrecorded\", \"before\": \"52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63\", \"after\": \"52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63\"}], \"preserved_inventory\": [{\"path\": \".claude/skills/adversarial-freeze-review/SKILL.md\", \"sha256\": \"7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044\", \"mode\": 420}, {\"path\": \".claude/skills/build-verification-review/SKILL.md\", \"sha256\": \"f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c\", \"mode\": 420}, {\"path\": \".claude/skills/check-ok/SIDE-CHECK-TEMPLATE.md\", \"sha256\": \"0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c\", \"mode\": 420}, {\"path\": \".claude/skills/check-ok/SKILL.md\", \"sha256\": \"3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a\", \"mode\": 420}, {\"path\": \".claude/skills/deploy-verification-review/SKILL.md\", \"sha256\": \"a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b\", \"mode\": 420}, {\"path\": \".claude/skills/freeze-review-loop/SKILL.md\", \"sha256\": \"355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f\", \"mode\": 420}, {\"path\": \".claude/skills/freeze-review/SKILL.md\", \"sha256\": \"620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b\", \"mode\": 420}, {\"path\": \".claude/skills/governance-sync/SKILL.md\", \"sha256\": \"06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14\", \"mode\": 420}, {\"path\": \".claude/skills/independent-second-reviewer/SKILL.md\", \"sha256\": \"994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837\", \"mode\": 420}, {\"path\": \".claude/skills/print-next/SKILL.md\", \"sha256\": \"de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff\", \"mode\": 420}, {\"path\": \".claude/skills/workspace-status/SKILL.md\", \"sha256\": \"a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25\", \"mode\": 420}, {\"path\": \".cursor/hooks.json\", \"sha256\": \"2f3f0de72a829aa7ad28055c884127a5db5660c5c78556ac7b8aea8dd2e2ac0e\", \"mode\": 420}, {\"path\": \".cursor/hooks/README.md\", \"sha256\": \"48e9ee363c5a2292d49765118f54eedac53ec788848ed53774812f55f897a31a\", \"mode\": 420}, {\"path\": \".cursor/hooks/session-end-closeout.sh\", \"sha256\": \"af4f2a4ae24cec4e375085e96d5144a7471457460206dbeba6d7a525ea00279a\", \"mode\": 493}, {\"path\": \".cursor/hooks/session-start-next.sh\", \"sha256\": \"af4f2a4ae24cec4e375085e96d5144a7471457460206dbeba6d7a525ea00279a\", \"mode\": 493}, {\"path\": \".cursor/rules/build-verification-required.mdc\", \"sha256\": \"b0fdb1a1e0a01d23b4b70cb5b4bb987eb11b9fdba1a8a77af54e90f47d832065\", \"mode\": 420}, {\"path\": \".cursor/rules/check-ok-thinking.mdc\", \"sha256\": \"a75697f0f8b6fb1ee424aa198dd5e4a6648e33b3707482964494287196729739\", \"mode\": 420}, {\"path\": \".cursor/rules/governance-sync.mdc\", \"sha256\": \"97414e26682f3ccefb3c442a05d73c7dbb998fd78e5a6d286e4ef625d4405fb6\", \"mode\": 420}, {\"path\": \".cursor/rules/l1-checkpoints-consumer-owned.mdc\", \"sha256\": \"6eebc8126cee6c7ee1d2de1180faec15e2822448b2bfeffb56495991fd21a037\", \"mode\": 420}, {\"path\": \".cursor/rules/no-docs-only-pr-to-main.mdc\", \"sha256\": \"c040517845d72aa9f40cc802db00e39dc67cd4d66a9f4dd1ac89d8bb680dd610\", \"mode\": 420}, {\"path\": \".cursor/rules/orchestrator.mdc\", \"sha256\": \"e4d2e9d9ed268086a43a2c3c2b9ba7bef8fb42e544c81182128704e5a26c8d84\", \"mode\": 420}, {\"path\": \".cursor/rules/print-next-closeout.mdc\", \"sha256\": \"c45ae41918dabb9b1afb3f180924039ff02df661a6c77f1c97c1a119b77f62bb\", \"mode\": 420}, {\"path\": \".cursor/rules/tier-authority.mdc\", \"sha256\": \"e685afdd9a6368bac11127bebb0ca9883ac7523f15f65ceb3d9efdf239fb9f2a\", \"mode\": 420}, {\"path\": \".cursor/rules/workspace-authority.mdc\", \"sha256\": \"438b69c1bae0e413e6ad953cbec3173162282625d4bee04066e482db72a8aff0\", \"mode\": 420}, {\"path\": \".cursor/skills/adversarial-freeze-review/SKILL.md\", \"sha256\": \"7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044\", \"mode\": 420}, {\"path\": \".cursor/skills/build-verification-review/SKILL.md\", \"sha256\": \"f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c\", \"mode\": 420}, {\"path\": \".cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md\", \"sha256\": \"0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c\", \"mode\": 420}, {\"path\": \".cursor/skills/check-ok/SKILL.md\", \"sha256\": \"3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a\", \"mode\": 420}, {\"path\": \".cursor/skills/deploy-verification-review/SKILL.md\", \"sha256\": \"a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b\", \"mode\": 420}, {\"path\": \".cursor/skills/freeze-review-loop/SKILL.md\", \"sha256\": \"355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f\", \"mode\": 420}, {\"path\": \".cursor/skills/freeze-review/SKILL.md\", \"sha256\": \"620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b\", \"mode\": 420}, {\"path\": \".cursor/skills/governance-sync/SKILL.md\", \"sha256\": \"06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14\", \"mode\": 420}, {\"path\": \".cursor/skills/independent-second-reviewer/SKILL.md\", \"sha256\": \"994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837\", \"mode\": 420}, {\"path\": \".cursor/skills/print-next/SKILL.md\", \"sha256\": \"de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff\", \"mode\": 420}, {\"path\": \".cursor/skills/workspace-status/SKILL.md\", \"sha256\": \"a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25\", \"mode\": 420}, {\"path\": \".overseer/STANDING-DECISIONS.reference.md\", \"sha256\": \"4694e4c48fc9595301629432ddd67861900d1288e097bd5d01232611c9ce18db\", \"mode\": 420}, {\"path\": \".overseer/bin/ok\", \"sha256\": \"1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4\", \"mode\": 493}, {\"path\": \".overseer/ledger.jsonl\", \"sha256\": \"absent\", \"mode\": null}, {\"path\": \".overseer/policy/model-labels.yaml\", \"sha256\": \"db95732401de452223d750c68172b6c1bb28b3b574c6368132678309b8c801e0\", \"mode\": 420}, {\"path\": \".overseer/policy/model-routing.yaml\", \"sha256\": \"52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63\", \"mode\": 420}, {\"path\": \".overseer/policy/test-tiers.yaml\", \"sha256\": \"55b337e9399ccd26f4c70dba9f6f57c1359fab930a522e605cbe52d3533238d8\", \"mode\": 420}, {\"path\": \".overseer/policy/tiers.yaml\", \"sha256\": \"92920331f4e35bad9191a101b8b5d211ef31f069b2ba1cf4446ceb3796894776\", \"mode\": 420}, {\"path\": \".overseer/version.lock\", \"sha256\": \"edbe7e6cbfb79011eb8d18409f831e6ff104da0ef98b1031e3804fedcefec96a\", \"mode\": 420}, {\"path\": \"MUSE-BRIDGE-WORKFLOW.md\", \"sha256\": \"4880952af1fdba7e4153435118422a520e84a987e8d845e5c1b593eb01e297d7\", \"mode\": 420}, {\"path\": \"docs/NEXT.md\", \"sha256\": \"0b6ef939df67ff2a2f5a4321c7787f56a4d0e804e7b433c30eccde162295dfb0\", \"mode\": 420}, {\"path\": \"docs/OVERSEER-HANDOVER.md\", \"sha256\": \"52b7e6af550b78da1ec26f5a5dc1ca8d9afa432c11b8fb3fe085ea356b99a842\", \"mode\": 420}, {\"path\": \"docs/ROADMAP.md\", \"sha256\": \"f267ce4f9267155ece888f1200e5a173baf1b6b9b1eec7cf3e1640e890befef0\", \"mode\": 420}, {\"path\": \"scripts/muse-bridge-deploy.sh\", \"sha256\": \"d1a4351567edbe3d054b545b8cb165e302e231037ae152bba14bd3a6a9e302d6\", \"mode\": 493}], \"dirty\": true, \"tracked_local\": [], \"substrate\": {\"ok\": true, \"state\": \"bound_git\", \"source_id\": null}, \"muse_sync\": {\"state\": \"not_applicable\", \"mirror_correspondence\": \"use_explicit_mirror_verify\"}, \"footprint_integrity\": {\"ok\": false, \"paths_requiring_attention\": [\".claude/skills/freeze-review-loop/SKILL.md\", \".claude/skills/governance-sync/SKILL.md\", \".claude/skills/print-next/SKILL.md\", \".claude/skills/workspace-status/SKILL.md\", \".cursor/hooks.json\", \".cursor/hooks/session-end-closeout.sh\", \".cursor/hooks/session-start-next.sh\", \".cursor/rules/build-verification-required.mdc\", \".cursor/rules/check-ok-thinking.mdc\", \".cursor/rules/governance-sync.mdc\", \".cursor/rules/no-docs-only-pr-to-main.mdc\", \".cursor/rules/orchestrator.mdc\", \".cursor/rules/print-next-closeout.mdc\", \".cursor/rules/tier-authority.mdc\", \".cursor/rules/workspace-authority.mdc\", \".cursor/skills/freeze-review-loop/SKILL.md\", \".cursor/skills/governance-sync/SKILL.md\", \".cursor/skills/print-next/SKILL.md\", \".cursor/skills/workspace-status/SKILL.md\", \"MUSE-BRIDGE-WORKFLOW.md\", \"scripts/muse-bridge-deploy.sh\"]}, \"footprint_coverage\": {\"ok\": false, \"missing_records\": [\"policy/model-routing.yaml\"]}, \"drift\": {\"status\": \"changed\", \"changed_files\": [\".cursor/rules/orchestrator.mdc\", \".overseer/STANDING-DECISIONS.reference.md\"]}, \"lock\": {\"lock_version\": 1, \"kit_version\": \"1.0.0.dev1\", \"config_version\": 3, \"installed_at\": \"2026-07-10T00:00:00Z\", \"synced_at\": \"2026-09-20T15:24:42Z\", \"footprint_digest\": \"sha256:882c3d251152d292378baf00d4b848a8013a321ef1808119d270a81dde0eec18\", \"footprint\": [{\"path\": \".claude/skills/adversarial-freeze-review/SKILL.md\", \"source\": \"cursor/skills/adversarial-freeze-review/SKILL.md\", \"sha256\": \"7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044\", \"origin\": \"kit\"}, {\"path\": \".claude/skills/build-verification-review/SKILL.md\", \"source\": \"cursor/skills/build-verification-review/SKILL.md\", \"sha256\": \"f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c\", \"origin\": \"kit\"}, {\"path\": \".claude/skills/check-ok/SIDE-CHECK-TEMPLATE.md\", \"source\": \"cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md\", \"sha256\": \"0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c\", \"origin\": \"kit\"}, {\"path\": \".claude/skills/check-ok/SKILL.md\", \"source\": \"cursor/skills/check-ok/SKILL.md\", \"sha256\": \"3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a\", \"origin\": \"kit\"}, {\"path\": \".claude/skills/deploy-verification-review/SKILL.md\", \"source\": \"cursor/skills/deploy-verification-review/SKILL.md\", \"sha256\": \"a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b\", \"origin\": \"kit\"}, {\"path\": \".claude/skills/freeze-review-loop/SKILL.md\", \"source\": \"cursor/skills/freeze-review-loop/SKILL.md\", \"sha256\": \"825a1090612be0923ee1b9bcfee973b7f6e982369b8d74af11d75462e844fde7\", \"origin\": \"kit\"}, {\"path\": \".claude/skills/freeze-review/SKILL.md\", \"source\": \"cursor/skills/freeze-review/SKILL.md\", \"sha256\": \"620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b\", \"origin\": \"kit\"}, {\"path\": \".claude/skills/governance-sync/SKILL.md\", \"source\": \"cursor/skills/governance-sync/SKILL.md\", \"sha256\": \"60df1ef0f87aea065c39d5bcd38754cc44279e99db447a2777c75d32b434e9b5\", \"origin\": \"kit\"}, {\"path\": \".claude/skills/independent-second-reviewer/SKILL.md\", \"source\": \"cursor/skills/independent-second-reviewer/SKILL.md\", \"sha256\": \"994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837\", \"origin\": \"kit\"}, {\"path\": \".claude/skills/print-next/SKILL.md\", \"source\": \"cursor/skills/print-next/SKILL.md\", \"sha256\": \"811841a99a2452936f1e59cb69dd02b31bb16e852ad3ba1614904c6b5ecb6de7\", \"origin\": \"kit\"}, {\"path\": \".claude/skills/workspace-status/SKILL.md\", \"source\": \"cursor/skills/workspace-status/SKILL.md\", \"sha256\": \"11a6b0586d84997a1394a8f168a4115dcde735c3ff72cd533086dfc484d0d779\", \"origin\": \"kit\"}, {\"path\": \".cursor/hooks.json\", \"source\": \"cursor/hooks/hooks.json\", \"sha256\": \"4ed9d7336f5c6fd4a1e3995d6b70b0b63b3451c5278baf651c3a5a42f0816eae\", \"origin\": \"kit\"}, {\"path\": \".cursor/hooks/README.md\", \"source\": \"cursor/hooks/README.md\", \"sha256\": \"48e9ee363c5a2292d49765118f54eedac53ec788848ed53774812f55f897a31a\", \"origin\": \"kit\"}, {\"path\": \".cursor/hooks/session-end-closeout.sh\", \"source\": \"cursor/hooks/session-end-closeout.sh\", \"sha256\": \"bf188aebfed548a1c64800aa0294249f318548c06d8d679d3b5894bea3844634\", \"origin\": \"kit\"}, {\"path\": \".cursor/hooks/session-start-next.sh\", \"source\": \"cursor/hooks/session-start-next.sh\", \"sha256\": \"d695c4d2ddeace73fecb3d4fc460fe582d51e8da71b012c08e8dd8a66280bbfc\", \"origin\": \"kit\"}, {\"path\": \".cursor/rules/build-verification-required.mdc\", \"source\": \"cursor/rules/build-verification-required.mdc\", \"sha256\": \"f6ba660c0fb1b2f006103136887c51bab41c6f633ebee8e57d3d549ef5d62f62\", \"origin\": \"kit\"}, {\"path\": \".cursor/rules/check-ok-thinking.mdc\", \"source\": \"cursor/rules/check-ok-thinking.mdc\", \"sha256\": \"7a7d48d8c317c3763f057f2025586e124d0f897705c0be55688351755847d474\", \"origin\": \"kit\"}, {\"path\": \".cursor/rules/governance-sync.mdc\", \"source\": \"cursor/rules/governance-sync.mdc\", \"sha256\": \"81b78835bf5c822bcf76bde4cea37918956727122c02e91f89130e864c700078\", \"origin\": \"kit\"}, {\"path\": \".cursor/rules/l1-checkpoints-consumer-owned.mdc\", \"source\": \"cursor/rules/l1-checkpoints-consumer-owned.mdc\", \"sha256\": \"6eebc8126cee6c7ee1d2de1180faec15e2822448b2bfeffb56495991fd21a037\", \"origin\": \"kit\"}, {\"path\": \".cursor/rules/no-docs-only-pr-to-main.mdc\", \"source\": \"cursor/rules/no-docs-only-pr-to-main.mdc\", \"sha256\": \"90b87da8ec1f6dfac079bab72ba5621161410f45999e0510d47bfe26ec0a09da\", \"origin\": \"kit\"}, {\"path\": \".cursor/rules/orchestrator.mdc\", \"source\": \"cursor/rules/orchestrator.mdc\", \"sha256\": \"48d461e588ce952f305c9b2635ceebbaa5acb9f1dc2007d3712b555c5076307c\", \"origin\": \"kit\"}, {\"path\": \".cursor/rules/print-next-closeout.mdc\", \"source\": \"cursor/rules/print-next-closeout.mdc\", \"sha256\": \"8be1072133829866c3e1ced50c416448150ed4253a992169efd77748de4a8122\", \"origin\": \"kit\"}, {\"path\": \".cursor/rules/tier-authority.mdc\", \"source\": \"cursor/rules/tier-authority.mdc\", \"sha256\": \"8b61784cce0f0905d43c7e453b0c4d7d6b219601eaf5b62d45304afaf0338b34\", \"origin\": \"kit\"}, {\"path\": \".cursor/rules/workspace-authority.mdc\", \"source\": \"cursor/rules/workspace-authority.mdc\", \"sha256\": \"083f5163e957b1e00956c5370b06d078590627b4bd9b00a27c7378434b344ff5\", \"origin\": \"kit\"}, {\"path\": \".cursor/skills/adversarial-freeze-review/SKILL.md\", \"source\": \"cursor/skills/adversarial-freeze-review/SKILL.md\", \"sha256\": \"7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044\", \"origin\": \"kit\"}, {\"path\": \".cursor/skills/build-verification-review/SKILL.md\", \"source\": \"cursor/skills/build-verification-review/SKILL.md\", \"sha256\": \"f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c\", \"origin\": \"kit\"}, {\"path\": \".cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md\", \"source\": \"cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md\", \"sha256\": \"0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c\", \"origin\": \"kit\"}, {\"path\": \".cursor/skills/check-ok/SKILL.md\", \"source\": \"cursor/skills/check-ok/SKILL.md\", \"sha256\": \"3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a\", \"origin\": \"kit\"}, {\"path\": \".cursor/skills/deploy-verification-review/SKILL.md\", \"source\": \"cursor/skills/deploy-verification-review/SKILL.md\", \"sha256\": \"a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b\", \"origin\": \"kit\"}, {\"path\": \".cursor/skills/freeze-review-loop/SKILL.md\", \"source\": \"cursor/skills/freeze-review-loop/SKILL.md\", \"sha256\": \"825a1090612be0923ee1b9bcfee973b7f6e982369b8d74af11d75462e844fde7\", \"origin\": \"kit\"}, {\"path\": \".cursor/skills/freeze-review/SKILL.md\", \"source\": \"cursor/skills/freeze-review/SKILL.md\", \"sha256\": \"620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b\", \"origin\": \"kit\"}, {\"path\": \".cursor/skills/governance-sync/SKILL.md\", \"source\": \"cursor/skills/governance-sync/SKILL.md\", \"sha256\": \"60df1ef0f87aea065c39d5bcd38754cc44279e99db447a2777c75d32b434e9b5\", \"origin\": \"kit\"}, {\"path\": \".cursor/skills/independent-second-reviewer/SKILL.md\", \"source\": \"cursor/skills/independent-second-reviewer/SKILL.md\", \"sha256\": \"994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837\", \"origin\": \"kit\"}, {\"path\": \".cursor/skills/print-next/SKILL.md\", \"source\": \"cursor/skills/print-next/SKILL.md\", \"sha256\": \"811841a99a2452936f1e59cb69dd02b31bb16e852ad3ba1614904c6b5ecb6de7\", \"origin\": \"kit\"}, {\"path\": \".cursor/skills/workspace-status/SKILL.md\", \"source\": \"cursor/skills/workspace-status/SKILL.md\", \"sha256\": \"11a6b0586d84997a1394a8f168a4115dcde735c3ff72cd533086dfc484d0d779\", \"origin\": \"kit\"}, {\"path\": \".overseer/STANDING-DECISIONS.reference.md\", \"source\": \"templates/STANDING-DECISIONS.template.md\", \"sha256\": \"4694e4c48fc9595301629432ddd67861900d1288e097bd5d01232611c9ce18db\", \"origin\": \"kit\"}, {\"path\": \".overseer/bin/ok\", \"source\": \"bound-product-assets\", \"sha256\": \"sha256:1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4\", \"origin\": \"kit\"}, {\"path\": \".overseer/policy/model-labels.yaml\", \"source\": \"policy/model-labels.yaml\", \"sha256\": \"db95732401de452223d750c68172b6c1bb28b3b574c6368132678309b8c801e0\", \"origin\": \"kit\"}, {\"path\": \".overseer/policy/model-routing.yaml\", \"source\": \"policy/model-routing.yaml\", \"sha256\": \"52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63\", \"origin\": \"kit\"}, {\"path\": \".overseer/policy/test-tiers.yaml\", \"source\": \"policy/test-tiers.yaml\", \"sha256\": \"55b337e9399ccd26f4c70dba9f6f57c1359fab930a522e605cbe52d3533238d8\", \"origin\": \"kit\"}, {\"path\": \".overseer/policy/tiers.yaml\", \"source\": \"policy/tiers.yaml\", \"sha256\": \"92920331f4e35bad9191a101b8b5d211ef31f069b2ba1cf4446ceb3796894776\", \"origin\": \"kit\"}, {\"path\": \"MUSE-BRIDGE-WORKFLOW.md\", \"source\": \"templates/MUSE-BRIDGE-WORKFLOW.template.md\", \"sha256\": \"08f1f73e8cb579210f05aea944928a0e7b2a6ae4ced3a4d42df7bab21543dcc2\", \"origin\": \"kit\"}, {\"path\": \"docs/OVERSEER-HANDOVER.md\", \"source\": \"templates/OVERSEER-HANDOVER.template.md\", \"sha256\": \"sha256:52b7e6af550b78da1ec26f5a5dc1ca8d9afa432c11b8fb3fe085ea356b99a842\", \"origin\": \"preserved\"}, {\"path\": \"docs/ROADMAP.md\", \"source\": \"templates/ROADMAP.template.md\", \"sha256\": \"sha256:f267ce4f9267155ece888f1200e5a173baf1b6b9b1eec7cf3e1640e890befef0\", \"origin\": \"preserved\"}, {\"path\": \"scripts/muse-bridge-deploy.sh\", \"source\": \"templates/scripts/muse-bridge-deploy.sh.template\", \"sha256\": \"7b1cda63aff0903d914459c84326efe6bef614b774e1a13fe8b29d5d474a6c97\", \"origin\": \"kit\"}]}, \"governance\": {\"lane\": \"product\", \"authority\": \"git\", \"branch\": \"feat/overseer-v1-recovery-20261014\", \"revision\": \"6289d2823184a63e2968d2c5f6a76abab5818368\", \"local_main\": \"d47291d5d9030de5ebef713da95efa978c4d8c6e\", \"remote\": \"not_checked_offline\", \"claimed_github_main\": null, \"remote_drift\": \"unknown_offline\", \"cached_remote_main\": \"d47291d5d9030de5ebef713da95efa978c4d8c6e\", \"drift\": {\"d1_handover_vs_git\": \"drifted\", \"d2_anchor_vs_canonical\": \"aligned\", \"d3_queue_vs_merged\": \"unknown_offline\", \"details\": {\"d1\": \"claimed=None actual=d47291d5d9030de5ebef713da95efa978c4d8c6e\"}}, \"realignment\": \"not_applicable\", \"canonical_next\": \"docs/NEXT.md\"}, \"governance_gates\": {\"enabled\": true, \"suppressed\": false, \"pending\": [], \"active_phases\": []}, \"model_routing\": {\"enabled\": false}, \"cost_awareness\": {\"enabled\": false}, \"optional_feature_tips\": {\"tips\": [\"tip: session_bookends off \\u2014 set session_bookends.enabled: true in .overseer/config.yaml then ok sync for Cursor session start/end nudges (cursor/hooks/README.md)\", \"tip: honesty off \\u2014 set honesty.enabled: true in .overseer/config.yaml for verification-evidence and independent-second-reviewer reminders (require_verification_evidence / require_independent_second_reviewer: warn|require; docs/INDEPENDENT-SECOND-REVIEWER.md)\"]}, \"verification_evidence_gate\": null, \"independent_second_reviewer_gate\": null, \"adversarial_freeze_gate\": null, \"readiness\": {\"authority\": \"bound\", \"remote\": \"not_checked_offline\", \"release\": \"not_certified\"}}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.overseer/bin/ok",
+        "-C",
+        "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+        "next",
+        "--json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"ok\": true, \"repository\": {\"name\": \"overseer-kit\", \"id\": \"6988dc4a-5f22-454b-9d68-ac5905b383bf\", \"root\": \"/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014\", \"root_relative_docs\": \"docs\"}, \"branch\": \"feat/overseer-v1-recovery-20261014\", \"head\": \"6289d2823184a63e2968d2c5f6a76abab5818368\", \"runtime\": {\"root\": \"/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014\", \"version\": \"1.0.0.dev1\", \"sha256\": \"bdbfdae4599ca0bd1b096d5ed2c84019df3b83ed24972c202319ea5507cf09ec\"}, \"vcs\": \"git\", \"source_id\": null, \"publication\": \"not_checked_offline\", \"next\": {\"schema\": 1, \"repo_id\": \"6988dc4a-5f22-454b-9d68-ac5905b383bf\", \"repo_root\": \"/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014\", \"branch\": \"feat/overseer-v1-recovery-20261014\", \"base_head\": \"695444fb5f8261391f5c273807129c13dc8db1fd\", \"lane\": \"product\", \"model\": \"GPT-6 Astra\", \"action_id\": \"OVERSEER-FULL-PRODUCT-RESTORATION-VALIDATION-4\", \"action_kind\": \"implement\", \"prompt_sha256\": \"201f539055c654bb4177b2e775b49e4098224682c8b0622fefeda26d06e788d7\"}, \"prompt\": \"Reasoning: Max\\nRole: Principal integration validation engineer\\n\\nPerform FPR-4 only after the owner accepts this prompt. Acceptance authorizes\\nlocal combined validation and necessary bounded repairs for section 9 of\\ndocs/decisions/FULL-PRODUCT-RESTORATION-PLAN.md. It does not authorize FPR-5,\\nremote operations, release or deployment.\\n\\nVerify physical cwd, Git top-level, branch, full HEAD, configured name overseer-kit,\\nUUID, product lane, runtime binding and clean state. Validate this NEXT as the\\nsingle FPR-3 feature closing commit whose sole predecessor is\\n695444fb5f8261391f5c273807129c13dc8db1fd. Stop on mismatch, unexpected dirt or moved\\nsource refs. Read AGENTS.md, ROADMAP, HANDOVER, canonical NEXT, the full restoration\\nplan, docs/validation/FPR-1-FOUNDATION.md, docs/validation/FPR-2-AUTHORITY.md,\\ndocs/validation/FPR-3-SURFACES.md and its source/test disposition and results,\\ndocs/FPR-2-AUTHORITY-AND-LANES.md, docs/FPR-3-PRODUCT-SURFACES.md,\\ndocs/SOURCE-DISTRIBUTION.md, V1-SCOPE-RESET, V1-CERTIFICATION and tests/README.md.\\n\\nKeep this branch as integration base. Verify committed sources here:\\nfeat/overseer-context-isolation at e9be0c4b3cafb149b9f3b7af2ab060f01bbfa504;\\nfeat/overseer-v1-recovery at 32254cd939885d9d6f40634997ea5b9c37ea776c;\\nmain at d47291d5d9030de5ebef713da95efa978c4d8c6e; repaired safety source at\\n348e0f323a3b17cd5022a1bfd56fa09a6831c51f. Read committed objects without entering\\nolder worktrees, merging, cherry-picking or wholesale reverting. Preserve other\\nrefs, Muse history, snapshots, rollback fixtures, completed bounded pilot and\\nbounded source-release directory.\\n\\nRun one combined section-9 selection against a recorded integrated source/runtime\\nand dependency set. Use this installation's conventional venv, pinned local\\nprerequisites, disposable repositories under a nonrepository parent and fake\\nproviders/transports only. Cover all three authority modes; two simultaneous\\nrepositories with distinct defaults and overlapping lanes; worktrees/nested\\nboundaries; lane ownership and workspace; canonical automatic/manual bookends;\\nGit closing-commit and native Muse exact-revision freshness; CAS/context races;\\nevery maintained command and full settings; app/desktop/hosted controls; legacy\\nand bounded migrations; controlled mirror reconciliation and credentials; fresh\\nsource-package installation and advertised entry points; compatible configuration\\nupgrade/rollback; and the intended Python 3.11/3.14 and local native-build matrix.\\nPreserve tracked Git bindings, explicit authority selection, confined writes,\\ncaptured context, final rechecks, pinned closing reads and whole-file CAS. No\\npublic path may invoke legacy_main or scrape/regenerate a handoff.\\n\\nUse the FPR-3 disposition map to include every restored/reachable requirement and\\nrelevant cross-cutting family, including all 104 historical failures. Preserve\\noriginal tests and historical results; add explicit replacement cases for changed\\ncontracts. Record commands, exit codes, source/runtime hashes and dependency\\nversions. Fix real failures with failing-before/passing-after evidence; rerun only\\naffected checks unless shared changes invalidate the combined result. Missing\\nprerequisites, sockets, hosts or toolchains remain unresolved evidence, never a\\ngreen skip or an implicit reduction of the promised product.\\n\\nObtain the pending owner choices before claiming named automatic host/version or\\nplatform/distribution acceptance, and before running the separately selected new\\nintegrated pilot. The proposed pilot is a new noncritical disposable local project\\nwith selected host/authority and fake remote transports. Continue independent\\nfixture work while those choices are pending. Preserve the completed bounded\\npilot and do not repeat its review, installation/rollback or certification process.\\nExercise changed safety behaviors in the new matrix. Record native GUI, host\\nlifecycle delivery and provider limitations separately from fixture success.\\n\\nNo real consumers/hooks, providers/network, live mirror/export/delivery, fetch,\\npush, main merge, tags, publication, signing, release or deployment. Do not restore\\nOCI, native/Mach GSR, sole-writer storage, identity bridges or packet prerequisites.\\nKeep local mutation, remote transport and release actions explicit. Do not run\\nFPR-5 or create an intervening review-only handoff; reserve one independent final\\nreview of the fixed integrated source and complete evidence for FPR-5.\\n\\nClose with the combined matrix, source/environment and migration/install/rollback/\\npilot evidence, failures/limits and unresolved owner choices. Update ROADMAP and\\nHANDOVER together. Publish one canonical FPR-5 successor through bound next-write\\nusing current context and expected prior digest; identify the independent-reviewer\\nchoice without claiming self-review as independent. Refresh this installation's\\nruntime binding explicitly if repairs require it, preserving identity/settings/NEXT.\\nMake one coherent local FPR-4 feature commit after checks, then validate NEXT from\\ndisk. Report changes, failures/limits, owner choices, commit and validated successor.\\nDo not claim release readiness before combined validation and independent final\\nreview, and do not infer release authorization from either.\\n\", \"next_sha256\": \"0b6ef939df67ff2a2f5a4321c7787f56a4d0e804e7b433c30eccde162295dfb0\", \"rendered\": \"## CURRENT NEXT \\u2014 paste this\\n\\n```text\\nRepository: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014\\nRepository ID: 6988dc4a-5f22-454b-9d68-ac5905b383bf\\nBranch: feat/overseer-v1-recovery-20261014\\nLane: product\\nModel: GPT-6 Astra\\nAction ID: OVERSEER-FULL-PRODUCT-RESTORATION-VALIDATION-4\\nAction kind: implement\\n\\nReasoning: Max\\nRole: Principal integration validation engineer\\n\\nPerform FPR-4 only after the owner accepts this prompt. Acceptance authorizes\\nlocal combined validation and necessary bounded repairs for section 9 of\\ndocs/decisions/FULL-PRODUCT-RESTORATION-PLAN.md. It does not authorize FPR-5,\\nremote operations, release or deployment.\\n\\nVerify physical cwd, Git top-level, branch, full HEAD, configured name overseer-kit,\\nUUID, product lane, runtime binding and clean state. Validate this NEXT as the\\nsingle FPR-3 feature closing commit whose sole predecessor is\\n695444fb5f8261391f5c273807129c13dc8db1fd. Stop on mismatch, unexpected dirt or moved\\nsource refs. Read AGENTS.md, ROADMAP, HANDOVER, canonical NEXT, the full restoration\\nplan, docs/validation/FPR-1-FOUNDATION.md, docs/validation/FPR-2-AUTHORITY.md,\\ndocs/validation/FPR-3-SURFACES.md and its source/test disposition and results,\\ndocs/FPR-2-AUTHORITY-AND-LANES.md, docs/FPR-3-PRODUCT-SURFACES.md,\\ndocs/SOURCE-DISTRIBUTION.md, V1-SCOPE-RESET, V1-CERTIFICATION and tests/README.md.\\n\\nKeep this branch as integration base. Verify committed sources here:\\nfeat/overseer-context-isolation at e9be0c4b3cafb149b9f3b7af2ab060f01bbfa504;\\nfeat/overseer-v1-recovery at 32254cd939885d9d6f40634997ea5b9c37ea776c;\\nmain at d47291d5d9030de5ebef713da95efa978c4d8c6e; repaired safety source at\\n348e0f323a3b17cd5022a1bfd56fa09a6831c51f. Read committed objects without entering\\nolder worktrees, merging, cherry-picking or wholesale reverting. Preserve other\\nrefs, Muse history, snapshots, rollback fixtures, completed bounded pilot and\\nbounded source-release directory.\\n\\nRun one combined section-9 selection against a recorded integrated source/runtime\\nand dependency set. Use this installation's conventional venv, pinned local\\nprerequisites, disposable repositories under a nonrepository parent and fake\\nproviders/transports only. Cover all three authority modes; two simultaneous\\nrepositories with distinct defaults and overlapping lanes; worktrees/nested\\nboundaries; lane ownership and workspace; canonical automatic/manual bookends;\\nGit closing-commit and native Muse exact-revision freshness; CAS/context races;\\nevery maintained command and full settings; app/desktop/hosted controls; legacy\\nand bounded migrations; controlled mirror reconciliation and credentials; fresh\\nsource-package installation and advertised entry points; compatible configuration\\nupgrade/rollback; and the intended Python 3.11/3.14 and local native-build matrix.\\nPreserve tracked Git bindings, explicit authority selection, confined writes,\\ncaptured context, final rechecks, pinned closing reads and whole-file CAS. No\\npublic path may invoke legacy_main or scrape/regenerate a handoff.\\n\\nUse the FPR-3 disposition map to include every restored/reachable requirement and\\nrelevant cross-cutting family, including all 104 historical failures. Preserve\\noriginal tests and historical results; add explicit replacement cases for changed\\ncontracts. Record commands, exit codes, source/runtime hashes and dependency\\nversions. Fix real failures with failing-before/passing-after evidence; rerun only\\naffected checks unless shared changes invalidate the combined result. Missing\\nprerequisites, sockets, hosts or toolchains remain unresolved evidence, never a\\ngreen skip or an implicit reduction of the promised product.\\n\\nObtain the pending owner choices before claiming named automatic host/version or\\nplatform/distribution acceptance, and before running the separately selected new\\nintegrated pilot. The proposed pilot is a new noncritical disposable local project\\nwith selected host/authority and fake remote transports. Continue independent\\nfixture work while those choices are pending. Preserve the completed bounded\\npilot and do not repeat its review, installation/rollback or certification process.\\nExercise changed safety behaviors in the new matrix. Record native GUI, host\\nlifecycle delivery and provider limitations separately from fixture success.\\n\\nNo real consumers/hooks, providers/network, live mirror/export/delivery, fetch,\\npush, main merge, tags, publication, signing, release or deployment. Do not restore\\nOCI, native/Mach GSR, sole-writer storage, identity bridges or packet prerequisites.\\nKeep local mutation, remote transport and release actions explicit. Do not run\\nFPR-5 or create an intervening review-only handoff; reserve one independent final\\nreview of the fixed integrated source and complete evidence for FPR-5.\\n\\nClose with the combined matrix, source/environment and migration/install/rollback/\\npilot evidence, failures/limits and unresolved owner choices. Update ROADMAP and\\nHANDOVER together. Publish one canonical FPR-5 successor through bound next-write\\nusing current context and expected prior digest; identify the independent-reviewer\\nchoice without claiming self-review as independent. Refresh this installation's\\nruntime binding explicitly if repairs require it, preserving identity/settings/NEXT.\\nMake one coherent local FPR-4 feature commit after checks, then validate NEXT from\\ndisk. Report changes, failures/limits, owner choices, commit and validated successor.\\nDo not claim release readiness before combined validation and independent final\\nreview, and do not infer release authorization from either.\\n```\\n\"}\n",
+      "stderr": ""
+    }
+  ],
+  "after_config_sha256": "5651f0118bfd8393559e97212f846ac1735a313c2176ccaabc12cdc4a08e2a10",
+  "after_configuration": {
+    "vcs": {
+      "regime": "git-only",
+      "canonical": "git",
+      "git": {
+        "remote": "origin",
+        "main_branch": "main",
+        "mirror_branch": null,
+        "feature_branch_pattern": "feat/{slug}"
+      },
+      "muse": {
+        "staging_remote": null,
+        "main_branch": null,
+        "working_dir": null
+      }
+    },
+    "docs": {
+      "handover": "OVERSEER-HANDOVER.md",
+      "roadmap": "ROADMAP.md",
+      "coordination": null,
+      "standing_decisions": "ROADMAP.md",
+      "handover_title": "Overseer Handover",
+      "roadmap_title": "Roadmap",
+      "canonical_next": "docs/NEXT.md",
+      "default_lane": "product",
+      "lanes": {
+        "product": {
+          "handover": "OVERSEER-HANDOVER.md",
+          "roadmap": "ROADMAP.md",
+          "handover_title": "Overseer Handover",
+          "roadmap_title": "Roadmap",
+          "repo_id": "6988dc4a-5f22-454b-9d68-ac5905b383bf"
+        }
+      }
+    },
+    "thresholds": {
+      "realign_max_commits": 50,
+      "drift_warn_only": true
+    },
+    "freeze_contract": {
+      "enabled": true,
+      "reviewer": "agent",
+      "human_escalation": [
+        "security"
+      ]
+    },
+    "repo": {
+      "name": "overseer-kit",
+      "id": "6988dc4a-5f22-454b-9d68-ac5905b383bf",
+      "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "root_relative_docs": "docs"
+    },
+    "context": {
+      "lane": "product",
+      "model": "GPT-6 Astra"
+    },
+    "runtime": {
+      "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "version": "1.0.0.dev1",
+      "sha256": "bdbfdae4599ca0bd1b096d5ed2c84019df3b83ed24972c202319ea5507cf09ec"
+    },
+    "schema": 3
+  },
+  "all_nonruntime_settings_preserved": true,
+  "next_preserved": true,
+  "hooks_preserved": true,
+  "runtime_matches": true,
+  "status": {
+    "ok": true,
+    "repository": {
+      "name": "overseer-kit",
+      "id": "6988dc4a-5f22-454b-9d68-ac5905b383bf",
+      "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "root_relative_docs": "docs"
+    },
+    "branch": "feat/overseer-v1-recovery-20261014",
+    "head": "6289d2823184a63e2968d2c5f6a76abab5818368",
+    "runtime": {
+      "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "version": "1.0.0.dev1",
+      "sha256": "bdbfdae4599ca0bd1b096d5ed2c84019df3b83ed24972c202319ea5507cf09ec"
+    },
+    "vcs": "git",
+    "source_id": null,
+    "publication": "not_checked_offline",
+    "next": {
+      "schema": 1,
+      "repo_id": "6988dc4a-5f22-454b-9d68-ac5905b383bf",
+      "repo_root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "branch": "feat/overseer-v1-recovery-20261014",
+      "base_head": "695444fb5f8261391f5c273807129c13dc8db1fd",
+      "lane": "product",
+      "model": "GPT-6 Astra",
+      "action_id": "OVERSEER-FULL-PRODUCT-RESTORATION-VALIDATION-4",
+      "action_kind": "implement",
+      "prompt_sha256": "201f539055c654bb4177b2e775b49e4098224682c8b0622fefeda26d06e788d7"
+    },
+    "prompt": "Reasoning: Max\nRole: Principal integration validation engineer\n\nPerform FPR-4 only after the owner accepts this prompt. Acceptance authorizes\nlocal combined validation and necessary bounded repairs for section 9 of\ndocs/decisions/FULL-PRODUCT-RESTORATION-PLAN.md. It does not authorize FPR-5,\nremote operations, release or deployment.\n\nVerify physical cwd, Git top-level, branch, full HEAD, configured name overseer-kit,\nUUID, product lane, runtime binding and clean state. Validate this NEXT as the\nsingle FPR-3 feature closing commit whose sole predecessor is\n695444fb5f8261391f5c273807129c13dc8db1fd. Stop on mismatch, unexpected dirt or moved\nsource refs. Read AGENTS.md, ROADMAP, HANDOVER, canonical NEXT, the full restoration\nplan, docs/validation/FPR-1-FOUNDATION.md, docs/validation/FPR-2-AUTHORITY.md,\ndocs/validation/FPR-3-SURFACES.md and its source/test disposition and results,\ndocs/FPR-2-AUTHORITY-AND-LANES.md, docs/FPR-3-PRODUCT-SURFACES.md,\ndocs/SOURCE-DISTRIBUTION.md, V1-SCOPE-RESET, V1-CERTIFICATION and tests/README.md.\n\nKeep this branch as integration base. Verify committed sources here:\nfeat/overseer-context-isolation at e9be0c4b3cafb149b9f3b7af2ab060f01bbfa504;\nfeat/overseer-v1-recovery at 32254cd939885d9d6f40634997ea5b9c37ea776c;\nmain at d47291d5d9030de5ebef713da95efa978c4d8c6e; repaired safety source at\n348e0f323a3b17cd5022a1bfd56fa09a6831c51f. Read committed objects without entering\nolder worktrees, merging, cherry-picking or wholesale reverting. Preserve other\nrefs, Muse history, snapshots, rollback fixtures, completed bounded pilot and\nbounded source-release directory.\n\nRun one combined section-9 selection against a recorded integrated source/runtime\nand dependency set. Use this installation's conventional venv, pinned local\nprerequisites, disposable repositories under a nonrepository parent and fake\nproviders/transports only. Cover all three authority modes; two simultaneous\nrepositories with distinct defaults and overlapping lanes; worktrees/nested\nboundaries; lane ownership and workspace; canonical automatic/manual bookends;\nGit closing-commit and native Muse exact-revision freshness; CAS/context races;\nevery maintained command and full settings; app/desktop/hosted controls; legacy\nand bounded migrations; controlled mirror reconciliation and credentials; fresh\nsource-package installation and advertised entry points; compatible configuration\nupgrade/rollback; and the intended Python 3.11/3.14 and local native-build matrix.\nPreserve tracked Git bindings, explicit authority selection, confined writes,\ncaptured context, final rechecks, pinned closing reads and whole-file CAS. No\npublic path may invoke legacy_main or scrape/regenerate a handoff.\n\nUse the FPR-3 disposition map to include every restored/reachable requirement and\nrelevant cross-cutting family, including all 104 historical failures. Preserve\noriginal tests and historical results; add explicit replacement cases for changed\ncontracts. Record commands, exit codes, source/runtime hashes and dependency\nversions. Fix real failures with failing-before/passing-after evidence; rerun only\naffected checks unless shared changes invalidate the combined result. Missing\nprerequisites, sockets, hosts or toolchains remain unresolved evidence, never a\ngreen skip or an implicit reduction of the promised product.\n\nObtain the pending owner choices before claiming named automatic host/version or\nplatform/distribution acceptance, and before running the separately selected new\nintegrated pilot. The proposed pilot is a new noncritical disposable local project\nwith selected host/authority and fake remote transports. Continue independent\nfixture work while those choices are pending. Preserve the completed bounded\npilot and do not repeat its review, installation/rollback or certification process.\nExercise changed safety behaviors in the new matrix. Record native GUI, host\nlifecycle delivery and provider limitations separately from fixture success.\n\nNo real consumers/hooks, providers/network, live mirror/export/delivery, fetch,\npush, main merge, tags, publication, signing, release or deployment. Do not restore\nOCI, native/Mach GSR, sole-writer storage, identity bridges or packet prerequisites.\nKeep local mutation, remote transport and release actions explicit. Do not run\nFPR-5 or create an intervening review-only handoff; reserve one independent final\nreview of the fixed integrated source and complete evidence for FPR-5.\n\nClose with the combined matrix, source/environment and migration/install/rollback/\npilot evidence, failures/limits and unresolved owner choices. Update ROADMAP and\nHANDOVER together. Publish one canonical FPR-5 successor through bound next-write\nusing current context and expected prior digest; identify the independent-reviewer\nchoice without claiming self-review as independent. Refresh this installation's\nruntime binding explicitly if repairs require it, preserving identity/settings/NEXT.\nMake one coherent local FPR-4 feature commit after checks, then validate NEXT from\ndisk. Report changes, failures/limits, owner choices, commit and validated successor.\nDo not claim release readiness before combined validation and independent final\nreview, and do not infer release authorization from either.\n",
+    "next_sha256": "0b6ef939df67ff2a2f5a4321c7787f56a4d0e804e7b433c30eccde162295dfb0",
+    "configuration": {
+      "vcs": {
+        "regime": "git-only",
+        "canonical": "git",
+        "git": {
+          "remote": "origin",
+          "main_branch": "main",
+          "mirror_branch": null,
+          "feature_branch_pattern": "feat/{slug}"
+        },
+        "muse": {
+          "staging_remote": null,
+          "main_branch": null,
+          "working_dir": null
+        }
+      },
+      "docs": {
+        "handover": "OVERSEER-HANDOVER.md",
+        "roadmap": "ROADMAP.md",
+        "coordination": null,
+        "standing_decisions": "ROADMAP.md",
+        "handover_title": "Overseer Handover",
+        "roadmap_title": "Roadmap",
+        "canonical_next": "docs/NEXT.md",
+        "default_lane": "product",
+        "lanes": {
+          "product": {
+            "handover": "OVERSEER-HANDOVER.md",
+            "roadmap": "ROADMAP.md",
+            "handover_title": "Overseer Handover",
+            "roadmap_title": "Roadmap",
+            "repo_id": "6988dc4a-5f22-454b-9d68-ac5905b383bf"
+          }
+        }
+      },
+      "thresholds": {
+        "realign_max_commits": 50,
+        "drift_warn_only": true
+      },
+      "freeze_contract": {
+        "enabled": true,
+        "reviewer": "agent",
+        "human_escalation": [
+          "security"
+        ]
+      },
+      "repo": {
+        "name": "overseer-kit",
+        "id": "6988dc4a-5f22-454b-9d68-ac5905b383bf",
+        "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+        "root_relative_docs": "docs"
+      },
+      "context": {
+        "lane": "product",
+        "model": "GPT-6 Astra"
+      },
+      "runtime": {
+        "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+        "version": "1.0.0.dev1",
+        "sha256": "bdbfdae4599ca0bd1b096d5ed2c84019df3b83ed24972c202319ea5507cf09ec"
+      },
+      "schema": 3
+    },
+    "source_schema": "schema-3",
+    "migration_required": false,
+    "diagnostics": [
+      "legacy_reviewer_model_preserved: thinking-high"
+    ],
+    "authority": "git",
+    "assets": [
+      {
+        "path": ".claude/skills/adversarial-freeze-review/SKILL.md",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044",
+        "after": "7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044"
+      },
+      {
+        "path": ".claude/skills/build-verification-review/SKILL.md",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c",
+        "after": "f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c"
+      },
+      {
+        "path": ".claude/skills/check-ok/SIDE-CHECK-TEMPLATE.md",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c",
+        "after": "0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c"
+      },
+      {
+        "path": ".claude/skills/check-ok/SKILL.md",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a",
+        "after": "3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a"
+      },
+      {
+        "path": ".claude/skills/deploy-verification-review/SKILL.md",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b",
+        "after": "a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b"
+      },
+      {
+        "path": ".claude/skills/freeze-review-loop/SKILL.md",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f",
+        "after": "355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f"
+      },
+      {
+        "path": ".claude/skills/freeze-review/SKILL.md",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b",
+        "after": "620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b"
+      },
+      {
+        "path": ".claude/skills/governance-sync/SKILL.md",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14",
+        "after": "06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14"
+      },
+      {
+        "path": ".claude/skills/independent-second-reviewer/SKILL.md",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837",
+        "after": "994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837"
+      },
+      {
+        "path": ".claude/skills/print-next/SKILL.md",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff",
+        "after": "de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff"
+      },
+      {
+        "path": ".claude/skills/workspace-status/SKILL.md",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25",
+        "after": "a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25"
+      },
+      {
+        "path": ".cursor/rules/build-verification-required.mdc",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "b0fdb1a1e0a01d23b4b70cb5b4bb987eb11b9fdba1a8a77af54e90f47d832065",
+        "after": "b0fdb1a1e0a01d23b4b70cb5b4bb987eb11b9fdba1a8a77af54e90f47d832065"
+      },
+      {
+        "path": ".cursor/rules/check-ok-thinking.mdc",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "a75697f0f8b6fb1ee424aa198dd5e4a6648e33b3707482964494287196729739",
+        "after": "a75697f0f8b6fb1ee424aa198dd5e4a6648e33b3707482964494287196729739"
+      },
+      {
+        "path": ".cursor/rules/governance-sync.mdc",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "97414e26682f3ccefb3c442a05d73c7dbb998fd78e5a6d286e4ef625d4405fb6",
+        "after": "97414e26682f3ccefb3c442a05d73c7dbb998fd78e5a6d286e4ef625d4405fb6"
+      },
+      {
+        "path": ".cursor/rules/l1-checkpoints-consumer-owned.mdc",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "6eebc8126cee6c7ee1d2de1180faec15e2822448b2bfeffb56495991fd21a037",
+        "after": "6eebc8126cee6c7ee1d2de1180faec15e2822448b2bfeffb56495991fd21a037"
+      },
+      {
+        "path": ".cursor/rules/no-docs-only-pr-to-main.mdc",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "c040517845d72aa9f40cc802db00e39dc67cd4d66a9f4dd1ac89d8bb680dd610",
+        "after": "c040517845d72aa9f40cc802db00e39dc67cd4d66a9f4dd1ac89d8bb680dd610"
+      },
+      {
+        "path": ".cursor/rules/orchestrator.mdc",
+        "classification": "both-changed",
+        "origin": "kit",
+        "before": "e4d2e9d9ed268086a43a2c3c2b9ba7bef8fb42e544c81182128704e5a26c8d84",
+        "after": "98b8df26c0f5abc71d203d2bcf457e23dea29e7c0e242bbe3cadeb711064e5c3"
+      },
+      {
+        "path": ".cursor/rules/print-next-closeout.mdc",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "c45ae41918dabb9b1afb3f180924039ff02df661a6c77f1c97c1a119b77f62bb",
+        "after": "c45ae41918dabb9b1afb3f180924039ff02df661a6c77f1c97c1a119b77f62bb"
+      },
+      {
+        "path": ".cursor/rules/tier-authority.mdc",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "e685afdd9a6368bac11127bebb0ca9883ac7523f15f65ceb3d9efdf239fb9f2a",
+        "after": "e685afdd9a6368bac11127bebb0ca9883ac7523f15f65ceb3d9efdf239fb9f2a"
+      },
+      {
+        "path": ".cursor/rules/workspace-authority.mdc",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "438b69c1bae0e413e6ad953cbec3173162282625d4bee04066e482db72a8aff0",
+        "after": "438b69c1bae0e413e6ad953cbec3173162282625d4bee04066e482db72a8aff0"
+      },
+      {
+        "path": ".cursor/skills/adversarial-freeze-review/SKILL.md",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044",
+        "after": "7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044"
+      },
+      {
+        "path": ".cursor/skills/build-verification-review/SKILL.md",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c",
+        "after": "f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c"
+      },
+      {
+        "path": ".cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c",
+        "after": "0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c"
+      },
+      {
+        "path": ".cursor/skills/check-ok/SKILL.md",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a",
+        "after": "3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a"
+      },
+      {
+        "path": ".cursor/skills/deploy-verification-review/SKILL.md",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b",
+        "after": "a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b"
+      },
+      {
+        "path": ".cursor/skills/freeze-review-loop/SKILL.md",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f",
+        "after": "355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f"
+      },
+      {
+        "path": ".cursor/skills/freeze-review/SKILL.md",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b",
+        "after": "620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b"
+      },
+      {
+        "path": ".cursor/skills/governance-sync/SKILL.md",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14",
+        "after": "06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14"
+      },
+      {
+        "path": ".cursor/skills/independent-second-reviewer/SKILL.md",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837",
+        "after": "994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837"
+      },
+      {
+        "path": ".cursor/skills/print-next/SKILL.md",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff",
+        "after": "de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff"
+      },
+      {
+        "path": ".cursor/skills/workspace-status/SKILL.md",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25",
+        "after": "a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25"
+      },
+      {
+        "path": ".overseer/STANDING-DECISIONS.reference.md",
+        "classification": "kit-updated",
+        "origin": "kit",
+        "before": "4694e4c48fc9595301629432ddd67861900d1288e097bd5d01232611c9ce18db",
+        "after": "290117014bcccc199b6802ac86e3c6ecf520542894384187c967c96a13235ccd"
+      },
+      {
+        "path": ".overseer/bin/ok",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4",
+        "after": "1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4"
+      },
+      {
+        "path": ".overseer/policy/model-labels.yaml",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "db95732401de452223d750c68172b6c1bb28b3b574c6368132678309b8c801e0",
+        "after": "db95732401de452223d750c68172b6c1bb28b3b574c6368132678309b8c801e0"
+      },
+      {
+        "path": ".overseer/policy/model-routing.yaml",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63",
+        "after": "52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63"
+      },
+      {
+        "path": ".overseer/policy/test-tiers.yaml",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "55b337e9399ccd26f4c70dba9f6f57c1359fab930a522e605cbe52d3533238d8",
+        "after": "55b337e9399ccd26f4c70dba9f6f57c1359fab930a522e605cbe52d3533238d8"
+      },
+      {
+        "path": ".overseer/policy/tiers.yaml",
+        "classification": "unchanged",
+        "origin": "kit",
+        "before": "92920331f4e35bad9191a101b8b5d211ef31f069b2ba1cf4446ceb3796894776",
+        "after": "92920331f4e35bad9191a101b8b5d211ef31f069b2ba1cf4446ceb3796894776"
+      },
+      {
+        "path": "policy/model-routing.yaml",
+        "classification": "unchanged",
+        "origin": "unrecorded",
+        "before": "52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63",
+        "after": "52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63"
+      }
+    ],
+    "preserved_inventory": [
+      {
+        "path": ".claude/skills/adversarial-freeze-review/SKILL.md",
+        "sha256": "7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044",
+        "mode": 420
+      },
+      {
+        "path": ".claude/skills/build-verification-review/SKILL.md",
+        "sha256": "f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c",
+        "mode": 420
+      },
+      {
+        "path": ".claude/skills/check-ok/SIDE-CHECK-TEMPLATE.md",
+        "sha256": "0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c",
+        "mode": 420
+      },
+      {
+        "path": ".claude/skills/check-ok/SKILL.md",
+        "sha256": "3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a",
+        "mode": 420
+      },
+      {
+        "path": ".claude/skills/deploy-verification-review/SKILL.md",
+        "sha256": "a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b",
+        "mode": 420
+      },
+      {
+        "path": ".claude/skills/freeze-review-loop/SKILL.md",
+        "sha256": "355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f",
+        "mode": 420
+      },
+      {
+        "path": ".claude/skills/freeze-review/SKILL.md",
+        "sha256": "620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b",
+        "mode": 420
+      },
+      {
+        "path": ".claude/skills/governance-sync/SKILL.md",
+        "sha256": "06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14",
+        "mode": 420
+      },
+      {
+        "path": ".claude/skills/independent-second-reviewer/SKILL.md",
+        "sha256": "994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837",
+        "mode": 420
+      },
+      {
+        "path": ".claude/skills/print-next/SKILL.md",
+        "sha256": "de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff",
+        "mode": 420
+      },
+      {
+        "path": ".claude/skills/workspace-status/SKILL.md",
+        "sha256": "a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25",
+        "mode": 420
+      },
+      {
+        "path": ".cursor/hooks.json",
+        "sha256": "2f3f0de72a829aa7ad28055c884127a5db5660c5c78556ac7b8aea8dd2e2ac0e",
+        "mode": 420
+      },
+      {
+        "path": ".cursor/hooks/README.md",
+        "sha256": "48e9ee363c5a2292d49765118f54eedac53ec788848ed53774812f55f897a31a",
+        "mode": 420
+      },
+      {
+        "path": ".cursor/hooks/session-end-closeout.sh",
+        "sha256": "af4f2a4ae24cec4e375085e96d5144a7471457460206dbeba6d7a525ea00279a",
+        "mode": 493
+      },
+      {
+        "path": ".cursor/hooks/session-start-next.sh",
+        "sha256": "af4f2a4ae24cec4e375085e96d5144a7471457460206dbeba6d7a525ea00279a",
+        "mode": 493
+      },
+      {
+        "path": ".cursor/rules/build-verification-required.mdc",
+        "sha256": "b0fdb1a1e0a01d23b4b70cb5b4bb987eb11b9fdba1a8a77af54e90f47d832065",
+        "mode": 420
+      },
+      {
+        "path": ".cursor/rules/check-ok-thinking.mdc",
+        "sha256": "a75697f0f8b6fb1ee424aa198dd5e4a6648e33b3707482964494287196729739",
+        "mode": 420
+      },
+      {
+        "path": ".cursor/rules/governance-sync.mdc",
+        "sha256": "97414e26682f3ccefb3c442a05d73c7dbb998fd78e5a6d286e4ef625d4405fb6",
+        "mode": 420
+      },
+      {
+        "path": ".cursor/rules/l1-checkpoints-consumer-owned.mdc",
+        "sha256": "6eebc8126cee6c7ee1d2de1180faec15e2822448b2bfeffb56495991fd21a037",
+        "mode": 420
+      },
+      {
+        "path": ".cursor/rules/no-docs-only-pr-to-main.mdc",
+        "sha256": "c040517845d72aa9f40cc802db00e39dc67cd4d66a9f4dd1ac89d8bb680dd610",
+        "mode": 420
+      },
+      {
+        "path": ".cursor/rules/orchestrator.mdc",
+        "sha256": "e4d2e9d9ed268086a43a2c3c2b9ba7bef8fb42e544c81182128704e5a26c8d84",
+        "mode": 420
+      },
+      {
+        "path": ".cursor/rules/print-next-closeout.mdc",
+        "sha256": "c45ae41918dabb9b1afb3f180924039ff02df661a6c77f1c97c1a119b77f62bb",
+        "mode": 420
+      },
+      {
+        "path": ".cursor/rules/tier-authority.mdc",
+        "sha256": "e685afdd9a6368bac11127bebb0ca9883ac7523f15f65ceb3d9efdf239fb9f2a",
+        "mode": 420
+      },
+      {
+        "path": ".cursor/rules/workspace-authority.mdc",
+        "sha256": "438b69c1bae0e413e6ad953cbec3173162282625d4bee04066e482db72a8aff0",
+        "mode": 420
+      },
+      {
+        "path": ".cursor/skills/adversarial-freeze-review/SKILL.md",
+        "sha256": "7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044",
+        "mode": 420
+      },
+      {
+        "path": ".cursor/skills/build-verification-review/SKILL.md",
+        "sha256": "f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c",
+        "mode": 420
+      },
+      {
+        "path": ".cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md",
+        "sha256": "0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c",
+        "mode": 420
+      },
+      {
+        "path": ".cursor/skills/check-ok/SKILL.md",
+        "sha256": "3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a",
+        "mode": 420
+      },
+      {
+        "path": ".cursor/skills/deploy-verification-review/SKILL.md",
+        "sha256": "a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b",
+        "mode": 420
+      },
+      {
+        "path": ".cursor/skills/freeze-review-loop/SKILL.md",
+        "sha256": "355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f",
+        "mode": 420
+      },
+      {
+        "path": ".cursor/skills/freeze-review/SKILL.md",
+        "sha256": "620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b",
+        "mode": 420
+      },
+      {
+        "path": ".cursor/skills/governance-sync/SKILL.md",
+        "sha256": "06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14",
+        "mode": 420
+      },
+      {
+        "path": ".cursor/skills/independent-second-reviewer/SKILL.md",
+        "sha256": "994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837",
+        "mode": 420
+      },
+      {
+        "path": ".cursor/skills/print-next/SKILL.md",
+        "sha256": "de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff",
+        "mode": 420
+      },
+      {
+        "path": ".cursor/skills/workspace-status/SKILL.md",
+        "sha256": "a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25",
+        "mode": 420
+      },
+      {
+        "path": ".overseer/STANDING-DECISIONS.reference.md",
+        "sha256": "4694e4c48fc9595301629432ddd67861900d1288e097bd5d01232611c9ce18db",
+        "mode": 420
+      },
+      {
+        "path": ".overseer/bin/ok",
+        "sha256": "1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4",
+        "mode": 493
+      },
+      {
+        "path": ".overseer/ledger.jsonl",
+        "sha256": "absent",
+        "mode": null
+      },
+      {
+        "path": ".overseer/policy/model-labels.yaml",
+        "sha256": "db95732401de452223d750c68172b6c1bb28b3b574c6368132678309b8c801e0",
+        "mode": 420
+      },
+      {
+        "path": ".overseer/policy/model-routing.yaml",
+        "sha256": "52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63",
+        "mode": 420
+      },
+      {
+        "path": ".overseer/policy/test-tiers.yaml",
+        "sha256": "55b337e9399ccd26f4c70dba9f6f57c1359fab930a522e605cbe52d3533238d8",
+        "mode": 420
+      },
+      {
+        "path": ".overseer/policy/tiers.yaml",
+        "sha256": "92920331f4e35bad9191a101b8b5d211ef31f069b2ba1cf4446ceb3796894776",
+        "mode": 420
+      },
+      {
+        "path": ".overseer/version.lock",
+        "sha256": "edbe7e6cbfb79011eb8d18409f831e6ff104da0ef98b1031e3804fedcefec96a",
+        "mode": 420
+      },
+      {
+        "path": "MUSE-BRIDGE-WORKFLOW.md",
+        "sha256": "4880952af1fdba7e4153435118422a520e84a987e8d845e5c1b593eb01e297d7",
+        "mode": 420
+      },
+      {
+        "path": "docs/NEXT.md",
+        "sha256": "0b6ef939df67ff2a2f5a4321c7787f56a4d0e804e7b433c30eccde162295dfb0",
+        "mode": 420
+      },
+      {
+        "path": "docs/OVERSEER-HANDOVER.md",
+        "sha256": "52b7e6af550b78da1ec26f5a5dc1ca8d9afa432c11b8fb3fe085ea356b99a842",
+        "mode": 420
+      },
+      {
+        "path": "docs/ROADMAP.md",
+        "sha256": "f267ce4f9267155ece888f1200e5a173baf1b6b9b1eec7cf3e1640e890befef0",
+        "mode": 420
+      },
+      {
+        "path": "scripts/muse-bridge-deploy.sh",
+        "sha256": "d1a4351567edbe3d054b545b8cb165e302e231037ae152bba14bd3a6a9e302d6",
+        "mode": 493
+      }
+    ],
+    "dirty": true,
+    "tracked_local": [],
+    "substrate": {
+      "ok": true,
+      "state": "bound_git",
+      "source_id": null
+    },
+    "muse_sync": {
+      "state": "not_applicable",
+      "mirror_correspondence": "use_explicit_mirror_verify"
+    },
+    "footprint_integrity": {
+      "ok": false,
+      "paths_requiring_attention": [
+        ".claude/skills/freeze-review-loop/SKILL.md",
+        ".claude/skills/governance-sync/SKILL.md",
+        ".claude/skills/print-next/SKILL.md",
+        ".claude/skills/workspace-status/SKILL.md",
+        ".cursor/hooks.json",
+        ".cursor/hooks/session-end-closeout.sh",
+        ".cursor/hooks/session-start-next.sh",
+        ".cursor/rules/build-verification-required.mdc",
+        ".cursor/rules/check-ok-thinking.mdc",
+        ".cursor/rules/governance-sync.mdc",
+        ".cursor/rules/no-docs-only-pr-to-main.mdc",
+        ".cursor/rules/orchestrator.mdc",
+        ".cursor/rules/print-next-closeout.mdc",
+        ".cursor/rules/tier-authority.mdc",
+        ".cursor/rules/workspace-authority.mdc",
+        ".cursor/skills/freeze-review-loop/SKILL.md",
+        ".cursor/skills/governance-sync/SKILL.md",
+        ".cursor/skills/print-next/SKILL.md",
+        ".cursor/skills/workspace-status/SKILL.md",
+        "MUSE-BRIDGE-WORKFLOW.md",
+        "scripts/muse-bridge-deploy.sh"
+      ]
+    },
+    "footprint_coverage": {
+      "ok": false,
+      "missing_records": [
+        "policy/model-routing.yaml"
+      ]
+    },
+    "drift": {
+      "status": "changed",
+      "changed_files": [
+        ".cursor/rules/orchestrator.mdc",
+        ".overseer/STANDING-DECISIONS.reference.md"
+      ]
+    },
+    "lock": {
+      "lock_version": 1,
+      "kit_version": "1.0.0.dev1",
+      "config_version": 3,
+      "installed_at": "2026-07-10T00:00:00Z",
+      "synced_at": "2026-09-20T15:24:42Z",
+      "footprint_digest": "sha256:882c3d251152d292378baf00d4b848a8013a321ef1808119d270a81dde0eec18",
+      "footprint": [
+        {
+          "path": ".claude/skills/adversarial-freeze-review/SKILL.md",
+          "source": "cursor/skills/adversarial-freeze-review/SKILL.md",
+          "sha256": "7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044",
+          "origin": "kit"
+        },
+        {
+          "path": ".claude/skills/build-verification-review/SKILL.md",
+          "source": "cursor/skills/build-verification-review/SKILL.md",
+          "sha256": "f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c",
+          "origin": "kit"
+        },
+        {
+          "path": ".claude/skills/check-ok/SIDE-CHECK-TEMPLATE.md",
+          "source": "cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md",
+          "sha256": "0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c",
+          "origin": "kit"
+        },
+        {
+          "path": ".claude/skills/check-ok/SKILL.md",
+          "source": "cursor/skills/check-ok/SKILL.md",
+          "sha256": "3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a",
+          "origin": "kit"
+        },
+        {
+          "path": ".claude/skills/deploy-verification-review/SKILL.md",
+          "source": "cursor/skills/deploy-verification-review/SKILL.md",
+          "sha256": "a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b",
+          "origin": "kit"
+        },
+        {
+          "path": ".claude/skills/freeze-review-loop/SKILL.md",
+          "source": "cursor/skills/freeze-review-loop/SKILL.md",
+          "sha256": "825a1090612be0923ee1b9bcfee973b7f6e982369b8d74af11d75462e844fde7",
+          "origin": "kit"
+        },
+        {
+          "path": ".claude/skills/freeze-review/SKILL.md",
+          "source": "cursor/skills/freeze-review/SKILL.md",
+          "sha256": "620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b",
+          "origin": "kit"
+        },
+        {
+          "path": ".claude/skills/governance-sync/SKILL.md",
+          "source": "cursor/skills/governance-sync/SKILL.md",
+          "sha256": "60df1ef0f87aea065c39d5bcd38754cc44279e99db447a2777c75d32b434e9b5",
+          "origin": "kit"
+        },
+        {
+          "path": ".claude/skills/independent-second-reviewer/SKILL.md",
+          "source": "cursor/skills/independent-second-reviewer/SKILL.md",
+          "sha256": "994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837",
+          "origin": "kit"
+        },
+        {
+          "path": ".claude/skills/print-next/SKILL.md",
+          "source": "cursor/skills/print-next/SKILL.md",
+          "sha256": "811841a99a2452936f1e59cb69dd02b31bb16e852ad3ba1614904c6b5ecb6de7",
+          "origin": "kit"
+        },
+        {
+          "path": ".claude/skills/workspace-status/SKILL.md",
+          "source": "cursor/skills/workspace-status/SKILL.md",
+          "sha256": "11a6b0586d84997a1394a8f168a4115dcde735c3ff72cd533086dfc484d0d779",
+          "origin": "kit"
+        },
+        {
+          "path": ".cursor/hooks.json",
+          "source": "cursor/hooks/hooks.json",
+          "sha256": "4ed9d7336f5c6fd4a1e3995d6b70b0b63b3451c5278baf651c3a5a42f0816eae",
+          "origin": "kit"
+        },
+        {
+          "path": ".cursor/hooks/README.md",
+          "source": "cursor/hooks/README.md",
+          "sha256": "48e9ee363c5a2292d49765118f54eedac53ec788848ed53774812f55f897a31a",
+          "origin": "kit"
+        },
+        {
+          "path": ".cursor/hooks/session-end-closeout.sh",
+          "source": "cursor/hooks/session-end-closeout.sh",
+          "sha256": "bf188aebfed548a1c64800aa0294249f318548c06d8d679d3b5894bea3844634",
+          "origin": "kit"
+        },
+        {
+          "path": ".cursor/hooks/session-start-next.sh",
+          "source": "cursor/hooks/session-start-next.sh",
+          "sha256": "d695c4d2ddeace73fecb3d4fc460fe582d51e8da71b012c08e8dd8a66280bbfc",
+          "origin": "kit"
+        },
+        {
+          "path": ".cursor/rules/build-verification-required.mdc",
+          "source": "cursor/rules/build-verification-required.mdc",
+          "sha256": "f6ba660c0fb1b2f006103136887c51bab41c6f633ebee8e57d3d549ef5d62f62",
+          "origin": "kit"
+        },
+        {
+          "path": ".cursor/rules/check-ok-thinking.mdc",
+          "source": "cursor/rules/check-ok-thinking.mdc",
+          "sha256": "7a7d48d8c317c3763f057f2025586e124d0f897705c0be55688351755847d474",
+          "origin": "kit"
+        },
+        {
+          "path": ".cursor/rules/governance-sync.mdc",
+          "source": "cursor/rules/governance-sync.mdc",
+          "sha256": "81b78835bf5c822bcf76bde4cea37918956727122c02e91f89130e864c700078",
+          "origin": "kit"
+        },
+        {
+          "path": ".cursor/rules/l1-checkpoints-consumer-owned.mdc",
+          "source": "cursor/rules/l1-checkpoints-consumer-owned.mdc",
+          "sha256": "6eebc8126cee6c7ee1d2de1180faec15e2822448b2bfeffb56495991fd21a037",
+          "origin": "kit"
+        },
+        {
+          "path": ".cursor/rules/no-docs-only-pr-to-main.mdc",
+          "source": "cursor/rules/no-docs-only-pr-to-main.mdc",
+          "sha256": "90b87da8ec1f6dfac079bab72ba5621161410f45999e0510d47bfe26ec0a09da",
+          "origin": "kit"
+        },
+        {
+          "path": ".cursor/rules/orchestrator.mdc",
+          "source": "cursor/rules/orchestrator.mdc",
+          "sha256": "48d461e588ce952f305c9b2635ceebbaa5acb9f1dc2007d3712b555c5076307c",
+          "origin": "kit"
+        },
+        {
+          "path": ".cursor/rules/print-next-closeout.mdc",
+          "source": "cursor/rules/print-next-closeout.mdc",
+          "sha256": "8be1072133829866c3e1ced50c416448150ed4253a992169efd77748de4a8122",
+          "origin": "kit"
+        },
+        {
+          "path": ".cursor/rules/tier-authority.mdc",
+          "source": "cursor/rules/tier-authority.mdc",
+          "sha256": "8b61784cce0f0905d43c7e453b0c4d7d6b219601eaf5b62d45304afaf0338b34",
+          "origin": "kit"
+        },
+        {
+          "path": ".cursor/rules/workspace-authority.mdc",
+          "source": "cursor/rules/workspace-authority.mdc",
+          "sha256": "083f5163e957b1e00956c5370b06d078590627b4bd9b00a27c7378434b344ff5",
+          "origin": "kit"
+        },
+        {
+          "path": ".cursor/skills/adversarial-freeze-review/SKILL.md",
+          "source": "cursor/skills/adversarial-freeze-review/SKILL.md",
+          "sha256": "7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044",
+          "origin": "kit"
+        },
+        {
+          "path": ".cursor/skills/build-verification-review/SKILL.md",
+          "source": "cursor/skills/build-verification-review/SKILL.md",
+          "sha256": "f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c",
+          "origin": "kit"
+        },
+        {
+          "path": ".cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md",
+          "source": "cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md",
+          "sha256": "0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c",
+          "origin": "kit"
+        },
+        {
+          "path": ".cursor/skills/check-ok/SKILL.md",
+          "source": "cursor/skills/check-ok/SKILL.md",
+          "sha256": "3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a",
+          "origin": "kit"
+        },
+        {
+          "path": ".cursor/skills/deploy-verification-review/SKILL.md",
+          "source": "cursor/skills/deploy-verification-review/SKILL.md",
+          "sha256": "a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b",
+          "origin": "kit"
+        },
+        {
+          "path": ".cursor/skills/freeze-review-loop/SKILL.md",
+          "source": "cursor/skills/freeze-review-loop/SKILL.md",
+          "sha256": "825a1090612be0923ee1b9bcfee973b7f6e982369b8d74af11d75462e844fde7",
+          "origin": "kit"
+        },
+        {
+          "path": ".cursor/skills/freeze-review/SKILL.md",
+          "source": "cursor/skills/freeze-review/SKILL.md",
+          "sha256": "620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b",
+          "origin": "kit"
+        },
+        {
+          "path": ".cursor/skills/governance-sync/SKILL.md",
+          "source": "cursor/skills/governance-sync/SKILL.md",
+          "sha256": "60df1ef0f87aea065c39d5bcd38754cc44279e99db447a2777c75d32b434e9b5",
+          "origin": "kit"
+        },
+        {
+          "path": ".cursor/skills/independent-second-reviewer/SKILL.md",
+          "source": "cursor/skills/independent-second-reviewer/SKILL.md",
+          "sha256": "994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837",
+          "origin": "kit"
+        },
+        {
+          "path": ".cursor/skills/print-next/SKILL.md",
+          "source": "cursor/skills/print-next/SKILL.md",
+          "sha256": "811841a99a2452936f1e59cb69dd02b31bb16e852ad3ba1614904c6b5ecb6de7",
+          "origin": "kit"
+        },
+        {
+          "path": ".cursor/skills/workspace-status/SKILL.md",
+          "source": "cursor/skills/workspace-status/SKILL.md",
+          "sha256": "11a6b0586d84997a1394a8f168a4115dcde735c3ff72cd533086dfc484d0d779",
+          "origin": "kit"
+        },
+        {
+          "path": ".overseer/STANDING-DECISIONS.reference.md",
+          "source": "templates/STANDING-DECISIONS.template.md",
+          "sha256": "4694e4c48fc9595301629432ddd67861900d1288e097bd5d01232611c9ce18db",
+          "origin": "kit"
+        },
+        {
+          "path": ".overseer/bin/ok",
+          "source": "bound-product-assets",
+          "sha256": "sha256:1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4",
+          "origin": "kit"
+        },
+        {
+          "path": ".overseer/policy/model-labels.yaml",
+          "source": "policy/model-labels.yaml",
+          "sha256": "db95732401de452223d750c68172b6c1bb28b3b574c6368132678309b8c801e0",
+          "origin": "kit"
+        },
+        {
+          "path": ".overseer/policy/model-routing.yaml",
+          "source": "policy/model-routing.yaml",
+          "sha256": "52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63",
+          "origin": "kit"
+        },
+        {
+          "path": ".overseer/policy/test-tiers.yaml",
+          "source": "policy/test-tiers.yaml",
+          "sha256": "55b337e9399ccd26f4c70dba9f6f57c1359fab930a522e605cbe52d3533238d8",
+          "origin": "kit"
+        },
+        {
+          "path": ".overseer/policy/tiers.yaml",
+          "source": "policy/tiers.yaml",
+          "sha256": "92920331f4e35bad9191a101b8b5d211ef31f069b2ba1cf4446ceb3796894776",
+          "origin": "kit"
+        },
+        {
+          "path": "MUSE-BRIDGE-WORKFLOW.md",
+          "source": "templates/MUSE-BRIDGE-WORKFLOW.template.md",
+          "sha256": "08f1f73e8cb579210f05aea944928a0e7b2a6ae4ced3a4d42df7bab21543dcc2",
+          "origin": "kit"
+        },
+        {
+          "path": "docs/OVERSEER-HANDOVER.md",
+          "source": "templates/OVERSEER-HANDOVER.template.md",
+          "sha256": "sha256:52b7e6af550b78da1ec26f5a5dc1ca8d9afa432c11b8fb3fe085ea356b99a842",
+          "origin": "preserved"
+        },
+        {
+          "path": "docs/ROADMAP.md",
+          "source": "templates/ROADMAP.template.md",
+          "sha256": "sha256:f267ce4f9267155ece888f1200e5a173baf1b6b9b1eec7cf3e1640e890befef0",
+          "origin": "preserved"
+        },
+        {
+          "path": "scripts/muse-bridge-deploy.sh",
+          "source": "templates/scripts/muse-bridge-deploy.sh.template",
+          "sha256": "7b1cda63aff0903d914459c84326efe6bef614b774e1a13fe8b29d5d474a6c97",
+          "origin": "kit"
+        }
+      ]
+    },
+    "governance": {
+      "lane": "product",
+      "authority": "git",
+      "branch": "feat/overseer-v1-recovery-20261014",
+      "revision": "6289d2823184a63e2968d2c5f6a76abab5818368",
+      "local_main": "d47291d5d9030de5ebef713da95efa978c4d8c6e",
+      "remote": "not_checked_offline",
+      "claimed_github_main": null,
+      "remote_drift": "unknown_offline",
+      "cached_remote_main": "d47291d5d9030de5ebef713da95efa978c4d8c6e",
+      "drift": {
+        "d1_handover_vs_git": "drifted",
+        "d2_anchor_vs_canonical": "aligned",
+        "d3_queue_vs_merged": "unknown_offline",
+        "details": {
+          "d1": "claimed=None actual=d47291d5d9030de5ebef713da95efa978c4d8c6e"
+        }
+      },
+      "realignment": "not_applicable",
+      "canonical_next": "docs/NEXT.md"
+    },
+    "governance_gates": {
+      "enabled": true,
+      "suppressed": false,
+      "pending": [],
+      "active_phases": []
+    },
+    "model_routing": {
+      "enabled": false
+    },
+    "cost_awareness": {
+      "enabled": false
+    },
+    "optional_feature_tips": {
+      "tips": [
+        "tip: session_bookends off \u2014 set session_bookends.enabled: true in .overseer/config.yaml then ok sync for Cursor session start/end nudges (cursor/hooks/README.md)",
+        "tip: honesty off \u2014 set honesty.enabled: true in .overseer/config.yaml for verification-evidence and independent-second-reviewer reminders (require_verification_evidence / require_independent_second_reviewer: warn|require; docs/INDEPENDENT-SECOND-REVIEWER.md)"
+      ]
+    },
+    "verification_evidence_gate": null,
+    "independent_second_reviewer_gate": null,
+    "adversarial_freeze_gate": null,
+    "readiness": {
+      "authority": "bound",
+      "remote": "not_checked_offline",
+      "release": "not_certified"
+    }
+  },
+  "next_readback": {
+    "ok": true,
+    "repository": {
+      "name": "overseer-kit",
+      "id": "6988dc4a-5f22-454b-9d68-ac5905b383bf",
+      "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "root_relative_docs": "docs"
+    },
+    "branch": "feat/overseer-v1-recovery-20261014",
+    "head": "6289d2823184a63e2968d2c5f6a76abab5818368",
+    "runtime": {
+      "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "version": "1.0.0.dev1",
+      "sha256": "bdbfdae4599ca0bd1b096d5ed2c84019df3b83ed24972c202319ea5507cf09ec"
+    },
+    "vcs": "git",
+    "source_id": null,
+    "publication": "not_checked_offline",
+    "next": {
+      "schema": 1,
+      "repo_id": "6988dc4a-5f22-454b-9d68-ac5905b383bf",
+      "repo_root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "branch": "feat/overseer-v1-recovery-20261014",
+      "base_head": "695444fb5f8261391f5c273807129c13dc8db1fd",
+      "lane": "product",
+      "model": "GPT-6 Astra",
+      "action_id": "OVERSEER-FULL-PRODUCT-RESTORATION-VALIDATION-4",
+      "action_kind": "implement",
+      "prompt_sha256": "201f539055c654bb4177b2e775b49e4098224682c8b0622fefeda26d06e788d7"
+    },
+    "prompt": "Reasoning: Max\nRole: Principal integration validation engineer\n\nPerform FPR-4 only after the owner accepts this prompt. Acceptance authorizes\nlocal combined validation and necessary bounded repairs for section 9 of\ndocs/decisions/FULL-PRODUCT-RESTORATION-PLAN.md. It does not authorize FPR-5,\nremote operations, release or deployment.\n\nVerify physical cwd, Git top-level, branch, full HEAD, configured name overseer-kit,\nUUID, product lane, runtime binding and clean state. Validate this NEXT as the\nsingle FPR-3 feature closing commit whose sole predecessor is\n695444fb5f8261391f5c273807129c13dc8db1fd. Stop on mismatch, unexpected dirt or moved\nsource refs. Read AGENTS.md, ROADMAP, HANDOVER, canonical NEXT, the full restoration\nplan, docs/validation/FPR-1-FOUNDATION.md, docs/validation/FPR-2-AUTHORITY.md,\ndocs/validation/FPR-3-SURFACES.md and its source/test disposition and results,\ndocs/FPR-2-AUTHORITY-AND-LANES.md, docs/FPR-3-PRODUCT-SURFACES.md,\ndocs/SOURCE-DISTRIBUTION.md, V1-SCOPE-RESET, V1-CERTIFICATION and tests/README.md.\n\nKeep this branch as integration base. Verify committed sources here:\nfeat/overseer-context-isolation at e9be0c4b3cafb149b9f3b7af2ab060f01bbfa504;\nfeat/overseer-v1-recovery at 32254cd939885d9d6f40634997ea5b9c37ea776c;\nmain at d47291d5d9030de5ebef713da95efa978c4d8c6e; repaired safety source at\n348e0f323a3b17cd5022a1bfd56fa09a6831c51f. Read committed objects without entering\nolder worktrees, merging, cherry-picking or wholesale reverting. Preserve other\nrefs, Muse history, snapshots, rollback fixtures, completed bounded pilot and\nbounded source-release directory.\n\nRun one combined section-9 selection against a recorded integrated source/runtime\nand dependency set. Use this installation's conventional venv, pinned local\nprerequisites, disposable repositories under a nonrepository parent and fake\nproviders/transports only. Cover all three authority modes; two simultaneous\nrepositories with distinct defaults and overlapping lanes; worktrees/nested\nboundaries; lane ownership and workspace; canonical automatic/manual bookends;\nGit closing-commit and native Muse exact-revision freshness; CAS/context races;\nevery maintained command and full settings; app/desktop/hosted controls; legacy\nand bounded migrations; controlled mirror reconciliation and credentials; fresh\nsource-package installation and advertised entry points; compatible configuration\nupgrade/rollback; and the intended Python 3.11/3.14 and local native-build matrix.\nPreserve tracked Git bindings, explicit authority selection, confined writes,\ncaptured context, final rechecks, pinned closing reads and whole-file CAS. No\npublic path may invoke legacy_main or scrape/regenerate a handoff.\n\nUse the FPR-3 disposition map to include every restored/reachable requirement and\nrelevant cross-cutting family, including all 104 historical failures. Preserve\noriginal tests and historical results; add explicit replacement cases for changed\ncontracts. Record commands, exit codes, source/runtime hashes and dependency\nversions. Fix real failures with failing-before/passing-after evidence; rerun only\naffected checks unless shared changes invalidate the combined result. Missing\nprerequisites, sockets, hosts or toolchains remain unresolved evidence, never a\ngreen skip or an implicit reduction of the promised product.\n\nObtain the pending owner choices before claiming named automatic host/version or\nplatform/distribution acceptance, and before running the separately selected new\nintegrated pilot. The proposed pilot is a new noncritical disposable local project\nwith selected host/authority and fake remote transports. Continue independent\nfixture work while those choices are pending. Preserve the completed bounded\npilot and do not repeat its review, installation/rollback or certification process.\nExercise changed safety behaviors in the new matrix. Record native GUI, host\nlifecycle delivery and provider limitations separately from fixture success.\n\nNo real consumers/hooks, providers/network, live mirror/export/delivery, fetch,\npush, main merge, tags, publication, signing, release or deployment. Do not restore\nOCI, native/Mach GSR, sole-writer storage, identity bridges or packet prerequisites.\nKeep local mutation, remote transport and release actions explicit. Do not run\nFPR-5 or create an intervening review-only handoff; reserve one independent final\nreview of the fixed integrated source and complete evidence for FPR-5.\n\nClose with the combined matrix, source/environment and migration/install/rollback/\npilot evidence, failures/limits and unresolved owner choices. Update ROADMAP and\nHANDOVER together. Publish one canonical FPR-5 successor through bound next-write\nusing current context and expected prior digest; identify the independent-reviewer\nchoice without claiming self-review as independent. Refresh this installation's\nruntime binding explicitly if repairs require it, preserving identity/settings/NEXT.\nMake one coherent local FPR-4 feature commit after checks, then validate NEXT from\ndisk. Report changes, failures/limits, owner choices, commit and validated successor.\nDo not claim release readiness before combined validation and independent final\nreview, and do not infer release authorization from either.\n",
+    "next_sha256": "0b6ef939df67ff2a2f5a4321c7787f56a4d0e804e7b433c30eccde162295dfb0",
+    "rendered": "## CURRENT NEXT \u2014 paste this\n\n```text\nRepository: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014\nRepository ID: 6988dc4a-5f22-454b-9d68-ac5905b383bf\nBranch: feat/overseer-v1-recovery-20261014\nLane: product\nModel: GPT-6 Astra\nAction ID: OVERSEER-FULL-PRODUCT-RESTORATION-VALIDATION-4\nAction kind: implement\n\nReasoning: Max\nRole: Principal integration validation engineer\n\nPerform FPR-4 only after the owner accepts this prompt. Acceptance authorizes\nlocal combined validation and necessary bounded repairs for section 9 of\ndocs/decisions/FULL-PRODUCT-RESTORATION-PLAN.md. It does not authorize FPR-5,\nremote operations, release or deployment.\n\nVerify physical cwd, Git top-level, branch, full HEAD, configured name overseer-kit,\nUUID, product lane, runtime binding and clean state. Validate this NEXT as the\nsingle FPR-3 feature closing commit whose sole predecessor is\n695444fb5f8261391f5c273807129c13dc8db1fd. Stop on mismatch, unexpected dirt or moved\nsource refs. Read AGENTS.md, ROADMAP, HANDOVER, canonical NEXT, the full restoration\nplan, docs/validation/FPR-1-FOUNDATION.md, docs/validation/FPR-2-AUTHORITY.md,\ndocs/validation/FPR-3-SURFACES.md and its source/test disposition and results,\ndocs/FPR-2-AUTHORITY-AND-LANES.md, docs/FPR-3-PRODUCT-SURFACES.md,\ndocs/SOURCE-DISTRIBUTION.md, V1-SCOPE-RESET, V1-CERTIFICATION and tests/README.md.\n\nKeep this branch as integration base. Verify committed sources here:\nfeat/overseer-context-isolation at e9be0c4b3cafb149b9f3b7af2ab060f01bbfa504;\nfeat/overseer-v1-recovery at 32254cd939885d9d6f40634997ea5b9c37ea776c;\nmain at d47291d5d9030de5ebef713da95efa978c4d8c6e; repaired safety source at\n348e0f323a3b17cd5022a1bfd56fa09a6831c51f. Read committed objects without entering\nolder worktrees, merging, cherry-picking or wholesale reverting. Preserve other\nrefs, Muse history, snapshots, rollback fixtures, completed bounded pilot and\nbounded source-release directory.\n\nRun one combined section-9 selection against a recorded integrated source/runtime\nand dependency set. Use this installation's conventional venv, pinned local\nprerequisites, disposable repositories under a nonrepository parent and fake\nproviders/transports only. Cover all three authority modes; two simultaneous\nrepositories with distinct defaults and overlapping lanes; worktrees/nested\nboundaries; lane ownership and workspace; canonical automatic/manual bookends;\nGit closing-commit and native Muse exact-revision freshness; CAS/context races;\nevery maintained command and full settings; app/desktop/hosted controls; legacy\nand bounded migrations; controlled mirror reconciliation and credentials; fresh\nsource-package installation and advertised entry points; compatible configuration\nupgrade/rollback; and the intended Python 3.11/3.14 and local native-build matrix.\nPreserve tracked Git bindings, explicit authority selection, confined writes,\ncaptured context, final rechecks, pinned closing reads and whole-file CAS. No\npublic path may invoke legacy_main or scrape/regenerate a handoff.\n\nUse the FPR-3 disposition map to include every restored/reachable requirement and\nrelevant cross-cutting family, including all 104 historical failures. Preserve\noriginal tests and historical results; add explicit replacement cases for changed\ncontracts. Record commands, exit codes, source/runtime hashes and dependency\nversions. Fix real failures with failing-before/passing-after evidence; rerun only\naffected checks unless shared changes invalidate the combined result. Missing\nprerequisites, sockets, hosts or toolchains remain unresolved evidence, never a\ngreen skip or an implicit reduction of the promised product.\n\nObtain the pending owner choices before claiming named automatic host/version or\nplatform/distribution acceptance, and before running the separately selected new\nintegrated pilot. The proposed pilot is a new noncritical disposable local project\nwith selected host/authority and fake remote transports. Continue independent\nfixture work while those choices are pending. Preserve the completed bounded\npilot and do not repeat its review, installation/rollback or certification process.\nExercise changed safety behaviors in the new matrix. Record native GUI, host\nlifecycle delivery and provider limitations separately from fixture success.\n\nNo real consumers/hooks, providers/network, live mirror/export/delivery, fetch,\npush, main merge, tags, publication, signing, release or deployment. Do not restore\nOCI, native/Mach GSR, sole-writer storage, identity bridges or packet prerequisites.\nKeep local mutation, remote transport and release actions explicit. Do not run\nFPR-5 or create an intervening review-only handoff; reserve one independent final\nreview of the fixed integrated source and complete evidence for FPR-5.\n\nClose with the combined matrix, source/environment and migration/install/rollback/\npilot evidence, failures/limits and unresolved owner choices. Update ROADMAP and\nHANDOVER together. Publish one canonical FPR-5 successor through bound next-write\nusing current context and expected prior digest; identify the independent-reviewer\nchoice without claiming self-review as independent. Refresh this installation's\nruntime binding explicitly if repairs require it, preserving identity/settings/NEXT.\nMake one coherent local FPR-4 feature commit after checks, then validate NEXT from\ndisk. Report changes, failures/limits, owner choices, commit and validated successor.\nDo not claim release readiness before combined validation and independent final\nreview, and do not infer release authorization from either.\n```\n"
+  },
+  "ok": true
+}

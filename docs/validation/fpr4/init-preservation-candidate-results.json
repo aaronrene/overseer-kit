@@ -1,0 +1,102 @@
+{
+  "scope": "FPR-4 author candidate repair only; production source remains unchanged while original combined run continues",
+  "source_head": "6289d2823184a63e2968d2c5f6a76abab5818368",
+  "original_runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "7d38764f026848d7d89d81abedfc62f1de5eefde6443d0032d770c2ff09a20d1"
+  },
+  "candidate": {
+    "head": "6289d2823184a63e2968d2c5f6a76abab5818368",
+    "parent": "/private/tmp/overseer-fpr4-init-candidate-yn8mhf51",
+    "installation": "/private/tmp/overseer-fpr4-init-candidate-yn8mhf51/installation",
+    "archive_sha256": "95c093c3b19f873c0ad67f1237bbd86c758b3ee9137fa992350ff03239a9cf1d",
+    "patch": "/private/tmp/fpr4-init-preservation.patch",
+    "patch_sha256": "2898bb55305619e1d379b47a3cc47be862cea11816c656fa004e809823f742bb",
+    "patched_stdout": "patching file 'cli/v1.py'\n",
+    "runtime": {
+      "root": "/private/tmp/overseer-fpr4-init-candidate-yn8mhf51/installation",
+      "version": "1.0.0.dev1",
+      "sha256": "8cc298eee30563542ad530116c401c0b91b8c04ab95b9f823c9245879f34065d"
+    },
+    "dependencies": {
+      "PyYAML": "6.0.3",
+      "cryptography": "49.0.0",
+      "cffi": "2.1.0",
+      "pycparser": "3.0",
+      "pytest": "9.1.1",
+      "iniconfig": "2.3.0",
+      "packaging": "26.2",
+      "Pygments": "2.20.0",
+      "pluggy": "1.6.0"
+    },
+    "python": "3.14.4 (main, Apr  7 2026, 13:13:20) [Clang 17.0.0 (clang-1700.6.4.2)]",
+    "test_sha256": "0e110a2ebbefbc321ead116e1a52a7b21095c20cfcd3932623b6a1ecd919b799",
+    "production_v1_unchanged": true
+  },
+  "original_test_unchanged": true,
+  "original_test_sha256": "d4998dfd53eb30af3f37eb4e5226c944e47fb5b77fe19cfc5d4f970492cd7fe8",
+  "root_cause": "Restored full footprint includes custom skills, rules and policies. Fresh initialize preflight refuses every pre-existing mapped path except ignores; this unnecessarily blocks initialization despite required owner-asset preservation. Shell quote handling is not reached.",
+  "patch_behavior": "Preserve pre-existing nonbinding footprint bytes/modes and record origin=preserved. Keep launchers, event hooks, generated bound instructions and executable Muse bridge wrapper strict. Snapshot preserved bytes/modes and recheck after directory lock and before every atomic replacement through the existing callback.",
+  "runs": [
+    {
+      "name": "bookend-before",
+      "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "command": "PYTHONDONTWRITEBYTECODE=1 GIT_OPTIONAL_LOCKS=0 GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_NOSYSTEM=1 .venv/bin/python -B -m pytest -q -p no:cacheprovider tests/fpr1/test_bookends.py::test_generated_commands_handle_spaces_and_do_not_overwrite_host_instructions --basetemp=/private/tmp/overseer-fpr4-bookend-before --junitxml=docs/validation/fpr4/bookend-before.xml > docs/validation/fpr4/bookend-before.log 2>&1",
+      "exit_code": 1,
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "1",
+          "skipped": "0",
+          "tests": "1",
+          "time": "0.242",
+          "timestamp": "2026-10-14T16:19:06.704097-07:00",
+          "hostname": "Carloss-MacBook-Pro.local"
+        }
+      ]
+    },
+    {
+      "name": "init-preservation-before",
+      "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "command": "PYTHONDONTWRITEBYTECODE=1 GIT_OPTIONAL_LOCKS=0 GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_NOSYSTEM=1 .venv/bin/python -B -m pytest -q -p no:cacheprovider tests/fpr4/test_init_preservation.py --basetemp=/private/tmp/overseer-fpr4-init-preservation-before --junitxml=docs/validation/fpr4/init-preservation-before.xml > docs/validation/fpr4/init-preservation-before.log 2>&1",
+      "exit_code": 1,
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "10",
+          "skipped": "0",
+          "tests": "14",
+          "time": "2.878",
+          "timestamp": "2026-10-14T16:26:28.193102-07:00",
+          "hostname": "Carloss-MacBook-Pro.local"
+        }
+      ]
+    },
+    {
+      "name": "init-preservation-candidate",
+      "cwd": "/private/tmp/overseer-fpr4-init-candidate-yn8mhf51/installation",
+      "command": "PYTHONDONTWRITEBYTECODE=1 GIT_OPTIONAL_LOCKS=0 GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_NOSYSTEM=1 .venv/bin/python -B -m pytest -q -p no:cacheprovider tests/fpr1/test_bookends.py::test_generated_commands_handle_spaces_and_do_not_overwrite_host_instructions tests/fpr4/test_init_preservation.py --basetemp=/private/tmp/overseer-fpr4-init-candidate-cases --junitxml=/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/docs/validation/fpr4/init-preservation-candidate.xml > /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/docs/validation/fpr4/init-preservation-candidate.log 2>&1",
+      "exit_code": 0,
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "15",
+          "time": "31.000",
+          "timestamp": "2026-10-14T16:27:15.337836-07:00",
+          "hostname": "Carloss-MacBook-Pro.local"
+        }
+      ]
+    }
+  ],
+  "recommendation": "Apply /private/tmp/fpr4-init-preservation.patch only after initial combined run completes; then run original bookend and new preservation/race/strict-binding cases on final integrated source and include in final matrix.",
+  "limitations": [
+    "Candidate proof uses one newly extracted current HEAD source archive with patch; not final integrated validation",
+    "No production file edits, original test edits, old worktree access, network or independent review"
+  ]
+}

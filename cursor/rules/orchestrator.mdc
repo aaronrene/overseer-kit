@@ -12,5 +12,7 @@ with current revision and whole-file expected digest. Preserve unrelated setting
 lanes, living files and other repositories. Never execute legacy_main.
 Local implementation, remote transport and release/deployment are separate scopes.
 Use configured review gates when applicable; do not invent extra review cycles or
-claim independent review from author tests. No legacy live export or packet,
+claim independent review from author tests. Use `/build-verification-review` when
+required by configured gates; use `/freeze-review-loop` only when explicitly
+requested, never automatically. No legacy live export or packet,
 OCI, identity-bridge, native GSR or sole-writer prerequisite is implied.

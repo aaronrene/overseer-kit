@@ -1,0 +1,23 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_ test_generated_commands_handle_spaces_and_do_not_overwrite_host_instructions _
+
+tmp_path = PosixPath('/private/tmp/overseer-fpr4-bookend-before/test_generated_commands_handle0')
+
+    def test_generated_commands_handle_spaces_and_do_not_overwrite_host_instructions(tmp_path):
+        root = seed(tmp_path / "space and 'quote'")
+        (root / "AGENTS.md").write_text("Existing Codex instructions.\n")
+        skill = root / ".claude/skills/print-next/SKILL.md"
+        skill.parent.mkdir(parents=True)
+        skill.write_text("Existing Claude instructions.\n")
+        result = command("-C", root, "init", "--hooks")
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .claude/skills/print-next/SKILL.md
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', "/priva...'init', '--hooks'], returncode=2, stdout='', stderr='refused: init_asset_exists: .claude/skills/print-next/SKILL.md\n').returncode
+
+tests/fpr1/test_bookends.py:127: AssertionError
+=========================== short test summary info ============================
+FAILED tests/fpr1/test_bookends.py::test_generated_commands_handle_spaces_and_do_not_overwrite_host_instructions
+1 failed in 0.24s

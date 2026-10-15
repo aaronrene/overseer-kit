@@ -21,8 +21,8 @@ The former sole-writer/NXR-GSR chain remains historical and is not the living NE
 | FPR-1 — unified foundation and automatic handoff | Complete locally — unified dispatcher/schema-3 migration, preserved bindings/settings, canonical Cursor fixture bookends; [focused evidence](validation/FPR-1-FOUNDATION.md) |
 | FPR-2 — Muse authority, mirror and repository lanes | Complete locally — selected authority, controlled mirrors, explicit adoption/rollback and canonical lane collection; [focused evidence](validation/FPR-2-AUTHORITY.md) |
 | FPR-3 — complete product surface | Complete locally — unified maintained commands, bound app/desktop/hosted surfaces, full footprint and local source packaging; [focused evidence](validation/FPR-3-SURFACES.md) |
-| FPR-4 — combined validation | **NEXT, awaiting owner acceptance** — one integrated matrix, installation/migration/rollback and a newly selected disposable integrated pilot |
-| FPR-5 — independent final review and release decision | Planned after FPR-4 — one independent review of the integrated build, bounded repairs if required, then owner release decision |
+| FPR-4 — combined validation | Local matrix, bounded repairs, package and rollback evidence recorded; required Python 3.11 and owner-selected acceptance cells remain open |
+| FPR-5 — independent final review and release decision | **NEXT, awaiting owner acceptance and reviewer appointment** — one independent review of the fixed build and explicit evidence limits; release decision remains separate |
 
 The exact current action lives only in `docs/NEXT.md`; use `ok -C ROOT next`.
 Update this summary and HANDOVER together. No release or remote operation is
@@ -125,12 +125,41 @@ Muse tests used only pinned local prerequisites and disposable fixtures. Other
 refs, old worktrees/Muse history, snapshots, rollback fixtures, completed bounded
 pilot and bounded source-release directory are preserved.
 
-The canonical successor is **FPR-4 combined validation**, pending owner acceptance
-of `docs/NEXT.md`, with GPT-6 Astra and Max reasoning. Section 9 of the restoration
-plan defines that matrix. The single independent final review remains FPR-5;
-no intervening review-only handoff is created. Client/host versions, broader remote
-scope, platform/distribution claims, the integrated pilot and final reviewer remain
-explicit owner choices. FPR-3 author checks do not establish release readiness.
+FPR-4 records the integrated section-9 matrix and bounded repairs in
+[combined evidence](validation/FPR-4-COMBINED.md). The opening run recorded
+**1,159 passed / 11 failed**. The repaired-source combined run recorded
+**1,207 passed / 1 failed, zero errors/skips**; the explicit clean-process successor then passed
+**2 cases** on the same production runtime and dependencies.
+The raw failure, its changed-contract disposition and affected rerun remain
+separate. All selected cases executed exactly once; no skip supplies acceptance.
+The earlier focused repair run passed 32 cases, and the new compatible/bounded
+upgrade and rollback exercise passed 13 checks. These separate runs are not
+summed into a single combined count.
+
+Repairs preserve existing portable consumer assets during initialization, restore
+configured-path/build-verification guidance, correct app installation guidance,
+and make repeated desktop resource bundling reserve distinct private directories.
+Runtime `bdbfdae4599ca0bd1b096d5ed2c84019df3b83ed24972c202319ea5507cf09ec`
+was explicitly refreshed while preserving identity, all non-runtime settings,
+NEXT and disabled hooks. No full-footprint overwrite was performed.
+
+Fresh packaged Python 3.14.4 CLI/app/desktop-child checks and the macOS arm64
+Rust 1.88 locked/offline native build passed. The complete Python 3.11 cell is
+unresolved because pinned cffi 2.1.0 for cp311 is unavailable locally. Named
+automatic host/version and platform/distribution acceptance, authorization for
+the separate new integrated pilot, and appointment of an independent reviewer
+remain pending. The new pilot was not run; the completed bounded pilot and its
+certification were preserved. Native GUI, native host lifecycle delivery, signed
+installers and live providers remain unverified.
+
+All 393 original test/support files and the historical **1,391 passed / 104 failed**
+record remain unchanged. The final disposition maps every historical failure to
+retained or explicit successor coverage. Author checks do not count as independent
+review. The sole successor is **FPR-5**, pending owner acceptance and appointment
+of an independent reviewer, with GPT-6 Astra and Max reasoning. Required evidence
+gaps prevent a release-readiness claim. One independent final review, bounded
+repairs if required, final adjudication and a separate owner release decision
+remain; no intervening review-only handoff or release authority is introduced.
 
 FPR-2 focused evidence covers 559 distinct maintained passing cases across
 recorded runs. Final affected reruns passed 169 Git/config/lane and 41 native
