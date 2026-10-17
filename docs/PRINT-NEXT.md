@@ -1,5 +1,26 @@
 # Canonical NEXT
 
+For manual current-prompt display, select the project and lane and run that
+project's bound reader:
+
+```sh
+/absolute/project/.overseer/bin/ok -C /absolute/project next --lane product
+```
+
+Replace the path and lane with the selected project's actual context. The
+validated output contains the current saved prompt and its recommended `Model:`;
+copy the entire returned block verbatim. In an already running bound browser,
+the **Next / Handover** tab's NEXT control displays the same validated result.
+Confirm the project context before using it. Refusal means report the error,
+not use an older display or reconstruct a prompt from summaries.
+
+Read at entry and before each new task. At closeout, publish the actual next
+unfinished authorized task through `next-write`, make the closing commit, then
+read and display the fresh validated prompt and model again. If approved work
+is complete, publish a `stop` stating completion with no invented next task.
+The [current scope](decisions/CURRENT-PROMPT-DISPLAY-SCOPE.md) excludes automatic
+Cursor events, vendor execution protection and shared-chat investigation.
+
 Run `./cli/ok -C ROOT next` from this source installation. Each initialized checkout
 has one persistent UUID and physical root in `.overseer/config.yaml` and one
 `docs/NEXT.md`. The reader checks repository, branch, lane, model, action ID/kind,

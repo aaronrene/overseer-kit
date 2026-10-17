@@ -1,5 +1,53 @@
 # Overseer Kit handover
 
+Current authority: the owner's [current-prompt display decision](decisions/CURRENT-PROMPT-DISPLAY-SCOPE.md),
+which supersedes the FPR-6 external-dependency stop and automatic completion plan
+for this task.
+
+**Manual current-prompt display is complete. No unfinished authorized task remains.**
+The existing bound reader displays the selected project's saved canonical NEXT
+prompt and recommended model. The browser uses the same validated service. No
+display-code gap was demonstrated; this closeout updates scope, operating guidance
+and session instructions and publishes a completion stop through the existing
+writer. [Verification record](validation/CURRENT-PROMPT-DISPLAY.md).
+
+Select the physical project and lane, then read its bound
+`.overseer/bin/ok -C ROOT next --lane LANE` at entry and before each new task.
+Check root/UUID, branch/revision, lane, model and action context; display the
+validated prompt verbatim with its model. Report any refusal without reconstructing
+a task. At closeout publish only the actual next unfinished authorized task through
+`next-write` with explicit context and the expected prior digest, make the local
+closing commit, then read and display NEXT again. If work is complete, publish a
+completion stop. Canonical [NEXT](NEXT.md) is the sole prompt source; these paired
+summaries are not alternative prompts. [Manual instructions](PRINT-NEXT.md).
+
+Automatic Cursor events, vendor execution protection and shared-chat investigation
+are outside this task. Their historical NOT VERIFIED / UNQUALIFIED / UNRESOLVED
+statuses remain unchanged. Dependency requests remain UNSENT and are not the next
+action. No vendor assistance or another general review is queued.
+
+Preserve the accepted manual source `97f052949146c3cf337478927e6d345e353d2063`,
+[independent acceptance](reviews/FPR-5-MANUAL-ACCEPTANCE.md) and
+[local release](releases/FPR-5-MANUAL-LOCAL-RELEASE.md) with their recorded limits.
+The development runtime remains
+`bb3108ae8ea0d03190291b2104e4f9e3aab2ac1690b4da9d226a09f6afa2bba0`, version
+`1.0.0.dev1`; this documentation closeout does not create a new release.
+
+**Existing-project installation remains on hold.** No external contact, network
+calls, profile/account/keychain access, vendor/shared-command changes, release or
+installation into existing projects. Hooks, original evidence, old worktrees and
+Muse history remain preserved. Reuse completed evidence; do not repeat completed
+general reviews, test suites, experiments or the blocked launch. Documentation
+checks and validated readback suffice for this documentation-only change.
+Model: GPT-6 Astra; reasoning: High.
+
+## Historical FPR-6 closeout and earlier milestones
+
+Everything below is preserved from the prior summary. Its then-current authority,
+external-dependency next step and reopened automatic requirements are superseded
+by the current decision above. They are historical statements, not instructions
+to resume work or repeat acceptance/release.
+
 Current authority: the owner's [automatic completion plan](decisions/FPR-6-AUTOMATIC-COMPLETION-PLAN.md).
 The [manual scope](decisions/FPR-5-MANUAL-DELIVERY-SCOPE.md) and
 [local release](releases/FPR-5-MANUAL-LOCAL-RELEASE.md) remain preserved milestones.

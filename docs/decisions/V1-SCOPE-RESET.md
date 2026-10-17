@@ -1,5 +1,10 @@
 # Bounded v1 recovery decision — 2026-10-14
 
+Current work follows the owner's [current-prompt display decision](CURRENT-PROMPT-DISPLAY-SCOPE.md).
+The original decision below is preserved as history; its then-pending review,
+installation/rollback and pilot requirements have since been completed in their
+recorded scopes. They do not queue additional work.
+
 The current owner request and October 6 recovery handover replace the old
 sole-writer/NXR-GSR NEXT and per-step packet chain. This is a local implementation
 milestone, not a release, remote publication, or consumer pilot.
