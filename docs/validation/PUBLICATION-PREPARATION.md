@@ -1,5 +1,7 @@
 # Full-product draft PR preparation — 2026-10-17
 
+Draft PR: https://github.com/aaronrene/overseer-kit/pull/92 (open, draft).
+
 The publication candidate carries the completed full kit into current GitHub main:
 CLI, local browser app, desktop launcher, policies, model guidance, review and
 verification, evidence ledger, workspace/lanes, source maintenance and optional
@@ -49,7 +51,11 @@ bindings and retained digest tests. Keep the improved mirror runbook and private
 GitHub security reporting; update security/contributor/changelog wording to match
 the full-product source and its acceptance limits. Source assistant rules and
 skills supersede main's old historical-only disclaimers. Hooks remain disabled.
-No hosted workflow is dispatched; the retained workflow is manual-only.
+No GitHub Actions workflow is dispatched; the retained workflow is manual-only.
+The existing Cloudflare integration automatically starts a branch preview check
+on push. This task invokes no deployment command and changes no hosting settings.
+No production deployment is performed. Final-head check status is reported at
+closeout and in the PR; it is distinct from product acceptance.
 
 ## Evidence and checks
 
@@ -58,6 +64,8 @@ New focused checks, recorded in [integration checks](publication-20261017/integr
 - All 295 runtime files and their path set match the completed source; digest
   `bb3108ae8ea0d03190291b2104e4f9e3aab2ac1690b4da9d226a09f6afa2bba0`.
 - README, independent acceptance and local release record are byte-identical to source.
+  The existing accepted archive was read-only hashed and still matches its recorded
+  SHA-256. The source checkout remains clean at `f6a314c`.
 - All 15 website assets and the three main pages' layout attributes match main.
 - Four HTML pages pass nesting/duplicate-ID/image-alt checks; 57 local links and
   repository-document targets/fragments resolve.
@@ -126,4 +134,4 @@ Before a new release:
 
 Rollout into existing projects remains a separate held task, not a prerequisite
 silently included in merge or release. No merge, release, deployment or rollout
-was performed by this preparation.
+was manually performed by this preparation.

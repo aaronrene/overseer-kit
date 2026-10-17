@@ -1,8 +1,8 @@
 # Overseer Kit handover
 
-## Draft PR publication — prepared, 2026-10-17
+## Draft PR publication — complete, 2026-10-17
 
-The isolated integration is prepared for the authorized draft PR push.
+Draft PR: https://github.com/aaronrene/overseer-kit/pull/92.
 Branch: `feat/overseer-publication-20261017`, based on current main
 `ff9091cc2f3bdb54c679ea2cd27f4d5280d83603` and completed source `f6a314c`.
 The whole-product README and accepted manual release are preserved; main's
@@ -24,9 +24,10 @@ version and distribution, bind acceptance to that candidate, and verify/approve
 its artifact, manifest, checksums and notes. No required GitHub checks or branch
 rules were configured at preparation; absence of checks is not a passing CI run.
 Existing-project installation remains separately held. No merge, release,
-deployment, other-project change or older-worktree change was performed.
+production deployment, other-project change or older-worktree change was performed.
+The existing hosting integration may run an automatic branch-preview check.
 
-Remaining authorized work: push the feature branch, open the draft PR and record its link.
+No unfinished publication-preparation task remains. Await owner direction.
 Canonical [NEXT](NEXT.md) is the sole prompt authority. The prior milestones below
 are historical; their completed tasks and old stops are not new work.
 Model: GPT-6 Astra; reasoning: High.
