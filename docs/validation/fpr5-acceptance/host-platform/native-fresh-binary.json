@@ -1,0 +1,10 @@
+{
+  "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/overseer-kit-desktop-fresh",
+  "sha256": "be7e3f2ccf3610898b01c7df650e9d0f34ec5ba1e717005b07d252c3d120a8b1",
+  "size": 19789456,
+  "source": "new reduced-debug locked/offline build from fixed repaired source",
+  "old_artifact_reused": false,
+  "generated_target_size_before_cleanup": "1055308\t/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cargo-target-reduced",
+  "removed_only_new_rebuildable_target": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cargo-target-reduced",
+  "free_after_cleanup_bytes": 1443737600
+}

@@ -1,0 +1,26 @@
+{
+  "argv": [
+    "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.overseer/bin/ok",
+    "-C",
+    "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "next",
+    "--repo-id",
+    "6988dc4a-5f22-454b-9d68-ac5905b383bf",
+    "--branch",
+    "feat/overseer-v1-recovery-20261014",
+    "--lane",
+    "product",
+    "--model",
+    "GPT-6 Astra",
+    "--action-id",
+    "OVERSEER-FPR5-OPS1-SCOPE-STOP-1",
+    "--action-kind",
+    "stop",
+    "--expect-next",
+    "6828ef2e035d236be8ce5c53216f32daa50a3997edb889ac2f9607a675cae0bc",
+    "--json"
+  ],
+  "exit_code": 0,
+  "stdout": "{\"ok\": true, \"repository\": {\"name\": \"overseer-kit\", \"id\": \"6988dc4a-5f22-454b-9d68-ac5905b383bf\", \"root\": \"/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014\", \"root_relative_docs\": \"docs\"}, \"branch\": \"feat/overseer-v1-recovery-20261014\", \"head\": \"4c7f225b6148f95fb575bcd604b113aed5b5999b\", \"runtime\": {\"root\": \"/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014\", \"version\": \"1.0.0.dev1\", \"sha256\": \"cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774\"}, \"vcs\": \"git\", \"source_id\": null, \"publication\": \"not_checked_offline\", \"next\": {\"schema\": 1, \"repo_id\": \"6988dc4a-5f22-454b-9d68-ac5905b383bf\", \"repo_root\": \"/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014\", \"branch\": \"feat/overseer-v1-recovery-20261014\", \"base_head\": \"4c7f225b6148f95fb575bcd604b113aed5b5999b\", \"lane\": \"product\", \"model\": \"GPT-6 Astra\", \"action_id\": \"OVERSEER-FPR5-OPS1-SCOPE-STOP-1\", \"action_kind\": \"stop\", \"prompt_sha256\": \"00f0c497e43ac726b8f149f155d422cf2b772a703d1fa2064fa189ed515645e2\"}, \"prompt\": \"Reasoning: Max\\nRole: Owner scope checkpoint; not independent adjudicator\\n\\nThe bounded FPR-OPS-1 investigation is complete. Read\\ndocs/validation/FPR-5-HANDOFF-RELIABILITY.md and its source/reproduction evidence.\\nHistorical cause remains unknown; the seeded offline reproduction proves only\\npropagation behavior. The owner did not deliberately open duplicates.\\n\\nStop pending owner scope for the proposed new disposable client restoration\\ncapture or confined host/owner guard repair. Do not repeat the saved-evidence\\ninvestigation, packet preparation, tests, reviews, pilots or failed launch.\\nKeep the separate FPR-OPS-2 legacy source/interpreter/dependency/backup plan explicit.\\nCursor sessionStart/stop remain owner-postponed NOT VERIFIED.\\nNo real profiles/accounts, permission changes, global/extension/consumer mutations\\nor hooks, network/providers, export/delivery, fetch/push, merge, tags or release.\\nPreserve original findings/failures, old worktrees, protected refs and Muse history.\\nFinal non-author adjudication and separate owner release remain pending and\\nunauthorized. This stop grants no authority to execute the proposed client capture.\\n\", \"next_sha256\": \"6828ef2e035d236be8ce5c53216f32daa50a3997edb889ac2f9607a675cae0bc\", \"rendered\": \"## CURRENT NEXT \\u2014 paste this\\n\\n```text\\nRepository: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014\\nRepository ID: 6988dc4a-5f22-454b-9d68-ac5905b383bf\\nBranch: feat/overseer-v1-recovery-20261014\\nLane: product\\nModel: GPT-6 Astra\\nAction ID: OVERSEER-FPR5-OPS1-SCOPE-STOP-1\\nAction kind: stop\\n\\nReasoning: Max\\nRole: Owner scope checkpoint; not independent adjudicator\\n\\nThe bounded FPR-OPS-1 investigation is complete. Read\\ndocs/validation/FPR-5-HANDOFF-RELIABILITY.md and its source/reproduction evidence.\\nHistorical cause remains unknown; the seeded offline reproduction proves only\\npropagation behavior. The owner did not deliberately open duplicates.\\n\\nStop pending owner scope for the proposed new disposable client restoration\\ncapture or confined host/owner guard repair. Do not repeat the saved-evidence\\ninvestigation, packet preparation, tests, reviews, pilots or failed launch.\\nKeep the separate FPR-OPS-2 legacy source/interpreter/dependency/backup plan explicit.\\nCursor sessionStart/stop remain owner-postponed NOT VERIFIED.\\nNo real profiles/accounts, permission changes, global/extension/consumer mutations\\nor hooks, network/providers, export/delivery, fetch/push, merge, tags or release.\\nPreserve original findings/failures, old worktrees, protected refs and Muse history.\\nFinal non-author adjudication and separate owner release remain pending and\\nunauthorized. This stop grants no authority to execute the proposed client capture.\\n```\\n\"}\n",
+  "stderr": ""
+}

@@ -1,0 +1,26 @@
+.....................................F.                                  [100%]
+=================================== FAILURES ===================================
+__________________ test_ledger_append_verify_show_and_honesty __________________
+
+repo = PosixPath('/private/tmp/fpr3-command-tests-1/test_ledger_append_verify_show0/similar-kit')
+
+    def test_ledger_append_verify_show_and_honesty(repo):
+        original=yaml.safe_load((KIT/'tests/fixtures/honesty/config-honesty-enabled.yaml').read_text())
+        settings(repo,honesty=original['honesty'])
+        (repo/'entry.json').write_text('{}')
+        p=command('-C',repo,'ledger','append','--kind','genesis','--file','entry.json','--json')
+        assert p.returncode==0,p.stderr+p.stdout
+        assert command('-C',repo,'ledger','verify').returncode==0
+        p=command('-C',repo,'ledger','show','--last','1','--json');assert p.returncode==0,p.stderr
+        assert len(json.loads(p.stdout)['entries'])==1
+>       p=command('-C',repo,'honesty-status','--json');assert p.returncode in (0,20),p.stdout+p.stderr
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: {"ok": false, "exit_code": 1, "command": "honesty-status", "hook": null, "artifact": null, "artifact_sha256": null, "producer_session": null, "matched_verdict_hash": null, "error": "usage"}
+E         
+E       assert 1 in (0, 20)
+E        +  where 1 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...null, "artifact_sha256": null, "producer_session": null, "matched_verdict_hash": null, "error": "usage"}\n', stderr='').returncode
+
+tests/fpr3/test_commands.py:118: AssertionError
+=========================== short test summary info ============================
+FAILED tests/fpr3/test_commands.py::test_ledger_append_verify_show_and_honesty
+1 failed, 38 passed in 49.86s

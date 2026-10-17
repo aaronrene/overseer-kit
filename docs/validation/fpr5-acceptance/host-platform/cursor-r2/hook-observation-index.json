@@ -1,0 +1,10 @@
+{
+  "cursor-profile/logs/20261015T035115/window1/output_20261015T035116/cursor.hooks.workspaceId-7b1abe362a580104b48521ddb7305f8f.log": {
+    "sha256": "58d6d3632024569d349bbdab14cb47c403f06ae49352f12b4bbeaf86984202de",
+    "bytes": 1699
+  },
+  "cursor-profile/logs/20261015T035115/window2/output_20261015T035313/cursor.hooks.workspaceId-7b1abe362a580104b48521ddb7305f8f.log": {
+    "sha256": "4694a931ac8a48becc755b31c323397e24bdb74370b6d590dff8923b3efb1154",
+    "bytes": 1708
+  }
+}

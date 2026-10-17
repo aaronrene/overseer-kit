@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="0.074" timestamp="2026-10-14T14:09:29.080009-07:00" hostname="Carloss-MacBook-Pro.local"><testcase classname="tests.fpr1.test_dispatch" name="test_unavailable_init_authority_refuses_before_git_discovery[muse-only]" time="0.002"><failure message="Failed: unsupported Muse init must not probe Git">tmp_path = PosixPath('/private/tmp/overseer-fpr1-authority-before/test_unavailable_init_authorit0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x112fbd0f0&gt;
+capsys = &lt;_pytest.capture.CaptureFixture object at 0x112c21e80&gt;
+regime = 'muse-only'
+
+    @pytest.mark.parametrize('regime', ['muse-only', 'muse+git-mirror'])
+    def test_unavailable_init_authority_refuses_before_git_discovery(tmp_path, monkeypatch, capsys, regime):
+        root = tmp_path/'native-only'; root.mkdir(); (root/'.muse').mkdir()
+        def forbidden(*args, **kwargs):
+            pytest.fail('unsupported Muse init must not probe Git')
+        monkeypatch.setattr(v1, 'git', forbidden)
+&gt;       assert main.main(['-C', str(root), 'init', '--regime', regime]) == 2
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/fpr1/test_dispatch.py:167: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+cli/main.py:195: in main
+    root = v1.root_for(args)
+           ^^^^^^^^^^^^^^^^^
+cli/v1.py:120: in root_for
+    root = Path(git(requested, "rev-parse", "--show-toplevel")).resolve(strict=True)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (PosixPath('/private/tmp/overseer-fpr1-authority-before/test_unavailable_init_authorit0/native-only'), 'rev-parse', '--show-toplevel')
+kwargs = {}
+
+    def forbidden(*args, **kwargs):
+&gt;       pytest.fail('unsupported Muse init must not probe Git')
+E       Failed: unsupported Muse init must not probe Git
+
+tests/fpr1/test_dispatch.py:165: Failed</failure></testcase><testcase classname="tests.fpr1.test_dispatch" name="test_unavailable_init_authority_refuses_before_git_discovery[muse+git-mirror]" time="0.002"><failure message="Failed: unsupported Muse init must not probe Git">tmp_path = PosixPath('/private/tmp/overseer-fpr1-authority-before/test_unavailable_init_authorit1')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x112c2cc30&gt;
+capsys = &lt;_pytest.capture.CaptureFixture object at 0x112f75590&gt;
+regime = 'muse+git-mirror'
+
+    @pytest.mark.parametrize('regime', ['muse-only', 'muse+git-mirror'])
+    def test_unavailable_init_authority_refuses_before_git_discovery(tmp_path, monkeypatch, capsys, regime):
+        root = tmp_path/'native-only'; root.mkdir(); (root/'.muse').mkdir()
+        def forbidden(*args, **kwargs):
+            pytest.fail('unsupported Muse init must not probe Git')
+        monkeypatch.setattr(v1, 'git', forbidden)
+&gt;       assert main.main(['-C', str(root), 'init', '--regime', regime]) == 2
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/fpr1/test_dispatch.py:167: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+cli/main.py:195: in main
+    root = v1.root_for(args)
+           ^^^^^^^^^^^^^^^^^
+cli/v1.py:120: in root_for
+    root = Path(git(requested, "rev-parse", "--show-toplevel")).resolve(strict=True)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (PosixPath('/private/tmp/overseer-fpr1-authority-before/test_unavailable_init_authorit1/native-only'), 'rev-parse', '--show-toplevel')
+kwargs = {}
+
+    def forbidden(*args, **kwargs):
+&gt;       pytest.fail('unsupported Muse init must not probe Git')
+E       Failed: unsupported Muse init must not probe Git
+
+tests/fpr1/test_dispatch.py:165: Failed</failure></testcase></testsuite></testsuites>

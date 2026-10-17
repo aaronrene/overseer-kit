@@ -538,7 +538,7 @@ def _run_consumer_override(
     mode: VerifyMode | None,
     executor: ScriptExecutor,
 ) -> VerifyStepResult:
-    """Invoke consumer orchestrator override (§K9.5)."""
+    """Plan or explicitly invoke the confined consumer override (§K9.5)."""
     orchestrator_rel = config.checkpoints.orchestrator
     assert orchestrator_rel
     try:
@@ -561,6 +561,20 @@ def _run_consumer_override(
             steps=[],
             error="refused",
         )
+    # Custom orchestrators own their manifest/policy formats, but their selected
+    # input paths still belong to the same repository as the built-in engine.
+    # Optional inputs remain optional; validate any configured or explicit input
+    # before returning a plan or handing arguments to executable consumer code.
+    for option, configured, resolve in (
+        (options.manifest, config.checkpoints.active_manifest, _resolve_manifest_path),
+        (options.policy, config.checkpoints.policy, _resolve_policy_path),
+    ):
+        if option is not None or configured is not None:
+            _, _, code = resolve(repo_root, config.checkpoints, option)
+            if code is not None:
+                return _result(exit_code=code, mode=mode, dry_run=options.dry_run,
+                               manifest_rel=options.manifest, steps=[],
+                               error="config" if code == 2 else "refused")
     argv = [repo_relative(repo_root, script_path)]
     # Pass through verify-step flags after script name.
     if options.manifest:
@@ -574,12 +588,18 @@ def _run_consumer_override(
         argv.append("--all")
     if options.policy:
         argv.extend(["--policy", options.policy])
-    if options.dry_run:
-        argv.append("--dry-run")
     if options.emit_json:
         argv.append("--json")
 
     env = {"OVERSEER_REPO_ROOT": str(repo_root.resolve())}
+    if options.dry_run:
+        # Do not delegate safety to an arbitrary script's --dry-run handling.
+        # The bound executor's read-only mutation guard remains in force.
+        result = _result(exit_code=0, mode=mode, dry_run=True,
+                         manifest_rel=options.manifest, steps=[], error=None)
+        result.json_payload.plan = {"argv": argv, "cwd": str(repo_root.resolve()),
+                                    "environment": env, "executed": False}
+        return result
     exec_result = executor.exec_argv(
         argv,
         cwd=str(repo_root.resolve()),

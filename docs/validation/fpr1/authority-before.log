@@ -1,0 +1,74 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+___ test_unavailable_init_authority_refuses_before_git_discovery[muse-only] ____
+
+tmp_path = PosixPath('/private/tmp/overseer-fpr1-authority-before/test_unavailable_init_authorit0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x112fbd0f0>
+capsys = <_pytest.capture.CaptureFixture object at 0x112c21e80>
+regime = 'muse-only'
+
+    @pytest.mark.parametrize('regime', ['muse-only', 'muse+git-mirror'])
+    def test_unavailable_init_authority_refuses_before_git_discovery(tmp_path, monkeypatch, capsys, regime):
+        root = tmp_path/'native-only'; root.mkdir(); (root/'.muse').mkdir()
+        def forbidden(*args, **kwargs):
+            pytest.fail('unsupported Muse init must not probe Git')
+        monkeypatch.setattr(v1, 'git', forbidden)
+>       assert main.main(['-C', str(root), 'init', '--regime', regime]) == 2
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/fpr1/test_dispatch.py:167: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+cli/main.py:195: in main
+    root = v1.root_for(args)
+           ^^^^^^^^^^^^^^^^^
+cli/v1.py:120: in root_for
+    root = Path(git(requested, "rev-parse", "--show-toplevel")).resolve(strict=True)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (PosixPath('/private/tmp/overseer-fpr1-authority-before/test_unavailable_init_authorit0/native-only'), 'rev-parse', '--show-toplevel')
+kwargs = {}
+
+    def forbidden(*args, **kwargs):
+>       pytest.fail('unsupported Muse init must not probe Git')
+E       Failed: unsupported Muse init must not probe Git
+
+tests/fpr1/test_dispatch.py:165: Failed
+_ test_unavailable_init_authority_refuses_before_git_discovery[muse+git-mirror] _
+
+tmp_path = PosixPath('/private/tmp/overseer-fpr1-authority-before/test_unavailable_init_authorit1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x112c2cc30>
+capsys = <_pytest.capture.CaptureFixture object at 0x112f75590>
+regime = 'muse+git-mirror'
+
+    @pytest.mark.parametrize('regime', ['muse-only', 'muse+git-mirror'])
+    def test_unavailable_init_authority_refuses_before_git_discovery(tmp_path, monkeypatch, capsys, regime):
+        root = tmp_path/'native-only'; root.mkdir(); (root/'.muse').mkdir()
+        def forbidden(*args, **kwargs):
+            pytest.fail('unsupported Muse init must not probe Git')
+        monkeypatch.setattr(v1, 'git', forbidden)
+>       assert main.main(['-C', str(root), 'init', '--regime', regime]) == 2
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/fpr1/test_dispatch.py:167: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+cli/main.py:195: in main
+    root = v1.root_for(args)
+           ^^^^^^^^^^^^^^^^^
+cli/v1.py:120: in root_for
+    root = Path(git(requested, "rev-parse", "--show-toplevel")).resolve(strict=True)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (PosixPath('/private/tmp/overseer-fpr1-authority-before/test_unavailable_init_authorit1/native-only'), 'rev-parse', '--show-toplevel')
+kwargs = {}
+
+    def forbidden(*args, **kwargs):
+>       pytest.fail('unsupported Muse init must not probe Git')
+E       Failed: unsupported Muse init must not probe Git
+
+tests/fpr1/test_dispatch.py:165: Failed
+=========================== short test summary info ============================
+FAILED tests/fpr1/test_dispatch.py::test_unavailable_init_authority_refuses_before_git_discovery[muse-only]
+FAILED tests/fpr1/test_dispatch.py::test_unavailable_init_authority_refuses_before_git_discovery[muse+git-mirror]
+2 failed in 0.07s

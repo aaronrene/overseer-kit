@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="6" time="30.456" timestamp="2026-10-14T14:26:58.365797-07:00" hostname="Carloss-MacBook-Pro.local"><testcase classname="tests.fpr2.test_lanes" name="test_collection_missing_selection_stale_and_bookends" time="3.114" /><testcase classname="tests.muse.test_product" name="test_upgrade_controlled_plan_preserves_settings_and_never_exports" time="5.206"><failure message="AssertionError: refused: config_invalid: &lt;normalized-config&gt;: muse+git-mirror regime requires vcs.muse.staging_remote&#10;  &#10;assert 2 == 0&#10; +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...t='', stderr='refused: config_invalid: &lt;normalized-config&gt;: muse+git-mirror regime requires vcs.muse.staging_remote\n').returncode">case = (PosixPath('/private/tmp/fpr2-product/test_upgrade_controlled_plan_p0/muse-only'), {'schema': 1, 'source': {'repo_id':...mirror', 'base': 'main', ...}, 'target': '/private/tmp/fpr2-product/test_upgrade_controlled_plan_p0/bare-mirror', ...})
+
+    def test_upgrade_controlled_plan_preserves_settings_and_never_exports(case):
+        root, plan = case
+        cfgpath = root/v1.CONFIG
+        original = yaml.safe_load(cfgpath.read_bytes())
+        body = json.dumps(plan).encode()
+        path = '.overseer/local/plan.json'
+        (root/path).parent.mkdir(exist_ok=True)
+        (root/path).write_bytes(body)
+        before = inventory(root)
+        args = ['-C', root, 'upgrade-regime', '--plan-file', path, '--expect-plan', digest(body)]
+        preview = command(*args, '--dry-run', '--json')
+        assert preview.returncode == 0, preview.stderr
+        assert inventory(root) == before
+        for extra in (['--live-bridge'], ['--live-bridge', '--yes']):
+            result = command(*args, *extra)
+            assert result.returncode == 2 and 'unsafe_legacy_live_export' in result.stderr
+            assert inventory(root) == before
+        assert command(*args, '--apply', '--expect-config', digest(cfgpath.read_bytes())).returncode == 0
+        updated = yaml.safe_load(cfgpath.read_bytes())
+        expected = deepcopy(original); expected['vcs']['regime'] = 'muse+git-mirror'
+        assert updated == expected
+        from pathlib import Path
+        assert not Path(plan['target']).exists()
+        for p, value in before.items():
+            if p != v1.CONFIG:
+                assert inventory(root)[p] == value
+        for operation in ('prepare', 'verify'):
+            result = command('-C', root, 'mirror', operation, '--plan-file', path, '--expect-plan', digest(body))
+&gt;           assert result.returncode == 0, result.stderr + result.stdout
+E           AssertionError: refused: config_invalid: &lt;normalized-config&gt;: muse+git-mirror regime requires vcs.muse.staging_remote
+E             
+E           assert 2 == 0
+E            +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...t='', stderr='refused: config_invalid: &lt;normalized-config&gt;: muse+git-mirror regime requires vcs.muse.staging_remote\n').returncode
+
+tests/muse/test_product.py:44: AssertionError</failure></testcase><testcase classname="tests.muse.test_product" name="test_muse_schema2_migration_preserves_native_binding_and_next" time="4.071" /><testcase classname="tests.muse.test_product" name="test_explicit_preserve_tracked_muse_bindings_keeps_history" time="4.126" /><testcase classname="tests.muse.test_product" name="test_native_lanes_commit_stales_untouched_entry" time="6.488" /><testcase classname="tests.muse.test_product" name="test_shared_native_stage_is_readonly_and_visible_in_linked_checkout" time="7.298" /></testsuite></testsuites>

@@ -1,0 +1,23 @@
+........................................................................ [ 18%]
+........................................................................ [ 36%]
+........................................................................ [ 54%]
+........................................................................ [ 72%]
+........................................................................ [ 90%]
+...................F..................                                   [100%]
+=================================== FAILURES ===================================
+________________ test_rendered_deploy_script_safety_invariants _________________
+
+muse_git_mirror_config = OverseerConfig(overseer_config_version=1, repo=RepoConfig(name='test-mirror', root_relative_docs='docs'), vcs=VcsConfi...ne, post_land_sync=PostLandSyncConfig(enabled=False, strategy='ff_only', require_clean_worktree=True)), workspace=None)
+
+    def test_rendered_deploy_script_safety_invariants(muse_git_mirror_config) -> None:
+        script = render_template(
+            kit_root() / "templates" / "scripts" / "muse-bridge-deploy.sh.template",
+            muse_git_mirror_config,
+        )
+>       assert "set -euo pipefail" in script
+E       assert 'set -euo pipefail' in '#!/bin/sh\n# Explicit bounded-v1 mirror entry point; preparation never publishes.\nset -eu\nPATH=/usr/bin:/bin\nexpor...nd explicitly select Muse with the bounded-v1 runtime\' >&2\n  exit 2\nfi\nexec "$ROOT/.overseer/bin/ok" mirror "$@"\n'
+
+tests/unit/test_k7_footprint.py:72: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_k7_footprint.py::test_rendered_deploy_script_safety_invariants
+1 failed, 397 passed in 429.91s (0:07:09)

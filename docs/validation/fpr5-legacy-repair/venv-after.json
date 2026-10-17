@@ -1,0 +1,3123 @@
+{
+  ".": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146193535446,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  ".gitignore": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146107219601,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1,
+    "sha256": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1"
+  },
+  ".lock": {
+    "mode": 438,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146193367985,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "CACHEDIR.TAG": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146107135266,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 43,
+    "sha256": "5953156d7e0c564a427251316eaf26f8870e6483ae2197f916b630e4f93e31ae"
+  },
+  "bin": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146108961929,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "bin/activate": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146108413543,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 4121,
+    "sha256": "a79b1943fd63becf76976d56c2bc97c18de611fb8dcb08d661fb8d94708d683a"
+  },
+  "bin/activate.bat": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146108780550,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 2701,
+    "sha256": "80f20e5abbe08a4f06809e1c82b44b7f84c2efba678a13429e221345dd4b22aa"
+  },
+  "bin/activate.csh": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146108519336,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 2651,
+    "sha256": "a9cafb0acc4a05de7d3ac8ff9e2fb2b9d8b9be668108ccc95efe49d32701ff83"
+  },
+  "bin/activate.fish": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146108590796,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 4362,
+    "sha256": "06b0a8897158e27520ee041008718db01d9f9beb6ca1562e81654f22c4718888"
+  },
+  "bin/activate.nu": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146108655422,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 3977,
+    "sha256": "5907112979710421baf9a06883ad52a9cca5b017f9308703847dd1101ed41ec3"
+  },
+  "bin/activate.ps1": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146108719757,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 2764,
+    "sha256": "5f4d6ebf3a7ef28fb3ef89a6d8f02b47d5c2d225e361c41428bb9960410ae4ab"
+  },
+  "bin/activate_this.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146108992846,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 2383,
+    "sha256": "c1b98392cec6efb935214e1bb1f24b0df5338969b4401d3c8297ee571c6d45b4"
+  },
+  "bin/deactivate.bat": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146108849802,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1730,
+    "sha256": "13ea86073a9ee43a66e3549312599dd47ff315758b4ca5a0406faf041fb82300"
+  },
+  "bin/pydoc.bat": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146108920636,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1219,
+    "sha256": "09f9608d478fa48a9e49af8f413cfeaab47773effd185433088b7688ce75890e"
+  },
+  "bin/python": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146108158454,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "symlink",
+    "target": "/opt/homebrew/opt/python@3.14/bin/python3.14"
+  },
+  "bin/python3": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146108201288,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "symlink",
+    "target": "python"
+  },
+  "bin/python3.14": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146108240872,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "symlink",
+    "target": "python"
+  },
+  "lib": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146109158433,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146109209142,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783763474353,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/__pycache__": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471225420977079,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/__pycache__/_virtualenv.cpython-314.pyc": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471225420894328,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 5048,
+    "sha256": "d005334bf88bb23ba05390f5c91307d6da2958bc4cd5c98e70dae2b50d9c55f6"
+  },
+  "lib/python3.14/site-packages/_cffi_backend.cpython-314-darwin.so": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526297094771,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 229392,
+    "sha256": "9e2ff74b2d5b17760e6f47735eb7e41c132574032f776057ccc24f921e09e079"
+  },
+  "lib/python3.14/site-packages/_virtualenv.pth": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146109379271,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 18,
+    "sha256": "69ac3d8f27e679c81b94ab30b3b56e9cd138219b1ba94a1fa3606d5a76a1433d"
+  },
+  "lib/python3.14/site-packages/_virtualenv.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146109294686,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 5246,
+    "sha256": "cfb3db86aaa53bb62b5ff764970bec2d71c9228590a0ebec57f6ec926cc0bf1a"
+  },
+  "lib/python3.14/site-packages/_yaml": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783677772806,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/_yaml/__init__.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783706855722499888,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1402,
+    "sha256": "d3801eff9a2cc5a8692476b75c165401fe308ba5d7df6811f03e97ea9eb81840"
+  },
+  "lib/python3.14/site-packages/cffi": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783759136669,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/cffi/__init__.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526298150610,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 511,
+    "sha256": "a8961ead2a83ec129962d0e2ffbe304b4cc5aebe0f210aee9f327cdad2c0adcf"
+  },
+  "lib/python3.14/site-packages/cffi/_cffi_errors.h": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526298055818,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 3583,
+    "sha256": "5b383ed01bb5fcad8610ad29494e5be90d86000b9d71a17cec7346f0ba05996c"
+  },
+  "lib/python3.14/site-packages/cffi/_cffi_gen_src.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526299720743,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 7044,
+    "sha256": "c94479de91526ec6b7b2c17bfd53aa5d368a78be402531ccfddc99f48198f6cc"
+  },
+  "lib/python3.14/site-packages/cffi/_cffi_include.h": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526297375481,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 15234,
+    "sha256": "cd8e8a168a3f6e96b4d8f6a042cd61cde5bd3b9eac9e2a25a32c6abd1280a2df"
+  },
+  "lib/python3.14/site-packages/cffi/_embedding.h": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526299110782,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 17554,
+    "sha256": "a537153c557b360eb9843ebcb30376ca6ef41b0ee2f38d890da6bf158f537338"
+  },
+  "lib/python3.14/site-packages/cffi/_imp_emulation.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526297487149,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 2960,
+    "sha256": "4714441bccc06c8d913c6070c3dd2eff97e2f2c59d6a1a5d8a93a83f3929ec2d"
+  },
+  "lib/python3.14/site-packages/cffi/_shimmed_dist_utils.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526297957318,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 2230,
+    "sha256": "0638f6c26f3265bbc5bd6131e4011f9aa6aa6726458587e8c8b2d01e45d9b9aa"
+  },
+  "lib/python3.14/site-packages/cffi/api.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526298843031,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 42013,
+    "sha256": "7165f5665b1c98ec9392fb61881a5458b712441b6a9699fe9a806ee1eb019b32"
+  },
+  "lib/python3.14/site-packages/cffi/backend_ctypes.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526297620899,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 42283,
+    "sha256": "4fb092735e0fe6fca5a22e61ca8c7af2a841597d3bf68c075da1836d8fd4edba"
+  },
+  "lib/python3.14/site-packages/cffi/cffi_opcode.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526298250027,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 5723,
+    "sha256": "e7ed5c53aa691c6cecb2d17f7a88250fff2d08393bebf6619338f77d6e1289cd"
+  },
+  "lib/python3.14/site-packages/cffi/commontypes.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526299231991,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 2805,
+    "sha256": "ecdeb33ed08596fc57316847574f29b148dd6082b65e0b0ddf2a39760b9afefe"
+  },
+  "lib/python3.14/site-packages/cffi/cparser.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526299607826,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 44754,
+    "sha256": "598fa8c785064ae552613b609b4d8598681b99cb9a6812b79a816591d1529ac5"
+  },
+  "lib/python3.14/site-packages/cffi/error.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526297715441,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 877,
+    "sha256": "bfac53892e14d24bc3732e21fc10d1a39bf7f5942e8fe20c4582efe444dd759b"
+  },
+  "lib/python3.14/site-packages/cffi/ffiplatform.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526298696405,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 3584,
+    "sha256": "6afc458dd8a460626812d9893bb7b0566c06fd511597a119fd668d859602aafe"
+  },
+  "lib/python3.14/site-packages/cffi/gen_src.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526299820119,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 132,
+    "sha256": "4d4fd9543c282e71cf95a97cfe63e6a71ab2589ed4ef9da34dcdd4b13984d502"
+  },
+  "lib/python3.14/site-packages/cffi/lock.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526299333866,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 747,
+    "sha256": "97d4d37703083298ba8c39091a742013d72f4c847b0809ed209afc1061edde96"
+  },
+  "lib/python3.14/site-packages/cffi/model.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526298589321,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 21752,
+    "sha256": "700f9b10089b70751bb5ba9f80cab408b42314f02357425247333229588d805e"
+  },
+  "lib/python3.14/site-packages/cffi/parse_c_type.h": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526300085454,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 5976,
+    "sha256": "39dc107f033d92dababe5081e377b11509b10c1b63d8c04d74af0b625d79b63c"
+  },
+  "lib/python3.14/site-packages/cffi/pkgconfig.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526298474070,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 4365,
+    "sha256": "bb2b75d7b4d079e6b77636a03355b9828f11a67c921938280b337c407c997657"
+  },
+  "lib/python3.14/site-packages/cffi/recompiler.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526299481451,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 65140,
+    "sha256": "4c9545d3b985cd819357ab33a76ccfac977674928737e781fd2ba22621a5f4ac"
+  },
+  "lib/python3.14/site-packages/cffi/setuptools_ext.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526297852817,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 9566,
+    "sha256": "a59ae74ea54290632abbc37123191d6c8b65eb981e84c3f52e8ada51d4fbfb85"
+  },
+  "lib/python3.14/site-packages/cffi/vengine_cpy.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526298992031,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 43030,
+    "sha256": "ad1a2e610e819650085cd8d91933d45b9e2b07de76aa2de0726d7a4965d628b7"
+  },
+  "lib/python3.14/site-packages/cffi/vengine_gen.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526298370195,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 26931,
+    "sha256": "67f2aa685eabe789f98b886341385975bfb50c14c48a69d4e32e04fcac520838"
+  },
+  "lib/python3.14/site-packages/cffi/verifier.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526299991120,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 11154,
+    "sha256": "c48cd5f220cc859d7eaa15f74515f80d6a36934ed6a5c271761840157023ae66"
+  },
+  "lib/python3.14/site-packages/cffi-2.1.0.dist-info": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783749107713,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/cffi-2.1.0.dist-info/INSTALLER": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526339054156,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 4,
+    "sha256": "ceebae7b8927a3227e5303cf5e0f1f7b34bb542ad7250ac03fbcde36ec2f1508"
+  },
+  "lib/python3.14/site-packages/cffi-2.1.0.dist-info/METADATA": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526300574498,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 2527,
+    "sha256": "a35079b9bb45bc0558e6e6b20b2eea49b9ebce2f87a7264b95574a1b741b5611"
+  },
+  "lib/python3.14/site-packages/cffi-2.1.0.dist-info/RECORD": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526339461366,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 3505,
+    "sha256": "604978e427bad4cfac2b6a7c2f67831ec901a5db8e38645be3a7a41345d0295b"
+  },
+  "lib/python3.14/site-packages/cffi-2.1.0.dist-info/WHEEL": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526300307872,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 136,
+    "sha256": "77adaffc38e392dfeca698661b3b25d28c7adc573488727da04b51d392de07fc"
+  },
+  "lib/python3.14/site-packages/cffi-2.1.0.dist-info/entry_points.txt": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526300397080,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 132,
+    "sha256": "a6b6108011f8e27050fe5269bba88c8051b414697880d3b0b6fbe3a03a0b001c"
+  },
+  "lib/python3.14/site-packages/cffi-2.1.0.dist-info/licenses": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783748587669,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/cffi-2.1.0.dist-info/licenses/LICENSE": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526300695332,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1123,
+    "sha256": "5ba24ddc57067f9249add644c3afc41a5d6dc37e23433ef759d95df370b0af63"
+  },
+  "lib/python3.14/site-packages/cffi-2.1.0.dist-info/top_level.txt": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526300490039,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 19,
+    "sha256": "ac4ed6477ad97cd2b1588f7e8e7ea1b0708097b303901f859ae41bc568c57a14"
+  },
+  "lib/python3.14/site-packages/cryptography": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783742537187,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/cryptography/__about__.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526340890498,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 445,
+    "sha256": "a76732bedad7ff170492adc155113351d6a43303f113936997dc4d281bdacbe9"
+  },
+  "lib/python3.14/site-packages/cryptography/__init__.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526340982916,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 364,
+    "sha256": "9ad86e52b4dde0544e0a9518ad322a863cfab3a4fd763019ad5ee7675a0c9b6a"
+  },
+  "lib/python3.14/site-packages/cryptography/exceptions.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526341070374,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1087,
+    "sha256": "f37e445882dcd9fc31c3e83214cae27220b64aa8558844c1d742c14b2b670c87"
+  },
+  "lib/python3.14/site-packages/cryptography/fernet.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526341165208,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 6963,
+    "sha256": "dc2bf1921d0a2526d7f076e7087bb8c1f096ed4d0681f500deffea43c6bc8967"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783724685075,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/__init__.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526341315459,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 455,
+    "sha256": "e48c2b2d6ad5a7402312bff815d586fd5d39ecd489198fd6e1e80d36cb9cb748"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/_oid.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526341432876,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 17879,
+    "sha256": "98724bda6e0b9d736a7adbbfc97f109cd6fc51a3ae5f8cb9f6e299106ba44f5a"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/asn1": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783694280288,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/asn1/__init__.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526341577585,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 776,
+    "sha256": "df440d4124d9c807e233c97d492b4b9d5db477a79fce7c26e1ee373244c70156"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/asn1/asn1.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526341686753,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 19152,
+    "sha256": "f6671fae676f2bb2ad8e1458a1f3330235b4bbb9efa9b7ecbcf7db84d40ad414"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/backends": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783694887874,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/backends/__init__.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526341817462,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 361,
+    "sha256": "3b98ef28541d6675e129ea89f87b6e95a10bf4d8bb9abd660f3658e641e56212"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/backends/openssl": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783695420918,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/backends/openssl/__init__.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526341937212,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 305,
+    "sha256": "a778e625f9c26a0f62139b1d32b37a56f544bb9e6ee3ac5a4bf223a08d12ae60"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/backends/openssl/backend.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526342077796,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 10591,
+    "sha256": "dd17b231edde7bf03cfb77d2ae81aeef1bbaa4f7af5d02edf567793bdc7179c6"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783722353982,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/__init__.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526342196047,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 180,
+    "sha256": "b3da0a090db2705757a0445d4b58a669fb9e4a406c2fd92f6f27e085a6ae67d6"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783722021398,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/__init__.pyi": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526342340714,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 2285,
+    "sha256": "b949e7bceabfb9a99e62704da66b2fdd244054ed16406a63239f1a47594be0ac"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/_openssl.pyi": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526342427631,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 228,
+    "sha256": "4ffe53a583bc6e08483e3010dc1b40001ab0f82718b241e9f76c26e4f358e9d7"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/asn1.pyi": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526342511757,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 354,
+    "sha256": "06b1a30bc27a9f0b92fabdc455c757241f27768b5f63d99b41839fa5b3c6d070"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/declarative_asn1.pyi": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526342591049,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 3866,
+    "sha256": "30198e6732d37663c9ebed4ae80ab73d3b872753068117c8bb484881a83ba1c1"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/exceptions.pyi": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526342679133,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 640,
+    "sha256": "7b15ebdb1c3fd29075924f777186ccdcca216f3a149233a6b3564c522d2e4191"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/ocsp.pyi": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526342763300,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 4020,
+    "sha256": "54f556b8a1c8f4432cd3d64b458006bd1d08cf49823261335c0920247a2fa683"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/openssl": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783720770476,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/openssl/__init__.pyi": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526342888467,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1550,
+    "sha256": "24309e7f6f6f5e7ac432f175dc91fdcf5f96f5a8624d9400939c61bbf287ea9a"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/openssl/aead.pyi": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526342977676,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 4582,
+    "sha256": "eddfbec5d734beecd17b84b6bae41a1a6fbd1862afe0d7122d070bc9671a0fab"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/openssl/ciphers.pyi": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526343069468,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1315,
+    "sha256": "2e13f31d649726ae20ac02579facd2bd249d57e698208b1c1c3c083e524618fb"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/openssl/cmac.pyi": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526343171927,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 564,
+    "sha256": "9cf1f45f9ed1629b00911a305698d0887139eba4e1513c7b617aec69d9ab9879"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/openssl/dh.pyi": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526343264969,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1564,
+    "sha256": "6774c2f86d38f931ed49d00e3cb3358761bb9a5e5b75ad4495951c9f9c29ba19"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/openssl/dsa.pyi": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526343357095,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1299,
+    "sha256": "a81b64823d9a95bb76a8572767d503ae1ce83610953bb1d36f2e5549fd445cc2"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/openssl/ec.pyi": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526343459345,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1691,
+    "sha256": "cc9cb4a516b99fefe9d9d9b8e4fc44081ffe07a49567234a7e3c450e93ea4f7f"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/openssl/ed25519.pyi": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526343570971,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 532,
+    "sha256": "5577d77791ba8548af837f7d4750d87665b77936f411e6f30d3aa3442da0691c"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/openssl/ed448.pyi": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526343672554,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 514,
+    "sha256": "631e3d96a7678ec0fb6f188357591c68cac392dba0e5ebe2e5aeb37ab322cb6b"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/openssl/hashes.pyi": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526343775763,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1076,
+    "sha256": "6c57b74f5dd47b24489d424c0fe47902b19318ba960e25a8d8bbf6286cd46dfe"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/openssl/hmac.pyi": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526343879847,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 702,
+    "sha256": "057667ecd0e32f72406d85b4490f298358b20b90db4175615008b0b22f03151f"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/openssl/hpke.pyi": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526343975598,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 2914,
+    "sha256": "a7f8462e7e981fe11aac91755796d4b14b638a9be2100a5c4793b4b141c92ed7"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/openssl/kdf.pyi": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526344064182,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 6619,
+    "sha256": "1e288b74407d9ea32c4ef330885a694297cfcfa7c7533f7f8298c407f5c03970"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/openssl/keys.pyi": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526344157390,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 912,
+    "sha256": "b5e22df0ce9910c26b9f8b375b45275b40d9fb7d0977af169d2b0a286d76e25d"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/openssl/mldsa.pyi": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526344248099,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1073,
+    "sha256": "1c284db235b40bfbcef4e543e0584466b5cedff16212ad994c5e7d8657dc11d3"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/openssl/mlkem.pyi": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526344337058,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 835,
+    "sha256": "6f2a1ebace3e9483a55a5122450742734d2a0a45e9381e6978163aca8f6293cb"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/openssl/poly1305.pyi": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526344421558,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 585,
+    "sha256": "fd25bd36d4391439406dd72516d5a94f89469b1288287a4dfb88fc27607361f4"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/openssl/rsa.pyi": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526344498601,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1364,
+    "sha256": "d8e4023525e4c6073edeec35c620829682104d5ea9f7f90aefd62ed2b85980f7"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/openssl/x25519.pyi": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526344583892,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 523,
+    "sha256": "7b09f81a94326fbccfc04fa78bb1adc9080c0b403598bbaa62c4b2aafea723fb"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/openssl/x448.pyi": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526344669268,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 505,
+    "sha256": "8ee4d94e6962f233bfe5572e7e0faf1efc7fb42c9ece648b221ffd3d4dd37332"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/pkcs12.pyi": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526344759227,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1605,
+    "sha256": "bc411de700e266f6fc64615ace22c26962f3030a06fedbcf5312d0c39fee3a5f"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/pkcs7.pyi": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526344859644,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1601,
+    "sha256": "b711812628ea66c84472aadae9bc8f35b9e2b08765c733922073f6865f5aacfb"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/test_support.pyi": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526344968978,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 757,
+    "sha256": "3cf86577e5a43bbe3789714f79b786d0bb602b4693cc6763708b1acb51a6e461"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust/x509.pyi": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526345104520,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 10204,
+    "sha256": "0239e81e5e42df57390164809b0d97bc6736928b14a73795f002ed32507160e8"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/_rust.abi3.so": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526359308052,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 11393824,
+    "sha256": "9e6f97ee44de5f5574b698069bebb28f1080662c55fab820bde07fb8f9c5cd4c"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/openssl": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783722976110,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/openssl/__init__.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526359620012,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 180,
+    "sha256": "b3da0a090db2705757a0445d4b58a669fb9e4a406c2fd92f6f27e085a6ae67d6"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/openssl/_conditional.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526359718971,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 5611,
+    "sha256": "bdfce2fb11dd4ad01c2508cbaaa3a54a8b3de0bf03feda85b417bb3afc3e2ad6"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/bindings/openssl/binding.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526359811013,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 3706,
+    "sha256": "16cb8bc5b4e7aea5bad3e7405ad6a482e7deabb4e7a9a41a8b53dcec3a30ae3a"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/decrepit": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783723656154,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/decrepit/__init__.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526359950264,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 216,
+    "sha256": "c0709b59f69e7daf9f93a4c74b0f6d87d7c952c4ad268ef6e39c1f141aa676e0"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/decrepit/ciphers": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783724447740,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/decrepit/ciphers/__init__.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526360061514,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 216,
+    "sha256": "c0709b59f69e7daf9f93a4c74b0f6d87d7c952c4ad268ef6e39c1f141aa676e0"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/decrepit/ciphers/algorithms.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526360139390,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 3566,
+    "sha256": "caa1edee4e4ecc5fcabaf3bc33dbd394d2ed1bb128b5bbd287260a21a509aa18"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/decrepit/ciphers/modes.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526360216140,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1649,
+    "sha256": "3aafcf1300a47b938b73339faffbf300e27ac0fc7eae5b2f1c05cf06e8796fda"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783741046889,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/__init__.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526360329474,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 180,
+    "sha256": "b3da0a090db2705757a0445d4b58a669fb9e4a406c2fd92f6f27e085a6ae67d6"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/_asymmetric.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526360412350,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 532,
+    "sha256": "46181ca2e501e874e214306b4752f1aa4323a54c4888dbd0d6bff3263446eaa4"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/_cipheralgorithm.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526360490475,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1522,
+    "sha256": "121de2ee5c1e7477e2d1e2d2b07f773d9c502b363d23a9642baeef2f8579b4e7"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/_modes.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526360566517,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 3075,
+    "sha256": "fc4880383f096fa5a915796ec247144f7102cff4c7f318c6bdb4251a4366e7d4"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/_serialization.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526360643267,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 4440,
+    "sha256": "862d3125b941019f29999c769566be96bba9871befbc6de0f4334ad06f0e75fb"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/asymmetric": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783731180934,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/asymmetric/__init__.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526360753435,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 180,
+    "sha256": "b3da0a090db2705757a0445d4b58a669fb9e4a406c2fd92f6f27e085a6ae67d6"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/asymmetric/dh.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526360835019,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 3912,
+    "sha256": "925bc755ac401645326965cbcada988c14e1f35671d41c8224d65545c483617f"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/asymmetric/dsa.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526360913852,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 4482,
+    "sha256": "910cd3562a8023d3e210b34e05ca3f9fa31f3f737d7a120f91276e3a9ba9b743"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/asymmetric/ec.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526361028561,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 10183,
+    "sha256": "2e495508b2f16db433aa213a1d16984d16ae2cca61614c37b44e9cf28048c584"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/asymmetric/ed25519.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526361104978,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 2998,
+    "sha256": "99b7df2efb3edcf8020de835ad05d55e1ec62e7b6554be004e390811ce29b793"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/asymmetric/ed448.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526361195104,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 4002,
+    "sha256": "9f474aeb2f952f1bb0fb3beb0f1b8f4f8e7df21ca6817fb5472fe3abd6944211"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/asymmetric/mldsa.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526361297896,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 13750,
+    "sha256": "8a1e19fffb3b6d102e64ab3da8a72e350ef3f56eaadf1ad5730e4e73cd7ff57d"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/asymmetric/mlkem.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526361373355,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 7901,
+    "sha256": "c2f5647854fee287fe55c500111dbecc8ff98574faaf04c93cc090f2017d1930"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/asymmetric/padding.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526361448188,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 2854,
+    "sha256": "bd0ea5ea03a0f47a9c6ceb2f1eb4a225154b7448fd2f89b81e4446633893c850"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/asymmetric/rsa.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526361561022,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 8492,
+    "sha256": "94813b9467b8e3d5b95112d3282a6f1467ab213a2e2a8655f46c2e4f349cb12a"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/asymmetric/types.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526361648023,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 2409,
+    "sha256": "b3cf96aa33a7b5a375a00395e5b1dcccb14cda6a528b4249bb2103ffd168179c"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/asymmetric/utils.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526361730231,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 821,
+    "sha256": "42cf117bd1853e35bfb4da7fef721e2448cf09fd2c94e22c58ec68eaaca64fa9"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/asymmetric/x25519.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526361817524,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 3888,
+    "sha256": "950720524f8f8ae6e3f329c535641e6267b7b5864c80742a9112a42033872f3a"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/asymmetric/x448.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526361908107,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 3913,
+    "sha256": "6f7ee283b93ba681ba4890ebcb8da3f849428f9ab8790d17e421663744a7f33f"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/ciphers": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783733193275,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/ciphers/__init__.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526362057900,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 680,
+    "sha256": "7b21179a393afc265768e3d80ebeef018197af6f50bf38162f6fb8092a252c5b"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/ciphers/aead.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526362155359,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 634,
+    "sha256": "173972c7bc3c29841a9330e9d735a026722beb6ce066b815875bb68787b1079e"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/ciphers/algorithms.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526362258401,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 3496,
+    "sha256": "2067c2c9c6093a1d53be8237e2b7f0f0a7c9ff19add69fc3a4186dd8582171ea"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/ciphers/base.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526362345526,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 4253,
+    "sha256": "6810bb1c7041a22c5e6e6a5aad5af4525383b37543d00ec1ea8cff01a4630eff"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/ciphers/modes.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526362419860,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 5999,
+    "sha256": "1080dd1400ae20f87039a0de528b92ae8c6d7458bbbcead7c096c1e193f144bb"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/cmac.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526362495360,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 338,
+    "sha256": "b33fece87fdc6273afc7e54d59d20a85185edd89a9f33f09d03dc206a397de08"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/constant_time.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526362570652,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 422,
+    "sha256": "c5dba7593d277fc3af29d72a52186514a6b21a9e3f3e0549454d96d702d2aff0"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/hashes.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526362641945,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 5184,
+    "sha256": "33c06b94a07753a0c4b47bd64d5e55463a6d787bf5912dd9c66fc1b24d3872bf"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/hmac.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526362719611,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 423,
+    "sha256": "469077cfdcf9b248ab090ae6ef341bb67a7da4b327023ae54d4bcaa85e5a0c37"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/hpke.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526362803945,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 865,
+    "sha256": "46c1e2b2c0b997e7533e7d69d896dcac8ac09c306b2ea339ba0045486a662aee"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/kdf": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783737530667,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/kdf/__init__.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526362935029,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1037,
+    "sha256": "bf7ca2601194dbbd84a233576f07d865d6db7c8f5c54e0821b79d78530dd6b79"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/kdf/argon2.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526363014196,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 632,
+    "sha256": "649c7e7a7525000e28edbe3a0b5c25cc6fd7010416d3022416050a92b33fc00f"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/kdf/concatkdf.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526363099863,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 591,
+    "sha256": "0459ce292ef6b71285d3242f012af435aeee873bcb1e95027242b988d002fda4"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/kdf/hkdf.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526363188197,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 543,
+    "sha256": "33494011f468738929a78fa7c038fdc81faf359ba420e60442b5255ac04d9fda"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/kdf/kbkdf.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526363269031,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 737,
+    "sha256": "0b7c3df6f8c5aa1ab3031cc5387e33cef5681e46f9002e8bcfa00440657b77f8"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/kdf/pbkdf2.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526363341531,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 468,
+    "sha256": "5dc86493df6cf8c93a6fa2920a8baa764f0557288d54e48521e9e69d6ded2e04"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/kdf/scrypt.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526363416032,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 590,
+    "sha256": "5f259475452686e23d57a4ea00f3afba3092306bf55d0760d1adb52160a63be5"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/kdf/x963kdf.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526363486866,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 456,
+    "sha256": "40a8e145e86e4ec02cb4bdfce1b29fbe3bafd727dd6a6007561b014567a7d95c"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/keywrap.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526363560949,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 5776,
+    "sha256": "508fb4504490c415d3294d47aeb4685300e216cad689ff35ab25e55757bb9326"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/padding.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526363631200,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1865,
+    "sha256": "413f94f8dbd5d9e4063b5c153db0e234635273d91e4434be8a0e5c40eacbcf41"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/poly1305.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526363702825,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 355,
+    "sha256": "3f910f415f9107f1493da869834d6ed13b384bf3e7026b2ba312065db19e451a"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/serialization": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783740656930,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/serialization/__init__.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526363839992,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1705,
+    "sha256": "43bb9380396dee7dd67ec313ea3630bad0ba0c883fed211ea009b51876790791"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/serialization/base.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526363922034,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 615,
+    "sha256": "8a4ab9309230a7fa149e389a05ca3f3e643039362e1a2f979185181cacbc568d"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/serialization/pkcs12.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526364001910,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 5104,
+    "sha256": "992f5c14d1b869fcefb1ea1ce5ed4c5a863656c91f2fc37c63f3858e5ebb96e6"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/serialization/pkcs7.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526364116869,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 13998,
+    "sha256": "98533b385b99f1c0b1506528a380a87fa06708773f21bc750108e37f19cf971a"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/serialization/ssh.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526364251994,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 53789,
+    "sha256": "1d5e99a888ea34d68d50be8ce2043234926d67be44b22499b3acb175da81ad62"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/twofactor": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783741662392,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/twofactor/__init__.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526364370662,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 258,
+    "sha256": "b66319181fa0e08535afb94816a012534d7dcebd2e3e9ff010161cc1d0c22820"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/twofactor/hotp.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526364444745,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 3256,
+    "sha256": "8af668e41adc08658bb2aaa5e27655d175c28f218f8bf8877c3165b4694e2709"
+  },
+  "lib/python3.14/site-packages/cryptography/hazmat/primitives/twofactor/totp.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526364517538,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1652,
+    "sha256": "9b92cfa512f4d24a78cd8f204e3af9e477f3f5a3253d2e7790799591240299d6"
+  },
+  "lib/python3.14/site-packages/cryptography/py.typed": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526364554204,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "lib/python3.14/site-packages/cryptography/utils.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526364644746,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 4281,
+    "sha256": "c029f291f9969a9e8be73505a2eef5e6c9d82fdfd82cb1e3a63e3f3479a58705"
+  },
+  "lib/python3.14/site-packages/cryptography/x509": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783745619491,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/cryptography/x509/__init__.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526364796039,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 8273,
+    "sha256": "cdc8b269d4609c2a760cd3cf9baba310a77a117fbcff33a7c2d0a325b6416ad8"
+  },
+  "lib/python3.14/site-packages/cryptography/x509/base.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526364887123,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 27056,
+    "sha256": "93dcc4142ec7ec6cace7c02624d7847e94de242be883ca7ca0311af0383408ed"
+  },
+  "lib/python3.14/site-packages/cryptography/x509/certificate_transparency.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526364964540,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 797,
+    "sha256": "26aa0e203865c089eb60c156e88167efb589d2f885f8f07fae5655defb3d3187"
+  },
+  "lib/python3.14/site-packages/cryptography/x509/extensions.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526365102082,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 77968,
+    "sha256": "d00520bad2dedba48b83529ac527a8d1f1bb7d4040c8adad120265f5cfc04113"
+  },
+  "lib/python3.14/site-packages/cryptography/x509/general_name.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526365201166,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 7836,
+    "sha256": "b0ffeb575d50969b24e31dd75c6258fccbf443fb3d76d8de2dc907b23a4b4284"
+  },
+  "lib/python3.14/site-packages/cryptography/x509/name.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526365318167,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 15566,
+    "sha256": "a08db0e95758f33830eeaa4d865c44c79d765b40215835d0ac361fe44b0cd8f6"
+  },
+  "lib/python3.14/site-packages/cryptography/x509/ocsp.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526365682002,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 12699,
+    "sha256": "61ecba35d155d4c3e3a29db8323fd57a78c4a60de451a328a5258e2b401b781b"
+  },
+  "lib/python3.14/site-packages/cryptography/x509/oid.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526365912920,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 931,
+    "sha256": "054ce05d71955a296406474a3d39bd478a84944f600061e07583cc640a7b3c9a"
+  },
+  "lib/python3.14/site-packages/cryptography/x509/verification.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526366043754,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 958,
+    "sha256": "811d82d9cf97650b5b959853e53e6f8d228eb426fbe1e7f66a53d59847301653"
+  },
+  "lib/python3.14/site-packages/cryptography-49.0.0.dist-info": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783690993483,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/cryptography-49.0.0.dist-info/INSTALLER": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526428462577,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 4,
+    "sha256": "ceebae7b8927a3227e5303cf5e0f1f7b34bb542ad7250ac03fbcde36ec2f1508"
+  },
+  "lib/python3.14/site-packages/cryptography-49.0.0.dist-info/METADATA": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526366236088,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 4343,
+    "sha256": "1fc839d24efc355f0e5c507aa807822bca4371e732603b6d3e92b24038deded2"
+  },
+  "lib/python3.14/site-packages/cryptography-49.0.0.dist-info/RECORD": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526429086122,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 17607,
+    "sha256": "74a405fbe96ccfc2944808eb6a7fb3b30a6f6ffa075a4691df0671d0560c6b41"
+  },
+  "lib/python3.14/site-packages/cryptography-49.0.0.dist-info/REQUESTED": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526428577161,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "lib/python3.14/site-packages/cryptography-49.0.0.dist-info/WHEEL": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526366332422,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 104,
+    "sha256": "46c246b4f89723b3f49ee0809661061423660df10082b7674a49b9ab21e791c3"
+  },
+  "lib/python3.14/site-packages/cryptography-49.0.0.dist-info/licenses": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783690559732,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/cryptography-49.0.0.dist-info/licenses/LICENSE": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526366469714,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 197,
+    "sha256": "3e0c7c091a948b82533ba98fd7cbb40432d6f1a9acbf85f5922d2f99a93ae6bb"
+  },
+  "lib/python3.14/site-packages/cryptography-49.0.0.dist-info/licenses/LICENSE.APACHE": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526366624632,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 11360,
+    "sha256": "aac73b3148f6d1d7111dbca32099f68d26c644c6813ae1e4f05f6579aa2663fe"
+  },
+  "lib/python3.14/site-packages/cryptography-49.0.0.dist-info/licenses/LICENSE.BSD": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526366724841,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1532,
+    "sha256": "602c4c7482de6479dd2e9793cda275e5e63d773dacd1eca689232ab7008fb4fb"
+  },
+  "lib/python3.14/site-packages/cryptography-49.0.0.dist-info/sboms": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783691432443,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/cryptography-49.0.0.dist-info/sboms/cryptography-rust.cyclonedx.json": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526366908050,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 45956,
+    "sha256": "e88b4427a6b70097b9fead6aab292456b29a40049567c4c501a25be506a370d7"
+  },
+  "lib/python3.14/site-packages/cryptography-49.0.0.dist-info/sboms/sbom.json": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526367006425,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1210,
+    "sha256": "95022207ef86610c13d768fac68a21fbf2edd8dcefc0a143154e84c5359b7c9c"
+  },
+  "lib/python3.14/site-packages/pycparser": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783766327698,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/pycparser/__init__.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526267785120,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 2829,
+    "sha256": "a6156247202e52682a13890d99a0aaa66e56544048bf351215aa41bf85d7df1a"
+  },
+  "lib/python3.14/site-packages/pycparser/_ast_gen.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526268002162,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 11292,
+    "sha256": "1311f9626e2993b7503c422442bf512629b97deced7414304813efa6f13ee413"
+  },
+  "lib/python3.14/site-packages/pycparser/_c_ast.cfg": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526268172538,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 4255,
+    "sha256": "95de5ecc4f72cc82452150147f0edecc94a5322e275ca342cdf9aa8cec904cda"
+  },
+  "lib/python3.14/site-packages/pycparser/ast_transforms.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526268301789,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 5899,
+    "sha256": "5f032c6ab73968375d35680888a9b8fa33963116226fdeb2350528d3fbb6f160"
+  },
+  "lib/python3.14/site-packages/pycparser/c_ast.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526268453748,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 32954,
+    "sha256": "bb091c6561df5c3408c3a583bc22f5ee258cffed11f94443a843263e35cb3807"
+  },
+  "lib/python3.14/site-packages/pycparser/c_generator.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526268603499,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 20661,
+    "sha256": "4552893e0bafd82be8bc71d27d092a8a672452bf70194f4fa1fc421a3db9d500"
+  },
+  "lib/python3.14/site-packages/pycparser/c_lexer.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526268759291,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 25155,
+    "sha256": "075568a9b6213d690e2495827a6e0e638ce3d08c6b3e4b4165915ed98f3b9148"
+  },
+  "lib/python3.14/site-packages/pycparser/c_parser.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526268979084,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 89798,
+    "sha256": "dc504a18b8e3942deff1a7f00ff727311ebb226a18232ef76b858a411ea15fb8"
+  },
+  "lib/python3.14/site-packages/pycparser-3.0.dist-info": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783763214894,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/pycparser-3.0.dist-info/INSTALLER": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526295217637,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 4,
+    "sha256": "ceebae7b8927a3227e5303cf5e0f1f7b34bb542ad7250ac03fbcde36ec2f1508"
+  },
+  "lib/python3.14/site-packages/pycparser-3.0.dist-info/METADATA": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526269411045,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 8229,
+    "sha256": "f547a60b0ab54cc2f242213d1f87960ad80df7dd5dfeb98d17a444d48bfb6b93"
+  },
+  "lib/python3.14/site-packages/pycparser-3.0.dist-info/RECORD": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526295580180,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1484,
+    "sha256": "05cc572b90575a00791e1425f397e7a0e80b7f4f0c948dbcac2bf38e47872de2"
+  },
+  "lib/python3.14/site-packages/pycparser-3.0.dist-info/WHEEL": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526269526420,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 92,
+    "sha256": "a842dba36b35633977f599ab0226d70368e33cb5187e756150d4e5c85d6bab46"
+  },
+  "lib/python3.14/site-packages/pycparser-3.0.dist-info/licenses": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783762905601,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/pycparser-3.0.dist-info/licenses/LICENSE": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526269212877,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1543,
+    "sha256": "0c846399369ea76ddd7b5c44fe6d16497415fcf015f5cbb508c24bf98b81c5b1"
+  },
+  "lib/python3.14/site-packages/pycparser-3.0.dist-info/top_level.txt": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783883526269639087,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 10,
+    "sha256": "73e94f712ef82fff0aa07ec813a3d0179a1fca2ad140d57856191b48520f7963"
+  },
+  "lib/python3.14/site-packages/pyyaml-6.0.3.dist-info": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783679864898,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/pyyaml-6.0.3.dist-info/INSTALLER": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783706855747698337,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 4,
+    "sha256": "ceebae7b8927a3227e5303cf5e0f1f7b34bb542ad7250ac03fbcde36ec2f1508"
+  },
+  "lib/python3.14/site-packages/pyyaml-6.0.3.dist-info/METADATA": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783706855722276178,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 2351,
+    "sha256": "03c3b415ed38d09faedc49360e930769b40c58f68585e6de00e2e4916a858d34"
+  },
+  "lib/python3.14/site-packages/pyyaml-6.0.3.dist-info/RECORD": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783706855748023797,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 2695,
+    "sha256": "b6cc865dd12a54367bded9629a54bd78d0fc3debcd6fad5320c28cabb14d5a68"
+  },
+  "lib/python3.14/site-packages/pyyaml-6.0.3.dist-info/WHEEL": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783706855722112802,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 136,
+    "sha256": "d8877aaab79eb79b78c19bf9f1b65f8a3279f2aadcdb1930e8e56f59f7aac55d"
+  },
+  "lib/python3.14/site-packages/pyyaml-6.0.3.dist-info/licenses": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783679577730,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/pyyaml-6.0.3.dist-info/licenses/LICENSE": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783706855722387095,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1101,
+    "sha256": "8d3928f9dc4490fd635707cb88eb26bd764102a7282954307d3e5167a577e8a4"
+  },
+  "lib/python3.14/site-packages/pyyaml-6.0.3.dist-info/top_level.txt": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783706855722197469,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 11,
+    "sha256": "ae98f42153138ac02387fd6f1b709c7fdbf98e9090c00cfa703d48554e597614"
+  },
+  "lib/python3.14/site-packages/yaml": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1792081783687901096,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/yaml/__init__.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783706855724332858,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 12311,
+    "sha256": "b19dfcc333d6a75dfd73073901164507252f271b41d3b5f7d85510033a0547a7"
+  },
+  "lib/python3.14/site-packages/yaml/_yaml.cpython-314-darwin.so": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783706855723538269,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 381736,
+    "sha256": "35b28ba8dc677e24bcd7c1fc1706b1960f173bb97497c3573a527b45aed12107"
+  },
+  "lib/python3.14/site-packages/yaml/composer.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783706855722965641,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 4883,
+    "sha256": "fcaa37d16afa783594794a5ab94193dcb720f503c19ce3d59539c8311189f453"
+  },
+  "lib/python3.14/site-packages/yaml/constructor.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783706855722865807,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 28639,
+    "sha256": "90d8247da78b524c10618fd0e857f54f3d97570fe91b5c5513d024ef3faf88b0"
+  },
+  "lib/python3.14/site-packages/yaml/cyaml.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783706855724770610,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 3851,
+    "sha256": "e99ac01bd7c062f7557b614aff0d21997a06ed962ca185306a91bc0a20bbd87d"
+  },
+  "lib/python3.14/site-packages/yaml/dumper.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783706855724672818,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 2837,
+    "sha256": "3cb72d66563064ba7b5e679477046ebf89d8399d940670c8532f3e94a7cb17ea"
+  },
+  "lib/python3.14/site-packages/yaml/emitter.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783706855725586949,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 43006,
+    "sha256": "8e086d694ede170837d5b1b407b45979aff6f40762f422a65eafd08e04290a44"
+  },
+  "lib/python3.14/site-packages/yaml/error.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783706855722773723,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 2533,
+    "sha256": "021f73fada072546c4f63f8cf18a7181244ce4280b09cc15cc980b2d1176171a"
+  },
+  "lib/python3.14/site-packages/yaml/events.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783706855724163732,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 2445,
+    "sha256": "e74fd392c810884e2ea7e94aa3f57e9c1cbeb402319083d0c58e6a0e1282787c"
+  },
+  "lib/python3.14/site-packages/yaml/loader.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783706855725094196,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 2061,
+    "sha256": "5156becc8aa6905482218abf3e04869b835226db4763645fff3438fdbd5f1cdd"
+  },
+  "lib/python3.14/site-packages/yaml/nodes.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783706855725438656,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1440,
+    "sha256": "80f28d8fca4a09d87677882bde021820d9cf39a3b11a12405226211919cf13ce"
+  },
+  "lib/python3.14/site-packages/yaml/parser.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783706855724892361,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 25495,
+    "sha256": "8a55a9e6fbe0a07146cef3990c8b45a068c3e83e369e1959ad9ca30306b4a09a"
+  },
+  "lib/python3.14/site-packages/yaml/reader.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783706855725009195,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 6794,
+    "sha256": "d1d9b38ab3a20c6e17a38d519ee412ecaf6b918df18c78956ac7c330d4ea08dc"
+  },
+  "lib/python3.14/site-packages/yaml/representer.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783706855724473067,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 14190,
+    "sha256": "22e58ff9c016f6c1ca1274b4802a926bcf78935060e1c813c5a0f021c6d143e6"
+  },
+  "lib/python3.14/site-packages/yaml/resolver.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783706855725287447,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 9004,
+    "sha256": "f4bf9561f9b89961f1503d558385fbae30d12bfed565de9bf76c33abb63620a6"
+  },
+  "lib/python3.14/site-packages/yaml/scanner.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783706855722688264,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 51279,
+    "sha256": "60433788b652690c17710460da5d91e0c753d3318fd85f5e1e42862a71f25906"
+  },
+  "lib/python3.14/site-packages/yaml/serializer.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783706855725369114,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 4165,
+    "sha256": "0a1b85826854d35863e31808f0668abfabdf33606e8f06bd8bb7761401e3edc0"
+  },
+  "lib/python3.14/site-packages/yaml/tokens.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1783706855724565692,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 2573,
+    "sha256": "953408cd2570f0c83dc2fe39f7e4e388e41eeb05738aa69196a5f6ffcf6ba79e"
+  },
+  "pyvenv.cfg": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146109077306,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 138,
+    "sha256": "9e51a850ef66bcdab54205b4642aeb6f6f97184988708503d76ad3b2bac6f491"
+  }
+}

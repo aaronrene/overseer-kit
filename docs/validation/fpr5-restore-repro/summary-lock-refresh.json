@@ -1,0 +1,27 @@
+{
+  "argv": [
+    "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.overseer/bin/ok",
+    "-C",
+    "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "sync",
+    "--only",
+    "launcher",
+    "--json"
+  ],
+  "exit_code": 0,
+  "stdout": "{\"ok\": true, \"repository\": {\"name\": \"overseer-kit\", \"id\": \"6988dc4a-5f22-454b-9d68-ac5905b383bf\", \"root\": \"/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014\", \"root_relative_docs\": \"docs\"}, \"changed\": [\".overseer/version.lock\"], \"classification\": [{\"path\": \".overseer/bin/ok\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4\", \"after\": \"1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4\"}], \"preserved\": [], \"dry_run\": false, \"diff\": {}, \"next\": \"preserved\"}\n",
+  "stderr": "",
+  "before_sha256": "2bd7d1f2fddfb515ecacc345990bbafb69aca958f9ab9d96577c44324ead7c9a",
+  "after_sha256": "018a76ddcfbd9a51aa37a9499af3369e5637e829ce91d55df1c1c5e9cd74a90e",
+  "preserved": {
+    ".overseer/config.yaml": "d3461fba4c20d84f506c0cad0cf0ba110eba9114d39db1e1abd0c111c08e1e14",
+    ".overseer/bin/ok": "1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4",
+    ".cursor/hooks.json": "2f3f0de72a829aa7ad28055c884127a5db5660c5c78556ac7b8aea8dd2e2ac0e",
+    "docs/NEXT.md": "6828ef2e035d236be8ce5c53216f32daa50a3997edb889ac2f9607a675cae0bc"
+  },
+  "preflight_correction": "Read-only lock inspection initially used JSON parser for YAML and failed before sync; corrected to YAML. No write or experiment rerun occurred.",
+  "only_changed_lock_rows": [
+    "docs/OVERSEER-HANDOVER.md",
+    "docs/ROADMAP.md"
+  ]
+}

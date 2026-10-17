@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.082" timestamp="2026-10-14T16:08:25.845844-07:00" hostname="Carloss-MacBook-Pro.local"><testcase classname="tests.fpr4.test_disposition_contracts" name="test_app_installation_copy_uses_explicit_root_and_current_source_distribution" time="0.007"><failure message="AssertionError: assert 'OVERSEER_REPO_ROOT' not in '&lt;!DOCTYPE h...&gt;\n&lt;/html&gt;\n'&#10;  &#10;  'OVERSEER_REPO_ROOT' is contained here:&#10;    set &lt;code&gt;OVERSEER_REPO_ROOT&lt;/code&gt; to your governed repo (otherwise the shell binds the bundled kit — no folder picker); launch.&lt;/li&gt;&#10;  ?           ++++++++++++++++++&#10;            &lt;li&gt;&lt;strong&gt;Path 2 — Browser&lt;/strong&gt;: from a governed repo run &lt;code&gt;ok app --open&lt;/code&gt;; paste &lt;code&gt;session_credential&lt;/code&gt; + &lt;code&gt;csrf_token&lt;/code&gt; from that terminal → Connect.&lt;/li&gt;&#10;            &lt;li&gt;&lt;strong&gt;Path 3 — Dev desktop&lt;/strong&gt;: kit root &lt;code&gt;./scripts/bundle-desktop-kit.sh&lt;/code&gt; then &lt;code&gt;cd desktop &amp;&amp; npm install &amp;&amp; npm run tauri dev&lt;/code&gt; (Python 3.11+ + Rust/Node).&lt;/li&gt;&#10;          &lt;/ul&gt;...&#10;  &#10;  ...Full output truncated (139 lines hidden), use '-vv' to show">def test_app_installation_copy_uses_explicit_root_and_current_source_distribution():
+        from tools.app.server import STATIC_ROOT
+    
+        html = (STATIC_ROOT / 'index.html').read_text()
+        js = (STATIC_ROOT / 'assets/app.js').read_text()
+&gt;       assert 'OVERSEER_REPO_ROOT' not in html
+E       AssertionError: assert 'OVERSEER_REPO_ROOT' not in '&lt;!DOCTYPE h...&gt;\n&lt;/html&gt;\n'
+E         
+E         'OVERSEER_REPO_ROOT' is contained here:
+E           set &lt;code&gt;OVERSEER_REPO_ROOT&lt;/code&gt; to your governed repo (otherwise the shell binds the bundled kit — no folder picker); launch.&lt;/li&gt;
+E         ?           ++++++++++++++++++
+E                   &lt;li&gt;&lt;strong&gt;Path 2 — Browser&lt;/strong&gt;: from a governed repo run &lt;code&gt;ok app --open&lt;/code&gt;; paste &lt;code&gt;session_credential&lt;/code&gt; + &lt;code&gt;csrf_token&lt;/code&gt; from that terminal → Connect.&lt;/li&gt;
+E                   &lt;li&gt;&lt;strong&gt;Path 3 — Dev desktop&lt;/strong&gt;: kit root &lt;code&gt;./scripts/bundle-desktop-kit.sh&lt;/code&gt; then &lt;code&gt;cd desktop &amp;&amp; npm install &amp;&amp; npm run tauri dev&lt;/code&gt; (Python 3.11+ + Rust/Node).&lt;/li&gt;
+E                 &lt;/ul&gt;...
+E         
+E         ...Full output truncated (139 lines hidden), use '-vv' to show
+
+tests/fpr4/test_disposition_contracts.py:171: AssertionError</failure></testcase></testsuite></testsuites>

@@ -1,0 +1,1 @@
+{"method": "Runtime.evaluate", "params": {"expression": "JSON.stringify({title:document.title,text:document.body.innerText.slice(0,24000),buttons:Array.from(document.querySelectorAll(\"button\")).map(e=>({text:e.innerText,aria:e.getAttribute(\"aria-label\")}))})", "returnByValue": true}, "output": "cdp-dom.json"}

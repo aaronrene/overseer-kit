@@ -17,6 +17,14 @@ def muse_python(request):
         pytest.fail('Real Muse matrix requires --muse-python; Git-only matrix is tests/v1 + tests/retained')
     path = Path(value)
     assert path.is_absolute() and path.exists()
+    probe = subprocess.run([str(path), '-I', '-B', '-c',
+        "import hashlib,importlib.metadata,pathlib,muse; "
+        "p=pathlib.Path(muse.__file__).resolve().parent; h=hashlib.sha256(); "
+        "[h.update(str(f.relative_to(p)).encode()+b'\\0'+f.read_bytes()+b'\\0') for f in sorted(p.rglob('*.py'))]; "
+        "print(importlib.metadata.version('muse')); print(h.hexdigest())"],
+        capture_output=True, text=True, timeout=15)
+    assert probe.returncode == 0, probe.stderr
+    assert probe.stdout.splitlines() == ['0.2.1rc5', '7b181b6eff6bde1b53105f2a7be7bd8937224988965d7462a3a6b04658f35e92']
     return path
 
 

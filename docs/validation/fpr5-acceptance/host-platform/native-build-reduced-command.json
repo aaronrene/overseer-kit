@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "/Users/aaronrenecarvajal/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo",
+    "build",
+    "--offline",
+    "--locked",
+    "--manifest-path",
+    "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/source/desktop/src-tauri/Cargo.toml",
+    "--target-dir",
+    "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/cargo-target-reduced"
+  ],
+  "environment": {
+    "RUSTC": "/Users/aaronrenecarvajal/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/rustc",
+    "RUSTDOC": "/Users/aaronrenecarvajal/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/rustdoc",
+    "CARGO_NET_OFFLINE": "true",
+    "CARGO_PROFILE_DEV_DEBUG": "0",
+    "CARGO_INCREMENTAL": "0"
+  },
+  "cwd": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/source/desktop/src-tauri",
+  "start": 1792061677.2752519,
+  "minimum_free_bytes": 681574400,
+  "free_before_bytes": 1468563456
+}

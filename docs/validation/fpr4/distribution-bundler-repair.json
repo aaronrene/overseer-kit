@@ -1,0 +1,166 @@
+{
+  "kind": "focused author packaging regression",
+  "source_archive": "/private/tmp/overseer-fpr4-distribution-final-20261014/source.tar.gz",
+  "source_archive_sha256": "0292b1155d044422178a3c66321fdbdf14233d4866bf6d6c6abc5ab049f57b94",
+  "runtime_sha256": "bdbfdae4599ca0bd1b096d5ed2c84019df3b83ed24972c202319ea5507cf09ec",
+  "commands": [
+    {
+      "argv": [
+        "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.venv/bin/python",
+        "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/tools/ci/source_package.py",
+        "unpack",
+        "--archive",
+        "/private/tmp/overseer-fpr4-distribution-final-20261014/source.tar.gz",
+        "--destination",
+        "/private/tmp/overseer-fpr4-bundler-repair-20261014/source"
+      ],
+      "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "exit": 0,
+      "stdout": "{\"ok\": true, \"destination\": \"/private/tmp/overseer-fpr4-bundler-repair-20261014/source\"}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.venv/bin/python",
+        "-m",
+        "venv",
+        "--without-pip",
+        "/private/tmp/overseer-fpr4-bundler-repair-20261014/source/.venv"
+      ],
+      "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/private/tmp/overseer-fpr4-bundler-repair-20261014/source/.venv/bin/python",
+        "/private/tmp/overseer-fpr4-bundler-repair-20261014/source/tools/ci/source_package.py",
+        "verify-tree",
+        "--directory",
+        "/private/tmp/overseer-fpr4-bundler-repair-20261014/source"
+      ],
+      "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "exit": 0,
+      "stdout": "{\"ok\": true, \"files\": 1205}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/private/tmp/overseer-fpr4-bundler-repair-20261014/source/scripts/bundle-desktop-kit.sh",
+        "/private/tmp/overseer-fpr4-bundler-repair-20261014/resource-a"
+      ],
+      "cwd": "/private/tmp/overseer-fpr4-bundler-repair-20261014",
+      "exit": 0,
+      "stdout": "{\"archive\": \"/private/tmp/overseer-fpr4-bundler-repair-20261014/same-tmpdir/overseer-desktop-source.mSCeizwN/source.tar.gz\", \"sha256\": \"7fe8bdab9a1449f151bb57a422e5c735b1858822e7fb5b7efc06408c6f6567f2\", \"manifest_sha256\": \"14ab8fc7a7ef5f171a890c1cc4b559d4939d896b4937ea51d862be205953767d\", \"files\": 1205}\n{\"ok\": true, \"destination\": \"/private/tmp/overseer-fpr4-bundler-repair-20261014/resource-a\"}\nbundled source at /private/tmp/overseer-fpr4-bundler-repair-20261014/resource-a; provision its conventional .venv from pinned local prerequisites before launch\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/private/tmp/overseer-fpr4-bundler-repair-20261014/source/.venv/bin/python",
+        "/private/tmp/overseer-fpr4-bundler-repair-20261014/source/tools/ci/source_package.py",
+        "verify-tree",
+        "--directory",
+        "/private/tmp/overseer-fpr4-bundler-repair-20261014/resource-a"
+      ],
+      "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "exit": 0,
+      "stdout": "{\"ok\": true, \"files\": 1205}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/private/tmp/overseer-fpr4-bundler-repair-20261014/source/.venv/bin/python",
+        "-I",
+        "-B",
+        "-c",
+        "import sys,json;sys.path.insert(0,sys.argv[1]);from cli.v1 import runtime;print(json.dumps(runtime()))",
+        "/private/tmp/overseer-fpr4-bundler-repair-20261014/resource-a"
+      ],
+      "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "exit": 0,
+      "stdout": "{\"root\": \"/private/tmp/overseer-fpr4-bundler-repair-20261014/resource-a\", \"version\": \"1.0.0.dev1\", \"sha256\": \"bdbfdae4599ca0bd1b096d5ed2c84019df3b83ed24972c202319ea5507cf09ec\"}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/private/tmp/overseer-fpr4-bundler-repair-20261014/source/scripts/bundle-desktop-kit.sh",
+        "/private/tmp/overseer-fpr4-bundler-repair-20261014/resource-b"
+      ],
+      "cwd": "/private/tmp/overseer-fpr4-bundler-repair-20261014",
+      "exit": 0,
+      "stdout": "{\"archive\": \"/private/tmp/overseer-fpr4-bundler-repair-20261014/same-tmpdir/overseer-desktop-source.lXuDQl52/source.tar.gz\", \"sha256\": \"7fe8bdab9a1449f151bb57a422e5c735b1858822e7fb5b7efc06408c6f6567f2\", \"manifest_sha256\": \"14ab8fc7a7ef5f171a890c1cc4b559d4939d896b4937ea51d862be205953767d\", \"files\": 1205}\n{\"ok\": true, \"destination\": \"/private/tmp/overseer-fpr4-bundler-repair-20261014/resource-b\"}\nbundled source at /private/tmp/overseer-fpr4-bundler-repair-20261014/resource-b; provision its conventional .venv from pinned local prerequisites before launch\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/private/tmp/overseer-fpr4-bundler-repair-20261014/source/.venv/bin/python",
+        "/private/tmp/overseer-fpr4-bundler-repair-20261014/source/tools/ci/source_package.py",
+        "verify-tree",
+        "--directory",
+        "/private/tmp/overseer-fpr4-bundler-repair-20261014/resource-b"
+      ],
+      "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "exit": 0,
+      "stdout": "{\"ok\": true, \"files\": 1205}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/private/tmp/overseer-fpr4-bundler-repair-20261014/source/.venv/bin/python",
+        "-I",
+        "-B",
+        "-c",
+        "import sys,json;sys.path.insert(0,sys.argv[1]);from cli.v1 import runtime;print(json.dumps(runtime()))",
+        "/private/tmp/overseer-fpr4-bundler-repair-20261014/resource-b"
+      ],
+      "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "exit": 0,
+      "stdout": "{\"root\": \"/private/tmp/overseer-fpr4-bundler-repair-20261014/resource-b\", \"version\": \"1.0.0.dev1\", \"sha256\": \"bdbfdae4599ca0bd1b096d5ed2c84019df3b83ed24972c202319ea5507cf09ec\"}\n",
+      "stderr": ""
+    }
+  ],
+  "checks": [
+    "two actual repaired script invocations under the same TMPDIR succeed",
+    "each archive is reserved inside a distinct private mode0700 directory",
+    "both archives remain preserved",
+    "archive bytes and manifests identical across invocations",
+    "both resource trees verify exact bytes/modes and expected product runtime"
+  ],
+  "driver_sha256": "2753c1b82c5c38471a4b0c88f16ce9baf4edeebeec986ee11db264c0491209a4",
+  "explicit_environment": {
+    "PATH": "/usr/bin:/bin",
+    "TMPDIR": "/private/tmp/overseer-fpr4-bundler-repair-20261014/same-tmpdir",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "repaired_script_sha256": "d3fc18a49daca74b036a9fd716d7c0d62f354889c556f8afc745549849d77e56",
+  "outputs": [
+    {
+      "archive": "/private/tmp/overseer-fpr4-bundler-repair-20261014/same-tmpdir/overseer-desktop-source.mSCeizwN/source.tar.gz",
+      "sha256": "7fe8bdab9a1449f151bb57a422e5c735b1858822e7fb5b7efc06408c6f6567f2",
+      "manifest_sha256": "14ab8fc7a7ef5f171a890c1cc4b559d4939d896b4937ea51d862be205953767d",
+      "files": 1205,
+      "runtime": {
+        "root": "/private/tmp/overseer-fpr4-bundler-repair-20261014/resource-a",
+        "version": "1.0.0.dev1",
+        "sha256": "bdbfdae4599ca0bd1b096d5ed2c84019df3b83ed24972c202319ea5507cf09ec"
+      }
+    },
+    {
+      "archive": "/private/tmp/overseer-fpr4-bundler-repair-20261014/same-tmpdir/overseer-desktop-source.lXuDQl52/source.tar.gz",
+      "sha256": "7fe8bdab9a1449f151bb57a422e5c735b1858822e7fb5b7efc06408c6f6567f2",
+      "manifest_sha256": "14ab8fc7a7ef5f171a890c1cc4b559d4939d896b4937ea51d862be205953767d",
+      "files": 1205,
+      "runtime": {
+        "root": "/private/tmp/overseer-fpr4-bundler-repair-20261014/resource-b",
+        "version": "1.0.0.dev1",
+        "sha256": "bdbfdae4599ca0bd1b096d5ed2c84019df3b83ed24972c202319ea5507cf09ec"
+      }
+    }
+  ],
+  "private_directories": {
+    "/private/tmp/overseer-fpr4-bundler-repair-20261014/same-tmpdir/overseer-desktop-source.mSCeizwN": "0o700",
+    "/private/tmp/overseer-fpr4-bundler-repair-20261014/same-tmpdir/overseer-desktop-source.lXuDQl52": "0o700"
+  },
+  "ok": true
+}

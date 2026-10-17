@@ -28,9 +28,6 @@ def resolve_kit_root(explicit: Path | None = None) -> Path:
     """Resolve the kit checkout root for dev or bundled desktop runs."""
     if explicit is not None:
         return explicit.resolve()
-    env = os.environ.get(KIT_ROOT_ENV)
-    if env:
-        return Path(env).resolve()
     return kit_root()
 
 
@@ -38,12 +35,7 @@ def resolve_repo_root(*, kit: Path, explicit: Path | None = None, cwd: Path | No
     """Resolve the governance repo root the desktop shell should bind."""
     if explicit is not None:
         return explicit.resolve()
-    env = os.environ.get(REPO_ROOT_ENV)
-    if env:
-        return Path(env).resolve()
-    if cwd is not None:
-        return cwd.resolve()
-    return kit.resolve()
+    raise ValueError('desktop requires an explicitly selected repository root')
 
 
 def build_launch_argv(
@@ -54,6 +46,13 @@ def build_launch_argv(
     bind: str = DEFAULT_BIND,
 ) -> list[str]:
     """Build argv for the canonical POSIX shim → ``ok app`` (§Q2a / §Q0.13)."""
+    kit_root_path = kit_root_path.resolve(strict=True)
+    repo_root = repo_root.resolve(strict=True)
+    from cli.product_config import normalize
+    from cli.v1_io import read
+    config = normalize(read(repo_root, '.overseer/config.yaml'), root=repo_root).data
+    if config['runtime']['root'] != str(kit_root_path):
+        raise ValueError('desktop runtime binding mismatch')
     ok_shim = kit_root_path / "cli" / CANONICAL_LAUNCHER
     if not ok_shim.is_file():
         raise FileNotFoundError(f"missing canonical launcher: {ok_shim}")
@@ -100,9 +99,7 @@ class DesktopLauncher:
     def start(self) -> StartupBanner:
         """Start ``ok app`` and block until the startup banner is complete."""
         env = os.environ.copy()
-        env["PYTHONPATH"] = str(self.kit_root_path) + (
-            f":{env['PYTHONPATH']}" if env.get("PYTHONPATH") else ""
-        )
+
         self._process = subprocess.Popen(
             self.argv,
             cwd=self.kit_root_path,
@@ -124,7 +121,11 @@ class DesktopLauncher:
         while time.monotonic() < deadline:
             banner = parse_startup_stderr(self._stderr_lines)
             if banner is not None:
-                self._wait_until_healthy(banner)
+                try:
+                    self._wait_until_healthy(banner)
+                except Exception:
+                    self.stop()
+                    raise
                 return banner
             if self._process.poll() is not None:
                 break
@@ -132,6 +133,7 @@ class DesktopLauncher:
 
         code = self._process.poll()
         tail = "".join(self._stderr_lines[-20:])
+        self.stop()
         raise RuntimeError(f"ok app failed to start (exit={code}): {tail}")
 
     def stop(self) -> None:
@@ -160,6 +162,15 @@ class DesktopLauncher:
             try:
                 with urllib.request.urlopen(request, timeout=1) as response:
                     if response.status == 200:
+                        import json
+                        payload = json.load(response)
+                        from cli.product_config import normalize
+                        from cli.v1_io import read
+                        config = normalize(read(self.repo_root, '.overseer/config.yaml'), root=self.repo_root).data
+                        health = payload.get('result') or {}
+                        if (not payload.get('ok') or health.get('repo_root') != str(self.repo_root)
+                                or health.get('repo_id') != config['repo']['id'] or health.get('runtime') != config['runtime']):
+                            raise RuntimeError('desktop health binding mismatch')
                         return
             except (urllib.error.URLError, TimeoutError):
                 time.sleep(0.05)

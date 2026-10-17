@@ -1,0 +1,158 @@
+{
+  "schema": 1,
+  "pytest": "9.1.1",
+  "cases": [
+    {
+      "nodeid": "tests/performance/test_check_ok_perf.py::test_scaffold_under_budget",
+      "node_sha256": "f98ddf6268b0f4de3177a73c1b0a146803fc75750a03b39324a9a22143274bd3",
+      "junit": [
+        "tests.performance.test_check_ok_perf",
+        "test_scaffold_under_budget"
+      ]
+    },
+    {
+      "nodeid": "tests/performance/test_checkpoints_bounded.py::test_twenty_step_all_bounded",
+      "node_sha256": "225f13a2919e174f1bb6b239f286347eeaf9890acb524a38a93a7167724767b9",
+      "junit": [
+        "tests.performance.test_checkpoints_bounded",
+        "test_twenty_step_all_bounded"
+      ]
+    },
+    {
+      "nodeid": "tests/performance/test_frv_perf.py::test_authorization_state_bounded",
+      "node_sha256": "4118e9685971665920484ed916945241c6e2f56f8496e7ba81571c64fc92294d",
+      "junit": [
+        "tests.performance.test_frv_perf",
+        "test_authorization_state_bounded"
+      ]
+    },
+    {
+      "nodeid": "tests/performance/test_governance_gates_bounded.py::test_gate_scan_completes_within_bound",
+      "node_sha256": "c7247bed4353e0e3bf64e9f2052b07843c78bcc226ed81e51e6391c1acc99f6b",
+      "junit": [
+        "tests.performance.test_governance_gates_bounded",
+        "test_gate_scan_completes_within_bound"
+      ]
+    },
+    {
+      "nodeid": "tests/performance/test_honesty_bounded.py::test_verify_10k_bounded",
+      "node_sha256": "fdf58ef96aa346ebb0737c05ac826f5585f9cc45e318fbe61383f8b8ebfa27d0",
+      "junit": [
+        "tests.performance.test_honesty_bounded",
+        "test_verify_10k_bounded"
+      ]
+    },
+    {
+      "nodeid": "tests/performance/test_hosted_dashboard_performance.py::test_single_repo_doc_fetch_bound",
+      "node_sha256": "d038c5956eb119148728dce29d0ddfe3a310144489b4106e0ab34fc7cd3ddb3d",
+      "junit": [
+        "tests.performance.test_hosted_dashboard_performance",
+        "test_single_repo_doc_fetch_bound"
+      ]
+    },
+    {
+      "nodeid": "tests/performance/test_hosted_dashboard_performance.py::test_startup_listen_bound",
+      "node_sha256": "c6da366da0666d956bd0aed9f1ffee0a155ffe0f4232bc0d326dcd2c298dbe95",
+      "junit": [
+        "tests.performance.test_hosted_dashboard_performance",
+        "test_startup_listen_bound"
+      ]
+    },
+    {
+      "nodeid": "tests/performance/test_isr_perf.py::test_append_mode_d_and_gate_within_bound",
+      "node_sha256": "a9bbfe74b51a5c8f65b8e8b6708891e2f7cf9ea5fed30b20605f15250032919a",
+      "junit": [
+        "tests.performance.test_isr_perf",
+        "test_append_mode_d_and_gate_within_bound"
+      ]
+    },
+    {
+      "nodeid": "tests/performance/test_p_deploy_performance.py::test_mode_c_match_over_realistic_ledger_within_bound",
+      "node_sha256": "64f27e3fe4a2537c4b1d388c476b3f9026ef44c01c8f1ede75a11f2cf847c29b",
+      "junit": [
+        "tests.performance.test_p_deploy_performance",
+        "test_mode_c_match_over_realistic_ledger_within_bound"
+      ]
+    },
+    {
+      "nodeid": "tests/performance/test_p_evidence_performance.py::test_realistic_evidence_append_verify_within_bound",
+      "node_sha256": "53e9939a0eb2f4b191162758c41686c9266a92e8f633ef6477c55b69385517a9",
+      "junit": [
+        "tests.performance.test_p_evidence_performance",
+        "test_realistic_evidence_append_verify_within_bound"
+      ]
+    },
+    {
+      "nodeid": "tests/performance/test_p_evidence_performance.py::test_match_scan_linear_no_filesystem_walk",
+      "node_sha256": "5ae0f066b7320ac1b351f7b699298ce267224347d325b4d4255b89622a2a6147",
+      "junit": [
+        "tests.performance.test_p_evidence_performance",
+        "test_match_scan_linear_no_filesystem_walk"
+      ]
+    },
+    {
+      "nodeid": "tests/performance/test_post_land_sync_bounded.py::test_clean_sync_on_main_uses_bounded_calls",
+      "node_sha256": "6f40b021213254aeeae1cc22dc1cc206ddaf9dc426e51f71b73619272af42a24",
+      "junit": [
+        "tests.performance.test_post_land_sync_bounded",
+        "test_clean_sync_on_main_uses_bounded_calls"
+      ]
+    },
+    {
+      "nodeid": "tests/performance/test_post_land_sync_bounded.py::test_clean_sync_on_feature_branch_uses_bounded_calls",
+      "node_sha256": "54bebfdc74a540ba40e0a286829e071e43cc66c7b9addc1f02d71a7c562de5a2",
+      "junit": [
+        "tests.performance.test_post_land_sync_bounded",
+        "test_clean_sync_on_feature_branch_uses_bounded_calls"
+      ]
+    },
+    {
+      "nodeid": "tests/performance/test_post_land_sync_bounded.py::test_dirty_skip_stops_after_status",
+      "node_sha256": "4f0640d239fa92557494b1b86491ce002f792b222c015529808cdfc832d7ce6e",
+      "junit": [
+        "tests.performance.test_post_land_sync_bounded",
+        "test_dirty_skip_stops_after_status"
+      ]
+    },
+    {
+      "nodeid": "tests/performance/test_post_land_sync_bounded.py::test_many_runs_complete_under_unit_budget",
+      "node_sha256": "a9e0bb699336df61c7eb9cd5de94d4615390097904ae51d71c064dfe2fb44501",
+      "junit": [
+        "tests.performance.test_post_land_sync_bounded",
+        "test_many_runs_complete_under_unit_budget"
+      ]
+    },
+    {
+      "nodeid": "tests/performance/test_provenance_performance.py::test_signed_verify_2k_bounded",
+      "node_sha256": "cf1ca2d3b630f5b087df69604a101630bd2e872bcb3f52991d8e8f3eea68eb22",
+      "junit": [
+        "tests.performance.test_provenance_performance",
+        "test_signed_verify_2k_bounded"
+      ]
+    },
+    {
+      "nodeid": "tests/performance/test_cost_awareness_performance.py::test_active_slice_surface_bounded",
+      "node_sha256": "8ecf3a87be4f0e3ae9efceb7f2e16a28a0c4c7ca3e9a62551b4304be7e7f0ec9",
+      "junit": [
+        "tests.performance.test_cost_awareness_performance",
+        "test_active_slice_surface_bounded"
+      ]
+    },
+    {
+      "nodeid": "tests/performance/test_footprint_integrity_performance.py::test_passing_precomputed_lock_avoids_a_second_disk_read",
+      "node_sha256": "f003a17483f6d8168cce424853706ee0eb43985c04dc1bcd10f69dad59a708f2",
+      "junit": [
+        "tests.performance.test_footprint_integrity_performance",
+        "test_passing_precomputed_lock_avoids_a_second_disk_read"
+      ]
+    },
+    {
+      "nodeid": "tests/performance/test_model_routing_performance.py::test_route_validate_bounded",
+      "node_sha256": "d7b571a15b40fc52a3f8da3257ae0419d59e9b91c77b35a458dcf2e9a48a0dc2",
+      "junit": [
+        "tests.performance.test_model_routing_performance",
+        "test_route_validate_bounded"
+      ]
+    }
+  ]
+}

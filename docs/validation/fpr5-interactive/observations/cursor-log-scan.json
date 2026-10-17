@@ -1,0 +1,214 @@
+{
+  "kind": "Post-close exact marker scan of the two new isolated Cursor runs; absence is not acceptance",
+  "markers": [
+    "Hook step requested: sessionStart",
+    "Hook step requested: stop",
+    "session-start-next.sh",
+    "session-end-closeout.sh",
+    "INPUT:",
+    "OUTPUT:",
+    "exit code: 0"
+  ],
+  "runs": [
+    {
+      "run": "owner-observation-cursor-p7_1rhzy",
+      "hook_channel_logs": [],
+      "logs": [
+        {
+          "source": {
+            "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-observation-cursor-p7_1rhzy/host.log",
+            "bytes": 4318,
+            "mode": "0644",
+            "sha256": "71777a400a387094827115589a822ffcd80ce7b125e15378354df71420dce485"
+          },
+          "marker_counts": {
+            "Hook step requested: sessionStart": 0,
+            "Hook step requested: stop": 0,
+            "session-start-next.sh": 0,
+            "session-end-closeout.sh": 0,
+            "INPUT:": 0,
+            "OUTPUT:": 0,
+            "exit code: 0": 0
+          }
+        }
+      ]
+    },
+    {
+      "run": "c-n68k5cn1",
+      "hook_channel_logs": [],
+      "logs": [
+        {
+          "source": {
+            "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/host.log",
+            "bytes": 26787,
+            "mode": "0644",
+            "sha256": "59b10a10756a3190cb6be222a0b016381bca9ed0a4b3cc9147fa7864eea8c5c7"
+          },
+          "marker_counts": {
+            "Hook step requested: sessionStart": 0,
+            "Hook step requested: stop": 0,
+            "session-start-next.sh": 0,
+            "session-end-closeout.sh": 0,
+            "INPUT:": 0,
+            "OUTPUT:": 0,
+            "exit code: 0": 0
+          }
+        },
+        {
+          "source": {
+            "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/logs/20261015T043839/composer.log",
+            "bytes": 0,
+            "mode": "0644",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "marker_counts": {
+            "Hook step requested: sessionStart": 0,
+            "Hook step requested: stop": 0,
+            "session-start-next.sh": 0,
+            "session-end-closeout.sh": 0,
+            "INPUT:": 0,
+            "OUTPUT:": 0,
+            "exit code: 0": 0
+          }
+        },
+        {
+          "source": {
+            "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/logs/20261015T043839/conversationSearch.log",
+            "bytes": 0,
+            "mode": "0644",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "marker_counts": {
+            "Hook step requested: sessionStart": 0,
+            "Hook step requested: stop": 0,
+            "session-start-next.sh": 0,
+            "session-end-closeout.sh": 0,
+            "INPUT:": 0,
+            "OUTPUT:": 0,
+            "exit code: 0": 0
+          }
+        },
+        {
+          "source": {
+            "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/logs/20261015T043839/main.log",
+            "bytes": 24681,
+            "mode": "0644",
+            "sha256": "5b79f3e57b71826d6b51193693440826d00c273d02689056038bbcd5d7ced320"
+          },
+          "marker_counts": {
+            "Hook step requested: sessionStart": 0,
+            "Hook step requested: stop": 0,
+            "session-start-next.sh": 0,
+            "session-end-closeout.sh": 0,
+            "INPUT:": 0,
+            "OUTPUT:": 0,
+            "exit code: 0": 0
+          }
+        },
+        {
+          "source": {
+            "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/logs/20261015T043839/mcpprocess.log",
+            "bytes": 0,
+            "mode": "0644",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "marker_counts": {
+            "Hook step requested: sessionStart": 0,
+            "Hook step requested: stop": 0,
+            "session-start-next.sh": 0,
+            "session-end-closeout.sh": 0,
+            "INPUT:": 0,
+            "OUTPUT:": 0,
+            "exit code: 0": 0
+          }
+        },
+        {
+          "source": {
+            "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/logs/20261015T043839/network-shared.log",
+            "bytes": 5886,
+            "mode": "0644",
+            "sha256": "da691ae14a9268a0707989fa0e636f040d587250bb2e990404623fc0899661a3"
+          },
+          "marker_counts": {
+            "Hook step requested: sessionStart": 0,
+            "Hook step requested: stop": 0,
+            "session-start-next.sh": 0,
+            "session-end-closeout.sh": 0,
+            "INPUT:": 0,
+            "OUTPUT:": 0,
+            "exit code: 0": 0
+          }
+        },
+        {
+          "source": {
+            "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/logs/20261015T043839/remoteTunnelService.log",
+            "bytes": 0,
+            "mode": "0644",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "marker_counts": {
+            "Hook step requested: sessionStart": 0,
+            "Hook step requested: stop": 0,
+            "session-start-next.sh": 0,
+            "session-end-closeout.sh": 0,
+            "INPUT:": 0,
+            "OUTPUT:": 0,
+            "exit code: 0": 0
+          }
+        },
+        {
+          "source": {
+            "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/logs/20261015T043839/sharedprocess.log",
+            "bytes": 11667,
+            "mode": "0644",
+            "sha256": "63de890387f1d5b404648cba589bc4d30d90bb1734b5bc54016031f94aa414a3"
+          },
+          "marker_counts": {
+            "Hook step requested: sessionStart": 0,
+            "Hook step requested: stop": 0,
+            "session-start-next.sh": 0,
+            "session-end-closeout.sh": 0,
+            "INPUT:": 0,
+            "OUTPUT:": 0,
+            "exit code: 0": 0
+          }
+        },
+        {
+          "source": {
+            "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/logs/20261015T043839/window1/renderer.log",
+            "bytes": 103441,
+            "mode": "0644",
+            "sha256": "892206519587438b44696a4ed68bb45de9c2802620fbc39910791056cedb5910"
+          },
+          "marker_counts": {
+            "Hook step requested: sessionStart": 0,
+            "Hook step requested: stop": 0,
+            "session-start-next.sh": 0,
+            "session-end-closeout.sh": 0,
+            "INPUT:": 0,
+            "OUTPUT:": 0,
+            "exit code: 0": 0
+          }
+        },
+        {
+          "source": {
+            "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/profile/logs/20261015T043839/window1/views.log",
+            "bytes": 0,
+            "mode": "0644",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "marker_counts": {
+            "Hook step requested: sessionStart": 0,
+            "Hook step requested: stop": 0,
+            "session-start-next.sh": 0,
+            "session-end-closeout.sh": 0,
+            "INPUT:": 0,
+            "OUTPUT:": 0,
+            "exit code: 0": 0
+          }
+        }
+      ]
+    }
+  ],
+  "interpretation": "No actual sessionStart/stop command receipts were found. The long directory run exited with socket EINVAL; the short directory run encountered the owner-observed keychain gate and required forced cleanup."
+}

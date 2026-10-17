@@ -1,0 +1,6 @@
+{
+  "selected": [
+    "tests/v1/test_integrity.py::test_raw_digest_preserves_exact_next_bytes"
+  ],
+  "deselected": []
+}

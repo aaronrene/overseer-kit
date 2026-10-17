@@ -1,0 +1,9 @@
+{
+  "source_archive": "/private/tmp/overseer-fpr5-acceptance-preparation-w580lsq4/source.tar.gz",
+  "source_sha256": "de8cd9222df8cf6c5fe3f4d858e561018baa0dc6d61df1f0ac423928adaed47f",
+  "source_head": "2e8ec694def9be4a0faa4a994bf2fff3f212ab23",
+  "runtime_sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774",
+  "author_acceptance_evidence": true,
+  "independent_adjudication": false,
+  "initial_read_error": "Tried .overseer/config.json; nonexistent; canonical config.yaml subsequently verified."
+}

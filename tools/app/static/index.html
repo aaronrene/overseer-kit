@@ -34,7 +34,7 @@
     <button type="button" data-tab="overview" id="tab-btn-overview" class="active" title="What this console is; suite doors; how to open it; bound repo">Overview</button>
     <button type="button" data-tab="status" id="tab-btn-status" title="Health of governance for the bound repo">Status</button>
     <button type="button" data-tab="roadmap" id="tab-btn-roadmap" title="Living phase board">Roadmap</button>
-    <button type="button" data-tab="handover" id="tab-btn-handover" title="Next-session relay / paste prompt">Handover</button>
+    <button type="button" data-tab="handover" id="tab-btn-handover" title="Canonical NEXT and handover">Next / Handover</button>
     <button type="button" data-tab="gates" id="tab-btn-gates" title="Pending honesty/governance reminders">Gates</button>
     <button type="button" data-tab="actions" id="tab-btn-actions" title="Dry-run-first freeze review + governance-sync + honesty-status">Actions</button>
     <button type="button" data-tab="ledger" id="tab-btn-ledger" title="Append-only honesty ledger view/verify">Ledger</button>
@@ -45,17 +45,15 @@
   <main id="content" hidden>
     <section id="tab-overview" class="tab-panel active">
       <p class="one-liner">Local governance console for 🆗 Overseer Kit — not a product task runtime.</p>
-      <p>Open-source governance CLI + local console (MIT). Terminal + living docs remain day-to-day authority; this UI is a convenience frontend.</p>
+      <p>Open-source governance CLI + local console (MIT). Canonical NEXT supplies the current action; ROADMAP and HANDOVER summarize progress. This UI displays the same repository-bound state.</p>
 
       <h3>Open the local console</h3>
       <ul class="playbook" id="overview-playbook">
-        <li><strong>Path 1 — Download Mac console</strong> (preferred on Apple Silicon): confirm Python 3.11+; download the signed <code>aarch64</code> <code>.dmg</code> from
-          <a class="suite-cta" href="https://github.com/aaronrene/overseer-kit/releases/tag/v0.1.0" target="_blank" rel="noopener noreferrer">GitHub Releases v0.1.0</a>;
-          set <code>OVERSEER_REPO_ROOT</code> to your governed repo (otherwise the shell binds the bundled kit — no folder picker); launch.</li>
-        <li><strong>Path 2 — Browser</strong>: from a governed repo run <code>ok app --open</code>; paste <code>session_credential</code> + <code>csrf_token</code> from that terminal → Connect.</li>
-        <li><strong>Path 3 — Dev desktop</strong>: kit root <code>./scripts/bundle-desktop-kit.sh</code> then <code>cd desktop && npm install && npm run tauri dev</code> (Python 3.11+ + Rust/Node).</li>
+        <li><strong>Source installation</strong>: unpack the verified source archive into a fixed installation directory and provision its own <code>.venv</code> with the pinned runtime requirements. See <code>docs/SOURCE-DISTRIBUTION.md</code> for prerequisites and validation limits.</li>
+        <li><strong>Browser</strong>: run <code>/physical/installation/cli/ok -C /physical/project app --open</code>; paste <code>session_credential</code> + <code>csrf_token</code> from that terminal → Connect.</li>
+        <li><strong>Desktop source build</strong>: prepare the resource bundle as documented, then launch the built shell with <code>--kit-root /physical/installation --repo /physical/project</code>. A packaged macOS build resolves its own Resources installation and still requires an explicit <code>--repo</code>.</li>
       </ul>
-      <p class="bound-honesty" id="overview-bound-honesty"><em>This console is bound to one local checkout. Reads and writes (when confirmed) apply only to that tree — not to overseerkit.com and not to arbitrary remote repos. Desktop Path 1/3: set <code>OVERSEER_REPO_ROOT</code> to your governed repo; otherwise the shell binds the bundled kit.</em></p>
+      <p class="bound-honesty" id="overview-bound-honesty"><em>This console validates one explicit local checkout and installation. Confirm the displayed repository before using its controls. Desktop launch requires <code>--repo</code>; a missing or mismatched target refuses to open.</em></p>
 
       <h3>L0 → L3 (summary)</h3>
       <ul class="layer-stack">
@@ -91,6 +89,8 @@
     </section>
 
     <section id="tab-handover" class="tab-panel">
+      <button id="load-next" type="button">Read validated NEXT</button>
+      <pre id="next-output"></pre>
       <button id="load-handover" type="button">Load handover</button>
       <pre id="handover-output"></pre>
     </section>
@@ -104,6 +104,7 @@
       <h3>Freeze review</h3>
       <label>Artifact path <input id="freeze-path" type="text" placeholder="docs/archive/phases/PHASE-....md"></label>
       <label><input id="freeze-dry-run" type="checkbox" checked> Dry run (default)</label>
+      <label><input id="freeze-network" type="checkbox"> Allow the configured reviewer API call</label>
       <button id="run-freeze" type="button">Run freeze review</button>
       <pre id="freeze-output"></pre>
 

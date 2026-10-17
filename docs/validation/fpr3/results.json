@@ -1,0 +1,2324 @@
+{
+  "scope": "Focused FPR-3 author checks; not the FPR-4 combined matrix or independent review",
+  "runs": [
+    {
+      "name": "commands-first",
+      "passed": 38,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 49.855,
+      "xml": "docs/validation/fpr3/commands-first.xml",
+      "log": "docs/validation/fpr3/commands-first.log"
+    },
+    {
+      "name": "surfaces-first",
+      "passed": 2,
+      "failed": 3,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 17.381,
+      "xml": "docs/validation/fpr3/surfaces-first.xml",
+      "log": "docs/validation/fpr3/surfaces-first.log"
+    },
+    {
+      "name": "commands-second",
+      "passed": 39,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 50.362,
+      "xml": "docs/validation/fpr3/commands-second.xml",
+      "log": "docs/validation/fpr3/commands-second.log"
+    },
+    {
+      "name": "surfaces-second",
+      "passed": 5,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 20.352,
+      "xml": "docs/validation/fpr3/surfaces-second.xml",
+      "log": "docs/validation/fpr3/surfaces-second.log"
+    },
+    {
+      "name": "engines-first",
+      "passed": 5,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 43.672,
+      "xml": "docs/validation/fpr3/engines-first.xml",
+      "log": "docs/validation/fpr3/engines-first.log"
+    },
+    {
+      "name": "retained-first",
+      "passed": 314,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 3.508,
+      "xml": "docs/validation/fpr3/retained-first.xml",
+      "log": "docs/validation/fpr3/retained-first.log"
+    },
+    {
+      "name": "binding-first",
+      "passed": 103,
+      "failed": 12,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 247.747,
+      "xml": "docs/validation/fpr3/binding-first.xml",
+      "log": "docs/validation/fpr3/binding-first.log"
+    },
+    {
+      "name": "engines-second",
+      "passed": 5,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 45.188,
+      "xml": "docs/validation/fpr3/engines-second.xml",
+      "log": "docs/validation/fpr3/engines-second.log"
+    },
+    {
+      "name": "artifact-first",
+      "passed": 13,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.072,
+      "xml": "docs/validation/fpr3/artifact-first.xml",
+      "log": "docs/validation/fpr3/artifact-first.log"
+    },
+    {
+      "name": "binding-second",
+      "passed": 79,
+      "failed": 2,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 270.058,
+      "xml": "docs/validation/fpr3/binding-second.xml",
+      "log": "docs/validation/fpr3/binding-second.log"
+    },
+    {
+      "name": "surfaces-final",
+      "passed": 70,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 154.555,
+      "xml": "docs/validation/fpr3/surfaces-final.xml",
+      "log": "docs/validation/fpr3/surfaces-final.log"
+    },
+    {
+      "name": "hosted-final",
+      "passed": 33,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 3.209,
+      "xml": "docs/validation/fpr3/hosted-final.xml",
+      "log": "docs/validation/fpr3/hosted-final.log",
+      "command": ".venv/bin/python -m pytest tests/unit/test_hosted_dashboard_unit.py tests/security/test_hosted_dashboard_security.py tests/data_integrity/test_hosted_dashboard_integrity.py -q --basetemp=/private/tmp/overseer-fpr3-hosted-final --junitxml=docs/validation/fpr3/hosted-final.xml"
+    },
+    {
+      "name": "hosted-close",
+      "passed": 73,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 58.694,
+      "xml": "docs/validation/fpr3/hosted-close.xml",
+      "log": "docs/validation/fpr3/hosted-close.log",
+      "command": ".venv/bin/python -m pytest tests/unit/test_hosted_dashboard_unit.py tests/security/test_hosted_dashboard_security.py tests/data_integrity/test_hosted_dashboard_integrity.py tests/fpr3/test_commands.py -q --basetemp=/private/tmp/overseer-fpr3-hosted-close --junitxml=docs/validation/fpr3/hosted-close.xml"
+    }
+  ],
+  "distinct_cases_latest_outcome": {
+    "passed": 529,
+    "failed": 0,
+    "skipped": 0
+  },
+  "latest_cases": {
+    "tests.fpr3.test_commands::test_actual_command_help[adopt]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_actual_command_help[app]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_actual_command_help[check-if-ok]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_actual_command_help[check-ok]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_actual_command_help[governance-sync]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_actual_command_help[handover-compact]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_actual_command_help[honesty-status]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_actual_command_help[hook]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_actual_command_help[hosted-dashboard]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_actual_command_help[init]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_actual_command_help[land-check]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_actual_command_help[land-closeout]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_actual_command_help[ledger]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_actual_command_help[mirror]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_actual_command_help[next]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_actual_command_help[next-write]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_actual_command_help[pr-land]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_actual_command_help[review]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_actual_command_help[route]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_actual_command_help[status]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_actual_command_help[sync]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_actual_command_help[upgrade-regime]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_actual_command_help[verify-step]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_actual_command_help[workspace]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_registry_covers_all_historical_commands_and_subcommands": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_status_route_full_assets_read_only": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_contradictions_refuse_before_execution[argv0]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_contradictions_refuse_before_execution[argv1]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_contradictions_refuse_before_execution[argv2]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_contradictions_refuse_before_execution[argv3]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_contradictions_refuse_before_execution[argv4]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_contradictions_refuse_before_execution[argv5]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_contradictions_refuse_before_execution[argv6]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_contradictions_refuse_before_execution[argv7]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_check_ok_review_dry_run_stamp_and_confinement": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_governance_print_next_and_local_commit": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_compaction_uses_bound_atomic_writer": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_ledger_append_verify_show_and_honesty": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_commands::test_engine_write_rechecks_context_and_file_cas": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.fpr3.test_surfaces::test_loopback_real_service_auth_csrf_origin_next_and_paths": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.fpr3.test_surfaces::test_app_copied_context_and_symlink_docs_refuse": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.fpr3.test_surfaces::test_hosted_allowlists_canonical_display_and_write_refusal": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.fpr3.test_surfaces::test_desktop_real_launcher_identity_and_ambient_refusal": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.fpr3.test_surfaces::test_workspace_canonical_members_stale_pin_and_no_ambient_scan": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.fpr3.test_engines::test_checkpoint_real_script_dry_run_failure_and_confinement": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.fpr3.test_engines::test_review_fake_provider_human_fallback_never_passes": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.fpr3.test_engines::test_fake_pr_transport_requires_explicit_authorization_and_preserves_context": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.fpr3.test_engines::test_full_footprint_preserves_settings_origins_and_next": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.muse.test_surfaces::test_native_product_status_review_hygiene_and_local_commit": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.muse.test_source_distribution::test_native_source_and_mirror_keep_ci_dotfiles": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.data_integrity.test_aff_integrity::test_last_verdict_matrix_uses_append_accepted_bodies": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_aff_integrity::test_different_digest_path_do_not_revoke": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_aff_integrity::test_skip_digest_d_does_not_authorize_d_prime": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_aff_integrity::test_ok_next_twice_identical_fence": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_aff_integrity::test_broken_ledger_absent_hold_never_auto": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_aff_integrity::test_mode_e_tamper_integrity_exits": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_aff_integrity::test_hash_consistent_malformed_ineligible": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_aff_integrity::test_hash_consistent_missing_ts_and_v_true_fail_closed": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_checkpoints_manifest::test_idempotent_reverify": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_checkpoints_manifest::test_mid_through_fail_keeps_prior_writes": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_checkpoints_manifest::test_dry_run_writes_nothing": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_honesty_ledger_integrity::test_dual_genesis_entry_atomic": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_honesty_ledger_integrity::test_verify_idempotent": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_honesty_ledger_integrity::test_verify_empty_ledger_zero": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_hosted_dashboard_integrity::test_twin_fetch_identical_sha256": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.data_integrity.test_hosted_dashboard_integrity::test_cache_refresh_and_no_secrets_in_result": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.data_integrity.test_isr_integrity::test_tamper_producer_session_breaks_verify": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_isr_integrity::test_canonical_hash_includes_isr_fields": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_isr_integrity::test_append_does_not_embed_chat_transcript": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_isr_integrity::test_validate_fail_writes_nothing": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_isr_integrity::test_mode_d_omit_vs_pin_does_not_rewrite_ledger": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_p_deploy_integrity::test_mode_c_match_depends_on_artifact_type_string": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_p_deploy_integrity::test_tampered_deploy_health_sha256_breaks_verify": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_p_deploy_integrity::test_append_embeds_hashes_refs_only_no_health_body": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_p_deploy_integrity::test_type_mismatch_fails_mode_c_match_without_tamper": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_p_deploy_integrity::test_validation_failure_no_partial_write": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_p_evidence_integrity::test_tampered_artifact_sha256_breaks_verify": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_p_evidence_integrity::test_append_does_not_embed_file_bytes": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_p_evidence_integrity::test_path_escape_append_file_refused": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_p_evidence_integrity::test_validation_failure_no_partial_write": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_p_evidence_integrity::test_idempotent_verify": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_post_land_sync_integrity::test_dirty_unique_bytes_unchanged_after_skipped_sync": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_post_land_sync_integrity::test_clean_sync_bytes_equal_origin_main_no_invented_commits": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_provenance_integrity::test_verify_idempotent_with_signatures": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_provenance_integrity::test_body_tamper_flips_22": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_provenance_integrity::test_sig_tamper_flips_25": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_provenance_integrity::test_excising_sig_does_not_change_entry_hash": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_provenance_integrity::test_verify_chain_direct_mix": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_provenance_integrity::test_verify_flags_malformed_provenance_exit_2": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.data_integrity.test_stamp_atomic::test_oserror_mid_stamp_preserves_original": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_aff_security::test_no_secret_key_url_in_skill_and_paste": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_aff_security::test_freeze_review_loop_forbids_auto_may_start_true": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_aff_security::test_url_like_session_ids_opaque": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_aff_security::test_no_network_or_model_imports_on_aff_paths": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_aff_security::test_author_session_cannot_append_pass_equal_ids": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_aff_security::test_mechanical_stamp_without_aff_holds_auto": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_aff_security::test_stale_mechanical_only_does_not_satisfy_trigger_b": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_aff_security::test_hash_consistent_malformed_cannot_authorize": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_aff_security::test_helper_off_under_disabled_honesty_cannot_hold": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_aff_security::test_mode_e_suggest_cannot_soften_integrity": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_aff_security::test_fail_closed_read_failure_suggest_surfaces_absent": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_isr_security::test_url_like_session_ids_opaque": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_isr_security::test_no_network_or_model_imports_on_isr_paths": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_isr_security::test_producer_cannot_append_isr": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_isr_security::test_equal_session_ids_cannot_pass": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_isr_security::test_exit_38_not_waived_under_require": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_isr_security::test_gate_payload_no_absolute_machine_paths": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_p_deploy_security::test_url_and_shell_metachar_ref_opaque_never_fetched": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_p_deploy_security::test_no_network_imports_on_mode_c_paths": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_p_deploy_security::test_no_kit_side_deploy_or_probe_helpers_in_honesty_and_skill": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_p_deploy_security::test_producer_cannot_append_deploy_health_evidence": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_p_deploy_security::test_exit_34_not_waived_when_require_and_mode_c_invoked": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_p_deploy_security::test_twin_skill_paths_exist": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_post_land_sync_security::test_call_log_never_contains_force_or_clobber[-main]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_post_land_sync_security::test_call_log_never_contains_force_or_clobber[-feat/pls-sec]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_post_land_sync_security::test_call_log_never_contains_force_or_clobber[ M dirty.md\\n-main]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_post_land_sync_security::test_call_log_never_contains_force_or_clobber[ M dirty.md\\n-feat/pls-sec]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_post_land_sync_security::test_muse_only_fixture_zero_git_and_gh_argv_from_sync": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_post_land_sync_security::test_metacharacter_refs_fail_closed_with_zero_git_argv[--upload-pack=/tmp/evil-main]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_post_land_sync_security::test_metacharacter_refs_fail_closed_with_zero_git_argv[origin---force]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_post_land_sync_security::test_metacharacter_refs_fail_closed_with_zero_git_argv[origin-main branch]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_post_land_sync_security::test_metacharacter_refs_fail_closed_with_zero_git_argv[origin\\n-main]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_post_land_sync_security::test_metacharacter_refs_fail_closed_with_zero_git_argv[-main]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_post_land_sync_security::test_metacharacter_refs_fail_closed_with_zero_git_argv[origin-]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.security.test_post_land_sync_security::test_refuse_blind_auto_merge_policy_still_holds": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_aff_in_entry_kinds": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_validate_accepts_minimal_pass_findings_blocked[aff-pass.json]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_validate_accepts_minimal_pass_findings_blocked[aff-findings.json]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_validate_accepts_minimal_pass_findings_blocked[aff-blocked.json]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_validate_accepts_minimal_skip": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_client_v_true_exit_2": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_client_v_not_exact_one_exit_2[0]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_client_v_not_exact_one_exit_2[2]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_client_v_not_exact_one_exit_2[-1]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_client_v_not_exact_one_exit_2[1.0]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_client_v_not_exact_one_exit_2[1]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_supplied_empty_ts_exit_2": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_supplied_non_string_ts_exit_2": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_omitted_ts_accepted_for_server_fill": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_verify_chain_rejects_missing_ts": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_verify_chain_rejects_v_true": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_round_true_rejected_on_round_bearing_kinds[verification_evidence-extra0]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_round_true_rejected_on_round_bearing_kinds[independent_second_review-extra1]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_round_true_rejected_on_round_bearing_kinds[freeze_review-extra2]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_round_true_rejected_on_round_bearing_kinds[adversarial_freeze-extra3]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_missing_reviewer_model_exit_2": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_same_session_ids_exit_2": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_missing_producer_session_on_pass_exit_2": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_missing_aff_posture_on_pass_exit_2": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_aff_posture_not_attack_exit_2": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_skip_with_aff_posture_exit_2": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_skip_non_owner_exit_23": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_pass_non_verifier_exit_23": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_bad_aff_verdict_exit_2": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_round_lt_1_exit_2": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_round_non_int_exit_2": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_digest_not_sha256_hex_exit_2": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_genesis_forbid_aff_keys": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_adversarial_freeze_config_parse": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_derived_suggest_from_security": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_derived_off_without_security": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_explicit_off_wins_over_security": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_require_never_derived": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_adversarial_freeze_in_honesty_keys": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_honesty_config_field_default_suggest": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_error_token_includes_missing_adversarial_freeze": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_resolve_mode_e_invariants": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_auto_hold_match_ignores_phase_id": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_mode_e_optional_phase_pin": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_skip_match_ignores_producer_session": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_pass_then_findings_never_returns_older_pass": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_pass_then_blocked_never_returns_older_pass": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_pass_then_skip_never_returns_older_pass": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_author_loop_complete_predicates": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_aff_hold_bypassed": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_helper_off_never_pending": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_resolver_eligibility_rejects_malformed": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_frv_authorizing_freeze_paths_only_substantive": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_aff_unit::test_aggregate_rank_absent_pending_skipped_pass": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_api_provider_k11::test_missing_api_key_unreachable": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_api_provider_k11::test_missing_api_url_unreachable": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_api_provider_k11::test_health_probe_success": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_api_provider_k11::test_model_hint_resolution": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_api_provider_k11::test_delimited_artifact_wraps_data": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_api_provider_k11::test_review_request_includes_checklist": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_api_provider_k11::test_parse_valid_findings": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_api_provider_k11::test_parse_invalid_json_raises": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_api_provider_k11::test_review_api_non_2xx_raises": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_checklist_engine::test_normative_escalation_vocabulary_is_not_a_finding": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_checklist_engine::test_absolute_path_still_emits_c4_security": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_checklist_engine::test_k5_contract_dogfood_has_no_false_escalation": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_checkpoints_k9b::test_step_id_regex": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_checkpoints_k9b::test_artifact_sha256_trailing_newlines": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_checkpoints_k9b::test_argv_builder_always_includes_policy": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_checkpoints_k9b::test_current_step_advance": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_checkpoints_k9b::test_checkpoints_config_mirror_mismatch_raises": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_checkpoints_k9b::test_governance_disabled_raises": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_checkpoints_k9b::test_extensions_well_formed_warn_only": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_checkpoints_k9b::test_extensions_malformed_raises": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_checkpoints_k9b::test_policy_version_not_one_raises": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_checkpoints_k9b::test_unused_broken_template_not_validated_until_selected": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_checkpoints_k9b::test_step_not_in_template_refused": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_checkpoints_k9b::test_current_step_not_in_template_refused": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_checkpoints_k9b::test_missing_manifest_step_refused": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_checkpoints_k9b::test_checkpoints_disabled_refused_without_manifest": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_checkpoints_k9b::test_dry_run_no_writes": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_checkpoints_k9b::test_json_dry_run_echo_on_empty_through": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_checkpoints_k9b::test_orchestrator_missing_refused": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_checkpoints_k9b::test_manifest_write_io_exit_5": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_close_ritual_land_check.CloseRitualLandCheckTests::test_close_ritual_disabled_noop": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_close_ritual_land_check.CloseRitualLandCheckTests::test_verify_landed_fail_on_mismatch": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_close_ritual_land_check.CloseRitualLandCheckTests::test_verify_landed_pass_when_matching": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_close_ritual_pr_land.PrLandAuthorizationTests::test_failed_check_exit_2": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_close_ritual_pr_land.PrLandAuthorizationTests::test_merges_when_green": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_close_ritual_pr_land.PrLandAuthorizationTests::test_refuses_without_authorization": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_cost_awareness_unit::test_cost_class_optional_valid_values": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_cost_awareness_unit::test_cost_class_rejects_unknown_value": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_cost_awareness_unit::test_cost_class_rejects_non_string": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_cost_awareness_unit::test_cost_class_recognized_key_not_unknown": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_cost_awareness_unit::test_cost_class_fail_closed_exit_32": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_cost_awareness_unit::test_paid_derivation_all_bands": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_cost_awareness_unit::test_paid_derivation_human_unpaid": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_cost_awareness_unit::test_paid_derivation_absent_band_conservative": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_cost_awareness_unit::test_cost_class_ordinal_order": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_cost_awareness_unit::test_cost_awareness_config_defaults": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_cost_awareness_unit::test_cost_awareness_unknown_surface_exit_2": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_cost_awareness_unit::test_phase_model_label_normalization": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_cost_awareness_unit::test_pending_gate_mapping": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_cost_awareness_unit::test_derivation_is_pure_no_io": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_findings_verdict::test_zero_findings_pass": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_findings_verdict::test_major_only_findings": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_findings_verdict::test_blocker_blocked": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_findings_verdict::test_escalation_category_blocked_even_if_major": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_findings_verdict::test_uncited_finding_becomes_synthetic_blocked": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_findings_verdict::test_stable_sort_and_ids": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_governance_drift::test_detect_drift_d1_drifted_d2_d3_aligned": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_governance_drift::test_detect_drift_fully_aligned": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_governance_drift::test_pr_match_rejects_generic_fragment_overlap": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_governance_drift::test_pr_match_rejects_bare_prefix_when_compound_id_exists": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_governance_drift::test_pr_match_accepts_compound_slice_id": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_governance_drift::test_pr_match_accepts_non_compound_slice_token": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_governance_drift::test_pr_match_rejects_visibility_checklist_overlap": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_governance_drift::test_pr_match_requires_word_boundary": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_governance_drift::test_pr_match_full_label_substring_still_matches": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_governance_drift::test_detect_drift_d3_ignores_mention_of_queued_slice": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_honesty_k10::test_genesis_prev_constant": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_honesty_k10::test_canonical_json_sorted_keys": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_honesty_k10::test_entry_hash_omits_entry_hash_key": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_honesty_k10::test_genesis_with_actors_refused": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_honesty_k10::test_kind_body_mismatch_refused": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_honesty_k10::test_approval_recorded_requires_owner": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_honesty_k10::test_verdict_empty_evidence_refused": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_honesty_k10::test_jsonl_trailing_empty_segment_ignored": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_honesty_k10::test_honesty_disabled_refuses_before_paths": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_honesty_k10::test_require_verdict_on_empty_raises": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_honesty_k10::test_require_verdict_on_unknown_raises": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_honesty_k10::test_hook_not_in_allowlist_refuses": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_honesty_k10::test_roles_file_missing_refuses": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_honesty_k10::test_roles_file_readable_warns_enum_only": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_honesty_k10::test_require_l1_evidence_prefix": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_honesty_k10::test_verify_chain_detects_break": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_isr_unit::test_isr_in_entry_kinds": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_isr_unit::test_validate_accepts_minimal_isr": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_isr_unit::test_same_session_ids_exit_2": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_isr_unit::test_empty_producer_session_exit_2": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_isr_unit::test_missing_producer_session_exit_2": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_isr_unit::test_non_verifier_exit_23": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_isr_unit::test_bad_isr_verdict_exit_2": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_isr_unit::test_round_lt_1_exit_2": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_isr_unit::test_both_agent_ids_equal_exit_2": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_isr_unit::test_one_agent_id_only_accept": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_isr_unit::test_genesis_forbid_isr_keys": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_isr_unit::test_frozen_spec_opaque_non_empty_no_must_exist": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_isr_unit::test_require_isr_config_parse": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_isr_unit::test_require_isr_in_honesty_keys": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_isr_unit::test_honesty_config_field_default_require": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_isr_unit::test_error_token_includes_missing_isr": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_isr_unit::test_resolve_mode_d_invariants": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_isr_unit::test_find_matching_isr_last_wins_and_pin": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_model_routing_unit::test_model_tiers_required_fields": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_model_routing_unit::test_model_tiers_unique_kebab_ids": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_model_routing_unit::test_model_tiers_reject_vendor_slug_id": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_model_routing_unit::test_kit_model_tiers_load": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_model_routing_unit::test_routing_policy_requires_defaults": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_model_routing_unit::test_routing_policy_rejects_unknown_when_key": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_model_routing_unit::test_routing_policy_fallback_must_start_with_model_tier": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_model_routing_unit::test_routing_policy_fallback_must_end_with_human": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_model_routing_unit::test_routing_policy_rejects_unknown_model_tier": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_model_routing_unit::test_routing_policy_duplicate_route_id": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_model_routing_unit::test_selector_wildcard_and_first_match": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_model_routing_unit::test_defaults_fallthrough": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_model_routing_unit::test_resolution_is_pure_no_io": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_p_deploy_unit::test_require_deploy_health_config_parse": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_p_deploy_unit::test_require_deploy_health_in_honesty_keys": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_p_deploy_unit::test_honesty_error_token_includes_missing_deploy_health": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_p_deploy_unit::test_find_matching_deploy_health_last_pass_with_artifact": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_p_deploy_unit::test_find_matching_deploy_health_rejects_test_output_only": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_p_deploy_unit::test_find_matching_deploy_health_rejects_findings_verdict": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_p_deploy_unit::test_find_matching_deploy_health_wrong_phase": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_p_deploy_unit::test_find_matching_deploy_health_wrong_frozen_spec": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_p_deploy_unit::test_find_matching_deploy_health_rejects_non_verifier": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_p_deploy_unit::test_resolve_mode_deploy_health_plus_frozen_spec_is_mode_c": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_p_deploy_unit::test_resolve_mode_b_and_c_together_invalid": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_p_deploy_unit::test_resolve_mode_frozen_spec_alone_invalid": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_p_deploy_unit::test_resolve_mode_a_plus_deploy_health_invalid": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_p_evidence_unit::test_verification_evidence_in_entry_kinds": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_p_evidence_unit::test_validate_accepts_minimal_verification_evidence": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_p_evidence_unit::test_unknown_artifact_type_exit_2": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_p_evidence_unit::test_uppercase_sha256_exit_2": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_p_evidence_unit::test_short_sha256_exit_2": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_p_evidence_unit::test_deploy_health_missing_ref_exit_2": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_p_evidence_unit::test_screenshot_missing_ref_exit_2": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_p_evidence_unit::test_empty_artifacts_exit_24": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_p_evidence_unit::test_non_verifier_actor_exit_23": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_p_evidence_unit::test_bad_bv_verdict_exit_2": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_p_evidence_unit::test_round_less_than_one_exit_2": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_p_evidence_unit::test_genesis_forbids_verification_evidence_keys": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_p_evidence_unit::test_frozen_spec_opaque_without_file_existence": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_p_evidence_unit::test_require_verification_evidence_config_parse": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_p_evidence_unit::test_require_verification_evidence_in_honesty_keys": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_p_evidence_unit::test_honesty_error_token_includes_missing_verification_evidence": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_post_land_sync_unit::test_defaults_when_block_omitted": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_post_land_sync_unit::test_defaults_when_post_land_sync_omitted": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_post_land_sync_unit::test_parse_explicit_opt_in": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_post_land_sync_unit::test_parse_rejects_bad_values[close_ritual:\\n  post_land_sync:\\n    surprise: 1\\n-unknown close_ritual.post_land_sync keys]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_post_land_sync_unit::test_parse_rejects_bad_values[close_ritual:\\n  post_land_sync:\\n    strategy: rebase\\n-strategy must be ff_only]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_post_land_sync_unit::test_parse_rejects_bad_values[close_ritual:\\n  post_land_sync:\\n    require_clean_worktree: false\\n-require_clean_worktree must be true]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_post_land_sync_unit::test_parse_rejects_bad_values[close_ritual:\\n  post_land_sync:\\n    enabled: yes please\\n-enabled must be a boolean]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_post_land_sync_unit::test_parse_rejects_bad_values[close_ritual:\\n  post_land_sync:\\n    require_clean_worktree: sometimes\\n-require_clean_worktree must be true]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_post_land_sync_unit::test_enabled_merged_not_dry_run_enters_helper": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_post_land_sync_unit::test_no_config_defaults_to_disabled_always_present": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_post_land_sync_unit::test_disabled_config_no_git_argv": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_post_land_sync_unit::test_dry_run_never_syncs": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_post_land_sync_unit::test_checks_failed_never_syncs": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_post_land_sync_unit::test_already_merged_checks_failed_never_syncs": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_post_land_sync_unit::test_muse_only_regime_skipped_zero_git_argv": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_post_land_sync_unit::test_dirty_porcelain_skips_without_checkout_or_pull": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_post_land_sync_unit::test_clean_on_feature_branch_checks_out_main_then_ff_pull": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_post_land_sync_unit::test_hard_fail_maps_to_exit_36_not_6[fetch]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_post_land_sync_unit::test_hard_fail_maps_to_exit_36_not_6[status]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_post_land_sync_unit::test_hard_fail_maps_to_exit_36_not_6[checkout]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_post_land_sync_unit::test_hard_fail_maps_to_exit_36_not_6[pull]": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_post_land_sync_unit::test_missing_repo_root_when_enabled_hard_fails": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_provenance_unit::test_provenance_required_fields": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_provenance_unit::test_provenance_strict_keys": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_provenance_unit::test_provenance_sig_pubkey_pairing": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_provenance_unit::test_compute_entry_hash_excludes_provenance_sig": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_provenance_unit::test_legacy_unsigned_entry_hash_unchanged": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_provenance_unit::test_ed25519_sign_verify_round_trip": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_provenance_unit::test_genesis_rejects_provenance": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_provenance_unit::test_soft_provenance_allowed_on_verdict": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_provenance_unit::test_git_only_require_agent_signature_config_error_26": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_provenance_unit::test_muse_regime_allows_require_agent_signature": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_report_stamp_line::test_idempotent_pass_stamp_line": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_review_stamp::test_markdown_fence_gets_review_stamp": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_review_stamp::test_yaml_whole_file_gets_top_level_stamp": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_review_stamp::test_operator_forced_markdown_appends_marker": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_review_stamp::test_idempotent_same_digest_noop": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_review_stamp::test_atomic_failure_preserves_bytes": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_review_stamp::test_digest_uses_bom_strip_and_lf": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_serializer_key_order::test_preserves_existing_key_relative_order": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_serializer_key_order::test_review_stamp_after_frozen_inputs": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_serializer_key_order::test_review_stamp_after_outputs_when_no_frozen_inputs": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.unit.test_serializer_key_order::test_round_trip_stable_with_custom_order": {
+      "outcome": "passed",
+      "run": "retained-first"
+    },
+    "tests.fpr1.test_config::test_read_only_legacy_inspection_is_unbound_and_preserves_lanes": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_every_optional_setting_and_hosted_limits_survive_bind_and_roundtrip": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_bounded_inputs_preserve_exact_bindings_without_runtime_refresh[1-git-bounded-1]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_bounded_inputs_preserve_exact_bindings_without_runtime_refresh[2-git-october-2]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_bounded_inputs_preserve_exact_bindings_without_runtime_refresh[2-muse-october-2]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_contradictions_and_unmapped_settings_refuse[<lambda>-unknown_unmapped_settings0]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_contradictions_and_unmapped_settings_refuse[<lambda>-unknown_unmapped_settings1]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_contradictions_and_unmapped_settings_refuse[<lambda>-unknown_unmapped_settings2]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_contradictions_and_unmapped_settings_refuse[<lambda>-unknown_unmapped_settings3]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_contradictions_and_unmapped_settings_refuse[<lambda>-unknown_unmapped_settings4]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_contradictions_and_unmapped_settings_refuse[<lambda>-git-only regime requires]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_contradictions_and_unmapped_settings_refuse[<lambda>-must equal]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_contradictions_and_unmapped_settings_refuse[<lambda>-config_document_alias]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_contradictions_and_unmapped_settings_refuse[<lambda>-config_lane_owner_mismatch]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_contradictions_and_unmapped_settings_refuse[<lambda>-must match]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_contradictions_and_unmapped_settings_refuse[<lambda>-config_path_invalid]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_contradictions_and_unmapped_settings_refuse[<lambda>-config_canonical_next]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_contradictions_and_unmapped_settings_refuse[<lambda>-unknown_unmapped_settings5]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_contradictions_and_unmapped_settings_refuse[<lambda>-config_default_lane_conflict]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_contradictions_and_unmapped_settings_refuse[<lambda>-unknown hosted_dashboard.sources]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_contradictions_and_unmapped_settings_refuse[<lambda>-config_integer_required0]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_contradictions_and_unmapped_settings_refuse[<lambda>-config_reviewer_provider_invalid]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_contradictions_and_unmapped_settings_refuse[<lambda>-config_integer_required1]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_contradictions_and_unmapped_settings_refuse[<lambda>-config_hosted_hosts_must_be_strings]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_duplicate_nested_and_recursive_yaml_refuse[\\nrepo: {}\\n]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_duplicate_nested_and_recursive_yaml_refuse[\\nworkspace:\\n  constellation_id: one\\n  constellation_id: two\\n]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_duplicate_nested_and_recursive_yaml_refuse[\\nextra: &a {again: *a}\\n]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_existing_binding_never_silently_changes[root]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_existing_binding_never_silently_changes[identity]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_existing_binding_never_silently_changes[runtime]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_existing_binding_never_silently_changes[lane]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_existing_binding_never_silently_changes[model]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_bounded_binding_missing_values_are_not_repaired_implicitly[id]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_bounded_binding_missing_values_are_not_repaired_implicitly[root]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_bounded_binding_missing_values_are_not_repaired_implicitly[runtime]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_bounded_binding_missing_values_are_not_repaired_implicitly[context]": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_symlink_policy_and_nondefault_lane_paths_refuse": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_linked_muse_working_directory_is_reported_and_binding_requires_pairing": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_config::test_all_preserved_valid_config_fixtures_load_without_muse_imports": {
+      "outcome": "passed",
+      "run": "binding-first"
+    },
+    "tests.fpr1.test_migration::test_legacy_plan_is_read_only_deterministic_and_lossless": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_bounded_migration_preserves_uuid_next_and_launch_binding": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_plan_drift_refuses_before_mutation[config]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_plan_drift_refuses_before_mutation[living]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_plan_drift_refuses_before_mutation[mode]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_plan_drift_refuses_before_mutation[head]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_partial_replacement_keeps_old_config_and_resumes": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.fpr1.test_migration::test_after_lock_context_change_refuses_without_replacement": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_before_replace_context_change_refuses_candidate": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_symlink_preflight_does_not_start_backup": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_legacy_prompt_is_exact_draft_only_and_conflicts_refuse": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_unknown_setting_and_hook_install_refuse": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_preserved_origin_and_custom_assets_are_classified_without_takeover": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_expected_plan_digest_refuses_tampered_document": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_custom_launcher_is_not_taken_over": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_referenced_optional_assets_are_in_the_digest_plan": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_runtime_refresh_is_explicit_and_sync_does_not_migrate_schema": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_october_muse_plan_preserves_authority_and_never_calls_git_revision": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_sync_partial_asset_failure_is_explicit": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_unchanged_launcher_mode_remains_in_preflight": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_malformed_reviewed_plan_refuses_without_traceback[<lambda>0]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_malformed_reviewed_plan_refuses_without_traceback[<lambda>1]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_malformed_reviewed_plan_refuses_without_traceback[<lambda>2]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_malformed_reviewed_plan_refuses_without_traceback[<lambda>3]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_canonical_json_plan_order_does_not_change_yaml_candidate": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_preserved_launcher_mode_is_not_promoted_by_migration": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_explicit_sync_upgrades_exact_bounded_hooks_only": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_plan_input_is_strict_finite_unique_json[plan:\\n  context: 2026-10-14\\n]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_plan_input_is_strict_finite_unique_json[{\"plan\": {}, \"plan\": {}}]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_plan_input_is_strict_finite_unique_json[{\"plan\": NaN}]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_sync_glob_selects_only_available_scripts_with_read_only_diff": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.fpr1.test_migration::test_sync_hook_glob_requires_explicit_hook_selection[.cursor/hooks/*.sh]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_sync_hook_glob_requires_explicit_hook_selection[.overseer/instructions/*]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_sync_hook_glob_requires_explicit_hook_selection[*]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_sync_unmatched_selection_refuses_before_runtime_refresh": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.fpr1.test_migration::test_sync_glob_preserves_origin_and_explicit_custom_settings": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_integrity::test_symlinks_cannot_cross_repository[a-to-b-.overseer/config.yaml]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_integrity::test_symlinks_cannot_cross_repository[a-to-b-docs/NEXT.md]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_integrity::test_symlinks_cannot_cross_repository[a-to-b-docs]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_integrity::test_symlinks_cannot_cross_repository[a-to-b-.overseer]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_integrity::test_symlinks_cannot_cross_repository[b-to-a-.overseer/config.yaml]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_integrity::test_symlinks_cannot_cross_repository[b-to-a-docs/NEXT.md]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_integrity::test_symlinks_cannot_cross_repository[b-to-a-docs]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_integrity::test_symlinks_cannot_cross_repository[b-to-a-.overseer]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_integrity::test_hardlinked_next_refused[a-to-b]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_integrity::test_hardlinked_next_refused[b-to-a]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_integrity::test_atomic_failure_preserves_old_bytes_and_removes_temp[replace]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_integrity::test_atomic_failure_preserves_old_bytes_and_removes_temp[fsync]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_integrity::test_atomic_unique_temp_and_permissions": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_integrity::test_writer_rejects_external_or_symlink_prompt": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_integrity::test_oversized_next_refused": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_integrity::test_concurrent_readers_and_cas_writers": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_integrity::test_next_read_bounded": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_integrity::test_post_replace_directory_fsync_failure_reports_failure_with_whole_file": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_integrity::test_raw_digest_preserves_exact_next_bytes": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_integrity::test_old_test_sources_preserved": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_context::test_writer_rechecks_context_after_real_lock_wait[branch]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_context::test_writer_rechecks_context_after_real_lock_wait[head]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_context::test_writer_rechecks_context_after_real_lock_wait[config]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_context::test_writer_rechecks_context_after_real_lock_wait[runtime]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_context::test_reader_cannot_mix_parent_and_blob_revisions": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_context::test_reader_rechecks_context_before_output[branch-next]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_context::test_reader_rechecks_context_before_output[branch-status]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_context::test_reader_rechecks_context_before_output[branch-hook]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_context::test_reader_rechecks_context_before_output[head-next]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_context::test_reader_rechecks_context_before_output[head-status]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_context::test_reader_rechecks_context_before_output[head-hook]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_context::test_reader_rechecks_context_before_output[config-next]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_context::test_reader_rechecks_context_before_output[config-status]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_context::test_reader_rechecks_context_before_output[config-hook]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_context::test_reader_rechecks_context_before_output[runtime-next]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_context::test_reader_rechecks_context_before_output[runtime-status]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_context::test_reader_rechecks_context_before_output[runtime-hook]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_context::test_writer_rechecks_context_after_candidate_fsync[branch]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_context::test_writer_rechecks_context_after_candidate_fsync[head]": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_context::test_context_checks_keep_successful_reads_read_only": {
+      "outcome": "passed",
+      "run": "binding-second"
+    },
+    "tests.v1.test_muse_artifact::test_rebuild_independent_of_order_time_mode_and_roundtrip": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.v1.test_muse_artifact::test_changed_source_data_or_metadata_refuses[muse/__init__.py]": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.v1.test_muse_artifact::test_changed_source_data_or_metadata_refuses[muse/data.bin]": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.v1.test_muse_artifact::test_changed_source_data_or_metadata_refuses[muse-0.2.1rc5.dist-info/METADATA]": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.v1.test_muse_artifact::test_added_installed_code_refuses_but_generated_bytecode_is_ignored": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.v1.test_muse_artifact::test_linked_input_refuses": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.v1.test_muse_artifact::test_source_pin_drift_refuses": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.v1.test_muse_artifact::test_duplicate_archive_entries_refuse": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.v1.test_muse_artifact::test_manifest_tamper_refuses": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.v1.test_muse_artifact::test_cli_rejects_artifact_substitution_before_output[wheel]": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.v1.test_muse_artifact::test_cli_rejects_artifact_substitution_before_output[source]": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.v1.test_muse_artifact::test_committed_contract_matches_supported_runtime_pin": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.fpr3.test_package::test_package_traversal_and_tamper_refused": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.fpr3.test_package::test_landing_and_active_handoff_copy": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.fpr3.test_engines::test_atomic_reader_reopens_replaced_inode_without_accepting_hardlinks": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.fpr3.test_engines::test_landing_compares_pinned_binary_bytes_and_requires_current_next": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.fpr3.test_package::test_actual_package_deterministic_manifest_modes_and_resource_bundle": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.fpr3.test_surfaces::test_hosted_rechecks_binding_before_returning_projection": {
+      "outcome": "passed",
+      "run": "surfaces-final"
+    },
+    "tests.unit.test_hosted_dashboard_unit::test_hosted_dashboard_registered": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.unit.test_hosted_dashboard_unit::test_default_port_8766": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.unit.test_hosted_dashboard_unit::test_bind_refuse_without_allow_non_loopback[127.0.0.1-False-127.0.0.1]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.unit.test_hosted_dashboard_unit::test_bind_refuse_without_allow_non_loopback[localhost-False-127.0.0.1]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.unit.test_hosted_dashboard_unit::test_bind_refuse_without_allow_non_loopback[::1-False-::1]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.unit.test_hosted_dashboard_unit::test_bind_refuse_without_allow_non_loopback[0.0.0.0-False-None]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.unit.test_hosted_dashboard_unit::test_bind_refuse_without_allow_non_loopback[0.0.0.0-True-0.0.0.0]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.unit.test_hosted_dashboard_unit::test_bind_refuse_without_allow_non_loopback[192.168.1.1-False-None]": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.unit.test_hosted_dashboard_unit::test_viewer_token_entropy": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.unit.test_hosted_dashboard_unit::test_empty_allowlist_validates": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.unit.test_hosted_dashboard_unit::test_allowlist_shape": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.unit.test_hosted_dashboard_unit::test_owner_repo_validators": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.unit.test_hosted_dashboard_unit::test_write_scope_refuse": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.unit.test_hosted_dashboard_unit::test_upstream_host_allowlist": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.unit.test_hosted_dashboard_unit::test_envelope_authoritative_local": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.unit.test_hosted_dashboard_unit::test_parser_never_invents_done_on_garbage": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.unit.test_hosted_dashboard_unit::test_parser_reads_build_status_rows": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.unit.test_hosted_dashboard_unit::test_config_unknown_key_refuse": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.unit.test_hosted_dashboard_unit::test_source_id_closed_vocabulary": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.unit.test_hosted_dashboard_unit::test_track_q_paths_detected": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.unit.test_hosted_dashboard_unit::test_repo_route_match": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.security.test_hosted_dashboard_security::test_mutating_methods_on_api": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.security.test_hosted_dashboard_security::test_upstream_client_methods_get_head_only": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.security.test_hosted_dashboard_security::test_rejected_scopes_refuse": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.security.test_hosted_dashboard_security::test_ssrf_disallowed_host_and_ip": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.security.test_hosted_dashboard_security::test_path_traversal_in_params_refused": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.security.test_hosted_dashboard_security::test_missing_auth_401_except_health": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.security.test_hosted_dashboard_security::test_no_localstorage_viewer_token": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.security.test_hosted_dashboard_security::test_no_auth_disable_flag_in_cli_help": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.security.test_hosted_dashboard_security::test_musehub_only_baseline_impossible": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.security.test_hosted_dashboard_security::test_no_deploy_probe_urls_in_module": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    },
+    "tests.security.test_hosted_dashboard_security::test_deploy_route_not_registered": {
+      "outcome": "passed",
+      "run": "hosted-close"
+    }
+  },
+  "python": "3.14.4 (main, Apr  7 2026, 13:13:20) [Clang 17.0.0 (clang-1700.6.4.2)]",
+  "dependencies": {
+    "PyYAML": "6.0.3",
+    "cryptography": "49.0.0",
+    "cffi": "2.1.0",
+    "pycparser": "3.0",
+    "pytest": "9.1.1"
+  },
+  "git": "git version 2.50.1 (Apple Git-155)",
+  "desktop": {
+    "toolchain": "Explicit locally installed Rust 1.88.0; ambient Rust 1.87 failed minimum version",
+    "build": "cargo build --locked --offline; RUSTC and CARGO_TARGET_DIR explicitly selected",
+    "log": "docs/validation/fpr3/desktop-build-identity.log",
+    "version": "1.0.0-dev.1",
+    "gui_run": false,
+    "signing_or_installer": false
+  },
+  "resource_launch": {
+    "ok": true,
+    "resource_manifest_files": 1003,
+    "runtime": {
+      "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/desktop/src-tauri/resources/kit",
+      "version": "1.0.0.dev1",
+      "sha256": "726c84b9e93e04e4eabea7c015c6260d7e2911ea5fa3d3e790c40abd1236e9fd"
+    },
+    "fixture_root": "/private/tmp/overseer-fpr3-resource-consumer-l4wa2gge/repository",
+    "repo_id": "73f97214-2035-469d-ade9-16d878d93980",
+    "dependencies": {
+      "PyYAML": "6.0.3",
+      "cryptography": "49.0.0",
+      "cffi": "2.1.0",
+      "pycparser": "3.0"
+    },
+    "checks": [
+      "source/resource manifest",
+      "offline conventional venv prerequisites",
+      "actual bundled cli/ok init and NEXT",
+      "desktop process startup",
+      "authenticated health root/UUID/runtime equality",
+      "child shutdown"
+    ],
+    "limits": "Focused resource check; no integrated migration/rollback/pilot matrix, native GUI, signing or release."
+  },
+  "resource_archive": {
+    "deterministic": true,
+    "archive": {
+      "archive": "/private/tmp/overseer-fpr3-resources-qyez1s73/source-a.tar.gz",
+      "sha256": "5c3ccf350a0aae9bde5ac16a8566cbfac24ef432d4a075e3888045e170432640",
+      "manifest_sha256": "5f6e2cf96214e29753ffbf967fa7e84403add5e61e9be22d9eb97e31a7999df7",
+      "files": 1003
+    },
+    "resource_root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/desktop/src-tauri/resources/kit",
+    "source_snapshot": "/private/tmp/overseer-fpr3-resources-qyez1s73/source"
+  },
+  "limits": [
+    "FPR-4 combined modes/clients/install/migration/rollback/pilot matrix pending",
+    "FPR-5 independent final review pending",
+    "Python 3.11 and additional platforms not run in FPR-3",
+    "Native GUI not opened; native build and actual Python child lifecycle checked separately",
+    "No real providers, remotes, consumers, hooks or release/deployment",
+    "setuptools unavailable in the conventional venv; no wheel build claimed",
+    "Historical baseline remains 1391 passes / 104 failures; exact dispositions do not recertify the baseline",
+    "This existing installation retains old footprint records/disabled hooks: status --check-footprint reports 21 attention paths, one missing policy record and standing-decisions reference drift. Runtime and canonical NEXT are valid; no forced full sync was run."
+  ]
+}

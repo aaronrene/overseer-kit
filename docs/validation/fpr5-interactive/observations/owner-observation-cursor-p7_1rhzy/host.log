@@ -1,0 +1,52 @@
+[1015/043657.333410:ERROR:third_party/crashpad/crashpad/client/crash_report_database_mac.mm:90] stat /Users/aaronrenecarvajal/Library/Application Support/Cursor/Crashpad: Operation not permitted (1)
+[38329:1015/043657.334113:ERROR:third_party/crashpad/crashpad/util/file/file_io.cc:103] ReadExactly: expected 8, observed 0
+[38329:1015/043657.334295:ERROR:third_party/crashpad/crashpad/client/crash_report_database_mac.mm:90] stat /Users/aaronrenecarvajal/Library/Application Support/Cursor/Crashpad: Operation not permitted (1)
+Unable to read argv.json configuration file in /Users/aaronrenecarvajal/.cursor/argv.json, falling back to defaults (Error: EPERM: operation not permitted, open '/Users/aaronrenecarvajal/.cursor/argv.json')
+(node:38329) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `Cursor --trace-deprecation ...` to show where the warning was created)
+WARNING: IPC handle "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-observation-cursor-p7_1rhzy/profile/3.24-main.sock" is longer than 103 chars, try a shorter --user-data-dir
+[90m[main 2026-10-15T11:36:57.457Z][0m PolicyConfiguration#initialize
+[90m[main 2026-10-15T11:36:57.457Z][0m PolicyConfiguration#updatePolicyDefinitions [
+  'update.mode',
+  'update.channel',
+  'update.releaseTrack',
+  'update.releaseTrackOverride',
+  'cursor.agentHost.updateMode',
+  'http.useLocalProxyConfiguration',
+  'http.electronFetch',
+  'http.proxy',
+  'http.proxyStrictSSL',
+  'http.proxyKerberosServicePrincipal',
+  'http.noProxy',
+[REDACTED credential-related diagnostic line 21; original retained locally]
+  'http.proxySupport',
+  'http.systemCertificates',
+  'http.experimental.systemCertificatesV2',
+  'http.fetchAdditionalSupport',
+  'crashReporting.enabled',
+  'telemetry.enableTelemetry'
+]
+[90m[main 2026-10-15T11:36:57.458Z][0m NativePolicyService#_updatePolicyDefinitions - Found 2 policy definitions
+[90m[main 2026-10-15T11:36:57.466Z][0m NativePolicyService#_onDidPolicyChange - Updated policy values: {}
+[90m[main 2026-10-15T11:36:57.466Z][0m PolicyConfiguration#update [ 'update.mode', 'cursor.agentHost.updateMode' ]
+[90m[main 2026-10-15T11:36:57.466Z][0m PolicyConfiguration#updatePolicyDefinitions [
+  'update.enableWindowsBackgroundUpdates',
+  'cursor.experimental.startupConnectTransport'
+]
+[90m[main 2026-10-15T11:36:57.466Z][0m PolicyConfiguration#update []
+[90m[main 2026-10-15T11:36:57.466Z][0m [File Watcher (node.js)] Request to start watching: /private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-observation-cursor-p7_1rhzy/profile/User (excludes: <none>, includes: <all>, filter: <none>, correlationId: <none>),/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-observation-cursor-p7_1rhzy/profile/User/settings.json (excludes: <none>, includes: <all>, filter: <none>, correlationId: <none>)
+[91m[main 2026-10-15T11:36:57.468Z][0m Error: listen EINVAL: invalid argument /private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-observation-cursor-p7_1rhzy/profile/3.24-main.sock
+    at Server.setupListenHandle [as _listen2] (node:net:1987:21)
+    at listenInCluster (node:net:2066:12)
+    at Server.listen (node:net:2188:5)
+    at file:///Applications/Cursor.app/Contents/Resources/app/out/main.js:37:22668
+    at new Promise (<anonymous>)
+    at y4e (file:///Applications/Cursor.app/Contents/Resources/app/out/main.js:37:22616)
+    at D9e.claimInstance (file:///Applications/Cursor.app/Contents/Resources/app/out/main.js:375:59368)
+    at file:///Applications/Cursor.app/Contents/Resources/app/out/main.js:375:56910
+    at Cx.invokeFunction (file:///Applications/Cursor.app/Contents/Resources/app/out/main.js:371:437)
+    at D9e.startup (file:///Applications/Cursor.app/Contents/Resources/app/out/main.js:375:56819)
+[90m[main 2026-10-15T11:36:57.468Z][0m Lifecycle#kill()
+[90m[main 2026-10-15T11:36:57.468Z][0m Lifecycle#onWillShutdown.fire()
+[90m[main 2026-10-15T11:36:57.470Z][0m [File Watcher (node.js)] Started watching: '/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-observation-cursor-p7_1rhzy/profile/User'
+[90m[main 2026-10-15T11:36:57.470Z][0m [File Watcher (node.js)] Started watching: '/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-observation-cursor-p7_1rhzy/profile/User/settings.json'

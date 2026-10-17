@@ -1,0 +1,7 @@
+{
+  "pid": 9766,
+  "mechanism": "NSRunningApplication.runningApplicationWithProcessIdentifier(pid).terminate()",
+  "accepted": true,
+  "time": 1792062370.211663,
+  "target": "only new candidate process"
+}

@@ -1,0 +1,128 @@
+{
+  "schema": 1,
+  "kind": "Confined legacy repair evidence; excludes inventory itself",
+  "opening_head": "c247186f139c7916a38030ff25fba30f5aa94576",
+  "files": {
+    "application.json": {
+      "sha256": "89823cb8d4ecdddab30eed4290abb40dbf139a98c83ef7c63fa80badc55bb2fe",
+      "bytes": 16646,
+      "mode": 420
+    },
+    "bound-next-precommit.json": {
+      "sha256": "ceb746b6ed7a8bf579f55c49a3fb3e00d1f15db4b722946ba6e0bd21f2b54ac6",
+      "bytes": 3959,
+      "mode": 420
+    },
+    "closeout.json": {
+      "sha256": "5be3147478629a75ba89ce74035be508ee25ba55a81f82801c34b7ac21df058b",
+      "bytes": 2615,
+      "mode": 420
+    },
+    "dependency-selection.json": {
+      "sha256": "5817b475473a5d30a76ffd1a024f3089d4573b0cc28df17b79f4c16af10ea148",
+      "bytes": 97230,
+      "mode": 420
+    },
+    "disposable-validation.json": {
+      "sha256": "4cdb26470c32f0b6fdf5237acc949d0e3363efc67509fe9c9d83d8cb8a0261ce",
+      "bytes": 8771,
+      "mode": 420
+    },
+    "external-yaml-before.json": {
+      "sha256": "7939f9c63b2a0b682922216d3c9a9b457f0e77a00c1ffd4f858438bcc693c8d6",
+      "bytes": 21559,
+      "mode": 420
+    },
+    "next-prompt.txt": {
+      "sha256": "89491a830d06f8c37c7a3e9fcd88302fe40689df9b0dd5286b407e96d78e1505",
+      "bytes": 821,
+      "mode": 420
+    },
+    "next-publication.json": {
+      "sha256": "42bee5ed8393b2b049859b5784d91f9251a0e9273069bcd0cd23881c70e29379",
+      "bytes": 1073,
+      "mode": 420
+    },
+    "opening-verification.json": {
+      "sha256": "56ebe89cb3bf2022f4d4346b99bae8086b487e0b48f688f5506e4498eaf6743c",
+      "bytes": 146631,
+      "mode": 420
+    },
+    "preparation-history.json": {
+      "sha256": "46fa09125e16ead1187d3730bc8aefe2576baa3f1eea2e468581fedf9694358a",
+      "bytes": 1771,
+      "mode": 420
+    },
+    "preparation.json": {
+      "sha256": "83888e1a9e82d2923a2242785406917c6fcd657f7ff41f6ad6eff023333ccfc9",
+      "bytes": 786,
+      "mode": 420
+    },
+    "preservation-after-apply.json": {
+      "sha256": "b57d65ae4d420b770e0bd5535b3f5d59b8e18a4e72d88f3f43c9d811245f4538",
+      "bytes": 2086,
+      "mode": 420
+    },
+    "repair.py": {
+      "sha256": "651cae06aea034cbe92597793fff8f792a564c52e710cfa82317a306539615c6",
+      "bytes": 18510,
+      "mode": 420
+    },
+    "summary-lock-final.json": {
+      "sha256": "c0f2326764677e4116cb7216f3b8cdbe2cc924962eb0aa132ebabfc50530c126",
+      "bytes": 1325,
+      "mode": 420
+    },
+    "summary-lock-refresh.json": {
+      "sha256": "ce0cc6bd8b5cf042377fba02d56ad8c7ea46d4c4622974dd14072d48455c8706",
+      "bytes": 1594,
+      "mode": 420
+    },
+    "target-validation.json": {
+      "sha256": "d630238c9cfd3a57b887127c5007c179bf74f9ca1fcc3171b1c3db2f0785537b",
+      "bytes": 8368,
+      "mode": 420
+    },
+    "venv-after.json": {
+      "sha256": "556cfcf12533bf623f3d14858d2f644e06cac5a22331eb6d5d33751d3f3f514d",
+      "bytes": 86059,
+      "mode": 420
+    },
+    "venv-before.json": {
+      "sha256": "7c1ac1030d42cb1f6eb84ebcf2f486df2bb83c585923a8d439666cd952fa5222",
+      "bytes": 7989,
+      "mode": 420
+    }
+  },
+  "companion_files": {
+    ".overseer/version.lock": {
+      "sha256": "8ad22758118751c7a4b69dc537f20c2eaaf0cbaa3721f13bd810d6fc0bc75a0b",
+      "bytes": 8498,
+      "mode": 420
+    },
+    "docs/NEXT.md": {
+      "sha256": "506c062fa0f6c8da4e0520e98a369be073f1d87e355d597ae786868a8026de19",
+      "bytes": 1238,
+      "mode": 420
+    },
+    "docs/OVERSEER-HANDOVER.md": {
+      "sha256": "9fbf3eed6af080ae3d50b65edb6ab314938eea685fed8052ddbc54f1a0e0a682",
+      "bytes": 19373,
+      "mode": 420
+    },
+    "docs/ROADMAP.md": {
+      "sha256": "b545df86bc170045e0f91feb404b158a04665b9c6645389173a882b2583d3d05",
+      "bytes": 17249,
+      "mode": 420
+    },
+    "docs/validation/FPR-5-LEGACY-CLI-REPAIR.md": {
+      "sha256": "55f8376a0f99c9dbade609b91b6f1e70b6a3fcc556bd6413c66615253f56807c",
+      "bytes": 8589,
+      "mode": 420
+    }
+  },
+  "runtime_sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774",
+  "backup_location": "/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261015-fpr-ops2-s8rcdg_c/venv-before",
+  "ops1_resolved": false,
+  "release_ready": false
+}

@@ -1,0 +1,6 @@
+{
+  "ok": true,
+  "bind": "127.0.0.1",
+  "port": 49346,
+  "execution": "local socket sandbox escalation"
+}

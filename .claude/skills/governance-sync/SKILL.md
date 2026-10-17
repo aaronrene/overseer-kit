@@ -1,72 +1,19 @@
-> **Historical pre-reset product.** This document describes the pre-reset historical product.
-> Its legacy commands are not exposed by the bounded-v1 entrypoint. Do not use it
-> as current onboarding. See the [root README](../../../README.md) and [current docs index](../../../docs/README.md).
+---
+name: governance-sync
+description: Inspect and explicitly synchronize paired repository governance summaries.
+---
 
-# Governance sync skill
+Read AGENTS.md and use the repository-bound `ok` launcher with an explicit root.
+Start with `ok next` and `ok governance-sync --dry-run`; select `--lane` or
+`--all-lanes` explicitly. Verify identity, history authority and the proposed paths.
 
-Use when a session is ending, handover/roadmap may be stale, or the operator runs `/governance-sync`.
+`--write` applies paired summaries and commits them locally on the selected clean
+feature branch. Preserve living prose and canonical NEXT. Remote PR enrichment
+requires `--allow-network --gh /absolute/gh`; feature push additionally requires
+`--push --write`. These flags require task authorization. Muse transport uses
+controlled `mirror prepare/reconcile/verify/deliver`, never live git-export.
 
-## Purpose
-
-Keep `{{docs.roadmap_path}}` and `{{docs.handover_path}}` aligned with true VCS state and phase
-truth. This automates the SD-17 obligation — it does not invent new policy.
-
-## Read first
-
-- `{{docs.handover_path}}` — current NEXT block
-- `{{docs.roadmap_path}}` — build status table
-- `policy/tiers.yaml`, `policy/model-labels.yaml`
-- `.overseer/config.yaml` — regime and doc paths
-
-## Workflow (docs-first)
-
-1. Read VCS status via the kit adapter for **`{{vcs.regime}}`** (fail-closed on read errors).
-2. Compare docs to reality; list drift (phase status, branch/sha, NEXT prompt staleness).
-3. Update `{{docs.roadmap_path}}` first.
-4. Regenerate `{{docs.handover_path}}` from updated roadmap + VCS snapshot.
-5. Include **`Model:`** on every NEXT block per `policy/model-labels.yaml`.
-6. If NEXT is **Thinking → Auto**, emit `{step}a` or `{step}b` only — not both unless `{step}a` incomplete.
-
-## CLI (when K4/K5 land)
-
-```bash
-/path/to/overseer-kit/cli/ok governance-sync --dry-run
-/path/to/overseer-kit/cli/ok governance-sync
-```
-
-**Default: dry-run.** Writes nothing except the local `.overseer/last_governance_sync`
-marker when D1/D2 are aligned (GFG carve-out). Governance-doc patches, commits, and
-realign apply only on explicit non-dry-run; never on `{{vcs.git.main_branch}}`.
-
-After apply/write of living docs, run `ok next` (or equivalent Read) and include the
-`## CURRENT NEXT — paste this` heading+fence in the user-visible close.
-
-## Post-merge land closeout (PMHF)
-
-When the handover NEXT is `land-phase=land-a` and D1 is drifted (the merge landed on
-`{{vcs.git.main_branch}}`), the plan emits the **land-b** paste for the same slice.
-land-b required: `ok governance-sync --dry-run` then apply; paste land-b; do not re-paste land-a.
-
-## Closing commit
-
-Feature branch only. Message pattern: `governance: sync handover + roadmap (<date>)`. Bundle both docs.
-
-## Hard stops
-
-- No merge to `{{vcs.git.main_branch}}` without Tier 3
-- No staging push without Tier 3
-- No live posture flips
-- No peer-repo writes from this command — workspace relay check is read-only (§MR.8)
-
-## Multi-repo (when `workspace:` configured)
-
-After advancing product_order PRIMARY, refresh each `relay: true` tip
-(`role=relay` or `## PRODUCT RELAY —`) and run:
-
-```bash
-ok workspace check-next
-```
-
-`governance-sync` footer / JSON key `workspace_relay` reports
-`not_configured|ok|stale_relay|ambiguous_primary|missing_member|error`. Multi-repo SD-17
-is incomplete until `check-next` exits `0`. Single-repo docs↔VCS sync remains required.
+`--print-next` reads the canonical service and cannot combine with writes or
+all-lanes. Hygiene never generates a prompt. After substantive work, explicitly
+publish the accepted successor through `next-write` with current context and
+expected prior digest. Read `ok next` again after the closing commit.

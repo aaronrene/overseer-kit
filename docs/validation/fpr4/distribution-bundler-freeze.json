@@ -1,0 +1,37 @@
+{
+  "changed_by_package_agent": [
+    "scripts/bundle-desktop-kit.sh",
+    "tests/fpr4/test_bundle_repeatability.py"
+  ],
+  "source_hashes": {
+    "scripts/bundle-desktop-kit.sh": "d3fc18a49daca74b036a9fd716d7c0d62f354889c556f8afc745549849d77e56",
+    "tests/fpr4/test_bundle_repeatability.py": "36e51f458247faa34ae77a37ef0807dbc39b22f913c7bf13118090e42cbe2762",
+    "scripts/fpr4_distribution_matrix.py": "2aca5023b6c6de415fd1b50e9f4028a09f145213fde389e81d0d87aea58f4fe3",
+    "scripts/fpr4_run.py": "bdd73a4343287048a5e99cc4fc7879787eccbadb9671419f4a1ef85e0980ecf0"
+  },
+  "runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "bdbfdae4599ca0bd1b096d5ed2c84019df3b83ed24972c202319ea5507cf09ec"
+  },
+  "focused_test": {
+    "command": [
+      ".venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "tests/fpr4/test_bundle_repeatability.py",
+      "-p",
+      "no:cacheprovider",
+      "--basetemp",
+      "/private/tmp/overseer-fpr4-bundle-repeatability-20261014",
+      "--junitxml",
+      "docs/validation/fpr4/distribution-bundler-regression.xml"
+    ],
+    "exit": 0,
+    "passed": 1,
+    "duration_seconds": 4.39
+  },
+  "external_regression": "distribution-bundler-repair.json",
+  "initial_failure": "distribution-final-native-initial-results.json"
+}

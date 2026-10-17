@@ -1,0 +1,170 @@
+{
+  "scope": "FPR-4 author native init failure investigation and isolated candidate evidence",
+  "source_head": "6289d2823184a63e2968d2c5f6a76abab5818368",
+  "opening_runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "7d38764f026848d7d89d81abedfc62f1de5eefde6443d0032d770c2ff09a20d1"
+  },
+  "candidate_runtime": {
+    "root": "/private/tmp/overseer-fpr4-init-candidate-yn8mhf51/installation",
+    "version": "1.0.0.dev1",
+    "sha256": "8cc298eee30563542ad530116c401c0b91b8c04ab95b9f823c9245879f34065d"
+  },
+  "patch_sha256": "2898bb55305619e1d379b47a3cc47be862cea11816c656fa004e809823f742bb",
+  "original_test_sha256": "2f3773558d3919e2520906a2b12661bf6f76faa961abe74ce7ef14f322509a80",
+  "original_test_unchanged": true,
+  "production_unchanged": true,
+  "successor": "tests/fpr4/test_native_linked_footprint.py::test_native_linked_checkout_reports_tracked_footprint_change_and_keeps_identity",
+  "successor_file_sha256": "ecb73f30953e7324a2433aa2395ab42152f294155b842fb6ce194b849c486e80",
+  "linked_disposition": {
+    "original": "tests/muse/test_handoffs.py::test_native_linked_worktree_own_branch_and_checkout_identity",
+    "final_deselect": "tests/muse/test_handoffs.py::test_native_linked_worktree_own_branch_and_checkout_identity",
+    "reason": "Fresh restored init now records a distinct checkout launcher digest and preserved origins for inherited portable assets in tracked .overseer/version.lock. Dirty=True is truthful. Preserve original clean-assertion failure and replace with sole-portable-change, exact ownership, identity, source/branch freshness and primary-isolation assertions. Do not hide dirty metadata or weaken tracking.",
+    "portable_diff": "native-linked-candidate-diff.json"
+  },
+  "import_disposition": {
+    "original": "tests/muse/test_handoffs.py::test_committed_git_baseline_import_isolated_from_owner_edits",
+    "final_deselect": null,
+    "reason": "Same inherited-assets init refusal is repaired by the init-preservation patch; unchanged original passes on candidate."
+  },
+  "runs": [
+    {
+      "name": "native-linked-before",
+      "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "command": "PYTHONDONTWRITEBYTECODE=1 GIT_OPTIONAL_LOCKS=0 GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_NOSYSTEM=1 .venv/bin/python -B -m pytest -q -p no:cacheprovider tests/muse/test_handoffs.py::test_native_linked_worktree_own_branch_and_checkout_identity --muse-python=/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python --basetemp=/private/tmp/overseer-fpr4-native-linked-before --junitxml=docs/validation/fpr4/native-linked-before.xml > docs/validation/fpr4/native-linked-before.log 2>&1",
+      "exit_code": 1,
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "1",
+          "skipped": "0",
+          "tests": "1",
+          "time": "15.511",
+          "timestamp": "2026-10-14T16:30:45.629249-07:00",
+          "hostname": "Carloss-MacBook-Pro.local"
+        }
+      ]
+    },
+    {
+      "name": "native-linked-candidate",
+      "cwd": "/private/tmp/overseer-fpr4-init-candidate-yn8mhf51/installation",
+      "command": "PYTHONDONTWRITEBYTECODE=1 GIT_OPTIONAL_LOCKS=0 GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_NOSYSTEM=1 .venv/bin/python -B -m pytest -q -p no:cacheprovider tests/muse/test_handoffs.py::test_native_linked_worktree_own_branch_and_checkout_identity --muse-python=/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python --basetemp=/private/tmp/overseer-fpr4-native-linked-candidate --junitxml=/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/docs/validation/fpr4/native-linked-candidate.xml > /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/docs/validation/fpr4/native-linked-candidate.log 2>&1",
+      "exit_code": 1,
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "1",
+          "skipped": "0",
+          "tests": "1",
+          "time": "25.639",
+          "timestamp": "2026-10-14T16:31:21.621933-07:00",
+          "hostname": "Carloss-MacBook-Pro.local"
+        }
+      ]
+    },
+    {
+      "name": "native-linked-successor",
+      "cwd": "/private/tmp/overseer-fpr4-init-candidate-yn8mhf51/installation",
+      "command": "FPR2_MUSE_PYTHON=/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python PYTHONDONTWRITEBYTECODE=1 GIT_OPTIONAL_LOCKS=0 GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_NOSYSTEM=1 .venv/bin/python -B -m pytest -q -p no:cacheprovider tests/fpr4/test_native_linked_footprint.py --basetemp=/private/tmp/overseer-fpr4-native-linked-successor --junitxml=/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/docs/validation/fpr4/native-linked-successor.xml > /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/docs/validation/fpr4/native-linked-successor.log 2>&1",
+      "exit_code": 0,
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "1",
+          "time": "32.521",
+          "timestamp": "2026-10-14T16:33:35.689121-07:00",
+          "hostname": "Carloss-MacBook-Pro.local"
+        }
+      ]
+    },
+    {
+      "name": "native-import-before",
+      "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "command": "PYTHONDONTWRITEBYTECODE=1 GIT_OPTIONAL_LOCKS=0 GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_NOSYSTEM=1 .venv/bin/python -B -m pytest -q -p no:cacheprovider tests/muse/test_handoffs.py::test_committed_git_baseline_import_isolated_from_owner_edits --muse-python=/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python --basetemp=/private/tmp/overseer-fpr4-native-import-before --junitxml=docs/validation/fpr4/native-import-before.xml > docs/validation/fpr4/native-import-before.log 2>&1",
+      "exit_code": 1,
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "1",
+          "skipped": "0",
+          "tests": "1",
+          "time": "4.582",
+          "timestamp": "2026-10-14T16:32:34.471343-07:00",
+          "hostname": "Carloss-MacBook-Pro.local"
+        }
+      ]
+    },
+    {
+      "name": "native-import-candidate",
+      "cwd": "/private/tmp/overseer-fpr4-init-candidate-yn8mhf51/installation",
+      "command": "PYTHONDONTWRITEBYTECODE=1 GIT_OPTIONAL_LOCKS=0 GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_NOSYSTEM=1 .venv/bin/python -B -m pytest -q -p no:cacheprovider tests/muse/test_handoffs.py::test_committed_git_baseline_import_isolated_from_owner_edits --muse-python=/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python --basetemp=/private/tmp/overseer-fpr4-native-import-candidate --junitxml=/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/docs/validation/fpr4/native-import-candidate.xml > /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/docs/validation/fpr4/native-import-candidate.log 2>&1",
+      "exit_code": 0,
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "1",
+          "time": "9.965",
+          "timestamp": "2026-10-14T16:32:41.794381-07:00",
+          "hostname": "Carloss-MacBook-Pro.local"
+        }
+      ]
+    },
+    {
+      "name": "native-stage-before",
+      "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "command": "PYTHONDONTWRITEBYTECODE=1 GIT_OPTIONAL_LOCKS=0 GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_NOSYSTEM=1 .venv/bin/python -B -m pytest -q -p no:cacheprovider tests/muse/test_product.py::test_shared_native_stage_is_readonly_and_visible_in_linked_checkout --muse-python=/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python --basetemp=/private/tmp/overseer-fpr4-native-stage-before --junitxml=docs/validation/fpr4/native-stage-before.xml > docs/validation/fpr4/native-stage-before.log 2>&1",
+      "exit_code": 1,
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "1",
+          "skipped": "0",
+          "tests": "1",
+          "time": "14.916",
+          "timestamp": "2026-10-14T16:43:03.572775-07:00",
+          "hostname": "Carloss-MacBook-Pro.local"
+        }
+      ]
+    },
+    {
+      "name": "native-stage-candidate",
+      "cwd": "/private/tmp/overseer-fpr4-init-candidate-yn8mhf51/installation",
+      "command": "PYTHONDONTWRITEBYTECODE=1 GIT_OPTIONAL_LOCKS=0 GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_NOSYSTEM=1 .venv/bin/python -B -m pytest -q -p no:cacheprovider tests/muse/test_product.py::test_shared_native_stage_is_readonly_and_visible_in_linked_checkout --muse-python=/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python --basetemp=/private/tmp/overseer-fpr4-native-stage-candidate --junitxml=/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/docs/validation/fpr4/native-stage-candidate.xml > /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/docs/validation/fpr4/native-stage-candidate.log 2>&1",
+      "exit_code": 0,
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "1",
+          "time": "23.164",
+          "timestamp": "2026-10-14T16:43:04.958583-07:00",
+          "hostname": "Carloss-MacBook-Pro.local"
+        }
+      ]
+    }
+  ],
+  "additional_originals": {
+    "tests/muse/test_product.py": {
+      "sha256": "c15722064c2721116336b2825850f3d910908ca679140162e6ce470a930a7f20",
+      "unchanged": true
+    }
+  },
+  "shared_stage_disposition": {
+    "original": "tests/muse/test_product.py::test_shared_native_stage_is_readonly_and_visible_in_linked_checkout",
+    "final_deselect": null,
+    "reason": "Same inherited-assets init refusal is repaired by preservation candidate; unchanged shared-stage read-only test passes."
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "scope": "Author verification of lane type refusal; generated fixture hooks only, no native event or client enforcement",
+  "before": {
+    "command": [
+      ".venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "tests/fpr6/test_bookend_lane_types.py",
+      "--basetemp=/private/tmp/overseer-fpr6-lane-before-20261017"
+    ],
+    "exit_code": 1,
+    "summary": "4 failed in 16.69s",
+    "source": "dd04b29789f1d4d2b5b795a0eedc19eeda33bf3b",
+    "output": "lane-before.json"
+  },
+  "after": {
+    "command": [
+      ".venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "tests/fpr6/test_bookend_lane_types.py",
+      "tests/fpr1/test_bookends.py::test_event_assertions_refuse_without_action_text",
+      "tests/fpr1/test_bookends.py::test_both_bookends_equal_manual_canonical_reader_and_write_nothing",
+      "tests/fpr1/test_bookends.py::test_legacy_bound_adapter_remains_readable",
+      "--basetemp=/private/tmp/overseer-fpr6-lane-after-20261017"
+    ],
+    "exit_code": 0,
+    "summary": "25 passed in 102.86s",
+    "source_record": "source-after.json",
+    "output": "lane-after.txt"
+  },
+  "affected_reason": "Changed lane assertion validation; existing malformed assertions and successful/legacy NEXT delivery guard compatibility",
+  "new_cases": 4,
+  "affected_existing_cases": 21,
+  "completed_matrix_repeated": false,
+  "evidence_storage": "Original pytest stdout is preserved losslessly in lane-before.json; four pytest E-prefix whitespace lines triggered the first staged diff check. JSON encoding fixes artifact formatting without altering raw failure bytes."
+}

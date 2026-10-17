@@ -147,7 +147,24 @@ class Revision:
     tracked_local: tuple[str, ...] = ()
 
 
+def backend_config(config):
+    """Projection of the one normalized model for the retained M engines."""
+    if isinstance(config['vcs'], str):
+        return config
+    result = dict(config, vcs=config['vcs']['canonical'])
+    if result['vcs'] == 'muse':
+        section = config['vcs']['muse']
+        working = section.get('working_dir')
+        if working not in (None, '.', ''):
+            raise Refusal('muse_working_dir_requires_explicit_pairing')
+        if not section.get('binding'):
+            raise Refusal('muse_binding_required: use explicit adopt')
+        result['muse'] = section['binding']
+    return result
+
+
 def revision(root, config, *, dirty=False):
+    config = backend_config(config)
     if config["vcs"] == "git":
         if not os.path.lexists(root / ".git") or Path(git(root, "rev-parse", "--show-toplevel")).resolve() != root:
             raise Refusal("git_repository_mismatch")

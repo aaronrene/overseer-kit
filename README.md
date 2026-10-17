@@ -1,309 +1,103 @@
 # Overseer Kit
 
-**Honesty for Agents.**
+Overseer Kit helps people and AI assistants carry development work across sessions:
+keep a roadmap, hand over the next task, review changes, verify completed work and
+keep each project's instructions tied to the right repository. It includes reusable
+policies, templates, assistant rules and skills, a command-line tool, a local browser
+app and a desktop launcher. Git works on its own; native Muse support is optional.
 
-Overseer Kit is a portable governance pattern for AI-assisted work. ROADMAP holds
-the plan and its phases. The team freezes that plan, gives it to a separate agent
-session or human to challenge, builds only the accepted phases, then independently
-compares the implementation and its evidence with the freeze before marking work
-DONE. HANDOVER carries what actually happened and what should happen next into the
-following session.
+## What the kit includes
 
-The kit supplies the structure and durable record. Review judgment comes from the
-independent agent or human the team chooses, and each project owns its tests and
-domain checks. The current public CLI is the continuity layer beneath that workflow:
-it keeps the reviewed next task bound to the correct repository and revision. It
-does not run agents or decide that a plan or build is correct.
-
-[v1.0.0-rc.1](https://github.com/aaronrene/overseer-kit/releases/tag/v1.0.0-rc.1) is the published bounded CLI prerelease,
-not a stable or complete-product release. Its tag targets
-`293e79eb96dc9b94b76fa28ffad5e9e0a6e85b30`; source, CLI and package metadata
-still report `1.0.0`. Identify rc.1 by the tag, commit and release manifest,
-not by `ok --version` alone.
-
-Git/GitHub-only operation is a permanent supported choice with no Muse installation,
-account or migration requirement. Muse authority and controlled GitHub mirroring
-are explicit per-repository choices. The kit project's own publication is Muse-first.
-See the [publication record](docs/decisions/V1-MUSE-PUBLICATION.md) and
-[public evidence](docs/validation/V1-PUBLIC-EVIDENCE.md).
-
-These docs are a separate post-publication follow-up. They do not change the rc.1
-tag or archive. The [published installation/rollback guide](https://github.com/aaronrene/overseer-kit/releases/download/v1.0.0-rc.1/INSTALL-AND-ROLLBACK.md)
-supersedes the historical README and quickstart inside that frozen archive.
-
-## The governance loop
-
-1. **Plan and freeze:** define the outcome, phases, outputs, and acceptance evidence
-   in ROADMAP before implementation begins.
-2. **Challenge before build:** send the frozen plan to a separate agent session or
-   human reviewer. Resolve cited findings and re-review before treating the plan as
-   build input.
-3. **Build in phases:** implement the accepted scope and run the project’s own tests
-   or domain checks at the declared boundaries.
-4. **Review before DONE:** compare the completed implementation and evidence with
-   the frozen plan. Findings return to the build until they clear.
-5. **Hand over the truth:** update ROADMAP and HANDOVER to reflect what landed, then
-   publish the reviewed next task for the following session.
-
-Repository identity, revision freshness, and NEXT-digest checks protect that loop
-from stale or misplaced instructions. Git-only is a complete supported mode; Muse
-authority and a controlled GitHub mirror are optional repository choices.
-
-## What the rc.1 CLI adds
-
-Each initialized repository receives:
-
-- a persistent UUID and exact physical-root binding in `.overseer/config.yaml`;
-- a repository-bound launcher at `.overseer/bin/ok`;
-- one canonical handoff in `docs/NEXT.md`;
-- small ROADMAP and HANDOVER documents when they do not already exist.
-
-Before printing NEXT, Overseer checks the repository UUID and root, selected VCS branch,
-configured lane and model label, action ID and kind, prompt digest, expected NEXT
-digest when supplied, and authoritative revision freshness. Muse mode also pins
-the Muse repository identity, store, separate Python environment and package source
-digest. A copied launcher, copied config, stale
-handoff, wrong repository, wrong lane, wrong branch, or stale writer is refused
-without printing the prompt.
-
-The public commands are:
-
-| Command | Purpose |
+| Capability | What it does |
 | --- | --- |
-| `status` | Show repository, runtime, selected local revision, and NEXT status without changing files. |
-| `init` | Give one checkout its identity, exclusions and initial local handoff files. |
-| `sync` | Refresh the bound launcher and runtime pin after an explicit kit update. |
-| `adopt` | Explicitly change schema/authority, preview exclusions, or restore a preserved config. |
-| `mirror` | Prepare or verify a pinned Muse projection offline; explicitly deliver it after separate authorization. |
-| `next` | Validate and print the current handoff. It never runs the task. |
-| `next-write` | Publish a new handoff with explicit context and the previous NEXT digest. |
+| Planning and handover | Keeps ROADMAP and HANDOVER summaries together, with one canonical NEXT file containing the saved task and recommended model for each declared work lane. |
+| Project identity and continuity | Checks the physical project, repository ID, branch, revision, lane and prompt digest before displaying a task. Rejects missing, stale or mismatched context. |
+| Policies and model guidance | Supplies configurable decision tiers, review and test policies, model labels, routing and cost hints. The owner selects the actual model; routing does not dispatch one. |
+| Review and verification | Provides freeze review, Check OK, local/API/human review modes, configured verification steps and evidence/readiness checks. Mechanical checks and independent review remain distinct. |
+| Evidence records | Records and verifies an evidence ledger with hash-chain, role and signature checks. |
+| Multiple projects and lanes | Shows explicitly configured workspace members and their lane status, missing prerequisites and stale prompts without silently switching projects. |
+| Git and optional Muse | Supports Git-only, Muse-only and Muse with controlled Git mirroring, plus explicit authority changes and pull-request landing checks. Remote delivery and merging are separate authorized actions. |
+| Installation and maintenance | Provides source packaging, initialization, template/policy updates, migration that preserves owner content, backups and guarded rollback. |
+| App and assistant interfaces | Uses one `cli/ok` service for the CLI, local browser app and desktop launcher. Includes assistant rules/skills and opt-in Cursor event adapters. The hosted dashboard is a separate read-only surface. |
 
-## What the rc.1 CLI does not do
+## Everyday workflow
 
-The public rc.1 CLI does not perform the independent plan review, execute a prompt,
-run the phased build, infer that work is complete, verify which AI model is actually
-running, or judge whether task prose or implementation is strategically correct.
-The team performs those planning, build, and review actions in its existing tools.
-The operator or agent advances the resulting handoff explicitly with `next-write`.
+1. Select the project and lane; read its bound NEXT prompt and saved model.
+2. Work on the approved task, using the configured review and verification steps.
+3. Keep ROADMAP and HANDOVER summaries current and record the relevant evidence.
+4. Explicitly publish the actual next task with `next-write`, or a completion stop
+   when nothing remains, then read the validated prompt again after closeout.
 
-Local handoff commands and mirror preparation stay offline. Only explicitly
-invoked `mirror deliver` observes Hub/GitHub, pushes the verified distribution
-commit and creates or verifies its PR. It never merges, releases or deploys.
-The kit has no hosted service, registry, background process,
-telemetry, automatic updater, transaction system, or OCI machinery. It supports
-local Git and Muse code-domain checkouts and linked worktrees. Moving an initialized checkout or moving the kit
-installation requires an explicitly reviewed rebind; copying is not migration.
+`docs/NEXT.md` is the single handoff authority. HANDOVER and ROADMAP are paired
+summaries, not alternative prompt sources. Only explicit `next-write` publishes
+accepted text with the expected whole-file digest and current context. Hooks and
+app refresh never generate tasks. A displayed prompt does not execute work or
+enforce an assistant vendor's tool permissions.
 
-## Prepare the source installation
+## Local use
 
-Start with the exact [rc.1 release](https://github.com/aaronrene/overseer-kit/releases/tag/v1.0.0-rc.1) and its five named
-attachments. Verify their checksums before extracting the attached source archive
-at a fixed physical kit path. Follow the
-[installation/rollback guide](docs/releases/v1.0.0-rc.1/INSTALL-AND-ROLLBACK.md)
-for the full procedure and the [Git-only quickstart](docs/GIT-ONLY-QUICKSTART.md)
-for repository setup.
-
-The tested interpreters are Python 3.11 and 3.14 for Git-only operation; optional
-Muse uses a separate Python 3.14 environment. Hosted evidence is Linux and retained
-local evidence is macOS arm64. Use a conventional `.venv` at the fixed kit path;
-consumer repositories do not install the kit's dependencies. Packaged/editable
-Overseer installation, arbitrary newer interpreters and Windows are not established.
-
-For an already verified source checkout at that fixed path:
+Use this installation's conventional `.venv`, with the pinned requirements in
+`requirements-v1.txt` (and `requirements-v1-dev.txt` for tests). Source runtime
+bindings include reachable engines and assets. No neighboring installation,
+ambient Python path or native identity bridge supplies a fallback.
 
 ```sh
-cd /absolute/fixed/path/to/overseer-kit
-python3.11 -m venv .venv
-.venv/bin/python -m pip install -r requirements-v1.txt
-.venv/bin/python -m pip check
-./cli/ok --version
+./cli/ok -C /absolute/project status
+./cli/ok -C /absolute/project next --lane product
+./cli/ok -C /absolute/project governance-sync --dry-run
+./cli/ok -C /absolute/project check-ok --topic example --dry-run
+./cli/ok -C /absolute/project app --bind 127.0.0.1 --port 8765
 ```
 
-For development and the supported test suite:
+These examples assume an initialized project. For manual session entry and
+closeout, use the selected project's bound reader:
 
 ```sh
-.venv/bin/python -m pip install -r requirements-v1-dev.txt
-.venv/bin/python -m pytest -q
+/absolute/project/.overseer/bin/ok -C /absolute/project next --lane product
 ```
 
-Muse is optional and stays in its own conventional venv: The supported integration uses exactly
-the pinned Overseer recovery build of Muse `0.2.1rc5` with Python 3.14.
-The kit does not install Muse. See the guide for the immutable wheel URL and pins. To run the additional real Muse matrix:
+The browser's **Next / Handover** NEXT control uses the same validated reader.
+See [manual prompt display](docs/PRINT-NEXT.md) for the complete workflow.
+Initialization uses `./cli/ok -C /absolute/project init --vcs git`; installation
+into existing projects remains on hold pending a separately selected target and
+installation scope.
 
-```sh
-.venv/bin/python -m pytest -q tests/v1 tests/retained tests/muse \
-  --muse-python /absolute/path/to/muse-venv/bin/python
-```
+## Commands and documentation
 
-The supported CI entrypoint is `tools/ci/supported_v1.py`, run with this source
-installation's `.venv/bin/python` and a required `--junitxml PATH`. Supplying
-`--muse-python /absolute/muse-venv/bin/python` selects the full Git/Muse/mirror
-matrix and checks the exact reviewed rc5 package source digest. Omitting it runs
-the permanent Git-only matrix. No CI step publishes or installs hooks.
+The maintained commands include init, sync, status, next, next-write, review,
+Check OK (`check-if-ok` is an alias), governance-sync, workspace status/check-next/
+doctor, verify-step, honesty-status, ledger append/verify/show, route, app,
+hosted-dashboard, adopt, mirror prepare/reconcile/verify/deliver, upgrade-regime,
+land-check, land-closeout, pr-land and handover-compact. Every command has `--help`.
+Local mutation, provider/remote access and release are separate operations.
 
-[Supported v1 CI](.github/workflows/supported-v1.yml) defines Git jobs for
-Python 3.11/3.14 and a combined Python 3.14 job on Linux. Three retained hosted
-runs each passed **156 / 156 / 289 tests**, with zero reported failures/errors/skips;
-their exact heads and links are in the [public evidence index](docs/validation/V1-PUBLIC-EVIDENCE.md).
+- [Product operations and changed contracts](docs/FPR-3-PRODUCT-SURFACES.md)
+- [Authority, mirrors and repository lanes](docs/FPR-2-AUTHORITY-AND-LANES.md)
+- [Source packaging, upgrade and rollback](docs/SOURCE-DISTRIBUTION.md)
+- [Desktop source launcher](desktop/README.md)
+- [Test selection and historical disposition](tests/README.md)
+- [Contributing](CONTRIBUTING.md) and [security reporting](SECURITY.md)
 
-The combined job uses `MUSE_RC5_RECOVERY_WHEEL_URL` and verifies the recovery wheel
-against [the exact artifact contract](tools/ci/muse-rc5-artifact.json).
-This is an Overseer recovery build from verified installed bytes, not an upstream
-rc5 release or reconstruction of the unavailable original sdist. Keep the immutable
-wheel URL and all four recovery digests in the [published guide](docs/releases/v1.0.0-rc.1/INSTALL-AND-ROLLBACK.md).
-Do not substitute a moving installer, another rc version or the PyPI package named `muse`.
+## Current delivery status
 
-Muse rc5's recursive `code add .` can omit a new dot-directory. Explicitly stage
-`.github/workflows/supported-v1.yml` when preparing this source, and compare the
-actual committed manifest before using it as a distribution or CI input.
+The approved manual workflow is complete. The broader maintained kit received
+[independent manual-delivery acceptance](docs/reviews/FPR-5-MANUAL-ACCEPTANCE.md)
+at source `97f052949146c3cf337478927e6d345e353d2063`, followed by the owner's
+[local source release](docs/releases/FPR-5-MANUAL-LOCAL-RELEASE.md), version
+`1.0.0.dev1`. Recorded validation includes integrated checks, fixture installation,
+migration and rollback, a local workflow pilot and owner-observed desktop use.
+The [manual prompt-display closeout](docs/validation/CURRENT-PROMPT-DISPLAY.md)
+completed the session instructions using the existing reader and writer.
 
-## Add one repository
+Acceptance is limited to the recorded macOS source environments and explicit
+manual workflow. Live providers, production mirror delivery, Windows/Linux
+qualification and real-consumer migration are not established. Existing-project
+installation remains on hold; it requires target-specific inspection, preservation
+of owner files and history, backups, rollback and validated project binding.
 
-Use the repository's absolute path. Initialization preserves existing ROADMAP and
-HANDOVER files and refuses an existing unmanaged launcher.
-
-```sh
-./cli/ok -C /absolute/path/to/project init \
-  --vcs git \
-  --repo-name PROJECT-NAME \
-  --lane product \
-  --model 'GPT-6 Astra'
-```
-
-Automatic editor hooks are off by default. Keep them off unless you deliberately
-review and authorize hook installation for that repository.
-
-For an already prepared Muse checkout, select `--vcs muse --muse-python
-/absolute/path/to/muse-venv/bin/python`. An uninitialized mixed checkout requires
-an explicit choice. An existing Git binding remains Git even if Muse metadata
-appears later. `init` and `sync` never change its authority. See
-[adoption and rollback](docs/MIGRATE-EXISTING-REPO.md) before changing modes.
-
-## Daily use
-
-From an initialized repository:
-
-```sh
-./.overseer/bin/ok status
-./.overseer/bin/ok next
-```
-
-`status --json` is useful for automation. A dirty repository is reported but does
-not by itself invalidate NEXT. A changed branch, a later authoritative commit, altered prompt,
-wrong identity, or changed runtime does invalidate it. Exit codes are 0 for success,
-1 when `status` can report identity but NEXT is invalid, and 2 for refusal or usage
-errors.
-
-Muse freshness uses its own branch and revision, regardless of a nearby Git HEAD.
-Publication is always `not_checked_offline` on these local commands; a valid local
-NEXT says nothing about MuseHub acceptance or GitHub delivery. Muse dirty state
-compares regular working files with the branch snapshot and reports a nonempty
-shared stage as dirty. R1 does not certify executable modes, symlinks, or a separate
-per-worktree Muse staging index.
-
-Use the expectation options when resuming a previously read handoff:
-
-```sh
-./.overseer/bin/ok next \
-  --repo-id UUID-FROM-STATUS \
-  --branch BRANCH-FROM-STATUS \
-  --lane product \
-  --model 'GPT-6 Astra' \
-  --action-id EXPECTED-ACTION \
-  --action-kind implement \
-  --expect-next DIGEST-FROM-STATUS
-```
-
-## Publish the next handoff
-
-Store the new prompt in a regular UTF-8 file inside the consumer repository, then
-run the kit installation's writer. All context fields and the current raw NEXT
-digest are required:
-
-```sh
-/absolute/path/to/overseer-kit/cli/ok -C /absolute/path/to/project next-write \
-  --repo-id UUID-FROM-STATUS \
-  --branch CURRENT-BRANCH \
-  --lane product \
-  --model 'GPT-6 Astra' \
-  --action-id TASK-1 \
-  --action-kind implement \
-  --base-head REVISION-FROM-STATUS \
-  --expect-next DIGEST-FROM-STATUS \
-  --prompt-file prompt.txt
-```
-
-Action kinds are `plan`, `implement`, `review`, `maintain`, and `stop`. Use `stop`
-when no executable task is queued. The writer compares the previous digest, locks
-cooperating writers briefly, writes a unique temporary file, flushes it, and replaces
-NEXT atomically. It changes no other consumer document.
-
-Muse writers additionally require `--vcs muse --base-head CURRENT-MUSE-REVISION`.
-Use `--base-head unborn` before the first commit. Commit application work first,
-then publish ignored NEXT against the new revision. Git accepts the same explicit
-revision options; its legacy tracked-NEXT closing-commit exception remains supported.
-
-## Simple update notifications
-
-Overseer deliberately does not check the internet in the background. The simplest
-notification system is GitHub's existing release watcher:
-
-1. Open the repository on GitHub.
-2. Select **Watch → Custom → Releases**.
-3. GitHub will notify you when a maintainer publishes a new release.
-
-Release watching needs no Overseer server or OCI registry. The published rc.1
-records reviewed Muse source acceptance, its verified GitHub mirror, owner-accepted
-PR #86 and the exact release tag. Later documentation has its own source revision
-and PR; it must never be substituted into that tag or its five assets.
-
-Review a specific release's notes and exact commit before updating. Stop commands
-during source replacement, preserve the previous source/dependency set, and update
-only a clean installation at the same physical path. Follow the guide's explicit
-inventory and rollback procedure; moving `main` is not a release selection.
-After replacing the source, preview and apply sync for each authorized repository:
-
-```sh
-KIT_ROOT=/absolute/fixed/path/to/overseer-kit
-PROJECT_ROOT=/absolute/path/to/authorized-project
-"$KIT_ROOT/cli/ok" -C "$PROJECT_ROOT" sync --dry-run --json
-"$KIT_ROOT/cli/ok" -C "$PROJECT_ROOT" sync --json
-"$PROJECT_ROOT/.overseer/bin/ok" status --json
-"$PROJECT_ROOT/.overseer/bin/ok" next
-```
-
-Review the preview before applying sync.
-
-Run `sync` once for each initialized repository. A source change intentionally makes
-status/NEXT refuse with `runtime_changed` until that explicit sync updates the runtime
-pin. `sync --dry-run` shows the planned managed-file changes first. It preserves the
-repository UUID, NEXT, ROADMAP, HANDOVER, and application files.
-
-## Validation and limits
-
-The three retained hosted runs each passed **156 / 156 / 289** tests. Earlier
-scoped architecture/build reviews, fixed-path source installation/rollback and the
-32-check authorized DINERO pilot remain closed at their original scope. They were
-not repeated for this documentation follow-up. No unresolved supported-test failure
-is recorded; historical out-of-scope failures remain disclosed in the
-[validation record](docs/validation/V1-RECOVERY.md).
-
-Native Muse rc5 clone omitted **19 empty directories** while preserving all **861
-file bytes**. Only verified isolated readbacks restored the approved directory
-metadata. Do not disable dirty-state checks or copy those directories into an
-unrelated project. Muse snapshots do not store POSIX modes; the mirror uses an
-explicit ten-path executable policy.
-
-Recovered Muse provenance, private/production Hub operation, general file/mode
-fidelity, relocation, untested platforms, packaged/desktop installation and broader
-consumer rollout remain limited or unvalidated. The trusted-host design protects
-against stale state and ordinary mistakes; it is not a boundary against a malicious
-administrator or another process with the same user account.
-
-Historical pre-reset commands remain in `cli/legacy_main.py` for evidence but are
-outside the public v1 command surface. Historical test sources remain preserved;
-see [test scope](tests/README.md).
-
-The [Muse restoration audit](docs/validation/V1-RECOVERY.md#musehub-restoration-audit--2026-10-08)
-links the historical findings and their bounded restoration disposition. Do not run the historical deploy script to publish this
-candidate. OCI remains excluded.
+Cursor start/end event adapters are available through explicitly selected
+`init/sync --hooks`, but automatic Cursor events remain unverified. Codex and Claude
+integrations are instruction-triggered. Vendor execution protection remains
+unqualified and shared-chat behavior unresolved; these are outside the completed
+manual scope. No signed full-product installer, hosted deployment or public
+release is established by this branch. Earlier installers are historical artifacts.

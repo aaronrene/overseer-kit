@@ -1,0 +1,11 @@
+{
+  "kind": "Close only isolated Cursor after owner-observed keychain gate",
+  "pid": 38573,
+  "normal_quit_requested": true,
+  "signals_sent": [
+    "SIGTERM exact test process group"
+  ],
+  "command_verified_for_exact_disposable_profile": true,
+  "remaining_group": "38573 38573 /Applications/Cursor.app/Contents/MacOS/Cursor\n38576 38573 <defunct>\n38578 38573 <defunct>\n38581 38573 <defunct>\n38582 38573 <defunct>\n",
+  "real_cursor_profiles_or_keychain_modified": false
+}

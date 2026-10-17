@@ -1,0 +1,55 @@
+[
+  {
+    "source": "extension",
+    "path": "/Users/aaronrenecarvajal/.cursor/extensions/openai.chatgpt-26.908.40401-darwin-arm64/out/extension.js",
+    "present": true,
+    "sha256": "820691c93be40e73f0929b633cddc694b41775050cd72283faba283e53941f4f",
+    "recorded_sha256": "820691c93be40e73f0929b633cddc694b41775050cd72283faba283e53941f4f",
+    "matches_record": true
+  },
+  {
+    "source": "renderer",
+    "path": "/Users/aaronrenecarvajal/.cursor/extensions/openai.chatgpt-26.908.40401-darwin-arm64/webview/assets/app-initial-bca4f920746a.js",
+    "present": true,
+    "sha256": "9c43854dc714687bbbdab5895bc084a09681b97c998b3f612e30a7aeac97bfec",
+    "recorded_sha256": "9c43854dc714687bbbdab5895bc084a09681b97c998b3f612e30a7aeac97bfec",
+    "matches_record": true
+  },
+  {
+    "source": "renderer_ui",
+    "path": "/Users/aaronrenecarvajal/.cursor/extensions/openai.chatgpt-26.908.40401-darwin-arm64/webview/assets/app-initial-a190b16fc630.js",
+    "present": true,
+    "sha256": "50b1a443400ba2f7ac0be53c56536a3e145bccfff0e2f456f100850133a01683",
+    "recorded_sha256": "50b1a443400ba2f7ac0be53c56536a3e145bccfff0e2f456f100850133a01683",
+    "matches_record": true
+  },
+  {
+    "source": "cursor_main",
+    "path": "/Applications/Cursor.app/Contents/Resources/app/out/main.js",
+    "present": true,
+    "sha256": "b5971a21568278cea0db0efe87e0d8c3106e0c1c7b65c17fe3bf4d38cd0b2bfd",
+    "recorded_sha256": "208e7b1ba65e410e50a6ddc167ffe358b469aa6079c2b6a7eb6937682771871d",
+    "matches_record": false
+  },
+  {
+    "path": "/Applications/Cursor.app/Contents/Resources/app/package.json",
+    "sha256": "2a08ed68f39fc6e9534ad156f2badffe6527f84eb7e345a5aad78fe90a2676d1",
+    "version": "3.25.6",
+    "commit": null,
+    "main": "./out/main.js"
+  },
+  {
+    "path": "/Applications/Cursor.app/Contents/Resources/app/product.json",
+    "sha256": "aa6562ffb40086eff61897c576c97243106d8310fe6e7259e70d66384dfeee9c",
+    "version": "3.25.6",
+    "commit": "f0df777c412b670d09e3eaf214967d779e67c080",
+    "main": null
+  },
+  {
+    "path": "/Users/aaronrenecarvajal/.cursor/extensions/openai.chatgpt-26.908.40401-darwin-arm64/package.json",
+    "sha256": "cc959f1eb08de6f7786f476ddc48b4e4fd77a263dc4eb19a7660b709bd247413",
+    "version": "26.908.40401",
+    "commit": null,
+    "main": "./out/extension.js"
+  }
+]

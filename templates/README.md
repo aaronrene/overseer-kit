@@ -1,10 +1,6 @@
-> **Historical pre-reset product.** This document describes the pre-reset historical product.
-> Its legacy commands are not exposed by the bounded-v1 entrypoint. Do not use it
-> as current onboarding. See the [root README](../README.md) and [current docs index](../docs/README.md).
-
 # Templates — token-parameterized governance doc skeletons
 
-Copied into consumer repos by `ok init` / `ok sync` (K4) with substitution from
+Available as reviewed skeletons; full init/sync installs owned rules, skills and policy while preserving living documents. Render explicitly with substitution from
 `.overseer/config.yaml`.
 
 | Template | Becomes (typical) |

@@ -59,8 +59,14 @@ def _run_append(args: Namespace, ctx: CliContext) -> int:
         return early
 
     stdin_text = None
-    if args.stdin:
-        stdin_text = sys.stdin.read()
+    if hasattr(args, 'append_body'):
+        import json
+        stdin_text = json.dumps(args.append_body)
+    elif args.stdin:
+        from cli.v1_io import LIMIT, Refusal
+        stdin_text = sys.stdin.read(LIMIT + 1)
+        if len(stdin_text.encode()) > LIMIT:
+            raise Refusal('ledger_input_too_large')
 
     body, body_exit, _ = parse_append_body(
         repo_root=repo_root,
@@ -161,6 +167,10 @@ def _run_show(args: Namespace, ctx: CliContext) -> int:
         ctx.output.error("ledger chain broken")
         return 22
 
-    for line in result.stdout_lines:
-        print(line)
+    if ctx.output.json_mode:
+        import json
+        ctx.output.emit_json({"entries": [json.loads(line) for line in result.stdout_lines]})
+    else:
+        for line in result.stdout_lines:
+            ctx.output.emit(line)
     return 0

@@ -1,0 +1,34 @@
+{
+  "argv": [
+    "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.venv/bin/python",
+    "-B",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "tests/fpr3/test_package.py",
+    "tests/fpr4/test_bundle_repeatability.py",
+    "tests/fpr4/test_standalone_dependencies.py",
+    "--basetemp",
+    "/private/tmp/overseer-fpr5-resources-integrated-dlmd0ccj/pytest",
+    "--junitxml",
+    "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/docs/validation/fpr5-repairs/resources/integrated.xml"
+  ],
+  "cwd": "/private/tmp/overseer-fpr5-resources-integrated-dlmd0ccj/frozen-source",
+  "fixture": "/private/tmp/overseer-fpr5-resources-integrated-dlmd0ccj",
+  "head": "4c62c17cff6c606a5e1ddf565e12353973b3bcad",
+  "runtime_before": "64a075b0eea2ca53beb8d18935c0a65630e1466388c00e1465293c8763b6de8d",
+  "source_package_sha256": "9386f14e5a1e84da2118f66dd2e78b330e9e50aa7cadcef91e1fdc6c834c6b1e",
+  "source_manifest_sha256": "ef7ea2e8b6628e0e8a5e747a5736efdcf6b735a82b33b5e7abfc748578f0d3b5",
+  "runtime_manifest_sha256": "e7026bc23b0a34b49824cd8582100d53990dcdfaa9294db6504ecd4fe23e4c74",
+  "provisioned_dependencies": {
+    "PyYAML": "6.0.3",
+    "cryptography": "49.0.0",
+    "cffi": "2.1.0",
+    "pycparser": "3.0"
+  },
+  "python": "3.14.4 (main, Apr  7 2026, 13:13:20) [Clang 17.0.0 (clang-1700.6.4.2)]",
+  "exit_code": 0,
+  "runtime_after": "64a075b0eea2ca53beb8d18935c0a65630e1466388c00e1465293c8763b6de8d"
+}

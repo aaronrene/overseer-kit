@@ -1,0 +1,65 @@
+........F...............................................FF               [100%]
+=================================== FAILURES ===================================
+________________ test_writer_binding_checks[model-Other Model] _________________
+
+repo = PosixPath('/private/tmp/fpr2-smoke1/test_writer_binding_checks_mod0/similar-kit')
+field = 'model', value = 'Other Model'
+
+    @pytest.mark.parametrize('field,value', [('repo_id','00000000-0000-0000-0000-000000000000'),
+        ('branch','other'), ('lane','other'), ('model','Other Model'), ('action_id','bad/action'),
+        ('action_kind','deploy')])
+    def test_writer_binding_checks(repo, field, value):
+        before = (repo / 'docs/NEXT.md').read_bytes()
+        r = write_action(repo, 'Safe prompt\n', **{field:value})
+>       assert r.returncode != 0 and not r.stdout
+E       assert (0 != 0)
+E        +  where 0 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...{\n  "ok": true,\n  "next_sha256": "aba1bb319355a140030a8eb5efc3eade882e59e0486f665349e1d8292b863190"\n}\n', stderr='').returncode
+
+tests/v1/test_commands.py:74: AssertionError
+___ test_unavailable_init_authority_refuses_before_git_discovery[muse-only] ____
+
+tmp_path = PosixPath('/private/tmp/fpr2-smoke1/test_unavailable_init_authorit0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10696ee50>
+capsys = <_pytest.capture.CaptureFixture object at 0x1071f9eb0>
+regime = 'muse-only'
+
+    @pytest.mark.parametrize('regime', ['muse-only', 'muse+git-mirror'])
+    def test_unavailable_init_authority_refuses_before_git_discovery(tmp_path, monkeypatch, capsys, regime):
+        root = tmp_path/'native-only'; root.mkdir(); (root/'.muse').mkdir()
+        def forbidden(*args, **kwargs):
+            pytest.fail('unsupported Muse init must not probe Git')
+        monkeypatch.setattr(v1, 'git', forbidden)
+        assert main.main(['-C', str(root), 'init', '--regime', regime]) == 2
+        output = capsys.readouterr()
+>       assert not output.out and 'authority_unavailable' in output.err
+E       AssertionError: assert (not '' and 'authority_unavailable' in 'refused: muse_python_required\n')
+E        +  where '' = CaptureResult(out='', err='refused: muse_python_required\n').out
+E        +  and   'refused: muse_python_required\n' = CaptureResult(out='', err='refused: muse_python_required\n').err
+
+tests/fpr1/test_dispatch.py:169: AssertionError
+_ test_unavailable_init_authority_refuses_before_git_discovery[muse+git-mirror] _
+
+tmp_path = PosixPath('/private/tmp/fpr2-smoke1/test_unavailable_init_authorit1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1072e3350>
+capsys = <_pytest.capture.CaptureFixture object at 0x107309040>
+regime = 'muse+git-mirror'
+
+    @pytest.mark.parametrize('regime', ['muse-only', 'muse+git-mirror'])
+    def test_unavailable_init_authority_refuses_before_git_discovery(tmp_path, monkeypatch, capsys, regime):
+        root = tmp_path/'native-only'; root.mkdir(); (root/'.muse').mkdir()
+        def forbidden(*args, **kwargs):
+            pytest.fail('unsupported Muse init must not probe Git')
+        monkeypatch.setattr(v1, 'git', forbidden)
+        assert main.main(['-C', str(root), 'init', '--regime', regime]) == 2
+        output = capsys.readouterr()
+>       assert not output.out and 'authority_unavailable' in output.err
+E       AssertionError: assert (not '' and 'authority_unavailable' in 'refused: muse_python_required\n')
+E        +  where '' = CaptureResult(out='', err='refused: muse_python_required\n').out
+E        +  and   'refused: muse_python_required\n' = CaptureResult(out='', err='refused: muse_python_required\n').err
+
+tests/fpr1/test_dispatch.py:169: AssertionError
+=========================== short test summary info ============================
+FAILED tests/v1/test_commands.py::test_writer_binding_checks[model-Other Model]
+FAILED tests/fpr1/test_dispatch.py::test_unavailable_init_authority_refuses_before_git_discovery[muse-only]
+FAILED tests/fpr1/test_dispatch.py::test_unavailable_init_authority_refuses_before_git_discovery[muse+git-mirror]
+3 failed, 55 passed in 58.39s

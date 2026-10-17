@@ -1,0 +1,32 @@
+.....................................................F..........         [100%]
+=================================== FAILURES ===================================
+___________ test_reader_rechecks_context_before_output[head-status] ____________
+
+repo = PosixPath('/private/tmp/overseer-fpr1-smoke/test_reader_rechecks_context_b4/similar-kit')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x103183350>
+capsys = <_pytest.capture.CaptureFixture object at 0x102e83ad0>
+reader = 'status', change = 'head'
+
+    @pytest.mark.parametrize('reader', ['next', 'status', 'hook'])
+    @pytest.mark.parametrize('change', ['branch', 'head', 'config', 'runtime'])
+    def test_reader_rechecks_context_before_output(repo, monkeypatch, capsys, reader, change):
+>       state = status(repo)
+                ^^^^^^^^^^^^
+
+tests/v1/test_context.py:144: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/overseer-fpr1-smoke/test_reader_rechecks_context_b4/similar-kit')
+
+    def status(root):
+        result = command('-C', root, 'status', '--json')
+>       assert result.returncode == 0, result.stderr + result.stdout
+E       AssertionError: refused: runtime_changed: run this installation's explicit sync
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...tatus', '--json'], returncode=2, stdout='', stderr="refused: runtime_changed: run this installation's explicit sync\n").returncode
+
+tests/v1/conftest.py:47: AssertionError
+=========================== short test summary info ============================
+FAILED tests/v1/test_context.py::test_reader_rechecks_context_before_output[head-status]
+1 failed, 63 passed in 68.56s (0:01:08)

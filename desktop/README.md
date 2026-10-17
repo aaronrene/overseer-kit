@@ -1,72 +1,37 @@
-> **Historical pre-reset product.** This document describes the pre-reset historical product.
-> Its legacy commands are not exposed by the bounded-v1 entrypoint. Do not use it
-> as current onboarding. See the [root README](../README.md) and [current docs index](../docs/README.md).
+# Overseer desktop source
 
-# Overseer Kit — desktop (Track Q / Q3)
+The desktop shell launches this installation's `cli/ok app` against an explicitly
+selected repository. It uses the same loopback authentication, CSRF, canonical
+NEXT and request binding as the CLI. Ambient environment roots and ancestor
+searches do not select an installation or project.
 
-Cross-platform Tauri shell for the Q1 local web UI. The desktop app **does not reimplement governance logic** — it spawns the canonical **`ok app`** subprocess and loads the same loopback UI in a native window.
+Development launch arguments are `--kit-root /physical/installation --repo
+/physical/project`. Packaged macOS resolves its own `../Resources/kit` and still
+requires `--repo`. Provision the bundled source's conventional `.venv` from pinned
+local dependencies before launch. Bindings must name that installation; copying
+an existing repository config is not a rebind.
 
-## Prerequisites
+Prepare a fresh portable engine bundle with:
 
-- Python 3.11+ (system or `.venv` at kit root)
-- Node.js + npm
-- Rust **1.88+** via [rustup](https://rustup.rs/) (`desktop/src-tauri/rust-toolchain.toml` pins 1.88.0)
-- macOS / Windows / Linux toolchain for your target platform
-
-## Development
-
-From the kit root:
-
-```bash
-# optional: bundle Python engine into Tauri resources (required before release builds)
-./scripts/bundle-desktop-kit.sh
-
-cd desktop
-npm install
-npm run tauri dev
+```sh
+scripts/bundle-desktop-kit.sh /absolute/new-resource-kit
+.venv/bin/python -B tools/ci/source_package.py provision-runtime --directory /absolute/new-resource-kit
+.venv/bin/python -B tools/ci/source_package.py verify-tree --directory /absolute/new-resource-kit
 ```
 
-Environment overrides:
+The source bundle includes cli, adapters, tools, app assets, policies and templates
+with a hash/mode manifest. It excludes virtual environments and local repository
+bindings. Explicit runtime provisioning then copies the exact pinned local
+dependencies into a new conventional `.venv` and records its separate inventory.
+The pre-build check rejects every unapproved resource entry, including hidden
+files and arbitrary `.venv` extras; see [the resource contract](../docs/SOURCE-DISTRIBUTION.md).
+This local provisioned runtime uses the selected platform's existing interpreter;
+it does not establish a portable interpreter bundle or native installer acceptance.
+The Rust/Tauri shell requires the pinned Cargo lock and local toolchain
+cache; use the explicitly selected compatible local Rust toolchain with `cargo build --offline --locked` from `desktop/src-tauri`. The locked dependency set needs Rust 1.88 or later. No automatic
+installer or dependency fetch is part of local preparation. Native installer
+platforms, signing/notarization and publication require later owner choices.
 
-| Variable | Purpose |
-| --- | --- |
-| `OVERSEER_KIT_ROOT` | Kit checkout (auto-detected when run from repo) |
-| `OVERSEER_REPO_ROOT` | Governance repo to bind (defaults to kit root in dev) |
-
-## App icon (OK mark)
-
-Source master: `desktop/app-icon.png` (same brand as `docs/landing/assets/ok-mark-1024.png` —
-blue `#1d4f91` rounded square + white **OK**). Tauri reads
-`desktop/src-tauri/icons/*` via `tauri.conf.json` → `bundle.icon`.
-
-Regenerate after changing the master:
-
-```bash
-cd desktop
-npx @tauri-apps/cli icon app-icon.png -o src-tauri/icons
-rm -rf src-tauri/icons/ios src-tauri/icons/android   # not used by current targets
-```
-
-A new GitHub Release (signed + notarized `.dmg`) is required before Path 1 downloads show the
-updated Dock/Finder icon. Editing icons in the repo alone does not change an already-installed app.
-
-## Release build
-
-```bash
-./scripts/bundle-desktop-kit.sh
-cd desktop
-npm run tauri build
-```
-
-Bundled installers place the Python engine under Tauri resources (`resources/kit/`). The Rust launcher resolves that tree at runtime.
-
-## Architecture
-
-```
-desktop/src-tauri/   Tauri shell (Rust)
-  launcher.rs        spawns cli/ok app, parses startup banner
-tools/desktop/       testable Python launcher contract + manifest checks
-scripts/bundle-desktop-kit.sh   copies engine into Tauri resources
-```
-
-**Boundary:** packaging only — no new `api/*` routes, subcommands, or exit codes.
+The prior v0.1.0 installer is historical and does not contain this restored build.
+Focused launcher/resource checks are recorded with FPR-3; native platform support
+and complete packaging remain subject to FPR-4 and independent FPR-5 review.

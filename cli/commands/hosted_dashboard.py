@@ -82,9 +82,15 @@ def run_hosted_dashboard(args: Namespace, ctx: CliContext) -> int:
 
     try:
         config_path = _resolve_config_path(args, ctx)
-        dashboard, _ = _load_dashboard_config(config_path)
+        from cli.product_boundary import active
+        boundary = active()
+        dashboard = boundary.model.hosted_dashboard if boundary else _load_dashboard_config(config_path)[0]
     except HostedDashboardConfigError as exc:
         ctx.output.error(f"refused: {exc}")
+        return 2
+
+    if not dashboard.enabled or not dashboard.org_allowlist:
+        ctx.output.error('refused: hosted dashboard requires enabled=true and an explicit org/repo allowlist')
         return 2
 
     bind = validate_bind_address(args.bind, allow_non_loopback=dashboard.allow_non_loopback)
@@ -104,7 +110,7 @@ def run_hosted_dashboard(args: Namespace, ctx: CliContext) -> int:
     if scopes_env:
         advertised_scopes = [s.strip() for s in scopes_env.split(",") if s.strip()]
     write_refused = refuse_write_scopes(advertised_scopes) is not None
-    if write_refused and os.environ.get("OVERSEER_HOSTED_DASHBOARD_REFUSE_ON_WRITE_SCOPE", "1") == "1":
+    if write_refused:
         ctx.output.error("refused: write_scope_refused")
         return 2
 
@@ -125,7 +131,7 @@ def run_hosted_dashboard(args: Namespace, ctx: CliContext) -> int:
         enumeration_cap=dashboard.enumeration_cap,
         max_doc_bytes=dashboard.max_doc_bytes,
     )
-    service = DashboardService(adapters, dashboard)
+    service = DashboardService(adapters, dashboard, validate_context=boundary.recheck if boundary else None)
     server_config = HostedServerConfig(
         bind=bind,
         port=port,

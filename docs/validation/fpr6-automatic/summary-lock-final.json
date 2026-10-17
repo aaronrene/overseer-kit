@@ -1,0 +1,19 @@
+{
+  "command": [
+    "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.overseer/bin/ok",
+    "-C",
+    "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "sync",
+    "--only",
+    "launcher",
+    "--json"
+  ],
+  "exit_code": 0,
+  "stdout": "{\"ok\": true, \"repository\": {\"name\": \"overseer-kit\", \"id\": \"6988dc4a-5f22-454b-9d68-ac5905b383bf\", \"root\": \"/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014\", \"root_relative_docs\": \"docs\"}, \"changed\": [\".overseer/version.lock\"], \"classification\": [{\"path\": \".overseer/bin/ok\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4\", \"after\": \"1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4\"}], \"preserved\": [], \"dry_run\": false, \"diff\": {}, \"next\": \"preserved\"}\n",
+  "stderr": "",
+  "only_lock_rows_changed": [
+    "docs/OVERSEER-HANDOVER.md",
+    "docs/ROADMAP.md"
+  ],
+  "config_and_next_preserved": true
+}

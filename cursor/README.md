@@ -1,7 +1,3 @@
-> **Historical pre-reset product.** This document describes the pre-reset historical product.
-> Its legacy commands are not exposed by the bounded-v1 entrypoint. Do not use it
-> as current onboarding. See the [root README](../README.md) and [current docs index](../docs/README.md).
-
 # Cursor fragments — vendored into consumer `.cursor/` on init/sync
 
 Portable rules and skills for the overseer governance method. Token placeholders
@@ -17,26 +13,26 @@ compatibility. Copilot and paste-only tools use `ok` CLI + `docs/CHECK-OK.md`.
 
 | Path | Purpose |
 | --- | --- |
-| `rules/governance-sync.mdc` | SD-17 mandatory roadmap + handover sync |
+| `rules/governance-sync.mdc` | Paired local summaries; explicit remote effects |
 | `rules/tier-authority.mdc` | Tier 1/2/3 when to act vs ask |
 | `rules/no-docs-only-pr-to-main.mdc` | Docs-only PR guard (configurable per consumer) |
 | `skills/governance-sync/SKILL.md` | Session-end hygiene agent workflow |
 | `skills/freeze-review/SKILL.md` | Single-pass frozen spec review before Auto build (§6) |
 | `skills/freeze-review-loop/SKILL.md` | **Optional** bounded loop until freeze `pass` |
-| `skills/build-verification-review/SKILL.md` | **Mandatory** post-build honesty review |
+| `skills/build-verification-review/SKILL.md` | Configured post-build evidence review |
 | `skills/check-ok/SKILL.md` | **Check OK** — ad-hoc honesty (`/check-ok`, `ok check-ok`) |
 | `skills/print-next/SKILL.md` | **Print NEXT** — closeout CURRENT NEXT from disk (`ok next`) |
-| `rules/build-verification-required.mdc` | Always-on: no DONE without build-verification `pass` |
-| `rules/check-ok-thinking.mdc` | Always-on: Thinking sessions get freeze + BV gates |
+| `rules/build-verification-required.mdc` | Apply the repository’s configured evidence gates |
+| `rules/check-ok-thinking.mdc` | Configured review hints; owner-selected model |
 | `rules/print-next-closeout.mdc` | Always-on: final reply includes CURRENT NEXT after living-doc writes |
 | `automations/*.json` | Optional Automation templates (not auto-enabled; **Tier 2** confirm-once to enable) |
 | `automations/governance-sync-session-end.json` | Session-end `ok governance-sync --dry-run` (GFG; degrade to CLI/skill) |
 | `automations/freeze-review-session-end.json` | Session-end freeze-review dry-run template |
-| `hooks/` | Optional Cursor `stop` hook snippet for print-next (**not** in footprint; Tier 2; fail-open) |
+| `hooks/` | Opt-in bound Cursor start/stop adapters; canonical read and refusal |
 
 **Degrade path:** when IDE skills are unavailable, use `./cli/ok check-ok`,
 `./cli/ok governance-sync`, `./cli/ok next`, and `./cli/ok review --freeze` from the
-terminal instead. Copilot fallback for NEXT: `ok next` + `docs/PRINT-NEXT.md`.
+terminal with the bound launcher and explicit repository root instead. Copilot fallback for NEXT: `ok next` + `docs/PRINT-NEXT.md`.
 
 Host niceties improve odds of tab refresh; they do **not** guarantee an accurate open
 tab. CLI/Muse/shell rewrites and dirty buffers can still stale a tab.

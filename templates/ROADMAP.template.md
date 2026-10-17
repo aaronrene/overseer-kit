@@ -1,55 +1,25 @@
-> **Historical pre-reset product.** This document describes the pre-reset historical product.
-> Its legacy commands are not exposed by the bounded-v1 entrypoint. Do not use it
-> as current onboarding. See the [root README](../README.md) and [current docs index](../docs/README.md).
+# {{docs.roadmap_title}}
 
-# {{docs.roadmap_title}} — {{repo.name}}
-
-## Phase Model Key
-
-| Label | Meaning |
-| --- | --- |
-| **Thinking** | Design + freeze spec before any build |
-| **Auto** | Mechanical implementation against frozen spec |
-| **Thinking → Auto** | Thinking design + test matrix, then Auto build |
-| **Operator + Auto** | Tier 3 operator authorization for live/staging gates; Auto for implementation |
-
-**Handover rule (SD-3):** any step marked **Thinking → Auto** is split into **`{step}a` (Thinking)** then
-**`{step}b` (Auto)** in `{{docs.handover_path}}`. Every next-step table and paste block **must**
-include **`Model:`**.
+Repository: {{repo.name}}. Companion: {{docs.handover_path}}.
+Read the current action with the bound `ok next`; canonical `docs/NEXT.md`
+contains repository identity, lane, model, revision and the accepted action.
 
 ## Build queue
 
-| Phase | Model | Status | Deliverable |
+| Phase | Model | Status | Deliverable / evidence |
 | --- | --- | --- | --- |
-| <phase-id> | <model label> | **TODO** | <deliverable> |
+| **First slice** | Owner-selected | **TODO** | Define acceptance before implementation |
 
-## Definition of Done (every phase)
+## Validation and dependencies
 
-- Deliverables match frozen spec for the phase
-- **Freeze review `pass`** before any **Auto** build that consumes a `frozen: true` artifact (`/freeze-review-loop` when findings)
-- Required seven-tier tests green locally (`policy/test-tiers.yaml`)
-- **Build verification `pass`** after any **Auto** (`{step}b`) phase before status → **DONE** (`/build-verification-review`; thinking-high)
-- No secrets committed
-- Both `{{docs.roadmap_path}}` and `{{docs.handover_path}}` updated together (SD-17)
-- Feature branch → commit → (push/PR per `{{vcs.regime}}` rules); no `{{vcs.git.main_branch}}` merge without Tier 3
+Record focused checks, combined validation and independent review separately.
+Build verification: when required by the accepted action or configured gates,
+record `/build-verification-review` evidence and the actual verdict before marking
+the phase complete. Author checks do not supply independent review.
+A missing prerequisite or failed check remains open. A local source package is
+not a published release. Record explicit authority for remote and release actions.
 
-## VCS context (this repo)
+## Change log
 
-| Setting | Value |
-| --- | --- |
-| Regime | {{vcs.regime}} |
-| Canonical | {{vcs.canonical}} |
-| Git remote | {{vcs.git.remote}} |
-| Main branch | {{vcs.git.main_branch}} |
-| Mirror branch | {{vcs.git.mirror_branch}} |
-| Muse staging | {{vcs.muse.staging_remote}} |
-| Muse main | {{vcs.muse.main_branch}} |
-| Feature branch pattern | {{vcs.git.feature_branch_pattern}} |
-
-## Cross-references
-
-- `{{docs.handover_path}}` — living relay; paste NEXT SESSION into fresh chats
-- `{{docs.standing_decisions_path}}` — Standing Decisions (ADR) log and decision authority tiers
-- `policy/tiers.yaml` — machine-readable Tier 1/2/3 authority table
-- `policy/model-labels.yaml` — allowed Model labels for roadmap + handover
-- `policy/test-tiers.yaml` — RULE #0 seven-tier test contract
+Keep this summary and the handover consistent. Publish successor text only via
+`ok next-write`; neither this table nor a handover fence regenerates NEXT.

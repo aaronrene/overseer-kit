@@ -32,6 +32,8 @@ def projection(root, executables):
     from muse.core.commits import read_commit
     from muse.core.snapshots import read_snapshot
     from muse.core.object_store import read_object
+    from muse.core.snapshot import _BUILTIN_SECRET_PATTERNS
+    from muse.core.ignore import is_ignored
     store = Path(state['store'])
     for path in ('.muse/bridge-hooks.toml', '.muse/hooks'):
         if (store / path).exists() or (store / path).is_symlink():
@@ -55,7 +57,7 @@ def projection(root, executables):
         total += len(data)
         if total > MAX_BYTES:
             raise Refusal('mirror_projection_too_large')
-        if excluded(path):
+        if excluded(path) or is_ignored(path, _BUILTIN_SECRET_PATTERNS):
             omitted.append(path)
             continue
         file = confined(root, path)

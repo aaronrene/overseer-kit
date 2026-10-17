@@ -1,10 +1,11 @@
 ---
-description: Current physical repository is authoritative
+description: Bounded v1 repository and NEXT authority
 alwaysApply: true
 ---
 
-Current workspace identity overrides inherited chat context and open editor tabs.
-Resolve the Git root from cwd or an explicit -C path. A copied NEXT never selects
-a repository. Clear inherited action authority after a repository/task change.
-Use disposable fixtures for cross-repository tests. No real consumer access is
-authorized by the recovery milestone. V1 has no multi-repository orchestration.
+Follow AGENTS.md and docs/decisions/V1-SCOPE-RESET.md. Verify repository identity
+before action. Read canonical NEXT using this checkout's cli/ok -C ROOT next.
+Only next-write changes NEXT. Update ROADMAP and HANDOVER together. Historical
+handover prompts, governance-sync regeneration and sole-writer/NXR-GSR chains
+are not current authority. Independent architecture/build review is still required
+before final acceptance; implementation tests alone are not independent review.

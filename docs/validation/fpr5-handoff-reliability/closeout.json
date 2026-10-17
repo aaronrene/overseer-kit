@@ -1,0 +1,50 @@
+{
+  "kind": "Bounded incident investigation closeout; not independent adjudication",
+  "opening_head": "4c7f225b6148f95fb575bcd604b113aed5b5999b",
+  "closing_commit_rule": "one local commit with opening HEAD as sole parent",
+  "source_groups_verified": {
+    "runtime_files": 295,
+    "test_sources": 440,
+    "native_sources": 40,
+    "packaging_sources": 10,
+    "validation_scripts": 4,
+    "requirements": 2
+  },
+  "immutable_evidence_file_counts": {
+    "fpr5-repairs": 133,
+    "fpr5-acceptance": 215,
+    "fpr5-interactive": 48,
+    "fpr5-owner-closeout": 7,
+    "fpr5-closeout": 9,
+    "original_review": 46
+  },
+  "runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774"
+  },
+  "protected_refs_before_commit": 144,
+  "installed_source_excerpts_verified": 22,
+  "checks": [
+    "source and evidence hashes",
+    "installed source byte ranges",
+    "relative links",
+    "whitespace and JSON",
+    "explicit-context NEXT readback"
+  ],
+  "verification_command_correction": "Initial git show inventory check used an absolute object path and exited 128; corrected to repository-relative object paths. No missing tracked artifact or source difference.",
+  "new_disposable_source_reproduction_exit_code": 0,
+  "cause_established": false,
+  "investigation_deliverables_complete": true,
+  "ops1_qualification_blocker": true,
+  "cursor_sessionStart": "owner-postponed NOT VERIFIED",
+  "cursor_stop": "owner-postponed NOT VERIFIED",
+  "legacy_repair_applied": false,
+  "final_adjudication_ready": false,
+  "release_authorized": false,
+  "repeated_tests_reviews_pilots_launches": false,
+  "source_runtime_dependencies_or_hooks_changed": false,
+  "successor": "OVERSEER-FPR5-OPS1-SCOPE-STOP-1",
+  "next_sha256": "6828ef2e035d236be8ce5c53216f32daa50a3997edb889ac2f9607a675cae0bc",
+  "unexpected_changes": []
+}

@@ -1,0 +1,152 @@
+{
+  "kind": "Selected local metadata only; no chat bodies, credential fields or profiles copied",
+  "recorded_at": "2026-10-15T14:09:26.409354+00:00",
+  "cursor_version": "3.24.18",
+  "codex_extension_version": "26.908.40401",
+  "conversation_ids": {
+    "overseer": "01a13f0e-ba38-78e1-8168-c46783739a4f",
+    "bornfree": "01a13f4a-4c40-7df2-b3ef-b0960784b987",
+    "knowtation_original": "01a13f54-95c8-7280-8a46-423397547702",
+    "knowtation_diagnostic": "01a13fae-fa0f-7a92-b941-6d2eaa3e4131"
+  },
+  "log_excerpts": {
+    "/Users/aaronrenecarvajal/Library/Application Support/Cursor/logs/20261015T055636/window1/exthost/openai.chatgpt/Codex.log": {
+      "sha256_at_read": "57d641d7b444dd90371ec1278d77ab55b6a02afc08cc3cffcc40ad026a3aed45",
+      "size_at_read": 80477,
+      "selected": [
+        {
+          "line": 35,
+          "text": "2026-10-15 06:03:47.585 [info] thread_stream_view_activity_changed active=true conversationId=01a13f0e-ba38-78e1-8168-c46783739a4f resumeState=needs_resume streamRole=null"
+        },
+        {
+          "line": 387,
+          "text": "2026-10-15 06:48:27.906 [info] thread_stream_view_activity_changed active=false conversationId=01a13f0e-ba38-78e1-8168-c46783739a4f resumeState=resumed streamRole=owner"
+        },
+        {
+          "line": 389,
+          "text": "2026-10-15 06:48:27.914 [info] thread_stream_view_activity_changed active=true conversationId=01a13f4a-4c40-7df2-b3ef-b0960784b987 resumeState=needs_resume streamRole=null"
+        }
+      ],
+      "scope": "Only view activity lines; growing source log not claimed frozen"
+    },
+    "/Users/aaronrenecarvajal/Library/Application Support/Cursor/logs/20261015T055636/window2/exthost/openai.chatgpt/Codex.log": {
+      "sha256_at_read": "dc911a714ef505c8b0fe782ba1154211e03434e0d1acd8476aba6601d59d0d6e",
+      "size_at_read": 48299,
+      "selected": [
+        {
+          "line": 49,
+          "text": "2026-10-15 06:11:17.860 [info] thread_stream_view_activity_changed active=true conversationId=01a13f0e-ba38-78e1-8168-c46783739a4f resumeState=needs_resume streamRole=null"
+        },
+        {
+          "line": 308,
+          "text": "2026-10-15 06:52:43.510 [info] thread_stream_view_activity_changed active=false conversationId=01a13f0e-ba38-78e1-8168-c46783739a4f resumeState=resumed streamRole=follower"
+        },
+        {
+          "line": 310,
+          "text": "2026-10-15 06:52:43.519 [info] thread_stream_view_activity_changed active=true conversationId=01a13f54-95c8-7280-8a46-423397547702 resumeState=needs_resume streamRole=null"
+        }
+      ],
+      "scope": "Only view activity lines; growing source log not claimed frozen"
+    },
+    "/Users/aaronrenecarvajal/Library/Application Support/Cursor/logs/20261015T055636/window3/exthost/openai.chatgpt/Codex.log": {
+      "sha256_at_read": "3b4540d3bbdd68d1d6854bcac1c013cd13507202a52bc020028ccdf321261c30",
+      "size_at_read": 45933,
+      "selected": [
+        {
+          "line": 44,
+          "text": "2026-10-15 06:11:41.144 [info] thread_stream_view_activity_changed active=true conversationId=01a13f0e-ba38-78e1-8168-c46783739a4f resumeState=needs_resume streamRole=null"
+        }
+      ],
+      "scope": "Only view activity lines; growing source log not claimed frozen"
+    },
+    "/Users/aaronrenecarvajal/Library/Application Support/Cursor/logs/20261015T055636/window6/exthost/openai.chatgpt/Codex.log": {
+      "sha256_at_read": "126bac11abf63bd1ba01dd1fa58fa9176d2e8385970bf72312439603d493be2c",
+      "size_at_read": 31556,
+      "selected": [
+        {
+          "line": 27,
+          "text": "2026-10-15 06:05:58.760 [info] thread_stream_view_activity_changed active=true conversationId=01a13f0e-ba38-78e1-8168-c46783739a4f resumeState=needs_resume streamRole=null"
+        },
+        {
+          "line": 62,
+          "text": "2026-10-15 06:09:51.473 [info] thread_stream_view_activity_changed active=false conversationId=01a13f0e-ba38-78e1-8168-c46783739a4f resumeState=resumed streamRole=follower"
+        },
+        {
+          "line": 69,
+          "text": "2026-10-15 06:09:58.722 [info] thread_stream_view_activity_changed active=true conversationId=01a13fae-fa0f-7a92-b941-6d2eaa3e4131 resumeState=resumed streamRole=owner"
+        },
+        {
+          "line": 75,
+          "text": "2026-10-15 06:09:58.932 [info] thread_stream_view_activity_changed active=false conversationId=01a13fae-fa0f-7a92-b941-6d2eaa3e4131 resumeState=resumed streamRole=owner"
+        },
+        {
+          "line": 76,
+          "text": "2026-10-15 06:09:58.933 [info] thread_stream_view_activity_changed active=true conversationId=01a13fae-fa0f-7a92-b941-6d2eaa3e4131 resumeState=resumed streamRole=owner"
+        }
+      ],
+      "scope": "Only view activity lines; growing source log not claimed frozen"
+    }
+  },
+  "workspaces": {
+    "knowtation_untitled": {
+      "path": "/Users/aaronrenecarvajal/Library/Application Support/Cursor/User/workspaceStorage/34218851568776b617c57d5f9932f86c/workspace.json",
+      "sha256": "145ad9086c3e645118230b79414042b6738f44008ef1b1d709afd8e0c7187118",
+      "mapping": {
+        "workspace": "file:///Users/aaronrenecarvajal/Library/Application%20Support/Cursor/Workspaces/1791810015264/workspace.json"
+      }
+    },
+    "knowtation_standalone": {
+      "path": "/Users/aaronrenecarvajal/Library/Application Support/Cursor/User/workspaceStorage/9abe6ecdddf965b22f0617f9b5a6a3b8/workspace.json",
+      "sha256": "85d274e7c65cf43e3c7376c4e40b15bb2484f98c57d840fb09e71db17fc2aa7f",
+      "mapping": {
+        "folder": "file:///Users/aaronrenecarvajal/knowtation"
+      }
+    },
+    "overseer": {
+      "path": "/Users/aaronrenecarvajal/Library/Application Support/Cursor/User/workspaceStorage/690bbc6c639d2d76f4d870cc151ad2ad/workspace.json",
+      "sha256": "a7fd246c53ceaf7daa3d4c8c9725ea777028f3c286a5cfb57f733d53221087af",
+      "mapping": {
+        "folder": "file:///Users/aaronrenecarvajal/OVERSEER_KIT"
+      }
+    }
+  },
+  "cause": "UNKNOWN: evidence does not identify the triggering action or restoration defect",
+  "owner_correction": "The owner did not deliberately open the same conversation or duplicate project windows.",
+  "mitigation_only": "Prior local URI navigation selected respective Bornfree/Knowtation chats; no prevention or restart acceptance is claimed.",
+  "untitled_folder_members": {
+    "path": "/Users/aaronrenecarvajal/Library/Application Support/Cursor/Workspaces/1791810015264/workspace.json",
+    "sha256": "4a8527d04ae61f66d162233fa0c527a5e5425709333e4fa4d08c2ec12bd334cd",
+    "folders": [
+      {
+        "path": "/Users/aaronrenecarvajal/knowtation"
+      },
+      {
+        "path": "../../../../../scooling"
+      }
+    ]
+  },
+  "legacy_launcher": {
+    "/Users/aaronrenecarvajal/.local/bin/ok": {
+      "sha256": "59e0cc05fc24a3a058ca08c93298b4e70a3c6fc6823c3176530c8b880fc845ef",
+      "text": "#!/bin/sh\n# Overseer Kit CLI \u2014 stable AFF source while OCI remains isolated in its worktree.\n# The dependency environment is shared; source and dispatch are pinned below.\nexec env PATH=\"/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit/.venv/bin:$PATH\" \\\n  sh /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-main-stable/cli/ok \"$@\"\n"
+    },
+    "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-main-stable/cli/ok": {
+      "sha256": "c02c90630fc175ffa54e04a6a128cafcbe346bcf432c036e5e849ee893146253",
+      "text": "#!/usr/bin/env sh\n# Overseer Kit CLI \u2014 canonical POSIX shim \u2192 python -m cli.main (init|sync|status|review|governance-sync).\nset -eu\nROOT=\"$(CDPATH= cd -- \"$(dirname \"$0\")/..\" && pwd)\"\nexport PYTHONPATH=\"${ROOT}${PYTHONPATH:+:$PYTHONPATH}\"\nif [ -x \"$ROOT/.venv/bin/python3\" ]; then\n  exec \"$ROOT/.venv/bin/python3\" -m cli.main \"$@\"\nfi\nexec python3 -m cli.main \"$@\"\n"
+    }
+  },
+  "legacy_readonly_failure": {
+    "provenance": "Coordinator tool observation in preceding turn; not rerun for this documentation action",
+    "command": [
+      "/Users/aaronrenecarvajal/.local/bin/ok",
+      "-C",
+      "/Users/aaronrenecarvajal/knowtation",
+      "next"
+    ],
+    "exit_code": 1,
+    "error": "ModuleNotFoundError: No module named 'cryptography'",
+    "interpreter_selected": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-main-stable/.venv/bin/python3",
+    "independent_connection_to_mirroring": "not established",
+    "repaired": false
+  }
+}

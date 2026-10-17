@@ -1,0 +1,28 @@
+{
+  "head": "6289d2823184a63e2968d2c5f6a76abab5818368",
+  "parent": "/private/tmp/overseer-fpr4-init-candidate-yn8mhf51",
+  "installation": "/private/tmp/overseer-fpr4-init-candidate-yn8mhf51/installation",
+  "archive_sha256": "95c093c3b19f873c0ad67f1237bbd86c758b3ee9137fa992350ff03239a9cf1d",
+  "patch": "/private/tmp/fpr4-init-preservation.patch",
+  "patch_sha256": "2898bb55305619e1d379b47a3cc47be862cea11816c656fa004e809823f742bb",
+  "patched_stdout": "patching file 'cli/v1.py'\n",
+  "runtime": {
+    "root": "/private/tmp/overseer-fpr4-init-candidate-yn8mhf51/installation",
+    "version": "1.0.0.dev1",
+    "sha256": "8cc298eee30563542ad530116c401c0b91b8c04ab95b9f823c9245879f34065d"
+  },
+  "dependencies": {
+    "PyYAML": "6.0.3",
+    "cryptography": "49.0.0",
+    "cffi": "2.1.0",
+    "pycparser": "3.0",
+    "pytest": "9.1.1",
+    "iniconfig": "2.3.0",
+    "packaging": "26.2",
+    "Pygments": "2.20.0",
+    "pluggy": "1.6.0"
+  },
+  "python": "3.14.4 (main, Apr  7 2026, 13:13:20) [Clang 17.0.0 (clang-1700.6.4.2)]",
+  "test_sha256": "0e110a2ebbefbc321ead116e1a52a7b21095c20cfcd3932623b6a1ecd919b799",
+  "production_v1_unchanged": true
+}

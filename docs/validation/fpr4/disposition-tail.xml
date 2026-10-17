@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="8" time="3.115" timestamp="2026-10-14T16:53:41.235209-07:00" hostname="Carloss-MacBook-Pro.local"><testcase classname="tests.fpr4.test_disposition_contracts" name="test_rendered_mirror_wrapper_uses_bound_launcher_and_literal_arguments" time="0.276" /><testcase classname="tests.fpr4.test_disposition_contracts" name="test_installed_orchestrator_preserves_canonical_authority_and_explicit_review_scope" time="2.701"><failure message="AssertionError: assert ('only when explicitly requested' in '---\ndescription: Bound product context and explicit action authority\nalwaysApply: true\n---\n\nFollow AGENTS.md and...atically. No legacy live export or packet,\nOCI, identity-bridge, native GSR or sole-writer prerequisite is implied.\n')">repo = PosixPath('/private/tmp/overseer-fpr4-disposition-tail/test_installed_orchestrator_pr0/similar-kit')
+
+    def test_installed_orchestrator_preserves_canonical_authority_and_explicit_review_scope(repo):
+        rule = (repo / '.cursor/rules/orchestrator.mdc').read_text()
+        frontmatter = yaml.safe_load(rule.split('---', 2)[1])
+        assert frontmatter['alwaysApply'] is True
+        for guidance in ('AGENTS.md', 'UUID', 'Git/Muse authority', 'bound launcher',
+                         'docs/NEXT.md is the only action source', 'whole-file expected digest',
+                         'ROADMAP and HANDOVER paired', 'configured review gates',
+                         'do not invent extra review cycles', 'independent review from author tests'):
+            assert guidance in rule
+        assert 'Local implementation, remote transport and release/deployment are separate scopes.' in rule
+        assert '{{' not in rule and 'NEXT SESSION' not in rule
+        assert '/build-verification-review' in rule and '/freeze-review-loop' in rule
+&gt;       assert 'only when explicitly requested' in rule and 'never automatically' in rule
+E       AssertionError: assert ('only when explicitly requested' in '---\ndescription: Bound product context and explicit action authority\nalwaysApply: true\n---\n\nFollow AGENTS.md and...atically. No legacy live export or packet,\nOCI, identity-bridge, native GSR or sole-writer prerequisite is implied.\n')
+
+tests/fpr4/test_disposition_contracts.py:349: AssertionError</failure></testcase><testcase classname="tests.unit.test_skills_footprint" name="test_rendered_templates_include_build_verification_in_dod" time="0.002" /><testcase classname="tests.unit.test_skills_footprint" name="test_footprint_includes_review_loop_skills" time="0.003" /><testcase classname="tests.unit.test_skills_footprint" name="test_review_loop_skill_documents_bounded_loop" time="0.003" /><testcase classname="tests.unit.test_skills_footprint" name="test_footprint_includes_build_verification_rule" time="0.002" /><testcase classname="tests.unit.test_skills_footprint" name="test_build_verification_skill_documents_honesty_gate" time="0.002" /><testcase classname="tests.unit.test_skills_footprint" name="test_footprint_includes_workspace_authority_and_skill" time="0.002" /></testsuite></testsuites>

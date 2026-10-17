@@ -8,4 +8,4 @@ if [ ! -x "$ROOT/.overseer/bin/ok" ]; then
   echo 'refused: initialize and explicitly select Muse with the bounded-v1 runtime' >&2
   exit 2
 fi
-exec "$ROOT/.overseer/bin/ok" mirror "$@"
+exec "$ROOT/.overseer/bin/ok" -C "$ROOT" mirror "$@"

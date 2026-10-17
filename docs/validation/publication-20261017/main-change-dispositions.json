@@ -1,0 +1,671 @@
+{
+  "source": "f6a314c0f862a921ed333688362b35f32493ae09",
+  "main": "ff9091cc2f3bdb54c679ea2cd27f4d5280d83603",
+  "merge_base": "d47291d5d9030de5ebef713da95efa978c4d8c6e",
+  "paths": [
+    {
+      "path": ".claude/skills/adversarial-freeze-review/SKILL.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".claude/skills/build-verification-review/SKILL.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".claude/skills/check-ok/SIDE-CHECK-TEMPLATE.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".claude/skills/check-ok/SKILL.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".claude/skills/deploy-verification-review/SKILL.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".claude/skills/freeze-review-loop/SKILL.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".claude/skills/freeze-review/SKILL.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".claude/skills/governance-sync/SKILL.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".claude/skills/independent-second-reviewer/SKILL.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".claude/skills/print-next/SKILL.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".claude/skills/workspace-status/SKILL.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".cursor/hooks.json",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".cursor/hooks/README.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".cursor/hooks/session-end-closeout.sh",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".cursor/hooks/session-start-next.sh",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".cursor/rules/build-verification-required.mdc",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".cursor/rules/check-ok-thinking.mdc",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".cursor/rules/governance-sync.mdc",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".cursor/rules/l1-checkpoints-consumer-owned.mdc",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".cursor/rules/no-docs-only-pr-to-main.mdc",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".cursor/rules/orchestrator.mdc",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".cursor/rules/print-next-closeout.mdc",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".cursor/rules/tier-authority.mdc",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".cursor/rules/workspace-authority.mdc",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".cursor/skills/adversarial-freeze-review/SKILL.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".cursor/skills/build-verification-review/SKILL.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".cursor/skills/check-ok/SKILL.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".cursor/skills/deploy-verification-review/SKILL.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".cursor/skills/freeze-review-loop/SKILL.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".cursor/skills/freeze-review/SKILL.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".cursor/skills/governance-sync/SKILL.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".cursor/skills/independent-second-reviewer/SKILL.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".cursor/skills/print-next/SKILL.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".cursor/skills/workspace-status/SKILL.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".github/workflows/supported-v1.yml",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".gitignore",
+      "resolution": "completed_source"
+    },
+    {
+      "path": ".museignore",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "AGENTS.md",
+      "resolution": "reconciled"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "resolution": "reconciled"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "resolution": "reconciled"
+    },
+    {
+      "path": "MUSE-BRIDGE-WORKFLOW.md",
+      "resolution": "current_main"
+    },
+    {
+      "path": "README.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "SECURITY.md",
+      "resolution": "reconciled"
+    },
+    {
+      "path": "VERSION",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "adapters/interface.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "cli/bootstrap.py",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "cli/legacy_main.py",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "cli/main.py",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "cli/ok",
+      "resolution": "identical_both"
+    },
+    {
+      "path": "cli/overseer",
+      "resolution": "identical_both"
+    },
+    {
+      "path": "cli/v1.py",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "cli/v1_git_credential.py",
+      "resolution": "identical_both"
+    },
+    {
+      "path": "cli/v1_io.py",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "cli/v1_mirror.py",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "cli/v1_mirror_history.py",
+      "resolution": "identical_both"
+    },
+    {
+      "path": "cli/v1_mirror_reader.py",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "cli/v1_muse_reader.py",
+      "resolution": "identical_both"
+    },
+    {
+      "path": "cli/v1_policy.py",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "cli/v1_revision.py",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "cursor/README.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "cursor/hooks/README.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "cursor/hooks/session-end-closeout.sh",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "cursor/hooks/session-start-next.sh",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "cursor/rules/build-verification-required.mdc",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "cursor/rules/governance-sync.mdc",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "cursor/rules/orchestrator.mdc",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "cursor/rules/print-next-closeout.mdc",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "cursor/rules/workspace-authority.mdc",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "cursor/skills/adversarial-freeze-review/SKILL.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "cursor/skills/build-verification-review/SKILL.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "cursor/skills/check-ok/SKILL.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "cursor/skills/deploy-verification-review/SKILL.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "cursor/skills/freeze-review-loop/SKILL.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "cursor/skills/freeze-review/SKILL.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "cursor/skills/governance-sync/SKILL.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "cursor/skills/independent-second-reviewer/SKILL.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "cursor/skills/print-next/SKILL.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "cursor/skills/workspace-status/SKILL.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "desktop/README.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "desktop/keys/README.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "docs/ADVERSARIAL-FREEZE-REVIEW.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "docs/CHECK-OK.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "docs/CONSUMER-ADAPTER-PATTERN.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "docs/GIT-ONLY-QUICKSTART.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "docs/HOSTED-GOVERNANCE-DASHBOARD-OPERATOR-RUNBOOK.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "docs/INDEPENDENT-SECOND-REVIEWER.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "docs/K7-DOGFOOD-OPERATOR-RUNBOOK.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "docs/MIGRATE-EXISTING-REPO.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "docs/OVERSEER-HANDOVER.md",
+      "resolution": "reconciled"
+    },
+    {
+      "path": "docs/OVERSEER-KIT-SPEC.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "docs/PRINT-NEXT.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "docs/PUBLIC-VISIBILITY-CHECKLIST.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "docs/README.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "docs/ROADMAP.md",
+      "resolution": "reconciled"
+    },
+    {
+      "path": "docs/TRACK-O-NORMIE-CUSTODY-PRODUCT-CONTRACT.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "docs/TRACK-O-STAGE3-UPGRADE-OPERATOR-RUNBOOK.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "docs/archive/v1/config-before-reset.yaml",
+      "resolution": "identical_both"
+    },
+    {
+      "path": "docs/archive/v1/legacy-overseer/README.md",
+      "resolution": "current_main"
+    },
+    {
+      "path": "docs/archive/v1/legacy-overseer/STANDING-DECISIONS.reference.md",
+      "resolution": "current_main"
+    },
+    {
+      "path": "docs/archive/v1/legacy-overseer/honesty/VERDICT-LEDGER.jsonl",
+      "resolution": "current_main"
+    },
+    {
+      "path": "docs/archive/v1/legacy-overseer/policy/model-labels.yaml",
+      "resolution": "current_main"
+    },
+    {
+      "path": "docs/archive/v1/legacy-overseer/policy/model-routing.yaml",
+      "resolution": "current_main"
+    },
+    {
+      "path": "docs/archive/v1/legacy-overseer/policy/test-tiers.yaml",
+      "resolution": "current_main"
+    },
+    {
+      "path": "docs/archive/v1/legacy-overseer/policy/tiers.yaml",
+      "resolution": "current_main"
+    },
+    {
+      "path": "docs/archive/v1/legacy-overseer/version.lock",
+      "resolution": "reconciled"
+    },
+    {
+      "path": "docs/consumers/knowtation/OVERSEER-SETUP.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "docs/consumers/scooling/OVERSEER-SETUP.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "docs/consumers/videofactory/OVERSEER-SETUP.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "docs/decisions/V1-HOSTED-CI-AUTHORIZATION.md",
+      "resolution": "current_main"
+    },
+    {
+      "path": "docs/decisions/V1-MUSE-PUBLICATION-DELTA.json",
+      "resolution": "current_main"
+    },
+    {
+      "path": "docs/decisions/V1-MUSE-PUBLICATION.md",
+      "resolution": "current_main"
+    },
+    {
+      "path": "docs/decisions/V1-RELEASE-PUBLICATION.md",
+      "resolution": "current_main"
+    },
+    {
+      "path": "docs/decisions/V1-SCOPE-RESET.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "docs/landing/HOSTING.md",
+      "resolution": "reconciled"
+    },
+    {
+      "path": "docs/landing/docs.html",
+      "resolution": "reconciled"
+    },
+    {
+      "path": "docs/landing/index.html",
+      "resolution": "reconciled"
+    },
+    {
+      "path": "docs/landing/manifest.yaml",
+      "resolution": "reconciled"
+    },
+    {
+      "path": "docs/landing/scenarios/index.html",
+      "resolution": "current_main"
+    },
+    {
+      "path": "docs/releases/v1.0.0-rc.1/INSTALL-AND-ROLLBACK.md",
+      "resolution": "current_main"
+    },
+    {
+      "path": "docs/releases/v1.0.0-rc.1/RELEASE-NOTES.md",
+      "resolution": "current_main"
+    },
+    {
+      "path": "docs/validation/V1-PUBLIC-EVIDENCE.md",
+      "resolution": "current_main"
+    },
+    {
+      "path": "docs/validation/V1-RECOVERY.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "docs/validation/baseline-failures.json",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "docs/validation/test-results.json",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "pyproject.toml",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "requirements-v1-dev.txt",
+      "resolution": "identical_both"
+    },
+    {
+      "path": "requirements-v1.txt",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "scripts/muse-bridge-deploy.sh",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "templates/CROSS-REPO-COORDINATION.template.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "templates/MUSE-BRIDGE-WORKFLOW.template.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "templates/OVERSEER-HANDOVER.template.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "templates/README.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "templates/ROADMAP.template.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "templates/STANDING-DECISIONS.template.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "templates/ci/desktop-release-github-actions.yml",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "templates/ci/freeze-review-github-actions.yml",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "templates/ci/governance-closeout-github-actions.yml",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "templates/scripts/muse-bridge-deploy.sh.template",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "tests/README.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "tests/historical/baseline-test-inventory.json",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "tests/muse/conftest.py",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "tests/muse/test_handoffs.py",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "tests/muse/test_mirror.py",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "tests/muse/test_reconciliation.py",
+      "resolution": "identical_both"
+    },
+    {
+      "path": "tests/muse/test_source_distribution.py",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "tests/retained/test_footprint_digest.py",
+      "resolution": "current_main"
+    },
+    {
+      "path": "tests/v1/__init__.py",
+      "resolution": "identical_both"
+    },
+    {
+      "path": "tests/v1/conftest.py",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "tests/v1/test_adoption.py",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "tests/v1/test_commands.py",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "tests/v1/test_integrity.py",
+      "resolution": "identical_both"
+    },
+    {
+      "path": "tests/v1/test_isolation.py",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "tests/v1/test_mirror_credentials.py",
+      "resolution": "identical_both"
+    },
+    {
+      "path": "tests/v1/test_muse_artifact.py",
+      "resolution": "identical_both"
+    },
+    {
+      "path": "tools/ci/MUSE-RC5-RECOVERY.md",
+      "resolution": "identical_both"
+    },
+    {
+      "path": "tools/ci/muse-rc5-artifact.json",
+      "resolution": "identical_both"
+    },
+    {
+      "path": "tools/ci/muse-rc5-source-files.json",
+      "resolution": "identical_both"
+    },
+    {
+      "path": "tools/ci/muse_artifact.py",
+      "resolution": "identical_both"
+    },
+    {
+      "path": "tools/ci/requirements-muse-rc5.txt",
+      "resolution": "identical_both"
+    },
+    {
+      "path": "tools/ci/supported_v1.py",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "tools/freeze_reviewer/README.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "tools/governance_hygiene/README.md",
+      "resolution": "completed_source"
+    },
+    {
+      "path": "tools/landing/validate.py",
+      "resolution": "completed_source"
+    }
+  ]
+}

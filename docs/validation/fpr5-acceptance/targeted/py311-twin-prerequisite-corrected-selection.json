@@ -1,0 +1,7 @@
+{
+  "selected": [
+    "tests/security/test_p_deploy_security.py::test_twin_skill_paths_exist"
+  ],
+  "deselected": [],
+  "expected_count": 1
+}

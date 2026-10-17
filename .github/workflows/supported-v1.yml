@@ -1,9 +1,7 @@
 name: Supported v1
 
+# Prepared only; manual hosted execution needs separate owner authorization.
 on:
-  pull_request:
-  push:
-    branches: [main, 'feat/**']
   workflow_dispatch:
 
 permissions:

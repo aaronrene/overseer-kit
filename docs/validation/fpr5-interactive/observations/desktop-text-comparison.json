@@ -1,0 +1,20 @@
+{
+  "kind": "Coordinator comparison of owner-pasted desktop text against saved bound NEXT; not independent adjudication",
+  "owner_paste": {
+    "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-observation-desktop-0pkcm8sj/user-desktop-next.txt",
+    "bytes": 1337,
+    "mode": "0644",
+    "sha256": "1fdf2699901617283449c1807f8bef859f0a6579c68872aeb1802ec342305eb1"
+  },
+  "bound_next_record": {
+    "path": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/owner-observation-desktop-0pkcm8sj/bound-next-at-observation.json",
+    "bytes": 4130,
+    "mode": "0644",
+    "sha256": "d2159c8528863ba84a8bf1945ae8be8b4c814f493fd87ceb3b7550ce4a2140cd"
+  },
+  "action_block_count": 2,
+  "action_blocks_exact_match": true,
+  "all_nonempty_lines_match": true,
+  "whole_string_byte_identical": false,
+  "visual_evidence": "Owner screenshot metadata and observation are in the run user-observation.json; screenshot pixels intentionally remain external."
+}

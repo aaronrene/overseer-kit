@@ -7,7 +7,8 @@ import tomllib
 
 from cli.v1_io import Refusal, digest, read
 
-LOCAL_PATHS = (".overseer/config.yaml", ".overseer/bin/", ".overseer/local/",
+LOCAL_PATHS = (".overseer/config.yaml", ".overseer/bin/", ".overseer/local/", ".overseer/migrations/",
+               ".overseer/instructions/",
                "docs/NEXT.md", ".cursor/")
 
 

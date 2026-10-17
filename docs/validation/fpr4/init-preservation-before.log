@@ -1,0 +1,414 @@
+FFFFFF....FFFF                                                           [100%]
+=================================== FAILURES ===================================
+_ test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.claude/skills/print-next/SKILL.md-493] _
+
+tmp_path = PosixPath('/private/tmp/overseer-fpr4-init-preservation-before/test_fresh_init_preserves_exis0')
+relative = '.claude/skills/print-next/SKILL.md', mode = 493
+
+    @pytest.mark.parametrize('relative,mode', [
+        ('.claude/skills/print-next/SKILL.md', 0o755),
+        ('.cursor/skills/print-next/SKILL.md', 0o600),
+        ('.cursor/rules/orchestrator.mdc', 0o640),
+        ('.overseer/policy/model-routing.yaml', 0o600),
+        ('policy/model-routing.yaml', 0o755),
+        ('.overseer/STANDING-DECISIONS.reference.md', 0o640),
+    ])
+    def test_fresh_init_preserves_existing_portable_asset_and_owned_mode(tmp_path, relative, mode):
+        root = seed(tmp_path/"consumer with 'quote'")
+        target = root/relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        body = (b'# Consumer-owned policy\n' + (KIT/'policy/model-routing.yaml').read_bytes()
+                if relative.endswith('.yaml') else b'Consumer-owned instructions.\n')
+        target.write_bytes(body)
+        target.chmod(mode)
+        (root/'AGENTS.md').write_text('Consumer Codex instructions.\n')
+        (root/'ledger.jsonl').write_text('{"owner":"retained"}\n')
+        before = snapshot(root)
+        preview = command('-C', root, 'init', '--hooks', '--dry-run', '--json')
+>       assert preview.returncode == 0, preview.stdout + preview.stderr
+E       AssertionError: refused: init_asset_exists: .claude/skills/print-next/SKILL.md
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', "/priva...ry-run', '--json'], returncode=2, stdout='', stderr='refused: init_asset_exists: .claude/skills/print-next/SKILL.md\n').returncode
+
+tests/fpr4/test_init_preservation.py:39: AssertionError
+_ test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.cursor/skills/print-next/SKILL.md-384] _
+
+tmp_path = PosixPath('/private/tmp/overseer-fpr4-init-preservation-before/test_fresh_init_preserves_exis1')
+relative = '.cursor/skills/print-next/SKILL.md', mode = 384
+
+    @pytest.mark.parametrize('relative,mode', [
+        ('.claude/skills/print-next/SKILL.md', 0o755),
+        ('.cursor/skills/print-next/SKILL.md', 0o600),
+        ('.cursor/rules/orchestrator.mdc', 0o640),
+        ('.overseer/policy/model-routing.yaml', 0o600),
+        ('policy/model-routing.yaml', 0o755),
+        ('.overseer/STANDING-DECISIONS.reference.md', 0o640),
+    ])
+    def test_fresh_init_preserves_existing_portable_asset_and_owned_mode(tmp_path, relative, mode):
+        root = seed(tmp_path/"consumer with 'quote'")
+        target = root/relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        body = (b'# Consumer-owned policy\n' + (KIT/'policy/model-routing.yaml').read_bytes()
+                if relative.endswith('.yaml') else b'Consumer-owned instructions.\n')
+        target.write_bytes(body)
+        target.chmod(mode)
+        (root/'AGENTS.md').write_text('Consumer Codex instructions.\n')
+        (root/'ledger.jsonl').write_text('{"owner":"retained"}\n')
+        before = snapshot(root)
+        preview = command('-C', root, 'init', '--hooks', '--dry-run', '--json')
+>       assert preview.returncode == 0, preview.stdout + preview.stderr
+E       AssertionError: refused: init_asset_exists: .cursor/skills/print-next/SKILL.md
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', "/priva...ry-run', '--json'], returncode=2, stdout='', stderr='refused: init_asset_exists: .cursor/skills/print-next/SKILL.md\n').returncode
+
+tests/fpr4/test_init_preservation.py:39: AssertionError
+_ test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.cursor/rules/orchestrator.mdc-416] _
+
+tmp_path = PosixPath('/private/tmp/overseer-fpr4-init-preservation-before/test_fresh_init_preserves_exis2')
+relative = '.cursor/rules/orchestrator.mdc', mode = 416
+
+    @pytest.mark.parametrize('relative,mode', [
+        ('.claude/skills/print-next/SKILL.md', 0o755),
+        ('.cursor/skills/print-next/SKILL.md', 0o600),
+        ('.cursor/rules/orchestrator.mdc', 0o640),
+        ('.overseer/policy/model-routing.yaml', 0o600),
+        ('policy/model-routing.yaml', 0o755),
+        ('.overseer/STANDING-DECISIONS.reference.md', 0o640),
+    ])
+    def test_fresh_init_preserves_existing_portable_asset_and_owned_mode(tmp_path, relative, mode):
+        root = seed(tmp_path/"consumer with 'quote'")
+        target = root/relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        body = (b'# Consumer-owned policy\n' + (KIT/'policy/model-routing.yaml').read_bytes()
+                if relative.endswith('.yaml') else b'Consumer-owned instructions.\n')
+        target.write_bytes(body)
+        target.chmod(mode)
+        (root/'AGENTS.md').write_text('Consumer Codex instructions.\n')
+        (root/'ledger.jsonl').write_text('{"owner":"retained"}\n')
+        before = snapshot(root)
+        preview = command('-C', root, 'init', '--hooks', '--dry-run', '--json')
+>       assert preview.returncode == 0, preview.stdout + preview.stderr
+E       AssertionError: refused: init_asset_exists: .cursor/rules/orchestrator.mdc
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', "/priva...'--dry-run', '--json'], returncode=2, stdout='', stderr='refused: init_asset_exists: .cursor/rules/orchestrator.mdc\n').returncode
+
+tests/fpr4/test_init_preservation.py:39: AssertionError
+_ test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.overseer/policy/model-routing.yaml-384] _
+
+tmp_path = PosixPath('/private/tmp/overseer-fpr4-init-preservation-before/test_fresh_init_preserves_exis3')
+relative = '.overseer/policy/model-routing.yaml', mode = 384
+
+    @pytest.mark.parametrize('relative,mode', [
+        ('.claude/skills/print-next/SKILL.md', 0o755),
+        ('.cursor/skills/print-next/SKILL.md', 0o600),
+        ('.cursor/rules/orchestrator.mdc', 0o640),
+        ('.overseer/policy/model-routing.yaml', 0o600),
+        ('policy/model-routing.yaml', 0o755),
+        ('.overseer/STANDING-DECISIONS.reference.md', 0o640),
+    ])
+    def test_fresh_init_preserves_existing_portable_asset_and_owned_mode(tmp_path, relative, mode):
+        root = seed(tmp_path/"consumer with 'quote'")
+        target = root/relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        body = (b'# Consumer-owned policy\n' + (KIT/'policy/model-routing.yaml').read_bytes()
+                if relative.endswith('.yaml') else b'Consumer-owned instructions.\n')
+        target.write_bytes(body)
+        target.chmod(mode)
+        (root/'AGENTS.md').write_text('Consumer Codex instructions.\n')
+        (root/'ledger.jsonl').write_text('{"owner":"retained"}\n')
+        before = snapshot(root)
+        preview = command('-C', root, 'init', '--hooks', '--dry-run', '--json')
+>       assert preview.returncode == 0, preview.stdout + preview.stderr
+E       AssertionError: refused: init_asset_exists: .overseer/policy/model-routing.yaml
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', "/priva...y-run', '--json'], returncode=2, stdout='', stderr='refused: init_asset_exists: .overseer/policy/model-routing.yaml\n').returncode
+
+tests/fpr4/test_init_preservation.py:39: AssertionError
+_ test_fresh_init_preserves_existing_portable_asset_and_owned_mode[policy/model-routing.yaml-493] _
+
+tmp_path = PosixPath('/private/tmp/overseer-fpr4-init-preservation-before/test_fresh_init_preserves_exis4')
+relative = 'policy/model-routing.yaml', mode = 493
+
+    @pytest.mark.parametrize('relative,mode', [
+        ('.claude/skills/print-next/SKILL.md', 0o755),
+        ('.cursor/skills/print-next/SKILL.md', 0o600),
+        ('.cursor/rules/orchestrator.mdc', 0o640),
+        ('.overseer/policy/model-routing.yaml', 0o600),
+        ('policy/model-routing.yaml', 0o755),
+        ('.overseer/STANDING-DECISIONS.reference.md', 0o640),
+    ])
+    def test_fresh_init_preserves_existing_portable_asset_and_owned_mode(tmp_path, relative, mode):
+        root = seed(tmp_path/"consumer with 'quote'")
+        target = root/relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        body = (b'# Consumer-owned policy\n' + (KIT/'policy/model-routing.yaml').read_bytes()
+                if relative.endswith('.yaml') else b'Consumer-owned instructions.\n')
+        target.write_bytes(body)
+        target.chmod(mode)
+        (root/'AGENTS.md').write_text('Consumer Codex instructions.\n')
+        (root/'ledger.jsonl').write_text('{"owner":"retained"}\n')
+        before = snapshot(root)
+        preview = command('-C', root, 'init', '--hooks', '--dry-run', '--json')
+>       assert preview.returncode == 0, preview.stdout + preview.stderr
+E       AssertionError: refused: init_asset_exists: policy/model-routing.yaml
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', "/priva...ks', '--dry-run', '--json'], returncode=2, stdout='', stderr='refused: init_asset_exists: policy/model-routing.yaml\n').returncode
+
+tests/fpr4/test_init_preservation.py:39: AssertionError
+_ test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.overseer/STANDING-DECISIONS.reference.md-416] _
+
+tmp_path = PosixPath('/private/tmp/overseer-fpr4-init-preservation-before/test_fresh_init_preserves_exis5')
+relative = '.overseer/STANDING-DECISIONS.reference.md', mode = 416
+
+    @pytest.mark.parametrize('relative,mode', [
+        ('.claude/skills/print-next/SKILL.md', 0o755),
+        ('.cursor/skills/print-next/SKILL.md', 0o600),
+        ('.cursor/rules/orchestrator.mdc', 0o640),
+        ('.overseer/policy/model-routing.yaml', 0o600),
+        ('policy/model-routing.yaml', 0o755),
+        ('.overseer/STANDING-DECISIONS.reference.md', 0o640),
+    ])
+    def test_fresh_init_preserves_existing_portable_asset_and_owned_mode(tmp_path, relative, mode):
+        root = seed(tmp_path/"consumer with 'quote'")
+        target = root/relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        body = (b'# Consumer-owned policy\n' + (KIT/'policy/model-routing.yaml').read_bytes()
+                if relative.endswith('.yaml') else b'Consumer-owned instructions.\n')
+        target.write_bytes(body)
+        target.chmod(mode)
+        (root/'AGENTS.md').write_text('Consumer Codex instructions.\n')
+        (root/'ledger.jsonl').write_text('{"owner":"retained"}\n')
+        before = snapshot(root)
+        preview = command('-C', root, 'init', '--hooks', '--dry-run', '--json')
+>       assert preview.returncode == 0, preview.stdout + preview.stderr
+E       AssertionError: refused: init_asset_exists: .overseer/STANDING-DECISIONS.reference.md
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', "/priva..., '--json'], returncode=2, stdout='', stderr='refused: init_asset_exists: .overseer/STANDING-DECISIONS.reference.md\n').returncode
+
+tests/fpr4/test_init_preservation.py:39: AssertionError
+_ test_preserved_asset_changes_refuse_after_lock_and_before_replace[bytes-after_lock] _
+
+tmp_path = PosixPath('/private/tmp/overseer-fpr4-init-preservation-before/test_preserved_asset_changes_r0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1078fab10>
+boundary = 'after_lock', mutation = 'bytes'
+
+    @pytest.mark.parametrize('boundary', ['after_lock', 'before_replace'])
+    @pytest.mark.parametrize('mutation', ['bytes', 'mode'])
+    def test_preserved_asset_changes_refuse_after_lock_and_before_replace(tmp_path, monkeypatch, boundary, mutation):
+        root = seed(tmp_path/'preserved-race')
+        target = root/'.claude/skills/print-next/SKILL.md'
+        target.parent.mkdir(parents=True)
+        target.write_bytes(b'Original owner instructions.\n')
+        target.chmod(0o755)
+        changed = False
+    
+        def mutate():
+            nonlocal changed
+            if changed:
+                return
+            changed = True
+            if mutation == 'bytes':
+                target.write_bytes(b'Concurrent owner instructions.\n')
+            else:
+                target.chmod(0o600)
+    
+        if boundary == 'after_lock':
+            original = product_migration.fcntl.flock
+    
+            def flock(fd, operation):
+                result = original(fd, operation)
+                if operation == product_migration.fcntl.LOCK_EX:
+                    mutate()
+                return result
+    
+            monkeypatch.setattr(product_migration.fcntl, 'flock', flock)
+        else:
+            original = product_migration.atomic
+    
+            def atomic(*args, **kwargs):
+                mutate()
+                return original(*args, **kwargs)
+    
+            monkeypatch.setattr(product_migration, 'atomic', atomic)
+        args = _arguments(['-C', str(root), 'init', '--hooks'])
+>       with pytest.raises(Refusal, match='init_preserved_asset_changed'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'init_preserved_asset_changed'
+E         Actual message: 'init_asset_exists: .claude/skills/print-next/SKILL.md'
+
+tests/fpr4/test_init_preservation.py:117: AssertionError
+_ test_preserved_asset_changes_refuse_after_lock_and_before_replace[bytes-before_replace] _
+
+tmp_path = PosixPath('/private/tmp/overseer-fpr4-init-preservation-before/test_preserved_asset_changes_r1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1114e5e00>
+boundary = 'before_replace', mutation = 'bytes'
+
+    @pytest.mark.parametrize('boundary', ['after_lock', 'before_replace'])
+    @pytest.mark.parametrize('mutation', ['bytes', 'mode'])
+    def test_preserved_asset_changes_refuse_after_lock_and_before_replace(tmp_path, monkeypatch, boundary, mutation):
+        root = seed(tmp_path/'preserved-race')
+        target = root/'.claude/skills/print-next/SKILL.md'
+        target.parent.mkdir(parents=True)
+        target.write_bytes(b'Original owner instructions.\n')
+        target.chmod(0o755)
+        changed = False
+    
+        def mutate():
+            nonlocal changed
+            if changed:
+                return
+            changed = True
+            if mutation == 'bytes':
+                target.write_bytes(b'Concurrent owner instructions.\n')
+            else:
+                target.chmod(0o600)
+    
+        if boundary == 'after_lock':
+            original = product_migration.fcntl.flock
+    
+            def flock(fd, operation):
+                result = original(fd, operation)
+                if operation == product_migration.fcntl.LOCK_EX:
+                    mutate()
+                return result
+    
+            monkeypatch.setattr(product_migration.fcntl, 'flock', flock)
+        else:
+            original = product_migration.atomic
+    
+            def atomic(*args, **kwargs):
+                mutate()
+                return original(*args, **kwargs)
+    
+            monkeypatch.setattr(product_migration, 'atomic', atomic)
+        args = _arguments(['-C', str(root), 'init', '--hooks'])
+>       with pytest.raises(Refusal, match='init_preserved_asset_changed'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'init_preserved_asset_changed'
+E         Actual message: 'init_asset_exists: .claude/skills/print-next/SKILL.md'
+
+tests/fpr4/test_init_preservation.py:117: AssertionError
+_ test_preserved_asset_changes_refuse_after_lock_and_before_replace[mode-after_lock] _
+
+tmp_path = PosixPath('/private/tmp/overseer-fpr4-init-preservation-before/test_preserved_asset_changes_r2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1114c28d0>
+boundary = 'after_lock', mutation = 'mode'
+
+    @pytest.mark.parametrize('boundary', ['after_lock', 'before_replace'])
+    @pytest.mark.parametrize('mutation', ['bytes', 'mode'])
+    def test_preserved_asset_changes_refuse_after_lock_and_before_replace(tmp_path, monkeypatch, boundary, mutation):
+        root = seed(tmp_path/'preserved-race')
+        target = root/'.claude/skills/print-next/SKILL.md'
+        target.parent.mkdir(parents=True)
+        target.write_bytes(b'Original owner instructions.\n')
+        target.chmod(0o755)
+        changed = False
+    
+        def mutate():
+            nonlocal changed
+            if changed:
+                return
+            changed = True
+            if mutation == 'bytes':
+                target.write_bytes(b'Concurrent owner instructions.\n')
+            else:
+                target.chmod(0o600)
+    
+        if boundary == 'after_lock':
+            original = product_migration.fcntl.flock
+    
+            def flock(fd, operation):
+                result = original(fd, operation)
+                if operation == product_migration.fcntl.LOCK_EX:
+                    mutate()
+                return result
+    
+            monkeypatch.setattr(product_migration.fcntl, 'flock', flock)
+        else:
+            original = product_migration.atomic
+    
+            def atomic(*args, **kwargs):
+                mutate()
+                return original(*args, **kwargs)
+    
+            monkeypatch.setattr(product_migration, 'atomic', atomic)
+        args = _arguments(['-C', str(root), 'init', '--hooks'])
+>       with pytest.raises(Refusal, match='init_preserved_asset_changed'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'init_preserved_asset_changed'
+E         Actual message: 'init_asset_exists: .claude/skills/print-next/SKILL.md'
+
+tests/fpr4/test_init_preservation.py:117: AssertionError
+_ test_preserved_asset_changes_refuse_after_lock_and_before_replace[mode-before_replace] _
+
+tmp_path = PosixPath('/private/tmp/overseer-fpr4-init-preservation-before/test_preserved_asset_changes_r3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x1114d2580>
+boundary = 'before_replace', mutation = 'mode'
+
+    @pytest.mark.parametrize('boundary', ['after_lock', 'before_replace'])
+    @pytest.mark.parametrize('mutation', ['bytes', 'mode'])
+    def test_preserved_asset_changes_refuse_after_lock_and_before_replace(tmp_path, monkeypatch, boundary, mutation):
+        root = seed(tmp_path/'preserved-race')
+        target = root/'.claude/skills/print-next/SKILL.md'
+        target.parent.mkdir(parents=True)
+        target.write_bytes(b'Original owner instructions.\n')
+        target.chmod(0o755)
+        changed = False
+    
+        def mutate():
+            nonlocal changed
+            if changed:
+                return
+            changed = True
+            if mutation == 'bytes':
+                target.write_bytes(b'Concurrent owner instructions.\n')
+            else:
+                target.chmod(0o600)
+    
+        if boundary == 'after_lock':
+            original = product_migration.fcntl.flock
+    
+            def flock(fd, operation):
+                result = original(fd, operation)
+                if operation == product_migration.fcntl.LOCK_EX:
+                    mutate()
+                return result
+    
+            monkeypatch.setattr(product_migration.fcntl, 'flock', flock)
+        else:
+            original = product_migration.atomic
+    
+            def atomic(*args, **kwargs):
+                mutate()
+                return original(*args, **kwargs)
+    
+            monkeypatch.setattr(product_migration, 'atomic', atomic)
+        args = _arguments(['-C', str(root), 'init', '--hooks'])
+>       with pytest.raises(Refusal, match='init_preserved_asset_changed'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'init_preserved_asset_changed'
+E         Actual message: 'init_asset_exists: .claude/skills/print-next/SKILL.md'
+
+tests/fpr4/test_init_preservation.py:117: AssertionError
+=========================== short test summary info ============================
+FAILED tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.claude/skills/print-next/SKILL.md-493]
+FAILED tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.cursor/skills/print-next/SKILL.md-384]
+FAILED tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.cursor/rules/orchestrator.mdc-416]
+FAILED tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.overseer/policy/model-routing.yaml-384]
+FAILED tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[policy/model-routing.yaml-493]
+FAILED tests/fpr4/test_init_preservation.py::test_fresh_init_preserves_existing_portable_asset_and_owned_mode[.overseer/STANDING-DECISIONS.reference.md-416]
+FAILED tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace[bytes-after_lock]
+FAILED tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace[bytes-before_replace]
+FAILED tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace[mode-after_lock]
+FAILED tests/fpr4/test_init_preservation.py::test_preserved_asset_changes_refuse_after_lock_and_before_replace[mode-before_replace]
+10 failed, 4 passed in 2.88s

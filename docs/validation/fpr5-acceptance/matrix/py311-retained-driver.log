@@ -1,0 +1,15 @@
+{
+  "ok": false,
+  "exit_code": 1,
+  "seconds": 13.733937540993793,
+  "boundary_unchanged": true,
+  "exact_collection_executed_once": true,
+  "results": {
+    "tests": 611,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 610
+  },
+  "evidence_error": null
+}

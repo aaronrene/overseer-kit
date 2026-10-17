@@ -1,0 +1,36 @@
+{
+  "label": "candidate-portability-before-correction",
+  "runtime_start": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "64a075b0eea2ca53beb8d18935c0a65630e1466388c00e1465293c8763b6de8d"
+  },
+  "owned_sha256": {
+    "cli/product_migration.py": "1d003b3fed5ce22d9e55484b2d9f9928300208e24456f161138bf876f06b2582",
+    "cli/v1.py": "81d2d6686d9dff330e5d40c55626054abe7abcf6d938a6ce6ecf3270690e4e71",
+    "tests/fpr5/test_foundation_repairs.py": "101b76c0cb852c16153201b6d9cf7abdaf3714c449dd6e38f00675911bcc1c84"
+  },
+  "argv": [
+    ".venv/bin/python",
+    "-B",
+    "-m",
+    "pytest",
+    "tests/fpr5/test_foundation_repairs.py::test_portable_collisions_and_owner_mode_only_change_stay_protected",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=/private/tmp/overseer-fpr5-foundation-supplement.iiq2vwsl/pytest",
+    "--junitxml=/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/docs/validation/fpr5-repairs/foundation/candidate-portability.xml"
+  ],
+  "environment": {
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "fixture_parent": "/private/tmp/overseer-fpr5-foundation-supplement.iiq2vwsl",
+  "exit_code": 1,
+  "runtime_end": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "64a075b0eea2ca53beb8d18935c0a65630e1466388c00e1465293c8763b6de8d"
+  }
+}

@@ -55,7 +55,7 @@
 
           <p class="hero-foot-links">
             <a id="cta-download-mac"
-               href="https://github.com/aaronrene/overseer-kit/releases/download/v1.0.0-rc.1/INSTALL-AND-ROLLBACK.md">Install v1.0.0-rc.1</a>
+               href="source.html">Manual source delivery</a>
             <span class="hero-foot-sep" aria-hidden="true">·</span>
             <a href="https://github.com/aaronrene/overseer-kit">Clone on GitHub</a>
           </p>
@@ -90,7 +90,7 @@
                 <summary>Technical detail</summary>
                 <div class="mech-details-body">
                   <p><strong>Two review boundaries for <code>ROADMAP</code>:</strong> challenge the frozen plan before build, then compare the completed implementation with that plan before <code>DONE</code>. A separate agent chat or human performs the judgment; Overseer provides the structure and durable record.</p>
-                  <p class="mech-details-cmd-label">Current rc.1 continuity layer</p>
+                  <p class="mech-details-cmd-label">Repository-bound continuity</p>
                   <pre class="mech-details-cmd"><code>ok -C . status --json
 ok -C . next</code></pre>
                   <p class="mech-details-cmd-label">Publish the reviewed handoff</p>
@@ -201,7 +201,7 @@ ok -C . next</code></pre>
           <span class="loop-index" aria-hidden="true">04</span>
           <div class="loop-body">
             <h3>Hand over the truth</h3>
-            <p>Update ROADMAP and HANDOVER to match what actually landed. The rc.1 CLI then keeps the next task bound to the correct repository and revision.</p>
+            <p>Update ROADMAP and HANDOVER to match what actually landed. The CLI then keeps the next task bound to the correct repository and revision.</p>
           </div>
         </li>
       </ol>
@@ -252,14 +252,14 @@ ok -C . next</code></pre>
 
     <section id="console-access">
       <h2>Get started</h2>
-      <p>This site is <strong>informational</strong> and does not run Overseer. Install the reviewed prerelease, initialize an authorized repository, then use the governance loop with the agent tools and reviewers you already trust.</p>
+      <p>This site is <strong>informational</strong> and does not run Overseer. The kit includes a CLI, local browser app, desktop launcher, policies, review and verification tools. Manual acceptance applies to the pinned source described in the delivery record; later development changes require their own assessment.</p>
 
       <article class="path-card path-preferred" id="path-1">
-        <h3>Path 1 — Install and initialize <span class="path-badge">start here</span></h3>
+        <h3>Path 1 — Read the manual source guide <span class="path-badge">start here</span></h3>
         <ol>
-          <li>Follow the reviewed <strong>v1.0.0-rc.1</strong> <code>INSTALL-AND-ROLLBACK.md</code> guide.</li>
-          <li>Set <code>PROJECT_ROOT</code> to an existing <code>Git</code> checkout you are authorized to initialize.</li>
-          <li>Run <code>./cli/ok</code> with <code>init --vcs git</code> and the required <code>repository name and context</code>. Existing ROADMAP and HANDOVER files are preserved.</li>
+          <li>Read the <a href="source.html">manual source delivery guide</a> and its exact accepted snapshot.</li>
+          <li>Existing-project installation remains on hold pending a named target, backups and a guarded rollback plan.</li>
+          <li>For an already initialized project, select its physical root and lane before using its bound <code>ok next --lane product</code> reader.</li>
           <li>Use the repository-bound launcher to inspect status and carry the reviewed next task between sessions.</li>
         </ol>
         <p class="cta-honesty">Git-only is a complete ongoing mode. The governance workflow does not require Muse, a hosted service, or a new agent product.</p>
@@ -269,7 +269,7 @@ ok -C . next</code></pre>
         <h3>Path 2 — Freeze and review the <code>plan</code></h3>
         <ol>
           <li>Write the goal, scope, phases, outputs, and acceptance evidence in <code>ROADMAP</code>.</li>
-          <li>Freeze the plan with the <a href="https://github.com/aaronrene/overseer-kit/blob/main/README.md#the-governance-loop" id="local-console-loopback">governance loop</a>, then give it to a separate agent chat or human reviewer.</li>
+          <li>Freeze the plan with the <a href="https://github.com/aaronrene/overseer-kit/blob/main/README.md#everyday-workflow" id="local-console-loopback">governance loop</a>, then give it to a separate agent chat or human reviewer.</li>
           <li>Resolve <code>cited findings</code> and <code>re-review</code> until the plan is safe to treat as build input.</li>
           <li>Record the accepted state so later phases do not silently reinterpret it.</li>
         </ol>
@@ -283,9 +283,9 @@ ok -C . next</code></pre>
         </ol>
       </article>
 
-      <p class="bound-honesty"><em>Overseer supplies the rails and durable state. It does not run agents, appoint the independent reviewer, decide that work is good, or merge code.</em></p>
+      <p class="bound-honesty"><em>Overseer supplies the workflow and durable state. It does not run agents or appoint the independent reviewer. Review judgment stays with your chosen reviewer; PR landing requires an explicit authorized command. This website performs neither action.</em></p>
       <p>Operator detail:
-        <a href="https://github.com/aaronrene/overseer-kit/releases/download/v1.0.0-rc.1/INSTALL-AND-ROLLBACK.md">Installation and rollback</a>
+        <a href="https://github.com/aaronrene/overseer-kit/releases/download/v1.0.0-rc.1/INSTALL-AND-ROLLBACK.md">Historical rc.1 installation and rollback</a>
         · Release index: <a href="https://github.com/aaronrene/overseer-kit/releases/tag/v1.0.0-rc.1">v1.0.0-rc.1</a>
         · Git guide:
         <a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/GIT-ONLY-QUICKSTART.md">Git-only quickstart</a></p>
@@ -310,7 +310,7 @@ ok -C . next</code></pre>
 
     <section id="next-steps">
       <h2>Where to go next</h2>
-      <p>This site explains the governance workflow and the bounded rc.1 CLI that carries its handoffs. Planning, building, and review stay in your existing tools.</p>
+      <p>This site explains the full kit and its explicit manual workflow. Automatic Cursor events remain unverified, vendor execution protection unqualified, and shared-chat behavior unresolved.</p>
       <div class="card-grid suite-grid">
         <div class="card">
           <h3>GitHub</h3>
@@ -324,8 +324,8 @@ ok -C . next</code></pre>
         </div>
         <div class="card">
           <h3>Release</h3>
-          <p>After reviewing <code>v1.0.0-rc.1</code>:
-            <a href="https://github.com/aaronrene/overseer-kit/releases/tag/v1.0.0-rc.1">Open the release</a>
+          <p>Historical bounded CLI <code>v1.0.0-rc.1</code>:
+            <a href="https://github.com/aaronrene/overseer-kit/releases/tag/v1.0.0-rc.1">Open the historical prerelease</a>
             — see <a href="#console-access">Get started</a>.</p>
         </div>
         <div class="card">

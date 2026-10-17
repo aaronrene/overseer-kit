@@ -1,0 +1,292 @@
+{
+  "kind": "FPR-5 new disposable integrated pilot author acceptance",
+  "full_product_acceptance": false,
+  "independent_adjudication": false,
+  "release_ready": false,
+  "local_workflow_passed": true,
+  "complete_integrated_pilot_acceptance": false,
+  "reason_incomplete": "Selected Cursor3.24.18 actual sessionStart/stop delivery remains blocked; synthetic invocations do not substitute. Native GUI/platform result is separately owned and not claimed here.",
+  "source": {
+    "archive": "/private/tmp/overseer-fpr5-acceptance-preparation-w580lsq4/source.tar.gz",
+    "archive_sha256": "de8cd9222df8cf6c5fe3f4d858e561018baa0dc6d61df1f0ac423928adaed47f",
+    "commit": "2e8ec694def9be4a0faa4a994bf2fff3f212ab23",
+    "runtime": {
+      "root": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/installation",
+      "version": "1.0.0.dev1",
+      "sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774"
+    },
+    "archive_files": 1483
+  },
+  "project": {
+    "root": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+    "repository": {
+      "name": "overseer-fpr5-integrated-pilot-20261015",
+      "root_relative_docs": "docs",
+      "id": "20dd0872-c7a4-5fdf-81a5-27eefa0acc2e",
+      "root": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project"
+    },
+    "branch": "pilot/fpr5-integrated-20261015",
+    "head": "4e394520262e1447ae8b5415ae36dc75dc05197e",
+    "lanes": [
+      "product",
+      "validation"
+    ],
+    "next_sha256": "489ded7be7f530ea242e1ed5dbdce96037ec752cc63c9359eaa778aa483ba055",
+    "clean": true,
+    "remotes": []
+  },
+  "passed_local_operations": [
+    "Fresh manifest-verified installation with offline exact pinned Python3.14 dependencies",
+    "Explicit full legacy migration; six owner files bytes/modes/mtime preserved and all selected settings retained; byte-exact backup and idempotent resume",
+    "Bound initialization with product+validation lanes and hook installation solely in new disposable target",
+    "Synthetic start/end adapter output equals manual canonical NEXT and remains read-only (not real host delivery)",
+    "Status and sync preview, paired all-lane governance local commit with NEXT bytes preserved",
+    "Explicit digest-CAS canonical publications, actual Check OK and local mechanical review",
+    "Explicit human review mode returns blocked/escalation code8 as designed; no invented human or independent pass",
+    "Confined owner-preservation verification executes and marks manifest; accurate coordinator ledger records append/show/chain verification",
+    "Real localhost app/desktop child health, authentication refusal, both-lane canonical output parity, status/docs/ledger readback and shutdown",
+    "Hosted localhost viewer uses in-memory fake upstream, disallows foreign repository and writes, marks projected NEXT nonactionable",
+    "Actual PR landing dispatcher with fake gh executable, bound repository and green checks; dry-run excludes merge, remote config removed",
+    "Local closing commit, clean final bound readback",
+    "Quiescent repaired-to-parent-runtime rollback with exact295 parent runtime hashes, mismatch refusal, explicit narrow refresh, preserved9 project files and identity; exact current source/config/lock return with clean final readback and resource-tree verification"
+  ],
+  "raw_attempts_preserved": [
+    {
+      "evidence": "evidence/01-migration.json",
+      "explanation": "Driver expected status success before initial NEXT; migration correctly preserved missing NEXT. Explicit absent-CAS publication followed."
+    },
+    {
+      "evidence": "evidence/01b-publish-start.json",
+      "explanation": "Writer correctly refused reserved Lane binding line in pilot prose; corrected prose uses structured lane context."
+    },
+    {
+      "evidence": "evidence/01c-publish-start.json",
+      "explanation": "ENOSPC truncated this evidence. Other agent reclaimed only new rebuildable native-target intermediates; subsequent evidence uses a new basename and250MiB floor."
+    },
+    {
+      "evidence": "evidence/02-workflow.json",
+      "explanation": "Human-mode mechanical review returned expected blocked/escalation exit8; initial driver expected only generic nonpass codes. Outcome retained, then remaining local steps continued."
+    },
+    {
+      "evidence": "evidence/03-surfaces.json",
+      "explanation": "Default sandbox denied loopback bind; separately approved bounded localhost escalation followed."
+    },
+    {
+      "evidence": "evidence/03b-surfaces-loopback.json",
+      "explanation": "Driver used GET for ledger verify and received404. Documented POST+CSRF succeeded in03c; no product change."
+    }
+  ],
+  "host_evidence": {
+    "root": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22",
+    "cursor_version": "3.24.18",
+    "first_result": "cursor-result.json",
+    "retry_result": "cursor-r2/cursor-result.json",
+    "retry_observations": "cursor-r2/hook-observation-index.json",
+    "status": "BLOCKED",
+    "observed": "Actual host recognized sessionStart and stop configuration and emitted workspaceOpen; no required sessionStart or stop delivery observed."
+  },
+  "outstanding": [
+    "Actual automatic start/end delivery for selected Cursor3.24.18",
+    "Separately selected native GUI/platform acceptance evidence",
+    "Complete Python3.11 matrix outcome owned by coordinator; no claim here",
+    "All required Git/Muse/mirror matrix evidence remains required; Git-only pilot does not waive it",
+    "One final independent adjudication after complete source/evidence, then separate owner release decision"
+  ],
+  "constraints": {
+    "external_requests": 0,
+    "real_consumers_accessed": false,
+    "live_delivery_export": false,
+    "fetch_push": false,
+    "main_merge": false,
+    "signing_tags_release_deployment": false,
+    "older_pilot_worktrees_muse_history_touched": false,
+    "main_source_changed_by_pilot": false
+  },
+  "evidence_records": [
+    {
+      "path": "evidence/00-bootstrap.json",
+      "json_valid": true,
+      "command_count": 5,
+      "nonzero_commands": []
+    },
+    {
+      "path": "evidence/01-migration.json",
+      "json_valid": true,
+      "command_count": 11,
+      "nonzero_commands": [
+        {
+          "argv": [
+            "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.overseer/bin/ok",
+            "-C",
+            "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+            "status",
+            "--json"
+          ],
+          "exit_code": 1
+        }
+      ]
+    },
+    {
+      "path": "evidence/01b-publish-start.json",
+      "json_valid": true,
+      "command_count": 2,
+      "nonzero_commands": [
+        {
+          "argv": [
+            "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.overseer/bin/ok",
+            "-C",
+            "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+            "status",
+            "--json"
+          ],
+          "exit_code": 1
+        },
+        {
+          "argv": [
+            "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.overseer/bin/ok",
+            "-C",
+            "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+            "next-write",
+            "--repo-id",
+            "20dd0872-c7a4-5fdf-81a5-27eefa0acc2e",
+            "--branch",
+            "pilot/fpr5-integrated-20261015",
+            "--expect-next",
+            "absent",
+            "--batch-file",
+            ".overseer/local/PILOT-START-batch.json",
+            "--json"
+          ],
+          "exit_code": 2
+        }
+      ]
+    },
+    {
+      "path": "evidence/01c-publish-start.json",
+      "json_valid": true,
+      "command_count": 0,
+      "nonzero_commands": []
+    },
+    {
+      "path": "evidence/01d-publish-start.json",
+      "json_valid": true,
+      "command_count": 7,
+      "nonzero_commands": [
+        {
+          "argv": [
+            "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.overseer/bin/ok",
+            "-C",
+            "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+            "status",
+            "--json"
+          ],
+          "exit_code": 1
+        }
+      ]
+    },
+    {
+      "path": "evidence/02-workflow.json",
+      "json_valid": true,
+      "command_count": 12,
+      "nonzero_commands": [
+        {
+          "argv": [
+            "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.overseer/bin/ok",
+            "-C",
+            "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+            "review",
+            "--freeze",
+            "docs/reviews/pilot-local.md",
+            "--mode",
+            "human",
+            "--no-stamp",
+            "--json"
+          ],
+          "exit_code": 8
+        }
+      ]
+    },
+    {
+      "path": "evidence/02b-workflow.json",
+      "json_valid": true,
+      "command_count": 9,
+      "nonzero_commands": [
+        {
+          "argv": [
+            "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.overseer/bin/ok",
+            "-C",
+            "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+            "honesty-status",
+            "--hook",
+            "handoff",
+            "--artifact",
+            "docs/reviews/pilot-local.md",
+            "--json"
+          ],
+          "exit_code": 20
+        }
+      ]
+    },
+    {
+      "path": "evidence/03-surfaces.json",
+      "json_valid": true,
+      "command_count": 0,
+      "nonzero_commands": []
+    },
+    {
+      "path": "evidence/03b-surfaces-loopback.json",
+      "json_valid": true,
+      "command_count": 3,
+      "nonzero_commands": []
+    },
+    {
+      "path": "evidence/03c-surfaces-correct-method.json",
+      "json_valid": true,
+      "command_count": 3,
+      "nonzero_commands": []
+    },
+    {
+      "path": "evidence/04-simulated-landing-close.json",
+      "json_valid": true,
+      "command_count": 17,
+      "nonzero_commands": []
+    },
+    {
+      "path": "evidence/05-rollback.json",
+      "json_valid": true,
+      "command_count": 25,
+      "nonzero_commands": [
+        {
+          "argv": [
+            "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.overseer/bin/ok",
+            "-C",
+            "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+            "next",
+            "--lane",
+            "product",
+            "--json"
+          ],
+          "exit_code": 2
+        },
+        {
+          "argv": [
+            "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.overseer/bin/ok",
+            "-C",
+            "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+            "next",
+            "--lane",
+            "product",
+            "--json"
+          ],
+          "exit_code": 2
+        }
+      ]
+    },
+    {
+      "path": "evidence/06-final-readback.json",
+      "json_valid": true,
+      "command_count": 8,
+      "nonzero_commands": []
+    }
+  ]
+}

@@ -144,3 +144,25 @@ def test_relative_bound_launcher_from_child_directory(pair):
     a,b=pair
     (a/'child').mkdir()
     assert_selected(command('next',cwd=a/'child',executable='../.overseer/bin/ok'),a,b)
+
+
+@pytest.mark.parametrize('selector', ['--rep', '--bound-r'])
+def test_abbreviated_selectors_cannot_override_binding(pair, selector):
+    a, b = pair
+    for executable in (KIT/'cli/ok', a/'.overseer/bin/ok'):
+        result = command('-C', a, selector, b, 'next', cwd=a, executable=executable)
+        assert result.returncode != 0 and not result.stdout
+
+
+def test_complete_runtime_copy_cannot_select_original_repository(pair, tmp_path):
+    a, b = pair
+    from cli.v1 import RUNTIME_FILES
+    copied = tmp_path/'copied-installation'
+    for relative in RUNTIME_FILES:
+        dest = copied/relative
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(KIT/relative, dest)
+    # Even sharing the original venv cannot create an implicit runtime fallback.
+    (copied/'.venv').symlink_to(KIT/'.venv', target_is_directory=True)
+    result = command('-C', b, 'next', cwd=a, executable=copied/'cli/ok')
+    assert result.returncode != 0 and not result.stdout

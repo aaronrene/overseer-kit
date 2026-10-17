@@ -1,44 +1,31 @@
 ---
 name: print-next
 description: >-
-  Print the current paste-ready NEXT fence from disk after updating living
-  handover/roadmap. Use ok next (or Read the handover) — never paste from
-  memory or an open tab. Required on every closeout that touches those docs.
+  Display canonical NEXT through the repository-bound launcher at session entry
+  and after the final local handoff/closing commit. This is an instruction-
+  triggered bookend; it does not establish native host lifecycle delivery.
 ---
 
+# Print canonical NEXT at entry and closeout
 
-> **Historical pre-reset product.** This document describes the pre-reset historical product.
-> Its legacy commands are not exposed by the bounded-v1 entrypoint. Do not use it
-> as current onboarding. See the [root README](../../../README.md) and [current docs index](../../../docs/README.md).
+Before acting at session entry, verify the physical repository root and run its
+bound `.overseer/bin/ok -C ROOT next`, using the actual absolute root in both
+paths. At closeout repeat that command after the accepted NEXT publication and
+final local closing commit. Include its validated `CURRENT NEXT — paste this`
+fence verbatim in the final reply when it describes the pending task.
 
+Use the exact bound command in `.overseer/instructions/bookends.md` where
+installed. Never resolve `ok` through PATH, another checkout or an environment
+override. If the command refuses, report the refusal without an actionable
+fallback; a previous chat, open tab or HANDOVER fence cannot establish freshness.
 
-# Print NEXT (closeout)
+Only canonical `docs/NEXT.md` supplies the prompt. Do not extract a task from
+HANDOVER/ROADMAP, run governance-sync to regenerate one, or publish from a hook.
+Only explicitly accepted `next-write` text with the expected prior digest may
+replace NEXT. Summary updates and workspace relay checks are separate work.
 
-After **any** update to the living handover and/or roadmap, the agent’s **FINAL reply**
-MUST include the full paste-ready fence under heading `## CURRENT NEXT — paste this`.
-Bytes MUST come from read from disk after write (run `ok next`, or Read the
-handover file and extract the `### Paste-ready prompt` fence). Do **not** paste from
-memory, from an earlier chat, or from an unsaved editor buffer. Session incomplete without it.
-
-Prefer native editor tools (Cursor StrReplace/Write; Claude Code Edit) for
-handover/roadmap so the host is more likely to refresh an open tab. That preference is
-best-effort and does **not** replace `ok next`. Host niceties do not guarantee an accurate open tab.
-
-## Fast path
-
-```bash
-ok next
-# synonym:
-ok governance-sync --print-next
-```
-
-## Source of truth order
-
-1. `ok next` / the printed CURRENT NEXT fence (this session, after the write)
-2. The handover file on disk at the config-driven path
-3. Never whatever the open tab happens to show
-
-## Not this command
-
-`ok workspace check-next` is constellation relay freshness (exit 35). Do **not** alias
-it to `ok next`.
+When these instructions are adopted in Claude Code skills or Codex AGENTS,
+label the output **instruction-triggered bookend**. They establish no native
+lifecycle API or automatic host support. Generated Cursor `sessionStart`/`stop`
+adapters use the same canonical reader; FPR-1 verifies fixture event handling,
+with named client delivery validation deferred to FPR-4.

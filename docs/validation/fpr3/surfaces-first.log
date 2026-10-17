@@ -1,0 +1,92 @@
+F.FF.                                                                    [100%]
+=================================== FAILURES ===================================
+__________ test_loopback_real_service_auth_csrf_origin_next_and_paths __________
+
+repo = PosixPath('/private/tmp/overseer-fpr3-surfaces-1/test_loopback_real_service_aut0/similar-kit')
+
+    def test_loopback_real_service_auth_csrf_origin_next_and_paths(repo):
+        from tools.app.server import build_server_config,start_app_server
+>       server=start_app_server(build_server_config(repo_root=repo,bind='127.0.0.1',port=0,ctx=bound_ctx(repo),
+            session_credential='session-fixture',csrf_token='csrf-fixture'))
+
+tests/fpr3/test_surfaces.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tools/app/server.py:291: in start_app_server
+    httpd = AppHTTPServer(config)
+            ^^^^^^^^^^^^^^^^^^^^^
+tools/app/server.py:61: in __init__
+    super().__init__((config.bind, config.port), AppRequestHandler)
+/opt/homebrew/Cellar/python@3.14/3.14.4_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socketserver.py:457: in __init__
+    self.server_bind()
+/opt/homebrew/Cellar/python@3.14/3.14.4_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/server.py:148: in server_bind
+    socketserver.TCPServer.server_bind(self)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <tools.app.server.AppHTTPServer object at 0x10630d400>
+
+    def server_bind(self):
+        """Called by constructor to bind the socket.
+    
+        May be overridden.
+    
+        """
+        if self.allow_reuse_address and hasattr(socket, "SO_REUSEADDR"):
+            self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        # Since Linux 6.12.9, SO_REUSEPORT is not allowed
+        # on other address families than AF_INET/AF_INET6.
+        if (
+            self.allow_reuse_port and hasattr(socket, "SO_REUSEPORT")
+            and self.address_family in (socket.AF_INET, socket.AF_INET6)
+        ):
+            self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
+>       self.socket.bind(self.server_address)
+E       PermissionError: [Errno 1] Operation not permitted
+
+/opt/homebrew/Cellar/python@3.14/3.14.4_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socketserver.py:478: PermissionError
+__________ test_hosted_allowlists_canonical_display_and_write_refusal __________
+
+    def test_hosted_allowlists_canonical_display_and_write_refusal():
+        from tests.fixtures.hosted_dashboard import FixtureUpstream
+        from tools.hosted_dashboard.config import parse_hosted_dashboard_config
+        from tools.hosted_dashboard.adapters.github import GitHubAdapters
+        from tools.hosted_dashboard.handlers import DashboardService
+        from tools.hosted_dashboard.http_client import UpstreamClient
+        from tools.hosted_dashboard.server import HostedServerConfig,start_hosted_server
+        fixture=FixtureUpstream();fixture.seed_kit_repo();fixture.put_file('acme','kit-demo','docs/NEXT.md','historical remote bytes')
+        config=parse_hosted_dashboard_config({'enabled':True,'org_allowlist':['acme/kit-demo']})
+        service=DashboardService(GitHubAdapters(UpstreamClient(token=None,transport=fixture.transport)),config)
+        before=len(fixture.calls)
+        refused=service.next('foreign','kit-demo',{})
+        assert refused.http_status==403 and len(fixture.calls)==before
+        result=service.next('acme','kit-demo',{})
+        assert result.ok and result.result['actionable'] is False
+        assert result.result['path']=='docs/NEXT.md'
+        with socket.socket() as sock:
+>           sock.bind(('127.0.0.1',0));port=sock.getsockname()[1]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           PermissionError: [Errno 1] Operation not permitted
+
+tests/fpr3/test_surfaces.py:90: PermissionError
+___________ test_desktop_real_launcher_identity_and_ambient_refusal ____________
+
+repo = PosixPath('/private/tmp/overseer-fpr3-surfaces-1/test_desktop_real_launcher_ide0/similar-kit')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x106390050>
+tmp_path = PosixPath('/private/tmp/overseer-fpr3-surfaces-1/test_desktop_real_launcher_ide0')
+
+    def test_desktop_real_launcher_identity_and_ambient_refusal(repo,monkeypatch,tmp_path):
+        from tools.desktop.launcher import DesktopLauncher,resolve_kit_root,resolve_repo_root,build_launch_argv
+        monkeypatch.setenv('OVERSEER_KIT_ROOT',str(tmp_path/'foreign'))
+        assert resolve_kit_root()==KIT
+        with pytest.raises(ValueError):resolve_repo_root(kit=KIT)
+        with pytest.raises(ValueError):build_launch_argv(kit_root_path=tmp_path,repo_root=repo)
+        with socket.socket() as sock:
+>           sock.bind(('127.0.0.1',0));port=sock.getsockname()[1]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           PermissionError: [Errno 1] Operation not permitted
+
+tests/fpr3/test_surfaces.py:106: PermissionError
+=========================== short test summary info ============================
+FAILED tests/fpr3/test_surfaces.py::test_loopback_real_service_auth_csrf_origin_next_and_paths
+FAILED tests/fpr3/test_surfaces.py::test_hosted_allowlists_canonical_display_and_write_refusal
+FAILED tests/fpr3/test_surfaces.py::test_desktop_real_launcher_identity_and_ambient_refusal
+3 failed, 2 passed in 17.38s

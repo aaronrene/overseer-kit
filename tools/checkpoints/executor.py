@@ -41,6 +41,14 @@ class SubprocessScriptExecutor:
         cwd: str,
         env: dict[str, str] | None = None,
     ) -> ExecResult:
+        from cli.product_boundary import active
+        boundary = active()
+        if boundary is not None:
+            boundary.recheck()
+            if not boundary.writable or cwd != str(boundary.context.root):
+                from cli.v1_io import Refusal
+                raise Refusal('script_execution_requires_explicit_bound_mutation')
+            boundary.watch(argv[0])
         merged_env = os.environ.copy()
         if env:
             merged_env.update(env)
@@ -49,6 +57,7 @@ class SubprocessScriptExecutor:
             cwd=cwd,
             env=merged_env,
             capture_output=True,
+            timeout=300,
         )
         return ExecResult(
             stdout=completed.stdout,

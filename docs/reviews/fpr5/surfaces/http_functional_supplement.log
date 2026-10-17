@@ -1,0 +1,20 @@
+{
+  "result": "FAIL",
+  "checks": [
+    {
+      "name": "CLI init succeeds",
+      "passed": true
+    }
+  ],
+  "request_count": 0,
+  "error": {
+    "type": "TypeError",
+    "message": "string indices must be integers, not 'str'",
+    "traceback": "Traceback (most recent call last):\n  File \"/private/tmp/overseer-fpr5-review.jTlE9P/surfaces/http_functional_supplement.py\", line 36, in <module>\n    check('configured review provider is local',c['freeze_contract']['reviewer']['provider']=='local')\n                                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^\nTypeError: string indices must be integers, not 'str'\n"
+  }
+}
+Traceback (most recent call last):
+  File "/private/tmp/overseer-fpr5-review.jTlE9P/surfaces/http_functional_supplement.py", line 36, in <module>
+    check('configured review provider is local',c['freeze_contract']['reviewer']['provider']=='local')
+                                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+TypeError: string indices must be integers, not 'str'

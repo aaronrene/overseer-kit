@@ -1,0 +1,336 @@
+{
+  ".": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146193535446,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  ".gitignore": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146107219601,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1,
+    "sha256": "684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1"
+  },
+  ".lock": {
+    "mode": 438,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146193367985,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "CACHEDIR.TAG": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146107135266,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 43,
+    "sha256": "5953156d7e0c564a427251316eaf26f8870e6483ae2197f916b630e4f93e31ae"
+  },
+  "bin": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146108961929,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "bin/activate": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146108413543,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 4121,
+    "sha256": "a79b1943fd63becf76976d56c2bc97c18de611fb8dcb08d661fb8d94708d683a"
+  },
+  "bin/activate.bat": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146108780550,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 2701,
+    "sha256": "80f20e5abbe08a4f06809e1c82b44b7f84c2efba678a13429e221345dd4b22aa"
+  },
+  "bin/activate.csh": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146108519336,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 2651,
+    "sha256": "a9cafb0acc4a05de7d3ac8ff9e2fb2b9d8b9be668108ccc95efe49d32701ff83"
+  },
+  "bin/activate.fish": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146108590796,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 4362,
+    "sha256": "06b0a8897158e27520ee041008718db01d9f9beb6ca1562e81654f22c4718888"
+  },
+  "bin/activate.nu": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146108655422,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 3977,
+    "sha256": "5907112979710421baf9a06883ad52a9cca5b017f9308703847dd1101ed41ec3"
+  },
+  "bin/activate.ps1": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146108719757,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 2764,
+    "sha256": "5f4d6ebf3a7ef28fb3ef89a6d8f02b47d5c2d225e361c41428bb9960410ae4ab"
+  },
+  "bin/activate_this.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146108992846,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 2383,
+    "sha256": "c1b98392cec6efb935214e1bb1f24b0df5338969b4401d3c8297ee571c6d45b4"
+  },
+  "bin/deactivate.bat": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146108849802,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1730,
+    "sha256": "13ea86073a9ee43a66e3549312599dd47ff315758b4ca5a0406faf041fb82300"
+  },
+  "bin/pydoc.bat": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146108920636,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 1219,
+    "sha256": "09f9608d478fa48a9e49af8f413cfeaab47773effd185433088b7688ce75890e"
+  },
+  "bin/python": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146108158454,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "symlink",
+    "target": "/opt/homebrew/opt/python@3.14/bin/python3.14"
+  },
+  "bin/python3": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146108201288,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "symlink",
+    "target": "python"
+  },
+  "bin/python3.14": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146108240872,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "symlink",
+    "target": "python"
+  },
+  "lib": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146109158433,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146109209142,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471225420743991,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/PyYAML-6.0.1.dist-info": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471225402758582,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "symlink",
+    "target": "/opt/homebrew/lib/python3.10/site-packages/PyYAML-6.0.1.dist-info"
+  },
+  "lib/python3.14/site-packages/__pycache__": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471225420977079,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "directory"
+  },
+  "lib/python3.14/site-packages/__pycache__/_virtualenv.cpython-314.pyc": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471225420894328,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 5048,
+    "sha256": "d005334bf88bb23ba05390f5c91307d6da2958bc4cd5c98e70dae2b50d9c55f6"
+  },
+  "lib/python3.14/site-packages/_virtualenv.pth": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146109379271,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 18,
+    "sha256": "69ac3d8f27e679c81b94ab30b3b56e9cd138219b1ba94a1fa3606d5a76a1433d"
+  },
+  "lib/python3.14/site-packages/_virtualenv.py": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146109294686,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 5246,
+    "sha256": "cfb3db86aaa53bb62b5ff764970bec2d71c9228590a0ebec57f6ec926cc0bf1a"
+  },
+  "lib/python3.14/site-packages/yaml": {
+    "mode": 493,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471225400857335,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "symlink",
+    "target": "/opt/homebrew/lib/python3.10/site-packages/yaml"
+  },
+  "pyvenv.cfg": {
+    "mode": 420,
+    "uid": 502,
+    "gid": 20,
+    "mtime_ns": 1791471146109077306,
+    "flags": 0,
+    "xattrs": {
+      "com.apple.provenance": "AQIAUJQJShW2R6M="
+    },
+    "kind": "file",
+    "bytes": 138,
+    "sha256": "9e51a850ef66bcdab54205b4642aeb6f6f97184988708503d76ad3b2bac6f491"
+  }
+}

@@ -56,6 +56,8 @@ def compact_handover_change_log(
             reason="change_log_anchor_missing",
         )
 
+    from cli.product_boundary import watch
+    watch(handover_path)
     text = handover_path.read_text(encoding="utf-8")
     region = _extract_region(text)
     if region is None:
@@ -106,17 +108,19 @@ def compact_handover_change_log(
             wrote=False,
         )
 
-    archive_path.parent.mkdir(parents=True, exist_ok=True)
+    from cli.atomic import atomic_write_text
+    from cli.product_boundary import watch
+    watch(archive_path)
     if archive_path.is_file():
         existing = archive_path.read_text(encoding="utf-8")
         if existing and not existing.endswith("\n"):
             existing += "\n"
-        archive_path.write_text(existing + archive_append, encoding="utf-8")
+        atomic_write_text(archive_path, existing + archive_append)
     else:
         title = f"# Archived handover change log — {config.repo.name}\n\n"
-        archive_path.write_text(title + archive_append, encoding="utf-8")
+        atomic_write_text(archive_path, title + archive_append)
 
-    handover_path.write_text(new_handover, encoding="utf-8")
+    atomic_write_text(handover_path, new_handover)
     return CompactReport(
         ok=True,
         compacted=compacted_count,

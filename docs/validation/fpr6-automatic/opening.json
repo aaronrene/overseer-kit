@@ -1,0 +1,44 @@
+{
+  "repository": {
+    "name": "overseer-kit",
+    "id": "6988dc4a-5f22-454b-9d68-ac5905b383bf",
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "root_relative_docs": "docs"
+  },
+  "branch": "feat/overseer-v1-recovery-20261014",
+  "head": "dd04b29789f1d4d2b5b795a0eedc19eeda33bf3b",
+  "runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774"
+  },
+  "next": {
+    "schema": 1,
+    "repo_id": "6988dc4a-5f22-454b-9d68-ac5905b383bf",
+    "repo_root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "branch": "feat/overseer-v1-recovery-20261014",
+    "base_head": "680c34bcba8fef1d1922570caa4c895151d9d44a",
+    "lane": "product",
+    "model": "GPT-6 Astra",
+    "action_id": "OVERSEER-FPR6-AUTOMATIC-COMPLETION-1",
+    "action_kind": "implement",
+    "prompt_sha256": "614496a9c1cb1864bb3f252060a9a5f7ae7893a451be2f9ed29f5cbc4d1bb3e9"
+  },
+  "next_sha256": "7e95a4cc30cd289fbfaaafc17e999c4a003bc4cd8e5903c9fd5e0bf2625eab60",
+  "python": "3.14.4 (main, Apr  7 2026, 13:13:20) [Clang 17.0.0 (clang-1700.6.4.2)]",
+  "platform": "macOS-15.7.2-arm64-arm-64bit-Mach-O",
+  "physical_root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+  "git_status": "",
+  "before": {
+    ".overseer/config.yaml": "d3461fba4c20d84f506c0cad0cf0ba110eba9114d39db1e1abd0c111c08e1e14",
+    ".overseer/version.lock": "388addd5a951858d576919e14c808ead9be5033e0e8db2500f4151aa1986b32f",
+    "docs/NEXT.md": "7e95a4cc30cd289fbfaaafc17e999c4a003bc4cd8e5903c9fd5e0bf2625eab60",
+    "cli/product_bookends.py": "0d4aa41b0234da77f45b767e6ab8a7aafaaa8da2aef027bfe7f3863b3b04ce04"
+  },
+  "hooks": {
+    ".cursor/hooks.json": "2f3f0de72a829aa7ad28055c884127a5db5660c5c78556ac7b8aea8dd2e2ac0e",
+    ".cursor/hooks/README.md": "48e9ee363c5a2292d49765118f54eedac53ec788848ed53774812f55f897a31a",
+    ".cursor/hooks/session-end-closeout.sh": "af4f2a4ae24cec4e375085e96d5144a7471457460206dbeba6d7a525ea00279a",
+    ".cursor/hooks/session-start-next.sh": "af4f2a4ae24cec4e375085e96d5144a7471457460206dbeba6d7a525ea00279a"
+  }
+}

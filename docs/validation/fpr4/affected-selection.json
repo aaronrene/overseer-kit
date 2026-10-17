@@ -1,0 +1,17 @@
+{
+  "selected": [
+    "tests/fpr4/test_init_preservation.py",
+    "tests/fpr1/test_bookends.py::test_generated_commands_handle_spaces_and_do_not_overwrite_host_instructions",
+    "tests/muse/test_handoffs.py::test_committed_git_baseline_import_isolated_from_owner_edits",
+    "tests/muse/test_product.py::test_shared_native_stage_is_readonly_and_visible_in_linked_checkout",
+    "tests/fpr4/test_native_linked_footprint.py",
+    "tests/fpr4/test_mirror_full_footprint.py",
+    "tests/unit/test_templating.py",
+    "tests/fpr4/test_disposition_contracts.py::test_app_installation_copy_uses_explicit_root_and_current_source_distribution",
+    "tests/fpr4/test_standalone_dependencies.py",
+    "tests/unit/test_skills_footprint.py::test_rendered_templates_include_build_verification_in_dod",
+    "tests/fpr4/test_disposition_contracts.py::test_rendered_mirror_wrapper_uses_bound_launcher_and_literal_arguments",
+    "tests/fpr4/test_disposition_contracts.py::test_installed_orchestrator_preserves_canonical_authority_and_explicit_review_scope"
+  ],
+  "deselected": []
+}

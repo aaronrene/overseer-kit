@@ -7,7 +7,6 @@ import urllib.error
 import urllib.request
 from dataclasses import dataclass
 from typing import Any, Callable
-from urllib.parse import urlparse
 
 from tools.hosted_dashboard.hosts import url_host_allowed
 
@@ -36,12 +35,22 @@ class UpstreamResponse:
 Transport = Callable[[str, str, dict[str, str], float], UpstreamResponse]
 
 
+class _RefuseRedirects(urllib.request.HTTPRedirectHandler):
+    """Never send another request, including to another allowed credential host."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
+
+
 def _default_transport(method: str, url: str, headers: dict[str, str], timeout: float) -> UpstreamResponse:
     if method not in ALLOWED_METHODS:
         raise UpstreamError("method_refused", detail=f"method {method} not allowed")
     request = urllib.request.Request(url, method=method, headers=headers)
     try:
-        with urllib.request.urlopen(request, timeout=timeout) as response:
+        # A private opener cannot inherit ambient redirect handlers. Every 3xx
+        # stays an unsuccessful upstream response; no hop receives credentials.
+        opener = urllib.request.build_opener(_RefuseRedirects())
+        with opener.open(request, timeout=timeout) as response:
             body = response.read() if method == "GET" else b""
             return UpstreamResponse(
                 status=int(response.status),

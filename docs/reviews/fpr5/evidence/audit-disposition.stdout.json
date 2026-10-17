@@ -1,0 +1,128 @@
+{
+  "scope": "Independent read-only evidence reconciliation; no product tests executed and no separate verdict.",
+  "head": "4c62c17cff6c606a5e1ddf565e12353973b3bcad",
+  "runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "bdbfdae4599ca0bd1b096d5ed2c84019df3b83ed24972c202319ea5507cf09ec"
+  },
+  "raw_and_supplemental_runs": [
+    {
+      "name": "combined-final-foundation-v1",
+      "cases": 195,
+      "outcomes": {
+        "passed": 195
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "combined-final-foundation-fpr1",
+      "cases": 118,
+      "outcomes": {
+        "passed": 117,
+        "failed": 1
+      },
+      "exit_code": 1
+    },
+    {
+      "name": "combined-final-surfaces",
+      "cases": 91,
+      "outcomes": {
+        "passed": 91
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "combined-final-native-mirror",
+      "cases": 101,
+      "outcomes": {
+        "passed": 101
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "combined-final-native-other",
+      "cases": 60,
+      "outcomes": {
+        "passed": 60
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "combined-final-retained",
+      "cases": 611,
+      "outcomes": {
+        "passed": 611
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "combined-final-latency",
+      "cases": 31,
+      "outcomes": {
+        "passed": 31
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "combined-final-package",
+      "cases": 1,
+      "outcomes": {
+        "passed": 1
+      },
+      "exit_code": 0
+    },
+    {
+      "name": "import-boundary-final-rerun",
+      "cases": 2,
+      "outcomes": {
+        "passed": 2
+      },
+      "exit_code": 0
+    }
+  ],
+  "passing_current_contract_union": 1209,
+  "historical_rows": 104,
+  "historical_categories": {
+    "missing_path_or_fixture": 9,
+    "sandbox_socket_denial": 68,
+    "other_product_or_test_failure": 11,
+    "launcher_missing_cryptography": 16
+  },
+  "historical_originals_selected": 20,
+  "original_files_verified_against_D_HEAD_disk": 393,
+  "closing_manifests": {
+    "runtime_files": 295,
+    "test_sources": 436,
+    "validation_scripts": 4,
+    "native_sources": 40,
+    "packaging_sources": 8,
+    "requirements": 2
+  },
+  "source_map_entries": 343,
+  "source_map_fpr4_changes": [
+    "cli/v1.py",
+    "cursor/rules/orchestrator.mdc",
+    "scripts/bundle-desktop-kit.sh",
+    "templates/OVERSEER-HANDOVER.template.md",
+    "templates/ROADMAP.template.md",
+    "tools/app/static/index.html"
+  ],
+  "refs_verified": 144,
+  "permitted_ref_delta": {
+    "refs/heads/feat/overseer-v1-recovery-20261014": {
+      "before": "6289d2823184a63e2968d2c5f6a76abab5818368",
+      "after": "4c62c17cff6c606a5e1ddf565e12353973b3bcad"
+    }
+  },
+  "preserved_evidence_hashes": {
+    "docs/reviews/V1-RECOVERY-REVIEW.md": "d6bd4958fcade51005bede1b01efbd29b6c64c3b7c5fdf14c147e133d0fc90e0",
+    "docs/validation/V1-CERTIFICATION.md": "46fe8302c17b86be3669ac38a79aed1ddbc4af58a51d543cbd7a98f76ed9e5f5",
+    "docs/validation/test-results.json": "52d625598e9de2f051e387373f6f4664f43330a4ce1abddc5a4e86babef6fc12",
+    "docs/validation/install-rollback-results.json": "29a34ed755bd1e9d880b83271c7c0c042443ec830c08899de1ab0040fec89dbf",
+    "docs/validation/pilot-results.json": "16c460c68a251f37be92c33a614e96094b6e1ad5eab200df519fd762a787b407",
+    ".cursor/hooks.json": "2f3f0de72a829aa7ad28055c884127a5db5660c5c78556ac7b8aea8dd2e2ac0e"
+  },
+  "manifest_executable_modes_checked": 785,
+  "errors": []
+}

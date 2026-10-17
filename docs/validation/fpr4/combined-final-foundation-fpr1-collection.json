@@ -1,0 +1,950 @@
+{
+  "schema": 1,
+  "pytest": "9.1.1",
+  "cases": [
+    {
+      "nodeid": "tests/fpr1/test_bookends.py::test_both_bookends_equal_manual_canonical_reader_and_write_nothing",
+      "node_sha256": "dfd67a495acafcb858ca9abd237ac259498f35859d47b9bebcf78adb62dd0dbe",
+      "junit": [
+        "tests.fpr1.test_bookends",
+        "test_both_bookends_equal_manual_canonical_reader_and_write_nothing"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_bookends.py::test_event_assertions_refuse_without_action_text[[]-hook_input_invalid]",
+      "node_sha256": "f8fa5e28f7523c7196bc78484e3da6338bd8078f8a88600fdd57c51094ada6fc",
+      "junit": [
+        "tests.fpr1.test_bookends",
+        "test_event_assertions_refuse_without_action_text[[]-hook_input_invalid]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_bookends.py::test_event_assertions_refuse_without_action_text[null-hook_input_invalid]",
+      "node_sha256": "6fe15de127d172093d0908bbda48c4fa240cdc745938c998aaf817f0d3f95ba8",
+      "junit": [
+        "tests.fpr1.test_bookends",
+        "test_event_assertions_refuse_without_action_text[null-hook_input_invalid]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_bookends.py::test_event_assertions_refuse_without_action_text[{-hook_input_invalid]",
+      "node_sha256": "3c1393276a8e79fbea64faa3a6075f5d7f89c54d44b4ac221810ef5f14304fe3",
+      "junit": [
+        "tests.fpr1.test_bookends",
+        "test_event_assertions_refuse_without_action_text[{-hook_input_invalid]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_bookends.py::test_event_assertions_refuse_without_action_text[{\"lane\":\"product\",\"lane\":\"other\"}-hook_duplicate_key]",
+      "node_sha256": "4c8861d4cd619e242125900e5a4b37b889eff8d261d0dd1cb58608239eda2083",
+      "junit": [
+        "tests.fpr1.test_bookends",
+        "test_event_assertions_refuse_without_action_text[{\"lane\":\"product\",\"lane\":\"other\"}-hook_duplicate_key]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_bookends.py::test_event_assertions_refuse_without_action_text[{\"nested\":{\"x\":1,\"x\":2}}-hook_duplicate_key]",
+      "node_sha256": "72e155ae92b3c69f58db7127b951e89750aa1434e6ad3e1d354f00ebe39873bb",
+      "junit": [
+        "tests.fpr1.test_bookends",
+        "test_event_assertions_refuse_without_action_text[{\"nested\":{\"x\":1,\"x\":2}}-hook_duplicate_key]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_bookends.py::test_event_assertions_refuse_without_action_text[{\"value\":NaN}-hook_input_invalid]",
+      "node_sha256": "5fc722f5003d151b5fa3317325e566cd64f7e37fdcfcd0505e4bdc88e6701c25",
+      "junit": [
+        "tests.fpr1.test_bookends",
+        "test_event_assertions_refuse_without_action_text[{\"value\":NaN}-hook_input_invalid]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_bookends.py::test_event_assertions_refuse_without_action_text[{\"workspace_roots\":null}-hook_workspace_mismatch]",
+      "node_sha256": "6bfdeef1500cb8d4065179d1d96b2432db90c051b172508d8f6e34499eabc05d",
+      "junit": [
+        "tests.fpr1.test_bookends",
+        "test_event_assertions_refuse_without_action_text[{\"workspace_roots\":null}-hook_workspace_mismatch]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_bookends.py::test_event_assertions_refuse_without_action_text[{\"workspace_roots\":false}-hook_workspace_mismatch]",
+      "node_sha256": "14de784aad85a34ee6dee2f542969ab51ad29609bc610b160f30cf6065f6f6ca",
+      "junit": [
+        "tests.fpr1.test_bookends",
+        "test_event_assertions_refuse_without_action_text[{\"workspace_roots\":false}-hook_workspace_mismatch]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_bookends.py::test_event_assertions_refuse_without_action_text[{\"workspace_roots\":\"\"}-hook_workspace_mismatch]",
+      "node_sha256": "17018ba000f6dbe2982249c8479fdbc7699c147cf3d699000c204473fea3a3b1",
+      "junit": [
+        "tests.fpr1.test_bookends",
+        "test_event_assertions_refuse_without_action_text[{\"workspace_roots\":\"\"}-hook_workspace_mismatch]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_bookends.py::test_event_assertions_refuse_without_action_text[{\"workspace_roots\":{}}-hook_workspace_mismatch]",
+      "node_sha256": "3f3f4e657accb096bf444cb047bb774895aa0b9ffe6f459309956ffac38ff48f",
+      "junit": [
+        "tests.fpr1.test_bookends",
+        "test_event_assertions_refuse_without_action_text[{\"workspace_roots\":{}}-hook_workspace_mismatch]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_bookends.py::test_event_assertions_refuse_without_action_text[{\"workspace_roots\":[false]}-hook_workspace_mismatch]",
+      "node_sha256": "b2513c7e0f62cf8b12425782ee96816c8e1c62c63e99f49e0b4ea5c1237220c7",
+      "junit": [
+        "tests.fpr1.test_bookends",
+        "test_event_assertions_refuse_without_action_text[{\"workspace_roots\":[false]}-hook_workspace_mismatch]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_bookends.py::test_event_assertions_refuse_without_action_text[{\"workspace_roots\":[\".\"]}-hook_workspace_mismatch]",
+      "node_sha256": "b4bfec6c8e6a263bec0ca5a778d8f2d460e924e4afd64e92f1f8cae21491961e",
+      "junit": [
+        "tests.fpr1.test_bookends",
+        "test_event_assertions_refuse_without_action_text[{\"workspace_roots\":[\".\"]}-hook_workspace_mismatch]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_bookends.py::test_event_assertions_refuse_without_action_text[{\"workspace_root\":\"/\"}-hook_workspace_mismatch]",
+      "node_sha256": "32f2b910b8d68f9de0e60adf3e4288163c592adf015e2178e78e406d384ad350",
+      "junit": [
+        "tests.fpr1.test_bookends",
+        "test_event_assertions_refuse_without_action_text[{\"workspace_root\":\"/\"}-hook_workspace_mismatch]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_bookends.py::test_event_assertions_refuse_without_action_text[{\"repo_root\":\".\"}-hook_workspace_mismatch]",
+      "node_sha256": "fa37fcbcbd62bbfb9fbc9c406172fe95634badcdf23bab66f7d0e26c8158a7bb",
+      "junit": [
+        "tests.fpr1.test_bookends",
+        "test_event_assertions_refuse_without_action_text[{\"repo_root\":\".\"}-hook_workspace_mismatch]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_bookends.py::test_event_assertions_refuse_without_action_text[{\"lane\":\"security\"}-hook_lane_mismatch]",
+      "node_sha256": "067e4910b6708d20014d5501f02a4a2bacb59946ca0e7e0009ed96423faf284d",
+      "junit": [
+        "tests.fpr1.test_bookends",
+        "test_event_assertions_refuse_without_action_text[{\"lane\":\"security\"}-hook_lane_mismatch]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_bookends.py::test_event_assertions_refuse_without_action_text[{\"lane\":null}-hook_lane_mismatch]",
+      "node_sha256": "1cb27279f64b8d70e12ad8f5349f033d7d50f2752011b3563bf9c66debde4e35",
+      "junit": [
+        "tests.fpr1.test_bookends",
+        "test_event_assertions_refuse_without_action_text[{\"lane\":null}-hook_lane_mismatch]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_bookends.py::test_event_assertions_refuse_without_action_text[{\"repo_id\":\"foreign\"}-hook_identity_mismatch]",
+      "node_sha256": "eb93fa05e065a669def941b42d5900eceedc3e51876aca74080c6d8b549b52ee",
+      "junit": [
+        "tests.fpr1.test_bookends",
+        "test_event_assertions_refuse_without_action_text[{\"repo_id\":\"foreign\"}-hook_identity_mismatch]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_bookends.py::test_event_assertions_refuse_without_action_text[{\"hook_event_name\":\"stop\"}-hook_event_mismatch]",
+      "node_sha256": "bc3af851a6178e8d1a702a88a1931656bc24cc20db35864d30dec24099d8affc",
+      "junit": [
+        "tests.fpr1.test_bookends",
+        "test_event_assertions_refuse_without_action_text[{\"hook_event_name\":\"stop\"}-hook_event_mismatch]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_bookends.py::test_event_assertions_refuse_without_action_text[{\"event_name\":\"sessionEnd\"}-hook_event_mismatch]",
+      "node_sha256": "d5d63c271a477007df55f6ce361b5630f0ecaf3b83bb64cc772fa0d75c8abeef",
+      "junit": [
+        "tests.fpr1.test_bookends",
+        "test_event_assertions_refuse_without_action_text[{\"event_name\":\"sessionEnd\"}-hook_event_mismatch]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_bookends.py::test_oversized_and_invalid_utf8_events_refuse",
+      "node_sha256": "4cbbc4664b4d8a5bd226a9118637b9361bd1dba6d90cdf1fa44f57d98ab5c9ea",
+      "junit": [
+        "tests.fpr1.test_bookends",
+        "test_oversized_and_invalid_utf8_events_refuse"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_bookends.py::test_stale_next_refuses_both_bookends_then_accepts_exact_closing_commit[sessionStart]",
+      "node_sha256": "431bd12dc993803f73382ef2ed308fbd4b148249e6eea9221951f56c64657213",
+      "junit": [
+        "tests.fpr1.test_bookends",
+        "test_stale_next_refuses_both_bookends_then_accepts_exact_closing_commit[sessionStart]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_bookends.py::test_stale_next_refuses_both_bookends_then_accepts_exact_closing_commit[stop]",
+      "node_sha256": "1a3fb43d9c1b7e9c5d0b10e531bced19f865120785a6894528c25d8179740962",
+      "junit": [
+        "tests.fpr1.test_bookends",
+        "test_stale_next_refuses_both_bookends_then_accepts_exact_closing_commit[stop]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_bookends.py::test_generated_commands_handle_spaces_and_do_not_overwrite_host_instructions",
+      "node_sha256": "c89e684dbf8c7f9bb9c51d1a4c70d833aacb76540bc3379bc8fec36afa0852b4",
+      "junit": [
+        "tests.fpr1.test_bookends",
+        "test_generated_commands_handle_spaces_and_do_not_overwrite_host_instructions"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_bookends.py::test_copied_or_edited_hook_cannot_become_owned_by_filename",
+      "node_sha256": "747fa0f82f3323719df4e4dbc83c6b1cbf9242786b1b60702a57dc382dfc87cd",
+      "junit": [
+        "tests.fpr1.test_bookends",
+        "test_copied_or_edited_hook_cannot_become_owned_by_filename"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_bookends.py::test_source_dispatcher_cannot_skip_bound_hook_transport",
+      "node_sha256": "42ac7fd8133875955deed117f2a9013c70a785c24fd27e17889cc0ce258b051f",
+      "junit": [
+        "tests.fpr1.test_bookends",
+        "test_source_dispatcher_cannot_skip_bound_hook_transport"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_bookends.py::test_event_field_conflict_and_repeated_roots_are_ambiguous",
+      "node_sha256": "168033e3987db9a6887f663c6394b2f674a2551d5fbb02609682777822540b93",
+      "junit": [
+        "tests.fpr1.test_bookends",
+        "test_event_field_conflict_and_repeated_roots_are_ambiguous"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_bookends.py::test_event_read_bounds_text_stream_and_does_not_accept_surrogates",
+      "node_sha256": "74f3770ce2439291c7192adfa6a580d6e8b43a714d4843f888b5c05b0099c932",
+      "junit": [
+        "tests.fpr1.test_bookends",
+        "test_event_read_bounds_text_stream_and_does_not_accept_surrogates"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_bookends.py::test_legacy_bound_adapter_remains_readable",
+      "node_sha256": "38d9780fd00f607482d4c2c4a1f430887dd10ff6ae15cb6966d5ed7469dfcbea",
+      "junit": [
+        "tests.fpr1.test_bookends",
+        "test_legacy_bound_adapter_remains_readable"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_read_only_legacy_inspection_is_unbound_and_preserves_lanes",
+      "node_sha256": "4c55dbf1e3c226b33f55a79e17ca82bcdf16c700af67fc8a64a61b2e4b383af6",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_read_only_legacy_inspection_is_unbound_and_preserves_lanes"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_every_optional_setting_and_hosted_limits_survive_bind_and_roundtrip",
+      "node_sha256": "14a892a3951c2248aff5bd17df2e902207856dce555a3db3b0f0ec6fc684a2f9",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_every_optional_setting_and_hosted_limits_survive_bind_and_roundtrip"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_bounded_inputs_preserve_exact_bindings_without_runtime_refresh[1-git-bounded-1]",
+      "node_sha256": "c755d0beb50e550c061b8abfd4e113ac5703496f63c49c628ccc0faa55764ed9",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_bounded_inputs_preserve_exact_bindings_without_runtime_refresh[1-git-bounded-1]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_bounded_inputs_preserve_exact_bindings_without_runtime_refresh[2-git-october-2]",
+      "node_sha256": "ae5dab2d4c1393daeec9a160348e67c8a2bcfd882f1e3e3a5baebabb922c610c",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_bounded_inputs_preserve_exact_bindings_without_runtime_refresh[2-git-october-2]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_bounded_inputs_preserve_exact_bindings_without_runtime_refresh[2-muse-october-2]",
+      "node_sha256": "564e36ff4c0d0ccaa27a31b331800c2448e2b4464515727beb3f1f130a750409",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_bounded_inputs_preserve_exact_bindings_without_runtime_refresh[2-muse-october-2]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_contradictions_and_unmapped_settings_refuse[<lambda>-unknown_unmapped_settings0]",
+      "node_sha256": "61a235c3e7589b465d6adea9b4d6cabf185063ac602b0a25c0b0de2dd7efd15f",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_contradictions_and_unmapped_settings_refuse[<lambda>-unknown_unmapped_settings0]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_contradictions_and_unmapped_settings_refuse[<lambda>-unknown_unmapped_settings1]",
+      "node_sha256": "247efea19e3ba13a6b2e68d8b01aee590fc46a9d67dda7067ef50454f3dcb909",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_contradictions_and_unmapped_settings_refuse[<lambda>-unknown_unmapped_settings1]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_contradictions_and_unmapped_settings_refuse[<lambda>-unknown_unmapped_settings2]",
+      "node_sha256": "43ae56f205af8d7f1d5854720c3c3afadd978449d8ff36688c49895f9c753045",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_contradictions_and_unmapped_settings_refuse[<lambda>-unknown_unmapped_settings2]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_contradictions_and_unmapped_settings_refuse[<lambda>-unknown_unmapped_settings3]",
+      "node_sha256": "93f022d0e9e6c889bd931ff8e8bf2549fdaeecec7dce3b34da6c7d928173714b",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_contradictions_and_unmapped_settings_refuse[<lambda>-unknown_unmapped_settings3]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_contradictions_and_unmapped_settings_refuse[<lambda>-unknown_unmapped_settings4]",
+      "node_sha256": "0964621a70077387d2bc1fc8c3604652a4e9768b194bce451062c49a495b7a3a",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_contradictions_and_unmapped_settings_refuse[<lambda>-unknown_unmapped_settings4]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_contradictions_and_unmapped_settings_refuse[<lambda>-git-only regime requires]",
+      "node_sha256": "165c6ace9f593a1f21cfffaec9bd1c9414c04f733fb036c1ea026688fab36f3f",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_contradictions_and_unmapped_settings_refuse[<lambda>-git-only regime requires]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_contradictions_and_unmapped_settings_refuse[<lambda>-must equal]",
+      "node_sha256": "c060a0ea77ea26c6afbdff91a4f1972d5bdad50503a72864e2035dc60118f4f2",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_contradictions_and_unmapped_settings_refuse[<lambda>-must equal]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_contradictions_and_unmapped_settings_refuse[<lambda>-config_document_alias]",
+      "node_sha256": "37c7ce7e9ebba0c3f63621fcd1dbce1bffba989eb4e8e4caeb6859f819962828",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_contradictions_and_unmapped_settings_refuse[<lambda>-config_document_alias]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_contradictions_and_unmapped_settings_refuse[<lambda>-config_lane_owner_mismatch]",
+      "node_sha256": "919fb11d48f452f30efdf3ab8fc25238d4c4f03d87279284504e3aa4596a34ae",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_contradictions_and_unmapped_settings_refuse[<lambda>-config_lane_owner_mismatch]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_contradictions_and_unmapped_settings_refuse[<lambda>-must match]",
+      "node_sha256": "fd251548636ee9dc9b7f3a3362aa55c148990d955e8d205eee991b774edbffa8",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_contradictions_and_unmapped_settings_refuse[<lambda>-must match]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_contradictions_and_unmapped_settings_refuse[<lambda>-config_path_invalid]",
+      "node_sha256": "f1707b6c3ba1343a3cf743b0bed9327795731aff5dfa52f9993efd2e45cbbde7",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_contradictions_and_unmapped_settings_refuse[<lambda>-config_path_invalid]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_contradictions_and_unmapped_settings_refuse[<lambda>-config_canonical_next]",
+      "node_sha256": "52bd49c649085971fb666a139214bdfcd230e685c52fd7b6244887ade1c055d3",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_contradictions_and_unmapped_settings_refuse[<lambda>-config_canonical_next]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_contradictions_and_unmapped_settings_refuse[<lambda>-unknown_unmapped_settings5]",
+      "node_sha256": "f6caf5fc317c87c31b5c76141491d171d3a7529de89ad688f4cba81777beed9d",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_contradictions_and_unmapped_settings_refuse[<lambda>-unknown_unmapped_settings5]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_contradictions_and_unmapped_settings_refuse[<lambda>-config_default_lane_conflict]",
+      "node_sha256": "012d339b28fb7437ffdfdb4a4fbcc439ca0caee79f69170614334e0b9bd4db42",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_contradictions_and_unmapped_settings_refuse[<lambda>-config_default_lane_conflict]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_contradictions_and_unmapped_settings_refuse[<lambda>-unknown hosted_dashboard.sources]",
+      "node_sha256": "47f94e62a4870b3f787cc91d1697d59ef842ea4a68f9e550abe209f6c38d24be",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_contradictions_and_unmapped_settings_refuse[<lambda>-unknown hosted_dashboard.sources]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_contradictions_and_unmapped_settings_refuse[<lambda>-config_integer_required0]",
+      "node_sha256": "258f5f1d141550c95ebb7a54b9721912f816729fdf0435e45259025083fd2936",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_contradictions_and_unmapped_settings_refuse[<lambda>-config_integer_required0]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_contradictions_and_unmapped_settings_refuse[<lambda>-config_reviewer_provider_invalid]",
+      "node_sha256": "1c625ba83990e14097b3d04e0fce006591bb30f5b04f2b42b8a5f63d2dad0e19",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_contradictions_and_unmapped_settings_refuse[<lambda>-config_reviewer_provider_invalid]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_contradictions_and_unmapped_settings_refuse[<lambda>-config_integer_required1]",
+      "node_sha256": "474edb0ac1a39aaf1322cb11c83c29f33bfa0a81ab39f46f9ce9d1ba3fddeb14",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_contradictions_and_unmapped_settings_refuse[<lambda>-config_integer_required1]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_contradictions_and_unmapped_settings_refuse[<lambda>-config_hosted_hosts_must_be_strings]",
+      "node_sha256": "6499f2124e4acd60d2242a3f9102ba08ef3a52c2952fe869ce9ad8bc7bb44d00",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_contradictions_and_unmapped_settings_refuse[<lambda>-config_hosted_hosts_must_be_strings]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_duplicate_nested_and_recursive_yaml_refuse[\\nrepo: {}\\n]",
+      "node_sha256": "b1d600fdee4d04281e1b79f73e60898829ef94f0a2d41ce866a0929796e60edc",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_duplicate_nested_and_recursive_yaml_refuse[\\nrepo: {}\\n]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_duplicate_nested_and_recursive_yaml_refuse[\\nworkspace:\\n  constellation_id: one\\n  constellation_id: two\\n]",
+      "node_sha256": "197dccf9decf1fe63b3c8c1f7befb24eeffc7e60dc5d639538cb3b5e57b1adce",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_duplicate_nested_and_recursive_yaml_refuse[\\nworkspace:\\n  constellation_id: one\\n  constellation_id: two\\n]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_duplicate_nested_and_recursive_yaml_refuse[\\nextra: &a {again: *a}\\n]",
+      "node_sha256": "a404b272dc0007f78f575c857f3d4a24ca129661fcb165204a65ad24de15d8bf",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_duplicate_nested_and_recursive_yaml_refuse[\\nextra: &a {again: *a}\\n]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_existing_binding_never_silently_changes[root]",
+      "node_sha256": "d66557eca8cb9dba998a5833055ea9a138e15b3ed55d6e0bdeec5064239fdf2e",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_existing_binding_never_silently_changes[root]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_existing_binding_never_silently_changes[identity]",
+      "node_sha256": "a0fb522097c3623c7ba2b38f4942b618e4007a9133bb6a70e8d1800e1c620a62",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_existing_binding_never_silently_changes[identity]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_existing_binding_never_silently_changes[runtime]",
+      "node_sha256": "632b138a5a099d1b97b95aa12d959489aa353b6b9fe55365ee010adf3ff22418",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_existing_binding_never_silently_changes[runtime]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_existing_binding_never_silently_changes[lane]",
+      "node_sha256": "6d7baa70bfcd2e4deada393b95c1863a178ae2ef531c1fac77445132e927ecec",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_existing_binding_never_silently_changes[lane]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_existing_binding_never_silently_changes[model]",
+      "node_sha256": "91cb330e2913442fc5c6ea4e24619337e7382b203edecbd050c4c4278154174b",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_existing_binding_never_silently_changes[model]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_bounded_binding_missing_values_are_not_repaired_implicitly[id]",
+      "node_sha256": "ae32f11295b47643b4b60d858d4a6a853c65050372de40c508ba7e1d67c55e1e",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_bounded_binding_missing_values_are_not_repaired_implicitly[id]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_bounded_binding_missing_values_are_not_repaired_implicitly[root]",
+      "node_sha256": "6616ee3d4e78b9da2391ca24090f399a1498cdd32bbd216e17d5370f6a28fb72",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_bounded_binding_missing_values_are_not_repaired_implicitly[root]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_bounded_binding_missing_values_are_not_repaired_implicitly[runtime]",
+      "node_sha256": "a6d19435620b33a2998915536d4871d2a7b0a31e1d2fa91e9fbf1814155cb526",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_bounded_binding_missing_values_are_not_repaired_implicitly[runtime]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_bounded_binding_missing_values_are_not_repaired_implicitly[context]",
+      "node_sha256": "3b1ee105b820f03ae1ac87c484d4b30f4376d6f4f745370848debbc2dd14bf66",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_bounded_binding_missing_values_are_not_repaired_implicitly[context]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_symlink_policy_and_nondefault_lane_paths_refuse",
+      "node_sha256": "29d2fa9092baed1c4b502d27267f5d5ade4da77d1295a49243e422073a00050e",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_symlink_policy_and_nondefault_lane_paths_refuse"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_linked_muse_working_directory_is_reported_and_binding_requires_pairing",
+      "node_sha256": "d401776bf0eb16583e8487e6cd60d029911dde4a24e555285eb34aca25273430",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_linked_muse_working_directory_is_reported_and_binding_requires_pairing"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_config.py::test_all_preserved_valid_config_fixtures_load_without_muse_imports",
+      "node_sha256": "f7cce068c8d240a2982bbdb5f95bb4a01507a58db4b549178e2d0d4fcd9d4853",
+      "junit": [
+        "tests.fpr1.test_config",
+        "test_all_preserved_valid_config_fixtures_load_without_muse_imports"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_dispatch.py::test_all_launchers_share_dispatcher_and_global_options",
+      "node_sha256": "0c0e4a7248985b812004ad0d336653906c2aed6df67021c7c1074caa93edcc0b",
+      "junit": [
+        "tests.fpr1.test_dispatch",
+        "test_all_launchers_share_dispatcher_and_global_options"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_dispatch.py::test_historical_module_is_not_a_second_public_cli",
+      "node_sha256": "3cca647d63123970405cbd6077d124e2c90c968cb8962609db83f26d3a384866",
+      "junit": [
+        "tests.fpr1.test_dispatch",
+        "test_historical_module_is_not_a_second_public_cli"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_dispatch.py::test_invalid_binding_cannot_enter_injected_handler",
+      "node_sha256": "f633fe36c6426f233d1e2e41b57fbb6c318ca951e55aab83183293d3e2c53e1f",
+      "junit": [
+        "tests.fpr1.test_dispatch",
+        "test_invalid_binding_cannot_enter_injected_handler"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_dispatch.py::test_git_core_imports_no_muse_or_provider_engine",
+      "node_sha256": "7b0a775c5de8ffaa2e9fb2cecacd5768e81f9a72a853812051645c3b2c714236",
+      "junit": [
+        "tests.fpr1.test_dispatch",
+        "test_git_core_imports_no_muse_or_provider_engine"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_dispatch.py::test_legacy_and_unavailable_authority_inspection_never_probes_git[git-False]",
+      "node_sha256": "9cf65ca7732859105bc23578aa6a0f360f2bdf17f10bb4fec672bdde8a222ca3",
+      "junit": [
+        "tests.fpr1.test_dispatch",
+        "test_legacy_and_unavailable_authority_inspection_never_probes_git[git-False]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_dispatch.py::test_legacy_and_unavailable_authority_inspection_never_probes_git[muse-False]",
+      "node_sha256": "36eb7d83d3b9e1e948427f77ab43dd291ad4ae7868ab080bbbf8c55f67af6960",
+      "junit": [
+        "tests.fpr1.test_dispatch",
+        "test_legacy_and_unavailable_authority_inspection_never_probes_git[muse-False]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_dispatch.py::test_legacy_and_unavailable_authority_inspection_never_probes_git[muse-True]",
+      "node_sha256": "2e5863946b0c4637ffa6657244135e21656ea9cc3a401cebc95336d3f374a44d",
+      "junit": [
+        "tests.fpr1.test_dispatch",
+        "test_legacy_and_unavailable_authority_inspection_never_probes_git[muse-True]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_dispatch.py::test_schema2_git_next_stays_byte_exact_across_sync",
+      "node_sha256": "82a80894e42a85398468ac01d17fc68f115cf2fc9a44bc49e2105131cbd9010b",
+      "junit": [
+        "tests.fpr1.test_dispatch",
+        "test_schema2_git_next_stays_byte_exact_across_sync"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_dispatch.py::test_init_dry_run_and_conflicts_do_not_write",
+      "node_sha256": "bd57db1e1e2378d3f5109e605c9ea9da02dd4de1bbf6b38c2a7b9267dfda51ed",
+      "junit": [
+        "tests.fpr1.test_dispatch",
+        "test_init_dry_run_and_conflicts_do_not_write"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_dispatch.py::test_runtime_manifest_covers_reachable_owned_modules_and_resources",
+      "node_sha256": "20c3d5dde2850e35c39d9186515184299114405547af28ffa871aaddbee41e16",
+      "junit": [
+        "tests.fpr1.test_dispatch",
+        "test_runtime_manifest_covers_reachable_owned_modules_and_resources"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_dispatch.py::test_repeated_init_refuses_custom_owned_assets",
+      "node_sha256": "481124d544b73390f5d92ae7d1a4c5cd92e2ff33b8aa8e7e628308d80bb90e07",
+      "junit": [
+        "tests.fpr1.test_dispatch",
+        "test_repeated_init_refuses_custom_owned_assets"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_dispatch.py::test_repeated_init_preserves_preserved_asset_mode",
+      "node_sha256": "d17e14ad832b209fe6971f9caae21085ca7cebfaddbdbaad8243c55d289d1866",
+      "junit": [
+        "tests.fpr1.test_dispatch",
+        "test_repeated_init_preserves_preserved_asset_mode"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_dispatch.py::test_unavailable_init_authority_refuses_before_git_discovery[muse-only]",
+      "node_sha256": "e9dd79b1c1216ee9c3d7698743299187e7dcbd6d85162b0ae70cdc9d7443e356",
+      "junit": [
+        "tests.fpr1.test_dispatch",
+        "test_unavailable_init_authority_refuses_before_git_discovery[muse-only]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_dispatch.py::test_unavailable_init_authority_refuses_before_git_discovery[muse+git-mirror]",
+      "node_sha256": "668bedca74445b1d901e827dfb772f8db2409fb98781aa4919353cb4fcd0140f",
+      "junit": [
+        "tests.fpr1.test_dispatch",
+        "test_unavailable_init_authority_refuses_before_git_discovery[muse+git-mirror]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_legacy_plan_is_read_only_deterministic_and_lossless",
+      "node_sha256": "5814d8dbd3df697c4fd2b40d4cc21cfcd47e94ce2c50ee2be7a082e846686fb2",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_legacy_plan_is_read_only_deterministic_and_lossless"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_bounded_migration_preserves_uuid_next_and_launch_binding",
+      "node_sha256": "ae8108ac43ce5b8cb9d10b9b170ab170a569a13bd369b1af16c302922f2037ec",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_bounded_migration_preserves_uuid_next_and_launch_binding"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_plan_drift_refuses_before_mutation[config]",
+      "node_sha256": "e5ff18bf08048d3638cf68e9b6aff2881b0e46f876562df4cfb0aa5928f3e6b2",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_plan_drift_refuses_before_mutation[config]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_plan_drift_refuses_before_mutation[living]",
+      "node_sha256": "4362718d4a8f99b8093eb9496f9d3e7eace2c1d25f971f2aca13d0718ee933a3",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_plan_drift_refuses_before_mutation[living]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_plan_drift_refuses_before_mutation[mode]",
+      "node_sha256": "68788340c3ae5677bc348b746ca126eab287a5e5822ada42702648dc85155b23",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_plan_drift_refuses_before_mutation[mode]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_plan_drift_refuses_before_mutation[head]",
+      "node_sha256": "3015bc3693169fad5a55a00d98414d877dfe32e5ea84f5ac9a1692d4861f1b36",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_plan_drift_refuses_before_mutation[head]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_partial_replacement_keeps_old_config_and_resumes",
+      "node_sha256": "51dfc59e96b36205749158f547dbd84bc93592753b4737a7e40a2014b4802777",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_partial_replacement_keeps_old_config_and_resumes"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_after_lock_context_change_refuses_without_replacement",
+      "node_sha256": "507f9821a7fe506835cd1346ba524ce85f243324b3df4cde5821cc9b47fe91a6",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_after_lock_context_change_refuses_without_replacement"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_before_replace_context_change_refuses_candidate",
+      "node_sha256": "9366bbedf99806de4948110b7ea7066ff8a4c7159034ce9fbbd7c4498451d4b5",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_before_replace_context_change_refuses_candidate"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_symlink_preflight_does_not_start_backup",
+      "node_sha256": "dd6f22ccd9c9d85a291bc35836fa783ae6991c85f3e9d0a75f9eb0a96ac09f80",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_symlink_preflight_does_not_start_backup"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_legacy_prompt_is_exact_draft_only_and_conflicts_refuse",
+      "node_sha256": "3b8f6ac8e13f36cc4f7617175af7157efa412684e4db2a31c8f4baaa439ef592",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_legacy_prompt_is_exact_draft_only_and_conflicts_refuse"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_unknown_setting_and_hook_install_refuse",
+      "node_sha256": "271b886a986b6339444dcb277cc6bfd2ff1a2ab711c84955fa3040c738e8f1fd",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_unknown_setting_and_hook_install_refuse"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_preserved_origin_and_custom_assets_are_classified_without_takeover",
+      "node_sha256": "9e748be9425e4971913321a2bdd83af75a37bd0d220f91413d035a2688ed70eb",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_preserved_origin_and_custom_assets_are_classified_without_takeover"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_expected_plan_digest_refuses_tampered_document",
+      "node_sha256": "5123ffb6494feb1d20dd4b0b10f2fecb3c24011846670dbca95bf7c162b9703d",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_expected_plan_digest_refuses_tampered_document"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_custom_launcher_is_not_taken_over",
+      "node_sha256": "3c6940599e5714dc1a136f68b06d4cb897d82972bab01f6e78f7e273d3575ba1",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_custom_launcher_is_not_taken_over"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_referenced_optional_assets_are_in_the_digest_plan",
+      "node_sha256": "7124db2eb0b7a3b34e82693f1228723b7554dd2f7a88fb144e16536c798c3983",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_referenced_optional_assets_are_in_the_digest_plan"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_runtime_refresh_is_explicit_and_sync_does_not_migrate_schema",
+      "node_sha256": "dc45005a725f6f4aa5f90903cafc00a2d1d43a08c5f1558243dff41a918df506",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_runtime_refresh_is_explicit_and_sync_does_not_migrate_schema"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_october_muse_plan_preserves_authority_and_never_calls_git_revision",
+      "node_sha256": "23af1a9e328d19da111f92cca7805ecf2625124f37c253c7cb4cae12d5df4c7c",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_october_muse_plan_preserves_authority_and_never_calls_git_revision"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_sync_partial_asset_failure_is_explicit",
+      "node_sha256": "da4455410fa831d64638ff2225b4b16548b7854c530fddcb669b3f7336be8279",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_sync_partial_asset_failure_is_explicit"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_unchanged_launcher_mode_remains_in_preflight",
+      "node_sha256": "fe54cfaf2964c11ad8b30e0d0cfa02fbea1bd8af2822d58a4ff8aac1271a635c",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_unchanged_launcher_mode_remains_in_preflight"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_malformed_reviewed_plan_refuses_without_traceback[<lambda>0]",
+      "node_sha256": "00fbf68ca9bb641896afd214488dbec003a1f33e98f70ed5942e1501a24cdc54",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_malformed_reviewed_plan_refuses_without_traceback[<lambda>0]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_malformed_reviewed_plan_refuses_without_traceback[<lambda>1]",
+      "node_sha256": "1eb61532a5e7169ca769b364fb8a257a1bca84a273ddf565f2763cdfa9618e68",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_malformed_reviewed_plan_refuses_without_traceback[<lambda>1]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_malformed_reviewed_plan_refuses_without_traceback[<lambda>2]",
+      "node_sha256": "e871b94d7de3ed56595773da05f86bcecba87be67b49ae3e8b61e75cd6594f12",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_malformed_reviewed_plan_refuses_without_traceback[<lambda>2]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_malformed_reviewed_plan_refuses_without_traceback[<lambda>3]",
+      "node_sha256": "38dddf133e919db70d2440148750e86bf55a22f9a039d96e975a1ee834f103c4",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_malformed_reviewed_plan_refuses_without_traceback[<lambda>3]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_canonical_json_plan_order_does_not_change_yaml_candidate",
+      "node_sha256": "1744deb7cbdaa4a787715664f7829b8d48e4c795a9a589e8a17f4cbd77d4d601",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_canonical_json_plan_order_does_not_change_yaml_candidate"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_preserved_launcher_mode_is_not_promoted_by_migration",
+      "node_sha256": "37d616dfce425ebe95608a09ba5267b7b4fbb5fa0093c6bd6b7e4091909fca3d",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_preserved_launcher_mode_is_not_promoted_by_migration"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_explicit_sync_upgrades_exact_bounded_hooks_only",
+      "node_sha256": "868e472ab39b4e181f63dd79f8bbe2c78324a5dba25e2ef8a559448e5affa27e",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_explicit_sync_upgrades_exact_bounded_hooks_only"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_plan_input_is_strict_finite_unique_json[plan:\\n  context: 2026-10-14\\n]",
+      "node_sha256": "531824460f4823a82f4d9d83c9c4063c6b977106dd186ba9353d4518f24a80f2",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_plan_input_is_strict_finite_unique_json[plan:\\n  context: 2026-10-14\\n]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_plan_input_is_strict_finite_unique_json[{\"plan\": {}, \"plan\": {}}]",
+      "node_sha256": "ef9372c788ca184a063d4de19ae96a1c6c0fce75c7b284218ab0f677e7e30970",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_plan_input_is_strict_finite_unique_json[{\"plan\": {}, \"plan\": {}}]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_plan_input_is_strict_finite_unique_json[{\"plan\": NaN}]",
+      "node_sha256": "be003cc95a1acede8d7d16975ab611aad0f9e0f2e5fbe0d55b3eb4306d8d5b18",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_plan_input_is_strict_finite_unique_json[{\"plan\": NaN}]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_sync_glob_selects_only_available_scripts_with_read_only_diff",
+      "node_sha256": "39bd914709713b3a89f5edf9a74b38acfe62fddee263d798a244e16533609bf7",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_sync_glob_selects_only_available_scripts_with_read_only_diff"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_sync_hook_glob_requires_explicit_hook_selection[.cursor/hooks/*.sh]",
+      "node_sha256": "698d4faf0b7273e41347a45b13cec39c8a328726b2e1bb86c4ce32ff88f5a0da",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_sync_hook_glob_requires_explicit_hook_selection[.cursor/hooks/*.sh]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_sync_hook_glob_requires_explicit_hook_selection[.overseer/instructions/*]",
+      "node_sha256": "f1b0b76996d640d0c6786490f398ac69d6068bced3d21bfa400ceb38c73b2c47",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_sync_hook_glob_requires_explicit_hook_selection[.overseer/instructions/*]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_sync_hook_glob_requires_explicit_hook_selection[*]",
+      "node_sha256": "7b6aee3043a51b86a104e2341874f4684e9800d8a9461f686a210230019ae435",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_sync_hook_glob_requires_explicit_hook_selection[*]"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_sync_unmatched_selection_refuses_before_runtime_refresh",
+      "node_sha256": "3493b47b363fbee644ad05dec9339f9c2a30b7871181b0c51c9a81a14f04d1f9",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_sync_unmatched_selection_refuses_before_runtime_refresh"
+      ]
+    },
+    {
+      "nodeid": "tests/fpr1/test_migration.py::test_sync_glob_preserves_origin_and_explicit_custom_settings",
+      "node_sha256": "21f3f864e6d495651442577152d9c33dc1697be6ad04da77b6cdcedd7be32eaf",
+      "junit": [
+        "tests.fpr1.test_migration",
+        "test_sync_glob_preserves_origin_and_explicit_custom_settings"
+      ]
+    }
+  ]
+}

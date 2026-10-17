@@ -1,0 +1,7 @@
+{
+  "selected": [
+    "tests/fpr5/test_resource_repairs.py::test_provisioned_runtime_and_actual_packaged_entrypoints"
+  ],
+  "deselected": [],
+  "expected_count": 1
+}

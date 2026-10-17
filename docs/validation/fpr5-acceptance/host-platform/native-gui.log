@@ -1,0 +1,69 @@
+2026-10-15 03:55:56.796 overseer-kit-desktop-fresh[73891:3766920] could not create directory "/Users/aaronrenecarvajal/Library/WebKit/overseer-kit-desktop-fresh/WebsiteData/MediaKeys/v1" for future sandbox extension, error Error Domain=NSCocoaErrorDomain Code=513 "You don’t have permission to save the file “v1” in the folder “MediaKeys”." UserInfo={NSFilePath=/Users/aaronrenecarvajal/Library/WebKit/overseer-kit-desktop-fresh/WebsiteData/MediaKeys/v1, NSURL=file:///Users/aaronrenecarvajal/Library/WebKit/overseer-kit-desktop-fresh/WebsiteData/MediaKeys/v1, NSUnderlyingError=0x600002120120 {Error Domain=NSPOSIXErrorDomain Code=1 "Operation not permitted"}}
+2026-10-15 03:55:56.796 overseer-kit-desktop-fresh[73891:3766920] could not create directory "/Users/aaronrenecarvajal/Library/WebKit/overseer-kit-desktop-fresh/WebsiteData/IndexedDB" for future sandbox extension, error Error Domain=NSCocoaErrorDomain Code=513 "You don’t have permission to save the file “IndexedDB” in the folder “WebsiteData”." UserInfo={NSFilePath=/Users/aaronrenecarvajal/Library/WebKit/overseer-kit-desktop-fresh/WebsiteData/IndexedDB, NSURL=file:///Users/aaronrenecarvajal/Library/WebKit/overseer-kit-desktop-fresh/WebsiteData/IndexedDB, NSUnderlyingError=0x6000021349f0 {Error Domain=NSPOSIXErrorDomain Code=1 "Operation not permitted"}}
+2026-10-15 03:55:56.796 overseer-kit-desktop-fresh[73891:3766920] could not create directory "/Users/aaronrenecarvajal/Library/Caches/overseer-kit-desktop-fresh/WebKit/AlternativeServices" for future sandbox extension, error Error Domain=NSCocoaErrorDomain Code=513 "You don’t have permission to save the file “AlternativeServices” in the folder “WebKit”." UserInfo={NSFilePath=/Users/aaronrenecarvajal/Library/Caches/overseer-kit-desktop-fresh/WebKit/AlternativeServices, NSURL=file:///Users/aaronrenecarvajal/Library/Caches/overseer-kit-desktop-fresh/WebKit/AlternativeServices, NSUnderlyingError=0x600002134ae0 {Error Domain=NSPOSIXErrorDomain Code=1 "Operation not permitted"}}
+2026-10-15 03:55:56.796 overseer-kit-desktop-fresh[73891:3766920] could not create directory "/Users/aaronrenecarvajal/Library/WebKit/overseer-kit-desktop-fresh/WebsiteData/LocalStorage" for future sandbox extension, error Error Domain=NSCocoaErrorDomain Code=513 "You don’t have permission to save the file “LocalStorage” in the folder “WebsiteData”." UserInfo={NSFilePath=/Users/aaronrenecarvajal/Library/WebKit/overseer-kit-desktop-fresh/WebsiteData/LocalStorage, NSURL=file:///Users/aaronrenecarvajal/Library/WebKit/overseer-kit-desktop-fresh/WebsiteData/LocalStorage, NSUnderlyingError=0x600002134b40 {Error Domain=NSPOSIXErrorDomain Code=1 "Operation not permitted"}}
+2026-10-15 03:55:56.796 overseer-kit-desktop-fresh[73891:3766920] could not create directory "/Users/aaronrenecarvajal/Library/WebKit/overseer-kit-desktop-fresh/WebsiteData/DeviceIdHashSalts" for future sandbox extension, error Error Domain=NSCocoaErrorDomain Code=513 "You don’t have permission to save the file “DeviceIdHashSalts” in the folder “WebsiteData”." UserInfo={NSFilePath=/Users/aaronrenecarvajal/Library/WebKit/overseer-kit-desktop-fresh/WebsiteData/DeviceIdHashSalts, NSURL=file:///Users/aaronrenecarvajal/Library/WebKit/overseer-kit-desktop-fresh/WebsiteData/DeviceIdHashSalts, NSUnderlyingError=0x600002134bd0 {Error Domain=NSPOSIXErrorDomain Code=1 "Operation not permitted"}}
+2026-10-15 03:55:56.797 overseer-kit-desktop-fresh[73891:3766920] could not create directory "/Users/aaronrenecarvajal/Library/Caches/overseer-kit-desktop-fresh/WebKit/NetworkCache" for future sandbox extension, error Error Domain=NSCocoaErrorDomain Code=513 "You don’t have permission to save the file “NetworkCache” in the folder “WebKit”." UserInfo={NSFilePath=/Users/aaronrenecarvajal/Library/Caches/overseer-kit-desktop-fresh/WebKit/NetworkCache, NSURL=file:///Users/aaronrenecarvajal/Library/Caches/overseer-kit-desktop-fresh/WebKit/NetworkCache, NSUnderlyingError=0x600002134c60 {Error Domain=NSPOSIXErrorDomain Code=1 "Operation not permitted"}}
+2026-10-15 03:55:56.797 overseer-kit-desktop-fresh[73891:3766920] could not create directory "/Users/aaronrenecarvajal/Library/WebKit/overseer-kit-desktop-fresh/WebsiteData/ResourceLoadStatistics" for future sandbox extension, error Error Domain=NSCocoaErrorDomain Code=513 "You don’t have permission to save the file “ResourceLoadStatistics” in the folder “WebsiteData”." UserInfo={NSFilePath=/Users/aaronrenecarvajal/Library/WebKit/overseer-kit-desktop-fresh/WebsiteData/ResourceLoadStatistics, NSURL=file:///Users/aaronrenecarvajal/Library/WebKit/overseer-kit-desktop-fresh/WebsiteData/ResourceLoadStatistics, NSUnderlyingError=0x600002134cf0 {Error Domain=NSPOSIXErrorDomain Code=1 "Operation not permitted"}}
+2026-10-15 03:55:56.797 overseer-kit-desktop-fresh[73891:3766920] could not create directory "/Users/aaronrenecarvajal/Library/Caches/overseer-kit-desktop-fresh/WebKit/ServiceWorkers" for future sandbox extension, error Error Domain=NSCocoaErrorDomain Code=513 "You don’t have permission to save the file “ServiceWorkers” in the folder “WebKit”." UserInfo={NSFilePath=/Users/aaronrenecarvajal/Library/Caches/overseer-kit-desktop-fresh/WebKit/ServiceWorkers, NSURL=file:///Users/aaronrenecarvajal/Library/Caches/overseer-kit-desktop-fresh/WebKit/ServiceWorkers, NSUnderlyingError=0x600002134d80 {Error Domain=NSPOSIXErrorDomain Code=1 "Operation not permitted"}}
+2026-10-15 03:55:56.797 overseer-kit-desktop-fresh[73891:3766920] could not create directory "/Users/aaronrenecarvajal/Library/Caches/overseer-kit-desktop-fresh/WebKit/CacheStorage" for future sandbox extension, error Error Domain=NSCocoaErrorDomain Code=513 "You don’t have permission to save the file “CacheStorage” in the folder “WebKit”." UserInfo={NSFilePath=/Users/aaronrenecarvajal/Library/Caches/overseer-kit-desktop-fresh/WebKit/CacheStorage, NSURL=file:///Users/aaronrenecarvajal/Library/Caches/overseer-kit-desktop-fresh/WebKit/CacheStorage, NSUnderlyingError=0x600002134e10 {Error Domain=NSPOSIXErrorDomain Code=1 "Operation not permitted"}}
+2026-10-15 03:55:56.797 overseer-kit-desktop-fresh[73891:3766920] could not create directory "/Users/aaronrenecarvajal/Library/Caches/overseer-kit-desktop-fresh/WebKit/HSTS" for future sandbox extension, error Error Domain=NSCocoaErrorDomain Code=513 "You don’t have permission to save the file “HSTS” in the folder “WebKit”." UserInfo={NSFilePath=/Users/aaronrenecarvajal/Library/Caches/overseer-kit-desktop-fresh/WebKit/HSTS, NSURL=file:///Users/aaronrenecarvajal/Library/Caches/overseer-kit-desktop-fresh/WebKit/HSTS, NSUnderlyingError=0x600002134ea0 {Error Domain=NSPOSIXErrorDomain Code=1 "Operation not permitted"}}
+2026-10-15 03:55:56.797 overseer-kit-desktop-fresh[73891:3766920] could not create directory "/Users/aaronrenecarvajal/Library/WebKit/overseer-kit-desktop-fresh/WebsiteData/Default" for future sandbox extension, error Error Domain=NSCocoaErrorDomain Code=513 "You don’t have permission to save the file “Default” in the folder “WebsiteData”." UserInfo={NSFilePath=/Users/aaronrenecarvajal/Library/WebKit/overseer-kit-desktop-fresh/WebsiteData/Default, NSURL=file:///Users/aaronrenecarvajal/Library/WebKit/overseer-kit-desktop-fresh/WebsiteData/Default, NSUnderlyingError=0x600002134f30 {Error Domain=NSPOSIXErrorDomain Code=1 "Operation not permitted"}}
+2026-10-15 03:55:56.797 overseer-kit-desktop-fresh[73891:3766920] could not create directory "/Users/aaronrenecarvajal/Library/WebKit/overseer-kit-desktop-fresh/WebsiteData/SearchHistory" for future sandbox extension, error Error Domain=NSCocoaErrorDomain Code=513 "You don’t have permission to save the file “SearchHistory” in the folder “WebsiteData”." UserInfo={NSFilePath=/Users/aaronrenecarvajal/Library/WebKit/overseer-kit-desktop-fresh/WebsiteData/SearchHistory, NSURL=file:///Users/aaronrenecarvajal/Library/WebKit/overseer-kit-desktop-fresh/WebsiteData/SearchHistory, NSUnderlyingError=0x600002134fc0 {Error Domain=NSPOSIXErrorDomain Code=1 "Operation not permitted"}}
+
+thread 'main' panicked at /Users/aaronrenecarvajal/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-2.11.5/src/app.rs:1425:11:
+Failed to setup app: error encountered during setup hook: a webview with label `main` already exists
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: tauri::app::App<R>::make_run_event_loop_callback::{{closure}}
+   3: tauri_runtime_wry::handle_event_loop
+   4: tauri_runtime_wry::make_event_handler::{{closure}}
+   5: <tao::platform_impl::platform::app_state::EventLoopHandler<T> as tao::platform_impl::platform::app_state::EventHandler>::handle_nonuser_event::{{closure}}
+   6: tao::platform_impl::platform::app_state::EventLoopHandler<T>::with_callback
+   7: <tao::platform_impl::platform::app_state::EventLoopHandler<T> as tao::platform_impl::platform::app_state::EventHandler>::handle_nonuser_event
+   8: tao::platform_impl::platform::app_state::Handler::handle_nonuser_event
+   9: tao::platform_impl::platform::app_state::AppState::launched
+  10: tao::platform_impl::platform::app_delegate::did_finish_launching
+  11: <unknown>
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: <unknown>
+  21: <unknown>
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+thread 'main' panicked at library/core/src/panicking.rs:226:5:
+panic in a function that cannot unwind
+stack backtrace:
+   0:        0x100c60054 - <std::sys::backtrace::BacktraceLock::print::DisplayBacktrace as core::fmt::Display>::fmt::h2c3f7b4c4ce00f07
+   1:        0x100c7ebe0 - core::fmt::write::h1dbafa36e52e01c5
+   2:        0x100c5cb20 - std::io::Write::write_fmt::he72d49f3084ee601
+   3:        0x100c5ff08 - std::sys::backtrace::BacktraceLock::print::h1fb87370474572ed
+   4:        0x100c61248 - std::panicking::default_hook::{{closure}}::h195a9b2c829547eb
+   5:        0x100c61098 - std::panicking::default_hook::h18c3aa3e3a3584d5
+   6:        0x100c61c58 - std::panicking::rust_panic_with_hook::h02a9fa3cad928562
+   7:        0x100c6192c - std::panicking::begin_panic_handler::{{closure}}::hd1cc56578f819958
+   8:        0x100c6050c - std::sys::backtrace::__rust_end_short_backtrace::h52c1e479035e4bc4
+   9:        0x100c615fc - __rustc[4794b31dd7191200]::rust_begin_unwind
+  10:        0x100c9c268 - core::panicking::panic_nounwind_fmt::h15b30cc5af643334
+  11:        0x100c9c2e0 - core::panicking::panic_nounwind::hc7163b0cd384d969
+  12:        0x100c9c45c - core::panicking::panic_cannot_unwind::he04b9d4fe77d66ef
+  13:        0x10096bc3c - tao::platform_impl::platform::app_delegate::did_finish_launching::h13de1ea11fae90cb
+  14:        0x19312b3bc - <unknown>
+  15:        0x1931baa78 - <unknown>
+  16:        0x1931ba9bc - <unknown>
+  17:        0x1930fa808 - <unknown>
+  18:        0x1946b4680 - <unknown>
+  19:        0x19705d1bc - <unknown>
+  20:        0x19705cf6c - <unknown>
+  21:        0x19705b568 - <unknown>
+  22:        0x19705b17c - <unknown>
+  23:        0x1946dce40 - <unknown>
+  24:        0x1946dcc38 - <unknown>
+thread caused non-unwinding panic. aborting.

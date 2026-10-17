@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased — full-product publication candidate
+
+The maintained CLI, local browser app, desktop launcher, policies, review and
+verification tools, evidence ledger, workspace/lanes and optional Muse support
+are restored. The whole-product README describes the current source contract.
+Manual acceptance and local release apply only to source `97f0529`; this later
+integration is a draft candidate, not a new accepted or published release.
+See [publication preparation](docs/validation/PUBLICATION-PREPARATION.md).
+
 ## v1.0.0-rc.1 — published 2026-10-10
 
 The bounded local CLI prerelease is published, not stable and not Latest. Its tag
@@ -10,7 +19,7 @@ explicit. Mirror repair and combined validation are complete.
 
 PR #87 later published the documentation closeout. Production deployment succeeded,
 and post-merge CI passed 156 / 156 / 289 tests with zero failures, errors or skips.
-No recovery task remains. See [the current summary](docs/ROADMAP.md).
+That historical closeout is complete. See [the current summary](docs/ROADMAP.md) for the successor candidate.
 
 ## Historical records
 

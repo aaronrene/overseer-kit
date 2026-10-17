@@ -51,4 +51,4 @@ def test_native_source_and_mirror_keep_ci_dotfiles(muse_root, muse_python, muse,
     assert git('ls-tree', 'refs/heads/muse-mirror', 'explicit-tool').startswith(b'100755 ')
     assert not any(p.startswith(('.overseer/', '.cursor/')) or p == 'docs/NEXT.md' for p in projected)
     assert not (root / '.muse/hooks').exists()
-    assert not (root / '.cursor').exists()
+    assert not (root / '.cursor/hooks.json').exists()

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.038" timestamp="2026-10-14T16:15:34.236488-07:00" hostname="Carloss-MacBook-Pro.local"><testcase classname="tests.unit.test_templating" name="test_render_handover_template" time="0.006"><failure message="AssertionError: assert 'docs/OVERSEER-HANDOVER.md' in '# Overseer Handover\n\nRepository: test-git. Keep this summary paired with docs/ROADMAP.md.\nThe sole action authorit...and release/deployment are separate actions.\n\n&lt;!-- overseer:change-log:start --&gt;\n&lt;!-- overseer:change-log:end --&gt;\n'">git_only_config = OverseerConfig(overseer_config_version=1, repo=RepoConfig(name='test-git', root_relative_docs='docs'), vcs=VcsConfig(r...ne, post_land_sync=PostLandSyncConfig(enabled=False, strategy='ff_only', require_clean_worktree=True)), workspace=None)
+repo_root = PosixPath('/private/tmp/overseer-fpr4-template-before/test_render_handover_template0')
+
+    def test_render_handover_template(git_only_config, repo_root: Path) -&gt; None:
+        template = (
+            Path(__file__).resolve().parents[2] / "templates" / "OVERSEER-HANDOVER.template.md"
+        )
+        rendered = render_template(template, git_only_config)
+        assert "test-git" in rendered
+        assert "{{repo.name}}" not in rendered
+&gt;       assert "docs/OVERSEER-HANDOVER.md" in rendered
+E       AssertionError: assert 'docs/OVERSEER-HANDOVER.md' in '# Overseer Handover\n\nRepository: test-git. Keep this summary paired with docs/ROADMAP.md.\nThe sole action authorit...and release/deployment are separate actions.\n\n&lt;!-- overseer:change-log:start --&gt;\n&lt;!-- overseer:change-log:end --&gt;\n'
+
+tests/unit/test_templating.py:62: AssertionError</failure></testcase></testsuite></testsuites>

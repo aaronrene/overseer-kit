@@ -1,0 +1,33 @@
+{
+  "command": [
+    "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.overseer/bin/ok",
+    "-C",
+    "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "next-write",
+    "--repo-id",
+    "6988dc4a-5f22-454b-9d68-ac5905b383bf",
+    "--branch",
+    "feat/overseer-v1-recovery-20261014",
+    "--lane",
+    "product",
+    "--model",
+    "GPT-6 Astra",
+    "--action-id",
+    "OVERSEER-FPR5-INTERACTIVE-ACCEPTANCE-1",
+    "--action-kind",
+    "stop",
+    "--vcs",
+    "git",
+    "--base-head",
+    "2e8ec694def9be4a0faa4a994bf2fff3f212ab23",
+    "--expect-next",
+    "a596753da25021c74799a96e3a4f8ff5d3c3e376e5da030632d1fa0b80f04ca7",
+    "--prompt-file",
+    "docs/validation/fpr5-acceptance/next-prompt.txt",
+    "--json"
+  ],
+  "exit_code": 0,
+  "stdout": "{\"ok\": true, \"next_sha256\": \"e02171ecc08a485ddc365870e3a64c657c17b283f4840bd87ece59dd2f47a00f\"}\n",
+  "stderr": "",
+  "expected_prior_digest": "a596753da25021c74799a96e3a4f8ff5d3c3e376e5da030632d1fa0b80f04ca7"
+}

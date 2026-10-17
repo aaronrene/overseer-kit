@@ -1,0 +1,11 @@
+{
+  "deterministic": true,
+  "archive": {
+    "archive": "/private/tmp/overseer-fpr3-resources-qyez1s73/source-a.tar.gz",
+    "sha256": "5c3ccf350a0aae9bde5ac16a8566cbfac24ef432d4a075e3888045e170432640",
+    "manifest_sha256": "5f6e2cf96214e29753ffbf967fa7e84403add5e61e9be22d9eb97e31a7999df7",
+    "files": 1003
+  },
+  "resource_root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/desktop/src-tauri/resources/kit",
+  "source_snapshot": "/private/tmp/overseer-fpr3-resources-qyez1s73/source"
+}

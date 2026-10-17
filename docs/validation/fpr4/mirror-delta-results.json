@@ -1,0 +1,59 @@
+{
+  "scope": "FPR-4 author full-footprint native-staging fixture replacement; no mirror production repair",
+  "source_head": "6289d2823184a63e2968d2c5f6a76abab5818368",
+  "runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "7d38764f026848d7d89d81abedfc62f1de5eefde6443d0032d770c2ff09a20d1"
+  },
+  "original_selector": "tests/muse/test_mirror.py::test_add_change_delete_and_no_content_source_commit",
+  "original_sha256": "bab954eea76662e46634d09257273a41e60302f2385060ccaa4527304fccd57d",
+  "original_unchanged": true,
+  "successor": "tests/fpr4/test_mirror_full_footprint.py::test_full_footprint_mirror_delta_and_identical_native_snapshot",
+  "successor_file_sha256": "61a62b9d9dea8633fdd32508afe8ace14a3b6176f57a53f2dccc239ca391bd55",
+  "reason": "rc5 code add . omits hidden directories. Original allow-empty native commit added 17 unstaged portable files, changing the native snapshot and mirror tree. prepared was correct. Successor explicitly stages hidden footprint before approval and verifies true native/Git no-content correspondence.",
+  "before_diff": "mirror-delta-before-diff.json",
+  "runs": [
+    {
+      "name": "mirror-delta-before",
+      "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "command": "PYTHONDONTWRITEBYTECODE=1 GIT_OPTIONAL_LOCKS=0 GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_NOSYSTEM=1 .venv/bin/python -B -m pytest -q -p no:cacheprovider tests/muse/test_mirror.py::test_add_change_delete_and_no_content_source_commit --muse-python=/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python --basetemp=/private/tmp/overseer-fpr4-mirror-delta-before --junitxml=docs/validation/fpr4/mirror-delta-before.xml > docs/validation/fpr4/mirror-delta-before.log 2>&1",
+      "exit_code": 1,
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "1",
+          "skipped": "0",
+          "tests": "1",
+          "time": "18.044",
+          "timestamp": "2026-10-14T16:41:12.296846-07:00",
+          "hostname": "Carloss-MacBook-Pro.local"
+        }
+      ]
+    },
+    {
+      "name": "mirror-delta-successor",
+      "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "command": "FPR2_MUSE_PYTHON=/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python PYTHONDONTWRITEBYTECODE=1 GIT_OPTIONAL_LOCKS=0 GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_NOSYSTEM=1 .venv/bin/python -B -m pytest -q -p no:cacheprovider tests/fpr4/test_mirror_full_footprint.py --basetemp=/private/tmp/overseer-fpr4-mirror-delta-successor --junitxml=docs/validation/fpr4/mirror-delta-successor.xml > docs/validation/fpr4/mirror-delta-successor.log 2>&1",
+      "exit_code": 0,
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "1",
+          "time": "26.746",
+          "timestamp": "2026-10-14T16:43:02.437987-07:00",
+          "hostname": "Carloss-MacBook-Pro.local"
+        }
+      ]
+    }
+  ],
+  "production_changed": false,
+  "limits": [
+    "Pinned rc5 local snapshots and fake delivery only; no live remote effect or provider validation",
+    "Author fixture validation, not independent review or final integrated acceptance"
+  ]
+}

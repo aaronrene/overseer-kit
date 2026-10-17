@@ -1,0 +1,15 @@
+Reasoning: High
+FPR-6 local work is complete; stop at the external capability dependencies.
+Results: docs/validation/FPR-6-AUTOMATIC-COMPLETION.md.
+Prepared requests: docs/decisions/FPR-6-AUTOMATIC-DEPENDENCIES.md (UNSENT).
+
+Next requires an owner-supplied supported isolated lifecycle environment and
+maintained client/execution binding interface, or separate authorization to
+route the sanitized requests. Cursor owns the real-event prerequisite; Codex
+extension/execution maintainers own admission and tool enforcement. Client
+selection/state maintainers must supply the missing shared-chat discriminator.
+Continuity depends on qualified real events and enforcement on the same build.
+
+Do not repeat completed work or the blocked launch. Preserve the manual release
+and hold existing-project rollout. No external contact, profile/account/keychain
+access, network/provider call, vendor/shared-command change or release is authorized.

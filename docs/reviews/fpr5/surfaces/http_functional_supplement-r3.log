@@ -1,0 +1,61 @@
+{
+  "result": "BLOCKED",
+  "checks": [
+    {
+      "name": "CLI init succeeds",
+      "passed": true
+    },
+    {
+      "name": "configured review provider is local",
+      "passed": true
+    },
+    {
+      "name": "synthetic artifact bytes verified",
+      "passed": true
+    },
+    {
+      "name": "CLI ledger succeeds",
+      "passed": true
+    },
+    {
+      "name": "CLI check-ok succeeds",
+      "passed": true
+    },
+    {
+      "name": "CLI ledger succeeds",
+      "passed": true
+    },
+    {
+      "name": "CLI honesty-status succeeds",
+      "passed": true
+    },
+    {
+      "name": "CLI status succeeds",
+      "passed": true
+    }
+  ],
+  "request_count": 0,
+  "error": {
+    "type": "PermissionError",
+    "message": "[Errno 1] Operation not permitted",
+    "traceback": "Traceback (most recent call last):\n  File \"/private/tmp/overseer-fpr5-review.jTlE9P/surfaces/http_functional_supplement-r3.py\", line 58, in <module>\n    server=start_app_server(build_server_config(repo_root=root,bind='127.0.0.1',port=0,ctx=bound_ctx(root),session_credential='session-fixture',csrf_token='csrf-fixture'))\n  File \"/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/tools/app/server.py\", line 306, in start_app_server\n    httpd = AppHTTPServer(config)\n  File \"/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/tools/app/server.py\", line 64, in __init__\n    super().__init__((config.bind, config.port), AppRequestHandler)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.4_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socketserver.py\", line 457, in __init__\n    self.server_bind()\n    ~~~~~~~~~~~~~~~~^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.4_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/server.py\", line 148, in server_bind\n    socketserver.TCPServer.server_bind(self)\n    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.4_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socketserver.py\", line 478, in server_bind\n    self.socket.bind(self.server_address)\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\nPermissionError: [Errno 1] Operation not permitted\n"
+  }
+}
+Traceback (most recent call last):
+  File "/private/tmp/overseer-fpr5-review.jTlE9P/surfaces/http_functional_supplement-r3.py", line 58, in <module>
+    server=start_app_server(build_server_config(repo_root=root,bind='127.0.0.1',port=0,ctx=bound_ctx(root),session_credential='session-fixture',csrf_token='csrf-fixture'))
+  File "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/tools/app/server.py", line 306, in start_app_server
+    httpd = AppHTTPServer(config)
+  File "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/tools/app/server.py", line 64, in __init__
+    super().__init__((config.bind, config.port), AppRequestHandler)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.4_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socketserver.py", line 457, in __init__
+    self.server_bind()
+    ~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.4_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/server.py", line 148, in server_bind
+    socketserver.TCPServer.server_bind(self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.4_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socketserver.py", line 478, in server_bind
+    self.socket.bind(self.server_address)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted

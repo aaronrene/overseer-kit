@@ -1,0 +1,325 @@
+{
+  "kind": "Complete Python3.11 Git cell executed in serial disjoint groups on immutable repaired source",
+  "expected_cases": 1196,
+  "groups": {
+    "retained": {
+      "expected_cases": 611,
+      "command": [
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/.venv/bin/python",
+        "-I",
+        "-B",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/scripts/fpr4_run.py",
+        "--name",
+        "py311-retained",
+        "--selection",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/selection-retained.json",
+        "--evidence-dir",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/matrix"
+      ],
+      "free_before": 1577947136,
+      "exit_code": 1,
+      "result": {
+        "ok": false,
+        "results": {
+          "tests": 611,
+          "failed": 1,
+          "errors": 0,
+          "skipped": 0,
+          "passed": 610
+        },
+        "boundary_unchanged": true,
+        "exact_collection_executed_once": true,
+        "seconds": 13.733937540993793,
+        "nonpassing": [
+          {
+            "case": "tests.security.test_p_deploy_security::test_twin_skill_paths_exist",
+            "outcome": "failure",
+            "message": "AssertionError: assert False\n +  where False = is_file()\n +    where is_file = PosixPath('/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/.cursor/skills/deploy-verification-review/SKILL.md').is_file"
+          }
+        ]
+      },
+      "matches_expected_partition": true,
+      "free_after": 1228038144
+    },
+    "v1": {
+      "expected_cases": 195,
+      "command": [
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/.venv/bin/python",
+        "-I",
+        "-B",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/scripts/fpr4_run.py",
+        "--name",
+        "py311-v1",
+        "--selection",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/selection-v1.json",
+        "--evidence-dir",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/matrix"
+      ],
+      "free_before": 1228034048,
+      "exit_code": 0,
+      "result": {
+        "ok": true,
+        "results": {
+          "tests": 195,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "passed": 195
+        },
+        "boundary_unchanged": true,
+        "exact_collection_executed_once": true,
+        "seconds": 744.6256034589896,
+        "nonpassing": []
+      },
+      "matches_expected_partition": true,
+      "passing_fixture_reclaimed": "/private/tmp/overseer-fpr4-py311-v1-edk55n1o",
+      "free_after": 1471954944
+    },
+    "fpr1": {
+      "expected_cases": 117,
+      "command": [
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/.venv/bin/python",
+        "-I",
+        "-B",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/scripts/fpr4_run.py",
+        "--name",
+        "py311-fpr1",
+        "--selection",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/selection-fpr1.json",
+        "--evidence-dir",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/matrix"
+      ],
+      "free_before": 1471950848,
+      "exit_code": 0,
+      "result": {
+        "ok": true,
+        "results": {
+          "tests": 117,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "passed": 117
+        },
+        "boundary_unchanged": true,
+        "exact_collection_executed_once": true,
+        "seconds": 201.683869667002,
+        "nonpassing": []
+      },
+      "matches_expected_partition": true,
+      "passing_fixture_reclaimed": "/private/tmp/overseer-fpr4-py311-fpr1-24kjda22",
+      "free_after": 1466503168
+    },
+    "fpr2": {
+      "expected_cases": 15,
+      "command": [
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/.venv/bin/python",
+        "-I",
+        "-B",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/scripts/fpr4_run.py",
+        "--name",
+        "py311-fpr2",
+        "--selection",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/selection-fpr2.json",
+        "--evidence-dir",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/matrix"
+      ],
+      "free_before": 1466486784,
+      "exit_code": 0,
+      "result": {
+        "ok": true,
+        "results": {
+          "tests": 15,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "passed": 15
+        },
+        "boundary_unchanged": true,
+        "exact_collection_executed_once": true,
+        "seconds": 52.64825841700076,
+        "nonpassing": []
+      },
+      "matches_expected_partition": true,
+      "passing_fixture_reclaimed": "/private/tmp/overseer-fpr4-py311-fpr2-x6gu4max",
+      "free_after": 1467916288
+    },
+    "fpr3": {
+      "expected_cases": 53,
+      "command": [
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/.venv/bin/python",
+        "-I",
+        "-B",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/scripts/fpr4_run.py",
+        "--name",
+        "py311-fpr3",
+        "--selection",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/selection-fpr3.json",
+        "--evidence-dir",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/matrix"
+      ],
+      "free_before": 1467912192,
+      "exit_code": 0,
+      "result": {
+        "ok": true,
+        "results": {
+          "tests": 53,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "passed": 53
+        },
+        "boundary_unchanged": true,
+        "exact_collection_executed_once": true,
+        "seconds": 108.27985545800766,
+        "nonpassing": []
+      },
+      "matches_expected_partition": true,
+      "passing_fixture_reclaimed": "/private/tmp/overseer-fpr4-py311-fpr3-0b8_r35s",
+      "free_after": 1444839424
+    },
+    "fpr4": {
+      "expected_cases": 33,
+      "command": [
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/.venv/bin/python",
+        "-I",
+        "-B",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/scripts/fpr4_run.py",
+        "--name",
+        "py311-fpr4",
+        "--selection",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/selection-fpr4.json",
+        "--evidence-dir",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/matrix"
+      ],
+      "free_before": 1444835328,
+      "exit_code": 0,
+      "result": {
+        "ok": true,
+        "results": {
+          "tests": 33,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "passed": 33
+        },
+        "boundary_unchanged": true,
+        "exact_collection_executed_once": true,
+        "seconds": 144.95032445900142,
+        "nonpassing": []
+      },
+      "matches_expected_partition": true,
+      "passing_fixture_reclaimed": "/private/tmp/overseer-fpr4-py311-fpr4-ztz63yff",
+      "free_after": 1424470016
+    },
+    "fpr5": {
+      "expected_cases": 151,
+      "command": [
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/.venv/bin/python",
+        "-I",
+        "-B",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/scripts/fpr4_run.py",
+        "--name",
+        "py311-fpr5",
+        "--selection",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/selection-fpr5.json",
+        "--evidence-dir",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/matrix"
+      ],
+      "free_before": 1424470016,
+      "exit_code": 0,
+      "result": {
+        "ok": true,
+        "results": {
+          "tests": 151,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "passed": 151
+        },
+        "boundary_unchanged": true,
+        "exact_collection_executed_once": true,
+        "seconds": 234.5571345000062,
+        "nonpassing": []
+      },
+      "matches_expected_partition": true,
+      "passing_fixture_reclaimed": "/private/tmp/overseer-fpr4-py311-fpr5-wmhf3aps",
+      "free_after": 1389555712
+    },
+    "performance": {
+      "expected_cases": 19,
+      "command": [
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/.venv/bin/python",
+        "-I",
+        "-B",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/scripts/fpr4_run.py",
+        "--name",
+        "py311-performance",
+        "--selection",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/selection-performance.json",
+        "--evidence-dir",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/matrix"
+      ],
+      "free_before": 1389547520,
+      "exit_code": 0,
+      "result": {
+        "ok": true,
+        "results": {
+          "tests": 19,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "passed": 19
+        },
+        "boundary_unchanged": true,
+        "exact_collection_executed_once": true,
+        "seconds": 4.845871415993315,
+        "nonpassing": []
+      },
+      "matches_expected_partition": true,
+      "passing_fixture_reclaimed": "/private/tmp/overseer-fpr4-py311-performance-ou72r56e",
+      "free_after": 1388081152
+    },
+    "packages": {
+      "expected_cases": 2,
+      "command": [
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/.venv/bin/python",
+        "-I",
+        "-B",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/python3.11-installation/scripts/fpr4_run.py",
+        "--name",
+        "py311-packages",
+        "--selection",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/selection-packages.json",
+        "--evidence-dir",
+        "/private/tmp/overseer-fpr5-acceptance-_4z0ip2o/matrix"
+      ],
+      "free_before": 1388077056,
+      "exit_code": 0,
+      "result": {
+        "ok": true,
+        "results": {
+          "tests": 2,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0,
+          "passed": 2
+        },
+        "boundary_unchanged": true,
+        "exact_collection_executed_once": true,
+        "seconds": 12.275347415998112,
+        "nonpassing": []
+      },
+      "matches_expected_partition": true,
+      "passing_fixture_reclaimed": "/private/tmp/overseer-fpr4-py311-packages-10kyf2ld",
+      "free_after": 1386180608
+    }
+  },
+  "runtime_sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774",
+  "prior_collection_failure": "python311-complete.json: ENOSPC before test execution; preserved unchanged",
+  "no_new_requirement_waivers": true,
+  "disk_floor_bytes": 262144000,
+  "cleanup_policy": "Only newly generated fully passing fixture trees; raw logs/XML/records preserved outside them",
+  "exact_complete_partition": true,
+  "collected_total": 1196,
+  "ok": false
+}

@@ -1,11 +1,18 @@
 ---
-description: Bounded v1 repository and NEXT workflow
+description: Bound product context and explicit action authority
 alwaysApply: true
 ---
 
-Read AGENTS.md and docs/decisions/V1-SCOPE-RESET.md. Establish physical cwd,
-Git root, branch/HEAD, and configured identity before acting. Use `cli/ok -C ROOT
-status` then `cli/ok -C ROOT next`. Canonical docs/NEXT.md is the sole prompt.
-The recovery request supersedes former freeze/sole-writer/OCI chains. Use the
-supported v1 suite and update ROADMAP and HANDOVER together. Local feature commits
-only; no push, mirror, merge, release, deployment, consumer activation, or pilot.
+Follow AGENTS.md and the accepted action. Verify physical repository, UUID,
+lane, configured runtime and selected Git/Muse authority. Use the bound launcher.
+Start and finish with `ok next`; canonical docs/NEXT.md is the only action source.
+Use shared services for status, review, checkpoints, ledger and governance.
+Keep ROADMAP and HANDOVER paired. Publish successors only through next-write
+with current revision and whole-file expected digest. Preserve unrelated settings,
+lanes, living files and other repositories. Never execute legacy_main.
+Local implementation, remote transport and release/deployment are separate scopes.
+Use configured review gates when applicable; do not invent extra review cycles or
+claim independent review from author tests. Use `/build-verification-review` when
+required by configured gates; use `/freeze-review-loop` only when explicitly
+requested, never automatically. No legacy live export or packet,
+OCI, identity-bridge, native GSR or sole-writer prerequisite is implied.

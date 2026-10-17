@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="6" time="43.672" timestamp="2026-10-14T15:27:45.636484-07:00" hostname="Carloss-MacBook-Pro.local"><testcase classname="tests.fpr3.test_engines" name="test_checkpoint_real_script_dry_run_failure_and_confinement" time="6.455" /><testcase classname="tests.fpr3.test_engines" name="test_review_fake_provider_human_fallback_never_passes" time="3.904" /><testcase classname="tests.fpr3.test_engines" name="test_fake_pr_transport_requires_explicit_authorization_and_preserves_context" time="3.504" /><testcase classname="tests.fpr3.test_engines" name="test_full_footprint_preserves_settings_origins_and_next" time="4.173" /><testcase classname="tests.muse.test_surfaces" name="test_native_product_status_review_hygiene_and_local_commit" time="11.818"><failure message="AssertionError: refused: governance_write_requires_clean_worktree&#10;  &#10;assert 2 == 0&#10; +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...nce-sync', '--write', '--json'], returncode=2, stdout='', stderr='refused: governance_write_requires_clean_worktree\n').returncode">muse_root = PosixPath('/private/tmp/overseer-fpr3-engines-1/test_native_product_status_rev0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = &lt;function muse.&lt;locals&gt;.run at 0x10914a980&gt;
+
+    def test_native_product_status_review_hygiene_and_local_commit(muse_root,muse_python,muse):
+        root=muse_root
+        state=init(root,muse_python)
+        assert state['governance']['authority']=='muse'
+        commit(root,muse)
+        muse(root,'branch','feat/surfaces')
+        muse(root,'checkout','feat/surfaces')
+        assert publish(root).returncode==0
+        p=command('-C',root,'status','--check-footprint','--json');assert p.returncode==0,p.stderr
+        assert json.loads(p.stdout)['governance']['local_main']
+        next_bytes=(root/'docs/NEXT.md').read_bytes()
+&gt;       p=command('-C',root,'governance-sync','--write','--json');assert p.returncode==0,p.stderr+p.stdout
+                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: refused: governance_write_requires_clean_worktree
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...nce-sync', '--write', '--json'], returncode=2, stdout='', stderr='refused: governance_write_requires_clean_worktree\n').returncode
+
+tests/muse/test_surfaces.py:18: AssertionError</failure></testcase><testcase classname="tests.muse.test_source_distribution" name="test_native_source_and_mirror_keep_ci_dotfiles" time="13.715" /></testsuite></testsuites>

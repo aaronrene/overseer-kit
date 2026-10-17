@@ -1,0 +1,44 @@
+{
+  "kind": "Evidence curator verification; no independent acceptance certification",
+  "created_utc": "2026-10-15T11:46:44.423270+00:00",
+  "completed_run_results": {
+    "owner-observation-desktop-g1lukv03": {
+      "exit": 0,
+      "normal_quit_requested": true,
+      "fallback_signal": false,
+      "remaining_group_before_fallback": "",
+      "next_unchanged": true,
+      "acceptance_verdict": "not_automatically_adjudicated"
+    },
+    "owner-observation-desktop-0pkcm8sj": {
+      "exit": 0,
+      "normal_quit_requested": false,
+      "fallback_signal": false,
+      "remaining_group_before_fallback": "",
+      "next_unchanged": true,
+      "acceptance_verdict": "not_automatically_adjudicated"
+    },
+    "owner-observation-cursor-p7_1rhzy": {
+      "exit": 1,
+      "normal_quit_requested": false,
+      "fallback_signal": false,
+      "remaining_group_before_fallback": "",
+      "next_unchanged": true,
+      "acceptance_verdict": "not_automatically_adjudicated"
+    },
+    "c-n68k5cn1": {
+      "exit": -9,
+      "normal_quit_requested": false,
+      "fallback_signal": false,
+      "remaining_group_before_fallback": "",
+      "next_unchanged": true,
+      "acceptance_verdict": "not_automatically_adjudicated"
+    }
+  },
+  "cursor_forced_cleanup_authority": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/c-n68k5cn1/forced-close-after-keychain-gate.json",
+  "cursor_normal_shutdown_pass": false,
+  "curator_extra_process_check": "Attempted read-only /bin/ps through Python, denied by execution sandbox with PermissionError errno 1. No escalation or process changes performed. Closure relies on saved launcher/final cleanup records and parent verified empty process group.",
+  "old_host_platform_inventory_sha256_before": "b9b7157dc56b06d0e59cf33e123d75d3b346b4ff9c0ce8a47170f2cf19680edc",
+  "original_logs_are_not_modified": true,
+  "network_or_app_launches_performed_by_curator": false
+}

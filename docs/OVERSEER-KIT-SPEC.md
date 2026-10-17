@@ -1,6 +1,4 @@
-> **Historical pre-reset product.** This document describes the pre-reset historical product.
-> Its legacy commands are not exposed by the bounded-v1 entrypoint. Do not use it
-> as current onboarding. See the [root README](../README.md) and [current docs index](README.md).
+> Historical product contract: maintained outcomes are mapped in [the restoration plan](decisions/FULL-PRODUCT-RESTORATION-PLAN.md). Current entrypoints use [canonical NEXT and explicit effects](FPR-3-PRODUCT-SURFACES.md); older HANDOVER prompt and installer mechanisms below are not current execution instructions.
 
 # Overseer Kit — Cross-Repo Governance System Architecture (Frozen Thinking Outline)
 

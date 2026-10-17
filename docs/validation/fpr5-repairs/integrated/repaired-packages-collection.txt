@@ -1,0 +1,4 @@
+tests/fpr3/test_package.py::test_actual_package_deterministic_manifest_modes_and_resource_bundle
+tests/fpr5/test_resource_repairs.py::test_provisioned_runtime_and_actual_packaged_entrypoints
+
+2 tests collected in 0.02s

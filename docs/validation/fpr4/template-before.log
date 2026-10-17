@@ -1,0 +1,21 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________________________ test_render_handover_template _________________________
+
+git_only_config = OverseerConfig(overseer_config_version=1, repo=RepoConfig(name='test-git', root_relative_docs='docs'), vcs=VcsConfig(r...ne, post_land_sync=PostLandSyncConfig(enabled=False, strategy='ff_only', require_clean_worktree=True)), workspace=None)
+repo_root = PosixPath('/private/tmp/overseer-fpr4-template-before/test_render_handover_template0')
+
+    def test_render_handover_template(git_only_config, repo_root: Path) -> None:
+        template = (
+            Path(__file__).resolve().parents[2] / "templates" / "OVERSEER-HANDOVER.template.md"
+        )
+        rendered = render_template(template, git_only_config)
+        assert "test-git" in rendered
+        assert "{{repo.name}}" not in rendered
+>       assert "docs/OVERSEER-HANDOVER.md" in rendered
+E       AssertionError: assert 'docs/OVERSEER-HANDOVER.md' in '# Overseer Handover\n\nRepository: test-git. Keep this summary paired with docs/ROADMAP.md.\nThe sole action authorit...and release/deployment are separate actions.\n\n<!-- overseer:change-log:start -->\n<!-- overseer:change-log:end -->\n'
+
+tests/unit/test_templating.py:62: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_templating.py::test_render_handover_template - Asserti...
+1 failed in 0.04s

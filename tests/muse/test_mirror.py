@@ -240,7 +240,7 @@ def test_existing_snapshot_local_bindings_and_secrets_are_projected_out(case, mu
     muse(root, 'commit', '-m', 'legacy local binding fixture', '--json')
     (root/'.museignore').write_bytes(ignore)
     # .museignore was not staged above; the approved tracked copy remains equal.
-    state = muse_read(root, yaml.safe_load((root/'.overseer/config.yaml').read_bytes())['muse']['runtime']['python'])
+    state = muse_read(root, yaml.safe_load((root/'.overseer/config.yaml').read_bytes())['vcs']['muse']['binding']['runtime']['python'])
     plan['source']['revision'] = state['head']
     result = prepared(case)
     assert {'docs/NEXT.md', '.overseer/config.yaml', '.env.local'} <= set(result['excluded'])
@@ -350,7 +350,7 @@ def test_add_change_delete_and_no_content_source_commit(case, muse):
     muse(root, 'code', 'add', '.')
     muse(root, 'commit', '-m', 'approved second snapshot', '--json')
     config = yaml.safe_load((root/'.overseer/config.yaml').read_bytes())
-    plan['source']['revision'] = muse_read(root, config['muse']['runtime']['python'])['head']
+    plan['source']['revision'] = muse_read(root, config['vcs']['muse']['binding']['runtime']['python'])['head']
     plan['expected_target'] = first['git_head']
     plan['destination']['expected_head'] = first['git_head']
     second = prepared(case)
@@ -362,7 +362,7 @@ def test_add_change_delete_and_no_content_source_commit(case, muse):
     assert execute(case, 'deliver', transport)['ok']
     # New approval with the same bytes retains correspondence through an empty commit.
     muse(root, 'commit', '--allow-empty', '-m', 'new approved source; same projection', '--json')
-    plan['source']['revision'] = muse_read(root, config['muse']['runtime']['python'])['head']
+    plan['source']['revision'] = muse_read(root, config['vcs']['muse']['binding']['runtime']['python'])['head']
     plan['expected_target'] = second['git_head']
     plan['destination']['expected_head'] = second['git_head']
     third = prepared(case)

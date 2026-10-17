@@ -1,0 +1,8 @@
+{
+  "removed_only_new_rebuildable_target": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/candidate/cargo-target-reduced",
+  "generated_target_kib": "1035720\t/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/candidate/cargo-target-reduced",
+  "before_free_bytes": 604270592,
+  "after_free_bytes": 1409134592,
+  "raw_build_log_preserved": true,
+  "build_result": "interrupted at650MiB floor; no candidate binary"
+}

@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "kind": "Acceptance packet evidence; excludes inventory itself",
+  "parent_commit": "d6d6b92d0f10c58a41e25678835f2436b1a5f827",
+  "runtime_sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774",
+  "files": {
+    "bound-next-precommit.json": {
+      "sha256": "5e4941c8221ec36d2e1d674a9c91327cb72ccbc4f45fc1c8569f6cd1171d955d",
+      "bytes": 5590,
+      "mode": 420
+    },
+    "closeout.json": {
+      "sha256": "5c8d6eff7f2faddb980a6757e3c6068b4092ec53da25a41e97e1618df98c5cb3",
+      "bytes": 1847,
+      "mode": 420
+    },
+    "command-inventory.json": {
+      "sha256": "90d2a6256d5e0503317167090ea66534d52508f87babf415cf83f612c2148427",
+      "bytes": 2205,
+      "mode": 420
+    },
+    "evidence-availability.json": {
+      "sha256": "11590231aa2d10b112f77317779583686d00fce0d26076cdf3db5691608af774",
+      "bytes": 49920,
+      "mode": 420
+    },
+    "next-prompt.txt": {
+      "sha256": "39eec33d12b2d102bb38e83535d3b152886ebf4a9db6d2b43c9d1499af639ce3",
+      "bytes": 1606,
+      "mode": 420
+    },
+    "next-publication.json": {
+      "sha256": "95ac5dcaede2b067412cdf7badd526cf3708f92dc0af26fc2fdbdd5e91b8cad8",
+      "bytes": 904,
+      "mode": 420
+    },
+    "readiness.json": {
+      "sha256": "8bc7f2eccd2db590164da7ebb49d46233675bdd7ae6d0885486275644eea77ad",
+      "bytes": 1991,
+      "mode": 420
+    },
+    "source-and-evidence.json": {
+      "sha256": "f22e88fa4e83383c62ea70e0188d3a27f0b9d7b26ef0591cc303e76d01afa242",
+      "bytes": 16854,
+      "mode": 420
+    },
+    "summary-lock-refresh.json": {
+      "sha256": "8a091f6e87155f38bdc4119da29c907082ec929d1422c734c46ca1a58711a6f1",
+      "bytes": 1700,
+      "mode": 420
+    }
+  },
+  "companion_files": {
+    ".overseer/version.lock": {
+      "sha256": "866aa238310407aa26ef71ad64637bd2e4bec23f77573923ccdf6fd5c9e79c55",
+      "bytes": 8498,
+      "mode": 420
+    },
+    "docs/NEXT.md": {
+      "sha256": "09b344ba932e4ddf072cb22fc008ed461a8e1e72772ee62a78c9a2d368048abd",
+      "bytes": 2030,
+      "mode": 420
+    },
+    "docs/OVERSEER-HANDOVER.md": {
+      "sha256": "7f4ad041d3d564d807823e33b74f388985dc15caad12a2dd36ce9c786948c5a7",
+      "bytes": 17795,
+      "mode": 420
+    },
+    "docs/ROADMAP.md": {
+      "sha256": "c2d21b451115c291802d66812c9f5c7288bd4ed9786af769d3e259fee249a4fe",
+      "bytes": 15828,
+      "mode": 420
+    },
+    "docs/validation/FPR-5-ACCEPTANCE-PACKET.md": {
+      "sha256": "3514b053420eae173974dabd9387fee2aa5796fdaff620f5a057021ca7221c65",
+      "bytes": 17845,
+      "mode": 420
+    }
+  },
+  "packet_complete": true,
+  "independent_adjudication_ready": false,
+  "release_ready": false
+}

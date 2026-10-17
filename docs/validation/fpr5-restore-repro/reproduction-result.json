@@ -1,0 +1,2154 @@
+{
+  "schema": 1,
+  "actionId": "OVERSEER-FPR5-OPS1-RESTORE-REPRO-1",
+  "kind": "Single offline host-API custom-editor restoration experiment; author evidence",
+  "node": "v24.1.0",
+  "status": "captured",
+  "persistenceRestoreCycles": 1,
+  "historicalCauseEstablished": false,
+  "historicalIncidentCleared": false,
+  "navigationCount": 0,
+  "appServerExecuted": false,
+  "ipc": "stubbed",
+  "fullClientLaunched": false,
+  "realProfilesOrAccountsAccessed": false,
+  "networkUsed": false,
+  "installedSourceMutated": false,
+  "events": [
+    {
+      "sequence": 1,
+      "phase": "initial-binding",
+      "windowId": "synthetic-window-a",
+      "clientId": "synthetic-client-a",
+      "workspaceId": "synthetic-workspace-a",
+      "membership": {
+        "generation": 1,
+        "roots": [
+          "$DISPOSABLE/repository-a"
+        ],
+        "repositoryIds": [
+          "7d521a18-129b-4907-8bbc-2a8c4eac71a1"
+        ]
+      },
+      "route": "/local/synthetic-thread-a",
+      "thread": {
+        "id": "synthetic-thread-a",
+        "cwd": "$DISPOSABLE/repository-a",
+        "repoId": "7d521a18-129b-4907-8bbc-2a8c4eac71a1"
+      },
+      "ownership": {
+        "source": "synthetic IPC fixture",
+        "role": "owner",
+        "ownerClientId": "synthetic-client-a"
+      }
+    },
+    {
+      "sequence": 2,
+      "phase": "initial-binding",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "workspaceId": "synthetic-workspace-b",
+      "membership": {
+        "generation": 1,
+        "roots": [
+          "$DISPOSABLE/repository-b"
+        ],
+        "repositoryIds": [
+          "58de70fd-939f-4c48-9f72-092c6d8230b2"
+        ]
+      },
+      "route": "/local/synthetic-thread-b",
+      "thread": {
+        "id": "synthetic-thread-b",
+        "cwd": "$DISPOSABLE/repository-b",
+        "repoId": "58de70fd-939f-4c48-9f72-092c6d8230b2"
+      },
+      "ownership": {
+        "source": "synthetic IPC fixture",
+        "role": "owner",
+        "ownerClientId": "synthetic-client-b"
+      }
+    },
+    {
+      "sequence": 3,
+      "phase": "storage-ipc",
+      "component": "cursor-custom-editor-host",
+      "windowId": "synthetic-window-a",
+      "clientId": "synthetic-client-a",
+      "workspaceId": "synthetic-workspace-a",
+      "membership": {
+        "generation": 1,
+        "roots": [
+          "$DISPOSABLE/repository-a"
+        ],
+        "repositoryIds": [
+          "7d521a18-129b-4907-8bbc-2a8c4eac71a1"
+        ]
+      },
+      "method": "getItems",
+      "scope": "workspace",
+      "requestedWorkspaceId": "synthetic-workspace-a"
+    },
+    {
+      "sequence": 4,
+      "phase": "initial-selection",
+      "component": "cursor-custom-editor-host",
+      "windowId": "synthetic-window-a",
+      "clientId": "synthetic-client-a",
+      "workspaceId": "synthetic-workspace-a",
+      "membership": {
+        "generation": 1,
+        "roots": [
+          "$DISPOSABLE/repository-a"
+        ],
+        "repositoryIds": [
+          "7d521a18-129b-4907-8bbc-2a8c4eac71a1"
+        ]
+      },
+      "routeOrigin": "fixture-custom-editor-uri",
+      "route": "/local/synthetic-thread-a",
+      "uri": "openai-codex://route/local/synthetic-thread-a",
+      "activeGroup": 0,
+      "beforeNavigation": true
+    },
+    {
+      "sequence": 5,
+      "phase": "storage-ipc",
+      "component": "cursor-custom-editor-host",
+      "windowId": "synthetic-window-a",
+      "clientId": "synthetic-client-a",
+      "workspaceId": "synthetic-workspace-a",
+      "membership": {
+        "generation": 1,
+        "roots": [
+          "$DISPOSABLE/repository-a"
+        ],
+        "repositoryIds": [
+          "7d521a18-129b-4907-8bbc-2a8c4eac71a1"
+        ]
+      },
+      "method": "updateItems",
+      "scope": "workspace",
+      "requestedWorkspaceId": "synthetic-workspace-a"
+    },
+    {
+      "sequence": 6,
+      "phase": "persisted",
+      "component": "cursor-custom-editor-host",
+      "windowId": "synthetic-window-a",
+      "clientId": "synthetic-client-a",
+      "workspaceId": "synthetic-workspace-a",
+      "membership": {
+        "generation": 1,
+        "roots": [
+          "$DISPOSABLE/repository-a"
+        ],
+        "repositoryIds": [
+          "7d521a18-129b-4907-8bbc-2a8c4eac71a1"
+        ]
+      },
+      "routeOrigin": "native-custom-editor-serializer",
+      "savedState": {
+        "serializedGrid": {
+          "root": {
+            "type": "branch",
+            "data": [
+              {
+                "type": "leaf",
+                "data": {
+                  "id": 0,
+                  "editors": [
+                    {
+                      "id": "workbench.editors.webviewEditor",
+                      "value": "{\"origin\":\"synthetic-origin-synthetic-window-a\",\"viewType\":\"chatgpt.conversationEditor\",\"providedId\":\"chatgpt.conversationEditor\",\"title\":\"Synthetic conversation\",\"options\":{\"retainContextWhenHidden\":true},\"group\":0,\"editorResource\":{\"scheme\":\"openai-codex\",\"authority\":\"route\",\"path\":\"/local/synthetic-thread-a\",\"query\":\"\",\"fragment\":\"\"},\"dirty\":false}"
+                    }
+                  ],
+                  "mru": [
+                    0
+                  ]
+                },
+                "size": 600
+              }
+            ],
+            "size": 800
+          },
+          "orientation": 0,
+          "width": 800,
+          "height": 600
+        },
+        "activeGroup": 0,
+        "mostRecentActiveGroups": [
+          0
+        ]
+      },
+      "beforeNavigation": true
+    },
+    {
+      "sequence": 7,
+      "phase": "storage-ipc",
+      "component": "cursor-custom-editor-host",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "workspaceId": "synthetic-workspace-b",
+      "membership": {
+        "generation": 1,
+        "roots": [
+          "$DISPOSABLE/repository-b"
+        ],
+        "repositoryIds": [
+          "58de70fd-939f-4c48-9f72-092c6d8230b2"
+        ]
+      },
+      "method": "getItems",
+      "scope": "workspace",
+      "requestedWorkspaceId": "synthetic-workspace-b"
+    },
+    {
+      "sequence": 8,
+      "phase": "initial-selection",
+      "component": "cursor-custom-editor-host",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "workspaceId": "synthetic-workspace-b",
+      "membership": {
+        "generation": 1,
+        "roots": [
+          "$DISPOSABLE/repository-b"
+        ],
+        "repositoryIds": [
+          "58de70fd-939f-4c48-9f72-092c6d8230b2"
+        ]
+      },
+      "routeOrigin": "fixture-custom-editor-uri",
+      "route": "/local/synthetic-thread-b",
+      "uri": "openai-codex://route/local/synthetic-thread-b",
+      "activeGroup": 1,
+      "beforeNavigation": true
+    },
+    {
+      "sequence": 9,
+      "phase": "storage-ipc",
+      "component": "cursor-custom-editor-host",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "workspaceId": "synthetic-workspace-b",
+      "membership": {
+        "generation": 1,
+        "roots": [
+          "$DISPOSABLE/repository-b"
+        ],
+        "repositoryIds": [
+          "58de70fd-939f-4c48-9f72-092c6d8230b2"
+        ]
+      },
+      "method": "updateItems",
+      "scope": "workspace",
+      "requestedWorkspaceId": "synthetic-workspace-b"
+    },
+    {
+      "sequence": 10,
+      "phase": "persisted",
+      "component": "cursor-custom-editor-host",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "workspaceId": "synthetic-workspace-b",
+      "membership": {
+        "generation": 1,
+        "roots": [
+          "$DISPOSABLE/repository-b"
+        ],
+        "repositoryIds": [
+          "58de70fd-939f-4c48-9f72-092c6d8230b2"
+        ]
+      },
+      "routeOrigin": "native-custom-editor-serializer",
+      "savedState": {
+        "serializedGrid": {
+          "root": {
+            "type": "branch",
+            "data": [
+              {
+                "type": "leaf",
+                "data": {
+                  "id": 1,
+                  "editors": [
+                    {
+                      "id": "workbench.editors.webviewEditor",
+                      "value": "{\"origin\":\"synthetic-origin-synthetic-window-b\",\"viewType\":\"chatgpt.conversationEditor\",\"providedId\":\"chatgpt.conversationEditor\",\"title\":\"Synthetic conversation\",\"options\":{\"retainContextWhenHidden\":true},\"group\":1,\"editorResource\":{\"scheme\":\"openai-codex\",\"authority\":\"route\",\"path\":\"/local/synthetic-thread-b\",\"query\":\"\",\"fragment\":\"\"},\"dirty\":false}"
+                    }
+                  ],
+                  "mru": [
+                    0
+                  ]
+                },
+                "size": 600
+              }
+            ],
+            "size": 800
+          },
+          "orientation": 0,
+          "width": 800,
+          "height": 600
+        },
+        "activeGroup": 1,
+        "mostRecentActiveGroups": [
+          1
+        ]
+      },
+      "beforeNavigation": true
+    },
+    {
+      "sequence": 11,
+      "phase": "storage-ipc",
+      "component": "cursor-custom-editor-host",
+      "windowId": "synthetic-window-a",
+      "clientId": "synthetic-client-a",
+      "workspaceId": "synthetic-workspace-a",
+      "membership": {
+        "generation": 1,
+        "roots": [
+          "$DISPOSABLE/repository-a"
+        ],
+        "repositoryIds": [
+          "7d521a18-129b-4907-8bbc-2a8c4eac71a1"
+        ]
+      },
+      "method": "getItems",
+      "scope": "workspace",
+      "requestedWorkspaceId": "synthetic-workspace-a"
+    },
+    {
+      "sequence": 12,
+      "phase": "restored-before-navigation",
+      "component": "cursor-custom-editor-host",
+      "windowId": "synthetic-window-a",
+      "clientId": "synthetic-client-a",
+      "workspaceId": "synthetic-workspace-a",
+      "membership": {
+        "generation": 1,
+        "roots": [
+          "$DISPOSABLE/repository-a"
+        ],
+        "repositoryIds": [
+          "7d521a18-129b-4907-8bbc-2a8c4eac71a1"
+        ]
+      },
+      "routeOrigin": "workspace-memento/custom-editor-deserialize/tab-api",
+      "route": "/local/synthetic-thread-a",
+      "uri": "openai-codex://route/local/synthetic-thread-a",
+      "activeGroup": 0,
+      "tabs": [
+        {
+          "isActive": true,
+          "viewColumn": 1,
+          "activeUri": "openai-codex://route/local/synthetic-thread-a",
+          "tabs": [
+            {
+              "uri": "openai-codex://route/local/synthetic-thread-a",
+              "isActive": true,
+              "isPreview": false,
+              "viewType": "chatgpt.conversationEditor"
+            }
+          ]
+        }
+      ],
+      "beforeNavigation": true
+    },
+    {
+      "sequence": 13,
+      "phase": "storage-ipc",
+      "component": "cursor-custom-editor-host",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "workspaceId": "synthetic-workspace-b",
+      "membership": {
+        "generation": 1,
+        "roots": [
+          "$DISPOSABLE/repository-b"
+        ],
+        "repositoryIds": [
+          "58de70fd-939f-4c48-9f72-092c6d8230b2"
+        ]
+      },
+      "method": "getItems",
+      "scope": "workspace",
+      "requestedWorkspaceId": "synthetic-workspace-b"
+    },
+    {
+      "sequence": 14,
+      "phase": "restored-before-navigation",
+      "component": "cursor-custom-editor-host",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "workspaceId": "synthetic-workspace-b",
+      "membership": {
+        "generation": 1,
+        "roots": [
+          "$DISPOSABLE/repository-b"
+        ],
+        "repositoryIds": [
+          "58de70fd-939f-4c48-9f72-092c6d8230b2"
+        ]
+      },
+      "routeOrigin": "workspace-memento/custom-editor-deserialize/tab-api",
+      "route": "/local/synthetic-thread-b",
+      "uri": "openai-codex://route/local/synthetic-thread-b",
+      "activeGroup": 1,
+      "tabs": [
+        {
+          "isActive": true,
+          "viewColumn": 1,
+          "activeUri": "openai-codex://route/local/synthetic-thread-b",
+          "tabs": [
+            {
+              "uri": "openai-codex://route/local/synthetic-thread-b",
+              "isActive": true,
+              "isPreview": false,
+              "viewType": "chatgpt.conversationEditor"
+            }
+          ]
+        }
+      ],
+      "beforeNavigation": true
+    },
+    {
+      "sequence": 15,
+      "phase": "extension-open-restored-tab",
+      "windowId": "synthetic-window-a",
+      "clientId": "synthetic-client-a",
+      "workspaceId": "synthetic-workspace-a",
+      "membership": {
+        "generation": 1,
+        "roots": [
+          "$DISPOSABLE/repository-a"
+        ],
+        "repositoryIds": [
+          "7d521a18-129b-4907-8bbc-2a8c4eac71a1"
+        ]
+      },
+      "uri": {
+        "scheme": "openai-codex",
+        "authority": "route",
+        "path": "/local/synthetic-thread-a",
+        "query": "",
+        "fragment": ""
+      },
+      "command": "vscode.openWith",
+      "options": {
+        "preserveFocus": true,
+        "preview": false
+      },
+      "origin": "host-restored-custom-editor"
+    },
+    {
+      "sequence": 16,
+      "phase": "extension-route-selected",
+      "windowId": "synthetic-window-a",
+      "clientId": "synthetic-client-a",
+      "workspaceId": "synthetic-workspace-a",
+      "membership": {
+        "generation": 1,
+        "roots": [
+          "$DISPOSABLE/repository-a"
+        ],
+        "repositoryIds": [
+          "7d521a18-129b-4907-8bbc-2a8c4eac71a1"
+        ]
+      },
+      "uri": {
+        "scheme": "openai-codex",
+        "authority": "route",
+        "path": "/local/synthetic-thread-a",
+        "query": "",
+        "fragment": ""
+      },
+      "initialRoute": "/local/synthetic-thread-a",
+      "initialRouteMetaTag": "<meta name=\"initial-route\" content=\"/local/synthetic-thread-a\">",
+      "rendererInitialRoute": "/local/synthetic-thread-a",
+      "origin": "custom-editor-uri",
+      "navigationCount": 0
+    },
+    {
+      "sequence": 17,
+      "phase": "stub-ipc-owner-discovery",
+      "windowId": "synthetic-window-a",
+      "clientId": "synthetic-client-a",
+      "workspaceId": "synthetic-workspace-a",
+      "membership": {
+        "generation": 1,
+        "roots": [
+          "$DISPOSABLE/repository-a"
+        ],
+        "repositoryIds": [
+          "7d521a18-129b-4907-8bbc-2a8c4eac71a1"
+        ]
+      },
+      "method": "thread-owner-discovery",
+      "params": {
+        "hostId": "local",
+        "conversationId": "synthetic-thread-a"
+      },
+      "options": {
+        "timeoutMs": 1000
+      },
+      "mockedOwnerClientId": "synthetic-client-a"
+    },
+    {
+      "sequence": 18,
+      "phase": "restored-binding",
+      "windowId": "synthetic-window-a",
+      "clientId": "synthetic-client-a",
+      "workspaceId": "synthetic-workspace-a",
+      "membership": {
+        "generation": 1,
+        "roots": [
+          "$DISPOSABLE/repository-a"
+        ],
+        "repositoryIds": [
+          "7d521a18-129b-4907-8bbc-2a8c4eac71a1"
+        ]
+      },
+      "route": "/local/synthetic-thread-a",
+      "threadId": "synthetic-thread-a",
+      "threadCwd": "$DISPOSABLE/repository-a",
+      "workspaceRoots": [
+        "$DISPOSABLE/repository-a"
+      ],
+      "ownerClientId": "synthetic-client-a",
+      "streamRole": "owner",
+      "ownershipEvidence": "stub IPC registry; actual discovery request executed",
+      "navigationCount": 0
+    },
+    {
+      "sequence": 19,
+      "phase": "extension-open-restored-tab",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "workspaceId": "synthetic-workspace-b",
+      "membership": {
+        "generation": 1,
+        "roots": [
+          "$DISPOSABLE/repository-b"
+        ],
+        "repositoryIds": [
+          "58de70fd-939f-4c48-9f72-092c6d8230b2"
+        ]
+      },
+      "uri": {
+        "scheme": "openai-codex",
+        "authority": "route",
+        "path": "/local/synthetic-thread-b",
+        "query": "",
+        "fragment": ""
+      },
+      "command": "vscode.openWith",
+      "options": {
+        "preserveFocus": true,
+        "preview": false
+      },
+      "origin": "host-restored-custom-editor"
+    },
+    {
+      "sequence": 20,
+      "phase": "extension-route-selected",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "workspaceId": "synthetic-workspace-b",
+      "membership": {
+        "generation": 1,
+        "roots": [
+          "$DISPOSABLE/repository-b"
+        ],
+        "repositoryIds": [
+          "58de70fd-939f-4c48-9f72-092c6d8230b2"
+        ]
+      },
+      "uri": {
+        "scheme": "openai-codex",
+        "authority": "route",
+        "path": "/local/synthetic-thread-b",
+        "query": "",
+        "fragment": ""
+      },
+      "initialRoute": "/local/synthetic-thread-b",
+      "initialRouteMetaTag": "<meta name=\"initial-route\" content=\"/local/synthetic-thread-b\">",
+      "rendererInitialRoute": "/local/synthetic-thread-b",
+      "origin": "custom-editor-uri",
+      "navigationCount": 0
+    },
+    {
+      "sequence": 21,
+      "phase": "stub-ipc-owner-discovery",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "workspaceId": "synthetic-workspace-b",
+      "membership": {
+        "generation": 1,
+        "roots": [
+          "$DISPOSABLE/repository-b"
+        ],
+        "repositoryIds": [
+          "58de70fd-939f-4c48-9f72-092c6d8230b2"
+        ]
+      },
+      "method": "thread-owner-discovery",
+      "params": {
+        "hostId": "local",
+        "conversationId": "synthetic-thread-b"
+      },
+      "options": {
+        "timeoutMs": 1000
+      },
+      "mockedOwnerClientId": "synthetic-client-b"
+    },
+    {
+      "sequence": 22,
+      "phase": "restored-binding",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "workspaceId": "synthetic-workspace-b",
+      "membership": {
+        "generation": 1,
+        "roots": [
+          "$DISPOSABLE/repository-b"
+        ],
+        "repositoryIds": [
+          "58de70fd-939f-4c48-9f72-092c6d8230b2"
+        ]
+      },
+      "route": "/local/synthetic-thread-b",
+      "threadId": "synthetic-thread-b",
+      "threadCwd": "$DISPOSABLE/repository-b",
+      "workspaceRoots": [
+        "$DISPOSABLE/repository-b"
+      ],
+      "ownerClientId": "synthetic-client-b",
+      "streamRole": "owner",
+      "ownershipEvidence": "stub IPC registry; actual discovery request executed",
+      "navigationCount": 0
+    },
+    {
+      "sequence": 23,
+      "phase": "pre-navigation-comparison",
+      "distinctRoutesConverged": false,
+      "naturalWorkspaceTaskMismatch": false,
+      "routes": [
+        "/local/synthetic-thread-a",
+        "/local/synthetic-thread-b"
+      ],
+      "navigationCount": 0
+    },
+    {
+      "sequence": 24,
+      "phase": "renderer-resume-fixture",
+      "windowId": "synthetic-window-a",
+      "clientId": "synthetic-client-a",
+      "hostId": "local",
+      "membershipGeneration": 1,
+      "probe": "restored-matching-membership",
+      "route": "/local/synthetic-thread-a",
+      "workspaceMembership": [
+        "$DISPOSABLE/repository-a"
+      ],
+      "thread": {
+        "id": "synthetic-thread-a",
+        "cwd": "$DISPOSABLE/repository-a",
+        "repoId": "7d521a18-129b-4907-8bbc-2a8c4eac71a1",
+        "sessionId": "synthetic-session-synthetic-thread-a",
+        "name": "",
+        "path": null,
+        "createdAt": 1,
+        "updatedAt": 2,
+        "recencyAt": 2,
+        "historyMode": "legacy",
+        "status": {
+          "type": "idle"
+        },
+        "source": "vscode",
+        "parentThreadId": null,
+        "threadSource": "user",
+        "modelProvider": "",
+        "turns": [],
+        "gitInfo": null
+      },
+      "summary": {
+        "conversationId": "synthetic-thread-a",
+        "hostId": "local",
+        "cwd": "$DISPOSABLE/repository-a",
+        "createdAt": 1000,
+        "updatedAt": 2000,
+        "recencyAt": 2000,
+        "title": "",
+        "source": "vscode",
+        "parentThreadId": null,
+        "threadSource": "user",
+        "modelProvider": "",
+        "workspaceKind": "project"
+      },
+      "settings": {
+        "personality": null,
+        "defaultFeatureOverrides": null,
+        "instructionOverrides": null,
+        "includeProseDetailLevelInstructions": false,
+        "automaticTitleCheckpoints": false,
+        "writingBlocks": false,
+        "presentationOutlines": false
+      },
+      "writableRoots": [],
+      "tailHydration": false,
+      "projectlessAssignments": [],
+      "appServerVersion": null,
+      "permissionsInput": null,
+      "hostWindowActivity": {
+        "visibilityState": "visible",
+        "canAcquireThreadStream": true
+      },
+      "perProbeRendererState": "fresh synthetic conversation and stream-role storage for this admission probe"
+    },
+    {
+      "sequence": 25,
+      "phase": "renderer-log",
+      "windowId": "synthetic-window-a",
+      "clientId": "synthetic-client-a",
+      "hostId": "local",
+      "membershipGeneration": 1,
+      "probe": "restored-matching-membership",
+      "level": "info",
+      "message": "maybe_resume_started",
+      "data": {
+        "safe": {
+          "conversationId": "synthetic-thread-a",
+          "previousResumeState": null,
+          "previousStreamRole": null,
+          "documentVisibilityState": "visible"
+        },
+        "sensitive": {
+          "hostId": "local",
+          "routePath": "/local/synthetic-thread-a"
+        }
+      }
+    },
+    {
+      "sequence": 26,
+      "phase": "app-server-request",
+      "windowId": "synthetic-window-a",
+      "clientId": "synthetic-client-a",
+      "hostId": "local",
+      "membershipGeneration": 1,
+      "probe": "restored-matching-membership",
+      "method": "thread/read",
+      "params": {
+        "threadId": "synthetic-thread-a",
+        "includeTurns": false
+      },
+      "options": {
+        "source": "thread_hydration",
+        "priority": "critical",
+        "timeoutMs": 30000
+      }
+    },
+    {
+      "sequence": 27,
+      "phase": "renderer-product-prepare-input",
+      "windowId": "synthetic-window-a",
+      "clientId": "synthetic-client-a",
+      "hostId": "local",
+      "membershipGeneration": 1,
+      "probe": "restored-matching-membership",
+      "authoritativeThreadCwd": "$DISPOSABLE/repository-a",
+      "conversationCwd": "$DISPOSABLE/repository-a",
+      "workspaceRoots": [
+        "$DISPOSABLE/repository-a"
+      ],
+      "permissions": {
+        "approvalPolicy": "on-request",
+        "approvalsReviewer": "user",
+        "runtimeWorkspaceRoots": [
+          "$DISPOSABLE/repository-a"
+        ],
+        "sandboxPolicy": {
+          "type": "workspaceWrite",
+          "writableRoots": [
+            "$DISPOSABLE/repository-a"
+          ],
+          "excludeSlashTmp": false,
+          "excludeTmpdirEnvVar": false,
+          "networkAccess": false
+        }
+      }
+    },
+    {
+      "sequence": 28,
+      "phase": "host-settings-read",
+      "windowId": "synthetic-window-a",
+      "clientId": "synthetic-client-a",
+      "hostId": "local",
+      "membershipGeneration": 1,
+      "probe": "restored-matching-membership",
+      "model": "synthetic-offline-model",
+      "cwd": "$DISPOSABLE/repository-a",
+      "includeDeveloperInstructions": true,
+      "settings": {
+        "personality": null,
+        "defaultFeatureOverrides": null,
+        "instructionOverrides": null,
+        "includeProseDetailLevelInstructions": false,
+        "automaticTitleCheckpoints": false,
+        "writingBlocks": false,
+        "presentationOutlines": false
+      }
+    },
+    {
+      "sequence": 29,
+      "phase": "host-config-read",
+      "windowId": "synthetic-window-a",
+      "clientId": "synthetic-client-a",
+      "hostId": "local",
+      "membershipGeneration": 1,
+      "probe": "restored-matching-membership",
+      "cwd": "$DISPOSABLE/repository-a",
+      "syntheticValue": {}
+    },
+    {
+      "sequence": 30,
+      "phase": "renderer-product-prepare-output",
+      "windowId": "synthetic-window-a",
+      "clientId": "synthetic-client-a",
+      "hostId": "local",
+      "membershipGeneration": 1,
+      "probe": "restored-matching-membership",
+      "start": {
+        "cwd": "$DISPOSABLE/repository-a",
+        "model": "synthetic-offline-model",
+        "modelProvider": null,
+        "serviceTier": null,
+        "config": {},
+        "approvalsReviewer": "user",
+        "approvalPolicy": "on-request",
+        "sandbox": "workspace-write",
+        "personality": null,
+        "ephemeral": null,
+        "baseInstructions": null,
+        "threadSource": "user",
+        "mockExperimentalField": null,
+        "experimentalRawEvents": false,
+        "dynamicTools": null
+      },
+      "preserveServerPermissions": false
+    },
+    {
+      "sequence": 31,
+      "phase": "renderer-stream-role",
+      "windowId": "synthetic-window-a",
+      "clientId": "synthetic-client-a",
+      "hostId": "local",
+      "membershipGeneration": 1,
+      "probe": "restored-matching-membership",
+      "conversationId": "synthetic-thread-a",
+      "role": {
+        "role": "owner"
+      }
+    },
+    {
+      "sequence": 32,
+      "phase": "app-server-request",
+      "windowId": "synthetic-window-a",
+      "clientId": "synthetic-client-a",
+      "hostId": "local",
+      "membershipGeneration": 1,
+      "probe": "restored-matching-membership",
+      "method": "thread/resume",
+      "params": {
+        "threadId": "synthetic-thread-a",
+        "history": null,
+        "path": null,
+        "model": null,
+        "modelProvider": null,
+        "serviceTier": null,
+        "cwd": "$DISPOSABLE/repository-a",
+        "personality": null,
+        "excludeTurns": false
+      },
+      "options": {
+        "source": "thread_hydration",
+        "priority": "critical",
+        "timeoutMs": 120000
+      }
+    },
+    {
+      "sequence": 33,
+      "phase": "resume-admission-boundary",
+      "windowId": "synthetic-window-a",
+      "clientId": "synthetic-client-a",
+      "hostId": "local",
+      "membershipGeneration": 1,
+      "probe": "restored-matching-membership",
+      "route": "/local/synthetic-thread-a",
+      "workspaceMembership": [
+        "$DISPOSABLE/repository-a"
+      ],
+      "authoritativeThreadCwd": "$DISPOSABLE/repository-a",
+      "resolvedTaskCwd": "$DISPOSABLE/repository-a",
+      "streamRole": {
+        "role": "owner"
+      },
+      "request": {
+        "threadId": "synthetic-thread-a",
+        "history": null,
+        "path": null,
+        "model": null,
+        "modelProvider": null,
+        "serviceTier": null,
+        "cwd": "$DISPOSABLE/repository-a",
+        "personality": null,
+        "excludeTurns": false
+      },
+      "derivedPermissions": {
+        "approvalPolicy": "on-request",
+        "approvalsReviewer": "user",
+        "runtimeWorkspaceRoots": [
+          "$DISPOSABLE/repository-a"
+        ],
+        "sandboxPolicy": {
+          "type": "workspaceWrite",
+          "writableRoots": [
+            "$DISPOSABLE/repository-a"
+          ],
+          "excludeSlashTmp": false,
+          "excludeTmpdirEnvVar": false,
+          "networkAccess": false
+        }
+      },
+      "workspaceTaskMismatch": false,
+      "effectivePermissions": "not-observed: app-server stub stops at request boundary"
+    },
+    {
+      "sequence": 34,
+      "phase": "renderer-resume-fixture",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "hostId": "local",
+      "membershipGeneration": 1,
+      "probe": "restored-matching-membership",
+      "route": "/local/synthetic-thread-b",
+      "workspaceMembership": [
+        "$DISPOSABLE/repository-b"
+      ],
+      "thread": {
+        "id": "synthetic-thread-b",
+        "cwd": "$DISPOSABLE/repository-b",
+        "repoId": "58de70fd-939f-4c48-9f72-092c6d8230b2",
+        "sessionId": "synthetic-session-synthetic-thread-b",
+        "name": "",
+        "path": null,
+        "createdAt": 1,
+        "updatedAt": 2,
+        "recencyAt": 2,
+        "historyMode": "legacy",
+        "status": {
+          "type": "idle"
+        },
+        "source": "vscode",
+        "parentThreadId": null,
+        "threadSource": "user",
+        "modelProvider": "",
+        "turns": [],
+        "gitInfo": null
+      },
+      "summary": {
+        "conversationId": "synthetic-thread-b",
+        "hostId": "local",
+        "cwd": "$DISPOSABLE/repository-b",
+        "createdAt": 1000,
+        "updatedAt": 2000,
+        "recencyAt": 2000,
+        "title": "",
+        "source": "vscode",
+        "parentThreadId": null,
+        "threadSource": "user",
+        "modelProvider": "",
+        "workspaceKind": "project"
+      },
+      "settings": {
+        "personality": null,
+        "defaultFeatureOverrides": null,
+        "instructionOverrides": null,
+        "includeProseDetailLevelInstructions": false,
+        "automaticTitleCheckpoints": false,
+        "writingBlocks": false,
+        "presentationOutlines": false
+      },
+      "writableRoots": [],
+      "tailHydration": false,
+      "projectlessAssignments": [],
+      "appServerVersion": null,
+      "permissionsInput": null,
+      "hostWindowActivity": {
+        "visibilityState": "visible",
+        "canAcquireThreadStream": true
+      },
+      "perProbeRendererState": "fresh synthetic conversation and stream-role storage for this admission probe"
+    },
+    {
+      "sequence": 35,
+      "phase": "renderer-log",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "hostId": "local",
+      "membershipGeneration": 1,
+      "probe": "restored-matching-membership",
+      "level": "info",
+      "message": "maybe_resume_started",
+      "data": {
+        "safe": {
+          "conversationId": "synthetic-thread-b",
+          "previousResumeState": null,
+          "previousStreamRole": null,
+          "documentVisibilityState": "visible"
+        },
+        "sensitive": {
+          "hostId": "local",
+          "routePath": "/local/synthetic-thread-b"
+        }
+      }
+    },
+    {
+      "sequence": 36,
+      "phase": "app-server-request",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "hostId": "local",
+      "membershipGeneration": 1,
+      "probe": "restored-matching-membership",
+      "method": "thread/read",
+      "params": {
+        "threadId": "synthetic-thread-b",
+        "includeTurns": false
+      },
+      "options": {
+        "source": "thread_hydration",
+        "priority": "critical",
+        "timeoutMs": 30000
+      }
+    },
+    {
+      "sequence": 37,
+      "phase": "renderer-product-prepare-input",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "hostId": "local",
+      "membershipGeneration": 1,
+      "probe": "restored-matching-membership",
+      "authoritativeThreadCwd": "$DISPOSABLE/repository-b",
+      "conversationCwd": "$DISPOSABLE/repository-b",
+      "workspaceRoots": [
+        "$DISPOSABLE/repository-b"
+      ],
+      "permissions": {
+        "approvalPolicy": "on-request",
+        "approvalsReviewer": "user",
+        "runtimeWorkspaceRoots": [
+          "$DISPOSABLE/repository-b"
+        ],
+        "sandboxPolicy": {
+          "type": "workspaceWrite",
+          "writableRoots": [
+            "$DISPOSABLE/repository-b"
+          ],
+          "excludeSlashTmp": false,
+          "excludeTmpdirEnvVar": false,
+          "networkAccess": false
+        }
+      }
+    },
+    {
+      "sequence": 38,
+      "phase": "host-settings-read",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "hostId": "local",
+      "membershipGeneration": 1,
+      "probe": "restored-matching-membership",
+      "model": "synthetic-offline-model",
+      "cwd": "$DISPOSABLE/repository-b",
+      "includeDeveloperInstructions": true,
+      "settings": {
+        "personality": null,
+        "defaultFeatureOverrides": null,
+        "instructionOverrides": null,
+        "includeProseDetailLevelInstructions": false,
+        "automaticTitleCheckpoints": false,
+        "writingBlocks": false,
+        "presentationOutlines": false
+      }
+    },
+    {
+      "sequence": 39,
+      "phase": "host-config-read",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "hostId": "local",
+      "membershipGeneration": 1,
+      "probe": "restored-matching-membership",
+      "cwd": "$DISPOSABLE/repository-b",
+      "syntheticValue": {}
+    },
+    {
+      "sequence": 40,
+      "phase": "renderer-product-prepare-output",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "hostId": "local",
+      "membershipGeneration": 1,
+      "probe": "restored-matching-membership",
+      "start": {
+        "cwd": "$DISPOSABLE/repository-b",
+        "model": "synthetic-offline-model",
+        "modelProvider": null,
+        "serviceTier": null,
+        "config": {},
+        "approvalsReviewer": "user",
+        "approvalPolicy": "on-request",
+        "sandbox": "workspace-write",
+        "personality": null,
+        "ephemeral": null,
+        "baseInstructions": null,
+        "threadSource": "user",
+        "mockExperimentalField": null,
+        "experimentalRawEvents": false,
+        "dynamicTools": null
+      },
+      "preserveServerPermissions": false
+    },
+    {
+      "sequence": 41,
+      "phase": "renderer-stream-role",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "hostId": "local",
+      "membershipGeneration": 1,
+      "probe": "restored-matching-membership",
+      "conversationId": "synthetic-thread-b",
+      "role": {
+        "role": "owner"
+      }
+    },
+    {
+      "sequence": 42,
+      "phase": "app-server-request",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "hostId": "local",
+      "membershipGeneration": 1,
+      "probe": "restored-matching-membership",
+      "method": "thread/resume",
+      "params": {
+        "threadId": "synthetic-thread-b",
+        "history": null,
+        "path": null,
+        "model": null,
+        "modelProvider": null,
+        "serviceTier": null,
+        "cwd": "$DISPOSABLE/repository-b",
+        "personality": null,
+        "excludeTurns": false
+      },
+      "options": {
+        "source": "thread_hydration",
+        "priority": "critical",
+        "timeoutMs": 120000
+      }
+    },
+    {
+      "sequence": 43,
+      "phase": "resume-admission-boundary",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "hostId": "local",
+      "membershipGeneration": 1,
+      "probe": "restored-matching-membership",
+      "route": "/local/synthetic-thread-b",
+      "workspaceMembership": [
+        "$DISPOSABLE/repository-b"
+      ],
+      "authoritativeThreadCwd": "$DISPOSABLE/repository-b",
+      "resolvedTaskCwd": "$DISPOSABLE/repository-b",
+      "streamRole": {
+        "role": "owner"
+      },
+      "request": {
+        "threadId": "synthetic-thread-b",
+        "history": null,
+        "path": null,
+        "model": null,
+        "modelProvider": null,
+        "serviceTier": null,
+        "cwd": "$DISPOSABLE/repository-b",
+        "personality": null,
+        "excludeTurns": false
+      },
+      "derivedPermissions": {
+        "approvalPolicy": "on-request",
+        "approvalsReviewer": "user",
+        "runtimeWorkspaceRoots": [
+          "$DISPOSABLE/repository-b"
+        ],
+        "sandboxPolicy": {
+          "type": "workspaceWrite",
+          "writableRoots": [
+            "$DISPOSABLE/repository-b"
+          ],
+          "excludeSlashTmp": false,
+          "excludeTmpdirEnvVar": false,
+          "networkAccess": false
+        }
+      },
+      "workspaceTaskMismatch": false,
+      "effectivePermissions": "not-observed: app-server stub stops at request boundary"
+    },
+    {
+      "sequence": 44,
+      "phase": "injected-membership-drift",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "route": "/local/synthetic-thread-b",
+      "threadId": "synthetic-thread-b",
+      "threadCwd": "$DISPOSABLE/repository-b",
+      "oldMembership": {
+        "generation": 1,
+        "roots": [
+          "$DISPOSABLE/repository-b"
+        ],
+        "repositoryIds": [
+          "58de70fd-939f-4c48-9f72-092c6d8230b2"
+        ]
+      },
+      "newMembership": {
+        "generation": 2,
+        "roots": [
+          "$DISPOSABLE/repository-a"
+        ],
+        "repositoryIds": [
+          "7d521a18-129b-4907-8bbc-2a8c4eac71a1"
+        ]
+      },
+      "origin": "explicit diagnostic fixture change; not spontaneous convergence",
+      "navigationCount": 0
+    },
+    {
+      "sequence": 45,
+      "phase": "renderer-resume-fixture",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "hostId": "local",
+      "membershipGeneration": 2,
+      "probe": "injected-post-restore-membership-drift",
+      "route": "/local/synthetic-thread-b",
+      "workspaceMembership": [
+        "$DISPOSABLE/repository-a"
+      ],
+      "thread": {
+        "id": "synthetic-thread-b",
+        "cwd": "$DISPOSABLE/repository-b",
+        "repoId": "58de70fd-939f-4c48-9f72-092c6d8230b2",
+        "sessionId": "synthetic-session-synthetic-thread-b",
+        "name": "",
+        "path": null,
+        "createdAt": 1,
+        "updatedAt": 2,
+        "recencyAt": 2,
+        "historyMode": "legacy",
+        "status": {
+          "type": "idle"
+        },
+        "source": "vscode",
+        "parentThreadId": null,
+        "threadSource": "user",
+        "modelProvider": "",
+        "turns": [],
+        "gitInfo": null
+      },
+      "summary": {
+        "conversationId": "synthetic-thread-b",
+        "hostId": "local",
+        "cwd": "$DISPOSABLE/repository-b",
+        "createdAt": 1000,
+        "updatedAt": 2000,
+        "recencyAt": 2000,
+        "title": "",
+        "source": "vscode",
+        "parentThreadId": null,
+        "threadSource": "user",
+        "modelProvider": "",
+        "workspaceKind": "project"
+      },
+      "settings": {
+        "personality": null,
+        "defaultFeatureOverrides": null,
+        "instructionOverrides": null,
+        "includeProseDetailLevelInstructions": false,
+        "automaticTitleCheckpoints": false,
+        "writingBlocks": false,
+        "presentationOutlines": false
+      },
+      "writableRoots": [],
+      "tailHydration": false,
+      "projectlessAssignments": [],
+      "appServerVersion": null,
+      "permissionsInput": null,
+      "hostWindowActivity": {
+        "visibilityState": "visible",
+        "canAcquireThreadStream": true
+      },
+      "perProbeRendererState": "fresh synthetic conversation and stream-role storage for this admission probe"
+    },
+    {
+      "sequence": 46,
+      "phase": "renderer-log",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "hostId": "local",
+      "membershipGeneration": 2,
+      "probe": "injected-post-restore-membership-drift",
+      "level": "info",
+      "message": "maybe_resume_started",
+      "data": {
+        "safe": {
+          "conversationId": "synthetic-thread-b",
+          "previousResumeState": null,
+          "previousStreamRole": null,
+          "documentVisibilityState": "visible"
+        },
+        "sensitive": {
+          "hostId": "local",
+          "routePath": "/local/synthetic-thread-b"
+        }
+      }
+    },
+    {
+      "sequence": 47,
+      "phase": "app-server-request",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "hostId": "local",
+      "membershipGeneration": 2,
+      "probe": "injected-post-restore-membership-drift",
+      "method": "thread/read",
+      "params": {
+        "threadId": "synthetic-thread-b",
+        "includeTurns": false
+      },
+      "options": {
+        "source": "thread_hydration",
+        "priority": "critical",
+        "timeoutMs": 30000
+      }
+    },
+    {
+      "sequence": 48,
+      "phase": "renderer-product-prepare-input",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "hostId": "local",
+      "membershipGeneration": 2,
+      "probe": "injected-post-restore-membership-drift",
+      "authoritativeThreadCwd": "$DISPOSABLE/repository-b",
+      "conversationCwd": "$DISPOSABLE/repository-b",
+      "workspaceRoots": [
+        "$DISPOSABLE/repository-b",
+        "$DISPOSABLE/repository-a"
+      ],
+      "permissions": {
+        "approvalPolicy": "on-request",
+        "approvalsReviewer": "user",
+        "runtimeWorkspaceRoots": [
+          "$DISPOSABLE/repository-b",
+          "$DISPOSABLE/repository-a"
+        ],
+        "sandboxPolicy": {
+          "type": "workspaceWrite",
+          "writableRoots": [
+            "$DISPOSABLE/repository-b",
+            "$DISPOSABLE/repository-a"
+          ],
+          "excludeSlashTmp": false,
+          "excludeTmpdirEnvVar": false,
+          "networkAccess": false
+        }
+      }
+    },
+    {
+      "sequence": 49,
+      "phase": "host-settings-read",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "hostId": "local",
+      "membershipGeneration": 2,
+      "probe": "injected-post-restore-membership-drift",
+      "model": "synthetic-offline-model",
+      "cwd": "$DISPOSABLE/repository-b",
+      "includeDeveloperInstructions": true,
+      "settings": {
+        "personality": null,
+        "defaultFeatureOverrides": null,
+        "instructionOverrides": null,
+        "includeProseDetailLevelInstructions": false,
+        "automaticTitleCheckpoints": false,
+        "writingBlocks": false,
+        "presentationOutlines": false
+      }
+    },
+    {
+      "sequence": 50,
+      "phase": "host-config-read",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "hostId": "local",
+      "membershipGeneration": 2,
+      "probe": "injected-post-restore-membership-drift",
+      "cwd": "$DISPOSABLE/repository-b",
+      "syntheticValue": {}
+    },
+    {
+      "sequence": 51,
+      "phase": "renderer-product-prepare-output",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "hostId": "local",
+      "membershipGeneration": 2,
+      "probe": "injected-post-restore-membership-drift",
+      "start": {
+        "cwd": "$DISPOSABLE/repository-b",
+        "model": "synthetic-offline-model",
+        "modelProvider": null,
+        "serviceTier": null,
+        "config": {},
+        "approvalsReviewer": "user",
+        "approvalPolicy": "on-request",
+        "sandbox": "workspace-write",
+        "personality": null,
+        "ephemeral": null,
+        "baseInstructions": null,
+        "threadSource": "user",
+        "mockExperimentalField": null,
+        "experimentalRawEvents": false,
+        "dynamicTools": null
+      },
+      "preserveServerPermissions": false
+    },
+    {
+      "sequence": 52,
+      "phase": "renderer-stream-role",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "hostId": "local",
+      "membershipGeneration": 2,
+      "probe": "injected-post-restore-membership-drift",
+      "conversationId": "synthetic-thread-b",
+      "role": {
+        "role": "owner"
+      }
+    },
+    {
+      "sequence": 53,
+      "phase": "app-server-request",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "hostId": "local",
+      "membershipGeneration": 2,
+      "probe": "injected-post-restore-membership-drift",
+      "method": "thread/resume",
+      "params": {
+        "threadId": "synthetic-thread-b",
+        "history": null,
+        "path": null,
+        "model": null,
+        "modelProvider": null,
+        "serviceTier": null,
+        "cwd": "$DISPOSABLE/repository-b",
+        "personality": null,
+        "excludeTurns": false
+      },
+      "options": {
+        "source": "thread_hydration",
+        "priority": "critical",
+        "timeoutMs": 120000
+      }
+    },
+    {
+      "sequence": 54,
+      "phase": "resume-admission-boundary",
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "hostId": "local",
+      "membershipGeneration": 2,
+      "probe": "injected-post-restore-membership-drift",
+      "route": "/local/synthetic-thread-b",
+      "workspaceMembership": [
+        "$DISPOSABLE/repository-a"
+      ],
+      "authoritativeThreadCwd": "$DISPOSABLE/repository-b",
+      "resolvedTaskCwd": "$DISPOSABLE/repository-b",
+      "streamRole": {
+        "role": "owner"
+      },
+      "request": {
+        "threadId": "synthetic-thread-b",
+        "history": null,
+        "path": null,
+        "model": null,
+        "modelProvider": null,
+        "serviceTier": null,
+        "cwd": "$DISPOSABLE/repository-b",
+        "personality": null,
+        "excludeTurns": false
+      },
+      "derivedPermissions": {
+        "approvalPolicy": "on-request",
+        "approvalsReviewer": "user",
+        "runtimeWorkspaceRoots": [
+          "$DISPOSABLE/repository-b",
+          "$DISPOSABLE/repository-a"
+        ],
+        "sandboxPolicy": {
+          "type": "workspaceWrite",
+          "writableRoots": [
+            "$DISPOSABLE/repository-b",
+            "$DISPOSABLE/repository-a"
+          ],
+          "excludeSlashTmp": false,
+          "excludeTmpdirEnvVar": false,
+          "networkAccess": false
+        }
+      },
+      "workspaceTaskMismatch": true,
+      "effectivePermissions": "not-observed: app-server stub stops at request boundary"
+    }
+  ],
+  "initialWindows": [
+    {
+      "windowId": "synthetic-window-a",
+      "clientId": "synthetic-client-a",
+      "workspaceId": "synthetic-workspace-a",
+      "membership": {
+        "generation": 1,
+        "roots": [
+          "$DISPOSABLE/repository-a"
+        ],
+        "repositoryIds": [
+          "7d521a18-129b-4907-8bbc-2a8c4eac71a1"
+        ]
+      },
+      "route": "/local/synthetic-thread-a"
+    },
+    {
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "workspaceId": "synthetic-workspace-b",
+      "membership": {
+        "generation": 1,
+        "roots": [
+          "$DISPOSABLE/repository-b"
+        ],
+        "repositoryIds": [
+          "58de70fd-939f-4c48-9f72-092c6d8230b2"
+        ]
+      },
+      "route": "/local/synthetic-thread-b"
+    }
+  ],
+  "mockThreads": [
+    {
+      "id": "synthetic-thread-a",
+      "cwd": "$DISPOSABLE/repository-a",
+      "repoId": "7d521a18-129b-4907-8bbc-2a8c4eac71a1"
+    },
+    {
+      "id": "synthetic-thread-b",
+      "cwd": "$DISPOSABLE/repository-b",
+      "repoId": "58de70fd-939f-4c48-9f72-092c6d8230b2"
+    }
+  ],
+  "hostRestore": {
+    "windows": [
+      {
+        "windowId": "synthetic-window-a",
+        "clientId": "synthetic-client-a",
+        "workspaceId": "synthetic-workspace-a",
+        "membership": {
+          "generation": 1,
+          "roots": [
+            "$DISPOSABLE/repository-a"
+          ],
+          "repositoryIds": [
+            "7d521a18-129b-4907-8bbc-2a8c4eac71a1"
+          ]
+        },
+        "route": "/local/synthetic-thread-a",
+        "uri": {
+          "scheme": "openai-codex",
+          "authority": "route",
+          "path": "/local/synthetic-thread-a",
+          "query": "",
+          "fragment": ""
+        },
+        "selectedUri": {
+          "scheme": "openai-codex",
+          "authority": "route",
+          "path": "/local/synthetic-thread-a",
+          "query": "",
+          "fragment": ""
+        },
+        "savedState": {
+          "serializedGrid": {
+            "root": {
+              "type": "branch",
+              "data": [
+                {
+                  "type": "leaf",
+                  "data": {
+                    "id": 0,
+                    "editors": [
+                      {
+                        "id": "workbench.editors.webviewEditor",
+                        "value": "{\"origin\":\"synthetic-origin-synthetic-window-a\",\"viewType\":\"chatgpt.conversationEditor\",\"providedId\":\"chatgpt.conversationEditor\",\"title\":\"Synthetic conversation\",\"options\":{\"retainContextWhenHidden\":true},\"group\":0,\"editorResource\":{\"scheme\":\"openai-codex\",\"authority\":\"route\",\"path\":\"/local/synthetic-thread-a\",\"query\":\"\",\"fragment\":\"\"},\"dirty\":false}"
+                      }
+                    ],
+                    "mru": [
+                      0
+                    ]
+                  },
+                  "size": 600
+                }
+              ],
+              "size": 800
+            },
+            "orientation": 0,
+            "width": 800,
+            "height": 600
+          },
+          "activeGroup": 0,
+          "mostRecentActiveGroups": [
+            0
+          ]
+        },
+        "storageFilename": "synthetic-workspace-a.json",
+        "routeOrigin": "workspace-memento/custom-editor-deserialize/tab-api"
+      },
+      {
+        "windowId": "synthetic-window-b",
+        "clientId": "synthetic-client-b",
+        "workspaceId": "synthetic-workspace-b",
+        "membership": {
+          "generation": 1,
+          "roots": [
+            "$DISPOSABLE/repository-b"
+          ],
+          "repositoryIds": [
+            "58de70fd-939f-4c48-9f72-092c6d8230b2"
+          ]
+        },
+        "route": "/local/synthetic-thread-b",
+        "uri": {
+          "scheme": "openai-codex",
+          "authority": "route",
+          "path": "/local/synthetic-thread-b",
+          "query": "",
+          "fragment": ""
+        },
+        "selectedUri": {
+          "scheme": "openai-codex",
+          "authority": "route",
+          "path": "/local/synthetic-thread-b",
+          "query": "",
+          "fragment": ""
+        },
+        "savedState": {
+          "serializedGrid": {
+            "root": {
+              "type": "branch",
+              "data": [
+                {
+                  "type": "leaf",
+                  "data": {
+                    "id": 1,
+                    "editors": [
+                      {
+                        "id": "workbench.editors.webviewEditor",
+                        "value": "{\"origin\":\"synthetic-origin-synthetic-window-b\",\"viewType\":\"chatgpt.conversationEditor\",\"providedId\":\"chatgpt.conversationEditor\",\"title\":\"Synthetic conversation\",\"options\":{\"retainContextWhenHidden\":true},\"group\":1,\"editorResource\":{\"scheme\":\"openai-codex\",\"authority\":\"route\",\"path\":\"/local/synthetic-thread-b\",\"query\":\"\",\"fragment\":\"\"},\"dirty\":false}"
+                      }
+                    ],
+                    "mru": [
+                      0
+                    ]
+                  },
+                  "size": 600
+                }
+              ],
+              "size": 800
+            },
+            "orientation": 0,
+            "width": 800,
+            "height": 600
+          },
+          "activeGroup": 1,
+          "mostRecentActiveGroups": [
+            1
+          ]
+        },
+        "storageFilename": "synthetic-workspace-b.json",
+        "routeOrigin": "workspace-memento/custom-editor-deserialize/tab-api"
+      }
+    ],
+    "distinctBeforeNavigation": true,
+    "snapshots": [
+      {
+        "windowId": "synthetic-window-a",
+        "initialRoute": "/local/synthetic-thread-a",
+        "savedRoute": "/local/synthetic-thread-a",
+        "savedState": {
+          "serializedGrid": {
+            "root": {
+              "type": "branch",
+              "data": [
+                {
+                  "type": "leaf",
+                  "data": {
+                    "id": 0,
+                    "editors": [
+                      {
+                        "id": "workbench.editors.webviewEditor",
+                        "value": "{\"origin\":\"synthetic-origin-synthetic-window-a\",\"viewType\":\"chatgpt.conversationEditor\",\"providedId\":\"chatgpt.conversationEditor\",\"title\":\"Synthetic conversation\",\"options\":{\"retainContextWhenHidden\":true},\"group\":0,\"editorResource\":{\"scheme\":\"openai-codex\",\"authority\":\"route\",\"path\":\"/local/synthetic-thread-a\",\"query\":\"\",\"fragment\":\"\"},\"dirty\":false}"
+                      }
+                    ],
+                    "mru": [
+                      0
+                    ]
+                  },
+                  "size": 600
+                }
+              ],
+              "size": 800
+            },
+            "orientation": 0,
+            "width": 800,
+            "height": 600
+          },
+          "activeGroup": 0,
+          "mostRecentActiveGroups": [
+            0
+          ]
+        },
+        "restoredRoute": "/local/synthetic-thread-a",
+        "tabs": [
+          {
+            "isActive": true,
+            "viewColumn": 1,
+            "activeUri": "openai-codex://route/local/synthetic-thread-a",
+            "tabs": [
+              {
+                "uri": "openai-codex://route/local/synthetic-thread-a",
+                "isActive": true,
+                "isPreview": false,
+                "viewType": "chatgpt.conversationEditor"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "windowId": "synthetic-window-b",
+        "initialRoute": "/local/synthetic-thread-b",
+        "savedRoute": "/local/synthetic-thread-b",
+        "savedState": {
+          "serializedGrid": {
+            "root": {
+              "type": "branch",
+              "data": [
+                {
+                  "type": "leaf",
+                  "data": {
+                    "id": 1,
+                    "editors": [
+                      {
+                        "id": "workbench.editors.webviewEditor",
+                        "value": "{\"origin\":\"synthetic-origin-synthetic-window-b\",\"viewType\":\"chatgpt.conversationEditor\",\"providedId\":\"chatgpt.conversationEditor\",\"title\":\"Synthetic conversation\",\"options\":{\"retainContextWhenHidden\":true},\"group\":1,\"editorResource\":{\"scheme\":\"openai-codex\",\"authority\":\"route\",\"path\":\"/local/synthetic-thread-b\",\"query\":\"\",\"fragment\":\"\"},\"dirty\":false}"
+                      }
+                    ],
+                    "mru": [
+                      0
+                    ]
+                  },
+                  "size": 600
+                }
+              ],
+              "size": 800
+            },
+            "orientation": 0,
+            "width": 800,
+            "height": 600
+          },
+          "activeGroup": 1,
+          "mostRecentActiveGroups": [
+            1
+          ]
+        },
+        "restoredRoute": "/local/synthetic-thread-b",
+        "tabs": [
+          {
+            "isActive": true,
+            "viewColumn": 1,
+            "activeUri": "openai-codex://route/local/synthetic-thread-b",
+            "tabs": [
+              {
+                "uri": "openai-codex://route/local/synthetic-thread-b",
+                "isActive": true,
+                "isPreview": false,
+                "viewType": "chatgpt.conversationEditor"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "sourceHashes": {
+      "workbench": "ed6922a7a86c8c448a46aa39af0c931580da162770fe406a0d41737290e637d9",
+      "extension_host": "473047ad3a1d711e955da5d407e9393b1ea78189c86abfd70be4b18335077507"
+    },
+    "limitations": [
+      "Pinned current installed bytes, not incident-time bytes.",
+      "Window/workspace identities are synthetic host API inputs, not reconstructed by the Cursor OS window manager.",
+      "Only custom editor persistence, workspace-scoped storage, group selection and tab hydration are exercised; DOM/layout/event emitters and backing storage/IPC are stubbed."
+    ]
+  },
+  "restoredBindings": [
+    {
+      "windowId": "synthetic-window-a",
+      "clientId": "synthetic-client-a",
+      "workspaceId": "synthetic-workspace-a",
+      "membership": {
+        "generation": 1,
+        "roots": [
+          "$DISPOSABLE/repository-a"
+        ],
+        "repositoryIds": [
+          "7d521a18-129b-4907-8bbc-2a8c4eac71a1"
+        ]
+      },
+      "route": "/local/synthetic-thread-a",
+      "threadId": "synthetic-thread-a",
+      "threadCwd": "$DISPOSABLE/repository-a",
+      "workspaceRoots": [
+        "$DISPOSABLE/repository-a"
+      ],
+      "ownerClientId": "synthetic-client-a",
+      "streamRole": "owner",
+      "ownershipEvidence": "stub IPC registry; actual discovery request executed",
+      "navigationCount": 0
+    },
+    {
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "workspaceId": "synthetic-workspace-b",
+      "membership": {
+        "generation": 1,
+        "roots": [
+          "$DISPOSABLE/repository-b"
+        ],
+        "repositoryIds": [
+          "58de70fd-939f-4c48-9f72-092c6d8230b2"
+        ]
+      },
+      "route": "/local/synthetic-thread-b",
+      "threadId": "synthetic-thread-b",
+      "threadCwd": "$DISPOSABLE/repository-b",
+      "workspaceRoots": [
+        "$DISPOSABLE/repository-b"
+      ],
+      "ownerClientId": "synthetic-client-b",
+      "streamRole": "owner",
+      "ownershipEvidence": "stub IPC registry; actual discovery request executed",
+      "navigationCount": 0
+    }
+  ],
+  "distinctRoutesConvergedBeforeNavigation": false,
+  "naturalWorkspaceTaskMismatch": false,
+  "admissions": [
+    {
+      "windowId": "synthetic-window-a",
+      "clientId": "synthetic-client-a",
+      "hostId": "local",
+      "membershipGeneration": 1,
+      "probe": "restored-matching-membership",
+      "route": "/local/synthetic-thread-a",
+      "threadId": "synthetic-thread-a",
+      "threadRepoId": "7d521a18-129b-4907-8bbc-2a8c4eac71a1",
+      "workspaceMembership": [
+        "$DISPOSABLE/repository-a"
+      ],
+      "authoritativeThreadCwd": "$DISPOSABLE/repository-a",
+      "requestedCwd": "$DISPOSABLE/repository-a",
+      "requestedCwdMeaning": "caller-selected window workspace root, not an explicit _6t cwd parameter",
+      "initialConversationCwd": "$DISPOSABLE/repository-a",
+      "resolvedCwd": "$DISPOSABLE/repository-a",
+      "preparationWorkspaceRoots": [
+        "$DISPOSABLE/repository-a"
+      ],
+      "derivedPermissions": {
+        "approvalPolicy": "on-request",
+        "approvalsReviewer": "user",
+        "runtimeWorkspaceRoots": [
+          "$DISPOSABLE/repository-a"
+        ],
+        "sandboxPolicy": {
+          "type": "workspaceWrite",
+          "writableRoots": [
+            "$DISPOSABLE/repository-a"
+          ],
+          "excludeSlashTmp": false,
+          "excludeTmpdirEnvVar": false,
+          "networkAccess": false
+        }
+      },
+      "preparedStart": {
+        "cwd": "$DISPOSABLE/repository-a",
+        "model": "synthetic-offline-model",
+        "modelProvider": null,
+        "serviceTier": null,
+        "config": {},
+        "approvalsReviewer": "user",
+        "approvalPolicy": "on-request",
+        "sandbox": "workspace-write",
+        "personality": null,
+        "ephemeral": null,
+        "baseInstructions": null,
+        "threadSource": "user",
+        "mockExperimentalField": null,
+        "experimentalRawEvents": false,
+        "dynamicTools": null
+      },
+      "request": {
+        "threadId": "synthetic-thread-a",
+        "history": null,
+        "path": null,
+        "model": null,
+        "modelProvider": null,
+        "serviceTier": null,
+        "cwd": "$DISPOSABLE/repository-a",
+        "personality": null,
+        "excludeTurns": false
+      },
+      "streamRole": {
+        "role": "owner"
+      },
+      "boundary": "client outgoing thread/resume request captured at stub app-server",
+      "resumeRequestReached": true,
+      "backendResumeExecuted": false,
+      "turnAdmitted": null,
+      "turnAdmission": "not exercised; stopped at resume request",
+      "effectivePermissions": "NOT OBSERVED: no app-server response or sandbox grant",
+      "workspaceTaskMismatch": false,
+      "result": {
+        "status": "not-ready",
+        "reason": "canceled"
+      },
+      "stopReason": "harness canceled after request capture, before backend response/history hydration",
+      "limitations": [
+        "Each admission probe has fresh renderer conversation/role stores; no completed resume or owner transition is simulated.",
+        "Actual canAcquireOwnership callback runs with synthetic visible-window canAcquireThreadStream=true host activity.",
+        "Empty projectless assignments and missing thread workspace transition state are synthetic persisted-state fixtures.",
+        "Settings APIs return explicitly recorded disabled optional feature flags and no proxy or extra config.",
+        "Derived permissions and request fields are client outputs, not effective backend or sandbox grants.",
+        "No turn admission, tool dispatch, history hydration or backend resume is executed."
+      ]
+    },
+    {
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "hostId": "local",
+      "membershipGeneration": 1,
+      "probe": "restored-matching-membership",
+      "route": "/local/synthetic-thread-b",
+      "threadId": "synthetic-thread-b",
+      "threadRepoId": "58de70fd-939f-4c48-9f72-092c6d8230b2",
+      "workspaceMembership": [
+        "$DISPOSABLE/repository-b"
+      ],
+      "authoritativeThreadCwd": "$DISPOSABLE/repository-b",
+      "requestedCwd": "$DISPOSABLE/repository-b",
+      "requestedCwdMeaning": "caller-selected window workspace root, not an explicit _6t cwd parameter",
+      "initialConversationCwd": "$DISPOSABLE/repository-b",
+      "resolvedCwd": "$DISPOSABLE/repository-b",
+      "preparationWorkspaceRoots": [
+        "$DISPOSABLE/repository-b"
+      ],
+      "derivedPermissions": {
+        "approvalPolicy": "on-request",
+        "approvalsReviewer": "user",
+        "runtimeWorkspaceRoots": [
+          "$DISPOSABLE/repository-b"
+        ],
+        "sandboxPolicy": {
+          "type": "workspaceWrite",
+          "writableRoots": [
+            "$DISPOSABLE/repository-b"
+          ],
+          "excludeSlashTmp": false,
+          "excludeTmpdirEnvVar": false,
+          "networkAccess": false
+        }
+      },
+      "preparedStart": {
+        "cwd": "$DISPOSABLE/repository-b",
+        "model": "synthetic-offline-model",
+        "modelProvider": null,
+        "serviceTier": null,
+        "config": {},
+        "approvalsReviewer": "user",
+        "approvalPolicy": "on-request",
+        "sandbox": "workspace-write",
+        "personality": null,
+        "ephemeral": null,
+        "baseInstructions": null,
+        "threadSource": "user",
+        "mockExperimentalField": null,
+        "experimentalRawEvents": false,
+        "dynamicTools": null
+      },
+      "request": {
+        "threadId": "synthetic-thread-b",
+        "history": null,
+        "path": null,
+        "model": null,
+        "modelProvider": null,
+        "serviceTier": null,
+        "cwd": "$DISPOSABLE/repository-b",
+        "personality": null,
+        "excludeTurns": false
+      },
+      "streamRole": {
+        "role": "owner"
+      },
+      "boundary": "client outgoing thread/resume request captured at stub app-server",
+      "resumeRequestReached": true,
+      "backendResumeExecuted": false,
+      "turnAdmitted": null,
+      "turnAdmission": "not exercised; stopped at resume request",
+      "effectivePermissions": "NOT OBSERVED: no app-server response or sandbox grant",
+      "workspaceTaskMismatch": false,
+      "result": {
+        "status": "not-ready",
+        "reason": "canceled"
+      },
+      "stopReason": "harness canceled after request capture, before backend response/history hydration",
+      "limitations": [
+        "Each admission probe has fresh renderer conversation/role stores; no completed resume or owner transition is simulated.",
+        "Actual canAcquireOwnership callback runs with synthetic visible-window canAcquireThreadStream=true host activity.",
+        "Empty projectless assignments and missing thread workspace transition state are synthetic persisted-state fixtures.",
+        "Settings APIs return explicitly recorded disabled optional feature flags and no proxy or extra config.",
+        "Derived permissions and request fields are client outputs, not effective backend or sandbox grants.",
+        "No turn admission, tool dispatch, history hydration or backend resume is executed."
+      ]
+    },
+    {
+      "windowId": "synthetic-window-b",
+      "clientId": "synthetic-client-b",
+      "hostId": "local",
+      "membershipGeneration": 2,
+      "probe": "injected-post-restore-membership-drift",
+      "route": "/local/synthetic-thread-b",
+      "threadId": "synthetic-thread-b",
+      "threadRepoId": "58de70fd-939f-4c48-9f72-092c6d8230b2",
+      "workspaceMembership": [
+        "$DISPOSABLE/repository-a"
+      ],
+      "authoritativeThreadCwd": "$DISPOSABLE/repository-b",
+      "requestedCwd": "$DISPOSABLE/repository-a",
+      "requestedCwdMeaning": "caller-selected window workspace root, not an explicit _6t cwd parameter",
+      "initialConversationCwd": "$DISPOSABLE/repository-b",
+      "resolvedCwd": "$DISPOSABLE/repository-b",
+      "preparationWorkspaceRoots": [
+        "$DISPOSABLE/repository-b",
+        "$DISPOSABLE/repository-a"
+      ],
+      "derivedPermissions": {
+        "approvalPolicy": "on-request",
+        "approvalsReviewer": "user",
+        "runtimeWorkspaceRoots": [
+          "$DISPOSABLE/repository-b",
+          "$DISPOSABLE/repository-a"
+        ],
+        "sandboxPolicy": {
+          "type": "workspaceWrite",
+          "writableRoots": [
+            "$DISPOSABLE/repository-b",
+            "$DISPOSABLE/repository-a"
+          ],
+          "excludeSlashTmp": false,
+          "excludeTmpdirEnvVar": false,
+          "networkAccess": false
+        }
+      },
+      "preparedStart": {
+        "cwd": "$DISPOSABLE/repository-b",
+        "model": "synthetic-offline-model",
+        "modelProvider": null,
+        "serviceTier": null,
+        "config": {},
+        "approvalsReviewer": "user",
+        "approvalPolicy": "on-request",
+        "sandbox": "workspace-write",
+        "personality": null,
+        "ephemeral": null,
+        "baseInstructions": null,
+        "threadSource": "user",
+        "mockExperimentalField": null,
+        "experimentalRawEvents": false,
+        "dynamicTools": null
+      },
+      "request": {
+        "threadId": "synthetic-thread-b",
+        "history": null,
+        "path": null,
+        "model": null,
+        "modelProvider": null,
+        "serviceTier": null,
+        "cwd": "$DISPOSABLE/repository-b",
+        "personality": null,
+        "excludeTurns": false
+      },
+      "streamRole": {
+        "role": "owner"
+      },
+      "boundary": "client outgoing thread/resume request captured at stub app-server",
+      "resumeRequestReached": true,
+      "backendResumeExecuted": false,
+      "turnAdmitted": null,
+      "turnAdmission": "not exercised; stopped at resume request",
+      "effectivePermissions": "NOT OBSERVED: no app-server response or sandbox grant",
+      "workspaceTaskMismatch": true,
+      "result": {
+        "status": "not-ready",
+        "reason": "canceled"
+      },
+      "stopReason": "harness canceled after request capture, before backend response/history hydration",
+      "limitations": [
+        "Each admission probe has fresh renderer conversation/role stores; no completed resume or owner transition is simulated.",
+        "Actual canAcquireOwnership callback runs with synthetic visible-window canAcquireThreadStream=true host activity.",
+        "Empty projectless assignments and missing thread workspace transition state are synthetic persisted-state fixtures.",
+        "Settings APIs return explicitly recorded disabled optional feature flags and no proxy or extra config.",
+        "Derived permissions and request fields are client outputs, not effective backend or sandbox grants.",
+        "No turn admission, tool dispatch, history hydration or backend resume is executed."
+      ]
+    }
+  ],
+  "limitations": [
+    "Custom-editor surface only; sidebar, OS window recreation/deduplication and real Electron lifecycle not executed.",
+    "Per-window workspace identifiers are synthetic host API inputs, not recovered historical window descriptors.",
+    "Distinct-route result does not clear the historical incident or identify its route-selection trigger.",
+    "Membership drift is deliberately injected after restoration; it is not evidence that restoration created a mismatch.",
+    "App-server and IPC are stubbed. Request dispatch does not prove backend acceptance, effective sandbox grants, turn/tool execution or writes.",
+    "Current installed bundle hashes do not establish incident-time byte identity."
+  ],
+  "disposableStateRemoved": true
+}

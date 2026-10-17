@@ -1,0 +1,8 @@
+{
+  "exit": -6,
+  "reason": "process_exited",
+  "elapsed_seconds": 2.2773969173431396,
+  "pilot_next_sha256_after": "489ded7be7f530ea242e1ed5dbdce96037ec752cc63c9359eaa778aa483ba055",
+  "pilot_next_unchanged": true,
+  "native_gui_acceptance_pass": false
+}

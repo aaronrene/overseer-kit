@@ -1,0 +1,42 @@
+{
+  "kind": "Acceptance author closeout; not independent adjudication or release",
+  "parent_commit": "2e8ec694def9be4a0faa4a994bf2fff3f212ab23",
+  "closing_commit_rule": "Exactly one local feature commit with this sole parent; verify bound NEXT and clean state afterward",
+  "runtime_sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774",
+  "native_config": {
+    "path": "desktop/src-tauri/tauri.conf.json",
+    "before": "d834a532c7e67eaf9c7a21c9e80d52a31a7160d6aaad88ee9903078132ef42be",
+    "after": "d65242ef9ca4be228e791d7596bd2a60ff90ba200445c0d5dbf58229c5eecab6"
+  },
+  "python311_distinct_passing_cases": 1196,
+  "python311_original_run": {
+    "passed": 1195,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0
+  },
+  "native_window_and_normal_shutdown": "passed",
+  "actual_rendered_desktop_content_next": "blocked",
+  "actual_cursor_sessionStart_stop": "blocked",
+  "local_pilot_workflow": "passed; full host-integrated acceptance blocked",
+  "existing_python314_and_muse_evidence": "preserved with identical runtime/test/dependency source; native config delta separately checked",
+  "nested_inventories_verified": [
+    "pilot/INVENTORY.json",
+    "host-platform/INVENTORY.json"
+  ],
+  "next_sha256": "e02171ecc08a485ddc365870e3a64c657c17b283f4840bd87ece59dd2f47a00f",
+  "release_ready": false,
+  "independent_adjudication_performed": false,
+  "owner_release_decision_performed": false,
+  "whitespace_check": {
+    "authored_source_and_paired_docs": "passed",
+    "full_staged_diff": "four preserved raw-evidence trailing-whitespace locations; not normalized",
+    "raw_paths": [
+      "host-platform/cursor-r2/cursor-host.log:623",
+      "host-platform/cursor-r2/cursor-host.log:720",
+      "host-platform/native-build.log:236",
+      "initial-collection/python311-complete-collection.json:182"
+    ],
+    "meaning": "Whitespace belongs to retained console output and ENOSPC-truncated collection; no production/docs whitespace failure."
+  }
+}

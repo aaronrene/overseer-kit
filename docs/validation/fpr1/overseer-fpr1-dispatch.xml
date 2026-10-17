@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="1" failures="2" skipped="0" tests="10" time="5.851" timestamp="2026-10-14T13:55:08.016010-07:00" hostname="Carloss-MacBook-Pro.local"><testcase classname="tests.fpr1.test_dispatch" name="test_all_launchers_share_dispatcher_and_global_options" time="2.048" /><testcase classname="tests.fpr1.test_dispatch" name="test_historical_module_is_not_a_second_public_cli" time="0.612" /><testcase classname="tests.fpr1.test_dispatch" name="test_invalid_binding_cannot_enter_injected_handler" time="0.560" /><testcase classname="tests.fpr1.test_dispatch" name="test_git_core_imports_no_muse_or_provider_engine" time="0.527"><error message="failed on setup with &quot;AssertionError: refused: runtime_changed: run this installation's explicit sync&#10;  &#10;assert 2 == 0&#10; +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...product', 'init'], returncode=2, stdout='', stderr=&quot;refused: runtime_changed: run this installation's explicit sync\n&quot;).returncode&quot;">tmp_path = PosixPath('/private/tmp/overseer-fpr1-dispatch/test_git_core_imports_no_muse_0')
+
+    @pytest.fixture
+    def repo(tmp_path):
+        root = seed(tmp_path / 'product')
+        result = command('-C', root, 'init')
+&gt;       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: runtime_changed: run this installation's explicit sync
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...product', 'init'], returncode=2, stdout='', stderr="refused: runtime_changed: run this installation's explicit sync\n").returncode
+
+tests/fpr1/test_dispatch.py:21: AssertionError</error></testcase><testcase classname="tests.fpr1.test_dispatch" name="test_legacy_and_unavailable_authority_inspection_never_probes_git[git-False]" time="0.007" /><testcase classname="tests.fpr1.test_dispatch" name="test_legacy_and_unavailable_authority_inspection_never_probes_git[muse-False]" time="0.005"><failure message="AssertionError: assert 2 == 1&#10; +  where 2 = &lt;function main at 0x1034b8510&gt;(['-C', '/private/tmp/overseer-fpr1-dispatch/test_legacy_and_unavailable_au1/non-git', 'status', '--json'])&#10; +    where &lt;function main at 0x1034b8510&gt; = main.main">tmp_path = PosixPath('/private/tmp/overseer-fpr1-dispatch/test_legacy_and_unavailable_au1')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x1033872f0&gt;
+capsys = &lt;_pytest.capture.CaptureFixture object at 0x103401e50&gt;
+authority = 'muse', bound = False
+
+    @pytest.mark.parametrize('authority,bound', [('git', False), ('muse', False), ('muse', True)])
+    def test_legacy_and_unavailable_authority_inspection_never_probes_git(tmp_path, monkeypatch, capsys, authority, bound):
+        root = tmp_path/'non-git'; root.mkdir(); (root/'.overseer').mkdir()
+        config = yaml.safe_load((KIT/'tests/fixtures/config-git-only.yaml').read_bytes())
+        config['vcs']['regime'] = 'git-only' if authority == 'git' else 'muse-only'
+        config['vcs']['canonical'] = authority
+        if bound:
+            config = normalize(v1.encode(config), root=root, runtime=v1.runtime(), bind=True).data
+        (root/v1.CONFIG).write_bytes(v1.encode(config))
+        def forbidden(*args, **kwargs):
+            pytest.fail('unsupported/unbound authority must not inspect Git')
+        monkeypatch.setattr(v1, 'git', forbidden)
+&gt;       assert main.main(['-C', str(root), 'status', '--json']) == 1
+E       AssertionError: assert 2 == 1
+E        +  where 2 = &lt;function main at 0x1034b8510&gt;(['-C', '/private/tmp/overseer-fpr1-dispatch/test_legacy_and_unavailable_au1/non-git', 'status', '--json'])
+E        +    where &lt;function main at 0x1034b8510&gt; = main.main
+
+tests/fpr1/test_dispatch.py:85: AssertionError</failure></testcase><testcase classname="tests.fpr1.test_dispatch" name="test_legacy_and_unavailable_authority_inspection_never_probes_git[muse-True]" time="0.007"><failure message="cli.v1_io.Refusal: config_invalid: &lt;normalized-config&gt;: muse-only regime requires vcs.muse.main_branch">data = {'repo': {'name': 'test-git', 'root_relative_docs': 'docs', 'id': '0ba9095e-3242-4484-bb01-17e4df8454f1', 'root': '/pr...one, 'standing_decisions': 'ROADMAP.md', ...}, 'thresholds': {'realign_max_commits': 50, 'drift_warn_only': True}, ...}
+
+    def _adapter_view(data):
+        view = {key: deepcopy(value) for key, value in data.items() if key in CORE | OPTIONAL}
+        view["overseer_config_version"] = 1
+        view["repo"] = {key: view["repo"][key] for key in ("name", "root_relative_docs")}
+        view["vcs"]["muse"].pop("binding", None)
+        view["docs"].pop("canonical_next", None)
+        for lane in (view["docs"].get("lanes") or {}).values():
+            lane.pop("repo_id", None)
+        try:
+&gt;           return legacy._validate_config(view, "&lt;normalized-config&gt;")
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+cli/product_config.py:200: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+adapters/config.py:394: in _validate_config
+    _validate_regime_fields(regime, canonical, git, muse, path)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+regime = 'muse-only', canonical = 'muse'
+git = GitConfig(remote='origin', main_branch='main', mirror_branch=None, feature_branch_pattern='feat/{slug}')
+muse = MuseConfig(staging_remote=None, main_branch=None, working_dir=None)
+path = '&lt;normalized-config&gt;'
+
+    def _validate_regime_fields(
+        regime: str,
+        canonical: str,
+        git: GitConfig,
+        muse: MuseConfig,
+        path: str,
+    ) -&gt; None:
+        if regime == "git-only":
+            if canonical != "git":
+                raise ConfigError("git-only regime requires vcs.canonical: git", path)
+            if muse.staging_remote is not None or muse.main_branch is not None:
+                raise ConfigError("git-only regime requires muse fields to be null", path)
+            return
+    
+        if regime == "muse-only":
+            if canonical != "muse":
+                raise ConfigError("muse-only regime requires vcs.canonical: muse", path)
+            if not muse.main_branch:
+&gt;               raise ConfigError("muse-only regime requires vcs.muse.main_branch", path)
+E               adapters.errors.ConfigError: &lt;normalized-config&gt;: muse-only regime requires vcs.muse.main_branch
+
+adapters/config.py:677: ConfigError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/private/tmp/overseer-fpr1-dispatch/test_legacy_and_unavailable_au2')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x101a5d040&gt;
+capsys = &lt;_pytest.capture.CaptureFixture object at 0x101a4da70&gt;
+authority = 'muse', bound = True
+
+    @pytest.mark.parametrize('authority,bound', [('git', False), ('muse', False), ('muse', True)])
+    def test_legacy_and_unavailable_authority_inspection_never_probes_git(tmp_path, monkeypatch, capsys, authority, bound):
+        root = tmp_path/'non-git'; root.mkdir(); (root/'.overseer').mkdir()
+        config = yaml.safe_load((KIT/'tests/fixtures/config-git-only.yaml').read_bytes())
+        config['vcs']['regime'] = 'git-only' if authority == 'git' else 'muse-only'
+        config['vcs']['canonical'] = authority
+        if bound:
+&gt;           config = normalize(v1.encode(config), root=root, runtime=v1.runtime(), bind=True).data
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/fpr1/test_dispatch.py:80: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+cli/product_config.py:416: in normalize
+    adapter = _adapter_view(result)
+              ^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+data = {'repo': {'name': 'test-git', 'root_relative_docs': 'docs', 'id': '0ba9095e-3242-4484-bb01-17e4df8454f1', 'root': '/pr...one, 'standing_decisions': 'ROADMAP.md', ...}, 'thresholds': {'realign_max_commits': 50, 'drift_warn_only': True}, ...}
+
+    def _adapter_view(data):
+        view = {key: deepcopy(value) for key, value in data.items() if key in CORE | OPTIONAL}
+        view["overseer_config_version"] = 1
+        view["repo"] = {key: view["repo"][key] for key in ("name", "root_relative_docs")}
+        view["vcs"]["muse"].pop("binding", None)
+        view["docs"].pop("canonical_next", None)
+        for lane in (view["docs"].get("lanes") or {}).values():
+            lane.pop("repo_id", None)
+        try:
+            return legacy._validate_config(view, "&lt;normalized-config&gt;")
+        except (ConfigError, ValueError, TypeError, KeyError, AttributeError) as exc:
+&gt;           raise Refusal("config_invalid: " + str(exc)) from exc
+E           cli.v1_io.Refusal: config_invalid: &lt;normalized-config&gt;: muse-only regime requires vcs.muse.main_branch
+
+cli/product_config.py:202: Refusal</failure></testcase><testcase classname="tests.fpr1.test_dispatch" name="test_schema2_git_next_stays_byte_exact_across_sync" time="0.929" /><testcase classname="tests.fpr1.test_dispatch" name="test_init_dry_run_and_conflicts_do_not_write" time="1.031" /><testcase classname="tests.fpr1.test_dispatch" name="test_runtime_manifest_covers_reachable_owned_modules_and_resources" time="0.041" /></testsuite></testsuites>

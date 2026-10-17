@@ -1,0 +1,4634 @@
+{
+  "pins": {
+    "D": "d47291d5d9030de5ebef713da95efa978c4d8c6e",
+    "P": "e9be0c4b3cafb149b9f3b7af2ab060f01bbfa504",
+    "M": "32254cd939885d9d6f40634997ea5b9c37ea776c",
+    "B": "348e0f323a3b17cd5022a1bfd56fa09a6831c51f",
+    "FPR2": "695444fb5f8261391f5c273807129c13dc8db1fd"
+  },
+  "files": [
+    {
+      "path": ".github/workflows/supported-v1.yml",
+      "git_blob": "e8efe84d3124bc1e64de0802e372fc9ada0cffd1",
+      "sha256": "4f29000322ee057daa3c394ed69ad90aad9f27dc1b12e2f2c5b4a79418f69c22",
+      "exact_sources": [],
+      "source": "M",
+      "disposition": "adapted_boundary_or_guidance"
+    },
+    {
+      "path": "adapters/__init__.py",
+      "git_blob": "77f071df23959aa3e273e09231ec335aff264295",
+      "sha256": "dce1a1e72f64b1344b6b35ddd38bc64d6ec586e63f663709c2df256e6c7ca0e8",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "adapters/base.py",
+      "git_blob": "dec43aba6f9c3b7a7ad787647695469eb790dec4",
+      "sha256": "44ae7f1826f96acfef9ed4c516799f2b625d8e1d62657105d215ff3fe51c0495",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "adapters/config.py",
+      "git_blob": "db7158fd0fab7729d3aa1ffc582d79567b0c050b",
+      "sha256": "b62056de86898ea8415bccc4c17fa404a651116f418a22a71d40e274b7ce7543",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance",
+      "functions": [
+        "GitConfig",
+        "MuseConfig",
+        "LaneDocsConfig",
+        "DocsConfig",
+        "ThresholdsConfig",
+        "ReviewerConfig",
+        "FreezeContractConfig",
+        "RepoConfig",
+        "VcsConfig",
+        "CheckpointsConfig",
+        "HonestyConfig",
+        "ModulesConfig",
+        "GovernanceGatesConfig",
+        "ModelRoutingConfig",
+        "CostAwarenessConfig",
+        "SessionBookendsConfig",
+        "WorkspacePointerConfig",
+        "HostedDashboardSection",
+        "PostLandSyncConfig",
+        "CloseRitualConfig",
+        "ExtensionEntry",
+        "OverseerConfig",
+        "load_config",
+        "_require_mapping",
+        "_require_str",
+        "_optional_str",
+        "_validate_config",
+        "_validate_muse_working_dir_shape",
+        "_validate_human_escalation",
+        "_parse_reviewer_config",
+        "_parse_lanes",
+        "_validate_lanes_config",
+        "resolve_lane_docs",
+        "list_configured_lanes",
+        "_validate_regime_fields",
+        "_validate_repo_relative_path",
+        "_parse_k9_modules",
+        "_parse_checkpoints",
+        "_parse_honesty",
+        "_parse_require_verdict_on",
+        "_parse_modules",
+        "_parse_post_land_sync",
+        "_parse_close_ritual",
+        "_parse_governance_gates",
+        "_parse_model_routing",
+        "_parse_hosted_dashboard",
+        "_parse_cost_awareness",
+        "_parse_session_bookends",
+        "_parse_workspace",
+        "_parse_extensions"
+      ]
+    },
+    {
+      "path": "adapters/errors.py",
+      "git_blob": "6a5b6dd8b15356af9ce950d89e52a17ace564240",
+      "sha256": "4b3d66b20aa17c130a064215498aeb2db44c9243b3f9a59ca24b6932a84b3fd9",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "adapters/factory.py",
+      "git_blob": "48c4684aebf5766495778a8eae21a63de8752ec9",
+      "sha256": "9f8cf53f5033401a2cd76663e94fb26c0f11c4fb020c6f17a995b50ee46af523",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "adapters/git_only/__init__.py",
+      "git_blob": "dc6e11b7c97cbc5e41b086763eebb9ba2689dbce",
+      "sha256": "f542644100eb6558e7430be4c32fbc8a1fb43c243fd49da48a884eb507a4d416",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "adapters/git_only/adapter.py",
+      "git_blob": "539cef2faab328ae3e0b3e58996e3c69b834c998",
+      "sha256": "4d76c7f55f9f2428ed783b468906caf432ce868a5e44f63b7223e394d0e7ea12",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "adapters/interface.md",
+      "git_blob": "4bc65e626204e29aab2fe2bf9f2946136dc813bb",
+      "sha256": "112e398f31a3ca4730966997ce6eb684572a2dce7792c41a0e7bf9269319539e",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "adapters/muse_git_mirror/__init__.py",
+      "git_blob": "7f46d7256c2a8ab8f577601eaacb4186a08de0dc",
+      "sha256": "74f2c11d6a9cc958a12a2cc584484184fe845b4310ef03d7f3894b8c77bd49b0",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "adapters/muse_git_mirror/adapter.py",
+      "git_blob": "13f2150a4dbb63f1bbe475d485d98ad5284059f1",
+      "sha256": "1806e3095e7a93e6fe32ee4e60ffa3e39e96b0805be6fdad680c73e9e0ab9000",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "adapters/muse_only/__init__.py",
+      "git_blob": "fc7672fc111de4f19b8f7febab7f05dd80cc18b2",
+      "sha256": "95de0c6baf8ad5d615930303d1a5ce72058a45ae4e46a430ffdb84a311919a2d",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "adapters/muse_only/adapter.py",
+      "git_blob": "1ae781a55eb264720dd593fccf6f4b726b88fb69",
+      "sha256": "cd03e13289e2a2ad64f561c6eb06244d682792e7cec6e977bd1eff629385c384",
+      "exact_sources": [
+        "D",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "adapters/runner.py",
+      "git_blob": "985ebf9ab5b1a07346f46434be5d46c3a6bbbdf0",
+      "sha256": "9af8047dcdd75e818e7b5977d405940c37b2dd9e3d967d80607251431237ab4c",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "adapters/templating.py",
+      "git_blob": "ebfd51bbdddaec6c3de63a664f2fa89e7cca23eb",
+      "sha256": "77cc8a897c5463e67efa8d51fe31f17cc01a8782038a05d171971827e92b4b4c",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "adapters/types.py",
+      "git_blob": "3e351160cda017680c914cf5e7be11a502492c13",
+      "sha256": "7b0cb068ed6341ddd9c7a6b17cd532f75af7f2301bc85e6bcd292b8d63eb2886",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/__init__.py",
+      "git_blob": "15be1ace34f06781a2af181b34113449697ec7ed",
+      "sha256": "729307a8165d2126dad355410a3c13dea45c7d263e188a37222a6af0fe377e90",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/args.py",
+      "git_blob": "a6899c18c8b7d5ab7feda9b18efc80dc7e388888",
+      "sha256": "db1bc5786b2fb316b4c227f4c840fd9dbc761559ab5bec60a56b5a9ada71aa4b",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/atomic.py",
+      "git_blob": "c269c718c11dfd8762038e91bf9f247a9e36e605",
+      "sha256": "ec47f8ca95a497ecf124bdeb85f9eb495142d7f7b13acd37b4f2f4c46deffc15",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance",
+      "functions": [
+        "WriteFailure",
+        "atomic_write_bytes",
+        "atomic_write_text"
+      ]
+    },
+    {
+      "path": "cli/bootstrap.py",
+      "git_blob": "7e675b180cc55d66c2bda7b0e0ebf470f3ecc604",
+      "sha256": "d10dfcc0f6b14287f851ca32149382c4d38004adcc7db89e65281ac08ef85888",
+      "exact_sources": [
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/commands/app.py",
+      "git_blob": "914c7250453767bf61d14dc6d8c6873533584446",
+      "sha256": "ce6c401436bffd13c8ad0a325bb627514910340f1669de9af12fbbef3d8d18ba",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/commands/check_ok.py",
+      "git_blob": "fd6a7534e2a0b009856ce04c2eed444c0cf11806",
+      "sha256": "15c7c07d29823663e8544edf951d1e0486815b31ca87841d41e8791ad1751ed2",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance",
+      "functions": [
+        "run_check_ok"
+      ]
+    },
+    {
+      "path": "cli/commands/governance_sync.py",
+      "git_blob": "781ded9b7c8af94cf3b28312050dc9618d2ff09f",
+      "sha256": "afd019eed62331e73ed60a773f8503027b8b5fa9f52a60d767e4ded2727abbef",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/commands/handover_compact.py",
+      "git_blob": "f22cd3dd1586bd1da63b8a91398cb9ee36a7563a",
+      "sha256": "2603b28f9b74c62a5b79cb8c667c35319b486055400c357379ba85e6d21c6f49",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/commands/honesty_status.py",
+      "git_blob": "a00f1680f778479e8032db6c31f46c55d3b3418f",
+      "sha256": "1ba3d35a7605de21c06885936c530fe16181dca4112b10f8efc9a0ca486885f0",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/commands/hosted_dashboard.py",
+      "git_blob": "f65951980901fba8802d59ccae59813ac7bbb994",
+      "sha256": "d06698feb80564fd2dc02f69ba215df8e373791d24869a33bcf14083893cf20d",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance",
+      "functions": [
+        "_load_dashboard_config",
+        "_resolve_config_path",
+        "_print_startup_banner",
+        "run_hosted_dashboard"
+      ]
+    },
+    {
+      "path": "cli/commands/init.py",
+      "git_blob": "07be86fde9d8eed2b54b16919865655153dc75b5",
+      "sha256": "53f8d6702e843560efdeed54519ebeec7ede209dd1922f834e29008b998fe071",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/commands/land_check.py",
+      "git_blob": "74fdc79fe6f721300dcfe986351cb605d0aa6263",
+      "sha256": "1073ec0a28f0118020b8b5f0dcf7c4b641302f4c18b7d5d89605354163f4bd63",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/commands/land_closeout.py",
+      "git_blob": "abd0ec403971d0afe739a77c023e96314b557d87",
+      "sha256": "b3cc66ade5fc642d02c87866aa600d480379850bdaf5f63bde32b07cc0a42eb9",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance",
+      "functions": [
+        "run_land_closeout_command"
+      ]
+    },
+    {
+      "path": "cli/commands/ledger.py",
+      "git_blob": "8ce59135e62a3ca93d9c3359850f9ab9f5470b3f",
+      "sha256": "c597ac793edcbd371ecb50440fe42c9f6fb9ab0b94709ee1419c4fa612e08adc",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance",
+      "functions": [
+        "run_ledger_command",
+        "_load_config_or_exit",
+        "_run_append",
+        "_run_verify",
+        "_run_show"
+      ]
+    },
+    {
+      "path": "cli/commands/next.py",
+      "git_blob": "45119c22eaf645b1d752fee4872cc56f020ba142",
+      "sha256": "cdd5b0f2fcbb93ceb05014b3afdb38c81ac92bcd68a73d81b683b04899a24744",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/commands/pr_land.py",
+      "git_blob": "3cd6f0a87927d0ec3200f1e82c5f97cdff0291c6",
+      "sha256": "606c0f5d625db7d166f26947490540ce0a4dafede58a28fa9b8dcf849052ca30",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance",
+      "functions": [
+        "run_pr_land_command"
+      ]
+    },
+    {
+      "path": "cli/commands/review.py",
+      "git_blob": "f35d776f0cbe78c9957c7bb7468222d727ccbcce",
+      "sha256": "85a21451a8b83406d8417ef53164452c65f528efa885964f3c3c519a75bceb32",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance",
+      "functions": [
+        "_validate_raw_argv",
+        "_looks_like_vendor_slug",
+        "_resolve_effective_checklist",
+        "_resolve_artifact",
+        "run_review"
+      ]
+    },
+    {
+      "path": "cli/commands/route.py",
+      "git_blob": "bbbe76a48c921b985ee338c8293822981c089091",
+      "sha256": "37eec529f089236b1a386a05d0a15995ec978c3d46357943db1d6bc5f27fd59f",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/commands/status.py",
+      "git_blob": "c9ea6196dcb74a7656fd148d55d51e59ee73d908",
+      "sha256": "852d99e9bad5aa90037748ab28952ff343ae3ac49474a2f4fbe5df22f92034b4",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/commands/sync.py",
+      "git_blob": "ceecdee18a6399340cb92b62ae37fdc69756ad15",
+      "sha256": "20eca9c983eebf6f43e45b0103c8cbace2232072b3ab85777bc6fb97c4193467",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/commands/upgrade_regime.py",
+      "git_blob": "acf6324eaa21f029689492123cedceb50c68c381",
+      "sha256": "3650c68b3dc3fdd46afc257e746657803ce7e12000b883893e9e09af9826c464",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/commands/verify_step.py",
+      "git_blob": "7767b9db5a9bc443db31a4f6319f68a2787ec97b",
+      "sha256": "28d3cd172e5c8b42d471a7089b6c6b3d3748dc364eb0334fd92552b600272bf5",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/commands/workspace.py",
+      "git_blob": "fed810dca794e98bb735c4a3a1ff25bbe726226a",
+      "sha256": "3b5e60ef5968333e6eef1a635a700ec9771873e3bad84b86b45e4bb4f9448fbc",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/config_gen.py",
+      "git_blob": "817a0a5710d4c3b6052c557251c3327d4b3dd825",
+      "sha256": "bccbcf141666ef5b4d967bcced19df8189a9162af01ded83cdb72d4c4968d5d5",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/context.py",
+      "git_blob": "f1cbd22aaba619ba0a95082f64728bc49299781e",
+      "sha256": "896ba8182349c3ccfaefde5eab4b155c9d1170fec884de236675eaebed9cb164",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/digest.py",
+      "git_blob": "7618930a2ea4e5e541ceb581f4663c0bafd46ea8",
+      "sha256": "be85fd89446446bf9e5692c00f7c01412cabf2dc3993fa395cfb35bffbae0b8d",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/docs_paths.py",
+      "git_blob": "03b54f69313e36290b011d7918474cc05f312447",
+      "sha256": "cbb2ac51500f2ff7aeb7fb439f036575faafacd8671299513d0c7935a529ca21",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/drift.py",
+      "git_blob": "e5421624ede8a0ddd3c2b9c6dcd64dc62cd38801",
+      "sha256": "955569747d59d599520f1661cfec572f9c7e903e9d4c27dfb302c088325113bb",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/footprint.py",
+      "git_blob": "3fb42f825bbd47ec0e4b41da5f221adead00c8f2",
+      "sha256": "a55e776824e2ecb0cdba0b97a7f92fa8d7d572a7477ee65b3b759137074492ea",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/footprint_writes.py",
+      "git_blob": "968f8cf0f790007a3158d3bb7ec7eab467220774",
+      "sha256": "6bb00b5a632778b717ab94a2ec2e9474680ea8dd043f07430fb42a1b60c8d0de",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/kit_root.py",
+      "git_blob": "83979c0658423182a6197eedb1f33d70724fdb67",
+      "sha256": "42f892c450318ffa7dc930054ffd8f0aa13ded1bc55ff74e1b0f4feb5548e279",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/kn_r2.py",
+      "git_blob": "b5bef7b84103d8767e783b883e32dc436cf9eda9",
+      "sha256": "a8f220bac5c9527f1b3189627f4898e8990797fba8536e0ea5909957122d2088",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/legacy_main.py",
+      "git_blob": "f0970a9ba98b996a658da683ddeadabaec3f6aa4",
+      "sha256": "86d7d3f0d38e29a24335c7579548c1682d39c24445e7704cad66ee83c2453391",
+      "exact_sources": [
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/main.py",
+      "git_blob": "fd7d1b0f275f53f6d3c193e6b278ab325503ee8b",
+      "sha256": "be23ec4f925c3f3fa95c7d5abb802c6bdcd9bf5cf5383cb96ac1ecb720d63c55",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance",
+      "functions": [
+        "ValidatedContext",
+        "parser",
+        "build_parser",
+        "_arguments",
+        "_inspect",
+        "_read",
+        "main"
+      ]
+    },
+    {
+      "path": "cli/ok",
+      "git_blob": "b49eb22f5a6a42836b5f105a6cea56dfe9ed974b",
+      "sha256": "115eb3f6fe568bd69b5dd18e926843152aefaaf31e28acfab5529158f7fbd7fc",
+      "exact_sources": [
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/output.py",
+      "git_blob": "658b068d6e37b44b050d8b1252b1f1391b540999",
+      "sha256": "70a27ca08cd1170d6ba1006097de2782dcae20da4d563c560c48c8771358aac7",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/overseer",
+      "git_blob": "145c352bcbe7ddbf8d5edf8e4fc39a0bc4a9ae07",
+      "sha256": "a6182f2b85ba932d9d4f5faaf8a0ed04e84772a76fda8432e08728a346fc5324",
+      "exact_sources": [
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/paths.py",
+      "git_blob": "80850033e7221a0f9d0dd077e006cab637fa0b8f",
+      "sha256": "69d9f38797ba83a46cd5c586014b81fa8b30356f957d023c579bd4fbc35038c8",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance",
+      "functions": [
+        "PathEscapeError",
+        "resolve_repo_root",
+        "resolve_config_path",
+        "repo_relative",
+        "confine_path",
+        "is_within_repo"
+      ]
+    },
+    {
+      "path": "cli/product_authority.py",
+      "git_blob": "15fa97ec3ba2893a6fed283e52e31a1b9afdf2fd",
+      "sha256": "fde4872094eb12c1f4faa56e540b2efc7df605679c44c2450af03876c41d53e7",
+      "exact_sources": [
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/product_bookends.py",
+      "git_blob": "44f6865628d50aa0bd411cc5e8bf928639ec2b3a",
+      "sha256": "0d4aa41b0234da77f45b767e6ab8a7aafaaa8da2aef027bfe7f3863b3b04ce04",
+      "exact_sources": [
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/product_boundary.py",
+      "git_blob": "40cd93da0c36c5212b79fea2e2478506217483fa",
+      "sha256": "2b9ded8ad05cd50689d99dae94bc3b6057ee45f952cae89de5d261c165f38a7f",
+      "exact_sources": [],
+      "source": "new_bound_integration",
+      "disposition": "new_shared_service",
+      "functions": [
+        "read",
+        "EngineBoundary",
+        "engine_boundary",
+        "active",
+        "watch"
+      ]
+    },
+    {
+      "path": "cli/product_commands.py",
+      "git_blob": "3408c68ffcc76d3d80471510917a43f6c92a5803",
+      "sha256": "0dec3a6d6fd7a49d4b9c2bf2eea0a31ff7c28dc3ed66ca0d50b33b264f913d03",
+      "exact_sources": [],
+      "source": "new_bound_integration",
+      "disposition": "new_shared_service",
+      "functions": [
+        "configure",
+        "validate"
+      ]
+    },
+    {
+      "path": "cli/product_config.py",
+      "git_blob": "cbf7072e79f3941e7519e9730434f3acfb2cda64",
+      "sha256": "5825f141d81d32471e3801d15ca7c094d84be45ff332764e67f96c7ce55c9433",
+      "exact_sources": [
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/product_footprint.py",
+      "git_blob": "f49e2095ac566518bd75e8c71b69fe71d5df3d82",
+      "sha256": "4cf71af5e156fb9ec74fbfe3e447a80bce542ba1f73d5adfbb25dbd9b24beab7",
+      "exact_sources": [],
+      "source": "new_bound_integration",
+      "disposition": "new_shared_service",
+      "functions": [
+        "with_lock"
+      ]
+    },
+    {
+      "path": "cli/product_governance.py",
+      "git_blob": "20d2ae121fdb7a947b647a327e5bc1997159b0d9",
+      "sha256": "c7827730447934d73ac17677cdd1fe22355edbea748c916d76182312c0bc8897",
+      "exact_sources": [],
+      "source": "new_bound_integration",
+      "disposition": "new_shared_service",
+      "functions": [
+        "observation",
+        "_refresh_after_commit",
+        "_local_command",
+        "run"
+      ]
+    },
+    {
+      "path": "cli/product_landing.py",
+      "git_blob": "a7670816212b43039643eb4c1f556713bf71f6de",
+      "sha256": "0797c4113e6131a6338c14acba1626ec241a9558c0b08571516c531cbb0f93ca",
+      "exact_sources": [],
+      "source": "new_bound_integration",
+      "disposition": "new_shared_service",
+      "functions": [
+        "native_query",
+        "run"
+      ]
+    },
+    {
+      "path": "cli/product_migration.py",
+      "git_blob": "29f95e02051ac59410d4dccced90470e5185eca7",
+      "sha256": "4e3a6b4aedaea755d0bb93cf5680a904e6d3aabadc84aa38b2a9aaf98a1cd1a4",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance",
+      "functions": [
+        "read",
+        "atomic",
+        "_json",
+        "_plan_shape",
+        "_snapshot",
+        "_same",
+        "_lock_entries",
+        "_bound_launcher",
+        "_bounded_hook_assets",
+        "classify_assets",
+        "_document_paths",
+        "inventory",
+        "_legacy_drafts",
+        "_context",
+        "_check_context",
+        "_updates",
+        "apply_mapping",
+        "build_plan",
+        "_apply_plan",
+        "migrate",
+        "sync"
+      ]
+    },
+    {
+      "path": "cli/product_native_read.py",
+      "git_blob": "70360a0d393619d208b7b21ec996ce2536ba4ee1",
+      "sha256": "3b411bde8432dc6938c773b0b02e54ce4aec4693579a3e9795913b14903155a5",
+      "exact_sources": [],
+      "source": "new_bound_integration",
+      "disposition": "new_shared_service",
+      "functions": [
+        "query"
+      ]
+    },
+    {
+      "path": "cli/product_next.py",
+      "git_blob": "2c62864553f09e0eaf785a8aa2b52e2be2ddc644",
+      "sha256": "3514a765ade89f94acedd20ef165f20572404398ac0d4f449189fbb79d4e7ed3",
+      "exact_sources": [
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/product_service.py",
+      "git_blob": "f34a53228d295738a52384868f0b651ab0e3e876",
+      "sha256": "37c15e436c5d44dfe8bbbebddcbb0d98484dd07fd873375f60bc16c5a40fd104",
+      "exact_sources": [],
+      "source": "new_bound_integration",
+      "disposition": "new_shared_service",
+      "functions": [
+        "CapturedOutput",
+        "BoundRunner",
+        "gh_run",
+        "mutates",
+        "invoke",
+        "execute"
+      ]
+    },
+    {
+      "path": "cli/product_status.py",
+      "git_blob": "8ff2c2f7bae79536277c2b1c66dec8279fe58a33",
+      "sha256": "5c41a109bba38fdc33e2b0958304a85526353ea291a270ecec14c9be462409a6",
+      "exact_sources": [],
+      "source": "new_bound_integration",
+      "disposition": "new_shared_service",
+      "functions": [
+        "sections"
+      ]
+    },
+    {
+      "path": "cli/product_transport.py",
+      "git_blob": "5ed48770fa8bf94f12f6f6f0e49c789612df8402",
+      "sha256": "93348faec97a05efe2fc37fc514239519fa9faa124ae346733681b5a503ac179",
+      "exact_sources": [],
+      "source": "new_bound_integration",
+      "disposition": "new_shared_service",
+      "functions": [
+        "post_land_git"
+      ]
+    },
+    {
+      "path": "cli/product_upgrade.py",
+      "git_blob": "3d8adf41f02a61702e825b83f32021f4450335ea",
+      "sha256": "9fda5cf3d2c3dce4a722e5b603848069dd69244f11f3d6b1e9d2e06cc6c7d5e8",
+      "exact_sources": [
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/product_workspace.py",
+      "git_blob": "ebbb63ac529e6ee47749f7e4129ef4c20608fac8",
+      "sha256": "6a08cbe3c6d157ac3662ff33664bec15c74dd6a9be277a0d0aa3bc5eb3ab61ed",
+      "exact_sources": [],
+      "source": "new_bound_integration",
+      "disposition": "new_shared_service",
+      "functions": [
+        "report"
+      ]
+    },
+    {
+      "path": "cli/sanitize.py",
+      "git_blob": "b024654851af8920cc1d54e7c8933d7c0d0499a4",
+      "sha256": "d176ab6709e9cdbe420eb7820943967ce99d4c791949594e0c2743722d9e2984",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/sync_classify.py",
+      "git_blob": "4567ae69993667391a17510ea174c25c4c9bd633",
+      "sha256": "b518217dc7acfb69710babca1724c95d5e95e774959228543f3a2547030d1ca2",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/v1.py",
+      "git_blob": "d360f2c0a6151dc3793e82533b77436c5e2a4083",
+      "sha256": "11e92d23ad598ba04875182139c2b502b33784d3b3316c173d357d2a5efd9d27",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance",
+      "functions": [
+        "runtime_files",
+        "UniqueLoader",
+        "unique_mapping",
+        "decode",
+        "encode",
+        "keys",
+        "label",
+        "token",
+        "git",
+        "root_for",
+        "branch",
+        "head",
+        "runtime",
+        "config_for",
+        "capture_context",
+        "check_context",
+        "check_expectations",
+        "parse_next",
+        "validate_prompt",
+        "validate_next",
+        "rendered",
+        "write_next",
+        "launcher",
+        "hook_script",
+        "assets",
+        "apply_assets",
+        "initialize",
+        "parser",
+        "main"
+      ]
+    },
+    {
+      "path": "cli/v1_git_credential.py",
+      "git_blob": "2c9aa0df388c7aa8f35f5b1e73df3ad06fac48dc",
+      "sha256": "0909bca9e01ac741274934d1c17faf6b657c0438478726b547a86f293832db78",
+      "exact_sources": [
+        "M",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/v1_io.py",
+      "git_blob": "882d791e390be0e8c0f2587ebfd798f1ddfdbbb7",
+      "sha256": "e15e12157581864c747cc4a0032d1040381e887786c7d218eb6f542e08679c8a",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance",
+      "functions": [
+        "Refusal",
+        "confined",
+        "read",
+        "atomic"
+      ]
+    },
+    {
+      "path": "cli/v1_mirror.py",
+      "git_blob": "3777a7556c56ac3bc59f5f25fc4ae816887e7e4c",
+      "sha256": "e181741b5149743b585f4cb297213974984156f166d68ab232140c8068d6208d",
+      "exact_sources": [
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/v1_mirror_history.py",
+      "git_blob": "9752999845e3ee8de3fc9144147fbbef971facfd",
+      "sha256": "dd25c4e669446ad98fbfe1ebf2b5cdb6591bc8c7ee65c4e447ec98061b156df6",
+      "exact_sources": [
+        "M",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/v1_mirror_reader.py",
+      "git_blob": "439653ac0424113d7594ab801da78fe53b87ee30",
+      "sha256": "7e4a6221f1f44bc6e8866075a4082f2e695d469a3d983eb4507d50ed01987713",
+      "exact_sources": [
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/v1_muse_reader.py",
+      "git_blob": "deeacce20d0a84138b2f835afe93addfff1140ae",
+      "sha256": "8c50d6651f3ba85f5c949e79f7e01cb36db7e562e87a1f68e8e21b513363fa37",
+      "exact_sources": [
+        "M",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/v1_policy.py",
+      "git_blob": "88848d1879ea58772d576594dddf842dd54ba5bd",
+      "sha256": "adc0f7d26372772d8e9135cd3d142396e25a320a0aa7dd6caae16a5abce2daa8",
+      "exact_sources": [
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/v1_revision.py",
+      "git_blob": "145351ce2f31105fedd32f8ae11bf813a6ac50c5",
+      "sha256": "85b0a8e309614a0c9652b7d06584f6bdd3d4274f52e17f847297be25ec2eb1ab",
+      "exact_sources": [
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/vcs_status.py",
+      "git_blob": "14be2f889f5fbb822c881bfaacecf1992075897e",
+      "sha256": "4296987dbbf8982a961a41f54e08f0c7d21870029f223d262bc398af89a9ab94",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cli/version_lock.py",
+      "git_blob": "f87622335d70be1dbfea7ff81aa8f28fa51e80fe",
+      "sha256": "23ca1bc33bbb6ff19a4d744fb2da734ce7c6fc3fff9950728846e288767d99f8",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cursor/README.md",
+      "git_blob": "ce72452a550f3f85ea01860b19484196183643a4",
+      "sha256": "f82a4dd2901e697cd647d469eb4483ef1a4bcb9de73de7ccc77e0d32c8239284",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance"
+    },
+    {
+      "path": "cursor/automations/freeze-review-on-merge.json",
+      "git_blob": "10217fe5974b1b9cf91e7ce4d29f2c3fb94c197b",
+      "sha256": "8b1fee35797450c7352d584847e30aa1224df66d7b48d0706aa39e78f064d9f4",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cursor/automations/freeze-review-session-end.json",
+      "git_blob": "839f6fc8f26a7d95a578cf8f560e5e7110a0d5dc",
+      "sha256": "e2ecbca4cc5be5eaf7fb7c420c8bc4fb73bbd52420f27bf5aaf1e489e915956d",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cursor/automations/governance-sync-session-end.json",
+      "git_blob": "2bc0f684120859bbb4f3043b6168efc8d35faea4",
+      "sha256": "efac64797f18cdf8c0071a0bdb06372c1f34783daefaeb051ad132185364b19f",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cursor/hooks/README.md",
+      "git_blob": "0adff3818d58a3890d5f8ec934ebce902cffea74",
+      "sha256": "33b8abc6bebe1a15ce7cfa31706355477b720b96a686a7ef91f1647e956d27c1",
+      "exact_sources": [
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cursor/hooks/hooks.json",
+      "git_blob": "8f9dc881726bb8272e9b925a2dfd16ec274a17a4",
+      "sha256": "2f3f0de72a829aa7ad28055c884127a5db5660c5c78556ac7b8aea8dd2e2ac0e",
+      "exact_sources": [
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cursor/hooks/print-next-stop.json",
+      "git_blob": "465f7d8dc9192762e4b4f804d328a95e87b37194",
+      "sha256": "778666927571dba79ebd840adcf7f5fff3642e083b166899481fec3a26886fa9",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cursor/hooks/session-end-closeout.sh",
+      "git_blob": "5f7fcbd590a308c032547f27766227e4de3c8c3e",
+      "sha256": "af4f2a4ae24cec4e375085e96d5144a7471457460206dbeba6d7a525ea00279a",
+      "exact_sources": [
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cursor/hooks/session-start-next.sh",
+      "git_blob": "5f7fcbd590a308c032547f27766227e4de3c8c3e",
+      "sha256": "af4f2a4ae24cec4e375085e96d5144a7471457460206dbeba6d7a525ea00279a",
+      "exact_sources": [
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cursor/rules/build-verification-required.mdc",
+      "git_blob": "2bda69df20bdcae18da8fddeb444f0121a1c6b2a",
+      "sha256": "b0fdb1a1e0a01d23b4b70cb5b4bb987eb11b9fdba1a8a77af54e90f47d832065",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance"
+    },
+    {
+      "path": "cursor/rules/check-ok-thinking.mdc",
+      "git_blob": "067b6f2946859ba9b3b67c4640fdc96595665c94",
+      "sha256": "a75697f0f8b6fb1ee424aa198dd5e4a6648e33b3707482964494287196729739",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance"
+    },
+    {
+      "path": "cursor/rules/governance-sync.mdc",
+      "git_blob": "09a128650863bdfa318b8233672b0946c9d41662",
+      "sha256": "97414e26682f3ccefb3c442a05d73c7dbb998fd78e5a6d286e4ef625d4405fb6",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance"
+    },
+    {
+      "path": "cursor/rules/l1-checkpoints-consumer-owned.mdc",
+      "git_blob": "b52c8100216bc1e9b957a8fc9eb4a76aac25387f",
+      "sha256": "6eebc8126cee6c7ee1d2de1180faec15e2822448b2bfeffb56495991fd21a037",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cursor/rules/no-docs-only-pr-to-main.mdc",
+      "git_blob": "da02ff4ecf62f8237caba0877bb26fa386d9cb25",
+      "sha256": "c040517845d72aa9f40cc802db00e39dc67cd4d66a9f4dd1ac89d8bb680dd610",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance"
+    },
+    {
+      "path": "cursor/rules/orchestrator.mdc",
+      "git_blob": "4b92268f7a0a3523222328b2095c63801a0942ec",
+      "sha256": "e4d2e9d9ed268086a43a2c3c2b9ba7bef8fb42e544c81182128704e5a26c8d84",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance"
+    },
+    {
+      "path": "cursor/rules/print-next-closeout.mdc",
+      "git_blob": "170e4c7979b73e688eee592f3607358541c1088d",
+      "sha256": "c45ae41918dabb9b1afb3f180924039ff02df661a6c77f1c97c1a119b77f62bb",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance"
+    },
+    {
+      "path": "cursor/rules/tier-authority.mdc",
+      "git_blob": "96991d68c52b3f646a30cc88a37d55f20e02e46e",
+      "sha256": "e685afdd9a6368bac11127bebb0ca9883ac7523f15f65ceb3d9efdf239fb9f2a",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance"
+    },
+    {
+      "path": "cursor/rules/workspace-authority.mdc",
+      "git_blob": "ff3e69af97341f94b2e42d93f8649fcc08e35c7a",
+      "sha256": "438b69c1bae0e413e6ad953cbec3173162282625d4bee04066e482db72a8aff0",
+      "exact_sources": [
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cursor/skills/adversarial-freeze-review/SKILL.md",
+      "git_blob": "4f6bac85e20eff5aa454a2a5bef86b5577e47332",
+      "sha256": "7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cursor/skills/build-verification-review/SKILL.md",
+      "git_blob": "7c53515a524e5bf0d5dcca93a7454c5d6712ef88",
+      "sha256": "f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md",
+      "git_blob": "c6ad4ba3f47927c202a3b2e4a498ffda3f919cda",
+      "sha256": "0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cursor/skills/check-ok/SKILL.md",
+      "git_blob": "213baa693369c2c2d583287cad4ee81249a5ce5e",
+      "sha256": "3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cursor/skills/deploy-verification-review/SKILL.md",
+      "git_blob": "eca229b8faacdf361741dca176787e0f539e58d1",
+      "sha256": "a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cursor/skills/freeze-review-loop/SKILL.md",
+      "git_blob": "a466d4fde9c712abedd1c7b82f985fe8de455382",
+      "sha256": "355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance"
+    },
+    {
+      "path": "cursor/skills/freeze-review/SKILL.md",
+      "git_blob": "ce6696ba19c63f48cfb9e93148f23edb0e127198",
+      "sha256": "620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cursor/skills/governance-sync/SKILL.md",
+      "git_blob": "575838ccb0f3917013ff72e37af1c32c8f60bd6e",
+      "sha256": "06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance"
+    },
+    {
+      "path": "cursor/skills/independent-second-reviewer/SKILL.md",
+      "git_blob": "8f9432b90eb030d7389ee53d04f43d7ae7d535da",
+      "sha256": "994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cursor/skills/print-next/SKILL.md",
+      "git_blob": "c3d592f64504b3f9e280f74aedd95fd57512ac07",
+      "sha256": "de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff",
+      "exact_sources": [
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "cursor/skills/workspace-status/SKILL.md",
+      "git_blob": "746207e1390925a57b9498f41576984273a265ee",
+      "sha256": "a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance"
+    },
+    {
+      "path": "desktop/.gitignore",
+      "git_blob": "a547bf36d8d11a4f89c59c144f24795749086dd1",
+      "sha256": "fe718e7babb14f3cbad2d97f08889b9ce5215ed3fe0e43b2b8cfbfb3b9b844e8",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/.vscode/extensions.json",
+      "git_blob": "24d7cc6de8e0b4d34e998fb0e0a195a20dc4b213",
+      "sha256": "8988c707a30230dcaa815dc690caab61f43c57b13fb42e2d632e06a794b58454",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/README.md",
+      "git_blob": "824c69d0469d21b1d56a220a77883449ba300951",
+      "sha256": "dd07764601c048146a45d9c16bc7324451bb30c5f3a4def858907b2b9cadfccf",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance"
+    },
+    {
+      "path": "desktop/app-icon.png",
+      "git_blob": "56a6733a4d7bb74d96dae2d06da3eab2fdf37260",
+      "sha256": "1b43d0e983b20b8637aab8564f447ab2ed322268e09a8a7b76a63bdf2ed3c334",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/keys/README.md",
+      "git_blob": "58da203399b33d02b1a74361e1961b1709d24d32",
+      "sha256": "4a095c352ad696e6d51ed028c5be65e32805dbb6c433b4d2d25532eeed666c83",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/keys/release.minisign.pub",
+      "git_blob": "2ba2550dc70c901c3eb810df9ee55563596b8eae",
+      "sha256": "39a00aad6aa5b8218151acabb754951ac8c160023780ed030cc628c123ec855d",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/package-lock.json",
+      "git_blob": "1265efd0227f9cb222b3ab2460205ae80d0e5521",
+      "sha256": "e904fcab7ce74f25e2783132b1ecf7eefe2a509c9565acd080e28b3ce35c74a9",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance"
+    },
+    {
+      "path": "desktop/package.json",
+      "git_blob": "98c5879a0c7827337f0e0cbff833505dbfbc7a6c",
+      "sha256": "ba0d2e508e433cddacf28eae9ec9626983e0e80976e12a898933372d2dffac93",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance"
+    },
+    {
+      "path": "desktop/src-tauri/.gitignore",
+      "git_blob": "b21bd681d99748c046b14202ab79bd8da0143302",
+      "sha256": "88707cda7ba4226eda3ffa91d8284f1a0d12b827f06fb9bc48425cc0d4af04af",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/src-tauri/Cargo.lock",
+      "git_blob": "8d71fef7766c294b564b61c094b1d50249eb7ecf",
+      "sha256": "9b61ad01c7461687061f10c8b69ba15700b997c280e6a7cb0eb4a02786461706",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance"
+    },
+    {
+      "path": "desktop/src-tauri/Cargo.toml",
+      "git_blob": "831a2bf85cfbd70c1892091f8973d6d1cc9371b9",
+      "sha256": "53e374be6a6074bcb2c0c632a803a1c85926c29dcf6bb0c89764be0139e69ee2",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance"
+    },
+    {
+      "path": "desktop/src-tauri/build.rs",
+      "git_blob": "d860e1e6a7cac333c3cc0bc9cb67faf286b07d69",
+      "sha256": "487059eaf8a947b80f20a9aacac038a5047b2ad69d2401b827376c67d6fe847f",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/src-tauri/capabilities/default.json",
+      "git_blob": "3ca2d7653522ffd04f9d2c453d4f064ccca6b215",
+      "sha256": "1701bb40d2d856a36c4c3d788724cc48613f662edf4f80c4c0b07f242785bf3d",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/src-tauri/icons/128x128.png",
+      "git_blob": "24cf7ab22d7915b4042acf0e51669575dcb9ac51",
+      "sha256": "e17c60f04cc858a6bfdbe65d097c889387617827bc2cda78ba8df044e589a76a",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/src-tauri/icons/128x128@2x.png",
+      "git_blob": "b9c25ad7f5763a846082486a0024d94de350c153",
+      "sha256": "ca01b747460bb4ad53a16c14f63ffccae99f87aee7ebeb08bc9cce2f2efa5e7d",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/src-tauri/icons/32x32.png",
+      "git_blob": "f650b35aba70b6645be54e66ee33f52724a200e6",
+      "sha256": "9bd70c640173c012e30d1597d19fbc28dbf5222cebad5891317d5968820d8984",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/src-tauri/icons/64x64.png",
+      "git_blob": "9c21b957932884d7018df4f3d6bb7554419c6233",
+      "sha256": "2e35b058cd9e7a1b720efdfe62d8f16747b2536251636036979c35d0f1c33ae7",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/src-tauri/icons/Square107x107Logo.png",
+      "git_blob": "29442ea60633a904bb84157a3cfc1b5ae31577be",
+      "sha256": "2e00267463ed186b499aaa7378fb4f966c676a7fc93d8a80e5def9956c06a45a",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/src-tauri/icons/Square142x142Logo.png",
+      "git_blob": "02b6e04e44d76523bbb58b2212d5448c90fcb0d5",
+      "sha256": "9273c6801ed2ee06995d4457e8193b2f1ee3109dcb1ddfba0833ff0191852b5a",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/src-tauri/icons/Square150x150Logo.png",
+      "git_blob": "f23c29dae178ae61d4ace3c784f6eb5bebcfcadf",
+      "sha256": "f929d73991cd70535733805f9b00d97ce71005573be71d5d653f54ba7f1f1f1a",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/src-tauri/icons/Square284x284Logo.png",
+      "git_blob": "8693101bd68de92e89d0edea42647573bb3f577b",
+      "sha256": "aecf7e94383cd0128c4c70ea233c095af6ed52f8f744043f0e4743d5cfd7b1da",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/src-tauri/icons/Square30x30Logo.png",
+      "git_blob": "6610ae557e19165a071a2e6a7b960459e54f8ef5",
+      "sha256": "908902a9e7ed177fb71213f6653155dd08647749e7a5ab8b51d5d0f35766b876",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/src-tauri/icons/Square310x310Logo.png",
+      "git_blob": "eaf9c6fc469b7aa1a2b1f1dd66b5527c113c9cdf",
+      "sha256": "c9f6b3234313952fc614870ee8d64030526c6d10d0013c792038ed29cfd68341",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/src-tauri/icons/Square44x44Logo.png",
+      "git_blob": "0d9e0fd639048abb9ed631d2effe3458bdfbee6f",
+      "sha256": "b706d6ab1919f400d6ea3e32161a1a0a4bffd7e68d94f7356ebe50b7871db0a7",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/src-tauri/icons/Square71x71Logo.png",
+      "git_blob": "3900cf057be1dd6e81ab8af4af9d895e53dffc5e",
+      "sha256": "529286f6044d8f3f77053da00351efb905ed3bf6c3618668a61d79cc542a86f4",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/src-tauri/icons/Square89x89Logo.png",
+      "git_blob": "96e178936b544f512e30b310c0fb84537066af4e",
+      "sha256": "0a8ca8d00d23c732df2d5519d29a84a1f77ee2a8eaede235a74146313b64eadc",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/src-tauri/icons/StoreLogo.png",
+      "git_blob": "8de62076181993cda7b1136e4d471128877629f5",
+      "sha256": "a69cf5513ead9dd6da4bb12e44780ecbd180c4af3117cf1d1fa31d9033ef00aa",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/src-tauri/icons/icon.icns",
+      "git_blob": "887f5f239a9115e4cc4c08a731c79a4faaf867e6",
+      "sha256": "3c76132825844b6c10e4f0b94a80e864e0c55603f0b8e923fc6ea985e4d3291b",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/src-tauri/icons/icon.ico",
+      "git_blob": "c248900c1e0a4ab0bf4f0a3d7a5a36fb29058d48",
+      "sha256": "8cb9d92aeae771a5073d9e6695aa5326b02141edb09f62f1314fa0762e1e413f",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/src-tauri/icons/icon.png",
+      "git_blob": "8a4c98e0fc7cd8c8b45a936eaea9c583e661a011",
+      "sha256": "96e64e142a5ac374005620da2effbe95ab08f339f6ef1914334b855be3918b85",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/src-tauri/rust-toolchain.toml",
+      "git_blob": "e88baf106b9e6550446ae1cd13dbba561193e062",
+      "sha256": "fdaf5c39586fd9584852826851a351483d1392a08014fb0925fb1b23da758cd6",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/src-tauri/src/launcher.rs",
+      "git_blob": "6a6fbea4d43756a20d93e92479a0fa2b5a15f3b1",
+      "sha256": "b8385b72d2b0dec63da38bf24d3e7d98d9413c492f2e95cb987f2354f6112b83",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance"
+    },
+    {
+      "path": "desktop/src-tauri/src/lib.rs",
+      "git_blob": "daf30306848906671805f6a58abd79bc950cc4b4",
+      "sha256": "8e5e038105371c57942d685b2ad475b3632f6d511fdb55720c26d89e8d50910d",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/src-tauri/src/main.rs",
+      "git_blob": "fa4b934d57f25612126d60816159c48e3ae6027a",
+      "sha256": "1ba82b07fc7016a74e80ee4bee7cfc81de3bd75b0873329a6967be85985700ce",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/src-tauri/tauri.conf.json",
+      "git_blob": "a1cecbc32158f2a9046f9e319edd90ca3bb8a854",
+      "sha256": "d834a532c7e67eaf9c7a21c9e80d52a31a7160d6aaad88ee9903078132ef42be",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance"
+    },
+    {
+      "path": "desktop/src/assets/javascript.svg",
+      "git_blob": "f9abb2b728d73b75ef8020c4846b534663c69a85",
+      "sha256": "8dac53799104214c30769aa44c25a16b3c8c86f7c6c6e46fb1996e63ab5d828e",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/src/assets/tauri.svg",
+      "git_blob": "31b62c92804b76aa2896dfd4bfca252255667332",
+      "sha256": "e5d2738bbaa5543c4684001a558dc53165da9b636144827b28db1dcfacf81aa8",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/src/index.html",
+      "git_blob": "a0e3d89c8352eac64f195bd69e5440d9c0514952",
+      "sha256": "3ee07ded6caaacb00583a1ddadfeeeb36d86f08f8ad21bff31cbc480d7b57025",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/src/main.js",
+      "git_blob": "55d5f93c28ce5a1f32947b436b418d004e3ccd3a",
+      "sha256": "3aab7ecfbd72220c97eb3989be25903fa3f1fa6d84a9c5ee0f23166d79377c93",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "desktop/src/styles.css",
+      "git_blob": "e57b8acaf1e6d4a2c0ccff33644349b525834339",
+      "sha256": "9f0fb12fdf51d9a8b3f61e73e3408b61b52fde21a48ab5793db9722cc9002a1a",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "policy/model-labels.yaml",
+      "git_blob": "65e1f560c02185f8e5f66aaf1f2c5ebb5adc1d00",
+      "sha256": "db95732401de452223d750c68172b6c1bb28b3b574c6368132678309b8c801e0",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "policy/model-routing.yaml",
+      "git_blob": "eaa95d44817b9c28259c9ea27765e5c44b242ade",
+      "sha256": "52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "policy/test-tiers.yaml",
+      "git_blob": "97f722a685a72b5ffda2046b6c64a2d691316f3a",
+      "sha256": "55b337e9399ccd26f4c70dba9f6f57c1359fab930a522e605cbe52d3533238d8",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "policy/tiers.yaml",
+      "git_blob": "4f9be78e78304e50f07bec9634365f9b33eae417",
+      "sha256": "92920331f4e35bad9191a101b8b5d211ef31f069b2ba1cf4446ceb3796894776",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "scripts/bundle-desktop-kit.sh",
+      "git_blob": "9ed909af15b66b6262c62277060d7523c737478d",
+      "sha256": "2aaffb43dfe85c48c5b0e2317405b2a2450bde3ff0e878e712b09aa3ffa603ca",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance"
+    },
+    {
+      "path": "scripts/muse-bridge-deploy.sh",
+      "git_blob": "15c03c024f5520170f433a4eba4c23c9ec1d23a8",
+      "sha256": "d1a4351567edbe3d054b545b8cb165e302e231037ae152bba14bd3a6a9e302d6",
+      "exact_sources": [
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "templates/BOOKENDS.instructions.md",
+      "git_blob": "7b9026d3d2f61f85082dda9fcfb06e3fc62f9cc7",
+      "sha256": "146a036e3c9795fd75975474fca6ff5084f5a73977cf8908dd692eafdcd90303",
+      "exact_sources": [
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "templates/CROSS-REPO-COORDINATION.template.md",
+      "git_blob": "be5b13857c61d14a1177387e486d44a807cd4be5",
+      "sha256": "4ac6c7aafadcdd474789144cef38fd2e3fe4f182adfdb01a263f6d5435118976",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance"
+    },
+    {
+      "path": "templates/MUSE-BRIDGE-WORKFLOW.template.md",
+      "git_blob": "549c6add566cbdb3f886df79f1b070fc24842a4a",
+      "sha256": "9269b6fb53a7457aba8c91b785a3fc826935b3fbd1ce9f20606b0e68eb4439ed",
+      "exact_sources": [
+        "D",
+        "P",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "templates/OVERSEER-HANDOVER.template.md",
+      "git_blob": "7b41c6ea9903db7b0813b5f5f3d10ff828725d70",
+      "sha256": "91c4bffa670271412254e08089ca1115c116788c552809e8f3f2498276656e31",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance"
+    },
+    {
+      "path": "templates/README.md",
+      "git_blob": "f2fe239798e09ee17638de185de9f15489697adb",
+      "sha256": "909141866874adeab82c3e0f7baf7c3886785154491157e04a4e27b9d4404095",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance"
+    },
+    {
+      "path": "templates/ROADMAP.template.md",
+      "git_blob": "2e232dd07b2d834d913d2c48bc0c94b1fb4d148c",
+      "sha256": "cfef184fcd6a43c00b732ac18365e3a0a654c300b2386fdb2a27c52d2d07fa2a",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance"
+    },
+    {
+      "path": "templates/STANDING-DECISIONS.template.md",
+      "git_blob": "b20a29b9be47c58d4eae926202e8588d03d96b2e",
+      "sha256": "097c27e16ce0fa39f0cd6a6ac61639402ca89c76fa93c67600c757547ea2b004",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance"
+    },
+    {
+      "path": "templates/ci/desktop-release-github-actions.yml",
+      "git_blob": "fe73fe0ff27651a24b07c50f03d1814d8823014d",
+      "sha256": "3104c29f7f9820b4ad9c4b2ee4f416d96e7542b9b63bd48f6147754084208b34",
+      "exact_sources": [
+        "D",
+        "P",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "templates/ci/freeze-review-github-actions.yml",
+      "git_blob": "4cc3be087ee2d1dff8421c6f7e0a7acd8808fa0b",
+      "sha256": "2edb7a756fbd8b3727c863f1f6de2e01ee7bd176d7d583495c3831eae0932dfa",
+      "exact_sources": [
+        "D",
+        "P",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "templates/ci/governance-closeout-github-actions.yml",
+      "git_blob": "3944ce8790908dbda98314f0322a7cd6cf8944be",
+      "sha256": "30d5ec1fc76f6616574f64cfd762a760003027fa66d6b70ec21b0ca6adf4ad74",
+      "exact_sources": [
+        "D",
+        "P",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "templates/scripts/muse-bridge-deploy.sh.template",
+      "git_blob": "15c03c024f5520170f433a4eba4c23c9ec1d23a8",
+      "sha256": "d1a4351567edbe3d054b545b8cb165e302e231037ae152bba14bd3a6a9e302d6",
+      "exact_sources": [
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "templates/tokens.yaml",
+      "git_blob": "159a81ecf1432420fd6066a73fdc75062942c8f0",
+      "sha256": "c1e97aa24abbbfb9624e8b34f3a5139da4e0c5ac5e3b07732785f62bbf53fa24",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/adversarial_freeze/__init__.py",
+      "git_blob": "e1d0d1ab19a99f01f539d565507fc5918caf931b",
+      "sha256": "808f2a4f734de3f53a49abd9e8ecb51dd3973a2ef34530cfa64f337919913444",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/adversarial_freeze/authorize.py",
+      "git_blob": "e1565df201b8de2235da2b027d48dfa3b696a311",
+      "sha256": "6b40c22ed010801dc7585013c3b78ccdba6223aee5bd8b091525946f091d0e98",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/adversarial_freeze/surface.py",
+      "git_blob": "32385f7d6d0ff324037fb7d243c7773ba4a40a9f",
+      "sha256": "3528350dadeda86504bc92d3c9bb09ee987047039e28fc2dd5a74a4974beaa2b",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/app/__init__.py",
+      "git_blob": "5bfd77f734d580978f9aad1f72a41396318c92b8",
+      "sha256": "18c6079f3e3ecfb7821a4ac6bb1a827182edcc6e22ec112173f5c476e4c10865",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/app/auth.py",
+      "git_blob": "3879fe7e72911f2ba7bf5524d26af8640c315768",
+      "sha256": "d28abaf280fbf063a56a879db047589348b888254fe04f8622e3842b1bdd2808",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/app/bind.py",
+      "git_blob": "5a43240e0dab6f470124377e8e5548030d40bed2",
+      "sha256": "1f56dfc6bdb329141c85513cc5e61e6802ce4ad413836973026dfc7114d301b9",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/app/capture.py",
+      "git_blob": "7d790882a73251e0283cf3e2ccf05f0d8f27153a",
+      "sha256": "121abde9e5a6a4a64ffdedaafebf84a56841d78fb070c40bbcfa8e414b1ad06f",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/app/cors.py",
+      "git_blob": "3dd09ac4951ae7b71bf9e7dec69449ff79b39770",
+      "sha256": "3e8d0cc0fef0377771d8dc07d825b45a9898a317fc851371c6b37c3787aa35c5",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/app/docs.py",
+      "git_blob": "f10a72ce369711c6fdb65c76eb2870c30ca31ea0",
+      "sha256": "dbb9506fa15d04c4c00c5c1a3a129c1c60dae3d6c3d5ac57bba649d5ed490673",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/app/engine.py",
+      "git_blob": "370e293aa2c9b266d26ac2f4a89d31631a8e44e7",
+      "sha256": "074fff1cfe9ceafcb80e17603188944500b3e79c705bd2da6aa50abd9e50dc8b",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance",
+      "functions": [
+        "_capture",
+        "_failure",
+        "_invoke",
+        "handle_health",
+        "handle_status",
+        "handle_next",
+        "handle_gates",
+        "_document",
+        "handle_docs_roadmap",
+        "handle_docs_handover",
+        "handle_review_freeze",
+        "handle_governance_sync",
+        "handle_ledger_show",
+        "handle_ledger_verify",
+        "handle_ledger_append",
+        "handle_honesty_status"
+      ]
+    },
+    {
+      "path": "tools/app/envelope.py",
+      "git_blob": "5676048ee7f89c71dd2c363b171291de832f7731",
+      "sha256": "86edfeeeaf266fa2b8758e90ca840c895adb2e4841b219e348e45456eadea2d1",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/app/server.py",
+      "git_blob": "8043c88b94817954e59fc6a6a2e667aea8b70dbf",
+      "sha256": "b0744c2b0ede5e19ba6344f29250755f18515ae3bd0c9be4784cbfe0c819e613",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance",
+      "functions": [
+        "AppServerConfig",
+        "AppHTTPServer",
+        "AppRequestHandler",
+        "_parse_last_query",
+        "AppServerHandle",
+        "start_app_server",
+        "build_server_config",
+        "run_app_server"
+      ]
+    },
+    {
+      "path": "tools/app/static/assets/app.css",
+      "git_blob": "075ea25ab5132e05bd76116b4ea2f7310fbef880",
+      "sha256": "4a5c812eca610600e641a2b0bbd05dc6fe08be34d353cf3c790d75cf7f9a3824",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/app/static/assets/app.js",
+      "git_blob": "ea295b1d38f4d7ffed00c7f1bd0cc2639c207030",
+      "sha256": "90482e19d2919195f1a538f37568ef305e0318e03ed6ac80b65be06d14d456f5",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance"
+    },
+    {
+      "path": "tools/app/static/assets/diagrams/kit-consumer.svg",
+      "git_blob": "09056d1fd12f2438a08e23d3f57ce1eb4656996d",
+      "sha256": "46ee30660d7a5e688e65b5cb99210b81db9ae3ceb89fc555993014dec6dc8b4c",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/app/static/assets/diagrams/lanes.svg",
+      "git_blob": "e6269fc0d2ae5e77522300367c4528f552cf5a04",
+      "sha256": "a5595937dd6c396d7982d7c87de3b042caa618e75700aa84e3302f20626343d2",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/app/static/assets/diagrams/layers.svg",
+      "git_blob": "d82647390d2e8de451a7052899f6db7e90b68c3e",
+      "sha256": "e7d2057867199d193cd8574432dab2cc9bb9acad575b8e05a6e2cdd8d5aa59cf",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/app/static/assets/diagrams/regimes.svg",
+      "git_blob": "6de27b4138935e7f9002d220f02655d33456b185",
+      "sha256": "77b7205439fcd80267ae898003a335861b4b592c88c8e12c27e7c6242737ef89",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/app/static/index.html",
+      "git_blob": "5f2306fb6f135a740c590e317ccac968b0ed62c1",
+      "sha256": "5610cecb600b79630beeb2fc8c8d5002193ee0611458fca24df6d98ff236b0e6",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance"
+    },
+    {
+      "path": "tools/check_ok/__init__.py",
+      "git_blob": "a9a69ca55e115bc20751d3c2d2d13fc6fa83f02e",
+      "sha256": "8bc655a3de53be37c1d7b0307b56ef528aefee71985887cbcdc26fe034012a00",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/check_ok/scaffold.py",
+      "git_blob": "80b545293cd838d13195b9bb1356461497578fb7",
+      "sha256": "de9525529543c76aaeb62bc75810418d73e36a4f9c7c01550cf61b756838cf4e",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance",
+      "functions": [
+        "slugify_topic",
+        "ScaffoldResult",
+        "render_side_check_markdown",
+        "resolve_artifact_path",
+        "scaffold_side_check"
+      ]
+    },
+    {
+      "path": "tools/checkpoints/__init__.py",
+      "git_blob": "d3bb57e34154fc53b90769fe79042e357997a80c",
+      "sha256": "26db169ea8cb268364948d74389f99285d87658fecdc0c34da8ef9607ecd7de1",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/checkpoints/advance.py",
+      "git_blob": "fbaa0a1173bc7443a573fdc7320573fb2632fd27",
+      "sha256": "c6a416a79972ada38dccc4856ddc5dabb133c9a826014b01b2bd06ba6c21f285",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/checkpoints/argv_builder.py",
+      "git_blob": "ffaa052c15a64dc570e6d790c526d8a3c25047d6",
+      "sha256": "25446cf4132859cda7f0b0faf47d57ce5c5e3a3f4f190a970c4558a27655a84f",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/checkpoints/artifact_hash.py",
+      "git_blob": "538ca9249572df47c042fffc984b0b24954e04ec",
+      "sha256": "c49f419c83601aeb58d5a0764305d54531fbc11adeeecc3e98963e77dfedd61f",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/checkpoints/executor.py",
+      "git_blob": "8b47281efc4a8cac1f1b64bfb0eb9281601c8b31",
+      "sha256": "3e68187a3209e6faeea92891e19fcec2c1584e89c8cd6fbc9f64a2f2032392b9",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance",
+      "functions": [
+        "ExecResult",
+        "ScriptExecutor",
+        "SubprocessScriptExecutor",
+        "RecordingScriptExecutor"
+      ]
+    },
+    {
+      "path": "tools/checkpoints/ids.py",
+      "git_blob": "cd30afb919f05e2b5286726a9a828866ec4223aa",
+      "sha256": "2f0a325bc569d3d64899005cbebfc5f1dc5c39c5500f9836f0b7d136568d5092",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/checkpoints/orchestrator.py",
+      "git_blob": "7ea4a5b59c4becacae5c6eb5e6905a94f155d581",
+      "sha256": "e404800fe06e118144a3d92b3f8755f799b2eb9556119838e4fc015444de36f0",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/checkpoints/overrides.py",
+      "git_blob": "775ea5544eddcd75854bc52fc83f862bcd31b250",
+      "sha256": "c628e7b26ae3e102f9354a7994fe25d6a98605bdac817813759ac698fe954c9a",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/checkpoints/schema.py",
+      "git_blob": "7eb9cd8af13bffc3de399224502564d04f5b06e9",
+      "sha256": "212becc68620a2a5d5569e8e73dbd91d021f53e5774c8109c8241ef32b7805a8",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/checkpoints/types.py",
+      "git_blob": "e316e3e621b74fe09692ba25ef7612e29d5c4d4c",
+      "sha256": "022319feddf74167f74d9a73d86ea3137dddf61ec9fda9b03009547489c72d5e",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/ci/MUSE-RC5-RECOVERY.md",
+      "git_blob": "6bd42f0ce243eff85e1145e520103afc9c1afdbb",
+      "sha256": "66bc069aac44d8ab965aceb45615c617c581e78fe970b2af4b26c5e52d7264f1",
+      "exact_sources": [
+        "M"
+      ],
+      "source": "M",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/ci/muse-rc5-artifact.json",
+      "git_blob": "0fac4926a5e718118f993fde6fff8060bb8e3fa1",
+      "sha256": "5757cb09ea8897b06801f6d77c48e2736a69184470a2172a4d24a23184db57a1",
+      "exact_sources": [
+        "M"
+      ],
+      "source": "M",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/ci/muse-rc5-source-files.json",
+      "git_blob": "ff82f2f79570f16d596ad0ad18434e7eda23010c",
+      "sha256": "3a30de887720d3019ad8a40b300960f97693fc13b91da8814784dabe897115ff",
+      "exact_sources": [
+        "M"
+      ],
+      "source": "M",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/ci/muse_artifact.py",
+      "git_blob": "f6523bb2b26c5c73a00f1321caad1903adca7095",
+      "sha256": "43a43d31e08d7e7a29115d2c15e0c2a5ee72b54342a8e2136041d205aa5b2edc",
+      "exact_sources": [
+        "M"
+      ],
+      "source": "M",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/ci/requirements-muse-rc5.txt",
+      "git_blob": "e6bc60c3a81aa8296777934d29b207426b2cf5f0",
+      "sha256": "107d3d75eb49e04f382a23955a1e2cfa5d178ec0487c447368ad66b7d6fd8226",
+      "exact_sources": [
+        "M"
+      ],
+      "source": "M",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/ci/source_package.py",
+      "git_blob": "37cf8de650ab6f24b8605037c18c82f392f71bf4",
+      "sha256": "6a665a6793920842b276717a66ffe1937eb13fc800a14c621dc8b0255281afc4",
+      "exact_sources": [],
+      "source": "new_bound_integration",
+      "disposition": "new_shared_service",
+      "functions": [
+        "eligible",
+        "source_files",
+        "manifest",
+        "build",
+        "verify",
+        "unpack",
+        "verify_tree",
+        "main"
+      ]
+    },
+    {
+      "path": "tools/ci/supported_v1.py",
+      "git_blob": "25e4d3b518c872adc34955842ae5e6e995d456f3",
+      "sha256": "bc6212685c1f79f608bf209d844624155220b67bae46c60bedb2d18d0bb94c80",
+      "exact_sources": [],
+      "source": "M",
+      "disposition": "adapted_boundary_or_guidance",
+      "functions": [
+        "main"
+      ]
+    },
+    {
+      "path": "tools/close_ritual/__init__.py",
+      "git_blob": "301e3169ae0fe297d4ff2d9d7a84e8fd4964c055",
+      "sha256": "fb9de1ac963306051f9b3220a605ec5382aba376f3f6b6e013bf9f0121f9e84c",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/close_ritual/land_check.py",
+      "git_blob": "cd449e033d315da528fd27599c57f8307ebda7dc",
+      "sha256": "0f2e52d066ef16a098f23ce1cbb5fb5996e5255c8dad67200bc2559c5477afcb",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance",
+      "functions": [
+        "LandCheckResult",
+        "_sha256_bytes",
+        "_git",
+        "compare_paths_to_main",
+        "run_land_check",
+        "_freshness_gate",
+        "_closeout_gate"
+      ]
+    },
+    {
+      "path": "tools/close_ritual/post_land_sync.py",
+      "git_blob": "a0400a87665750d9607428f098dc57b40113d2be",
+      "sha256": "f71b3395e098be6fe91f10280f4da70e628cc5a51fe7c95d32412e789ff59840",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/close_ritual/pr_land.py",
+      "git_blob": "4dc530301061fc8a3e3f9b6b6e23eda38975c47e",
+      "sha256": "e71310051d84a46a28776182b63f879062e0c49ee3e88ff350d7606a96783a34",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/cost_awareness/__init__.py",
+      "git_blob": "9e893c3df21bd40cc880ca870ada245fe148b350",
+      "sha256": "ef9f4664789f1e69eabe355e2de4f05da5fe595c429b08833bddfbe7dcf99156",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/cost_awareness/derive.py",
+      "git_blob": "30e27934f43381eb3b8d958c329ae5d720ac20f9",
+      "sha256": "8063676b418df8d5e0924ac28309d55bde2375c044ae5d4bec2750eed99dea21",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/cost_awareness/format.py",
+      "git_blob": "e9f29bab99cff956a4a2222ffcf5bf5c6d2b02bc",
+      "sha256": "2da33792349d6013f93bf6fa590ef578a95b277dd06d8686d531a2f3116749ce",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/cost_awareness/normalize.py",
+      "git_blob": "d4283a493bef35893b9ec1548633d57476d8d18e",
+      "sha256": "e2de5f376616bfbadf190261693f3d21ff3374817fefe7c4e4f81f283be3a1fb",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/cost_awareness/surface.py",
+      "git_blob": "0547e49cc03d4f97dfd079437ad35245d80d9008",
+      "sha256": "55555ef87692291cfa4d0d9f886826533b38550e041832aba7114e0834869cd8",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/desktop/__init__.py",
+      "git_blob": "8fd0d8a67b3a216dcb8e00f4c22bd7567b46465d",
+      "sha256": "7ca9c8ec0f63aeef9233da615d98f98144d616ab2508892e4462cd00cddd1511",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/desktop/banner.py",
+      "git_blob": "733bb959ee9267fe76313ad9f09554616260a8d5",
+      "sha256": "33a81db0f14df4922f754905bd27a185027e3304386ea9942a42f7b673ea6a9d",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/desktop/constants.py",
+      "git_blob": "7eb7a1e88f33ada192e0b48fd59a2daba7793ee0",
+      "sha256": "534ee7c25de3f8a60bd192c81c7f3d726b59ab868b1dc3e26c4e76976a306013",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/desktop/init_script.py",
+      "git_blob": "17f51afb8572bc3bfabd2061bf9b1cffe3380b82",
+      "sha256": "bf127a7bb8215cc9f7c40b8823bcf99086524c3043619ecf740727db4b9ba9d9",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/desktop/launcher.py",
+      "git_blob": "f8267fed76435b7528f3f5ef0791ee11039e00e4",
+      "sha256": "3b890b833c9f5c2565d6eeb6b65d14d8931a01b27e2a7fccc06533f8a43a6aab",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance",
+      "functions": [
+        "resolve_kit_root",
+        "resolve_repo_root",
+        "build_launch_argv",
+        "DesktopLauncher"
+      ]
+    },
+    {
+      "path": "tools/desktop/manifest.py",
+      "git_blob": "9ddcec5603d97c77da8f33de86531973cf8f7b47",
+      "sha256": "7b0b9d68f01a4dfda71b3ce1e3d429997b8220259229f50f8c56a33e51616c87",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/desktop_release/__init__.py",
+      "git_blob": "57fef4efdda35dd1f2174800db735774575ee96e",
+      "sha256": "c3309c4686d994c3783073ce4d7ebf59cac1b808ab86e7711eab912f82122827",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/desktop_release/allowlist.py",
+      "git_blob": "773004b1d31c30ec5b426bf9fe7eeca7e755bfde",
+      "sha256": "c095ec65b277570ae57ff95a23834000808fc696c4e4e50d06139a547463b56e",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/desktop_release/checksums.py",
+      "git_blob": "a07065b3e94a5ea32db37448da3ba2e018d141c7",
+      "sha256": "32bb22bd8c1f1b52535f703455f50de8bbcd66f978bacc409498c9c712853188",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/desktop_release/constants.py",
+      "git_blob": "091da9920f341242b7738e3c5621f092d13a4fc1",
+      "sha256": "ecdc0443717dcc5cafa35987042cde8ccb1d96d0fc403673c46dd6054abe79ab",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/desktop_release/finalize.py",
+      "git_blob": "17a42032c3f62fac717b8c619669b8b70bc08248",
+      "sha256": "b3d755314f1763b556a2eea581f77b9040b41a1450fc155ebb9a5fb37ab33f8f",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/desktop_release/manifest.py",
+      "git_blob": "3bd799a8a7b0f9b8a3e06138dedf054131a68ab6",
+      "sha256": "63f8767790dc7ce6a213470c771f39996a817d01ff9c30bcc2812f639394ed2c",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/desktop_release/refuse.py",
+      "git_blob": "d74b5dc95148e125c9c8f5d84dcdc7ec5bcb237a",
+      "sha256": "b7a5c305d630e89a88389fb26ab7c6e592f740566e7ee570faa3390b87f71bae",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/desktop_release/version_align.py",
+      "git_blob": "3eb5cb54859a70535bf98ce0a5073208578f2e0d",
+      "sha256": "7ea9a2b74de45f8083c8342d0472bbc5768c830a2a5b0669e3e8b70283dea181",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/desktop_release/workflow_lint.py",
+      "git_blob": "a0251994659f41a9c44eefe64bfe7a7458de466d",
+      "sha256": "ea26eb9c752dcdfaab1fcd78aa00166b46d2cfd4bb04313bb42f8aae0a9de23f",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/footprint_coverage/__init__.py",
+      "git_blob": "fc328105c1d407e71b9eaafd179a7f64a483dba0",
+      "sha256": "b1937649752bcc8738efd9912942af30758e41a59a76ca8cedd6c9ec7b8dce09",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/footprint_coverage/check.py",
+      "git_blob": "dfafd6b87c3259e6f82cacd7707e13fede8923bc",
+      "sha256": "ca0f8bc8e0c426a5292421a31c177303ff8ec220740983f4177b53f2749f3bd7",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/footprint_integrity/__init__.py",
+      "git_blob": "d23e7f92e8df234138323f1732a85fdd43789a44",
+      "sha256": "b5429e978e408e8ee9da07d8bbb19d0669d9a6f7b38dff10b0912747980e0eaa",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/footprint_integrity/check.py",
+      "git_blob": "78e89b982a56890d4567c0aa45332828ff0a6378",
+      "sha256": "f76fd90ce5a8d767d3a996da9cc0022198776e3231d68a5b1c87d4fd77e81aa0",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/freeze_authorization/__init__.py",
+      "git_blob": "c21976ec74ad87e45b8d8b3181283ad480cc92fb",
+      "sha256": "1a2a992303490ec757bb00f6ba7cc1cb57a2433b8fab5fb41fde177fd9a15dfe",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/freeze_authorization/resolve.py",
+      "git_blob": "055628a7ac1f68e2783dcf02d6accfa228e8f69f",
+      "sha256": "164aa409b065bd8ebd77988200d2a3f09891169c0244c3c0c06972f413a4e174",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/freeze_reviewer/README.md",
+      "git_blob": "0766720f66c92215b9ff6c30f5201cdfb02cefe9",
+      "sha256": "f9ecd20a8256f42546f8910d42da8b058a47cebad107944f5360d5ca10a95d55",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/freeze_reviewer/__init__.py",
+      "git_blob": "9f0516d4b28e2104ee46259c3977feb2e9cc7f85",
+      "sha256": "b255cdd23b66ae6101aa55dc5bb00cbc8a11ac59bae54b0f091ebf9d463eaa91",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/freeze_reviewer/artifact.py",
+      "git_blob": "9e16674ef0e5d27f7e575b48e11cc64c4fcd53d0",
+      "sha256": "432ac6a704ff2695a89f7b0f001e210e0f6fee2d048ffa66e3df9d3a1dbe8c5c",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/freeze_reviewer/checklist.py",
+      "git_blob": "b4397280e64c228309d7ede162344376b808e38d",
+      "sha256": "06fd5a643e60ae7effb6ff245f9be490842d1708c58a25899aec8761ca4c8881",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/freeze_reviewer/engine.py",
+      "git_blob": "4577cbf63de6ab9e6744210fac6fbc520c0a6e91",
+      "sha256": "77ab6de7b659fae6386a5123c688bffed7ac23b53ead67f825150a906af5e9df",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/freeze_reviewer/findings.py",
+      "git_blob": "40e63f0f6157357d836c508ca7ec1e489fd87f2e",
+      "sha256": "16bcb92dcd62f6a0523ab0649186d0f7f3df4ad74733a3c191183f26dba9e03e",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/freeze_reviewer/labels.py",
+      "git_blob": "be0f608bf0a62e5e5225f1dbcc6c7fdf3645a4f8",
+      "sha256": "e565d3ee70631d36e1e207bf4df470499b54a0d716ecd11e40ada731947b9df1",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/freeze_reviewer/providers/__init__.py",
+      "git_blob": "311a49cd84e99f32938a1fae1094596486080246",
+      "sha256": "ddb6b52314b8b3310c87d75a8de1317095f86b4e5921f9242972a3788d786da0",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/freeze_reviewer/providers/api_client.py",
+      "git_blob": "73a15207287a716bdb67c211ac2152a491d9fd4e",
+      "sha256": "a3f3c1194c346ed61bef8b12f76b703a1071188c0630440d50e9b4eac8431ca3",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/freeze_reviewer/providers/api_prompt.py",
+      "git_blob": "ff754ead164e9b152faf0e61fd097a2b017c9c53",
+      "sha256": "dd2b170be552b7ef30933e75f589838021366942782e5b3e2df5e4d6c872b8c2",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/freeze_reviewer/providers/api_response.py",
+      "git_blob": "a0af5f6d20c315e1478ba53a24a201beabb49d51",
+      "sha256": "3d7c7be18a15f6f0c0e206e35f24753e450b00aee303349f284cd8a6fb055de1",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/freeze_reviewer/providers/base.py",
+      "git_blob": "ea493417bf7532a56696c11ac8f34657b81e3dcb",
+      "sha256": "8d5cfc482c83ea72aad6a8cecf2404d18439588644667332c24d437094f650ad",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/freeze_reviewer/providers/model_hint.py",
+      "git_blob": "122a68b77abbc86389ab4db8975b52f2f9754187",
+      "sha256": "ac6cbf25eff6edf81641d1bd92e07ef692a8228619f0a60073f07e9a81d65e12",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/freeze_reviewer/report.py",
+      "git_blob": "40bb43089305fb13365130551e050105cf4db574",
+      "sha256": "93645ffecc9e9f199e33fcd2d80d5a5b2f560cb5b9703b52e9cdfc721ccc4cc1",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/freeze_reviewer/serializer.py",
+      "git_blob": "137a8523394b617d4e43325f58ca6aa23cf3fb67",
+      "sha256": "58100ad12b43bbc10b38a4164a829d31024b0da29c2fdf06223aaae198f012d3",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/freeze_reviewer/stamp.py",
+      "git_blob": "db8f9048ce146290d789007edd036011261d4d39",
+      "sha256": "52e5ffdfe23421510441f04f52f95be29885db92fad5ced48ba1b81a7eab7f28",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/freeze_reviewer/types.py",
+      "git_blob": "72c8ca233cf288780c94edbf6b22984769a435d5",
+      "sha256": "8010cbdf6592fad7dfa52d20d51c4af2e55d1598505edd6406ade17218f51884",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/governance_freshness/__init__.py",
+      "git_blob": "ff2ceb3b0a59f308fbf627acb2d6ba40bc82f049",
+      "sha256": "3166a40bd70680c463642fc9d7cfc397b64e560edc34cc799538818e05ec73d0",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/governance_freshness/check.py",
+      "git_blob": "c9241a4ced1962ebc18b4e5eb678d583353372e5",
+      "sha256": "5390a570e8c980d0772dac51222150254ecba3b18ad024bc0ce9405398ee63e8",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/governance_gates/__init__.py",
+      "git_blob": "08142ebeb09ccfee8e5ddfffd32adc191cb5b35e",
+      "sha256": "8437f9143e999555ba382807845cddb230dcfe15c2c30b1d60b21da8100a8af2",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/governance_gates/checklist.py",
+      "git_blob": "8c1014fd15522d34da55c1469b422be926d70fab",
+      "sha256": "4f3941adf98e559786a17fd84ee19a7c59619f3b4b1500cc0ba704f2d50bfa33",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/governance_gates/format.py",
+      "git_blob": "2b249bccd8ed2d73d516569467be3f1d8ede44cd",
+      "sha256": "745437f5e14ce1a74403bc290eef35445dfaa8b1f596c1ed49b0ccbad86ca46e",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/governance_gates/scan.py",
+      "git_blob": "164b641ea732638fd18029ebff8ab5429e3d9709",
+      "sha256": "b136c43d26acf78f2ef1db50e56cc4136ed1795a0a2949cf8cff10c433fc2132",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance",
+      "functions": [
+        "scan_governance_gates",
+        "_read_text",
+        "_active_phases",
+        "_next_phase_id",
+        "_normalize_phase_id",
+        "_scan_freeze_review",
+        "_scan_build_verification",
+        "_is_auto_model",
+        "_build_verification_recorded",
+        "_contract_path_for_phase"
+      ]
+    },
+    {
+      "path": "tools/governance_gates/types.py",
+      "git_blob": "4af0cee039df1d992218ea0930408b342d960d3c",
+      "sha256": "8d884c089dd9c469d4cfb3baef4009738eea0cab2d242dab890d892e700dd7a3",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/governance_hygiene/README.md",
+      "git_blob": "1f0de950d7d576cd16abb05e0e7ee224e7ba1059",
+      "sha256": "d1250c8d08891fc6f579ac455698f0bfcad3bd944abfc44cd0db32e2b34ddc45",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/governance_hygiene/__init__.py",
+      "git_blob": "dfbea35774dedd54a4dacc6a7900410fa9a7d016",
+      "sha256": "8ff9c18413efc9854940661b40ec4824c7845b911c301093dcab79eaccda95ee",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/governance_hygiene/anchors.py",
+      "git_blob": "58d4bdebd40aa90369d049bd3f9c8478781b8d7b",
+      "sha256": "b515c97429e4db9e9885e22af8845dc1c2801014d68d96b8f3900a6e29b3364c",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/governance_hygiene/drift.py",
+      "git_blob": "0811aacba41144ce9b902eef973392b442f6aaf6",
+      "sha256": "4a17438383f61f71130971f87a99573c0c1e7c1ea8212a3e162144f725d1685d",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/governance_hygiene/engine.py",
+      "git_blob": "dda82e153d2ef3a250f55a51200a761ad320faf7",
+      "sha256": "bb6b75bceab2c0395d83c2536203d5ecb853dc65aeeb15c5a1e4fb5af408cbfa",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/governance_hygiene/next_regen.py",
+      "git_blob": "17c5f34dbc85261cd108d89cd2d77e7c3fb67b4e",
+      "sha256": "6235cb4a7cbbdc49a06743abb758b71cf912fb8b535a23de7ece5a82fc21b3b0",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/governance_hygiene/parse.py",
+      "git_blob": "45cd357908372377edb600df5257539a2dbe27d5",
+      "sha256": "62a7f60275c8e62af3e8d8b29360e58fb996da77a1ebf786ee15e0346d6f76da",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/governance_hygiene/patch.py",
+      "git_blob": "8e5accf5a72ec7bf9a8ab057fe84b4b087e0f4e8",
+      "sha256": "bc9851831c175031e783f420ac655c07257f0aa667f252ab3f4dfa2ece5d326b",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/governance_hygiene/reads.py",
+      "git_blob": "eee56ec5b179bd5a8f791795c87559d34634c9ac",
+      "sha256": "69d225f7e4b653334452bd36fd3dc32613a7ce4a10e5ff3515c41830e168ee05",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/governance_hygiene/realign.py",
+      "git_blob": "764169f067e26fdd2dcb6bd8e426eee56e8d2bb9",
+      "sha256": "545a7161b4c8e79234b159ea93d34e5afb8ed9bfb917a26f5913b46ec922198a",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/governance_hygiene/types.py",
+      "git_blob": "b50cc489f2dba3f491ccce3d2c3f7d955eef83fc",
+      "sha256": "6cc0031d6f47f821a6b1fcf7f684b09e7e6dea8932debec1b5bfec5adc339a99",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/handover_compact/__init__.py",
+      "git_blob": "a849f49fbc1a01e315d2bc084a74e86c21d70ff1",
+      "sha256": "8ced81fa414cf54620fe826c158be07278ca3396756340465271c6d0ffce240f",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/handover_compact/compact.py",
+      "git_blob": "ff563f13372dfc9a1c77abea89d5774cff417c21",
+      "sha256": "98f80124cc55509a02f31bfd7a25bb4e210df9e5b4d603a0029af5cfca21ccf7",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance",
+      "functions": [
+        "CompactReport",
+        "_ChangeLogEntry",
+        "compact_handover_change_log",
+        "_extract_region",
+        "_collect_dated_entries",
+        "_render_entries"
+      ]
+    },
+    {
+      "path": "tools/honesty/__init__.py",
+      "git_blob": "ebec2b0191c1cef85e3b54161bdec8d0c6a832eb",
+      "sha256": "0aab216205a4f1d08b95561f1bfa6fc2242e6db261a3c6d534703a17a7d71d7d",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/honesty/artifact.py",
+      "git_blob": "3742a5562aad352e038965cb8164b693250fab77",
+      "sha256": "d93a89a8fb6af15a4c964a4486472544f7b8d76753d3cb6250ed8447465d8d43",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/honesty/canonical.py",
+      "git_blob": "4c2706a274db4c4660d7beaa9e7f2c3efbc7174b",
+      "sha256": "73b1e7ba76f8e2f592a0aad73a55c1c8ef1c41dd8a6fc37b7d11f069b636efdc",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/honesty/ed25519_util.py",
+      "git_blob": "07f680077625fc8f609a783f615689160121d291",
+      "sha256": "0e0005cf837020b56ad2710a3859b7849097c01ba5710585484a8298125c77b8",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/honesty/gate.py",
+      "git_blob": "210de40b9c7d91fbe5580cd5ef00af5a9b3f4ba5",
+      "sha256": "25c1969afd04f7d7e85368fadf5e3b3552eb7c23f88efc6f803cf7233f9d4c12",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/honesty/genesis.py",
+      "git_blob": "9d63c12e9c8f7652a52af74e2c14547f4065a20a",
+      "sha256": "4f6f7ac22465b8b550a3ccf9359bce0910c34fba41191f64279349f4b084bdea",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/honesty/ledger.py",
+      "git_blob": "4a44daceae7eedca0842ab976644fb39da0eb04b",
+      "sha256": "46ce51a9d70cda5cd0173eb049a869eb5e176fc1b9e9789490ef93d50cdcd265",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/honesty/ledger_io.py",
+      "git_blob": "5f93e30db194fa9b66e61e7542cf0061dc54ef53",
+      "sha256": "f77304c7d64baf4b295f69f400771f7d353a92d3c047ef5892a4265233bea4e0",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance",
+      "functions": [
+        "LedgerIOError",
+        "split_jsonl_lines",
+        "parse_jsonl_text",
+        "read_ledger_entries",
+        "serialize_entry",
+        "atomic_append_lines"
+      ]
+    },
+    {
+      "path": "tools/honesty/muse_registry.py",
+      "git_blob": "ded976a1deb2f0d881ae8e941338b45f4f0390c0",
+      "sha256": "c0cfec2e911681633c49f8d4ff0d8a28a283a2fb71bdfc9ee3be76a4ee2667f6",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/honesty/provenance.py",
+      "git_blob": "4cf0796af66d74d15e101ee39959681ee0f74766",
+      "sha256": "d83b49a7ec739ec066a8756accfa027853f132baf72a53fb0dda2d3a5e43e8eb",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/honesty/status.py",
+      "git_blob": "cc09b44065c6cfe328fa68e5b4b2b875fd55fa32",
+      "sha256": "10703178e50870997450e40a3c87b922aa6949f2eec3d10a842f8ae29f923e8f",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/honesty/types.py",
+      "git_blob": "7216dab231c25cff172c363e6a41037380b02ed6",
+      "sha256": "9f88997c3f429d45c09b5c1630e72263a611ab9b1e31d9eff4b895be22daf7a4",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/honesty/validate.py",
+      "git_blob": "7f34bab83a2b64a1254955e84a867e5d60cf5f3f",
+      "sha256": "77528fd10a8a6ec803faf02827e72dd9de6bb10a84828ef5a4bfa27cfb6e45ee",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/hosted_dashboard/__init__.py",
+      "git_blob": "25bc8017341992cfc76e0ab9191de0bab02ff0e3",
+      "sha256": "1c9e2e1d26a1fa4e5732900135250e37c2bd2324c2e931d404a8974389b40e21",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/hosted_dashboard/adapters/__init__.py",
+      "git_blob": "a650b7c00eb0a8154d98cb9d0fe0fc636cdd1c3c",
+      "sha256": "223f2213316805445eca3008e43950c361ecefc8e82aebbf11c953c811aa27d4",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/hosted_dashboard/adapters/github.py",
+      "git_blob": "cceb027c21f513a29b0c4a048ce6fa1dcb9ea99a",
+      "sha256": "ba0badfb4c82f9294aa66d1f3357092f9dacfd1d7da7b19ee161df700fdfef4c",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/hosted_dashboard/adapters/musehub.py",
+      "git_blob": "283d484960328f085b74e86eb12d88b8c5bd81b1",
+      "sha256": "06aae368577c628a1009471d15b3d9d4e2cf4d948875b59cc18e577986f52342",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/hosted_dashboard/auth.py",
+      "git_blob": "a9163c477a91184a82ffcd90480e003e27be56c5",
+      "sha256": "2de78ee1a94ed89bbebe3d39e137f34fc593686298bd83c667f16fa749f026fa",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/hosted_dashboard/bind.py",
+      "git_blob": "7772ebf1b4f38b916f63b84e3cbe49cc7a580640",
+      "sha256": "7d051c90d654bf7f521089ad1174d1ab6e660c0f69b16e20568f76c2ebad5c37",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/hosted_dashboard/cache.py",
+      "git_blob": "4b1d4db82c1f2461cabd4cca35a12d840a37dc07",
+      "sha256": "802dae0d567006aca10cae3061e8a11d53d40784b47a3f1f44ba7cb1359c1aae",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/hosted_dashboard/config.py",
+      "git_blob": "1f4b55c5d272e39b0bc2077a3f5766c7d86a9756",
+      "sha256": "5da59df98a54a8a2a141eec55d202303dbc83c99054cddd5898e4744b017bbfc",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/hosted_dashboard/cors.py",
+      "git_blob": "f07ae972e7007448d5189e8a849685cf8342f14b",
+      "sha256": "d63183e4d3f90e9f50573ea9e3171f2edaa3d44dda6ec8ee90d0e60ce4ff2c06",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/hosted_dashboard/discovery.py",
+      "git_blob": "04a9aee2ec5667fef2333549eea556dfa1cfe193",
+      "sha256": "02d6b7081c6e910643f9e883f9cc70eb9785cd01475488280b1cc0c02c329e0d",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/hosted_dashboard/envelope.py",
+      "git_blob": "515055bd4c18462096ce14c71da957bb99669704",
+      "sha256": "2650bcb518050e802d07c82601a3f24fbf2f47ea5e486bfa1461d3631edbe92d",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/hosted_dashboard/handlers.py",
+      "git_blob": "fe2598d7f8eb101e4e7a97a023d709f38a930105",
+      "sha256": "e47d3b7651885d3275048317be68b3744fb75ec881ef40ca08326eb3868f165d",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance",
+      "functions": [
+        "is_track_q_act_path",
+        "DashboardService",
+        "match_repo_route"
+      ]
+    },
+    {
+      "path": "tools/hosted_dashboard/hosts.py",
+      "git_blob": "981b45f9e66b5eecb9a34da10eaa2bf3140c8ce1",
+      "sha256": "d1fd30c6ada8a03899e337f2cc1aedcf2f1f8e7d17ec23011254f237c06a15a1",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/hosted_dashboard/http_client.py",
+      "git_blob": "66392b0b78f12f7e84e08feb784b183941e7602a",
+      "sha256": "68173d6a1f3261c1c2ae5c22066cd5c0cc9e811aa220ea027e4d8bd23b77ca68",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/hosted_dashboard/parsers.py",
+      "git_blob": "f733f53c7a24b569b9bbe126031572cc7fa455f8",
+      "sha256": "dfcceaa7e794ebea7b0e6bef9876179940fce82fa7aee1ad0d69d0c296b86ed8",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/hosted_dashboard/scopes.py",
+      "git_blob": "c4551173eaef01e34a0ec0da98e90f62407bc313",
+      "sha256": "ef16604d7b484001906b432d8e30d4c156b40f253ff5fd06274278ce8d15f029",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/hosted_dashboard/server.py",
+      "git_blob": "88cc3577714c30fa0ba40a332d445d229c67f7f3",
+      "sha256": "f2b7a451117d73b9e33d933d6d9e6b7670c3e9cd34680cd23be52b9f249553d1",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance",
+      "functions": [
+        "HostedServerConfig",
+        "HostedHTTPServer",
+        "HostedRequestHandler",
+        "HostedServerHandle",
+        "start_hosted_server",
+        "run_hosted_server"
+      ]
+    },
+    {
+      "path": "tools/hosted_dashboard/sources.py",
+      "git_blob": "63cff811e3482432e0bcd93120b43e5db67ed551",
+      "sha256": "7002123971cebbfaec6e2886859247468bd4911e7ffe5ff65d8286ad95431f9a",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/hosted_dashboard/static/assets/dashboard.css",
+      "git_blob": "17db424b2eecaaeb0f21e2f36e7dd33c2d7f7826",
+      "sha256": "702ee5329aae7df925abdd0934120c946a90d3f358293417dcc7aa9a03b4756d",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/hosted_dashboard/static/assets/dashboard.js",
+      "git_blob": "84a337e9b33b349920ea2826427e189a9e675cb2",
+      "sha256": "8dcc4b556fffa110365d3f0e440d40f79e25fa225268b2ab47f4546db2d1c5da",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance"
+    },
+    {
+      "path": "tools/hosted_dashboard/static/index.html",
+      "git_blob": "e67548a8f27735ccdc5ddcef4f68dfeed2a15f08",
+      "sha256": "332cfcd5549a524d25a790e08b4f29129b00603d46a3f6fba7d843e8d0f4e7fa",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance"
+    },
+    {
+      "path": "tools/hosted_dashboard/validators.py",
+      "git_blob": "f5044ca9021a76875b5926e9ece4ae324f0b815e",
+      "sha256": "f8388bc64440b20cf2fa0c7020d7c9f723e6f6e16d3f38513b61f05df0301216",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/independent_second_reviewer/__init__.py",
+      "git_blob": "94200840a46e100b88e4f24c38fed870013f5cc9",
+      "sha256": "835ccc4489167dfbe2128068374a980de6601b725e684cfce45f4339e583c677",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/independent_second_reviewer/surface.py",
+      "git_blob": "85b10f789cbb92b3f54d6f9e58e190360bdfd251",
+      "sha256": "bc250d56213afba16c306749a7cd2a6584028be6874d7acf3e69165373296754",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/land_closeout/__init__.py",
+      "git_blob": "865a94b2443a09b3d7207b2926c3f9b36139736b",
+      "sha256": "52d3cc36da1cba634f2cc8e826ac43a919c2ea499e85745154c3c45678760596",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/land_closeout/check.py",
+      "git_blob": "eb4616c8397e785c484f2637fca03e84ebf5e7f9",
+      "sha256": "63a3dd995ba918ac809a3d965b098eed99c70c6bd74cd5b1d29910a2dc949fa2",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/landing/__init__.py",
+      "git_blob": "02f0016ccc6f0a29cfdc6e1db19a8c9481c484d8",
+      "sha256": "df90c95c526ad1bd407d15e84d7913967135885150aac53f3cab299f3fdd49f6",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/landing/schema.py",
+      "git_blob": "09bea1cb353abe269c0febe8660377d6c8d9c93e",
+      "sha256": "585e742e47d3ff9c98c3214ad3721feb6bf319caba9043be7a88be256ddf68e3",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/landing/validate.py",
+      "git_blob": "bec1fcf37d3965f6110bae15c0fd728e5a9db4fb",
+      "sha256": "e35a39a38cabbc475c62ed5d961166cb56bdb9df57119efced0dbb532ec2104f",
+      "exact_sources": [],
+      "source": "FPR2",
+      "disposition": "adapted_boundary_or_guidance",
+      "functions": [
+        "ValidationResult",
+        "_read",
+        "_check_html_sections",
+        "_check_personas",
+        "_check_secret_leaks",
+        "_check_html_security",
+        "_check_relative_doc_links",
+        "_check_lac_index_contract",
+        "validate_landing",
+        "main"
+      ]
+    },
+    {
+      "path": "tools/model_routing/__init__.py",
+      "git_blob": "c60b082d03d4e1fa8f28c45ed89d15dd41ec42ae",
+      "sha256": "a64cbedf34d2c93e7961d815ef67c0ecfa0ed4076c7fc633612e393331f0c123",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/model_routing/labels.py",
+      "git_blob": "062557341a529dfabb7d820d1eda12a422a0b4c2",
+      "sha256": "a1b8633b7c862d22c263efa5dc109699cfb5f993830088c254c16cc30ed7cd24",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/model_routing/policy.py",
+      "git_blob": "a3fe81d0148d8cc71e8268678ebc423599bb557a",
+      "sha256": "0b6a2c029af9db9759173bf5975d1ba3535d24dd1c1158ee12020e8b49cd9878",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/model_routing/resolve.py",
+      "git_blob": "a0bddc9243f96d2ff8a2013bc31981ee793e1f7b",
+      "sha256": "83412fd9c4409aa8b3963070138d6f0d03ce977a73cc94adcd93c38371c45033",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/model_routing/types.py",
+      "git_blob": "0ed7bb482cfaf4c2696529ab635576ba772193e3",
+      "sha256": "20e4c939931ccac7d49ab9c9e7294efef694b408b929235fc74249c9fdd41e03",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/muse_sync/__init__.py",
+      "git_blob": "edb9faa3945be57b08e8af0bb5fd38309f0a410b",
+      "sha256": "2d0e70c8bcc366568da0933166852ecdbcc1a1930ee60d014dbca9f18d036254",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/muse_sync/check.py",
+      "git_blob": "8ad0fecc68b474fb87cddf35c1c1ab116b6f8c87",
+      "sha256": "f794326f5faf552046aff9473c0887d7340d9261e94b967d7e22e322b2279a8f",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/optional_feature_tips/__init__.py",
+      "git_blob": "b235495b7ffd2afc495745faa570f7ed90208c3f",
+      "sha256": "cb1a3aefe5d09364b4cc6862f143ad474e28fe8e9d9722144ec4882c3ab8ba4a",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/optional_feature_tips/surface.py",
+      "git_blob": "d9a0c67bb4df15cd3e34b70e525a4b372789f85f",
+      "sha256": "c091078fb38ccb1646b62e2b07d0ed12c6cdf37800ca4148a4d0a0949ff43b6c",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/print_next/__init__.py",
+      "git_blob": "75bc51ca92f40e8a4f095c35ac663edca6934075",
+      "sha256": "b3577fce3403a2271974e073151bc5697601f8a17d8c6895579902114a7c2b6d",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/print_next/extract.py",
+      "git_blob": "265c13476f7b3c482ee50a25cfd3d4310796ea95",
+      "sha256": "26e4ed7544372cc36a352e4d20be28a521b5a1bb83744517da02dce48ac10d11",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/substrate_health/__init__.py",
+      "git_blob": "bf0986922bf99f07603c2b777e2731de0e50843c",
+      "sha256": "6964c7812e6d64464fd3bc960cafe22a6cc06c3efd105d5214a3860ebf0b386a",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/substrate_health/check.py",
+      "git_blob": "95c1936bec407fc99ff96410c97cf8ee4358e171",
+      "sha256": "42a6af25123970efd3195ae844d3cc63883eb558fe541d7766cf3610a9846f19",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/track_o/__init__.py",
+      "git_blob": "5f27147e7d4261a40bbffc17a74e2ab4dcf0bc2c",
+      "sha256": "da3395b11fb86d44bc3c53d9cc4c39c07d0ac89c90e368eed1df3e73a8bca3db",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/track_o/validate.py",
+      "git_blob": "43e5f1f3332d8a1a731f3090ab6e0b0551ee739c",
+      "sha256": "55d89754236a73f355b77811848e00763782b4f47c24593abc2c7da2b9b0ce61",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/upgrade_regime/__init__.py",
+      "git_blob": "ef7ba2eea821678c0e0b75b777911a95a8293a4d",
+      "sha256": "b3360613826ccc292d722367f0af3371c5192cb606789eff36eb8808097a38a2",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/upgrade_regime/ceremony.py",
+      "git_blob": "65892f0205a5829647543dd7a5ac50a67c406e59",
+      "sha256": "65c0eb9bec45679691efac1bfa4fc260989d01f220533de8e4b2a2cc1d4c6ee0",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/verification_evidence_gate/__init__.py",
+      "git_blob": "f5e915453ce73065c56fc72cfaab4e91ef9ef65f",
+      "sha256": "3607484715c5d9200da3fecea1a73c82541f8e68bbaab6f16a8859ebcf79f330",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/verification_evidence_gate/surface.py",
+      "git_blob": "78d565486bbe8ff299ffd0559a0418aaceb1847d",
+      "sha256": "a7a5189ffc3593067af735f83d2cb735f1130cfeaf71531332a6af8725338905",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/workspace/__init__.py",
+      "git_blob": "7cdc48ceb12aa8565f8df371bcad9e2b5df04f7b",
+      "sha256": "fec0218f85f8d965802a0c083006ed9c13d8447d303b63f67ded58ab14051a6d",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/workspace/board_names.py",
+      "git_blob": "24b751e6badec5872f1bc0713252d6014212554e",
+      "sha256": "fa3d326909e74c8f24ee0822c9a73c2a8eee7ce33522c0e307306ff1f9dd24bc",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/workspace/check_next.py",
+      "git_blob": "7ace14f8995279916a5850fc7139a61b811dabc3",
+      "sha256": "a7a39e6738df4791bd33ec4254914c455348a5fee633ae845a1792c0100336a6",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/workspace/doctor.py",
+      "git_blob": "673f101d5673082f45c95f66ab2eecb33798e6fa",
+      "sha256": "9d3049d9b80e633cd82fc36f064b64d317eea9eee9083a12c980752a0c57c06f",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/workspace/manifest.py",
+      "git_blob": "4567e5a3d0863f272925e7acea71f6d14df865dc",
+      "sha256": "809c078b4dff354e54392eeb2fdf226e6930816f1a136d8eb40518358de49a28",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/workspace/next_extract.py",
+      "git_blob": "869d8ec06e81a98637cf9ffc139dc145a7efb57a",
+      "sha256": "719afb2e99eed5b32a3475af66b62e9e75afe4446cb4e342c70682e5a8d04cfd",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    },
+    {
+      "path": "tools/workspace/types.py",
+      "git_blob": "c26c3bad8dfdf46a6a79b07f133276428b1e18b2",
+      "sha256": "76aed0369745a4d0b254ecb64efad09144a504cb7b2b89bd10f45e33d18bb71a",
+      "exact_sources": [
+        "D",
+        "P",
+        "M",
+        "B",
+        "FPR2"
+      ],
+      "source": "FPR2",
+      "disposition": "exact_reuse"
+    }
+  ],
+  "legacy_main": "retained historical source; never dispatched",
+  "mechanisms": "See FPR-3-SURFACES.md for function-level boundary and replacement outcomes"
+}

@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "node",
+    "docs/validation/fpr5-handoff-reliability/reproduce.mjs"
+  ],
+  "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+  "exit_code": 0,
+  "script_sha256": "f04a97f6132a7740025ac5408bf2274a92b9d484dd4fd9cc44ed71dc521b1ed9",
+  "source_map_sha256": "07817a4488abbd664c66730eb760752eb27a22f9c7758d3f9c07b03882b20a33",
+  "stdout_file": "reproduction-result.json",
+  "stderr_file": "reproduction-stderr.txt",
+  "prior_suite_or_launch_repeated": false
+}

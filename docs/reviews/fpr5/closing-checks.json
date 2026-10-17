@@ -1,0 +1,79 @@
+{
+  "checked_at_utc": "2026-10-15T01:28:42.017121+00:00",
+  "reviewed_head": "4c62c17cff6c606a5e1ddf565e12353973b3bcad",
+  "runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "bdbfdae4599ca0bd1b096d5ed2c84019df3b83ed24972c202319ea5507cf09ec"
+  },
+  "checks": {
+    "physical_root_matches": true,
+    "git_root_matches": true,
+    "branch_matches": true,
+    "head_matches": true,
+    "parents_match": true,
+    "runtime_matches": true,
+    "all_refs_unchanged": true,
+    "tracked_source_unchanged": true,
+    "preserved_artifact_hashes_unchanged": true,
+    "next_equals_head": true,
+    "only_expected_review_additions": true,
+    "bound_next_still_valid": true
+  },
+  "refs_checked": 144,
+  "preservation_hashes": {
+    "docs/reviews/V1-RECOVERY-REVIEW.md": "d6bd4958fcade51005bede1b01efbd29b6c64c3b7c5fdf14c147e133d0fc90e0",
+    "docs/validation/V1-CERTIFICATION.md": "46fe8302c17b86be3669ac38a79aed1ddbc4af58a51d543cbd7a98f76ed9e5f5",
+    "docs/validation/V1-RECOVERY.md": "5568cdc001f89203607d1669ce90a87054880fb554f6ba02e720f1a5fd37e25f",
+    "docs/validation/install-rollback-results.json": "29a34ed755bd1e9d880b83271c7c0c042443ec830c08899de1ab0040fec89dbf",
+    "docs/validation/pilot-results.json": "16c460c68a251f37be92c33a614e96094b6e1ad5eab200df519fd762a787b407",
+    "docs/NEXT.md": "fa1b65567f773886b6131d679a3c9053ca05d79f5d6e56d1b31e860acfb8a6aa",
+    "docs/ROADMAP.md": "a9b10d2cf9bac538837b410058cfe9dcf3195a52dd93778f3ee0cadf05f38069",
+    "docs/OVERSEER-HANDOVER.md": "8cba386bd4b95f7da1794873aa43d3a10b258fa02bd47dfa5504eed04fcc9aa2",
+    ".overseer/config.yaml": "5651f0118bfd8393559e97212f846ac1735a313c2176ccaabc12cdc4a08e2a10",
+    ".overseer/bin/ok": "1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4",
+    ".cursor/hooks.json": "2f3f0de72a829aa7ad28055c884127a5db5660c5c78556ac7b8aea8dd2e2ac0e"
+  },
+  "tracked_diff_empty": true,
+  "untracked_scope": "Only docs/reviews/FPR-5-REVIEW.md and docs/reviews/fpr5/**",
+  "bound_next_readback": {
+    "ok": true,
+    "repository": {
+      "name": "overseer-kit",
+      "id": "6988dc4a-5f22-454b-9d68-ac5905b383bf",
+      "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "root_relative_docs": "docs"
+    },
+    "branch": "feat/overseer-v1-recovery-20261014",
+    "head": "4c62c17cff6c606a5e1ddf565e12353973b3bcad",
+    "runtime": {
+      "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "version": "1.0.0.dev1",
+      "sha256": "bdbfdae4599ca0bd1b096d5ed2c84019df3b83ed24972c202319ea5507cf09ec"
+    },
+    "vcs": "git",
+    "source_id": null,
+    "publication": "not_checked_offline",
+    "next": {
+      "schema": 1,
+      "repo_id": "6988dc4a-5f22-454b-9d68-ac5905b383bf",
+      "repo_root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "branch": "feat/overseer-v1-recovery-20261014",
+      "base_head": "6289d2823184a63e2968d2c5f6a76abab5818368",
+      "lane": "product",
+      "model": "GPT-6 Astra",
+      "action_id": "OVERSEER-FULL-PRODUCT-RESTORATION-FINAL-REVIEW-5",
+      "action_kind": "review",
+      "prompt_sha256": "7c1f47870537f77e0fc36c902f988f98b169866bebdcee64b419b9aa31e3fd3c"
+    },
+    "prompt": "Reasoning: Max\nRole: Owner-appointed independent final reviewer\n\nPerform FPR-5 only after owner acceptance and appointment of an independent\nreviewer. FPR-4 authors and author-validation agents cannot certify this work as\nindependent. If appointment is still pending, identify that decision; do not\nsubstitute author self-review. This action authorizes local review under section\n10 of docs/decisions/FULL-PRODUCT-RESTORATION-PLAN.md, not release or deployment.\n\nVerify physical cwd, Git top-level, branch, full HEAD, configured overseer-kit\nname/UUID, product lane, runtime binding and clean state. Validate canonical NEXT\nagainst the single FPR-4 closing commit with sole predecessor\n6289d2823184a63e2968d2c5f6a76abab5818368. Match the reviewed source/runtime to the\nfinal FPR-4 evidence and runtime\nbdbfdae4599ca0bd1b096d5ed2c84019df3b83ed24972c202319ea5507cf09ec. Stop on identity mismatch, unexpected dirt or moved pins.\nRead AGENTS.md, ROADMAP, HANDOVER, canonical NEXT, the complete restoration plan,\nFPR-1/2/3/4 validation reports and detailed FPR-4 artifacts, source/test disposition,\nauthority/product/distribution contracts, V1-SCOPE-RESET, V1-CERTIFICATION and\ntests/README.md. Treat NEXT as the only pending prompt.\n\nKeep this integration branch. Inspect committed source objects here, preserving\nfeat/overseer-context-isolation at e9be0c4b3cafb149b9f3b7af2ab060f01bbfa504,\nfeat/overseer-v1-recovery at 32254cd939885d9d6f40634997ea5b9c37ea776c,\nmain at d47291d5d9030de5ebef713da95efa978c4d8c6e, and repaired safety source\n348e0f323a3b17cd5022a1bfd56fa09a6831c51f. Do not enter older worktrees, move refs,\nmerge/cherry-pick, or alter preserved Muse history, snapshots, bounded review,\ninstallation/rollback, completed pilot or source-release evidence.\n\nAssess architecture, implementation, security and completeness together against\none fixed integrated source/digest. Trace every maintained command and setting\nthrough real CLI/app boundaries; all three authorities; identity/lane/workspace\nisolation; canonical bookends and exact freshness; captured context, final rechecks\nand whole-file CAS; migrations, compatible rollback and source installation;\ncontrolled mirrors, reconciliation and scoped credentials. Confirm no public\nlegacy_main bypass, competing prompt scrape/regeneration, implicit authority\nswitch, untracking or remote action. Reconcile all 104 historical failures with\nthe retained disposition and replacements. Preserve raw failures and distinguish\ncombined results, affected reruns, fixture corrections and unresolved cells.\nThe final raw combined run records 1,207 passed and one preserved changed-contract\nassertion failure; two guarded successor cases passed separately on unchanged\nproduction. The 1,209-case closeout selection has exact passing coverage across\nthose runs, not a second all-green combined execution. Assess each explicit\nreplacement against the maintained requirement.\n\nThe owner has not selected named automatic host/client versions or accepted\nplatform/distribution claims, authorized the separate new integrated pilot, or\nappointed the reviewer. The new pilot was not run. Python 3.11 lacks the locally\navailable pinned cffi 2.1.0 cp311 prerequisite, so the complete declared Python\n3.11 dependency cell remains unresolved; unaffected passes do not close it.\nNative GUI/lifecycle/provider limitations remain distinct from script, loopback,\nbuild and fake-transport success. These gaps must remain explicit; review may\nassess the available fixed evidence but cannot declare complete acceptance or\nrelease readiness while required evidence is missing. Obtain concrete owner\nselections before dependent work; do not infer them or repeat the old pilot.\n\nUse the conventional venv, pinned local prerequisites and new disposable fixtures\nunder a nonrepository /private/tmp parent for necessary focused verification.\nNo network/providers, real consumers/hooks, live delivery/export, fetch/push,\nmain merge, tags, signing, publication, release or deployment. Do not restore\nexcluded OCI/GSR/sole-writer/identity-bridge/packet machinery.\n\nProduce one independent verdict with reproducible findings, severity, affected\nrequirements and evidence references. Preserve it if defects require bounded\nrepairs; record failing-before/passing-after evidence and rerun affected integrated\nchecks. Reserve one final independent adjudication of the complete repaired\nsource/evidence, then one separate owner release decision. An unresolved finding\nblocks release; it does not create additional per-wave review cycles. Return\narchitecture/scope expansion decisions to the owner. Report the reviewed commit,\nruntime, evidence limits and outstanding owner choices without claiming release\nauthorization from FPR-5 acceptance or its verdict.\n",
+    "next_sha256": "fa1b65567f773886b6131d679a3c9053ca05d79f5d6e56d1b31e860acfb8a6aa",
+    "rendered": "## CURRENT NEXT \u2014 paste this\n\n```text\nRepository: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014\nRepository ID: 6988dc4a-5f22-454b-9d68-ac5905b383bf\nBranch: feat/overseer-v1-recovery-20261014\nLane: product\nModel: GPT-6 Astra\nAction ID: OVERSEER-FULL-PRODUCT-RESTORATION-FINAL-REVIEW-5\nAction kind: review\n\nReasoning: Max\nRole: Owner-appointed independent final reviewer\n\nPerform FPR-5 only after owner acceptance and appointment of an independent\nreviewer. FPR-4 authors and author-validation agents cannot certify this work as\nindependent. If appointment is still pending, identify that decision; do not\nsubstitute author self-review. This action authorizes local review under section\n10 of docs/decisions/FULL-PRODUCT-RESTORATION-PLAN.md, not release or deployment.\n\nVerify physical cwd, Git top-level, branch, full HEAD, configured overseer-kit\nname/UUID, product lane, runtime binding and clean state. Validate canonical NEXT\nagainst the single FPR-4 closing commit with sole predecessor\n6289d2823184a63e2968d2c5f6a76abab5818368. Match the reviewed source/runtime to the\nfinal FPR-4 evidence and runtime\nbdbfdae4599ca0bd1b096d5ed2c84019df3b83ed24972c202319ea5507cf09ec. Stop on identity mismatch, unexpected dirt or moved pins.\nRead AGENTS.md, ROADMAP, HANDOVER, canonical NEXT, the complete restoration plan,\nFPR-1/2/3/4 validation reports and detailed FPR-4 artifacts, source/test disposition,\nauthority/product/distribution contracts, V1-SCOPE-RESET, V1-CERTIFICATION and\ntests/README.md. Treat NEXT as the only pending prompt.\n\nKeep this integration branch. Inspect committed source objects here, preserving\nfeat/overseer-context-isolation at e9be0c4b3cafb149b9f3b7af2ab060f01bbfa504,\nfeat/overseer-v1-recovery at 32254cd939885d9d6f40634997ea5b9c37ea776c,\nmain at d47291d5d9030de5ebef713da95efa978c4d8c6e, and repaired safety source\n348e0f323a3b17cd5022a1bfd56fa09a6831c51f. Do not enter older worktrees, move refs,\nmerge/cherry-pick, or alter preserved Muse history, snapshots, bounded review,\ninstallation/rollback, completed pilot or source-release evidence.\n\nAssess architecture, implementation, security and completeness together against\none fixed integrated source/digest. Trace every maintained command and setting\nthrough real CLI/app boundaries; all three authorities; identity/lane/workspace\nisolation; canonical bookends and exact freshness; captured context, final rechecks\nand whole-file CAS; migrations, compatible rollback and source installation;\ncontrolled mirrors, reconciliation and scoped credentials. Confirm no public\nlegacy_main bypass, competing prompt scrape/regeneration, implicit authority\nswitch, untracking or remote action. Reconcile all 104 historical failures with\nthe retained disposition and replacements. Preserve raw failures and distinguish\ncombined results, affected reruns, fixture corrections and unresolved cells.\nThe final raw combined run records 1,207 passed and one preserved changed-contract\nassertion failure; two guarded successor cases passed separately on unchanged\nproduction. The 1,209-case closeout selection has exact passing coverage across\nthose runs, not a second all-green combined execution. Assess each explicit\nreplacement against the maintained requirement.\n\nThe owner has not selected named automatic host/client versions or accepted\nplatform/distribution claims, authorized the separate new integrated pilot, or\nappointed the reviewer. The new pilot was not run. Python 3.11 lacks the locally\navailable pinned cffi 2.1.0 cp311 prerequisite, so the complete declared Python\n3.11 dependency cell remains unresolved; unaffected passes do not close it.\nNative GUI/lifecycle/provider limitations remain distinct from script, loopback,\nbuild and fake-transport success. These gaps must remain explicit; review may\nassess the available fixed evidence but cannot declare complete acceptance or\nrelease readiness while required evidence is missing. Obtain concrete owner\nselections before dependent work; do not infer them or repeat the old pilot.\n\nUse the conventional venv, pinned local prerequisites and new disposable fixtures\nunder a nonrepository /private/tmp parent for necessary focused verification.\nNo network/providers, real consumers/hooks, live delivery/export, fetch/push,\nmain merge, tags, signing, publication, release or deployment. Do not restore\nexcluded OCI/GSR/sole-writer/identity-bridge/packet machinery.\n\nProduce one independent verdict with reproducible findings, severity, affected\nrequirements and evidence references. Preserve it if defects require bounded\nrepairs; record failing-before/passing-after evidence and rerun affected integrated\nchecks. Reserve one final independent adjudication of the complete repaired\nsource/evidence, then one separate owner release decision. An unresolved finding\nblocks release; it does not create additional per-wave review cycles. Return\narchitecture/scope expansion decisions to the owner. Report the reviewed commit,\nruntime, evidence limits and outstanding owner choices without claiming release\nauthorization from FPR-5 acceptance or its verdict.\n```\n"
+  },
+  "bound_next_exit": 0,
+  "next_interpretation": "Preserved input to the now-completed FPR-5 review; do not present as a pending rerun. No successor was published.",
+  "report_sha256": "912e8383d38e49552abb6d9c984cadc9da91601fc8644f8dd4d0d91849d58f80",
+  "production_repairs": false,
+  "ref_moves": false,
+  "local_commit_created": false
+}

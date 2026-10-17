@@ -1,0 +1,1392 @@
+{
+  "stage": "03b-surfaces-loopback",
+  "scope": "Author acceptance; not independent adjudication",
+  "commands_and_operations": [
+    {
+      "kind": "desktop_child_start",
+      "argv": [
+        "/private/tmp/overseer-fpr5-integrated-pilot-20261015/installation/cli/ok",
+        "app",
+        "--repo",
+        "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+        "--port",
+        "53377",
+        "--bind",
+        "127.0.0.1"
+      ],
+      "cwd": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/installation",
+      "native_gui": false
+    },
+    {
+      "kind": "loopback_http",
+      "path": "/api/health",
+      "method": "GET",
+      "authentication": "absent",
+      "status": 401,
+      "result": {
+        "error": "auth",
+        "exit_code": null,
+        "ok": false,
+        "result": null
+      }
+    },
+    {
+      "kind": "loopback_http",
+      "path": "/api/health",
+      "method": "GET",
+      "authentication": "present-redacted",
+      "status": 200,
+      "result": {
+        "error": null,
+        "exit_code": 0,
+        "ok": true,
+        "result": {
+          "bind": "127.0.0.1",
+          "lane": "product",
+          "port": 53377,
+          "repo_id": "20dd0872-c7a4-5fdf-81a5-27eefa0acc2e",
+          "repo_root": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+          "runtime": {
+            "root": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/installation",
+            "sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774",
+            "version": "1.0.0.dev1"
+          },
+          "status": "ok"
+        }
+      }
+    },
+    {
+      "kind": "loopback_http",
+      "path": "/api/next?lane=product",
+      "method": "GET",
+      "authentication": "present-redacted",
+      "status": 200,
+      "result": {
+        "error": null,
+        "exit_code": 0,
+        "ok": true,
+        "result": {
+          "lanes": {
+            "product": {
+              "next": {
+                "action_id": "PILOT-WORK-product",
+                "action_kind": "implement",
+                "base_head": "6accf73f0020b0413836964bf1460889c8e4c0ad",
+                "branch": "pilot/fpr5-integrated-20261015",
+                "lane": "product",
+                "model": "GPT-6 Astra",
+                "prompt_sha256": "7efdb16fc25295f9434af003b73872a22f433f7d77fd3644b437613424e57416",
+                "repo_id": "20dd0872-c7a4-5fdf-81a5-27eefa0acc2e",
+                "repo_root": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+                "schema": 3,
+                "source_id": null,
+                "vcs": "git"
+              },
+              "ok": true,
+              "prompt": "Complete the authorized local checks, application readback and rollback. Preserve author evidence; native lifecycle and final independent adjudication remain separate.\nSelected work stream is product.\n"
+            },
+            "validation": {
+              "next": {
+                "action_id": "PILOT-WORK-validation",
+                "action_kind": "implement",
+                "base_head": "6accf73f0020b0413836964bf1460889c8e4c0ad",
+                "branch": "pilot/fpr5-integrated-20261015",
+                "lane": "validation",
+                "model": "GPT-6 Astra",
+                "prompt_sha256": "80713be34c85d93ab259a5ab82019caa2623582794aa210878ef3d70c2db0296",
+                "repo_id": "20dd0872-c7a4-5fdf-81a5-27eefa0acc2e",
+                "repo_root": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+                "schema": 3,
+                "source_id": null,
+                "vcs": "git"
+              },
+              "ok": true,
+              "prompt": "Complete the authorized local checks, application readback and rollback. Preserve author evidence; native lifecycle and final independent adjudication remain separate.\nSelected work stream is validation.\n"
+            }
+          },
+          "next": {
+            "action_id": "PILOT-WORK-product",
+            "action_kind": "implement",
+            "base_head": "6accf73f0020b0413836964bf1460889c8e4c0ad",
+            "branch": "pilot/fpr5-integrated-20261015",
+            "lane": "product",
+            "model": "GPT-6 Astra",
+            "prompt_sha256": "7efdb16fc25295f9434af003b73872a22f433f7d77fd3644b437613424e57416",
+            "repo_id": "20dd0872-c7a4-5fdf-81a5-27eefa0acc2e",
+            "repo_root": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+            "schema": 3,
+            "source_id": null,
+            "vcs": "git"
+          },
+          "next_sha256": "776b3617437ecc28e8085b6d804534d872e2ed2e826f2c17b63e4285cf9d66ed",
+          "prompt": "Complete the authorized local checks, application readback and rollback. Preserve author evidence; native lifecycle and final independent adjudication remain separate.\nSelected work stream is product.\n",
+          "rendered": "## CURRENT NEXT \u2014 paste this\n\n```text\nRepository: /private/tmp/overseer-fpr5-integrated-pilot-20261015/project\nRepository ID: 20dd0872-c7a4-5fdf-81a5-27eefa0acc2e\nBranch: pilot/fpr5-integrated-20261015\nLane: product\nModel: GPT-6 Astra\nAction ID: PILOT-WORK-product\nAction kind: implement\n\nComplete the authorized local checks, application readback and rollback. Preserve author evidence; native lifecycle and final independent adjudication remain separate.\nSelected work stream is product.\n```\n\nOther repository lanes:\nvalidation: valid\n"
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "argv": [
+        "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.overseer/bin/ok",
+        "-C",
+        "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+        "next",
+        "--lane",
+        "product"
+      ],
+      "cwd": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+      "exit_code": 0,
+      "stdout": "## CURRENT NEXT \u2014 paste this\n\n```text\nRepository: /private/tmp/overseer-fpr5-integrated-pilot-20261015/project\nRepository ID: 20dd0872-c7a4-5fdf-81a5-27eefa0acc2e\nBranch: pilot/fpr5-integrated-20261015\nLane: product\nModel: GPT-6 Astra\nAction ID: PILOT-WORK-product\nAction kind: implement\n\nComplete the authorized local checks, application readback and rollback. Preserve author evidence; native lifecycle and final independent adjudication remain separate.\nSelected work stream is product.\n```\n\nOther repository lanes:\nvalidation: valid\n",
+      "stderr": "",
+      "seconds": 0.3301990032196045
+    },
+    {
+      "kind": "loopback_http",
+      "path": "/api/next?lane=validation",
+      "method": "GET",
+      "authentication": "present-redacted",
+      "status": 200,
+      "result": {
+        "error": null,
+        "exit_code": 0,
+        "ok": true,
+        "result": {
+          "lanes": {
+            "product": {
+              "next": {
+                "action_id": "PILOT-WORK-product",
+                "action_kind": "implement",
+                "base_head": "6accf73f0020b0413836964bf1460889c8e4c0ad",
+                "branch": "pilot/fpr5-integrated-20261015",
+                "lane": "product",
+                "model": "GPT-6 Astra",
+                "prompt_sha256": "7efdb16fc25295f9434af003b73872a22f433f7d77fd3644b437613424e57416",
+                "repo_id": "20dd0872-c7a4-5fdf-81a5-27eefa0acc2e",
+                "repo_root": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+                "schema": 3,
+                "source_id": null,
+                "vcs": "git"
+              },
+              "ok": true,
+              "prompt": "Complete the authorized local checks, application readback and rollback. Preserve author evidence; native lifecycle and final independent adjudication remain separate.\nSelected work stream is product.\n"
+            },
+            "validation": {
+              "next": {
+                "action_id": "PILOT-WORK-validation",
+                "action_kind": "implement",
+                "base_head": "6accf73f0020b0413836964bf1460889c8e4c0ad",
+                "branch": "pilot/fpr5-integrated-20261015",
+                "lane": "validation",
+                "model": "GPT-6 Astra",
+                "prompt_sha256": "80713be34c85d93ab259a5ab82019caa2623582794aa210878ef3d70c2db0296",
+                "repo_id": "20dd0872-c7a4-5fdf-81a5-27eefa0acc2e",
+                "repo_root": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+                "schema": 3,
+                "source_id": null,
+                "vcs": "git"
+              },
+              "ok": true,
+              "prompt": "Complete the authorized local checks, application readback and rollback. Preserve author evidence; native lifecycle and final independent adjudication remain separate.\nSelected work stream is validation.\n"
+            }
+          },
+          "next": {
+            "action_id": "PILOT-WORK-validation",
+            "action_kind": "implement",
+            "base_head": "6accf73f0020b0413836964bf1460889c8e4c0ad",
+            "branch": "pilot/fpr5-integrated-20261015",
+            "lane": "validation",
+            "model": "GPT-6 Astra",
+            "prompt_sha256": "80713be34c85d93ab259a5ab82019caa2623582794aa210878ef3d70c2db0296",
+            "repo_id": "20dd0872-c7a4-5fdf-81a5-27eefa0acc2e",
+            "repo_root": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+            "schema": 3,
+            "source_id": null,
+            "vcs": "git"
+          },
+          "next_sha256": "776b3617437ecc28e8085b6d804534d872e2ed2e826f2c17b63e4285cf9d66ed",
+          "prompt": "Complete the authorized local checks, application readback and rollback. Preserve author evidence; native lifecycle and final independent adjudication remain separate.\nSelected work stream is validation.\n",
+          "rendered": "## CURRENT NEXT \u2014 paste this\n\n```text\nRepository: /private/tmp/overseer-fpr5-integrated-pilot-20261015/project\nRepository ID: 20dd0872-c7a4-5fdf-81a5-27eefa0acc2e\nBranch: pilot/fpr5-integrated-20261015\nLane: validation\nModel: GPT-6 Astra\nAction ID: PILOT-WORK-validation\nAction kind: implement\n\nComplete the authorized local checks, application readback and rollback. Preserve author evidence; native lifecycle and final independent adjudication remain separate.\nSelected work stream is validation.\n```\n\nOther repository lanes:\nproduct: valid\n"
+        }
+      }
+    },
+    {
+      "kind": "command",
+      "argv": [
+        "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project/.overseer/bin/ok",
+        "-C",
+        "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+        "next",
+        "--lane",
+        "validation"
+      ],
+      "cwd": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+      "exit_code": 0,
+      "stdout": "## CURRENT NEXT \u2014 paste this\n\n```text\nRepository: /private/tmp/overseer-fpr5-integrated-pilot-20261015/project\nRepository ID: 20dd0872-c7a4-5fdf-81a5-27eefa0acc2e\nBranch: pilot/fpr5-integrated-20261015\nLane: validation\nModel: GPT-6 Astra\nAction ID: PILOT-WORK-validation\nAction kind: implement\n\nComplete the authorized local checks, application readback and rollback. Preserve author evidence; native lifecycle and final independent adjudication remain separate.\nSelected work stream is validation.\n```\n\nOther repository lanes:\nproduct: valid\n",
+      "stderr": "",
+      "seconds": 0.3143579959869385
+    },
+    {
+      "kind": "loopback_http",
+      "path": "/api/status",
+      "method": "GET",
+      "authentication": "present-redacted",
+      "status": 200,
+      "result": {
+        "error": null,
+        "exit_code": 0,
+        "ok": true,
+        "result": {
+          "adversarial_freeze_gate": null,
+          "assets": [
+            {
+              "after": "7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044",
+              "before": "7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".claude/skills/adversarial-freeze-review/SKILL.md"
+            },
+            {
+              "after": "f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c",
+              "before": "f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".claude/skills/build-verification-review/SKILL.md"
+            },
+            {
+              "after": "0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c",
+              "before": "0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".claude/skills/check-ok/SIDE-CHECK-TEMPLATE.md"
+            },
+            {
+              "after": "3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a",
+              "before": "3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".claude/skills/check-ok/SKILL.md"
+            },
+            {
+              "after": "a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b",
+              "before": "a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".claude/skills/deploy-verification-review/SKILL.md"
+            },
+            {
+              "after": "355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f",
+              "before": "355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".claude/skills/freeze-review-loop/SKILL.md"
+            },
+            {
+              "after": "620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b",
+              "before": "620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".claude/skills/freeze-review/SKILL.md"
+            },
+            {
+              "after": "06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14",
+              "before": "06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".claude/skills/governance-sync/SKILL.md"
+            },
+            {
+              "after": "994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837",
+              "before": "994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".claude/skills/independent-second-reviewer/SKILL.md"
+            },
+            {
+              "after": "de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff",
+              "before": "de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".claude/skills/print-next/SKILL.md"
+            },
+            {
+              "after": "a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25",
+              "before": "a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".claude/skills/workspace-status/SKILL.md"
+            },
+            {
+              "after": "b0fdb1a1e0a01d23b4b70cb5b4bb987eb11b9fdba1a8a77af54e90f47d832065",
+              "before": "1a87e2801635e9fcaae24ab6b5583ed3146ef95868163c7a0eddf3cb57f25983",
+              "classification": "preserved",
+              "origin": "preserved",
+              "path": ".cursor/rules/build-verification-required.mdc"
+            },
+            {
+              "after": "a75697f0f8b6fb1ee424aa198dd5e4a6648e33b3707482964494287196729739",
+              "before": "a75697f0f8b6fb1ee424aa198dd5e4a6648e33b3707482964494287196729739",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".cursor/rules/check-ok-thinking.mdc"
+            },
+            {
+              "after": "97414e26682f3ccefb3c442a05d73c7dbb998fd78e5a6d286e4ef625d4405fb6",
+              "before": "97414e26682f3ccefb3c442a05d73c7dbb998fd78e5a6d286e4ef625d4405fb6",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".cursor/rules/governance-sync.mdc"
+            },
+            {
+              "after": "6eebc8126cee6c7ee1d2de1180faec15e2822448b2bfeffb56495991fd21a037",
+              "before": "6eebc8126cee6c7ee1d2de1180faec15e2822448b2bfeffb56495991fd21a037",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".cursor/rules/l1-checkpoints-consumer-owned.mdc"
+            },
+            {
+              "after": "c040517845d72aa9f40cc802db00e39dc67cd4d66a9f4dd1ac89d8bb680dd610",
+              "before": "c040517845d72aa9f40cc802db00e39dc67cd4d66a9f4dd1ac89d8bb680dd610",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".cursor/rules/no-docs-only-pr-to-main.mdc"
+            },
+            {
+              "after": "98b8df26c0f5abc71d203d2bcf457e23dea29e7c0e242bbe3cadeb711064e5c3",
+              "before": "98b8df26c0f5abc71d203d2bcf457e23dea29e7c0e242bbe3cadeb711064e5c3",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".cursor/rules/orchestrator.mdc"
+            },
+            {
+              "after": "c45ae41918dabb9b1afb3f180924039ff02df661a6c77f1c97c1a119b77f62bb",
+              "before": "c45ae41918dabb9b1afb3f180924039ff02df661a6c77f1c97c1a119b77f62bb",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".cursor/rules/print-next-closeout.mdc"
+            },
+            {
+              "after": "e685afdd9a6368bac11127bebb0ca9883ac7523f15f65ceb3d9efdf239fb9f2a",
+              "before": "e685afdd9a6368bac11127bebb0ca9883ac7523f15f65ceb3d9efdf239fb9f2a",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".cursor/rules/tier-authority.mdc"
+            },
+            {
+              "after": "438b69c1bae0e413e6ad953cbec3173162282625d4bee04066e482db72a8aff0",
+              "before": "438b69c1bae0e413e6ad953cbec3173162282625d4bee04066e482db72a8aff0",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".cursor/rules/workspace-authority.mdc"
+            },
+            {
+              "after": "7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044",
+              "before": "7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".cursor/skills/adversarial-freeze-review/SKILL.md"
+            },
+            {
+              "after": "f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c",
+              "before": "f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".cursor/skills/build-verification-review/SKILL.md"
+            },
+            {
+              "after": "0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c",
+              "before": "0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md"
+            },
+            {
+              "after": "3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a",
+              "before": "3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".cursor/skills/check-ok/SKILL.md"
+            },
+            {
+              "after": "a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b",
+              "before": "a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".cursor/skills/deploy-verification-review/SKILL.md"
+            },
+            {
+              "after": "355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f",
+              "before": "355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".cursor/skills/freeze-review-loop/SKILL.md"
+            },
+            {
+              "after": "620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b",
+              "before": "620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".cursor/skills/freeze-review/SKILL.md"
+            },
+            {
+              "after": "06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14",
+              "before": "06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".cursor/skills/governance-sync/SKILL.md"
+            },
+            {
+              "after": "994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837",
+              "before": "994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".cursor/skills/independent-second-reviewer/SKILL.md"
+            },
+            {
+              "after": "de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff",
+              "before": "de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".cursor/skills/print-next/SKILL.md"
+            },
+            {
+              "after": "a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25",
+              "before": "a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".cursor/skills/workspace-status/SKILL.md"
+            },
+            {
+              "after": "cd5e4008057325d1b88039d704ba004857d424d432ac5b40e00d9bfcbc05972f",
+              "before": "cd5e4008057325d1b88039d704ba004857d424d432ac5b40e00d9bfcbc05972f",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".overseer/STANDING-DECISIONS.reference.md"
+            },
+            {
+              "after": "56504ce2c6152d955c58c22d79d4c107db88590ed70126a697b63ffaba2daebe",
+              "before": "56504ce2c6152d955c58c22d79d4c107db88590ed70126a697b63ffaba2daebe",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".overseer/bin/ok"
+            },
+            {
+              "after": "db95732401de452223d750c68172b6c1bb28b3b574c6368132678309b8c801e0",
+              "before": "db95732401de452223d750c68172b6c1bb28b3b574c6368132678309b8c801e0",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".overseer/policy/model-labels.yaml"
+            },
+            {
+              "after": "52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63",
+              "before": "52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".overseer/policy/model-routing.yaml"
+            },
+            {
+              "after": "55b337e9399ccd26f4c70dba9f6f57c1359fab930a522e605cbe52d3533238d8",
+              "before": "55b337e9399ccd26f4c70dba9f6f57c1359fab930a522e605cbe52d3533238d8",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".overseer/policy/test-tiers.yaml"
+            },
+            {
+              "after": "92920331f4e35bad9191a101b8b5d211ef31f069b2ba1cf4446ceb3796894776",
+              "before": "92920331f4e35bad9191a101b8b5d211ef31f069b2ba1cf4446ceb3796894776",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": ".overseer/policy/tiers.yaml"
+            },
+            {
+              "after": "52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63",
+              "before": "52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63",
+              "classification": "unchanged",
+              "origin": "kit",
+              "path": "policy/model-routing.yaml"
+            }
+          ],
+          "authority": "git",
+          "branch": "pilot/fpr5-integrated-20261015",
+          "configuration": {
+            "checkpoints": {
+              "active_manifest": "manifests/pilot.yaml",
+              "allow_hand_verified": false,
+              "enabled": true,
+              "orchestrator": null,
+              "policy": "policy/pilot-checkpoints.yaml",
+              "progress": "PROGRESS.md"
+            },
+            "context": {
+              "lane": "product",
+              "model": "GPT-6 Astra"
+            },
+            "docs": {
+              "canonical_next": "docs/NEXT.md",
+              "coordination": null,
+              "default_lane": "product",
+              "handover": "HANDOVER.md",
+              "handover_title": "Pilot Handover",
+              "lanes": {
+                "product": {
+                  "handover": "HANDOVER.md",
+                  "handover_title": "Pilot Handover",
+                  "repo_id": "20dd0872-c7a4-5fdf-81a5-27eefa0acc2e",
+                  "roadmap": "ROADMAP.md",
+                  "roadmap_title": "Pilot Roadmap"
+                },
+                "validation": {
+                  "handover": "validation/HANDOVER.md",
+                  "handover_title": "Validation Handover",
+                  "repo_id": "20dd0872-c7a4-5fdf-81a5-27eefa0acc2e",
+                  "roadmap": "validation/ROADMAP.md",
+                  "roadmap_title": "Validation Roadmap"
+                }
+              },
+              "roadmap": "ROADMAP.md",
+              "roadmap_title": "Pilot Roadmap",
+              "standing_decisions": "ROADMAP.md"
+            },
+            "freeze_contract": {
+              "enabled": true,
+              "human_escalation": [
+                "security",
+                "irreversible",
+                "real_money",
+                "gates_tier3"
+              ],
+              "reviewer": {
+                "fallback": "human",
+                "mode": "agent",
+                "model": "thinking-high",
+                "provider": "local"
+              }
+            },
+            "honesty": {
+              "allow_signed_approval": false,
+              "ci_reexecutor": null,
+              "enabled": true,
+              "ledger": ".overseer/honesty/VERDICT-LEDGER.jsonl",
+              "require_l1_evidence": "warn",
+              "require_verdict_on": [
+                "board_done",
+                "handoff",
+                "register"
+              ],
+              "roles_file": null
+            },
+            "modules": {
+              "checkpoints": {
+                "enabled": true
+              },
+              "governance": {
+                "enabled": true
+              },
+              "honesty": {
+                "enabled": true
+              }
+            },
+            "repo": {
+              "id": "20dd0872-c7a4-5fdf-81a5-27eefa0acc2e",
+              "name": "overseer-fpr5-integrated-pilot-20261015",
+              "root": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+              "root_relative_docs": "docs"
+            },
+            "runtime": {
+              "root": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/installation",
+              "sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774",
+              "version": "1.0.0.dev1"
+            },
+            "schema": 3,
+            "thresholds": {
+              "drift_warn_only": true,
+              "realign_max_commits": 50
+            },
+            "vcs": {
+              "canonical": "git",
+              "git": {
+                "feature_branch_pattern": "pilot/{slug}",
+                "main_branch": "main",
+                "mirror_branch": null,
+                "remote": "origin"
+              },
+              "muse": {
+                "main_branch": null,
+                "staging_remote": null,
+                "working_dir": null
+              },
+              "regime": "git-only"
+            }
+          },
+          "cost_awareness": {
+            "enabled": false
+          },
+          "diagnostics": [
+            "legacy_reviewer_model_preserved: thinking-high"
+          ],
+          "dirty": true,
+          "drift": {
+            "changed_files": [],
+            "status": "current"
+          },
+          "footprint_coverage": {
+            "missing_records": [],
+            "ok": true
+          },
+          "footprint_integrity": {
+            "ok": true,
+            "paths_requiring_attention": []
+          },
+          "governance": {
+            "authority": "git",
+            "branch": "pilot/fpr5-integrated-20261015",
+            "cached_remote_main": null,
+            "canonical_next": "docs/NEXT.md",
+            "claimed_github_main": null,
+            "drift": {
+              "d1_handover_vs_git": "unreadable",
+              "d2_anchor_vs_canonical": "aligned",
+              "d3_queue_vs_merged": "unknown_offline",
+              "details": {}
+            },
+            "lane": "product",
+            "local_main": "c8253284e3964f83b3f5d2b50cf471aa5b8c1d23",
+            "realignment": "not_applicable",
+            "remote": "not_checked_offline",
+            "remote_drift": "unknown_offline",
+            "revision": "6accf73f0020b0413836964bf1460889c8e4c0ad"
+          },
+          "governance_gates": {
+            "active_phases": [],
+            "enabled": true,
+            "pending": [],
+            "suppressed": false
+          },
+          "head": "6accf73f0020b0413836964bf1460889c8e4c0ad",
+          "independent_second_reviewer_gate": null,
+          "lanes": {
+            "product": {
+              "next": {
+                "action_id": "PILOT-WORK-product",
+                "action_kind": "implement",
+                "base_head": "6accf73f0020b0413836964bf1460889c8e4c0ad",
+                "branch": "pilot/fpr5-integrated-20261015",
+                "lane": "product",
+                "model": "GPT-6 Astra",
+                "prompt_sha256": "7efdb16fc25295f9434af003b73872a22f433f7d77fd3644b437613424e57416",
+                "repo_id": "20dd0872-c7a4-5fdf-81a5-27eefa0acc2e",
+                "repo_root": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+                "schema": 3,
+                "source_id": null,
+                "vcs": "git"
+              },
+              "ok": true,
+              "prompt": "Complete the authorized local checks, application readback and rollback. Preserve author evidence; native lifecycle and final independent adjudication remain separate.\nSelected work stream is product.\n"
+            },
+            "validation": {
+              "next": {
+                "action_id": "PILOT-WORK-validation",
+                "action_kind": "implement",
+                "base_head": "6accf73f0020b0413836964bf1460889c8e4c0ad",
+                "branch": "pilot/fpr5-integrated-20261015",
+                "lane": "validation",
+                "model": "GPT-6 Astra",
+                "prompt_sha256": "80713be34c85d93ab259a5ab82019caa2623582794aa210878ef3d70c2db0296",
+                "repo_id": "20dd0872-c7a4-5fdf-81a5-27eefa0acc2e",
+                "repo_root": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+                "schema": 3,
+                "source_id": null,
+                "vcs": "git"
+              },
+              "ok": true,
+              "prompt": "Complete the authorized local checks, application readback and rollback. Preserve author evidence; native lifecycle and final independent adjudication remain separate.\nSelected work stream is validation.\n"
+            }
+          },
+          "lock": {
+            "config_version": 3,
+            "footprint": [
+              {
+                "origin": "kit",
+                "path": ".claude/skills/adversarial-freeze-review/SKILL.md",
+                "sha256": "sha256:7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".claude/skills/build-verification-review/SKILL.md",
+                "sha256": "sha256:f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".claude/skills/check-ok/SIDE-CHECK-TEMPLATE.md",
+                "sha256": "sha256:0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".claude/skills/check-ok/SKILL.md",
+                "sha256": "sha256:3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".claude/skills/deploy-verification-review/SKILL.md",
+                "sha256": "sha256:a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".claude/skills/freeze-review-loop/SKILL.md",
+                "sha256": "sha256:355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".claude/skills/freeze-review/SKILL.md",
+                "sha256": "sha256:620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".claude/skills/governance-sync/SKILL.md",
+                "sha256": "sha256:06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".claude/skills/independent-second-reviewer/SKILL.md",
+                "sha256": "sha256:994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".claude/skills/print-next/SKILL.md",
+                "sha256": "sha256:de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".claude/skills/workspace-status/SKILL.md",
+                "sha256": "sha256:a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".cursor/hooks.json",
+                "sha256": "sha256:6331cba439857676144891062d7fced5c1bed9ed5752f58ab08ab557c95f43ba",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".cursor/hooks/session-end-closeout.sh",
+                "sha256": "sha256:272304dbf3e941e2f02663bde22a2da571567520e56ddde2f62cc135f9f3b72f",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".cursor/hooks/session-start-next.sh",
+                "sha256": "sha256:146d6c6f815f730e3df18842264139560b43b8e870fb47ed81f9db5e8edbc3dd",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "preserved",
+                "path": ".cursor/rules/build-verification-required.mdc",
+                "sha256": "sha256:1a87e2801635e9fcaae24ab6b5583ed3146ef95868163c7a0eddf3cb57f25983",
+                "source": "consumer"
+              },
+              {
+                "origin": "kit",
+                "path": ".cursor/rules/check-ok-thinking.mdc",
+                "sha256": "sha256:a75697f0f8b6fb1ee424aa198dd5e4a6648e33b3707482964494287196729739",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".cursor/rules/governance-sync.mdc",
+                "sha256": "sha256:97414e26682f3ccefb3c442a05d73c7dbb998fd78e5a6d286e4ef625d4405fb6",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".cursor/rules/l1-checkpoints-consumer-owned.mdc",
+                "sha256": "sha256:6eebc8126cee6c7ee1d2de1180faec15e2822448b2bfeffb56495991fd21a037",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".cursor/rules/no-docs-only-pr-to-main.mdc",
+                "sha256": "sha256:c040517845d72aa9f40cc802db00e39dc67cd4d66a9f4dd1ac89d8bb680dd610",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".cursor/rules/orchestrator.mdc",
+                "sha256": "sha256:98b8df26c0f5abc71d203d2bcf457e23dea29e7c0e242bbe3cadeb711064e5c3",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".cursor/rules/print-next-closeout.mdc",
+                "sha256": "sha256:c45ae41918dabb9b1afb3f180924039ff02df661a6c77f1c97c1a119b77f62bb",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".cursor/rules/tier-authority.mdc",
+                "sha256": "sha256:e685afdd9a6368bac11127bebb0ca9883ac7523f15f65ceb3d9efdf239fb9f2a",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".cursor/rules/workspace-authority.mdc",
+                "sha256": "sha256:438b69c1bae0e413e6ad953cbec3173162282625d4bee04066e482db72a8aff0",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".cursor/skills/adversarial-freeze-review/SKILL.md",
+                "sha256": "sha256:7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".cursor/skills/build-verification-review/SKILL.md",
+                "sha256": "sha256:f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md",
+                "sha256": "sha256:0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".cursor/skills/check-ok/SKILL.md",
+                "sha256": "sha256:3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".cursor/skills/deploy-verification-review/SKILL.md",
+                "sha256": "sha256:a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".cursor/skills/freeze-review-loop/SKILL.md",
+                "sha256": "sha256:355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".cursor/skills/freeze-review/SKILL.md",
+                "sha256": "sha256:620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".cursor/skills/governance-sync/SKILL.md",
+                "sha256": "sha256:06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".cursor/skills/independent-second-reviewer/SKILL.md",
+                "sha256": "sha256:994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".cursor/skills/print-next/SKILL.md",
+                "sha256": "sha256:de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".cursor/skills/workspace-status/SKILL.md",
+                "sha256": "sha256:a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".overseer/STANDING-DECISIONS.reference.md",
+                "sha256": "sha256:cd5e4008057325d1b88039d704ba004857d424d432ac5b40e00d9bfcbc05972f",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".overseer/bin/ok",
+                "sha256": "sha256:56504ce2c6152d955c58c22d79d4c107db88590ed70126a697b63ffaba2daebe",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".overseer/instructions/bookends.md",
+                "sha256": "sha256:137d9b98d9683f12264a8dd91a070e7308f56d10f8ef512f50e0e2527aa80e6a",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".overseer/policy/model-labels.yaml",
+                "sha256": "sha256:db95732401de452223d750c68172b6c1bb28b3b574c6368132678309b8c801e0",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".overseer/policy/model-routing.yaml",
+                "sha256": "sha256:52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".overseer/policy/test-tiers.yaml",
+                "sha256": "sha256:55b337e9399ccd26f4c70dba9f6f57c1359fab930a522e605cbe52d3533238d8",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "kit",
+                "path": ".overseer/policy/tiers.yaml",
+                "sha256": "sha256:92920331f4e35bad9191a101b8b5d211ef31f069b2ba1cf4446ceb3796894776",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "preserved",
+                "path": "docs/HANDOVER.md",
+                "sha256": "sha256:36d2cb870f290e184e8e207bc1541d76428e4a3a000bf6a6c6fb6e95573ac4bc",
+                "source": "consumer"
+              },
+              {
+                "origin": "kit",
+                "path": "docs/OVERSEER-HANDOVER.md",
+                "sha256": "sha256:2d9ebe147ca68554d74a8af84efcac8ddac134e39c993bc275365dd7db156754",
+                "source": "bound-product-assets"
+              },
+              {
+                "origin": "preserved",
+                "path": "docs/ROADMAP.md",
+                "sha256": "sha256:3df1ed0fafedec31a19e6f6a26b2a572e2c23382f577b1720ae19895469d3e71",
+                "source": "consumer"
+              },
+              {
+                "origin": "preserved",
+                "path": "docs/validation/HANDOVER.md",
+                "sha256": "sha256:73dac6b9c995fbdf001eee56ec28f28c322e3725c690cc8a8c1914e9b9559b52",
+                "source": "consumer"
+              },
+              {
+                "origin": "preserved",
+                "path": "docs/validation/ROADMAP.md",
+                "sha256": "sha256:d9d7b2b9ffb73fedc1b8731fefbfc411998be50955b1dcd62017fedbb02747b7",
+                "source": "consumer"
+              },
+              {
+                "origin": "kit",
+                "path": "policy/model-routing.yaml",
+                "sha256": "sha256:52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63",
+                "source": "bound-product-assets"
+              }
+            ],
+            "footprint_digest": "sha256:75aa6e91a7a733a88be02111cb1125cb370aa342f36bb157f2cd773d814b3450",
+            "installed_at": "unrecorded",
+            "kit_version": "1.0.0.dev1",
+            "lock_version": 1,
+            "synced_at": "unrecorded"
+          },
+          "migration_required": false,
+          "model_routing": {
+            "enabled": false
+          },
+          "muse_sync": {
+            "mirror_correspondence": "use_explicit_mirror_verify",
+            "state": "not_applicable"
+          },
+          "next_sha256": "776b3617437ecc28e8085b6d804534d872e2ed2e826f2c17b63e4285cf9d66ed",
+          "ok": true,
+          "optional_feature_tips": {
+            "tips": [
+              "tip: session_bookends off \u2014 set session_bookends.enabled: true in .overseer/config.yaml then ok sync for Cursor session start/end nudges (cursor/hooks/README.md)"
+            ]
+          },
+          "preserved_inventory": [
+            {
+              "mode": 420,
+              "path": ".claude/skills/adversarial-freeze-review/SKILL.md",
+              "sha256": "7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044"
+            },
+            {
+              "mode": 420,
+              "path": ".claude/skills/build-verification-review/SKILL.md",
+              "sha256": "f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c"
+            },
+            {
+              "mode": 420,
+              "path": ".claude/skills/check-ok/SIDE-CHECK-TEMPLATE.md",
+              "sha256": "0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c"
+            },
+            {
+              "mode": 420,
+              "path": ".claude/skills/check-ok/SKILL.md",
+              "sha256": "3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a"
+            },
+            {
+              "mode": 420,
+              "path": ".claude/skills/deploy-verification-review/SKILL.md",
+              "sha256": "a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b"
+            },
+            {
+              "mode": 420,
+              "path": ".claude/skills/freeze-review-loop/SKILL.md",
+              "sha256": "355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f"
+            },
+            {
+              "mode": 420,
+              "path": ".claude/skills/freeze-review/SKILL.md",
+              "sha256": "620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b"
+            },
+            {
+              "mode": 420,
+              "path": ".claude/skills/governance-sync/SKILL.md",
+              "sha256": "06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14"
+            },
+            {
+              "mode": 420,
+              "path": ".claude/skills/independent-second-reviewer/SKILL.md",
+              "sha256": "994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837"
+            },
+            {
+              "mode": 420,
+              "path": ".claude/skills/print-next/SKILL.md",
+              "sha256": "de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff"
+            },
+            {
+              "mode": 420,
+              "path": ".claude/skills/workspace-status/SKILL.md",
+              "sha256": "a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25"
+            },
+            {
+              "mode": 420,
+              "path": ".cursor/hooks.json",
+              "sha256": "6331cba439857676144891062d7fced5c1bed9ed5752f58ab08ab557c95f43ba"
+            },
+            {
+              "mode": 493,
+              "path": ".cursor/hooks/session-end-closeout.sh",
+              "sha256": "272304dbf3e941e2f02663bde22a2da571567520e56ddde2f62cc135f9f3b72f"
+            },
+            {
+              "mode": 493,
+              "path": ".cursor/hooks/session-start-next.sh",
+              "sha256": "146d6c6f815f730e3df18842264139560b43b8e870fb47ed81f9db5e8edbc3dd"
+            },
+            {
+              "mode": 488,
+              "path": ".cursor/rules/build-verification-required.mdc",
+              "sha256": "1a87e2801635e9fcaae24ab6b5583ed3146ef95868163c7a0eddf3cb57f25983"
+            },
+            {
+              "mode": 420,
+              "path": ".cursor/rules/check-ok-thinking.mdc",
+              "sha256": "a75697f0f8b6fb1ee424aa198dd5e4a6648e33b3707482964494287196729739"
+            },
+            {
+              "mode": 420,
+              "path": ".cursor/rules/governance-sync.mdc",
+              "sha256": "97414e26682f3ccefb3c442a05d73c7dbb998fd78e5a6d286e4ef625d4405fb6"
+            },
+            {
+              "mode": 420,
+              "path": ".cursor/rules/l1-checkpoints-consumer-owned.mdc",
+              "sha256": "6eebc8126cee6c7ee1d2de1180faec15e2822448b2bfeffb56495991fd21a037"
+            },
+            {
+              "mode": 420,
+              "path": ".cursor/rules/no-docs-only-pr-to-main.mdc",
+              "sha256": "c040517845d72aa9f40cc802db00e39dc67cd4d66a9f4dd1ac89d8bb680dd610"
+            },
+            {
+              "mode": 420,
+              "path": ".cursor/rules/orchestrator.mdc",
+              "sha256": "98b8df26c0f5abc71d203d2bcf457e23dea29e7c0e242bbe3cadeb711064e5c3"
+            },
+            {
+              "mode": 420,
+              "path": ".cursor/rules/print-next-closeout.mdc",
+              "sha256": "c45ae41918dabb9b1afb3f180924039ff02df661a6c77f1c97c1a119b77f62bb"
+            },
+            {
+              "mode": 420,
+              "path": ".cursor/rules/tier-authority.mdc",
+              "sha256": "e685afdd9a6368bac11127bebb0ca9883ac7523f15f65ceb3d9efdf239fb9f2a"
+            },
+            {
+              "mode": 420,
+              "path": ".cursor/rules/workspace-authority.mdc",
+              "sha256": "438b69c1bae0e413e6ad953cbec3173162282625d4bee04066e482db72a8aff0"
+            },
+            {
+              "mode": 420,
+              "path": ".cursor/skills/adversarial-freeze-review/SKILL.md",
+              "sha256": "7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044"
+            },
+            {
+              "mode": 420,
+              "path": ".cursor/skills/build-verification-review/SKILL.md",
+              "sha256": "f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c"
+            },
+            {
+              "mode": 420,
+              "path": ".cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md",
+              "sha256": "0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c"
+            },
+            {
+              "mode": 420,
+              "path": ".cursor/skills/check-ok/SKILL.md",
+              "sha256": "3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a"
+            },
+            {
+              "mode": 420,
+              "path": ".cursor/skills/deploy-verification-review/SKILL.md",
+              "sha256": "a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b"
+            },
+            {
+              "mode": 420,
+              "path": ".cursor/skills/freeze-review-loop/SKILL.md",
+              "sha256": "355020d8bb99db119f004a3c2277f47f8ed7498072cfa64edd882d68f95b3f8f"
+            },
+            {
+              "mode": 420,
+              "path": ".cursor/skills/freeze-review/SKILL.md",
+              "sha256": "620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b"
+            },
+            {
+              "mode": 420,
+              "path": ".cursor/skills/governance-sync/SKILL.md",
+              "sha256": "06b1ac11ea1adfa63efc9f664faad4c7c461ca055ffc54a0e0a14714330b0b14"
+            },
+            {
+              "mode": 420,
+              "path": ".cursor/skills/independent-second-reviewer/SKILL.md",
+              "sha256": "994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837"
+            },
+            {
+              "mode": 420,
+              "path": ".cursor/skills/print-next/SKILL.md",
+              "sha256": "de42e333dc2213827bee6de2c2c49d339acf8ff80f4a2b815ecbc8025d021bff"
+            },
+            {
+              "mode": 420,
+              "path": ".cursor/skills/workspace-status/SKILL.md",
+              "sha256": "a18282664c8146eb1403c255d73bc87202c2e2c22e3c5a81b6b3786532795a25"
+            },
+            {
+              "mode": 420,
+              "path": ".overseer/STANDING-DECISIONS.reference.md",
+              "sha256": "cd5e4008057325d1b88039d704ba004857d424d432ac5b40e00d9bfcbc05972f"
+            },
+            {
+              "mode": 493,
+              "path": ".overseer/bin/ok",
+              "sha256": "56504ce2c6152d955c58c22d79d4c107db88590ed70126a697b63ffaba2daebe"
+            },
+            {
+              "mode": 420,
+              "path": ".overseer/honesty/VERDICT-LEDGER.jsonl",
+              "sha256": "286bc2303ae028b2864a6516e29a914ad7151941b506523a078b35518e77d67a"
+            },
+            {
+              "mode": 420,
+              "path": ".overseer/instructions/bookends.md",
+              "sha256": "137d9b98d9683f12264a8dd91a070e7308f56d10f8ef512f50e0e2527aa80e6a"
+            },
+            {
+              "mode": null,
+              "path": ".overseer/ledger.jsonl",
+              "sha256": "absent"
+            },
+            {
+              "mode": 420,
+              "path": ".overseer/policy/model-labels.yaml",
+              "sha256": "db95732401de452223d750c68172b6c1bb28b3b574c6368132678309b8c801e0"
+            },
+            {
+              "mode": 420,
+              "path": ".overseer/policy/model-routing.yaml",
+              "sha256": "52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63"
+            },
+            {
+              "mode": 420,
+              "path": ".overseer/policy/pilot-owner.yaml",
+              "sha256": "f34fd58003fa39d8b9f63203dd87c19424ebc81de37e51cfac0211475c7b071f"
+            },
+            {
+              "mode": 420,
+              "path": ".overseer/policy/test-tiers.yaml",
+              "sha256": "55b337e9399ccd26f4c70dba9f6f57c1359fab930a522e605cbe52d3533238d8"
+            },
+            {
+              "mode": 420,
+              "path": ".overseer/policy/tiers.yaml",
+              "sha256": "92920331f4e35bad9191a101b8b5d211ef31f069b2ba1cf4446ceb3796894776"
+            },
+            {
+              "mode": 420,
+              "path": ".overseer/version.lock",
+              "sha256": "8fc838ae37c87bf044738402ce06c445e5eb311bd4b0e2f955694cb69465d872"
+            },
+            {
+              "mode": 420,
+              "path": "PROGRESS.md",
+              "sha256": "f4293d78c38c8dcdc816f2eb811a4eade1f796e85f8f9788b4a1b1be6476a308"
+            },
+            {
+              "mode": 420,
+              "path": "docs/HANDOVER.md",
+              "sha256": "9859974411a887a61ac78dbbb66cce0ccaf9f6374fccb29491ccb1e39b27e747"
+            },
+            {
+              "mode": 420,
+              "path": "docs/NEXT.md",
+              "sha256": "776b3617437ecc28e8085b6d804534d872e2ed2e826f2c17b63e4285cf9d66ed"
+            },
+            {
+              "mode": 420,
+              "path": "docs/OVERSEER-HANDOVER.md",
+              "sha256": "2d9ebe147ca68554d74a8af84efcac8ddac134e39c993bc275365dd7db156754"
+            },
+            {
+              "mode": 420,
+              "path": "docs/ROADMAP.md",
+              "sha256": "caccf0e9d128012e707c3c4d4386746f950a240e0f3e622a163362bbd7248d3f"
+            },
+            {
+              "mode": 420,
+              "path": "docs/validation/HANDOVER.md",
+              "sha256": "eaa688b5ca57bd77ee4965b57c41e746e286a02d970a817f21da85bd94cd10a3"
+            },
+            {
+              "mode": 420,
+              "path": "docs/validation/ROADMAP.md",
+              "sha256": "957085739592ae326be3ba521359c0a0415816fc3b20476e4300cfdd272ee3b3"
+            },
+            {
+              "mode": 420,
+              "path": "manifests/pilot.yaml",
+              "sha256": "3b302f3a57054f8fab5c59193d679f19da25176b375c86a7e9a0c4d25222ae31"
+            },
+            {
+              "mode": 420,
+              "path": "policy/model-routing.yaml",
+              "sha256": "52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63"
+            },
+            {
+              "mode": 420,
+              "path": "policy/pilot-checkpoints.yaml",
+              "sha256": "8328a0a655209568874487dba955e4eb9718cdf99667c7a59dbd595774ebb248"
+            }
+          ],
+          "publication": "not_checked_offline",
+          "readiness": {
+            "authority": "bound",
+            "release": "not_certified",
+            "remote": "not_checked_offline"
+          },
+          "repository": {
+            "id": "20dd0872-c7a4-5fdf-81a5-27eefa0acc2e",
+            "name": "overseer-fpr5-integrated-pilot-20261015",
+            "root": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/project",
+            "root_relative_docs": "docs"
+          },
+          "runtime": {
+            "root": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/installation",
+            "sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774",
+            "version": "1.0.0.dev1"
+          },
+          "selection_required": true,
+          "source_id": null,
+          "source_schema": "schema-3",
+          "substrate": {
+            "ok": true,
+            "source_id": null,
+            "state": "bound_git"
+          },
+          "tracked_local": [],
+          "vcs": "git",
+          "verification_evidence_gate": null
+        }
+      }
+    },
+    {
+      "kind": "loopback_http",
+      "path": "/api/ledger/show?last=3",
+      "method": "GET",
+      "authentication": "present-redacted",
+      "status": 200,
+      "result": {
+        "error": null,
+        "exit_code": 0,
+        "ok": true,
+        "result": {
+          "entries": [
+            {
+              "entry_hash": "5528baa6d9c6881360439d5fdc1f8ee114b4e491a095ce5f864effca34165b9a",
+              "kind": "genesis",
+              "prev_hash": "368646f427571067ec853ef0c3d4cce9ecfa3fb3e003dd1252cd5d02f111e513",
+              "ts": "2026-10-15T10:49:18Z",
+              "v": 1
+            },
+            {
+              "actor_role": "overseer",
+              "actor_session_id": "fpr5-disposable-pilot-author-20261015",
+              "assignment": {
+                "independent_adjudication": false,
+                "scope": "Owner-approved local integrated pilot",
+                "verification": "Check preserved owner policy/rule and bound NEXT with confined script"
+              },
+              "entry_hash": "dbb0c9c9fadd6a049301ddfc19b5ba4534820b0d5b7b5e92bf27b3d743b74446",
+              "kind": "task_assigned",
+              "prev_hash": "5528baa6d9c6881360439d5fdc1f8ee114b4e491a095ce5f864effca34165b9a",
+              "ts": "2026-10-15T10:49:18Z",
+              "v": 1
+            },
+            {
+              "actor_role": "overseer",
+              "actor_session_id": "fpr5-disposable-pilot-author-20261015",
+              "entry_hash": "21fd93145780c81c658656c827085cb93d3555b83ef669a9c24bd0d523dd2563",
+              "evidence_path": "docs/validation/pilot-verification.json",
+              "evidence_sha256": "ea2d60606023bd8a5c2163a4c597a41d6651e9830da2985cd24e74210217b549",
+              "kind": "overseer_ruling",
+              "prev_hash": "dbb0c9c9fadd6a049301ddfc19b5ba4534820b0d5b7b5e92bf27b3d743b74446",
+              "ruling": "The confined local owner-preservation checkpoint executed successfully. This author observation is not an independent verdict.",
+              "ts": "2026-10-15T10:49:20Z",
+              "v": 1
+            }
+          ],
+          "exit_code": 0,
+          "ok": true
+        }
+      }
+    },
+    {
+      "kind": "loopback_http",
+      "path": "/api/ledger/verify",
+      "method": "GET",
+      "authentication": "present-redacted",
+      "status": 404,
+      "result": {
+        "error": "not_found",
+        "exit_code": null,
+        "ok": false,
+        "result": null
+      }
+    },
+    {
+      "kind": "desktop_child_stopped",
+      "exited": true
+    },
+    {
+      "kind": "surface_attempt_failure",
+      "exception": "AssertionError(('/api/ledger/verify', 404, {'error': 'not_found', 'exit_code': None, 'ok': False, 'result': None}))"
+    }
+  ]
+}

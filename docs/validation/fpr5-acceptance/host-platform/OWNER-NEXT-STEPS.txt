@@ -1,0 +1,13 @@
+Continue with the current repaired-source context; these commands create NEW observation directories and preserve every earlier attempt. They are owner-assisted follow-up, not completed acceptance. The helper has been syntax checked, not launched.
+
+Native desktop:
+python3 /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/docs/validation/fpr5-acceptance/host-platform/owner_observe.py --surface desktop
+
+Observe only the newly opened disposable Overseer window. Record that actual rendered application content loads for the named pilot, selected lane and current runtime; compare displayed canonical NEXT with the same bound CLI read. Capture only that window and exclude authentication inputs/tokens. Close it normally. One actual window and normal app/child shutdown already passed; rendered content/readback remains required.
+
+Cursor:
+python3 /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/docs/validation/fpr5-acceptance/host-platform/owner_observe.py --surface cursor
+
+Observe only the new isolated Cursor3.24.18 profile. Required evidence is real sessionStart and stop delivery through the installed generated hooks, exact canonical NEXT text/digest equality, and no governance/NEXT writes. WorkspaceOpen and hook loading do not satisfy either event. Do not sign in or submit a model prompt. Whether this client can create the required session and finish an actual turn without account/provider access remains unknown and blocked; preserve that limitation if observed. Do not relax network/account restrictions.
+
+Both commands use the unchanged hash-pinned outer macOS sandbox, deny external networking and actual home/account reads, use only the approved disposable pilot, and end within180 seconds plus bounded shutdown. Cursor retains the recorded --no-sandbox/--disable-gpu compatibility flags inside the enforced outer sandbox, so this does not establish default-profile behavior. Native cache paths remain in a new temporary directory. The helper refuses changed pinned pilot NEXT, runtime, binary or sandbox inputs. If these temporary prerequisites are unavailable, stop and rebuild/revalidate from recorded source; never substitute another app or consumer.

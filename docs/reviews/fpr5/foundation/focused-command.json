@@ -1,0 +1,32 @@
+{
+  "cwd": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+  "argv": [
+    ".venv/bin/python3",
+    "-B",
+    "-m",
+    "pytest",
+    "tests/v1/test_context.py",
+    "tests/fpr2/test_lanes.py",
+    "tests/fpr1/test_migration.py::test_partial_replacement_keeps_old_config_and_resumes",
+    "tests/fpr1/test_migration.py::test_after_lock_context_change_refuses_without_replacement",
+    "tests/fpr1/test_migration.py::test_before_replace_context_change_refuses_candidate",
+    "tests/fpr1/test_migration.py::test_plan_drift_refuses_before_mutation",
+    "-q",
+    "-o",
+    "cache_dir=/private/tmp/overseer-fpr5-review.jTlE9P/foundation/pytest-cache",
+    "--basetemp=/private/tmp/overseer-fpr5-review.jTlE9P/foundation/pytest",
+    "--junitxml=/private/tmp/overseer-fpr5-review.jTlE9P/foundation/focused.xml"
+  ],
+  "environment": {
+    "explicit_overrides": {
+      "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "policy": "Otherwise inherited execution-tool shell environment."
+  },
+  "shell": "zsh, exec_command default login semantics",
+  "stdout_file": "/private/tmp/overseer-fpr5-review.jTlE9P/foundation/focused.log",
+  "stderr": "redirected to stdout with 2>&1",
+  "exit_code": 0,
+  "note": "Recorded after completion from the executed command; not a rerun. Use a new fixture parent for later runs."
+}

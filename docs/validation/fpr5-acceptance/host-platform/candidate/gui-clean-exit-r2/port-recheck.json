@@ -1,0 +1,7 @@
+{
+  "time": 1792062489.911784,
+  "connect_ex_127_0_0_1_8765": 61,
+  "so_reuseaddr_rebind": true,
+  "error": null,
+  "interpretation": "Native app and recorded child both exited before any fallback signal; immediate plain bind failure retained separately and does not prove a live listener. This observation checks listener and reuse directly."
+}

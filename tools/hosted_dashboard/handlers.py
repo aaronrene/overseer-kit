@@ -44,14 +44,30 @@ def is_track_q_act_path(path: str) -> bool:
 class DashboardService:
     """Business logic for closed read surface."""
 
-    def __init__(self, adapters: GitHubAdapters, config: HostedDashboardConfig) -> None:
+    def __init__(self, adapters: GitHubAdapters, config: HostedDashboardConfig, *, validate_context=None) -> None:
         self._adapters = adapters
         self._config = config
+        self._validate_context = validate_context
+
+    def _binding_failure(self):
+        if self._validate_context is not None:
+            from cli.v1_io import Refusal
+            try:
+                self._validate_context()
+            except (Refusal, OSError, ValueError):
+                return failure(error='binding_changed_restart_required', http_status=409)
+        return None
 
     def health(self) -> ApiEnvelope:
+        failed = self._binding_failure()
+        if failed is not None:
+            return failed
         return health_success()
 
     def org_summary(self, query: dict[str, list[str]]) -> ApiEnvelope:
+        failed = self._binding_failure()
+        if failed is not None:
+            return failed
         unknown = unknown_query_keys(query)
         if unknown:
             return failure(error="unknown_query", http_status=400)
@@ -79,6 +95,9 @@ class DashboardService:
 
     def handover(self, owner: str, repo: str, query: dict[str, list[str]]) -> ApiEnvelope:
         return self._doc_endpoint(owner, repo, query, kind="handover")
+
+    def next(self, owner: str, repo: str, query: dict[str, list[str]]) -> ApiEnvelope:
+        return self._doc_endpoint(owner, repo, query, kind='next')
 
     def gates(self, owner: str, repo: str, query: dict[str, list[str]]) -> ApiEnvelope:
         bad = self._validate_owner_repo_query(owner, repo, query)
@@ -155,12 +174,15 @@ class DashboardService:
             meta = self._adapters.get_repo_meta(owner, repo)
             marker = self._adapters.fetch_marker_summary(owner, repo, ref=meta.default_branch)
             roadmap_path, handover_path = self._adapters.doc_paths_from_marker(marker)
-            path = roadmap_path if kind == "roadmap" else handover_path
+            path = "docs/NEXT.md" if kind == "next" else roadmap_path if kind == "roadmap" else handover_path
             file = self._adapters.fetch_file(owner, repo, path, ref=meta.default_branch)
             result = {
                 "path": file.path,
                 "text": file.text,
                 "sha256": file.sha256,
+                "authority": "remote_display_only",
+                "actionable": False,
+                "local_validation_required": True,
             }
             return success(
                 result,
@@ -176,11 +198,17 @@ class DashboardService:
     def _validate_owner_repo_query(
         self, owner: str, repo: str, query: dict[str, list[str]]
     ) -> ApiEnvelope | None:
+        failed = self._binding_failure()
+        if failed is not None:
+            return failed
         if not valid_owner_repo_segment(owner) or not valid_owner_repo_segment(repo):
             return failure(error="invalid_path", http_status=400)
         unknown = unknown_query_keys(query)
         if unknown:
             return failure(error="unknown_query", http_status=400)
+        if not any(owner.lower() == org.lower() and (name is None or name.lower() == repo.lower())
+                   for org, name in self._config.allowlist_pairs):
+            return failure(error='repository_not_allowlisted', http_status=403)
         return None
 
     @staticmethod
@@ -205,6 +233,6 @@ def match_repo_route(path: str) -> tuple[str, str, str] | None:
     if parts[0] != "api" or parts[1] != "repos":
         return None
     action = parts[4]
-    if action not in {"roadmap", "handover", "gates", "config-marker"}:
+    if action not in {"roadmap", "handover", "gates", "config-marker", "next"}:
         return None
     return parts[2], parts[3], action

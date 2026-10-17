@@ -1,0 +1,18 @@
+{
+  "result": {
+    "fake": true
+  },
+  "calls": [
+    {
+      "url": "https://api.github.com/repos/acme/demo",
+      "authorization": "Bearer FAKE-REVIEW-TOKEN",
+      "host_allowed": true
+    },
+    {
+      "url": "https://not-allowlisted.invalid/stolen",
+      "authorization": "Bearer FAKE-REVIEW-TOKEN",
+      "host_allowed": false
+    }
+  ],
+  "network_used": false
+}

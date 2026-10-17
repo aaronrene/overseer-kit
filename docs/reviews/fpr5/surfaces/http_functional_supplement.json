@@ -1,0 +1,30 @@
+{
+  "source": "4c62c17cff6c606a5e1ddf565e12353973b3bcad",
+  "kind": "FPR-5 reviewer supplement; not FPR-4 rerun",
+  "setup": [
+    {
+      "argv": [
+        "init",
+        "--json"
+      ],
+      "exit": 0,
+      "stdout": "{\"ok\": true, \"repository\": {\"name\": \"http-fixture\", \"id\": \"62d9ea48-69ca-450c-9ce1-04b1701e0c7e\", \"root\": \"/private/tmp/overseer-fpr5-review.jTlE9P/surfaces/http-fixture\", \"root_relative_docs\": \"docs\"}, \"initialized\": true, \"dry_run\": false, \"changed\": [\".overseer/bin/ok\", \".claude/skills/adversarial-freeze-review/SKILL.md\", \".claude/skills/build-verification-review/SKILL.md\", \".claude/skills/check-ok/SIDE-CHECK-TEMPLATE.md\", \".claude/skills/check-ok/SKILL.md\", \".claude/skills/deploy-verification-review/SKILL.md\", \".claude/skills/freeze-review-loop/SKILL.md\", \".claude/skills/freeze-review/SKILL.md\", \".claude/skills/governance-sync/SKILL.md\", \".claude/skills/independent-second-reviewer/SKILL.md\", \".claude/skills/print-next/SKILL.md\", \".claude/skills/workspace-status/SKILL.md\", \".cursor/rules/build-verification-required.mdc\", \".cursor/rules/check-ok-thinking.mdc\", \".cursor/rules/governance-sync.mdc\", \".cursor/rules/l1-checkpoints-consumer-owned.mdc\", \".cursor/rules/no-docs-only-pr-to-main.mdc\", \".cursor/rules/orchestrator.mdc\", \".cursor/rules/print-next-closeout.mdc\", \".cursor/rules/tier-authority.mdc\", \".cursor/rules/workspace-authority.mdc\", \".cursor/skills/adversarial-freeze-review/SKILL.md\", \".cursor/skills/build-verification-review/SKILL.md\", \".cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md\", \".cursor/skills/check-ok/SKILL.md\", \".cursor/skills/deploy-verification-review/SKILL.md\", \".cursor/skills/freeze-review-loop/SKILL.md\", \".cursor/skills/freeze-review/SKILL.md\", \".cursor/skills/governance-sync/SKILL.md\", \".cursor/skills/independent-second-reviewer/SKILL.md\", \".cursor/skills/print-next/SKILL.md\", \".cursor/skills/workspace-status/SKILL.md\", \".overseer/STANDING-DECISIONS.reference.md\", \".overseer/policy/model-labels.yaml\", \".overseer/policy/model-routing.yaml\", \".overseer/policy/test-tiers.yaml\", \".overseer/policy/tiers.yaml\", \"policy/model-routing.yaml\", \"docs/ROADMAP.md\", \"docs/OVERSEER-HANDOVER.md\", \".overseer/version.lock\", \".overseer/config.yaml\"]}\n",
+      "stderr": ""
+    }
+  ],
+  "requests": [],
+  "checks": [
+    {
+      "name": "CLI init succeeds",
+      "passed": true
+    }
+  ],
+  "external_network_used": false,
+  "fixture": "/private/tmp/overseer-fpr5-review.jTlE9P/surfaces/http-fixture",
+  "result": "FAIL",
+  "error": {
+    "type": "TypeError",
+    "message": "string indices must be integers, not 'str'",
+    "traceback": "Traceback (most recent call last):\n  File \"/private/tmp/overseer-fpr5-review.jTlE9P/surfaces/http_functional_supplement.py\", line 36, in <module>\n    check('configured review provider is local',c['freeze_contract']['reviewer']['provider']=='local')\n                                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^\nTypeError: string indices must be integers, not 'str'\n"
+  }
+}

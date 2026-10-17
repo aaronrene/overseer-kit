@@ -7,6 +7,8 @@ from pathlib import Path
 import argparse
 import subprocess
 import sys
+import tempfile
+import json
 
 KIT = Path(__file__).resolve().parents[2]
 MUSE_SOURCE_SHA256 = '7b181b6eff6bde1b53105f2a7be7bd8937224988965d7462a3a6b04658f35e92'
@@ -25,7 +27,8 @@ def main():
             parser.error('source file missing: ' + relative)
     if Path(sys.prefix).resolve() != KIT / '.venv':
         parser.error('run with this source installation\'s .venv/bin/python')
-    command = [sys.executable, '-m', 'pytest', '-q', 'tests/v1', 'tests/retained']
+    command = [sys.executable, '-m', 'pytest', '-q', 'tests/v1', 'tests/fpr1', 'tests/fpr2', 'tests/fpr3']
+    command += json.loads((KIT / 'docs/validation/fpr3/retained-selection.json').read_text())
     if args.muse_python:
         python = args.muse_python
         if (not python.is_absolute() or python.parent.name != 'bin'
@@ -46,7 +49,7 @@ assert h.hexdigest() == sys.argv[1], 'Muse package source differs from reviewed 
 '''
         subprocess.run([str(python), '-I', '-B', '-c', probe, MUSE_SOURCE_SHA256], check=True)
         command += ['tests/muse', '--muse-python', str(python)]
-    command += ['-p', 'no:cacheprovider', '--junitxml', args.junitxml]
+    command += ['-p', 'no:cacheprovider', '--basetemp', tempfile.mkdtemp(prefix='overseer-ci-'), '--junitxml', args.junitxml]
     return subprocess.call(command, cwd=KIT)
 
 

@@ -1,0 +1,65 @@
+{
+  "scope": "FPR-4 author dependency fixture replacement; no production repair or independent review",
+  "source_head": "6289d2823184a63e2968d2c5f6a76abab5818368",
+  "runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "7d38764f026848d7d89d81abedfc62f1de5eefde6443d0032d770c2ff09a20d1"
+  },
+  "python": "3.14.4 (main, Apr  7 2026, 13:13:20) [Clang 17.0.0 (clang-1700.6.4.2)]",
+  "declared_dependency_versions": {
+    "PyYAML": "6.0.3",
+    "cryptography": "49.0.0",
+    "cffi": "2.1.0",
+    "pycparser": "3.0"
+  },
+  "requirements_sha256": "fe11b31f4640d2d3c1670a719d898f1f255e24c55aaeaba5a6a9a73da6b6ad9a",
+  "original_test_file": "tests/v1/test_adoption.py",
+  "original_sha256": "73365873fc47763d5504eab7a868464ee23fc93deb73cf557f6a664b90653d29",
+  "original_matches_head": true,
+  "successor": "tests/fpr4/test_standalone_dependencies.py::test_fresh_full_dependency_git_install_without_muse",
+  "successor_file_sha256": "7e63b485f9bd842611b61d58ac249a492bb49657a0bd5eb2fe0c5143d0888d15",
+  "cause": "Preserved bounded fixture provisions only yaml. Restored status now reaches routing/cost/governance/honesty provenance and imports cryptography, which is explicitly declared in requirements-v1.txt and pyproject.toml. Missing declared dependency; not Muse or an undeclared core dependency.",
+  "disposition": "Original remains unchanged and its failure is retained; explicit full-product successor provisions the declared pinned dependency set offline.",
+  "runs": [
+    {
+      "stage": "before",
+      "command": "PYTHONDONTWRITEBYTECODE=1 GIT_OPTIONAL_LOCKS=0 GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_NOSYSTEM=1 .venv/bin/python -B -m pytest -q -p no:cacheprovider tests/v1/test_adoption.py::test_fresh_standalone_git_install_without_muse --basetemp=/private/tmp/overseer-fpr4-standalone-before --junitxml=docs/validation/fpr4/standalone-before.xml > docs/validation/fpr4/standalone-before.log 2>&1",
+      "exit_code": 1,
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "1",
+          "skipped": "0",
+          "tests": "1",
+          "time": "3.425",
+          "timestamp": "2026-10-14T16:07:11.862602-07:00",
+          "hostname": "Carloss-MacBook-Pro.local"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "command": "PYTHONDONTWRITEBYTECODE=1 GIT_OPTIONAL_LOCKS=0 GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_NOSYSTEM=1 .venv/bin/python -B -m pytest -q -p no:cacheprovider tests/fpr4/test_standalone_dependencies.py --basetemp=/private/tmp/overseer-fpr4-standalone-after --junitxml=docs/validation/fpr4/standalone-after.xml > docs/validation/fpr4/standalone-after.log 2>&1",
+      "exit_code": 0,
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "1",
+          "time": "6.479",
+          "timestamp": "2026-10-14T16:08:01.636321-07:00",
+          "hostname": "Carloss-MacBook-Pro.local"
+        }
+      ]
+    }
+  ],
+  "production_changed": false,
+  "limitations": [
+    "Offline same-platform, same-interpreter distribution copies from the current conventional venv; not a wheel resolver or cross-platform portability claim",
+    "No Muse package, pip, pytest or network in fresh fixture environment"
+  ]
+}

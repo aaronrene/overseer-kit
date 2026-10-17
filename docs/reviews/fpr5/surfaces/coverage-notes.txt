@@ -1,0 +1,140 @@
+FPR-5 command/application subreview coverage (contributes to root's ONE verdict)
+
+Fixed source: 4c62c17cff6c606a5e1ddf565e12353973b3bcad.
+Repository: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014.
+Read-only closing identity check: correct Git root, branch feat/overseer-v1-recovery-20261014,
+configured name overseer-kit; git status --short empty. Conventional .venv Python 3.14.4.
+All new files and fixtures are under /private/tmp/overseer-fpr5-review.jTlE9P/surfaces.
+No repository source/ref changes, network/provider access, real consumers, or builds.
+
+Sources reviewed
+AGENTS.md; FULL-PRODUCT-RESTORATION-PLAN sections 4, 7, 8, 9, 10; FPR-3 maintained
+surface contract and validation evidence; FPR-4 combined report. Production tracing
+covered cli/main.py, product_commands.py, product_service.py, product_boundary.py,
+product_status.py, product_governance.py, product_workspace.py, product_landing.py,
+product_transport.py, retained review/check-ok/verify-step/ledger/honesty/route/compact/
+app/hosted/pr-land command boundaries; underlying checkpoint, review, ledger, hosted,
+app, Python desktop and native Tauri launch paths. This is source assessment, not a
+claim that every option or platform was independently exercised.
+
+Maintained registry and outcomes
+- cli/main.py:20,39-135 registers all 20 historical names and newer next-write/adopt/
+  mirror/hook. cli/product_commands.py:4-6,9-133 declares historical option families.
+  Main routes product operations through captured context (main.py:283-307), then
+  product_service.py:108-151 applies the shared request boundary. Bound adapter config
+  is returned by adapters/config.py:307-313 rather than reloaded independently.
+- init/sync/status/next foundations and newer adopt/mirror/upgrade-regime were traced
+  at dispatcher level; detailed config/authority/NEXT assessment belongs to root and
+  authority subreview. status -> product_status.sections includes footprint, routing,
+  cost, governance/gates/readiness and optional workspace observations.
+- review, check-ok, check-if-ok -> retained review/scaffold engines; dry-run, checklist,
+  local/API/human modes, explicit API permission, no-stamp and non-pass override pass
+  through the bound service. product_service.py:120-123 checks API permission;
+  commands/review.py:56-84 confines checklist/artifact, :193-218 invokes engine;
+  commands/check_ok.py:47-57 previews without scaffolding when requested.
+- governance-sync -> product_governance.run: local default plan, explicit write/local
+  feature-branch commit, separate push/network authorization; --print-next calls the
+  canonical display service. Source preserves NEXT, checks clean tree and re-captures
+  context after its own commit. No active legacy prompt generation was found here.
+- workspace status/check-next/doctor -> product_workspace.py:10-74 reads only an
+  explicitly configured manifest; absolute member roots, individual contexts, UUID
+  duplicate checks, regime checks, canonical NEXT and optional digest pins. Optional
+  failures stay visible; strict-all changes aggregate outcome. No writes present.
+- verify-step -> commands/verify_step.py and checkpoints/orchestrator.py, confined
+  manifests/policies/scripts and configured gates. One actual defect reproduced for
+  configured orchestrator dry-run below. Built-in real-script success/failure cases
+  exist in tests/fpr3/test_engines.py:12-34; not rerun by this subreview.
+- honesty-status and ledger append/verify/show -> retained evidence/role/signature/hash
+  engines through the same adapter/config and confined read/write boundary. No network
+  action is introduced by those handlers. Ledger append alone gets writable boundary.
+- route -> retained validation/resolution/cost engines; hints do not invoke providers.
+- land-check/land-closeout -> product_landing.py selected-authority checks, canonical
+  NEXT, path comparison or explicitly configured local verification script; closeout
+  remote enrichment needs explicit flags. pr-land additionally requires authorization,
+  network flag and explicit gh; existing target-selector defect is separately logged.
+  Configured post-land-sync is explicitly gated (commands/pr_land.py:48-55).
+- handover-compact -> retained dated-entry parser; preview default, keep >=5, local
+  archive/summary writes via bound atomic writer; canonical NEXT protected from writes.
+- app and hosted-dashboard -> real loopback/read-only servers rather than legacy CLI.
+  Native desktop invokes canonical CLI and health-checks root/UUID/runtime; no GUI
+  session or native platform acceptance was performed by this subreview.
+- legacy_main.main unconditionally refuses (cli/legacy_main.py:438-441); the archived
+  internal dispatcher also immediately raises (:444-446). No public legacy bypass was
+  found. Installed guidance search found canonical-next instructions, not active
+  HANDOVER scraping.
+
+Requested HTTP endpoint functional trace and evidence limits
+All routes appear in tools/app/server.py:136-157. Before dispatch, API requests have
+loopback peer, bearer authentication, POST CSRF, origin and bounded JSON/duplicate-key
+validation (:90-109,165-214). Query selectors are closed and duplicate queries rejected
+(:126-131). engine._capture validates current root/runtime/config against the server
+pin (tools/app/engine.py:9-22), and _invoke calls the unified parser/service (:29-46).
+- POST /api/review/freeze: engine.py:117-128 restricts field names/types, defaults to
+  dry_run, allows explicit no_stamp/network, then invokes review. Source reaches the
+  same confined artifact/checklist and stamping policy as CLI. Existing FPR-3 HTTP
+  test asserts only a rejected outside artifact for this route (test_surfaces.py:56-57).
+- GET /api/gates: engine.py:87-91 calls bound full status, returns governance_gates
+  when available, preserving binding-error envelope when there is no result. Its
+  success indicates retrieval; gate pending details remain in the returned payload.
+- POST /api/ledger/verify: engine.py:144-147 requires empty body and invokes ledger
+  verify; commands/ledger.py:120-143 calls verify_ledger_file and propagates exit code.
+  product_service.py:145-150 builds a response even when handler emits no JSON payload.
+- POST /api/honesty-status: engine.py:159-167 validates closed string-valued fields,
+  builds CLI options, and invokes honesty-status. commands/honesty_status.py:58-80
+  reaches the retained engine and emits its structured exit/gate result. No missing
+  success return was found in this source trace.
+No new actual HTTP success test was run for these four endpoints. Their source paths
+are reachable; that is not independent evidence of successful HTTP composition.
+Existing successful CLI engine cases do not close a missing HTTP evidence cell.
+No actual defect was established for these four endpoints solely from that absence.
+
+Confirmed configured-orchestrator dry-run defect (suggested P2)
+A fresh disposable initialized fixture was configured with checkpoints enabled and a
+valid executable scripts/override.py as checkpoints.orchestrator. Actual cli/ok -C
+FIXTURE verify-step --all --dry-run --json exited 2, stderr:
+  refused: script_execution_requires_explicit_bound_mutation
+The fixture script was NOT executed. tools/checkpoints/orchestrator.py:190-197 selects
+the override before the built-in dry-run return; :577-586 adds --dry-run but still calls
+the production executor. product_service.py:100-105 marks dry-run read-only, and
+checkpoints/executor.py:44-50 rejects it. Thus a supported configured override cannot
+produce the documented no-execution plan. Requirement: plan section 4 verification/
+checkpoints, section 9 full workflow parity with enabled settings, and
+FPR-3-PRODUCT-SURFACES.md:36-39 ('--dry-run plans without execution'). Repair should
+return a plan before executor invocation, preserving the refusal of actual dry-run
+script execution. Repro and exact captured stdout/stderr: repro_cli.py, repro_cli.log,
+repro_cli_result.json. The same script includes previously completed fake-gh cases;
+do not rerun unnecessarily just to reproduce the isolated checkpoint failure.
+
+Tauri resource-membership corroboration (for authority subreview)
+No build performed. desktop/src-tauri/tauri.conf.json:28-30 maps the entire
+resources/kit/ directory to kit/. Cargo.lock:3106-3107 pins local tauri-utils 2.9.3.
+Locally installed tauri-utils-2.9.3/src/resources.rs:262-277 expands a directory using
+WalkDir without hidden filtering; :172-183 skips directories only; :196-205 retains
+relative file names. tauri-build-2.6.3/src/lib.rs:570-572 passes allow_walk=true for the
+map and :88-110 copies yielded files. This corroborates authority agent's result that
+unmanifested .overseer/config.yaml, docs/NEXT.md and tools/.env in that resource tree
+would be packaged despite its successful current verify-tree check. Resource .venv
+is an intended distinct packaging requirement and was not treated as the defect.
+
+Follow-up reviewer HTTP supplement (separate from fixed FPR-4 evidence)
+Root subsequently requested actual success checks for status/CLI parity, gates/status
+parity, local review dry-run, ledger show/verify and positive honesty evidence match.
+The prepared supplement uses existing bound app helpers, a new isolated fixture and
+127.0.0.1:0; it explicitly rejects non-loopback create_connection destinations. No
+external/provider activity was attempted.
+- Attempt 1: reviewer fixture setup TypeError from assuming serialized reviewer is a
+  mapping; the normal supported legacy string is normalized to local provider. Raw
+  script/log/JSON retained as http_functional_supplement.{py,log,json}.
+- Attempt 2: reviewer fixture used a sha256: prefix for ordinary verdict artifact hash;
+  honesty-status correctly returned exit20 missing_verdict because that field expects
+  bare hex. Raw attempt retained as http_functional_supplement-r2.{py,log,json}.
+- Attempt 3: corrected fixture passed eight setup assertions: real CLI init, local
+  provider check, exact synthetic artifact bytes, ledger append/show, scoped scaffold,
+  successful honesty match for distinct synthetic producer/verifier IDs and status.
+  Real app startup then failed at socket.bind(('127.0.0.1',0)) with PermissionError
+  [Errno 1] Operation not permitted. Process exit1; result BLOCKED; zero HTTP requests.
+  Full raw records: http_functional_supplement-r3.py, -r3.log and -r3.json.
+The requested HTTP success supplement is blocked by loopback sandbox permission,
+not a detected endpoint implementation failure. No endpoint PASS, equality comparison,
+or read-only preservation claim is inferred from a test that did not reach requests.
+FPR-4 records remain unchanged. No escalation or external network expansion attempted.

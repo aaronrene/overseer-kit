@@ -1,0 +1,642 @@
+{
+  "schema": 1,
+  "source": {
+    "path": "/Users/aaronrenecarvajal/.cursor/extensions/openai.chatgpt-26.908.40401-darwin-arm64/webview/assets/app-initial-bca4f920746a.js",
+    "sha256": "9c43854dc714687bbbdab5895bc084a09681b97c998b3f612e30a7aeac97bfec",
+    "bytes": 6022063
+  },
+  "offset_convention": "Zero-based UTF-8 byte offsets; end exclusive; character offsets are JavaScript UTF-16 code unit offsets.",
+  "extraction": "Acorn AST declarations/methods/constant assignments; no behavior executed during extraction",
+  "excerpts": {
+    "n7e": {
+      "kind": "function",
+      "character_start": 2017741,
+      "character_end_exclusive": 2017935,
+      "byte_start": 2054768,
+      "byte_end_exclusive": 2054962,
+      "line": 1794,
+      "sha256": "9c64ce825b4a41478a9c22787f46d4a6c8ffdb60c380f1a9edfbd243ff888302",
+      "text": "function n7e(e){switch(e.type){case`dangerFullAccess`:return`danger-full-access`;case`readOnly`:return`read-only`;case`workspaceWrite`:return`workspace-write`;case`externalSandbox`:return null}}"
+    },
+    "r7e": {
+      "kind": "function",
+      "character_start": 2017935,
+      "character_end_exclusive": 2018064,
+      "byte_start": 2054962,
+      "byte_end_exclusive": 2055091,
+      "line": 1794,
+      "sha256": "b0c8a9fad6e60a6df1fdaa005d4cde92b682f830347fb3660b67c886b299176d",
+      "text": "function r7e(e){return e.activePermissionProfile==null?{sandbox:n7e(e.sandboxPolicy)}:{permissions:e.activePermissionProfile.id}}"
+    },
+    "pV": {
+      "kind": "function",
+      "character_start": 2018193,
+      "character_end_exclusive": 2018243,
+      "byte_start": 2055220,
+      "byte_end_exclusive": 2055270,
+      "line": 1794,
+      "sha256": "48ec24d954dee58bc05ea28016f67b951b40efafff4edd0b40638e98771ebb96",
+      "text": "function pV(e){return e.runtimeWorkspaceRoots??[]}"
+    },
+    "mV": {
+      "kind": "function",
+      "character_start": 2019467,
+      "character_end_exclusive": 2019861,
+      "byte_start": 2056494,
+      "byte_end_exclusive": 2056888,
+      "line": 1794,
+      "sha256": "9b76d38491a38af6f790e9d9c385e05a2ff0022fd0f05338e1fb079e947cf55b",
+      "text": "function mV(e,t,n,r=`user`,i=t==null?{id:`:workspace`,extends:null}:null){return{activePermissionProfile:i,runtimeWorkspaceRoots:e,sandboxPolicy:{type:`workspaceWrite`,writableRoots:[...e,...t?.writable_roots??[]],excludeSlashTmp:t?.exclude_slash_tmp??!1,excludeTmpdirEnvVar:t?.exclude_tmpdir_env_var??!1,networkAccess:t?.network_access??!1},approvalPolicy:n??`on-request`,approvalsReviewer:r}}"
+    },
+    "SV": {
+      "kind": "function",
+      "character_start": 2025575,
+      "character_end_exclusive": 2025892,
+      "byte_start": 2062602,
+      "byte_end_exclusive": 2062919,
+      "line": 1794,
+      "sha256": "e21e970390c487602ee68397d1e27987cb25802a73021223b11d7539f2078e67",
+      "text": "function SV(e,t){if(e===CV)return!0;let n=e9e[t];if(n==null||e==null||!bV(e))return!1;if(t===`compactionImageBudget`){if(e.startsWith(`0.149.0-alpha.4.`))return yV(e,`0.149.0-alpha.4.3`)>=0;if(e.startsWith(`0.149.0-alpha.7.`))return yV(e,`0.149.0-alpha.7.3`)>=0;if(e.startsWith(`0.150.0-`))return!1}return yV(e,n)>=0}"
+    },
+    "CV": {
+      "kind": "constant",
+      "character_start": 2026065,
+      "character_end_exclusive": 2026075,
+      "byte_start": 2063092,
+      "byte_end_exclusive": 2063102,
+      "line": 1794,
+      "sha256": "3762accd3055258b40f71367e4c87f5ea42776ffdddcd0169b384bbebe31e165",
+      "text": "CV=`0.0.0`"
+    },
+    "e9e": {
+      "kind": "constant",
+      "character_start": 2026076,
+      "character_end_exclusive": 2027202,
+      "byte_start": 2063103,
+      "byte_end_exclusive": 2064229,
+      "line": 1794,
+      "sha256": "bf3983c846d3fd0eef4f9906a4df549500f78b9ef5449b6b83867506f28659bf",
+      "text": "e9e={applyPatchPreserveLineEndings:`0.148.0-alpha.6`,appRead:`0.145.0-alpha.19`,compactionImageBudget:`0.149.1`,cyberAccessProgram:`0.150.0-alpha.11`,daybreakEnabled:`0.154.0-alpha.6`,mcpToolExposure:`0.147.0`,mcpToolCallAppContext:`0.142.0-alpha.3`,misalignmentReview:`0.151.0-alpha.1`,diagnostics:`0.148.0-alpha.3`,defaultPaginatedHistory:`0.150.0-alpha.10`,deferredToolWorldState:`0.146.0-alpha.6`,mcpEventStream:`0.150.0-alpha.1`,mcpOauthLoginThreadId:`0.143.0-alpha.26`,mcpOauthRefreshCoordination:`0.154.0-alpha.1`,mcpResourceReadOriginCallId:`0.148.0-alpha.22`,mcpStructuredErrors:`0.151.0-alpha.7`,pluginMcpConfigOverrides:`0.151.0-alpha.1`,guardianV2StructuredConfig:`0.148.0-alpha.18`,recommendedPlugins:`0.147.0-alpha.1`,projects:`0.148.0-alpha.21`,providerModelFallback:`0.143.0-alpha.26`,threadQueue:`0.148.0-alpha.14`,threadRevert:`0.148.0-alpha.13`,threadTimeline:`0.150.0-alpha.9`,threadRealtimeExistingCall:`0.150.0-alpha.3`,tokenBudgetHistoryNotes:`0.150.0-alpha.2`,turnTrigger:`0.150.0-alpha.10`,turnToolOutput:`0.151.0-alpha.4`,turnApprovalsReviewer:`0.153.0-alpha.4`,serviceTierForTurn:`0.150.0-alpha.10`}"
+    },
+    "IV": {
+      "kind": "function",
+      "character_start": 2033678,
+      "character_end_exclusive": 2033702,
+      "byte_start": 2070705,
+      "byte_end_exclusive": 2070729,
+      "line": 1796,
+      "sha256": "da25901005feb5111b1eea5d434a5b791095c4fc7b82cd0a4ba72c9a55039bd8",
+      "text": "function IV(e){return e}"
+    },
+    "pH": {
+      "kind": "function",
+      "character_start": 2058751,
+      "character_end_exclusive": 2058785,
+      "byte_start": 2095778,
+      "byte_end_exclusive": 2095812,
+      "line": 1856,
+      "sha256": "e828722518a0976613aa0579c17684ceec8d9bd153324fde65425f93d24ea2d1",
+      "text": "function pH(e){return Cnt.test(e)}"
+    },
+    "mH": {
+      "kind": "function",
+      "character_start": 2058785,
+      "character_end_exclusive": 2058832,
+      "byte_start": 2095812,
+      "byte_end_exclusive": 2095859,
+      "line": 1856,
+      "sha256": "0db43c226c681338bc8af680344693299971821e90ab37b5c4f0ba9c431bcd02",
+      "text": "function mH(e){return Tnt.test(e)||Ent.test(e)}"
+    },
+    "xnt": {
+      "kind": "function",
+      "character_start": 2059209,
+      "character_end_exclusive": 2059374,
+      "byte_start": 2096236,
+      "byte_end_exclusive": 2096401,
+      "line": 1856,
+      "sha256": "a325d5d6368824dac62337eda30c05a6d71f71171a92d8a5914d054b44a0851f",
+      "text": "function xnt(e,t){let n=_H(e),r=_H(t);if(n===r)return!0;let i=Snt(n),a=Snt(r);return i!=null&&a!=null&&(i.explicit||a.explicit)&&i.comparablePath===a.comparablePath}"
+    },
+    "Cnt": {
+      "kind": "constant",
+      "character_start": 2059899,
+      "character_end_exclusive": 2059920,
+      "byte_start": 2096926,
+      "byte_end_exclusive": 2096947,
+      "line": 1856,
+      "sha256": "a22464c0dda7e66ce82ed4cfd2cf61de51c99bd38b738ebea762f83eaba892f7",
+      "text": "Cnt=/^[A-Za-z]:[\\\\/]/"
+    },
+    "Tnt": {
+      "kind": "constant",
+      "character_start": 2059945,
+      "character_end_exclusive": 2059970,
+      "byte_start": 2096972,
+      "byte_end_exclusive": 2096997,
+      "line": 1856,
+      "sha256": "a9c1d3c6e3b4bd5ebecde2d720b4fac85834eb636795b92f4d4f4c00a04e7bc2",
+      "text": "Tnt=/^\\\\\\\\[^\\\\]+\\\\[^\\\\]+/"
+    },
+    "Ent": {
+      "kind": "constant",
+      "character_start": 2059971,
+      "character_end_exclusive": 2059994,
+      "byte_start": 2096998,
+      "byte_end_exclusive": 2097021,
+      "line": 1856,
+      "sha256": "e3845c0f4c3acc49f86c26fe9cc8db5fdc25ed7c30801974486fb7bceb76b092",
+      "text": "Ent=/^\\/\\/[^/]+\\/[^/]+/"
+    },
+    "uot": {
+      "kind": "function",
+      "character_start": 2102909,
+      "character_end_exclusive": 2103674,
+      "byte_start": 2139936,
+      "byte_end_exclusive": 2140701,
+      "line": 1908,
+      "sha256": "54f5d6ba7a64905a9883567d9ae0ef2b4c0861f4f9ae763e6f320e63dc9c1586",
+      "text": "function uot(e,t){if(!e)return e;let n=e;if(n.apply_patch_preserve_line_endings!=null&&!SV(t,`applyPatchPreserveLineEndings`)){let{apply_patch_preserve_line_endings:e,...t}=n;n=t}if(n.compaction_image_budget!=null&&!SV(t,`compactionImageBudget`)){let{compaction_image_budget:e,...t}=n;n=t}if(n.deferred_tool_world_state!=null&&!SV(t,`deferredToolWorldState`)){let{deferred_tool_world_state:e,...t}=n;n=t}if(n.mcp_oauth_refresh_coordination!=null&&!SV(t,`mcpOauthRefreshCoordination`)){let{mcp_oauth_refresh_coordination:e,...t}=n;n=t}if(e.recommended_plugins!=null&&!SV(t,`recommendedPlugins`)){let{recommended_plugins:e,...t}=n;n=t}let r=n[qH];return typeof r==`object`&&r&&!Array.isArray(r)&&(SV(t,`guardianV2StructuredConfig`)||(n={...n,[qH]:r.enabled===!0})),n}"
+    },
+    "dot": {
+      "kind": "function",
+      "character_start": 2103674,
+      "character_end_exclusive": 2103768,
+      "byte_start": 2140701,
+      "byte_end_exclusive": 2140795,
+      "line": 1908,
+      "sha256": "144d285bcb2881559343f7529305bafdc8efc30cfbd92661ddc811a99683af00",
+      "text": "function dot(e,t){return!t||Object.keys(t).length===0?e:{...e,config:{...fot(t),...e.config}}}"
+    },
+    "QH": {
+      "kind": "constant",
+      "character_start": 2115621,
+      "character_end_exclusive": 2115633,
+      "byte_start": 2152648,
+      "byte_end_exclusive": 2152660,
+      "line": 1916,
+      "sha256": "b24acd63ff89b9f61f491497bfaf1f7c961a141275fcf9dce69a1cfefcd8c156",
+      "text": "QH=`durable`"
+    },
+    "ilt": {
+      "kind": "function",
+      "character_start": 2134041,
+      "character_end_exclusive": 2134784,
+      "byte_start": 2171068,
+      "byte_end_exclusive": 2171811,
+      "line": 1916,
+      "sha256": "325a49a1d17d5ab05ee77d6d84d4684647efcf9bbcf1cedbee2cdff178f65ce3",
+      "text": "async function ilt(e,t,n,r,i,a,o,s=i?.approvalsReviewer??`user`,c){let l={},u=await n(),d;if(u!=null){d=wU;let{baseUrl:e,secret:t}=u;l.model_provider=wU,l[`model_providers.${wU}`]={name:olt,base_url:e,experimental_bearer_token:t,wire_api:`responses`}}else d=null;let f=alt(c?.permissionSelection??null,i);if(a){let e=await a();if(e)for(let[t,n]of Object.entries(e))l[t]=n}return{cwd:r,model:e,modelProvider:d,serviceTier:t,config:l,approvalsReviewer:s??void 0,...f,...i?.activePermissionProfile==null?{}:{runtimeWorkspaceRoots:pV(i)},personality:o??null,ephemeral:null,baseInstructions:c?.baseInstructions??null,threadSource:c?.threadSource===void 0?`user`:c.threadSource,mockExperimentalField:null,experimentalRawEvents:!1,dynamicTools:null}}"
+    },
+    "alt": {
+      "kind": "function",
+      "character_start": 2134784,
+      "character_end_exclusive": 2134881,
+      "byte_start": 2171811,
+      "byte_end_exclusive": 2171908,
+      "line": 1916,
+      "sha256": "da4a98385608d1b79c1f96b8c4474fcb1641a81ea47a742774e9e2b56fe33b1d",
+      "text": "function alt(e,t){return e==null?t==null?null:{approvalPolicy:t.approvalPolicy,...r7e(t)}:nlt(e)}"
+    },
+    "SY": {
+      "kind": "constant",
+      "character_start": 2754611,
+      "character_end_exclusive": 2754617,
+      "byte_start": 2791648,
+      "byte_end_exclusive": 2791654,
+      "line": 1930,
+      "sha256": "feb9ac1a9a8a1521e5848c87a82f19d5a3987223f6b64c6f658e35c02fe472bf",
+      "text": "SY=3e4"
+    },
+    "JX": {
+      "kind": "function",
+      "character_start": 2823010,
+      "character_end_exclusive": 2823101,
+      "byte_start": 2860047,
+      "byte_end_exclusive": 2860138,
+      "line": 1935,
+      "sha256": "c33803f5c42dee21128f6d2e8c8b62d6ede5bc98bf5d19eec18621ae9d969671",
+      "text": "function JX(e){return e.turnHistory?.kind===`canonical`?lWt(e.turnHistory.history):e.turns}"
+    },
+    "QX": {
+      "kind": "function",
+      "character_start": 2823908,
+      "character_end_exclusive": 2823955,
+      "byte_start": 2860945,
+      "byte_end_exclusive": 2860992,
+      "line": 1935,
+      "sha256": "236dd439eb3058aafe97003ad9055343f99cb76b29dc14baca53bd7b2f187338",
+      "text": "function QX(e){return hWt(e,e=>e.turnId!=null)}"
+    },
+    "hWt": {
+      "kind": "function",
+      "character_start": 2824423,
+      "character_end_exclusive": 2824745,
+      "byte_start": 2861460,
+      "byte_end_exclusive": 2861782,
+      "line": 1935,
+      "sha256": "18ac23bd321660f9c9e24d7e932f664060dc3180a603d87f0ffe0a0df92781dd",
+      "text": "function hWt(e,t){if(e.turnHistory?.kind===`canonical`){let{history:n}=e.turnHistory,r=KX(n);if(r!=null)for(let e=r.entries.length-1;e>=0;--e){let i=r.entries[e]?.value,a=i==null?null:n.entitiesByKey[i];if(a!=null&&t(a))return a}}let n=JX(e);for(let e=n.length-1;e>=0;--e){let r=n[e];if(r!=null&&t(r))return r}return null}"
+    },
+    "qKt": {
+      "kind": "function",
+      "character_start": 2900929,
+      "character_end_exclusive": 2901983,
+      "byte_start": 2937968,
+      "byte_end_exclusive": 2939022,
+      "line": 1936,
+      "sha256": "496fbca79f7ab02be7c9f5aac9d6421058447bb7a384598c13e6e72781ebf980",
+      "text": "function qKt(e){return{id:e.conversationId,forkedFromId:e.forkedFromId??null,hostId:e.hostId,turns:[],requests:[],createdAt:e.createdAt,updatedAt:e.updatedAt,recencyAt:e.recencyAt??e.updatedAt,title:e.title,generatedTitle:e.generatedTitle,originator:e.originator,source:e.source??void 0,agentNickname:e.agentNickname,threadSource:e.threadSource,historyMode:e.historyMode,parentThreadId:e.parentThreadId==null?null:IV(e.parentThreadId),mode:e.mode??`default`,threadStartKind:e.threadStartKind??`default`,modelProvider:e.modelProvider,daybreakEnabled:e.daybreakEnabled,latestModel:``,latestReasoningEffort:null,previousTurnModel:null,latestCollaborationMode:{mode:`default`,settings:{developer_instructions:null,model:``,reasoning_effort:null}},hasUnreadTurn:e.hasUnreadTurn,threadGoal:null,threadRuntimeStatus:e.threadRuntimeStatus,rolloutPath:``,gitInfo:e.gitInfo,resumeState:`needs_resume`,latestTokenUsageInfo:null,workspaceKind:e.workspaceKind,cwd:e.cwd??void 0,environments:e.environments,environmentSelectionEvidence:e.environmentSelectionEvidence}}"
+    },
+    "YZ": {
+      "kind": "function",
+      "character_start": 2937653,
+      "character_end_exclusive": 2937885,
+      "byte_start": 2974744,
+      "byte_end_exclusive": 2974976,
+      "line": 1947,
+      "sha256": "488fa0e8a7c47ff765d529b18971d686b7a3135148010de2f2a58ec67863bbbd",
+      "text": "function YZ(e){let t=e.createdAt*1e3,n=Number.isFinite(t)?t:Date.now(),r=e.updatedAt*1e3,i=Number.isFinite(r)?r:n,a=e.recencyAt==null?null:e.recencyAt*1e3;return{createdAt:n,updatedAt:i,recencyAt:a!=null&&Number.isFinite(a)?a:null}}"
+    },
+    "XZ": {
+      "kind": "function",
+      "character_start": 2937885,
+      "character_end_exclusive": 2937986,
+      "byte_start": 2974976,
+      "byte_end_exclusive": 2975077,
+      "line": 1947,
+      "sha256": "c46f9d14441c274c2a232f49d7fe98bfbc908d684c7252d63c2edacf7d3e9759",
+      "text": "function XZ({currentRecencyAt:e,threadRecencyAt:t,updatedAt:n}){return t==null?e??n:Math.max(e??t,t)}"
+    },
+    "QZ": {
+      "kind": "function",
+      "character_start": 2938005,
+      "character_end_exclusive": 2938367,
+      "byte_start": 2975096,
+      "byte_end_exclusive": 2975458,
+      "line": 1947,
+      "sha256": "7550f47c1beee7a54b27cbbd60d59540b502915cb0e2082a566975c1976c5f16",
+      "text": "function QZ(e,t,n){return e.environments==null||n===`stored`&&(t?.environmentSelectionEvidence?.source===`live`||(t?.environmentSelectionEvidence?.updatedAt??-1/0)>=e.updatedAt)?{environments:t?.environments,environmentSelectionEvidence:t?.environmentSelectionEvidence}:{environments:e.environments,environmentSelectionEvidence:{source:n,updatedAt:e.updatedAt}}}"
+    },
+    "readThread": {
+      "kind": "method",
+      "character_start": 2977261,
+      "character_end_exclusive": 2978272,
+      "byte_start": 3014352,
+      "byte_end_exclusive": 3015363,
+      "line": 1947,
+      "sha256": "a824a054d47936afdae48b7de3979bf0bd70aec4ddc0fbd42424cfa01d4c699d",
+      "text": "readThread(e,{includeTurns:t=!1,requestOptions:n}={}){let r=IV(e),i=e=>(this.updateConversationState(r,t=>{Object.assign(t,QZ(e.thread,t,`stored`))}),e),a=this.threadReadStates.get(r);if(a instanceof Error)return Promise.reject(a);let o={threadId:e,includeTurns:t};if(this.params.hostId!==`durable`&&!t&&n?.priority===`background`)return this.backgroundThreadLookups.read(e,()=>this.params.requestClient.sendRequest(`thread/read`,o,n)).then(i);this.backgroundThreadLookups.delete(e);let s=n==null?this.params.requestClient.sendRequest(`thread/read`,o):this.params.requestClient.sendRequest(`thread/read`,o,n);if(this.params.hostId!==`durable`)return s.then(i);let c=a??s;if(this.threadReadStates.set(r,c),this.threadReadStates.size>500){let e=this.threadReadStates.keys().next().value;e!=null&&this.threadReadStates.delete(e)}return s.then(e=>(this.recordThreadAvailability(r),i(e)),e=>{throw e instanceof Error&&Uht(e)===`thread_not_found`&&this.threadReadStates.get(r)===c&&this.threadReadStates.set(r,e),e})}"
+    },
+    "FQ": {
+      "kind": "function",
+      "character_start": 3132985,
+      "character_end_exclusive": 3133039,
+      "byte_start": 3170076,
+      "byte_end_exclusive": 3170130,
+      "line": 1965,
+      "sha256": "ba28257cd967c61c050d0f1aa5d3d80560e124d367cea01026d7f5e2a3235294",
+      "text": "function FQ(e){return e?.trim().match(Q0t)?.[1]??null}"
+    },
+    "Q0t": {
+      "kind": "constant",
+      "character_start": 3133058,
+      "character_end_exclusive": 3133195,
+      "byte_start": 3170149,
+      "byte_end_exclusive": 3170286,
+      "line": 1965,
+      "sha256": "89b23edcc38fdc6eb163570cdf0120ed42a2d1fe3d3a270533705e9c49be6ba9",
+      "text": "Q0t=/^(.*(?:^|[\\\\/])Documents[\\\\/]+Codex)[\\\\/]+(?:\\d{4}-\\d{2}-\\d{2}-[a-z0-9][a-z0-9-]*|\\d{4}-\\d{2}-\\d{2}[\\\\/]+[a-z0-9][a-z0-9-]*)[\\\\/]*$/"
+    },
+    "LQ": {
+      "kind": "function",
+      "character_start": 3133342,
+      "character_end_exclusive": 3133668,
+      "byte_start": 3170433,
+      "byte_end_exclusive": 3170759,
+      "line": 1965,
+      "sha256": "1091a8fda0179455e27c18e5622b06ebed1265b48c23b7fd500f651fd8305fa8",
+      "text": "function LQ({cwd:e,fallbackCwd:t,workspaceBrowserRoot:n,workspaceKind:r}){if(r!==`projectless`)return e??t;let i=n==null||n===`~`?t:n;if(i==null||i===`~`)return e===`~`?null:e??null;let a=fH(i).replace(/\\/+$/,``);if(a===``)return null;if(e==null)return i;let o=fH(e).replace(/\\/+$/,``);return o===a||o.startsWith(`${a}/`)?e:i}"
+    },
+    "RQ": {
+      "kind": "function",
+      "character_start": 3133668,
+      "character_end_exclusive": 3133761,
+      "byte_start": 3170759,
+      "byte_end_exclusive": 3170852,
+      "line": 1965,
+      "sha256": "12608ca41e617abd3d7c0b92dd3ccd42d05f189c39847987d32f7e83d1584f03",
+      "text": "function RQ(e){return e?.type===`workspaceWrite`?e.writableRoots.find(e=>e!==`~`)??null:null}"
+    },
+    "e2t": {
+      "kind": "function",
+      "character_start": 3133761,
+      "character_end_exclusive": 3133895,
+      "byte_start": 3170852,
+      "byte_end_exclusive": 3170986,
+      "line": 1965,
+      "sha256": "a638d17746f562cc307a515b70a5a7569892ca19b9802008ae072d37073075ea",
+      "text": "function e2t({sandboxPolicy:e,workspaceKind:t}){return t!==`projectless`||e.type!==`workspaceWrite`||RQ(e)!=null?e:hV().sandboxPolicy}"
+    },
+    "S2t": {
+      "kind": "function",
+      "character_start": 3141903,
+      "character_end_exclusive": 3142158,
+      "byte_start": 3178994,
+      "byte_end_exclusive": 3179249,
+      "line": 1972,
+      "sha256": "c51f7e928247e2cccfe957f3c2cd289893bf3a6af825120b4fdfa501bc4eeef2",
+      "text": "async function S2t(e,t,n){if(e==null)return null;try{if((await n()).requirements?.featureRequirements?.fast_mode===!1)return null}catch(e){return t.warning(`Failed to load config requirements for service tier`,{safe:{},sensitive:{error:e}}),null}return e}"
+    },
+    "w2t": {
+      "kind": "function",
+      "character_start": 3142178,
+      "character_end_exclusive": 3144637,
+      "byte_start": 3179269,
+      "byte_end_exclusive": 3181728,
+      "line": 1972,
+      "sha256": "c07f970c60dab4d8411a4ee60f258e0ad12ea5439eef5e2615b5078c005de8fd",
+      "text": "async function w2t(e,t,n=`critical`){let{requestClient:r,logger:i}=t,a=await S2t(e.serviceTier,i,()=>r.sendRequest(`configRequirements/read`,void 0,{priority:n,timeoutMs:SY})),o=await ilt(e.model,a,t.fetchProxyConfig,e.cwd,e.permissionsConfig,t.fetchCodexConfig,e.personality,e.approvalsReviewer,{baseInstructions:e.baseInstructions,permissionSelection:e.permissionSelection,threadSource:e.threadSource}),s=e.instructionOverrides;if(e.allowMemoryPromptOverrides&&(s?.memoryReadPrompt!=null||s?.memoryPhaseOnePrompt!=null||s?.memoryPhaseTwoPrompt!=null)&&(o.config={...o.config,...s.memoryReadPrompt==null?{}:{\"memories.read_prompt\":s.memoryReadPrompt},...s.memoryPhaseOnePrompt==null?{}:{\"memories.phase_one_prompt\":s.memoryPhaseOnePrompt},...s.memoryPhaseTwoPrompt==null?{}:{\"memories.phase_two_prompt\":s.memoryPhaseTwoPrompt}}),o=dot(o,uot(e.defaultFeatureOverrides,r.getAppServerVersion())),t.readShellEnvironment!=null&&(o=await E2t(o,e.cwd,t.readShellEnvironment,async()=>e.hostConfig??zQ((await r.sendRequest(`config/read`,{cwd:e.cwd,includeLayers:!1},{priority:n})).config),i)),t.readDynamicTools!=null){let n=await t.readDynamicTools();o.dynamicTools=void 0,e.registerDynamicTools!==!1&&(o.dynamicTools=e.usesDesktopMcp?[]:xat(n)),e.usesDesktopMcp&&(o.config={...o.config,[bat(r.getAppServerVersion())]:n.flatMap(e=>e.type===`namespace`?e.tools.map(({name:e})=>e):[e.name])})}if(t.readDeveloperInstructions!=null){let n=await t.readDeveloperInstructions({baseInstructions:o.developerInstructions??void 0,cwd:o.cwd??e.cwd,includeProseDetailLevelInstructions:e.includeProseDetailLevelInstructions,instructionOverrides:s?.desktopContextSection!=null||s?.workspaceDependenciesSection!=null?{desktopContextSection:s.desktopContextSection,workspaceDependenciesSection:s.workspaceDependenciesSection}:null,sidebarSectionToolsEnabled:e.sidebarSectionToolsEnabled,threadId:e.threadId??null,threadToolsEnabled:e.defaultFeatureOverrides?.thread_tools===!0,hostId:r.hostId});o.developerInstructions=e.automaticTitleCheckpoints?`${n.instructions}\\n\\n${c2t}`.trim():n.instructions}if(e.writingBlockInstructions){let t=e.presentationOutlineInstructions?`${u2t}\\n\\n${d2t}`:u2t;o.developerInstructions=o.developerInstructions?`${o.developerInstructions}\\n\\n${t}`:t}return e.additionalDeveloperInstructions!=null&&(o.developerInstructions=o.developerInstructions?`${o.developerInstructions}\\n\\n${e.additionalDeveloperInstructions}`:e.additionalDeveloperInstructions),o}"
+    },
+    "T2t": {
+      "kind": "function",
+      "character_start": 3144637,
+      "character_end_exclusive": 3144913,
+      "byte_start": 3181728,
+      "byte_end_exclusive": 3182004,
+      "line": 1972,
+      "sha256": "ee6a7fab57d25b62c0127f61138d00558ee472b090febd5d8cd527a640042a65",
+      "text": "function T2t(e,t,n,r){let i=e;return(t==null||typeof t.approvalPolicy==`object`&&`granular`in t.approvalPolicy)&&(i={...e,config:{...e.config,\"features.request_permissions_tool\":!0}}),i.ephemeral!==!0&&(n===`paginated`||SV(r,`defaultPaginatedHistory`))?{...i,historyMode:n}:i}"
+    },
+    "M2t": {
+      "kind": "function",
+      "character_start": 3146168,
+      "character_end_exclusive": 3149660,
+      "byte_start": 3183259,
+      "byte_end_exclusive": 3186751,
+      "line": 1972,
+      "sha256": "67559b3a9cb423349b7229fede4d23c4e01183d3f125001e3739f28eb9f4577e",
+      "text": "function M2t(e,t,n,r,i,a){return{beginHydration:e.beginHydration,readCatalogEntry:e.readCatalogEntry,history:{mapResumeResponse:(e,t)=>r.mapThreadTurns(Dqt(e,t))},workspace:{projectlessPathSentinel:`~`,getCwd:LQ,getSandboxPolicy:e2t,getWritableRoot:RQ,arePathsEquivalent:xnt},getThreadStartKind(e){return null},useCompactHistory(e){return!1},async prepare(r){let{conversation:o,params:s,permissions:c,workspaceRoots:l}=r;e.restricted;let u=e.readShellEnvironment,d=e.readDynamicTools;if(t.hostId===`durable`&&s.preserveServerConfiguration===!0)return{start:{},defaultFeatureOverrides:null,requestOptions:r.requestOptions,backgroundRequestOptions:void 0,preserveServerPermissions:!0,canInferMissingRuntimeWorkspaceRoots:!1,canReuseRunningThread:!0,independentHistory:null,useTurnsPageFallback:!1,drainRemainingHistory:!0,completeRequest:({threadId:e,excludeTurns:t,initialTurnsPage:n})=>({threadId:e,excludeTurns:t,initialTurnsPage:n}),async getResult(e){return{model:e.model.trim()||null,collaborationModel:e.model,reasoningEffort:e.reasoningEffort,developerInstructions:null,threadStartKind:null}}};let f=(s.model??o?.latestCollaborationMode.settings.model??s.collaborationMode?.settings.model)?.trim()||null,p=l[0]??`/`,m=await(a==null?e.readSettings(f,p,!0):a({model:f,cwd:p,includeDeveloperInstructions:!0}));if(`status`in m)return m;let h=`defaultPersonality`in m?await A2t(t,p,r.requestOptions.priority)??void 0:void 0,g=`defaultPersonality`in m?EU(h?.personality)??EU(h?.model_personality)??m.defaultPersonality:m.personality,_=o?.mode,v=o?.threadStartKind??(r.thread?.threadSource===`realtime_voice`?`realtime_voice`:`default`),y=await w2t({model:f,serviceTier:r.serviceTier,cwd:p,permissionsConfig:c,approvalsReviewer:c.approvalsReviewer,personality:g,hostConfig:h,defaultFeatureOverrides:m.defaultFeatureOverrides,instructionOverrides:m.instructionOverrides,allowMemoryPromptOverrides:e.allowMemoryPromptOverrides,threadId:s.conversationId,includeProseDetailLevelInstructions:m.includeProseDetailLevelInstructions,automaticTitleCheckpoints:m.automaticTitleCheckpoints&&(_??`default`)===\"default\"&&v===\"default\",writingBlockInstructions:m.writingBlocks&&m.includeProseDetailLevelInstructions,usesDesktopMcp:e.usesDesktopMcp,registerDynamicTools:!1,presentationOutlineInstructions:m.presentationOutlines},{requestClient:t,logger:n,fetchProxyConfig:e.fetchProxyConfig,fetchCodexConfig:()=>e.readCodexConfig(p),readShellEnvironment:u==null?void 0:()=>u(p),readDeveloperInstructions:e.readDeveloperInstructions,readDynamicTools:e.usesDesktopMcp&&d!=null?()=>d({featureOverrides:m.defaultFeatureOverrides,mode:_??`default`,threadStartKind:v}):void 0},r.requestOptions.priority);y=T2t(y,c,`legacy`,t.getAppServerVersion());let b=s.permissions==null&&(e.isBrowserRuntime&&t.hostId.startsWith(`remote-control:`)||t.hostId===`durable`&&r.thread?.status.type===`active`);return e.isTokenBudgetThread(s.conversationId)&&(y.config=o0t(y.config,t.getAppServerVersion())),{start:y,defaultFeatureOverrides:m.defaultFeatureOverrides,requestOptions:r.requestOptions,backgroundRequestOptions:void 0,preserveServerPermissions:s.useAppServerPermissionDefault===!0&&i(s.conversationId)||b,canInferMissingRuntimeWorkspaceRoots:!b,canReuseRunningThread:!0,independentHistory:null,useTurnsPageFallback:!1,drainRemainingHistory:!0,completeRequest:e=>e,async getResult(e){return{model:e.model.trim()||null,collaborationModel:e.model,reasoningEffort:void 0,developerInstructions:null,threadStartKind:null}}}}}}"
+    },
+    "t$": {
+      "kind": "function",
+      "character_start": 3174942,
+      "character_end_exclusive": 3175091,
+      "byte_start": 3212035,
+      "byte_end_exclusive": 3212184,
+      "line": 1985,
+      "sha256": "41a77d15ea5a4e3709f42715367bec9fc47d7eea1f54782b41d779530301061f",
+      "text": "function t$(e,t){if(e.type!==`workspaceWrite`)return e;let n=n$(e.writableRoots,t);return n.length===e.writableRoots.length?e:{...e,writableRoots:n}}"
+    },
+    "h3t": {
+      "kind": "function",
+      "character_start": 3175166,
+      "character_end_exclusive": 3175271,
+      "byte_start": 3212259,
+      "byte_end_exclusive": 3212364,
+      "line": 1985,
+      "sha256": "fd166c82ec45558738f5207b8729cf921a21d2baadb04af8e3970c5a2c8c55ce",
+      "text": "function h3t(e,t){if(e==null)return[];let n=g3t(e),r=_3t(e);return!n&&!r?[]:t.filter(e=>n?g3t(e):_3t(e))}"
+    },
+    "g3t": {
+      "kind": "function",
+      "character_start": 3175271,
+      "character_end_exclusive": 3175307,
+      "byte_start": 3212364,
+      "byte_end_exclusive": 3212400,
+      "line": 1985,
+      "sha256": "ce3e4dec60034cdccf7702bea5cb5a6bdd0dcc3f9c0f221d7831209288b14443",
+      "text": "function g3t(e){return pH(e)||mH(e)}"
+    },
+    "_3t": {
+      "kind": "function",
+      "character_start": 3175307,
+      "character_end_exclusive": 3175369,
+      "byte_start": 3212400,
+      "byte_end_exclusive": 3212462,
+      "line": 1985,
+      "sha256": "037d7e45db6085b3bd52b2eaca575bf76b65ad97977847283589e6c89a6d2d3e",
+      "text": "function _3t(e){return e.startsWith(`/`)&&!e.startsWith(`//`)}"
+    },
+    "n$": {
+      "kind": "function",
+      "character_start": 3175369,
+      "character_end_exclusive": 3175448,
+      "byte_start": 3212462,
+      "byte_end_exclusive": 3212541,
+      "line": 1985,
+      "sha256": "23fd93ad7703a05bdf8cd17bf31ad9e63fa523afb871fa9964b146467caf2aa3",
+      "text": "function n$(e,t){let n=[...e];for(let e of t)n.includes(e)||n.push(e);return n}"
+    },
+    "i$": {
+      "kind": "function",
+      "character_start": 3193296,
+      "character_end_exclusive": 3193429,
+      "byte_start": 3230389,
+      "byte_end_exclusive": 3230522,
+      "line": 1985,
+      "sha256": "5200726d96af4c60a8a94ff8878ddd87c2f9e782f48d3cbf4ba0f1d48db70b5f",
+      "text": "function i$({requestedCwd:e,responseCwd:t,threadCwd:n,fallbackCwd:r}){let i=t||n;return e!=null&&i!=null&&J3t(e,i)?e:i||e||r||void 0}"
+    },
+    "J3t": {
+      "kind": "function",
+      "character_start": 3193429,
+      "character_end_exclusive": 3193505,
+      "byte_start": 3230522,
+      "byte_end_exclusive": 3230598,
+      "line": 1985,
+      "sha256": "5fe3955d2f1b570eeadbcdb8feb3edcfe2b8fd8548fa18e6d899846203da65e5",
+      "text": "function J3t(e,t){let n=Y3t(e),r=Y3t(t);return n===r||n.startsWith(`${r}/`)}"
+    },
+    "Y3t": {
+      "kind": "function",
+      "character_start": 3193505,
+      "character_end_exclusive": 3193641,
+      "byte_start": 3230598,
+      "byte_end_exclusive": 3230734,
+      "line": 1985,
+      "sha256": "1bfd8519769757439907d73f52550088bb58323b16241a30603a4d352caa419f",
+      "text": "function Y3t(e){let t=e.replaceAll(`\\\\`,`/`);for(;t.length>1&&t.endsWith(`/`)&&!Z3t(t);)t=t.slice(0,-1);return X3t(t)?t.toLowerCase():t}"
+    },
+    "X3t": {
+      "kind": "function",
+      "character_start": 3193641,
+      "character_end_exclusive": 3193706,
+      "byte_start": 3230734,
+      "byte_end_exclusive": 3230799,
+      "line": 1985,
+      "sha256": "483a76b8656b5d3bdcc65b0e6aa97a8615b4b5721f38176240f04f4a94ee6c81",
+      "text": "function X3t(e){return/^[a-zA-Z]:\\//.test(e)||e.startsWith(`//`)}"
+    },
+    "Z3t": {
+      "kind": "function",
+      "character_start": 3193706,
+      "character_end_exclusive": 3193752,
+      "byte_start": 3230799,
+      "byte_end_exclusive": 3230845,
+      "line": 1985,
+      "sha256": "53d978a2bd6e39c7f891126bf7a2fb9e8e3f64ee8de9103dd58e996c9b397ab1",
+      "text": "function Z3t(e){return/^[a-zA-Z]:\\/$/.test(e)}"
+    },
+    "h6t": {
+      "kind": "function",
+      "character_start": 3205157,
+      "character_end_exclusive": 3205668,
+      "byte_start": 3242250,
+      "byte_end_exclusive": 3242761,
+      "line": 1985,
+      "sha256": "8b708970b6adbd80968647a58075331f7cd83a0bdb42dca605b0806e265df46e",
+      "text": "async function h6t({sendRequest:e,request:t,options:n,schedule:r,isCurrentResumeAttempt:i,setRetryCleanup:a}){let o=0,s=0;for(;i();)try{return await e(`thread/resume`,t,{...n,timeoutMs:n.timeoutMs??12e4*2**o})}catch(e){let c=yU(e),l=c?.includes(`thread ${t.threadId} is closing; retry thread/resume after the thread is closed`),u=c===`Timeout`&&n.timeoutMs==null,d=750;if(l&&s<4)d*=2**s,s+=1;else if(u&&o<2)o+=1;else throw e;if(!i())return null;await new Promise(e=>{let t=r(e,d);a(()=>{t(),e()})})}return null}"
+    },
+    "_6t": {
+      "kind": "function",
+      "character_start": 3205692,
+      "character_end_exclusive": 3226467,
+      "byte_start": 3242785,
+      "byte_end_exclusive": 3263560,
+      "line": 1985,
+      "sha256": "576ca3b98718a0cac920f5755259a721c96e75cc8183b44bfcb09e5549cefc28",
+      "text": "async function _6t({manager:e,workspace:t,params:n,product:r,historyPolicy:i,canAcquireOwnership:a,isCurrentResumeAttempt:o,setHydrationCleanup:s,schedule:c,isReconnectRecovery:l=!1}){if(!o())return{status:`not-ready`,reason:`canceled`};let{conversationId:u,model:d,serviceTier:f,reasoningEffort:p,workspaceRoots:m,permissions:h,collaborationMode:g,showThreadGoalResumeConfirmation:_,trace:v}=n,y=e.getConversation(u),b=e.getHostId(),x=e.getWindowActivity(),S=x?.visibilityState;e.logger.info(`maybe_resume_started`,{safe:{conversationId:u,previousResumeState:y?.resumeState??null,previousStreamRole:e.getStreamRole(u)?.role??null,documentVisibilityState:S},sensitive:{hostId:b,routePath:x?.routePath}});let C=b===QH,w=e.getStreamRole(u)==null,T=()=>(x=e.getWindowActivity(),e.getStreamRole(u)==null&&!a());if(T())return e.ensureRecentConversationId(u),e.logger.info(`maybe_resume_skipped_inactive_hotkey_window`,{safe:{conversationId:u,documentVisibilityState:S},sensitive:{hostId:b,routePath:x?.routePath}}),{status:`not-ready`,reason:`inactive-window`};let E,D=y==null&&!C?r.readCatalogEntry(b,u):void 0;if(D!=null){try{let e=await D;E=e?.sourceKind===`chatgpt`?void 0:e}catch(t){e.logger.warning(`maybe_resume_catalog_read_failed`,{safe:{conversationId:u},sensitive:{error:t,hostId:b}})}if(!o())return{status:`not-ready`,reason:`canceled`};if(y=e.getConversation(u),w=e.getStreamRole(u)==null,T())return{status:`not-ready`,reason:`inactive-window`}}let O=y==null&&E==null?e.getThreadSummaries().find(e=>e.conversationId===u):void 0;if(!C&&y==null&&E==null&&n.knownCatalogEntry?.sourceKind!==`chatgpt`&&n.knownCatalogEntry?.hostId===b&&n.knownCatalogEntry.threadId===u&&(O==null||O.updatedAt<n.knownCatalogEntry.sourceUpdatedAt*1e3)&&(E=n.knownCatalogEntry,O=void 0),y==null){let t=Date.now();y=qKt(O??{conversationId:u,hostId:b,createdAt:E==null?t:E.sourceCreatedAt*1e3,updatedAt:E==null?t:E.sourceUpdatedAt*1e3,recencyAt:E==null?void 0:E.sourceRecencyAt*1e3,title:E?.displayTitle??null,cwd:E?.cwd??``,gitInfo:null,hasUnreadTurn:e.getThreadHasUnreadTurn(u),modelProvider:E?.modelProvider??``,parentThreadId:null,source:null,threadSource:E?.threadSource??null,threadRuntimeStatus:void 0,workspaceKind:E?.cwd===r.workspace.projectlessPathSentinel?`projectless`:`project`}),e.setConversation(y)}if(n.threadAccess===`shared`&&y.threadAccess!==`shared`&&(e.updateConversationState(u,e=>{e.threadAccess=`shared`}),y={...y,threadAccess:`shared`}),y.resumeState!==`resumed`&&e.getStreamRole(u)?.role===`follower`)return{status:`not-ready`,reason:`owner-recovering`};if(!w&&y.resumeState!==`needs_resume`)return e.ensureRecentConversationId(u),{status:`ready`};let k=y;QX(y);let A=e.useTailHydration(),j=r.beginHydration?.({conversationId:u,durable:C,threadIsAeon:y.threadStartKind==null&&y.threadSource==null&&void 0,parentTrace:v,startupResume:n.startupResume,tailHydration:A}),ee;s(()=>{ee?.(),j?.cancel()});let M={source:`thread_hydration`,trace:j?.trace,priority:l?`interactive`:`critical`},N=e.readThread(u,{includeTurns:!1,requestOptions:{...M,timeoutMs:SY}}).catch(t=>(e.logger.warning(`Failed to read thread metadata before resume`,{safe:{conversationId:u},sensitive:{error:t}}),null)),te=Date.now(),ne,re;try{[ne,re]=await Promise.all([S6t(e,u),t.load(!0)])}catch(e){throw j?.recordWritableRoots(te),j?.fail(e),e}if(!o())return{status:`not-ready`,reason:`canceled`};j?.recordWritableRoots(te),y=e.getConversation(u);let ie=y==null?void 0:QX(y),ae=ie?.permissionParamsSource===`inferred`?void 0:ie?.params,oe=e.getThreadWorkspaceState(u)?.applied??null,se=oe==null&&y?.workspaceKind===`projectless`?r.workspace.getWritableRoot(y.latestThreadSettings?.sandboxPolicy??ae?.sandboxPolicy):null,ce=b6t(y,m[0]??null,r.workspace.projectlessPathSentinel),le=oe?.cwd??r.workspace.getCwd({cwd:y?.cwd,fallbackCwd:se??ce,workspaceBrowserRoot:y?.workspaceBrowserRoot,workspaceKind:y?.workspaceKind}),ue=oe?.runtimeWorkspaceRoots??y6t(le,m,r.workspace.projectlessPathSentinel);if(e.updateConversationState(u,e=>{e.resumeState=`resuming`}),!o())return{status:`not-ready`,reason:`canceled`};A&&e.beginResumeNotificationBuffer(u);let de=null,fe=!1;try{let a=y==null?[]:JX(y),s=null,v=await N;if(j?.mark(`metadata_ready`),!o())return{status:`not-ready`,reason:`canceled`};de=v;let w=v==null?null:r.getThreadStartKind(v.thread);if(v!=null){if(re){let n=v.thread,r=t.getThreadWorkspaceKind(u,n),i=t.getThreadWorkspaceBrowserRoot(n),a=t.getThreadProjectlessOutputDirectory(u,n);e.updateConversationState(u,e=>{e.workspaceKind=r,e.workspaceBrowserRoot=r===`projectless`?i??e.workspaceBrowserRoot:null,e.projectlessOutputDirectory=r===`projectless`?a??e.projectlessOutputDirectory:null}),y=e.getConversation(u)}if(oe==null){let e=i$({requestedCwd:le,responseCwd:null,threadCwd:E?.cwd&&E.cwd!==r.workspace.projectlessPathSentinel&&E.sourceUpdatedAt>=v.thread.updatedAt?E.cwd:v.thread.cwd,fallbackCwd:ue[0]});le=r.workspace.getCwd({cwd:e??le,fallbackCwd:se??b6t(y,ue[0],r.workspace.projectlessPathSentinel),workspaceBrowserRoot:y?.workspaceBrowserRoot,workspaceKind:y?.workspaceKind}),ue=y6t(le,m,r.workspace.projectlessPathSentinel)}let n=v.thread.name?.trim()??``,{updatedAt:i,recencyAt:a}=YZ(v.thread);e.updateConversationState(u,e=>{e.sessionId=v.thread.sessionId,v.thread.daybreakEnabled!==void 0&&(e.daybreakEnabled=v.thread.daybreakEnabled),e.rolloutPath=v.thread.path??``,e.cwd=le??e.cwd,e.originator=v.thread.originator??e.originator,e.source=v.thread.source,e.agentNickname=v.thread.agentNickname,e.threadSource=v.thread.threadSource??e.threadSource??null,w!=null&&(e.threadStartKind=w),e.gitInfo=v.thread.gitInfo??e.gitInfo,n&&(!e.title||e.title===(E?.displayTitle??O?.title))&&(e.title=n);let t=e.recencyAt??e.updatedAt;e.updatedAt=Math.max(e.updatedAt,i),e.recencyAt=XZ({currentRecencyAt:t,threadRecencyAt:a,updatedAt:i})})}y=e.getConversation(u);let D=y==null?void 0:QX(y),te=D?.params,ie=D?.permissionParamsSource===`inferred`?void 0:te,ae=y?.latestThreadSettings,ce=v?.thread.historyMode??y?.historyMode??`legacy`,pe=A&&!C&&ce===`paginated`&&e.supportsPaginatedThreadHistory(),me=oe?.runtimeWorkspaceRoots??x6t({conversation:y,projectlessPathSentinel:r.workspace.projectlessPathSentinel,projectlessWorkspaceWriteRoot:se,resumeCwd:le,resumeWorkspaceRoots:ue}),he=y?.workspaceKind===`projectless`&&me.length===0?hV():mV(me),ge=h?.approvalsReviewer??ae?.approvalsReviewer??ie?.approvalsReviewer??y?.currentPermissions?.approvalsReviewer??he.approvalsReviewer,_e=y?.currentPermissions?.activePermissionProfile;ae?.activePermissionProfile===void 0?ie?.permissions!=null&&(_e={id:ie.permissions,extends:null}):_e=ae.activePermissionProfile;let ve=h??{activePermissionProfile:_e,approvalPolicy:ae?.approvalPolicy??ie?.approvalPolicy??y?.currentPermissions?.approvalPolicy??he.approvalPolicy,approvalsReviewer:ge,runtimeWorkspaceRoots:n$(n$(y?.currentPermissions?.runtimeWorkspaceRoots??[],me),ne),sandboxPolicy:ae?.sandboxPolicy??ie?.sandboxPolicy??y?.currentPermissions?.sandboxPolicy??he.sandboxPolicy};if(h==null&&ve.activePermissionProfile!=null&&(y?.currentPermissions==null||y.currentPermissions.activePermissionProfile?.id===ve.activePermissionProfile.id)){let e=y?.currentPermissions?.sandboxPolicy??ve.sandboxPolicy;e.type===`workspaceWrite`&&(ve.runtimeWorkspaceRoots=n$(n$(y?.currentPermissions?.runtimeWorkspaceRoots??[],me),ne.filter(t=>!e.writableRoots.some(e=>r.workspace.arePathsEquivalent(e,t)))))}let ye=t$(ve.sandboxPolicy,ne),be={...ve,sandboxPolicy:r.workspace.getSandboxPolicy({sandboxPolicy:ye,workspaceKind:y?.workspaceKind})},xe=h!=null||ae?.approvalPolicy!=null||ae?.sandboxPolicy!=null||ae?.permissions!=null||ae?.activePermissionProfile!==void 0||ie!=null||y?.currentPermissions?.activePermissionProfile?.id===`:danger-full-access`,Se=f;ie?.serviceTier!==void 0&&(Se=ie.serviceTier),ae?.serviceTier!==void 0&&(Se=ae.serviceTier);let Ce=await r.prepare({initialConversation:k,conversation:y,thread:v?.thread,params:n,permissions:be,serviceTier:Se??null,workspaceRoots:ue,requestOptions:M});if(!o())return{status:`not-ready`,reason:`canceled`};if(`status`in Ce||T())return A&&e.releaseResumeNotificationBuffer(u),e.updateConversationState(u,e=>{e.resumeState===`resuming`&&(e.resumeState=`needs_resume`)}),j?.cancel(),`status`in Ce?Ce:{status:`not-ready`,reason:`inactive-window`};let we=C?Ce.independentHistory:null,Te=Ce.start,Ee=Ce.requestOptions,De=l?M:Ce.backgroundRequestOptions,Oe=!Ce.preserveServerPermissions&&xe,ke=!Ce.preserveServerPermissions&&(h?.approvalsReviewer!=null||ae?.approvalsReviewer!=null||ie?.approvalsReviewer!=null||D?.permissionParamsSource!==`inferred`&&y?.currentPermissions?.approvalsReviewer!=null);oe==null&&(y?.workspaceKind===`projectless`||b===`local`&&FQ(Te.cwd)!=null)&&(Te.config={...Te.config,\"features.request_permissions_tool\":!0});let Ae=h3t(le??ue[0],Te.runtimeWorkspaceRoots??[]),je={...be,runtimeWorkspaceRoots:Ae},Me=Object.entries(Te.config??{}).filter(([e,t])=>t!=null&&(e!==`profiles`||typeof t!=`object`||Array.isArray(t)||Object.keys(t).length>0)),Ne=Me.length>0,Pe=Me.some(([e,t])=>!e.startsWith(`features.`)||!(0,c$.default)(Ce.defaultFeatureOverrides?.[e],t)&&!(0,c$.default)(Ce.defaultFeatureOverrides?.[e.slice(9)],t)),Fe=Ce.canReuseRunningThread&&v?.thread.status.type===`idle`&&h==null&&f==null&&!(Oe&&Te.permissions!=null)&&!Pe;if(e.getStreamRole(u)?.role===`follower`&&we==null)return e.updateConversationState(u,e=>{e.resumeState===`resuming`&&(e.resumeState=`resumed`)}),o()?(A&&e.releaseResumeNotificationBuffer(u),j?.finish(),{status:`ready`}):{status:`not-ready`,reason:`canceled`};if(fe=e.getStreamRole(u)==null,fe&&e.setConversationStreamRole(u,{role:`owner`}),!o())return{status:`not-ready`,reason:`canceled`};let Ie={threadId:u,history:null,path:v==null?y?.rolloutPath||null:v.thread.path,model:null,modelProvider:Te.modelProvider,...Se===void 0?{}:{serviceTier:Te.serviceTier},cwd:Te.cwd,...Fe?{}:{baseInstructions:Te.baseInstructions??void 0,developerInstructions:Te.developerInstructions??void 0},personality:ae?.personality===void 0?te?.personality??Te.personality:ae.personality,excludeTurns:A&&(!C||we!=null)&&!we?.useCompactHistory,...A&&!C&&!pe?{initialTurnsPage:{limit:5,itemsView:`full`,sortDirection:`desc`}}:{}};Oe&&(Ie.approvalPolicy=Te.approvalPolicy,Te.permissions==null?Ie.sandbox=Te.sandbox:(Ie.permissions=Te.permissions,Ie.runtimeWorkspaceRoots=Ae)),ke&&(Ie.approvalsReviewer=Te.approvalsReviewer),Ne&&!Fe&&(Ie.config=Te.config);let Le=Ce.completeRequest(Ie),Re=Le.config??null,ze=Re==null?y?.shellEnvironmentPolicy??null:null;if((Re!=null||y?.shellEnvironmentPolicy==null&&!Fe)&&(ze=await e.readShellEnvironmentPolicy(Le.cwd,Re)),!o())return{status:`not-ready`,reason:`canceled`};let Be=e.getConversation(u)?.environmentSelectionEvidence;j?.mark(`runtime_resume_started`);let Ve=h6t({sendRequest:e.sendRequest.bind(e),request:Le,options:l?{...Ee,timeoutMs:SY}:Ee,schedule:c,isCurrentResumeAttempt:o,setRetryCleanup:e=>{ee=e}}),He=()=>e.sendRequest(`thread/goal/get`,{threadId:u},_===!0?Ee:De).then(({goal:e})=>({ok:!0,goal:e})).catch(t=>(e.logger.warning(`Failed to hydrate thread goal after resume`,{safe:{conversationId:u},sensitive:{error:t}}),{ok:!1})),Ue=await Ve.catch(async e=>{throw o()&&await void 0,e});if(Ue==null||!o())return{status:`not-ready`,reason:`canceled`};j?.mark(`runtime_resume_finished`);let We=e.getConversation(u)?.environmentSelectionEvidence;(We?.source!==`live`||We===Be)&&e.updateConversationState(u,e=>{Object.assign(e,QZ(Ue.thread,e,`live`))}),e.ensureRecentConversationId(u);let Ge=pe?c6t(Ue):null,Ke=a$(Ue,je);if(Ce.canInferMissingRuntimeWorkspaceRoots&&(!Oe||Te.permissions!=null)&&Ue.activePermissionProfile!=null&&Ue.sandbox.type===`workspaceWrite`&&Ue.runtimeWorkspaceRoots.length===0){let e=Ue.sandbox.writableRoots;Ke.runtimeWorkspaceRoots=(Oe?Te.runtimeWorkspaceRoots??[]:me).filter(t=>e.some(e=>r.workspace.arePathsEquivalent(e,t)))}let qe=_===!0?await He():{ok:!1};if(!o())return{status:`not-ready`,reason:`canceled`};let Je=await null;if(!o())return{status:`not-ready`,reason:`canceled`};let Ye=!0,Xe;if(A&&!we?.useCompactHistory){let t;if(t=C?Je??await vZ(e.sendRequest.bind(e),u,null,5,Ee).then(e=>({response:e})):pe?e.supportsThreadTimeline()?await sGt(e,u,null,l?De:Ee):Ge?.turnsBackwardsCursor==null?{response:{backwardsCursor:null,data:[],nextCursor:null},itemsPaginationByTurnId:{}}:await tGt(e,e.getConversationTurnItemLimit(u),i.turnMergePolicy,u,Ge.turnsBackwardsCursor,Ge.itemsBackwardsCursor,5,l?De:Ee):Ue.initialTurnsPage==null?Ce.useTurnsPageFallback?await e.listThreadTurns(u,{limit:5,itemsView:`full`,sortDirection:`desc`,requestOptions:Ee}):null:{response:Ue.initialTurnsPage},!o())return{status:`not-ready`,reason:`canceled`};let n=t==null&&!C&&!pe?await e.readThread(u,{includeTurns:!0,requestOptions:Ee}).catch(t=>{throw e.logger.warning(`Failed to read legacy thread history after resume`,{safe:{conversationId:u},sensitive:{error:t}}),t}):null;if(!o())return{status:`not-ready`,reason:`canceled`};Ye=t==null?C||n!=null:t.source!==`compact`&&t.response.nextCursor==null;let c;c=t==null?n==null?[]:i.mapThreadTurns({threadId:n.thread.id,turns:n.thread.turns,model:y?.latestModel??d??g?.settings.model??``,reasoningEffort:p??y?.latestReasoningEffort??null,cwd:n.thread.cwd||le||`/`,permissions:Ke}):i.mapThreadTurns({threadId:u,turns:t.response.data.slice().reverse(),model:y?.latestModel??d??g?.settings.model??``,reasoningEffort:p??y?.latestReasoningEffort??null,cwd:le??`/`,permissions:Ke,itemsPaginationByTurnId:t.itemsPaginationByTurnId}),C&&we==null&&(c=HX(c,r.history.mapResumeResponse(Ue,{fallbackCwd:le,resolvedPermissions:Ke}),{policy:i.turnMergePolicy,preserveExistingTerminalState:!0})),s=t==null?n?.thread.turns??null:t.response.data.slice().reverse(),t?.source===`compact`&&(s=null);let f=e.getConversation(u);if(a=HX(f==null?a:JX(f),c,{policy:i.turnMergePolicy,isResumeSnapshot:pe}),Xe=t?.response.nextCursor==null?void 0:{source:t.source,cursor:t.response.nextCursor,oldestLoadedTurnId:c.find(e=>e.turnId!=null)?.turnId??null},e.updateConversationState(u,e=>{sZ(e,a,Ye,Xe,i.turnMergePolicy),e.turnsPagination=t==null?{olderCursor:null,oldestLoadedTurnId:null,isLoadingOlder:!1,hasLoadedOldest:Ye}:{source:t.source,olderCursor:t.response.nextCursor,oldestLoadedTurnId:c.find(e=>e.turnId!=null)?.turnId??null,isLoadingOlder:!1,hasLoadedOldest:t.response.nextCursor==null}}),!o())return{status:`not-ready`,reason:`canceled`}}j?.mark(`history_ready`);let Ze=Ue.cwd,Qe=Ue.thread.cwd,$e=i$({requestedCwd:le,responseCwd:Ze??null,threadCwd:Qe,fallbackCwd:ue[0]}),et=Ue.thread.gitInfo,tt=Ue.thread.name?.trim()??``,nt=await Ce.getResult(Ue);if(!o())return{status:`not-ready`,reason:`canceled`};let rt=A&&!we?.useCompactHistory?[]:r.history.mapResumeResponse(Ue,{fallbackCwd:$e??null,resolvedPermissions:Ke});A||(s=Ue.thread.turns);let it=e.getConversation(u),at=HX(it==null?a:JX(it),rt,{policy:i.turnMergePolicy}),ot=rt.length>0?at:at.map(e=>({...e,params:{...e.params,approvalPolicy:Ue.approvalPolicy,approvalsReviewer:Ue.approvalsReviewer,sandboxPolicy:Ue.sandbox,model:Ue.model,cwd:$e??null,effort:Ue.reasoningEffort}}));if(we?.useCompactHistory&&it?.turnHistory?.kind===`canonical`){Ye=it.turnHistory.history.isComplete;let e=it.turnHistory.history.islands[0]?.olderBoundary;Xe=e?.status===`available`?e.handle:void 0}if(e.updateConversationState(u,t=>{e.canonicalTurnHistory?cZ(t,ot,Ye,Xe,i.turnMergePolicy):sZ(t,ot,Ye,Xe,i.turnMergePolicy),t.sessionId=Ue.thread.sessionId,Ue.thread.daybreakEnabled!==void 0&&(t.daybreakEnabled=Ue.thread.daybreakEnabled),t.shellEnvironmentPolicy=ze,t.historyMode=Ue.thread.historyMode,t.paginatedHistory=Ge==null?void 0:{itemsBackwardsCursor:Ge.itemsBackwardsCursor};let n=nt.model;t.rolloutPath=Ue.thread.path??``,t.resumeState=`resumed`,qe.ok&&(t.threadGoal=qe.goal,t.threadGoalResumeConfirmation=_===!0&&qe.goal!=null&&i1t(qe.goal.status)?qe.goal:null),t.threadRuntimeStatus=Ue.thread.status,t.cwd=$e,t.currentPermissions=Ke,t.originator=Ue.thread.originator??t.originator,t.source=Ue.thread.source,t.agentNickname=Ue.thread.agentNickname,t.threadSource=Ue.thread.threadSource??t.threadSource??null;let{createdAt:r,updatedAt:a,recencyAt:o}=YZ(Ue.thread);nt.threadStartKind!=null&&(t.threadStartKind=nt.threadStartKind,t.createdAt=r),t.forkedFromId=Ue.thread.forkedFromId==null?null:IV(Ue.thread.forkedFromId),t.gitInfo=et??t.gitInfo,tt&&(!t.title||t.title===(E?.displayTitle??O?.title))&&(t.title=tt);let s=t.recencyAt??t.updatedAt;t.updatedAt=Math.max(t.updatedAt,a),t.recencyAt=XZ({currentRecencyAt:s,threadRecencyAt:o,updatedAt:a});let c=t.previousTurnModel!=null,l=nt.reasoningEffort===void 0?p??Ue.reasoningEffort??t.latestReasoningEffort:nt.reasoningEffort;nQ(t,{..._Xt(Ue,n??t.latestModel,l,$e,{mode:`default`,settings:{...g?.settings,model:nt.collaborationModel??t.latestModel,reasoning_effort:l,developer_instructions:nt.developerInstructions}}),...vXt(Ke)}),c||(t.previousTurnModel=null)}),!o()||(s!=null&&(pe?e.acceptConversationHistory(u,null):e.acceptConversationHistory(u,{replacesExistingHistory:!0,truncatedBefore:!Ye,turns:s})),!o()))return{status:`not-ready`,reason:`canceled`};let st=ot.at(-1)??null;if((we==null||e.getStreamRole(u)?.role!==`follower`)&&e.setConversationStreamRole(u,{role:`owner`}),!o())return{status:`not-ready`,reason:`canceled`};let ct=e.getConversation(u)?.threadGoal,lt=_===!0?null:(()=>{let t=e.beginThreadGoalHydration(u);return{hydration:t,promise:He().then(n=>{if(!e.isCurrentThreadGoalHydration(u,t))return;let r=e.getConversation(u)?.threadGoal!==ct;n.ok&&!r&&e.updateConversationState(u,e=>{e.threadGoal=n.goal,e.threadGoalResumeConfirmation=null})})}})();if(!o()||(A&&e.releaseResumeNotificationBuffer(u),!o()))return{status:`not-ready`,reason:`canceled`};e.broadcastConversationSnapshot(u);let ut=e.getConversation(u)?.turnsPagination??null,dt=A&&!C&&!pe&&Ce.drainRemainingHistory&&!l&&!e.suppressResumeHistoryDrain()&&ut?.olderCursor!=null;return lt==null?dt&&v6t(e,u):lt.promise.then(()=>{e.endThreadGoalHydration(u,lt.hydration)&&dt&&v6t(e,u)}).finally(()=>{e.endThreadGoalHydration(u,lt.hydration)}),e.logger.info(`maybe_resume_success`,{safe:{conversationId:u,turnCount:ot.length,latestTurnId:st?.turnId??null,latestTurnStatus:st?.status??null,markedStreaming:!0,assignedStreamRole:e.getStreamRole(u)?.role??null,documentVisibilityState:S},sensitive:{routePath:x?.routePath,hasExplicitPermissions:h!=null,hasLatestThreadSettings:ae!=null,hasLatestTurnParams:te!=null,hasCurrentPermissions:y?.currentPermissions!=null,approvalPolicySource:s$(h!=null,ae?.approvalPolicy!=null,ie?.approvalPolicy!=null,y?.currentPermissions?.approvalPolicy!=null),approvalsReviewerSource:s$(h?.approvalsReviewer!=null,ae?.approvalsReviewer!=null,ie?.approvalsReviewer!=null,y?.currentPermissions?.approvalsReviewer!=null),activePermissionProfileSource:s$(h!=null,ae?.activePermissionProfile!==void 0,ie?.permissions!=null,y?.currentPermissions?.activePermissionProfile!==void 0),sandboxPolicySource:s$(h!=null,ae?.sandboxPolicy!=null,ie?.sandboxPolicy!=null,y?.currentPermissions?.sandboxPolicy!=null),derivedApprovalPolicy:be.approvalPolicy,derivedApprovalsReviewer:be.approvalsReviewer,derivedSandboxPolicy:C6t(be.sandboxPolicy),derivedActivePermissionProfile:be.activePermissionProfile?.id??null,shouldSendPermissions:Oe,shouldSendApprovalsReviewer:ke,requestApprovalPolicy:Oe?Te.approvalPolicy??null:null,requestApprovalsReviewer:ke?Te.approvalsReviewer??null:null,requestSandboxMode:Oe?Te.sandbox??null:null,requestPermissionProfile:Oe?Te.permissions??null:null,responseApprovalPolicy:Ue.approvalPolicy,responseApprovalsReviewer:Ue.approvalsReviewer,responseSandboxPolicy:C6t(Ue.sandbox),responseActivePermissionProfile:Ue.activePermissionProfile?.id??null,approvalPolicyChanged:Ue.approvalPolicy!==be.approvalPolicy,approvalsReviewerChanged:Ue.approvalsReviewer!==be.approvalsReviewer,activePermissionProfileChanged:(Ue.activePermissionProfile?.id??null)!==(be.activePermissionProfile?.id??null),sandboxPolicyChanged:!(0,c$.default)(Ue.sandbox,be.sandboxPolicy)}}),j?.finish(),{status:`ready`}}catch(t){if(!o()||(fe&&e.getStreamRole(u)?.role===`owner`&&e.setConversationStreamRole(u,null),!o())||(j?.fail(t),!o())||(A&&e.releaseResumeNotificationBuffer(u),!o()))throw t;if(p6t(t)&&de?.thread.historyMode===`paginated`)try{await l6t(e,{conversationId:u,isCurrentResumeAttempt:o,mapThreadTurns:i.mapThreadTurns,requestOptions:M,thread:de.thread,turnMergePolicy:i.turnMergePolicy,workspaceRoots:ue})}catch(t){e.logger.warning(`Failed to hydrate writer-conflicted thread history`,{safe:{conversationId:u},sensitive:{error:t}})}throw!o()||(yU(t)?.includes(`session ${u} is archived.`)&&e.suppressArchivedConversation(u),!o())||e.updateConversationState(u,e=>{e.resumeState===`resuming`&&(e.resumeState=`needs_resume`)}),t}}"
+    },
+    "y6t": {
+      "kind": "function",
+      "character_start": 3226650,
+      "character_end_exclusive": 3226753,
+      "byte_start": 3263743,
+      "byte_end_exclusive": 3263846,
+      "line": 1985,
+      "sha256": "a1b14f2e48596048aa024c53f3f351a422cebae53668cd36f21f4ebcb679dce9",
+      "text": "function y6t(e,t,n){let r=t.filter(e=>e!==n);return e==null||e===``||e===n?r:[e,...r.filter(t=>t!==e)]}"
+    },
+    "b6t": {
+      "kind": "function",
+      "character_start": 3226753,
+      "character_end_exclusive": 3226911,
+      "byte_start": 3263846,
+      "byte_end_exclusive": 3264004,
+      "line": 1985,
+      "sha256": "64b1f39d267d2a8f6d3666f24d3731c40562db20396a6909fdae5b200a7386e5",
+      "text": "function b6t(e,t,n){return t==null||t===n?null:e?.workspaceKind!==`projectless`||e.cwd==null?t:fH(t).replace(/\\/+$/,``)===fH(e.cwd).replace(/\\/+$/,``)?null:t}"
+    },
+    "x6t": {
+      "kind": "function",
+      "character_start": 3226911,
+      "character_end_exclusive": 3227204,
+      "byte_start": 3264004,
+      "byte_end_exclusive": 3264297,
+      "line": 1985,
+      "sha256": "53abc489a6bca7b7b6e251a26c459a0d903c96063a04385a0e521c1348d9d61e",
+      "text": "function x6t({conversation:e,projectlessPathSentinel:t,projectlessWorkspaceWriteRoot:n,resumeCwd:r,resumeWorkspaceRoots:i}){return e?.workspaceKind===`projectless`?e.workspaceBrowserRoot!=null&&e.workspaceBrowserRoot!==t?[e.workspaceBrowserRoot]:n==null?r!=null&&r!==t&&r!==e.cwd?[r]:[]:[n]:i}"
+    },
+    "S6t": {
+      "kind": "function",
+      "character_start": 3227204,
+      "character_end_exclusive": 3227410,
+      "byte_start": 3264297,
+      "byte_end_exclusive": 3264503,
+      "line": 1985,
+      "sha256": "2256bad2b84663e91ac5953a27ec0cc1256b71dc97f73b10a03dca9cf5b17fe5",
+      "text": "async function S6t(e,t){try{return await e.getThreadWritableRoots(t)}catch(n){return e.logger.warning(`Failed to load thread writable roots before resume`,{safe:{conversationId:t},sensitive:{error:n}}),[]}}"
+    },
+    "D9t": {
+      "kind": "function",
+      "character_start": 3343638,
+      "character_end_exclusive": 3343740,
+      "byte_start": 3380733,
+      "byte_end_exclusive": 3380835,
+      "line": 2001,
+      "sha256": "b113cd4dc9110985faaa01053d9211fdeb113be07f841b2cea7fab64ab74d08a",
+      "text": "function D9t(e){return e.parentThreadId==null?AZ(e.source)?.parentThreadId??null:IV(e.parentThreadId)}"
+    },
+    "getThreadWorkspaceKind": {
+      "kind": "method",
+      "character_start": 3345124,
+      "character_end_exclusive": 3345434,
+      "byte_start": 3382219,
+      "byte_end_exclusive": 3382529,
+      "line": 2001,
+      "sha256": "83d99364f6fe671c154cc80874ae2ba808eb0a3b946c121973dccff7f6926659",
+      "text": "getThreadWorkspaceKind(e,t){let n=this.getWorkspaceKindOverride?.(e);if(n!=null)return n;if(this.conversationIds.has(e)||this.hostId===`local`&&FQ(t.cwd)!=null)return`projectless`;let r=D9t(t);return r==null?`project`:this.conversationIds.has(r)?`projectless`:this.getConversation(r)?.workspaceKind??`project`}"
+    },
+    "getThreadWorkspaceBrowserRoot": {
+      "kind": "method",
+      "character_start": 3345434,
+      "character_end_exclusive": 3345878,
+      "byte_start": 3382529,
+      "byte_end_exclusive": 3382973,
+      "line": 2001,
+      "sha256": "171b0eb72d590f9996b8a5710812cae2f87a376c8be3f2c605daa50fe57222ab",
+      "text": "getThreadWorkspaceBrowserRoot(e){let t=IV(e.id),n=this.getWorkspaceKindOverride?.(t);if(n===`projectless`||n==null&&this.conversationIds.has(t)){let e=this.workspaceRootHints.get(t);if(e!=null)return e}if(this.hostId===`local`){let t=FQ(e.cwd);if(t!=null)return t}let r=D9t(e);if(r==null)return null;let i=this.getConversation(r);return i==null?this.conversationIds.has(r)?this.workspaceRootHints.get(r)??null:null:i.workspaceBrowserRoot??null}"
+    },
+    "getThreadProjectlessOutputDirectory": {
+      "kind": "method",
+      "character_start": 3345878,
+      "character_end_exclusive": 3346166,
+      "byte_start": 3382973,
+      "byte_end_exclusive": 3383261,
+      "line": 2001,
+      "sha256": "eddfa6e609e3f87503910c50ff36db88fefd04febc550c109815efe6d6e4b12e",
+      "text": "getThreadProjectlessOutputDirectory(e,t){let n=this.outputDirectoryHints.get(e);if(n!=null)return n;let r=D9t(t);if(r==null)return null;let i=this.getConversation(r);return i==null?this.conversationIds.has(r)?this.outputDirectoryHints.get(r)??null:null:i.projectlessOutputDirectory??null}"
+    },
+    "AZ": {
+      "kind": "function",
+      "character_start": 2902006,
+      "character_end_exclusive": 2902104,
+      "byte_start": 2939045,
+      "byte_end_exclusive": 2939143,
+      "line": 1936,
+      "sha256": "d27955e31f6dd37636be5407f860c841260d5461b33aa64f19702de2096125f4",
+      "text": "function AZ(e){if(e==null||typeof e==`string`)return null;let t=JKt(e);return t==null?null:YKt(t)}"
+    },
+    "JKt": {
+      "kind": "function",
+      "character_start": 2902104,
+      "character_end_exclusive": 2902157,
+      "byte_start": 2939143,
+      "byte_end_exclusive": 2939196,
+      "line": 1936,
+      "sha256": "1758337feb8a65ceb12b9a0f0bbac89fcf217c7d09f6ba46312428ebe321132d",
+      "text": "function JKt(e){return`subAgent`in e?e.subAgent:null}"
+    },
+    "YKt": {
+      "kind": "function",
+      "character_start": 2902157,
+      "character_end_exclusive": 2902399,
+      "byte_start": 2939196,
+      "byte_end_exclusive": 2939438,
+      "line": 1936,
+      "sha256": "9f38e110fd4704ffbd405676e6c0424ac6600c06edb3acc7c4f3e1c14fd7caf1",
+      "text": "function YKt(e){return typeof e==`string`?XKt():`thread_spawn`in e?{parentThreadId:IV(e.thread_spawn.parent_thread_id),agentPath:e.thread_spawn.agent_path,agentNickname:e.thread_spawn.agent_nickname,agentRole:e.thread_spawn.agent_role}:XKt()}"
+    },
+    "XKt": {
+      "kind": "function",
+      "character_start": 2902399,
+      "character_end_exclusive": 2902491,
+      "byte_start": 2939438,
+      "byte_end_exclusive": 2939530,
+      "line": 1936,
+      "sha256": "747650d7553fe8df69d1370b4c4561d75c3ba6a758d9bf0e3433ee5e6945df11",
+      "text": "function XKt(){return{parentThreadId:null,agentPath:null,agentNickname:null,agentRole:null}}"
+    },
+    "workspaceLoad": {
+      "kind": "method",
+      "character_start": 3344270,
+      "character_end_exclusive": 3344972,
+      "byte_start": 3381365,
+      "byte_end_exclusive": 3382067,
+      "line": 2001,
+      "sha256": "403f87692e1023cc622d6aabc68bc8daa35eb8aa301d5660c19b86359e57ec87",
+      "text": "async load(e=!1){if(this.hasFetchedConversationIds&&!e)return!0;let t=this.loadConversationIds(),n=Promise.all([this.loadThreadPathHints(`thread-projectless-output-directories`),this.loadThreadPathHints(`thread-workspace-root-hints`)]),r=await t;if(r==null)return!1;let[i,a]=await n;this.conversationIds=e?r:new Set([...r,...this.conversationIds]),i!=null&&(this.outputDirectoryHints=e?i:new Map([...i,...this.outputDirectoryHints])),a!=null&&(this.workspaceRootHints=e?a:new Map([...a,...this.workspaceRootHints]));for(let e of this.removedConversationIds)this.conversationIds.delete(e),this.outputDirectoryHints.delete(e),this.workspaceRootHints.delete(e);return this.hasFetchedConversationIds=!0,!0}"
+    },
+    "canAcquireOwnership": {
+      "kind": "expression",
+      "character_start": 3366013,
+      "character_end_exclusive": 3366134,
+      "byte_start": 3403108,
+      "byte_end_exclusive": 3403229,
+      "line": 2001,
+      "sha256": "7b0e70825f6ee2743c7718c44a7ccabd0c5358964d53954a99c545306c4c7f40",
+      "text": "()=>t===`executor`?this.runtime.queuedMessages.canAcquireOwnership():this.getWindowActivity()?.canAcquireThreadStream??!0"
+    }
+  }
+}

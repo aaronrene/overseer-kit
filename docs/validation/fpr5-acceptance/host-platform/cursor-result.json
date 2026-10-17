@@ -1,0 +1,7 @@
+{
+  "exit": -5,
+  "stop_reason": "host_exited",
+  "elapsed_seconds": 4.382089138031006,
+  "free_bytes": 1450778624,
+  "native_lifecycle_pass": false
+}

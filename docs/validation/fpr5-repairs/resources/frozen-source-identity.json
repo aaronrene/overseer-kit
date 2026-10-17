@@ -1,0 +1,10 @@
+{
+  "fixture_runtime": {
+    "root": "/private/tmp/overseer-fpr5-resources-integrated-dlmd0ccj/frozen-source",
+    "version": "1.0.0.dev1",
+    "sha256": "64a075b0eea2ca53beb8d18935c0a65630e1466388c00e1465293c8763b6de8d"
+  },
+  "source_manifest_sha256": "ef7ea2e8b6628e0e8a5e747a5736efdcf6b735a82b33b5e7abfc748578f0d3b5",
+  "source_package_sha256": "9386f14e5a1e84da2118f66dd2e78b330e9e50aa7cadcef91e1fdc6c834c6b1e",
+  "source_identity_note": "Frozen fixture contains an exact one-time byte copy. The root branch remained at initial HEAD with authorized uncommitted repairs; this fixture is repaired-source validation, not committed-source or acceptance certification."
+}

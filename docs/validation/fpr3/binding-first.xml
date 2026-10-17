@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="12" skipped="0" tests="115" time="247.747" timestamp="2026-10-14T15:32:29.853839-07:00" hostname="Carloss-MacBook-Pro.local"><testcase classname="tests.fpr1.test_config" name="test_read_only_legacy_inspection_is_unbound_and_preserves_lanes" time="0.005" /><testcase classname="tests.fpr1.test_config" name="test_every_optional_setting_and_hosted_limits_survive_bind_and_roundtrip" time="0.016" /><testcase classname="tests.fpr1.test_config" name="test_bounded_inputs_preserve_exact_bindings_without_runtime_refresh[1-git-bounded-1]" time="0.002" /><testcase classname="tests.fpr1.test_config" name="test_bounded_inputs_preserve_exact_bindings_without_runtime_refresh[2-git-october-2]" time="0.002" /><testcase classname="tests.fpr1.test_config" name="test_bounded_inputs_preserve_exact_bindings_without_runtime_refresh[2-muse-october-2]" time="0.002" /><testcase classname="tests.fpr1.test_config" name="test_contradictions_and_unmapped_settings_refuse[&lt;lambda&gt;-unknown_unmapped_settings0]" time="0.005" /><testcase classname="tests.fpr1.test_config" name="test_contradictions_and_unmapped_settings_refuse[&lt;lambda&gt;-unknown_unmapped_settings1]" time="0.004" /><testcase classname="tests.fpr1.test_config" name="test_contradictions_and_unmapped_settings_refuse[&lt;lambda&gt;-unknown_unmapped_settings2]" time="0.004" /><testcase classname="tests.fpr1.test_config" name="test_contradictions_and_unmapped_settings_refuse[&lt;lambda&gt;-unknown_unmapped_settings3]" time="0.004" /><testcase classname="tests.fpr1.test_config" name="test_contradictions_and_unmapped_settings_refuse[&lt;lambda&gt;-unknown_unmapped_settings4]" time="0.005" /><testcase classname="tests.fpr1.test_config" name="test_contradictions_and_unmapped_settings_refuse[&lt;lambda&gt;-git-only regime requires]" time="0.005" /><testcase classname="tests.fpr1.test_config" name="test_contradictions_and_unmapped_settings_refuse[&lt;lambda&gt;-must equal]" time="0.005" /><testcase classname="tests.fpr1.test_config" name="test_contradictions_and_unmapped_settings_refuse[&lt;lambda&gt;-config_document_alias]" time="0.005" /><testcase classname="tests.fpr1.test_config" name="test_contradictions_and_unmapped_settings_refuse[&lt;lambda&gt;-config_lane_owner_mismatch]" time="0.005" /><testcase classname="tests.fpr1.test_config" name="test_contradictions_and_unmapped_settings_refuse[&lt;lambda&gt;-must match]" time="0.005" /><testcase classname="tests.fpr1.test_config" name="test_contradictions_and_unmapped_settings_refuse[&lt;lambda&gt;-config_path_invalid]" time="0.005" /><testcase classname="tests.fpr1.test_config" name="test_contradictions_and_unmapped_settings_refuse[&lt;lambda&gt;-config_canonical_next]" time="0.005" /><testcase classname="tests.fpr1.test_config" name="test_contradictions_and_unmapped_settings_refuse[&lt;lambda&gt;-unknown_unmapped_settings5]" time="0.004" /><testcase classname="tests.fpr1.test_config" name="test_contradictions_and_unmapped_settings_refuse[&lt;lambda&gt;-config_default_lane_conflict]" time="0.004" /><testcase classname="tests.fpr1.test_config" name="test_contradictions_and_unmapped_settings_refuse[&lt;lambda&gt;-unknown hosted_dashboard.sources]" time="0.005" /><testcase classname="tests.fpr1.test_config" name="test_contradictions_and_unmapped_settings_refuse[&lt;lambda&gt;-config_integer_required0]" time="0.005" /><testcase classname="tests.fpr1.test_config" name="test_contradictions_and_unmapped_settings_refuse[&lt;lambda&gt;-config_reviewer_provider_invalid]" time="0.004" /><testcase classname="tests.fpr1.test_config" name="test_contradictions_and_unmapped_settings_refuse[&lt;lambda&gt;-config_integer_required1]" time="0.005" /><testcase classname="tests.fpr1.test_config" name="test_contradictions_and_unmapped_settings_refuse[&lt;lambda&gt;-config_hosted_hosts_must_be_strings]" time="0.004" /><testcase classname="tests.fpr1.test_config" name="test_duplicate_nested_and_recursive_yaml_refuse[\nrepo: {}\n]" time="0.004" /><testcase classname="tests.fpr1.test_config" name="test_duplicate_nested_and_recursive_yaml_refuse[\nworkspace:\n  constellation_id: one\n  constellation_id: two\n]" time="0.004" /><testcase classname="tests.fpr1.test_config" name="test_duplicate_nested_and_recursive_yaml_refuse[\nextra: &amp;a {again: *a}\n]" time="0.005" /><testcase classname="tests.fpr1.test_config" name="test_existing_binding_never_silently_changes[root]" time="0.001" /><testcase classname="tests.fpr1.test_config" name="test_existing_binding_never_silently_changes[identity]" time="0.001" /><testcase classname="tests.fpr1.test_config" name="test_existing_binding_never_silently_changes[runtime]" time="0.001" /><testcase classname="tests.fpr1.test_config" name="test_existing_binding_never_silently_changes[lane]" time="0.001" /><testcase classname="tests.fpr1.test_config" name="test_existing_binding_never_silently_changes[model]" time="0.001" /><testcase classname="tests.fpr1.test_config" name="test_bounded_binding_missing_values_are_not_repaired_implicitly[id]" time="0.001" /><testcase classname="tests.fpr1.test_config" name="test_bounded_binding_missing_values_are_not_repaired_implicitly[root]" time="0.001" /><testcase classname="tests.fpr1.test_config" name="test_bounded_binding_missing_values_are_not_repaired_implicitly[runtime]" time="0.001" /><testcase classname="tests.fpr1.test_config" name="test_bounded_binding_missing_values_are_not_repaired_implicitly[context]" time="0.001" /><testcase classname="tests.fpr1.test_config" name="test_symlink_policy_and_nondefault_lane_paths_refuse" time="0.005" /><testcase classname="tests.fpr1.test_config" name="test_linked_muse_working_directory_is_reported_and_binding_requires_pairing" time="0.005" /><testcase classname="tests.fpr1.test_config" name="test_all_preserved_valid_config_fixtures_load_without_muse_imports" time="0.093" /><testcase classname="tests.fpr1.test_migration" name="test_legacy_plan_is_read_only_deterministic_and_lossless" time="0.934"><failure message="AssertionError: refused: file_invalid: migration-plan.json&#10;  &#10;assert 2 == 0&#10; +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...8dd5520ea473bb719c6ae1d4b8', '--json'], returncode=2, stdout='', stderr='refused: file_invalid: migration-plan.json\n').returncode">legacy = PosixPath('/private/tmp/overseer-fpr3-binding-1/test_legacy_plan_is_read_only_0/legacy')
+
+    def test_legacy_plan_is_read_only_deterministic_and_lossless(legacy):
+        before = {p.relative_to(legacy): p.read_bytes() for p in legacy.rglob("*") if p.is_file() and ".git" not in p.parts}
+        first = command(legacy, "init", "--migrate", "--dry-run", "--json")
+        second = command(legacy, "init", "--migrate", "--dry-run", "--json")
+        assert first.returncode == second.returncode == 0, first.stderr + second.stderr
+        assert first.stdout == second.stdout
+        assert before == {p.relative_to(legacy): p.read_bytes() for p in legacy.rglob("*") if p.is_file() and ".git" not in p.parts}
+        document, _ = prepare(legacy)
+        result = apply_cli(legacy, document)
+&gt;       assert result.returncode == 0, result.stderr + result.stdout
+E       AssertionError: refused: file_invalid: migration-plan.json
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...8dd5520ea473bb719c6ae1d4b8', '--json'], returncode=2, stdout='', stderr='refused: file_invalid: migration-plan.json\n').returncode
+
+tests/fpr1/test_migration.py:72: AssertionError</failure></testcase><testcase classname="tests.fpr1.test_migration" name="test_bounded_migration_preserves_uuid_next_and_launch_binding" time="4.160" /><testcase classname="tests.fpr1.test_migration" name="test_plan_drift_refuses_before_mutation[config]" time="0.388" /><testcase classname="tests.fpr1.test_migration" name="test_plan_drift_refuses_before_mutation[living]" time="0.393" /><testcase classname="tests.fpr1.test_migration" name="test_plan_drift_refuses_before_mutation[mode]" time="0.394" /><testcase classname="tests.fpr1.test_migration" name="test_plan_drift_refuses_before_mutation[head]" time="0.403" /><testcase classname="tests.fpr1.test_migration" name="test_partial_replacement_keeps_old_config_and_resumes" time="0.305"><failure message="cli.v1_io.Refusal: file_invalid: migration-plan.json">legacy = PosixPath('/private/tmp/overseer-fpr3-binding-1/test_partial_replacement_keeps0/legacy')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x106263950&gt;
+
+    def test_partial_replacement_keeps_old_config_and_resumes(legacy, monkeypatch):
+        document, args = prepare(legacy)
+        original = (legacy / migration.CONFIG).read_bytes()
+        actual = migration.atomic
+    
+        def fail_config(root, path, data, **kwargs):
+            if path == migration.CONFIG:
+                raise OSError("injected replacement failure")
+            return actual(root, path, data, **kwargs)
+    
+        monkeypatch.setattr(migration, "atomic", fail_config)
+&gt;       result = migration.migrate(legacy, args)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/fpr1/test_migration.py:146: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+cli/product_migration.py:514: in migrate
+    wrapper = json.loads(read(root, args.apply_plan).decode("utf-8"),
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/overseer-fpr3-binding-1/test_partial_replacement_keeps0/legacy')
+relative = 'migration-plan.json', missing = False
+
+    def read(root: Path, relative: str, *, missing: bool = False) -&gt; bytes | None:
+        path = confined(root, relative, missing_parents=missing)
+        try:
+            fd = os.open(path, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)
+        except FileNotFoundError:
+            if missing:
+                return None
+            raise Refusal("file_missing: " + relative) from None
+        with os.fdopen(fd, "rb") as stream:
+            st = os.fstat(stream.fileno())
+            if not stat.S_ISREG(st.st_mode) or st.st_nlink != 1 or st.st_size &gt; LIMIT:
+&gt;               raise Refusal("file_invalid: " + relative)
+E               cli.v1_io.Refusal: file_invalid: migration-plan.json
+
+cli/v1_io.py:56: Refusal</failure></testcase><testcase classname="tests.fpr1.test_migration" name="test_after_lock_context_change_refuses_without_replacement" time="0.304"><failure message="cli.v1_io.Refusal: file_invalid: migration-plan.json">legacy = PosixPath('/private/tmp/overseer-fpr3-binding-1/test_after_lock_context_change0/legacy')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x106c4c050&gt;
+
+    def test_after_lock_context_change_refuses_without_replacement(legacy, monkeypatch):
+        _, args = prepare(legacy)
+        actual = migration.fcntl.flock
+    
+        def change_after_lock(fd, mode):
+            actual(fd, mode)
+            subprocess.run(["/usr/bin/git", "-C", str(legacy), "checkout", "-b", "other"],
+                           check=True, capture_output=True)
+    
+        monkeypatch.setattr(migration.fcntl, "flock", change_after_lock)
+&gt;       result = migration.migrate(legacy, args)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/fpr1/test_migration.py:168: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+cli/product_migration.py:514: in migrate
+    wrapper = json.loads(read(root, args.apply_plan).decode("utf-8"),
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/overseer-fpr3-binding-1/test_after_lock_context_change0/legacy')
+relative = 'migration-plan.json', missing = False
+
+    def read(root: Path, relative: str, *, missing: bool = False) -&gt; bytes | None:
+        path = confined(root, relative, missing_parents=missing)
+        try:
+            fd = os.open(path, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)
+        except FileNotFoundError:
+            if missing:
+                return None
+            raise Refusal("file_missing: " + relative) from None
+        with os.fdopen(fd, "rb") as stream:
+            st = os.fstat(stream.fileno())
+            if not stat.S_ISREG(st.st_mode) or st.st_nlink != 1 or st.st_size &gt; LIMIT:
+&gt;               raise Refusal("file_invalid: " + relative)
+E               cli.v1_io.Refusal: file_invalid: migration-plan.json
+
+cli/v1_io.py:56: Refusal</failure></testcase><testcase classname="tests.fpr1.test_migration" name="test_before_replace_context_change_refuses_candidate" time="0.298"><failure message="cli.v1_io.Refusal: file_invalid: migration-plan.json">legacy = PosixPath('/private/tmp/overseer-fpr3-binding-1/test_before_replace_context_ch0/legacy')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x1062f7770&gt;
+
+    def test_before_replace_context_change_refuses_candidate(legacy, monkeypatch):
+        _, args = prepare(legacy)
+        actual = migration.atomic
+    
+        def change_before_replace(root, path, data, **kwargs):
+            if path == migration.LAUNCHER:
+                prior = kwargs["before_replace"]
+    
+                def changed():
+                    (root / "QUEUE_HANDOVER.md").write_text("concurrent owner edit\n")
+                    prior()
+    
+                kwargs["before_replace"] = changed
+            return actual(root, path, data, **kwargs)
+    
+        monkeypatch.setattr(migration, "atomic", change_before_replace)
+&gt;       result = migration.migrate(legacy, args)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/fpr1/test_migration.py:190: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+cli/product_migration.py:514: in migrate
+    wrapper = json.loads(read(root, args.apply_plan).decode("utf-8"),
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/overseer-fpr3-binding-1/test_before_replace_context_ch0/legacy')
+relative = 'migration-plan.json', missing = False
+
+    def read(root: Path, relative: str, *, missing: bool = False) -&gt; bytes | None:
+        path = confined(root, relative, missing_parents=missing)
+        try:
+            fd = os.open(path, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)
+        except FileNotFoundError:
+            if missing:
+                return None
+            raise Refusal("file_missing: " + relative) from None
+        with os.fdopen(fd, "rb") as stream:
+            st = os.fstat(stream.fileno())
+            if not stat.S_ISREG(st.st_mode) or st.st_nlink != 1 or st.st_size &gt; LIMIT:
+&gt;               raise Refusal("file_invalid: " + relative)
+E               cli.v1_io.Refusal: file_invalid: migration-plan.json
+
+cli/v1_io.py:56: Refusal</failure></testcase><testcase classname="tests.fpr1.test_migration" name="test_symlink_preflight_does_not_start_backup" time="0.376" /><testcase classname="tests.fpr1.test_migration" name="test_legacy_prompt_is_exact_draft_only_and_conflicts_refuse" time="0.495" /><testcase classname="tests.fpr1.test_migration" name="test_unknown_setting_and_hook_install_refuse" time="0.325" /><testcase classname="tests.fpr1.test_migration" name="test_preserved_origin_and_custom_assets_are_classified_without_takeover" time="0.066" /><testcase classname="tests.fpr1.test_migration" name="test_expected_plan_digest_refuses_tampered_document" time="0.370"><failure message="AssertionError: assert (2 != 0 and 'plan_digest_mismatch' in 'refused: file_invalid: migration-plan.json\n')&#10; +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...8dd5520ea473bb719c6ae1d4b8', '--json'], returncode=2, stdout='', stderr='refused: file_invalid: migration-plan.json\n').returncode&#10; +  and   'refused: file_invalid: migration-plan.json\n' = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...8dd5520ea473bb719c6ae1d4b8', '--json'], returncode=2, stdout='', stderr='refused: file_invalid: migration-plan.json\n').stderr">legacy = PosixPath('/private/tmp/overseer-fpr3-binding-1/test_expected_plan_digest_refu0/legacy')
+
+    def test_expected_plan_digest_refuses_tampered_document(legacy):
+        document, _ = prepare(legacy)
+        document["plan"]["diagnostics"].append("unreviewed edit")
+        (legacy / "migration-plan.json").write_text(json.dumps(document))
+        result = apply_cli(legacy, document)
+&gt;       assert result.returncode != 0 and "plan_digest_mismatch" in result.stderr
+E       AssertionError: assert (2 != 0 and 'plan_digest_mismatch' in 'refused: file_invalid: migration-plan.json\n')
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...8dd5520ea473bb719c6ae1d4b8', '--json'], returncode=2, stdout='', stderr='refused: file_invalid: migration-plan.json\n').returncode
+E        +  and   'refused: file_invalid: migration-plan.json\n' = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...8dd5520ea473bb719c6ae1d4b8', '--json'], returncode=2, stdout='', stderr='refused: file_invalid: migration-plan.json\n').stderr
+
+tests/fpr1/test_migration.py:241: AssertionError</failure></testcase><testcase classname="tests.fpr1.test_migration" name="test_custom_launcher_is_not_taken_over" time="0.421" /><testcase classname="tests.fpr1.test_migration" name="test_referenced_optional_assets_are_in_the_digest_plan" time="0.371" /><testcase classname="tests.fpr1.test_migration" name="test_runtime_refresh_is_explicit_and_sync_does_not_migrate_schema" time="0.375"><failure message="AssertionError: assert 2 == 0&#10; +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...8dd5520ea473bb719c6ae1d4b8', '--json'], returncode=2, stdout='', stderr='refused: file_invalid: migration-plan.json\n').returncode&#10; +    where CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...8dd5520ea473bb719c6ae1d4b8', '--json'], returncode=2, stdout='', stderr='refused: file_invalid: migration-plan.json\n') = apply_cli(PosixPath('/private/tmp/overseer-fpr3-binding-1/test_runtime_refresh_is_explic0/legacy'), {'ok': True, 'dry_run': True, 'plan_sha256': '40c1fae178612bb43a2c43a8d0e85d9f81a0bc93f8851274efd145a3c4220a0a', 'plan...-5b2e-9372-90d18dd809f6', 'root': '/private/tmp/overseer-fpr3-binding-1/test_runtime_refresh_is_explic0/legacy'}, ...}})">legacy = PosixPath('/private/tmp/overseer-fpr3-binding-1/test_runtime_refresh_is_explic0/legacy')
+
+    def test_runtime_refresh_is_explicit_and_sync_does_not_migrate_schema(legacy):
+        document, _ = prepare(legacy)
+&gt;       assert apply_cli(legacy, document).returncode == 0
+E       AssertionError: assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...8dd5520ea473bb719c6ae1d4b8', '--json'], returncode=2, stdout='', stderr='refused: file_invalid: migration-plan.json\n').returncode
+E        +    where CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...8dd5520ea473bb719c6ae1d4b8', '--json'], returncode=2, stdout='', stderr='refused: file_invalid: migration-plan.json\n') = apply_cli(PosixPath('/private/tmp/overseer-fpr3-binding-1/test_runtime_refresh_is_explic0/legacy'), {'ok': True, 'dry_run': True, 'plan_sha256': '40c1fae178612bb43a2c43a8d0e85d9f81a0bc93f8851274efd145a3c4220a0a', 'plan...-5b2e-9372-90d18dd809f6', 'root': '/private/tmp/overseer-fpr3-binding-1/test_runtime_refresh_is_explic0/legacy'}, ...}})
+
+tests/fpr1/test_migration.py:276: AssertionError</failure></testcase><testcase classname="tests.fpr1.test_migration" name="test_october_muse_plan_preserves_authority_and_never_calls_git_revision" time="0.130" /><testcase classname="tests.fpr1.test_migration" name="test_sync_partial_asset_failure_is_explicit" time="3.523" /><testcase classname="tests.fpr1.test_migration" name="test_unchanged_launcher_mode_remains_in_preflight" time="0.374"><failure message="AssertionError: assert 2 == 0&#10; +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...8dd5520ea473bb719c6ae1d4b8', '--json'], returncode=2, stdout='', stderr='refused: file_invalid: migration-plan.json\n').returncode&#10; +    where CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...8dd5520ea473bb719c6ae1d4b8', '--json'], returncode=2, stdout='', stderr='refused: file_invalid: migration-plan.json\n') = apply_cli(PosixPath('/private/tmp/overseer-fpr3-binding-1/test_unchanged_launcher_mode_r0/legacy'), {'ok': True, 'dry_run': True, 'plan_sha256': 'c9925e18773fd47b056d4925077ed136f77f04bb6388c463a35fc05719b67a78', 'plan...-5693-ba4d-7c327284e56e', 'root': '/private/tmp/overseer-fpr3-binding-1/test_unchanged_launcher_mode_r0/legacy'}, ...}})">legacy = PosixPath('/private/tmp/overseer-fpr3-binding-1/test_unchanged_launcher_mode_r0/legacy')
+
+    def test_unchanged_launcher_mode_remains_in_preflight(legacy):
+        document, _ = prepare(legacy)
+&gt;       assert apply_cli(legacy, document).returncode == 0
+E       AssertionError: assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...8dd5520ea473bb719c6ae1d4b8', '--json'], returncode=2, stdout='', stderr='refused: file_invalid: migration-plan.json\n').returncode
+E        +    where CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...8dd5520ea473bb719c6ae1d4b8', '--json'], returncode=2, stdout='', stderr='refused: file_invalid: migration-plan.json\n') = apply_cli(PosixPath('/private/tmp/overseer-fpr3-binding-1/test_unchanged_launcher_mode_r0/legacy'), {'ok': True, 'dry_run': True, 'plan_sha256': 'c9925e18773fd47b056d4925077ed136f77f04bb6388c463a35fc05719b67a78', 'plan...-5693-ba4d-7c327284e56e', 'root': '/private/tmp/overseer-fpr3-binding-1/test_unchanged_launcher_mode_r0/legacy'}, ...}})
+
+tests/fpr1/test_migration.py:344: AssertionError</failure></testcase><testcase classname="tests.fpr1.test_migration" name="test_malformed_reviewed_plan_refuses_without_traceback[&lt;lambda&gt;0]" time="0.389" /><testcase classname="tests.fpr1.test_migration" name="test_malformed_reviewed_plan_refuses_without_traceback[&lt;lambda&gt;1]" time="0.378" /><testcase classname="tests.fpr1.test_migration" name="test_malformed_reviewed_plan_refuses_without_traceback[&lt;lambda&gt;2]" time="0.365" /><testcase classname="tests.fpr1.test_migration" name="test_malformed_reviewed_plan_refuses_without_traceback[&lt;lambda&gt;3]" time="0.379" /><testcase classname="tests.fpr1.test_migration" name="test_canonical_json_plan_order_does_not_change_yaml_candidate" time="0.384"><failure message="AssertionError: refused: file_invalid: migration-plan.json&#10;  &#10;assert 2 == 0&#10; +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...8dd5520ea473bb719c6ae1d4b8', '--json'], returncode=2, stdout='', stderr='refused: file_invalid: migration-plan.json\n').returncode">legacy = PosixPath('/private/tmp/overseer-fpr3-binding-1/test_canonical_json_plan_order0/legacy')
+
+    def test_canonical_json_plan_order_does_not_change_yaml_candidate(legacy):
+        document, _ = prepare(legacy)
+        (legacy / "migration-plan.json").write_bytes(migration._json(document))
+        result = apply_cli(legacy, document)
+&gt;       assert result.returncode == 0, result.stderr + result.stdout
+E       AssertionError: refused: file_invalid: migration-plan.json
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...8dd5520ea473bb719c6ae1d4b8', '--json'], returncode=2, stdout='', stderr='refused: file_invalid: migration-plan.json\n').returncode
+
+tests/fpr1/test_migration.py:376: AssertionError</failure></testcase><testcase classname="tests.fpr1.test_migration" name="test_preserved_launcher_mode_is_not_promoted_by_migration" time="0.485" /><testcase classname="tests.fpr1.test_migration" name="test_explicit_sync_upgrades_exact_bounded_hooks_only" time="4.115" /><testcase classname="tests.fpr1.test_migration" name="test_plan_input_is_strict_finite_unique_json[plan:\n  context: 2026-10-14\n]" time="0.386" /><testcase classname="tests.fpr1.test_migration" name="test_plan_input_is_strict_finite_unique_json[{&quot;plan&quot;: {}, &quot;plan&quot;: {}}]" time="0.399" /><testcase classname="tests.fpr1.test_migration" name="test_plan_input_is_strict_finite_unique_json[{&quot;plan&quot;: NaN}]" time="0.397" /><testcase classname="tests.fpr1.test_migration" name="test_sync_glob_selects_only_available_scripts_with_read_only_diff" time="3.480"><failure message="AssertionError: assert {'.cursor/hoo...version.lock'} == {'.cursor/hoo...tart-next.sh'}&#10;  &#10;  Extra items in the left set:&#10;  '.overseer/version.lock'&#10;  Use -v to get more diff">tmp_path = PosixPath('/private/tmp/overseer-fpr3-binding-1/test_sync_glob_selects_only_av0')
+
+    def test_sync_glob_selects_only_available_scripts_with_read_only_diff(tmp_path):
+        root = _sync_fixture(tmp_path)
+        old = migration._bounded_hook_assets(root)
+        for path, body in old.items():
+            (root / path).write_bytes(body)
+        next_bytes = (root / migration.NEXT).read_bytes()
+        result = command(root, "sync", "--hooks", "--only", ".cursor/hooks/session-*.sh",
+                         "--dry-run", "--diff", "--json")
+        assert result.returncode == 0, result.stderr
+        report = json.loads(result.stdout)
+        selected = {".cursor/hooks/session-start-next.sh", ".cursor/hooks/session-end-closeout.sh"}
+        assert set(report["changed"]) == selected
+&gt;       assert set(report["diff"]) == selected
+E       AssertionError: assert {'.cursor/hoo...version.lock'} == {'.cursor/hoo...tart-next.sh'}
+E         
+E         Extra items in the left set:
+E         '.overseer/version.lock'
+E         Use -v to get more diff
+
+tests/fpr1/test_migration.py:444: AssertionError</failure></testcase><testcase classname="tests.fpr1.test_migration" name="test_sync_hook_glob_requires_explicit_hook_selection[.cursor/hooks/*.sh]" time="3.398" /><testcase classname="tests.fpr1.test_migration" name="test_sync_hook_glob_requires_explicit_hook_selection[.overseer/instructions/*]" time="3.419" /><testcase classname="tests.fpr1.test_migration" name="test_sync_hook_glob_requires_explicit_hook_selection[*]" time="3.420" /><testcase classname="tests.fpr1.test_migration" name="test_sync_unmatched_selection_refuses_before_runtime_refresh" time="3.692"><failure message="assert (0 == 2)&#10; +  where 0 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...e8356f63&quot;\n    }\n  ],\n  &quot;preserved&quot;: [],\n  &quot;dry_run&quot;: false,\n  &quot;diff&quot;: {},\n  &quot;next&quot;: &quot;preserved&quot;\n}\n', stderr='').returncode">tmp_path = PosixPath('/private/tmp/overseer-fpr3-binding-1/test_sync_unmatched_selection_0')
+
+    def test_sync_unmatched_selection_refuses_before_runtime_refresh(tmp_path):
+        root = _sync_fixture(tmp_path)
+        config = yaml.safe_load((root / migration.CONFIG).read_bytes())
+        config["runtime"]["sha256"] = "0" * 64
+        original = v1.encode(config)
+        (root / migration.CONFIG).write_bytes(original)
+        result = command(root, "sync", "--only", "launcher", "--only", "policy/*.yaml")
+&gt;       assert result.returncode == 2 and "sync_only_no_matches" in result.stderr
+E       assert (0 == 2)
+E        +  where 0 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...e8356f63"\n    }\n  ],\n  "preserved": [],\n  "dry_run": false,\n  "diff": {},\n  "next": "preserved"\n}\n', stderr='').returncode
+
+tests/fpr1/test_migration.py:470: AssertionError</failure></testcase><testcase classname="tests.fpr1.test_migration" name="test_sync_glob_preserves_origin_and_explicit_custom_settings" time="3.874"><failure message="AssertionError: assert ['.overseer/version.lock'] == []&#10;  &#10;  Left contains one more item: '.overseer/version.lock'&#10;  Use -v to get more diff">tmp_path = PosixPath('/private/tmp/overseer-fpr3-binding-1/test_sync_glob_preserves_origi0')
+
+    def test_sync_glob_preserves_origin_and_explicit_custom_settings(tmp_path):
+        root = _sync_fixture(tmp_path)
+        start = ".cursor/hooks/session-start-next.sh"
+        end = ".cursor/hooks/session-end-closeout.sh"
+        old = migration._bounded_hook_assets(root)
+        (root / start).write_bytes(old[start])
+        custom = old[end] + b"# owner customization\n"
+        (root / end).write_bytes(custom)
+        (root / migration.LOCK).write_text(yaml.safe_dump({"footprint": [{"path": start,
+            "source": "cursor/hooks/session-start-next.sh", "sha256": digest(old[start]), "origin": "preserved"}]}))
+        refused = command(root, "sync", "--hooks", "--only", ".cursor/hooks/*.sh")
+        assert refused.returncode == 2 and "sync_asset_modified" in refused.stderr
+        result = command(root, "sync", "--hooks", "--only", ".cursor/hooks/*.sh", "--preserve-modified", "--json")
+        assert result.returncode == 0, result.stderr
+        report = json.loads(result.stdout)
+        assert set(report["preserved"]) == {start, end}
+&gt;       assert report["changed"] == []
+E       AssertionError: assert ['.overseer/version.lock'] == []
+E         
+E         Left contains one more item: '.overseer/version.lock'
+E         Use -v to get more diff
+
+tests/fpr1/test_migration.py:490: AssertionError</failure></testcase><testcase classname="tests.v1.test_integrity" name="test_symlinks_cannot_cross_repository[a-to-b-.overseer/config.yaml]" time="9.066" /><testcase classname="tests.v1.test_integrity" name="test_symlinks_cannot_cross_repository[a-to-b-docs/NEXT.md]" time="9.608" /><testcase classname="tests.v1.test_integrity" name="test_symlinks_cannot_cross_repository[a-to-b-docs]" time="9.138" /><testcase classname="tests.v1.test_integrity" name="test_symlinks_cannot_cross_repository[a-to-b-.overseer]" time="9.138" /><testcase classname="tests.v1.test_integrity" name="test_symlinks_cannot_cross_repository[b-to-a-.overseer/config.yaml]" time="9.194" /><testcase classname="tests.v1.test_integrity" name="test_symlinks_cannot_cross_repository[b-to-a-docs/NEXT.md]" time="9.461" /><testcase classname="tests.v1.test_integrity" name="test_symlinks_cannot_cross_repository[b-to-a-docs]" time="9.034" /><testcase classname="tests.v1.test_integrity" name="test_symlinks_cannot_cross_repository[b-to-a-.overseer]" time="8.980" /><testcase classname="tests.v1.test_integrity" name="test_hardlinked_next_refused[a-to-b]" time="9.043" /><testcase classname="tests.v1.test_integrity" name="test_hardlinked_next_refused[b-to-a]" time="9.022" /><testcase classname="tests.v1.test_integrity" name="test_atomic_failure_preserves_old_bytes_and_removes_temp[replace]" time="0.003" /><testcase classname="tests.v1.test_integrity" name="test_atomic_failure_preserves_old_bytes_and_removes_temp[fsync]" time="0.001" /><testcase classname="tests.v1.test_integrity" name="test_atomic_unique_temp_and_permissions" time="0.001" /><testcase classname="tests.v1.test_integrity" name="test_writer_rejects_external_or_symlink_prompt" time="9.762" /><testcase classname="tests.v1.test_integrity" name="test_oversized_next_refused" time="3.452" /><testcase classname="tests.v1.test_integrity" name="test_concurrent_readers_and_cas_writers" time="4.417"><failure message="AssertionError: refused: file_invalid: docs/NEXT.md&#10;  &#10;assert 2 == 0&#10; +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...current_readers_and_ca0/similar-kit', 'next'], returncode=2, stdout='', stderr='refused: file_invalid: docs/NEXT.md\n').returncode">repo = PosixPath('/private/tmp/overseer-fpr3-binding-1/test_concurrent_readers_and_ca0/similar-kit')
+
+    def test_concurrent_readers_and_cas_writers(repo):
+        state=status(repo)
+        (repo/'prompt-a').write_text('Concurrent A\n');(repo/'prompt-b').write_text('Concurrent B\n')
+        from tests.v1.conftest import KIT
+        args=[str(KIT/'cli/ok'),'-C',str(repo),'next-write','--repo-id',state['repository']['id'],
+              '--branch','main','--lane','product','--model','GPT-6 Astra','--action-id','CONCURRENT',
+              '--action-kind','implement','--expect-next',state['next_sha256']]
+        workers=[subprocess.Popen(args+['--prompt-file',p],stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
+                 for p in ('prompt-a','prompt-b')]
+        for _ in range(5):
+&gt;           r=command('-C',repo,'next');assert r.returncode==0,r.stderr
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AssertionError: refused: file_invalid: docs/NEXT.md
+E             
+E           assert 2 == 0
+E            +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...current_readers_and_ca0/similar-kit', 'next'], returncode=2, stdout='', stderr='refused: file_invalid: docs/NEXT.md\n').returncode
+
+tests/v1/test_integrity.py:75: AssertionError</failure></testcase><testcase classname="tests.v1.test_integrity" name="test_next_read_bounded" time="6.133" /><testcase classname="tests.v1.test_integrity" name="test_post_replace_directory_fsync_failure_reports_failure_with_whole_file" time="0.003" /><testcase classname="tests.v1.test_integrity" name="test_raw_digest_preserves_exact_next_bytes" time="0.000" /><testcase classname="tests.v1.test_integrity" name="test_old_test_sources_preserved" time="0.031" /><testcase classname="tests.v1.test_context" name="test_writer_rechecks_context_after_real_lock_wait[branch]" time="4.377" /><testcase classname="tests.v1.test_context" name="test_writer_rechecks_context_after_real_lock_wait[head]" time="4.354" /><testcase classname="tests.v1.test_context" name="test_writer_rechecks_context_after_real_lock_wait[config]" time="4.260" /><testcase classname="tests.v1.test_context" name="test_writer_rechecks_context_after_real_lock_wait[runtime]" time="4.254" /><testcase classname="tests.v1.test_context" name="test_reader_cannot_mix_parent_and_blob_revisions" time="6.233" /><testcase classname="tests.v1.test_context" name="test_reader_rechecks_context_before_output[branch-next]" time="4.231" /><testcase classname="tests.v1.test_context" name="test_reader_rechecks_context_before_output[branch-status]" time="4.332" /><testcase classname="tests.v1.test_context" name="test_reader_rechecks_context_before_output[branch-hook]" time="4.300" /><testcase classname="tests.v1.test_context" name="test_reader_rechecks_context_before_output[head-next]" time="4.243" /><testcase classname="tests.v1.test_context" name="test_reader_rechecks_context_before_output[head-status]" time="4.336" /><testcase classname="tests.v1.test_context" name="test_reader_rechecks_context_before_output[head-hook]" time="4.216" /><testcase classname="tests.v1.test_context" name="test_reader_rechecks_context_before_output[config-next]" time="4.234" /><testcase classname="tests.v1.test_context" name="test_reader_rechecks_context_before_output[config-status]" time="4.276" /><testcase classname="tests.v1.test_context" name="test_reader_rechecks_context_before_output[config-hook]" time="4.172" /><testcase classname="tests.v1.test_context" name="test_reader_rechecks_context_before_output[runtime-next]" time="4.201" /><testcase classname="tests.v1.test_context" name="test_reader_rechecks_context_before_output[runtime-status]" time="4.223" /><testcase classname="tests.v1.test_context" name="test_reader_rechecks_context_before_output[runtime-hook]" time="4.122" /><testcase classname="tests.v1.test_context" name="test_writer_rechecks_context_after_candidate_fsync[branch]" time="4.357" /><testcase classname="tests.v1.test_context" name="test_writer_rechecks_context_after_candidate_fsync[head]" time="4.342" /><testcase classname="tests.v1.test_context" name="test_context_checks_keep_successful_reads_read_only" time="5.300" /></testsuite></testsuites>

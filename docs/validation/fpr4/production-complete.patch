@@ -1,0 +1,143 @@
+diff --git a/cli/v1.py b/cli/v1.py
+index d360f2c..12c3063 100644
+--- a/cli/v1.py
++++ b/cli/v1.py
+@@ -398,7 +398,7 @@ def apply_assets(root, mapping, *, dry_run=False):
+ 
+ def initialize(root, args):
+     from cli.product_config import normalize
+-    from cli.product_migration import apply_mapping, classify_assets
++    from cli.product_migration import apply_mapping, classify_assets, _snapshot, _same, LAUNCHER, HOOKS
+     from cli.product_authority import select, bind_muse, tracked_bindings
+     from cli.v1_policy import ignore_assets
+     existing = read(root, CONFIG, missing=True)
+@@ -446,22 +446,32 @@ def initialize(root, args):
+                 mapping.pop(row["path"])
+             elif row["classification"] in ("consumer-modified", "both-changed"):
+                 raise Refusal("init_asset_modified: " + row["path"])
+-    for path in mapping:
++    preserved = {}
++    binding_assets = {LAUNCHER, *HOOKS, "scripts/muse-bridge-deploy.sh"}
++    for path in list(mapping):
+         confined(root, path, missing_parents=True)
+         old = read(root, path, missing=True)
+         if existing is None and old is not None and path not in ('.gitignore', '.museignore'):
+-            raise Refusal("init_asset_exists: " + path)
++            if path in binding_assets:
++                raise Refusal("init_asset_exists: " + path)
++            # Existing portable skills, rules, policies and references remain
++            # consumer-owned. Operational bindings still require exact adoption.
++            preserved[path] = _snapshot(root, path)
++            mapping.pop(path)
+     for path, body in {"docs/ROADMAP.md": "# Roadmap\n\nCurrent action: docs/NEXT.md.\n",
+                        "docs/OVERSEER-HANDOVER.md": "# Handover\n\nRead current action with `ok next`.\n"}.items():
+         confined(root, path, missing_parents=True)
+         if read(root, path, missing=True) is None:
+             mapping[path] = body.encode()
+     from cli.product_footprint import with_lock
+-    mapping = with_lock(root, mapping, config)
++    mapping = with_lock(root, mapping, config, preserved=preserved)
+     if existing is None:
+         mapping[CONFIG] = config_data  # Binding is committed after all other assets.
+ 
+     def recheck():
++        for relative, snapshot in preserved.items():
++            if not _same(root, snapshot):
++                raise Refusal("init_preserved_asset_changed: " + relative)
+         for relative, expected_digest in ignore_expected.items():
+             body = read(root, relative, missing=True)
+             if ('absent' if body is None else digest(body)) not in (expected_digest, digest(mapping[relative])):
+diff --git a/cursor/rules/orchestrator.mdc b/cursor/rules/orchestrator.mdc
+index 4b92268..fb1e252 100644
+--- a/cursor/rules/orchestrator.mdc
++++ b/cursor/rules/orchestrator.mdc
+@@ -12,5 +12,7 @@ with current revision and whole-file expected digest. Preserve unrelated setting
+ lanes, living files and other repositories. Never execute legacy_main.
+ Local implementation, remote transport and release/deployment are separate scopes.
+ Use configured review gates when applicable; do not invent extra review cycles or
+-claim independent review from author tests. No legacy live export or packet,
++claim independent review from author tests. Use `/build-verification-review` when
++required by configured gates; use `/freeze-review-loop` only when explicitly
++requested, never automatically. No legacy live export or packet,
+ OCI, identity-bridge, native GSR or sole-writer prerequisite is implied.
+diff --git a/scripts/bundle-desktop-kit.sh b/scripts/bundle-desktop-kit.sh
+index 9ed909a..146bf2c 100755
+--- a/scripts/bundle-desktop-kit.sh
++++ b/scripts/bundle-desktop-kit.sh
+@@ -4,7 +4,10 @@ set -eu
+ ROOT="$(CDPATH= cd -- "$(dirname "$0")/.." && pwd -P)"
+ # New destination only; preserve previous bundles for inspection/rollback.
+ DEST="${1:?usage: bundle-desktop-kit.sh NEW_DESTINATION}"
+-ARCHIVE="$(mktemp -u "${TMPDIR:-/tmp}/overseer-desktop-source.XXXXXXXX.tar.gz")"
++# Reserve a private directory atomically. BSD mktemp requires terminal Xs;
++# an unused-name probe neither reserves the archive nor randomizes that suffix.
++ARCHIVE_DIR="$(mktemp -d "${TMPDIR:-/tmp}/overseer-desktop-source.XXXXXXXX")"
++ARCHIVE="${ARCHIVE_DIR}/source.tar.gz"
+ "${ROOT}/.venv/bin/python" "${ROOT}/tools/ci/source_package.py" build --output "$ARCHIVE"
+ "${ROOT}/.venv/bin/python" "${ROOT}/tools/ci/source_package.py" unpack --archive "$ARCHIVE" --destination "$DEST"
+ printf '%s\n' "bundled source at $DEST; provision its conventional .venv from pinned local prerequisites before launch"
+diff --git a/templates/OVERSEER-HANDOVER.template.md b/templates/OVERSEER-HANDOVER.template.md
+index 7b41c6e..37ede32 100644
+--- a/templates/OVERSEER-HANDOVER.template.md
++++ b/templates/OVERSEER-HANDOVER.template.md
+@@ -1,6 +1,7 @@
+ # {{docs.handover_title}}
+ 
+-Repository: {{repo.name}}. Keep this summary paired with {{docs.roadmap_path}}.
++Repository: {{repo.name}}. This summary lives at {{docs.handover_path}}.
++Keep it paired with {{docs.roadmap_path}}.
+ The sole action authority is canonical `docs/NEXT.md`; read it through the
+ repository-bound `.overseer/bin/ok -C /absolute/repository next`.
+ 
+@@ -8,6 +9,10 @@ repository-bound `.overseer/bin/ok -C /absolute/repository next`.
+ 
+ Record the implemented behavior, validation evidence, failures and prerequisites.
+ Link evidence rather than copying an active prompt into this file.
++When the accepted action calls for build verification, use
++`/build-verification-review` and record its evidence and verdict separately from
++author tests. Follow configured review requirements; do not infer an independent
++review from author validation.
+ 
+ ## Completed work
+ 
+diff --git a/templates/ROADMAP.template.md b/templates/ROADMAP.template.md
+index 2e232dd..a90d5c9 100644
+--- a/templates/ROADMAP.template.md
++++ b/templates/ROADMAP.template.md
+@@ -13,6 +13,9 @@ contains repository identity, lane, model, revision and the accepted action.
+ ## Validation and dependencies
+ 
+ Record focused checks, combined validation and independent review separately.
++Build verification: when required by the accepted action or configured gates,
++record `/build-verification-review` evidence and the actual verdict before marking
++the phase complete. Author checks do not supply independent review.
+ A missing prerequisite or failed check remains open. A local source package is
+ not a published release. Record explicit authority for remote and release actions.
+ 
+diff --git a/tools/app/static/index.html b/tools/app/static/index.html
+index 5f2306f..60a4ffd 100644
+--- a/tools/app/static/index.html
++++ b/tools/app/static/index.html
+@@ -45,17 +45,15 @@
+   <main id="content" hidden>
+     <section id="tab-overview" class="tab-panel active">
+       <p class="one-liner">Local governance console for 🆗 Overseer Kit — not a product task runtime.</p>
+-      <p>Open-source governance CLI + local console (MIT). Terminal + living docs remain day-to-day authority; this UI is a convenience frontend.</p>
++      <p>Open-source governance CLI + local console (MIT). Canonical NEXT supplies the current action; ROADMAP and HANDOVER summarize progress. This UI displays the same repository-bound state.</p>
+ 
+       <h3>Open the local console</h3>
+       <ul class="playbook" id="overview-playbook">
+-        <li><strong>Path 1 — Download Mac console</strong> (preferred on Apple Silicon): confirm Python 3.11+; download the signed <code>aarch64</code> <code>.dmg</code> from
+-          <a class="suite-cta" href="https://github.com/aaronrene/overseer-kit/releases/tag/v0.1.0" target="_blank" rel="noopener noreferrer">GitHub Releases v0.1.0</a>;
+-          set <code>OVERSEER_REPO_ROOT</code> to your governed repo (otherwise the shell binds the bundled kit — no folder picker); launch.</li>
+-        <li><strong>Path 2 — Browser</strong>: from a governed repo run <code>ok app --open</code>; paste <code>session_credential</code> + <code>csrf_token</code> from that terminal → Connect.</li>
+-        <li><strong>Path 3 — Dev desktop</strong>: kit root <code>./scripts/bundle-desktop-kit.sh</code> then <code>cd desktop && npm install && npm run tauri dev</code> (Python 3.11+ + Rust/Node).</li>
++        <li><strong>Source installation</strong>: unpack the verified source archive into a fixed installation directory and provision its own <code>.venv</code> with the pinned runtime requirements. See <code>docs/SOURCE-DISTRIBUTION.md</code> for prerequisites and validation limits.</li>
++        <li><strong>Browser</strong>: run <code>/physical/installation/cli/ok -C /physical/project app --open</code>; paste <code>session_credential</code> + <code>csrf_token</code> from that terminal → Connect.</li>
++        <li><strong>Desktop source build</strong>: prepare the resource bundle as documented, then launch the built shell with <code>--kit-root /physical/installation --repo /physical/project</code>. A packaged macOS build resolves its own Resources installation and still requires an explicit <code>--repo</code>.</li>
+       </ul>
+-      <p class="bound-honesty" id="overview-bound-honesty"><em>This console is bound to one local checkout. Reads and writes (when confirmed) apply only to that tree — not to overseerkit.com and not to arbitrary remote repos. Desktop Path 1/3: set <code>OVERSEER_REPO_ROOT</code> to your governed repo; otherwise the shell binds the bundled kit.</em></p>
++      <p class="bound-honesty" id="overview-bound-honesty"><em>This console validates one explicit local checkout and installation. Confirm the displayed repository before using its controls. Desktop launch requires <code>--repo</code>; a missing or mismatched target refuses to open.</em></p>
+ 
+       <h3>L0 → L3 (summary)</h3>
+       <ul class="layer-stack">

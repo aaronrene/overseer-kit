@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.242" timestamp="2026-10-14T16:19:06.704097-07:00" hostname="Carloss-MacBook-Pro.local"><testcase classname="tests.fpr1.test_bookends" name="test_generated_commands_handle_spaces_and_do_not_overwrite_host_instructions" time="0.209"><failure message="AssertionError: refused: init_asset_exists: .claude/skills/print-next/SKILL.md&#10;  &#10;assert 2 == 0&#10; +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', &quot;/priva...'init', '--hooks'], returncode=2, stdout='', stderr='refused: init_asset_exists: .claude/skills/print-next/SKILL.md\n').returncode">tmp_path = PosixPath('/private/tmp/overseer-fpr4-bookend-before/test_generated_commands_handle0')
+
+    def test_generated_commands_handle_spaces_and_do_not_overwrite_host_instructions(tmp_path):
+        root = seed(tmp_path / "space and 'quote'")
+        (root / "AGENTS.md").write_text("Existing Codex instructions.\n")
+        skill = root / ".claude/skills/print-next/SKILL.md"
+        skill.parent.mkdir(parents=True)
+        skill.write_text("Existing Claude instructions.\n")
+        result = command("-C", root, "init", "--hooks")
+&gt;       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .claude/skills/print-next/SKILL.md
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', "/priva...'init', '--hooks'], returncode=2, stdout='', stderr='refused: init_asset_exists: .claude/skills/print-next/SKILL.md\n').returncode
+
+tests/fpr1/test_bookends.py:127: AssertionError</failure></testcase></testsuite></testsuites>

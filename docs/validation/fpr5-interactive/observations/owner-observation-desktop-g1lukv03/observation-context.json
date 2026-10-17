@@ -1,0 +1,50 @@
+{
+  "kind": "Owner-assisted desktop observation context, captured after launch",
+  "acceptance_head": "7ee9a372e478ad251c17d8e8fd1a4118811c01b2",
+  "pilot_head": "4e394520262e1447ae8b5415ae36dc75dc05197e",
+  "pilot_status": "",
+  "files": {
+    "docs/NEXT.md": {
+      "sha256": "489ded7be7f530ea242e1ed5dbdce96037ec752cc63c9359eaa778aa483ba055",
+      "bytes": 1452,
+      "mode": 420
+    },
+    "docs/ROADMAP.md": {
+      "sha256": "a5084b15886f28d0fb2694e931bd6d9abd0b3a6eabb08757b5684816038abbaa",
+      "bytes": 947,
+      "mode": 420
+    },
+    "docs/OVERSEER-HANDOVER.md": {
+      "sha256": "2d9ebe147ca68554d74a8af84efcac8ddac134e39c993bc275365dd7db156754",
+      "bytes": 48,
+      "mode": 420
+    },
+    ".overseer/config.yaml": {
+      "sha256": "f7a7deb2ca9eb204015879143101bf26bd5e02b62f8a69f1ebdfe7030c41f320",
+      "bytes": 2102,
+      "mode": 384
+    },
+    ".overseer/version.lock": {
+      "sha256": "8fc838ae37c87bf044738402ce06c445e5eb311bd4b0e2f955694cb69465d872",
+      "bytes": 8286,
+      "mode": 420
+    },
+    ".cursor/hooks.json": {
+      "sha256": "6331cba439857676144891062d7fced5c1bed9ed5752f58ab08ab557c95f43ba",
+      "bytes": 439,
+      "mode": 420
+    },
+    ".cursor/hooks/session-start-next.sh": {
+      "sha256": "146d6c6f815f730e3df18842264139560b43b8e870fb47ed81f9db5e8edbc3dd",
+      "bytes": 144,
+      "mode": 493
+    },
+    ".cursor/hooks/session-end-closeout.sh": {
+      "sha256": "272304dbf3e941e2f02663bde22a2da571567520e56ddde2f62cc135f9f3b72f",
+      "bytes": 136,
+      "mode": 493
+    }
+  },
+  "user_observation": "pending",
+  "network_policy": "unchanged pinned outer sandbox"
+}

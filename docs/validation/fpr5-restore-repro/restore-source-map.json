@@ -1,0 +1,232 @@
+{
+  "schema": 1,
+  "kind": "Installed Cursor source used by isolated custom-editor restoration host harness",
+  "sources": {
+    "workbench": {
+      "path": "/Applications/Cursor.app/Contents/Resources/app/out/vs/workbench/workbench.desktop.main.js",
+      "bytes": 39803884,
+      "sha256": "ed6922a7a86c8c448a46aa39af0c931580da162770fe406a0d41737290e637d9"
+    },
+    "extension_host": {
+      "path": "/Applications/Cursor.app/Contents/Resources/app/out/vs/workbench/api/node/extensionHostProcess.js",
+      "bytes": 4876572,
+      "sha256": "473047ad3a1d711e955da5d407e9393b1ea78189c86abfd70be4b18335077507"
+    }
+  },
+  "excerpts": {
+    "serializer_base": {
+      "file": "workbench",
+      "byte_start": 35075307,
+      "byte_end_exclusive": 35076451,
+      "line": 19866,
+      "sha256": "78f36521f124eb28b599d00964041172a2b7cd02c119db73a962368ae87859df",
+      "text": "class{constructor(e){this._webviewWorkbenchService=e}canSerialize(e){return this._webviewWorkbenchService.shouldPersist(e)}serialize(e){if(!this.canSerialize(e))return;const t=this.toJson(e);try{return JSON.stringify(t)}catch{return}}deserialize(e,t){const n=this.fromJson(JSON.parse(t));return this._webviewWorkbenchService.openRevivedWebview({webviewInitInfo:{providedViewType:n.providedId,origin:n.origin,title:n.title,options:n.webviewOptions,contentOptions:n.contentOptions,extension:n.extension},viewType:n.viewType,title:n.title,iconPath:n.iconPath,state:n.state,group:n.group})}fromJson(e){return{...e,extension:cim(e.extensionId,e.extensionLocation),iconPath:lim(e.iconPath),state:pAS(e.state),webviewOptions:e.options,contentOptions:uim(e.options)}}toJson(e){return{origin:e.webview.origin,viewType:e.viewType,providedId:e.providedId,title:e.getName(),options:{...e.webview.options,...e.webview.contentOptions},extensionLocation:e.extension?.location,extensionId:e.extension?.id.value,state:e.webview.state,iconPath:e.iconPath?Ft.isThemeIcon(e.iconPath)?e.iconPath:{light:e.iconPath.light,dark:e.iconPath.dark}:void 0,group:e.group}}}"
+    },
+    "serializer_custom": {
+      "file": "workbench",
+      "byte_start": 35077819,
+      "byte_end_exclusive": 35078486,
+      "line": 19866,
+      "sha256": "03390c446b37c0d78c2e7ffdefce77d704fb0e1af1851b85911d68aae56b3fa2",
+      "text": "class extends ntn{constructor(e,t,n){super(e),this._instantiationService=t,this._webviewService=n}serialize(e){const t=e.isDirty(),n={...this.toJson(e),editorResource:e.resource.toJSON(),dirty:t,backupId:t?e.backupId:void 0};try{return JSON.stringify(n)}catch{return}}fromJson(e){return{...super.fromJson(e),editorResource:Ee.from(e.editorResource),dirty:e.dirty}}deserialize(e,t){const n=this.fromJson(JSON.parse(t)),i=dim(this._webviewService,n),r=this._instantiationService.createInstance($2,{resource:n.editorResource,viewType:n.viewType,iconPath:n.iconPath},i,{startsDirty:n.dirty,backupId:n.backupId});return typeof n.group==\"number\"&&r.updateGroup(n.group),r}}"
+    },
+    "serializer_helpers": {
+      "file": "workbench",
+      "byte_start": 35076492,
+      "byte_end_exclusive": 35077022,
+      "line": 19866,
+      "sha256": "52f52e167c0af675b9d396c9db2dace03d1e9af6e19a21d4e08e9599f9bacc39",
+      "text": "function cim(e,t){if(!e)return;const n=XSr(t);if(n)return{id:new xu(e),location:n}}function lim(e){if(!e)return;if(Ft.isThemeIcon(e))return e;const t=XSr(e.light),n=XSr(e.dark);return t&&n?{light:t,dark:n}:void 0}function XSr(e){if(e)try{return typeof e==\"string\"?Ee.parse(e):Ee.from(e)}catch{return}}function pAS(e){return typeof e==\"string\"?e:void 0}function xDw(e){return e}function uim(e){return{...e,forwardUntrustedKeypressEvents:e.forwardUntrustedKeypressEvents??!0,localResourceRoots:e.localResourceRoots?.map(t=>XSr(t))}}"
+    },
+    "webview_overlay": {
+      "file": "workbench",
+      "byte_start": 35078544,
+      "byte_end_exclusive": 35078881,
+      "line": 19866,
+      "sha256": "8b6136b56a44a261d92bbe2cf40df1aebeb79fc5fff571b6324be08ab1284927",
+      "text": "function dim(e,t){const n=e.createWebviewOverlay({providedViewType:t.viewType,origin:t.origin,title:void 0,options:{purpose:\"customEditor\",enableFindWidget:t.webviewOptions.enableFindWidget,retainContextWhenHidden:t.webviewOptions.retainContextWhenHidden},contentOptions:t.contentOptions,extension:t.extension});return n.state=t.state,n}"
+    },
+    "editor_group": {
+      "file": "workbench",
+      "byte_start": 24160107,
+      "byte_end_exclusive": 24170885,
+      "line": 17501,
+      "sha256": "7a1e3be67f9938bb01698c5ebdda808495c88c71df566e3d27a54752a5639f62",
+      "text": "class extends we{constructor(e,t,n){super(),this.instantiationService=t,this.configurationService=n,this._onDidModelChange=this._register(new ve({leakWarningThreshold:500})),this.onDidModelChange=this._onDidModelChange.event,this.editors=[],this.mru=[],this.editorListeners=this._register(new He),this.locked=!1,this._hasHadEditors=!1,this.selection=[],this.preview=null,this.sticky=-1,this.transient=new Set,Rcr(e)?this._id=this.deserialize(e):this._id=oNe.IDS++,this.onConfigurationUpdated(),this.registerListeners()}get id(){return this._id}get hasHadEditors(){return this._hasHadEditors}get active(){return this.selection[0]??null}registerListeners(){this._register(this.configurationService.onDidChangeConfiguration(e=>this.onConfigurationUpdated(e)))}onConfigurationUpdated(e){e&&!e.affectsConfiguration(\"workbench.editor.openPositioning\")&&!e.affectsConfiguration(\"workbench.editor.focusRecentEditorAfterClose\")||(this.editorOpenPositioning=this.configurationService.getValue(\"workbench.editor.openPositioning\"),this.focusRecentEditorAfterClose=this.configurationService.getValue(\"workbench.editor.focusRecentEditorAfterClose\"))}get count(){return this.editors.length}get stickyCount(){return this.sticky+1}getEditors(e,t){const n=e===0?this.mru.slice(0):this.editors.slice(0);return t?.excludeSticky?e===0?n.filter(i=>!this.isSticky(i)):n.slice(this.sticky+1):n}getEditorByIndex(e){return this.editors[e]}get activeEditor(){return this.active}isActive(e){return this.matches(this.active,e)}get previewEditor(){return this.preview}openEditor(e,t){this._hasHadEditors=!0;const n=t?.sticky||typeof t?.index==\"number\"&&this.isSticky(t.index),i=t?.pinned||t?.sticky,r=!!t?.transient,s=t?.active||!this.activeEditor||!i&&this.preview===this.activeEditor,o=this.findEditor(e,t);if(o){const[a,c]=o;return this.doSetTransient(a,c,r===!1?!1:this.isTransient(a)),i&&this.doPin(a,c),this.setSelection(s?a:this.activeEditor,t?.inactiveSelection??[]),t&&typeof t.index==\"number\"&&this.moveEditor(a,t.index),n&&this.doStick(a,this.indexOf(a)),{editor:a,isNew:!1}}else{const a=e,c=this.indexOf(this.active);let l;if(t&&typeof t.index==\"number\"?l=t.index:this.editorOpenPositioning===T6o.FIRST?(l=0,!n&&this.isSticky(l)&&(l=this.sticky+1)):this.editorOpenPositioning===T6o.LAST?l=this.editors.length:(this.editorOpenPositioning===T6o.LEFT?c===0||!this.editors.length?l=0:l=c:l=c+1,!n&&this.isSticky(l)&&(l=this.sticky+1)),n&&(this.sticky++,this.isSticky(l)||(l=this.sticky)),(i||!this.preview)&&this.splice(l,!1,a),r&&this.doSetTransient(a,l,!0),!i){if(this.preview){const h=this.indexOf(this.preview);l>h&&l--,this.replaceEditor(this.preview,a,l,!s)}this.preview=a}this.registerEditorListeners(a);const u={kind:5,editor:a,editorIndex:l};return this._onDidModelChange.fire(u),this.setSelection(s?a:this.activeEditor,t?.inactiveSelection??[]),{editor:a,isNew:!0}}}registerEditorListeners(e){const t=new He;this.editorListeners.add(t),t.add(Ct.once(e.onWillDispose)(()=>{const n=this.editors.indexOf(e);if(n>=0){const i={kind:15,editor:e,editorIndex:n};this._onDidModelChange.fire(i)}})),t.add(e.onDidChangeDirty(()=>{const n={kind:14,editor:e,editorIndex:this.editors.indexOf(e)};this._onDidModelChange.fire(n)})),t.add(e.onDidChangeLabel(()=>{const n={kind:9,editor:e,editorIndex:this.editors.indexOf(e)};this._onDidModelChange.fire(n)})),t.add(e.onDidChangeCapabilities(()=>{const n={kind:10,editor:e,editorIndex:this.editors.indexOf(e)};this._onDidModelChange.fire(n)})),t.add(this.onDidModelChange(n=>{n.kind===6&&n.editor?.matches(e)&&this.editorListeners.delete(t)}))}replaceEditor(e,t,n,i=!0){const r=this.doCloseEditor(e,rj.REPLACE,i);if(this.splice(n,!1,t),r){const s={kind:6,...r};this._onDidModelChange.fire(s)}}closeEditor(e,t=rj.UNKNOWN,n=!0){const i=this.doCloseEditor(e,t,n);if(i){const r={kind:6,...i};return this._onDidModelChange.fire(r),i}}doCloseEditor(e,t,n){const i=this.indexOf(e);if(i===-1)return;const r=this.editors[i],s=this.isSticky(i),o=this.active===r;if(n&&o)if(this.mru.length>1){let a;this.focusRecentEditorAfterClose?a=this.mru[1]:i===this.editors.length-1?a=this.editors[i-1]:a=this.editors[i+1];const c=this.selection.filter(l=>l!==r&&l!==a);this.doSetSelection(a,this.editors.indexOf(a),c)}else this.doSetSelection(null,void 0,[]);else if(!o&&this.doIsSelected(r)){const a=this.selection.filter(c=>c!==r&&c!==this.activeEditor);this.doSetSelection(this.activeEditor,this.indexOf(this.activeEditor),a)}return this.preview===r&&(this.preview=null),this.transient.delete(r),this.splice(i,!0),{editor:r,sticky:s,editorIndex:i,context:t}}moveEditor(e,t){t>=this.editors.length?t=this.editors.length-1:t<0&&(t=0);const n=this.indexOf(e);if(n<0||t===n)return;const i=this.editors[n],r=this.sticky;this.isSticky(n)&&t>this.sticky?this.sticky--:!this.isSticky(n)&&t<=this.sticky&&this.sticky++,this.editors.splice(n,1),this.editors.splice(t,0,i);const s={kind:7,editor:i,oldEditorIndex:n,editorIndex:t};if(this._onDidModelChange.fire(s),r!==this.sticky){const o={kind:13,editor:i,editorIndex:t};this._onDidModelChange.fire(o)}return i}setActive(e){let t;return e?t=this.setEditorActive(e):this.setGroupActive(),t}setGroupActive(){this._onDidModelChange.fire({kind:0})}setEditorActive(e){const t=this.findEditor(e);if(!t)return;const[n,i]=t;return this.doSetSelection(n,i,[]),n}get selectedEditors(){return this.editors.filter(e=>this.doIsSelected(e))}isSelected(e){let t;return typeof e==\"number\"?t=this.editors[e]:t=this.findEditor(e)?.[0],!!t&&this.doIsSelected(t)}doIsSelected(e){return this.selection.includes(e)}setSelection(e,t){const n=this.findEditor(e);if(!n)return;const[i,r]=n,s=new Set;for(const o of t){const a=this.findEditor(o);if(!a)return;const[c]=a;c!==i&&s.add(c)}this.doSetSelection(i,r,Array.from(s))}doSetSelection(e,t,n){const i=this.activeEditor,r=this.selection;let s;e?s=[e,...n]:s=[],this.selection=s;const o=e&&typeof t==\"number\"&&i!==e;if(o){const a=this.indexOf(e,this.mru);this.mru.splice(a,1),this.mru.unshift(e);const c={kind:8,editor:e,editorIndex:t};this._onDidModelChange.fire(c)}if(o||r.length!==s.length||r.some(a=>!s.includes(a))){const a={kind:4};this._onDidModelChange.fire(a)}}setIndex(e){this._onDidModelChange.fire({kind:1})}setLabel(e){this._onDidModelChange.fire({kind:2})}pin(e){const t=this.findEditor(e);if(!t)return;const[n,i]=t;return this.doPin(n,i),n}doPin(e,t){if(this.isPinned(e))return;this.setTransient(e,!1),this.preview=null;const n={kind:11,editor:e,editorIndex:t};this._onDidModelChange.fire(n)}unpin(e){const t=this.findEditor(e);if(!t)return;const[n,i]=t;return this.doUnpin(n,i),n}doUnpin(e,t){if(!this.isPinned(e))return;const n=this.preview;this.preview=e;const i={kind:11,editor:e,editorIndex:t};this._onDidModelChange.fire(i),n&&this.closeEditor(n,rj.UNPIN)}isPinned(e){let t;return typeof e==\"number\"?t=this.editors[e]:t=e,!this.matches(this.preview,t)}stick(e){const t=this.findEditor(e);if(!t)return;const[n,i]=t;return this.doStick(n,i),n}doStick(e,t){if(this.isSticky(t))return;this.pin(e);const n=this.sticky+1;this.moveEditor(e,n),this.sticky++;const i={kind:13,editor:e,editorIndex:n};this._onDidModelChange.fire(i)}unstick(e){const t=this.findEditor(e);if(!t)return;const[n,i]=t;return this.doUnstick(n,i),n}doUnstick(e,t){if(!this.isSticky(t))return;const n=this.sticky;this.moveEditor(e,n),this.sticky--;const i={kind:13,editor:e,editorIndex:n};this._onDidModelChange.fire(i)}isSticky(e){if(this.sticky<0)return!1;let t;return typeof e==\"number\"?t=e:t=this.indexOf(e),t<0?!1:t<=this.sticky}setTransient(e,t){if(!t&&this.transient.size===0)return;const n=this.findEditor(e);if(!n)return;const[i,r]=n;return this.doSetTransient(i,r,t),i}doSetTransient(e,t,n){if(n){if(this.transient.has(e))return;this.transient.add(e)}else{if(!this.transient.has(e))return;this.transient.delete(e)}const i={kind:12,editor:e,editorIndex:t};this._onDidModelChange.fire(i)}isTransient(e){if(this.transient.size===0)return!1;let t;return typeof e==\"number\"?t=this.editors[e]:t=this.findEditor(e)?.[0],!!t&&this.transient.has(t)}splice(e,t,n){const i=this.editors[e];if(t&&this.isSticky(e)&&this.sticky--,n?this.editors.splice(e,t?1:0,n):this.editors.splice(e,t?1:0),!t&&n)this.mru.length===0?this.mru.push(n):this.mru.splice(1,0,n);else{const r=this.indexOf(i,this.mru);t&&!n?this.mru.splice(r,1):t&&n&&this.mru.splice(r,1,n)}}indexOf(e,t=this.editors,n){let i=-1;if(!e)return i;for(let r=0;r<t.length;r++){const s=t[r];if(this.matches(s,e,n))if(n?.supportSideBySide&&s instanceof Tk&&!(e instanceof Tk))i=r;else{i=r;break}}return i}findEditor(e,t){const n=this.indexOf(e,this.editors,t);if(n!==-1)return[this.editors[n],n]}isFirst(e,t=this.editors){return this.matches(t[0],e)}isLast(e,t=this.editors){return this.matches(t[t.length-1],e)}contains(e,t){return this.indexOf(e,this.editors,t)!==-1}matches(e,t,n){if(!e||!t)return!1;if(n?.supportSideBySide&&e instanceof Tk&&!(t instanceof Tk))switch(n.supportSideBySide){case jd.ANY:if(this.matches(e.primary,t,n)||this.matches(e.secondary,t,n))return!0;break;case jd.BOTH:if(this.matches(e.primary,t,n)&&this.matches(e.secondary,t,n))return!0;break}const i=e===t;return n?.strictEquals?i:i||e.matches(t)}get isLocked(){return this.locked}lock(e){this.isLocked!==e&&(this.locked=e,this._onDidModelChange.fire({kind:3}))}clone(){const e=this.instantiationService.createInstance(oNe,void 0);e.editors=this.editors.slice(0),e.mru=this.mru.slice(0),e.preview=this.preview,e.selection=this.selection.slice(0),e.sticky=this.sticky;for(const t of e.editors)e.registerEditorListeners(t);return e}serialize(){const e=kn.as(Wh.EditorFactory),t=[],n=[];let i,r=this.sticky;for(let o=0;o<this.editors.length;o++){const a=this.editors[o];let c=!1;const l=e.getEditorSerializer(a);if(l){const u=l.canSerialize(a)?l.serialize(a):void 0;typeof u==\"string\"?(c=!0,n.push({id:a.typeId,value:u}),t.push(a),this.preview===a&&(i=t.length-1)):c=!1}!c&&this.isSticky(o)&&r--}const s=this.mru.map(o=>this.indexOf(o,t)).filter(o=>o>=0);return{id:this.id,locked:this.locked?!0:void 0,editors:n,mru:s,preview:i,sticky:r>=0?r:void 0}}deserialize(e){const t=kn.as(Wh.EditorFactory);return typeof e.id==\"number\"?(this._id=e.id,oNe.IDS=Math.max(e.id+1,oNe.IDS)):this._id=oNe.IDS++,e.locked&&(this.locked=!0),e.editors.length>0&&(this._hasHadEditors=!0),this.editors=qu(e.editors.map((n,i)=>{let r;const s=t.getEditorSerializer(n.id);if(s){const o=s.deserialize(this.instantiationService,n.value);o instanceof H0&&(r=o,this.registerEditorListeners(r))}return!r&&typeof e.sticky==\"number\"&&i<=e.sticky&&e.sticky--,r})),this.mru=qu(e.mru.map(n=>this.editors[n])),this.selection=this.mru.length>0?[this.mru[0]]:[],typeof e.preview==\"number\"&&(this.preview=this.editors[e.preview]),typeof e.sticky==\"number\"&&(this.sticky=e.sticky),this._id}dispose(){this.transient.clear(),super.dispose()}}"
+    },
+    "group_shape": {
+      "file": "workbench",
+      "byte_start": 24159723,
+      "byte_end_exclusive": 24159829,
+      "line": 17501,
+      "sha256": "35b6b2d1b141bf4f549c1bbc3a04c2498b591b68eedfd3097c6407d9f8f7655f",
+      "text": "function Rcr(e){const t=e;return!!(t&&typeof t==\"object\"&&Array.isArray(t.editors)&&Array.isArray(t.mru))}"
+    },
+    "memento_scope": {
+      "file": "workbench",
+      "byte_start": 20553576,
+      "byte_end_exclusive": 20554839,
+      "line": 9391,
+      "sha256": "ab53836a9f1cd72ec4fc3829732e9e20276fe6b0d4ff01892ac12d8e22c5a73f",
+      "text": "class wz{constructor(t,n){this.storageService=n,this.id=wz.COMMON_PREFIX+t}getMemento(t,n){switch(t){case 1:{let i=wz.workspaceMementos.get(this.storageService);i||(i=new Map,wz.workspaceMementos.set(this.storageService,i));let r=i.get(this.id);return r||(r=new wtr(this.id,t,n,this.storageService),i.set(this.id,r)),r.getMemento()}case 0:{let i=wz.profileMementos.get(this.id);return i||(i=new wtr(this.id,t,n,this.storageService),wz.profileMementos.set(this.id,i)),i.getMemento()}case-1:{let i=wz.applicationMementos.get(this.id);return i||(i=new wtr(this.id,t,n,this.storageService),wz.applicationMementos.set(this.id,i)),i.getMemento()}}}onDidChangeValue(t,n){return this.storageService.onDidChangeValue(t,this.id,n)}saveMemento(){wz.workspaceMementos.get(this.storageService)?.get(this.id)?.save(),wz.profileMementos.get(this.id)?.save(),wz.applicationMementos.get(this.id)?.save()}reloadMemento(t){let n;switch(t){case-1:n=wz.applicationMementos.get(this.id);break;case 0:n=wz.profileMementos.get(this.id);break;case 1:n=wz.workspaceMementos.get(this.storageService)?.get(this.id);break}n?.reload()}static clear(t){switch(t){case 1:wz.workspaceMementos=new WeakMap;break;case 0:wz.profileMementos.clear();break;case-1:wz.applicationMementos.clear();break}}}"
+    },
+    "memento_storage": {
+      "file": "workbench",
+      "byte_start": 20554974,
+      "byte_end_exclusive": 20555651,
+      "line": 9391,
+      "sha256": "43a8014d0c4fa3edcf15f6b7f3a719c5d9988e7490c395c0d33dcf92c135fa75",
+      "text": "class{constructor(e,t,n,i){this.id=e,this.scope=t,this.target=n,this.storageService=i,this.mementoObj=this.doLoad()}doLoad(){try{return this.storageService.getObject(this.id,this.scope,{})}catch(e){ns(`[memento]: failed to parse contents: ${e} (id: ${this.id}, scope: ${this.scope}, contents: ${this.storageService.get(this.id,this.scope)})`)}return{}}getMemento(){return this.mementoObj}reload(){for(const e of Object.getOwnPropertyNames(this.mementoObj))delete this.mementoObj[e];Object.assign(this.mementoObj,this.doLoad())}save(){pge(this.mementoObj)?this.storageService.remove(this.id,this.scope):this.storageService.store(this.id,this.mementoObj,this.scope,this.target)}}"
+    },
+    "grid_serialize_node": {
+      "file": "workbench",
+      "byte_start": 26145030,
+      "byte_end_exclusive": 26145434,
+      "line": 17613,
+      "sha256": "f28983cbc12886d8f29b4b877dbe6aec437932bba7052ea603e9b54c75bbff89",
+      "text": "static serializeNode(t,n){const i=n===0?t.box.width:t.box.height;if(!ATt(t)){const s={type:\"leaf\",data:t.view.toJSON(),size:i};return typeof t.cachedVisibleSize==\"number\"?(s.size=t.cachedVisibleSize,s.visible=!1):t.maximized&&(s.maximized=!0),s}const r=t.children.map(s=>TQn.serializeNode(s,kNe(n)));return r.some(s=>s.visible!==!1)?{type:\"branch\",data:r,size:i}:{type:\"branch\",data:r,size:i,visible:!1}}"
+    },
+    "grid_serialize": {
+      "file": "workbench",
+      "byte_start": 26145885,
+      "byte_end_exclusive": 26146027,
+      "line": 17613,
+      "sha256": "2f7439b2855f21765ca2b70918b0879d93e176e5a25779382c6b5875f3662927",
+      "text": "serialize(){return{root:TQn.serializeNode(this.getViews(),this.orientation),orientation:this.orientation,width:this.width,height:this.height}}"
+    },
+    "grid_deserialize": {
+      "file": "workbench",
+      "byte_start": 26136847,
+      "byte_end_exclusive": 26137316,
+      "line": 17613,
+      "sha256": "cc09ea484730a7a7ae53fcfdd6834459866168f0291bfdc8fb3315333d049db0",
+      "text": "_deserialize(t,n,i,r){this.root=this._deserializeNode(t,n,i,r)}_deserializeNode(t,n,i,r){let s;if(t.type===\"branch\"){const a=t.data.map(c=>({node:this._deserializeNode(c,kNe(n),i,t.size),visible:c.visible}));s=new p4(n,this.layoutController,this.styles,this.proportionalLayout,t.size,r,void 0,a)}else s=new m4(i.fromJSON(t.data),n,this.layoutController,r,t.size),t.maximized&&!this.maximizedNode&&(this.maximizedNode=s,this._onDidChangeViewMaximized.fire(!0));return s}"
+    },
+    "editorpart_persistence": {
+      "file": "workbench",
+      "byte_start": 26717255,
+      "byte_end_exclusive": 26717884,
+      "line": 17738,
+      "sha256": "f7a060df6118f5ad4c0c9cffd23868f538da6ef541f80eb2a2fa535e63e2b84b",
+      "text": "saveState(){const e=Ybe.EDITOR_PART_UI_STATE_STORAGE_KEY,t=Ybe.EDITOR_PART_CENTERED_VIEW_STORAGE_KEY;if(this.gridWidget&&(this.isEmpty?delete this.workspaceMemento[e]:this.workspaceMemento[e]=this.createState()),this.centeredLayoutWidget){const n=this.centeredLayoutWidget.state;this.centeredLayoutWidget.isDefault(n)?delete this.profileMemento[t]:this.profileMemento[t]=n}super.saveState()}loadState(){const e=Ybe.EDITOR_PART_UI_STATE_STORAGE_KEY;return this.workspaceMemento[e]}createState(){return{serializedGrid:this.gridWidget.serialize(),activeGroup:this._activeGroup.id,mostRecentActiveGroups:this.mostRecentActiveGroups}}"
+    },
+    "editorpart_restore_groups": {
+      "file": "workbench",
+      "byte_start": 26715635,
+      "byte_end_exclusive": 26716104,
+      "line": 17738,
+      "sha256": "e7bab3afc521a15707c7ed9bea2384a2f532dd9d4f0bde0bac8fbf1d2a93fc69",
+      "text": "doCreateGridControlWithState(e,t,n,i){let r;n?r=n.slice(0):r=[];const s=[],o=ASp.createFromDeserializedGrid(e,{fromJSON:a=>{let c;return r.length>0?c=r.shift():c=this.doCreateGroupView(a,i),s.push(c),c.id===t&&this.doSetGroupActive(c),c}},this,{styles:{separatorBorder:this.gridSeparatorBorder}});this._activeGroup||this.doSetGroupActive(s[0]),this.mostRecentActiveGroups.some(a=>!this.getGroup(a))&&(this.mostRecentActiveGroups=s.map(a=>a.id)),this.doSetGridWidget(o)}"
+    },
+    "tab_dto_methods": {
+      "file": "workbench",
+      "byte_start": 24251996,
+      "byte_end_exclusive": 24253636,
+      "line": 17506,
+      "sha256": "c01db95dfd91efc152a7204fd9ed03c1fefb97d52b6f5ad41655f06073d3f4c6",
+      "text": "_buildTabObject(e,t,n){const i=t.editorId;return{id:this._generateTabId(t,e.id),label:t.getName(),editorId:i,input:this._editorInputToDto(t),isPinned:e.isSticky(n),isPreview:!e.isPinned(n),isActive:e.isActive(t),isDirty:t.isDirty()}}_editorInputToDto(e){if(e instanceof xte)return{kind:3,base:e.base,input1:e.input1.uri,input2:e.input2.uri,result:e.resource};if(e instanceof abe)return{kind:1,uri:e.resource};if(e instanceof Tk&&!(e instanceof ZE)){const t=e.primary.resource,n=e.secondary.resource;return e.primary instanceof abe&&e.secondary instanceof abe&&Ac(t,n)&&t&&n?{kind:1,uri:t}:{kind:0}}if(e instanceof MC)return{kind:4,notebookType:e.viewType,uri:e.resource};if(e instanceof $2)return{kind:6,viewType:e.viewType,uri:e.resource};if(e instanceof kF)return{kind:7,viewType:e.viewType};if(e instanceof g8)return{kind:8};if(e instanceof ZE){if(e.modified instanceof abe&&e.original instanceof abe)return{kind:2,modified:e.modified.resource,original:e.original.resource};if(e.modified instanceof MC&&e.original instanceof MC)return{kind:5,notebookType:e.original.viewType,modified:e.modified.resource,original:e.original.resource}}if(e instanceof r9)return{kind:9,uri:e.resource,inputBoxUri:e.inputResource};if(e instanceof nH){const t=[];for(const n of e?.resources.get()??[])n.originalUri&&n.modifiedUri&&t.push({kind:2,original:n.originalUri,modified:n.modifiedUri});return{kind:10,diffEditors:t}}return{kind:0}}_generateTabId(e,t){let n;const i=vd.getCanonicalUri(e,{supportSideBySide:jd.BOTH});return i instanceof Ee?n=i.toString():n=`${i?.primary?.toString()}-${i?.secondary?.toString()}`,`${t}~${e.editorId}-${e.typeId}-${n} `}"
+    },
+    "tab_model_create": {
+      "file": "workbench",
+      "byte_start": 24256526,
+      "byte_end_exclusive": 24257415,
+      "line": 17506,
+      "sha256": "6d7bc81d664889324641f0102d671c3bb07076e04bc920c3aaa81738e6f0df2e",
+      "text": "_createTabsModel(){if(this._editorGroupsService.groups.length===0)return;this._tabGroupModel=[],this._groupLookup.clear(),this._tabInfoLookup.clear();let e=[];for(const t of this._editorGroupsService.groups){const n={groupId:t.id,isActive:t.id===this._editorGroupsService.activeGroup.id,viewColumn:q8e(this._editorGroupsService,t),tabs:[]};t.editors.forEach((i,r)=>{const s=this._buildTabObject(t,i,r);e.push(s),this._tabInfoLookup.set(this._generateTabId(i,t.id),{group:t,tab:s,editorInput:i})}),n.tabs=e,this._tabGroupModel.push(n),this._groupLookup.set(t.id,n),e=[]}if(this._tabGroupModel.length>0&&!this._tabGroupModel.some(t=>t.isActive)){this._logService.warn(\"[MainThreadEditorTabs] Tab model had no active group; marking first group active\");for(const t of this._tabGroupModel)t.isActive=!1;this._tabGroupModel[0].isActive=!0}this._proxy.$acceptEditorTabModel(this._tabGroupModel)}"
+    },
+    "view_column": {
+      "file": "workbench",
+      "byte_start": 20925750,
+      "byte_end_exclusive": 20925859,
+      "line": 11775,
+      "sha256": "a7591b13d07b2487b8dda7be8310dd61670ab181f5c82c2fc71107d9de6cb26e",
+      "text": "function q8e(e,t){const n=typeof t==\"number\"?e.getGroup(t):t;return e.getGroups(2).indexOf(n??e.activeGroup)}"
+    },
+    "storage_client": {
+      "file": "workbench",
+      "byte_start": 29805853,
+      "byte_end_exclusive": 29810314,
+      "line": 18523,
+      "sha256": "bd6fa37bec2237670bd542dbbda2e7d8dfe46ac9a74a8653864c46a4bab16493",
+      "text": "class extends we{constructor(e,t,n){super(),this.channel=e,this.profile=t,this.workspace=n}async getItems(){const e={profile:this.profile,workspace:this.workspace},t=await this.channel.call(\"getItems\",e);return new Map(t)}async collectionBulkInsert(e,t){return this.channel.call(\"collectionBulkInsert\",[this.profile,this.workspace,e,t])}async collectionUpsertIfPreferred(e,t){return this.channel.call(\"collectionUpsertIfPreferred\",[this.profile,this.workspace,e,t])}async collectionDeleteMany(e,t){return this.channel.call(\"collectionDeleteMany\",[this.profile,this.workspace,e,t])}async collectionQuery(e,t){return this.channel.call(\"collectionQuery\",[this.profile,this.workspace,e,t])}async cursorDiskKVGet(e,t){return t?.(`[storageIpc] BaseStorageDatabaseClient.cursorDiskKVGet: ${e}`),this.channel.call(\"cursorDiskKVGet\",[this.profile,this.workspace,e])}async cursorDiskKVGetWithLogs(e){return this.channel.call(\"cursorDiskKVGetWithLogs\",[this.profile,this.workspace,e])}async cursorDiskKVGetBatch(e){return this.channel.call(\"cursorDiskKVGetBatch\",[this.profile,this.workspace,e])}async cursorDiskKVSet(e,t){return this.channel.call(\"cursorDiskKVSet\",[this.profile,this.workspace,e,t])}async cursorDiskKVSetIfAbsent(e,t){return this.channel.call(\"cursorDiskKVSetIfAbsent\",[this.profile,this.workspace,e,t])}async cursorDiskKVReplaceIfEquals(e,t,n){return this.channel.call(\"cursorDiskKVReplaceIfEquals\",[this.profile,this.workspace,e,t,n])}async cursorDiskKVSetBinary(e,t){return this.channel.call(\"cursorDiskKVSetBinary\",[this.profile,this.workspace,e,t])}async cursorDiskKVSetBinaryBatch(e){const t=e.map(([n,i])=>[n,wi.wrap(i)]);return this.channel.call(\"cursorDiskKVSetBinaryBatch\",[this.profile,this.workspace,t])}async cursorDiskKVSetBatch(e,t){return this.channel.call(\"cursorDiskKVSetBatch\",[this.profile,this.workspace,e,t])}async cursorDiskKVGetBinary(e){return this.channel.call(\"cursorDiskKVGetBinary\",[this.profile,this.workspace,e])}async cursorDiskKVDelete(e,t){return this.channel.call(\"cursorDiskKVDelete\",[this.profile,this.workspace,e,t])}async cursorDiskKVClearPrefix(e){const t={profile:this.profile,workspace:this.workspace,prefix:e};return this.channel.call(\"cursorDiskKVClearPrefix\",t)}async cursorDiskKVGetPrefix(e){const t={profile:this.profile,workspace:this.workspace,prefix:e};return this.channel.call(\"cursorDiskKVGetPrefix\",t)}async cursorDiskKVGetPrefixKeys(e){const t={profile:this.profile,workspace:this.workspace,prefix:e};return this.channel.call(\"cursorDiskKVGetPrefixKeys\",t)}async cursorDiskKVGetPrefixBinary(e){const t={profile:this.profile,workspace:this.workspace,prefix:e};return this.channel.call(\"cursorDiskKVGetPrefixBinary\",t)}async updateItems(e,t){const n=e.insert?Array.from(e.insert.entries()):[],i=e.delete?Array.from(e.delete.values()):[],r=h=>{let p=100;for(const[g,f]of h)p+=g.length+f.length+20;return p},s=h=>{let p=100;for(const g of h)p+=g.length+10;return p},o=n.length>0?r(n):0,a=i.length>0?s(i):0;if(o+a<Dht)return this.channel.call(\"updateItems\",{profile:this.profile,workspace:this.workspace,insert:n.length>0?n:void 0,delete:i.length>0?i:void 0});const c=async h=>{await this.channel.call(\"updateItems\",{profile:this.profile,workspace:this.workspace,...h}),t?.({insert:h.insert&&new Map(h.insert),delete:h.delete&&new Set(h.delete)})};let l=[],u=0;for(const h of n){const p=h[0].length+h[1].length+20;if(p>Dht){l.length>0&&(await c({insert:l}),l=[],u=0),console.warn(`[storage] Item exceeds IPC threshold: key=\"${h[0].substring(0,100)}...\" size=${p.toLocaleString()} bytes`),await c({insert:[h]});continue}u+p>Dht&&l.length>0&&(await c({insert:l}),l=[],u=0),l.push(h),u+=p}if(l.length>0&&await c({insert:l}),i.length>0)if(s(i)<Dht)await c({delete:i});else{let p=[],g=0;for(const f of i){const v=f.length+10;g+v>Dht&&p.length>0&&(await c({delete:p}),p=[],g=0),p.push(f),g+=v}p.length>0&&await c({delete:p})}}optimize(e){const t={profile:this.profile,workspace:this.workspace,incrementalPages:e?.incrementalPages,checkpointWal:e?.checkpointWal};return this.channel.call(\"optimize\",t)}getStorageStats(){const e={profile:this.profile,workspace:this.workspace};return this.channel.call(\"getStorageStats\",e)}getStorageSizeBreakdown(e){const t={profile:this.profile,workspace:this.workspace,payload:e};return this.channel.call(\"getStorageSizeBreakdown\",t)}cancelStorageSizeBreakdown(){const e={profile:this.profile,workspace:this.workspace};return this.channel.call(\"cancelStorageSizeBreakdown\",e)}}"
+    },
+    "storage_threshold": {
+      "file": "workbench",
+      "byte_start": 490388,
+      "byte_end_exclusive": 490395,
+      "line": 60,
+      "sha256": "b52cb533f504f45c16439db3bee3938cf85e3cd8e77e1323073eeacf0a7e9c7b",
+      "text": "Dht=4e6"
+    },
+    "persist_predicate": {
+      "file": "workbench",
+      "byte_start": 24180757,
+      "byte_end_exclusive": 24180846,
+      "line": 17501,
+      "sha256": "1cb8cffe1712237c1bbfa8d3d55facababc5dc43ddb425f15627ee5429df982a",
+      "text": "shouldPersist(e){return e instanceof zKt?!0:_a.some(this._revivers.values(),t=>A6o(t,e))}"
+    },
+    "tab_input_classes": {
+      "file": "extension_host",
+      "byte_start": 664276,
+      "byte_end_exclusive": 664851,
+      "line": 130,
+      "sha256": "145b332a59e4c2bf543ba0d01e1bfedb3f79388653a82f534caadebc21570f09",
+      "text": "IO=class{constructor(e){this.uri=e}},LE=class{constructor(e,n){this.original=e,this.modified=n}},wq=class{constructor(e,n,a,r){this.base=e,this.input1=n,this.input2=a,this.result=r}},AO=class{constructor(e,n){this.uri=e,this.viewType=n}},Uq=class{constructor(e){this.viewType=e}},NO=class{constructor(e,n){this.uri=e,this.notebookType=n}},MO=class{constructor(e,n,a){this.original=e,this.modified=n,this.notebookType=a}},Lq=class{constructor(){}},Gq=class{constructor(e,n){this.uri=e,this.inputBoxUri=n}},TAe=class{constructor(){}},xq=class{constructor(e){this.textDiffs=e}},"
+    },
+    "ext_tab": {
+      "file": "extension_host",
+      "byte_start": 704889,
+      "byte_end_exclusive": 706370,
+      "line": 131,
+      "sha256": "2745d4c5670dee93b65fb114740ae7873d7e658c5ffb812e799f9c0c78a803b1",
+      "text": "class{constructor(e,n,a){this._activeTabIdGetter=a,this._parentGroup=n,this.acceptDtoUpdate(e)}get apiObject(){if(!this._apiObject){const e=this,n={get isActive(){return e._dto.id===e._activeTabIdGetter()},get label(){return e._dto.label},get input(){return e._input},get isDirty(){return e._dto.isDirty},get isPinned(){return e._dto.isPinned},get isPreview(){return e._dto.isPreview},get group(){return e._parentGroup.apiObject}};this._apiObject=Object.freeze(n)}return this._apiObject}get tabId(){return this._dto.id}acceptDtoUpdate(e){this._dto=e,this._input=this._initInput()}_initInput(){switch(this._dto.input.kind){case 1:return new IO(I.revive(this._dto.input.uri));case 2:return new LE(I.revive(this._dto.input.original),I.revive(this._dto.input.modified));case 3:return new wq(I.revive(this._dto.input.base),I.revive(this._dto.input.input1),I.revive(this._dto.input.input2),I.revive(this._dto.input.result));case 6:return new AO(I.revive(this._dto.input.uri),this._dto.input.viewType);case 7:return new Uq(this._dto.input.viewType);case 4:return new NO(I.revive(this._dto.input.uri),this._dto.input.notebookType);case 5:return new MO(I.revive(this._dto.input.original),I.revive(this._dto.input.modified),this._dto.input.notebookType);case 8:return new Lq;case 9:return new Gq(I.revive(this._dto.input.uri),I.revive(this._dto.input.inputBoxUri));case 10:return new xq(this._dto.input.diffEditors.map(e=>new LE(I.revive(e.original),I.revive(e.modified))));default:return}}}"
+    },
+    "ext_tab_group": {
+      "file": "extension_host",
+      "byte_start": 706375,
+      "byte_end_exclusive": 708006,
+      "line": 131,
+      "sha256": "2359d8f3e7acf11ad31ca2eeff3ea51eb1e78342199fbc41707127e1a656d24b",
+      "text": "class{constructor(e,n){this._tabs=[],this._activeTabId=\"\",this._dto=e,this._activeGroupIdGetter=n;for(const a of e.tabs)a.isActive&&(this._activeTabId=a.id),this._tabs.push(new m6(a,this,()=>this.activeTabId()))}get apiObject(){if(!this._apiObject){const e=this,n={get isActive(){return e._dto.groupId===e._activeGroupIdGetter()},get viewColumn(){return Ma.to(e._dto.viewColumn)},get activeTab(){return e._tabs.find(a=>a.tabId===e._activeTabId)?.apiObject},get tabs(){return Object.freeze(e._tabs.map(a=>a.apiObject))}};this._apiObject=Object.freeze(n)}return this._apiObject}get groupId(){return this._dto.groupId}get tabs(){return this._tabs}acceptGroupDtoUpdate(e){this._dto=e}acceptTabOperation(e){if(e.kind===0){const a=new m6(e.tabDto,this,()=>this.activeTabId());return this._tabs.splice(e.index,0,a),e.tabDto.isActive&&(this._activeTabId=a.tabId),a}else if(e.kind===1){const a=this._tabs.splice(e.index,1)[0];if(!a)throw new Error(`Tab close updated received for index ${e.index} which does not exist`);return a.tabId===this._activeTabId&&(this._activeTabId=\"\"),a}else if(e.kind===3){if(e.oldIndex===void 0)throw new Error(\"Invalid old index on move IPC\");const a=this._tabs.splice(e.oldIndex,1)[0];if(!a)throw new Error(`Tab move updated received for index ${e.oldIndex} which does not exist`);return this._tabs.splice(e.index,0,a),a}const n=this._tabs.find(a=>a.tabId===e.tabDto.id);if(!n)throw new Error(\"INVALID tab\");return e.tabDto.isActive?this._activeTabId=e.tabDto.id:this._activeTabId===e.tabDto.id&&!e.tabDto.isActive&&(this._activeTabId=\"\"),n.acceptDtoUpdate(e.tabDto),n}activeTabId(){return this._activeTabId}}"
+    },
+    "custom_editor_type_id": {
+      "file": "workbench",
+      "byte_start": 24187934,
+      "byte_end_exclusive": 24187977,
+      "line": 17501,
+      "sha256": "3bd9f6aa78fff9f0a4b9e7f8e8107c80c42d211f1a22106b0266f25720d59754",
+      "text": "$2.typeId=\"workbench.editors.webviewEditor\""
+    },
+    "memento_static_scopes": {
+      "file": "workbench",
+      "byte_start": 20554840,
+      "byte_end_exclusive": 20554962,
+      "line": 9391,
+      "sha256": "cb2d13eed48117fa116f0b2e2c586849b9f6b3ceb62d9cf0db02c300e78d609d",
+      "text": "gqt.applicationMementos=new Map,gqt.profileMementos=new Map,gqt.workspaceMementos=new WeakMap,gqt.COMMON_PREFIX=\"memento/\""
+    },
+    "editorpart_keys": {
+      "file": "workbench",
+      "byte_start": 26719379,
+      "byte_end_exclusive": 26719502,
+      "line": 17738,
+      "sha256": "d74cd23b3367bc64bce532ca0ac6121170a0f8c2342e0cbff8ab3f0ffd52a722",
+      "text": "Ybe.EDITOR_PART_UI_STATE_STORAGE_KEY=\"editorpart.state\",Ybe.EDITOR_PART_CENTERED_VIEW_STORAGE_KEY=\"editorpart.centeredview\""
+    }
+  },
+  "limitations": [
+    "Pinned current installed bytes, not incident-time bytes.",
+    "Window/workspace identities are synthetic host API inputs, not reconstructed by the Cursor OS window manager.",
+    "Only custom editor persistence, workspace-scoped storage, group selection and tab hydration are exercised; DOM/layout/event emitters and backing storage/IPC are stubbed."
+  ],
+  "host_api_stubs": [
+    "URI construction/revival for restricted synthetic conversation URI inputs",
+    "Disposable/event emitters and custom editor model/DOM overlay objects",
+    "Editor-factory registry and instantiation service",
+    "Backing store and storage IPC keyed by the explicit synthetic workspace descriptor forwarded by actual U6p methods",
+    "Layout node objects; installed grid traversal and editor-part group callback select restored groups",
+    "Canonical-resource URI accessor used only to form tab DTO IDs",
+    "Tab view-column display conversion"
+  ]
+}

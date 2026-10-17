@@ -1,0 +1,7 @@
+{
+  "script_sha256": "0c906888bca6b9435af12c6e1f71a1fc835191560cd35c6515d7fc788a8a9d6b",
+  "isolation_profile_sha256": "ba54a8e1217b4d9d5db7c11115bcc4515f501a10d83c945d474680147dc34eff",
+  "syntax_validated": true,
+  "executed": false,
+  "reason_not_executed": "Owner-assisted future observation only; no further GUI launches in current closeout."
+}

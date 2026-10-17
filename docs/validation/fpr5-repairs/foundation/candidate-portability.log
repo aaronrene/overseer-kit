@@ -1,0 +1,68 @@
+..FFF                                                                    [100%]
+=================================== FAILURES ===================================
+_ test_portable_collisions_and_owner_mode_only_change_stay_protected[policy/model-routing.yaml-unrecorded] _
+
+tmp_path = PosixPath('/private/tmp/overseer-fpr5-foundation-supplement.iiq2vwsl/pytest/test_portable_collisions_and_o2')
+path = 'policy/model-routing.yaml', origin = 'unrecorded'
+
+    @pytest.mark.parametrize("path,origin", [
+        (".claude/skills/print-next/SKILL.md", "unrecorded"),
+        (".overseer/policy/model-routing.yaml", "unrecorded"),
+        ("policy/model-routing.yaml", "unrecorded"),
+        (".overseer/STANDING-DECISIONS.reference.md", "unrecorded"),
+        (COLLISION, "recorded-mode-only"),
+    ])
+    def test_portable_collisions_and_owner_mode_only_change_stay_protected(tmp_path, path, origin):
+        root = legacy_collision(tmp_path, origin, path)
+        before = snapshot(root / path)
+        document = prepare(root)
+>       assert path in {row["path"] for row in document["plan"]["protected"]}
+E       AssertionError: assert 'policy/model-routing.yaml' in {'.overseer/ledger.jsonl', 'QUEUE_HANDOVER.md', 'QUEUE_ROADMAP.md', 'docs/NEXT.md', 'videos/_active/HANDOVER.md', 'videos/_active/ROADMAP.md'}
+
+tests/fpr5/test_foundation_repairs.py:146: AssertionError
+_ test_portable_collisions_and_owner_mode_only_change_stay_protected[.overseer/STANDING-DECISIONS.reference.md-unrecorded] _
+
+tmp_path = PosixPath('/private/tmp/overseer-fpr5-foundation-supplement.iiq2vwsl/pytest/test_portable_collisions_and_o3')
+path = '.overseer/STANDING-DECISIONS.reference.md', origin = 'unrecorded'
+
+    @pytest.mark.parametrize("path,origin", [
+        (".claude/skills/print-next/SKILL.md", "unrecorded"),
+        (".overseer/policy/model-routing.yaml", "unrecorded"),
+        ("policy/model-routing.yaml", "unrecorded"),
+        (".overseer/STANDING-DECISIONS.reference.md", "unrecorded"),
+        (COLLISION, "recorded-mode-only"),
+    ])
+    def test_portable_collisions_and_owner_mode_only_change_stay_protected(tmp_path, path, origin):
+        root = legacy_collision(tmp_path, origin, path)
+        before = snapshot(root / path)
+        document = prepare(root)
+>       assert path in {row["path"] for row in document["plan"]["protected"]}
+E       AssertionError: assert '.overseer/STANDING-DECISIONS.reference.md' in {'.overseer/ledger.jsonl', 'QUEUE_HANDOVER.md', 'QUEUE_ROADMAP.md', 'docs/NEXT.md', 'videos/_active/HANDOVER.md', 'videos/_active/ROADMAP.md'}
+
+tests/fpr5/test_foundation_repairs.py:146: AssertionError
+_ test_portable_collisions_and_owner_mode_only_change_stay_protected[.cursor/rules/build-verification-required.mdc-recorded-mode-only] _
+
+tmp_path = PosixPath('/private/tmp/overseer-fpr5-foundation-supplement.iiq2vwsl/pytest/test_portable_collisions_and_o4')
+path = '.cursor/rules/build-verification-required.mdc'
+origin = 'recorded-mode-only'
+
+    @pytest.mark.parametrize("path,origin", [
+        (".claude/skills/print-next/SKILL.md", "unrecorded"),
+        (".overseer/policy/model-routing.yaml", "unrecorded"),
+        ("policy/model-routing.yaml", "unrecorded"),
+        (".overseer/STANDING-DECISIONS.reference.md", "unrecorded"),
+        (COLLISION, "recorded-mode-only"),
+    ])
+    def test_portable_collisions_and_owner_mode_only_change_stay_protected(tmp_path, path, origin):
+        root = legacy_collision(tmp_path, origin, path)
+        before = snapshot(root / path)
+        document = prepare(root)
+>       assert path in {row["path"] for row in document["plan"]["protected"]}
+E       AssertionError: assert '.cursor/rules/build-verification-required.mdc' in {'.overseer/ledger.jsonl', 'QUEUE_HANDOVER.md', 'QUEUE_ROADMAP.md', 'docs/NEXT.md', 'videos/_active/HANDOVER.md', 'videos/_active/ROADMAP.md'}
+
+tests/fpr5/test_foundation_repairs.py:146: AssertionError
+=========================== short test summary info ============================
+FAILED tests/fpr5/test_foundation_repairs.py::test_portable_collisions_and_owner_mode_only_change_stay_protected[policy/model-routing.yaml-unrecorded]
+FAILED tests/fpr5/test_foundation_repairs.py::test_portable_collisions_and_owner_mode_only_change_stay_protected[.overseer/STANDING-DECISIONS.reference.md-unrecorded]
+FAILED tests/fpr5/test_foundation_repairs.py::test_portable_collisions_and_owner_mode_only_change_stay_protected[.cursor/rules/build-verification-required.mdc-recorded-mode-only]
+3 failed, 2 passed in 8.74s

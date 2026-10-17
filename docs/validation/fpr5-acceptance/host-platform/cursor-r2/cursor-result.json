@@ -1,0 +1,7 @@
+{
+  "exit": -9,
+  "stop_reason": "observation_complete",
+  "elapsed_seconds": 124.74418687820435,
+  "free_bytes": 1475956736,
+  "native_lifecycle_pass": false
+}

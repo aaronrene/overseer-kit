@@ -1,0 +1,22 @@
+{
+  "command": [
+    "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.overseer/bin/ok",
+    "-C",
+    "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "sync",
+    "--only",
+    "launcher",
+    "--json"
+  ],
+  "exit_code": 0,
+  "stdout": "{\"ok\": true, \"repository\": {\"name\": \"overseer-kit\", \"id\": \"6988dc4a-5f22-454b-9d68-ac5905b383bf\", \"root\": \"/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014\", \"root_relative_docs\": \"docs\"}, \"changed\": [\".overseer/version.lock\"], \"classification\": [{\"path\": \".overseer/bin/ok\", \"classification\": \"unchanged\", \"origin\": \"kit\", \"before\": \"1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4\", \"after\": \"1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4\"}], \"preserved\": [], \"dry_run\": false, \"diff\": {}, \"next\": \"preserved\"}\n",
+  "stderr": "",
+  "only_lock_footprint_sha256_changed": [
+    "docs/OVERSEER-HANDOVER.md",
+    "docs/ROADMAP.md"
+  ],
+  "config_and_next_unchanged": true,
+  "before_lock_sha256": "f1cea36730f11abc5e32dcc0b34b450aa045ec24542dcfdf555464f710c6992e",
+  "after_lock_sha256": "2168a972d6d77deda33161f768809f610cc066a82a6568f6e9246511c163f972",
+  "preexisting_unrelated_footprint_drift": "preserved"
+}

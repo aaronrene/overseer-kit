@@ -1,0 +1,24 @@
+{
+  "base": "d47291d5d9030de5ebef713da95efa978c4d8c6e",
+  "local_muse_main": "sha256:80c922b95203a49a07d1706db41ac051a91414bff298d83739df87028610cec1",
+  "local_muse_aff": "sha256:8461d44b77376fbf06fa7c3e085d309e3010fd8d5886d63c63e69ce118811ad4",
+  "ancestry_commits": 21,
+  "snapshot_entries": 846,
+  "identical_files": 835,
+  "changed_files": [
+    "adapters/muse_only/adapter.py",
+    "tests/integration/test_muse_sync_status.py",
+    "tests/security/test_governance_sync_security.py",
+    "tests/security/test_pilot_least_privilege.py",
+    "tests/unit/test_muse_only.py",
+    "tests/unit/test_muse_working_dir.py"
+  ],
+  "omitted_files": [
+    ".overseer/.muse-bridge-sentinel",
+    "desktop/src-tauri/gen/schemas/acl-manifests.json",
+    "desktop/src-tauri/gen/schemas/capabilities.json",
+    "desktop/src-tauri/gen/schemas/desktop-schema.json",
+    "desktop/src-tauri/gen/schemas/macOS-schema.json"
+  ],
+  "git_only_files": []
+}

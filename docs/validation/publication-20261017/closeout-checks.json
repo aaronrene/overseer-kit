@@ -1,0 +1,12 @@
+{
+  "paired_summaries_match": true,
+  "updated_lock_rows": [
+    "docs/OVERSEER-HANDOVER.md",
+    "docs/ROADMAP.md"
+  ],
+  "kit_footprint_digest": "sha256:493a8c38c83b15ec2aa1fc99a2adc0224574512df741d408e70c03173ac48ae0",
+  "full_sync_performed": false,
+  "hooks_disabled": true,
+  "pr_url": "https://github.com/aaronrene/overseer-kit/pull/92",
+  "state": "complete"
+}

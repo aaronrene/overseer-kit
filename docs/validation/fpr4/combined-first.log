@@ -1,0 +1,347 @@
+...........................F................................F........... [  6%]
+........................................................................ [ 12%]
+........................................................................ [ 18%]
+....F................................................................... [ 24%]
+........................................................................ [ 30%]
+............................................F......................F.... [ 36%]
+.............................................F.......................... [ 43%]
+.........F.............................................................. [ 49%]
+........................................................................ [ 55%]
+........................................................................ [ 61%]
+........................................................................ [ 67%]
+........................................................................ [ 73%]
+........................................................................ [ 80%]
+..............................................F......................... [ 86%]
+........................................................................ [ 92%]
+..........................F..F.....F.................................... [ 98%]
+..................                                                       [100%]
+=================================== FAILURES ===================================
+________________ test_fresh_standalone_git_install_without_muse ________________
+
+tmp_path = PosixPath('/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0')
+
+    def test_fresh_standalone_git_install_without_muse(tmp_path):
+        import shutil
+        import venv
+        from tests.v1.conftest import KIT
+        installation = tmp_path/'standalone-kit'
+        for relative in v1.RUNTIME_FILES:
+            target = installation/relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(KIT/relative, target)
+        venv.EnvBuilder(with_pip=False, symlinks=True).create(installation/'.venv')
+        python = installation/'.venv/bin/python3'
+        site = Path(subprocess.check_output([str(python), '-I', '-c',
+            'import sysconfig; print(sysconfig.get_paths()["purelib"])'], text=True).strip())
+        # Seed only the pinned runtime dependency offline; no editable finder or
+        # site packages from the development environment are inherited.
+        shutil.copytree(Path(yaml.__file__).parent, site/'yaml')
+        r = subprocess.run([str(python), '-I', '-c',
+            'import importlib.util; assert importlib.util.find_spec("muse") is None'], capture_output=True)
+        assert r.returncode == 0
+        root = seed(tmp_path/'standalone-project')
+        launcher = installation/'cli/ok'
+        for args in (('init',), ('status',), ('next',), ('sync',)):
+            r = command('-C', root, *args, executable=launcher, env={'PATH':'/usr/bin:/bin'})
+>           assert r.returncode == 0, r.stderr
+E           AssertionError: Traceback (most recent call last):
+E               File "/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/cli/bootstrap.py", line 33, in <module>
+E                 raise SystemExit(run())
+E                                  ~~~^^
+E               File "/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/cli/bootstrap.py", line 29, in run
+E                 return main()
+E               File "/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/cli/main.py", line 309, in main
+E                 result = _read(context, args)
+E               File "/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/cli/main.py", line 255, in _read
+E                 result.update(sections(context, args))
+E                               ~~~~~~~~^^^^^^^^^^^^^^^
+E               File "/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/cli/product_status.py", line 11, in sections
+E                 from cli.commands.route import routing_policy_status
+E               File "/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/cli/commands/route.py", line 13, in <module>
+E                 from tools.cost_awareness.derive import derive_cost_view
+E               File "/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/tools/cost_awareness/__init__.py", line 4, in <module>
+E                 from tools.cost_awareness.format import format_cost_awareness_lines
+E               File "/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/tools/cost_awareness/format.py", line 5, in <module>
+E                 from tools.cost_awareness.surface import CostAwarenessReport, CostSlice
+E               File "/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/tools/cost_awareness/surface.py", line 12, in <module>
+E                 from tools.governance_gates import scan_governance_gates
+E               File "/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/tools/governance_gates/__init__.py", line 10, in __getattr__
+E                 from tools.governance_gates.scan import scan_governance_gates
+E               File "/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/tools/governance_gates/scan.py", line 9, in <module>
+E                 from tools.freeze_authorization.resolve import freeze_authorization_state
+E               File "/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/tools/freeze_authorization/__init__.py", line 5, in <module>
+E                 from tools.freeze_authorization.resolve import (
+E                 ...<5 lines>...
+E                 )
+E               File "/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/tools/freeze_authorization/resolve.py", line 16, in <module>
+E                 from tools.honesty.gate import honesty_module_disabled
+E               File "/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/tools/honesty/__init__.py", line 3, in <module>
+E                 from tools.honesty.ledger import append_entry, show_entries, verify_chain
+E               File "/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/tools/honesty/ledger.py", line 21, in <module>
+E                 from tools.honesty.provenance import (
+E                 ...<4 lines>...
+E                 )
+E               File "/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/tools/honesty/provenance.py", line 7, in <module>
+E                 from tools.honesty.ed25519_util import verify_ed25519_signature
+E               File "/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-kit/tools/honesty/ed25519_util.py", line 11, in <module>
+E                 from cryptography.exceptions import InvalidSignature
+E             ModuleNotFoundError: No module named 'cryptography'
+E             
+E           assert 1 == 0
+E            +  where 1 = CompletedProcess(args=['/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_fresh_standalone_git_inst0/standalone-...e>\n    from cryptography.exceptions import InvalidSignature\nModuleNotFoundError: No module named \'cryptography\'\n').returncode
+
+tests/v1/test_adoption.py:219: AssertionError
+_____________________ test_unsupported_commands_cannot_run _____________________
+
+repo = PosixPath('/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_unsupported_commands_cann0/similar-kit')
+
+    def test_unsupported_commands_cannot_run(repo):
+        for cmd in ('pr-land','governance-sync','upgrade-regime','app'):
+            r = command('-C',repo,cmd)
+>           assert r.returncode != 0 and not r.stdout
+E           assert (0 != 0)
+E            +  where 0 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...ved; republish explicitly after a work commit",\n  "remote": "not_checked_offline",\n  "exit_code": 0\n}\n', stderr='').returncode
+
+tests/v1/test_commands.py:174: AssertionError
+_ test_generated_commands_handle_spaces_and_do_not_overwrite_host_instructions _
+
+tmp_path = PosixPath('/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_generated_commands_handle0')
+
+    def test_generated_commands_handle_spaces_and_do_not_overwrite_host_instructions(tmp_path):
+        root = seed(tmp_path / "space and 'quote'")
+        (root / "AGENTS.md").write_text("Existing Codex instructions.\n")
+        skill = root / ".claude/skills/print-next/SKILL.md"
+        skill.parent.mkdir(parents=True)
+        skill.write_text("Existing Claude instructions.\n")
+        result = command("-C", root, "init", "--hooks")
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .claude/skills/print-next/SKILL.md
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', "/priva...'init', '--hooks'], returncode=2, stdout='', stderr='refused: init_asset_exists: .claude/skills/print-next/SKILL.md\n').returncode
+
+tests/fpr1/test_bookends.py:127: AssertionError
+_________ test_native_linked_worktree_own_branch_and_checkout_identity _________
+
+muse_root = PosixPath('/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_native_linked_worktree_ow0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x124ba3060>
+tmp_path = PosixPath('/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_native_linked_worktree_ow0')
+
+    def test_native_linked_worktree_own_branch_and_checkout_identity(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+        init(root, muse_python)
+        commit(root, muse)
+        assert publish(root).returncode == 0
+        linked = (tmp_path / 'linked').resolve()
+        muse(root, 'worktree', 'add', 'linked', 'main', '-b', 'lane-two', '--path', str(linked), '--json')
+        original = inventory(root)
+>       other = init(linked, muse_python, '--lane', 'architecture')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/muse/test_handoffs.py:109: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_native_linked_worktree_ow0/linked')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ('--lane', 'architecture')
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .claude/skills/adversarial-freeze-review/SKILL.md
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...e'], returncode=2, stdout='', stderr='refused: init_asset_exists: .claude/skills/adversarial-freeze-review/SKILL.md\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_________ test_committed_git_baseline_import_isolated_from_owner_edits _________
+
+tmp_path = PosixPath('/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_committed_git_baseline_im0')
+muse = <function muse.<locals>.run at 0x124c26c40>
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+
+    def test_committed_git_baseline_import_isolated_from_owner_edits(tmp_path, muse, muse_python):
+        source = seed(tmp_path/'git-source')
+        assert command('-C', source, 'init').returncode == 0
+        from cli.v1_policy import ignore_assets
+        for p, body in ignore_assets(source).items():
+            (source/p).write_bytes(body)
+        (source/'app.py').write_text('committed = True\n')
+        for args in (('add', '.'), ('-c', 'core.hooksPath=/dev/null', 'commit', '-m', 'reviewed baseline')):
+            subprocess.run(['/usr/bin/git', '-C', str(source), *args], check=True, capture_output=True)
+        (source/'app.py').write_text('owner dirty edit\n')
+        (source/'untracked.txt').write_text('owner untracked edit\n')
+        before = inventory(source)
+        imported = (tmp_path/'isolated-import').resolve()
+        imported.mkdir()
+        muse(imported, 'bridge', 'git-import', str(source), '--target', str(imported), '--branch', 'main', '--json')
+        # Import creates history, not a populated working tree. Materialize only
+        # the reviewed imported manifest in this disposable destination.
+        manifest = json.loads(muse(imported, 'ls-files', '--json').stdout)['files']
+        paths = [item['path'] for item in manifest]
+        committed = subprocess.check_output(['/usr/bin/git', '-C', str(source), 'ls-files', '-z']).decode().rstrip('\0').split('\0')
+        assert sorted(paths) == sorted(committed)
+        muse(imported, 'restore', '--source', 'main', *paths, '--json')
+        for path in paths:
+            assert (imported/path).read_bytes() == subprocess.check_output(
+                ['/usr/bin/git', '-C', str(source), 'show', 'HEAD:'+path])
+        assert (imported/'app.py').read_text() == 'committed = True\n'
+        assert not (imported/'untracked.txt').exists()
+        assert not (imported/v1.CONFIG).exists() and not (imported/v1.NEXT).exists()
+>       state = init(imported, muse_python)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/muse/test_handoffs.py:293: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_committed_git_baseline_im0/isolated-import')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .claude/skills/adversarial-freeze-review/SKILL.md
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...n'], returncode=2, stdout='', stderr='refused: init_asset_exists: .claude/skills/adversarial-freeze-review/SKILL.md\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+_____________ test_add_change_delete_and_no_content_source_commit ______________
+
+case = (PosixPath('/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_add_change_delete_and_no_0/muse-only'), {'schema':......}, 'target': '/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_add_change_delete_and_no_0/bare-mirror', ...})
+muse = <function muse.<locals>.run at 0x1220f83b0>
+
+    def test_add_change_delete_and_no_content_source_commit(case, muse):
+        root, plan = case
+        first = prepared(case)
+        (root/'data.bin').unlink()
+        (root/'app.py').write_text('value = 2\n')
+        (root/'new.txt').write_text('addition\n')
+        muse(root, 'code', 'add', '.')
+        muse(root, 'commit', '-m', 'approved second snapshot', '--json')
+        config = yaml.safe_load((root/'.overseer/config.yaml').read_bytes())
+        plan['source']['revision'] = muse_read(root, config['vcs']['muse']['binding']['runtime']['python'])['head']
+        plan['expected_target'] = first['git_head']
+        plan['destination']['expected_head'] = first['git_head']
+        second = prepared(case)
+        paths = mirror.git(Path(plan['target']), 'ls-tree', '-r', '--name-only', 'HEAD').decode().splitlines()
+        assert 'data.bin' not in paths and 'new.txt' in paths
+        transport = Delivery(plan); transport.fail_push = 'before'
+        assert not execute(case, 'deliver', transport)['ok']
+        transport.fail_push = None
+        assert execute(case, 'deliver', transport)['ok']
+        # New approval with the same bytes retains correspondence through an empty commit.
+        muse(root, 'commit', '--allow-empty', '-m', 'new approved source; same projection', '--json')
+        plan['source']['revision'] = muse_read(root, config['vcs']['muse']['binding']['runtime']['python'])['head']
+        plan['expected_target'] = second['git_head']
+        plan['destination']['expected_head'] = second['git_head']
+        third = prepared(case)
+>       assert third['export'] == 'mapped_no_content_change' and third['git_head'] != second['git_head']
+E       AssertionError: assert ('prepared' == 'mapped_no_content_change'
+E         
+E         - mapped_no_content_change
+E         + prepared)
+
+tests/muse/test_mirror.py:369: AssertionError
+_____ test_shared_native_stage_is_readonly_and_visible_in_linked_checkout ______
+
+muse_root = PosixPath('/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_shared_native_stage_is_re0/muse-only')
+muse_python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+muse = <function muse.<locals>.run at 0x12745acf0>
+tmp_path = PosixPath('/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_shared_native_stage_is_re0')
+
+    def test_shared_native_stage_is_readonly_and_visible_in_linked_checkout(muse_root, muse_python, muse, tmp_path):
+        root = muse_root
+        init(root, muse_python)
+        commit(root, muse)
+        linked = (tmp_path/'linked-stage').resolve()
+        muse(root, 'worktree', 'add', 'linked-stage', 'main', '-b', 'linked', '--path', str(linked), '--json')
+>       init(linked, muse_python)
+
+tests/muse/test_product.py:114: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_shared_native_stage_is_re0/linked-stage')
+python = PosixPath('/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python')
+args = ()
+
+    def init(root, python, *args):
+        result = command('-C', root, 'init', '--vcs', 'muse', '--muse-python', python, *args)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: refused: init_asset_exists: .claude/skills/adversarial-freeze-review/SKILL.md
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...n'], returncode=2, stdout='', stderr='refused: init_asset_exists: .claude/skills/adversarial-freeze-review/SKILL.md\n').returncode
+
+tests/muse/test_handoffs.py:21: AssertionError
+________________ test_rendered_deploy_script_safety_invariants _________________
+
+muse_git_mirror_config = OverseerConfig(overseer_config_version=1, repo=RepoConfig(name='test-mirror', root_relative_docs='docs'), vcs=VcsConfi...ne, post_land_sync=PostLandSyncConfig(enabled=False, strategy='ff_only', require_clean_worktree=True)), workspace=None)
+
+    def test_rendered_deploy_script_safety_invariants(muse_git_mirror_config) -> None:
+        script = render_template(
+            kit_root() / "templates" / "scripts" / "muse-bridge-deploy.sh.template",
+            muse_git_mirror_config,
+        )
+>       assert "set -euo pipefail" in script
+E       assert 'set -euo pipefail' in '#!/bin/sh\n# Explicit bounded-v1 mirror entry point; preparation never publishes.\nset -eu\nPATH=/usr/bin:/bin\nexpor...ly select Muse with the bounded-v1 runtime\' >&2\n  exit 2\nfi\nexec "$ROOT/.overseer/bin/ok" -C "$ROOT" mirror "$@"\n'
+
+tests/unit/test_k7_footprint.py:72: AssertionError
+__________________ test_footprint_includes_orchestrator_rule ___________________
+
+git_only_config = OverseerConfig(overseer_config_version=1, repo=RepoConfig(name='test-git', root_relative_docs='docs'), vcs=VcsConfig(r...ne, post_land_sync=PostLandSyncConfig(enabled=False, strategy='ff_only', require_clean_worktree=True)), workspace=None)
+
+    def test_footprint_includes_orchestrator_rule(git_only_config) -> None:
+        files = {f.destination: f.text for f in resolve_footprint(git_only_config)}
+        assert ".cursor/rules/orchestrator.mdc" in files
+        text = files[".cursor/rules/orchestrator.mdc"]
+        assert "alwaysApply: true" in text
+>       assert "RULE #8" in text
+E       AssertionError: assert 'RULE #8' in '---\ndescription: Bound product context and explicit action authority\nalwaysApply: true\n---\n\nFollow AGENTS.md and...or tests. No legacy live export or packet,\nOCI, identity-bridge, native GSR or sole-writer prerequisite is implied.\n'
+
+tests/unit/test_skills_footprint.py:34: AssertionError
+__________ test_rendered_templates_include_build_verification_in_dod ___________
+
+git_only_config = OverseerConfig(overseer_config_version=1, repo=RepoConfig(name='test-git', root_relative_docs='docs'), vcs=VcsConfig(r...ne, post_land_sync=PostLandSyncConfig(enabled=False, strategy='ff_only', require_clean_worktree=True)), workspace=None)
+
+    def test_rendered_templates_include_build_verification_in_dod(git_only_config) -> None:
+        from adapters.templating import render_template
+        from cli.kit_root import kit_root
+    
+        handover = render_template(kit_root() / "templates/OVERSEER-HANDOVER.template.md", git_only_config)
+        roadmap = render_template(kit_root() / "templates/ROADMAP.template.md", git_only_config)
+>       assert "build-verification-review" in handover
+E       AssertionError: assert 'build-verification-review' in '# Overseer Handover\n\nRepository: test-git. Keep this summary paired with docs/ROADMAP.md.\nThe sole action authorit...and release/deployment are separate actions.\n\n<!-- overseer:change-log:start -->\n<!-- overseer:change-log:end -->\n'
+
+tests/unit/test_skills_footprint.py:65: AssertionError
+________________________ test_render_handover_template _________________________
+
+git_only_config = OverseerConfig(overseer_config_version=1, repo=RepoConfig(name='test-git', root_relative_docs='docs'), vcs=VcsConfig(r...ne, post_land_sync=PostLandSyncConfig(enabled=False, strategy='ff_only', require_clean_worktree=True)), workspace=None)
+repo_root = PosixPath('/private/tmp/overseer-fpr4-combined-first-zamhfpcb/test_render_handover_template0')
+
+    def test_render_handover_template(git_only_config, repo_root: Path) -> None:
+        template = (
+            Path(__file__).resolve().parents[2] / "templates" / "OVERSEER-HANDOVER.template.md"
+        )
+        rendered = render_template(template, git_only_config)
+        assert "test-git" in rendered
+        assert "{{repo.name}}" not in rendered
+>       assert "docs/OVERSEER-HANDOVER.md" in rendered
+E       AssertionError: assert 'docs/OVERSEER-HANDOVER.md' in '# Overseer Handover\n\nRepository: test-git. Keep this summary paired with docs/ROADMAP.md.\nThe sole action authorit...and release/deployment are separate actions.\n\n<!-- overseer:change-log:start -->\n<!-- overseer:change-log:end -->\n'
+
+tests/unit/test_templating.py:62: AssertionError
+=========================== short test summary info ============================
+FAILED tests/v1/test_adoption.py::test_fresh_standalone_git_install_without_muse
+FAILED tests/v1/test_commands.py::test_unsupported_commands_cannot_run - asse...
+FAILED tests/fpr1/test_bookends.py::test_generated_commands_handle_spaces_and_do_not_overwrite_host_instructions
+FAILED tests/muse/test_handoffs.py::test_native_linked_worktree_own_branch_and_checkout_identity
+FAILED tests/muse/test_handoffs.py::test_committed_git_baseline_import_isolated_from_owner_edits
+FAILED tests/muse/test_mirror.py::test_add_change_delete_and_no_content_source_commit
+FAILED tests/muse/test_product.py::test_shared_native_stage_is_readonly_and_visible_in_linked_checkout
+FAILED tests/unit/test_k7_footprint.py::test_rendered_deploy_script_safety_invariants
+FAILED tests/unit/test_skills_footprint.py::test_footprint_includes_orchestrator_rule
+FAILED tests/unit/test_skills_footprint.py::test_rendered_templates_include_build_verification_in_dod
+FAILED tests/unit/test_templating.py::test_render_handover_template - Asserti...
+11 failed, 1159 passed in 2835.21s (0:47:15)

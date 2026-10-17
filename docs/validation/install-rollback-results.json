@@ -1,0 +1,178 @@
+{
+  "source": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+  "output": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.overseer/scratch/validation/install-rollback/exercise",
+  "python": "3.14.4 (main, Apr  7 2026, 13:13:20) [Clang 17.0.0 (clang-1700.6.4.2)]",
+  "current_commit": "348e0f323a3b17cd5022a1bfd56fa09a6831c51f",
+  "previous_commit": "333f81e9bf847dcd418b305b931b1279da3c7ade",
+  "checks": [
+    "current and previous source exported solely from bound Git objects",
+    "current exact committed source installed at installation",
+    "current exact committed source installed at other-installation",
+    "fresh conventional symlinked venvs use local offline PyYAML only",
+    "repeat init preserves UUID and files",
+    "clean init preserves preexisting living documents",
+    "current bound/cwd/explicit reads preserve bytes modes mtimes and Git",
+    "symlink selector resolves physical root",
+    "current stale CAS refuses",
+    "current bound/cwd/explicit reads preserve bytes modes mtimes and Git",
+    "bound launcher rejects changed UUID",
+    "copied configuration rejects different physical root",
+    "bound launcher rejects other repository",
+    "other installation refuses status",
+    "other installation refuses next",
+    "other installation refuses sync",
+    "missing installation interpreter refuses without PATH or neighbor fallback",
+    "previous exact committed source installed at installation",
+    "previous pre-refresh status refuses",
+    "previous pre-refresh next refuses",
+    "previous pre-refresh init refuses",
+    "previous pre-refresh bound NEXT refuses",
+    "previous pre-refresh bound writer refuses",
+    "previous sync dry-run is read-only",
+    "previous bound/cwd/explicit reads preserve bytes modes mtimes and Git",
+    "previous explicit refresh preserves UUID physical root NEXT and living documents",
+    "previous repeated sync is a no-op",
+    "previous stale CAS refuses",
+    "previous bound/cwd/explicit reads preserve bytes modes mtimes and Git",
+    "current exact committed source installed at installation",
+    "current pre-refresh status refuses",
+    "current pre-refresh next refuses",
+    "current pre-refresh init refuses",
+    "current pre-refresh bound NEXT refuses",
+    "current pre-refresh bound writer refuses",
+    "current sync dry-run is read-only",
+    "current bound/cwd/explicit reads preserve bytes modes mtimes and Git",
+    "current explicit refresh preserves UUID physical root NEXT and living documents",
+    "current repeated sync is a no-op",
+    "recovered-current stale CAS refuses",
+    "current bound/cwd/explicit reads preserve bytes modes mtimes and Git",
+    "launcher mode repair dry-run is read-only",
+    "current bound/cwd/explicit reads preserve bytes modes mtimes and Git"
+  ],
+  "previous_limitations": "Known R1/R2 findings remain; operability only.",
+  "builds": {
+    "current": {
+      "commit": "348e0f323a3b17cd5022a1bfd56fa09a6831c51f",
+      "archive_sha256": "dfae3759b3d6ddfdb7805950111e05947b83e58ef077c1ad66ab8c185e4b260e",
+      "source_files": 866,
+      "source_manifest_sha256": "a00fb818d4c3b6ca077d30d6c8bdee630dfa427b99ac8fb4018b98eb4b7d8845",
+      "runtime_sha256": "b7fa1921fcb586ac6fcf8422f094fe20f9f9a438f64eecdaddd97d347115db95"
+    },
+    "previous": {
+      "commit": "333f81e9bf847dcd418b305b931b1279da3c7ade",
+      "archive_sha256": "3c60d485f9f6b035c74bfb49a08504668c3d231112ca28278fa6d8154e0015e5",
+      "source_files": 865,
+      "source_manifest_sha256": "b9d44d402260b51d260d11658ccb08adb6fddf582a72b758eb3a6dcec0863e01",
+      "runtime_sha256": "6fbdec4ece741f2407eb20b72f781228a6cb453ec67597cad44f22a5e8feb923"
+    }
+  },
+  "offline_dependency": {
+    "name": "PyYAML",
+    "version": "6.0.3",
+    "files_sha256": {
+      "_yaml/__init__.py": "d3801eff9a2cc5a8692476b75c165401fe308ba5d7df6811f03e97ea9eb81840",
+      "pyyaml-6.0.3.dist-info/INSTALLER": "ceebae7b8927a3227e5303cf5e0f1f7b34bb542ad7250ac03fbcde36ec2f1508",
+      "pyyaml-6.0.3.dist-info/METADATA": "03c3b415ed38d09faedc49360e930769b40c58f68585e6de00e2e4916a858d34",
+      "pyyaml-6.0.3.dist-info/RECORD": "b6cc865dd12a54367bded9629a54bd78d0fc3debcd6fad5320c28cabb14d5a68",
+      "pyyaml-6.0.3.dist-info/WHEEL": "d8877aaab79eb79b78c19bf9f1b65f8a3279f2aadcdb1930e8e56f59f7aac55d",
+      "pyyaml-6.0.3.dist-info/licenses/LICENSE": "8d3928f9dc4490fd635707cb88eb26bd764102a7282954307d3e5167a577e8a4",
+      "pyyaml-6.0.3.dist-info/top_level.txt": "ae98f42153138ac02387fd6f1b709c7fdbf98e9090c00cfa703d48554e597614",
+      "yaml/__init__.py": "b19dfcc333d6a75dfd73073901164507252f271b41d3b5f7d85510033a0547a7",
+      "yaml/_yaml.cpython-314-darwin.so": "35b28ba8dc677e24bcd7c1fc1706b1960f173bb97497c3573a527b45aed12107",
+      "yaml/composer.py": "fcaa37d16afa783594794a5ab94193dcb720f503c19ce3d59539c8311189f453",
+      "yaml/constructor.py": "90d8247da78b524c10618fd0e857f54f3d97570fe91b5c5513d024ef3faf88b0",
+      "yaml/cyaml.py": "e99ac01bd7c062f7557b614aff0d21997a06ed962ca185306a91bc0a20bbd87d",
+      "yaml/dumper.py": "3cb72d66563064ba7b5e679477046ebf89d8399d940670c8532f3e94a7cb17ea",
+      "yaml/emitter.py": "8e086d694ede170837d5b1b407b45979aff6f40762f422a65eafd08e04290a44",
+      "yaml/error.py": "021f73fada072546c4f63f8cf18a7181244ce4280b09cc15cc980b2d1176171a",
+      "yaml/events.py": "e74fd392c810884e2ea7e94aa3f57e9c1cbeb402319083d0c58e6a0e1282787c",
+      "yaml/loader.py": "5156becc8aa6905482218abf3e04869b835226db4763645fff3438fdbd5f1cdd",
+      "yaml/nodes.py": "80f28d8fca4a09d87677882bde021820d9cf39a3b11a12405226211919cf13ce",
+      "yaml/parser.py": "8a55a9e6fbe0a07146cef3990c8b45a068c3e83e369e1959ad9ca30306b4a09a",
+      "yaml/reader.py": "d1d9b38ab3a20c6e17a38d519ee412ecaf6b918df18c78956ac7c330d4ea08dc",
+      "yaml/representer.py": "22e58ff9c016f6c1ca1274b4802a926bcf78935060e1c813c5a0f021c6d143e6",
+      "yaml/resolver.py": "f4bf9561f9b89961f1503d558385fbae30d12bfed565de9bf76c33abb63620a6",
+      "yaml/scanner.py": "60433788b652690c17710460da5d91e0c753d3318fd85f5e1e42862a71f25906",
+      "yaml/serializer.py": "0a1b85826854d35863e31808f0668abfabdf33606e8f06bd8bb7761401e3edc0",
+      "yaml/tokens.py": "953408cd2570f0c83dc2fe39f7e4e388e41eeb05738aa69196a5f6ffcf6ba79e"
+    }
+  },
+  "environments": [
+    {
+      "prefix": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.overseer/scratch/validation/install-rollback/exercise/installation/.venv",
+      "yaml": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.overseer/scratch/validation/install-rollback/exercise/installation/.venv/lib/python3.14/site-packages/yaml/__init__.py",
+      "version": "6.0.3"
+    },
+    {
+      "prefix": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.overseer/scratch/validation/install-rollback/exercise/other-installation/.venv",
+      "yaml": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.overseer/scratch/validation/install-rollback/exercise/other-installation/.venv/lib/python3.14/site-packages/yaml/__init__.py",
+      "version": "6.0.3"
+    }
+  ],
+  "fixture_identity": {
+    "name": "offline-rollback-fixture",
+    "id": "9cf90a7b-d03a-413f-848d-2fb324d87c4c",
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.overseer/scratch/validation/install-rollback/exercise/consumer-fixture"
+  },
+  "transitions": [
+    {
+      "to": "previous",
+      "runtime": {
+        "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.overseer/scratch/validation/install-rollback/exercise/installation",
+        "version": "1.0.0.dev1",
+        "sha256": "6fbdec4ece741f2407eb20b72f781228a6cb453ec67597cad44f22a5e8feb923"
+      },
+      "repo_id": "9cf90a7b-d03a-413f-848d-2fb324d87c4c",
+      "next_sha256_preserved": "04d0db4d6dda0f431409f255fe53f95b3b7b91343a52a915703127603064e66d",
+      "sync_changed": [
+        ".overseer/config.yaml"
+      ]
+    },
+    {
+      "to": "current",
+      "runtime": {
+        "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.overseer/scratch/validation/install-rollback/exercise/installation",
+        "version": "1.0.0.dev1",
+        "sha256": "b7fa1921fcb586ac6fcf8422f094fe20f9f9a438f64eecdaddd97d347115db95"
+      },
+      "repo_id": "9cf90a7b-d03a-413f-848d-2fb324d87c4c",
+      "next_sha256_preserved": "58c9d9e65c72cfb210286ae0c99f7b46a50cd1433a2383e1c8390a7100f46550",
+      "sync_changed": [
+        ".overseer/config.yaml"
+      ]
+    }
+  ],
+  "final_status": {
+    "ok": true,
+    "repository": {
+      "name": "offline-rollback-fixture",
+      "id": "9cf90a7b-d03a-413f-848d-2fb324d87c4c",
+      "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.overseer/scratch/validation/install-rollback/exercise/consumer-fixture"
+    },
+    "branch": "main",
+    "head": "3317defb17360ab04d3189d554ed2db0a9687431",
+    "runtime": {
+      "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.overseer/scratch/validation/install-rollback/exercise/installation",
+      "version": "1.0.0.dev1",
+      "sha256": "b7fa1921fcb586ac6fcf8422f094fe20f9f9a438f64eecdaddd97d347115db95"
+    },
+    "next": {
+      "schema": 1,
+      "repo_id": "9cf90a7b-d03a-413f-848d-2fb324d87c4c",
+      "repo_root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.overseer/scratch/validation/install-rollback/exercise/consumer-fixture",
+      "branch": "main",
+      "base_head": "b625b2eadce2b8bcf0bdd9b3d280a2668f82c415",
+      "lane": "product",
+      "model": "GPT-6 Astra",
+      "action_id": "FIXTURE-RECOVERED-CURRENT",
+      "action_kind": "maintain",
+      "prompt_sha256": "d2994bb0739efc4116dacdaa8cd3becc68cc0f8f3bcfba50d827e769bb60d486"
+    },
+    "next_sha256": "a2b154593a7426b6b85006966bd471a5e99083f95d3b1f9a6bea96590cb32b84",
+    "dirty": false
+  },
+  "result": "passed",
+  "commands_sha256": "5b7b4e0ded841f87b8990a2ce2494e6ba933c8c00c0695c845c72d10585f1516",
+  "exercise_log_sha256": "59a3edf8c4010278dc04a97f8792fa6040db8860184f2243800177b03f660f7e",
+  "reproduction_script_sha256": "926558db22c68ac3c6f41d5201adfec6a4e5bd6bdeda8a054356fa49f71b94c9"
+}

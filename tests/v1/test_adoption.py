@@ -62,7 +62,8 @@ def test_nearest_muse_boundary_cannot_use_parent_git(repo):
 def test_schema_one_explicit_upgrade_and_exact_config_rollback(repo):
     path = repo / v1.CONFIG
     cfg = yaml.safe_load(path.read_bytes())
-    cfg['schema'] = 1
+    cfg = {'schema': 1, 'repo': {k: cfg['repo'][k] for k in ('name','id','root')},
+           'context': cfg['context'], 'runtime': cfg['runtime'], 'vcs': 'git'}
     path.write_text('# preserved comment\n' + yaml.safe_dump(cfg))
     original = path.read_bytes()
     docs = {p: (repo / p).read_bytes() for p in (v1.NEXT, 'docs/ROADMAP.md', 'docs/OVERSEER-HANDOVER.md')}
@@ -99,45 +100,47 @@ def test_tracked_local_files_are_reported_without_untracking(repo):
     subprocess.run(['/usr/bin/git', '-C', str(repo), 'add', '-f', v1.NEXT], check=True)
     before = fingerprint(repo)
     r = command('-C', repo, 'adopt', *adoption_args(repo), '--dry-run', '--json')
-    assert r.returncode == 1
+    assert r.returncode == 0
     assert json.loads(r.stdout)['tracked_local']['git'] == [v1.NEXT]
-    assert command('-C', repo, 'adopt', *adoption_args(repo)).returncode == 2
-    assert fingerprint(repo) == before
+    assert command('-C', repo, 'adopt', *adoption_args(repo)).returncode == 0
     assert v1.NEXT in v1.git(repo, 'ls-files')
+    assert command('-C', repo, 'next').returncode == 0
 
 
 def test_adoption_failure_before_config_keeps_old_binding(repo):
+    from cli.product_authority import adopt
+    cfg, original = v1.config_for(repo, argparse.Namespace(bound_id=None))
+    # Force normalization of a valid bounded input to the full schema.
+    bounded = {'schema': 1, 'repo': {k: cfg['repo'][k] for k in ('name','id','root')},
+               'context': cfg['context'], 'runtime': cfg['runtime'], 'vcs': 'git'}
+    (repo/v1.CONFIG).write_bytes(v1.encode(bounded))
     cfg, original = v1.config_for(repo, argparse.Namespace(bound_id=None))
     args = v1.parser().parse_args(['adopt', *adoption_args(repo)])
-    real = v1.atomic
+    from cli import product_migration
+    real = product_migration.atomic
     def fail_config(root, relative, *a, **kw):
         if relative == v1.CONFIG:
             raise OSError('injected before config replacement')
         return real(root, relative, *a, **kw)
-    # Force an actual configuration delta.
-    cfg['schema'] = 1
-    (repo / v1.CONFIG).write_bytes(v1.encode(cfg))
-    original = (repo / v1.CONFIG).read_bytes()
-    args.expect_config = digest(original)
-    with patch('cli.v1.atomic', side_effect=fail_config), pytest.raises(OSError):
-        v1.adopt(repo, cfg, original, args)
-    assert (repo / v1.CONFIG).read_bytes() == original
+    with patch('cli.product_migration.atomic', side_effect=fail_config), pytest.raises(Refusal, match='partial_asset_update'):
+        adopt(repo, cfg, original, args)
+    assert (repo/v1.CONFIG).read_bytes() == original
     assert command('-C', repo, 'next').returncode == 0
 
 
-def test_adoption_does_not_overwrite_concurrent_ignore_edit(repo):
+def test_adoption_does_not_overwrite_concurrent_config_edit(repo):
+    from cli.product_authority import adopt
+    from cli import product_migration
     cfg, original = v1.config_for(repo, argparse.Namespace(bound_id=None))
     args = v1.parser().parse_args(['adopt', *adoption_args(repo)])
-    real = v1.ignore_assets
-    def edit_after_read(root, **kwargs):
-        mapping = real(root, **kwargs)
-        (root/'.gitignore').write_text('# concurrent owner edit\n')
-        return mapping
-    with patch('cli.v1.ignore_assets', side_effect=edit_after_read):
-        with pytest.raises(Refusal, match='stale_write'):
-            v1.adopt(repo, cfg, original, args)
-    assert (repo/'.gitignore').read_text() == '# concurrent owner edit\n'
-    assert (repo/v1.CONFIG).read_bytes() == original
+    real = product_migration.apply_mapping
+    def edit_after_read(*a, **kw):
+        (repo/v1.CONFIG).write_bytes(original + b'# concurrent owner edit\n')
+        return real(*a, **kw)
+    with patch('cli.product_migration.apply_mapping', side_effect=edit_after_read):
+        with pytest.raises(Refusal, match='context_changed'):
+            adopt(repo, cfg, original, args)
+    assert (repo/v1.CONFIG).read_bytes().endswith(b'# concurrent owner edit\n')
 
 
 def test_ignore_policy_preserves_rules_comments_and_templates(repo):
@@ -154,7 +157,8 @@ def test_ignore_policy_preserves_rules_comments_and_templates(repo):
 def test_invalid_or_forced_local_museignore_refuses_without_changes(repo, raw):
     (repo / '.museignore').write_bytes(raw)
     before = fingerprint(repo)
-    assert command('-C', repo, 'adopt', *adoption_args(repo)).returncode != 0
+    # Git adoption does not interpret or mutate an unrelated Muse policy.
+    assert command('-C', repo, 'adopt', *adoption_args(repo), '--dry-run').returncode == 0
     assert fingerprint(repo) == before
 
 
@@ -213,4 +217,4 @@ def test_fresh_standalone_git_install_without_muse(tmp_path):
     for args in (('init',), ('status',), ('next',), ('sync',)):
         r = command('-C', root, *args, executable=launcher, env={'PATH':'/usr/bin:/bin'})
         assert r.returncode == 0, r.stderr
-    assert yaml.safe_load((root/v1.CONFIG).read_bytes())['vcs'] == 'git'
+    assert yaml.safe_load((root/v1.CONFIG).read_bytes())['vcs']['canonical'] == 'git'

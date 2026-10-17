@@ -1,0 +1,15 @@
+---
+description: Check OK and configured evidence gates
+alwaysApply: true
+---
+
+Use `ok check-ok --dry-run` to inspect a proposed side-check artifact, or
+`--scaffold-only` to create one explicitly. Review uses the shared bound service
+and the repository's reviewer/checklist settings. A mechanical pass is not an
+independent semantic review. Preserve non-pass stamps and producer/reviewer roles.
+
+Use configured verification, ISR and adversarial-freeze requirements when the
+accepted task invokes them. Model labels do not mandate extra review loops or
+authorize paid provider calls. API execution needs explicit opt-in. No review
+engine generates NEXT: publish any accepted successor through bound next-write
+with current context and expected whole-file digest, then read it with ok next.

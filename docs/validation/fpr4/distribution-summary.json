@@ -1,0 +1,97 @@
+{
+  "author_validation": true,
+  "release_ready": false,
+  "latest_source_artifact": {
+    "archive": "/private/tmp/overseer-fpr4-distribution-repaired-20261014/source.tar.gz",
+    "sha256": "fd6b5ebe0fcd87156f15d610a6b8e76beec1ac469ce07b2958a8e5fa961010cd",
+    "manifest_sha256": "f1297351f0d0e1bd6e4dd6481193d36a6708bb2ddf488e62643864216a70a1b8",
+    "files": 1220
+  },
+  "runtime": {
+    "root": "/private/tmp/overseer-fpr4-distribution-repaired-20261014/python3.14",
+    "version": "1.0.0.dev1",
+    "sha256": "bdbfdae4599ca0bd1b096d5ed2c84019df3b83ed24972c202319ea5507cf09ec"
+  },
+  "source_installation": "/private/tmp/overseer-fpr4-distribution-repaired-20261014/python3.14",
+  "source_environment": "Python3.14.4 conventional installation-local venv; exact pinned dependency file hashes in distribution-repaired-results.json",
+  "package": {
+    "deterministic_unpack_repack": true,
+    "required_assets_modes_ci_dotfiles": true,
+    "local_bindings_and_virtualenvs_excluded": true,
+    "missing_venv_has_no_runtime_fallback": true
+  },
+  "cli_and_desktop_child": {
+    "entrypoints": [
+      "cli/ok",
+      "cli/overseer",
+      "consumer .overseer/bin/ok"
+    ],
+    "fresh_git_init_status_next": true,
+    "fresh_footprint_all_unchanged": true,
+    "governance_and_check_ok_dry_runs": true,
+    "actual_authenticated_loopback_app_child": true,
+    "desktop_health_root_uuid_runtime": true,
+    "child_shutdown": true
+  },
+  "resource": {
+    "root": "/private/tmp/overseer-fpr4-distribution-repaired-20261014/python3.14/desktop/src-tauri/resources/kit",
+    "runtime": {
+      "root": "/private/tmp/overseer-fpr4-distribution-repaired-20261014/python3.14/desktop/src-tauri/resources/kit",
+      "version": "1.0.0.dev1",
+      "sha256": "bdbfdae4599ca0bd1b096d5ed2c84019df3b83ed24972c202319ea5507cf09ec"
+    },
+    "manifest_sha256": "f1297351f0d0e1bd6e4dd6481193d36a6708bb2ddf488e62643864216a70a1b8"
+  },
+  "native_build": {
+    "platform": "darwin",
+    "target": "/private/tmp/overseer-fpr4-distribution-20261014-2/native-target",
+    "cargo_lock_sha256": "9b61ad01c7461687061f10c8b69ba15700b997c280e6a7cb0eb4a02786461706",
+    "gui_run": false,
+    "signing": false,
+    "installer": false,
+    "exit": 0,
+    "binary_sha256": "0eca7f90280274afa114ee4563db1dcf6d722c3f82f0a6d8f01b64847fb6a6c7"
+  },
+  "bundler_repair": {
+    "problem": "BSD mktemp requires terminal Xs; the prior -u suffix template produced a literal conflicting basename and did not reserve an archive.",
+    "fixed_script": "scripts/bundle-desktop-kit.sh",
+    "fixed_script_sha256": "d3fc18a49daca74b036a9fd716d7c0d62f354889c556f8afc745549849d77e56",
+    "change": "Atomically reserve a unique private mktemp -d directory with terminal Xs; keep source.tar.gz inside; preserve prior archives.",
+    "focused_pytest_passed": 1,
+    "focused_checks": [
+      "two actual repaired script invocations under the same TMPDIR succeed",
+      "each archive is reserved inside a distinct private mode0700 directory",
+      "both archives remain preserved",
+      "archive bytes and manifests identical across invocations",
+      "both resource trees verify exact bytes/modes and expected product runtime"
+    ],
+    "same_TMPDIR_repeated_actual_script_success": true,
+    "unmodified_ambient_TMPDIR_repaired_native_success": true
+  },
+  "python311": {
+    "version": "3.11.15",
+    "full_matrix": "unresolved: pinned cffi2.1.0 cp311 backend/wheel/sdist unavailable locally",
+    "original_full_collection_exit": 4,
+    "original_status_exit": 1,
+    "affected_template_pytest_exit": 0,
+    "no_download_or_substitution": true
+  },
+  "limits": [
+    "The root combined-final selection owns the full Python3.14+nativeMuse matrix; its outcomes are recorded separately. No duplicate complete3.14 suite is claimed here.",
+    "Initial redundant3.14 suite was interrupted and is not a passing matrix.",
+    "Python3.11 full dependency/cryptography cell remains unresolved despite affected template passing.",
+    "No native GUI session, installer signing, platform acceptance, provider network, pilot or FPR5 independent review claimed."
+  ],
+  "evidence": [
+    "distribution-repaired-results.json",
+    "distribution-repaired-exercise-3.14-results.json",
+    "distribution-repaired-native-3.14-results.json",
+    "environment-native-build-repaired.log",
+    "distribution-bundler-regression.xml",
+    "distribution-bundler-repair.json",
+    "distribution-bundler-freeze.json",
+    "distribution-final-native-initial-results.json",
+    "distribution-final-native-workaround.json",
+    "distribution-final-template-3.11-results.json"
+  ]
+}

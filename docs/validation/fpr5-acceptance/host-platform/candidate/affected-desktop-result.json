@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.venv/bin/python",
+    "-B",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "tests/fpr3/test_surfaces.py::test_desktop_real_launcher_identity_and_ambient_refusal",
+    "tests/unit/test_q3_desktop_unit.py::test_desktop_manifest_validates",
+    "--basetemp",
+    "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/candidate/affected-fixtures",
+    "--junitxml",
+    "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/candidate/affected-desktop.xml"
+  ],
+  "cwd": "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/candidate/source",
+  "exit": 0,
+  "selection_rationale": "Current-contract actual bound desktop child/identity case plus existing manifest validation; actual native GUI remains separate requirement."
+}

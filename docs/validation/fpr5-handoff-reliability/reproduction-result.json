@@ -1,0 +1,91 @@
+{
+  "kind": "New isolated source-function reproduction; not a client incident reproduction or acceptance test",
+  "node": "v24.1.0",
+  "sourceMapSha256": "07817a4488abbd664c66730eb760752eb27a22f9c7758d3f9c07b03882b20a33",
+  "executedExcerpts": [
+    "C1",
+    "E1",
+    "E2",
+    "E3",
+    "E8",
+    "R1",
+    "R2"
+  ],
+  "windows": [
+    {
+      "windowRoot": "$DISPOSABLE/project-a",
+      "seededRestoredUri": {
+        "scheme": "openai-codex",
+        "authority": "route",
+        "path": "/local/synthetic-thread-a",
+        "query": ""
+      },
+      "route": "/local/synthetic-thread-a",
+      "resolvedCwd": "$DISPOSABLE/project-a",
+      "resumeRootCandidates": [
+        "$DISPOSABLE/project-a"
+      ],
+      "ownerRequests": [
+        {
+          "method": "thread-owner-discovery",
+          "params": {
+            "hostId": "local",
+            "conversationId": "synthetic-thread-a"
+          },
+          "options": {
+            "timeoutMs": 1000
+          }
+        }
+      ],
+      "mockedOwnerResponse": "synthetic-owner-a",
+      "workspaceTaskMismatch": false
+    },
+    {
+      "windowRoot": "$DISPOSABLE/project-b",
+      "seededRestoredUri": {
+        "scheme": "openai-codex",
+        "authority": "route",
+        "path": "/local/synthetic-thread-a",
+        "query": ""
+      },
+      "route": "/local/synthetic-thread-a",
+      "resolvedCwd": "$DISPOSABLE/project-a",
+      "resumeRootCandidates": [
+        "$DISPOSABLE/project-a",
+        "$DISPOSABLE/project-b"
+      ],
+      "ownerRequests": [
+        {
+          "method": "thread-owner-discovery",
+          "params": {
+            "hostId": "local",
+            "conversationId": "synthetic-thread-a"
+          },
+          "options": {
+            "timeoutMs": 1000
+          }
+        }
+      ],
+      "mockedOwnerResponse": "synthetic-owner-a",
+      "workspaceTaskMismatch": true
+    }
+  ],
+  "cursorPolicy": {
+    "configured": "none",
+    "ordinary": "none",
+    "appRestartFlag": "all",
+    "incidentFlagValue": "unknown; application lifecycle flag is not inferred from OS restart"
+  },
+  "demonstrated": "Seeded shared restored URI is reopened in both windows; cwd arbitration retains project A; owner discovery omits workspace identity.",
+  "notDemonstrated": [
+    "How the incident selected the shared URI",
+    "Whether incident views were sidebar or custom editor",
+    "Full renderer resume or effective sandbox grants",
+    "Actual owner arbitration, tool execution or cross-repository writes",
+    "Cursor lifecycle events or restart qualification"
+  ],
+  "sourceChanged": false,
+  "fullClientsLaunched": false,
+  "networkUsed": false,
+  "scratchPolicy": "Only two new empty directories; removed by finally"
+}

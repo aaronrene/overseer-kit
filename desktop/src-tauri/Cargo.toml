@@ -1,6 +1,6 @@
 [package]
 name = "overseer-kit-desktop"
-version = "0.1.0"
+version = "1.0.0-dev.1"
 description = "Overseer Kit desktop shell (Track Q / Q3)"
 authors = ["Overseer Kit"]
 edition = "2021"

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="3.782" timestamp="2026-10-15T02:36:11.642126-07:00" hostname="Carloss-MacBook-Pro.local"><testcase classname="tests.fpr5.test_transport_repairs" name="test_pr_matching_identity_pins_every_transport_and_ignores_ambient_target[unicode-digit-branch]" time="3.726"><failure message="AssertionError: refused: gh_pr_identity_mismatch&#10;  &#10;assert 2 == 0&#10; +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...--authorized', 'disposable fake transport only'], returncode=2, stdout='', stderr='refused: gh_pr_identity_mismatch\n').returncode">pr_fixture = (PosixPath('/private/tmp/overseer-fpr5-transport-dln4t45k/fixtures/test_pr_matching_identity_pins0/bound'), PosixPath(...view.json'), &lt;function pr_fixture.&lt;locals&gt;.invoke at 0x107d237f0&gt;, &lt;function pr_fixture.&lt;locals&gt;.calls at 0x107d235e0&gt;)
+selector = '٧'
+
+    @pytest.mark.parametrize("selector", ["7", "https://github.com/fixture/bound/pull/7", "feature/topic",
+                                          pytest.param("٧", id="unicode-digit-branch")])
+    def test_pr_matching_identity_pins_every_transport_and_ignores_ambient_target(pr_fixture, selector):
+        root, _, invoke, calls = pr_fixture
+        before = (root / "docs/NEXT.md").read_bytes()
+        result = invoke(selector, env={"GH_REPO": "foreign/repo", "GH_HOST": "foreign.invalid"})
+&gt;       assert result.returncode == 0, result.stdout + result.stderr
+E       AssertionError: refused: gh_pr_identity_mismatch
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...--authorized', 'disposable fake transport only'], returncode=2, stdout='', stderr='refused: gh_pr_identity_mismatch\n').returncode
+
+tests/fpr5/test_transport_repairs.py:145: AssertionError</failure></testcase></testsuite></testsuites>

@@ -1,0 +1,10 @@
+{
+  "stage": "01c-publish-start",
+  "scope": "Author acceptance; not independent adjudication",
+  "commands_and_operations": [
+    {
+      "kind": "prior_attempt",
+      "explanation": "Writer correctly refused pilot prose containing the reserved Lane binding field. 01b evidence is preserved; lane is now only in structured context, with ordinary descriptive prose. Product unchanged."
+    }
+  ]
+}

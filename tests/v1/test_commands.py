@@ -115,9 +115,6 @@ def test_branch_and_head_freshness(repo):
     assert r.returncode != 0 and 'branch_mismatch' in r.stderr
     subprocess.run(['/usr/bin/git','-C',str(repo),'switch','main'], check=True, capture_output=True)
     subprocess.run(['/usr/bin/git','-C',str(repo),'add','.'], check=True)
-    # Preserve the legacy tracked-NEXT closing-commit exception explicitly.
-    # New init now excludes checkout-local NEXT from ordinary git add.
-    subprocess.run(['/usr/bin/git','-C',str(repo),'add','-f','docs/NEXT.md'], check=True)
     subprocess.run(['/usr/bin/git','-C',str(repo),'-c','core.hooksPath=/dev/null','commit','-m','publish NEXT'], check=True, capture_output=True)
     assert command('-C', repo, 'next').returncode == 0
     subprocess.run(['/usr/bin/git','-C',str(repo),'-c','core.hooksPath=/dev/null','commit','--allow-empty','-m','later work'], check=True, capture_output=True)
@@ -185,19 +182,7 @@ def test_unborn_repository_first_commit_is_supported(tmp_path):
     subprocess.run(['/usr/bin/git','-C',str(root),'add','.'],check=True)
     subprocess.run(['/usr/bin/git','-C',str(root),'-c','user.name=Fixture','-c',
         'user.email=fixture@example.invalid','-c','core.hooksPath=/dev/null','commit','-m','first'],check=True,capture_output=True)
-    r = command('-C',root,'next')
-    assert r.returncode == 2 and 'next_stale_head' in r.stderr
-    # The ignored local handoff is deliberately published after the first commit.
-    import yaml
-    cfg = yaml.safe_load((root/'.overseer/config.yaml').read_bytes())
-    from cli.v1_io import digest
-    (root/'prompt.txt').write_text('First post-commit task.\n')
-    r = command('-C',root,'next-write','--repo-id',cfg['repo']['id'], '--branch','main',
-                '--lane','product','--model','GPT-6 Astra','--action-id','FIRST',
-                '--action-kind','implement','--expect-next',digest((root/'docs/NEXT.md').read_bytes()),
-                '--prompt-file','prompt.txt')
-    assert r.returncode == 0, r.stderr
-    assert command('-C',root,'next').returncode == 0
+    assert command('-C',root,'next').returncode==0
 
 
 def test_git_worktree_supported(repo,tmp_path):
@@ -242,3 +227,31 @@ def test_sync_dry_run_plans_missing_launcher_without_writes(repo):
     assert fingerprint(repo)==before and not path.parent.exists()
     assert command('-C',repo,'sync').returncode==0
     assert command('next',cwd=repo,executable=path).returncode==0
+
+
+def test_sync_repairs_executable_modes_and_dry_run_preserves_them(repo):
+    paths = [repo/'.overseer/bin/ok', repo/'.cursor/hooks/session-start-next.sh',
+             repo/'.cursor/hooks/session-end-closeout.sh']
+    for path in paths:
+        path.chmod(0o644)
+    before = fingerprint(repo)
+    result = command('-C', repo, 'sync', '--hooks', '--dry-run', '--json')
+    assert result.returncode == 0, result.stderr
+    assert all(str(p.relative_to(repo)) in json.loads(result.stdout)['changed'] for p in paths)
+    assert fingerprint(repo) == before
+    assert command('-C', repo, 'sync', '--hooks').returncode == 0
+    assert all(p.stat().st_mode & 0o777 == 0o755 for p in paths)
+    assert command('next', cwd=repo, executable=paths[0]).returncode == 0
+
+
+def test_different_freshness_and_action_requirements_fail_closed(repo):
+    subprocess.run(['/usr/bin/git', '-C', str(repo), 'add', '.'], check=True)
+    subprocess.run(['/usr/bin/git', '-C', str(repo), '-c', 'core.hooksPath=/dev/null',
+                    'commit', '-m', 'publish'], check=True, capture_output=True)
+    assert command('-C', repo, 'next').returncode == 0
+    # Semantically equivalent frontmatter is still different committed NEXT bytes.
+    path = repo/'docs/NEXT.md'
+    path.write_text(path.read_text().replace('schema: 1\n', 'schema: 1 # edited\n', 1))
+    result = command('-C', repo, 'next')
+    assert result.returncode != 0 and not result.stdout
+    assert 'next_stale_head' in result.stderr

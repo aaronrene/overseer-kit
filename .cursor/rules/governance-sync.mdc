@@ -1,0 +1,11 @@
+---
+description: Paired local governance with canonical NEXT
+alwaysApply: true
+---
+
+Keep ROADMAP and HANDOVER consistent. `ok governance-sync` defaults to dry-run;
+`--write` applies and commits locally on a clean feature branch. Request remote
+enrichment/transport separately and only within authorization. Preserve canonical
+NEXT; `--print-next` delegates to its validated reader. Offline remote freshness
+is unknown. Muse realignment uses controlled mirror reconciliation, never export
+into a live worktree. Refresh a successor explicitly with bound next-write and CAS.

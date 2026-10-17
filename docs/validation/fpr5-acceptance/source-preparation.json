@@ -1,0 +1,44 @@
+{
+  "kind": "Local preparation for remaining acceptance; not pilot, independent adjudication or release",
+  "source": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+  "head": "2e8ec694def9be4a0faa4a994bf2fff3f212ab23",
+  "runtime_sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774",
+  "pending_permissions": [
+    "official-PyPI cffi 2.1.0 cp311 artifact lookup/download",
+    "separate disposable integrated pilot"
+  ],
+  "open_requirements": [
+    "complete Python 3.11 dependency and matrix cell",
+    "actual Cursor 3.24.18 native lifecycle delivery",
+    "macOS15.7.2 arm64 platform/app/native-GUI acceptance",
+    "new integrated pilot",
+    "final independent adjudication",
+    "separate owner release decision"
+  ],
+  "commands": [
+    {
+      "argv": [
+        "/private/tmp/overseer-fpr5-acceptance-preparation-w580lsq4/python3.14-installation/cli/ok",
+        "--help"
+      ],
+      "cwd": "/private/tmp/overseer-fpr5-acceptance-preparation-w580lsq4",
+      "exit_code": 0,
+      "stdout": "usage: ok [-h] [-C REPO] [--config CONFIG] [--json] [-q] [-v] [--no-color]\n          [--version]\n          {adopt,app,check-if-ok,check-ok,governance-sync,handover-compact,honesty-status,hook,hosted-dashboard,init,land-check,land-closeout,ledger,mirror,next,next-write,pr-land,review,route,status,sync,upgrade-regime,verify-step,workspace} ...\n\nRepository-bound Overseer product; local changes, remote transport and release\nare separate\n\npositional arguments:\n  {adopt,app,check-if-ok,check-ok,governance-sync,handover-compact,honesty-status,hook,hosted-dashboard,init,land-check,land-closeout,ledger,mirror,next,next-write,pr-land,review,route,status,sync,upgrade-regime,verify-step,workspace}\n\noptions:\n  -h, --help            show this help message and exit\n  -C, --repo REPO\n  --config CONFIG\n  --json\n  -q, --quiet\n  -v, --verbose\n  --no-color\n  --version             show program's version number and exit\n",
+      "stderr": ""
+    }
+  ],
+  "artifact": {
+    "archive": "/private/tmp/overseer-fpr5-acceptance-preparation-w580lsq4/source.tar.gz",
+    "sha256": "de8cd9222df8cf6c5fe3f4d858e561018baa0dc6d61df1f0ac423928adaed47f",
+    "manifest_sha256": "044ed9bea6a61220604252372b37186584b15e66dd4efbccde1d9901e485134d",
+    "files": 1483
+  },
+  "unpacked_files": 1483,
+  "runtime_dependencies": {
+    "PyYAML": "6.0.3",
+    "cryptography": "49.0.0",
+    "cffi": "2.1.0",
+    "pycparser": "3.0"
+  },
+  "preparation_ok": true
+}

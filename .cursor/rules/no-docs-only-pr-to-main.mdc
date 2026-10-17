@@ -1,0 +1,9 @@
+---
+description: Close local work without inventing remote scope
+alwaysApply: true
+---
+
+Update the paired summaries and publish the accepted canonical NEXT during the
+feature closing change. A documentation change does not itself authorize a PR,
+push or main merge. Respect the accepted task's local/remote/release scope. Keep
+the selected integration branch unless an authorized operation explicitly changes it.

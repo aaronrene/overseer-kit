@@ -1,0 +1,30 @@
+{
+  "kind": "Owner-observed actual desktop rendering, coordinator comparison; not independent adjudication",
+  "outcome": "PASS for required rendered app and canonical NEXT readback",
+  "user_source": "Owner message with screenshot and pasted text from current native window",
+  "screenshot": {
+    "path": "/Users/aaronrenecarvajal/Desktop/Screenshot 2026-10-15 at 4.33.53\u202fAM.png",
+    "sha256": "3c292faf794e12e20a3d1a3c49f0cd05ad3bab410ce23d5e10751953fe04116e",
+    "bytes": 1871575,
+    "durable_copy": false,
+    "reason": "Owner desktop screenshot includes unrelated background windows; retain only external reference and hash"
+  },
+  "visual_observation": "Native Overseer Kit window visibly renders application, Connected state, correct disposable bound repository, selected Next / Handover tab and product canonical NEXT plus validation section; full pasted text supplies both lanes.",
+  "exact_action_blocks_match": true,
+  "action_blocks": 2,
+  "all_nonempty_lines_match": true,
+  "whole_rendered_string_byte_identical": false,
+  "presentation_difference": "Blank lines outside action blocks differ in chat paste; action block contents exactly match.",
+  "pilot_next_sha256": "489ded7be7f530ea242e1ed5dbdce96037ec752cc63c9359eaa778aa483ba055",
+  "pilot_head": "4e394520262e1447ae8b5415ae36dc75dc05197e",
+  "runtime": {
+    "root": "/private/tmp/overseer-fpr5-integrated-pilot-20261015/installation",
+    "version": "1.0.0.dev1",
+    "sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774"
+  },
+  "native_binary_sha256": "a515148a94ffebb88e7520fb194bc0287967484896c44900e6d7ab4e7b364551",
+  "cursor_sessionStart": "unresolved",
+  "cursor_stop": "unresolved",
+  "independent_adjudication_performed": false,
+  "release_authorized": false
+}

@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "pytest": "9.1.1",
+  "cases": [
+    {
+      "nodeid": "tests/fpr5/test_resource_repairs.py::test_provisioned_runtime_and_actual_packaged_entrypoints",
+      "node_sha256": "6a4b1475ba208586c7c9a824c1fa201d125b0b0878195c2350e7e214063afbf2",
+      "junit": [
+        "tests.fpr5.test_resource_repairs",
+        "test_provisioned_runtime_and_actual_packaged_entrypoints"
+      ]
+    }
+  ]
+}

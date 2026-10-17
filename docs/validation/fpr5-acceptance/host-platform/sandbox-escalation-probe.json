@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "/usr/bin/sandbox-exec",
+    "-f",
+    "/private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/deny-external.sb",
+    "/usr/bin/true"
+  ],
+  "exit": 0,
+  "sandbox_permissions": "require_escalated",
+  "note": "Built-in tool sandbox prohibited nested sandbox_apply; bounded auto-review escalation allowed enforcing outer denial."
+}

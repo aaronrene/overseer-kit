@@ -1,0 +1,38 @@
+{
+  "head": "4c7f225b6148f95fb575bcd604b113aed5b5999b",
+  "source_and_artifact_counts": {
+    "runtime_files": 295,
+    "test_sources": 440,
+    "native_sources": 40,
+    "packaging_sources": 10,
+    "validation_scripts": 4,
+    "fpr5-repairs": 133,
+    "fpr5-acceptance": 215,
+    "fpr5-interactive": 48,
+    "fpr5-owner-closeout": 7,
+    "fpr5-closeout": 14,
+    "original_review_files": 46,
+    "requirements": 2
+  },
+  "refs_verified": 144,
+  "problems": [],
+  "read_only": true,
+  "runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774"
+  },
+  "runtime_membership_count": 295,
+  "physical_root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+  "branch": "feat/overseer-v1-recovery-20261014",
+  "packet_sole_parent": "d6d6b92d0f10c58a41e25678835f2436b1a5f827",
+  "clean_at_entry": true,
+  "repository": {
+    "name": "overseer-kit",
+    "id": "6988dc4a-5f22-454b-9d68-ac5905b383bf"
+  },
+  "verification_command_corrections": [
+    "requirements.txt was not present; corrected inspection to the two requirements entries actually named in the candidate boundary. No recorded file difference.",
+    "Parent workspace AGENTS discovery hit unrelated permission-denied fixtures; no access retried. No ancestor AGENTS exists."
+  ]
+}

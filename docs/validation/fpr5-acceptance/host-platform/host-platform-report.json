@@ -1,0 +1,96 @@
+{
+  "role": "acceptance author evidence; not independent adjudication",
+  "source": {
+    "head": "2e8ec694def9be4a0faa4a994bf2fff3f212ab23",
+    "archive_sha256": "de8cd9222df8cf6c5fe3f4d858e561018baa0dc6d61df1f0ac423928adaed47f",
+    "runtime_sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774"
+  },
+  "selected_platform": {
+    "os": "macOS15.7.2",
+    "build": "24G325",
+    "architecture": "arm64",
+    "client": "Cursor3.24.18"
+  },
+  "lifecycle": {
+    "outcome": "BLOCKED",
+    "start_delivered": false,
+    "stop_delivered": false,
+    "first_attempt": "Default Cursor inner sandbox conflicts with enforced outer isolation; renderer/GPU/network subprocess sandbox initialization fails, host exits signal5 after4.38s.",
+    "retry": "Fresh profile with --no-sandbox --disable-gpu, unchanged enforced outer network/home/account boundary. Renderer window reported ready; host logs load2 configured project hooks(sessionStart,stop) and workspaceOpen requests only. Loopback debugger timed out; own-window screenshot refused. No successful rendered-state observation. Exact process group terminated after124.74s; empty group verified.",
+    "partial_evidence": "Actual selected host recognizes generated hook configuration; this is not sessionStart or stop delivery.",
+    "provider_calls_authorized": false,
+    "default_profile_access": false,
+    "evidence": [
+      "cursor-launch.json",
+      "cursor-host.log",
+      "cursor-result.json",
+      "cursor-r2/cursor-launch.json",
+      "cursor-r2/cursor-host.log",
+      "cursor-r2/cursor-result.json",
+      "cursor-r2/observation-limitations.json",
+      "cursor-r2/hook-observation-index.json"
+    ]
+  },
+  "native_build": {
+    "outcome": "PASS_AFTER_ENVIRONMENT_FAILURE",
+    "initial": "Default debug fresh build failed at linker write errno28; raw log preserved. Only this new generated target and new Swift cache reclaimed.",
+    "success": "Fresh source/locked dependencies built offline with local Rust1.88, CARGO_PROFILE_DEV_DEBUG=0,CARGO_INCREMENTAL=0. No old binary reused.",
+    "monitor": "650MiB free-space floor checked every1s; build completed before the next check with final free635MiB, then new intermediates immediately reclaimed preserving verified binary.",
+    "evidence": [
+      "native-build-command.json",
+      "native-build.log",
+      "native-build-result.json",
+      "cleanup-after-enospc.json",
+      "native-build-reduced-command.json",
+      "native-build-reduced.log",
+      "native-build-reduced-result.json",
+      "native-fresh-binary.json"
+    ]
+  },
+  "native_gui": {
+    "outcome": "FAIL",
+    "binary_sha256": "be7e3f2ccf3610898b01c7df650e9d0f34ec5ba1e717005b07d252c3d120a8b1",
+    "exit_signal": 6,
+    "elapsed_seconds": 2.2773969173431396,
+    "fatal": "Failed to setup app: error encountered during setup hook: a webview with label `main` already exists",
+    "cause": "tauri.conf.json auto-creates main; lib.rs setup constructs another main. Locked tauri2.11.5 creates configured windows before setup.",
+    "additional_environment_messages": "Outer isolation refused WebKit default home cache writes; no network/account boundary was relaxed.",
+    "pilot_head": "4e394520262e1447ae8b5415ae36dc75dc05197e",
+    "pilot_next_sha256": "489ded7be7f530ea242e1ed5dbdce96037ec752cc63c9359eaa778aa483ba055",
+    "pilot_next_unchanged": true,
+    "pilot_clean_after": true,
+    "process_group_empty_after": true,
+    "port8765_released_after": true,
+    "evidence": [
+      "native-gui-command.json",
+      "native-gui.log",
+      "native-gui-result.json",
+      "native-gui-cleanup.json"
+    ]
+  },
+  "old_binary_provenance": {
+    "status": "EXPLAINED",
+    "observed": "0eca7f90280274afa114ee4563db1dcf6d722c3f82f0a6d8f01b64847fb6a6c7",
+    "explanation": "Matches recorded repaired-tag build in distribution-summary.json and distribution-repaired-native-3.14-results.json; initial comparison used older final-tag hash. Both initial observation and correction retained.",
+    "reused": false,
+    "evidence": [
+      "old-native-reuse-refusal.json",
+      "old-native-reuse-correction.json"
+    ]
+  },
+  "scope": {
+    "product_source_changes": false,
+    "existing_consumer_access": false,
+    "external_network_allowed": false,
+    "release_signing_publication": false,
+    "required_native_gui_accepted": false,
+    "required_automatic_bookends_accepted": false,
+    "independent_adjudication_performed": false
+  },
+  "unresolved": [
+    "Actual Cursor3.24.18 sessionStart and stop delivery and exact NEXT equality.",
+    "Native GUI duplicate-main startup failure; actual rendered application/readback and clean normal exit not accepted.",
+    "Default-profile/client behavior not established by isolated invocation."
+  ],
+  "notes": "No synthetic hook payloads were used as native host evidence. Source preparation/resource verification passed; prior app/desktop-child checks remain separate from failed actual native GUI acceptance."
+}

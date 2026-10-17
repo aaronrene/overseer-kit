@@ -1,0 +1,89 @@
+{
+  "kind": "FPR-5 bounded repair source map; earlier maps are historical and unchanged",
+  "parent_commit": "4c62c17cff6c606a5e1ddf565e12353973b3bcad",
+  "runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774"
+  },
+  "runtime_file_count": 295,
+  "production_changes": [
+    {
+      "path": "cli/product_service.py",
+      "findings": [
+        "R2"
+      ],
+      "before_sha256": "37c15e436c5d44dfe8bbbebddcbb0d98484dd07fd873375f60bc16c5a40fd104",
+      "after_sha256": "9727c6f0e40749e93060423c9c1b370bb23bcf621d713512af8c418b7e03b3ce",
+      "mode": "0o644"
+    },
+    {
+      "path": "tools/hosted_dashboard/http_client.py",
+      "findings": [
+        "R1"
+      ],
+      "before_sha256": "68173d6a1f3261c1c2ae5c22066cd5c0cc9e811aa220ea027e4d8bd23b77ca68",
+      "after_sha256": "525fac38f7d2813a442ba74be075e1ea76fa69158b7555acaa1c43ec2c0c3bba",
+      "mode": "0o644"
+    },
+    {
+      "path": "cli/product_migration.py",
+      "findings": [
+        "R3"
+      ],
+      "before_sha256": "4e3a6b4aedaea755d0bb93cf5680a904e6d3aabadc84aa38b2a9aaf98a1cd1a4",
+      "after_sha256": "30c29f72e24cbfd77048901223ae6063b22b009de825ac74dd9e80605eed5467",
+      "mode": "0o644"
+    },
+    {
+      "path": "cli/v1.py",
+      "findings": [
+        "R5"
+      ],
+      "before_sha256": "a5f1b2300e592b78ac2794929c9943fae4457874c75974660ee0d53a1a3b5e8d",
+      "after_sha256": "81d2d6686d9dff330e5d40c55626054abe7abcf6d938a6ce6ecf3270690e4e71",
+      "mode": "0o644"
+    },
+    {
+      "path": "tools/ci/source_package.py",
+      "findings": [
+        "R4"
+      ],
+      "before_sha256": "6a665a6793920842b276717a66ffe1937eb13fc800a14c621dc8b0255281afc4",
+      "after_sha256": "9386f14e5a1e84da2118f66dd2e78b330e9e50aa7cadcef91e1fdc6c834c6b1e",
+      "mode": "0o644"
+    },
+    {
+      "path": "tools/checkpoints/orchestrator.py",
+      "findings": [
+        "R6"
+      ],
+      "before_sha256": "e404800fe06e118144a3d92b3f8755f799b2eb9556119838e4fc015444de36f0",
+      "after_sha256": "97b499ae2bc0476228a1213f6e80f1a86e52c0175df5c8a7b5f001ffa3f800bd",
+      "mode": "0o644"
+    },
+    {
+      "path": "tools/checkpoints/types.py",
+      "findings": [
+        "R6"
+      ],
+      "before_sha256": "022319feddf74167f74d9a73d86ea3137dddf61ec9fda9b03009547489c72d5e",
+      "after_sha256": "53af65d39ca7cacb97f4972f38ecdc4f4976045bb83e18578f1b9f40adae3b31",
+      "mode": "0o644"
+    },
+    {
+      "path": "cli/commands/verify_step.py",
+      "findings": [
+        "R6"
+      ],
+      "before_sha256": "28d3cd172e5c8b42d471a7089b6c6b3d3748dc364eb0334fd92552b600272bf5",
+      "after_sha256": "4b74e6c9c40173be1976680e7e7e1ff35ccbf465ede85451fec64a7747528783",
+      "mode": "0o644"
+    }
+  ],
+  "test_changes": {
+    "tests/fpr5": "152 additive requirement cases",
+    "tests/fpr3/test_engines.py": "Existing fake gh view response now includes matching URL and PR number required by target binding; no requirement removed."
+  },
+  "validation_driver_changes": "Optional explicit evidence-dir; defer both archive-dependent cases until concurrent writers finish. Original failing-run driver bytes are preserved separately."
+}

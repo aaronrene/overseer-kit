@@ -1,0 +1,11 @@
+---
+description: Bounded v1 repository and NEXT authority
+alwaysApply: true
+---
+
+Follow AGENTS.md and docs/decisions/V1-SCOPE-RESET.md. Verify repository identity
+before action. Read canonical NEXT using this checkout's cli/ok -C ROOT next.
+Only next-write changes NEXT. Update ROADMAP and HANDOVER together. Historical
+handover prompts, governance-sync regeneration and sole-writer/NXR-GSR chains
+are not current authority. Independent architecture/build review is still required
+before final acceptance; implementation tests alone are not independent review.

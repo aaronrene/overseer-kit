@@ -1,40 +1,13 @@
 #!/usr/bin/env sh
-# Bundle the Python engine into the Tauri desktop resources directory (Track Q / Q3).
+# Local portable engine resource bundle (cli, adapters, tools and assets).
 set -eu
-
-ROOT="$(CDPATH= cd -- "$(dirname "$0")/.." && pwd)"
-DEST="${ROOT}/desktop/src-tauri/resources/kit"
-
-rm -rf "${DEST}"
-mkdir -p "${DEST}"
-
-copy_tree() {
-  src="${ROOT}/$1"
-  dest="${DEST}/$1"
-  if [ -d "${src}" ]; then
-    mkdir -p "$(dirname "${dest}")"
-    cp -R "${src}" "${dest%/*}/"
-  fi
-}
-
-copy_file() {
-  src="${ROOT}/$1"
-  dest="${DEST}/$1"
-  if [ -f "${src}" ]; then
-    mkdir -p "$(dirname "${dest}")"
-    cp "${src}" "${dest}"
-  fi
-}
-
-for dir in adapters cli tools policy templates cursor; do
-  copy_tree "${dir}"
-done
-
-for file in VERSION pyproject.toml; do
-  copy_file "${file}"
-done
-
-chmod +x "${DEST}/cli/ok" 2>/dev/null || true
-chmod +x "${DEST}/cli/overseer" 2>/dev/null || true
-
-echo "bundled kit → ${DEST}"
+ROOT="$(CDPATH= cd -- "$(dirname "$0")/.." && pwd -P)"
+# New destination only; preserve previous bundles for inspection/rollback.
+DEST="${1:?usage: bundle-desktop-kit.sh NEW_DESTINATION}"
+# Reserve a private directory atomically. BSD mktemp requires terminal Xs;
+# an unused-name probe neither reserves the archive nor randomizes that suffix.
+ARCHIVE_DIR="$(mktemp -d "${TMPDIR:-/tmp}/overseer-desktop-source.XXXXXXXX")"
+ARCHIVE="${ARCHIVE_DIR}/source.tar.gz"
+"${ROOT}/.venv/bin/python" "${ROOT}/tools/ci/source_package.py" build --output "$ARCHIVE"
+"${ROOT}/.venv/bin/python" "${ROOT}/tools/ci/source_package.py" unpack --archive "$ARCHIVE" --destination "$DEST"
+printf '%s\n' "bundled source at $DEST; provision its conventional .venv from pinned local prerequisites before launch"

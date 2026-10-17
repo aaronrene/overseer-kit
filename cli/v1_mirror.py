@@ -22,7 +22,7 @@ import tempfile
 import urllib.request
 
 from cli.v1_io import Refusal, atomic, digest, read
-from cli.v1_revision import OID, bounded_run, revision, unique_json
+from cli.v1_revision import OID, bounded_run, revision, unique_json, backend_config
 
 RECORD = '.overseer/local/git-bridge.json'
 MARKER = 'overseer-mirror.json'
@@ -69,6 +69,7 @@ def physical(value):
 
 
 def validate_plan(plan, root, config):
+    config = backend_config(config)
     from cli.v1 import keys, KIT
     fields = ('schema', 'source', 'destination', 'target', 'expected_target', 'executables')
     keys(plan, (*fields, 'reconciliation') if 'reconciliation' in plan else fields)
@@ -117,6 +118,7 @@ def validate_plan(plan, root, config):
 
 
 def binding(plan, config):
+    config = backend_config(config)
     pair = {'source_root': config['repo']['root'], 'checkout_id': config['repo']['id'],
             'source_id': plan['source']['repo_id'], 'source_branch': plan['source']['branch'],
             'hub_url': plan['source']['hub_url'], 'target': plan['target'],
@@ -145,6 +147,10 @@ def locked(root, target):
 
 
 def check_source(root, config, plan):
+    config = backend_config(config)
+    from cli.v1 import runtime
+    if config['runtime'] != runtime():
+        raise Refusal('mirror_runtime_changed')
     state = revision(root, config)
     if (state.branch, state.head, state.source_id) != (
             plan['source']['branch'], plan['source']['revision'], plan['source']['repo_id']):
@@ -298,6 +304,7 @@ def save_record(root, old, pair, plan, plan_hash, commit):
 
 
 def execute(root, config, original, plan, plan_hash, operation, transport=None):
+    config = backend_config(config)
     target = validate_plan(plan, root, config)
     initial_reconciliation = 'reconciliation' in plan and plan['expected_target'] == 'absent'
     if operation == 'reconcile' and not initial_reconciliation:
@@ -372,6 +379,7 @@ def execute(root, config, original, plan, plan_hash, operation, transport=None):
             # Recover an interrupted record write using exact tree, parent and trailers.
             if not correspondence(target, observed, plan, plan_hash, files):
                 raise Refusal('mirror_correspondence_failed')
+            recheck(root, config, original, plan, plan_hash, pair, projection, observed)
             if operation != 'verify':
                 save_record(root, old, pair, plan, plan_hash, observed)
             if operation == 'deliver':

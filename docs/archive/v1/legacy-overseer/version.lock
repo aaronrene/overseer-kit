@@ -1,9 +1,9 @@
 lock_version: 1
-kit_version: 0.1.0
-config_version: 1
+kit_version: 1.0.0.dev1
+config_version: 3
 installed_at: '2026-07-10T00:00:00Z'
 synced_at: '2026-09-20T15:24:42Z'
-footprint_digest: sha256:f401931fb27a140fef8d5376c19a21d584ae9a9c8827c6aaaecda337d788c962
+footprint_digest: sha256:882c3d251152d292378baf00d4b848a8013a321ef1808119d270a81dde0eec18
 footprint:
 - path: .claude/skills/adversarial-freeze-review/SKILL.md
   source: cursor/skills/adversarial-freeze-review/SKILL.md
@@ -149,6 +149,10 @@ footprint:
   source: templates/STANDING-DECISIONS.template.md
   sha256: 4694e4c48fc9595301629432ddd67861900d1288e097bd5d01232611c9ce18db
   origin: kit
+- path: .overseer/bin/ok
+  source: bound-product-assets
+  sha256: sha256:1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4
+  origin: kit
 - path: .overseer/policy/model-labels.yaml
   source: policy/model-labels.yaml
   sha256: db95732401de452223d750c68172b6c1bb28b3b574c6368132678309b8c801e0
@@ -171,11 +175,11 @@ footprint:
   origin: kit
 - path: docs/OVERSEER-HANDOVER.md
   source: templates/OVERSEER-HANDOVER.template.md
-  sha256: 06131f788df4442910e489cf53d7c67b303aad7efd550b82ff6abb352755f0be
+  sha256: sha256:78783871efa3867c8c200f3854a6d6e4da0237ae1c36e2ab02e875410c93f88d
   origin: preserved
 - path: docs/ROADMAP.md
   source: templates/ROADMAP.template.md
-  sha256: 93f9484b26276d9641f9790a12ea62322b2f3b938979791e5d5d6a93557fcbdf
+  sha256: sha256:ab941d1351ec2a1391f7fa269e3ec05550489ab9812a2fc35ffe9bb6a9cc5c68
   origin: preserved
 - path: scripts/muse-bridge-deploy.sh
   source: templates/scripts/muse-bridge-deploy.sh.template

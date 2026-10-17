@@ -50,6 +50,33 @@ def compare_paths_to_main(
     main_branch: str,
 ) -> tuple[str, list[dict[str, Any]], list[str]]:
     """Return (ref, path_reports, dirty_paths)."""
+    from cli.product_boundary import active
+    boundary = active()
+    if boundary is not None:
+        from cli import v1
+        from cli.v1_io import read, Refusal
+        boundary.recheck()
+        ref = f'refs/remotes/{remote}/{main_branch}'
+        head = v1.git(repo_root, 'rev-parse', '--verify', ref + '^{commit}', optional=True)
+        if not head:
+            ref = 'refs/heads/' + main_branch
+            head = v1.git(repo_root, 'rev-parse', '--verify', ref + '^{commit}', optional=True)
+        if not head:
+            return ref, [], list(paths)
+        reports = []
+        for relative in paths:
+            boundary.watch(relative)
+            local = read(repo_root, relative, missing=True)
+            exists = bool(v1.git(repo_root, 'ls-tree', head, '--', relative))
+            data = v1.git(repo_root, 'show', head + ':' + relative, raw=True) if exists else None
+            reports.append({'path': relative, 'workingTreeSha256': _sha256_bytes(local) if local is not None else None,
+                'mainSha256': _sha256_bytes(data) if data is not None else None,
+                'match': local is not None and data is not None and local == data})
+        dirty = v1.git(repo_root, 'status', '--porcelain', '--', *paths, raw=True).decode()
+        if v1.git(repo_root, 'rev-parse', '--verify', ref + '^{commit}', optional=True) != head:
+            raise Refusal('landing_main_ref_changed')
+        boundary.recheck()
+        return head, reports, [line[3:].strip() for line in dirty.splitlines() if line.strip()]
     ref = f"{remote}/{main_branch}"
     if _git(repo_root, "rev-parse", "--verify", ref).returncode != 0:
         if _git(repo_root, "rev-parse", "--verify", main_branch).returncode == 0:

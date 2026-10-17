@@ -1,0 +1,67 @@
+{
+  "kind": "Author installation-repair closeout; not independent adjudication",
+  "opening_head": "c247186f139c7916a38030ff25fba30f5aa94576",
+  "closing_commit_rule": "one local documentation/evidence commit with opening HEAD as sole parent",
+  "repair_applied": true,
+  "authorized_target": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-main-stable/.venv",
+  "dependency_files_added": 190,
+  "replaced_aliases": {
+    "lib/python3.14/site-packages/PyYAML-6.0.1.dist-info": "/opt/homebrew/lib/python3.10/site-packages/PyYAML-6.0.1.dist-info",
+    "lib/python3.14/site-packages/yaml": "/opt/homebrew/lib/python3.10/site-packages/yaml"
+  },
+  "other_existing_venv_entries_preserved": true,
+  "backup_verified": true,
+  "rollback_rehearsed": true,
+  "backup": "/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/20261015-fpr-ops2-s8rcdg_c/venv-before",
+  "source_groups_verified": {
+    "runtime_files": 295,
+    "test_sources": 440,
+    "native_sources": 40,
+    "packaging_sources": 10,
+    "validation_scripts": 4,
+    "requirements": 2
+  },
+  "runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774"
+  },
+  "legacy_source_files_unchanged": 841,
+  "global_wrapper_unchanged": true,
+  "interpreter_unchanged": true,
+  "external_yaml_targets_unchanged": true,
+  "prior_reports_and_tracked_evidence_unchanged": true,
+  "protected_refs_verified_before_commit": 144,
+  "focused_validation": {
+    "disposable_commands": 5,
+    "target_commands": 5,
+    "each_expected_exit_codes": [
+      0,
+      0,
+      0,
+      0,
+      4
+    ],
+    "completed_acceptance_suites_repeated": false
+  },
+  "legacy_modern_uuid_branch_digest_binding": "unsupported by unchanged legacy source",
+  "optional_cffi_generator": "absent and not installed; historical RECORD reference preserved",
+  "ops1_historical_cause": "unresolved",
+  "cursor_sessionStart": "owner-postponed NOT VERIFIED",
+  "cursor_stop": "owner-postponed NOT VERIFIED",
+  "review_or_experiment_scheduled": false,
+  "adjudication_authorized": false,
+  "release_authorized": false,
+  "next_action_id": "OVERSEER-FPR5-OPS2-REPAIR-STOP-1",
+  "next_sha256": "506c062fa0f6c8da4e0520e98a369be073f1d87e355d597ae786868a8026de19",
+  "mechanical_checks": [
+    "JSON",
+    "relative links",
+    "whitespace",
+    "source/runtime hashes",
+    "legacy source/interpreter/wrapper/external YAML preservation",
+    "exact venv before/after and backup inventories",
+    "bound NEXT readback"
+  ],
+  "unexpected_changes": []
+}

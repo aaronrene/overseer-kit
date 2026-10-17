@@ -25,6 +25,13 @@ def init(root, python, *args):
 def commit(root, muse, text='first'):
     (root / 'app.py').write_text('value = ' + repr(text) + '\n')
     muse(root, 'code', 'add', '.')
+    # rc5's recursive staging omits dot-directories. FPR-3 installs the full
+    # portable footprint; stage its nonignored hidden assets explicitly.
+    for relative in ('.claude', '.overseer/policy', '.overseer/version.lock', '.overseer/STANDING-DECISIONS.reference.md'):
+        path = root / relative
+        for item in sorted(path.rglob('*')) if path.is_dir() else [path]:
+            if item.is_file():
+                muse(root, 'code', 'add', item.relative_to(root).as_posix())
     muse(root, 'commit', '-m', text, '--json')
     return muse(root, 'rev-parse', 'HEAD').stdout.strip()
 
@@ -145,11 +152,11 @@ def test_muse_missing_or_malformed_state_refuses(muse_root, muse_python, muse, b
     cfg_path = root / v1.CONFIG
     cfg = yaml.safe_load(cfg_path.read_bytes())
     if broken == 'missing_python':
-        cfg['muse']['runtime']['python'] = str(muse_python.parent/'missing-python')
+        cfg['vcs']['muse']['binding']['runtime']['python'] = str(muse_python.parent/'missing-python')
     elif broken == 'runtime_pin':
-        cfg['muse']['runtime']['sha256'] = '0'*64
+        cfg['vcs']['muse']['binding']['runtime']['sha256'] = '0'*64
     elif broken == 'wrong_source':
-        cfg['muse']['repo_id'] = 'sha256:'+'0'*64
+        cfg['vcs']['muse']['binding']['repo_id'] = 'sha256:'+'0'*64
     elif broken == 'missing_object':
         from cli.v1_revision import muse_read
         # Delete only a disposable fixture commit object, retaining its ref.
@@ -183,9 +190,10 @@ def test_changed_revision_during_write_refused(muse_root, muse_python):
     from dataclasses import replace
     args = argparse.Namespace(action_id='STALE', action_kind='implement', vcs='muse', base_head=state.head)
     before = (root/v1.NEXT).read_bytes()
-    with patch('cli.v1.revision', side_effect=[state, replace(state, head='sha256:'+'1'*64)]):
+    context = v1.capture_context(root, (root/v1.CONFIG).read_bytes())
+    with patch('cli.v1.revision', return_value=replace(state, head='sha256:'+'1'*64)):
         with pytest.raises(Refusal, match='context_changed'):
-            v1.write_next(root, cfg, args, 'Task.\n', expected=digest(before))
+            v1.write_next(root, cfg, args, 'Task.\n', expected=digest(before), context=context)
     assert (root/v1.NEXT).read_bytes() == before
 
 
@@ -199,7 +207,7 @@ def test_explicit_adoption_preserves_identity_docs_edits_and_rollback(muse_root,
     before = inventory(root)
     original = (root/v1.CONFIG).read_bytes()
     state = muse_read(root, str(muse_python))
-    args = adoption_args(root, vcs='muse', muse_python=str(muse_python), base_head=state['head'])
+    args = adoption_args(root, vcs='muse', muse_python=str(muse_python), base_head=state['head'], tracked_bindings='preserve')
     plan = command('-C', root, 'adopt', *args, '--dry-run', '--json')
     assert plan.returncode == 0, plan.stderr
     assert inventory(root) == before
@@ -212,7 +220,7 @@ def test_explicit_adoption_preserves_identity_docs_edits_and_rollback(muse_root,
     assert status(root)['vcs'] == 'muse'
     # Roll back even when the selected Muse runtime is unavailable.
     cfg = yaml.safe_load((root/v1.CONFIG).read_bytes())
-    cfg['muse']['runtime']['python'] = str(muse_python.parent/'missing-python')
+    cfg['vcs']['muse']['binding']['runtime']['python'] = str(muse_python.parent/'missing-python')
     (root/v1.CONFIG).write_text(yaml.safe_dump(cfg))
     args = adoption_args(root, vcs=None, restore_config=backup)
     assert command('-C', root, 'adopt', *args).returncode == 0
@@ -257,6 +265,9 @@ def test_tracked_muse_binding_blocks_adoption_and_snapshot_excludes_new_local_fi
 def test_committed_git_baseline_import_isolated_from_owner_edits(tmp_path, muse, muse_python):
     source = seed(tmp_path/'git-source')
     assert command('-C', source, 'init').returncode == 0
+    from cli.v1_policy import ignore_assets
+    for p, body in ignore_assets(source).items():
+        (source/p).write_bytes(body)
     (source/'app.py').write_text('committed = True\n')
     for args in (('add', '.'), ('-c', 'core.hooksPath=/dev/null', 'commit', '-m', 'reviewed baseline')):
         subprocess.run(['/usr/bin/git', '-C', str(source), *args], check=True, capture_output=True)

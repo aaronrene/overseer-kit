@@ -1,7 +1,3 @@
-> **Historical pre-reset product.** This document describes the pre-reset historical product.
-> Its legacy commands are not exposed by the bounded-v1 entrypoint. Do not use it
-> as current onboarding. See the [root README](../README.md) and [current docs index](README.md).
-
 # Consumer adapter pattern
 
 **Purpose:** How any repo adopts Overseer Kit without forking kit core.  
@@ -22,22 +18,18 @@ your domain.
 | **L0** | `init`/`sync`/`status`/`review`/`governance-sync`, templates, adapters | Living docs content, `docs.lanes`, VCS regime |
 | **L1** | Orchestrator + policy/manifest schemas + `verify-step` | `policy/checkpoints.yaml`, verify scripts, manifests |
 | **L2** | Ledger engine + roles + co-requirement hooks | Hook call sites, domain DoD, optional roster path (`roles_file` — v1 warn/ignore) |
-| **L3** | Regime adapters (`realign`/`mirror`) | Choosing `muse+git-mirror` when ready |
+| **L3** | Selected authority and controlled mirror services | Choosing `muse+git-mirror` when ready |
 
 ---
 
 ## Install skeleton
 
-```bash
-KIT=/path/to/overseer-kit
-REPO=/path/to/consumer
+Use the explicit installation and repository root. For an existing configuration,
+run `ok -C ROOT init --migrate --dry-run --json`, review its plan, then apply with
+`--apply-plan`, `--expect-plan` and `--expect-config`. Fresh repositories use
+`ok -C ROOT init --regime git-only` or explicitly bound native Muse. Follow
+[Migrate an existing repository](MIGRATE-EXISTING-REPO.md) for the full ceremony.
 
-$KIT/cli/ok -C $REPO init --migrate \
-  --from-config $KIT/tests/fixtures/pilot/config-<consumer>.yaml \
-  --non-interactive --dry-run
-# then apply without --dry-run
-$KIT/cli/ok -C $REPO status --check-footprint
-```
 
 Customize only `.overseer/config.yaml` (regime, doc paths, future `checkpoints:` / `honesty:`).
 

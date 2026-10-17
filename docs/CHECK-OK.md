@@ -1,7 +1,3 @@
-> **Historical pre-reset product.** This document describes the pre-reset historical product.
-> Its legacy commands are not exposed by the bounded-v1 entrypoint. Do not use it
-> as current onboarding. See the [root README](../README.md) and [current docs index](README.md).
-
 # Check OK — portable honesty check (any AI tool)
 
 **Not Cursor-only.** Use this in Claude Code, GitHub Copilot, ChatGPT, or any assistant.

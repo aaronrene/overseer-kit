@@ -1,0 +1,184 @@
+FFFFFF.FF...                                                             [100%]
+=================================== FAILURES ===================================
+__ test_override_preview_returns_plan_without_execution[False-selection0-all] __
+
+override_repo = PosixPath('/private/tmp/overseer-fpr5-repair-82wrfwag/tests/test_override_preview_returns_0/override-fixture')
+selection = ['--all'], mode = 'all', emit_json = False
+
+    @pytest.mark.parametrize('selection,mode', [(['--all'], 'all'), (['--step', 'alpha'], 'step'),
+                                             (['--through', 'current'], 'through')])
+    @pytest.mark.parametrize('emit_json', [False, True])
+    def test_override_preview_returns_plan_without_execution(override_repo, selection, mode, emit_json):
+        root = override_repo
+        before = snapshot(root)
+        flags = selection + ['--manifest', 'manifests/work-unit.yaml', '--policy', 'policy/checkpoints.yaml']
+        if emit_json:
+            flags.append('--json')
+        result = command('-C', root, 'verify-step', *flags, '--dry-run')
+>       assert result.returncode == 0, result.stderr + result.stdout
+E       AssertionError: refused: script_execution_requires_explicit_bound_mutation
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...ts.yaml', '--dry-run'], returncode=2, stdout='', stderr='refused: script_execution_requires_explicit_bound_mutation\n').returncode
+
+tests/fpr5/test_orchestrator_repairs.py:45: AssertionError
+_ test_override_preview_returns_plan_without_execution[False-selection1-step] __
+
+override_repo = PosixPath('/private/tmp/overseer-fpr5-repair-82wrfwag/tests/test_override_preview_returns_1/override-fixture')
+selection = ['--step', 'alpha'], mode = 'step', emit_json = False
+
+    @pytest.mark.parametrize('selection,mode', [(['--all'], 'all'), (['--step', 'alpha'], 'step'),
+                                             (['--through', 'current'], 'through')])
+    @pytest.mark.parametrize('emit_json', [False, True])
+    def test_override_preview_returns_plan_without_execution(override_repo, selection, mode, emit_json):
+        root = override_repo
+        before = snapshot(root)
+        flags = selection + ['--manifest', 'manifests/work-unit.yaml', '--policy', 'policy/checkpoints.yaml']
+        if emit_json:
+            flags.append('--json')
+        result = command('-C', root, 'verify-step', *flags, '--dry-run')
+>       assert result.returncode == 0, result.stderr + result.stdout
+E       AssertionError: refused: script_execution_requires_explicit_bound_mutation
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...ts.yaml', '--dry-run'], returncode=2, stdout='', stderr='refused: script_execution_requires_explicit_bound_mutation\n').returncode
+
+tests/fpr5/test_orchestrator_repairs.py:45: AssertionError
+_ test_override_preview_returns_plan_without_execution[False-selection2-through] _
+
+override_repo = PosixPath('/private/tmp/overseer-fpr5-repair-82wrfwag/tests/test_override_preview_returns_2/override-fixture')
+selection = ['--through', 'current'], mode = 'through', emit_json = False
+
+    @pytest.mark.parametrize('selection,mode', [(['--all'], 'all'), (['--step', 'alpha'], 'step'),
+                                             (['--through', 'current'], 'through')])
+    @pytest.mark.parametrize('emit_json', [False, True])
+    def test_override_preview_returns_plan_without_execution(override_repo, selection, mode, emit_json):
+        root = override_repo
+        before = snapshot(root)
+        flags = selection + ['--manifest', 'manifests/work-unit.yaml', '--policy', 'policy/checkpoints.yaml']
+        if emit_json:
+            flags.append('--json')
+        result = command('-C', root, 'verify-step', *flags, '--dry-run')
+>       assert result.returncode == 0, result.stderr + result.stdout
+E       AssertionError: refused: script_execution_requires_explicit_bound_mutation
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...ts.yaml', '--dry-run'], returncode=2, stdout='', stderr='refused: script_execution_requires_explicit_bound_mutation\n').returncode
+
+tests/fpr5/test_orchestrator_repairs.py:45: AssertionError
+__ test_override_preview_returns_plan_without_execution[True-selection0-all] ___
+
+override_repo = PosixPath('/private/tmp/overseer-fpr5-repair-82wrfwag/tests/test_override_preview_returns_3/override-fixture')
+selection = ['--all'], mode = 'all', emit_json = True
+
+    @pytest.mark.parametrize('selection,mode', [(['--all'], 'all'), (['--step', 'alpha'], 'step'),
+                                             (['--through', 'current'], 'through')])
+    @pytest.mark.parametrize('emit_json', [False, True])
+    def test_override_preview_returns_plan_without_execution(override_repo, selection, mode, emit_json):
+        root = override_repo
+        before = snapshot(root)
+        flags = selection + ['--manifest', 'manifests/work-unit.yaml', '--policy', 'policy/checkpoints.yaml']
+        if emit_json:
+            flags.append('--json')
+        result = command('-C', root, 'verify-step', *flags, '--dry-run')
+>       assert result.returncode == 0, result.stderr + result.stdout
+E       AssertionError: refused: script_execution_requires_explicit_bound_mutation
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...'--json', '--dry-run'], returncode=2, stdout='', stderr='refused: script_execution_requires_explicit_bound_mutation\n').returncode
+
+tests/fpr5/test_orchestrator_repairs.py:45: AssertionError
+__ test_override_preview_returns_plan_without_execution[True-selection1-step] __
+
+override_repo = PosixPath('/private/tmp/overseer-fpr5-repair-82wrfwag/tests/test_override_preview_returns_4/override-fixture')
+selection = ['--step', 'alpha'], mode = 'step', emit_json = True
+
+    @pytest.mark.parametrize('selection,mode', [(['--all'], 'all'), (['--step', 'alpha'], 'step'),
+                                             (['--through', 'current'], 'through')])
+    @pytest.mark.parametrize('emit_json', [False, True])
+    def test_override_preview_returns_plan_without_execution(override_repo, selection, mode, emit_json):
+        root = override_repo
+        before = snapshot(root)
+        flags = selection + ['--manifest', 'manifests/work-unit.yaml', '--policy', 'policy/checkpoints.yaml']
+        if emit_json:
+            flags.append('--json')
+        result = command('-C', root, 'verify-step', *flags, '--dry-run')
+>       assert result.returncode == 0, result.stderr + result.stdout
+E       AssertionError: refused: script_execution_requires_explicit_bound_mutation
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...'--json', '--dry-run'], returncode=2, stdout='', stderr='refused: script_execution_requires_explicit_bound_mutation\n').returncode
+
+tests/fpr5/test_orchestrator_repairs.py:45: AssertionError
+_ test_override_preview_returns_plan_without_execution[True-selection2-through] _
+
+override_repo = PosixPath('/private/tmp/overseer-fpr5-repair-82wrfwag/tests/test_override_preview_returns_5/override-fixture')
+selection = ['--through', 'current'], mode = 'through', emit_json = True
+
+    @pytest.mark.parametrize('selection,mode', [(['--all'], 'all'), (['--step', 'alpha'], 'step'),
+                                             (['--through', 'current'], 'through')])
+    @pytest.mark.parametrize('emit_json', [False, True])
+    def test_override_preview_returns_plan_without_execution(override_repo, selection, mode, emit_json):
+        root = override_repo
+        before = snapshot(root)
+        flags = selection + ['--manifest', 'manifests/work-unit.yaml', '--policy', 'policy/checkpoints.yaml']
+        if emit_json:
+            flags.append('--json')
+        result = command('-C', root, 'verify-step', *flags, '--dry-run')
+>       assert result.returncode == 0, result.stderr + result.stdout
+E       AssertionError: refused: script_execution_requires_explicit_bound_mutation
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...'--json', '--dry-run'], returncode=2, stdout='', stderr='refused: script_execution_requires_explicit_bound_mutation\n').returncode
+
+tests/fpr5/test_orchestrator_repairs.py:45: AssertionError
+_ test_override_refuses_escaped_inputs_before_plan_or_execution[False---manifest] _
+
+override_repo = PosixPath('/private/tmp/overseer-fpr5-repair-82wrfwag/tests/test_override_refuses_escaped_0/override-fixture')
+option = '--manifest', dry_run = False
+
+    @pytest.mark.parametrize('option', ['--manifest', '--policy'])
+    @pytest.mark.parametrize('dry_run', [False, True])
+    def test_override_refuses_escaped_inputs_before_plan_or_execution(override_repo, option, dry_run):
+        outside = override_repo.parent / 'outside.yaml'
+        outside.write_text('owner: private\n')
+        before = snapshot(override_repo)
+        result = command('-C', override_repo, 'verify-step', '--all', option, '../outside.yaml',
+                         '--json', *(['--dry-run'] if dry_run else []))
+>       assert result.returncode != 0, result.stdout
+E       AssertionError: {"ok": true, "exit_code": 0, "command": "verify-step", "mode": "all", "dry_run": false, "manifest": "../outside.yaml", "steps": [], "error": null}
+E         
+E       assert 0 != 0
+E        +  where 0 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva...erify-step", "mode": "all", "dry_run": false, "manifest": "../outside.yaml", "steps": [], "error": null}\n', stderr='').returncode
+
+tests/fpr5/test_orchestrator_repairs.py:74: AssertionError
+_ test_override_refuses_escaped_inputs_before_plan_or_execution[False---policy] _
+
+override_repo = PosixPath('/private/tmp/overseer-fpr5-repair-82wrfwag/tests/test_override_refuses_escaped_1/override-fixture')
+option = '--policy', dry_run = False
+
+    @pytest.mark.parametrize('option', ['--manifest', '--policy'])
+    @pytest.mark.parametrize('dry_run', [False, True])
+    def test_override_refuses_escaped_inputs_before_plan_or_execution(override_repo, option, dry_run):
+        outside = override_repo.parent / 'outside.yaml'
+        outside.write_text('owner: private\n')
+        before = snapshot(override_repo)
+        result = command('-C', override_repo, 'verify-step', '--all', option, '../outside.yaml',
+                         '--json', *(['--dry-run'] if dry_run else []))
+>       assert result.returncode != 0, result.stdout
+E       AssertionError: {"ok": true, "exit_code": 0, "command": "verify-step", "mode": "all", "dry_run": false, "manifest": null, "steps": [], "error": null}
+E         
+E       assert 0 != 0
+E        +  where 0 = CompletedProcess(args=['/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/ok', '-C', '/priva..."command": "verify-step", "mode": "all", "dry_run": false, "manifest": null, "steps": [], "error": null}\n', stderr='').returncode
+
+tests/fpr5/test_orchestrator_repairs.py:74: AssertionError
+=========================== short test summary info ============================
+FAILED tests/fpr5/test_orchestrator_repairs.py::test_override_preview_returns_plan_without_execution[False-selection0-all]
+FAILED tests/fpr5/test_orchestrator_repairs.py::test_override_preview_returns_plan_without_execution[False-selection1-step]
+FAILED tests/fpr5/test_orchestrator_repairs.py::test_override_preview_returns_plan_without_execution[False-selection2-through]
+FAILED tests/fpr5/test_orchestrator_repairs.py::test_override_preview_returns_plan_without_execution[True-selection0-all]
+FAILED tests/fpr5/test_orchestrator_repairs.py::test_override_preview_returns_plan_without_execution[True-selection1-step]
+FAILED tests/fpr5/test_orchestrator_repairs.py::test_override_preview_returns_plan_without_execution[True-selection2-through]
+FAILED tests/fpr5/test_orchestrator_repairs.py::test_override_refuses_escaped_inputs_before_plan_or_execution[False---manifest]
+FAILED tests/fpr5/test_orchestrator_repairs.py::test_override_refuses_escaped_inputs_before_plan_or_execution[False---policy]
+8 failed, 4 passed in 33.46s

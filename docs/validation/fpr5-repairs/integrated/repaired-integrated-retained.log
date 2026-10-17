@@ -1,0 +1,54 @@
+........................................................................ [  9%]
+........................................................................ [ 18%]
+........................................................................ [ 28%]
+........................................................................ [ 37%]
+........................................................................ [ 47%]
+........................................................................ [ 56%]
+........................................................................ [ 66%]
+........................................................................ [ 75%]
+........................................................................ [ 84%]
+................F....................................................... [ 94%]
+...........................................                              [100%]
+=================================== FAILURES ===================================
+___________ test_provisioned_runtime_and_actual_packaged_entrypoints ___________
+
+tmp_path = PosixPath('/private/tmp/overseer-fpr4-repaired-integrated-retained-s_7871hc/test_provisioned_runtime_and_a0')
+
+    def test_provisioned_runtime_and_actual_packaged_entrypoints(tmp_path):
+        archive = tmp_path / 'source.tar.gz'
+>       package.build(KIT, archive)
+
+tests/fpr5/test_resource_repairs.py:84: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tools/ci/source_package.py:96: in build
+    verify(output)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+archive = PosixPath('/private/tmp/overseer-fpr4-repaired-integrated-retained-s_7871hc/test_provisioned_runtime_and_a0/source.tar.gz')
+
+    def verify(archive):
+        with tarfile.open(archive, 'r:gz') as tar:
+            members = tar.getmembers()
+            if len(members) > 20000 or sum(m.size for m in members) > 256 * 1024 * 1024:
+                raise ValueError('archive bounds exceeded')
+            names = [m.name for m in members]
+            if len(names) != len(set(names)) or MANIFEST not in names:
+                raise ValueError('duplicate paths or absent manifest')
+            if any(not m.isfile() or m.mode not in (0o644, 0o755) or (m.name != MANIFEST and not eligible(m.name)) or m.size > 32 * 1024 * 1024 for m in members):
+                raise ValueError('unsafe archive member')
+            m = json.load(tar.extractfile(MANIFEST))
+            if m.get('schema') != 1 or set(names) != set(m['files']) | {MANIFEST}:
+                raise ValueError('manifest membership mismatch')
+            for entry in members:
+                if entry.name == MANIFEST:
+                    continue
+                row = m['files'][entry.name]
+                if (entry.mode != int(row['mode'], 8) or entry.size != row['size'] or
+                        hashlib.sha256(tar.extractfile(entry).read()).hexdigest() != row['sha256']):
+>                   raise ValueError('manifest mismatch: ' + entry.name)
+E                   ValueError: manifest mismatch: docs/validation/fpr5-repairs/integrated/repaired-integrated-foundation-fpr1.log
+
+tools/ci/source_package.py:120: ValueError
+=========================== short test summary info ============================
+FAILED tests/fpr5/test_resource_repairs.py::test_provisioned_runtime_and_actual_packaged_entrypoints
+1 failed, 762 passed, 2 deselected in 288.89s (0:04:48)

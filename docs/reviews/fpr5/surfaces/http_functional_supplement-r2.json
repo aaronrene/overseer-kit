@@ -1,0 +1,111 @@
+{
+  "source": "4c62c17cff6c606a5e1ddf565e12353973b3bcad",
+  "kind": "FPR-5 reviewer supplement; not FPR-4 rerun",
+  "setup": [
+    {
+      "argv": [
+        "init",
+        "--json"
+      ],
+      "exit": 0,
+      "stdout": "{\"ok\": true, \"repository\": {\"name\": \"http-fixture-r2\", \"id\": \"1a5e58e4-c8cb-42b1-84ad-0043972f6f10\", \"root\": \"/private/tmp/overseer-fpr5-review.jTlE9P/surfaces/http-fixture-r2\", \"root_relative_docs\": \"docs\"}, \"initialized\": true, \"dry_run\": false, \"changed\": [\".overseer/bin/ok\", \".claude/skills/adversarial-freeze-review/SKILL.md\", \".claude/skills/build-verification-review/SKILL.md\", \".claude/skills/check-ok/SIDE-CHECK-TEMPLATE.md\", \".claude/skills/check-ok/SKILL.md\", \".claude/skills/deploy-verification-review/SKILL.md\", \".claude/skills/freeze-review-loop/SKILL.md\", \".claude/skills/freeze-review/SKILL.md\", \".claude/skills/governance-sync/SKILL.md\", \".claude/skills/independent-second-reviewer/SKILL.md\", \".claude/skills/print-next/SKILL.md\", \".claude/skills/workspace-status/SKILL.md\", \".cursor/rules/build-verification-required.mdc\", \".cursor/rules/check-ok-thinking.mdc\", \".cursor/rules/governance-sync.mdc\", \".cursor/rules/l1-checkpoints-consumer-owned.mdc\", \".cursor/rules/no-docs-only-pr-to-main.mdc\", \".cursor/rules/orchestrator.mdc\", \".cursor/rules/print-next-closeout.mdc\", \".cursor/rules/tier-authority.mdc\", \".cursor/rules/workspace-authority.mdc\", \".cursor/skills/adversarial-freeze-review/SKILL.md\", \".cursor/skills/build-verification-review/SKILL.md\", \".cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md\", \".cursor/skills/check-ok/SKILL.md\", \".cursor/skills/deploy-verification-review/SKILL.md\", \".cursor/skills/freeze-review-loop/SKILL.md\", \".cursor/skills/freeze-review/SKILL.md\", \".cursor/skills/governance-sync/SKILL.md\", \".cursor/skills/independent-second-reviewer/SKILL.md\", \".cursor/skills/print-next/SKILL.md\", \".cursor/skills/workspace-status/SKILL.md\", \".overseer/STANDING-DECISIONS.reference.md\", \".overseer/policy/model-labels.yaml\", \".overseer/policy/model-routing.yaml\", \".overseer/policy/test-tiers.yaml\", \".overseer/policy/tiers.yaml\", \"policy/model-routing.yaml\", \"docs/ROADMAP.md\", \"docs/OVERSEER-HANDOVER.md\", \".overseer/version.lock\", \".overseer/config.yaml\"]}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "ledger",
+        "append",
+        "--kind",
+        "verdict",
+        "--file",
+        "fixture-verdict.json",
+        "--json"
+      ],
+      "exit": 0,
+      "stdout": "{\"ok\": true, \"exit_code\": 0, \"messages\": []}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "check-ok",
+        "--path",
+        "docs/reviews/http-check.md",
+        "--topic",
+        "Synthetic HTTP fixture",
+        "--scope",
+        "Local no-execution review preview",
+        "--scaffold-only",
+        "--json"
+      ],
+      "exit": 0,
+      "stdout": "{\"command\": \"check-ok\", \"rel_path\": \"docs/reviews/http-check.md\", \"created\": true, \"scaffold_only\": true, \"exit_code\": 0, \"ok\": true, \"messages\": [\"check-ok: scaffolded docs/reviews/http-check.md\"]}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "ledger",
+        "show",
+        "--last",
+        "20",
+        "--json"
+      ],
+      "exit": 0,
+      "stdout": "{\"entries\": [{\"entry_hash\": \"55e32cfe5ab1a8af3a354e5bdd50e425abb9b4a06d3dd8736fd832f56c0107ff\", \"kind\": \"genesis\", \"prev_hash\": \"368646f427571067ec853ef0c3d4cce9ecfa3fb3e003dd1252cd5d02f111e513\", \"ts\": \"2026-10-15T01:20:19Z\", \"v\": 1}, {\"actor_role\": \"verifier\", \"actor_session_id\": \"fixture-verifier\", \"artifact_sha256\": \"sha256:1f88e795bd7693451e8f1560a92a2f54a9464cb61a524bd0f9d634af6a47bb06\", \"entry_hash\": \"1a7011cbeaf47ee0fa463d434364426645d9d824b2aa188f5576049fe7b65c03\", \"evidence\": {\"reexecuted\": [\"fixture artifact exact bytes and SHA-256 verified by this supplement\"]}, \"kind\": \"verdict\", \"passed\": true, \"prev_hash\": \"55e32cfe5ab1a8af3a354e5bdd50e425abb9b4a06d3dd8736fd832f56c0107ff\", \"ts\": \"2026-10-15T01:20:19Z\", \"v\": 1}], \"ok\": true, \"exit_code\": 0}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "honesty-status",
+        "--hook",
+        "handoff",
+        "--artifact",
+        "fixture-artifact.txt",
+        "--producer-session",
+        "fixture-producer",
+        "--json"
+      ],
+      "exit": 20,
+      "stdout": "{\"ok\": false, \"exit_code\": 20, \"command\": \"honesty-status\", \"hook\": \"handoff\", \"artifact\": \"fixture-artifact.txt\", \"artifact_sha256\": \"1f88e795bd7693451e8f1560a92a2f54a9464cb61a524bd0f9d634af6a47bb06\", \"producer_session\": \"fixture-producer\", \"matched_verdict_hash\": null, \"error\": \"missing_verdict\"}\n",
+      "stderr": ""
+    }
+  ],
+  "requests": [],
+  "checks": [
+    {
+      "name": "CLI init succeeds",
+      "passed": true
+    },
+    {
+      "name": "configured review provider is local",
+      "passed": true
+    },
+    {
+      "name": "synthetic artifact bytes verified",
+      "passed": true
+    },
+    {
+      "name": "CLI ledger succeeds",
+      "passed": true
+    },
+    {
+      "name": "CLI check-ok succeeds",
+      "passed": true
+    },
+    {
+      "name": "CLI ledger succeeds",
+      "passed": true
+    },
+    {
+      "name": "CLI honesty-status succeeds",
+      "passed": false
+    }
+  ],
+  "external_network_used": false,
+  "fixture": "/private/tmp/overseer-fpr5-review.jTlE9P/surfaces/http-fixture-r2",
+  "result": "FAIL",
+  "error": {
+    "type": "AssertionError",
+    "message": "CLI honesty-status succeeds",
+    "traceback": "Traceback (most recent call last):\n  File \"/private/tmp/overseer-fpr5-review.jTlE9P/surfaces/http_functional_supplement-r2.py\", line 48, in <module>\n    cli_honesty=cli(root,'honesty-status','--hook','handoff','--artifact','fixture-artifact.txt','--producer-session','fixture-producer','--json')\n  File \"/private/tmp/overseer-fpr5-review.jTlE9P/surfaces/http_functional_supplement-r2.py\", line 18, in cli\n    check('CLI '+str(args[0])+' succeeds',p.returncode==0)\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/private/tmp/overseer-fpr5-review.jTlE9P/surfaces/http_functional_supplement-r2.py\", line 13, in check\n    assert condition,name\n           ^^^^^^^^^\nAssertionError: CLI honesty-status succeeds\n"
+  }
+}

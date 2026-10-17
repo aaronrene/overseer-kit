@@ -1,0 +1,11 @@
+{
+  "paired_summary_sections_equal": true,
+  "preserved_lock_rows_updated": [
+    "MUSE-BRIDGE-WORKFLOW.md",
+    "docs/OVERSEER-HANDOVER.md",
+    "docs/ROADMAP.md"
+  ],
+  "kit_footprint_digest_unchanged": "sha256:493a8c38c83b15ec2aa1fc99a2adc0224574512df741d408e70c03173ac48ae0",
+  "runtime_unchanged": true,
+  "no_full_sync": true
+}

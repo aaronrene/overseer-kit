@@ -130,48 +130,55 @@ def run_review(args: Namespace, ctx: CliContext, *, raw_argv: list[str] | None =
             ctx.output.error("invalid --mode value")
             return 1
 
-    adapter = create_adapter(config, repo_root, runner=ctx.runner)
-    substrate = check_substrate(config, repo_root)
-    if not substrate.ok:
-        ctx.output.error(f"substrate: {substrate.state} — {substrate.message}")
-        if substrate.remediation:
-            ctx.output.error(f"remediation: {substrate.remediation}")
-        return 2
+    from cli.product_boundary import active
+    boundary = active()
+    if boundary is not None:
+        # Authority/runtime were validated by the shared service. Native stage
+        # reads and controlled mirror state must not use legacy bridge sentinels.
+        boundary.recheck()
+    else:
+        adapter = create_adapter(config, repo_root, runner=ctx.runner)
+        substrate = check_substrate(config, repo_root)
+        if not substrate.ok:
+            ctx.output.error(f"substrate: {substrate.state} — {substrate.message}")
+            if substrate.remediation:
+                ctx.output.error(f"remediation: {substrate.remediation}")
+            return 2
 
-    status = adapter.status()
-    if isinstance(status, ReadError):
-        ctx.output.error(str(status))
-        return 2
+        status = adapter.status()
+        if isinstance(status, ReadError):
+            ctx.output.error(str(status))
+            return 2
 
-    muse_sync = check_muse_sync(config, status)
-    if not muse_sync.ok:
-        ctx.output.error(f"muse_sync: {muse_sync.state} — {muse_sync.message}")
-        if muse_sync.remediation:
-            ctx.output.error(f"remediation: {muse_sync.remediation}")
-        return 2
+        muse_sync = check_muse_sync(config, status)
+        if not muse_sync.ok:
+            ctx.output.error(f"muse_sync: {muse_sync.state} — {muse_sync.message}")
+            if muse_sync.remediation:
+                ctx.output.error(f"remediation: {muse_sync.remediation}")
+            return 2
 
-    footprint_self_integrity = check_footprint_integrity(repo_root)
-    if not footprint_self_integrity.ok:
-        ctx.output.error(
-            f"footprint_self_integrity: {footprint_self_integrity.state} — "
-            f"{footprint_self_integrity.message}"
+        footprint_self_integrity = check_footprint_integrity(repo_root)
+        if not footprint_self_integrity.ok:
+            ctx.output.error(
+                f"footprint_self_integrity: {footprint_self_integrity.state} — "
+                f"{footprint_self_integrity.message}"
+            )
+            if footprint_self_integrity.remediation:
+                ctx.output.error(f"remediation: {footprint_self_integrity.remediation}")
+            return 2
+
+        footprint_coverage = check_footprint_coverage(
+            repo_root,
+            config,
+            kit=ctx.kit,
         )
-        if footprint_self_integrity.remediation:
-            ctx.output.error(f"remediation: {footprint_self_integrity.remediation}")
-        return 2
-
-    footprint_coverage = check_footprint_coverage(
-        repo_root,
-        config,
-        kit=ctx.kit,
-    )
-    if not footprint_coverage.ok:
-        ctx.output.error(
-            f"footprint_coverage: {footprint_coverage.state} — {footprint_coverage.message}"
-        )
-        if footprint_coverage.remediation:
-            ctx.output.error(f"remediation: {footprint_coverage.remediation}")
-        return 2
+        if not footprint_coverage.ok:
+            ctx.output.error(
+                f"footprint_coverage: {footprint_coverage.state} — {footprint_coverage.message}"
+            )
+            if footprint_coverage.remediation:
+                ctx.output.error(f"remediation: {footprint_coverage.remediation}")
+            return 2
 
     injected_provider = None
     if ctx.review_provider_factory is not None:

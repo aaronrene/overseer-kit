@@ -1,0 +1,13 @@
+{
+  "path": "desktop/src-tauri/tauri.conf.json",
+  "finding": "Actual native GUI launch created duplicate main webview",
+  "before_sha256": "d834a532c7e67eaf9c7a21c9e80d52a31a7160d6aaad88ee9903078132ef42be",
+  "after_sha256": "d65242ef9ca4be228e791d7596bd2a60ff90ba200445c0d5dbf58229c5eecab6",
+  "change": "Disable automatic config-window creation; existing setup creates the sole authenticated main window",
+  "runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774"
+  },
+  "production_python_and_tests_unchanged": true
+}

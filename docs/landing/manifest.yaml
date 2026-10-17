@@ -1,4 +1,4 @@
-# Bounded-v1 informational site contract.
+# Informational site contract for the manual source delivery.
 version: 1
 license: MIT
 sections:
@@ -27,12 +27,15 @@ personas:
 - id: E
   title: Classroom
   status: reference
+# Keep the visible status labels and the original styling-class identifiers.
 status_badges:
 - supported
 - reference
 - illustrative
+- dogfood
+- aspirational
 funnel_steps:
 - install
 - bind
 - next
-primary_download_href: https://github.com/aaronrene/overseer-kit/releases/download/v1.0.0-rc.1/INSTALL-AND-ROLLBACK.md
+primary_download_href: source.html

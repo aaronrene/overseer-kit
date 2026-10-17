@@ -1,0 +1,178 @@
+{
+  "classification": "newly created local test-repository pilot",
+  "recovery_source": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+  "recovery_base_head": "fabb62dadd7a03d1bb31ad0ed4c72289dc358b7e",
+  "checks": [
+    "new dedicated Git branch, persistent pilot UUID, exact repaired runtime, living documents preserved, no hooks",
+    "initialized unborn repository: explicit and cwd status/NEXT preserve bytes, modes, mtimes and Git metadata",
+    "sync dry-run is a no-op preserving all pilot state",
+    "sync is a no-op preserving all pilot state",
+    "OVERSEER-V1-PILOT-DOCS-1: stale prior digest refuses without mutation",
+    "OVERSEER-V1-PILOT-DOCS-1 publication: explicit and cwd status/NEXT preserve bytes, modes, mtimes and Git metadata",
+    "required complete supported suite passed before local commit: 173, zero failures/errors/skips",
+    "chore: initialize authorized local pilot and publish documentation handoff closing commit: explicit and cwd status/NEXT preserve bytes, modes, mtimes and Git metadata",
+    "operating-note command preserves pilot: status --json",
+    "operating-note command preserves pilot: next",
+    "operating-note command preserves pilot: sync --dry-run",
+    "operating-note command preserves pilot: sync",
+    "operating-note shell examples pass syntax checks; documented read/sync commands exercised",
+    "OVERSEER-V1-PILOT-COMPLETE-1: stale prior digest refuses without mutation",
+    "OVERSEER-V1-PILOT-COMPLETE-1 publication: explicit and cwd status/NEXT preserve bytes, modes, mtimes and Git metadata",
+    "required complete supported suite passed before local commit: 173, zero failures/errors/skips",
+    "docs: complete operating-note task and close local test pilot closing commit: explicit and cwd status/NEXT preserve bytes, modes, mtimes and Git metadata",
+    "both older dirty worktrees, review, historical test disposition, installation/rollback fixture and recovery venv unchanged"
+  ],
+  "handoffs": [
+    {
+      "action_id": "OVERSEER-V1-PILOT-DOCS-1",
+      "action_kind": "implement",
+      "base_head": "unborn",
+      "prior_next_sha256": "8b5c527cf6702706f3c89012d744d021ec4f583d9ee73e18a1e51a8ddc1a04da",
+      "next_sha256": "b7cf48030884d9683c11d058574e049478565237969bf1290900382033113f62"
+    },
+    {
+      "action_id": "OVERSEER-V1-PILOT-COMPLETE-1",
+      "action_kind": "stop",
+      "base_head": "d0288f6159330833ab1b85089a62a43066503123",
+      "prior_next_sha256": "b7cf48030884d9683c11d058574e049478565237969bf1290900382033113f62",
+      "next_sha256": "927525832146b01fcb21473c42c3afff81099e94667aa15dd9ae50a78f2e1eae"
+    }
+  ],
+  "commits": [
+    {
+      "head": "d0288f6159330833ab1b85089a62a43066503123",
+      "subject": "chore: initialize authorized local pilot and publish documentation handoff",
+      "paths": [
+        ".gitignore",
+        "README.md",
+        ".overseer/config.yaml",
+        ".overseer/bin/ok",
+        "docs/ROADMAP.md",
+        "docs/OVERSEER-HANDOVER.md",
+        "docs/NEXT.md"
+      ]
+    },
+    {
+      "head": "50b5a19b7d6f1c964368140ed0dc3dc91504de16",
+      "subject": "docs: complete operating-note task and close local test pilot",
+      "paths": [
+        "docs/PILOT-OPERATIONS.md",
+        "docs/ROADMAP.md",
+        "docs/OVERSEER-HANDOVER.md",
+        "docs/NEXT.md"
+      ]
+    }
+  ],
+  "pilot_identity": {
+    "name": "overseer-v1-pilot-20261014",
+    "id": "8520ff03-a248-4dbd-8f21-ec53de6c967b",
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-v1-pilot-20261014"
+  },
+  "final_status": {
+    "ok": true,
+    "repository": {
+      "name": "overseer-v1-pilot-20261014",
+      "id": "8520ff03-a248-4dbd-8f21-ec53de6c967b",
+      "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-v1-pilot-20261014"
+    },
+    "branch": "pilot/overseer-v1-20261014",
+    "head": "50b5a19b7d6f1c964368140ed0dc3dc91504de16",
+    "runtime": {
+      "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+      "version": "1.0.0.dev1",
+      "sha256": "b7fa1921fcb586ac6fcf8422f094fe20f9f9a438f64eecdaddd97d347115db95"
+    },
+    "next": {
+      "schema": 1,
+      "repo_id": "8520ff03-a248-4dbd-8f21-ec53de6c967b",
+      "repo_root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-v1-pilot-20261014",
+      "branch": "pilot/overseer-v1-20261014",
+      "base_head": "d0288f6159330833ab1b85089a62a43066503123",
+      "lane": "product",
+      "model": "GPT-6 Astra",
+      "action_id": "OVERSEER-V1-PILOT-COMPLETE-1",
+      "action_kind": "stop",
+      "prompt_sha256": "62c29799172594d9a60c7ff754768cd62f7632b355c63fd14e730f2ceac6f2b7"
+    },
+    "next_sha256": "927525832146b01fcb21473c42c3afff81099e94667aa15dd9ae50a78f2e1eae",
+    "dirty": false
+  },
+  "result": "passed",
+  "preservation": {
+    "result": "unchanged",
+    "original_test_files": 393,
+    "before_manifest_sha256": "520537e799241d1788645ebd7112b1d5cc23a26e249051189793b3603cf77bf1",
+    "review_sha256": "d6bd4958fcade51005bede1b01efbd29b6c64c3b7c5fdf14c147e133d0fc90e0"
+  },
+  "date": "2026-10-14",
+  "supported_suite": {
+    "tests": 173,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 173,
+    "junit_seconds": 107.478,
+    "console_seconds": 107.49,
+    "classification": "Passed unchanged supported suite before local pilot and recovery evidence commits. No product failure or environment restriction.",
+    "artifact_sha256": {
+      "log": "46dba4affaf41c04d3017d6ff9b5ee3785e1b3a8905baa1294b1c416301bafac",
+      "xml": "b0d05d295e5f29e4b36b72da24babcc720392395d5fba49ba9f9b875c48da148"
+    },
+    "command": "PYTHONDONTWRITEBYTECODE=1 GIT_OPTIONAL_LOCKS=0 GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_NOSYSTEM=1 .venv/bin/python -m pytest -q -p no:cacheprovider --basetemp=/private/tmp/overseer-v1-pilot-suite.Zv4dSO/fixtures --junitxml=.overseer/scratch/validation/pilot-20261014/supported.xml"
+  },
+  "scope": {
+    "target_was_absent": true,
+    "new_repository": true,
+    "hooks_installed": false,
+    "git_hooks_path": "/dev/null",
+    "remotes": [],
+    "network_or_provider_access": false,
+    "runtime_or_test_changes": false,
+    "independent_review_repeated": false
+  },
+  "limitations": [
+    "Newly created test repository; no preexisting consumer migration or established workflow.",
+    "One maintainer, one session, one documentation task and two local closing commits; no independent operator or sustained trial.",
+    "No consumer hooks, providers/network, packaged install or cross-platform validation.",
+    "Trusted-host contract with per-file atomic writes; no Git/filesystem transaction.",
+    "Historical baseline remains 1391 passed / 104 failed; not rerun or declared green.",
+    "Completed independent review original findings retained; author repair evidence remains separate.",
+    "Pilot success does not establish final-v1 certification or authorize release/publication."
+  ],
+  "artifacts": {
+    ".overseer/scratch/validation/pilot-20261014/commands.json": {
+      "sha256": "906e161ef9748e8509ec2ac21feedd160e6748f870ebe0161113fb94d348cad3"
+    },
+    ".overseer/scratch/validation/pilot-20261014/result.json": {
+      "sha256": "c0d7ab7ff4d4fc54dc5274ccd151d1f797348416b26f625dbf75a369bb1b8276"
+    },
+    ".overseer/scratch/validation/pilot-20261014/pilot.py": {
+      "sha256": "77df0767f14feb53b293992f88fc22641b693eb852f00c786ac572e2b20d85db"
+    },
+    ".overseer/scratch/validation/pilot-20261014/preservation-before.json": {
+      "sha256": "520537e799241d1788645ebd7112b1d5cc23a26e249051189793b3603cf77bf1"
+    },
+    ".overseer/scratch/validation/pilot-20261014/supported.log": {
+      "sha256": "46dba4affaf41c04d3017d6ff9b5ee3785e1b3a8905baa1294b1c416301bafac"
+    },
+    ".overseer/scratch/validation/pilot-20261014/supported.xml": {
+      "sha256": "b0d05d295e5f29e4b36b72da24babcc720392395d5fba49ba9f9b875c48da148"
+    }
+  },
+  "recovery_handoff": {
+    "action_id": "OVERSEER-V1-RECOVERY-PILOT-COMPLETE-1",
+    "action_kind": "stop",
+    "base_head": "fabb62dadd7a03d1bb31ad0ed4c72289dc358b7e",
+    "prior_next_sha256": "8c28a7f77072a620f9f40204bfbd0edf2184bfa56f405aa4823a893e1b80e44d",
+    "next_sha256": "56e52bc98dad1577a1e86b240c3c442770e38e15ec64cbe7d2a395fc030f78c6",
+    "model": "GPT-6 Astra",
+    "reasoning": "Extra High"
+  },
+  "operator_notes": [
+    {
+      "operation": "Initial recovery NEXT readback",
+      "result": "refused: next_digest_mismatch (exit 2)",
+      "classification": "Maintainer supplied an incorrect expected digest; corrected to the writer-reported digest and readback passed. Published NEXT bytes remained unchanged."
+    }
+  ]
+}

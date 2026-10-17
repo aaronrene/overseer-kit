@@ -1,0 +1,251 @@
+{
+  "copy_method": "macOS cp -cR clone; source files independently writable",
+  "base_archive_sha256": "de8cd9222df8cf6c5fe3f4d858e561018baa0dc6d61df1f0ac423928adaed47f",
+  "changes": [
+    "desktop/src-tauri/tauri.conf.json"
+  ],
+  "native_file_map": {
+    "desktop/.gitignore": {
+      "before_sha256": "fe718e7babb14f3cbad2d97f08889b9ce5215ed3fe0e43b2b8cfbfb3b9b844e8",
+      "after_sha256": "fe718e7babb14f3cbad2d97f08889b9ce5215ed3fe0e43b2b8cfbfb3b9b844e8",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/.vscode/extensions.json": {
+      "before_sha256": "8988c707a30230dcaa815dc690caab61f43c57b13fb42e2d632e06a794b58454",
+      "after_sha256": "8988c707a30230dcaa815dc690caab61f43c57b13fb42e2d632e06a794b58454",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/README.md": {
+      "before_sha256": "d4dd09c3f71e42b26e79bc04b9c1bbfff77ac59c40953ce7559ea3807ed21855",
+      "after_sha256": "d4dd09c3f71e42b26e79bc04b9c1bbfff77ac59c40953ce7559ea3807ed21855",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/app-icon.png": {
+      "before_sha256": "1b43d0e983b20b8637aab8564f447ab2ed322268e09a8a7b76a63bdf2ed3c334",
+      "after_sha256": "1b43d0e983b20b8637aab8564f447ab2ed322268e09a8a7b76a63bdf2ed3c334",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/keys/README.md": {
+      "before_sha256": "4a095c352ad696e6d51ed028c5be65e32805dbb6c433b4d2d25532eeed666c83",
+      "after_sha256": "4a095c352ad696e6d51ed028c5be65e32805dbb6c433b4d2d25532eeed666c83",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/keys/release.minisign.pub": {
+      "before_sha256": "39a00aad6aa5b8218151acabb754951ac8c160023780ed030cc628c123ec855d",
+      "after_sha256": "39a00aad6aa5b8218151acabb754951ac8c160023780ed030cc628c123ec855d",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/package-lock.json": {
+      "before_sha256": "e904fcab7ce74f25e2783132b1ecf7eefe2a509c9565acd080e28b3ce35c74a9",
+      "after_sha256": "e904fcab7ce74f25e2783132b1ecf7eefe2a509c9565acd080e28b3ce35c74a9",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/package.json": {
+      "before_sha256": "ba0d2e508e433cddacf28eae9ec9626983e0e80976e12a898933372d2dffac93",
+      "after_sha256": "ba0d2e508e433cddacf28eae9ec9626983e0e80976e12a898933372d2dffac93",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src-tauri/.gitignore": {
+      "before_sha256": "88707cda7ba4226eda3ffa91d8284f1a0d12b827f06fb9bc48425cc0d4af04af",
+      "after_sha256": "88707cda7ba4226eda3ffa91d8284f1a0d12b827f06fb9bc48425cc0d4af04af",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src-tauri/Cargo.lock": {
+      "before_sha256": "9b61ad01c7461687061f10c8b69ba15700b997c280e6a7cb0eb4a02786461706",
+      "after_sha256": "9b61ad01c7461687061f10c8b69ba15700b997c280e6a7cb0eb4a02786461706",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src-tauri/Cargo.toml": {
+      "before_sha256": "53e374be6a6074bcb2c0c632a803a1c85926c29dcf6bb0c89764be0139e69ee2",
+      "after_sha256": "53e374be6a6074bcb2c0c632a803a1c85926c29dcf6bb0c89764be0139e69ee2",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src-tauri/build.rs": {
+      "before_sha256": "487059eaf8a947b80f20a9aacac038a5047b2ad69d2401b827376c67d6fe847f",
+      "after_sha256": "487059eaf8a947b80f20a9aacac038a5047b2ad69d2401b827376c67d6fe847f",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src-tauri/capabilities/default.json": {
+      "before_sha256": "1701bb40d2d856a36c4c3d788724cc48613f662edf4f80c4c0b07f242785bf3d",
+      "after_sha256": "1701bb40d2d856a36c4c3d788724cc48613f662edf4f80c4c0b07f242785bf3d",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src-tauri/icons/128x128.png": {
+      "before_sha256": "e17c60f04cc858a6bfdbe65d097c889387617827bc2cda78ba8df044e589a76a",
+      "after_sha256": "e17c60f04cc858a6bfdbe65d097c889387617827bc2cda78ba8df044e589a76a",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src-tauri/icons/128x128@2x.png": {
+      "before_sha256": "ca01b747460bb4ad53a16c14f63ffccae99f87aee7ebeb08bc9cce2f2efa5e7d",
+      "after_sha256": "ca01b747460bb4ad53a16c14f63ffccae99f87aee7ebeb08bc9cce2f2efa5e7d",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src-tauri/icons/32x32.png": {
+      "before_sha256": "9bd70c640173c012e30d1597d19fbc28dbf5222cebad5891317d5968820d8984",
+      "after_sha256": "9bd70c640173c012e30d1597d19fbc28dbf5222cebad5891317d5968820d8984",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src-tauri/icons/64x64.png": {
+      "before_sha256": "2e35b058cd9e7a1b720efdfe62d8f16747b2536251636036979c35d0f1c33ae7",
+      "after_sha256": "2e35b058cd9e7a1b720efdfe62d8f16747b2536251636036979c35d0f1c33ae7",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src-tauri/icons/Square107x107Logo.png": {
+      "before_sha256": "2e00267463ed186b499aaa7378fb4f966c676a7fc93d8a80e5def9956c06a45a",
+      "after_sha256": "2e00267463ed186b499aaa7378fb4f966c676a7fc93d8a80e5def9956c06a45a",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src-tauri/icons/Square142x142Logo.png": {
+      "before_sha256": "9273c6801ed2ee06995d4457e8193b2f1ee3109dcb1ddfba0833ff0191852b5a",
+      "after_sha256": "9273c6801ed2ee06995d4457e8193b2f1ee3109dcb1ddfba0833ff0191852b5a",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src-tauri/icons/Square150x150Logo.png": {
+      "before_sha256": "f929d73991cd70535733805f9b00d97ce71005573be71d5d653f54ba7f1f1f1a",
+      "after_sha256": "f929d73991cd70535733805f9b00d97ce71005573be71d5d653f54ba7f1f1f1a",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src-tauri/icons/Square284x284Logo.png": {
+      "before_sha256": "aecf7e94383cd0128c4c70ea233c095af6ed52f8f744043f0e4743d5cfd7b1da",
+      "after_sha256": "aecf7e94383cd0128c4c70ea233c095af6ed52f8f744043f0e4743d5cfd7b1da",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src-tauri/icons/Square30x30Logo.png": {
+      "before_sha256": "908902a9e7ed177fb71213f6653155dd08647749e7a5ab8b51d5d0f35766b876",
+      "after_sha256": "908902a9e7ed177fb71213f6653155dd08647749e7a5ab8b51d5d0f35766b876",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src-tauri/icons/Square310x310Logo.png": {
+      "before_sha256": "c9f6b3234313952fc614870ee8d64030526c6d10d0013c792038ed29cfd68341",
+      "after_sha256": "c9f6b3234313952fc614870ee8d64030526c6d10d0013c792038ed29cfd68341",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src-tauri/icons/Square44x44Logo.png": {
+      "before_sha256": "b706d6ab1919f400d6ea3e32161a1a0a4bffd7e68d94f7356ebe50b7871db0a7",
+      "after_sha256": "b706d6ab1919f400d6ea3e32161a1a0a4bffd7e68d94f7356ebe50b7871db0a7",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src-tauri/icons/Square71x71Logo.png": {
+      "before_sha256": "529286f6044d8f3f77053da00351efb905ed3bf6c3618668a61d79cc542a86f4",
+      "after_sha256": "529286f6044d8f3f77053da00351efb905ed3bf6c3618668a61d79cc542a86f4",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src-tauri/icons/Square89x89Logo.png": {
+      "before_sha256": "0a8ca8d00d23c732df2d5519d29a84a1f77ee2a8eaede235a74146313b64eadc",
+      "after_sha256": "0a8ca8d00d23c732df2d5519d29a84a1f77ee2a8eaede235a74146313b64eadc",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src-tauri/icons/StoreLogo.png": {
+      "before_sha256": "a69cf5513ead9dd6da4bb12e44780ecbd180c4af3117cf1d1fa31d9033ef00aa",
+      "after_sha256": "a69cf5513ead9dd6da4bb12e44780ecbd180c4af3117cf1d1fa31d9033ef00aa",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src-tauri/icons/icon.icns": {
+      "before_sha256": "3c76132825844b6c10e4f0b94a80e864e0c55603f0b8e923fc6ea985e4d3291b",
+      "after_sha256": "3c76132825844b6c10e4f0b94a80e864e0c55603f0b8e923fc6ea985e4d3291b",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src-tauri/icons/icon.ico": {
+      "before_sha256": "8cb9d92aeae771a5073d9e6695aa5326b02141edb09f62f1314fa0762e1e413f",
+      "after_sha256": "8cb9d92aeae771a5073d9e6695aa5326b02141edb09f62f1314fa0762e1e413f",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src-tauri/icons/icon.png": {
+      "before_sha256": "96e64e142a5ac374005620da2effbe95ab08f339f6ef1914334b855be3918b85",
+      "after_sha256": "96e64e142a5ac374005620da2effbe95ab08f339f6ef1914334b855be3918b85",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src-tauri/rust-toolchain.toml": {
+      "before_sha256": "fdaf5c39586fd9584852826851a351483d1392a08014fb0925fb1b23da758cd6",
+      "after_sha256": "fdaf5c39586fd9584852826851a351483d1392a08014fb0925fb1b23da758cd6",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src-tauri/src/launcher.rs": {
+      "before_sha256": "b8385b72d2b0dec63da38bf24d3e7d98d9413c492f2e95cb987f2354f6112b83",
+      "after_sha256": "b8385b72d2b0dec63da38bf24d3e7d98d9413c492f2e95cb987f2354f6112b83",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src-tauri/src/lib.rs": {
+      "before_sha256": "8e5e038105371c57942d685b2ad475b3632f6d511fdb55720c26d89e8d50910d",
+      "after_sha256": "8e5e038105371c57942d685b2ad475b3632f6d511fdb55720c26d89e8d50910d",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src-tauri/src/main.rs": {
+      "before_sha256": "1ba82b07fc7016a74e80ee4bee7cfc81de3bd75b0873329a6967be85985700ce",
+      "after_sha256": "1ba82b07fc7016a74e80ee4bee7cfc81de3bd75b0873329a6967be85985700ce",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src-tauri/tauri.conf.json": {
+      "before_sha256": "d834a532c7e67eaf9c7a21c9e80d52a31a7160d6aaad88ee9903078132ef42be",
+      "after_sha256": "d65242ef9ca4be228e791d7596bd2a60ff90ba200445c0d5dbf58229c5eecab6",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src/assets/javascript.svg": {
+      "before_sha256": "8dac53799104214c30769aa44c25a16b3c8c86f7c6c6e46fb1996e63ab5d828e",
+      "after_sha256": "8dac53799104214c30769aa44c25a16b3c8c86f7c6c6e46fb1996e63ab5d828e",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src/assets/tauri.svg": {
+      "before_sha256": "e5d2738bbaa5543c4684001a558dc53165da9b636144827b28db1dcfacf81aa8",
+      "after_sha256": "e5d2738bbaa5543c4684001a558dc53165da9b636144827b28db1dcfacf81aa8",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src/index.html": {
+      "before_sha256": "3ee07ded6caaacb00583a1ddadfeeeb36d86f08f8ad21bff31cbc480d7b57025",
+      "after_sha256": "3ee07ded6caaacb00583a1ddadfeeeb36d86f08f8ad21bff31cbc480d7b57025",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src/main.js": {
+      "before_sha256": "3aab7ecfbd72220c97eb3989be25903fa3f1fa6d84a9c5ee0f23166d79377c93",
+      "after_sha256": "3aab7ecfbd72220c97eb3989be25903fa3f1fa6d84a9c5ee0f23166d79377c93",
+      "before_mode": 420,
+      "after_mode": 420
+    },
+    "desktop/src/styles.css": {
+      "before_sha256": "9f0fb12fdf51d9a8b3f61e73e3408b61b52fde21a48ab5793db9722cc9002a1a",
+      "after_sha256": "9f0fb12fdf51d9a8b3f61e73e3408b61b52fde21a48ab5793db9722cc9002a1a",
+      "before_mode": 420,
+      "after_mode": 420
+    }
+  },
+  "old_manifest_retained_as_base_only": true,
+  "candidate_is_modified_source_not_original_archive": true
+}

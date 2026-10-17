@@ -1,0 +1,14 @@
+{
+  "reviewed_head": "8fa6671b162ba51ba18da0e40a9bdef7a9c74a46",
+  "base_main": "ff9091cc2f3bdb54c679ea2cd27f4d5280d83603",
+  "runtime_changed": false,
+  "existing_bookend_evidence_hashes_match": true,
+  "existing_bookend_checks": 25,
+  "bookend_checks_rerun": false,
+  "changed_guide_links_and_fragments_checked": 22,
+  "current_mirror_adopt_help_matches_docs": true,
+  "landing_validator": "pass",
+  "integration_diff_whitespace": "pass",
+  "independent_acceptance": false,
+  "general_review_or_suite_repeated": false
+}

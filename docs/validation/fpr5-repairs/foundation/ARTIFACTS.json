@@ -1,0 +1,74 @@
+{
+  "files": {
+    "README.md": {
+      "sha256": "3ed3b472907f8624128932b937a4d04bc9afbb3acd666b84b7e445a811a8ba95",
+      "bytes": 4869,
+      "mode": 420
+    },
+    "after-integrated-command.json": {
+      "sha256": "3da5c1cfe1a3bd345dd4dd03a0c4c05118b7c7377c639e448059f91ad85fced7",
+      "bytes": 1967,
+      "mode": 420
+    },
+    "after-integrated.log": {
+      "sha256": "b7eec44d635bbd69844c14364444dc1b196bf19b8c5ecb22d06671d2aa122e9e",
+      "bytes": 1303,
+      "mode": 420
+    },
+    "after-integrated.xml": {
+      "sha256": "855a1d811bf5f71d1180cc3200bfe51c9014bc8d3efbc8d1e88abc23572cb701",
+      "bytes": 21597,
+      "mode": 420
+    },
+    "before-command.json": {
+      "sha256": "de5e7aaf24f0d0ad0dde731c828ccba6334c946032f374c600ed74e7cd17a43b",
+      "bytes": 1767,
+      "mode": 420
+    },
+    "before.log": {
+      "sha256": "78220cc0235f14bac3fad58ef2432def0e80f3f69139ddc94e8659130c94e4c1",
+      "bytes": 27123,
+      "mode": 420
+    },
+    "before.xml": {
+      "sha256": "c74ebc08196a452a4b2d337b41b859399ac81eda2a2e2feb8c21cf3cc7662e9b",
+      "bytes": 35240,
+      "mode": 420
+    },
+    "candidate-after-command.json": {
+      "sha256": "06222d5c103f6aaea0aa8c4de09adbc03e53668febe744cdadd99141e8b8aa79",
+      "bytes": 1775,
+      "mode": 420
+    },
+    "candidate-after.log": {
+      "sha256": "cf9e9aae798cef97c9beded0e3fd2f94be52914e97c6b08797bd66a488e66c71",
+      "bytes": 3074,
+      "mode": 420
+    },
+    "candidate-after.xml": {
+      "sha256": "bb5fa7de1b97e1b9b60cb07ca06da335d0f3dbc46639136cfad7ab510bb5768f",
+      "bytes": 7675,
+      "mode": 420
+    },
+    "candidate-portability-command.json": {
+      "sha256": "cd5668b3021305cebc511cae5fe8cf62226f7dc9f740ae6724ef3760ba627f3c",
+      "bytes": 1494,
+      "mode": 420
+    },
+    "candidate-portability.log": {
+      "sha256": "be55c4d22d5b66cc31032fc140f70cee07a99aae5173843d73bf6ea929f8b9e5",
+      "bytes": 4499,
+      "mode": 420
+    },
+    "candidate-portability.xml": {
+      "sha256": "80529f2e8d5390291e8c09e5fd9de931b5f9e22a47549e485de18ac1e64d5136",
+      "bytes": 5349,
+      "mode": 420
+    },
+    "results.json": {
+      "sha256": "77f51f6b4d9f77938d43dd6726eeb19bd234f64a6578a688a7215a85386cf792",
+      "bytes": 43771,
+      "mode": 420
+    }
+  }
+}

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Local source — Overseer Kit</title><link rel="stylesheet" href="assets/style.css"></head>
+<body><main><h1>Prepare local source</h1><p>Manual source <code>97f052949146c3cf337478927e6d345e353d2063</code> received independent acceptance and a local source release, version <code>1.0.0.dev1</code>. That acceptance covers only the pinned snapshot. The later integration candidate is not a new accepted release or signed installer. Existing-project installation remains on hold.</p>
+<p>Use the selected source installation's conventional Python environment and pinned local prerequisites. The full instructions are in <code>docs/SOURCE-DISTRIBUTION.md</code> in that source checkout.</p>
+<p>For separately authorized source preparation, the packaging commands are:</p>
+<pre>.venv/bin/python tools/ci/source_package.py build --output /absolute/new-source.tar.gz
+.venv/bin/python tools/ci/source_package.py verify --archive /absolute/new-source.tar.gz
+.venv/bin/python tools/ci/source_package.py unpack --archive /absolute/new-source.tar.gz --destination /absolute/new-installation</pre>
+<p>The archive carries a hash, size and executable-mode manifest. It excludes live repository bindings, canonical NEXT, stores, virtual environments and secrets. Provision the new installation's own conventional venv before launch. No neighboring installation supplies its runtime.</p>
+<p>Read the <a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/releases/FPR-5-MANUAL-LOCAL-RELEASE.md">local release record</a> and <a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/reviews/FPR-5-MANUAL-ACCEPTANCE.md">independent acceptance</a> for environment, evidence and manual-use limitations. Automatic Cursor events are unverified, vendor execution protection unqualified, and shared-chat behavior unresolved.</p>
+<p>Desktop resource preparation and local CLI/app operation are distinct from signing, publication and deployment. Keep matching configuration and source backups for explicit quiescent rollback.</p><p><a href="index.html">Back to Overseer Kit</a></p></main></body></html>

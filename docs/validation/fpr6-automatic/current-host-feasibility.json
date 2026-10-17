@@ -1,0 +1,42 @@
+{
+  "kind": "Read-only feasibility inspection, not native event evidence",
+  "version": "3.25.6",
+  "commit": "f0df777c412b670d09e3eaf214967d779e67c080",
+  "path": "/Applications/Cursor.app/Contents/Resources/app/out/vs/workbench/workbench.desktop.main.js",
+  "bytes": 40742181,
+  "sha256": "ccb73f4cbb222e7f137137ec3bfffaff4b40afb211b4bea609ab3130084d30e0",
+  "excerpts": [
+    {
+      "landmark": "start",
+      "needle": "Error executing sessionStart hook",
+      "found": true,
+      "byte_start": 31867998,
+      "byte_end_exclusive": 31869598,
+      "text": "onfigService.getHookModelFields(f),F=await this.cursorHooksService.executeHookForStep(Au.sessionStart,{conversation_id:g,generation_id:\"\",model:L,...O,is_background_agent:x,composer_mode:E.unifiedMode});if(F?.env&&Object.keys(F.env).length>0&&this.cursorHooksService.setSessionEnvironment(g,F.env),F?.additional_context){const H=this.composerDataService.getHandleIfLoaded(g);H&&this.updateComposer(H,{hooksAdditionalContext:F.additional_context})}}catch(L){this._composerLogService.error(\"[composer] Error executing sessionStart hook:\",L)}})();let A;try{A=await this.composerDataService.appendComposer_DO_NOT_CALL_UNLESS_YOU_KNOW_WHAT_YOURE_DOING(E)}catch(L){throw this._composerLogService.error(\"[composer] Failed to create composer - appendComposer threw exception:\",L),this.cursorHooksService.cleanupSessionTracking(g),L}if(!A){this._composerLogService.error(\"[composer] Failed to create composer - appendComposer returned undefined\"),this.cursorHooksService.cleanupSessionTracking(g);return}a===\"inline_banner\"&&c?this.updateComposer(A,{pendingAutoSwitchBanner:{previousModel:c}}):a===\"popup\"&&c&&this.updateComposer(A,{pendingAutoSwitchPopup:{previousModel:c}});const M=o?this.modelConfigService.getModelConfig(\"composer\"):void 0;if(o&&M&&!SKt(M.modelName,this.reactiveStorageService.applicationUserPersistentStorage)){const L=M,O=L.modelName;(async()=>{try{let F,H,B,G,j,q,z,Y,Z;const K=(L.selectedModels??[])[0],Q=K?.modelId??O,te=this.modelConfigService.resolveModelParametersForSubmission(Q,K?.parameters,L.maxMode),ee=new LM({modelId:Q,maxMode:L.maxMode,parameters:te.map(qe=>new NM({id:qe."
+    },
+    {
+      "landmark": "stop",
+      "needle": "async triggerStopHook(",
+      "found": true,
+      "byte_start": 18948537,
+      "byte_end_exclusive": 18950137,
+      "text": "dHooks({composerId:e,generationUUID:t,status:n}){const i=this._composerDataService.getHandleIfLoaded(e);if(!i){this._mcpProviderService.notifyTurnEnded({conversationId:e});return}const r=this._composerDataService.getComposerData(i);if(n===\"completed\"&&r&&this._cursorHooksService.hasHookForStep(Au.afterAgentResponse))try{await this.executeAfterAgentResponseHook(i,r,t)}catch(s){this._composerLogService.error(\"[composer] error executing afterAgentResponse hook\",s)}await this.triggerStopHook(i,n,t)}async triggerStopHook(e,t,n){this._mcpProviderService.notifyTurnEnded({conversationId:e.composerId});try{if(!this._cursorHooksService.hasHookForStep(Au.stop))return;const i=e.composerId,r=this._composerDataService.getComposerData(e);if(!r)return;const s=r.stopHookLoopCount??0,o=r.turnTokenUsage,a=r.modelConfig,c=this._modelConfigService.getHookModelString(a),l=this._modelConfigService.getHookModelFields(a),u=await this._cursorHooksService.executeHookForStep(Au.stop,{conversation_id:i,generation_id:n,model:c,...l,status:t,loop_count:s,input_tokens:o?.inputTokens,output_tokens:o?.outputTokens,cache_read_tokens:o?.cacheReadTokens,cache_write_tokens:o?.cacheWriteTokens});if(u&&typeof u.followup_message==\"string\"&&u.followup_message.trim().length>0){const h=this._composerDataService.getComposerData(e)?.latestChatGenerationUUID;if(h!==void 0&&h!==n){this._composerLogService.info(\"[composer] stop hook follow-up dropped: a newer turn owns the chat\",{composerId:i,generationUUID:n,latestGenerationUUID:h});return}const p=u.followup_message;this._composerDataService.updateComposerData(e,{stopHoo"
+    },
+    {
+      "landmark": "followup",
+      "needle": "isAutoFollowupFromStopHook:!0",
+      "found": true,
+      "byte_start": 18949738,
+      "byte_end_exclusive": 18951338,
+      "text": "essage==\"string\"&&u.followup_message.trim().length>0){const h=this._composerDataService.getComposerData(e)?.latestChatGenerationUUID;if(h!==void 0&&h!==n){this._composerLogService.info(\"[composer] stop hook follow-up dropped: a newer turn owns the chat\",{composerId:i,generationUUID:n,latestGenerationUUID:h});return}const p=u.followup_message;this._composerDataService.updateComposerData(e,{stopHookLoopCount:s+1}),this.submitChatMaybeAbortCurrent(i,p,{skipClearInput:!0,skipFocusAfterSubmission:!0,isAutoFollowupFromStopHook:!0}).catch(g=>{this._composerLogService.error(\"[composer] Error submitting follow-up from stop hook:\",g)})}}catch(i){this._composerLogService.error(\"[composer] Error executing stop hook:\",i)}}_getAgentRuntimeTag(){return qOh(this._cursorAgentHostEnablementService,this._experimentService)}async getUserTurnTracker(e,t,n,i,r,s){if(n){if(r!==void 0)return r;const l=this._activeUserTurnTrackers.get(e);return l||this._structuredLogService.warn(\"composer\",\"Missing turn tracker for continuation\",{composerId:e,turnType:t}),l}const o=await(s??this.getModelDetails(e)),a=q6n(o),c=new Azd({logger:this._structuredLogService,logKey:\"composer\",startEventName:\"agent.turn.start\",outcomeEventName:\"agent.turn.outcome\",simulatedThinkingTimeoutEventName:\"agent.turn.simulated_thinking_timeout\",turnType:t,workspaceTag:i,bringYourOwnKey:a});return c.setExtraTags({runtime:this._getAgentRuntimeTag()}),c.setConversationId(e),this._activeUserTurnTrackers.set(e,c),c}getErrorCodeFromErrorDisplayInfo(e){if(!e)return;const t=e?.errorCode;if(t!==void 0){const r=uo[t];return r===void 0?t.toS"
+    },
+    {
+      "landmark": "close",
+      "needle": "fireSessionEndHook(e,\"user_close\")",
+      "found": true,
+      "byte_start": 31859890,
+      "byte_end_exclusive": 31861490,
+      "text": "on_ms:s,is_background_agent:o,final_status:a})}catch(h){this._composerLogService.error(\"[composer] Error executing sessionEnd hook:\",h)}finally{this.cursorHooksService.cleanupSessionTracking(e)}}fireSessionEndHook(e,t){this.fireSessionEndHookAsync(e,t)}notifyComposerClosed(e,t){this.fireSessionEndHook(e,t)}async closeComposer(e,t){if(!this.composerDataService.selectedComposerIds.includes(e)){this._composerLogService.error(\"[composer] Cannot close composer that is not selected\",e);return}if(this.fireSessionEndHook(e,\"user_close\"),!t?.skipOpenComposer){if(this.composerDataService.selectedComposerIds.length===1){const o=this.composerViewsService.getComposerLocation(e);if(o===\"pane\")this.composerViewsService.hideAndBlur(e);else if(t?.openPrevComposerIfLast){const a=this.composerDataService.allComposersData.allComposers.filter(c=>c.composerId!==e);if(a.length>0){let c;for(const l of a){c=l.composerId;break}c?this.openComposer(c,{skipShowAndFocus:!0}):this.composerViewsService.hideAndBlur(e)}else this.resetComposer(e),this.composerViewsService.hideAndBlur(e);return}else{const a=await this.createComposer({skipShowAndFocus:!0,openInNewTab:!1});a?.composerId&&(e=a.composerId),this.backgroundComposerDataService.bcIdForThisWindow()!==void 0?await this.composerViewsService.close(e):this.composerViewsService.hideAndBlur(e)}if(o!==\"pane\")return}if(e===this.composerDataService.selectedComposerId){const o=this.composerDataService.selectedComposerIds.filter(l=>l!==e);let a=this.composerDataService.getLastFocusedComposerIds().filter(l=>o.includes(l)),c=a.length>0?a[0]:void 0;if(!c&&o.length>"
+    }
+  ]
+}

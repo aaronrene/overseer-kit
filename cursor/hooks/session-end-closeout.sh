@@ -1,6 +1,3 @@
 #!/bin/sh
-set -eu
-PATH=/usr/bin:/bin
-export PATH
-ROOT=$(CDPATH= cd -P -- "$(/usr/bin/dirname -- "$0")/../.." && pwd -P)
-exec "$ROOT/.overseer/bin/ok" hook --hook-path "$0"
+# Historical hook disabled; v1 init --hooks installs a repository-bound hook.
+exit 0

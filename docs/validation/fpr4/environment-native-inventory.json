@@ -1,0 +1,85 @@
+{
+  "platform": "macOS-15.7.2-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "mac_version": [
+    "15.7.2",
+    [
+      "",
+      "",
+      ""
+    ],
+    "arm64"
+  ],
+  "author_validation": true,
+  "platform_acceptance": false,
+  "tool_files": {
+    "/Users/aaronrenecarvajal/.local/bin/python3.11": {
+      "resolved": "/Users/aaronrenecarvajal/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/bin/python3.11",
+      "sha256": "e3938f2a272dafdc33f3dd12b093dfc85354629476cb97a7d7d4a7201b8482dd"
+    },
+    "/opt/homebrew/bin/python3.14": {
+      "resolved": "/opt/homebrew/Cellar/python@3.14/3.14.4_1/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+      "sha256": "9d8a576754c7fa953404cfe209f94b649aa0f723421fa196e42e081939eae7bb"
+    },
+    "/Users/aaronrenecarvajal/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/rustc": {
+      "resolved": "/Users/aaronrenecarvajal/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/rustc",
+      "sha256": "6efc19b5cef1e23df77a75d94ce8b75ed9e8929f0dee0618154c88fd6d82c3e1"
+    },
+    "/Users/aaronrenecarvajal/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo": {
+      "resolved": "/Users/aaronrenecarvajal/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo",
+      "sha256": "1e871156aaf10cf58364b6fd4c824859d5d178f227b963a81a58ade2442ac744"
+    },
+    "/usr/bin/git": {
+      "resolved": "/usr/bin/git",
+      "sha256": "7f30f076d0e9c38f772a76449fca9da8cf97f6a3d43b94c90a00e4f9ce7ad39e"
+    }
+  },
+  "commands": [
+    {
+      "argv": [
+        "/usr/bin/sw_vers"
+      ],
+      "exit": 0,
+      "stdout": "ProductName:\t\tmacOS\nProductVersion:\t\t15.7.2\nBuildVersion:\t\t24G325\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/uname",
+        "-a"
+      ],
+      "exit": 0,
+      "stdout": "Darwin Carloss-MacBook-Pro.local 24.6.0 Darwin Kernel Version 24.6.0: Wed Oct 15 21:12:09 PDT 2025; root:xnu-11417.140.69.703.14~1/RELEASE_ARM64_T6031 arm64\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/git",
+        "--version"
+      ],
+      "exit": 0,
+      "stdout": "git version 2.50.1 (Apple Git-155)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/xcodebuild",
+        "-version"
+      ],
+      "exit": 0,
+      "stdout": "Xcode 26.2\nBuild version 17C52\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/xcrun",
+        "--find",
+        "clang"
+      ],
+      "exit": 0,
+      "stdout": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang\n",
+      "stderr": ""
+    }
+  ],
+  "dependency_limitation": "Pinned cffi2.1.0 CPython3.11 backend/wheel/sdist absent from inspected pip/uv caches; Python3.11 cryptography/status/full collection fail. No download or version substitution."
+}

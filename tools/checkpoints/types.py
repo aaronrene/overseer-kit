@@ -72,9 +72,10 @@ class VerifyStepJson:
     manifest: str | None = None
     steps: list[dict[str, Any]] = field(default_factory=list)
     error: ErrorToken = None
+    plan: dict[str, Any] | None = None
 
     def to_dict(self) -> dict[str, Any]:
-        return {
+        payload = {
             "ok": self.ok,
             "exit_code": self.exit_code,
             "command": self.command,
@@ -84,6 +85,9 @@ class VerifyStepJson:
             "steps": self.steps,
             "error": self.error,
         }
+        if self.plan is not None:
+            payload["plan"] = self.plan
+        return payload
 
 
 @dataclass

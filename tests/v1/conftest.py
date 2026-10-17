@@ -32,14 +32,14 @@ def repo(tmp_path):
     return root
 
 
-@pytest.fixture
-def pair(repo, tmp_path):
+@pytest.fixture(params=[False, True], ids=['a-to-b', 'b-to-a'])
+def pair(repo, tmp_path, request):
     other = seed(tmp_path / 'similar-kit-copy')
     result = command('-C', other, 'init', '--hooks')
     assert result.returncode == 0, result.stderr
     for root in (repo, other):
         write_action(root, 'Unique content for ' + root.name + '\n')
-    return repo, other
+    return (other, repo) if request.param else (repo, other)
 
 
 def status(root):

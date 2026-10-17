@@ -1,0 +1,29 @@
+....................F..................................                  [100%]
+=================================== FAILURES ===================================
+_____________ test_collection_missing_selection_stale_and_bookends _____________
+
+repo = PosixPath('/private/tmp/fpr2-git2/test_collection_missing_select0/similar-kit')
+
+    def test_collection_missing_selection_stale_and_bookends(repo):
+        lanes(repo)
+        result = command('-C', repo, 'next', '--json')
+        data = json.loads(result.stdout)
+        assert data['selection_required']
+        assert not data['lanes']['architecture']['ok']
+        assert command(*writer(repo, 'architecture')).returncode == 0
+        assert v1.parse_next((repo/v1.NEXT).read_bytes())[0]['schema'] == 3
+        before = (repo/v1.NEXT).read_bytes()
+        manual = command('-C', repo, 'next', '--lane', 'architecture')
+        assert manual.returncode == 0 and 'Other repository lanes' in manual.stdout
+        hook = subprocess.run([str(repo/'.cursor/hooks/session-start-next.sh')],
+                              input=json.dumps({'lane': 'architecture'}), text=True, capture_output=True)
+>       assert hook.returncode == 0, hook.stderr
+E       AssertionError: refused: launcher_repository_mismatch
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/private/tmp/fpr2-git2/test_collection_missing_select0/similar-kit/.cursor/hooks/session-start-next.sh'], returncode=2, stdout='', stderr='refused: launcher_repository_mismatch\n').returncode
+
+tests/fpr2/test_lanes.py:45: AssertionError
+=========================== short test summary info ============================
+FAILED tests/fpr2/test_lanes.py::test_collection_missing_selection_stale_and_bookends
+1 failed, 54 passed in 56.25s

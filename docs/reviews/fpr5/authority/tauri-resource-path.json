@@ -1,0 +1,66 @@
+{
+  "tauri_utils": {
+    "path": "/Users/aaronrenecarvajal/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-utils-2.9.3/src/resources.rs",
+    "sha256": "66111e061092d9c3281f06fa8a683d9d5c178248d996d24bb6824aecf67d7e99",
+    "excerpts": [
+      {
+        "first_line": 152,
+        "last_line": 211,
+        "text": "152: }\n153: \n154: impl Iterator for ResourcePathsInnerIter {\n155:   type Item = crate::Result<PathBuf>;\n156: \n157:   fn next(&mut self) -> Option<crate::Result<PathBuf>> {\n158:     match self {\n159:       ResourcePathsInnerIter::Walk { iter, .. } => Some(\n160:         iter\n161:           .next()?\n162:           .map(|entry| entry.into_path())\n163:           .map_err(Into::into),\n164:       ),\n165:       ResourcePathsInnerIter::Glob { iter } => Some(iter.next()?.map_err(Into::into)),\n166:     }\n167:   }\n168: }\n169: \n170: impl ResourcePathsIter<'_> {\n171:   fn next_current_iter(&mut self) -> Option<crate::Result<Resource>> {\n172:     let current_iter = self.current_iter.as_mut().unwrap();\n173:     let entry = current_iter.next()?;\n174: \n175:     Some(match entry {\n176:       Ok(entry) => {\n177:         // Skip directories\n178:         if entry.is_dir() {\n179:           self.next_current_iter()?\n180:         } else {\n181:           self.resource_from_path(normalize(&entry))\n182:         }\n183:       }\n184:       Err(error) => Err(error),\n185:     })\n186:   }\n187: \n188:   fn resource_from_path(&self, path: PathBuf) -> crate::Result<Resource> {\n189:     if !path.exists() {\n190:       return Err(crate::Error::ResourcePathNotFound(path));\n191:     }\n192: \n193:     Ok(Resource {\n194:       target: if let Some(dest) = &self.current_dest {\n195:         match &self.current_iter {\n196:           Some(current_iter) => match current_iter {\n197:             // if processing a directory, preserve directory structure under current_dest\n198:             ResourcePathsInnerIter::Walk {\n199:               current_pattern, ..\n200:             } => {\n201:               if let Some(pattern) = current_pattern {\n202:                 dest.join(path.strip_prefix(pattern).unwrap_or(&path))\n203:               } else {\n204:                 dest.join(&path)\n205:               }\n206:             }\n207:             // if processing a glob and current_dest is not empty\n208:             // we put all globbed paths under current_dest\n209:             // preserving the file name as it is\n210:             ResourcePathsInnerIter::Glob { .. } => dest.join(path.file_name().unwrap()),\n211:           },"
+      },
+      {
+        "first_line": 247,
+        "last_line": 277,
+        "text": "247:     };\n248: \n249:     if pattern.contains('*') {\n250:       self.current_iter = match glob::glob(pattern) {\n251:         Ok(glob) => Some(ResourcePathsInnerIter::Glob { iter: glob }),\n252:         Err(error) => return Some(Err(error.into())),\n253:       };\n254:       match self.next_current_iter() {\n255:         Some(r) => Some(r),\n256:         None => {\n257:           self.current_iter = None;\n258:           Some(Err(crate::Error::GlobPathNotFound(pattern.clone())))\n259:         }\n260:       }\n261:     } else {\n262:       let path = normalize(Path::new(pattern));\n263:       if path.is_dir() {\n264:         if !self.allow_walk {\n265:           return Some(Err(crate::Error::NotAllowedToWalkDir(path)));\n266:         }\n267:         self.current_iter = Some(ResourcePathsInnerIter::Walk {\n268:           iter: WalkDir::new(&path).into_iter(),\n269:           current_pattern: if matches!(self.pattern_iter, PatternIter::Map(_)) {\n270:             Some(path)\n271:           } else {\n272:             None\n273:           },\n274:         });\n275:         // If the directory is empty, skip and continue to the next pattern\n276:         self.next_current_iter().or_else(|| self.next_pattern())\n277:       } else {"
+      }
+    ]
+  },
+  "tauri_build": {
+    "path": "/Users/aaronrenecarvajal/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tauri-build-2.6.3/src/lib.rs",
+    "sha256": "562607e65dca4377ef4a33ade8527990c54fe176514ae460ca00260d1ca2211f",
+    "excerpts": [
+      {
+        "first_line": 87,
+        "last_line": 102,
+        "text": "87: /// Copies resources to a path.\n88: fn copy_resources(resources: ResourcePaths<'_>, path: &Path) -> Result<()> {\n89:   let path = path.canonicalize()?;\n90:   for resource in resources.iter() {\n91:     let resource = resource?;\n92: \n93:     println!(\"cargo:rerun-if-changed={}\", resource.path().display());\n94: \n95:     // avoid copying the resource if target is the same as source\n96:     let src = resource.path().canonicalize()?;\n97:     let target = path.join(resource.target());\n98:     if src != target {\n99:       copy_file(src, target)?;\n100:     }\n101:   }\n102:   Ok(())"
+      },
+      {
+        "first_line": 554,
+        "last_line": 573,
+        "text": "554:   #[allow(unused_mut, clippy::redundant_clone)]\n555:   let mut resources = config\n556:     .bundle\n557:     .resources\n558:     .clone()\n559:     .unwrap_or(BundleResources::List(Vec::new()));\n560:   if target_triple.contains(\"windows\") {\n561:     if let Some(fixed_webview2_runtime_path) = match &config.bundle.windows.webview_install_mode {\n562:       WebviewInstallMode::FixedRuntime { path } => Some(path),\n563:       _ => None,\n564:     } {\n565:       resources.push(fixed_webview2_runtime_path.display().to_string());\n566:     }\n567:   }\n568:   match resources {\n569:     BundleResources::List(res) => {\n570:       copy_resources(ResourcePaths::new(res.as_slice(), true), target_dir)?\n571:     }\n572:     BundleResources::Map(map) => copy_resources(ResourcePaths::from_map(&map, true), target_dir)?,\n573:   }"
+      }
+    ]
+  },
+  "config": {
+    "path": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/desktop/src-tauri/tauri.conf.json",
+    "sha256": "d834a532c7e67eaf9c7a21c9e80d52a31a7160d6aaad88ee9903078132ef42be",
+    "excerpts": [
+      {
+        "first_line": 6,
+        "last_line": 8,
+        "text": "6:   \"build\": {\n7:     \"beforeBuildCommand\": \"../.venv/bin/python ../tools/ci/source_package.py verify-tree --directory src-tauri/resources/kit\",\n8:     \"frontendDist\": \"../src\""
+      },
+      {
+        "first_line": 25,
+        "last_line": 30,
+        "text": "25:   \"bundle\": {\n26:     \"active\": true,\n27:     \"targets\": \"all\",\n28:     \"resources\": {\n29:       \"resources/kit/\": \"kit/\"\n30:     },"
+      }
+    ]
+  },
+  "lock": {
+    "path": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/desktop/src-tauri/Cargo.lock",
+    "sha256": "9b61ad01c7461687061f10c8b69ba15700b997c280e6a7cb0eb4a02786461706",
+    "excerpts": [
+      {
+        "first_line": 2993,
+        "last_line": 2996,
+        "text": "2993: name = \"tauri-build\"\n2994: version = \"2.6.3\"\n2995: source = \"registry+https://github.com/rust-lang/crates.io-index\"\n2996: checksum = \"bc9ce40b16101cb6ea63d3e221567affd1c3a9205f95d7bc574941a10636b632\""
+      },
+      {
+        "first_line": 3106,
+        "last_line": 3109,
+        "text": "3106: name = \"tauri-utils\"\n3107: version = \"2.9.3\"\n3108: source = \"registry+https://github.com/rust-lang/crates.io-index\"\n3109: checksum = \"3e176a18e67764923c4f1ce66f25ae4abe5f688384d5eb1a0fa6c77f3d90f887\""
+      }
+    ]
+  }
+}

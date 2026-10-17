@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import mimetypes
 import threading
+import socket
 from dataclasses import dataclass
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -46,6 +47,8 @@ class HostedHTTPServer(ThreadingHTTPServer):
 
     def __init__(self, config: HostedServerConfig) -> None:
         self.hosted_config = config
+        if config.bind == '::1':
+            self.address_family = socket.AF_INET6
         super().__init__((config.bind, config.port), HostedRequestHandler)
 
 
@@ -140,6 +143,8 @@ class HostedRequestHandler(BaseHTTPRequestHandler):
         matched = match_repo_route(path)
         if matched is not None:
             owner, repo, action = matched
+            if action == "next":
+                return service.next(owner, repo, query)
             if action == "roadmap":
                 return service.roadmap(owner, repo, query)
             if action == "handover":
@@ -175,6 +180,9 @@ class HostedRequestHandler(BaseHTTPRequestHandler):
         )
 
     def _send_envelope(self, envelope: ApiEnvelope, *, head_only: bool = False) -> None:
+        binding_failure = self.server.hosted_config.service._binding_failure()
+        if binding_failure is not None:
+            envelope = binding_failure
         self.send_response(envelope.http_status)
         self.send_header("Content-Type", "application/json; charset=utf-8")
         body = envelope.to_json_bytes()
@@ -196,7 +204,7 @@ class HostedRequestHandler(BaseHTTPRequestHandler):
     def _serve_static(self, path: Path, *, head_only: bool = False) -> None:
         try:
             resolved = path.resolve()
-            if not str(resolved).startswith(str(STATIC_ROOT.resolve())):
+            if not resolved.is_relative_to(STATIC_ROOT.resolve()) or path.is_symlink():
                 self.send_error(HTTPStatus.FORBIDDEN)
                 return
         except OSError:

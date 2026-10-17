@@ -1,0 +1,16 @@
+.............F                                                           [100%]
+=================================== FAILURES ===================================
+_____________________ test_landing_and_active_handoff_copy _____________________
+
+    def test_landing_and_active_handoff_copy():
+        from tools.landing.validate import validate_landing
+>       result=validate_landing(KIT);assert result.ok,result.errors
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: ['raw_md_link: ../SOURCE-DISTRIBUTION.md']
+E       assert False
+E        +  where False = ValidationResult(ok=False, errors=['raw_md_link: ../SOURCE-DISTRIBUTION.md']).ok
+
+tests/fpr3/test_package.py:41: AssertionError
+=========================== short test summary info ============================
+FAILED tests/fpr3/test_package.py::test_landing_and_active_handoff_copy - Ass...
+1 failed, 13 passed, 1 deselected in 0.07s

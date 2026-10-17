@@ -1,0 +1,13 @@
+{
+  "pid": 16477,
+  "normal_quit_accepted": true,
+  "exit_before_fallback": 0,
+  "timed_out": false,
+  "process_group_before_normal_quit": "16477 16463 16477 /private/tmp/overseer-fpr5-host-platform-20261015-0crxbk22/candidate/overseer-kit-desktop-candidate\n16568 16477 16477 /opt/homebrew/Cellar/python@3.14/3.14.4_1/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python\n",
+  "process_group_after_before_fallback": "",
+  "group_probe_exit": 1,
+  "port8765_free_before_fallback": false,
+  "own_child_shutdown_proven": false,
+  "elapsed_seconds": 5.062766790390015,
+  "fallback_signals_sent": false
+}
