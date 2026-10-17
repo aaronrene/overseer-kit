@@ -1,14 +1,53 @@
 # Changelog
 
-## Unreleased
+## Unreleased — full-product publication candidate
+
+The maintained CLI, local browser app, desktop launcher, policies, review and
+verification tools, evidence ledger, workspace/lanes and optional Muse support
+are restored. The whole-product README describes the current source contract.
+Manual acceptance and local release apply only to source `97f0529`; this later
+integration is a draft candidate, not a new accepted or published release.
+See [publication preparation](docs/validation/PUBLICATION-PREPARATION.md).
+
+## v1.0.0-rc.1 — published 2026-10-10
+
+The bounded local CLI prerelease is published, not stable and not Latest. Its tag
+remains at `293e79eb96dc9b94b76fa28ffad5e9e0a6e85b30`; all five assets are unchanged.
+The seven commands are `status`, `init`, `sync`, `adopt`, `mirror`, `next`, and
+`next-write`. Git-only use remains permanent; Muse adoption and mirroring are
+explicit. Mirror repair and combined validation are complete.
+
+PR #87 later published the documentation closeout. Production deployment succeeded,
+and post-merge CI passed 156 / 156 / 289 tests with zero failures, errors or skips.
+That historical closeout is complete. See [the current summary](docs/ROADMAP.md) for the successor candidate.
+
+## Historical records
+
+The entries below describe earlier source milestones, including the pre-reset
+historical product. Their command lists are not the bounded-v1 entrypoint contract.
+The `1.0.0` source milestone was not a stable release. Use the [README](README.md)
+and [docs index](docs/README.md) for current commands.
+
+## Historical source milestone: 1.0.0 — 2026-10-08
 
 ### Added
 
-- **`ok pr-land`** — authorized wait-for-green PR merge (`tools/close_ritual/pr_land.py`).
-  Polls `gh pr checks` locally, refuses merge on failure (exit 2 for babysit),
-  merges only when green. Requires `--authorized "<reason>"` (Tier-3 delegated).
-  Spec: `docs/archive/phases/PHASE-PR-LAND-AFTER-CHECKS.md`. Policy: `policy/tiers.yaml`
-  `delegated_merge_when_green`.
+- Bounded v1 command surface: `status`, `init`, `sync`, `next`, and `next-write`.
+- Persistent per-checkout UUID and physical-root binding.
+- Canonical `docs/NEXT.md` with repository, branch, lane, model-label, action,
+  prompt-digest, expected-digest, and Git-freshness validation.
+- Repository-bound launchers with isolated source-installation imports.
+- Confined atomic NEXT writes and stale-writer refusal.
+- Optional read-only Cursor hooks; disabled by default.
+- Clean source installation, current/previous rollback, and authorized DINERO
+  pilot validation.
+
+### Changed
+
+- Reset the supported product to a small trusted-host local Git handoff utility.
+- Preserve former CLI and tests as historical sources outside the public v1 surface.
+- Document opt-in GitHub Release notifications and explicit Git pull/sync updates;
+  no automatic update check or background network access was added.
 
 ## 0.1.0 — 2026-07-10
 

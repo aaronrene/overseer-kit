@@ -1,51 +1,41 @@
-# Landing clarity pass — visitor IA (amends LAC §LAC.3.1)
-# Validated by tools/landing/validate.py
-
+# Informational site contract for the manual source delivery.
 version: 1
 license: MIT
-
 sections:
-  - id: hero
-  - id: kit-basics
-  - id: problem
-  - id: how-it-works
-  - id: structure
-  - id: console-access
-  - id: musehub
-  - id: next-steps
-  - id: scenarios
-
+- id: hero
+- id: kit-basics
+- id: problem
+- id: how-it-works
+- id: structure
+- id: console-access
+- id: musehub
+- id: next-steps
+- id: scenarios
 personas:
-  - id: A
-    slug: software-engineering
-    title: Software engineering
-    status: dogfood
-  - id: B
-    slug: video-studio
-    title: Video studio
-    status: dogfood
-  - id: C
-    slug: research-pipeline
-    title: Research paper pipeline
-    status: reference
-  - id: D
-    slug: accounting-close
-    title: Accounting close
-    status: aspirational
-  - id: E
-    slug: classroom
-    title: Classroom
-    status: reference
-
+- id: A
+  title: Software engineering
+  status: supported
+- id: B
+  title: Video studio
+  status: reference
+- id: C
+  title: Research paper pipeline
+  status: reference
+- id: D
+  title: Accounting close
+  status: illustrative
+- id: E
+  title: Classroom
+  status: reference
+# Keep the visible status labels and the original styling-class identifiers.
 status_badges:
-  - dogfood
-  - reference
-  - aspirational
-
+- supported
+- reference
+- illustrative
+- dogfood
+- aspirational
 funnel_steps:
-  - github
-  - kit
-  - musehub
-
-# Current restoration source preparation; not a release download.
+- install
+- bind
+- next
 primary_download_href: source.html

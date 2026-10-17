@@ -1,21 +1,18 @@
 ---
 schema: 1
-repo_id: 6988dc4a-5f22-454b-9d68-ac5905b383bf
-repo_root: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014
-branch: feat/overseer-v1-recovery-20261014
-base_head: 897a0cbd280cff4a04def3b010f13e81beccd035
+repo_id: 3c1b4d77-db52-48de-b8f8-4a4a57d93720
+repo_root: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-publication-20261017
+branch: feat/overseer-publication-20261017
+base_head: f6a314c0f862a921ed333688362b35f32493ae09
 lane: product
 model: GPT-6 Astra
-action_id: OVERSEER-MANUAL-HANDOVER-COMPLETE-1
-action_kind: stop
-prompt_sha256: cd7ba47caca11a60c7c78fd949063f814cd1f0b2104effc6bee11bffa9b3506a
+action_id: OVERSEER-PUBLICATION-PREPARE-1
+action_kind: maintain
+prompt_sha256: 0f23fff0fed20ec15d0e90b99485c3ea1e4056d6506d630402fec3cb156e238f
 ---
 Reasoning: High
-The small documentation task and manual handover demonstration are complete.
-The everyday-use checklist is in docs/PRINT-NEXT.md; ROADMAP and HANDOVER agree.
-No unfinished authorized task remains. Await new owner direction.
-
-Before a new task, read the selected project's bound NEXT and display its saved
-prompt and model. Preserve the accepted manual release and keep existing-project
-installation on hold. Keep other repositories unchanged. Automatic Cursor events,
-vendor execution protection and shared-chat investigation remain outside scope.
+Prepare the owner-authorized isolated integration against current GitHub main.
+Preserve the whole-product README, current website improvements and accepted
+manual release. Reuse acceptance evidence and check only integration changes.
+Push the branch and open a draft PR; update paired summaries and canonical NEXT.
+Do not merge, release, deploy or install into existing projects.

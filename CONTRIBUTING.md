@@ -31,14 +31,14 @@ Requires **Python 3.11+**.
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -e ".[dev]"
+pip install -r requirements-v1-dev.txt
 
 # Sanity
 ./cli/ok status
 ./cli/ok --help
 ```
 
-`cli/ok` is the canonical POSIX entrypoint (`python -m cli.main`). The
+`cli/ok` is the canonical POSIX entrypoint using this installation’s isolated `.venv`. The
 `cli/overseer` shim remains for compatibility and prints a one-line deprecation.
 
 ## Making a change
@@ -48,7 +48,7 @@ pip install -e ".[dev]"
 3. Update living governance docs **together** when a phase/status changes:
    - `docs/ROADMAP.md`
    - `docs/OVERSEER-HANDOVER.md`
-4. Prefer `./cli/ok governance-sync --dry-run` before claiming docs match VCS reality.
+4. Read bound NEXT at entry; publish canonical NEXT only with explicit `next-write` and its expected prior digest. Display the validated result after the closing commit.
 5. Open a pull request against `main`. Describe intent, risk, and how you tested.
 
 ### Authority tiers (short form)
@@ -68,11 +68,8 @@ where applicable: unit, integration, end-to-end, stress, data-integrity,
 performance, security.
 
 ```bash
-# Full suite
-.venv/bin/pytest -q
-
-# Focused
-.venv/bin/pytest -q tests/security/
+# Select affected tests using tests/README.md; preserve historical dispositions.
+.venv/bin/python -m pytest -q path/to/affected_test.py
 ```
 
 Do not mark a Build phase **DONE** on green tests alone when freeze/build gates

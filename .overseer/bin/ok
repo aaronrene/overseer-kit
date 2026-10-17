@@ -3,4 +3,4 @@ set -eu
 PATH=/usr/bin:/bin
 export PATH
 unset PYTHONPATH PYTHONHOME VIRTUAL_ENV
-exec /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/.venv/bin/python3 -I -B /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014/cli/bootstrap.py --bound-root /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014 --bound-id 6988dc4a-5f22-454b-9d68-ac5905b383bf --binding-path "$0" "$@"
+exec /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-publication-20261017/.venv/bin/python3 -I -B /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-publication-20261017/cli/bootstrap.py --bound-root /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-publication-20261017 --bound-id 3c1b4d77-db52-48de-b8f8-4a4a57d93720 --binding-path "$0" "$@"

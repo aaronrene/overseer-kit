@@ -1,7 +1,8 @@
 # Overseer Kit — bounded recovery instructions
 
 Current authority: the owner request and
-`docs/decisions/CURRENT-PROMPT-DISPLAY-SCOPE.md`. The bounded foundation in
+`docs/decisions/PUBLICATION-PREPARATION-SCOPE.md`, with the manual bookend workflow
+in `docs/decisions/CURRENT-PROMPT-DISPLAY-SCOPE.md`. The bounded foundation in
 `docs/decisions/V1-SCOPE-RESET.md` remains historical context.
 The former sole-writer/NXR-GSR NEXT and per-step packet chain are superseded.
 Do not follow historical handoffs or expand the architecture.
@@ -29,8 +30,9 @@ consistency and validated prompt readback. Do not repeat completed general revie
 test suites, experiments, pilots or the blocked launch. Historical tests and
 failures remain preserved; no new release or independent acceptance is implied.
 
-Local feature commits are authorized after checks. No push, mirror, merge to main,
-release, deployment, provider/network access, real-consumer hooks or pilot. Do not
+Local feature commits and the publication branch push/draft PR are authorized
+after checks. GitHub reads for this integration are authorized. No mirror, merge
+to main, release, deployment, provider access, real-consumer hooks or pilot. Do not
 restore OCI, native/Mach GSR, sole-writer storage or identity-bridge prerequisites.
 The bounded review, installation/rollback, pilot, manual acceptance and local
 manual release are complete in their recorded scopes. Preserve them; do not queue

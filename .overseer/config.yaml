@@ -25,7 +25,7 @@ docs:
       roadmap: ROADMAP.md
       handover_title: Overseer Handover
       roadmap_title: Roadmap
-      repo_id: 6988dc4a-5f22-454b-9d68-ac5905b383bf
+      repo_id: 3c1b4d77-db52-48de-b8f8-4a4a57d93720
 thresholds:
   realign_max_commits: 50
   drift_warn_only: true
@@ -36,14 +36,14 @@ freeze_contract:
   - security
 repo:
   name: overseer-kit
-  id: 6988dc4a-5f22-454b-9d68-ac5905b383bf
-  root: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014
+  id: 3c1b4d77-db52-48de-b8f8-4a4a57d93720
+  root: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-publication-20261017
   root_relative_docs: docs
 context:
   lane: product
   model: GPT-6 Astra
 runtime:
-  root: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014
+  root: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-publication-20261017
   version: 1.0.0.dev1
   sha256: bb3108ae8ea0d03190291b2104e4f9e3aab2ac1690b4da9d226a09f6afa2bba0
 schema: 3

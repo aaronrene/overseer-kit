@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Overseer Kit docs — get started, living docs, and where to read more.">
+  <meta name="description" content="Overseer Kit docs — review a frozen plan, build it in phases, verify the result, and hand over the truth.">
   <title>Docs — Overseer Kit</title>
   <link rel="icon" href="assets/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32">
@@ -33,39 +33,39 @@
 
   <main>
     <h1>Docs</h1>
-    <p class="lead">Start here on this site. Full operator manuals live in the GitHub repo once you have access.</p>
+    <p class="lead">Start with the honesty loop: freeze and challenge the plan, build accepted phases, review the implementation, then hand over what is actually true.</p>
 
     <section>
       <h2>On this site</h2>
       <ul class="compact">
-        <li><a href="index.html#how-it-works">How it works</a> — the honesty loop in plain language</li>
-        <li><a href="index.html#structure">Structure</a> — lanes, version-control options, layers</li>
-        <li><a href="index.html#console-access">Get started</a> — Local source, <code>ok app</code>, and dev desktop</li>
-        <li><a href="scenarios/index.html">Scenario gallery</a> — software engineering, video, research, and more</li>
+        <li><a href="index.html#how-it-works">How it works</a> — plan review, phased build, completion review, and truthful handover</li>
+        <li><a href="index.html#structure">Structure</a> — ROADMAP/HANDOVER lanes, safety layers, and optional repository authority</li>
+        <li><a href="index.html#console-access">Get started</a> — read the source guide, freeze the plan, build, verify, and hand over</li>
+        <li><a href="scenarios/index.html">Scenario gallery</a> — the same governance loop applied to different kinds of work</li>
       </ul>
     </section>
 
     <section>
-      <h2>Clone / init (short path)</h2>
+      <h2>Start the workflow</h2>
       <ol>
-        <li>Clone the kit when you have repo access.</li>
-        <li>From your project: <code>/absolute/kit/cli/ok -C /absolute/project init --regime git-only</code></li>
-        <li>Read canonical docs/NEXT.md with your repository-bound ok next.</li>
-        <li>Run <code>.overseer/bin/ok -C /absolute/project governance-sync --dry-run</code> before you end a session.</li>
+        <li>Read the <a href="source.html">manual source delivery guide</a>. Acceptance applies to its pinned snapshot; the integration candidate is later work.</li>
+        <li>In an already initialized project: <code>.overseer/bin/ok -C &quot;$PROJECT_ROOT&quot; next --lane product</code>. Check the returned project, revision, lane and model. Existing-project installation remains on hold.</li>
+        <li>Write bounded phases in ROADMAP, freeze the outputs and acceptance evidence, then resolve findings from a separate agent chat or human reviewer before build.</li>
+        <li>Build the accepted phases, run project-owned checks, and have a separate reviewer compare the result with the freeze before DONE. Update ROADMAP and HANDOVER to match reality, then use <code>next-write</code> to carry the reviewed next task forward.</li>
       </ol>
-      <p>Local source preparation: <a href="index.html#path-1">Source guide</a> (Apple Silicon).</p>
+      <p>The reviews are independent actions performed by your chosen agent session or human reviewer. The maintained CLI supplies review, verification, evidence and handover tools; it does not appoint the independent reviewer or enforce an agent vendor’s tool permissions. The <a href="https://github.com/aaronrene/overseer-kit/releases/tag/v1.0.0-rc.1">rc.1 prerelease</a> is an earlier bounded CLI, not this full-product delivery.</p>
     </section>
 
     <section>
       <h2>GitHub docs</h2>
-      <p>Deep runbooks and the full docs tree live in the repository.</p>
+      <p>Current guides, living-document templates, and the full documentation tree live in the repository. Repository, revision, and NEXT checks support the governance loop; they are not its purpose. This public website does not run Overseer, execute prompts, perform reviews, or access a repository.</p>
       <ul class="compact">
         <li><a href="https://github.com/aaronrene/overseer-kit">Repository home</a></li>
         <li><a href="https://github.com/aaronrene/overseer-kit/blob/main/README.md">README</a></li>
         <li><a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/README.md">Docs index</a></li>
         <li><a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/GIT-ONLY-QUICKSTART.md">Git-only quickstart</a></li>
-        <li><a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/TRACK-Q-DESKTOP-OPERATOR-RUNBOOK.md">Desktop operator runbook</a></li>
-        <li><a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/archive/README.md">Maintainer archive</a> (phase freezes / pilot notes)</li>
+        <li><a href="https://github.com/aaronrene/overseer-kit/blob/main/docs/MIGRATE-EXISTING-REPO.md">Muse adoption and rollback</a></li>
+        <li><a href="https://github.com/aaronrene/overseer-kit/blob/main/MUSE-BRIDGE-WORKFLOW.md">Controlled GitHub mirror workflow</a></li>
       </ul>
     </section>
   </main>
@@ -76,7 +76,7 @@
       · <a href="https://github.com/aaronrene/overseer-kit/blob/main/SECURITY.md">Security</a>
       · <a href="index.html">Home</a>
     </p>
-    <p class="footer-tagline">🆗 Overseer Kit — portable governance for AI-assisted development.</p>
+    <p class="footer-tagline">🆗 Overseer Kit — Honesty for Agents.</p>
   </footer>
 </body>
 </html>

@@ -1,0 +1,698 @@
+{
+  "schema": 1,
+  "git_candidate": "2d689a8398002ce667743ac7fefd12291b8973bf",
+  "muse_candidate": "sha256:987d0cde6e15bf17e0a9db96f94a6d03fdcefa6e52f7543c141b2998c38bddfa",
+  "muse_snapshot": "sha256:dbda007c1c2b058039369d9dc7a3a8c3dd851a585c05dd2790965c0a14d6bc0d",
+  "muse_staging_base": "sha256:208d9dc47f0c6d8553ee80aafc8f0993a6ebf0a88410746f47f58b4e7c6fd6a6",
+  "github_main": "d47291d5d9030de5ebef713da95efa978c4d8c6e",
+  "github_mirror": "3e21496f7c4eab64b6d9ab3f868c5cdcaf8cfcde",
+  "github_base_tree_equal": true,
+  "counts": {
+    "base": 841,
+    "candidate": 855,
+    "added": 46,
+    "modified": 32,
+    "removed": 32
+  },
+  "delta": {
+    ".cursor/hooks.json": {
+      "before": "4ed9d7336f5c6fd4a1e3995d6b70b0b63b3451c5278baf651c3a5a42f0816eae",
+      "after": null,
+      "mode_before": "100644",
+      "mode_after": null
+    },
+    ".cursor/hooks/README.md": {
+      "before": "48e9ee363c5a2292d49765118f54eedac53ec788848ed53774812f55f897a31a",
+      "after": null,
+      "mode_before": "100644",
+      "mode_after": null
+    },
+    ".cursor/hooks/session-end-closeout.sh": {
+      "before": "bf188aebfed548a1c64800aa0294249f318548c06d8d679d3b5894bea3844634",
+      "after": null,
+      "mode_before": "100755",
+      "mode_after": null
+    },
+    ".cursor/hooks/session-start-next.sh": {
+      "before": "d03f5d834edc3d7b67d5c6e7ea9b5ff4f31e213bb435e22f7dc80e2f0a290812",
+      "after": null,
+      "mode_before": "100755",
+      "mode_after": null
+    },
+    ".cursor/rules/build-verification-required.mdc": {
+      "before": "f6ba660c0fb1b2f006103136887c51bab41c6f633ebee8e57d3d549ef5d62f62",
+      "after": null,
+      "mode_before": "100644",
+      "mode_after": null
+    },
+    ".cursor/rules/check-ok-thinking.mdc": {
+      "before": "7a7d48d8c317c3763f057f2025586e124d0f897705c0be55688351755847d474",
+      "after": null,
+      "mode_before": "100644",
+      "mode_after": null
+    },
+    ".cursor/rules/governance-sync.mdc": {
+      "before": "81b78835bf5c822bcf76bde4cea37918956727122c02e91f89130e864c700078",
+      "after": null,
+      "mode_before": "100644",
+      "mode_after": null
+    },
+    ".cursor/rules/l1-checkpoints-consumer-owned.mdc": {
+      "before": "6eebc8126cee6c7ee1d2de1180faec15e2822448b2bfeffb56495991fd21a037",
+      "after": null,
+      "mode_before": "100644",
+      "mode_after": null
+    },
+    ".cursor/rules/no-docs-only-pr-to-main.mdc": {
+      "before": "90b87da8ec1f6dfac079bab72ba5621161410f45999e0510d47bfe26ec0a09da",
+      "after": null,
+      "mode_before": "100644",
+      "mode_after": null
+    },
+    ".cursor/rules/orchestrator.mdc": {
+      "before": "48d461e588ce952f305c9b2635ceebbaa5acb9f1dc2007d3712b555c5076307c",
+      "after": null,
+      "mode_before": "100644",
+      "mode_after": null
+    },
+    ".cursor/rules/print-next-closeout.mdc": {
+      "before": "8be1072133829866c3e1ced50c416448150ed4253a992169efd77748de4a8122",
+      "after": null,
+      "mode_before": "100644",
+      "mode_after": null
+    },
+    ".cursor/rules/tier-authority.mdc": {
+      "before": "8b61784cce0f0905d43c7e453b0c4d7d6b219601eaf5b62d45304afaf0338b34",
+      "after": null,
+      "mode_before": "100644",
+      "mode_after": null
+    },
+    ".cursor/rules/workspace-authority.mdc": {
+      "before": "083f5163e957b1e00956c5370b06d078590627b4bd9b00a27c7378434b344ff5",
+      "after": null,
+      "mode_before": "100644",
+      "mode_after": null
+    },
+    ".cursor/skills/adversarial-freeze-review/SKILL.md": {
+      "before": "7c210505582a882f8314f56b5b3149c93bb6774c7a869bb2c455214a6171e044",
+      "after": null,
+      "mode_before": "100644",
+      "mode_after": null
+    },
+    ".cursor/skills/build-verification-review/SKILL.md": {
+      "before": "f3c619566f11f5b021fe25120e1583be4a4c61684eb854d5360dc729b6b4380c",
+      "after": null,
+      "mode_before": "100644",
+      "mode_after": null
+    },
+    ".cursor/skills/check-ok/SIDE-CHECK-TEMPLATE.md": {
+      "before": "0fe9aa0866661bfc864a070117254dc6997f175cffeb2d2f6430385fd717276c",
+      "after": null,
+      "mode_before": "100644",
+      "mode_after": null
+    },
+    ".cursor/skills/check-ok/SKILL.md": {
+      "before": "3942f7752ac9e97e4e9ed7109b14e2c8ea8e460e263ecbbe790543d90359680a",
+      "after": null,
+      "mode_before": "100644",
+      "mode_after": null
+    },
+    ".cursor/skills/deploy-verification-review/SKILL.md": {
+      "before": "a76e0dbcc660b1942e2d83a21170e17b34e235ea2261e01923a8e4102515df5b",
+      "after": null,
+      "mode_before": "100644",
+      "mode_after": null
+    },
+    ".cursor/skills/freeze-review-loop/SKILL.md": {
+      "before": "825a1090612be0923ee1b9bcfee973b7f6e982369b8d74af11d75462e844fde7",
+      "after": null,
+      "mode_before": "100644",
+      "mode_after": null
+    },
+    ".cursor/skills/freeze-review/SKILL.md": {
+      "before": "620964bf716e0bc80f4c4fd6e9bcc0c1d9c6b5cfc2a523efa722999f51b2368b",
+      "after": null,
+      "mode_before": "100644",
+      "mode_after": null
+    },
+    ".cursor/skills/governance-sync/SKILL.md": {
+      "before": "60df1ef0f87aea065c39d5bcd38754cc44279e99db447a2777c75d32b434e9b5",
+      "after": null,
+      "mode_before": "100644",
+      "mode_after": null
+    },
+    ".cursor/skills/independent-second-reviewer/SKILL.md": {
+      "before": "994ab2bd462758f119ee939631442bde55cec2e2c08525e4a93c348829dac837",
+      "after": null,
+      "mode_before": "100644",
+      "mode_after": null
+    },
+    ".cursor/skills/print-next/SKILL.md": {
+      "before": "811841a99a2452936f1e59cb69dd02b31bb16e852ad3ba1614904c6b5ecb6de7",
+      "after": null,
+      "mode_before": "100644",
+      "mode_after": null
+    },
+    ".cursor/skills/workspace-status/SKILL.md": {
+      "before": "11a6b0586d84997a1394a8f168a4115dcde735c3ff72cd533086dfc484d0d779",
+      "after": null,
+      "mode_before": "100644",
+      "mode_after": null
+    },
+    ".github/workflows/supported-v1.yml": {
+      "before": null,
+      "after": "4e4dd6d08c0f60205b7968e2eb3c7273b41b640fea71df9870356ef5b63a2a99",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    ".gitignore": {
+      "before": "1577e39889509892097b509c81eaa380ee11096c7982bb4246c909b8f601b091",
+      "after": "6c3885f554ad837596d83408fb1135bad283a421fbb83586233d5ab07a887206",
+      "mode_before": "100644",
+      "mode_after": "100644"
+    },
+    ".museignore": {
+      "before": "38011d6ce595f3d32eccfead9176ad924407903359a1f229b8cc4703618bea06",
+      "after": "2bff94eec954e46c2ee4392913c6da8b24f72a93bcaa7d0bc652a601b0cdd07f",
+      "mode_before": "100644",
+      "mode_after": "100644"
+    },
+    ".overseer/STANDING-DECISIONS.reference.md": {
+      "before": "4694e4c48fc9595301629432ddd67861900d1288e097bd5d01232611c9ce18db",
+      "after": null,
+      "mode_before": "100644",
+      "mode_after": null
+    },
+    ".overseer/config.yaml": {
+      "before": "1393492843b0735afd249d24786bebf0339b9fc9d44d8a054b5011a2dbb7adf1",
+      "after": null,
+      "mode_before": "100644",
+      "mode_after": null
+    },
+    ".overseer/honesty/VERDICT-LEDGER.jsonl": {
+      "before": "fc62d9506439d41565b6b575a481713fd118408806046e2d76bc4fbcfba7d558",
+      "after": null,
+      "mode_before": "100644",
+      "mode_after": null
+    },
+    ".overseer/policy/model-labels.yaml": {
+      "before": "db95732401de452223d750c68172b6c1bb28b3b574c6368132678309b8c801e0",
+      "after": null,
+      "mode_before": "100644",
+      "mode_after": null
+    },
+    ".overseer/policy/model-routing.yaml": {
+      "before": "52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63",
+      "after": null,
+      "mode_before": "100644",
+      "mode_after": null
+    },
+    ".overseer/policy/test-tiers.yaml": {
+      "before": "55b337e9399ccd26f4c70dba9f6f57c1359fab930a522e605cbe52d3533238d8",
+      "after": null,
+      "mode_before": "100644",
+      "mode_after": null
+    },
+    ".overseer/policy/tiers.yaml": {
+      "before": "92920331f4e35bad9191a101b8b5d211ef31f069b2ba1cf4446ceb3796894776",
+      "after": null,
+      "mode_before": "100644",
+      "mode_after": null
+    },
+    ".overseer/version.lock": {
+      "before": "830db2c481f3feb00ae832688e131da9eea2571abf0b2e3e1157ac9831cea779",
+      "after": null,
+      "mode_before": "100644",
+      "mode_after": null
+    },
+    "AGENTS.md": {
+      "before": "bf78a67b1e339ffef54fbff362340236c78f86124533becc6c176f9e8e190442",
+      "after": "92cb16fa4e26e6c95971db667d843e292919b4b6577206046a1d520425130956",
+      "mode_before": "100644",
+      "mode_after": "100644"
+    },
+    "CHANGELOG.md": {
+      "before": "2fc47d2a5640739bcfbfe4616121935c2f1dc303b23a81d4a81f9a5a574511c8",
+      "after": "3741f417376e3cbfd4555fefe275a23a7c491c50c1ad439b606b20b60945a7c1",
+      "mode_before": "100644",
+      "mode_after": "100644"
+    },
+    "CONTRIBUTING.md": {
+      "before": "92a221c65d9a58899b9f8da32f8ff1eaffdc03700b73c3d3c6e3793f437dbfcc",
+      "after": "8fd1c57760add34a9bd91507dc740d81399780fb6833a60e17e97e6f2f2a1ac0",
+      "mode_before": "100644",
+      "mode_after": "100644"
+    },
+    "MUSE-BRIDGE-WORKFLOW.md": {
+      "before": "4880952af1fdba7e4153435118422a520e84a987e8d845e5c1b593eb01e297d7",
+      "after": "b9523fa91cfe90aac51fc0ff1fbadeafb4f9a192e1614507284d34735ff710b4",
+      "mode_before": "100644",
+      "mode_after": "100644"
+    },
+    "README.md": {
+      "before": "a38080edbcfcc51fc9b6a53a577a0d6307c8cda3e026dcbe63e08dd558dba31f",
+      "after": "7bcd888318858a15b4cad95c294c46dc28453576d740f208ffdacf8ffe2ebed0",
+      "mode_before": "100644",
+      "mode_after": "100644"
+    },
+    "SECURITY.md": {
+      "before": "fe08acfe4d63633d0115352302eb447e11574c2aa95495aba6a05506814cdefc",
+      "after": "826843365b57ea5146bdb2ec35873a2e7a0a24888f402817f6783d0c6ad574d0",
+      "mode_before": "100644",
+      "mode_after": "100644"
+    },
+    "VERSION": {
+      "before": "e9dd8507f4bf0c6f42458e41aea833ad0bd3f6127272335eee9bf4d58541ed67",
+      "after": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+      "mode_before": "100644",
+      "mode_after": "100644"
+    },
+    "cli/bootstrap.py": {
+      "before": null,
+      "after": "3c7a0979a5830141e46352c2c1c62af470236f48b8db618335716387cc0d3466",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "cli/legacy_main.py": {
+      "before": null,
+      "after": "5196b2d1bf7a1dba5b9efc41112a77b9fdccdd4014143de8ce029a7d009fc462",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "cli/main.py": {
+      "before": "5196b2d1bf7a1dba5b9efc41112a77b9fdccdd4014143de8ce029a7d009fc462",
+      "after": "68755d18a0541ffc12c752f2cd73e58db0f9248d6f2db57403b74feb64131457",
+      "mode_before": "100644",
+      "mode_after": "100644"
+    },
+    "cli/ok": {
+      "before": "c02c90630fc175ffa54e04a6a128cafcbe346bcf432c036e5e849ee893146253",
+      "after": "115eb3f6fe568bd69b5dd18e926843152aefaaf31e28acfab5529158f7fbd7fc",
+      "mode_before": "100755",
+      "mode_after": "100755"
+    },
+    "cli/overseer": {
+      "before": "be09209ef02d5e4af48af26c8d193298cc244a0604cf2d1b612e872985ee02c4",
+      "after": "a6182f2b85ba932d9d4f5faaf8a0ed04e84772a76fda8432e08728a346fc5324",
+      "mode_before": "100755",
+      "mode_after": "100755"
+    },
+    "cli/v1.py": {
+      "before": null,
+      "after": "a42326f8041648f0ac69932876f172db90ace9716b9a845ca89e292186fc7cf9",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "cli/v1_io.py": {
+      "before": null,
+      "after": "40f1187a187a025acd277ae37698a7a4ad6c7b219678c45dfd81607d992489d1",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "cli/v1_mirror.py": {
+      "before": null,
+      "after": "1464f5cc7633997b764907e4d6aaa765b983d316d7a9406cd2debff9a4fb4a87",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "cli/v1_mirror_reader.py": {
+      "before": null,
+      "after": "2c0bd8692e84a15b3f4f2335b4787116a746f0ad11660f4bbd04841cbb08cde9",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "cli/v1_muse_reader.py": {
+      "before": null,
+      "after": "8c50d6651f3ba85f5c949e79f7e01cb36db7e562e87a1f68e8e21b513363fa37",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "cli/v1_policy.py": {
+      "before": null,
+      "after": "ea421727fae14e441f2e3dc9d7ed7a5e887533550f2fac7e53db6502088cc0c9",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "cli/v1_revision.py": {
+      "before": null,
+      "after": "9e89d25a79cd914f036e19cf4df0f9766a7722aa283627e81788dc186f19bd53",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "cursor/hooks/README.md": {
+      "before": "48e9ee363c5a2292d49765118f54eedac53ec788848ed53774812f55f897a31a",
+      "after": "cf53c76ce20d0fbdf0731245db42fc79d590fa1be0ccceace615fabfb1a1c6e9",
+      "mode_before": "100644",
+      "mode_after": "100644"
+    },
+    "cursor/hooks/session-end-closeout.sh": {
+      "before": "bf188aebfed548a1c64800aa0294249f318548c06d8d679d3b5894bea3844634",
+      "after": "20b1136e0e395c72a4295c0f09b6af53e49feee3cf4b2e90c2d1e4f3d35b5a75",
+      "mode_before": "100755",
+      "mode_after": "100755"
+    },
+    "cursor/hooks/session-start-next.sh": {
+      "before": "d03f5d834edc3d7b67d5c6e7ea9b5ff4f31e213bb435e22f7dc80e2f0a290812",
+      "after": "20b1136e0e395c72a4295c0f09b6af53e49feee3cf4b2e90c2d1e4f3d35b5a75",
+      "mode_before": "100755",
+      "mode_after": "100755"
+    },
+    "cursor/rules/build-verification-required.mdc": {
+      "before": "f6ba660c0fb1b2f006103136887c51bab41c6f633ebee8e57d3d549ef5d62f62",
+      "after": "7bbb174280dbc1dec2a1f7b14f5d3ebb30306c33dc5568fde08b80d21b4a56fd",
+      "mode_before": "100644",
+      "mode_after": "100644"
+    },
+    "cursor/rules/governance-sync.mdc": {
+      "before": "81b78835bf5c822bcf76bde4cea37918956727122c02e91f89130e864c700078",
+      "after": "22b659f6f8783ac79db54d9b2c0f4f8b8af106fc8094999eb35538bf4e95c089",
+      "mode_before": "100644",
+      "mode_after": "100644"
+    },
+    "cursor/rules/orchestrator.mdc": {
+      "before": "48d461e588ce952f305c9b2635ceebbaa5acb9f1dc2007d3712b555c5076307c",
+      "after": "f4f23264d62b9b0be5ebaec8001d68d62e17841005bc8e4a18eb07e4cdb623f3",
+      "mode_before": "100644",
+      "mode_after": "100644"
+    },
+    "cursor/rules/print-next-closeout.mdc": {
+      "before": "8be1072133829866c3e1ced50c416448150ed4253a992169efd77748de4a8122",
+      "after": "dfcb8816139767ba8d50e721abebd4483e541249a186471257a94cea0d0a2ce8",
+      "mode_before": "100644",
+      "mode_after": "100644"
+    },
+    "cursor/rules/workspace-authority.mdc": {
+      "before": "083f5163e957b1e00956c5370b06d078590627b4bd9b00a27c7378434b344ff5",
+      "after": "0fc37ca34525355578a2f34b8359407a7a360b2f454b15e0fe007870a7caa262",
+      "mode_before": "100644",
+      "mode_after": "100644"
+    },
+    "docs/MIGRATE-EXISTING-REPO.md": {
+      "before": "4b7db3d23f9fc532b6ea40d50edc49fb9ab9283019fbe0c3dbab8a581142c401",
+      "after": "cbc6791c9a00070f239e3569d10f1407470cd32769e8446a75d00fa8af1a3b77",
+      "mode_before": "100644",
+      "mode_after": "100644"
+    },
+    "docs/OVERSEER-HANDOVER.md": {
+      "before": "adc93c6c800351cfb73693734c2ef31c4ccbb3802f79d1e1f218b6e886d80d3b",
+      "after": "fdf95dea8bdc8e93895b71b3bcc85f7573fa32fc8ad5338bf748e746d194df35",
+      "mode_before": "100644",
+      "mode_after": "100644"
+    },
+    "docs/PRINT-NEXT.md": {
+      "before": "1692a899ecef6383d975f416df65f5136cd94f506d460183e7d690263cdcaf2a",
+      "after": "ab4429054aa52f02bef3a852b4ecb73c48fe18fb14dcab17a10cffb4c7898c1a",
+      "mode_before": "100644",
+      "mode_after": "100644"
+    },
+    "docs/README.md": {
+      "before": "831cf0ca665b3a53e332b6dbac0be35c36e45140f49949721e635fa466c8bddd",
+      "after": "7b032761415b91de452cbf690f648611dc936384dad5287c515e9541a190411b",
+      "mode_before": "100644",
+      "mode_after": "100644"
+    },
+    "docs/ROADMAP.md": {
+      "before": "44e283da948f20f653aa8341a1e385cdd9c943eb598f7c8feca691e375384c36",
+      "after": "fba67491f004b82a3edca6ef09ddec0726d06416a40d9d949c66337ef8fc52c5",
+      "mode_before": "100644",
+      "mode_after": "100644"
+    },
+    "docs/archive/v1/config-before-reset.yaml": {
+      "before": null,
+      "after": "1393492843b0735afd249d24786bebf0339b9fc9d44d8a054b5011a2dbb7adf1",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "docs/archive/v1/legacy-overseer/README.md": {
+      "before": null,
+      "after": "1f7d40e5e58e34414c3a7f21631571524bec6fb0b0f2d8fb749e49cd997810a7",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "docs/archive/v1/legacy-overseer/STANDING-DECISIONS.reference.md": {
+      "before": null,
+      "after": "4694e4c48fc9595301629432ddd67861900d1288e097bd5d01232611c9ce18db",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "docs/archive/v1/legacy-overseer/honesty/VERDICT-LEDGER.jsonl": {
+      "before": null,
+      "after": "fc62d9506439d41565b6b575a481713fd118408806046e2d76bc4fbcfba7d558",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "docs/archive/v1/legacy-overseer/policy/model-labels.yaml": {
+      "before": null,
+      "after": "db95732401de452223d750c68172b6c1bb28b3b574c6368132678309b8c801e0",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "docs/archive/v1/legacy-overseer/policy/model-routing.yaml": {
+      "before": null,
+      "after": "52d3cbb6b803ca8e63772832462695d834a63982b96097d399ab803de8356f63",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "docs/archive/v1/legacy-overseer/policy/test-tiers.yaml": {
+      "before": null,
+      "after": "55b337e9399ccd26f4c70dba9f6f57c1359fab930a522e605cbe52d3533238d8",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "docs/archive/v1/legacy-overseer/policy/tiers.yaml": {
+      "before": null,
+      "after": "92920331f4e35bad9191a101b8b5d211ef31f069b2ba1cf4446ceb3796894776",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "docs/archive/v1/legacy-overseer/version.lock": {
+      "before": null,
+      "after": "830db2c481f3feb00ae832688e131da9eea2571abf0b2e3e1157ac9831cea779",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "docs/decisions/V1-HOSTED-CI-AUTHORIZATION.md": {
+      "before": null,
+      "after": "9f7d72ff89a2e7cd502f92da2d0f9923950364b009dd80d9ae79126fcd9bd625",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "docs/decisions/V1-SCOPE-RESET.md": {
+      "before": null,
+      "after": "84bc4319727c065e9091d6021711abad924e3ffd870b06dcd2b3a9a827218507",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "docs/validation/V1-RECOVERY.md": {
+      "before": null,
+      "after": "d02fcad2fbfa4dee8e83a403e69ccf978bf2bdf03414b0110ca73943ed69304b",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "docs/validation/baseline-failures.json": {
+      "before": null,
+      "after": "1e2d66a5662997ad110cf600574794e7f8e960ab6ab35bb7c01ee3f38e0aa463",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "docs/validation/test-results.json": {
+      "before": null,
+      "after": "752d3dc70d0f19124636e4650a313166ba6f429d2d610c7593c65627eb2b85f2",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "pyproject.toml": {
+      "before": "fbb015fc13f9d85916ecf016253daff4c57d3c429fba61b43969f599140bd941",
+      "after": "2acb41c7b4a6e4a634e958140fde9870c53fbb4ed0d3e167f28d81eea47b4a04",
+      "mode_before": "100644",
+      "mode_after": "100644"
+    },
+    "requirements-v1-dev.txt": {
+      "before": null,
+      "after": "9fc399602c408fb81af4b5c32d59e3e5c5ffd9709a1a67e9da672a8d85a71789",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "requirements-v1.txt": {
+      "before": null,
+      "after": "0969da99a0bc2a1b71ed50584560f4588a37567ac63af3ddbaf3c4617ca5621a",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "scripts/muse-bridge-deploy.sh": {
+      "before": "7b1cda63aff0903d914459c84326efe6bef614b774e1a13fe8b29d5d474a6c97",
+      "after": "d5239df5f2f02843d844c8494768858e9cfce3a97465a368564ccc518f550627",
+      "mode_before": "100755",
+      "mode_after": "100755"
+    },
+    "templates/MUSE-BRIDGE-WORKFLOW.template.md": {
+      "before": "9269b6fb53a7457aba8c91b785a3fc826935b3fbd1ce9f20606b0e68eb4439ed",
+      "after": "5459fc747421ddb51f9cff4a38dc10286704e7b92e45df47db53b90e155a0348",
+      "mode_before": "100644",
+      "mode_after": "100644"
+    },
+    "templates/ci/desktop-release-github-actions.yml": {
+      "before": "3104c29f7f9820b4ad9c4b2ee4f416d96e7542b9b63bd48f6147754084208b34",
+      "after": "9c1f9285c9b4b027090d2441675c0f18a2516c198ae41895b946d42ebaa0079a",
+      "mode_before": "100644",
+      "mode_after": "100644"
+    },
+    "templates/ci/freeze-review-github-actions.yml": {
+      "before": "2edb7a756fbd8b3727c863f1f6de2e01ee7bd176d7d583495c3831eae0932dfa",
+      "after": "894e8cea250a022083284de626a7bc010401e1e2ef212dcd9a8fec2aab6fa33d",
+      "mode_before": "100644",
+      "mode_after": "100644"
+    },
+    "templates/ci/governance-closeout-github-actions.yml": {
+      "before": "30d5ec1fc76f6616574f64cfd762a760003027fa66d6b70ec21b0ca6adf4ad74",
+      "after": "bf7d5fd2fa9bfd52fa81849b6737ef33aafcc9592824151a09d4ce098b327f90",
+      "mode_before": "100644",
+      "mode_after": "100644"
+    },
+    "templates/scripts/muse-bridge-deploy.sh.template": {
+      "before": "f6edd1339759602ec76fef46bfb0f0fa2e9fba2f108d706fef235752ac12213c",
+      "after": "d5239df5f2f02843d844c8494768858e9cfce3a97465a368564ccc518f550627",
+      "mode_before": "100755",
+      "mode_after": "100755"
+    },
+    "tests/README.md": {
+      "before": null,
+      "after": "a576c9daba824ea71def52102dc7a3ebe22fb4eb5d250e0ebcbfcdd833af963e",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "tests/historical/baseline-test-inventory.json": {
+      "before": null,
+      "after": "fed5cd078170b8474c991c751c56d5e1ccb4559510f5b5cce49a7d46bff54a49",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "tests/muse/conftest.py": {
+      "before": null,
+      "after": "8a24e26809f58bfff647de95530ec0fe06b2555f44932839fbb17b81c40170a0",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "tests/muse/test_handoffs.py": {
+      "before": null,
+      "after": "30be99f9906f6f019711932ec1df08faa13402605703b0a6fe0599b53a912e75",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "tests/muse/test_mirror.py": {
+      "before": null,
+      "after": "268b15efd9d07f033529ffd2b16b2cb14a09bb0e1d040bd8db8fd781f3015ab3",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "tests/muse/test_source_distribution.py": {
+      "before": null,
+      "after": "96f2ce417671331f2e40eca6ee2f4f477648c88e9312b5e0d930378d88d58993",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "tests/retained/test_footprint_digest.py": {
+      "before": null,
+      "after": "a1756303d45b8a7ea010e1fcf6ff634b1b6a7ab21206a7822a59bfd1e3cd8608",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "tests/v1/__init__.py": {
+      "before": null,
+      "after": "dc4adf4d3d8186a2081f7dc6679cd9f3606df9aed15996deeb922e6952cae912",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "tests/v1/conftest.py": {
+      "before": null,
+      "after": "b8b7a56eaab473a2673c4a7a646086f63d243267aa71751c7227b783886eef8c",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "tests/v1/test_adoption.py": {
+      "before": null,
+      "after": "8f28534718e82b139aafddd77c19a3b8fb2f9a03dc29d7613ae14d826b6c01ad",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "tests/v1/test_commands.py": {
+      "before": null,
+      "after": "4b96661adb25520432d9ce286ada155917b8b038008fb800ab79d36fe1c6e565",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "tests/v1/test_integrity.py": {
+      "before": null,
+      "after": "8433298ba3749a0f3e871e2be3ba2c41323ce910dfa76b285807dd2510fa1594",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "tests/v1/test_isolation.py": {
+      "before": null,
+      "after": "4038b84726a9272230c86e30ee575473a6b417827edc65a7321e1e51a676db5c",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "tests/v1/test_muse_artifact.py": {
+      "before": null,
+      "after": "9cb2f558730b29e4b09b34e31a092af23006d7da849fd3f977978919ced6c784",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "tools/ci/MUSE-RC5-RECOVERY.md": {
+      "before": null,
+      "after": "66bc069aac44d8ab965aceb45615c617c581e78fe970b2af4b26c5e52d7264f1",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "tools/ci/muse-rc5-artifact.json": {
+      "before": null,
+      "after": "5757cb09ea8897b06801f6d77c48e2736a69184470a2172a4d24a23184db57a1",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "tools/ci/muse-rc5-source-files.json": {
+      "before": null,
+      "after": "3a30de887720d3019ad8a40b300960f97693fc13b91da8814784dabe897115ff",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "tools/ci/muse_artifact.py": {
+      "before": null,
+      "after": "43a43d31e08d7e7a29115d2c15e0c2a5ee72b54342a8e2136041d205aa5b2edc",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "tools/ci/requirements-muse-rc5.txt": {
+      "before": null,
+      "after": "107d3d75eb49e04f382a23955a1e2cfa5d178ec0487c447368ad66b7d6fd8226",
+      "mode_before": null,
+      "mode_after": "100644"
+    },
+    "tools/ci/supported_v1.py": {
+      "before": null,
+      "after": "8feffe7baecb229c495519d75a4d8d5ba19ebe8c53c291046aaf898f73f7004e",
+      "mode_before": null,
+      "mode_after": "100644"
+    }
+  },
+  "staging_only_removed": {
+    ".overseer/.muse-bridge-sentinel": "14067d8eb2e37054eae29f060ae4235b2bf4255ccdea4fbc590c92c17c17c0df",
+    "desktop/src-tauri/gen/schemas/acl-manifests.json": "b8665c2471bd4c59d570c77e226f37410ce396da52525383a15b5cbbff9d786e",
+    "desktop/src-tauri/gen/schemas/capabilities.json": "d0dec3872f18fca8fd17bb88a80512ebedd22f6a0c12fa52e1bd8b1a57d41ea5",
+    "desktop/src-tauri/gen/schemas/desktop-schema.json": "f68a9c570ecff07ac6826145d33b966d6fc02f7d680967f44437268b08a6ba78",
+    "desktop/src-tauri/gen/schemas/macOS-schema.json": "f68a9c570ecff07ac6826145d33b966d6fc02f7d680967f44437268b08a6ba78"
+  },
+  "executables": [
+    "cli/ok",
+    "cli/overseer",
+    "cursor/hooks/session-end-closeout.sh",
+    "cursor/hooks/session-start-next.sh",
+    "scripts/bundle-desktop-kit.sh",
+    "scripts/muse-bridge-deploy.sh",
+    "templates/scripts/muse-bridge-deploy.sh.template",
+    "tests/fixtures/checkpoints/scripts/verify/verify_alpha.py",
+    "tests/fixtures/checkpoints/scripts/verify/verify_beta.py",
+    "tests/fixtures/checkpoints/scripts/verify/verify_gamma_fail.py"
+  ]
+}
