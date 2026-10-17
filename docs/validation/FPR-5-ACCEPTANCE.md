@@ -8,6 +8,13 @@ Python cells and source installation/migration/update/rollback remain in scope.
 The selected platform remains macOS 15.7.2 arm64 source installation. The
 browser is sufficient; no feature removal or browser expansion is requested.
 
+The owner clarified the workflow on 2026-10-17: retain automatic display as a
+convenience, but obtain and check fresh repository-bound NEXT before each new
+task. The agent may perform that explicit read; it is not required per message.
+Use the validated result; stop on refusal or wrong context. Current hook settings
+stay unchanged, including disabled hooks. This instruction does not qualify
+automatic freshness, actual host events or client-wide enforcement.
+
 | Requirement | Current acceptance disposition |
 | --- | --- |
 | Manual repository-bound NEXT | Required. Explicit physical root/UUID, branch/revision, lane, model and action context; digest-checked publication through `next-write`. Existing recorded evidence goes to the single non-author adjudicator. |

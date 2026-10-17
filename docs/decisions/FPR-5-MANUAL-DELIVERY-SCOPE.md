@@ -24,6 +24,25 @@ prior digest. Instructions can request these bookends; no automatic lifecycle
 delivery or client-wide execution enforcement is claimed. The browser is
 sufficient and requires no expansion.
 
+## Owner clarification — automatic display with a fresh NEXT read
+
+On 2026-10-17 the owner chose to keep automatic prompt display as a convenience
+and require a fresh repository-bound NEXT read before starting each new task,
+not before every message. Use the returned validated instruction, not a cached,
+restored or forwarded prompt. Check physical root/UUID, branch/revision, lane,
+model and action context. If the reader refuses or the context is wrong, stop
+and report it; do not execute the earlier displayed instruction as a fallback.
+An agent can perform this explicit read; a manual button click is not required
+when the agent has already obtained and checked the fresh bound result.
+
+This preserves the existing automatic-display implementation and current hook
+settings, including disabled hooks. It neither enables hooks nor changes Cursor
+or Codex code. It is an operating instruction, not new automatic enforcement or
+proof that stale automatic display is fixed. The deferrals below remain intact.
+The next step remains one fresh non-author acceptance review, followed by a
+separate owner release decision. Supplying the prepared review prompt to that
+fresh session appoints it; this author session must not execute the review.
+
 ## Deferred requirements and unresolved behavior
 
 - Actual Cursor `sessionStart` and `stop` delivery, including their continuity
@@ -75,3 +94,8 @@ Opening source: `f5e945c8832efe6ec12ca60f3735f329b1901203` on
 The [acceptance packet](../validation/FPR-5-ACCEPTANCE-PACKET.md) supplies the
 claim, evidence map and single-review brief. Canonical `docs/NEXT.md` supplies
 the pending action; ROADMAP and HANDOVER are summaries.
+
+The original scope reconciliation closed at
+`a1751f84604f634521020c93c67050d9127bd6b1`. The owner clarification above is a
+documentation-only successor based on that commit; its closing commit becomes
+the review candidate, with the same retained runtime/native identities.

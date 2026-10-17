@@ -7,6 +7,15 @@ read-only hosted surface, all three authority modes, selected Python cells and
 source installation/migration/update/rollback requirements. The browser is
 sufficient; the product is not reverted to the older bounded snapshot.
 
+**Owner decision, 2026-10-17:** keep automatic prompt display for convenience.
+Before each new task, explicitly retrieve fresh NEXT from the selected
+repository's bound reader and check its identity/context; use that result rather
+than an earlier displayed prompt. An agent may do this read, so a button click
+is not required when a fresh validated read has already occurred. On refusal or
+wrong context, stop. This is required per new task, not per message. Existing
+implementation and hook settings are preserved, including disabled hooks;
+no client code change, hook activation or automatic-freshness fix is claimed.
+
 Actual Cursor sessionStart/stop and dependent automatic-pilot continuity are
 **DEFERRED / NOT VERIFIED**. Client-level protection against restored/forwarded
 conversations acting in the wrong project is **DEFERRED / UNQUALIFIED**. These
@@ -30,6 +39,8 @@ candidate, all retained requirements and R1–R6; after ACCEPTED, the owner make
 separate release decision identifying artifact/version, destination and permitted
 effects. If BLOCKED, the reviewer must name the precise retained requirement and
 evidence gap. No review or release starts in this documentation action.
+The owner appoints the fresh reviewer by supplying the prepared canonical NEXT
+review prompt to that session. The author/coordinator must not execute it.
 
 Use the bound `ok -C ROOT next` for the selected repository/lane and check the
 returned identity/context; publish only through `next-write` with explicit context

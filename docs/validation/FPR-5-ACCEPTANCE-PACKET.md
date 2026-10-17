@@ -23,8 +23,10 @@ inventories and original findings remain historical evidence. The implemented
 product and all other retained requirements remain; the old bounded snapshot
 is not substituted for this candidate.
 
-The closing documentation commit is the review candidate. Its parent/base is
-`f5e945c8832efe6ec12ca60f3735f329b1901203`; canonical NEXT records that base and
+The closing owner-clarification documentation commit is the review candidate.
+Its parent/base is `a1751f84604f634521020c93c67050d9127bd6b1`, the original
+scope-reconciliation closing commit (whose parent was
+`f5e945c8832efe6ec12ca60f3735f329b1901203`). Canonical NEXT records the new base and
 its bound reader validates the closing commit. At appointment, record the full
 closing commit plus the runtime/native identities below in the reviewer record.
 Only the scope documents, paired summaries, optional-request status annotation,
@@ -73,6 +75,15 @@ selecting the repository/lane and checking returned identity/context, with
 `next-write` publication using explicit context and the expected prior digest.
 Instruction bookends are manual coordination, not native lifecycle evidence or
 client-wide execution protection. The existing browser is sufficient.
+
+The owner's subsequent clarification retains automatic prompt display as a
+convenience. Before each new task, the agent or operator must explicitly retrieve
+fresh repository-bound NEXT and check its identity/context; use that result,
+not an earlier displayed, restored or forwarded instruction. Stop on refusal
+or wrong context. An agent's fresh validated read does not require an additional
+button click; this is per task, not per message. Existing implementation and
+hook settings, including disabled hooks, are preserved. No automatic-freshness
+fix, client code change, hook activation or client-wide enforcement is claimed.
 
 The supportable **current status** is completed author implementation/repair,
 validation, local integrated workflow and owner-observed desktop evidence,
@@ -329,6 +340,8 @@ appointment, stop; do not run review from the author/coordinator session. No
 vendor response, automatic event receipt, new pilot, original reconstruction or
 extra readiness-review cycle is a prerequisite for appointment. The reviewer
 still decides the sufficiency of all retained evidence.
+The owner appoints that fresh reviewer by supplying the prepared canonical NEXT
+review prompt to it. The author/coordinator stops after preparing this handoff.
 
 After an ACCEPTED verdict, the owner makes the separate release decision for
 that exact candidate and limited claim. A BLOCKED verdict must name the precise
@@ -339,7 +352,8 @@ The prepared vendor request stays optional and unsent.
 ## Brief for ONE final non-author adjudication — pending appointment
 
 **Appointment gate:** the owner appoints one non-author after this documentation
-handoff. The scope revision itself is not that appointment or a review. Read the
+handoff, by supplying the prepared review prompt to the fresh session. Recording
+the workflow decision is not review execution or author self-appointment. Read the
 closing source commit through validated NEXT and record its full Git identity,
 the retained runtime/native digests and the explicit B1/B2 exclusions. No future
 host manifest or guard/event evidence is required for this revised claim.
@@ -402,8 +416,9 @@ document/link/whitespace consistency, allowed changes, preservation, summary loc
 rows and bound NEXT publication/readback. No behavioral test or review runs.
 
 Preserve old worktrees, protected refs and Muse history. Publish NEXT through
-bound `next-write` with explicit context and prior digest as a stop pending
-non-author appointment. One local documentation closing commit uses
-`f5e945c8832efe6ec12ca60f3735f329b1901203` as sole parent, followed by validated
+bound `next-write` with explicit context and prior digest as the prepared review
+brief for the owner's fresh non-author session; the author must stop. The
+clarification's local documentation closing commit uses
+`a1751f84604f634521020c93c67050d9127bd6b1` as sole parent, followed by validated
 NEXT readback. ROADMAP/HANDOVER summarize; canonical NEXT carries the pending
 action. No vendor contact, network/provider work, release or rollout is authorized.
