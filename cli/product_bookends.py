@@ -147,7 +147,7 @@ def validate_event(root: Path, config: dict, args, raw: bytes) -> str:
         if field in payload:
             _physical_root(payload[field], root)
     if "lane" in payload:
-        if payload["lane"] not in config['docs']['lanes'] or (
+        if not isinstance(payload["lane"], str) or payload["lane"] not in config['docs']['lanes'] or (
                 getattr(args, 'lane', None) not in (None, payload['lane'])):
             raise Refusal('hook_lane_mismatch')
         args.lane = payload['lane']

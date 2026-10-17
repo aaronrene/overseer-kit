@@ -1,12 +1,14 @@
 # Prevent work from a conversation bound to another project
 
-**Current disposition — 2026-10-17: OPTIONAL / UNSENT.** Under the
-[manual delivery scope](FPR-5-MANUAL-DELIVERY-SCOPE.md), this vendor request and
-client-level restored/forwarded conversation protection are deferred from this
-delivery's acceptance prerequisites. No contact is authorized or performed.
-Shared chat-history behavior remains unresolved. The prepared body and historical
-observations below are preserved; their completion criteria concern optional
-future qualification, not the current release path.
+**Current disposition — 2026-10-17: ACTIVE FPR-6 DEPENDENCY / UNSENT.** The
+[automatic completion scope](FPR-6-AUTOMATIC-COMPLETION-PLAN.md) reopens
+client-level restored/forwarded protection. The [execution result](../validation/FPR-6-AUTOMATIC-COMPLETION.md)
+found no supported editable client/execution integration in this repository.
+This request remains excluded from the preserved [manual delivery scope](FPR-5-MANUAL-DELIVERY-SCOPE.md)
+and does not retroactively block that release. No contact is authorized or
+performed. Shared chat-history behavior remains unresolved. The prepared body
+and historical observations below are unchanged; the missing capabilities and
+smallest next action are in the [FPR-6 dependency request](FPR-6-AUTOMATIC-DEPENDENCIES.md).
 
 Prepared 2026-10-17 for the Codex IDE extension maintainers, with the Codex
 execution-service maintainers. Coordinate with the Cursor workspace API owner

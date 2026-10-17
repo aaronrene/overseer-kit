@@ -4,25 +4,36 @@ Current authority: the owner's [automatic completion plan](decisions/FPR-6-AUTOM
 The [manual scope](decisions/FPR-5-MANUAL-DELIVERY-SCOPE.md) and
 [local release](releases/FPR-5-MANUAL-LOCAL-RELEASE.md) remain preserved milestones.
 
-**FPR-6 — finish the automatic experience before installation into existing
-projects.** The owner has reopened automatic session delivery, restored/forwarded
-project protection and the unresolved shared-chat issue. The completion plan is
-saved; execution is queued for one sustained GPT-6 Astra / High session. No new
-implementation or host verification is claimed by this planning closeout.
+**FPR-6 local execution completed; automatic experience remains blocked.**
+The [execution record](validation/FPR-6-AUTOMATIC-COMPLETION.md) preserves the
+outcome and evidence. A demonstrated adapter defect is repaired: JSON array/object
+lane assertions now return a bounded refusal instead of a traceback. Four new
+regressions failed before repair; all 25 new/affected checks passed afterward.
+No completed suite, investigation, pilot, review or failed launch was repeated.
 
-| Completion work | Current state / exact remaining outcome |
+| Completion work | Current state / exact remaining dependency |
 | --- | --- |
-| A — automatic start/end NEXT | Adapter code exists; actual Cursor events remain NOT VERIFIED. Resolve the known keychain/model-turn prerequisite before any new real event attempt; do not repeat the failed launch |
-| B — wrong-project work prevention | UNQUALIFIED at the client/execution boundary. Implement only a demonstrated supported local change; external host/task/owner enforcement may require a named outside component |
-| C — shared-chat display cause | UNRESOLVED. Reuse the completed investigations; pursue only an accessible missing discriminator, with no invented causal explanation |
-| D — full automatic workflow | NOT VERIFIED. Connect newly qualified A/B behavior in a narrow disposable workflow; preserve C's explicit disposition and do not rerun the historical pilot |
+| A — automatic start/end NEXT | NOT VERIFIED. Local malformed-lane repair passed fixtures. Cursor lifecycle/environment owner must supply a supported isolated real-event path without account/keychain/provider effects; none is established |
+| B — wrong-project work prevention | UNQUALIFIED. Codex extension/execution maintainers must supply supported host/task/owner binding and actual admission/permission/tool evidence; no editable integration is present here |
+| C — shared-chat display cause | UNRESOLVED. Client selection/state owner must supply a correlated route-origin/state-key/window/client/task/owner discriminator; existing distinct-route result is preserved |
+| D — full automatic workflow | NOT VERIFIED. Integration owner needs qualified A/B on the same build/context before a narrow disposable continuity check, retaining C's separate disposition |
 
-The session must finish all useful authorized local work before stopping for a
-specific unavailable capability or new permission. No repeated broad reviews,
-completed suites/experiments or routine approval pauses. Run only justified new
-or affected checks. Full details, evidence requirements, ownership, restrictions
-and stop conditions are in the plan. The preserved manual release remains valid
-only for its original claim; it does not satisfy these reopened requirements.
+Installed Cursor is now 3.25.6 (not silently qualified as the historical 3.24.18).
+Narrow read-only source inspection still ties stop to turn completion and possible
+follow-up submission; no permitted prerequisite for another launch is established.
+The recorded Codex extension/renderer hashes match. No real profile or account
+was read, no host launched and no external execution enforcement inferred.
+The [prepared dependency requests](decisions/FPR-6-AUTOMATIC-DEPENDENCIES.md)
+remain UNSENT. All independent useful authorized local work is exhausted; the
+smallest next step needs a supported isolated host/client capability and owner,
+or separate authority to route the sanitized requests. Existing-project rollout
+stays held. The preserved manual release retains its original scope and identity.
+
+Development successor runtime is
+`bb3108ae8ea0d03190291b2104e4f9e3aab2ac1690b4da9d226a09f6afa2bba0`, version
+`1.0.0.dev1`. Bound narrow maintenance preserves identity/settings/NEXT and existing
+hooks. This candidate has author checks only; no expanded independent acceptance
+or successor release is claimed. Accepted-release runtime below is historical.
 
 **Independent acceptance completed on 2026-10-17: ACCEPTED for the revised
 manual-delivery scope**, candidate `97f052949146c3cf337478927e6d345e353d2063`.
@@ -37,7 +48,7 @@ Retained scope: macOS 15.7.2 arm64 source installation, maintained CLI, local
 browser app, owner-observed actual desktop, local read-only hosted surface,
 Git-only/Muse-only/Muse-with-Git-mirror, selected Python 3.11.15 and 3.14.4 cells
 and pinned Muse 0.2.1rc5, identity/lanes/settings, source installation/migration/
-update/rollback and the completed local integrated workflow. Runtime remains
+update/rollback and the completed local integrated workflow. Accepted-release runtime remains
 `cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774`;
 native configuration remains
 `d65242ef9ca4be228e791d7596bd2a60ff90ba200445c0d5dbf58229c5eecab6`.
@@ -48,7 +59,8 @@ UUID, branch/revision, lane, model and action context. Use that validated result
 stop on refusal or mismatch. No additional button click is required after an
 agent's checked read. This is per task, not per message. Publish canonical NEXT
 only through bound next-write with explicit context and expected prior digest.
-Existing implementation and disabled hooks remain unchanged.
+The manual-release implementation and existing disabled hooks remain unchanged;
+the development successor has only the adapter type-check repair described above.
 
 For the preserved manual release, actual Cursor events and automatic continuity
 were **DEFERRED / NOT VERIFIED**, and restored/forwarded protection was
@@ -73,12 +85,12 @@ retained component entries passed; completed tests/reviews were not rerun.
 The independent acceptance record is a separate byte-exact companion from
 `a6d2576dfeb00f8209e56908bef8d192431312cf`; it is not inserted into the source.
 
-**Next: execute the FPR-6 automatic completion plan in one sustained session.**
-Canonical [NEXT](NEXT.md) is the sole actionable prompt. The old release stop is
-superseded for this newly requested scope. Finish concrete local fixes and new
-missing-evidence work when feasible; otherwise give the exact external dependency
-and smallest next action after completing independent work. Do not claim that
-Overseer prompt checks enforce client tool execution.
+**Next: dependency stop after completed FPR-6 local work.**
+Canonical [NEXT](NEXT.md) is the sole actionable prompt. Obtain the exact supported
+host/client capability and responsible owner described in the prepared request;
+external routing needs separate authority. Do not repeat the completed local
+execution, failed launch or old experiments. Automatic acceptance remains open;
+Overseer prompt checks do not enforce client tool execution.
 
 **Existing-project installation remains on hold.** Later rollout still requires
 named targets/effects, modern binding or separately scoped legacy source changes,

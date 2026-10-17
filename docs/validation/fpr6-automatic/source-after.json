@@ -1,0 +1,11 @@
+{
+  "runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "bb3108ae8ea0d03190291b2104e4f9e3aab2ac1690b4da9d226a09f6afa2bba0"
+  },
+  "source": {
+    "cli/product_bookends.py": "df2788bf5f332a5b6f93467d51fd0b37c09efdc188a93d97839c7355081345d0"
+  },
+  "test_sha256": "da8d6bd394b332a741e2389116d94d2d858e87b7aa5f714351b7cd9c31444bf1"
+}

@@ -1,7 +1,10 @@
 # FPR-6 — finish the automatic experience
 
-Status: completion plan and execution handoff prepared on 2026-10-17.
-Implementation and new host observations have not started in this planning task.
+Status: local execution completed on 2026-10-17; expanded completion blocked on
+external capabilities. See the [execution result](../validation/FPR-6-AUTOMATIC-COMPLETION.md)
+and [prepared dependency request](FPR-6-AUTOMATIC-DEPENDENCIES.md).
+The original planning handoff below is retained as history; native host observations
+remain unverified.
 Model: GPT-6 Astra; reasoning: High; lane: product.
 
 ## Owner direction and preserved release

@@ -1,0 +1,61 @@
+{
+  "ok": true,
+  "postcommit": false,
+  "head": "dd04b29789f1d4d2b5b795a0eedc19eeda33bf3b",
+  "parent": "dd04b29789f1d4d2b5b795a0eedc19eeda33bf3b",
+  "bound_status": true,
+  "runtime": {
+    "root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "version": "1.0.0.dev1",
+    "sha256": "bb3108ae8ea0d03190291b2104e4f9e3aab2ac1690b4da9d226a09f6afa2bba0"
+  },
+  "action": {
+    "schema": 1,
+    "repo_id": "6988dc4a-5f22-454b-9d68-ac5905b383bf",
+    "repo_root": "/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014",
+    "branch": "feat/overseer-v1-recovery-20261014",
+    "base_head": "dd04b29789f1d4d2b5b795a0eedc19eeda33bf3b",
+    "lane": "product",
+    "model": "GPT-6 Astra",
+    "action_id": "OVERSEER-FPR6-CAPABILITY-DEPENDENCY-1",
+    "action_kind": "stop",
+    "prompt_sha256": "9ca1d25651d2a0216f5040cfc58f706cc591dfaa0e5932da3cc72219820123e8"
+  },
+  "next_sha256": "225811f44bffc75881847588fbb933eace532ee45175b99488227eb7ba630731",
+  "original_test_and_evidence_paths_preserved": 1331,
+  "existing_hooks_preserved": true,
+  "non_runtime_settings_preserved": true,
+  "only_lock_rows_changed": [
+    "docs/OVERSEER-HANDOVER.md",
+    "docs/ROADMAP.md"
+  ],
+  "tracked_changes": [
+    ".overseer/config.yaml",
+    ".overseer/version.lock",
+    "cli/product_bookends.py",
+    "docs/NEXT.md",
+    "docs/OVERSEER-HANDOVER.md",
+    "docs/ROADMAP.md",
+    "docs/decisions/FPR-6-AUTOMATIC-COMPLETION-PLAN.md",
+    "docs/decisions/FPR-6-AUTOMATIC-DEPENDENCIES.md",
+    "docs/decisions/FPR-OPS-1-CLIENT-CHANGE-REQUEST.md",
+    "docs/validation/FPR-6-AUTOMATIC-COMPLETION.md",
+    "docs/validation/fpr6-automatic/ARTIFACTS.json",
+    "docs/validation/fpr6-automatic/current-host-feasibility.json",
+    "docs/validation/fpr6-automatic/lane-after.txt",
+    "docs/validation/fpr6-automatic/lane-before.json",
+    "docs/validation/fpr6-automatic/local-build-metadata.json",
+    "docs/validation/fpr6-automatic/next-prompt.txt",
+    "docs/validation/fpr6-automatic/next-publication.json",
+    "docs/validation/fpr6-automatic/opening.json",
+    "docs/validation/fpr6-automatic/precommit-verification.json",
+    "docs/validation/fpr6-automatic/runtime-and-summary-refresh.json",
+    "docs/validation/fpr6-automatic/runtime-refresh-plan.json",
+    "docs/validation/fpr6-automatic/source-after.json",
+    "docs/validation/fpr6-automatic/summary-lock-final.json",
+    "docs/validation/fpr6-automatic/verification.json",
+    "docs/validation/fpr6-automatic/verify_closeout.py",
+    "tests/fpr6/test_bookend_lane_types.py"
+  ],
+  "new_files": []
+}
