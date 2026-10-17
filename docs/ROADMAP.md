@@ -24,39 +24,43 @@ The former sole-writer/NXR-GSR chain remains historical and is not the living NE
 | FPR-4 — combined validation | Local matrix, bounded repairs, package and rollback evidence recorded; missing Python 3.11 cell now has complete passing coverage in the acceptance record; selected interactive acceptance remains open |
 | FPR-5 — independent final review | Complete — original **FINDINGS** verdict and evidence preserved in [the review](reviews/FPR-5-REVIEW.md) |
 | FPR-5 bounded repairs | All six implemented; 1,361 selected cases have passing evidence across the new combined run and affected rerun; [author evidence](validation/FPR-5-REPAIRS.md) |
-| Remaining acceptance, final adjudication and release decision | **Closeout packet complete; final readiness not established** — [exact claim/source/evidence map](validation/FPR-5-ACCEPTANCE-PACKET.md) records all outcomes and limits. Cursor start/stop remain owner-postponed **NOT VERIFIED**. Resolve required incident/claim dispositions before one independent non-author adjudication, then a separate owner release decision |
-| FPR-OPS-1 — unexplained cross-window conversation restoration | **One authorized restoration capture complete; cause unresolved** — [distinct-route result](validation/FPR-5-RESTORE-REPRO.md): actual custom-editor persistence preserves distinct routes; an explicitly injected membership mismatch reaches the outgoing resume request. Backend acceptance/turn execution unobserved. Prior investigation preserved; qualification blocker remains. One host/owner guard recommendation; NEXT stops with no further experiment or review scheduled |
+| Remaining acceptance, final adjudication and release decision | **One bounded closeout reconciliation complete; full-product hold** — [packet](validation/FPR-5-ACCEPTANCE-PACKET.md) contains exact proposed claims, blocker/action/component/criterion table, one consolidated owner recommendation and one dormant final non-author brief. Host qualification, postponed actual events/dependent pilot and evidence disposition precede adjudication; owner release remains separate |
+| FPR-OPS-1 — unexplained cross-window conversation restoration | **Both investigations/captures complete; qualification unresolved** — [distinct-route result](validation/FPR-5-RESTORE-REPRO.md): routes stay distinct; injected membership mismatch reaches outgoing resume. Backend/turn/tool execution unobserved. Host and execution-owner guard work is external; repository adapter work depends on their trusted contract. No investigation or guard implementation is scheduled |
 | FPR-OPS-2 — broken shared legacy `ok` environment | **Confined dependency repair complete** — [repair and verified rollback](validation/FPR-5-LEGACY-CLI-REPAIR.md). Only stable `.venv` changed; existing source/interpreter/global wrapper preserved. Imports, native dependencies, CLI startup and disposable root/path-confinement checks pass. Legacy UUID/branch/digest-bound NEXT remains unsupported; no consumer qualification or FPR-OPS-1 resolution claimed |
-| FPR-EVID-1 — external temporary originals unavailable | **Availability gap mapped; not waived** — 40 interactive copies (34 exact/six redacted), 79 host copies and 28 pilot records verify. Temporary originals, backup trees and two screenshots are unavailable at recorded paths. Packet preserves provenance and custody limits for later sufficiency assessment |
+| FPR-EVID-1 — external temporary originals unavailable | **Custody-limited submission basis proposed; not a sufficiency waiver** — 40 interactive copies (34 exact/six redacted), 79 host copies and 28 pilot records survive. Original temporary/backup trees and two screenshots are unavailable. Owner observation remains historical; final non-author decides sufficiency once all prerequisites are ready |
 
 The exact current action lives only in `docs/NEXT.md`; use `ok -C ROOT next`.
-The [acceptance packet](validation/FPR-5-ACCEPTANCE-PACKET.md) and prior bounded
-FPR-OPS-1 investigation remain complete and unchanged. The newly authorized
-[host-API capture](validation/FPR-5-RESTORE-REPRO.md) ran once with two synthetic
-repositories/threads and distinct routes through actual installed custom-editor
-persistence, selection and restoration code. Routes stayed distinct before
-navigation. A labelled post-restore membership-drift probe reached the client's
-outgoing `thread/resume` with a task cwd outside the current window membership;
-backend acceptance, effective grants and turn/tool execution were not observed.
-This negative convergence result does not clear the historical incident. The
-confined host/owner repository-binding guard remains a recommendation, unapplied.
-NEXT stops; no further experiment, repair or review is scheduled or authorized.
-Cursor sessionStart/stop remain owner-postponed **NOT VERIFIED**. The owner did
-not deliberately open duplicates; restart/full-disk causation remains unknown
-and visible-chat selection remains mitigation only. The separately authorized
-[FPR-OPS-2 repair](validation/FPR-5-LEGACY-CLI-REPAIR.md) now restores required
-libraries in the stable checkout's own venv using 190 exact local artifact files.
-Its interpreter, source and global wrapper are unchanged; rollback was rehearsed
-before target mutation. Startup and disposable root/path-confinement checks pass.
-The legacy source lacks UUID/branch/digest-bound NEXT; that remains an explicit
-limitation, not a claimed repair. No other global/consumer mutation occurred.
-The packet and subsequent repair record distinguish candidate evidence, an
-unqualified host workflow, a repaired legacy installation with limited binding,
-and missing external originals. Required disposition
-of those limits precedes final readiness; do not silently narrow the full claim.
-Update this summary and HANDOVER together. No release or remote operation is
-authorized. See `docs/validation/V1-RECOVERY.md` for the bounded test matrix and
-results; historical suites are not silently treated as passing.
+The [acceptance packet](validation/FPR-5-ACCEPTANCE-PACKET.md) is reconciled with
+all completed outcomes. Implementation, six repairs, both OPS1 captures, the
+dependency repair and existing local validation/pilot work are done. No completed
+test, experiment, pilot, failed launch or general review ran in this pass.
+Full-product completion still requires the effective host/owner binding guard,
+actual Cursor delivery and dependent full-pilot evidence, custody disposition,
+one final non-author adjudication and a separate owner release decision. Cursor
+sessionStart/stop remain owner-postponed **NOT VERIFIED**; no smaller release or
+manual-only substitute is selected. The guard's repository adapter can check
+local bindings but cannot attest windows/tasks or enforce backend tool admission.
+
+The one recommended owner decision retains that hold, adopts the explicit
+custody-limited submission basis and assigns the host/protocol implementation
+owner and exact source/build destination, with only the repository adapter the
+agreed contract requires. This is the concrete next action, not permission to
+implement, relaunch checks, report externally or begin adjudication. If the host
+delivery path is unavailable, retain the full-product hold. NEXT is updated once
+as an owner-decision stop; no further experiment or review is scheduled.
+
+The owner did not deliberately open duplicates. Historical cause remains
+unknown, and injected resume admission is not proof of backend execution.
+FPR-OPS-2's missing-dependency failure is repaired; preserve its rollback.
+Legacy UUID/branch/digest binding and installed-asset drift remain explicit
+conditions for a separately scoped consumer rollout, not another dependency
+repair or candidate-suite requirement. Original reports, failures/inventories,
+production source/tests, disabled hooks, old worktrees, protected refs and Muse
+history remain unchanged. Profiles/accounts, permissions, installed/global/
+consumer mutations, hooks, providers/network, live export/delivery, fetch/push,
+main merge, tags, signing and deployment remain restricted. ROADMAP and HANDOVER
+are paired summaries only. Historical results below retain their original scope
+and then-pending prerequisites; they are not new outstanding work.
 
 FPR-0 reconciled the pinned product/lane line (`e9be0c4`), newer Muse line
 (`32254cd`), repaired safety implementation (`348e0f3`) and main baseline

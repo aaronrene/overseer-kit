@@ -8,56 +8,59 @@ Active implementation: `overseer-kit-v1-recovery-20261014`, branch
 `feat/overseer-v1-recovery-20261014`, reconciled base `d47291d`.
 Both older dirty worktrees remain untouched.
 
-**One authorized restoration capture complete; historical cause unresolved.**
-The [acceptance packet](validation/FPR-5-ACCEPTANCE-PACKET.md) and completed
-[prior investigation](validation/FPR-5-HANDOFF-RELIABILITY.md), including its
-seeded propagation reproduction, are preserved unchanged. The new
-[distinct-route capture](validation/FPR-5-RESTORE-REPRO.md) ran once through actual
-installed custom-editor serialization, workspace persistence, selection,
-restoration and renderer resume preparation in an offline host-API harness.
-Two synthetic repositories/threads retained distinct routes before navigation.
-A labelled membership-drift probe then kept thread B while window B's workspace
-input became A: actual client code assigned owner and sent `thread/resume` with
-cwd B. The stub stopped at the request boundary; backend acceptance, effective
-permissions, turn admission and tool execution remain unobserved. This is no
-proof of the historical selection trigger, wrong-root execution or incident
-clearance. Production source/runtime and original evidence remain unchanged.
+**One bounded acceptance-closeout reconciliation complete; full product remains
+on hold.** The [reconciled packet](validation/FPR-5-ACCEPTANCE-PACKET.md) now
+incorporates completed implementation, all six author repairs, the
+[source investigation](validation/FPR-5-HANDOFF-RELIABILITY.md),
+[distinct-route restoration capture](validation/FPR-5-RESTORE-REPRO.md) and
+[legacy dependency repair](validation/FPR-5-LEGACY-CLI-REPAIR.md). None is pending
+again. The packet contains the exact present claim, conditional full-product
+acceptance claim, remaining blocker/action/owner/criterion table and one dormant
+final non-author adjudication brief. This pass is evidence coordination only;
+no completed test, experiment, pilot, failed launch or review was repeated.
 
-The report supplies one confined host/owner repository-binding admission guard
-recommendation. No repair was applied. NEXT stops with no further experiment,
-repair or review scheduled or authorized. Cursor sessionStart/stop remain
-**owner-postponed NOT VERIFIED**. Full automatic-host qualification and
-final-adjudication readiness remain unestablished; FPR-OPS-1 remains an open
-qualification blocker. Final non-author adjudication and separate owner release
-remain unauthorized. No completed test, review, pilot or failed launch was
-repeated; no installed source, profile/account, global/consumer or hook mutation
-occurred during that restoration capture. The later authorized venv repair is
-recorded separately below. All other restrictions remain in force.
+FPR-OPS-1's historical cause remains unknown. Distinct routes stayed separate;
+an injected membership mismatch reached outgoing client `thread/resume` with the
+retained task cwd. Backend acceptance, effective grants and turn/tool execution
+were unobserved. The owner did **not** deliberately open duplicates; neither
+restart/full-disk causation nor wrong-root execution is established. Required
+admission qualification remains open. The proposed guard requires client/host
+selection and task comparison plus execution-owner validation of trusted sender
+context. This repository can supply the agreed binding adapter and checks at its
+own boundaries; NEXT wording or a hook flag cannot enforce external task/tool
+admission. No guard was implemented, and no new investigation is scheduled.
 
-The owner did **not** deliberately open the same conversation or duplicate project
-windows. Logs establish shared display, not how it was selected or restored. The
-earlier explanation overstated the cause. FPR-OPS-1 tracks investigation and
-workspace/task mismatch prevention; changing visible chats was mitigation only.
-FPR-OPS-2's separately authorized [dependency repair](validation/FPR-5-LEGACY-CLI-REPAIR.md)
-is complete. Only `overseer-kit-main-stable/.venv` changed: 190 exact previously
-recorded local artifact files provide PyYAML 6.0.3, cryptography 49.0.0, cffi 2.1.0
-and pycparser 3.0; two old venv aliases to external Python 3.10 PyYAML were replaced.
-The stable source, its own Python 3.14.4 interpreter, global wrapper and external
-alias targets remain unchanged. Exact rollback was rehearsed before mutation;
-required imports/native operations, CLI startup and disposable root selection/
-config-path refusal pass. The legacy CLI does not support modern UUID/branch/
-digest-bound NEXT, so that qualification remains unavailable through this source.
-This repair does not resolve FPR-OPS-1 or establish consumer acceptance. The
-original missing-cryptography failure and both incident reports are preserved.
-NEXT stops; no further experiment or review is scheduled.
+Remaining gates are that host/owner binding qualification, actual Cursor
+sessionStart/stop and dependent full-pilot acceptance, the custody-limited
+claim/evidence disposition, then ONE final non-author adjudication and the
+separate owner release decision. Cursor tests remain **owner-postponed NOT
+VERIFIED**; postponement is preserved without a manual-only release substitute.
+The 40 interactive, 79 host/platform and 28 pilot curated records retain their
+stated provenance; temporary originals/backups and two screenshots are missing.
+The proposed submission uses historical owner observation, not recovered pixels
+or independent visual inspection. Final sufficiency belongs to the adjudicator
+after prerequisites are ready; no adjudication is launched now.
 
-FPR-EVID-1's availability gap is now mapped: 40 interactive copies (34 exact/six
-redacted), 79 host/platform copies and 28 curated pilot records verify, while
-temporary originals/backups and two screenshots remain unavailable. Preserve
-those custody limits for later independent sufficiency assessment.
-Neither restart nor recent-repair causation is proven. See the owner record for
-evidence and scheduling boundaries. Existing consumers, profiles and global
-launchers stay untouched; only the expressly authorized stable venv was repaired.
+FPR-OPS-2 startup/dependency repair is complete, with its backup and rehearsed
+guarded rollback preserved. Only the stable venv changed in that authorized
+action. The unchanged legacy source cannot validate modern UUID/branch/digest
+handoffs; modern consumer binding and installed-footprint drift are conditions
+for a separately selected rollout, not new dependency or candidate-suite work.
+Do not redirect the global wrapper or touch consumers. Original reports,
+failures/inventories, production source/tests, disabled hooks, protected refs,
+old worktrees and Muse history remain preserved.
+
+The single recommended owner decision is to retain the full-product hold,
+adopt the packet's custody-limited submission basis, and assign the confined
+host/protocol binding delivery path with any required repository adapter.
+Name its implementation owner and exact source/build destination before any
+implementation authorization. If that external path is unavailable, keep the
+hold. The concrete pending action is an owner decision in validated `docs/NEXT.md`,
+published once for this pass; summaries are not alternative prompts. Final
+adjudication, Cursor resumption, external reporting, installed/global/consumer
+mutation, profiles/accounts, permissions, hooks, provider/network, live
+export/delivery, fetch/push, main merge, tags, signing and deployment remain
+unauthorized. Stop here with GPT-6 Astra / Max.
 
 The owner selected
 Cursor 3.24.18 on macOS 15.7.2 arm64, retained the complete Python 3.11/3.14 and
