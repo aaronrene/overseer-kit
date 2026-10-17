@@ -1,13 +1,18 @@
-# FPR-5 acceptance closeout packet — reconciled 2026-10-17
+# FPR-5 acceptance closeout packet — Cursor pass completed 2026-10-17
 
 **Packet complete; full-product acceptance and final-adjudication readiness are
-not established.** This is the owner's one bounded acceptance-closeout pass,
-not a new independent review or certification. Implementation, all six repairs,
+not established.** The owner's one bounded Cursor-integration pass is complete,
+following the prior acceptance-closeout reconciliation. This is not a new
+independent review or certification. Implementation, all six repairs,
 both FPR-OPS-1 investigations/captures and the FPR-OPS-2 dependency repair are
 complete. Their completed work is not queued again. FPR-OPS-1 qualification is
 still blocked; the owner-postponed native Cursor events remain **NOT VERIFIED**.
-The full-product target is unchanged. No completed test, experiment, review,
-pilot or isolated launch was repeated, and final adjudication was not started.
+The full-product target is unchanged. The existing browser is sufficient by
+owner direction; no browser expansion is pending. No enforceable new repository
+repair for the demonstrated client mismatch is justified by the available host
+interface. A [precise external change request](../decisions/FPR-OPS-1-CLIENT-CHANGE-REQUEST.md)
+is prepared and **not sent**. No completed test, experiment, review, pilot or
+isolated launch was repeated, and final adjudication was not started.
 
 ## Exact candidate and authority
 
@@ -22,6 +27,11 @@ repair instructions using the completed [source investigation](FPR-5-HANDOFF-REL
 [restoration capture](FPR-5-RESTORE-REPRO.md) and
 [dependency repair](FPR-5-LEGACY-CLI-REPAIR.md). Those dated reports, owner record,
 original inventories and their then-current statements remain unchanged.
+The current owner direction authorizes this bounded integration pass and use
+of surviving evidence with its recorded limits. It supersedes the previous
+owner-decision stop for this pass; it does not resume Cursor checks or authorize
+external reporting. The old proposed owner-decision wording below is replaced
+by the actual outcome and one concrete next action.
 
 | Identity | Value |
 | --- | --- |
@@ -30,6 +40,7 @@ original inventories and their then-current statements remain unchanged.
 | Branch / lane | `feat/overseer-v1-recovery-20261014` / `product` |
 | Packet opening commit | `d6d6b92d0f10c58a41e25678835f2436b1a5f827`; sole parent `829dc3352c6510cd5623afa72a032de868a05f3f` |
 | Reconciliation opening commit | `be54c121253fd7d5fd5228b822f9b88ee377692b`; sole parent `c247186f139c7916a38030ff25fba30f5aa94576` |
+| Cursor-integration pass opening commit | `4efbeb2d38c2ab43568fe455355bf7081fbe3095`; sole parent `be54c121253fd7d5fd5228b822f9b88ee377692b` |
 | Six-repair source commit | `2e8ec694def9be4a0faa4a994bf2fff3f212ab23` |
 | Last production delta | Native window configuration recorded in `7ee9a372e478ad251c17d8e8fd1a4118811c01b2`; subsequent commits change only documentation/evidence and summary locks |
 | Python runtime | `1.0.0.dev1`, SHA-256 `cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774` |
@@ -38,15 +49,16 @@ original inventories and their then-current statements remain unchanged.
 | Original independent verdict | **FINDINGS**, preserved in [FPR-5 review](../reviews/FPR-5-REVIEW.md); author repairs do not replace it |
 
 [Original packet source verification](fpr5-closeout/source-and-evidence.json)
-compared its entry checkout to the final-candidate record: **295 runtime, 440 test, 40 native, ten
-packaging, four validation-driver and two requirements entries match**. Among
+compared its entry checkout to the final-candidate record: **295 runtime, 440
+test, 40 native, ten packaging, four validation-driver and two requirements
+entries match**. Among
 the 1,483 recorded source archive members, only ROADMAP and HANDOVER differ at
 packet entry, reflecting later documentation. New evidence files were added
 after the old archive; this is not a claim that the full checkout equals that
 archive or that an updated release artifact has been built.
 The latest [repair closeout](fpr5-legacy-repair/closeout.json) retains the same
 791 source/test/native/packaging/driver/requirements entries and runtime.
-This reconciliation changes documentation and summary lock rows only. Older
+This pass changes documentation and summary lock rows only. Older
 packet/summary hashes attest their historical revisions, not this edited packet.
 
 ## Exact proposed claim and exclusions
@@ -63,7 +75,10 @@ The exact claim supportable **now**, for coordination and later submission, is:
 > completed implementation, six author repairs, the recorded Python 3.11/3.14
 > and native Muse validation, source installation/migration/rollback work, local
 > integrated-pilot workflow and owner-observed native desktop acceptance.
-> The FPR-OPS-1 investigations and FPR-OPS-2 dependency repair are complete.
+> The FPR-OPS-1 investigations, bounded Cursor-integration pass and FPR-OPS-2
+> dependency repair are complete. The current host interface does not justify
+> an enforceable new repository repair for the captured client mismatch; the
+> required external change request is prepared and unsent.
 > Full-product acceptance is pending: restored-window task admission remains
 > unqualified, Cursor sessionStart and stop are owner-postponed NOT VERIFIED,
 > and the dependent full pilot is unaccepted. Surviving curated evidence has
@@ -193,14 +208,15 @@ rehearsal are complete. The missing-cryptography failure is historical. Preserve
 the [verified backup and guarded rollback](FPR-5-LEGACY-CLI-REPAIR.md#verified-rollback);
 do not rerun repair or rollback.
 
-Only the following gates remain for the unchanged full-product target. B4 and
-B5 are required decisions after qualification, not extra implementation work.
+The following table retains the gate identifiers for the unchanged full-product
+target. B3's submission-basis disposition is now complete; it is not another
+owner approval request. B4 and B5 remain required decisions after qualification.
 
 | Gate | Exact required action | Responsible component / decision owner | Completion criterion |
 | --- | --- | --- | --- |
-| B1 — FPR-OPS-1 task/host admission qualification | Adopt and implement the confined binding contract below; establish refusal at both host admission and execution-owner boundaries, then record the remaining unknown historical cause explicitly. Use only newly authorized evidence for the added behavior, not another restoration investigation. | Client/host and execution-owner maintainers; repository maintainer for any required adapter; product owner assigns scope. | Missing, stale, ambiguous or mismatched bindings cannot acquire work ownership, resume for work, submit/forward a turn or dispatch tools. Correctly bound work remains usable and an unrelated owner is unaffected. Frozen component identities and focused evidence cover the contract below. Historical cause can remain unknown with explicit disposition; the guard is not certified by its proposal. |
+| B1 — FPR-OPS-1 task/host admission qualification | Route the prepared external request under separate reporting authority; obtain an implementation owner and exact supported protocol/build. Establish the specified client and execution-owner enforcement and its focused evidence. No current repository-only repair closes this boundary; a later adapter depends on an actual supported host contract. | Codex IDE extension host/renderer and execution-owner/service maintainers; Cursor workspace API owner only if the required membership contract is missing. Product owner controls external routing. | Missing, stale, ambiguous or mismatched bindings cannot acquire work ownership, resume for work, submit/forward a turn or dispatch tools. Correctly bound work remains usable and an unrelated owner is unaffected. Frozen component identities and evidence establish actual enforcement. Existing downstream enforcement may supply part of this proof; the capture did not inspect it. Historical cause remains explicitly unknown. |
 | B2 — actual automatic host events and dependent pilot | Keep the postponement. Only if the owner later explicitly resumes these checks, obtain the two missing real Cursor receipts and reconcile them with the completed local workflow. Do not repeat the completed pilot or failed launch. If the unavailable pilot fixture prevents that join, identify the exact missing continuity evidence and request only that acquisition when resumption is authorized. | Cursor lifecycle integration and owner-controlled acceptance environment; product owner controls resumption. | Actual sessionStart and stop each display the correct canonical NEXT for the frozen candidate/repository/lane, with a traceable context/revision chain to the integrated workflow. Fixtures, instruction bookends and manual reads do not qualify. Until then **POSTPONED / NOT VERIFIED** blocks the full claim and final-adjudication readiness. |
-| B3 — FPR-EVID-1 claim/evidence disposition | Record owner adoption of the custody-limited submission basis below: preserved curated records, historical owner desktop observation and explicit absent originals. Map any still-needed claim to its exact missing evidence; no invented originals or reruns. Final evidentiary sufficiency belongs to B4. | Product owner accepts submission basis; coordinator maps provenance; final non-author decides sufficiency. | No unresolved demand for original screenshot pixels, unredacted logs or a live old fixture is hidden in the proposed claim. Each required outcome has traceable supporting records or a named blocking gap. A required gap keeps readiness false; adopting provenance is not a waiver of a functional requirement. |
+| B3 — FPR-EVID-1 claim/evidence disposition | **Submission basis recorded under the current owner instruction:** use the surviving records with their stated limits. No missing original has been identified as indispensable to the custody-limited claim. Do not seek another approval or acquisition. Final sufficiency belongs to B4. | Coordinator records provenance; final non-author decides sufficiency. | The claim uses historical owner observation, not missing screenshot pixels, restored unredacted logs or a live old fixture. This disposition is complete for submission, not a guarantee of the final verdict. If the eventual reviewer requires an absent original, identify the exact claim and indispensable artifact before any new action. |
 | B4 — one final non-author adjudication | After B1–B3 and the frozen candidate/evidence handoff are ready, obtain explicit appointment and execute the single brief below. | One independent adjudicator who authored neither implementation, repairs, guard nor this closeout. | One recorded acceptance/blocked verdict on the exact full claim, dispositions for all six findings, host/pilot qualification and custody limits. No outstanding required finding or evidence gap for acceptance; original FINDINGS review remains preserved. |
 | B5 — owner release decision | After a successful B4, present that exact accepted candidate/claim and request the separate release disposition. | Product owner / release owner. | Explicit approval identifies version/artifact/destination and permitted effects, or records a hold. Acceptance alone authorizes no publication, main merge, signing, deployment or consumer rollout. |
 
@@ -226,8 +242,9 @@ without proving or preventing every historical route-selection mechanism.
 
 ## Host guard: repository work versus external ownership
 
-This is a proposed implementation boundary, inferred from the completed traces;
-no guard implementation is claimed or authorized by this closeout.
+This remains a proposed implementation boundary inferred from the completed
+traces. The current pass allowed a justified repository repair; none was found
+for this mismatch under the available interface. No guard was implemented.
 
 | Boundary | Exact work and acceptance obligation |
 | --- | --- |
@@ -243,6 +260,36 @@ NEXT wording, a hook flag or a repository-only comparison cannot supply trusted
 host tokens or stop unrelated client/backend tools. Do not patch installed client
 bundles. Assign those changes to their source/protocol owners; contacting them
 or sending evidence externally requires separate authorization.
+
+## Bounded Cursor-integration pass outcome
+
+**No new repository repair is justified for the demonstrated mismatch with the
+available host interface.** This is a scoped implementation decision based on
+the existing findings, not a claim that every possible future host interface
+is incapable of supporting a repair. No installed client source was accessed
+again and no experiment, functional test or general review was run.
+
+| Protection / missing control | Existing code and result |
+| --- | --- |
+| Overseer's own project and installation | `cli/v1.py:108–140,162–204` binds physical root, launcher location, project UUID and runtime, then detects changed configuration/revision. These protections already exist. |
+| Canonical task read/publication | `cli/v1.py:262–301,314–349` validates root/identity/authority/branch/lane and freshness, with explicit expected digest and context rechecks. `cli/main.py:210–237` uses the same display service and recheck for hooks. These are not new repairs. |
+| Hook transport | `cli/product_bookends.py:103–159` validates the bound hook and any supplied root/identity/lane/event assertions. Empty input remains compatible. Lines 33–41 generate `failClosed: false`; lines 162–167 return presentation text, not execution authority. Existing `tests/fpr1/test_bookends.py` covers this contract; it was read, not rerun. |
+| Client task admission and tool execution | The saved capture reaches client resume dispatch without an Overseer admission call. There is no supported trusted window/task/sender token or mandatory client-tool veto available to this repository in the recorded interface. An invented token, mandatory optional fields or a hook toggle would not establish the required protection. |
+
+The two repository files pinned by the prior investigation (`cli/v1.py` and
+`cli/product_bookends.py`) still match its recorded hashes. No source, browser,
+tests, dependencies, runtime binding or hook configuration changed. No new
+behavioral pass is claimed; document links, request consistency, permitted file
+scope, summary lock rows and canonical NEXT are the mechanical closing checks.
+
+The [external request](../decisions/FPR-OPS-1-CLIENT-CHANGE-REQUEST.md) identifies
+extension-host selection, renderer resume/turn admission and actual execution-owner
+enforcement separately, with exact recorded versions, synthetic observations,
+limitations and completion criteria. It does not allege proven backend escape,
+wrong-root writes or a Cursor restoration cause. No recipient has been contacted
+and no supported implementation commitment or fixed build is available in the
+existing evidence. Future repository adapter work is conditional on that contract,
+not a task to repeat while waiting.
 
 ## Surviving evidence and unavailable originals
 
@@ -267,46 +314,54 @@ on the reported restart. Under the no-repeat instruction, continue with explicit
 custody limits; if a later readiness assessment requires an unavailable original,
 identify that exact claim and evidence gap before any new acquisition or test.
 
-## One consolidated owner recommendation and concrete next action
+Only the following absent evidence is presently indispensable to an unqualified
+full-product claim; neither item is supplied by recovering old screenshots:
 
-**Recommended decision: retain the full-product acceptance hold and assign one
-confined host-binding delivery path.** Adopt the following as a single scope
-decision; it is proposed, not approved by preparation of this packet:
+| Claim still awaiting evidence | Exact missing evidence and disposition |
+| --- | --- |
+| Project-safe restored/forwarded task execution | Supported host/task binding contract and identified client/owner builds, plus evidence of effective mismatch refusal through execution (B1). The existing capture stops at request dispatch and cannot supply this. Await the external implementation path; no new experiment now. |
+| Actual automatic Cursor start/end and complete integrated workflow | Two real native-event receipts showing correct canonical action/context and their link to the completed workflow (B2). They were never established and remain **OWNER-POSTPONED / NOT VERIFIED**. If the absent old pilot prevents that link, specify only the required continuity record when resumption is authorized. |
 
-> Keep the selected full-product target and the existing Cursor-test postponement.
-> Assign the client/extension host and execution-owner maintainers to the binding
-> contract in this packet, with an agreed protocol and exact source/build targets
-> before implementation. Scope repository work only to the adapter/checks that
-> contract requires. Accept the surviving curated records and historical owner
-> desktop observation as the submission basis with their stated custody limits;
-> leave final sufficiency to the one non-author adjudicator. Do not reopen
-> completed repairs, investigations, matrices or pilots. Keep final adjudication,
-> release and existing-consumer rollout on hold until their stated prerequisites
-> and separate authority exist. No client installation mutation, external
-> reporting, new test launch or permission/network expansion follows from this
-> decision alone.
+The unavailable screenshots would be indispensable to a new pixel inspection;
+unredacted logs/incident-time state to a stronger causal claim; the live old
+fixture to a fresh inspection of that historical environment. None of those is
+asserted in the proposed custody-limited claim. The owner observation, copied
+NEXT comparison, quit record and curated workflow records remain the submission
+evidence. No additional original-artifact acquisition is justified in this pass.
+The final reviewer may still identify a precise indispensable gap; that is not
+permission to reconstruct or rerun anything.
 
-The concrete next action is for the product owner to adopt that decision and
-name the host/protocol implementation owner and source/build destination, or
-record that no such delivery path is available and keep the full-product hold.
-This is the only present decision request. No new request to approve postponement
-is made. When the owner eventually chooses to resume Cursor checks or release,
-those later authorities must be explicit; their future need is not permission now.
-If the external owner cannot provide the required boundary, a repository-only
-patch cannot complete the product. Do not silently select a smaller release.
+## Concrete next action
 
-The current request authorizes reconciliation and a single canonical handoff
-update only. Therefore this pass stops at that owner decision, not at another
-investigation, guard implementation or premature adjudication.
+**The owner routes the prepared change request to the Codex IDE extension
+maintainers to obtain an implementation owner and exact supported protocol/build.**
+Use the sendable body of
+[FPR-OPS-1-CLIENT-CHANGE-REQUEST.md](../decisions/FPR-OPS-1-CLIENT-CHANGE-REQUEST.md).
+It names the collaborating execution-service owner and the conditional Cursor
+workspace-API dependency. The request is ready locally; no external submission,
+attachment disclosure or installed-client change is authorized or performed.
+If the assistant is to submit it, the owner must explicitly authorize the
+recipient/channel and exact content first. This is one external routing action,
+not another investigation or request to restate the product scope.
+
+Repository work for this pass is complete. Do not repeat this assessment or add
+speculative adapter code while the host contract is unavailable. If no external
+implementation path is offered, keep B1 visibly blocked; do not claim a local
+prompt or warning completes it. Cursor tests remain postponed, with no request
+to approve that postponement again. B3's submission basis is recorded under the
+current instruction. After B1/B2 and the exact candidate/evidence handoff are
+ready, the ONE non-author adjudication remains, followed by the separate owner
+release decision. No smaller release or reduced product target is selected.
 
 ## Brief for ONE final non-author adjudication — dormant until ready
 
-**Appointment gate:** B1–B3 must be satisfied, the exact full-product claim above
+**Appointment gate:** B1/B2 must be satisfied and B3's recorded custody limits
+must remain explicit; the exact full-product claim above
 must still match the selected scope, and the final source/runtime/native/host
 manifest and all newly affected guard/event evidence must be present. The
 coordinator records those prerequisites; this is an evidence handoff, not a
 separate readiness review. The owner must then explicitly appoint one non-author.
-This pass and its read-only evidence extraction are not that adjudication.
+Neither this bounded integration pass nor the prior closeout is that adjudication.
 
 **Reviewer:** one fresh GPT-6 Astra / Max session with a reviewer who authored
 neither the implementation, six repairs, proposed guard nor this closeout. Read
@@ -324,6 +379,8 @@ and source/evidence delta map from the current candidate; the
 [owner correction/postponement](../decisions/FPR-5-OWNER-CLOSEOUT.md), both
 completed OPS1 reports, the OPS2 repair/rollback record, the custody records
 linked above, and B1/B2's eventual bounded completion evidence and owner decisions.
+Include the prepared external request and the actual supported contract/fixed
+build response; the request alone supplies no evidence of implemented protection.
 Prior counts/raw failures and changed-contract dispositions remain separate.
 
 **Task:** adjudicate the exact proposed full-product claim once from the frozen
@@ -354,15 +411,17 @@ a narrower necessary exception. Do not infer broad authority from this brief.
 
 ## Closeout discipline
 
-Only this packet, paired summaries, two summary lock rows/derived digest and
-bound NEXT change. Original reports/review, failures, inventories,
+Only this packet, the external request, paired summaries, two summary lock rows
+and bound NEXT change. Original reports/review, failures, inventories,
 source/tests/dependency pins and disabled hooks remain unchanged. The user's
-no-repeat instruction overrides the standing pre-feature-commit suite rerun:
-perform only document/link/whitespace checks, scope/preservation checks and bound
-NEXT readback. Preserve old worktrees, protected refs and Muse history. No
+no-repeat instruction overrides the standing pre-feature-commit suite rerun.
+No new product change requires behavioral checks in this pass; perform only
+document/link/whitespace checks, request/source-record consistency,
+scope/preservation checks and bound NEXT readback. Preserve old worktrees,
+protected refs and Muse history. No
 provider/network, consumer hooks, live delivery/export, fetch/push, main merge,
 tags, signing or deployment. Publish NEXT once through bound `next-write` with
-explicit context and prior digest, as an owner-decision stop. One local closing
-commit uses reconciliation opening HEAD as sole parent, followed by the required
-validated NEXT bookend. ROADMAP/HANDOVER summarize; canonical NEXT alone carries
+explicit context and prior digest, as an external-routing stop. One local closing
+commit uses the Cursor-integration opening HEAD as sole parent, followed by the
+required validated NEXT bookend. ROADMAP/HANDOVER summarize; canonical NEXT alone carries
 the pending action. Stop after this bounded pass.

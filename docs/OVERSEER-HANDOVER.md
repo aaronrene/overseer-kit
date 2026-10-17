@@ -8,59 +8,56 @@ Active implementation: `overseer-kit-v1-recovery-20261014`, branch
 `feat/overseer-v1-recovery-20261014`, reconciled base `d47291d`.
 Both older dirty worktrees remain untouched.
 
-**One bounded acceptance-closeout reconciliation complete; full product remains
-on hold.** The [reconciled packet](validation/FPR-5-ACCEPTANCE-PACKET.md) now
-incorporates completed implementation, all six author repairs, the
-[source investigation](validation/FPR-5-HANDOFF-RELIABILITY.md),
-[distinct-route restoration capture](validation/FPR-5-RESTORE-REPRO.md) and
-[legacy dependency repair](validation/FPR-5-LEGACY-CLI-REPAIR.md). None is pending
-again. The packet contains the exact present claim, conditional full-product
-acceptance claim, remaining blocker/action/owner/criterion table and one dormant
-final non-author adjudication brief. This pass is evidence coordination only;
-no completed test, experiment, pilot, failed launch or review was repeated.
+**The one bounded Cursor-integration pass is complete. No enforceable new
+repository repair for the captured client mismatch is justified by the available
+host interface.** Existing root/UUID/runtime, canonical NEXT, freshness and hook
+assertion checks already protect Overseer's own operations. They cannot attest
+the selected client window/task or veto client tool execution. No code, browser,
+test, dependency or hook change was made; no behavioral test, experiment, pilot,
+failed launch or general review was repeated. The browser is sufficient by owner
+direction. Full-product completion is still pending, not replaced by a smaller
+release.
 
-FPR-OPS-1's historical cause remains unknown. Distinct routes stayed separate;
-an injected membership mismatch reached outgoing client `thread/resume` with the
-retained task cwd. Backend acceptance, effective grants and turn/tool execution
-were unobserved. The owner did **not** deliberately open duplicates; neither
-restart/full-disk causation nor wrong-root execution is established. Required
-admission qualification remains open. The proposed guard requires client/host
-selection and task comparison plus execution-owner validation of trusted sender
-context. This repository can supply the agreed binding adapter and checks at its
-own boundaries; NEXT wording or a hook flag cannot enforce external task/tool
-admission. No guard was implemented, and no new investigation is scheduled.
+The [external change request](decisions/FPR-OPS-1-CLIENT-CHANGE-REQUEST.md) is
+ready to send and **not sent**. It names Codex extension-host selection, renderer
+resume/turn admission and execution-owner/service enforcement, with a conditional
+Cursor workspace-API dependency. It uses synthetic observations and gives exact
+recorded versions, required changes and completion criteria. No external owner
+or fixed build has been committed. Future repository adapter work requires an
+actual supported host contract; do not invent one or repeat this pass while waiting.
 
-Remaining gates are that host/owner binding qualification, actual Cursor
-sessionStart/stop and dependent full-pilot acceptance, the custody-limited
-claim/evidence disposition, then ONE final non-author adjudication and the
-separate owner release decision. Cursor tests remain **owner-postponed NOT
-VERIFIED**; postponement is preserved without a manual-only release substitute.
-The 40 interactive, 79 host/platform and 28 pilot curated records retain their
-stated provenance; temporary originals/backups and two screenshots are missing.
-The proposed submission uses historical owner observation, not recovered pixels
-or independent visual inspection. Final sufficiency belongs to the adjudicator
-after prerequisites are ready; no adjudication is launched now.
+The [acceptance packet](validation/FPR-5-ACCEPTANCE-PACKET.md) records that outcome,
+the remaining gates and one dormant final non-author brief. FPR-OPS-1's historical
+cause remains unknown: distinct routes stayed separate, while an injected
+membership mismatch reached outgoing `thread/resume`. Backend acceptance,
+effective grants and turn/tool execution were not observed. The owner did **not**
+deliberately open duplicates. Existing reports, evidence, failures and limitations
+remain unchanged; no installed client source was accessed again.
 
-FPR-OPS-2 startup/dependency repair is complete, with its backup and rehearsed
-guarded rollback preserved. Only the stable venv changed in that authorized
-action. The unchanged legacy source cannot validate modern UUID/branch/digest
-handoffs; modern consumer binding and installed-footprint drift are conditions
-for a separately selected rollout, not new dependency or candidate-suite work.
-Do not redirect the global wrapper or touch consumers. Original reports,
-failures/inventories, production source/tests, disabled hooks, protected refs,
-old worktrees and Muse history remain preserved.
+Remaining requirements are effective client/owner binding protection, the two
+actual Cursor events and their link to the completed workflow, ONE final
+non-author acceptance decision, and the separate owner release decision.
+Cursor sessionStart/stop remain **OWNER-POSTPONED / NOT VERIFIED**. The owner's
+instruction to use surviving evidence settles the submission basis; no additional
+owner approval or original acquisition is queued. Missing originals remain
+disclosed, and final evidentiary sufficiency belongs to the eventual adjudicator.
+The indispensable absent evidence is effective enforcement and actual event
+receipts, not invented screenshot pixels. No adjudication starts now.
 
-The single recommended owner decision is to retain the full-product hold,
-adopt the packet's custody-limited submission basis, and assign the confined
-host/protocol binding delivery path with any required repository adapter.
-Name its implementation owner and exact source/build destination before any
-implementation authorization. If that external path is unavailable, keep the
-hold. The concrete pending action is an owner decision in validated `docs/NEXT.md`,
-published once for this pass; summaries are not alternative prompts. Final
-adjudication, Cursor resumption, external reporting, installed/global/consumer
-mutation, profiles/accounts, permissions, hooks, provider/network, live
-export/delivery, fetch/push, main merge, tags, signing and deployment remain
-unauthorized. Stop here with GPT-6 Astra / Max.
+Implementation, all six repairs, both investigations/captures, the dependency
+repair and completed validation remain done. Preserve the legacy repair's
+verified backup/guarded rollback; its missing modern handoff binding and existing
+installation drift remain separately scoped rollout conditions. Old worktrees,
+protected refs, Muse history, source/tests and disabled hooks are preserved.
+
+**One next action:** the owner routes the prepared request to the Codex IDE
+extension maintainers to obtain an implementation owner and supported protocol/
+build. Assistant submission requires explicit recipient/content authorization;
+none is performed here. Canonical NEXT is published once as that external-routing
+stop. No profile/account, permission, installed/global/consumer, hook, network/
+provider, live export/delivery, fetch/push, main merge, tag, signing or deployment
+action is authorized. Continue with GPT-6 Astra / Max only within a newly supplied
+external response or explicit next scope; do not schedule another investigation.
 
 The owner selected
 Cursor 3.24.18 on macOS 15.7.2 arm64, retained the complete Python 3.11/3.14 and

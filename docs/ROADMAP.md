@@ -24,30 +24,38 @@ The former sole-writer/NXR-GSR chain remains historical and is not the living NE
 | FPR-4 — combined validation | Local matrix, bounded repairs, package and rollback evidence recorded; missing Python 3.11 cell now has complete passing coverage in the acceptance record; selected interactive acceptance remains open |
 | FPR-5 — independent final review | Complete — original **FINDINGS** verdict and evidence preserved in [the review](reviews/FPR-5-REVIEW.md) |
 | FPR-5 bounded repairs | All six implemented; 1,361 selected cases have passing evidence across the new combined run and affected rerun; [author evidence](validation/FPR-5-REPAIRS.md) |
-| Remaining acceptance, final adjudication and release decision | **One bounded closeout reconciliation complete; full-product hold** — [packet](validation/FPR-5-ACCEPTANCE-PACKET.md) contains exact proposed claims, blocker/action/component/criterion table, one consolidated owner recommendation and one dormant final non-author brief. Host qualification, postponed actual events/dependent pilot and evidence disposition precede adjudication; owner release remains separate |
-| FPR-OPS-1 — unexplained cross-window conversation restoration | **Both investigations/captures complete; qualification unresolved** — [distinct-route result](validation/FPR-5-RESTORE-REPRO.md): routes stay distinct; injected membership mismatch reaches outgoing resume. Backend/turn/tool execution unobserved. Host and execution-owner guard work is external; repository adapter work depends on their trusted contract. No investigation or guard implementation is scheduled |
+| Remaining acceptance, final adjudication and release decision | **Bounded Cursor-integration pass complete; full-product acceptance pending** — [packet](validation/FPR-5-ACCEPTANCE-PACKET.md) retains exact claims and one dormant final non-author brief. Effective host/owner protection and postponed actual events/dependent pilot remain; surviving-evidence submission basis is recorded. Final acceptance and owner release are separate |
+| FPR-OPS-1 — unexplained cross-window conversation restoration | **No justified new repository repair under the available interface; external request ready and unsent** — [request](decisions/FPR-OPS-1-CLIENT-CHANGE-REQUEST.md) names Codex extension/renderer and execution-service owners, conditional Cursor API support, exact changes and completion criteria. Existing checks are preserved; no guard, new investigation or experiment is claimed |
 | FPR-OPS-2 — broken shared legacy `ok` environment | **Confined dependency repair complete** — [repair and verified rollback](validation/FPR-5-LEGACY-CLI-REPAIR.md). Only stable `.venv` changed; existing source/interpreter/global wrapper preserved. Imports, native dependencies, CLI startup and disposable root/path-confinement checks pass. Legacy UUID/branch/digest-bound NEXT remains unsupported; no consumer qualification or FPR-OPS-1 resolution claimed |
-| FPR-EVID-1 — external temporary originals unavailable | **Custody-limited submission basis proposed; not a sufficiency waiver** — 40 interactive copies (34 exact/six redacted), 79 host copies and 28 pilot records survive. Original temporary/backup trees and two screenshots are unavailable. Owner observation remains historical; final non-author decides sufficiency once all prerequisites are ready |
+| FPR-EVID-1 — external temporary originals unavailable | **Surviving-evidence submission basis recorded under current owner instruction** — 40 interactive, 79 host and 28 pilot curated records retain their original provenance/limits. No missing original is identified as indispensable to the proposed custody-limited claim; no new acquisition or owner approval is queued. Final non-author decides sufficiency once prerequisites are ready |
 
 The exact current action lives only in `docs/NEXT.md`; use `ok -C ROOT next`.
-The [acceptance packet](validation/FPR-5-ACCEPTANCE-PACKET.md) is reconciled with
-all completed outcomes. Implementation, six repairs, both OPS1 captures, the
-dependency repair and existing local validation/pilot work are done. No completed
-test, experiment, pilot, failed launch or general review ran in this pass.
-Full-product completion still requires the effective host/owner binding guard,
-actual Cursor delivery and dependent full-pilot evidence, custody disposition,
-one final non-author adjudication and a separate owner release decision. Cursor
-sessionStart/stop remain owner-postponed **NOT VERIFIED**; no smaller release or
-manual-only substitute is selected. The guard's repository adapter can check
-local bindings but cannot attest windows/tasks or enforce backend tool admission.
+The one bounded Cursor-integration pass is complete. Existing repository, runtime,
+NEXT and hook checks already enforce their local boundary. The captured mismatch
+occurs in client resume admission, where the available interface gives Overseer
+neither a trusted window/task/sender binding nor control over client tool
+execution. No enforceable new repository repair for that mismatch is justified;
+no code, browser, dependency, test or hook change was made. The browser is
+sufficient by owner direction. No completed test, experiment, pilot, failed
+launch or general review ran. Implementation, six repairs, both investigations/
+captures, dependency repair and completed validation remain done.
 
-The one recommended owner decision retains that hold, adopts the explicit
-custody-limited submission basis and assigns the host/protocol implementation
-owner and exact source/build destination, with only the repository adapter the
-agreed contract requires. This is the concrete next action, not permission to
-implement, relaunch checks, report externally or begin adjudication. If the host
-delivery path is unavailable, retain the full-product hold. NEXT is updated once
-as an owner-decision stop; no further experiment or review is scheduled.
+The [prepared external request](decisions/FPR-OPS-1-CLIENT-CHANGE-REQUEST.md)
+contains the exact responsible components, required change and completion
+criteria; it is **not sent**. One next action is for the owner to route its
+sendable body to the Codex IDE extension maintainers and obtain an implementation
+owner and supported protocol/build. No fixed build or supported contract is
+established. Future repository adapter work depends on that contract; do not
+repeat this assessment or invent an adapter while waiting. NEXT is published
+once as an external-routing stop, not another investigation/review task.
+
+Full-product completion still requires effective host/owner protection, actual
+Cursor delivery with full-workflow continuity, ONE final non-author acceptance
+decision and the separate owner release decision. Cursor sessionStart/stop remain
+**OWNER-POSTPONED / NOT VERIFIED**; no smaller release is selected. The owner's
+instruction to use surviving evidence settles the submission basis, with original
+custody limits and final reviewer sufficiency preserved. No new original-artifact
+acquisition or redundant owner approval is scheduled.
 
 The owner did not deliberately open duplicates. Historical cause remains
 unknown, and injected resume admission is not proof of backend execution.
