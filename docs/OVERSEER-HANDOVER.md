@@ -1,5 +1,23 @@
 # Overseer Kit handover
 
+## Small-task manual handover — complete, 2026-10-17
+
+The owner authorized one small task in this repository to demonstrate everyday
+manual use. Added the [start-to-handover checklist](PRINT-NEXT.md#one-small-task-from-start-to-handover).
+The bound reader displayed the prior stop, then the explicitly published task
+`OVERSEER-MANUAL-HANDOVER-EXAMPLE-1` with GPT-6 Astra / High. Documentation checks
+cover links, matching paired summaries and preservation of the prior text.
+Closeout publishes `OVERSEER-MANUAL-HANDOVER-COMPLETE-1` through the bound writer,
+followed by a local commit and fresh validated readback. Command receipts are in
+`.overseer/scratch/manual-handover-example/` locally.
+
+No unfinished authorized task remains. The accepted source/release and runtime
+are preserved; other repositories are unchanged. Existing-project installation
+remains on hold. This small documentation task does not repeat or broaden the
+completed acceptance or pilot. Canonical [NEXT](NEXT.md) remains the prompt source.
+
+## Preserved manual-display milestone
+
 Current authority: the owner's [current-prompt display decision](decisions/CURRENT-PROMPT-DISPLAY-SCOPE.md),
 which supersedes the FPR-6 external-dependency stop and automatic completion plan
 for this task.

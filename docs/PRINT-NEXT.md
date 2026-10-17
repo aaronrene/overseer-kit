@@ -21,6 +21,37 @@ is complete, publish a `stop` stating completion with no invented next task.
 The [current scope](decisions/CURRENT-PROMPT-DISPLAY-SCOPE.md) excludes automatic
 Cursor events, vendor execution protection and shared-chat investigation.
 
+## One small task, from start to handover
+
+For example, use an already initialized Git project to improve one documentation
+page. No new installation is needed.
+
+1. **Read first.** Run the project's bound `next --lane product` reader above.
+   Check the project, branch, lane and model, and display the returned prompt
+   verbatim. If it refuses, report the refusal and resolve it explicitly.
+2. **Confirm the task's authority.** A valid `stop` means no work is queued.
+   A new owner instruction can authorize a new task; the stop itself cannot.
+   When saving that task, use bound `next-write` with the current context and
+   the whole-file digest from `status --json`, then read it back before work.
+3. **Make the small change.** Stay within the authorized repository and scope.
+   For a documentation edit, check the wording and links and run
+   `git diff --check`. Update ROADMAP and HANDOVER together when the milestone
+   changes; keep them as summaries rather than separate task instructions.
+4. **Publish the handover.** Use bound `next-write` with the current digest and
+   explicit context to save the next unfinished authorized task. If the task is
+   finished and nothing else is authorized, save an `action-kind stop` saying so.
+   For Git, include that NEXT publication in the single closing commit.
+5. **Read after the commit.** Run the same bound reader and display its exact
+   prompt and recommended model. Check that it names the intended project and
+   reports the actual remaining work or completion stop. Report the checks and
+   commit to the owner. Do not treat the completed task as pending again.
+
+This demonstrates the explicit manual workflow. It does not establish automatic
+editor events, qualify a new release or authorize installation into another repo.
+Muse's publication order differs; see the revision rules below.
+
+## Reader and writer reference
+
 Run `./cli/ok -C ROOT next` from this source installation. Each initialized checkout
 has one persistent UUID and physical root in `.overseer/config.yaml` and one
 `docs/NEXT.md`. The reader checks repository, branch, lane, model, action ID/kind,
