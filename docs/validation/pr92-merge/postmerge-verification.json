@@ -1,0 +1,37 @@
+{
+  "merge_commit": "87d40740081c0f5855e75f7aa2df7f16528d4e5c",
+  "merge_parents": [
+    "ff9091cc2f3bdb54c679ea2cd27f4d5280d83603",
+    "18608de80a0f0a5119a41f2fbeba630ab196d450"
+  ],
+  "merged_tree_identical_to_approved_head": true,
+  "public_html": [
+    {
+      "path": "docs/landing/index.html",
+      "hosting_injected_cloudflare_analytics_scripts": 1,
+      "additional_injected_newline": true,
+      "html_after_removing_host_injection_matches_source": true
+    },
+    {
+      "path": "docs/landing/docs.html",
+      "hosting_injected_cloudflare_analytics_scripts": 1,
+      "additional_injected_newline": true,
+      "html_after_removing_host_injection_matches_source": true
+    },
+    {
+      "path": "docs/landing/scenarios/index.html",
+      "hosting_injected_cloudflare_analytics_scripts": 1,
+      "additional_injected_newline": true,
+      "html_after_removing_host_injection_matches_source": true
+    },
+    {
+      "path": "docs/landing/source.html",
+      "hosting_injected_cloudflare_analytics_scripts": 1,
+      "additional_injected_newline": true,
+      "html_after_removing_host_injection_matches_source": true
+    }
+  ],
+  "authenticated_cloudflare_control_plane_verified": false,
+  "control_plane_limit": "No configured authenticated Cloudflare connection/token; no credential/profile search performed.",
+  "hosting_documentation_discrepancy": "HOSTING.md says no tracking script; served HTML includes one Cloudflare analytics script per page. No hosting settings changed."
+}

@@ -1,5 +1,35 @@
 # Overseer Kit handover
 
+## PR #92 — merged with owner approval, 2026-10-17
+
+[PR #92](https://github.com/aaronrene/overseer-kit/pull/92) is merged at
+`87d40740081c0f5855e75f7aa2df7f16528d4e5c`. The owner approved the successor delta
+and existing automatic website deployment. Immediately rechecked approved head
+`18608de`, main `ff9091c` and green checks, marked ready, then merged with an exact
+head guard and merge commit. Both histories are preserved; the resulting main tree
+exactly equals the approved PR tree. The owner-decision gate below is completed.
+
+[Merge record](validation/PR-92-MERGE.md) contains exact identities and receipts.
+Cloudflare's GitHub app reports successful deployment of the merge commit. Four
+public pages and two assets return 200; assets match exactly, and HTML matches after
+removing only one hosting-injected Cloudflare analytics script plus newline per page.
+This reveals a narrow HOSTING.md wording discrepancy about tracking. Authenticated
+Cloudflare account/domain/project-control checks remain unverified because no
+configured read-only connection/token is available. Do not infer those checks from
+the app receipt, change hosting settings, or repeat the completed merge.
+
+No unfinished merge operation remains. The next owner choices are the hosting-doc
+clarification/control verification, if pursued, and any separately scoped release.
+Release needs exact source/version/distribution approval and candidate-specific
+acceptance, artifact, manifest, checksums and notes. Existing-project installation
+stays held. Accepted source `97f0529` and its manual release keep their original
+limits; merge approval is not independent successor acceptance.
+
+This local closeout updates paired summaries and bound NEXT without an extra main
+write or new PR. Source and older worktrees remain unchanged. Earlier milestones
+below are historical; canonical [NEXT](NEXT.md) is the sole prompt source.
+Model: GPT-6 Astra; reasoning: High.
+
 ## PR #92 follow-up — complete, awaiting owner merge decision
 
 [Draft PR #92](https://github.com/aaronrene/overseer-kit/pull/92) received a focused
