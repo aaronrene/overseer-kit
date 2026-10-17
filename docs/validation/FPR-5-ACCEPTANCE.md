@@ -1,3 +1,39 @@
+# FPR-5 acceptance scope — manual delivery, 2026-10-17
+
+**Current scope: existing features, browser and manual repository-bound NEXT.**
+The [owner-approved scope revision](../decisions/FPR-5-MANUAL-DELIVERY-SCOPE.md)
+supersedes earlier automatic-host prerequisites. The maintained CLI, local app,
+actual desktop, local read-only hosted surface, three authority modes, selected
+Python cells and source installation/migration/update/rollback remain in scope.
+The selected platform remains macOS 15.7.2 arm64 source installation. The
+browser is sufficient; no feature removal or browser expansion is requested.
+
+| Requirement | Current acceptance disposition |
+| --- | --- |
+| Manual repository-bound NEXT | Required. Explicit physical root/UUID, branch/revision, lane, model and action context; digest-checked publication through `next-write`. Existing recorded evidence goes to the single non-author adjudicator. |
+| Actual desktop rendering/NEXT | Owner observation and exact copied NEXT comparison were subsequently recorded in [interactive acceptance](FPR-5-INTERACTIVE.md). The original blocked attempt below remains historical; missing screenshot originals remain disclosed. |
+| Local integrated workflow | Completed local install/migration, governance/NEXT, ledger, app/desktop, simulated transport and rollback evidence remains in scope. No pilot rerun. The original full automatic-pilot verdict remains unaccepted. |
+| Actual Cursor sessionStart/stop and dependent pilot continuity | **DEFERRED / NOT VERIFIED**; excluded from this delivery's acceptance prerequisites, not passed by manual or synthetic bookends. |
+| Client-level restored/forwarded conversation protection | **DEFERRED / UNQUALIFIED**; Overseer's own repository checks do not establish client-wide task/tool enforcement. |
+| Shared chat-history behavior | **UNRESOLVED**; neither its cause nor a fix is established. |
+| Upstream vendor request | **OPTIONAL / UNSENT**, not a release prerequisite; no vendor contact authorized. |
+| Evidence custody | Surviving curated evidence with its recorded limits is the submission basis. Unavailable originals are not reconstructed; the final non-author decides sufficiency. |
+| Final acceptance / release | One independent non-author acceptance decision remains, then the owner's separate release decision. Neither is started or performed by this documentation change. |
+
+All six repairs, original FINDINGS, raw failures and completed validation remain
+preserved. The [current packet](FPR-5-ACCEPTANCE-PACKET.md) contains the exact
+revised claim, retained environment/command/authority coverage and review brief.
+No completed tests, experiments, pilot or general review are rerun. Existing
+platform/distribution/provider exclusions and legacy rollout conditions remain.
+Model for this scope reconciliation: GPT-6 Astra; reasoning: High.
+
+## Historical author acceptance record — 2026-10-15
+
+The original report follows unchanged. Its opening identity, then-blocked GUI
+observation, automatic-host requirements and former NEXT are historical, not
+current instructions. Later desktop evidence and the owner-approved revision
+above determine the current scope; deferred requirements are not relabelled passed.
+
 # FPR-5 remaining acceptance — author evidence
 
 Status: local acceptance evidence recorded on 2026-10-15; **two interactive

@@ -1,5 +1,13 @@
 # Prevent work from a conversation bound to another project
 
+**Current disposition — 2026-10-17: OPTIONAL / UNSENT.** Under the
+[manual delivery scope](FPR-5-MANUAL-DELIVERY-SCOPE.md), this vendor request and
+client-level restored/forwarded conversation protection are deferred from this
+delivery's acceptance prerequisites. No contact is authorized or performed.
+Shared chat-history behavior remains unresolved. The prepared body and historical
+observations below are preserved; their completion criteria concern optional
+future qualification, not the current release path.
+
 Prepared 2026-10-17 for the Codex IDE extension maintainers, with the Codex
 execution-service maintainers. Coordinate with the Cursor workspace API owner
 only where the required host membership contract is unavailable. This is a

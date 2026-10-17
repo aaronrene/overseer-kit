@@ -1,10 +1,50 @@
 # Overseer Kit roadmap
 
-Current authority: owner direction on 2026-10-14 to restore the complete product
-without discarding the certified safety work. The [scope reset](decisions/V1-SCOPE-RESET.md)
-and [bounded certification](validation/V1-CERTIFICATION.md) remain the exact record
-for that source snapshot; they do not define the desired full-product endpoint.
-The former sole-writer/NXR-GSR chain remains historical and is not the living NEXT.
+Current authority: the owner's [manual delivery scope decision](decisions/FPR-5-MANUAL-DELIVERY-SCOPE.md)
+on 2026-10-17. Deliver the existing features, browser and explicit repository-bound
+NEXT workflow. Retain the maintained CLI, local app, actual desktop, local
+read-only hosted surface, all three authority modes, selected Python cells and
+source installation/migration/update/rollback requirements. The browser is
+sufficient; the product is not reverted to the older bounded snapshot.
+
+Actual Cursor sessionStart/stop and dependent automatic-pilot continuity are
+**DEFERRED / NOT VERIFIED**. Client-level protection against restored/forwarded
+conversations acting in the wrong project is **DEFERRED / UNQUALIFIED**. These
+are excluded from this delivery, not passed. Shared chat-history behavior remains
+**UNRESOLVED**. The [vendor request](decisions/FPR-OPS-1-CLIENT-CHANGE-REQUEST.md)
+is **OPTIONAL / UNSENT**, not a release prerequisite. No vendor response, host
+contract, guard build or speculative adapter is required for this delivery.
+
+Implementation, six repairs, both investigations, dependency repair and completed
+validation remain done. The local pilot workflow and owner-observed desktop
+records are submitted with their original provenance. The original full automatic
+pilot remains unaccepted. Preserve original FINDINGS, raw failures and unavailable
+original-artifact limitations; no tests, pilots, launches or reviews are repeated.
+The final non-author decides whether the surviving evidence supports the retained
+claim. No screenshot reconstruction or new acquisition is queued.
+
+The [acceptance packet](validation/FPR-5-ACCEPTANCE-PACKET.md) contains the revised
+claim, evidence map and single non-author brief. **Remaining path:** owner appoints
+one independent non-author session to decide acceptance of the exact closing
+candidate, all retained requirements and R1–R6; after ACCEPTED, the owner makes a
+separate release decision identifying artifact/version, destination and permitted
+effects. If BLOCKED, the reviewer must name the precise retained requirement and
+evidence gap. No review or release starts in this documentation action.
+
+Use the bound `ok -C ROOT next` for the selected repository/lane and check the
+returned identity/context; publish only through `next-write` with explicit context
+and expected prior digest. These are manual repository checks, not a guarantee
+that the editor isolates conversations or enforces every tool operation.
+Canonical NEXT alone carries the pending action; ROADMAP/HANDOVER are summaries.
+Model: GPT-6 Astra; reasoning: High. Active checkout:
+`overseer-kit-v1-recovery-20261014`, branch `feat/overseer-v1-recovery-20261014`.
+
+Preserve legacy repair backup/rollback, old worktrees, protected refs, Muse
+history, runtime/tests, dependencies and disabled hooks. Legacy handoff binding
+and installation-footprint drift remain separate consumer-rollout conditions.
+No profiles/accounts, permission changes, installed/global/consumer mutations,
+hooks, vendor contact, provider/network access, live delivery/export, fetch/push,
+main merge, tags, signing, deployment or release are authorized here.
 
 | Milestone | State |
 | --- | --- |
@@ -21,54 +61,19 @@ The former sole-writer/NXR-GSR chain remains historical and is not the living NE
 | FPR-1 — unified foundation and automatic handoff | Complete locally — unified dispatcher/schema-3 migration, preserved bindings/settings, canonical Cursor fixture bookends; [focused evidence](validation/FPR-1-FOUNDATION.md) |
 | FPR-2 — Muse authority, mirror and repository lanes | Complete locally — selected authority, controlled mirrors, explicit adoption/rollback and canonical lane collection; [focused evidence](validation/FPR-2-AUTHORITY.md) |
 | FPR-3 — complete product surface | Complete locally — unified maintained commands, bound app/desktop/hosted surfaces, full footprint and local source packaging; [focused evidence](validation/FPR-3-SURFACES.md) |
-| FPR-4 — combined validation | Local matrix, bounded repairs, package and rollback evidence recorded; missing Python 3.11 cell now has complete passing coverage in the acceptance record; selected interactive acceptance remains open |
+| FPR-4 — combined validation | Local matrix, bounded repairs, package and rollback evidence recorded; missing Python 3.11 cell now has complete passing coverage in the acceptance record; desktop owner evidence recorded; actual Cursor events are deferred/not verified |
 | FPR-5 — independent final review | Complete — original **FINDINGS** verdict and evidence preserved in [the review](reviews/FPR-5-REVIEW.md) |
 | FPR-5 bounded repairs | All six implemented; 1,361 selected cases have passing evidence across the new combined run and affected rerun; [author evidence](validation/FPR-5-REPAIRS.md) |
-| Remaining acceptance, final adjudication and release decision | **Bounded Cursor-integration pass complete; full-product acceptance pending** — [packet](validation/FPR-5-ACCEPTANCE-PACKET.md) retains exact claims and one dormant final non-author brief. Effective host/owner protection and postponed actual events/dependent pilot remain; surviving-evidence submission basis is recorded. Final acceptance and owner release are separate |
-| FPR-OPS-1 — unexplained cross-window conversation restoration | **No justified new repository repair under the available interface; external request ready and unsent** — [request](decisions/FPR-OPS-1-CLIENT-CHANGE-REQUEST.md) names Codex extension/renderer and execution-service owners, conditional Cursor API support, exact changes and completion criteria. Existing checks are preserved; no guard, new investigation or experiment is claimed |
+| Remaining acceptance, final adjudication and release decision | **Manual delivery scope revised; independent acceptance pending** — [packet](validation/FPR-5-ACCEPTANCE-PACKET.md) retains the revised claim and one non-author brief pending owner appointment. B1/B2 are deferred exclusions, not passes. Surviving-evidence submission basis is recorded; owner release remains separate |
+| FPR-OPS-1 — unexplained cross-window conversation restoration | **Shared chat-history behavior unresolved; client protection deferred/unqualified** — [vendor request](decisions/FPR-OPS-1-CLIENT-CHANGE-REQUEST.md) optional and unsent. No vendor response or client guard is required for this delivery; no fix is claimed |
 | FPR-OPS-2 — broken shared legacy `ok` environment | **Confined dependency repair complete** — [repair and verified rollback](validation/FPR-5-LEGACY-CLI-REPAIR.md). Only stable `.venv` changed; existing source/interpreter/global wrapper preserved. Imports, native dependencies, CLI startup and disposable root/path-confinement checks pass. Legacy UUID/branch/digest-bound NEXT remains unsupported; no consumer qualification or FPR-OPS-1 resolution claimed |
-| FPR-EVID-1 — external temporary originals unavailable | **Surviving-evidence submission basis recorded under current owner instruction** — 40 interactive, 79 host and 28 pilot curated records retain their original provenance/limits. No missing original is identified as indispensable to the proposed custody-limited claim; no new acquisition or owner approval is queued. Final non-author decides sufficiency once prerequisites are ready |
+| FPR-EVID-1 — external temporary originals unavailable | **Surviving-evidence submission basis recorded under current owner instruction** — 40 interactive, 79 host and 28 pilot curated records retain their original provenance/limits. No missing original is identified as indispensable to the proposed custody-limited claim; no new acquisition or owner approval is queued. Final non-author decides sufficiency for the revised manual delivery claim |
 
-The exact current action lives only in `docs/NEXT.md`; use `ok -C ROOT next`.
-The one bounded Cursor-integration pass is complete. Existing repository, runtime,
-NEXT and hook checks already enforce their local boundary. The captured mismatch
-occurs in client resume admission, where the available interface gives Overseer
-neither a trusted window/task/sender binding nor control over client tool
-execution. No enforceable new repository repair for that mismatch is justified;
-no code, browser, dependency, test or hook change was made. The browser is
-sufficient by owner direction. No completed test, experiment, pilot, failed
-launch or general review ran. Implementation, six repairs, both investigations/
-captures, dependency repair and completed validation remain done.
+## Historical implementation and validation record
 
-The [prepared external request](decisions/FPR-OPS-1-CLIENT-CHANGE-REQUEST.md)
-contains the exact responsible components, required change and completion
-criteria; it is **not sent**. One next action is for the owner to route its
-sendable body to the Codex IDE extension maintainers and obtain an implementation
-owner and supported protocol/build. No fixed build or supported contract is
-established. Future repository adapter work depends on that contract; do not
-repeat this assessment or invent an adapter while waiting. NEXT is published
-once as an external-routing stop, not another investigation/review task.
-
-Full-product completion still requires effective host/owner protection, actual
-Cursor delivery with full-workflow continuity, ONE final non-author acceptance
-decision and the separate owner release decision. Cursor sessionStart/stop remain
-**OWNER-POSTPONED / NOT VERIFIED**; no smaller release is selected. The owner's
-instruction to use surviving evidence settles the submission basis, with original
-custody limits and final reviewer sufficiency preserved. No new original-artifact
-acquisition or redundant owner approval is scheduled.
-
-The owner did not deliberately open duplicates. Historical cause remains
-unknown, and injected resume admission is not proof of backend execution.
-FPR-OPS-2's missing-dependency failure is repaired; preserve its rollback.
-Legacy UUID/branch/digest binding and installed-asset drift remain explicit
-conditions for a separately scoped consumer rollout, not another dependency
-repair or candidate-suite requirement. Original reports, failures/inventories,
-production source/tests, disabled hooks, old worktrees, protected refs and Muse
-history remain unchanged. Profiles/accounts, permissions, installed/global/
-consumer mutations, hooks, providers/network, live export/delivery, fetch/push,
-main merge, tags, signing and deployment remain restricted. ROADMAP and HANDOVER
-are paired summaries only. Historical results below retain their original scope
-and then-pending prerequisites; they are not new outstanding work.
+The following results and then-pending prerequisites retain their original scope.
+The manual delivery decision above supersedes automatic-host requirements; earlier
+full-product language does not silently restore those as current release gates.
 
 FPR-0 reconciled the pinned product/lane line (`e9be0c4`), newer Muse line
 (`32254cd`), repaired safety implementation (`348e0f3`) and main baseline

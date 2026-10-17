@@ -1,63 +1,56 @@
 # Overseer Kit handover
 
-Current authority: owner direction on 2026-10-14 to restore the complete product
-without discarding the certified safety work. The [scope reset](decisions/V1-SCOPE-RESET.md)
-and [bounded certification](validation/V1-CERTIFICATION.md) remain preserved as the
-record of the smaller source snapshot, not the desired full-product endpoint.
-Active implementation: `overseer-kit-v1-recovery-20261014`, branch
-`feat/overseer-v1-recovery-20261014`, reconciled base `d47291d`.
-Both older dirty worktrees remain untouched.
+Current authority: the owner's [manual delivery scope decision](decisions/FPR-5-MANUAL-DELIVERY-SCOPE.md)
+on 2026-10-17. Deliver the existing features, browser and explicit repository-bound
+NEXT workflow. Retain the maintained CLI, local app, actual desktop, local
+read-only hosted surface, all three authority modes, selected Python cells and
+source installation/migration/update/rollback requirements. The browser is
+sufficient; the product is not reverted to the older bounded snapshot.
 
-**The one bounded Cursor-integration pass is complete. No enforceable new
-repository repair for the captured client mismatch is justified by the available
-host interface.** Existing root/UUID/runtime, canonical NEXT, freshness and hook
-assertion checks already protect Overseer's own operations. They cannot attest
-the selected client window/task or veto client tool execution. No code, browser,
-test, dependency or hook change was made; no behavioral test, experiment, pilot,
-failed launch or general review was repeated. The browser is sufficient by owner
-direction. Full-product completion is still pending, not replaced by a smaller
-release.
+Actual Cursor sessionStart/stop and dependent automatic-pilot continuity are
+**DEFERRED / NOT VERIFIED**. Client-level protection against restored/forwarded
+conversations acting in the wrong project is **DEFERRED / UNQUALIFIED**. These
+are excluded from this delivery, not passed. Shared chat-history behavior remains
+**UNRESOLVED**. The [vendor request](decisions/FPR-OPS-1-CLIENT-CHANGE-REQUEST.md)
+is **OPTIONAL / UNSENT**, not a release prerequisite. No vendor response, host
+contract, guard build or speculative adapter is required for this delivery.
 
-The [external change request](decisions/FPR-OPS-1-CLIENT-CHANGE-REQUEST.md) is
-ready to send and **not sent**. It names Codex extension-host selection, renderer
-resume/turn admission and execution-owner/service enforcement, with a conditional
-Cursor workspace-API dependency. It uses synthetic observations and gives exact
-recorded versions, required changes and completion criteria. No external owner
-or fixed build has been committed. Future repository adapter work requires an
-actual supported host contract; do not invent one or repeat this pass while waiting.
+Implementation, six repairs, both investigations, dependency repair and completed
+validation remain done. The local pilot workflow and owner-observed desktop
+records are submitted with their original provenance. The original full automatic
+pilot remains unaccepted. Preserve original FINDINGS, raw failures and unavailable
+original-artifact limitations; no tests, pilots, launches or reviews are repeated.
+The final non-author decides whether the surviving evidence supports the retained
+claim. No screenshot reconstruction or new acquisition is queued.
 
-The [acceptance packet](validation/FPR-5-ACCEPTANCE-PACKET.md) records that outcome,
-the remaining gates and one dormant final non-author brief. FPR-OPS-1's historical
-cause remains unknown: distinct routes stayed separate, while an injected
-membership mismatch reached outgoing `thread/resume`. Backend acceptance,
-effective grants and turn/tool execution were not observed. The owner did **not**
-deliberately open duplicates. Existing reports, evidence, failures and limitations
-remain unchanged; no installed client source was accessed again.
+The [acceptance packet](validation/FPR-5-ACCEPTANCE-PACKET.md) contains the revised
+claim, evidence map and single non-author brief. **Remaining path:** owner appoints
+one independent non-author session to decide acceptance of the exact closing
+candidate, all retained requirements and R1–R6; after ACCEPTED, the owner makes a
+separate release decision identifying artifact/version, destination and permitted
+effects. If BLOCKED, the reviewer must name the precise retained requirement and
+evidence gap. No review or release starts in this documentation action.
 
-Remaining requirements are effective client/owner binding protection, the two
-actual Cursor events and their link to the completed workflow, ONE final
-non-author acceptance decision, and the separate owner release decision.
-Cursor sessionStart/stop remain **OWNER-POSTPONED / NOT VERIFIED**. The owner's
-instruction to use surviving evidence settles the submission basis; no additional
-owner approval or original acquisition is queued. Missing originals remain
-disclosed, and final evidentiary sufficiency belongs to the eventual adjudicator.
-The indispensable absent evidence is effective enforcement and actual event
-receipts, not invented screenshot pixels. No adjudication starts now.
+Use the bound `ok -C ROOT next` for the selected repository/lane and check the
+returned identity/context; publish only through `next-write` with explicit context
+and expected prior digest. These are manual repository checks, not a guarantee
+that the editor isolates conversations or enforces every tool operation.
+Canonical NEXT alone carries the pending action; ROADMAP/HANDOVER are summaries.
+Model: GPT-6 Astra; reasoning: High. Active checkout:
+`overseer-kit-v1-recovery-20261014`, branch `feat/overseer-v1-recovery-20261014`.
 
-Implementation, all six repairs, both investigations/captures, the dependency
-repair and completed validation remain done. Preserve the legacy repair's
-verified backup/guarded rollback; its missing modern handoff binding and existing
-installation drift remain separately scoped rollout conditions. Old worktrees,
-protected refs, Muse history, source/tests and disabled hooks are preserved.
+Preserve legacy repair backup/rollback, old worktrees, protected refs, Muse
+history, runtime/tests, dependencies and disabled hooks. Legacy handoff binding
+and installation-footprint drift remain separate consumer-rollout conditions.
+No profiles/accounts, permission changes, installed/global/consumer mutations,
+hooks, vendor contact, provider/network access, live delivery/export, fetch/push,
+main merge, tags, signing, deployment or release are authorized here.
 
-**One next action:** the owner routes the prepared request to the Codex IDE
-extension maintainers to obtain an implementation owner and supported protocol/
-build. Assistant submission requires explicit recipient/content authorization;
-none is performed here. Canonical NEXT is published once as that external-routing
-stop. No profile/account, permission, installed/global/consumer, hook, network/
-provider, live export/delivery, fetch/push, main merge, tag, signing or deployment
-action is authorized. Continue with GPT-6 Astra / Max only within a newly supplied
-external response or explicit next scope; do not schedule another investigation.
+## Historical implementation and acceptance record
+
+The following dated results and then-pending prerequisites are preserved as
+history. Automatic-host requirements and earlier handoff instructions below are
+superseded by the current scope above; they do not reopen completed work.
 
 The owner selected
 Cursor 3.24.18 on macOS 15.7.2 arm64, retained the complete Python 3.11/3.14 and
