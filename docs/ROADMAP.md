@@ -1,61 +1,55 @@
 # Overseer Kit roadmap
 
-Current authority: the owner's [manual delivery scope decision](decisions/FPR-5-MANUAL-DELIVERY-SCOPE.md)
-on 2026-10-17. Deliver the existing features, browser and explicit repository-bound
-NEXT workflow. Retain the maintained CLI, local app, actual desktop, local
-read-only hosted surface, all three authority modes, selected Python cells and
-source installation/migration/update/rollback requirements. The browser is
-sufficient; the product is not reverted to the older bounded snapshot.
+Current authority: the owner's [manual delivery scope decision](decisions/FPR-5-MANUAL-DELIVERY-SCOPE.md).
 
-**Owner decision, 2026-10-17:** keep automatic prompt display for convenience.
-Before each new task, explicitly retrieve fresh NEXT from the selected
-repository's bound reader and check its identity/context; use that result rather
-than an earlier displayed prompt. An agent may do this read, so a button click
-is not required when a fresh validated read has already occurred. On refusal or
-wrong context, stop. This is required per new task, not per message. Existing
-implementation and hook settings are preserved, including disabled hooks;
-no client code change, hook activation or automatic-freshness fix is claimed.
+**Independent acceptance completed on 2026-10-17: ACCEPTED for the revised
+manual-delivery scope**, candidate `97f052949146c3cf337478927e6d345e353d2063`.
+The owner-appointed fresh GPT-6 Astra / High non-author reviewer decided R1–R6,
+all 16 packet requirement rows, all 12 command families and custody sufficiency
+in [the reviewer record](reviews/FPR-5-MANUAL-ACCEPTANCE.md). No retained-requirement
+acceptance blocker remains. Original FINDINGS and raw failures are preserved.
+The review closing commit contains documentation/handoff only; it does not
+replace the accepted implementation candidate or constitute a release artifact.
 
-Actual Cursor sessionStart/stop and dependent automatic-pilot continuity are
-**DEFERRED / NOT VERIFIED**. Client-level protection against restored/forwarded
-conversations acting in the wrong project is **DEFERRED / UNQUALIFIED**. These
-are excluded from this delivery, not passed. Shared chat-history behavior remains
-**UNRESOLVED**. The [vendor request](decisions/FPR-OPS-1-CLIENT-CHANGE-REQUEST.md)
-is **OPTIONAL / UNSENT**, not a release prerequisite. No vendor response, host
-contract, guard build or speculative adapter is required for this delivery.
+Retained scope: macOS 15.7.2 arm64 source installation, maintained CLI, local
+browser app, owner-observed actual desktop, local read-only hosted surface,
+Git-only/Muse-only/Muse-with-Git-mirror, selected Python 3.11.15 and 3.14.4 cells
+and pinned Muse 0.2.1rc5, identity/lanes/settings, source installation/migration/
+update/rollback and the completed local integrated workflow. Runtime remains
+`cb08617a09222622e5a3e18c9d48ab5c7f5ff216b1191a2fe390b1765b422774`;
+native configuration remains
+`d65242ef9ca4be228e791d7596bd2a60ff90ba200445c0d5dbf58229c5eecab6`.
 
-Implementation, six repairs, both investigations, dependency repair and completed
-validation remain done. The local pilot workflow and owner-observed desktop
-records are submitted with their original provenance. The original full automatic
-pilot remains unaccepted. Preserve original FINDINGS, raw failures and unavailable
-original-artifact limitations; no tests, pilots, launches or reviews are repeated.
-The final non-author decides whether the surviving evidence supports the retained
-claim. No screenshot reconstruction or new acquisition is queued.
+Keep automatic prompt display as a convenience. Before each new task, an agent
+or operator must retrieve fresh repository-bound NEXT and check physical root,
+UUID, branch/revision, lane, model and action context. Use that validated result;
+stop on refusal or mismatch. No additional button click is required after an
+agent's checked read. This is per task, not per message. Publish canonical NEXT
+only through bound next-write with explicit context and expected prior digest.
+Existing implementation and disabled hooks remain unchanged.
 
-The [acceptance packet](validation/FPR-5-ACCEPTANCE-PACKET.md) contains the revised
-claim, evidence map and single non-author brief. **Remaining path:** owner appoints
-one independent non-author session to decide acceptance of the exact closing
-candidate, all retained requirements and R1–R6; after ACCEPTED, the owner makes a
-separate release decision identifying artifact/version, destination and permitted
-effects. If BLOCKED, the reviewer must name the precise retained requirement and
-evidence gap. No review or release starts in this documentation action.
-The owner appoints the fresh reviewer by supplying the prepared canonical NEXT
-review prompt to that session. The author/coordinator must not execute it.
+Actual Cursor sessionStart/stop and automatic-pilot continuity remain
+**DEFERRED / NOT VERIFIED**. Client restored/forwarded conversation protection
+remains **DEFERRED / UNQUALIFIED**. Shared chat-history behavior remains
+**UNRESOLVED**. Vendor request remains **OPTIONAL / UNSENT**. These are not passes;
+the original full automatic-pilot acceptance remains false.
 
-Use the bound `ok -C ROOT next` for the selected repository/lane and check the
-returned identity/context; publish only through `next-write` with explicit context
-and expected prior digest. These are manual repository checks, not a guarantee
-that the editor isolates conversations or enforces every tool operation.
-Canonical NEXT alone carries the pending action; ROADMAP/HANDOVER are summaries.
-Model: GPT-6 Astra; reasoning: High. Active checkout:
-`overseer-kit-v1-recovery-20261014`, branch `feat/overseer-v1-recovery-20261014`.
+Acceptance uses surviving curated records and historical owner observation.
+Missing screenshot pixels, original logs, binary/profile/cache and pilot fixture
+custody are not supplied by hashes. The reviewer also records that the file
+labelled as invalid ENOSPC-truncated JSON is actually a valid 399-byte prior-attempt
+note; it supplies no successful execution evidence. No original was reconstructed,
+and no test, experiment, pilot or launch was rerun.
 
-Preserve legacy repair backup/rollback, old worktrees, protected refs, Muse
-history, runtime/tests, dependencies and disabled hooks. Legacy handoff binding
-and installation-footprint drift remain separate consumer-rollout conditions.
-No profiles/accounts, permission changes, installed/global/consumer mutations,
-hooks, vendor contact, provider/network access, live delivery/export, fetch/push,
-main merge, tags, signing, deployment or release are authorized here.
+**Next: stop for the owner's separate release decision** naming the accepted
+candidate, version/artifact, destination and permitted effects, or holding release.
+Canonical [NEXT](NEXT.md) carries that pending stop; these documents are summaries.
+No new review, repair or rerun is queued. Legacy modern-binding and installed
+footprint-drift conditions remain for any separately authorized consumer rollout.
+Preserve their backup/rollback, old worktrees, protected refs and Muse history.
+No publication, deployment, merge, signing, tag, fetch/push, network/provider,
+vendor contact, live delivery, consumer/global/profile/dependency/hook changes
+are authorized. Model: GPT-6 Astra; reasoning: High.
 
 | Milestone | State |
 | --- | --- |
@@ -76,10 +70,10 @@ main merge, tags, signing, deployment or release are authorized here.
 | FPR-4 — combined validation | Local matrix, bounded repairs, package and rollback evidence recorded; missing Python 3.11 cell now has complete passing coverage in the acceptance record; desktop owner evidence recorded; actual Cursor events are deferred/not verified |
 | FPR-5 — independent final review | Complete — original **FINDINGS** verdict and evidence preserved in [the review](reviews/FPR-5-REVIEW.md) |
 | FPR-5 bounded repairs | All six implemented; 1,361 selected cases have passing evidence across the new combined run and affected rerun; [author evidence](validation/FPR-5-REPAIRS.md) |
-| Remaining acceptance, final adjudication and release decision | **Manual delivery scope revised; independent acceptance pending** — [packet](validation/FPR-5-ACCEPTANCE-PACKET.md) retains the revised claim and one non-author brief pending owner appointment. B1/B2 are deferred exclusions, not passes. Surviving-evidence submission basis is recorded; owner release remains separate |
+| Final manual-delivery adjudication / owner release | **ACCEPTED** at `97f052949146c3cf337478927e6d345e353d2063`; [independent verdict](reviews/FPR-5-MANUAL-ACCEPTANCE.md). All retained requirements and R1–R6 decided. Separate owner release decision pending; B1/B2 remain deferred, not passed |
 | FPR-OPS-1 — unexplained cross-window conversation restoration | **Shared chat-history behavior unresolved; client protection deferred/unqualified** — [vendor request](decisions/FPR-OPS-1-CLIENT-CHANGE-REQUEST.md) optional and unsent. No vendor response or client guard is required for this delivery; no fix is claimed |
 | FPR-OPS-2 — broken shared legacy `ok` environment | **Confined dependency repair complete** — [repair and verified rollback](validation/FPR-5-LEGACY-CLI-REPAIR.md). Only stable `.venv` changed; existing source/interpreter/global wrapper preserved. Imports, native dependencies, CLI startup and disposable root/path-confinement checks pass. Legacy UUID/branch/digest-bound NEXT remains unsupported; no consumer qualification or FPR-OPS-1 resolution claimed |
-| FPR-EVID-1 — external temporary originals unavailable | **Surviving-evidence submission basis recorded under current owner instruction** — 40 interactive, 79 host and 28 pilot curated records retain their original provenance/limits. No missing original is identified as indispensable to the proposed custody-limited claim; no new acquisition or owner approval is queued. Final non-author decides sufficiency for the revised manual delivery claim |
+| FPR-EVID-1 — external temporary originals unavailable | **Sufficient for the limited accepted claim**, with missing-original limits and the 399-byte attempt-note discrepancy in the reviewer record. No reconstructed originals or independent pixel inspection; no acquisition queued |
 
 ## Historical implementation and validation record
 
