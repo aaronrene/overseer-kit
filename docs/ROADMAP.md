@@ -1,7 +1,28 @@
 # Overseer Kit roadmap
 
-Current authority: the owner's [manual delivery scope decision](decisions/FPR-5-MANUAL-DELIVERY-SCOPE.md)
-and explicit local release authorization recorded in the [release record](releases/FPR-5-MANUAL-LOCAL-RELEASE.md).
+Current authority: the owner's [automatic completion plan](decisions/FPR-6-AUTOMATIC-COMPLETION-PLAN.md).
+The [manual scope](decisions/FPR-5-MANUAL-DELIVERY-SCOPE.md) and
+[local release](releases/FPR-5-MANUAL-LOCAL-RELEASE.md) remain preserved milestones.
+
+**FPR-6 — finish the automatic experience before installation into existing
+projects.** The owner has reopened automatic session delivery, restored/forwarded
+project protection and the unresolved shared-chat issue. The completion plan is
+saved; execution is queued for one sustained GPT-6 Astra / High session. No new
+implementation or host verification is claimed by this planning closeout.
+
+| Completion work | Current state / exact remaining outcome |
+| --- | --- |
+| A — automatic start/end NEXT | Adapter code exists; actual Cursor events remain NOT VERIFIED. Resolve the known keychain/model-turn prerequisite before any new real event attempt; do not repeat the failed launch |
+| B — wrong-project work prevention | UNQUALIFIED at the client/execution boundary. Implement only a demonstrated supported local change; external host/task/owner enforcement may require a named outside component |
+| C — shared-chat display cause | UNRESOLVED. Reuse the completed investigations; pursue only an accessible missing discriminator, with no invented causal explanation |
+| D — full automatic workflow | NOT VERIFIED. Connect newly qualified A/B behavior in a narrow disposable workflow; preserve C's explicit disposition and do not rerun the historical pilot |
+
+The session must finish all useful authorized local work before stopping for a
+specific unavailable capability or new permission. No repeated broad reviews,
+completed suites/experiments or routine approval pauses. Run only justified new
+or affected checks. Full details, evidence requirements, ownership, restrictions
+and stop conditions are in the plan. The preserved manual release remains valid
+only for its original claim; it does not satisfy these reopened requirements.
 
 **Independent acceptance completed on 2026-10-17: ACCEPTED for the revised
 manual-delivery scope**, candidate `97f052949146c3cf337478927e6d345e353d2063`.
@@ -29,11 +50,12 @@ agent's checked read. This is per task, not per message. Publish canonical NEXT
 only through bound next-write with explicit context and expected prior digest.
 Existing implementation and disabled hooks remain unchanged.
 
-Actual Cursor sessionStart/stop and automatic-pilot continuity remain
-**DEFERRED / NOT VERIFIED**. Client restored/forwarded conversation protection
-remains **DEFERRED / UNQUALIFIED**. Shared chat-history behavior remains
-**UNRESOLVED**. Vendor request remains **OPTIONAL / UNSENT**. These are not passes;
-the original full automatic-pilot acceptance remains false.
+For the preserved manual release, actual Cursor events and automatic continuity
+were **DEFERRED / NOT VERIFIED**, and restored/forwarded protection was
+**DEFERRED / UNQUALIFIED**. FPR-6 now reopens those requirements; their verification
+status has not improved. Shared chat-history behavior remains **UNRESOLVED**.
+The prepared vendor request remains **UNSENT**; any external routing needs
+separate authority. The original full automatic-pilot acceptance remains false.
 
 Acceptance uses surviving curated records and historical owner observation.
 Missing screenshot pixels, original logs, binary/profile/cache and pilot fixture
@@ -51,16 +73,21 @@ retained component entries passed; completed tests/reviews were not rerun.
 The independent acceptance record is a separate byte-exact companion from
 `a6d2576dfeb00f8209e56908bef8d192431312cf`; it is not inserted into the source.
 
-**Next: stop; local release is complete.** Canonical [NEXT](NEXT.md) carries the
-validated stop. No new review, repair, rerun or installation is queued.
-Any later installation/rollout requires separate owner authorization naming
-targets/effects, modern binding or separately scoped legacy source changes,
-target footprint-drift classification, root/UUID/branch/lane/revision/digest
-readback and mismatch refusal, preservation of owner content/history/NEXT and
-compatible guarded backup/rollback. Summary lock updates are not full sync.
-Preserve older worktrees, protected refs and Muse history. No installation,
-wrapper/hook change, network, publication, push, merge, tag, signing, deployment
-or native build was performed or is queued. Model: GPT-6 Astra; reasoning: High.
+**Next: execute the FPR-6 automatic completion plan in one sustained session.**
+Canonical [NEXT](NEXT.md) is the sole actionable prompt. The old release stop is
+superseded for this newly requested scope. Finish concrete local fixes and new
+missing-evidence work when feasible; otherwise give the exact external dependency
+and smallest next action after completing independent work. Do not claim that
+Overseer prompt checks enforce client tool execution.
+
+**Existing-project installation remains on hold.** Later rollout still requires
+named targets/effects, modern binding or separately scoped legacy source changes,
+footprint assessment, exact context readback/mismatch refusal and preserved
+owner content/history/NEXT/guarded rollback. Existing hooks and shared commands
+remain unchanged. No account/keychain access, network, vendor contact,
+publication, push, merge, tag, signing, deployment or native build is authorized.
+Preserve release artifacts, original evidence, old worktrees and Muse history.
+Model: GPT-6 Astra; reasoning: High.
 
 | Milestone | State |
 | --- | --- |
@@ -81,8 +108,9 @@ or native build was performed or is queued. Model: GPT-6 Astra; reasoning: High.
 | FPR-4 — combined validation | Local matrix, bounded repairs, package and rollback evidence recorded; missing Python 3.11 cell now has complete passing coverage in the acceptance record; desktop owner evidence recorded; actual Cursor events are deferred/not verified |
 | FPR-5 — independent final review | Complete — original **FINDINGS** verdict and evidence preserved in [the review](reviews/FPR-5-REVIEW.md) |
 | FPR-5 bounded repairs | All six implemented; 1,361 selected cases have passing evidence across the new combined run and affected rerun; [author evidence](validation/FPR-5-REPAIRS.md) |
-| Final manual-delivery adjudication / owner release | **ACCEPTED** at `97f052949146c3cf337478927e6d345e353d2063`; [independent verdict](reviews/FPR-5-MANUAL-ACCEPTANCE.md). All retained requirements and R1–R6 decided. Owner-authorized local source release complete; installation/rollout remains separately gated; B1/B2 remain deferred, not passed |
-| FPR-OPS-1 — unexplained cross-window conversation restoration | **Shared chat-history behavior unresolved; client protection deferred/unqualified** — [vendor request](decisions/FPR-OPS-1-CLIENT-CHANGE-REQUEST.md) optional and unsent. No vendor response or client guard is required for this delivery; no fix is claimed |
+| Final manual-delivery adjudication / owner release | **ACCEPTED** at `97f052949146c3cf337478927e6d345e353d2063`; [independent verdict](reviews/FPR-5-MANUAL-ACCEPTANCE.md). All retained requirements and R1–R6 decided. Owner-authorized local source release complete; installation/rollout remains separately gated; B1/B2 remain excluded from that manual-release claim and are reopened under FPR-6 |
+| FPR-6 — automatic experience completion | **PLAN SAVED; EXECUTION QUEUED.** [Finite completion plan](decisions/FPR-6-AUTOMATIC-COMPLETION-PLAN.md); resolve A–D before existing-project rollout. Preserve the manual release; complete local work before any specific external dependency stop |
+| FPR-OPS-1 — unexplained cross-window conversation restoration | **Shared chat-history behavior unresolved; client protection unqualified and reopened under FPR-6** — [vendor request](decisions/FPR-OPS-1-CLIENT-CHANGE-REQUEST.md) optional and unsent. No vendor response or client guard was required for the preserved manual delivery; FPR-6 reopens protection for the expanded goal; no fix is claimed |
 | FPR-OPS-2 — broken shared legacy `ok` environment | **Confined dependency repair complete** — [repair and verified rollback](validation/FPR-5-LEGACY-CLI-REPAIR.md). Only stable `.venv` changed; existing source/interpreter/global wrapper preserved. Imports, native dependencies, CLI startup and disposable root/path-confinement checks pass. Legacy UUID/branch/digest-bound NEXT remains unsupported; no consumer qualification or FPR-OPS-1 resolution claimed |
 | FPR-EVID-1 — external temporary originals unavailable | **Sufficient for the limited accepted claim**, with missing-original limits and the 399-byte attempt-note discrepancy in the reviewer record. No reconstructed originals or independent pixel inspection; no acquisition queued |
 
