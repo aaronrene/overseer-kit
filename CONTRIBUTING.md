@@ -39,7 +39,7 @@ pip install -r requirements-v1-dev.txt
 ```
 
 `cli/ok` is the canonical POSIX entrypoint using this installation’s isolated `.venv`. The
-`cli/overseer` shim remains for compatibility and prints a one-line deprecation.
+`cli/overseer` shim remains for compatibility and delegates to `cli/ok`.
 
 ## Making a change
 

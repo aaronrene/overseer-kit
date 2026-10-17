@@ -167,7 +167,10 @@ checkout-local `.cursor/`, all Git/Muse administration, `.env` and `.env.*`, and
 old local bridge sentinel. Actual excluded snapshot paths appear in the report;
 ignore rules alone are not evidence. Templates and living summaries remain.
 An old snapshot may contain local bindings; projection omits them without changing
-Muse history. Normal adoption still refuses tracked local bindings under R1.
+Muse history. Current Muse adoption requires an explicit `--tracked-bindings
+preserve` choice when local bindings are tracked, or separately authorized
+untracking before retry. Adoption never silently untracks owner files. See the
+[current authority contract](docs/FPR-2-AUTHORITY-AND-LANES.md#explicit-authority).
 
 Supported files are regular, singly linked files. Working bytes must match the
 snapshot, the shared stage must be empty, and source revision/config are rechecked.
@@ -188,7 +191,9 @@ Git command. Nothing installs or activates editor/Muse/Git hooks.
 ## Separately authorized delivery and retry
 
 Only after approving actual payload and named destinations, invoke `mirror deliver`
-with the same plan arguments and an explicit physical `--gh /path/to/gh` executable.
+with the same plan arguments, `--allow-network`, and an explicit physical
+`--gh /path/to/gh` executable. Without the network flag, the current dispatcher
+refuses delivery before transport.
 No delivery was run against a real remote during R2. Preparation and verification
 never contact remotes. Ordinary local `status`/`next` remain offline.
 
@@ -240,5 +245,8 @@ revision with the same projection gets a correspondence commit with no file delt
 Interrupted preparation can leave unreachable local objects, but never publishes
 an unchecked tree; ordinary rerun can finish. There is no new ledger or daemon.
 
-The [validation record](docs/validation/V1-RECOVERY.md#r2-controlled-mirror-preparation-and-retry--2026-10-08)
+The [historical R2 validation record](https://github.com/aaronrene/overseer-kit/blob/ff9091cc2f3bdb54c679ea2cd27f4d5280d83603/docs/validation/V1-RECOVERY.md#r2-controlled-mirror-preparation-and-retry--2026-10-08)
 distinguishes retained local fixture results from later source/CI/publication evidence.
+That link pins the historical document; the current
+[controlled-distribution contract](docs/FPR-2-AUTHORITY-AND-LANES.md#controlled-distribution)
+describes the restored product's explicit authorization requirements.

@@ -1,5 +1,35 @@
 # Overseer Kit roadmap
 
+## PR #92 follow-up — complete, awaiting owner merge decision
+
+[Draft PR #92](https://github.com/aaronrene/overseer-kit/pull/92) received a focused
+author review of the main reconciliation and post-acceptance delta. The
+[review record](reviews/PR-92-INTEGRATION-FOLLOWUP.md) records five resolved
+documentation findings: mirror flags/preservation policy, historical evidence
+link, static-site versus explicit CLI behavior, and small operating-guide errors.
+No unresolved finding remains in this scoped author review. Runtime is unchanged;
+all 295 runtime files match completed source. Existing 25-check lane-guard evidence
+was verified by source/test hashes and reused, not rerun or relabelled independent.
+
+Fresh landing, HTML/link, 22 guide-link, CLI-help, asset/layout and preservation
+checks pass. Main remains `ff9091c` at review; final-head GitHub checks are confirmed
+after pushing this documentation closeout and recorded in the PR. Original
+preparation receipts, whole-product README, accepted source `97f0529`, acceptance
+and local manual release remain unchanged. No general review or suite repeated.
+
+Next owner decision: approve this successor delta and authorize marking the draft
+ready and merging the final PR head, including the existing main-site deployment
+consequence. Recheck main/head/checks immediately before merge. Independent
+successor acceptance is not claimed; a non-author may review only this bounded
+delta if separately appointed. Release still requires an explicit source/version/
+distribution decision, candidate-specific acceptance and verified/approved artifacts,
+manifest, checksums and notes. Existing-project installation remains on hold.
+
+No unfinished authorized follow-up task remains. No merge, release, production
+deployment or existing-project installation occurred. Prior milestones below are
+historical; canonical [NEXT](NEXT.md) is the sole prompt source.
+Model: GPT-6 Astra; reasoning: High.
+
 ## Draft PR publication — complete, 2026-10-17
 
 Draft PR: https://github.com/aaronrene/overseer-kit/pull/92.

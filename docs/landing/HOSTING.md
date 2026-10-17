@@ -12,15 +12,17 @@ does not run Overseer, initialize repositories, perform reviews or execute tasks
 | `/` | Original landing layout with the plan-review, phased-build and completion-review workflow |
 | `/docs.html` | Governance workflow, current CLI boundary, installation and repository guides |
 | `/scenarios/` | Original persona flows, clearly labelled as governance patterns or examples |
+| `/source.html` | Accepted manual source identity, later-candidate boundary and source preparation guide |
 | `/assets/style.css` | The original responsive styles, including light and dark themes |
 | `/assets/theme.js` | Optional theme preference only |
 
-All three pages work without JavaScript. Theme selection is an enhancement;
+All four pages work without JavaScript. Theme selection is an enhancement;
 no application backend, tracking script, credential prompt or repository access
 is involved. The original diagrams remain in their original positions and explain
 the operating model. Their surrounding copy makes clear that independent humans or
-agent sessions perform review judgment and project repositories own domain checks;
-the current CLI does not automate either role.
+agent sessions perform review judgment and project repositories own domain checks.
+The current CLI can run explicitly invoked review and verification commands;
+this static website cannot.
 
 The primary action opens `source.html`, distinguishing the accepted manual snapshot
 from later development. Historical rc.1 links retain their immutable targets.
@@ -29,7 +31,7 @@ Git-only setup needs no Muse installation or account.
 
 ## Local verification
 
-Open `docs/landing/index.html` directly in a browser. Verify all three pages at
+Open `docs/landing/index.html` directly in a browser. Verify all four pages at
 desktop and mobile widths, with JavaScript disabled, and in light and dark
 themes. Follow current guide/release links. Compare the DOM structure, stylesheet,
 theme script and image bytes with the approved original presentation baseline;
@@ -39,7 +41,8 @@ only factual text and link destinations should differ.
 
 The project publishes `docs/landing/` from GitHub. Normal pull-request activity
 creates the preview; an authorized merge to `main` triggers production deployment.
-Overseer itself does not merge or deploy. Do not manually create or retry a Pages
+This website does not merge or deploy. The kit's PR-landing command requires
+separate explicit authorization. Do not manually create or retry a Pages
 deployment or change project settings as part of documentation publication.
 
 Before accepting a preview, verify its exact candidate commit, pages and links.
