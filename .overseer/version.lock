@@ -3,7 +3,7 @@ kit_version: 1.0.0.dev1
 config_version: 3
 installed_at: '2026-07-10T00:00:00Z'
 synced_at: '2026-09-20T15:24:42Z'
-footprint_digest: sha256:882c3d251152d292378baf00d4b848a8013a321ef1808119d270a81dde0eec18
+footprint_digest: sha256:493a8c38c83b15ec2aa1fc99a2adc0224574512df741d408e70c03173ac48ae0
 footprint:
 - path: .claude/skills/adversarial-freeze-review/SKILL.md
   source: cursor/skills/adversarial-freeze-review/SKILL.md
@@ -151,7 +151,7 @@ footprint:
   origin: kit
 - path: .overseer/bin/ok
   source: bound-product-assets
-  sha256: sha256:1b84db23babf0961885e1e66570034556ee5b3f0780d30ccf3e48cd0e38b38a4
+  sha256: sha256:a22ebaff8598847ed27ccf7d45444b3d01f065e7c94f5fd520b44623ad315037
   origin: kit
 - path: .overseer/policy/model-labels.yaml
   source: policy/model-labels.yaml
@@ -171,15 +171,15 @@ footprint:
   origin: kit
 - path: MUSE-BRIDGE-WORKFLOW.md
   source: templates/MUSE-BRIDGE-WORKFLOW.template.md
-  sha256: 08f1f73e8cb579210f05aea944928a0e7b2a6ae4ced3a4d42df7bab21543dcc2
-  origin: kit
+  sha256: f57978000219ddb07166f995485cc7e32a887e423206a52fe0c8b1a068ec1511
+  origin: preserved
 - path: docs/OVERSEER-HANDOVER.md
   source: templates/OVERSEER-HANDOVER.template.md
-  sha256: sha256:78783871efa3867c8c200f3854a6d6e4da0237ae1c36e2ab02e875410c93f88d
+  sha256: sha256:2937b227409fb347dc46c436b1fd05d866bc57f83b708fcf2a53543e967061fe
   origin: preserved
 - path: docs/ROADMAP.md
   source: templates/ROADMAP.template.md
-  sha256: sha256:ab941d1351ec2a1391f7fa269e3ec05550489ab9812a2fc35ffe9bb6a9cc5c68
+  sha256: sha256:6292d793ffa7768fb6fb51667e9cf2c3a21d2541af0f20016eb959a75c4f2fb9
   origin: preserved
 - path: scripts/muse-bridge-deploy.sh
   source: templates/scripts/muse-bridge-deploy.sh.template

@@ -157,7 +157,7 @@
     },
     {
       "path": "AGENTS.md",
-      "resolution": "completed_source"
+      "resolution": "reconciled"
     },
     {
       "path": "CHANGELOG.md",
@@ -365,7 +365,7 @@
     },
     {
       "path": "docs/OVERSEER-HANDOVER.md",
-      "resolution": "completed_source"
+      "resolution": "reconciled"
     },
     {
       "path": "docs/OVERSEER-KIT-SPEC.md",
@@ -385,7 +385,7 @@
     },
     {
       "path": "docs/ROADMAP.md",
-      "resolution": "completed_source"
+      "resolution": "reconciled"
     },
     {
       "path": "docs/TRACK-O-NORMIE-CUSTODY-PRODUCT-CONTRACT.md",

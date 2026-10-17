@@ -1,5 +1,36 @@
 # Overseer Kit handover
 
+## Draft PR publication — prepared, 2026-10-17
+
+The isolated integration is prepared for the authorized draft PR push.
+Branch: `feat/overseer-publication-20261017`, based on current main
+`ff9091cc2f3bdb54c679ea2cd27f4d5280d83603` and completed source `f6a314c`.
+The whole-product README and accepted manual release are preserved; main's
+website presentation and governance-loop improvements remain, with delivery
+copy reconciled to the manual source boundary. All 295 runtime files match the
+completed source. This is later work, not acceptance of a new release.
+
+[Publication record](validation/PUBLICATION-PREPARATION.md) records per-path
+reconciliation, focused checks, preserved evidence, and exact merge/release steps.
+Landing validation, four HTML pages, 57 local links, 15 unchanged website assets,
+repository-document links and layout preservation pass. Reuse the accepted
+snapshot's evidence and the later bookend repair's 25 author checks; no general
+review or suite was repeated. Manual-use and evidence-custody limits remain.
+
+Before merge, resolve focused PR findings and the post-acceptance delta, confirm
+main/final-head checks, and obtain explicit owner merge approval including the
+existing hosting consequence. Before release, select/authorize the exact source,
+version and distribution, bind acceptance to that candidate, and verify/approve
+its artifact, manifest, checksums and notes. No required GitHub checks or branch
+rules were configured at preparation; absence of checks is not a passing CI run.
+Existing-project installation remains separately held. No merge, release,
+deployment, other-project change or older-worktree change was performed.
+
+Remaining authorized work: push the feature branch, open the draft PR and record its link.
+Canonical [NEXT](NEXT.md) is the sole prompt authority. The prior milestones below
+are historical; their completed tasks and old stops are not new work.
+Model: GPT-6 Astra; reasoning: High.
+
 ## Small-task manual handover — complete, 2026-10-17
 
 The owner authorized one small task in this repository to demonstrate everyday
