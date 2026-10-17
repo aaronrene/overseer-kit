@@ -1,6 +1,7 @@
 # Overseer Kit handover
 
-Current authority: the owner's [manual delivery scope decision](decisions/FPR-5-MANUAL-DELIVERY-SCOPE.md).
+Current authority: the owner's [manual delivery scope decision](decisions/FPR-5-MANUAL-DELIVERY-SCOPE.md)
+and explicit local release authorization recorded in the [release record](releases/FPR-5-MANUAL-LOCAL-RELEASE.md).
 
 **Independent acceptance completed on 2026-10-17: ACCEPTED for the revised
 manual-delivery scope**, candidate `97f052949146c3cf337478927e6d345e353d2063`.
@@ -41,15 +42,25 @@ labelled as invalid ENOSPC-truncated JSON is actually a valid 399-byte prior-att
 note; it supplies no successful execution evidence. No original was reconstructed,
 and no test, experiment, pilot or launch was rerun.
 
-**Next: stop for the owner's separate release decision** naming the accepted
-candidate, version/artifact, destination and permitted effects, or holding release.
-Canonical [NEXT](NEXT.md) carries that pending stop; these documents are summaries.
-No new review, repair or rerun is queued. Legacy modern-binding and installed
-footprint-drift conditions remain for any separately authorized consumer rollout.
-Preserve their backup/rollback, old worktrees, protected refs and Muse history.
-No publication, deployment, merge, signing, tag, fetch/push, network/provider,
-vendor contact, live delivery, consumer/global/profile/dependency/hook changes
-are authorized. Model: GPT-6 Astra; reasoning: High.
+**Owner-authorized local source release completed on 2026-10-17.**
+Version remains `1.0.0.dev1`; the exact accepted source was packaged with the
+existing tool at `/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RELEASES/fpr5-manual-97f0529/`.
+The [release record](releases/FPR-5-MANUAL-LOCAL-RELEASE.md) records archive,
+manifest and acceptance provenance hashes. New archive integrity and all 791
+retained component entries passed; completed tests/reviews were not rerun.
+The independent acceptance record is a separate byte-exact companion from
+`a6d2576dfeb00f8209e56908bef8d192431312cf`; it is not inserted into the source.
+
+**Next: stop; local release is complete.** Canonical [NEXT](NEXT.md) carries the
+validated stop. No new review, repair, rerun or installation is queued.
+Any later installation/rollout requires separate owner authorization naming
+targets/effects, modern binding or separately scoped legacy source changes,
+target footprint-drift classification, root/UUID/branch/lane/revision/digest
+readback and mismatch refusal, preservation of owner content/history/NEXT and
+compatible guarded backup/rollback. Summary lock updates are not full sync.
+Preserve older worktrees, protected refs and Muse history. No installation,
+wrapper/hook change, network, publication, push, merge, tag, signing, deployment
+or native build was performed or is queued. Model: GPT-6 Astra; reasoning: High.
 
 ## Historical implementation and acceptance record
 

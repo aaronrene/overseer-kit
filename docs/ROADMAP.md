@@ -1,6 +1,7 @@
 # Overseer Kit roadmap
 
-Current authority: the owner's [manual delivery scope decision](decisions/FPR-5-MANUAL-DELIVERY-SCOPE.md).
+Current authority: the owner's [manual delivery scope decision](decisions/FPR-5-MANUAL-DELIVERY-SCOPE.md)
+and explicit local release authorization recorded in the [release record](releases/FPR-5-MANUAL-LOCAL-RELEASE.md).
 
 **Independent acceptance completed on 2026-10-17: ACCEPTED for the revised
 manual-delivery scope**, candidate `97f052949146c3cf337478927e6d345e353d2063`.
@@ -41,15 +42,25 @@ labelled as invalid ENOSPC-truncated JSON is actually a valid 399-byte prior-att
 note; it supplies no successful execution evidence. No original was reconstructed,
 and no test, experiment, pilot or launch was rerun.
 
-**Next: stop for the owner's separate release decision** naming the accepted
-candidate, version/artifact, destination and permitted effects, or holding release.
-Canonical [NEXT](NEXT.md) carries that pending stop; these documents are summaries.
-No new review, repair or rerun is queued. Legacy modern-binding and installed
-footprint-drift conditions remain for any separately authorized consumer rollout.
-Preserve their backup/rollback, old worktrees, protected refs and Muse history.
-No publication, deployment, merge, signing, tag, fetch/push, network/provider,
-vendor contact, live delivery, consumer/global/profile/dependency/hook changes
-are authorized. Model: GPT-6 Astra; reasoning: High.
+**Owner-authorized local source release completed on 2026-10-17.**
+Version remains `1.0.0.dev1`; the exact accepted source was packaged with the
+existing tool at `/Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RELEASES/fpr5-manual-97f0529/`.
+The [release record](releases/FPR-5-MANUAL-LOCAL-RELEASE.md) records archive,
+manifest and acceptance provenance hashes. New archive integrity and all 791
+retained component entries passed; completed tests/reviews were not rerun.
+The independent acceptance record is a separate byte-exact companion from
+`a6d2576dfeb00f8209e56908bef8d192431312cf`; it is not inserted into the source.
+
+**Next: stop; local release is complete.** Canonical [NEXT](NEXT.md) carries the
+validated stop. No new review, repair, rerun or installation is queued.
+Any later installation/rollout requires separate owner authorization naming
+targets/effects, modern binding or separately scoped legacy source changes,
+target footprint-drift classification, root/UUID/branch/lane/revision/digest
+readback and mismatch refusal, preservation of owner content/history/NEXT and
+compatible guarded backup/rollback. Summary lock updates are not full sync.
+Preserve older worktrees, protected refs and Muse history. No installation,
+wrapper/hook change, network, publication, push, merge, tag, signing, deployment
+or native build was performed or is queued. Model: GPT-6 Astra; reasoning: High.
 
 | Milestone | State |
 | --- | --- |
@@ -70,7 +81,7 @@ are authorized. Model: GPT-6 Astra; reasoning: High.
 | FPR-4 — combined validation | Local matrix, bounded repairs, package and rollback evidence recorded; missing Python 3.11 cell now has complete passing coverage in the acceptance record; desktop owner evidence recorded; actual Cursor events are deferred/not verified |
 | FPR-5 — independent final review | Complete — original **FINDINGS** verdict and evidence preserved in [the review](reviews/FPR-5-REVIEW.md) |
 | FPR-5 bounded repairs | All six implemented; 1,361 selected cases have passing evidence across the new combined run and affected rerun; [author evidence](validation/FPR-5-REPAIRS.md) |
-| Final manual-delivery adjudication / owner release | **ACCEPTED** at `97f052949146c3cf337478927e6d345e353d2063`; [independent verdict](reviews/FPR-5-MANUAL-ACCEPTANCE.md). All retained requirements and R1–R6 decided. Separate owner release decision pending; B1/B2 remain deferred, not passed |
+| Final manual-delivery adjudication / owner release | **ACCEPTED** at `97f052949146c3cf337478927e6d345e353d2063`; [independent verdict](reviews/FPR-5-MANUAL-ACCEPTANCE.md). All retained requirements and R1–R6 decided. Owner-authorized local source release complete; installation/rollout remains separately gated; B1/B2 remain deferred, not passed |
 | FPR-OPS-1 — unexplained cross-window conversation restoration | **Shared chat-history behavior unresolved; client protection deferred/unqualified** — [vendor request](decisions/FPR-OPS-1-CLIENT-CHANGE-REQUEST.md) optional and unsent. No vendor response or client guard is required for this delivery; no fix is claimed |
 | FPR-OPS-2 — broken shared legacy `ok` environment | **Confined dependency repair complete** — [repair and verified rollback](validation/FPR-5-LEGACY-CLI-REPAIR.md). Only stable `.venv` changed; existing source/interpreter/global wrapper preserved. Imports, native dependencies, CLI startup and disposable root/path-confinement checks pass. Legacy UUID/branch/digest-bound NEXT remains unsupported; no consumer qualification or FPR-OPS-1 resolution claimed |
 | FPR-EVID-1 — external temporary originals unavailable | **Sufficient for the limited accepted claim**, with missing-original limits and the 399-byte attempt-note discrepancy in the reviewer record. No reconstructed originals or independent pixel inspection; no acquisition queued |
