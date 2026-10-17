@@ -3,7 +3,7 @@ schema: 1
 repo_id: 6988dc4a-5f22-454b-9d68-ac5905b383bf
 repo_root: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-v1-recovery-20261014
 branch: feat/overseer-v1-recovery-20261014
-base_head: a0a1250aa25122cbe4b051d012421a887de8378b
+base_head: 85c64fd7b90d4fd0c7d37688ee210849a495b2a5
 lane: product
 model: GPT-6 Astra
 action_id: OVERSEER-CURRENT-PROMPT-COMPLETE-1
