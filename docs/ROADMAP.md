@@ -1,5 +1,25 @@
 # Overseer Kit roadmap
 
+## Hosting follow-up — draft preparation; authenticated checks blocked
+
+[PR #92](https://github.com/aaronrene/overseer-kit/pull/92) remains merged at
+`87d40740081c0f5855e75f7aa2df7f16528d4e5c`; fresh GitHub reads confirm current main.
+The [hosting guide](landing/HOSTING.md) now distinguishes repository assets from
+hosting-injected analytics and correctly requires checks of four public pages.
+[Follow-up record](validation/HOSTING-FOLLOWUP.md) captures scope and focused checks.
+Runtime and website executable assets are unchanged; existing merge evidence is
+reused without claiming new acceptance or repeating a general review.
+
+Authenticated Cloudflare verification is blocked: no supported connector or token
+is configured. With read-only access, verify the project's production identity,
+domain, controls and analytics settings; do not change settings. The documentation
+correction and merge receipts are being prepared for a follow-up draft PR. Its merge
+needs an exact-head decision including automatic production deployment. No new merge,
+release, deployment command or existing-project install occurred.
+Preserve accepted source `97f0529`, its manual release, source and older worktrees.
+Earlier milestones below are historical. Canonical [NEXT](NEXT.md) remains the
+sole prompt source. Model: GPT-6 Astra; reasoning: High.
+
 ## PR #92 — merged with owner approval, 2026-10-17
 
 [PR #92](https://github.com/aaronrene/overseer-kit/pull/92) is merged at
