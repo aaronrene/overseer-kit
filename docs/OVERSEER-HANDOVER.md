@@ -1,5 +1,24 @@
 # Overseer Kit handover
 
+## PR #93 — hosting verified; owner-authorized merge in progress, 2026-10-18
+
+[Authenticated evidence](validation/PR-93-HOSTING-VERIFICATION.md) confirms the
+expected Cloudflare account/project, GitHub source/main branch, successful canonical
+production deployment of `87d4074`, and active `overseerkit.com` domain/zone association.
+Existing Wrangler authentication was sufficient. Only read-only requests were made.
+The Web Analytics settings endpoint returns HTTP 403; full analytics settings and
+a historical control baseline remain unverified, as explicitly accepted by the owner.
+
+The owner authorizes marking [PR #93](https://github.com/aaronrene/overseer-kit/pull/93)
+ready and merging its exact checked final head, including automatic production
+deployment, once final checks remain good. Reconfirm main/head/checks and applicable
+rules, then verify the resulting merge, deployment, controls and public content.
+This documentation-only change preserves runtime/site code and existing acceptance.
+No release, existing-project installation or hosting-settings change is authorized.
+PR #92 is already merged. Preserve source and older worktrees. Earlier milestones
+are historical; canonical [NEXT](NEXT.md) is the sole current prompt source.
+Model: GPT-6 Astra; reasoning: High.
+
 ## Hosting follow-up — draft PR #93; authenticated checks blocked
 
 [PR #92](https://github.com/aaronrene/overseer-kit/pull/92) remains merged at

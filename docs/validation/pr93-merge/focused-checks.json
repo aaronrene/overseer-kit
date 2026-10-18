@@ -1,0 +1,20 @@
+{
+  "main_before_merge": "87d40740081c0f5855e75f7aa2df7f16528d4e5c",
+  "checks": {
+    "authenticated_production_identity": true,
+    "active_domain_account_association": true,
+    "documentation_only_scope": true,
+    "runtime_site_readme_unchanged": true,
+    "paired_summaries_match": true,
+    "local_documentation_links_resolve": true,
+    "preserved_summary_hashes_match": true,
+    "runtime_pin_unchanged": true,
+    "whitespace": true,
+    "next_readback_valid": true
+  },
+  "links_checked": 6,
+  "analytics_limit": "Web Analytics endpoint HTTP 403; accepted by current owner instruction",
+  "historical_baseline_limit": "No authenticated pre-session baseline; selected current controls recorded for post-merge comparison",
+  "general_tests_rerun": false,
+  "independent_acceptance_claimed": false
+}

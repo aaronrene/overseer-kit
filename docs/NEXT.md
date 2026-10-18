@@ -3,23 +3,20 @@ schema: 1
 repo_id: 3c1b4d77-db52-48de-b8f8-4a4a57d93720
 repo_root: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-publication-20261017
 branch: feat/overseer-publication-20261017
-base_head: 36b174bdf52efb1a3439ca9f305f025ba2188324
+base_head: 29c070606f1f112b5686ae2f470409ee87184dce
 lane: product
 model: GPT-6 Astra
-action_id: OVERSEER-HOSTING-READONLY-BLOCKED-1
+action_id: OVERSEER-PR93-AUTHORIZED-MERGE-1
 action_kind: maintain
-prompt_sha256: 2c7587c6494aa61f88f0c6023234c74c31cd4e59f6808f0d5d371fe3522e62a3
+prompt_sha256: 71f5f8347d5d1e3b5d6e13968352c697cb11116f09f26291a16b54ae39aafd29
 ---
 Reasoning: High
-PR #92 is merged at 87d40740081c0f5855e75f7aa2df7f16528d4e5c. Do not remerge.
-Hosting clarification and merge receipts: https://github.com/aaronrene/overseer-kit/pull/93
-PR #93 is a draft. Focused documentation checks pass; runtime and website code are unchanged.
-Authenticated Cloudflare verification remains blocked by missing read-only access.
-Once a supported connection is available, verify the overseer-kit production
-commit/deployment, overseerkit.com domain, project controls and analytics settings.
-Before merging #93, review its final diff, reconfirm main/head/checks, and obtain
-an owner decision including the automatic production-deployment consequence.
-Do not merge, change hosting settings, release or install under this handover.
-Preserve accepted source 97f0529 and its manual release; acceptance excludes later code.
-A successor release needs exact source/version/scope approval, candidate-specific
-acceptance, verified artifacts, manifest, checksums and notes. Preserve older worktrees.
+Complete the owner-authorized merge of PR #93: https://github.com/aaronrene/overseer-kit/pull/93
+Authenticated Cloudflare production identity and active domain/account association pass.
+The owner accepts the Web Analytics settings HTTP 403 and missing historical baseline.
+Review final head/main/checks and applicable rules, mark ready, and merge with an
+exact-head guard. Authorization includes automatic production deployment.
+Verify merge parents/tree, authenticated deployment and public pages/assets afterward.
+Update paired summaries and canonical NEXT; keep the post-merge closing receipt local.
+Do not remerge PR #92, change hosting settings, manually deploy, release or install.
+Preserve accepted source 97f0529, its manual release, source and older worktrees.

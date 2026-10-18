@@ -1,5 +1,14 @@
 # Hosting clarification and read-only verification gap — 2026-10-17
 
+## Update — authenticated access established, 2026-10-18
+
+Existing Wrangler authentication now verifies production identity and the active
+domain/account association. See [authenticated verification](PR-93-HOSTING-VERIFICATION.md).
+The Web Analytics settings endpoint returns HTTP 403; the owner explicitly accepts
+carrying this precise limitation and the missing historical baseline through the
+conditional merge of PR #93, including automatic production deployment. The earlier
+blocked-access and pending-authorization statements below describe the prior session.
+
 The owner asked to finish the pasted post-merge handover or explain any blocker.
 This follow-up corrects the demonstrated hosting documentation discrepancy and
 checks the availability of authenticated read-only Cloudflare access. It does not

@@ -1,0 +1,159 @@
+{
+  "observed_at": "2026-10-18T13:21:57.365216+00:00",
+  "authentication": "Existing Wrangler-managed credentials; token captured in process memory only",
+  "wrangler_version": "4.151.1",
+  "account_id": "9db4904dce0e99f9234ac003e66ff3ee",
+  "account_read_matches": true,
+  "project": {
+    "id": "bd820a42-cc1f-454f-bd05-efb87e9bb6ac",
+    "name": "overseer-kit",
+    "subdomain": "overseer-kit.pages.dev"
+  },
+  "controls": {
+    "production_branch": "main",
+    "source_type": "github",
+    "source": {
+      "owner": "aaronrene",
+      "repo_name": "overseer-kit",
+      "production_branch": "main",
+      "pr_comments_enabled": true,
+      "deployments_enabled": true,
+      "production_deployments_enabled": true,
+      "preview_deployment_setting": "all",
+      "preview_branch_includes": [
+        "*"
+      ],
+      "preview_branch_excludes": [],
+      "path_includes": [
+        "*"
+      ],
+      "path_excludes": []
+    },
+    "build": {
+      "build_command": "",
+      "destination_dir": "docs/landing",
+      "root_dir": ""
+    },
+    "domains": [
+      "overseer-kit.pages.dev",
+      "overseerkit.com"
+    ],
+    "deployment_configs": {
+      "preview": {
+        "compatibility_date": "2026-07-14",
+        "compatibility_flags": [],
+        "usage_model": "standard",
+        "fail_open": true,
+        "always_use_latest_compatibility_date": false
+      },
+      "production": {
+        "compatibility_date": "2026-07-14",
+        "compatibility_flags": [],
+        "usage_model": "standard",
+        "fail_open": true,
+        "always_use_latest_compatibility_date": false
+      }
+    }
+  },
+  "canonical_deployment": {
+    "id": "78f9799d-b958-453e-a6b7-f043aefc098e",
+    "environment": "production",
+    "url": "https://78f9799d.overseer-kit.pages.dev",
+    "created_on": "2026-10-17T22:01:50.406882Z",
+    "latest_stage": {
+      "name": "deploy",
+      "started_on": "2026-10-17T22:01:57.427483Z",
+      "ended_on": "2026-10-17T22:02:03.028655Z",
+      "status": "success"
+    },
+    "branch": "main",
+    "commit_hash": "87d40740081c0f5855e75f7aa2df7f16528d4e5c",
+    "commit_dirty": false
+  },
+  "latest_deployment": {
+    "id": "1a538d15-8241-4a40-9751-c0fc5e942ad3",
+    "environment": "preview",
+    "url": "https://1a538d15.overseer-kit.pages.dev",
+    "created_on": "2026-10-18T04:36:31.834195Z",
+    "latest_stage": {
+      "name": "deploy",
+      "started_on": "2026-10-18T04:36:38.985263Z",
+      "ended_on": "2026-10-18T04:36:43.487343Z",
+      "status": "success"
+    },
+    "branch": "feat/overseer-publication-20261017",
+    "commit_hash": "29c070606f1f112b5686ae2f470409ee87184dce",
+    "commit_dirty": false
+  },
+  "domain": {
+    "id": "19f18348-7b07-4ab6-8bed-4e49a6c20fa9",
+    "name": "overseerkit.com",
+    "status": "active",
+    "zone_tag": "6299ba09237cc40e2548d49537a75272",
+    "validation_data": {
+      "status": "active",
+      "method": "http"
+    },
+    "verification_data": {
+      "status": "active"
+    },
+    "certificate_authority": "google"
+  },
+  "zones": [
+    {
+      "id": "6299ba09237cc40e2548d49537a75272",
+      "name": "overseerkit.com",
+      "status": "active",
+      "account_id": "9db4904dce0e99f9234ac003e66ff3ee"
+    }
+  ],
+  "analytics": {
+    "build_web_analytics_tag_present": false,
+    "build_web_analytics_token_present": false,
+    "deployment_configs": {
+      "preview": {
+        "web_analytics_tag_present": false,
+        "web_analytics_token_present": false
+      },
+      "production": {
+        "web_analytics_tag_present": false,
+        "web_analytics_token_present": false
+      }
+    },
+    "limitation": "Web Analytics settings were not available through these authorized reads; no historical configuration baseline is established.",
+    "project_web_analytics_tag_present": false,
+    "project_web_analytics_token_present": false,
+    "matching_site_settings": []
+  },
+  "requests": [
+    {
+      "path": "accounts/9db4904dce0e99f9234ac003e66ff3ee/pages/projects/overseer-kit",
+      "http_status": 200,
+      "success": true,
+      "error_codes": []
+    },
+    {
+      "path": "accounts/9db4904dce0e99f9234ac003e66ff3ee/pages/projects/overseer-kit/domains/overseerkit.com",
+      "http_status": 200,
+      "success": true,
+      "error_codes": []
+    },
+    {
+      "path": "accounts/9db4904dce0e99f9234ac003e66ff3ee",
+      "http_status": 200,
+      "success": true,
+      "error_codes": []
+    },
+    {
+      "path": "zones?name=overseerkit.com&account.id=9db4904dce0e99f9234ac003e66ff3ee",
+      "http_status": 200,
+      "success": true,
+      "error_codes": []
+    },
+    {
+      "path": "accounts/9db4904dce0e99f9234ac003e66ff3ee/rum/site_info/list?per_page=100",
+      "http_status": 403,
+      "success": false
+    }
+  ]
+}
