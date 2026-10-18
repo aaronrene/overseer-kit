@@ -1,5 +1,75 @@
 # Overseer Kit roadmap
 
+## PR #93 — hosting verified; owner-authorized merge in progress, 2026-10-18
+
+[Authenticated evidence](validation/PR-93-HOSTING-VERIFICATION.md) confirms the
+expected Cloudflare account/project, GitHub source/main branch, successful canonical
+production deployment of `87d4074`, and active `overseerkit.com` domain/zone association.
+Existing Wrangler authentication was sufficient. Only read-only requests were made.
+The Web Analytics settings endpoint returns HTTP 403; full analytics settings and
+a historical control baseline remain unverified, as explicitly accepted by the owner.
+
+The owner authorizes marking [PR #93](https://github.com/aaronrene/overseer-kit/pull/93)
+ready and merging its exact checked final head, including automatic production
+deployment, once final checks remain good. Reconfirm main/head/checks and applicable
+rules, then verify the resulting merge, deployment, controls and public content.
+This documentation-only change preserves runtime/site code and existing acceptance.
+No release, existing-project installation or hosting-settings change is authorized.
+PR #92 is already merged. Preserve source and older worktrees. Earlier milestones
+are historical; canonical [NEXT](NEXT.md) is the sole current prompt source.
+Model: GPT-6 Astra; reasoning: High.
+
+## Hosting follow-up — draft PR #93; authenticated checks blocked
+
+[PR #92](https://github.com/aaronrene/overseer-kit/pull/92) remains merged at
+`87d40740081c0f5855e75f7aa2df7f16528d4e5c`; fresh GitHub reads confirm current main.
+The [hosting guide](landing/HOSTING.md) now distinguishes repository assets from
+hosting-injected analytics and correctly requires checks of four public pages.
+[Follow-up record](validation/HOSTING-FOLLOWUP.md) captures scope and focused checks.
+Runtime and website executable assets are unchanged; existing merge evidence is
+reused without claiming new acceptance or repeating a general review.
+
+Authenticated Cloudflare verification is blocked: no supported connector or token
+is configured. With read-only access, verify the project's production identity,
+domain, controls and analytics settings; do not change settings. The documentation
+correction and formerly local merge receipts are published in
+[draft PR #93](https://github.com/aaronrene/overseer-kit/pull/93). Focused checks pass.
+Its merge needs an exact-head decision including automatic production deployment. No new merge,
+release, deployment command or existing-project install occurred.
+Preserve accepted source `97f0529`, its manual release, source and older worktrees.
+Earlier milestones below are historical. Canonical [NEXT](NEXT.md) remains the
+sole prompt source. Model: GPT-6 Astra; reasoning: High.
+
+## PR #92 — merged with owner approval, 2026-10-17
+
+[PR #92](https://github.com/aaronrene/overseer-kit/pull/92) is merged at
+`87d40740081c0f5855e75f7aa2df7f16528d4e5c`. The owner approved the successor delta
+and existing automatic website deployment. Immediately rechecked approved head
+`18608de`, main `ff9091c` and green checks, marked ready, then merged with an exact
+head guard and merge commit. Both histories are preserved; the resulting main tree
+exactly equals the approved PR tree. The owner-decision gate below is completed.
+
+[Merge record](validation/PR-92-MERGE.md) contains exact identities and receipts.
+Cloudflare's GitHub app reports successful deployment of the merge commit. Four
+public pages and two assets return 200; assets match exactly, and HTML matches after
+removing only one hosting-injected Cloudflare analytics script plus newline per page.
+This reveals a narrow HOSTING.md wording discrepancy about tracking. Authenticated
+Cloudflare account/domain/project-control checks remain unverified because no
+configured read-only connection/token is available. Do not infer those checks from
+the app receipt, change hosting settings, or repeat the completed merge.
+
+No unfinished merge operation remains. The next owner choices are the hosting-doc
+clarification/control verification, if pursued, and any separately scoped release.
+Release needs exact source/version/distribution approval and candidate-specific
+acceptance, artifact, manifest, checksums and notes. Existing-project installation
+stays held. Accepted source `97f0529` and its manual release keep their original
+limits; merge approval is not independent successor acceptance.
+
+This local closeout updates paired summaries and bound NEXT without an extra main
+write or new PR. Source and older worktrees remain unchanged. Earlier milestones
+below are historical; canonical [NEXT](NEXT.md) is the sole prompt source.
+Model: GPT-6 Astra; reasoning: High.
+
 ## PR #92 follow-up — complete, awaiting owner merge decision
 
 [Draft PR #92](https://github.com/aaronrene/overseer-kit/pull/92) received a focused

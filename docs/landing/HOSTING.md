@@ -16,9 +16,16 @@ does not run Overseer, initialize repositories, perform reviews or execute tasks
 | `/assets/style.css` | The original responsive styles, including light and dark themes |
 | `/assets/theme.js` | Optional theme preference only |
 
-All four pages work without JavaScript. Theme selection is an enhancement;
-no application backend, tracking script, credential prompt or repository access
-is involved. The original diagrams remain in their original positions and explain
+All four pages work without JavaScript. Theme selection is an enhancement.
+The repository's website assets include no analytics script, application backend,
+credential prompt or repository-access integration. Hosting can add scripts to the
+served HTML: the recorded PR #92 production checks observed one Cloudflare analytics
+script on each of the four pages. See the [merge verification record](../validation/PR-92-MERGE.md).
+The deployed website therefore must not be described as having no tracking script.
+The script's presence does not establish its account-level configuration or data
+collection settings; those require authenticated read-only verification.
+
+The original diagrams remain in their original positions and explain
 the operating model. Their surrounding copy makes clear that independent humans or
 agent sessions perform review judgment and project repositories own domain checks.
 The current CLI can run explicitly invoked review and verification commands;
@@ -48,5 +55,11 @@ deployment or change project settings as part of documentation publication.
 Before accepting a preview, verify its exact candidate commit, pages and links.
 After an authorized merge, authenticated read-only Cloudflare requests must confirm
 successful production, branch `main`, the resulting commit, canonical deployment,
-active `overseerkit.com` ownership and unchanged project controls. Read-only HTTP
-checks of the three public routes supplement that authenticated verification.
+active `overseerkit.com` ownership and project controls. Compare controls with a
+recorded baseline before claiming that they are unchanged. Include any analytics
+injection settings visible through the authorized read-only connection. Read-only
+HTTP checks of the four public pages supplement that authenticated verification;
+they do not establish account ownership or project configuration. If authenticated
+access is unavailable, record those checks as unverified rather than inferring
+success from public content or the GitHub deployment check. Do not change settings
+to reconcile the documentation.

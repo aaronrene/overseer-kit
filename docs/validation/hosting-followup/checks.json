@@ -1,0 +1,21 @@
+{
+  "baseline_head": "9b2e4d11b3a18e99a13c32339a22d921317a9aee",
+  "github_main": "87d40740081c0f5855e75f7aa2df7f16528d4e5c",
+  "checks": {
+    "reused_four_page_analytics_observation": true,
+    "runtime_and_website_code_unchanged": true,
+    "paired_summaries_match": true,
+    "local_documentation_links_resolve": true,
+    "git_diff_check": true,
+    "bound_runtime_pin_unchanged": true,
+    "preserved_summary_hashes_match": true,
+    "bound_next_validates": true
+  },
+  "authenticated_cloudflare_checks": "BLOCKED: no supported read-only connection or configured token",
+  "plugin_search": {
+    "query": "Cloudflare",
+    "results": []
+  },
+  "general_tests_rerun": false,
+  "inherited_diagnostics_unchanged": true
+}
