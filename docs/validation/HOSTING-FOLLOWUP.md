@@ -46,8 +46,10 @@ unchanged website executable assets, whitespace and validated bound NEXT readbac
 Inherited footprint/drift diagnostics are unchanged; this does not certify those
 historical diagnostics or establish successor acceptance.
 
-The correction and the local PR #92 merge receipts are being prepared for a
-follow-up draft PR from the selected publication branch. Merging that new PR needs
+The correction and the formerly local PR #92 merge receipts are published in
+[draft PR #93](https://github.com/aaronrene/overseer-kit/pull/93) from the selected
+publication branch. The earlier merge record describes its original local custody;
+this follow-up publishes it without altering its observations. Merging the draft needs
 a decision covering its exact head and the existing automatic production deployment.
 The already merged PR #92 is not modified or remerged. Source and older worktrees
 are unchanged.

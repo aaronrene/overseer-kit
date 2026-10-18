@@ -1,6 +1,6 @@
 # Overseer Kit handover
 
-## Hosting follow-up — draft preparation; authenticated checks blocked
+## Hosting follow-up — draft PR #93; authenticated checks blocked
 
 [PR #92](https://github.com/aaronrene/overseer-kit/pull/92) remains merged at
 `87d40740081c0f5855e75f7aa2df7f16528d4e5c`; fresh GitHub reads confirm current main.
@@ -13,8 +13,9 @@ reused without claiming new acceptance or repeating a general review.
 Authenticated Cloudflare verification is blocked: no supported connector or token
 is configured. With read-only access, verify the project's production identity,
 domain, controls and analytics settings; do not change settings. The documentation
-correction and merge receipts are being prepared for a follow-up draft PR. Its merge
-needs an exact-head decision including automatic production deployment. No new merge,
+correction and formerly local merge receipts are published in
+[draft PR #93](https://github.com/aaronrene/overseer-kit/pull/93). Focused checks pass.
+Its merge needs an exact-head decision including automatic production deployment. No new merge,
 release, deployment command or existing-project install occurred.
 Preserve accepted source `97f0529`, its manual release, source and older worktrees.
 Earlier milestones below are historical. Canonical [NEXT](NEXT.md) remains the
