@@ -7,7 +7,7 @@ import pytest
 
 
 def pytest_addoption(parser):
-    parser.addoption('--muse-python', help='Absolute Python in a separate Muse 0.2.1rc5 venv')
+    parser.addoption('--muse-python', help='Absolute Python in a separate, exactly reviewed Muse venv')
 
 
 @pytest.fixture(scope='session')
@@ -24,7 +24,9 @@ def muse_python(request):
         "print(importlib.metadata.version('muse')); print(h.hexdigest())"],
         capture_output=True, text=True, timeout=15)
     assert probe.returncode == 0, probe.stderr
-    assert probe.stdout.splitlines() == ['0.2.1rc5', '7b181b6eff6bde1b53105f2a7be7bd8937224988965d7462a3a6b04658f35e92']
+    from cli.v1_revision import MUSE_RUNTIMES
+    version, source_digest = probe.stdout.splitlines()
+    assert version in MUSE_RUNTIMES and source_digest == MUSE_RUNTIMES[version]
     return path
 
 

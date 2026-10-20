@@ -21,8 +21,10 @@ identical source files produces identical archive bytes.
 Provision the unpacked installation's `.venv` from pinned local prerequisites in
 `requirements-v1.txt`; test dependencies are in `requirements-v1-dev.txt`. There
 is no automatic download or neighboring-runtime fallback. Native Muse is optional
-and separately bound to the reviewed rc5 package. `tools/ci/muse_artifact.py` and
-its manifests verify the exact optional recovery wheel/source. A missing wheel,
+and separately bound to an [exact reviewed rc5 or rc11 source
+tree](MUSE-RC11-COMPATIBILITY.md). `tools/ci/muse_artifact.py` and
+its existing manifests still verify only the optional rc5 recovery wheel/source;
+they are not an rc11 installer. A missing wheel,
 Python, dependency or desktop toolchain is a missing prerequisite, not a skip.
 
 Prepared desktop resources use the same manifest but a stricter complete-tree

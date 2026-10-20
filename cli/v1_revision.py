@@ -13,6 +13,11 @@ import time
 from cli.v1_io import Refusal
 
 MUSE_VERSION = "0.2.1rc5"
+# Exact reviewed source trees, not a version range. See docs/MUSE-RC11-COMPATIBILITY.md.
+MUSE_RUNTIMES = {
+    MUSE_VERSION: "7b181b6eff6bde1b53105f2a7be7bd8937224988965d7462a3a6b04658f35e92",
+    "0.2.1rc11": "c68f34f8a7b8a645e9ef433fcd34477591819df42944e856556c2bb43dd037fe",
+}
 OID = re.compile(r"sha256:[0-9a-f]{64}\Z")
 RESPONSE_LIMIT = 2 * 1024 * 1024
 
@@ -116,8 +121,10 @@ def muse_read(root, python, *, dirty=False):
             raise ValueError()
         runtime = value["runtime"]
         if (not isinstance(runtime, dict) or set(runtime) != {"python", "version", "sha256"}
-                or runtime["python"] != str(executable) or runtime["version"] != MUSE_VERSION
-                or not re.fullmatch(r"[0-9a-f]{64}", runtime["sha256"])):
+                or runtime["python"] != str(executable)
+                or not isinstance(runtime["version"], str)
+                or runtime["version"] not in MUSE_RUNTIMES
+                or runtime["sha256"] != MUSE_RUNTIMES[runtime["version"]]):
             raise ValueError()
         if value["root"] != str(root) or not Path(value["store"]).is_absolute():
             raise ValueError()

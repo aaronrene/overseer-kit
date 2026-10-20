@@ -21,8 +21,10 @@ its own authorized task; restoration checks use disposable repositories.
 6. After a partial failure, inspect its report and backup before using the same
    plan/digests with `--resume`. Changed context or protected bytes still refuse.
 
-A legacy HANDOVER prompt is a draft only. Accept a successor explicitly and publish
-through bound `next-write` with the current authority/revision and expected whole-file
+A legacy HANDOVER prompt is a draft only. Multiple distinct historical prompt
+blocks remain preserved drafts; migration reports their counts without selecting
+or activating any block, and leaves document bytes unchanged. Accept a successor
+explicitly and publish through bound `next-write` with the current authority/revision and expected whole-file
 NEXT digest (`absent` only when absent). Do not promote preserved files with generic
 force. See [source upgrade/rollback guidance](SOURCE-DISTRIBUTION.md) and
 [authority and lanes](FPR-2-AUTHORITY-AND-LANES.md). Remote transport, publication and

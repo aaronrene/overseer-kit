@@ -163,10 +163,29 @@ def classify_assets(root, mapping, config, *, read_asset=None, lock_entries=None
     return rows
 
 
-def _migration_assets(root, config, mapping, classifications):
+def _legacy_consumer_owned(root, config, generated, entries):
+    """Legacy kit records this runtime no longer generates, edited by the owner.
+
+    They stay untouched and are re-recorded as preserved rather than left as
+    a stale kit claim. Missing files keep their record so absence stays visible.
+    """
+    living = _document_paths(config)
+    owned = []
+    for path, entry in sorted(entries.items()):
+        if (path in generated or path in living or path in (LOCK, CONFIG, NEXT)
+                or entry.get("origin", "kit") != "kit"):
+            continue
+        body = read(root, path, missing=True)
+        if body is not None and digest(body) != entry["sha256"].removeprefix("sha256:"):
+            owned.append(path)
+    return owned
+
+
+def _migration_assets(root, config, mapping, classifications, *, lock_entries=None):
     """Keep owner collisions active and record their ownership for later sync."""
     from cli.product_footprint import with_lock
-    preserved = []
+    entries = _lock_entries(root) if lock_entries is None else lock_entries
+    preserved = _legacy_consumer_owned(root, config, set(mapping), entries)
     mapping = dict(mapping)
     for row in classifications:
         if row["classification"] == "missing":
@@ -254,15 +273,15 @@ def _legacy_drafts(root, config):
             drafts.append({"source": path, "text": match.group(2),
                            "sha256": digest(match.group(2).encode()),
                            "publication": "operator acceptance and next-write --expect-next absent required"})
-    if read(root, NEXT, missing=True) is None and len({d["sha256"] for d in drafts}) > 1:
-        raise Refusal("conflicting_legacy_prompts")
     return drafts
 
 
-def _context(root):
+def _context(root, config=None):
+    """Observe the planned authority; a native binding being added is the plan's."""
     from cli import v1
     from cli.product_config import normalize
-    config = normalize(read(root, CONFIG), root=root).data
+    if config is None:
+        config = normalize(read(root, CONFIG), root=root).data
     if config['vcs']['canonical'] == 'muse':
         state = v1.revision(root, config)
         return {'root': str(root), 'branch': state.branch, 'head': state.head,
@@ -273,10 +292,9 @@ def _context(root):
             "runtime": v1.runtime()}
 
 
-def _check_context(root, captured, allowed_config):
-    from cli import v1
+def _check_context(root, captured, allowed_config, config=None):
     if (root.resolve(strict=True) != root or
-            _context(root) != captured):
+            _context(root, config) != captured):
         raise Refusal("migration_context_changed")
     if digest(read(root, CONFIG)) not in allowed_config:
         raise Refusal("migration_config_changed")
@@ -322,6 +340,34 @@ def apply_mapping(root, mapping, *, check_context, dry_run=False):
     return [row["path"] for row in updates]
 
 
+def _bind_native(root, config, python):
+    """Explicitly bind an unbound Muse authority to its natively read source.
+
+    Regime, branches, remotes and every other setting are retained; only the
+    source identity, store and Muse runtime reported by the reader are added.
+    """
+    from cli import v1
+    from cli.product_authority import bind_muse
+    from cli.product_config import normalize
+    if config["vcs"]["canonical"] != "muse":
+        raise Refusal("git_does_not_use_muse_python")
+    if config["vcs"]["muse"].get("binding"):
+        raise Refusal("muse_binding_exists: change it with explicit adopt")
+    bound = bind_muse(root, config, python)
+    if (bound["vcs"]["regime"] != config["vcs"]["regime"] or
+            normalize(v1.encode(bound), root=root).data != bound):
+        raise Refusal("migration_config_plan_invalid")
+    return bound
+
+
+def _tracked_choice(root, config, args):
+    from cli.product_authority import tracked_bindings
+    tracked = tracked_bindings(root, config)
+    if any(tracked.values()) and getattr(args, "tracked_bindings", None) != "preserve":
+        raise Refusal("tracked_local_bindings: explicitly choose --tracked-bindings preserve or untrack separately")
+    return tracked
+
+
 def build_plan(root, args):
     from cli import v1
     from cli.product_config import normalize
@@ -338,6 +384,11 @@ def build_plan(root, args):
         raise Refusal("migration_repo_name_change_requires_explicit_resolution")
     if getattr(args, "regime", None) not in (None, config["vcs"]["regime"]):
         raise Refusal("authority_change_requires_adopt")
+    native = getattr(args, "muse_python", None) is not None
+    tracked = {}
+    if native:
+        config = _bind_native(root, config, args.muse_python)
+        tracked = _tracked_choice(root, config, args)
     if getattr(args, "refresh_runtime", False):
         config["runtime"] = v1.runtime()
     if getattr(args, "bound_id", None) not in (None, identity):
@@ -364,6 +415,7 @@ def build_plan(root, args):
     preserved = []
     if available:
         mapping, preserved = _migration_assets(root, config, mapping, classifications)
+    classified = {row["path"] for row in classifications}
     mapping[CONFIG] = v1.encode(config)
     updates = _updates(root, mapping)
     updated_paths = {row["path"] for row in updates}
@@ -375,15 +427,28 @@ def build_plan(root, args):
             "repository": config["repo"], "source_config_sha256": digest(original),
             "normalized_config": config, "field_map": model.field_map,
             "diagnostics": list(model.diagnostics), "refresh_runtime": bool(getattr(args, "refresh_runtime", False)),
-            "context": _context(root) if available else {"root": str(root), "runtime": v1.runtime(),
+            "context": _context(root, config) if available else {"root": str(root), "runtime": v1.runtime(),
                 "authority": "muse", "unavailable": "muse_binding_required"},
             "assets": updates, "protected": protected,
             "classification": classifications,
             "legacy_prompt_drafts": _legacy_drafts(root, config),
             "next": "preserved byte-for-byte; accepted drafts publish only through next-write",
             "apply_supported": available and config["runtime"] == v1.runtime()}
+    drafts = plan["legacy_prompt_drafts"]
+    if drafts:
+        plan["diagnostics"].append(
+            f"historical_prompts_preserved: {len(drafts)} blocks / "
+            f"{len({draft['sha256'] for draft in drafts})} distinct; none selected or activated; "
+            "operator acceptance and next-write are separate")
+    plan["diagnostics"].extend("legacy_kit_asset_consumer_owned: " + path
+                               for path in preserved if path not in classified)
+    if native:
+        plan["diagnostics"].append("native_muse_binding_added: " + config["vcs"]["muse"]["binding"]["repo_id"])
+        plan["diagnostics"].append("tracked_local_bindings_preserved: " + ", ".join(
+            f"{kind}={len(paths)}" for kind, paths in sorted(tracked.items())) if any(tracked.values())
+            else "tracked_local_bindings: none")
     if not available:
-        plan['diagnostics'].append('Muse authority preserved; apply requires explicit native binding')
+        plan['diagnostics'].append('Muse authority preserved; apply requires explicit native binding (--muse-python)')
     if config["runtime"] != v1.runtime():
         plan["diagnostics"].append("Runtime changed: repeat dry-run with explicit --refresh-runtime")
     return plan
@@ -420,6 +485,16 @@ def _apply_plan(root, args, plan):
     proposed = normalize(original, root=root, runtime=v1.runtime(), bind=True,
                          identity=target["repo"]["id"], lane=target["context"]["lane"],
                          model=target["context"]["model"]).data
+    # A planned native binding is re-read now; a changed source never applies.
+    native = bool(target["vcs"]["canonical"] == "muse" and target["vcs"]["muse"].get("binding")
+                  and not proposed["vcs"]["muse"].get("binding"))
+    if native:
+        planned_python = target["vcs"]["muse"]["binding"]["runtime"]["python"]
+        if getattr(args, "muse_python", None) not in (None, planned_python):
+            raise Refusal("migration_muse_python_plan_mismatch")
+        proposed = _bind_native(root, proposed, planned_python)
+    elif getattr(args, "muse_python", None) is not None:
+        raise Refusal("migration_muse_python_not_planned")
     if plan["refresh_runtime"]:
         proposed["runtime"] = v1.runtime()
     if proposed != target or target["runtime"] != v1.runtime():
@@ -430,6 +505,8 @@ def _apply_plan(root, args, plan):
     target = proposed
     if getattr(args, "bound_id", None) not in (None, target["repo"]["id"]):
         raise Refusal("launcher_identity_mismatch")
+    if native:
+        _tracked_choice(root, target, args)
     rows = plan["assets"]
     if not isinstance(rows, list) or len({row["path"] for row in rows}) != len(rows):
         raise Refusal("migration_asset_plan_invalid")
@@ -460,7 +537,7 @@ def _apply_plan(root, args, plan):
     classifications = classify_assets(root, generated, target, read_asset=before_asset, lock_entries=entries)
     if classifications != plan["classification"]:
         raise Refusal("migration_classification_plan_changed")
-    approved, preserved = _migration_assets(root, target, generated, classifications)
+    approved, preserved = _migration_assets(root, target, generated, classifications, lock_entries=entries)
     approved[CONFIG] = v1.encode(target)
     for row in rows:
         if (row["path"] not in approved or row["before"]["path"] != row["path"] or
@@ -481,7 +558,7 @@ def _apply_plan(root, args, plan):
         allowed.add(digest(v1.encode(target)))
 
     def check():
-        _check_context(root, plan["context"], allowed)
+        _check_context(root, plan["context"], allowed, target)
         for entry in plan["protected"]:
             if not _same(root, entry):
                 raise Refusal("migration_protected_asset_changed: " + entry["path"])

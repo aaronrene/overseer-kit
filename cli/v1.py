@@ -349,11 +349,12 @@ def write_next(root, config, args, prompt, *, expected, context):
     return payload
 
 
-def launcher(root, identity):
+def launcher(root, identity, *, runtime_root=None):
+    installation = KIT if runtime_root is None else Path(runtime_root)
     q = shlex.quote
     return ("#!/bin/sh\nset -eu\nPATH=/usr/bin:/bin\nexport PATH\n"
             "unset PYTHONPATH PYTHONHOME VIRTUAL_ENV\nexec "
-            + q(str(KIT / ".venv/bin/python3")) + " -I -B " + q(str(KIT / "cli/bootstrap.py"))
+            + q(str(installation / ".venv/bin/python3")) + " -I -B " + q(str(installation / "cli/bootstrap.py"))
             + " --bound-root " + q(str(root)) + " --bound-id " + q(identity)
             + ' --binding-path "$0" "$@"\n').encode()
 

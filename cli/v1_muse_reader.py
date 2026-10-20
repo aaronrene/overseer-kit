@@ -1,4 +1,4 @@
-"""Read-only bridge to Muse 0.2.1rc5, executed in its own conventional venv.
+"""Read-only bridge to exactly reviewed Muse releases in a separate venv.
 
 Do not call the native CLI: require_repo performs GC and some stage readers
 migrate files. Only object reads, ignore matching and hashing are reused here.
@@ -20,7 +20,7 @@ import tomllib
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from cli.v1_io import Refusal, read
 from cli.v1_policy import local_path
-from cli.v1_revision import MUSE_VERSION, OID, unique_json
+from cli.v1_revision import MUSE_RUNTIMES, OID, unique_json
 
 
 def readonly(event, args):
@@ -66,7 +66,8 @@ def layout(root):
 
 def run(root, with_dirty):
     sys.addaudithook(readonly)
-    if sys.prefix == sys.base_prefix or importlib.metadata.version("muse") != MUSE_VERSION:
+    version = importlib.metadata.version("muse")
+    if sys.prefix == sys.base_prefix or version not in MUSE_RUNTIMES:
         raise Refusal("muse_version_unsupported")
     import muse
     package = Path(muse.__file__).resolve().parent
@@ -75,6 +76,8 @@ def run(root, with_dirty):
     source_hash = hashlib.sha256()
     for path in sorted(package.rglob("*.py")):
         source_hash.update(str(path.relative_to(package)).encode() + b"\0" + path.read_bytes() + b"\0")
+    if source_hash.hexdigest() != MUSE_RUNTIMES[version]:
+        raise Refusal("muse_source_digest_unsupported")
     from muse.core.commits import read_commit
     from muse.core.snapshots import read_snapshot
     from muse.core.validation import validate_branch_name
@@ -153,7 +156,7 @@ def run(root, with_dirty):
     return {"root": str(root), "store": str(store), "repo_id": identity["repo_id"],
             "branch": branch, "head": head, "dirty": dirty, "tracked_local": tracked,
             "runtime": {"python": str(Path(sys.prefix).resolve() / "bin" / Path(sys.executable).name),
-                        "version": MUSE_VERSION, "sha256": source_hash.hexdigest()}}
+                        "version": version, "sha256": source_hash.hexdigest()}}
 
 
 if __name__ == "__main__":

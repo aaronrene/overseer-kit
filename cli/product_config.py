@@ -30,6 +30,8 @@ CORE = frozenset({"repo", "vcs", "docs", "thresholds", "freeze_contract"})
 DOC_KEYS = frozenset({"handover", "roadmap", "coordination", "standing_decisions",
     "handover_title", "roadmap_title", "default_lane", "lanes", "canonical_next"})
 LANE_KEYS = frozenset({"handover", "roadmap", "handover_title", "roadmap_title", "repo_id"})
+LEGACY_KIT_MAX_KEYS = 64
+LEGACY_KIT_MAX_TEXT = 16384
 
 
 class UniqueLoader(yaml.SafeLoader):
@@ -118,6 +120,30 @@ def _relative(value, field, root, *, directory=False):
         if current.is_symlink():
             raise Refusal("config_path_symlink: " + field)
     return path
+
+
+def _legacy_kit(value):
+    """Validate inert historical kit provenance retained as ``legacy_kit``.
+
+    Legacy-full configurations recorded their installing kit checkout, pin and
+    operator notes under ``kit``. Schema 3 keeps every value byte-for-byte
+    under ``legacy_kit`` so nothing is silently dropped; no engine reads it,
+    and runtime/source selection remains the separately bound ``runtime``.
+    Only flat scalar values are accepted; anything else refuses visibly.
+    """
+    if not isinstance(value, dict) or len(value) > LEGACY_KIT_MAX_KEYS:
+        raise Refusal("config_legacy_kit_invalid")
+    for key, item in value.items():
+        if not isinstance(key, str) or not TOKEN.fullmatch(key):
+            raise Refusal("config_legacy_kit_invalid: key")
+        if item is None or type(item) in (bool, int):
+            continue
+        if type(item) is float and item == item and item not in (float("inf"), float("-inf")):
+            continue
+        if (not isinstance(item, str) or len(item) > LEGACY_KIT_MAX_TEXT or
+                any((ord(c) < 32 and c not in "\n\t") or ord(c) == 127 for c in item)):
+            raise Refusal("config_legacy_kit_invalid: " + key)
+    return value
 
 
 def _runtime(value, field="runtime"):
@@ -263,6 +289,8 @@ def _field_map(before, after, source_schema):
             target = "vcs.canonical"
         elif key.startswith("muse.") and source_schema == "october-2":
             target = "vcs.muse.binding." + key[5:]
+        elif source_schema == "legacy-full" and (key == "kit" or key.startswith("kit.")):
+            target = "legacy_" + key
         mapped.add(target)
         result.append({"before_path": key, "after_path": target, "before": value,
                        "after": new.get(target), "disposition": "preserved" if value == new.get(target) else "mapped"})
@@ -307,12 +335,14 @@ def normalize(data: bytes, *, root: Path, runtime: dict | None = None,
     root = Path(root).resolve()
     raw = decode(data)
     if "overseer_config_version" in raw:
-        _mapping(raw, CORE | OPTIONAL | {"overseer_config_version", "context", "runtime"}, "config", CORE)
+        _mapping(raw, CORE | OPTIONAL | {"overseer_config_version", "context", "runtime", "kit"}, "config", CORE)
         if type(raw["overseer_config_version"]) is not int or raw["overseer_config_version"] != 1:
             raise Refusal("config_version_or_vcs_unsupported")
         source = "legacy-full"
         result = deepcopy(raw)
         del result["overseer_config_version"]
+        if "kit" in result:
+            result["legacy_kit"] = _legacy_kit(result.pop("kit"))
     elif type(raw.get("schema")) is int and raw["schema"] in (1, 2):
         authority = raw.get("vcs")
         if authority not in ("git", "muse") or (authority == "muse" and raw["schema"] != 2):
@@ -332,8 +362,11 @@ def normalize(data: bytes, *, root: Path, runtime: dict | None = None,
         if authority == "muse":
             result["vcs"]["muse"]["binding"] = deepcopy(raw["muse"])
     elif type(raw.get("schema")) is int and raw["schema"] == 3:
-        _mapping(raw, CORE | OPTIONAL | {"schema", "context", "runtime"}, "config", CORE | {"schema", "context", "runtime"})
+        _mapping(raw, CORE | OPTIONAL | {"schema", "context", "runtime", "legacy_kit"}, "config",
+                 CORE | {"schema", "context", "runtime"})
         source, result = "schema-3", deepcopy(raw)
+        if "legacy_kit" in result:
+            _legacy_kit(result["legacy_kit"])
     else:
         raise Refusal("config_version_or_vcs_unsupported")
     result["schema"] = 3
@@ -430,6 +463,8 @@ def normalize(data: bytes, *, root: Path, runtime: dict | None = None,
     diagnostics.extend(adapter.extension_warnings)
     if adapter.freeze_contract.reviewer.model == "thinking-high":
         diagnostics.append("legacy_reviewer_model_preserved: thinking-high")
+    if "legacy_kit" in result:
+        diagnostics.append("legacy_kit_metadata_preserved: inert provenance; never selects a runtime or source")
     if source != "schema-3":
         diagnostics.append("migration_required: " + source + " -> schema-3")
     if not (repo["id"] and repo["root"] and result["runtime"]):

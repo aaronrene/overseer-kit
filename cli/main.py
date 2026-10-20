@@ -69,6 +69,9 @@ def parser():
             cmd.add_argument('--muse-python')
             cmd.add_argument('--tracked-bindings', choices=('preserve',))
         if name == 'adopt':
+            cmd.add_argument('--rebind-muse-runtime', action='store_true',
+                             help='Preview or explicitly accept a same-source Muse and Kit runtime rebind')
+            cmd.add_argument('--expect-rebind', help='Exact rebind plan SHA-256 from --dry-run')
             cmd.add_argument('--restore-config')
             cmd.add_argument('--expect-config', required=True)
             cmd.add_argument('--base-head', required=True)
@@ -274,9 +277,15 @@ def main(argv=None):
             else:
                 result = v1.initialize(root, args)
         elif args.command == 'adopt':
-            from cli.product_authority import adopt
-            config, original = v1.config_for(root, args, authority=False)
-            result = adopt(root, config, original, args)
+            if args.rebind_muse_runtime:
+                from cli.product_authority import rebind_muse_runtime
+                result = rebind_muse_runtime(root, args)
+            else:
+                if args.expect_rebind:
+                    raise Refusal('expect_rebind_requires_rebind_muse_runtime')
+                from cli.product_authority import adopt
+                config, original = v1.config_for(root, args, authority=False)
+                result = adopt(root, config, original, args)
         elif args.command == 'status' and (inspection := _inspect(root, args)) is not None:
             result = inspection
         else:
