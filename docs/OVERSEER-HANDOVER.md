@@ -78,6 +78,11 @@ F3-F8 are out of scope (queued as H1/D1).
 
 - 2026-10-20: added the independent review, queued F1–F8 (R1a, R1b, R2, R3, H1, D1)
   and drafted the R1a prompt. No code changes.
+- 2026-10-20: queued owner-found F9 (single-lane `next_model_mismatch`) as N1a, N1b,
+  N1-R and N1-PR on a stacked branch.
+  - N1 runs from the Knowtation session and is independent of R1.
+  - R1a remains this branch's next step.
+  - Added the Knowtation rollback chain to the roadmap.
 
 ## PR #93 — hosting verified; owner-authorized merge in progress, 2026-10-18
 

@@ -30,6 +30,10 @@ Auto doc sync.
 | R3 | Operator + Auto | Blocked on R2 | Owner authorizes push and PR. Merge to main is Tier 3 and needs explicit owner approval. |
 | H1 | Thinking → Auto | Queued after merge | Hardening: **F3**, **F4**, **F5**, **F6**, **F7**. |
 | D1 | Operator + Auto | Queued after merge | Decide how consumers move off prepared runtime `309ac668…` (**F8**). |
+| N1a | Thinking → Auto (a: Thinking) | Owner-requested; runs from the Knowtation session | Freeze `OK-NEXT-MODEL` (**F9**) at `knowtation/docs/evidence/B02/overseer-next-model-select-20261020/FREEZE.md`; freeze review **pass**. |
+| N1b | Thinking → Auto (b: Auto) | Blocked on N1a | Build on stacked branch `feat/next-model-select-20261020` from this branch's head (not a parallel branch from `30f5cb4`). Copy the freeze into `docs/reviews/`. Build a new prepared runtime and rebind Knowtation with `adopt --rebind-muse-runtime` from the new runtime. Publish `C2-PROPOSAL-REVISION-1`. |
+| N1-R | Thinking, independent model | Blocked on N1b | Independent review of the N1 branch delta, required before its PR. |
+| N1-PR | Operator + Auto | Blocked on R3 and N1-R | Stacked PR for N1 on top of the R3 PR. Merge is Tier 3. |
 
 What each finding is (details and line evidence are in the review):
 
@@ -62,6 +66,21 @@ What each finding is (details and line evidence are in the review):
   - Choose between updating the prepared runtime in place followed by that
     installation's explicit `sync`, or a reviewed relocation command.
   - Until then, both consumers stay on `309ac668…`.
+  - BornFree also cannot take the N1 runtime until D1 is settled.
+- **F9 (owner-found while using Knowtation; source-verified).** A single-lane NEXT
+  cannot name a model other than `context.model`: `cli/v1.py:273-274` raises
+  `next_model_mismatch` on both write and read. No supported command changes
+  `context.model`; `adopt` and the rebind require `--model` to equal it
+  (`cli/product_authority.py:176-178`, `cli/main.py:196-199`).
+  - Multi-lane NEXT already accepts any validated model; only explicit `--model`
+    expectations are checked (`cli/v1.py:207-211`).
+  - The N1a freeze must therefore decide whether its mechanism also governs
+    multi-lane, so the two behave consistently.
+  - It must state whether a hand-edited model label in NEXT is refused or
+    displayed. Model labels confer no authority.
+- **Rollback chain for Knowtation after N1:** undo the N1 rebind first (its
+  `.overseer/local/rebind-<72c2f1fc…>` backups), then the rc11 rebind
+  (`rebind-3899dd65…`), then the original migration rollback package.
 
 Definition of Done for this milestone:
 
@@ -69,6 +88,7 @@ Definition of Done for this milestone:
 2. Build verification and the R2 re-review both pass.
 3. The PR is opened under owner authorization.
 4. H1 and D1 are tracked in a successor roadmap section.
+5. N1 is either merged through its own reviewed stacked PR or carried forward explicitly.
 
 This branch's [NEXT](NEXT.md) is stale (PR #93). It cannot be republished from this
 checkout: the tracked binding points to the publication checkout, so the bound
