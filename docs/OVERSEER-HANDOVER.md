@@ -1,5 +1,84 @@
 # Overseer Kit handover
 
+## Migration compatibility + Muse rc11 — review PASS; R1a next, 2026-10-20
+
+### NEXT SESSION
+
+**R1a — Model: Thinking.** Start a fresh chat. Freeze the pre-PR fix spec for review
+findings F1 and F2. Do not implement. The R1a session issues the R1b (Auto) prompt
+only after the freeze review passes.
+
+### Paste-ready prompt (draft; canonical NEXT cannot be published from this checkout)
+
+```text
+Model: Thinking
+Overseer Kit — R1a: freeze the pre-PR fix spec for independent-review findings F1 and F2.
+
+Checkout: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-knowtation-compat-20261020
+Branch: fix/knowtation-migration-compat-20261020 (local; not pushed). Reviewed commit 30f5cb4.
+Read first: docs/ROADMAP.md (top section), this handover's verified snapshot,
+docs/reviews/MIGRATION-COMPAT-RC11-INDEPENDENT-REVIEW.md (F1, F2, section 7),
+docs/MUSE-RC11-COMPATIBILITY.md, tools/ci/supported_v1.py, tests/muse/test_runtime_rebind.py,
+tests/muse/conftest.py, tests/fpr4/test_mirror_full_footprint.py, cli/product_migration.py:315-340.
+
+Freeze WHAT and HOW only. No implementation, pushes, PRs, merges, installs or dependency changes.
+Do not touch /Users/aaronrenecarvajal/knowtation or /Users/aaronrenecarvajal/bornfree-hub.
+
+F1. Make the supported matrix and the new tests portable across the exact MUSE_RUNTIMES allowlist.
+  - The supported_v1.py probe accepts only an exact (version, digest) pair from cli.v1_revision.MUSE_RUNTIMES.
+  - test_runtime_rebind derives "current" from the probed venv and "stale" from the other allowlisted entry.
+  - The digest-refusal case patches the probed version's entry.
+  - Add tests/integration/test_legacy_migration_compat.py and test_historical_prompt_migration.py
+    to the CI selection.
+  - Add a committed rc11-capable wrapper for the FPR-4 mirror successor contract.
+  - Decide whether supported-v1.yml gains an rc11 job. No hosted run is authorized; add no URLs or secrets.
+F2. apply_mapping accepts a caller-supplied recovery hint.
+  - Rebind passes: restore .overseer/bin/ok, .overseer/version.lock, then .overseer/config.yaml
+    from <backup>, then preview again.
+  - Sync and migration messages stay unchanged.
+
+Deliver docs/reviews/MIGRATION-COMPAT-RC11-R1-SPEC.md (frozen: true) containing exact files and
+behaviors, fail-closed rules, and a seven-tier matrix per .overseer/policy/test-tiers.yaml.
+The matrix must include an interrupted-rebind test that asserts the new message and the restore path.
+Then run /freeze-review-loop until the verdict is pass. If ok review --freeze refuses because of the
+inherited launcher binding, record that and use the skill.
+Close with a feature-branch commit containing the spec, the roadmap (R1a DONE, R1b NEXT) and this
+handover with the R1b (Auto) paste-ready prompt. Leave a clean tree.
+F3-F8 are out of scope (queued as H1/D1).
+```
+
+### Verified snapshot (2026-10-20, independent review)
+
+- `30f5cb4` reviewed **PASS** with no blockers
+  ([report](reviews/MIGRATION-COMPAT-RC11-INDEPENDENT-REVIEW.md); reviewer Claude Opus 5.5).
+- Test results:
+  - focused suites: 77/77 passed;
+  - whole tree compared with an exported `d54a228`: no new failures;
+  - CI selection (698 tests): 2 failures, both pre-existing and documented in
+    `reviews/FPR-5-REVIEW.md:267-268`;
+  - `tests/muse` on rc11: 184/186, with 2 documented superseded failures
+    (`FPR-5-REVIEW.md:269-270`).
+- rc5 was not executed because no rc5 venv exists on this host.
+- Consumers on prepared runtime `309ac668…`:
+  - Knowtation config `72c2f1fc…` and NEXT `1279cdee…` match its receipt.
+  - BornFree migrated with 138/71 historical blocks and none selected. Its NEXT was
+    later superseded by an operator `stop` publication (`d659c71f…`).
+- Findings F1–F8 are queued in the roadmap; none is fixed.
+
+### VCS
+
+| Item | Value |
+| --- | --- |
+| Branch | `fix/knowtation-migration-compat-20261020` (local only) |
+| Reviewed commit | `30f5cb48cfe6aafc542d6818e9128caa03e978a1` |
+| Base | `d54a228` (main after PR #93) |
+| Push / PR / merge | none; push and PR require owner authorization; merge is Tier 3 |
+
+### Change log
+
+- 2026-10-20: added the independent review, queued F1–F8 (R1a, R1b, R2, R3, H1, D1)
+  and drafted the R1a prompt. No code changes.
+
 ## PR #93 — hosting verified; owner-authorized merge in progress, 2026-10-18
 
 [Authenticated evidence](validation/PR-93-HOSTING-VERIFICATION.md) confirms the

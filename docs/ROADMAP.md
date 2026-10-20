@@ -1,5 +1,80 @@
 # Overseer Kit roadmap
 
+## Migration compatibility + Muse rc11 — independent review PASS; pre-PR fixes queued, 2026-10-20
+
+Local commit `30f5cb4` on `fix/knowtation-migration-compat-20261020` (parent `d54a228`,
+not pushed) covers several changes:
+
+- legacy `kit` metadata is kept as inert `legacy_kit`;
+- living documents up to 16 MiB are preserved;
+- historical prompts stay inert drafts;
+- Muse 0.2.1rc11 support uses an exact allowlist;
+- adds `adopt --rebind-muse-runtime`.
+
+Knowtation (rebind and C2 publication) and BornFree (migration and publication)
+adopted the prepared runtime `309ac668…` built from this exact commit.
+
+The [independent review](reviews/MIGRATION-COMPAT-RC11-INDEPENDENT-REVIEW.md) returned
+**PASS** with no blockers. The owner accepted all of its recommendations. Every
+finding is queued below; none is marked fixed. Merge to main remains Tier 3.
+
+Phase Model Key: Thinking = freeze WHAT/HOW; Auto = build exactly to the frozen spec;
+Thinking → Auto = step `a` then step `b`; Operator + Auto = human Tier-3 gate plus
+Auto doc sync.
+
+| Step | Model | Status | Deliverable |
+| --- | --- | --- | --- |
+| R1a | Thinking → Auto (a: Thinking) | **NEXT** | Frozen spec for **F1** and **F2**, with fail-closed rules and a seven-tier test matrix; freeze review **pass**. |
+| R1b | Thinking → Auto (b: Auto) | Blocked on R1a | Build exactly to the R1a spec. Run the seven tiers, then `/build-verification-review` → **pass**. Feature-branch commit. |
+| R2 | Thinking | Blocked on R1b | Independent re-review of `d54a228..<R1b head>` by a model other than the R1b builder; **pass** required. |
+| R3 | Operator + Auto | Blocked on R2 | Owner authorizes push and PR. Merge to main is Tier 3 and needs explicit owner approval. |
+| H1 | Thinking → Auto | Queued after merge | Hardening: **F3**, **F4**, **F5**, **F6**, **F7**. |
+| D1 | Operator + Auto | Queued after merge | Decide how consumers move off prepared runtime `309ac668…` (**F8**). |
+
+What each finding is (details and line evidence are in the review):
+
+- **F1 (Medium, pre-PR).** The prepared CI cannot exercise rc11, and the new tests
+  hard-code rc11:
+  - `tools/ci/supported_v1.py:42, 48` accepts rc5 only;
+  - `tests/muse/test_runtime_rebind.py:24, 70-71, 211` pin rc11;
+  - the two new integration test files are missing from the CI selection;
+  - the FPR-4 mirror replacement test has no rc11 wrapper.
+- **F2 (Low, pre-PR).** After an interrupted rebind, `apply_mapping` says "rerun
+  explicit sync" (`cli/product_migration.py:336`). That step refuses; restoring
+  from the backup is the working path.
+- **F3 (Low).** Rebind backups are always 0644 or 0755 instead of the original
+  mode, so a 0600 config gets a 0644 backup.
+- **F4 (Low).** `docs/MUSE-RC11-COMPATIBILITY.md:82-83` says "shared directory
+  lock", but `next-write` locks `docs/`, not `.overseer/`.
+- **F5 (Medium, pre-existing).** The `_legacy_drafts` pattern
+  (`product_migration.py:271`) backtracks exponentially on blank lines after a
+  `### Paste-ready prompt` heading. Use `(?:[ \t]*\n)*`.
+- **F6 (Low, pre-existing).** The Muse source digest covers `*.py` only, and
+  `muse/__init__` runs before the check. Hash before importing; enforce
+  hash-checked bytecode or include it in the digest.
+- **F7 (Low).** The rebind drift tests assert only exit code 2. Assert the named
+  refusals, and add tests for the interrupted-rebind restore, a symlinked or
+  planted backup, and backup modes.
+- **F8 (operator decision; source-verified, not run).** No command relocates a
+  **Git-authority** repository to a Kit installation at a different path
+  (`cli/v1.py:175`, `cli/product_config.py:393-394`). Only the Muse rebind
+  relocates. BornFree is Git-only.
+  - Choose between updating the prepared runtime in place followed by that
+    installation's explicit `sync`, or a reviewed relocation command.
+  - Until then, both consumers stay on `309ac668…`.
+
+Definition of Done for this milestone:
+
+1. F1 and F2 are fixed with seven-tier tests.
+2. Build verification and the R2 re-review both pass.
+3. The PR is opened under owner authorization.
+4. H1 and D1 are tracked in a successor roadmap section.
+
+This branch's [NEXT](NEXT.md) is stale (PR #93). It cannot be republished from this
+checkout: the tracked binding points to the publication checkout, so the bound
+launcher refuses with `launcher_repository_mismatch`. The handover holds the R1a
+draft prompt until publication is possible. Model: Thinking.
+
 ## PR #93 — hosting verified; owner-authorized merge in progress, 2026-10-18
 
 [Authenticated evidence](validation/PR-93-HOSTING-VERIFICATION.md) confirms the
