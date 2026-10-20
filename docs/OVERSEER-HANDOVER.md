@@ -8,6 +8,9 @@
 findings F1 and F2. Do not implement. The R1a session issues the R1b (Auto) prompt
 only after the freeze review passes.
 
+In parallel, the owner may run **N1a** (prompt below) in a fresh Knowtation session.
+The order of work is in the roadmap's top section.
+
 ### Paste-ready prompt (draft; canonical NEXT cannot be published from this checkout)
 
 ```text
@@ -44,7 +47,145 @@ Then run /freeze-review-loop until the verdict is pass. If ok review --freeze re
 inherited launcher binding, record that and use the skill.
 Close with a feature-branch commit containing the spec, the roadmap (R1a DONE, R1b NEXT) and this
 handover with the R1b (Auto) paste-ready prompt. Leave a clean tree.
-F3-F8 are out of scope (queued as H1/D1).
+F3-F10 are out of scope (queued as H1, D1, N1 and M1).
+```
+
+### Parallel track — N1a prompt (paste into a fresh Knowtation session)
+
+Amended from the owner's `PROMPT-A-THINKING.txt`. The changes: a stacked base branch,
+read and write coverage plus multi-lane consistency, the named rebind path, the
+consumer staging guard, and the owner's preference for option 1.
+
+```text
+Model: GPT-6 Astra
+Reasoning: High
+Tier: Thinking (freeze only; no mechanical build)
+Step: OK-NEXT-MODEL-a (kit roadmap row N1a, finding F9)
+
+Freeze a small, permanent Overseer Kit change so a single-lane consumer can publish
+a canonical NEXT that names a different model for one action.
+
+Consumer: /Users/aaronrenecarvajal/knowtation (repo ID 6df95ecb-f668-5cf6-adf1-384baf3e6246)
+Kit source: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-knowtation-compat-20261020
+Base: the current head of fix/knowtation-migration-compat-20261020. Its only commits
+after 30f5cb4 are docs. 30f5cb4 is the source of the installed runtime
+PREPARED-RUNTIMES/knowtation-bornfree-compat-rc11-20261020. Record the head SHA.
+Build branch (named in the freeze): feat/next-model-select-20261020, stacked on that
+head. Never fork from 30f5cb4 directly.
+
+Read the consumer's AGENTS.md, the top entry of docs/KNOWTATION-OVERSEER-HANDOVER.md,
+docs/evidence/B02/overseer-rc11-rebind-20261020/README.md and
+docs/evidence/B02/c2-closure-encoding-cross-model-review-20261020/OWNER-DISPOSITION.md.
+Then read the kit source's AGENTS.md, docs/ROADMAP.md (top section: F9, F2, F3, F10),
+and docs/MUSE-RC11-COMPATIBILITY.md ("Explicit same-source rebinding"). This owner task
+supersedes historical kit stop/NEXT instructions only for this change. Do not use or edit
+the kit's own NEXT, the main kit checkout (feat/overseer-context-isolation, which has
+unrelated dirty work), other worktrees, or the installed runtime.
+
+Problem (source-verified): with one lane, cli/v1.py:273-274 refuses any NEXT whose
+model differs from config context.model ('next_model_mismatch'). The check runs
+inside validate_next, so it governs both next-write and reading NEXT. Knowtation pins
+'Anthropic Claude Opus, thinking enabled'. No supported command changes it: adopt
+and the rebind require --model to equal it (cli/product_authority.py:176-178,
+cli/main.py:196-199). A hand edit breaks config and lock integrity. Multi-lane NEXT
+already accepts any validated model and checks only explicit --model expectations
+(cli/v1.py:207-211). The owner needs to publish the saved C2-PROPOSAL-REVISION-1
+prompt with model 'OpenAI Codex (latest GPT model, high reasoning)', followed later by
+a Claude Opus review.
+
+Write a freeze document (frozen: true) at
+/Users/aaronrenecarvajal/knowtation/docs/evidence/B02/overseer-next-model-select-20261020/FREEZE.md
+that fixes WHAT and HOW:
+- The chosen mechanism, after comparing at least two options. (1) An owner-maintained
+  allowed-model list per lane, changed only through a previewable command with an
+  expected config digest. (2) context.model as the default, with any validated
+  --model accepted. Owner preference: (1), unless the comparison finds a concrete
+  defect; record why. State the security rationale; model labels confer no authority.
+- Whether the mechanism also governs multi-lane NEXT, so that single-lane and
+  multi-lane behave consistently.
+- Whether a hand-edited model label in NEXT is refused or only displayed when read.
+- Default behavior is unchanged when the feature is not used, and every existing
+  next-write and next check is retained: repo ID and root, branch, lane, Muse source
+  and base head, expected NEXT digest, prompt validation, atomic write.
+- Model value validation (length bound, allowed characters, no newline or
+  binding-line injection), and how the value is recorded and displayed.
+- Exact files to change, plus seven-tier focused tests on synthetic fixtures (unit,
+  integration, end-to-end, stress, data-integrity, performance, security) with named
+  refusal cases.
+- How the build produces a NEW prepared runtime directory under
+  /Users/aaronrenecarvajal/OVERSEER_KIT/PREPARED-RUNTIMES/.
+- How Knowtation is moved onto that runtime. Use NEW_KIT/cli/ok adopt
+  --rebind-muse-runtime, run from the new runtime, with --model 'Anthropic Claude
+  Opus, thinking enabled' (the rebind requires the current model). Do a dry run first,
+  then apply with --expect-config and --expect-rebind. Originals go to
+  .overseer/local/rebind-<current config digest>/.
+- The exact rollback, ordered newest first: this rebind, then
+  rebind-3899dd65..., then the original migration package. Known caveats: after an
+  interrupted apply, restore from the backup rather than following the "rerun explicit
+  sync" message (F2), and backups are written 0644 (F3).
+- Stop conditions.
+Run the configured freeze review from the consumer
+(/Users/aaronrenecarvajal/knowtation/.overseer/bin/ok review --freeze <FREEZE.md>) and record its
+verdict. Amend and re-run until pass, or stop with the precise blocking finding.
+
+No code changes, tests, runtime builds, consumer config edits, next-write, commits,
+pushes, merges or deployment in this step. Never run git add -A, git add . or
+muse code add . in Knowtation (kit finding F10). Report the freeze path, its SHA-256
+and the review verdict. Step b (Auto) starts only on a pass verdict.
+```
+
+### Parallel track — N1b prompt (only after N1a passes)
+
+```text
+Model: Auto
+Tier: Auto (build exactly to the frozen spec; no redesign)
+Step: OK-NEXT-MODEL-b (kit roadmap row N1b, finding F9)
+
+Build the frozen Overseer Kit change, install it into Knowtation, and publish the
+saved C2 revision prompt.
+
+Precondition: /Users/aaronrenecarvajal/knowtation/docs/evidence/B02/overseer-next-model-select-20261020/FREEZE.md
+exists with frozen: true and a recorded freeze-review verdict of pass. If not, stop
+and report. Verify that the freeze file's SHA-256 matches the one step a reported.
+
+Kit source: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-knowtation-compat-20261020.
+Create feat/next-model-select-20261020 from the fix-branch head recorded in the freeze.
+Do not touch the main kit checkout, other worktrees, the kit's own NEXT, or the existing
+prepared runtime (it stays as rollback).
+
+1. Implement exactly the frozen files and behavior. If the freeze is wrong or
+   incomplete, stop and report; do not redesign.
+2. Add the frozen seven-tier focused tests. Run them and the existing next and
+   next-write test groups. Record commands and results.
+3. Run /build-verification-review against the freeze; DONE only on pass. Record it.
+4. Commit locally on feat/next-model-select-20261020: code, tests, a copy of the
+   freeze at docs/reviews/NEXT-MODEL-SELECT-FREEZE.md, and changes to docs/ROADMAP.md
+   limited to the N1 rows (N1a and N1b DONE, N1-R NEXT) plus one handover change-log
+   line. No push, merge or release.
+5. Build the new prepared runtime directory and move Knowtation onto it through the
+   frozen rebind path. Inspect the dry-run preview and apply only if it matches.
+   Originals must land under .overseer/local. Then verify from a fresh process:
+   `ok status --check-footprint --exit-code` and `ok next --lane product`.
+6. Publish the saved prompt with bound next-write:
+   --repo-id 6df95ecb-f668-5cf6-adf1-384baf3e6246 --branch docs/scooling-brain-pair-relay
+   --lane product --model "OpenAI Codex (latest GPT model, high reasoning)"
+   --action-id C2-PROPOSAL-REVISION-1 --action-kind plan --vcs muse
+   --base-head <current Muse head> --expect-next <current docs/NEXT.md SHA-256>
+   --prompt-file docs/evidence/B02/c2-closure-encoding-cross-model-review-20261020/NEXT-PROMPT.txt
+   Read it back with `ok next --lane product` from a fresh process.
+7. Write a receipt README.md in the freeze's folder: what changed, hashes before and
+   after, test and review results, and the full rollback chain. Prepend one identical
+   entry to docs/KNOWTATION-ROADMAP.md, docs/KNOWTATION-OVERSEER-HANDOVER.md and
+   docs/NEXT-BROWSER-PRIVATE-VAULT.md. Its Single NEXT is the Codex revision, and it
+   carries the staging guard: never use git add -A, git add . or muse code add .
+   until kit fix M1 lands.
+
+Knowtation: no product code, tests or services; no vault or secret access; no Git or
+Muse commit (Muse staging holds unrelated earlier work; commit scope is the owner's
+decision). No push, merge, deployment or subagents. Format approval and C5 remain
+pending. Stop on any unresolved failure with a precise report and the rollback state.
+Next kit step after this: N1-R, an independent review by a different model, before
+any PR.
 ```
 
 ### Verified snapshot (2026-10-20, independent review)
@@ -63,7 +204,7 @@ F3-F8 are out of scope (queued as H1/D1).
   - Knowtation config `72c2f1fc…` and NEXT `1279cdee…` match its receipt.
   - BornFree migrated with 138/71 historical blocks and none selected. Its NEXT was
     later superseded by an operator `stop` publication (`d659c71f…`).
-- Findings F1–F8 are queued in the roadmap; none is fixed.
+- Findings F1–F10 are queued in the roadmap; none is fixed.
 
 ### VCS
 
@@ -83,6 +224,11 @@ F3-F8 are out of scope (queued as H1/D1).
   - N1 runs from the Knowtation session and is independent of R1.
   - R1a remains this branch's next step.
   - Added the Knowtation rollback chain to the roadmap.
+- 2026-10-20: queued F10 (checkout-local ignore rules missing after migration;
+  pre-existing) as M1a and M1b, plus cleanup C1. Recorded the order of work and the
+  consumer staging guard.
+  - Added the amended N1a and N1b prompts. The owner's originals remain unchanged in
+    Knowtation as `PROMPT-A-THINKING.txt` and `PROMPT-B-AUTO.txt`.
 
 ## PR #93 — hosting verified; owner-authorized merge in progress, 2026-10-18
 

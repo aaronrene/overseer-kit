@@ -34,6 +34,22 @@ Auto doc sync.
 | N1b | Thinking → Auto (b: Auto) | Blocked on N1a | Build on stacked branch `feat/next-model-select-20261020` from this branch's head (not a parallel branch from `30f5cb4`). Copy the freeze into `docs/reviews/`. Build a new prepared runtime and rebind Knowtation with `adopt --rebind-muse-runtime` from the new runtime. Publish `C2-PROPOSAL-REVISION-1`. |
 | N1-R | Thinking, independent model | Blocked on N1b | Independent review of the N1 branch delta, required before its PR. |
 | N1-PR | Operator + Auto | Blocked on R3 and N1-R | Stacked PR for N1 on top of the R3 PR. Merge is Tier 3. |
+| M1a | Thinking → Auto (a: Thinking) | Queued; first step after the R3 merge | Freeze the checkout-local ignore fix (**F10**) for migration, Git-only init and already-migrated consumers. |
+| M1b | Thinking → Auto (b: Auto) | Blocked on M1a | Build, seven tiers, `/build-verification-review` → **pass**, independent review, PR. Then each consumer applies it through the kit's previewable path. |
+| C1 | Operator + Auto | After the R3 and N1 merges | Cleanup: remove the `overseer-kit-knowtation-baseline-20261020` worktree and the review scratch folders `/tmp/rv30f5b`, `/tmp/rv30f5c` and `/tmp/rv30f5d` (deletion needs owner approval). Archive `RECOVERY-RUNS/migration-compat-rc11-20261020/` once the PR is merged. |
+
+Order of work:
+
+1. R1a in this kit checkout and N1a in the Knowtation session can run at the same
+   time; they change different files.
+2. R1b, then R2, then R3 (push and PR).
+3. N1b, then N1-R, then the N1 stacked PR.
+4. After both merges: M1, H1, D1 and C1.
+
+Consumer guard until M1 lands (Knowtation and BornFree): stage explicit paths only.
+Never run `git add -A`, `git add .` or `muse code add .` there, because
+`.overseer/bin/`, `.overseer/local/`, `.overseer/migrations/` and `docs/NEXT.md` are
+neither tracked nor ignored.
 
 What each finding is (details and line evidence are in the review):
 
@@ -78,6 +94,27 @@ What each finding is (details and line evidence are in the review):
     multi-lane, so the two behave consistently.
   - It must state whether a hand-edited model label in NEXT is refused or
     displayed. Model labels confer no authority.
+- **F10 (Medium, pre-existing; owner-recorded in Knowtation's rc11 receipt,
+  source-verified).** Checkout-local Kit files are never excluded after a
+  migration.
+  - `cli/v1_policy.py:10-12` lists them, and `ignore_assets` adds the matching
+    `.gitignore` and `.museignore` rules.
+  - Only fresh Muse init (`cli/v1.py:444-449`) and authority changes
+    (`cli/product_authority.py:199`) call it. Migration
+    (`cli/product_migration.py`), the rebind and fresh Git-only init do not. The
+    same was true at `d54a228`.
+  - Knowtation (`muse status`) and BornFree (`git status`) both show `.overseer/bin/`,
+    `.overseer/local/`, `.overseer/migrations/` and `docs/NEXT.md` as untracked
+    and not ignored.
+  - Knowtation's `docs/AGENT-ORCHESTRATION.md:105` documents `muse code add .`.
+    That command would commit rebind and migration backups, which contain absolute
+    local paths.
+  - The M1a freeze must cover three things. First, the same additive, previewable
+    ignore block for migration and for Git-only init. Second, a supported way for
+    already-migrated consumers to add it. Third, the policy conflict:
+    `.overseer/config.yaml`, `.cursor/` and `docs/NEXT.md` are listed as local, but
+    both consumers track the config with `--tracked-bindings preserve`, and Git
+    freshness accepts a committed NEXT (`cli/v1.py:282-290`).
 - **Rollback chain for Knowtation after N1:** undo the N1 rebind first (its
   `.overseer/local/rebind-<72c2f1fc…>` backups), then the rc11 rebind
   (`rebind-3899dd65…`), then the original migration rollback package.
@@ -89,6 +126,7 @@ Definition of Done for this milestone:
 3. The PR is opened under owner authorization.
 4. H1 and D1 are tracked in a successor roadmap section.
 5. N1 is either merged through its own reviewed stacked PR or carried forward explicitly.
+6. M1 and C1 are tracked in the successor roadmap section.
 
 This branch's [NEXT](NEXT.md) is stale (PR #93). It cannot be republished from this
 checkout: the tracked binding points to the publication checkout, so the bound
