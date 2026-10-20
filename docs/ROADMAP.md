@@ -36,7 +36,7 @@ Auto doc sync.
 | N1-PR | Operator + Auto | Blocked on R3 and N1-R | Stacked PR for N1 on top of the R3 PR. Merge is Tier 3. |
 | M1a | Thinking → Auto (a: Thinking) | Queued; first step after the R3 merge | Freeze the checkout-local ignore fix (**F10**) for migration, Git-only init and already-migrated consumers. |
 | M1b | Thinking → Auto (b: Auto) | Blocked on M1a | Build, seven tiers, `/build-verification-review` → **pass**, independent review, PR. Then each consumer applies it through the kit's previewable path. |
-| C1 | Operator + Auto | After the R3 and N1 merges | Cleanup: remove the `overseer-kit-knowtation-baseline-20261020` worktree and the review scratch folders `/tmp/rv30f5b`, `/tmp/rv30f5c` and `/tmp/rv30f5d` (deletion needs owner approval). Archive `RECOVERY-RUNS/migration-compat-rc11-20261020/` once the PR is merged. |
+| C1 | Operator + Auto | Partly done 2026-10-20; rest after R2 passes | Done: the review scratch folders under `/tmp` (about 2.5 GB) were deleted with owner approval. The cited probe scripts were kept in `RECOVERY-RUNS/migration-compat-rc11-20261020/probes/`. Remaining: once R2 passes, remove the `overseer-kit-knowtation-baseline-20261020` worktree (117 MB, a `d54a228` checkout that can be recreated). Once the PR is merged, archive `RECOVERY-RUNS/migration-compat-rc11-20261020/`. |
 
 Order of work:
 
