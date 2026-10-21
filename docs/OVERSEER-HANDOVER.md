@@ -1,198 +1,102 @@
 # Overseer Kit handover
 
-## Migration compatibility + Muse rc11 — review PASS; R1a next, 2026-10-20
+## Migration compatibility + Muse rc11 — R1a freeze pass; R1b next, 2026-10-20
 
 ### NEXT SESSION
 
-**R1a — Model: Thinking.** Start a fresh chat. Freeze the pre-PR fix spec for review
-findings F1 and F2. Do not implement. The R1a session issues the R1b (Auto) prompt
-only after the freeze review passes.
+**R1b — Model: Auto.** Start a fresh chat in this checkout. Build exactly
+[docs/reviews/MIGRATION-COMPAT-RC11-R1-SPEC.md](reviews/MIGRATION-COMPAT-RC11-R1-SPEC.md).
+No redesign. Do not start N1b in that chat.
 
-In parallel, the owner may run **N1a** (prompt below) in a fresh Knowtation session.
-The order of work is in the roadmap's top section.
+N1b may resume after this R1a close, in a **new** chat whose cwd is
+`/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-next-model-select-20261020`.
+Do not run N1b inside the R1b chat. Use the option-A Auto prompt in the N1 freeze.
 
 ### Paste-ready prompt (draft; canonical NEXT cannot be published from this checkout)
 
 ```text
-Model: Thinking
-Overseer Kit — R1a: freeze the pre-PR fix spec for independent-review findings F1 and F2.
+Model: Auto
+Tier: Auto (build exactly to the frozen spec; no redesign)
+Overseer Kit — R1b: implement F1 and F2 from the frozen R1 spec.
 
 Checkout: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-knowtation-compat-20261020
-Branch: fix/knowtation-migration-compat-20261020 (local; not pushed). Reviewed commit 30f5cb4.
-Read first: docs/ROADMAP.md (top section), this handover's verified snapshot,
-docs/reviews/MIGRATION-COMPAT-RC11-INDEPENDENT-REVIEW.md (F1, F2, section 7),
-docs/MUSE-RC11-COMPATIBILITY.md, tools/ci/supported_v1.py, tests/muse/test_runtime_rebind.py,
-tests/muse/conftest.py, tests/fpr4/test_mirror_full_footprint.py, cli/product_migration.py:315-340.
+Branch: fix/knowtation-migration-compat-20261020 (local; not pushed).
+Frozen spec: docs/reviews/MIGRATION-COMPAT-RC11-R1-SPEC.md
+Required: frozen: true; Review record round 3 verdict pass.
+Read that spec in full, then docs/ROADMAP.md (top section) and this handover's
+verified snapshot. Build exactly the files and behaviors in spec sections 2–5.
+Follow spec section 6 build rules.
 
-Freeze WHAT and HOW only. No implementation, pushes, PRs, merges, installs or dependency changes.
-Do not touch /Users/aaronrenecarvajal/knowtation or /Users/aaronrenecarvajal/bornfree-hub.
+Do not redesign. If the spec is wrong or incomplete, stop and report.
+No pushes, PRs, merges, installs or dependency changes.
+Do not touch /Users/aaronrenecarvajal/knowtation, /Users/aaronrenecarvajal/bornfree-hub,
+or /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-next-model-select-20261020.
+Do not implement N1, F3–F11, A1, or D1.
 
-F1. Make the supported matrix and the new tests portable across the exact MUSE_RUNTIMES allowlist.
-  - The supported_v1.py probe accepts only an exact (version, digest) pair from cli.v1_revision.MUSE_RUNTIMES.
-  - test_runtime_rebind derives "current" from the probed venv and "stale" from the other allowlisted entry.
-  - The digest-refusal case patches the probed version's entry.
-  - Add tests/integration/test_legacy_migration_compat.py and test_historical_prompt_migration.py
-    to the CI selection.
-  - Add a committed rc11-capable wrapper for the FPR-4 mirror successor contract.
-  - Decide whether supported-v1.yml gains an rc11 job. No hosted run is authorized; add no URLs or secrets.
-F2. apply_mapping accepts a caller-supplied recovery hint.
-  - Rebind passes: restore .overseer/bin/ok, .overseer/version.lock, then .overseer/config.yaml
-    from <backup>, then preview again.
-  - Sync and migration messages stay unchanged.
+1. Implement F1 (portable MUSE_RUNTIMES probe and tests; compatibility files in the
+   CI driver; committed FPR-4 successor wrapper; no rc11 job in supported-v1.yml).
+2. Implement F2 (apply_mapping recovery hint; rebind-only hint; sync/init/adopt/
+   upgrade-regime messages unchanged).
+3. Add the named seven-tier tests. Run them outside the Cursor sandbox, with
+   -p no:cacheprovider, PYTHONDONTWRITEBYTECODE=1, and a /tmp basetemp.
+4. Run the commands in spec section 6.3, then E2 and E3. Only the four documented
+   superseded failures are allowed.
+5. Write docs/reviews/MIGRATION-COMPAT-RC11-R1-BUILD.md with commands, counts and
+   the X5 diff checks.
+6. Run /build-verification-review against the spec. DONE only on pass.
+7. One feature-branch commit: code, tests, docs, the build record, roadmap
+   (R1b DONE, R2 NEXT) and this handover. Leave a clean tree. No push.
 
-Deliver docs/reviews/MIGRATION-COMPAT-RC11-R1-SPEC.md (frozen: true) containing exact files and
-behaviors, fail-closed rules, and a seven-tier matrix per .overseer/policy/test-tiers.yaml.
-The matrix must include an interrupted-rebind test that asserts the new message and the restore path.
-Then run /freeze-review-loop until the verdict is pass. If ok review --freeze refuses because of the
-inherited launcher binding, record that and use the skill.
-Close with a feature-branch commit containing the spec, the roadmap (R1a DONE, R1b NEXT) and this
-handover with the R1b (Auto) paste-ready prompt. Leave a clean tree.
-F3-F10 are out of scope (queued as H1, D1, N1 and M1).
+Consumers stay on prepared runtime 309ac668…. Build no prepared runtime in R1b.
 ```
 
-### Parallel track — N1a prompt (paste into a fresh Knowtation session)
+### N1 status (held; do not paste the old option-1 prompts)
+
+N1a is done: option A freeze
+`knowtation/docs/evidence/B02/overseer-next-model-select-20261020/FREEZE.md`
+(sha256 `cc79cfff…`; mechanical pass). The allowlist freeze and the historical
+N1a/N1b prompts that preferred option 1 are superseded.
+
+N1b worktree already exists, clean, at `99e2e5b` on `feat/next-model-select-20261020`.
+A prior Auto session created it and started the baseline matrix; that pytest was
+stopped incomplete (no code edits). Resume later with the freeze's own Auto prompt,
+skipping `worktree add`, and re-run the baseline.
+
+### Historical N1a prompt (superseded; do not run)
 
 Amended from the owner's `PROMPT-A-THINKING.txt`. The changes: a stacked base branch,
 read and write coverage plus multi-lane consistency, the named rebind path, the
 consumer staging guard, and the owner's preference for option 1.
 
 ```text
-Model: GPT-6 Astra
-Reasoning: High
-Tier: Thinking (freeze only; no mechanical build)
-Step: OK-NEXT-MODEL-a (kit roadmap row N1a, finding F9)
-
-Freeze a small, permanent Overseer Kit change so a single-lane consumer can publish
-a canonical NEXT that names a different model for one action.
-
-Consumer: /Users/aaronrenecarvajal/knowtation (repo ID 6df95ecb-f668-5cf6-adf1-384baf3e6246)
-Kit source: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-knowtation-compat-20261020
-Base: the current head of fix/knowtation-migration-compat-20261020. Its only commits
-after 30f5cb4 are docs. 30f5cb4 is the source of the installed runtime
-PREPARED-RUNTIMES/knowtation-bornfree-compat-rc11-20261020. Record the head SHA.
-Build branch (named in the freeze): feat/next-model-select-20261020, stacked on that
-head. Never fork from 30f5cb4 directly.
-
-Read the consumer's AGENTS.md, the top entry of docs/KNOWTATION-OVERSEER-HANDOVER.md,
-docs/evidence/B02/overseer-rc11-rebind-20261020/README.md and
-docs/evidence/B02/c2-closure-encoding-cross-model-review-20261020/OWNER-DISPOSITION.md.
-Then read the kit source's AGENTS.md, docs/ROADMAP.md (top section: F9, F2, F3, F10),
-and docs/MUSE-RC11-COMPATIBILITY.md ("Explicit same-source rebinding"). This owner task
-supersedes historical kit stop/NEXT instructions only for this change. Do not use or edit
-the kit's own NEXT, the main kit checkout (feat/overseer-context-isolation, which has
-unrelated dirty work), other worktrees, or the installed runtime.
-
-Problem (source-verified): with one lane, cli/v1.py:273-274 refuses any NEXT whose
-model differs from config context.model ('next_model_mismatch'). The check runs
-inside validate_next, so it governs both next-write and reading NEXT. Knowtation pins
-'Anthropic Claude Opus, thinking enabled'. No supported command changes it: adopt
-and the rebind require --model to equal it (cli/product_authority.py:176-178,
-cli/main.py:196-199). A hand edit breaks config and lock integrity. Multi-lane NEXT
-already accepts any validated model and checks only explicit --model expectations
-(cli/v1.py:207-211). The owner needs to publish the saved C2-PROPOSAL-REVISION-1
-prompt with model 'OpenAI Codex (latest GPT model, high reasoning)', followed later by
-a Claude Opus review.
-
-Write a freeze document (frozen: true) at
-/Users/aaronrenecarvajal/knowtation/docs/evidence/B02/overseer-next-model-select-20261020/FREEZE.md
-that fixes WHAT and HOW:
-- The chosen mechanism, after comparing at least two options. (1) An owner-maintained
-  allowed-model list per lane, changed only through a previewable command with an
-  expected config digest. (2) context.model as the default, with any validated
-  --model accepted. Owner preference: (1), unless the comparison finds a concrete
-  defect; record why. State the security rationale; model labels confer no authority.
-- Whether the mechanism also governs multi-lane NEXT, so that single-lane and
-  multi-lane behave consistently.
-- Whether a hand-edited model label in NEXT is refused or only displayed when read.
-- Default behavior is unchanged when the feature is not used, and every existing
-  next-write and next check is retained: repo ID and root, branch, lane, Muse source
-  and base head, expected NEXT digest, prompt validation, atomic write.
-- Model value validation (length bound, allowed characters, no newline or
-  binding-line injection), and how the value is recorded and displayed.
-- Exact files to change, plus seven-tier focused tests on synthetic fixtures (unit,
-  integration, end-to-end, stress, data-integrity, performance, security) with named
-  refusal cases.
-- How the build produces a NEW prepared runtime directory under
-  /Users/aaronrenecarvajal/OVERSEER_KIT/PREPARED-RUNTIMES/.
-- How Knowtation is moved onto that runtime. Use NEW_KIT/cli/ok adopt
-  --rebind-muse-runtime, run from the new runtime, with --model 'Anthropic Claude
-  Opus, thinking enabled' (the rebind requires the current model). Do a dry run first,
-  then apply with --expect-config and --expect-rebind. Originals go to
-  .overseer/local/rebind-<current config digest>/.
-- The exact rollback, ordered newest first: this rebind, then
-  rebind-3899dd65..., then the original migration package. Known caveats: after an
-  interrupted apply, restore from the backup rather than following the "rerun explicit
-  sync" message (F2), and backups are written 0644 (F3).
-- Stop conditions.
-Run the configured freeze review from the consumer
-(/Users/aaronrenecarvajal/knowtation/.overseer/bin/ok review --freeze <FREEZE.md>) and record its
-verdict. Amend and re-run until pass, or stop with the precise blocking finding.
-
-No code changes, tests, runtime builds, consumer config edits, next-write, commits,
-pushes, merges or deployment in this step. Never run git add -A, git add . or
-muse code add . in Knowtation (kit finding F10). Report the freeze path, its SHA-256
-and the review verdict. Step b (Auto) starts only on a pass verdict.
+SUPERSEDED. Do not run. N1a is done as option A. See FREEZE.md sha256 cc79cfff….
 ```
 
-### Parallel track — N1b prompt (only after N1a passes)
+### Historical N1b prompt (superseded; do not run)
+
+The following block is the old stacked/allowlist-era Auto prompt. Do not run it.
+Use the option-A prompt in the N1 freeze after R1b.
 
 ```text
-Model: Auto
-Tier: Auto (build exactly to the frozen spec; no redesign)
-Step: OK-NEXT-MODEL-b (kit roadmap row N1b, finding F9)
-
-Build the frozen Overseer Kit change, install it into Knowtation, and publish the
-saved C2 revision prompt.
-
-Precondition: /Users/aaronrenecarvajal/knowtation/docs/evidence/B02/overseer-next-model-select-20261020/FREEZE.md
-exists with frozen: true and a recorded freeze-review verdict of pass. If not, stop
-and report. Verify that the freeze file's SHA-256 matches the one step a reported.
-
-Kit source: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-knowtation-compat-20261020.
-Create feat/next-model-select-20261020 from the fix-branch head recorded in the freeze.
-Do not touch the main kit checkout, other worktrees, the kit's own NEXT, or the existing
-prepared runtime (it stays as rollback).
-
-1. Implement exactly the frozen files and behavior. If the freeze is wrong or
-   incomplete, stop and report; do not redesign.
-2. Add the frozen seven-tier focused tests. Run them and the existing next and
-   next-write test groups. Record commands and results.
-3. Run /build-verification-review against the freeze; DONE only on pass. Record it.
-4. Commit locally on feat/next-model-select-20261020: code, tests, a copy of the
-   freeze at docs/reviews/NEXT-MODEL-SELECT-FREEZE.md, and changes to docs/ROADMAP.md
-   limited to the N1 rows (N1a and N1b DONE, N1-R NEXT) plus one handover change-log
-   line. No push, merge or release.
-5. Build the new prepared runtime directory and move Knowtation onto it through the
-   frozen rebind path. Inspect the dry-run preview and apply only if it matches.
-   Originals must land under .overseer/local. Then verify from a fresh process:
-   `ok status --check-footprint --exit-code` and `ok next --lane product`.
-6. Publish the saved prompt with bound next-write:
-   --repo-id 6df95ecb-f668-5cf6-adf1-384baf3e6246 --branch docs/scooling-brain-pair-relay
-   --lane product --model "OpenAI Codex (latest GPT model, high reasoning)"
-   --action-id C2-PROPOSAL-REVISION-1 --action-kind plan --vcs muse
-   --base-head <current Muse head> --expect-next <current docs/NEXT.md SHA-256>
-   --prompt-file docs/evidence/B02/c2-closure-encoding-cross-model-review-20261020/NEXT-PROMPT.txt
-   Read it back with `ok next --lane product` from a fresh process.
-7. Write a receipt README.md in the freeze's folder: what changed, hashes before and
-   after, test and review results, and the full rollback chain. Prepend one identical
-   entry to docs/KNOWTATION-ROADMAP.md, docs/KNOWTATION-OVERSEER-HANDOVER.md and
-   docs/NEXT-BROWSER-PRIVATE-VAULT.md. Its Single NEXT is the Codex revision, and it
-   carries the staging guard: never use git add -A, git add . or muse code add .
-   until kit fix M1 lands.
-
-Knowtation: no product code, tests or services; no vault or secret access; no Git or
-Muse commit (Muse staging holds unrelated earlier work; commit scope is the owner's
-decision). No push, merge, deployment or subagents. Format approval and C5 remain
-pending. Stop on any unresolved failure with a precise report and the rollback state.
-Next kit step after this: N1-R, an independent review by a different model, before
-any PR.
+SUPERSEDED. Do not run. N1b resumes from 99e2e5b in
+/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-next-model-select-20261020
+using the freeze at cc79cfff….
 ```
 
-### Verified snapshot (2026-10-20, independent review)
+### Retired long prompts (kept only as markers)
 
+The full superseded option-1 N1a and N1b text that used to sit here is retired.
+Knowtation still has `PROMPT-A-THINKING.txt` and `PROMPT-B-AUTO.txt` as owner
+originals; they are also superseded by `FREEZE.md`.
+
+### Verified snapshot (2026-10-20, R1a freeze pass)
+
+- R1 spec [MIGRATION-COMPAT-RC11-R1-SPEC.md](reviews/MIGRATION-COMPAT-RC11-R1-SPEC.md)
+  is frozen. Freeze-review loop round 3: **pass**. CLI `ok review --freeze` refuses
+  (`config_repository_mismatch` / `launcher_repository_mismatch`).
 - `30f5cb4` reviewed **PASS** with no blockers
   ([report](reviews/MIGRATION-COMPAT-RC11-INDEPENDENT-REVIEW.md); reviewer Claude Opus 5.5).
-- Test results:
+- Test results at `30f5cb4`:
   - focused suites: 77/77 passed;
   - whole tree compared with an exported `d54a228`: no new failures;
   - CI selection (698 tests): 2 failures, both pre-existing and documented in
@@ -200,35 +104,38 @@ any PR.
   - `tests/muse` on rc11: 184/186, with 2 documented superseded failures
     (`FPR-5-REVIEW.md:269-270`).
 - rc5 was not executed because no rc5 venv exists on this host.
-- Consumers on prepared runtime `309ac668…`:
+- Consumers on prepared runtime `309ac668…` (unchanged; D1):
   - Knowtation config `72c2f1fc…` and NEXT `1279cdee…` match its receipt.
   - BornFree migrated with 138/71 historical blocks and none selected. Its NEXT was
     later superseded by an operator `stop` publication (`d659c71f…`).
-- Findings F1–F10 are queued in the roadmap; none is fixed.
+- F1 and F2 are specified, not built. F3–F8, F10 remain queued. F9 is option A
+  (N1a done). F11 is queued on H1.
+- N1b worktree exists, clean, at `99e2e5b`. No N1 code. No new N1 runtime.
 
 ### VCS
 
 | Item | Value |
 | --- | --- |
 | Branch | `fix/knowtation-migration-compat-20261020` (local only) |
-| Reviewed commit | `30f5cb48cfe6aafc542d6818e9128caa03e978a1` |
+| Head after this close | this R1a commit |
+| Reviewed code commit | `30f5cb48cfe6aafc542d6818e9128caa03e978a1` |
 | Base | `d54a228` (main after PR #93) |
+| Sibling N1 branch | `feat/next-model-select-20261020` at `99e2e5b` |
 | Push / PR / merge | none; push and PR require owner authorization; merge is Tier 3 |
 
 ### Change log
 
+- 2026-10-20: R1a freeze review **pass**. Spec committed. R1b is NEXT. Added A1.
+  Recorded N1a option A (`cc79cfff…`), N1b held in its worktree, N1c, and F11 on H1.
+  Leftover N1b baseline pytest was already gone when rechecked (PIDs 84099/84118).
 - 2026-10-20: added the independent review, queued F1–F8 (R1a, R1b, R2, R3, H1, D1)
   and drafted the R1a prompt. No code changes.
 - 2026-10-20: queued owner-found F9 (single-lane `next_model_mismatch`) as N1a, N1b,
   N1-R and N1-PR on a stacked branch.
-  - N1 runs from the Knowtation session and is independent of R1.
-  - R1a remains this branch's next step.
-  - Added the Knowtation rollback chain to the roadmap.
+  - Later superseded: N1a chose option A; N1b forks `99e2e5b` in a sibling worktree.
 - 2026-10-20: queued F10 (checkout-local ignore rules missing after migration;
   pre-existing) as M1a and M1b, plus cleanup C1. Recorded the order of work and the
   consumer staging guard.
-  - Added the amended N1a and N1b prompts. The owner's originals remain unchanged in
-    Knowtation as `PROMPT-A-THINKING.txt` and `PROMPT-B-AUTO.txt`.
 
 ## PR #93 — hosting verified; owner-authorized merge in progress, 2026-10-18
 
