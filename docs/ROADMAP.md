@@ -1,6 +1,6 @@
 # Overseer Kit roadmap
 
-## OK-NEXT-MODEL (F9) — N1a pass; N1b DONE (BV round 2 pass); N1c NEXT, 2026-10-21
+## OK-NEXT-MODEL (F9) — N1c DONE; N1-R NEXT, 2026-10-21
 
 **N1b DONE.** Build-verification round 2 recorded **pass** in
 `RECOVERY-RUNS/knowtation-next-model-select-20261020/build-verification.json`
@@ -9,8 +9,10 @@ sha256 `3d521241c0610a6ca278074cfb7bce06e75760735b3b13b2a3af4b93733ad70e`. Tip a
 review `ef24c6547abda5b3c43455e64973e26e3c703db9`. Prepared runtime sha256
 `559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7`. Commit 3
 `29db9e267ded73bc127e2da9867f3c15a8dca25f` (parent `1571b921be817d5b68f7dfa60fcfe91409a11ff3`)
-is the section-13 rebuild. **N1c** is next (Knowtation rebind + CODEX NEXT); do not
-start it in this closeout.
+is the section-13 rebuild. **N1c is DONE.** Knowtation was rebound to runtime
+`559e1635…` and `C2-PROPOSAL-REVISION-1` was published. Receipt:
+`knowtation/docs/evidence/B02/overseer-next-model-select-20261020/README.md`.
+**N1-R** is next. Do not push or open a PR from this closeout.
 
 N1a freeze review **pass** (mechanical) for the pre-amendment freeze; the amended
 freeze used for N1b/N1c is sha256 `3d521241…`. Option A: single-lane NEXT `Model:`
@@ -36,8 +38,8 @@ queued for **H1**. After N1c: **N1-R**.
 | --- | --- | --- | --- |
 | N1a | Thinking → Auto (a: Thinking) | **DONE** (mechanical freeze pass) | Pre-amendment freeze review pass; option A recommendation + `model_label`. |
 | N1b | Thinking → Auto (b: Auto) | **DONE** (BV round 2 pass) | Commit 3 `29db9e2…`; tip `ef24c654…`; runtime `559e1635…`; freeze `3d521241…`; reviewer `cursor-grok-4.7-bv-r2-2026-10-21T19:01:34Z`. |
-| N1c | Thinking → Auto (b: Auto) | **NEXT** | Rebind Knowtation to runtime `559e1635…`; publish `C2-PROPOSAL-REVISION-1` with CODEX (`PROMPT-C-AUTO.txt`). |
-| N1-R | Thinking, independent model | Blocked on N1c | Independent review of the N1 branch delta before PR. |
+| N1c | Thinking → Auto (b: Auto) | **DONE** 2026-10-21 | Knowtation rebound to runtime `559e1635…`. Published NEXT `3a878755…` (`C2-PROPOSAL-REVISION-1`). Rebind plan `d94b3579…`. |
+| N1-R | Thinking, independent model | **NEXT** | Independent review of `99e2e5b..HEAD` before any N1 PR. Reviewer is not the N1b builder and not the BV round-2 reviewer. |
 | N1-PR | Operator + Auto | Blocked on R3 and N1-R | Stacked PR for N1 on top of the R3 PR. Merge is Tier 3. |
 
 ## Migration compatibility + Muse rc11 — independent review PASS; pre-PR fixes queued, 2026-10-20
@@ -72,8 +74,8 @@ Auto doc sync.
 | D1 | Operator + Auto | Queued after merge | Decide how consumers move off prepared runtime `309ac668…` (**F8**). |
 | N1a | Thinking → Auto (a: Thinking) | **DONE** (see top section) | Freeze `OK-NEXT-MODEL` (**F9**); freeze review **pass**. |
 | N1b | Thinking → Auto (b: Auto) | **DONE** (BV round 2 pass; see top section) | Kit build + prepared runtime `559e1635…` on `feat/next-model-select-20261020`. |
-| N1c | Thinking → Auto (b: Auto) | **NEXT** | Knowtation rebind + CODEX NEXT publish (freeze section 9; `PROMPT-C-AUTO.txt`). |
-| N1-R | Thinking, independent model | Blocked on N1c | Independent review of the N1 branch delta, required before its PR. |
+| N1c | Thinking → Auto (b: Auto) | **DONE** 2026-10-21 (see top section) | Knowtation rebind + Codex NEXT publish. |
+| N1-R | Thinking, independent model | **NEXT** | Independent review of the N1 branch delta, required before its PR. |
 | N1-PR | Operator + Auto | Blocked on R3 and N1-R | Stacked PR for N1 on top of the R3 PR. Merge is Tier 3. |
 | M1a | Thinking → Auto (a: Thinking) | Queued; first step after the R3 merge | Freeze the checkout-local ignore fix (**F10**) for migration, Git-only init and already-migrated consumers. |
 | M1b | Thinking → Auto (b: Auto) | Blocked on M1a | Build, seven tiers, `/build-verification-review` → **pass**, independent review, PR. Then each consumer applies it through the kit's previewable path. |
@@ -84,7 +86,7 @@ Order of work:
 1. R1a in this kit checkout and N1a in the Knowtation session can run at the same
    time; they change different files.
 2. R1b, then R2, then R3 (push and PR).
-3. N1c (Knowtation rebind), then N1-R, then the N1 stacked PR.
+3. N1c is done. N1-R, then the N1 draft PR on top of the R3 PR. Do not merge.
 4. After both merges: M1, H1, D1 and C1.
 
 Consumer guard until M1 lands (Knowtation and BornFree): stage explicit paths only.
@@ -122,8 +124,8 @@ What each finding is (details and line evidence are in the review):
   relocates. BornFree is Git-only.
   - Choose between updating the prepared runtime in place followed by that
     installation's explicit `sync`, or a reviewed relocation command.
-  - Until then, both consumers stay on `309ac668…`.
-  - BornFree also cannot take the N1 runtime until D1 is settled.
+  - Knowtation moved to `559e1635…` at N1c. BornFree stays on `309ac668…` until D1.
+  - BornFree cannot take the N1 runtime until D1 is settled.
 - **F9 (owner-found while using Knowtation; source-verified).** A single-lane NEXT
   cannot name a model other than `context.model`: `cli/v1.py:273-274` raised
   `next_model_mismatch` on both write and read. **Addressed in N1b commit

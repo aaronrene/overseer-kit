@@ -1,21 +1,57 @@
 # Overseer Kit handover
 
-## OK-NEXT-MODEL — N1b DONE (BV round 2 pass); N1c NEXT, 2026-10-21
+## OK-NEXT-MODEL — N1c DONE; N1-R NEXT, 2026-10-21
 
 ### NEXT SESSION
 
-**N1c — Model: Auto.** Fresh chat. Paste the fence below (`PROMPT-C-AUTO.txt`).
-Rebind Knowtation to prepared runtime `559e1635…` and publish
-`C2-PROPOSAL-REVISION-1`. Do not start N1c from this closeout commit.
+**N1-R — Model: Thinking.** Fresh chat in this worktree. Use a model other than
+the N1b builder and other than Grok 4.7, which ran build-verification round 2.
+Claude Opus with thinking enabled fits. Paste the fence below. Do not push,
+open a PR, or merge.
 
-N1b is **DONE**. Build-verification round 2 **pass**
+N1c is **DONE**. Knowtation receipt:
+`/Users/aaronrenecarvajal/knowtation/docs/evidence/B02/overseer-next-model-select-20261020/README.md`.
+Rebind plan `d94b35798932e783552163ba97f7afc5795d10d351955c5284dbf8589026f322`.
+Published NEXT at that step: `3a87875593f58a71d0802180048d3cbd06862929a7dab72b51173715c7239b1c`
+(`C2-PROPOSAL-REVISION-1`). Knowtation's product task has since moved on its own
+to `C2-CROSS-MODEL-REVIEW-2`. Do not repeat N1c. Do not edit Knowtation in N1-R.
+
+N1b remains **DONE**. Build-verification round 2 **pass**
 (reviewer session `cursor-grok-4.7-bv-r2-2026-10-21T19:01:34Z`; tip
 `ef24c6547abda5b3c43455e64973e26e3c703db9`; freeze sha256
 `3d521241c0610a6ca278074cfb7bce06e75760735b3b13b2a3af4b93733ad70e`; runtime
-`559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7`). Install
-commit 3 `29db9e267ded73bc127e2da9867f3c15a8dca25f` / runtime `559e1635…` only.
+`559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7`).
 
-### Paste-ready prompt (N1c)
+### Paste-ready prompt (N1-R)
+
+```text
+Model: Thinking
+Tier: Thinking (independent review only; no code changes)
+Step: OK-NEXT-MODEL-R (kit roadmap N1-R)
+
+Repository: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-next-model-select-20261020
+Branch: feat/next-model-select-20261020
+
+You did not build N1b and you are not the build-verification round-2 reviewer
+(Grok 4.7, session cursor-grok-4.7-bv-r2-2026-10-21T19:01:34Z). If you are,
+stop and say so.
+
+Review 99e2e5bcfd6de0eb45b4f48872653f396aaa9850..HEAD against freeze
+/Users/aaronrenecarvajal/knowtation/docs/evidence/B02/overseer-next-model-select-20261020/FREEZE.md
+sha256 3d521241c0610a6ca278074cfb7bce06e75760735b3b13b2a3af4b93733ad70e.
+Read the N1c receipt in that same folder, README.md. Confirm the Knowtation
+install matches it: runtime 559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7,
+rebind plan d94b35798932e783552163ba97f7afc5795d10d351955c5284dbf8589026f322.
+Do not edit Knowtation, Born Free, or the compat worktree.
+
+Write docs/reviews/OK-NEXT-MODEL-N1-R.md with verdict PASS or FAIL.
+Update docs/ROADMAP.md and docs/OVERSEER-HANDOVER.md together.
+On PASS, mark N1-R done and name the draft PR as next. That PR waits until
+the compat branch has an open draft PR. Do not push, open a PR, or merge.
+No installs and no Muse changes.
+```
+
+### Historical paste-ready prompt (N1c — done; do not run)
 
 ```text
 STOP. Do not run this prompt until build-verification round 2 records pass against
@@ -78,8 +114,11 @@ the rollback position from section 10.
 - Tests: baseline 766/8/2; after / b2 group 817/8/2. Failure IDs unchanged. The
   concurrent `ok next` stress test passed in the group run.
 - Build verification: round 2 **pass** (reviewer session
-  `cursor-grok-4.7-bv-r2-2026-10-21T19:01:34Z`). N1b **DONE**. N1c **NEXT**.
-- F11 queued for H1. Knowtation still on OLD_RT `309ac668…` until N1c.
+  `cursor-grok-4.7-bv-r2-2026-10-21T19:01:34Z`). N1b **DONE**. N1c **DONE**.
+- N1c receipt: Knowtation `docs/evidence/B02/overseer-next-model-select-20261020/README.md`.
+  Rebind plan `d94b3579…`. Published NEXT `3a878755…`. Knowtation now uses runtime
+  `559e1635…`. Its later product task, `C2-CROSS-MODEL-REVIEW-2`, is outside N1.
+- F11 queued for H1. BornFree stays on `309ac668…` until D1. N1-R **NEXT**.
 
 ### VCS
 
@@ -93,7 +132,7 @@ the rollback position from section 10.
 | Commit 3 parent | `1571b921be817d5b68f7dfa60fcfe91409a11ff3` |
 | Runtime | `559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7` |
 | Freeze | `3d521241c0610a6ca278074cfb7bce06e75760735b3b13b2a3af4b93733ad70e` |
-| Docs closeout | this docs pair (N1b DONE; N1c NEXT) |
+| Docs closeout | this docs pair (N1c DONE; N1-R NEXT) |
 | Push / PR / merge | none |
 
 ### Change log
@@ -106,6 +145,9 @@ the rollback position from section 10.
 - 2026-10-21: BV round 2 **pass** (reviewer session
   `cursor-grok-4.7-bv-r2-2026-10-21T19:01:34Z`; tip `ef24c654…`; freeze `3d521241…`;
   runtime `559e1635…`). N1b marked **DONE**; N1c named **NEXT**. No N1c start, no push.
+- 2026-10-21: N1c **DONE** in Knowtation. Receipt README beside the freeze. Rebind
+  plan `d94b3579…`. NEXT `3a878755…` (`C2-PROPOSAL-REVISION-1`). Runtime
+  `559e1635…`. N1-R named **NEXT**. No push.
 
 ## Migration compatibility + Muse rc11 — review PASS; R1a next, 2026-10-20
 
