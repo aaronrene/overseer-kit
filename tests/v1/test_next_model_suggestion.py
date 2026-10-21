@@ -281,6 +281,26 @@ def test_stress_concurrent_codex_and_default_writers(repo):
             raise AssertionError('CAS conflict not observed within retry budget')
 
 
+def test_stable_hard_link_still_refused(repo):
+    """Security: a second name for docs/NEXT.md that outlasts the retries is refused.
+
+    After a published NEXT, os.link adds another directory entry for that file.
+    ok next exits 2, stdout is empty, and stderr contains path_not_regular.
+    Removing the extra entry lets ok next exit 0 and show the published model.
+    """
+    published = write_action(repo, 'Stable hard link probe\n', model=CODEX)
+    assert published.returncode == 0, published.stderr
+    extra = repo / 'docs' / 'NEXT.md.extra'
+    os.link(repo / v1.NEXT, extra)
+    refused = command('-C', repo, 'next')
+    assert refused.returncode == 2 and not refused.stdout
+    assert 'path_not_regular' in refused.stderr
+    extra.unlink()
+    shown = command('-C', repo, 'next')
+    assert shown.returncode == 0, shown.stderr
+    assert f'Model: {CODEX}' in shown.stdout
+
+
 # ---------------------------------------------------------------------------
 # 5. Data-integrity
 # ---------------------------------------------------------------------------
