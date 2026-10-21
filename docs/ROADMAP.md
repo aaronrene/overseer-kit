@@ -1,42 +1,42 @@
 # Overseer Kit roadmap
 
-## OK-NEXT-MODEL (F9) — N1a pass; N1b built; BV1 amended; N1c blocked on round 2, 2026-10-21
+## OK-NEXT-MODEL (F9) — N1a pass; N1b DONE (BV round 2 pass); N1c NEXT, 2026-10-21
 
-**BV1 amended (2026-10-21).** Commit 3 `29db9e267ded73bc127e2da9867f3c15a8dca25f`
-(parent `1571b921be817d5b68f7dfa60fcfe91409a11ff3`) retries a transient extra name
-while a file is replaced. The prepared runtime digest is
-`559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7`. The amended
-freeze sha256 is `3d521241c0610a6ca278074cfb7bce06e75760735b3b13b2a3af4b93733ad70e`.
-N1c stays blocked until round 2 of build verification passes. N1b is not marked done.
+**N1b DONE.** Build-verification round 2 recorded **pass** in
+`RECOVERY-RUNS/knowtation-next-model-select-20261020/build-verification.json`
+(reviewer session `cursor-grok-4.7-bv-r2-2026-10-21T19:01:34Z`). Frozen-spec
+sha256 `3d521241c0610a6ca278074cfb7bce06e75760735b3b13b2a3af4b93733ad70e`. Tip at
+review `ef24c6547abda5b3c43455e64973e26e3c703db9`. Prepared runtime sha256
+`559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7`. Commit 3
+`29db9e267ded73bc127e2da9867f3c15a8dca25f` (parent `1571b921be817d5b68f7dfa60fcfe91409a11ff3`)
+is the section-13 rebuild. **N1c** is next (Knowtation rebind + CODEX NEXT); do not
+start it in this closeout.
 
-N1a freeze review **pass** (mechanical) for
-`knowtation/docs/evidence/B02/overseer-next-model-select-20261020/FREEZE.md`
-sha256 `cc79cfff630f5bb98a75760bec8df85b0854ad821b4e6bf3983ddad48eec0c32`
-(`frozen: true`, `reviewed_at` 2026-10-21T00:53:56Z). Option A: single-lane NEXT
-`Model:` is a recommendation under a strict `model_label` grammar.
+N1a freeze review **pass** (mechanical) for the pre-amendment freeze; the amended
+freeze used for N1b/N1c is sha256 `3d521241…`. Option A: single-lane NEXT `Model:`
+is a recommendation under a strict `model_label` grammar.
 
-N1b built on local branch `feat/next-model-select-20261020` in worktree
-`overseer-kit-next-model-select-20261020` from parent `99e2e5b…`:
+N1b on local branch `feat/next-model-select-20261020` in worktree
+`overseer-kit-next-model-select-20261020`:
 
 - Commit 1 (code/tests/docs except ROADMAP/HANDOVER):
   `6a04ce18ad53a2fb1e3704f89935fdf7163fe67a`
+- Commit 3 (BV1 replace-window amendment): `29db9e267ded73bc127e2da9867f3c15a8dca25f`
 - Prepared runtime `PREPARED-RUNTIMES/knowtation-next-model-select-20261020`
-  sha256 `1762a406b027e7b805788456d98bfede35a3e0c32274b412d304de6151368510`
+  sha256 `559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7`
 - Evidence run `RECOVERY-RUNS/knowtation-next-model-select-20261020/`
-  (`runtime.json`; build verification **pending**)
-- Baseline tests: 766 passed, 8 failed, 2 errors. After change: 816 passed, 8
-  failed, 2 errors. Failure/error IDs unchanged from baseline.
+  (`runtime.json`; build-verification round 2 **pass**)
+- Baseline tests: 766 passed, 8 failed, 2 errors. After change / b2 group:
+  817 passed, 8 failed, 2 errors. Failure/error IDs unchanged from baseline.
 
-N1b does **not** mark DONE until `/build-verification-review` → **pass** in a
-separate chat (`PROMPT-BV-THINKING.txt`). Round 1 returned findings. N1c stays
-blocked until round 2 passes. Then **N1-R**. Finding **F11** (Low, pre-existing
-general `label()` admits DEL/C1/U+2028/bidi) is queued for **H1**.
+Finding **F11** (Low, pre-existing general `label()` admits DEL/C1/U+2028/bidi) is
+queued for **H1**. After N1c: **N1-R**.
 
 | Step | Model | Status | Deliverable |
 | --- | --- | --- | --- |
-| N1a | Thinking → Auto (a: Thinking) | **DONE** (mechanical freeze pass) | Freeze sha256 `cc79cfff…`; option A recommendation + `model_label`. |
-| N1b | Thinking → Auto (b: Auto) | **Built**; BV round 2 **pending** | Commit 3 `29db9e2…`; runtime `559e1635…`; seven-tier tests; kit docs copy of the amended freeze. |
-| N1c | Thinking → Auto (b: Auto) | **Blocked** until BV round 2 passes | Rebind Knowtation to runtime `559e1635…`; publish `C2-PROPOSAL-REVISION-1` with CODEX. |
+| N1a | Thinking → Auto (a: Thinking) | **DONE** (mechanical freeze pass) | Pre-amendment freeze review pass; option A recommendation + `model_label`. |
+| N1b | Thinking → Auto (b: Auto) | **DONE** (BV round 2 pass) | Commit 3 `29db9e2…`; tip `ef24c654…`; runtime `559e1635…`; freeze `3d521241…`; reviewer `cursor-grok-4.7-bv-r2-2026-10-21T19:01:34Z`. |
+| N1c | Thinking → Auto (b: Auto) | **NEXT** | Rebind Knowtation to runtime `559e1635…`; publish `C2-PROPOSAL-REVISION-1` with CODEX (`PROMPT-C-AUTO.txt`). |
 | N1-R | Thinking, independent model | Blocked on N1c | Independent review of the N1 branch delta before PR. |
 | N1-PR | Operator + Auto | Blocked on R3 and N1-R | Stacked PR for N1 on top of the R3 PR. Merge is Tier 3. |
 
@@ -71,8 +71,8 @@ Auto doc sync.
 | H1 | Thinking → Auto | Queued after merge | Hardening: **F3**, **F4**, **F5**, **F6**, **F7**, **F11**. |
 | D1 | Operator + Auto | Queued after merge | Decide how consumers move off prepared runtime `309ac668…` (**F8**). |
 | N1a | Thinking → Auto (a: Thinking) | **DONE** (see top section) | Freeze `OK-NEXT-MODEL` (**F9**); freeze review **pass**. |
-| N1b | Thinking → Auto (b: Auto) | **Built**; BV round 2 pending (see top section) | Kit build + rebuilt prepared runtime `559e1635…` on `feat/next-model-select-20261020`. |
-| N1c | Thinking → Auto (b: Auto) | **Blocked** until BV round 2 passes | Knowtation rebind + CODEX NEXT publish (freeze section 9). |
+| N1b | Thinking → Auto (b: Auto) | **DONE** (BV round 2 pass; see top section) | Kit build + prepared runtime `559e1635…` on `feat/next-model-select-20261020`. |
+| N1c | Thinking → Auto (b: Auto) | **NEXT** | Knowtation rebind + CODEX NEXT publish (freeze section 9; `PROMPT-C-AUTO.txt`). |
 | N1-R | Thinking, independent model | Blocked on N1c | Independent review of the N1 branch delta, required before its PR. |
 | N1-PR | Operator + Auto | Blocked on R3 and N1-R | Stacked PR for N1 on top of the R3 PR. Merge is Tier 3. |
 | M1a | Thinking → Auto (a: Thinking) | Queued; first step after the R3 merge | Freeze the checkout-local ignore fix (**F10**) for migration, Git-only init and already-migrated consumers. |
@@ -84,7 +84,7 @@ Order of work:
 1. R1a in this kit checkout and N1a in the Knowtation session can run at the same
    time; they change different files.
 2. R1b, then R2, then R3 (push and PR).
-3. N1b, then N1-R, then the N1 stacked PR.
+3. N1c (Knowtation rebind), then N1-R, then the N1 stacked PR.
 4. After both merges: M1, H1, D1 and C1.
 
 Consumer guard until M1 lands (Knowtation and BornFree): stage explicit paths only.

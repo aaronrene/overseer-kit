@@ -1,62 +1,84 @@
 # Overseer Kit handover
 
-## OK-NEXT-MODEL — N1b built; BV1 amended; N1c blocked on round 2, 2026-10-21
+## OK-NEXT-MODEL — N1b DONE (BV round 2 pass); N1c NEXT, 2026-10-21
 
 ### NEXT SESSION
 
-**Build verification round 2 (separate chat) first.** BV1 is amended. Do not mark
-N1b DONE, and do not start N1c, until round 2 records **pass** in
-`RECOVERY-RUNS/knowtation-next-model-select-20261020/build-verification.json`.
+**N1c — Model: Auto.** Fresh chat. Paste the fence below (`PROMPT-C-AUTO.txt`).
+Rebind Knowtation to prepared runtime `559e1635…` and publish
+`C2-PROPOSAL-REVISION-1`. Do not start N1c from this closeout commit.
 
-**BV1 amended (2026-10-21).** Commit 3 `29db9e267ded73bc127e2da9867f3c15a8dca25f`
-(parent `1571b921be817d5b68f7dfa60fcfe91409a11ff3`) retries a transient extra name
-while a file is replaced. The prepared runtime digest is
-`559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7`. The amended
-freeze sha256 is `3d521241c0610a6ca278074cfb7bce06e75760735b3b13b2a3af4b93733ad70e`.
-N1c stays blocked until round 2 of build verification passes. N1b is not marked done.
+N1b is **DONE**. Build-verification round 2 **pass**
+(reviewer session `cursor-grok-4.7-bv-r2-2026-10-21T19:01:34Z`; tip
+`ef24c6547abda5b3c43455e64973e26e3c703db9`; freeze sha256
+`3d521241c0610a6ca278074cfb7bce06e75760735b3b13b2a3af4b93733ad70e`; runtime
+`559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7`). Install
+commit 3 `29db9e267ded73bc127e2da9867f3c15a8dca25f` / runtime `559e1635…` only.
 
-The paste-ready fence below still names the pre-BV1 parent, commit, and runtime
-digest. Do not use that fence until round 2 passes, and then use commit 3 and
-runtime `559e1635…`.
-
-### Paste-ready prompt (N1c — only after BV pass)
+### Paste-ready prompt (N1c)
 
 ```text
-Model: Auto
-Tier: Auto (build exactly to the frozen spec; no redesign)
+STOP. Do not run this prompt until build-verification round 2 records pass against
+freeze sha256 3d521241c0610a6ca278074cfb7bce06e75760735b3b13b2a3af4b93733ad70e.
+(Round 2 already passed; proceed only after confirming that artifact.)
+
+Model: Cursor Auto
+Tier: Auto (follow the frozen procedure; no redesign)
 Step: OK-NEXT-MODEL-c (kit roadmap N1c)
 
-Frozen spec (read in full; verify sha256 before anything else):
+Repository: /Users/aaronrenecarvajal/knowtation (repo ID 6df95ecb-f668-5cf6-adf1-384baf3e6246)
+
+Move Knowtation onto the new Overseer Kit runtime and publish the saved Codex
+revision step.
+
+Start: run the bound launcher `.overseer/bin/ok -C <repo> next --lane product` and
+show its output. It shows the completed C2-CROSS-MODEL-REVIEW-1; do not run that
+action.
+
+Follow freeze section 9 exactly:
 /Users/aaronrenecarvajal/knowtation/docs/evidence/B02/overseer-next-model-select-20261020/FREEZE.md
-Required: sha256 cc79cfff630f5bb98a75760bec8df85b0854ad821b4e6bf3983ddad48eec0c32,
-frozen: true, mechanical_verdict pass. Ignore SUPERSEDED-FREEZE-ALLOWLIST.md.
+(sha256 3d521241c0610a6ca278074cfb7bce06e75760735b3b13b2a3af4b93733ad70e).
 
-Entry checks (freeze section 9): RUN/runtime.json exists with parent 99e2e5b…;
-RUN/build-verification.json verdict pass; NEW_RT runtime() equals recorded digest
-1762a406b027e7b805788456d98bfede35a3e0c32274b412d304de6151368510.
-Commit 1: 6a04ce18ad53a2fb1e3704f89935fdf7163fe67a.
-NEW_RT: /Users/aaronrenecarvajal/OVERSEER_KIT/PREPARED-RUNTIMES/knowtation-next-model-select-20261020
-RUN: /Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/knowtation-next-model-select-20261020
-OLD_RT stays unchanged as rollback.
+1. Entry checks in freeze section 9. Round 2 or later must be pass, and the runtime
+   sha256 must be the section 13 rebuild:
+   559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7
+   (commit 3 29db9e267ded73bc127e2da9867f3c15a8dca25f).
+2. Preflight digests and snapshots; copy the originals to RUN/before/.
+3. Run the 9.1 rebind dry run and save the preview. Accept it only if every listed
+   criterion holds.
+4. Apply 9.2 with --expect-rebind. Verify status and NEXT from fresh processes.
+5. Publish 9.3 with --model "OpenAI Codex (latest GPT model, high reasoning)" and
+   read it back.
+6. 9.4: write the receipt README.md beside the freeze, and prepend one identical
+   entry to docs/KNOWTATION-ROADMAP.md, docs/KNOWTATION-OVERSEER-HANDOVER.md and
+   docs/NEXT-BROWSER-PRIVATE-VAULT.md. Its Single NEXT is the Codex revision.
 
-Execute freeze section 9 exactly (preflight digests, 9.1 dry-run, 9.2 apply,
-9.3 publish CODEX NEXT, 9.4 receipt + living-doc prepends). Never git add -A / git
-add . / muse code add . in Knowtation (F10). No kit worktree edits beyond what
-section 9 names. No push, PR, merge, release, provider call or subagent.
-Stop on any section 11 condition with a precise report.
+End: run the bound `ok next --lane product` again and show its output. It must show
+"Model: OpenAI Codex (latest GPT model, high reasoning)" and C2-PROPOSAL-REVISION-1.
+
+Hard limits:
+- No product code, tests or services; no vault or secret access.
+- No Git or Muse staging or commit. Muse staging holds unrelated earlier work, and
+  commit scope is the owner's decision.
+- Never run `git add -A`, `git add .` or `muse code add .` (finding F10).
+- No push, merge, deployment, provider call or subagent.
+
+On any stop condition (freeze section 11), stop, report the exact state, and give
+the rollback position from section 10.
 ```
 
-### Verified snapshot (2026-10-21, N1b)
+### Verified snapshot (2026-10-21, N1b DONE)
 
-- Freeze sha256 `cc79cfff630f5bb98a75760bec8df85b0854ad821b4e6bf3983ddad48eec0c32`
-  (mechanical pass at 2026-10-21T00:53:56Z).
-- Branch `feat/next-model-select-20261020` (local), parent `99e2e5b…`.
-- Commit 1 `6a04ce18ad53a2fb1e3704f89935fdf7163fe67a` (code/tests/operator note/freeze
-  copy). Commit 2 is this docs pair.
-- Commit 1 runtime sha256 `1762a406b027e7b805788456d98bfede35a3e0c32274b412d304de6151368510` is superseded.
-- BV1 amended in commit 3 `29db9e267ded73bc127e2da9867f3c15a8dca25f`. Runtime sha256 `559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7`. N1c blocked until build-verification round 2 passes.
-- Tests: baseline 766/8/2; after 816/8/2; b2 group 817/8/2. Failure IDs unchanged. The concurrent `ok next` stress test passed in the group run.
-- Build verification: round 1 findings (BV1). Round 2 not started. N1b not DONE.
+- Amended freeze sha256 `3d521241c0610a6ca278074cfb7bce06e75760735b3b13b2a3af4b93733ad70e`.
+- Branch `feat/next-model-select-20261020` (local). Tip at BV round 2:
+  `ef24c6547abda5b3c43455e64973e26e3c703db9`.
+- Commit 1 `6a04ce18ad53a2fb1e3704f89935fdf7163fe67a`. Commit 3
+  `29db9e267ded73bc127e2da9867f3c15a8dca25f` (BV1 replace-window amendment).
+- Runtime sha256 `559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7`.
+- Tests: baseline 766/8/2; after / b2 group 817/8/2. Failure IDs unchanged. The
+  concurrent `ok next` stress test passed in the group run.
+- Build verification: round 2 **pass** (reviewer session
+  `cursor-grok-4.7-bv-r2-2026-10-21T19:01:34Z`). N1b **DONE**. N1c **NEXT**.
 - F11 queued for H1. Knowtation still on OLD_RT `309ac668…` until N1c.
 
 ### VCS
@@ -65,20 +87,25 @@ Stop on any section 11 condition with a precise report.
 | --- | --- |
 | Worktree | `/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-next-model-select-20261020` |
 | Branch | `feat/next-model-select-20261020` (local only) |
+| Tip (BV r2) | `ef24c6547abda5b3c43455e64973e26e3c703db9` |
 | Commit 1 | `6a04ce18ad53a2fb1e3704f89935fdf7163fe67a` |
 | Commit 3 | `29db9e267ded73bc127e2da9867f3c15a8dca25f` |
 | Commit 3 parent | `1571b921be817d5b68f7dfa60fcfe91409a11ff3` |
 | Runtime | `559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7` |
-| Commit 4 | this docs pair |
+| Freeze | `3d521241c0610a6ca278074cfb7bce06e75760735b3b13b2a3af4b93733ad70e` |
+| Docs closeout | this docs pair (N1b DONE; N1c NEXT) |
 | Push / PR / merge | none |
 
 ### Change log
 
-- 2026-10-21: N1a pass (`cc79cfff…`). N1b built commit `6a04ce1…` and runtime
-  `1762a406…` in a new worktree. BV pending; N1c next; F11 queued for H1. No push.
+- 2026-10-21: N1a pass. N1b built commit `6a04ce1…` in a new worktree. Pre-amendment
+  runtime superseded by section-13 rebuild. BV pending; F11 queued for H1. No push.
 - 2026-10-21: BV1 amended in commit 3 `29db9e267ded73bc127e2da9867f3c15a8dca25f`
   (parent `1571b92…`). Runtime digest `559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7`.
-  N1c stays blocked until round 2 of build verification passes. No push.
+  N1c stayed blocked until round 2 of build verification. No push.
+- 2026-10-21: BV round 2 **pass** (reviewer session
+  `cursor-grok-4.7-bv-r2-2026-10-21T19:01:34Z`; tip `ef24c654…`; freeze `3d521241…`;
+  runtime `559e1635…`). N1b marked **DONE**; N1c named **NEXT**. No N1c start, no push.
 
 ## Migration compatibility + Muse rc11 — review PASS; R1a next, 2026-10-20
 
