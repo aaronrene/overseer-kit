@@ -1,16 +1,23 @@
 # Overseer Kit handover
 
-## OK-NEXT-MODEL — N1b built; BV then N1c, 2026-10-21
+## OK-NEXT-MODEL — N1b built; BV1 amended; N1c blocked on round 2, 2026-10-21
 
 ### NEXT SESSION
 
-**Build verification (separate Thinking chat) first.** Paste
-`knowtation/docs/evidence/B02/overseer-next-model-select-20261020/PROMPT-BV-THINKING.txt`.
-Do not mark N1b DONE until that review records **pass** in
+**Build verification round 2 (separate chat) first.** BV1 is amended. Do not mark
+N1b DONE, and do not start N1c, until round 2 records **pass** in
 `RECOVERY-RUNS/knowtation-next-model-select-20261020/build-verification.json`.
 
-**Then N1c — Model: Auto.** Fresh chat. Install the new runtime into Knowtation and
-publish the saved Codex revision prompt. Do not redesign.
+**BV1 amended (2026-10-21).** Commit 3 `29db9e267ded73bc127e2da9867f3c15a8dca25f`
+(parent `1571b921be817d5b68f7dfa60fcfe91409a11ff3`) retries a transient extra name
+while a file is replaced. The prepared runtime digest is
+`559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7`. The amended
+freeze sha256 is `3d521241c0610a6ca278074cfb7bce06e75760735b3b13b2a3af4b93733ad70e`.
+N1c stays blocked until round 2 of build verification passes. N1b is not marked done.
+
+The paste-ready fence below still names the pre-BV1 parent, commit, and runtime
+digest. Do not use that fence until round 2 passes, and then use commit 3 and
+runtime `559e1635…`.
 
 ### Paste-ready prompt (N1c — only after BV pass)
 
@@ -46,9 +53,10 @@ Stop on any section 11 condition with a precise report.
 - Branch `feat/next-model-select-20261020` (local), parent `99e2e5b…`.
 - Commit 1 `6a04ce18ad53a2fb1e3704f89935fdf7163fe67a` (code/tests/operator note/freeze
   copy). Commit 2 is this docs pair.
-- Runtime sha256 `1762a406b027e7b805788456d98bfede35a3e0c32274b412d304de6151368510`.
-- Tests: baseline 766/8/2; after 816/8/2; failure IDs unchanged.
-- Build verification: **pending** (separate chat). N1b not DONE.
+- Commit 1 runtime sha256 `1762a406b027e7b805788456d98bfede35a3e0c32274b412d304de6151368510` is superseded.
+- BV1 amended in commit 3 `29db9e267ded73bc127e2da9867f3c15a8dca25f`. Runtime sha256 `559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7`. N1c blocked until build-verification round 2 passes.
+- Tests: baseline 766/8/2; after 816/8/2; b2 group 817/8/2. Failure IDs unchanged. The concurrent `ok next` stress test passed in the group run.
+- Build verification: round 1 findings (BV1). Round 2 not started. N1b not DONE.
 - F11 queued for H1. Knowtation still on OLD_RT `309ac668…` until N1c.
 
 ### VCS
@@ -58,13 +66,19 @@ Stop on any section 11 condition with a precise report.
 | Worktree | `/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-next-model-select-20261020` |
 | Branch | `feat/next-model-select-20261020` (local only) |
 | Commit 1 | `6a04ce18ad53a2fb1e3704f89935fdf7163fe67a` |
-| Parent | `99e2e5bcfd6de0eb45b4f48872653f396aaa9850` |
+| Commit 3 | `29db9e267ded73bc127e2da9867f3c15a8dca25f` |
+| Commit 3 parent | `1571b921be817d5b68f7dfa60fcfe91409a11ff3` |
+| Runtime | `559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7` |
+| Commit 4 | this docs pair |
 | Push / PR / merge | none |
 
 ### Change log
 
 - 2026-10-21: N1a pass (`cc79cfff…`). N1b built commit `6a04ce1…` and runtime
   `1762a406…` in a new worktree. BV pending; N1c next; F11 queued for H1. No push.
+- 2026-10-21: BV1 amended in commit 3 `29db9e267ded73bc127e2da9867f3c15a8dca25f`
+  (parent `1571b92…`). Runtime digest `559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7`.
+  N1c stays blocked until round 2 of build verification passes. No push.
 
 ## Migration compatibility + Muse rc11 — review PASS; R1a next, 2026-10-20
 

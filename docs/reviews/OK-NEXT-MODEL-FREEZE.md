@@ -6,7 +6,7 @@ outputs:
 - id: ok-next-model-freeze
   path: docs/evidence/B02/overseer-next-model-select-20261020/FREEZE.md
   frozen: true
-  notes: Single-lane NEXT may name any strictly validated model label; context.model stays the default; F9.
+  notes: Single-lane NEXT may name any strictly validated model label; context.model stays the default; F9. Section 13 adds the BV1 replace-window retry in cli/v1_io.py only.
 frozen_inputs:
 - id: kit-source-head
   path: fix/knowtation-migration-compat-20261020 at 99e2e5bcfd6de0eb45b4f48872653f396aaa9850
@@ -26,9 +26,15 @@ frozen_inputs:
 - id: superseded-allowlist-freeze
   path: docs/evidence/B02/overseer-next-model-select-20261020/SUPERSEDED-FREEZE-ALLOWLIST.md
   notes: sha256 90324289919c92d5c5782f50056320ef1a78146fcd905dac7723b8ba8a36a15e; the owner rejected the allowlist design on 2026-10-20. Not to be built.
+- id: pre-bv1-freeze
+  path: docs/evidence/B02/overseer-next-model-select-20261020/FREEZE.md
+  notes: sha256 cc79cfff630f5bb98a75760bec8df85b0854ad821b4e6bf3983ddad48eec0c32 before section 13. That digest built commits 6a04ce1 and 1571b92. It is not the digest step b2 or step c checks.
+- id: bv1-finding
+  path: RECOVERY-RUNS/knowtation-next-model-select-20261020/build-verification.json
+  notes: Round 1 verdict findings. BV1 MAJOR at tests/v1/test_next_model_suggestion.py:268. ok next exited 2 with path_not_regular from cli/v1_io.py:38-41. Isolated rerun passed. N1c stays blocked.
 review_stamp:
   gate: mechanical
-  reviewed_at: '2026-10-21T00:53:56Z'
+  reviewed_at: '2026-10-21T17:27:09Z'
   mechanical_verdict: pass
   produced_by: checklist_engine
   provider_kind: rule_engine
@@ -48,18 +54,23 @@ review_stamp:
   findings_count: 0
   override_applied: false
   kit_version: 1.0.0.dev1
-  artifact_digest: sha256:a92f02fb070b686362c35f9001e16b0113e563c1f889f1c4a0df6b6a40f31c1e
+  artifact_digest: sha256:ea04b29564c1ceded7bdfba6f215bdf06ea7b36a4353bdcddcdf4ed5cf84e091
 ```
 
-**Status.** frozen: true. This document is the ground truth for two Auto steps:
+**Status.** frozen: true. This document is the ground truth for three Auto steps:
 
 - **OK-NEXT-MODEL-b** (kit roadmap N1b): build and test the kit change, and prepare a
-  new runtime. It runs in a kit worktree and does not touch Knowtation.
-- **OK-NEXT-MODEL-c** (kit roadmap N1c): move Knowtation onto that runtime and publish
-  the saved Codex revision prompt. It runs in Knowtation.
+  new runtime. It runs in a kit worktree and does not touch Knowtation. This step
+  has already produced commits `6a04ce1` and `1571b92`.
+- **OK-NEXT-MODEL-b2** (section 13): fix only the BV1 replace-window race, on the
+  same branch, and rebuild the runtime. It does not touch Knowtation.
+- **OK-NEXT-MODEL-c** (kit roadmap N1c): move Knowtation onto that rebuilt runtime
+  and publish the saved Codex revision prompt. It runs in Knowtation, and only
+  after a later build-verification verdict of pass.
 
-Neither step redesigns anything. If anything here is wrong or incomplete, the step
-stops and reports; it does not improvise.
+Section 13 wins where it conflicts with sections 6, 8, 9, and 11. Option A in
+sections 3–5 is unchanged. No step redesigns anything else. If anything here is
+wrong or incomplete, the step stops and reports; it does not improvise.
 
 **Owner decision (2026-10-20).** The owner chose "recommend, don't force". The model
 named in NEXT is a suggestion shown to the person, who picks the model they run in
@@ -242,8 +253,10 @@ it. `next_model_mismatch` is no longer raised anywhere.
 
 ### 5.4 Retained checks (unchanged code paths)
 
-Only `cli/v1.py:273-274` changes inside the NEXT reader and writer. Each of these
-stays byte-identical in behavior, and the section 7 regression tests re-assert them:
+Inside the NEXT reader and writer, only `cli/v1.py:273-274` changes. Section 13
+allows one further change, in `cli/v1_io.py`, and it does not change the checks
+below. Each of these stays byte-identical in behavior, and the section 7
+regression tests re-assert them:
 
 - repository identity and root (`cli/v1.py:269-272`) and launcher binding
   (`cli/v1.py:124-133`);
@@ -273,11 +286,13 @@ stays byte-identical in behavior, and the section 7 regression tests re-assert t
 | `docs/reviews/OK-NEXT-MODEL-FREEZE.md` | Byte copy of this file after its review stamp. |
 | `docs/ROADMAP.md`, `docs/OVERSEER-HANDOVER.md` | Paired update in step b's commit 2 (section 8). |
 
-Not changed: any other `cli/` file, `cursor/`, `templates/`, `policy/`, `adapters/`,
-`tools/`, the kit's own `docs/NEXT.md`, and `docs/validation/` (historical records,
-including `docs/validation/FPR-2-AUTHORITY.md:117-118`). Shipped consumer assets
-therefore stay identical. `cli/v1.py` is already in the runtime digest
-(`cli/v1.py:28-43`), so the runtime digest changes and a new runtime is required.
+Not changed: any other `cli/` file except the section 13 edit to `cli/v1_io.py`,
+plus `cursor/`, `templates/`, `policy/`, `adapters/`, `tools/`, the kit's own
+`docs/NEXT.md`, and `docs/validation/` (historical records, including
+`docs/validation/FPR-2-AUTHORITY.md:117-118`). Shipped consumer assets therefore
+stay identical. `cli/v1.py` and `cli/v1_io.py` are both in the runtime digest
+(`cli/v1.py:28-43`), so each of those edits needs a runtime built from the commit
+that contains it.
 
 The two existing test edits above are the only edits to existing tests. If any other
 existing test fails because of the 5.2 change, step b stops and reports. It does not
@@ -330,9 +345,13 @@ configuration or credentials. Every new test module and test function has a docs
      written.
    - 20 iterations of two `next-write` processes, started together with the same
      `--expect-next`, one naming CODEX and one the default (the pattern of
-     `tests/v1/test_integrity.py:65-78`). Each iteration ends with sorted exit codes
-     `[0, 2]`, the loser's stderr containing `stale_write`, NEXT's model equal to the
-     winner's, and no `docs/.NEXT.md.*` temporary files.
+     `tests/v1/test_integrity.py:65-78`). During those writers, each in-flight
+     `ok next` exits 0. That is the assertion at `tests/v1/test_integrity.py:74-75`,
+     copied at `tests/v1/test_next_model_suggestion.py:268`. Each iteration ends with
+     sorted exit codes `[0, 2]`, the loser's stderr containing `stale_write`, NEXT's
+     model equal to the winner's, and no `docs/.NEXT.md.*` temporary files. Section
+     13 is what makes the in-flight read succeed while `os.replace` is in progress
+     (`cli/v1_io.py:102`).
 5. **Data-integrity.**
    - A successful CODEX write changes only `docs/NEXT.md` in a full-tree byte-and-mode
      fingerprint (the `fingerprint` helper pattern at `tests/v1/test_commands.py:13-15`).
@@ -375,6 +394,9 @@ configuration or credentials. Every new test module and test function has a docs
    - Muse regression: the remaining `test_muse_writer_rejects_wrong_context_without_writes`
      parameters still refuse. The new Muse module asserts that CODEX without `--vcs`
      or `--base-head` refuses `muse_writer_requires_explicit_vcs_and_base_head`.
+   - Stable hard link (section 13): `test_stable_hard_link_still_refused`. A second
+     name for `docs/NEXT.md` that is still present after the retries refuses
+     `path_not_regular`. Removing that name lets `ok next` exit 0.
 
 **Runs (step b, from `WT`, with `WT/.venv/bin/python3 -m pytest`, `-p no:cacheprovider`
 and a disposable `--basetemp "$(mktemp -d)"`):**
@@ -434,9 +456,12 @@ anything in `KN` except this freeze.
 
 **Entry checks** (stop on any failure):
 
-- this file's sha256 equals the one step a reported;
-- `RUN/runtime.json` exists and its commit's parent is `99e2e5b…`;
-- `RUN/build-verification.json` records verdict `pass`;
+- this file's sha256 equals the digest reported after the section 13 review stamp;
+- `RUN/runtime.json` records the section 13 code commit, whose parent is
+  `1571b921be817d5b68f7dfa60fcfe91409a11ff3`, and a runtime sha256 other than
+  `1762a406b027e7b805788456d98bfede35a3e0c32274b412d304de6151368510`;
+- `RUN/build-verification.json` records verdict `pass`, round 2 or later, and
+  `frozen_spec_sha256` equal to this file's sha256;
 - `NEW_RT` exists and its computed `runtime()` equals the recorded digest.
 
 **Preflight** (stop on any difference from section 1): check the digests of config,
@@ -591,6 +616,10 @@ of these occur.
 - the parent of commit 1 is not `99e2e5b…`, or `git -C "$WT" status --porcelain` is
   non-empty before the runtime build.
 
+The stops that cite the step-a digest, that say any planned name already exists, and
+that check the parent of commit 1 apply only to the original step b. Step b2 uses
+the section 13 stops instead.
+
 **Step c:**
 
 - an entry check fails;
@@ -617,3 +646,110 @@ The following are out of scope:
 - N1-R and the stacked PR (a Tier 3 merge);
 - any change to multi-lane behavior, to `context.model` handling or to the general
   `label()` check.
+
+## 13. Amendment BV1 — tolerate the replace window (2026-10-21)
+
+Build verification round 1 returned `findings`. BV1 is MAJOR. In the full section 7
+group, `test_stress_concurrent_codex_and_default_writers` failed at
+`tests/v1/test_next_model_suggestion.py:268`: an in-flight `ok next` exited 2 with
+`refused: path_not_regular`. The same test passed when run alone. The other failures
+in that group matched the recorded baseline. N1c stays blocked. The pre-amendment
+freeze digest is `cc79cfff630f5bb98a75760bec8df85b0854ad821b4e6bf3983ddad48eec0c32`.
+
+**Cause, cited at the built tree `1571b92` (`cli/v1_io.py` is unchanged since
+`99e2e5b`).** `confined()` stats the pathname and refuses unless `st_nlink == 1`
+(`cli/v1_io.py:38-41`). `atomic()` publishes with `os.replace` (`cli/v1_io.py:102`).
+For an instant the new file can have two names, the temporary sibling and
+`docs/NEXT.md`, so a pathname stat can see `st_nlink == 2`. `read()` retries only
+when an already opened descriptor has `st_nlink == 0` (`cli/v1_io.py:54-60`). A
+descriptor with `st_nlink > 1` is refused immediately as `file_invalid`
+(`cli/v1_io.py:63`). Copying only the `st_nlink == 0` retry would move this flake
+from `path_not_regular` to `file_invalid`.
+
+**Allowed edit.** One code file, `cli/v1_io.py`, and only the two functions below.
+`atomic()` is not changed. No new lock is added to the reader. The advisory
+directory lock in `cli/v1.py:337-348` stays as it is. No sleep, no new dependency,
+and no raise of the attempt count above 3.
+
+`confined()` keeps its path walk. On the final path component it repeats the
+following at most 3 times:
+
+- a symlink refuses `path_symlink` on the first observation;
+- a `FileNotFoundError` from `stat` means the path is absent, which `confined()`
+  already allows, so it returns the path;
+- a file that is not a regular file refuses `path_not_regular` on the first
+  observation;
+- `st_nlink == 1` returns the path;
+- any other `st_nlink` tries again.
+
+After 3 observations of `st_nlink != 1`, it refuses `path_not_regular`. Any other
+`OSError` propagates as it does today.
+
+`read()` keeps `O_NOFOLLOW` and its 3-attempt loop (`cli/v1_io.py:47`). On each
+attempt:
+
+- a non-regular file, or a size over the limit, refuses `file_invalid` on the first
+  observation (the same code as `cli/v1_io.py:63`);
+- `st_nlink == 1` accepts the descriptor and reads it;
+- `st_nlink == 0` or `st_nlink > 1` closes the descriptor and tries again.
+
+If the attempts end on `st_nlink == 0`, the refusal stays
+`file_changed_during_read`. If they end on `st_nlink > 1`, the refusal stays
+`file_invalid`. A symlink is never followed. A hard link that is still present
+after the retries is still refused.
+
+**Regression tests.** Both are in `tests/v1/test_next_model_suggestion.py`.
+
+- Leave `test_stress_concurrent_codex_and_default_writers` unchanged, including the
+  exit-0 assertion at line 268. Do not catch or ignore `path_not_regular`.
+- Add `test_stable_hard_link_still_refused`, with a docstring. On the `repo`
+  fixture, after a published NEXT, create a second directory entry for
+  `docs/NEXT.md` with `os.link`. `ok next` exits 2, its stdout is empty, and its
+  stderr contains `path_not_regular`. Remove that second entry. `ok next` then
+  exits 0 and shows the published model.
+
+**Step b2, in `WT` on `feat/next-model-select-20261020`.** Do not create another
+worktree and do not rebuild from `99e2e5b`. The tree must be clean and `HEAD` must
+be `1571b921be817d5b68f7dfa60fcfe91409a11ff3` before the edit.
+
+1. Implement only the edit and the new test above.
+2. Run `tests/v1/test_next_model_suggestion.py` and
+   `tests/v1/test_integrity.py`. Record the output under `RUN/tests/`. A failure
+   here stops the step.
+3. Run the section 7 group once (`tests/v1`, `tests/fpr1`, `tests/fpr2`,
+   `tests/fpr3`, `tests/fpr4`, `tests/fpr5`,
+   `tests/integration/test_legacy_migration_compat.py`,
+   `tests/performance/test_print_next_perf.py`, and `tests/muse` with
+   `--muse-python "$MUSE_PY"`). One passing isolated stress test does not count.
+   The group run must include a pass of
+   `test_stress_concurrent_codex_and_default_writers`. Any failure absent from the
+   recorded baseline (8 failed, 2 errors, as stored in `RUN/runtime.json`) stops
+   the step.
+4. **Commit 3**, local only: `cli/v1_io.py` and
+   `tests/v1/test_next_model_suggestion.py`, staged by those exact paths. Its parent
+   must be `1571b92…`.
+5. Rebuild `NEW_RT` from commit 3 with a clean tree. If unpack refuses the existing
+   destination, rename that directory to
+   `PREPARED-RUNTIMES/knowtation-next-model-select-20261020-pre-bv1`. Do not delete
+   it. Unpack to the original `NEW_RT` path, copy `OLD_RT/.venv` in the same way as
+   section 8, and import `yaml` and `cryptography`. Update `RUN/runtime.json` so
+   `commit` is commit 3, `parent` is `1571b92…`, and `runtime.sha256` is the new
+   `runtime()` value. Keep the previous runtime sha256
+   `1762a406b027e7b805788456d98bfede35a3e0c32274b412d304de6151368510` in a
+   `superseded_runtime_sha256` field. `OLD_RT` is not modified. Copy
+   `build-verification.json` to `build-verification-r1.json` if that copy is not
+   already there, and do not edit `build-verification.json`.
+6. **Commit 4**, docs only: replace `docs/reviews/OK-NEXT-MODEL-FREEZE.md` with a
+   byte copy of this file, and add one paired note to `docs/ROADMAP.md` and
+   `docs/OVERSEER-HANDOVER.md` that BV1 is amended, N1c is still blocked until
+   round 2 of build verification passes, and the runtime digest is the commit 3
+   value. Docs are outside the runtime digest, so `NEW_RT` still matches commit 3.
+
+No push, PR, merge, release, or Knowtation edit.
+
+**Step b2 stops** if `HEAD` is not `1571b92…` at the start, the tree is dirty, a
+change falls outside the two functions and the one new test, the stress test is
+edited, the new test is missing, the group run fails outside the baseline, commit
+3's parent is not `1571b92…`, or the rebuilt `runtime()` still equals
+`1762a406…`. Round 2 of `/build-verification-review` is a separate chat. Step b2
+does not mark N1b done and does not start N1c.
