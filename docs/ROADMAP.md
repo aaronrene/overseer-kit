@@ -31,14 +31,14 @@ Auto doc sync.
 | R1a | Thinking → Auto (a: Thinking) | **DONE** 2026-10-20 | Frozen spec [MIGRATION-COMPAT-RC11-R1-SPEC.md](reviews/MIGRATION-COMPAT-RC11-R1-SPEC.md) for **F1** and **F2**; freeze-review loop **pass** (round 3). `ok review --freeze` cannot stamp this checkout (`config_repository_mismatch` / `launcher_repository_mismatch`). |
 | R1b | Thinking → Auto (b: Auto) | **DONE** 2026-10-21 | Built F1/F2 exactly to the R1a spec. Seven tiers + E2/E3 recorded in [MIGRATION-COMPAT-RC11-R1-BUILD.md](reviews/MIGRATION-COMPAT-RC11-R1-BUILD.md). `/build-verification-review` → **pass**. Feature-branch commit. No push. |
 | R2 | Thinking | **DONE** 2026-10-21 | Independent re-review of `d54a228..68952c7` **pass**. Record: [MIGRATION-COMPAT-RC11-R2-REVIEW.md](reviews/MIGRATION-COMPAT-RC11-R2-REVIEW.md). Reviewer was not the R1b builder. No push. |
-| R3 | Operator + Auto | **NEXT** | Owner authorizes push and a draft PR. Merge to main is Tier 3 and needs a separate explicit owner approval. |
+| R3 | Operator + Auto | **NEXT** | Owner authorized the push and a draft PR on 2026-10-21. Merge to main needs a separate approval. |
 | A1 | Operator + Auto | Queued after merge | Reviewed rc11 distribution artifact contract, plus owner authorization for hosting it and for any hosted rc11 `supported-v1.yml` job. No URLs or secrets in R1. |
 | H1 | Thinking → Auto | Queued after merge | Hardening: **F3**, **F4**, **F5**, **F6**, **F7**, and **F11** (pre-existing loose `label()` grammar; recorded in the N1 freeze). |
 | D1 | Operator + Auto | Queued after merge | Decide how consumers move off prepared runtime `309ac668…` (**F8**). |
-| N1a | Thinking → Auto (a: Thinking) | **DONE** 2026-10-20 | Option A freeze at `knowtation/docs/evidence/B02/overseer-next-model-select-20261020/FREEZE.md` (sha256 `cc79cfff…`); mechanical freeze-review pass. The allowlist design is superseded. |
-| N1b | Thinking → Auto (b: Auto) | Held; resume after R1a in a separate chat | Build option A in worktree `/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-next-model-select-20261020` on `feat/next-model-select-20261020` from `99e2e5b` (sibling of this branch, not stacked on later R1 commits). Worktree already exists and is clean. Do not touch this checkout. |
-| N1c | Auto | Blocked on N1b plus its build-verification **pass** | Move Knowtation onto the new N1 runtime and publish `C2-PROPOSAL-REVISION-1`. Kit-only N1b does not do this. |
-| N1-R | Thinking, independent model | Blocked on N1b | Independent review of the N1 branch delta, required before its PR. |
+| N1a | Thinking → Auto (a: Thinking) | **DONE** 2026-10-20 | Option A. Amended freeze sha256 `3d521241…`. The allowlist design and freeze `cc79cfff…` are superseded. |
+| N1b | Thinking → Auto (b: Auto) | **DONE** 2026-10-21 | Sibling worktree `overseer-kit-next-model-select-20261020`, branch `feat/next-model-select-20261020`. Runtime `559e1635…`. BV round 2 pass. |
+| N1c | Auto | **DONE** 2026-10-21 | Knowtation rebound to `559e1635…`. Published `C2-PROPOSAL-REVISION-1`. Receipt beside that freeze. |
+| N1-R | Thinking, independent model | **NEXT** in the N1 worktree | Independent review of the N1 branch before its draft PR. Do not do it in this checkout. |
 | N1-PR | Operator + Auto | Blocked on R3 and N1-R | Combine N1 onto the R3 branch (rebase or merge; they share parent `99e2e5b`). Merge is Tier 3. |
 | M1a | Thinking → Auto (a: Thinking) | Queued; first step after the R3 merge | Freeze the checkout-local ignore fix (**F10**) for migration, Git-only init and already-migrated consumers. |
 | M1b | Thinking → Auto (b: Auto) | Blocked on M1a | Build, seven tiers, `/build-verification-review` → **pass**, independent review, PR. Then each consumer applies it through the kit's previewable path. |
@@ -46,9 +46,9 @@ Auto doc sync.
 
 Order of work:
 
-1. Done in this checkout: R1b, then R2. N1b may resume in its own worktree and chat.
-2. R3 (push and draft PR) only after the owner authorizes that in the R3 session.
-3. N1c after N1b's build-verification pass; then N1-R; then the N1 PR onto the R3 branch.
+1. Done in this checkout: R1b, then R2. N1a, N1b, and N1c are done in the sibling worktree and in Knowtation.
+2. R3 (push and draft PR). The owner authorized the upload and the draft on 2026-10-21. Merge to main needs a separate approval.
+3. N1-R in the sibling worktree, then a draft PR of that branch onto this one. Do not merge.
 4. After both merges: M1, H1 (including F11), D1, A1 and C1.
 
 Consumer guard until M1 lands (Knowtation and BornFree): stage explicit paths only.
@@ -84,7 +84,7 @@ What each finding is (details and line evidence are in the review):
   relocates. BornFree is Git-only.
   - Choose between updating the prepared runtime in place followed by that
     installation's explicit `sync`, or a reviewed relocation command.
-  - Until then, both consumers stay on `309ac668…`.
+  - Knowtation moved to `559e1635…` at N1c. BornFree stays on `309ac668…` until D1.
   - BornFree also cannot take the N1 runtime until D1 is settled.
 - **F9 (owner-found while using Knowtation; source-verified).** A single-lane NEXT
   cannot name a model other than `context.model`: `cli/v1.py:273-274` raises

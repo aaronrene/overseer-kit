@@ -16,6 +16,25 @@ an exact reviewed version/digest pair. The repository additionally binds the
 exact Python path, version, digest, source ID and store. A shared environment
 upgrade therefore still refuses ordinary bound reads until explicit rebinding.
 
+## Standing procedure for a later Muse version
+
+Install the new Muse in its own folder. Leave the Muse folder a project already
+uses where it is. Overseer does not follow a Muse install on its own.
+
+1. Review the new version. Add one exact version and source-fingerprint pair to
+   `MUSE_RUNTIMES` in `cli/v1_revision.py`. Keep refusing every other version.
+   Confirm the read-only reader still works, with tests. Build one new kit runtime.
+2. For each project that uses Muse, point it at that same new runtime and the new
+   Muse Python with `adopt --rebind-muse-runtime`. Preview first. Apply only when
+   the preview matches. The rebind changes that project's config, launcher, and
+   lock. It does not change the project's notes, code, or NEXT.
+3. A project that does not use Muse stays where it is. Born Free is Git-only.
+
+Replacing `~/.local/share/muse/venv` while a project still names the old version
+makes that project's checks refuse until step 2. Version 0.2.1rc12 is not in the
+table above. Do not install it over the shared folder until it has been reviewed
+and added.
+
 ## Installed-source review, 2026-10-20
 
 Reviewed the installed package at

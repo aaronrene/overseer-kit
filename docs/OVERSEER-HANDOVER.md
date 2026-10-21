@@ -4,35 +4,36 @@
 
 ### NEXT SESSION
 
-**R3 — Model: Operator + Auto.** Fresh chat. Push this branch and open a draft
-PR only after the owner explicitly authorizes that in the R3 chat. Do not merge
-to main. Do not start N1b in that chat unless the owner redirects.
+**R3 — Model: Operator + Auto.** Fresh chat. The owner authorized a push and a
+draft PR on 2026-10-21. Do not merge to main. Do not start N1 work in that chat.
 
-N1b remains held in
+N1a, N1b, and N1c are done in
 `/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-next-model-select-20261020`
-(option-A freeze `cc79cfff…`). Resume only in that worktree's own chat.
+and in Knowtation. The live freeze is `3d521241…`. Freeze `cc79cfff…` is
+superseded. N1-R stays in that other worktree.
 
 ### Paste-ready prompt (draft; canonical NEXT cannot be published from this checkout)
 
 ```text
 Model: Operator + Auto
-Tier: Operator + Auto (push and draft PR only after explicit owner authorization in this chat)
+Tier: Operator + Auto (push and draft PR only)
 Overseer Kit — R3: push the migration-compat branch and open a draft PR.
 
 Checkout: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-knowtation-compat-20261020
 Branch: fix/knowtation-migration-compat-20261020 (local; not pushed).
-Parent of this close: 68952c7 (F1/F2 build).
-R2 record: docs/reviews/MIGRATION-COMPAT-RC11-R2-REVIEW.md (pass).
+R2 record: docs/reviews/MIGRATION-COMPAT-RC11-R2-REVIEW.md (pass) at 68952c7.
+Later docs commit: standing Muse update procedure in docs/MUSE-RC11-COMPATIBILITY.md,
+plus the roadmap and handover status correction. Owner authorized this push and
+draft PR on 2026-10-21. Merge to main is not authorized.
 
-Do not push, open a PR, or merge until the owner explicitly authorizes the
-push and draft PR in this chat. When authorized:
 - push this branch only;
 - open a draft PR against main;
-- do not merge to main (that needs a separate explicit owner approval);
+- do not merge to main;
 - no installs, dependency changes, prepared runtime, hosted rc11 job, or N1 work.
 
 Do not touch knowtation, bornfree-hub, or the N1 worktree.
 Canonical ok next still refuses with launcher_repository_mismatch in this checkout.
+Return the draft PR URL.
 ```
 
 ### Historical R2 prompt (done; do not run)
@@ -42,15 +43,12 @@ SUPERSEDED. Do not run. R2 passed 2026-10-21. See
 docs/reviews/MIGRATION-COMPAT-RC11-R2-REVIEW.md.
 ```
 
-### N1 status (held; do not paste the old option-1 prompts)
+### N1 status (done through N1c; do not paste the old prompts)
 
-N1a is done: option A freeze
-`knowtation/docs/evidence/B02/overseer-next-model-select-20261020/FREEZE.md`
-(sha256 `cc79cfff…`; mechanical pass). The allowlist freeze and the historical
-N1a/N1b prompts that preferred option 1 are superseded.
-
-N1b worktree already exists, clean, at `99e2e5b` on `feat/next-model-select-20261020`.
-Resume later with the freeze's own Auto prompt in that worktree's chat.
+N1a, N1b, and N1c are done. Live freeze sha256 `3d521241…`. Freeze `cc79cfff…`
+and the allowlist design are superseded. N1-R is next in
+`/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-next-model-select-20261020`.
+Do not resume N1b. Do not run N1-R in this checkout.
 
 ### Historical N1a prompt (superseded; do not run)
 
@@ -98,6 +96,9 @@ using the freeze at cc79cfff….
 
 ### Change log
 
+- 2026-10-21: Recorded N1a–N1c done on the sibling branch. Added the standing Muse
+  update procedure to `docs/MUSE-RC11-COMPATIBILITY.md`. Owner authorized the R3
+  push and draft PR. Merge to main is still a separate approval. No push in this commit.
 - 2026-10-21: R2 independent re-review **pass**. Record committed. R3 is NEXT
   (push and draft PR only after owner authorization). No push.
 - 2026-10-21: R1b Auto build **pass**. F1/F2 implemented; seven tiers + E2/E3 recorded;
