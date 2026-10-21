@@ -1,18 +1,23 @@
 # Overseer Kit roadmap
 
-## OK-NEXT-MODEL (F9) — N1c DONE; N1-R NEXT, 2026-10-21
+## OK-NEXT-MODEL (F9) — N1-R PASS; N1-PR NEXT, 2026-10-21
+
+**N1-R PASS.** Independent review `docs/reviews/OK-NEXT-MODEL-N1-R.md` compared
+`99e2e5bcfd6de0eb45b4f48872653f396aaa9850..de711aec04396d9fd5c79b18f37eb672689e24fd`
+with freeze sha256 `3d521241c0610a6ca278074cfb7bce06e75760735b3b13b2a3af4b93733ad70e`.
+Knowtation's installed runtime is `559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7`
+and the rebind plan is `d94b35798932e783552163ba97f7afc5795d10d351955c5284dbf8589026f322`.
+**N1-PR** is next: a draft PR of this branch stacked on compat draft PR
+[#94](https://github.com/aaronrene/overseer-kit/pull/94). Do not merge. This
+closeout does not push or open that PR.
 
 **N1b DONE.** Build-verification round 2 recorded **pass** in
 `RECOVERY-RUNS/knowtation-next-model-select-20261020/build-verification.json`
-(reviewer session `cursor-grok-4.7-bv-r2-2026-10-21T19:01:34Z`). Frozen-spec
-sha256 `3d521241c0610a6ca278074cfb7bce06e75760735b3b13b2a3af4b93733ad70e`. Tip at
-review `ef24c6547abda5b3c43455e64973e26e3c703db9`. Prepared runtime sha256
-`559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7`. Commit 3
+(reviewer session `cursor-grok-4.7-bv-r2-2026-10-21T19:01:34Z`). Tip at that
+review `ef24c6547abda5b3c43455e64973e26e3c703db9`. Commit 3
 `29db9e267ded73bc127e2da9867f3c15a8dca25f` (parent `1571b921be817d5b68f7dfa60fcfe91409a11ff3`)
-is the section-13 rebuild. **N1c is DONE.** Knowtation was rebound to runtime
-`559e1635…` and `C2-PROPOSAL-REVISION-1` was published. Receipt:
+is the section-13 rebuild. **N1c is DONE.** Receipt:
 `knowtation/docs/evidence/B02/overseer-next-model-select-20261020/README.md`.
-**N1-R** is next. Do not push or open a PR from this closeout.
 
 N1a freeze review **pass** (mechanical) for the pre-amendment freeze; the amended
 freeze used for N1b/N1c is sha256 `3d521241…`. Option A: single-lane NEXT `Model:`
@@ -32,15 +37,15 @@ N1b on local branch `feat/next-model-select-20261020` in worktree
   817 passed, 8 failed, 2 errors. Failure/error IDs unchanged from baseline.
 
 Finding **F11** (Low, pre-existing general `label()` admits DEL/C1/U+2028/bidi) is
-queued for **H1**. After N1c: **N1-R**.
+queued for **H1**. N1-R is done. Next is **N1-PR**.
 
 | Step | Model | Status | Deliverable |
 | --- | --- | --- | --- |
 | N1a | Thinking → Auto (a: Thinking) | **DONE** (mechanical freeze pass) | Pre-amendment freeze review pass; option A recommendation + `model_label`. |
 | N1b | Thinking → Auto (b: Auto) | **DONE** (BV round 2 pass) | Commit 3 `29db9e2…`; tip `ef24c654…`; runtime `559e1635…`; freeze `3d521241…`; reviewer `cursor-grok-4.7-bv-r2-2026-10-21T19:01:34Z`. |
 | N1c | Thinking → Auto (b: Auto) | **DONE** 2026-10-21 | Knowtation rebound to runtime `559e1635…`. Published NEXT `3a878755…` (`C2-PROPOSAL-REVISION-1`). Rebind plan `d94b3579…`. |
-| N1-R | Thinking, independent model | **NEXT** | Independent review of `99e2e5b..HEAD` before any N1 PR. Reviewer is not the N1b builder and not the BV round-2 reviewer. |
-| N1-PR | Operator + Auto | Blocked on R3 and N1-R | Stacked PR for N1 on top of the R3 PR. Merge is Tier 3. |
+| N1-R | Thinking, independent model | **DONE** (PASS, 2026-10-21) | `docs/reviews/OK-NEXT-MODEL-N1-R.md`. Range `99e2e5b..de711ae`. Reviewer is not the N1b builder and not BV round 2. |
+| N1-PR | Operator + Auto | **NEXT** | Stacked draft PR on open compat draft PR #94. Merge is Tier 3. |
 
 ## Migration compatibility + Muse rc11 — independent review PASS; pre-PR fixes queued, 2026-10-20
 
@@ -75,8 +80,8 @@ Auto doc sync.
 | N1a | Thinking → Auto (a: Thinking) | **DONE** (see top section) | Freeze `OK-NEXT-MODEL` (**F9**); freeze review **pass**. |
 | N1b | Thinking → Auto (b: Auto) | **DONE** (BV round 2 pass; see top section) | Kit build + prepared runtime `559e1635…` on `feat/next-model-select-20261020`. |
 | N1c | Thinking → Auto (b: Auto) | **DONE** 2026-10-21 (see top section) | Knowtation rebind + Codex NEXT publish. |
-| N1-R | Thinking, independent model | **NEXT** | Independent review of the N1 branch delta, required before its PR. |
-| N1-PR | Operator + Auto | Blocked on R3 and N1-R | Stacked PR for N1 on top of the R3 PR. Merge is Tier 3. |
+| N1-R | Thinking, independent model | **DONE** (PASS; see top section) | Independent review of the N1 branch delta. |
+| N1-PR | Operator + Auto | **NEXT** | Stacked draft PR on compat draft PR #94. Merge is Tier 3. |
 | M1a | Thinking → Auto (a: Thinking) | Queued; first step after the R3 merge | Freeze the checkout-local ignore fix (**F10**) for migration, Git-only init and already-migrated consumers. |
 | M1b | Thinking → Auto (b: Auto) | Blocked on M1a | Build, seven tiers, `/build-verification-review` → **pass**, independent review, PR. Then each consumer applies it through the kit's previewable path. |
 | C1 | Operator + Auto | Partly done 2026-10-20; rest after R2 passes | Done: the review scratch folders under `/tmp` (about 2.5 GB) were deleted with owner approval. The cited probe scripts were kept in `RECOVERY-RUNS/migration-compat-rc11-20261020/probes/`. Remaining: once R2 passes, remove the `overseer-kit-knowtation-baseline-20261020` worktree (117 MB, a `d54a228` checkout that can be recreated). Once the PR is merged, archive `RECOVERY-RUNS/migration-compat-rc11-20261020/`. |
@@ -86,7 +91,7 @@ Order of work:
 1. R1a in this kit checkout and N1a in the Knowtation session can run at the same
    time; they change different files.
 2. R1b, then R2, then R3 (push and PR).
-3. N1c is done. N1-R, then the N1 draft PR on top of the R3 PR. Do not merge.
+3. N1c and N1-R are done. Next is the N1 draft PR stacked on compat draft PR #94. Do not merge.
 4. After both merges: M1, H1, D1 and C1.
 
 Consumer guard until M1 lands (Knowtation and BornFree): stage explicit paths only.
@@ -130,7 +135,7 @@ What each finding is (details and line evidence are in the review):
   cannot name a model other than `context.model`: `cli/v1.py:273-274` raised
   `next_model_mismatch` on both write and read. **Addressed in N1b commit
   `6a04ce1…` (option A):** differing labels that pass `model_label` are accepted;
-  `context.model` stays the default. Consumer install remains N1c after BV.
+  `context.model` stays the default. Knowtation installed that runtime at N1c. N1-R passed.
 - **F11 (Low, pre-existing; recorded in the N1a freeze).** The general `label()`
   check (`cli/v1.py:82-85`) admits DEL, C1 controls such as U+0085, U+2028 and
   bidirectional overrides. It still governs `context.model` and multi-lane

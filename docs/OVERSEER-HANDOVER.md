@@ -1,28 +1,62 @@
 # Overseer Kit handover
 
-## OK-NEXT-MODEL — N1c DONE; N1-R NEXT, 2026-10-21
+## OK-NEXT-MODEL — N1-R PASS; N1-PR NEXT, 2026-10-21
 
 ### NEXT SESSION
 
-**N1-R — Model: Thinking.** Fresh chat in this worktree. Use a model other than
-the N1b builder and other than Grok 4.7, which ran build-verification round 2.
-Claude Opus with thinking enabled fits. Paste the fence below. Do not push,
-open a PR, or merge.
+**N1-PR — Model: Operator + Auto.** Fresh chat in this worktree. Open the stacked
+draft pull request only. Do not merge.
 
-N1c is **DONE**. Knowtation receipt:
-`/Users/aaronrenecarvajal/knowtation/docs/evidence/B02/overseer-next-model-select-20261020/README.md`.
+N1-R is **PASS**: `docs/reviews/OK-NEXT-MODEL-N1-R.md`. Reviewed range
+`99e2e5bcfd6de0eb45b4f48872653f396aaa9850..de711aec04396d9fd5c79b18f37eb672689e24fd`.
+Freeze sha256 `3d521241c0610a6ca278074cfb7bce06e75760735b3b13b2a3af4b93733ad70e`.
+Knowtation runtime `559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7`.
 Rebind plan `d94b35798932e783552163ba97f7afc5795d10d351955c5284dbf8589026f322`.
-Published NEXT at that step: `3a87875593f58a71d0802180048d3cbd06862929a7dab72b51173715c7239b1c`
-(`C2-PROPOSAL-REVISION-1`). Knowtation's product task has since moved on its own
-to `C2-CROSS-MODEL-REVIEW-2`. Do not repeat N1c. Do not edit Knowtation in N1-R.
 
-N1b remains **DONE**. Build-verification round 2 **pass**
-(reviewer session `cursor-grok-4.7-bv-r2-2026-10-21T19:01:34Z`; tip
-`ef24c6547abda5b3c43455e64973e26e3c703db9`; freeze sha256
-`3d521241c0610a6ca278074cfb7bce06e75760735b3b13b2a3af4b93733ad70e`; runtime
-`559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7`).
+Compat draft PR [#94](https://github.com/aaronrene/overseer-kit/pull/94) is open
+(`fix/knowtation-migration-compat-20261020`, tip
+`069fe3b4cbc9e291370d9f6f468b4830a7552755`). The wait for that draft PR is over.
+The branches diverged at `99e2e5b…`. Both later edited `docs/ROADMAP.md` and
+`docs/OVERSEER-HANDOVER.md`.
 
-### Paste-ready prompt (N1-R)
+This worktree's `origin` is the local publication checkout, not GitHub. The
+GitHub remote is `https://github.com/aaronrene/overseer-kit.git` on the
+publication checkout. Bound `ok next` in this worktree refuses
+`launcher_repository_mismatch`.
+
+Knowtation's installed runtime is unchanged. Its canonical NEXT has moved on its
+own past the N1c publication to action `C5-OWNER-DECISION` (model Codex;
+`context.model` still Opus). Do not edit Knowtation, Born Free, or the compat
+worktree for N1-PR. No installs and no Muse changes.
+
+### Paste-ready prompt (N1-PR)
+
+```text
+Model: Operator + Auto
+Tier: Operator + Auto (stacked draft PR only; do not merge)
+Step: OK-NEXT-MODEL-PR (kit roadmap N1-PR)
+
+Repository: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-next-model-select-20261020
+Branch: feat/next-model-select-20261020
+
+N1-R passed. Read docs/reviews/OK-NEXT-MODEL-N1-R.md.
+Compat draft PR https://github.com/aaronrene/overseer-kit/pull/94 is open
+on fix/knowtation-migration-compat-20261020 at 069fe3b4cbc9e291370d9f6f468b4830a7552755.
+
+Open a draft pull request for feat/next-model-select-20261020 stacked on that
+compat branch. Push this feature branch to github.com/aaronrene/overseer-kit.
+This worktree's origin remote is the local publication checkout; do not treat
+that path as GitHub.
+
+The branches diverged at 99e2e5bcfd6de0eb45b4f48872653f396aaa9850. Both changed
+docs/ROADMAP.md and docs/OVERSEER-HANDOVER.md. Keep the N1-R pass and the
+compat branch's R-track record when those two files overlap.
+
+Do not merge. Do not merge to main. Do not edit Knowtation, Born Free, or the
+compat worktree. No installs and no Muse changes. No release and no deployment.
+```
+
+### Historical paste-ready prompt (N1-R — done; do not run)
 
 ```text
 Model: Thinking
@@ -103,22 +137,25 @@ On any stop condition (freeze section 11), stop, report the exact state, and giv
 the rollback position from section 10.
 ```
 
-### Verified snapshot (2026-10-21, N1b DONE)
+### Verified snapshot (2026-10-21, N1-R PASS)
 
 - Amended freeze sha256 `3d521241c0610a6ca278074cfb7bce06e75760735b3b13b2a3af4b93733ad70e`.
-- Branch `feat/next-model-select-20261020` (local). Tip at BV round 2:
-  `ef24c6547abda5b3c43455e64973e26e3c703db9`.
+- Branch `feat/next-model-select-20261020` (local). Reviewed tip
+  `de711aec04396d9fd5c79b18f37eb672689e24fd`. This closeout commit is docs only.
 - Commit 1 `6a04ce18ad53a2fb1e3704f89935fdf7163fe67a`. Commit 3
   `29db9e267ded73bc127e2da9867f3c15a8dca25f` (BV1 replace-window amendment).
 - Runtime sha256 `559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7`.
-- Tests: baseline 766/8/2; after / b2 group 817/8/2. Failure IDs unchanged. The
-  concurrent `ok next` stress test passed in the group run.
+- Tests: baseline 766/8/2; b2 group 817/8/2. Failure IDs unchanged. N1-R re-ran
+  the `model_label` unit tests: 31 passed. The section 7 group was not repeated.
 - Build verification: round 2 **pass** (reviewer session
   `cursor-grok-4.7-bv-r2-2026-10-21T19:01:34Z`). N1b **DONE**. N1c **DONE**.
+  N1-R **PASS**.
 - N1c receipt: Knowtation `docs/evidence/B02/overseer-next-model-select-20261020/README.md`.
-  Rebind plan `d94b3579…`. Published NEXT `3a878755…`. Knowtation now uses runtime
-  `559e1635…`. Its later product task, `C2-CROSS-MODEL-REVIEW-2`, is outside N1.
-- F11 queued for H1. BornFree stays on `309ac668…` until D1. N1-R **NEXT**.
+  Rebind plan `d94b35798932e783552163ba97f7afc5795d10d351955c5284dbf8589026f322`.
+  Published NEXT at N1c `3a878755…`. Live Knowtation NEXT is now
+  `C5-OWNER-DECISION` (`0cd54fd9…`); `context.model` is still Opus.
+- Compat draft PR #94 is open. F11 queued for H1. BornFree stays on `309ac668…`
+  until D1. N1-PR **NEXT**. No push from this closeout.
 
 ### VCS
 
@@ -126,14 +163,17 @@ the rollback position from section 10.
 | --- | --- |
 | Worktree | `/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-next-model-select-20261020` |
 | Branch | `feat/next-model-select-20261020` (local only) |
-| Tip (BV r2) | `ef24c6547abda5b3c43455e64973e26e3c703db9` |
+| Reviewed tip | `de711aec04396d9fd5c79b18f37eb672689e24fd` |
 | Commit 1 | `6a04ce18ad53a2fb1e3704f89935fdf7163fe67a` |
 | Commit 3 | `29db9e267ded73bc127e2da9867f3c15a8dca25f` |
 | Commit 3 parent | `1571b921be817d5b68f7dfa60fcfe91409a11ff3` |
 | Runtime | `559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7` |
+| Rebind plan | `d94b35798932e783552163ba97f7afc5795d10d351955c5284dbf8589026f322` |
 | Freeze | `3d521241c0610a6ca278074cfb7bce06e75760735b3b13b2a3af4b93733ad70e` |
-| Docs closeout | this docs pair (N1c DONE; N1-R NEXT) |
-| Push / PR / merge | none |
+| Review | `docs/reviews/OK-NEXT-MODEL-N1-R.md` (PASS) |
+| Compat draft PR | https://github.com/aaronrene/overseer-kit/pull/94 |
+| Docs closeout | this docs pair (N1-R PASS; N1-PR NEXT) |
+| Push / N1 PR / merge | none from this closeout |
 
 ### Change log
 
@@ -148,6 +188,10 @@ the rollback position from section 10.
 - 2026-10-21: N1c **DONE** in Knowtation. Receipt README beside the freeze. Rebind
   plan `d94b3579…`. NEXT `3a878755…` (`C2-PROPOSAL-REVISION-1`). Runtime
   `559e1635…`. N1-R named **NEXT**. No push.
+- 2026-10-21: N1-R **PASS** (`docs/reviews/OK-NEXT-MODEL-N1-R.md`) over
+  `99e2e5b..de711ae`. Live Knowtation runtime `559e1635…` and rebind plan
+  `d94b3579…` match the receipt. Compat draft PR #94 is open. N1-PR named
+  **NEXT**. No push.
 
 ## Migration compatibility + Muse rc11 — review PASS; R1a next, 2026-10-20
 
