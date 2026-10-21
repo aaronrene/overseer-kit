@@ -1,53 +1,41 @@
 # Overseer Kit handover
 
-## Migration compatibility + Muse rc11 — R1a freeze pass; R1b next, 2026-10-20
+## Migration compatibility + Muse rc11 — R1b build pass; R2 next, 2026-10-21
 
 ### NEXT SESSION
 
-**R1b — Model: Auto.** Start a fresh chat in this checkout. Build exactly
-[docs/reviews/MIGRATION-COMPAT-RC11-R1-SPEC.md](reviews/MIGRATION-COMPAT-RC11-R1-SPEC.md).
-No redesign. Do not start N1b in that chat.
+**R2 — Model: Thinking (independent).** Fresh chat. Independently re-review
+`d54a228..<R1b head>` on this branch. The reviewer must not be the R1b builder.
+**pass** required before R3 (push/PR). Do not start N1b in that chat unless the
+owner redirects.
 
-N1b may resume after this R1a close, in a **new** chat whose cwd is
-`/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-next-model-select-20261020`.
-Do not run N1b inside the R1b chat. Use the option-A Auto prompt in the N1 freeze.
+N1b remains held in
+`/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-next-model-select-20261020`
+(option-A freeze `cc79cfff…`). Resume only in that worktree's own chat after R1b.
 
 ### Paste-ready prompt (draft; canonical NEXT cannot be published from this checkout)
 
 ```text
-Model: Auto
-Tier: Auto (build exactly to the frozen spec; no redesign)
-Overseer Kit — R1b: implement F1 and F2 from the frozen R1 spec.
+Model: Thinking
+Tier: Thinking (independent re-review; no redesign, no build)
+Overseer Kit — R2: independent re-review of the R1b delta.
 
 Checkout: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-knowtation-compat-20261020
 Branch: fix/knowtation-migration-compat-20261020 (local; not pushed).
+Range: d54a228..<R1b head> (include F1/F2 build commit).
 Frozen spec: docs/reviews/MIGRATION-COMPAT-RC11-R1-SPEC.md
-Required: frozen: true; Review record round 3 verdict pass.
-Read that spec in full, then docs/ROADMAP.md (top section) and this handover's
-verified snapshot. Build exactly the files and behaviors in spec sections 2–5.
-Follow spec section 6 build rules.
+Build record: docs/reviews/MIGRATION-COMPAT-RC11-R1-BUILD.md
+Prior independent review: docs/reviews/MIGRATION-COMPAT-RC11-INDEPENDENT-REVIEW.md
 
-Do not redesign. If the spec is wrong or incomplete, stop and report.
+The reviewer must be a model other than the R1b Auto builder. Read the frozen
+spec, the build record, ROADMAP/HANDOVER, and the full diff. Confirm F1 and F2
+match the spec, that only the four superseded failures appear in E2/E3, and that
+scope stayed inside R1 (no N1/F3–F11/A1/D1, no push, no prepared runtime).
+Write the review under docs/reviews/. Verdict pass is required before R3.
+
 No pushes, PRs, merges, installs or dependency changes.
-Do not touch /Users/aaronrenecarvajal/knowtation, /Users/aaronrenecarvajal/bornfree-hub,
-or /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-next-model-select-20261020.
-Do not implement N1, F3–F11, A1, or D1.
-
-1. Implement F1 (portable MUSE_RUNTIMES probe and tests; compatibility files in the
-   CI driver; committed FPR-4 successor wrapper; no rc11 job in supported-v1.yml).
-2. Implement F2 (apply_mapping recovery hint; rebind-only hint; sync/init/adopt/
-   upgrade-regime messages unchanged).
-3. Add the named seven-tier tests. Run them outside the Cursor sandbox, with
-   -p no:cacheprovider, PYTHONDONTWRITEBYTECODE=1, and a /tmp basetemp.
-4. Run the commands in spec section 6.3, then E2 and E3. Only the four documented
-   superseded failures are allowed.
-5. Write docs/reviews/MIGRATION-COMPAT-RC11-R1-BUILD.md with commands, counts and
-   the X5 diff checks.
-6. Run /build-verification-review against the spec. DONE only on pass.
-7. One feature-branch commit: code, tests, docs, the build record, roadmap
-   (R1b DONE, R2 NEXT) and this handover. Leave a clean tree. No push.
-
-Consumers stay on prepared runtime 309ac668…. Build no prepared runtime in R1b.
+Do not touch knowtation, bornfree-hub, or the N1 worktree.
+Do not implement fixes in R2; report findings only.
 ```
 
 ### N1 status (held; do not paste the old option-1 prompts)
@@ -58,15 +46,9 @@ N1a is done: option A freeze
 N1a/N1b prompts that preferred option 1 are superseded.
 
 N1b worktree already exists, clean, at `99e2e5b` on `feat/next-model-select-20261020`.
-A prior Auto session created it and started the baseline matrix; that pytest was
-stopped incomplete (no code edits). Resume later with the freeze's own Auto prompt,
-skipping `worktree add`, and re-run the baseline.
+Resume later with the freeze's own Auto prompt in that worktree's chat.
 
 ### Historical N1a prompt (superseded; do not run)
-
-Amended from the owner's `PROMPT-A-THINKING.txt`. The changes: a stacked base branch,
-read and write coverage plus multi-lane consistency, the named rebind path, the
-consumer staging guard, and the owner's preference for option 1.
 
 ```text
 SUPERSEDED. Do not run. N1a is done as option A. See FREEZE.md sha256 cc79cfff….
@@ -74,60 +56,48 @@ SUPERSEDED. Do not run. N1a is done as option A. See FREEZE.md sha256 cc79cfff�
 
 ### Historical N1b prompt (superseded; do not run)
 
-The following block is the old stacked/allowlist-era Auto prompt. Do not run it.
-Use the option-A prompt in the N1 freeze after R1b.
-
 ```text
 SUPERSEDED. Do not run. N1b resumes from 99e2e5b in
 /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-next-model-select-20261020
 using the freeze at cc79cfff….
 ```
 
-### Retired long prompts (kept only as markers)
+### Verified snapshot (2026-10-21, R1b build pass)
 
-The full superseded option-1 N1a and N1b text that used to sit here is retired.
-Knowtation still has `PROMPT-A-THINKING.txt` and `PROMPT-B-AUTO.txt` as owner
-originals; they are also superseded by `FREEZE.md`.
-
-### Verified snapshot (2026-10-20, R1a freeze pass)
-
-- R1 spec [MIGRATION-COMPAT-RC11-R1-SPEC.md](reviews/MIGRATION-COMPAT-RC11-R1-SPEC.md)
-  is frozen. Freeze-review loop round 3: **pass**. CLI `ok review --freeze` refuses
-  (`config_repository_mismatch` / `launcher_repository_mismatch`).
-- `30f5cb4` reviewed **PASS** with no blockers
-  ([report](reviews/MIGRATION-COMPAT-RC11-INDEPENDENT-REVIEW.md); reviewer Claude Opus 5.5).
-- Test results at `30f5cb4`:
-  - focused suites: 77/77 passed;
-  - whole tree compared with an exported `d54a228`: no new failures;
-  - CI selection (698 tests): 2 failures, both pre-existing and documented in
-    `reviews/FPR-5-REVIEW.md:267-268`;
-  - `tests/muse` on rc11: 184/186, with 2 documented superseded failures
-    (`FPR-5-REVIEW.md:269-270`).
-- rc5 was not executed because no rc5 venv exists on this host.
-- Consumers on prepared runtime `309ac668…` (unchanged; D1):
-  - Knowtation config `72c2f1fc…` and NEXT `1279cdee…` match its receipt.
-  - BornFree migrated with 138/71 historical blocks and none selected. Its NEXT was
-    later superseded by an operator `stop` publication (`d659c71f…`).
-- F1 and F2 are specified, not built. F3–F8, F10 remain queued. F9 is option A
-  (N1a done). F11 is queued on H1.
-- N1b worktree exists, clean, at `99e2e5b`. No N1 code. No new N1 runtime.
+- R1b built F1 and F2 exactly to
+  [MIGRATION-COMPAT-RC11-R1-SPEC.md](reviews/MIGRATION-COMPAT-RC11-R1-SPEC.md).
+  Build record: [MIGRATION-COMPAT-RC11-R1-BUILD.md](reviews/MIGRATION-COMPAT-RC11-R1-BUILD.md).
+  `/build-verification-review` → **pass** (honesty ISR off / N/A; V1–V8).
+- Focused: new Git tests 66/66; fpr1+artifact 48/48; compatibility 18/18;
+  muse rebind+matrix on rc11 32/32.
+- E2: 768 passed, 2 superseded failures (`FPR-5-REVIEW.md:267-268`); wall 1185.69 s.
+- E3: 967 passed, 4 superseded failures (`FPR-5-REVIEW.md:267-270`); wall 2971.23 s;
+  stderr `supported_v1: reviewed Muse 0.2.1rc11 c68f34f8…`.
+- X5: `.github/` diff empty; no added URLs/IPs/`secrets.`/`vars.`/home paths.
+- rc5 not run on this host (source-verified portable stale=rc11 path only).
+- Consumers remain on prepared runtime `309ac668…` (D1). No prepared runtime built.
+- F3–F8, F10 remain queued. F9 is option A (N1a done). F11 on H1. A1 queued after merge.
+- N1b worktree unchanged at `99e2e5b`. Canonical `ok next` still refuses
+  `launcher_repository_mismatch` in this checkout.
 
 ### VCS
 
 | Item | Value |
 | --- | --- |
 | Branch | `fix/knowtation-migration-compat-20261020` (local only) |
-| Head after this close | this R1a commit |
-| Reviewed code commit | `30f5cb48cfe6aafc542d6818e9128caa03e978a1` |
+| Head after this close | this R1b commit |
+| Reviewed code commit (pre-R1b) | `30f5cb48cfe6aafc542d6818e9128caa03e978a1` |
+| Spec base | `99e2e5b` |
 | Base | `d54a228` (main after PR #93) |
 | Sibling N1 branch | `feat/next-model-select-20261020` at `99e2e5b` |
 | Push / PR / merge | none; push and PR require owner authorization; merge is Tier 3 |
 
 ### Change log
 
-- 2026-10-20: R1a freeze review **pass**. Spec committed. R1b is NEXT. Added A1.
+- 2026-10-21: R1b Auto build **pass**. F1/F2 implemented; seven tiers + E2/E3 recorded;
+  build-verification **pass**; R2 is NEXT. No push.
+- 2026-10-20: R1a freeze review **pass**. Spec committed. R1b was NEXT. Added A1.
   Recorded N1a option A (`cc79cfff…`), N1b held in its worktree, N1c, and F11 on H1.
-  Leftover N1b baseline pytest was already gone when rechecked (PIDs 84099/84118).
 - 2026-10-20: added the independent review, queued F1–F8 (R1a, R1b, R2, R3, H1, D1)
   and drafted the R1a prompt. No code changes.
 - 2026-10-20: queued owner-found F9 (single-lane `next_model_mismatch`) as N1a, N1b,

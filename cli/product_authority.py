@@ -7,6 +7,10 @@ from cli.v1_io import Refusal, read, digest, confined
 from cli.v1_revision import muse_read, revision
 from cli.v1_policy import ignore_assets, local_path
 
+REBIND_RECOVERY = ("restore .overseer/bin/ok, .overseer/version.lock, then "
+                   ".overseer/config.yaml from each copy present in {backup}/, "
+                   "then preview again")
+
 
 def select(root, args, existing=None):
     selected = getattr(args, 'vcs', None)
@@ -162,7 +166,8 @@ def rebind_muse_runtime(root, args):
             raise Refusal('tracked_local_bindings: choose --tracked-bindings preserve or untrack separately')
         if args.expect_rebind != plan_digest:
             raise Refusal('rebind_plan_digest_mismatch: review --dry-run and supply --expect-rebind')
-    changed = apply_mapping(root, mapping, check_context=recheck, dry_run=args.dry_run)
+    changed = apply_mapping(root, mapping, check_context=recheck, dry_run=args.dry_run,
+                            recovery=REBIND_RECOVERY.format(backup=backup))
     return {'ok': allowed, 'dry_run': args.dry_run, 'rebind_sha256': plan_digest,
             'plan': plan, 'changed': changed, 'config_sha256': digest(payload)}
 

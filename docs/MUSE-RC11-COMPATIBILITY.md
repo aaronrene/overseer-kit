@@ -82,11 +82,35 @@ Original config, launcher and lock are copied under the reported
 `.overseer/local/rebind-<original-config-digest>/` backup. Writes use the shared
 directory lock, compare-and-swap checks and config-last ordering, with runtime,
 source, revision and protected-input rechecks before each replacement. This is
-per-file atomicity, not a multi-file transaction. On interruption inspect
-reported completed paths and the preview's original hashes/modes; restore the
-three original paths from the backup, config last, before preparing a fresh
-preview. An old rc5 config restored against an rc11 venv will still refuse reads;
-restoration does not downgrade Muse.
+per-file atomicity, not a multi-file transaction. If an apply is interrupted after its first write, it refuses with
+`partial_asset_update: restore .overseer/bin/ok, .overseer/version.lock, then
+.overseer/config.yaml from each copy present in <backup>/, then preview again;
+reason: <reason>; completed: <paths>`. Explicit `sync` cannot repair this state.
+If `reason` is `stale_write: <path>` or `context_changed_before_rebind`, another
+writer changed a file during the apply. Before copying, save each of the three live
+files whose SHA-256 matches neither the preview's `assets[].before.sha256` nor
+`assets[].after`, because the restore overwrites it.
+Copy each of those three backup files that exists over its live path, in that
+order, and set each restored live path's mode to its preview `assets[].before.mode`.
+Then run the same `--dry-run` again and apply its new `--expect-rebind` digest. Live files are replaced only after all three copies exist, so a missing
+copy means its live file was not changed. A restored config whose Muse runtime
+differs from the installed venv still refuses ordinary reads until the rebind
+completes; restoration does not downgrade Muse.
 
 Rebinding neither accepts a prompt nor publishes NEXT. Operator acceptance and
 `next-write` with the exact prior NEXT digest remain separate steps.
+
+## Validation across reviewed runtimes
+
+The Muse tests take the current runtime from the probed `--muse-python` venv and
+use the single other `MUSE_RUNTIMES` entry as the stale binding.
+`tools/ci/supported_v1.py` accepts only an exact (version, digest) pair from
+`cli/v1_revision.py:MUSE_RUNTIMES` and refuses before running pytest otherwise.
+The prepared hosted `muse` job installs only the reviewed rc5 recovery wheel. There
+is no hosted rc11 job: no reviewed rc11 distribution artifact exists, and hosted
+execution is not authorized. Run the rc11 matrix locally:
+
+    .venv/bin/python tools/ci/supported_v1.py \
+      --muse-python /absolute/rc11-venv/bin/python3.14 \
+      --junitxml /absolute/scratch/combined.xml
+

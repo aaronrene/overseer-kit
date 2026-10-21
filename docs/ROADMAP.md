@@ -25,8 +25,8 @@ Auto doc sync.
 | Step | Model | Status | Deliverable |
 | --- | --- | --- | --- |
 | R1a | Thinking → Auto (a: Thinking) | **DONE** 2026-10-20 | Frozen spec [MIGRATION-COMPAT-RC11-R1-SPEC.md](reviews/MIGRATION-COMPAT-RC11-R1-SPEC.md) for **F1** and **F2**; freeze-review loop **pass** (round 3). `ok review --freeze` cannot stamp this checkout (`config_repository_mismatch` / `launcher_repository_mismatch`). |
-| R1b | Thinking → Auto (b: Auto) | **NEXT** | Build exactly to the R1a spec. Run the seven tiers, then `/build-verification-review` → **pass**. Feature-branch commit. No push. |
-| R2 | Thinking | Blocked on R1b | Independent re-review of `d54a228..<R1b head>` by a model other than the R1b builder; **pass** required. |
+| R1b | Thinking → Auto (b: Auto) | **DONE** 2026-10-21 | Built F1/F2 exactly to the R1a spec. Seven tiers + E2/E3 recorded in [MIGRATION-COMPAT-RC11-R1-BUILD.md](reviews/MIGRATION-COMPAT-RC11-R1-BUILD.md). `/build-verification-review` → **pass**. Feature-branch commit. No push. |
+| R2 | Thinking | **NEXT** | Independent re-review of `d54a228..<R1b head>` by a model other than the R1b builder; **pass** required. |
 | R3 | Operator + Auto | Blocked on R2 | Owner authorizes push and PR. Merge to main is Tier 3 and needs explicit owner approval. |
 | A1 | Operator + Auto | Queued after merge | Reviewed rc11 distribution artifact contract, plus owner authorization for hosting it and for any hosted rc11 `supported-v1.yml` job. No URLs or secrets in R1. |
 | H1 | Thinking → Auto | Queued after merge | Hardening: **F3**, **F4**, **F5**, **F6**, **F7**, and **F11** (pre-existing loose `label()` grammar; recorded in the N1 freeze). |

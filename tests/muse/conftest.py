@@ -1,9 +1,23 @@
 """Opt-in real Muse matrix: selecting this directory requires a Muse venv."""
 import os
 from pathlib import Path
-import subprocess
+from typing import NamedTuple
 
 import pytest
+
+from cli.v1_revision import MUSE_RUNTIMES
+
+
+class MuseRuntime(NamedTuple):
+    python: Path
+    version: str
+    sha256: str
+
+
+def rebind_pair(current):
+    others = sorted(v for v in MUSE_RUNTIMES if v != current)
+    assert len(others) == 1, 'exactly one other reviewed Muse runtime is required'
+    return current, others[0]
 
 
 def pytest_addoption(parser):
@@ -11,23 +25,28 @@ def pytest_addoption(parser):
 
 
 @pytest.fixture(scope='session')
-def muse_python(request):
+def muse_runtime(request):
     value = request.config.getoption('--muse-python')
     if not value:
         pytest.fail('Real Muse matrix requires --muse-python; Git-only matrix is tests/v1 + tests/retained')
     path = Path(value)
     assert path.is_absolute() and path.exists()
-    probe = subprocess.run([str(path), '-I', '-B', '-c',
-        "import hashlib,importlib.metadata,pathlib,muse; "
-        "p=pathlib.Path(muse.__file__).resolve().parent; h=hashlib.sha256(); "
-        "[h.update(str(f.relative_to(p)).encode()+b'\\0'+f.read_bytes()+b'\\0') for f in sorted(p.rglob('*.py'))]; "
-        "print(importlib.metadata.version('muse')); print(h.hexdigest())"],
-        capture_output=True, text=True, timeout=15)
-    assert probe.returncode == 0, probe.stderr
-    from cli.v1_revision import MUSE_RUNTIMES
-    version, source_digest = probe.stdout.splitlines()
-    assert version in MUSE_RUNTIMES and source_digest == MUSE_RUNTIMES[version]
-    return path
+    from tools.ci.supported_v1 import muse_runtime as probe
+    try:
+        version, sha256 = probe(path)
+    except ValueError as exc:
+        pytest.fail('Muse runtime is not an exact reviewed pair: ' + str(exc))
+    return MuseRuntime(path, version, sha256)
+
+
+@pytest.fixture(scope='session')
+def muse_python(muse_runtime):
+    return muse_runtime.python
+
+
+@pytest.fixture(scope='session')
+def rebind_runtimes(muse_runtime):
+    return rebind_pair(muse_runtime.version)
 
 
 @pytest.fixture
@@ -38,6 +57,7 @@ def muse(muse_python):
                    GIT_CONFIG_NOSYSTEM='1', GIT_AUTHOR_NAME='Fixture',
                    GIT_AUTHOR_EMAIL='fixture@example.invalid', GIT_COMMITTER_NAME='Fixture',
                    GIT_COMMITTER_EMAIL='fixture@example.invalid')
+        import subprocess
         result = subprocess.run([str(muse_python.parent / 'muse'), '-C', str(root), *args],
                                 env=env, text=True, capture_output=True, timeout=30)
         assert result.returncode == 0, result.stdout + result.stderr
