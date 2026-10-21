@@ -1,6 +1,6 @@
 # Overseer Kit roadmap
 
-## Migration compatibility + Muse rc11 — independent review PASS; pre-PR fixes queued, 2026-10-20
+## Migration compatibility + Muse rc11 — R2 pass; R3 next, 2026-10-21
 
 Local commit `30f5cb4` on `fix/knowtation-migration-compat-20261020` (parent `d54a228`,
 not pushed) covers several changes:
@@ -14,9 +14,13 @@ not pushed) covers several changes:
 Knowtation (rebind and C2 publication) and BornFree (migration and publication)
 adopted the prepared runtime `309ac668…` built from this exact commit.
 
-The [independent review](reviews/MIGRATION-COMPAT-RC11-INDEPENDENT-REVIEW.md) returned
-**PASS** with no blockers. The owner accepted all of its recommendations. Every
-finding is queued below; none is marked fixed. Merge to main remains Tier 3.
+The [independent review](reviews/MIGRATION-COMPAT-RC11-INDEPENDENT-REVIEW.md) of
+`30f5cb4` returned **PASS** with no blockers. The owner accepted all of its
+recommendations. **F1** and **F2** are fixed at `68952c7`. The independent
+re-review passed
+([MIGRATION-COMPAT-RC11-R2-REVIEW.md](reviews/MIGRATION-COMPAT-RC11-R2-REVIEW.md)).
+F3–F11, A1, D1, and N1 stay queued below. This branch is still local. Merge to
+main remains Tier 3.
 
 Phase Model Key: Thinking = freeze WHAT/HOW; Auto = build exactly to the frozen spec;
 Thinking → Auto = step `a` then step `b`; Operator + Auto = human Tier-3 gate plus
@@ -26,8 +30,8 @@ Auto doc sync.
 | --- | --- | --- | --- |
 | R1a | Thinking → Auto (a: Thinking) | **DONE** 2026-10-20 | Frozen spec [MIGRATION-COMPAT-RC11-R1-SPEC.md](reviews/MIGRATION-COMPAT-RC11-R1-SPEC.md) for **F1** and **F2**; freeze-review loop **pass** (round 3). `ok review --freeze` cannot stamp this checkout (`config_repository_mismatch` / `launcher_repository_mismatch`). |
 | R1b | Thinking → Auto (b: Auto) | **DONE** 2026-10-21 | Built F1/F2 exactly to the R1a spec. Seven tiers + E2/E3 recorded in [MIGRATION-COMPAT-RC11-R1-BUILD.md](reviews/MIGRATION-COMPAT-RC11-R1-BUILD.md). `/build-verification-review` → **pass**. Feature-branch commit. No push. |
-| R2 | Thinking | **NEXT** | Independent re-review of `d54a228..<R1b head>` by a model other than the R1b builder; **pass** required. |
-| R3 | Operator + Auto | Blocked on R2 | Owner authorizes push and PR. Merge to main is Tier 3 and needs explicit owner approval. |
+| R2 | Thinking | **DONE** 2026-10-21 | Independent re-review of `d54a228..68952c7` **pass**. Record: [MIGRATION-COMPAT-RC11-R2-REVIEW.md](reviews/MIGRATION-COMPAT-RC11-R2-REVIEW.md). Reviewer was not the R1b builder. No push. |
+| R3 | Operator + Auto | **NEXT** | Owner authorizes push and a draft PR. Merge to main is Tier 3 and needs a separate explicit owner approval. |
 | A1 | Operator + Auto | Queued after merge | Reviewed rc11 distribution artifact contract, plus owner authorization for hosting it and for any hosted rc11 `supported-v1.yml` job. No URLs or secrets in R1. |
 | H1 | Thinking → Auto | Queued after merge | Hardening: **F3**, **F4**, **F5**, **F6**, **F7**, and **F11** (pre-existing loose `label()` grammar; recorded in the N1 freeze). |
 | D1 | Operator + Auto | Queued after merge | Decide how consumers move off prepared runtime `309ac668…` (**F8**). |
@@ -38,12 +42,12 @@ Auto doc sync.
 | N1-PR | Operator + Auto | Blocked on R3 and N1-R | Combine N1 onto the R3 branch (rebase or merge; they share parent `99e2e5b`). Merge is Tier 3. |
 | M1a | Thinking → Auto (a: Thinking) | Queued; first step after the R3 merge | Freeze the checkout-local ignore fix (**F10**) for migration, Git-only init and already-migrated consumers. |
 | M1b | Thinking → Auto (b: Auto) | Blocked on M1a | Build, seven tiers, `/build-verification-review` → **pass**, independent review, PR. Then each consumer applies it through the kit's previewable path. |
-| C1 | Operator + Auto | Partly done 2026-10-20; rest after R2 passes | Done: the review scratch folders under `/tmp` (about 2.5 GB) were deleted with owner approval. The cited probe scripts were kept in `RECOVERY-RUNS/migration-compat-rc11-20261020/probes/`. Remaining: once R2 passes, remove the `overseer-kit-knowtation-baseline-20261020` worktree (117 MB, a `d54a228` checkout that can be recreated). Once the PR is merged, archive `RECOVERY-RUNS/migration-compat-rc11-20261020/`. |
+| C1 | Operator + Auto | Partly done; baseline removal unblocked, not done in the R2 close | Done: the review scratch folders under `/tmp` (about 2.5 GB) were deleted with owner approval. The cited probe scripts were kept in `RECOVERY-RUNS/migration-compat-rc11-20261020/probes/`. R2 passed 2026-10-21. Remaining, not done here: remove the `overseer-kit-knowtation-baseline-20261020` worktree (117 MB, a `d54a228` checkout that can be recreated). Once the PR is merged, archive `RECOVERY-RUNS/migration-compat-rc11-20261020/`. |
 
 Order of work:
 
-1. R1b in this checkout. N1b may resume afterward in its own worktree and chat.
-2. R2, then R3 (push and PR).
+1. Done in this checkout: R1b, then R2. N1b may resume in its own worktree and chat.
+2. R3 (push and draft PR) only after the owner authorizes that in the R3 session.
 3. N1c after N1b's build-verification pass; then N1-R; then the N1 PR onto the R3 branch.
 4. After both merges: M1, H1 (including F11), D1, A1 and C1.
 
@@ -54,15 +58,13 @@ neither tracked nor ignored.
 
 What each finding is (details and line evidence are in the review):
 
-- **F1 (Medium, pre-PR).** The prepared CI cannot exercise rc11, and the new tests
-  hard-code rc11:
-  - `tools/ci/supported_v1.py:42, 48` accepts rc5 only;
-  - `tests/muse/test_runtime_rebind.py:24, 70-71, 211` pin rc11;
-  - the two new integration test files are missing from the CI selection;
-  - the FPR-4 mirror replacement test has no rc11 wrapper.
-- **F2 (Low, pre-PR).** After an interrupted rebind, `apply_mapping` says "rerun
-  explicit sync" (`cli/product_migration.py:336`). That step refuses; restoring
-  from the backup is the working path.
+- **F1 (Medium, pre-PR). Fixed** at `68952c7`. R2 **pass**. The CI probe accepts
+  only an exact `MUSE_RUNTIMES` pair; current and stale come from the probed
+  venv; both compatibility files are on the driver command; the FPR-4 successor
+  runs under the probed runtime. No hosted rc11 job (A1).
+- **F2 (Low, pre-PR). Fixed** at `68952c7`. R2 **pass**. An interrupted rebind
+  refuses with the backup-restore hint first. Init, sync, adopt, and
+  upgrade-regime keep the previous sync sentence.
 - **F3 (Low).** Rebind backups are always 0644 or 0755 instead of the original
   mode, so a 0600 config gets a 0644 backup.
 - **F4 (Low).** `docs/MUSE-RC11-COMPATIBILITY.md:82-83` says "shared directory
@@ -123,8 +125,8 @@ What each finding is (details and line evidence are in the review):
 
 Definition of Done for this milestone:
 
-1. F1 and F2 are fixed with seven-tier tests.
-2. Build verification and the R2 re-review both pass.
+1. Done: F1 and F2 are fixed with seven-tier tests (`68952c7`).
+2. Done: build verification and the R2 re-review both pass.
 3. The PR is opened under owner authorization.
 4. H1 and D1 are tracked in a successor roadmap section.
 5. N1 is either merged through its own reviewed stacked PR or carried forward explicitly.
@@ -132,8 +134,8 @@ Definition of Done for this milestone:
 
 This branch's [NEXT](NEXT.md) is stale (PR #93). It cannot be republished from this
 checkout: the tracked binding points to the publication checkout, so the bound
-launcher refuses with `launcher_repository_mismatch`. The handover holds the R1b
-(Auto) prompt. Model: Auto.
+launcher refuses with `launcher_repository_mismatch`. The handover holds the R3
+(Operator + Auto) prompt. Model: Operator + Auto.
 
 ## PR #93 — hosting verified; owner-authorized merge in progress, 2026-10-18
 
