@@ -1,39 +1,34 @@
 # Overseer Kit handover
 
-## Migration compatibility + Muse rc11 — R2 pass; R3 next, 2026-10-21
+## Migration compatibility + Muse rc11 — R3 draft PR open, 2026-10-21
 
 ### NEXT SESSION
 
-**R3 — Model: Operator + Auto.** Fresh chat. The owner authorized a push and a
-draft PR on 2026-10-21. Do not merge to main. Do not start N1 work in that chat.
+**N1-R — Model: Thinking, independent model.** Fresh chat in the N1 worktree
+only: `/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-next-model-select-20261020`.
+Independent review of the N1 branch before its draft PR onto this one. Do not
+run N1-R in this migration-compat checkout. Do not merge PR #94 without a
+separate owner approval.
 
-N1a, N1b, and N1c are done in
-`/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-next-model-select-20261020`
-and in Knowtation. The live freeze is `3d521241…`. Freeze `cc79cfff…` is
-superseded. N1-R stays in that other worktree.
+R3 is done: draft [PR #94](https://github.com/aaronrene/overseer-kit/pull/94).
+N1a, N1b, and N1c are done. Live freeze is `3d521241…`. Freeze `cc79cfff…` is
+superseded.
 
 ### Paste-ready prompt (draft; canonical NEXT cannot be published from this checkout)
 
 ```text
-Model: Operator + Auto
-Tier: Operator + Auto (push and draft PR only)
-Overseer Kit — R3: push the migration-compat branch and open a draft PR.
+SUPERSEDED for this checkout. R3 is done.
+Draft PR: https://github.com/aaronrene/overseer-kit/pull/94
+Next unfinished authorized work is N1-R in
+/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-next-model-select-20261020.
+Merge of PR #94 to main is not authorized.
+```
 
-Checkout: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-knowtation-compat-20261020
-Branch: fix/knowtation-migration-compat-20261020 (local; not pushed).
-R2 record: docs/reviews/MIGRATION-COMPAT-RC11-R2-REVIEW.md (pass) at 68952c7.
-Later docs commit: standing Muse update procedure in docs/MUSE-RC11-COMPATIBILITY.md,
-plus the roadmap and handover status correction. Owner authorized this push and
-draft PR on 2026-10-21. Merge to main is not authorized.
+### Historical R3 prompt (done; do not run)
 
-- push this branch only;
-- open a draft PR against main;
-- do not merge to main;
-- no installs, dependency changes, prepared runtime, hosted rc11 job, or N1 work.
-
-Do not touch knowtation, bornfree-hub, or the N1 worktree.
-Canonical ok next still refuses with launcher_repository_mismatch in this checkout.
-Return the draft PR URL.
+```text
+SUPERSEDED. Do not run. R3 pushed the branch and opened draft PR #94 on
+2026-10-21. See https://github.com/aaronrene/overseer-kit/pull/94
 ```
 
 ### Historical R2 prompt (done; do not run)
@@ -64,12 +59,15 @@ SUPERSEDED. Do not run. N1b resumes from 99e2e5b in
 using the freeze at cc79cfff….
 ```
 
-### Verified snapshot (2026-10-21, R2 pass)
+### Verified snapshot (2026-10-21, R3 draft PR)
 
+- R3 **done**: pushed `fix/knowtation-migration-compat-20261020` and opened
+  draft [PR #94](https://github.com/aaronrene/overseer-kit/pull/94) against
+  `main`. Merge not authorized.
 - R2 independent re-review **pass**:
   [MIGRATION-COMPAT-RC11-R2-REVIEW.md](reviews/MIGRATION-COMPAT-RC11-R2-REVIEW.md).
   Reviewer was not the R1b builder. F1 and F2 match the frozen spec. E2/E3
-  failure sets are the four superseded FPR-5 rows only. No push in that review.
+  failure sets are the four superseded FPR-5 rows only.
 - R1b built F1 and F2 at `68952c7` to
   [MIGRATION-COMPAT-RC11-R1-SPEC.md](reviews/MIGRATION-COMPAT-RC11-R1-SPEC.md).
   Build record: [MIGRATION-COMPAT-RC11-R1-BUILD.md](reviews/MIGRATION-COMPAT-RC11-R1-BUILD.md).
@@ -79,23 +77,26 @@ using the freeze at cc79cfff….
 - Consumers remain on prepared runtime `309ac668…` (D1). No prepared runtime built.
 - F3–F8, F10 remain queued. F9 is option A (N1a done). F11 on H1. A1 queued after merge.
 - C1 baseline worktree removal is unblocked and not done in this close.
-- N1b worktree unchanged at `99e2e5b`. Canonical `ok next` still refuses
-  `launcher_repository_mismatch` in this checkout.
+- Canonical `ok next` still refuses `launcher_repository_mismatch` in this checkout.
 
 ### VCS
 
 | Item | Value |
 | --- | --- |
-| Branch | `fix/knowtation-migration-compat-20261020` (local only) |
-| Head after this close | this R2 close commit (parent `68952c7`) |
+| Branch | `fix/knowtation-migration-compat-20261020` (pushed) |
+| Draft PR | https://github.com/aaronrene/overseer-kit/pull/94 |
+| Head after this close | this R3 closeout commit |
 | Reviewed code commit (pre-R1b) | `30f5cb48cfe6aafc542d6818e9128caa03e978a1` |
 | Spec base | `99e2e5b` |
 | Base | `d54a228` (main after PR #93) |
-| Sibling N1 branch | `feat/next-model-select-20261020` at `99e2e5b` |
-| Push / PR / merge | none; push and PR require owner authorization; merge is Tier 3 |
+| Sibling N1 branch | `feat/next-model-select-20261020` |
+| Push / PR / merge | branch pushed; draft PR #94 open; merge is Tier 3 |
 
 ### Change log
 
+- 2026-10-21: R3 done. Pushed the branch and opened draft PR #94. Merge still
+  needs a separate approval. Updated paired summaries; canonical `ok next`
+  still refuses `launcher_repository_mismatch`.
 - 2026-10-21: Recorded N1a–N1c done on the sibling branch. Added the standing Muse
   update procedure to `docs/MUSE-RC11-COMPATIBILITY.md`. Owner authorized the R3
   push and draft PR. Merge to main is still a separate approval. No push in this commit.

@@ -1,9 +1,9 @@
 # Overseer Kit roadmap
 
-## Migration compatibility + Muse rc11 — R2 pass; R3 next, 2026-10-21
+## Migration compatibility + Muse rc11 — R3 draft PR open, 2026-10-21
 
-Local commit `30f5cb4` on `fix/knowtation-migration-compat-20261020` (parent `d54a228`,
-not pushed) covers several changes:
+Local commit `30f5cb4` on `fix/knowtation-migration-compat-20261020` (parent `d54a228`)
+covers several changes:
 
 - legacy `kit` metadata is kept as inert `legacy_kit`;
 - living documents up to 16 MiB are preserved;
@@ -19,8 +19,9 @@ The [independent review](reviews/MIGRATION-COMPAT-RC11-INDEPENDENT-REVIEW.md) of
 recommendations. **F1** and **F2** are fixed at `68952c7`. The independent
 re-review passed
 ([MIGRATION-COMPAT-RC11-R2-REVIEW.md](reviews/MIGRATION-COMPAT-RC11-R2-REVIEW.md)).
-F3–F11, A1, D1, and N1 stay queued below. This branch is still local. Merge to
-main remains Tier 3.
+F3–F11, A1, D1, and N1 stay queued below. R3 pushed the branch and opened draft
+[PR #94](https://github.com/aaronrene/overseer-kit/pull/94). Merge to main
+remains Tier 3.
 
 Phase Model Key: Thinking = freeze WHAT/HOW; Auto = build exactly to the frozen spec;
 Thinking → Auto = step `a` then step `b`; Operator + Auto = human Tier-3 gate plus
@@ -31,7 +32,7 @@ Auto doc sync.
 | R1a | Thinking → Auto (a: Thinking) | **DONE** 2026-10-20 | Frozen spec [MIGRATION-COMPAT-RC11-R1-SPEC.md](reviews/MIGRATION-COMPAT-RC11-R1-SPEC.md) for **F1** and **F2**; freeze-review loop **pass** (round 3). `ok review --freeze` cannot stamp this checkout (`config_repository_mismatch` / `launcher_repository_mismatch`). |
 | R1b | Thinking → Auto (b: Auto) | **DONE** 2026-10-21 | Built F1/F2 exactly to the R1a spec. Seven tiers + E2/E3 recorded in [MIGRATION-COMPAT-RC11-R1-BUILD.md](reviews/MIGRATION-COMPAT-RC11-R1-BUILD.md). `/build-verification-review` → **pass**. Feature-branch commit. No push. |
 | R2 | Thinking | **DONE** 2026-10-21 | Independent re-review of `d54a228..68952c7` **pass**. Record: [MIGRATION-COMPAT-RC11-R2-REVIEW.md](reviews/MIGRATION-COMPAT-RC11-R2-REVIEW.md). Reviewer was not the R1b builder. No push. |
-| R3 | Operator + Auto | **NEXT** | Owner authorized the push and a draft PR on 2026-10-21. Merge to main needs a separate approval. |
+| R3 | Operator + Auto | **DONE** 2026-10-21 | Pushed `fix/knowtation-migration-compat-20261020` and opened draft [PR #94](https://github.com/aaronrene/overseer-kit/pull/94) against `main`. Merge to main needs a separate approval. |
 | A1 | Operator + Auto | Queued after merge | Reviewed rc11 distribution artifact contract, plus owner authorization for hosting it and for any hosted rc11 `supported-v1.yml` job. No URLs or secrets in R1. |
 | H1 | Thinking → Auto | Queued after merge | Hardening: **F3**, **F4**, **F5**, **F6**, **F7**, and **F11** (pre-existing loose `label()` grammar; recorded in the N1 freeze). |
 | D1 | Operator + Auto | Queued after merge | Decide how consumers move off prepared runtime `309ac668…` (**F8**). |
@@ -39,16 +40,16 @@ Auto doc sync.
 | N1b | Thinking → Auto (b: Auto) | **DONE** 2026-10-21 | Sibling worktree `overseer-kit-next-model-select-20261020`, branch `feat/next-model-select-20261020`. Runtime `559e1635…`. BV round 2 pass. |
 | N1c | Auto | **DONE** 2026-10-21 | Knowtation rebound to `559e1635…`. Published `C2-PROPOSAL-REVISION-1`. Receipt beside that freeze. |
 | N1-R | Thinking, independent model | **NEXT** in the N1 worktree | Independent review of the N1 branch before its draft PR. Do not do it in this checkout. |
-| N1-PR | Operator + Auto | Blocked on R3 and N1-R | Combine N1 onto the R3 branch (rebase or merge; they share parent `99e2e5b`). Merge is Tier 3. |
+| N1-PR | Operator + Auto | Blocked on N1-R | Combine N1 onto the R3 branch (rebase or merge; they share parent `99e2e5b`). Merge is Tier 3. |
 | M1a | Thinking → Auto (a: Thinking) | Queued; first step after the R3 merge | Freeze the checkout-local ignore fix (**F10**) for migration, Git-only init and already-migrated consumers. |
 | M1b | Thinking → Auto (b: Auto) | Blocked on M1a | Build, seven tiers, `/build-verification-review` → **pass**, independent review, PR. Then each consumer applies it through the kit's previewable path. |
 | C1 | Operator + Auto | Partly done; baseline removal unblocked, not done in the R2 close | Done: the review scratch folders under `/tmp` (about 2.5 GB) were deleted with owner approval. The cited probe scripts were kept in `RECOVERY-RUNS/migration-compat-rc11-20261020/probes/`. R2 passed 2026-10-21. Remaining, not done here: remove the `overseer-kit-knowtation-baseline-20261020` worktree (117 MB, a `d54a228` checkout that can be recreated). Once the PR is merged, archive `RECOVERY-RUNS/migration-compat-rc11-20261020/`. |
 
 Order of work:
 
-1. Done in this checkout: R1b, then R2. N1a, N1b, and N1c are done in the sibling worktree and in Knowtation.
-2. R3 (push and draft PR). The owner authorized the upload and the draft on 2026-10-21. Merge to main needs a separate approval.
-3. N1-R in the sibling worktree, then a draft PR of that branch onto this one. Do not merge.
+1. Done in this checkout: R1b, R2, and R3 (draft [PR #94](https://github.com/aaronrene/overseer-kit/pull/94)). N1a, N1b, and N1c are done in the sibling worktree and in Knowtation.
+2. N1-R in the sibling worktree, then a draft PR of that branch onto this one. Do not merge.
+3. Merge of this draft PR to main needs a separate owner approval (Tier 3).
 4. After both merges: M1, H1 (including F11), D1, A1 and C1.
 
 Consumer guard until M1 lands (Knowtation and BornFree): stage explicit paths only.
@@ -134,8 +135,8 @@ Definition of Done for this milestone:
 
 This branch's [NEXT](NEXT.md) is stale (PR #93). It cannot be republished from this
 checkout: the tracked binding points to the publication checkout, so the bound
-launcher refuses with `launcher_repository_mismatch`. The handover holds the R3
-(Operator + Auto) prompt. Model: Operator + Auto.
+launcher refuses with `launcher_repository_mismatch`. R3 is done (draft PR #94).
+The handover points N1-R to the sibling worktree. Merge of PR #94 remains Tier 3.
 
 ## PR #93 — hosting verified; owner-authorized merge in progress, 2026-10-18
 
