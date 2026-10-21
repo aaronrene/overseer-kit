@@ -1,5 +1,71 @@
 # Overseer Kit handover
 
+## OK-NEXT-MODEL — N1b built; BV then N1c, 2026-10-21
+
+### NEXT SESSION
+
+**Build verification (separate Thinking chat) first.** Paste
+`knowtation/docs/evidence/B02/overseer-next-model-select-20261020/PROMPT-BV-THINKING.txt`.
+Do not mark N1b DONE until that review records **pass** in
+`RECOVERY-RUNS/knowtation-next-model-select-20261020/build-verification.json`.
+
+**Then N1c — Model: Auto.** Fresh chat. Install the new runtime into Knowtation and
+publish the saved Codex revision prompt. Do not redesign.
+
+### Paste-ready prompt (N1c — only after BV pass)
+
+```text
+Model: Auto
+Tier: Auto (build exactly to the frozen spec; no redesign)
+Step: OK-NEXT-MODEL-c (kit roadmap N1c)
+
+Frozen spec (read in full; verify sha256 before anything else):
+/Users/aaronrenecarvajal/knowtation/docs/evidence/B02/overseer-next-model-select-20261020/FREEZE.md
+Required: sha256 cc79cfff630f5bb98a75760bec8df85b0854ad821b4e6bf3983ddad48eec0c32,
+frozen: true, mechanical_verdict pass. Ignore SUPERSEDED-FREEZE-ALLOWLIST.md.
+
+Entry checks (freeze section 9): RUN/runtime.json exists with parent 99e2e5b…;
+RUN/build-verification.json verdict pass; NEW_RT runtime() equals recorded digest
+1762a406b027e7b805788456d98bfede35a3e0c32274b412d304de6151368510.
+Commit 1: 6a04ce18ad53a2fb1e3704f89935fdf7163fe67a.
+NEW_RT: /Users/aaronrenecarvajal/OVERSEER_KIT/PREPARED-RUNTIMES/knowtation-next-model-select-20261020
+RUN: /Users/aaronrenecarvajal/OVERSEER_KIT/RECOVERY-RUNS/knowtation-next-model-select-20261020
+OLD_RT stays unchanged as rollback.
+
+Execute freeze section 9 exactly (preflight digests, 9.1 dry-run, 9.2 apply,
+9.3 publish CODEX NEXT, 9.4 receipt + living-doc prepends). Never git add -A / git
+add . / muse code add . in Knowtation (F10). No kit worktree edits beyond what
+section 9 names. No push, PR, merge, release, provider call or subagent.
+Stop on any section 11 condition with a precise report.
+```
+
+### Verified snapshot (2026-10-21, N1b)
+
+- Freeze sha256 `cc79cfff630f5bb98a75760bec8df85b0854ad821b4e6bf3983ddad48eec0c32`
+  (mechanical pass at 2026-10-21T00:53:56Z).
+- Branch `feat/next-model-select-20261020` (local), parent `99e2e5b…`.
+- Commit 1 `6a04ce18ad53a2fb1e3704f89935fdf7163fe67a` (code/tests/operator note/freeze
+  copy). Commit 2 is this docs pair.
+- Runtime sha256 `1762a406b027e7b805788456d98bfede35a3e0c32274b412d304de6151368510`.
+- Tests: baseline 766/8/2; after 816/8/2; failure IDs unchanged.
+- Build verification: **pending** (separate chat). N1b not DONE.
+- F11 queued for H1. Knowtation still on OLD_RT `309ac668…` until N1c.
+
+### VCS
+
+| Item | Value |
+| --- | --- |
+| Worktree | `/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-next-model-select-20261020` |
+| Branch | `feat/next-model-select-20261020` (local only) |
+| Commit 1 | `6a04ce18ad53a2fb1e3704f89935fdf7163fe67a` |
+| Parent | `99e2e5bcfd6de0eb45b4f48872653f396aaa9850` |
+| Push / PR / merge | none |
+
+### Change log
+
+- 2026-10-21: N1a pass (`cc79cfff…`). N1b built commit `6a04ce1…` and runtime
+  `1762a406…` in a new worktree. BV pending; N1c next; F11 queued for H1. No push.
+
 ## Migration compatibility + Muse rc11 — review PASS; R1a next, 2026-10-20
 
 ### NEXT SESSION
@@ -9,7 +75,8 @@ findings F1 and F2. Do not implement. The R1a session issues the R1b (Auto) prom
 only after the freeze review passes.
 
 In parallel, the owner may run **N1a** (prompt below) in a fresh Knowtation session.
-The order of work is in the roadmap's top section.
+The order of work is in the roadmap's top section. N1a/N1b status is in the newer
+top section of this handover.
 
 ### Paste-ready prompt (draft; canonical NEXT cannot be published from this checkout)
 

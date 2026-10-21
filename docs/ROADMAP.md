@@ -1,5 +1,38 @@
 # Overseer Kit roadmap
 
+## OK-NEXT-MODEL (F9) — N1a pass; N1b built; BV pending; N1c next, 2026-10-21
+
+N1a freeze review **pass** (mechanical) for
+`knowtation/docs/evidence/B02/overseer-next-model-select-20261020/FREEZE.md`
+sha256 `cc79cfff630f5bb98a75760bec8df85b0854ad821b4e6bf3983ddad48eec0c32`
+(`frozen: true`, `reviewed_at` 2026-10-21T00:53:56Z). Option A: single-lane NEXT
+`Model:` is a recommendation under a strict `model_label` grammar.
+
+N1b built on local branch `feat/next-model-select-20261020` in worktree
+`overseer-kit-next-model-select-20261020` from parent `99e2e5b…`:
+
+- Commit 1 (code/tests/docs except ROADMAP/HANDOVER):
+  `6a04ce18ad53a2fb1e3704f89935fdf7163fe67a`
+- Prepared runtime `PREPARED-RUNTIMES/knowtation-next-model-select-20261020`
+  sha256 `1762a406b027e7b805788456d98bfede35a3e0c32274b412d304de6151368510`
+- Evidence run `RECOVERY-RUNS/knowtation-next-model-select-20261020/`
+  (`runtime.json`; build verification **pending**)
+- Baseline tests: 766 passed, 8 failed, 2 errors. After change: 816 passed, 8
+  failed, 2 errors. Failure/error IDs unchanged from baseline.
+
+N1b does **not** mark DONE until `/build-verification-review` → **pass** in a
+separate chat (`PROMPT-BV-THINKING.txt`). Next Auto step is **N1c** (Knowtation
+install + Codex NEXT publish). Then **N1-R**. Finding **F11** (Low, pre-existing
+general `label()` admits DEL/C1/U+2028/bidi) is queued for **H1**.
+
+| Step | Model | Status | Deliverable |
+| --- | --- | --- | --- |
+| N1a | Thinking → Auto (a: Thinking) | **DONE** (mechanical freeze pass) | Freeze sha256 `cc79cfff…`; option A recommendation + `model_label`. |
+| N1b | Thinking → Auto (b: Auto) | **Built**; build verification **pending** | Commit `6a04ce1…`; runtime `1762a406…`; seven-tier tests; kit docs copy of freeze. |
+| N1c | Thinking → Auto (b: Auto) | **NEXT** (after BV pass) | Rebind Knowtation to the new runtime; publish `C2-PROPOSAL-REVISION-1` with CODEX. |
+| N1-R | Thinking, independent model | Blocked on N1c | Independent review of the N1 branch delta before PR. |
+| N1-PR | Operator + Auto | Blocked on R3 and N1-R | Stacked PR for N1 on top of the R3 PR. Merge is Tier 3. |
+
 ## Migration compatibility + Muse rc11 — independent review PASS; pre-PR fixes queued, 2026-10-20
 
 Local commit `30f5cb4` on `fix/knowtation-migration-compat-20261020` (parent `d54a228`,
@@ -28,11 +61,12 @@ Auto doc sync.
 | R1b | Thinking → Auto (b: Auto) | Blocked on R1a | Build exactly to the R1a spec. Run the seven tiers, then `/build-verification-review` → **pass**. Feature-branch commit. |
 | R2 | Thinking | Blocked on R1b | Independent re-review of `d54a228..<R1b head>` by a model other than the R1b builder; **pass** required. |
 | R3 | Operator + Auto | Blocked on R2 | Owner authorizes push and PR. Merge to main is Tier 3 and needs explicit owner approval. |
-| H1 | Thinking → Auto | Queued after merge | Hardening: **F3**, **F4**, **F5**, **F6**, **F7**. |
+| H1 | Thinking → Auto | Queued after merge | Hardening: **F3**, **F4**, **F5**, **F6**, **F7**, **F11**. |
 | D1 | Operator + Auto | Queued after merge | Decide how consumers move off prepared runtime `309ac668…` (**F8**). |
-| N1a | Thinking → Auto (a: Thinking) | Owner-requested; runs from the Knowtation session | Freeze `OK-NEXT-MODEL` (**F9**) at `knowtation/docs/evidence/B02/overseer-next-model-select-20261020/FREEZE.md`; freeze review **pass**. |
-| N1b | Thinking → Auto (b: Auto) | Blocked on N1a | Build on stacked branch `feat/next-model-select-20261020` from this branch's head (not a parallel branch from `30f5cb4`). Copy the freeze into `docs/reviews/`. Build a new prepared runtime and rebind Knowtation with `adopt --rebind-muse-runtime` from the new runtime. Publish `C2-PROPOSAL-REVISION-1`. |
-| N1-R | Thinking, independent model | Blocked on N1b | Independent review of the N1 branch delta, required before its PR. |
+| N1a | Thinking → Auto (a: Thinking) | **DONE** (see top section) | Freeze `OK-NEXT-MODEL` (**F9**); freeze review **pass**. |
+| N1b | Thinking → Auto (b: Auto) | **Built**; BV pending (see top section) | Kit build + new prepared runtime on `feat/next-model-select-20261020`. |
+| N1c | Thinking → Auto (b: Auto) | **NEXT** after BV pass | Knowtation rebind + CODEX NEXT publish (freeze section 9). |
+| N1-R | Thinking, independent model | Blocked on N1c | Independent review of the N1 branch delta, required before its PR. |
 | N1-PR | Operator + Auto | Blocked on R3 and N1-R | Stacked PR for N1 on top of the R3 PR. Merge is Tier 3. |
 | M1a | Thinking → Auto (a: Thinking) | Queued; first step after the R3 merge | Freeze the checkout-local ignore fix (**F10**) for migration, Git-only init and already-migrated consumers. |
 | M1b | Thinking → Auto (b: Auto) | Blocked on M1a | Build, seven tiers, `/build-verification-review` → **pass**, independent review, PR. Then each consumer applies it through the kit's previewable path. |
@@ -84,16 +118,15 @@ What each finding is (details and line evidence are in the review):
   - Until then, both consumers stay on `309ac668…`.
   - BornFree also cannot take the N1 runtime until D1 is settled.
 - **F9 (owner-found while using Knowtation; source-verified).** A single-lane NEXT
-  cannot name a model other than `context.model`: `cli/v1.py:273-274` raises
-  `next_model_mismatch` on both write and read. No supported command changes
-  `context.model`; `adopt` and the rebind require `--model` to equal it
-  (`cli/product_authority.py:176-178`, `cli/main.py:196-199`).
-  - Multi-lane NEXT already accepts any validated model; only explicit `--model`
-    expectations are checked (`cli/v1.py:207-211`).
-  - The N1a freeze must therefore decide whether its mechanism also governs
-    multi-lane, so the two behave consistently.
-  - It must state whether a hand-edited model label in NEXT is refused or
-    displayed. Model labels confer no authority.
+  cannot name a model other than `context.model`: `cli/v1.py:273-274` raised
+  `next_model_mismatch` on both write and read. **Addressed in N1b commit
+  `6a04ce1…` (option A):** differing labels that pass `model_label` are accepted;
+  `context.model` stays the default. Consumer install remains N1c after BV.
+- **F11 (Low, pre-existing; recorded in the N1a freeze).** The general `label()`
+  check (`cli/v1.py:82-85`) admits DEL, C1 controls such as U+0085, U+2028 and
+  bidirectional overrides. It still governs `context.model` and multi-lane
+  labels. Tightening it would change behavior for existing multi-lane and
+  default labels. Queued for **H1**.
 - **F10 (Medium, pre-existing; owner-recorded in Knowtation's rc11 receipt,
   source-verified).** Checkout-local Kit files are never excluded after a
   migration.
