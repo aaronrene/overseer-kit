@@ -1,15 +1,20 @@
 # Overseer Kit roadmap
 
-## OK-NEXT-MODEL (F9) — N1-R PASS; N1-PR NEXT, 2026-10-21
+## OK-NEXT-MODEL (F9) — N1-PR DONE (draft PR #95), 2026-10-22
 
-**N1-R PASS.** Independent review `docs/reviews/OK-NEXT-MODEL-N1-R.md` compared
+**N1-PR DONE.** Pushed `feat/next-model-select-20261020` to
+`github.com/aaronrene/overseer-kit` and opened stacked draft
+[PR #95](https://github.com/aaronrene/overseer-kit/pull/95) onto
+`fix/knowtation-migration-compat-20261020` (compat draft
+[#94](https://github.com/aaronrene/overseer-kit/pull/94) @ `069fe3b`). Merge of
+either draft PR to `main` is Tier 3 and is **not** authorized here.
+
+**N1-R PASS** remains recorded in `docs/reviews/OK-NEXT-MODEL-N1-R.md` over
 `99e2e5bcfd6de0eb45b4f48872653f396aaa9850..de711aec04396d9fd5c79b18f37eb672689e24fd`
-with freeze sha256 `3d521241c0610a6ca278074cfb7bce06e75760735b3b13b2a3af4b93733ad70e`.
-Knowtation's installed runtime is `559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7`
-and the rebind plan is `d94b35798932e783552163ba97f7afc5795d10d351955c5284dbf8589026f322`.
-**N1-PR** is next: a draft PR of this branch stacked on compat draft PR
-[#94](https://github.com/aaronrene/overseer-kit/pull/94). Do not merge. This
-closeout does not push or open that PR.
+against freeze sha256 `3d521241c0610a6ca278074cfb7bce06e75760735b3b13b2a3af4b93733ad70e`.
+Knowtation runtime `559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7`;
+rebind plan `d94b35798932e783552163ba97f7afc5795d10d351955c5284dbf8589026f322`.
+No unfinished authorized N1 task remains. Do not invent merge work.
 
 **N1b DONE.** Build-verification round 2 recorded **pass** in
 `RECOVERY-RUNS/knowtation-next-model-select-20261020/build-verification.json`
@@ -37,7 +42,7 @@ N1b on local branch `feat/next-model-select-20261020` in worktree
   817 passed, 8 failed, 2 errors. Failure/error IDs unchanged from baseline.
 
 Finding **F11** (Low, pre-existing general `label()` admits DEL/C1/U+2028/bidi) is
-queued for **H1**. N1-R is done. Next is **N1-PR**.
+queued for **H1**. N1a–N1-PR are done. No unfinished authorized N1 task remains.
 
 | Step | Model | Status | Deliverable |
 | --- | --- | --- | --- |
@@ -45,7 +50,7 @@ queued for **H1**. N1-R is done. Next is **N1-PR**.
 | N1b | Thinking → Auto (b: Auto) | **DONE** (BV round 2 pass) | Commit 3 `29db9e2…`; tip `ef24c654…`; runtime `559e1635…`; freeze `3d521241…`; reviewer `cursor-grok-4.7-bv-r2-2026-10-21T19:01:34Z`. |
 | N1c | Thinking → Auto (b: Auto) | **DONE** 2026-10-21 | Knowtation rebound to runtime `559e1635…`. Published NEXT `3a878755…` (`C2-PROPOSAL-REVISION-1`). Rebind plan `d94b3579…`. |
 | N1-R | Thinking, independent model | **DONE** (PASS, 2026-10-21) | `docs/reviews/OK-NEXT-MODEL-N1-R.md`. Range `99e2e5b..de711ae`. Reviewer is not the N1b builder and not BV round 2. |
-| N1-PR | Operator + Auto | **NEXT** | Stacked draft PR on open compat draft PR #94. Merge is Tier 3. |
+| N1-PR | Operator + Auto | **DONE** 2026-10-22 | Stacked draft [PR #95](https://github.com/aaronrene/overseer-kit/pull/95) on #94. Merge is Tier 3. |
 
 ## Migration compatibility + Muse rc11 — R3 draft PR open, 2026-10-21
 
@@ -66,7 +71,7 @@ The [independent review](reviews/MIGRATION-COMPAT-RC11-INDEPENDENT-REVIEW.md) of
 recommendations. **F1** and **F2** are fixed at `68952c7`. The independent
 re-review passed
 ([MIGRATION-COMPAT-RC11-R2-REVIEW.md](reviews/MIGRATION-COMPAT-RC11-R2-REVIEW.md)).
-F3–F8, F10–F11, A1, and D1 stay queued below. N1-R is done; N1-PR is next. R3 pushed the branch and opened draft
+F3–F8, F10–F11, A1, and D1 stay queued below. N1a–N1-PR are done (draft PR #95). R3 pushed the branch and opened draft
 [PR #94](https://github.com/aaronrene/overseer-kit/pull/94). Merge to main
 remains Tier 3.
 
@@ -87,15 +92,15 @@ Auto doc sync.
 | N1b | Thinking → Auto (b: Auto) | **DONE** 2026-10-21 | Sibling worktree `overseer-kit-next-model-select-20261020`, branch `feat/next-model-select-20261020`. Runtime `559e1635…`. BV round 2 pass. |
 | N1c | Auto | **DONE** 2026-10-21 | Knowtation rebound to `559e1635…`. Published `C2-PROPOSAL-REVISION-1`. Receipt beside that freeze. |
 | N1-R | Thinking, independent model | **DONE** (PASS, 2026-10-21) | `docs/reviews/OK-NEXT-MODEL-N1-R.md`. Range `99e2e5b..de711ae`. Reviewer is not the N1b builder and not BV round 2. |
-| N1-PR | Operator + Auto | **NEXT** | Stacked draft PR on open compat draft PR #94 (merge of N1 onto `069fe3b`). Merge is Tier 3. |
+| N1-PR | Operator + Auto | **DONE** 2026-10-22 | Stacked draft [PR #95](https://github.com/aaronrene/overseer-kit/pull/95) on #94. Merge is Tier 3. |
 | M1a | Thinking → Auto (a: Thinking) | Queued; first step after the R3 merge | Freeze the checkout-local ignore fix (**F10**) for migration, Git-only init and already-migrated consumers. |
 | M1b | Thinking → Auto (b: Auto) | Blocked on M1a | Build, seven tiers, `/build-verification-review` → **pass**, independent review, PR. Then each consumer applies it through the kit's previewable path. |
 | C1 | Operator + Auto | Partly done; baseline removal unblocked, not done in the R2 close | Done: the review scratch folders under `/tmp` (about 2.5 GB) were deleted with owner approval. The cited probe scripts were kept in `RECOVERY-RUNS/migration-compat-rc11-20261020/probes/`. R2 passed 2026-10-21. Remaining, not done here: remove the `overseer-kit-knowtation-baseline-20261020` worktree (117 MB, a `d54a228` checkout that can be recreated). Once the PR is merged, archive `RECOVERY-RUNS/migration-compat-rc11-20261020/`. |
 
 Order of work:
 
-1. Done: R1b, R2, and R3 (draft [PR #94](https://github.com/aaronrene/overseer-kit/pull/94)). N1a, N1b, N1c, and N1-R are done in the N1 worktree and in Knowtation.
-2. N1-PR is next: stacked draft PR of `feat/next-model-select-20261020` onto the compat branch. Do not merge.
+1. Done: R1b, R2, and R3 (draft [PR #94](https://github.com/aaronrene/overseer-kit/pull/94)). N1a–N1-PR are done (stacked draft [PR #95](https://github.com/aaronrene/overseer-kit/pull/95)).
+2. No unfinished authorized N1 task remains. Do not invent merge work.
 3. Merge of either draft PR to main needs a separate owner approval (Tier 3).
 4. After both merges: M1, H1 (including F11), D1, A1 and C1.
 
@@ -190,7 +195,7 @@ Definition of Done for this milestone:
 This branch's [NEXT](NEXT.md) is stale (PR #93). It cannot be republished from this
 checkout: the tracked binding points to the publication checkout, so the bound
 launcher refuses with `launcher_repository_mismatch`. R3 is done (draft PR #94).
-N1-R is done; N1-PR is the next unfinished N1 step. Merge of PR #94 remains Tier 3.
+N1a–N1-PR are done (draft PR #95). Merge of PR #94 or #95 remains Tier 3.
 
 ## PR #93 — hosting verified; owner-authorized merge in progress, 2026-10-18
 
