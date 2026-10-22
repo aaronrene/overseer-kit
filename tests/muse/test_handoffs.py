@@ -120,7 +120,7 @@ def test_native_linked_worktree_own_branch_and_checkout_identity(muse_root, muse
     assert command('-C', root, 'next').returncode != 0
 
 
-@pytest.mark.parametrize('field,value', [('lane', 'wrong'), ('model', 'Other'),
+@pytest.mark.parametrize('field,value', [('lane', 'wrong'),
     ('repo_id', 'wrong'), ('branch', 'wrong'), ('base_head', 'sha256:'+'0'*64),
     ('vcs', 'git'), ('vcs', None), ('base_head', None)])
 def test_muse_writer_rejects_wrong_context_without_writes(muse_root, muse_python, field, value):

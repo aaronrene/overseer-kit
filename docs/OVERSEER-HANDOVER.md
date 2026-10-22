@@ -1,25 +1,151 @@
 # Overseer Kit handover
 
+## OK-NEXT-MODEL — N1-PR DONE (draft PR #95), 2026-10-22
+
+### NEXT SESSION
+
+**STOP.** No unfinished authorized N1 task remains. Do not invent merge work.
+Merge of draft [PR #95](https://github.com/aaronrene/overseer-kit/pull/95) or
+compat draft [PR #94](https://github.com/aaronrene/overseer-kit/pull/94) to
+`main` needs a separate Tier-3 owner approval.
+
+N1-PR opened stacked draft PR #95 onto `fix/knowtation-migration-compat-20261020`
+(compat tip `069fe3b`; PR #94). Branch tip after the docs-merge was
+`0f6c39a41c983770888a98befb753b26318b0640` (parents `245c5bc` + `069fe3b`).
+N1-R **PASS** remains in `docs/reviews/OK-NEXT-MODEL-N1-R.md`.
+
+Bound `ok next` in this worktree refuses `launcher_repository_mismatch`. Canonical
+`docs/NEXT.md` cannot be republished from this checkout. This worktree's `origin`
+is the local publication checkout; GitHub is
+`https://github.com/aaronrene/overseer-kit.git`. Do not edit Knowtation, Born Free,
+or the compat worktree. No installs, Muse changes, release, or deployment.
+
+### Historical paste-ready prompt (N1-PR — done; do not run)
+
+```text
+Model: Operator + Auto
+Tier: Operator + Auto (stacked draft PR only; do not merge)
+Step: OK-NEXT-MODEL-PR (kit roadmap N1-PR)
+
+Repository: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-next-model-select-20261020
+Branch: feat/next-model-select-20261020
+
+N1-R passed. Read docs/reviews/OK-NEXT-MODEL-N1-R.md.
+Compat draft PR https://github.com/aaronrene/overseer-kit/pull/94 is open
+on fix/knowtation-migration-compat-20261020 at 069fe3b4cbc9e291370d9f6f468b4830a7552755.
+
+Open a draft pull request for feat/next-model-select-20261020 stacked on that
+compat branch. Push this feature branch to github.com/aaronrene/overseer-kit.
+This worktree's origin remote is the local publication checkout; do not treat
+that path as GitHub.
+
+The branches diverged at 99e2e5bcfd6de0eb45b4f48872653f396aaa9850. Both changed
+docs/ROADMAP.md and docs/OVERSEER-HANDOVER.md. Keep the N1-R pass and the
+compat branch's R-track record when those two files overlap.
+
+Do not merge. Do not merge to main. Do not edit Knowtation, Born Free, or the
+compat worktree. No installs and no Muse changes. No release and no deployment.
+```
+
+### Historical paste-ready prompt (N1-R — done; do not run)
+
+```text
+Model: Thinking
+Tier: Thinking (independent review only; no code changes)
+Step: OK-NEXT-MODEL-R (kit roadmap N1-R)
+
+Repository: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-next-model-select-20261020
+Branch: feat/next-model-select-20261020
+
+You did not build N1b and you are not the build-verification round-2 reviewer
+(Grok 4.7, session cursor-grok-4.7-bv-r2-2026-10-21T19:01:34Z). If you are,
+stop and say so.
+
+Review 99e2e5bcfd6de0eb45b4f48872653f396aaa9850..HEAD against freeze
+/Users/aaronrenecarvajal/knowtation/docs/evidence/B02/overseer-next-model-select-20261020/FREEZE.md
+sha256 3d521241c0610a6ca278074cfb7bce06e75760735b3b13b2a3af4b93733ad70e.
+Read the N1c receipt in that same folder, README.md. Confirm the Knowtation
+install matches it: runtime 559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7,
+rebind plan d94b35798932e783552163ba97f7afc5795d10d351955c5284dbf8589026f322.
+Do not edit Knowtation, Born Free, or the compat worktree.
+
+Write docs/reviews/OK-NEXT-MODEL-N1-R.md with verdict PASS or FAIL.
+Update docs/ROADMAP.md and docs/OVERSEER-HANDOVER.md together.
+On PASS, mark N1-R done and name the draft PR as next. That PR waits until
+the compat branch has an open draft PR. Do not push, open a PR, or merge.
+No installs and no Muse changes.
+```
+
+### Verified snapshot (2026-10-22, N1-PR DONE)
+
+- Amended freeze sha256 `3d521241c0610a6ca278074cfb7bce06e75760735b3b13b2a3af4b93733ad70e`.
+- Branch `feat/next-model-select-20261020` pushed to GitHub. Stacked draft
+  [PR #95](https://github.com/aaronrene/overseer-kit/pull/95) onto compat
+  `fix/knowtation-migration-compat-20261020` / [PR #94](https://github.com/aaronrene/overseer-kit/pull/94).
+- Docs merge commit `0f6c39a41c983770888a98befb753b26318b0640` (parents
+  `245c5bc` + `069fe3b`). ROADMAP/HANDOVER keep N1-R PASS and the R-track DONE
+  record.
+- Commit 1 `6a04ce18ad53a2fb1e3704f89935fdf7163fe67a`. Commit 3
+  `29db9e267ded73bc127e2da9867f3c15a8dca25f`.
+- Runtime sha256 `559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7`.
+- N1-R **PASS** (`docs/reviews/OK-NEXT-MODEL-N1-R.md`). N1-PR **DONE**.
+- No merge. No installs. No Muse changes. No Knowtation / Born Free / compat edits.
+
+### VCS
+
+| Item | Value |
+| --- | --- |
+| Worktree | `/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-next-model-select-20261020` |
+| Branch | `feat/next-model-select-20261020` (pushed) |
+| Stacked draft PR | https://github.com/aaronrene/overseer-kit/pull/95 |
+| Compat draft PR | https://github.com/aaronrene/overseer-kit/pull/94 |
+| Docs-merge tip | `0f6c39a41c983770888a98befb753b26318b0640` |
+| Reviewed tip (N1-R) | `de711aec04396d9fd5c79b18f37eb672689e24fd` |
+| Commit 1 | `6a04ce18ad53a2fb1e3704f89935fdf7163fe67a` |
+| Commit 3 | `29db9e267ded73bc127e2da9867f3c15a8dca25f` |
+| Runtime | `559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7` |
+| Rebind plan | `d94b35798932e783552163ba97f7afc5795d10d351955c5284dbf8589026f322` |
+| Freeze | `3d521241c0610a6ca278074cfb7bce06e75760735b3b13b2a3af4b93733ad70e` |
+| Review | `docs/reviews/OK-NEXT-MODEL-N1-R.md` (PASS) |
+| Docs closeout | this docs pair (N1-PR DONE; stop) |
+| Merge | not authorized |
+
+### Change log
+
+- 2026-10-22: N1-PR **DONE**. Merged compat tip `069fe3b` into the feature branch
+  (keeping N1-R PASS and the R-track record). Pushed to GitHub and opened stacked
+  draft PR #95. No merge. Bound `ok next` still refuses `launcher_repository_mismatch`.
+- 2026-10-21: N1a pass. N1b built commit `6a04ce1…` in a new worktree. Pre-amendment
+  runtime superseded by section-13 rebuild. BV pending; F11 queued for H1. No push.
+- 2026-10-21: BV1 amended in commit 3 `29db9e267ded73bc127e2da9867f3c15a8dca25f`
+  (parent `1571b92…`). Runtime digest `559e1635299830b4d4c814dceac2acc7b89413a1a33929ae1cb3faa276ba52a7`.
+  N1c stayed blocked until round 2 of build verification. No push.
+- 2026-10-21: BV round 2 **pass** (reviewer session
+  `cursor-grok-4.7-bv-r2-2026-10-21T19:01:34Z`; tip `ef24c654…`; freeze `3d521241…`;
+  runtime `559e1635…`). N1b marked **DONE**; N1c named **NEXT**. No N1c start, no push.
+- 2026-10-21: N1c **DONE** in Knowtation. Receipt README beside the freeze. Rebind
+  plan `d94b3579…`. NEXT `3a878755…` (`C2-PROPOSAL-REVISION-1`). Runtime
+  `559e1635…`. N1-R named **NEXT**. No push.
+- 2026-10-21: N1-R **PASS** (`docs/reviews/OK-NEXT-MODEL-N1-R.md`) over
+  `99e2e5b..de711ae`. Live Knowtation runtime `559e1635…` and rebind plan
+  `d94b3579…` match the receipt. Compat draft PR #94 is open. N1-PR named
+  **NEXT**. No push.
+
 ## Migration compatibility + Muse rc11 — R3 draft PR open, 2026-10-21
 
 ### NEXT SESSION
 
-**N1-R — Model: Thinking, independent model.** Fresh chat in the N1 worktree
-only: `/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-next-model-select-20261020`.
-Independent review of the N1 branch before its draft PR onto this one. Do not
-run N1-R in this migration-compat checkout. Do not merge PR #94 without a
-separate owner approval.
-
 R3 is done: draft [PR #94](https://github.com/aaronrene/overseer-kit/pull/94).
-N1a, N1b, and N1c are done. Live freeze is `3d521241…`. Freeze `cc79cfff…` is
-superseded.
+N1a, N1b, N1c, and N1-R are done. Live freeze is `3d521241…`. Freeze `cc79cfff…`
+is superseded. N1-PR is **DONE** (stacked draft PR #95) in the top OK-NEXT-MODEL section.
+Do not merge PR #94 or PR #95 without a separate owner approval.
 
 ### Paste-ready prompt (draft; canonical NEXT cannot be published from this checkout)
 
 ```text
 SUPERSEDED for this checkout. R3 is done.
 Draft PR: https://github.com/aaronrene/overseer-kit/pull/94
-Next unfinished authorized work is N1-R in
+No unfinished authorized N1 work remains in
 /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-next-model-select-20261020.
 Merge of PR #94 to main is not authorized.
 ```
@@ -41,9 +167,8 @@ docs/reviews/MIGRATION-COMPAT-RC11-R2-REVIEW.md.
 ### N1 status (done through N1c; do not paste the old prompts)
 
 N1a, N1b, and N1c are done. Live freeze sha256 `3d521241…`. Freeze `cc79cfff…`
-and the allowlist design are superseded. N1-R is next in
-`/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-next-model-select-20261020`.
-Do not resume N1b. Do not run N1-R in this checkout.
+and the allowlist design are superseded. N1-R **PASS** and N1-PR **DONE** (draft PR #95) are recorded in the top OK-NEXT-MODEL section.
+Do not resume N1b or N1-R in the compat checkout.
 
 ### Historical N1a prompt (superseded; do not run)
 
