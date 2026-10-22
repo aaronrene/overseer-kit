@@ -47,10 +47,10 @@ queued for **H1**. N1-R is done. Next is **N1-PR**.
 | N1-R | Thinking, independent model | **DONE** (PASS, 2026-10-21) | `docs/reviews/OK-NEXT-MODEL-N1-R.md`. Range `99e2e5b..de711ae`. Reviewer is not the N1b builder and not BV round 2. |
 | N1-PR | Operator + Auto | **NEXT** | Stacked draft PR on open compat draft PR #94. Merge is Tier 3. |
 
-## Migration compatibility + Muse rc11 — independent review PASS; pre-PR fixes queued, 2026-10-20
+## Migration compatibility + Muse rc11 — R3 draft PR open, 2026-10-21
 
-Local commit `30f5cb4` on `fix/knowtation-migration-compat-20261020` (parent `d54a228`,
-not pushed) covers several changes:
+Local commit `30f5cb4` on `fix/knowtation-migration-compat-20261020` (parent `d54a228`)
+covers several changes:
 
 - legacy `kit` metadata is kept as inert `legacy_kit`;
 - living documents up to 16 MiB are preserved;
@@ -61,9 +61,14 @@ not pushed) covers several changes:
 Knowtation (rebind and C2 publication) and BornFree (migration and publication)
 adopted the prepared runtime `309ac668…` built from this exact commit.
 
-The [independent review](reviews/MIGRATION-COMPAT-RC11-INDEPENDENT-REVIEW.md) returned
-**PASS** with no blockers. The owner accepted all of its recommendations. Every
-finding is queued below; none is marked fixed. Merge to main remains Tier 3.
+The [independent review](reviews/MIGRATION-COMPAT-RC11-INDEPENDENT-REVIEW.md) of
+`30f5cb4` returned **PASS** with no blockers. The owner accepted all of its
+recommendations. **F1** and **F2** are fixed at `68952c7`. The independent
+re-review passed
+([MIGRATION-COMPAT-RC11-R2-REVIEW.md](reviews/MIGRATION-COMPAT-RC11-R2-REVIEW.md)).
+F3–F8, F10–F11, A1, and D1 stay queued below. N1-R is done; N1-PR is next. R3 pushed the branch and opened draft
+[PR #94](https://github.com/aaronrene/overseer-kit/pull/94). Merge to main
+remains Tier 3.
 
 Phase Model Key: Thinking = freeze WHAT/HOW; Auto = build exactly to the frozen spec;
 Thinking → Auto = step `a` then step `b`; Operator + Auto = human Tier-3 gate plus
@@ -71,28 +76,28 @@ Auto doc sync.
 
 | Step | Model | Status | Deliverable |
 | --- | --- | --- | --- |
-| R1a | Thinking → Auto (a: Thinking) | **NEXT** | Frozen spec for **F1** and **F2**, with fail-closed rules and a seven-tier test matrix; freeze review **pass**. |
-| R1b | Thinking → Auto (b: Auto) | Blocked on R1a | Build exactly to the R1a spec. Run the seven tiers, then `/build-verification-review` → **pass**. Feature-branch commit. |
-| R2 | Thinking | Blocked on R1b | Independent re-review of `d54a228..<R1b head>` by a model other than the R1b builder; **pass** required. |
-| R3 | Operator + Auto | Blocked on R2 | Owner authorizes push and PR. Merge to main is Tier 3 and needs explicit owner approval. |
-| H1 | Thinking → Auto | Queued after merge | Hardening: **F3**, **F4**, **F5**, **F6**, **F7**, **F11**. |
+| R1a | Thinking → Auto (a: Thinking) | **DONE** 2026-10-20 | Frozen spec [MIGRATION-COMPAT-RC11-R1-SPEC.md](reviews/MIGRATION-COMPAT-RC11-R1-SPEC.md) for **F1** and **F2**; freeze-review loop **pass** (round 3). `ok review --freeze` cannot stamp this checkout (`config_repository_mismatch` / `launcher_repository_mismatch`). |
+| R1b | Thinking → Auto (b: Auto) | **DONE** 2026-10-21 | Built F1/F2 exactly to the R1a spec. Seven tiers + E2/E3 recorded in [MIGRATION-COMPAT-RC11-R1-BUILD.md](reviews/MIGRATION-COMPAT-RC11-R1-BUILD.md). `/build-verification-review` → **pass**. Feature-branch commit. No push. |
+| R2 | Thinking | **DONE** 2026-10-21 | Independent re-review of `d54a228..68952c7` **pass**. Record: [MIGRATION-COMPAT-RC11-R2-REVIEW.md](reviews/MIGRATION-COMPAT-RC11-R2-REVIEW.md). Reviewer was not the R1b builder. No push. |
+| R3 | Operator + Auto | **DONE** 2026-10-21 | Pushed `fix/knowtation-migration-compat-20261020` and opened draft [PR #94](https://github.com/aaronrene/overseer-kit/pull/94) against `main`. Merge to main needs a separate approval. |
+| A1 | Operator + Auto | Queued after merge | Reviewed rc11 distribution artifact contract, plus owner authorization for hosting it and for any hosted rc11 `supported-v1.yml` job. No URLs or secrets in R1. |
+| H1 | Thinking → Auto | Queued after merge | Hardening: **F3**, **F4**, **F5**, **F6**, **F7**, and **F11** (pre-existing loose `label()` grammar; recorded in the N1 freeze). |
 | D1 | Operator + Auto | Queued after merge | Decide how consumers move off prepared runtime `309ac668…` (**F8**). |
-| N1a | Thinking → Auto (a: Thinking) | **DONE** (see top section) | Freeze `OK-NEXT-MODEL` (**F9**); freeze review **pass**. |
-| N1b | Thinking → Auto (b: Auto) | **DONE** (BV round 2 pass; see top section) | Kit build + prepared runtime `559e1635…` on `feat/next-model-select-20261020`. |
-| N1c | Thinking → Auto (b: Auto) | **DONE** 2026-10-21 (see top section) | Knowtation rebind + Codex NEXT publish. |
-| N1-R | Thinking, independent model | **DONE** (PASS; see top section) | Independent review of the N1 branch delta. |
-| N1-PR | Operator + Auto | **NEXT** | Stacked draft PR on compat draft PR #94. Merge is Tier 3. |
+| N1a | Thinking → Auto (a: Thinking) | **DONE** 2026-10-20 | Option A. Amended freeze sha256 `3d521241…`. The allowlist design and freeze `cc79cfff…` are superseded. |
+| N1b | Thinking → Auto (b: Auto) | **DONE** 2026-10-21 | Sibling worktree `overseer-kit-next-model-select-20261020`, branch `feat/next-model-select-20261020`. Runtime `559e1635…`. BV round 2 pass. |
+| N1c | Auto | **DONE** 2026-10-21 | Knowtation rebound to `559e1635…`. Published `C2-PROPOSAL-REVISION-1`. Receipt beside that freeze. |
+| N1-R | Thinking, independent model | **DONE** (PASS, 2026-10-21) | `docs/reviews/OK-NEXT-MODEL-N1-R.md`. Range `99e2e5b..de711ae`. Reviewer is not the N1b builder and not BV round 2. |
+| N1-PR | Operator + Auto | **NEXT** | Stacked draft PR on open compat draft PR #94 (merge of N1 onto `069fe3b`). Merge is Tier 3. |
 | M1a | Thinking → Auto (a: Thinking) | Queued; first step after the R3 merge | Freeze the checkout-local ignore fix (**F10**) for migration, Git-only init and already-migrated consumers. |
 | M1b | Thinking → Auto (b: Auto) | Blocked on M1a | Build, seven tiers, `/build-verification-review` → **pass**, independent review, PR. Then each consumer applies it through the kit's previewable path. |
-| C1 | Operator + Auto | Partly done 2026-10-20; rest after R2 passes | Done: the review scratch folders under `/tmp` (about 2.5 GB) were deleted with owner approval. The cited probe scripts were kept in `RECOVERY-RUNS/migration-compat-rc11-20261020/probes/`. Remaining: once R2 passes, remove the `overseer-kit-knowtation-baseline-20261020` worktree (117 MB, a `d54a228` checkout that can be recreated). Once the PR is merged, archive `RECOVERY-RUNS/migration-compat-rc11-20261020/`. |
+| C1 | Operator + Auto | Partly done; baseline removal unblocked, not done in the R2 close | Done: the review scratch folders under `/tmp` (about 2.5 GB) were deleted with owner approval. The cited probe scripts were kept in `RECOVERY-RUNS/migration-compat-rc11-20261020/probes/`. R2 passed 2026-10-21. Remaining, not done here: remove the `overseer-kit-knowtation-baseline-20261020` worktree (117 MB, a `d54a228` checkout that can be recreated). Once the PR is merged, archive `RECOVERY-RUNS/migration-compat-rc11-20261020/`. |
 
 Order of work:
 
-1. R1a in this kit checkout and N1a in the Knowtation session can run at the same
-   time; they change different files.
-2. R1b, then R2, then R3 (push and PR).
-3. N1c and N1-R are done. Next is the N1 draft PR stacked on compat draft PR #94. Do not merge.
-4. After both merges: M1, H1, D1 and C1.
+1. Done: R1b, R2, and R3 (draft [PR #94](https://github.com/aaronrene/overseer-kit/pull/94)). N1a, N1b, N1c, and N1-R are done in the N1 worktree and in Knowtation.
+2. N1-PR is next: stacked draft PR of `feat/next-model-select-20261020` onto the compat branch. Do not merge.
+3. Merge of either draft PR to main needs a separate owner approval (Tier 3).
+4. After both merges: M1, H1 (including F11), D1, A1 and C1.
 
 Consumer guard until M1 lands (Knowtation and BornFree): stage explicit paths only.
 Never run `git add -A`, `git add .` or `muse code add .` there, because
@@ -101,15 +106,13 @@ neither tracked nor ignored.
 
 What each finding is (details and line evidence are in the review):
 
-- **F1 (Medium, pre-PR).** The prepared CI cannot exercise rc11, and the new tests
-  hard-code rc11:
-  - `tools/ci/supported_v1.py:42, 48` accepts rc5 only;
-  - `tests/muse/test_runtime_rebind.py:24, 70-71, 211` pin rc11;
-  - the two new integration test files are missing from the CI selection;
-  - the FPR-4 mirror replacement test has no rc11 wrapper.
-- **F2 (Low, pre-PR).** After an interrupted rebind, `apply_mapping` says "rerun
-  explicit sync" (`cli/product_migration.py:336`). That step refuses; restoring
-  from the backup is the working path.
+- **F1 (Medium, pre-PR). Fixed** at `68952c7`. R2 **pass**. The CI probe accepts
+  only an exact `MUSE_RUNTIMES` pair; current and stale come from the probed
+  venv; both compatibility files are on the driver command; the FPR-4 successor
+  runs under the probed runtime. No hosted rc11 job (A1).
+- **F2 (Low, pre-PR). Fixed** at `68952c7`. R2 **pass**. An interrupted rebind
+  refuses with the backup-restore hint first. Init, sync, adopt, and
+  upgrade-regime keep the previous sync sentence.
 - **F3 (Low).** Rebind backups are always 0644 or 0755 instead of the original
   mode, so a 0600 config gets a 0644 backup.
 - **F4 (Low).** `docs/MUSE-RC11-COMPATIBILITY.md:82-83` says "shared directory
@@ -130,12 +133,21 @@ What each finding is (details and line evidence are in the review):
   - Choose between updating the prepared runtime in place followed by that
     installation's explicit `sync`, or a reviewed relocation command.
   - Knowtation moved to `559e1635…` at N1c. BornFree stays on `309ac668…` until D1.
-  - BornFree cannot take the N1 runtime until D1 is settled.
+  - BornFree also cannot take the N1 runtime until D1 is settled.
 - **F9 (owner-found while using Knowtation; source-verified).** A single-lane NEXT
-  cannot name a model other than `context.model`: `cli/v1.py:273-274` raised
-  `next_model_mismatch` on both write and read. **Addressed in N1b commit
-  `6a04ce1…` (option A):** differing labels that pass `model_label` are accepted;
-  `context.model` stays the default. Knowtation installed that runtime at N1c. N1-R passed.
+  could not name a model other than `context.model`: `cli/v1.py:273-274` raised
+  `next_model_mismatch` on both write and read. No supported command changes
+  `context.model`; `adopt` and the rebind require `--model` to equal it
+  (`cli/product_authority.py:176-178`, `cli/main.py:196-199`).
+  - Multi-lane NEXT already accepts any validated model; only explicit `--model`
+    expectations are checked (`cli/v1.py:207-211`).
+  - **Decided (N1a, option A):** the NEXT `Model:` line is a recommendation. A
+    single-lane NEXT may name any label that passes a strict grammar;
+    `context.model` stays the default. No allowlist and no `ok next-models`
+    command. A valid hand-edited label is displayed; `--expect-next` catches any
+    byte change. Multi-lane is unchanged. Model labels confer no authority.
+  - **Addressed in N1b commit `6a04ce1…`.** Knowtation installed that runtime at
+    N1c. N1-R **PASS** (`docs/reviews/OK-NEXT-MODEL-N1-R.md`).
 - **F11 (Low, pre-existing; recorded in the N1a freeze).** The general `label()`
   check (`cli/v1.py:82-85`) admits DEL, C1 controls such as U+0085, U+2028 and
   bidirectional overrides. It still governs `context.model` and multi-lane
@@ -168,8 +180,8 @@ What each finding is (details and line evidence are in the review):
 
 Definition of Done for this milestone:
 
-1. F1 and F2 are fixed with seven-tier tests.
-2. Build verification and the R2 re-review both pass.
+1. Done: F1 and F2 are fixed with seven-tier tests (`68952c7`).
+2. Done: build verification and the R2 re-review both pass.
 3. The PR is opened under owner authorization.
 4. H1 and D1 are tracked in a successor roadmap section.
 5. N1 is either merged through its own reviewed stacked PR or carried forward explicitly.
@@ -177,8 +189,8 @@ Definition of Done for this milestone:
 
 This branch's [NEXT](NEXT.md) is stale (PR #93). It cannot be republished from this
 checkout: the tracked binding points to the publication checkout, so the bound
-launcher refuses with `launcher_repository_mismatch`. The handover holds the R1a
-draft prompt until publication is possible. Model: Thinking.
+launcher refuses with `launcher_repository_mismatch`. R3 is done (draft PR #94).
+N1-R is done; N1-PR is the next unfinished N1 step. Merge of PR #94 remains Tier 3.
 
 ## PR #93 — hosting verified; owner-authorized merge in progress, 2026-10-18
 

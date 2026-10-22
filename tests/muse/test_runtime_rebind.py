@@ -1,13 +1,17 @@
-"""Real reviewed Muse reads; stale rc5 bindings are metadata-only fixtures."""
+"""Real reviewed Muse reads; the stale binding is a metadata-only fixture naming the other reviewed runtime."""
 from copy import deepcopy
 import json
+import os
 from pathlib import Path
+import shutil
 import subprocess
+import time
 
 import pytest
 import yaml
 
-from cli import v1
+from cli import product_authority, product_migration, v1
+from cli.product_authority import REBIND_RECOVERY
 from cli.v1_io import Refusal, digest
 from cli.v1_revision import MUSE_RUNTIMES, muse_read, revision
 from cli.version_lock import FootprintEntry, compute_lock_digest
@@ -15,15 +19,22 @@ from tests.integration.test_legacy_migration_compat import command, snapshot
 from tests.muse.test_legacy_native_binding import native, dry, save, apply, controls
 
 
+CONFIG = v1.CONFIG
+LAUNCHER = '.overseer/bin/ok'
+LOCK = '.overseer/version.lock'
+LIVE = (LAUNCHER, LOCK, CONFIG)
+
+
 @pytest.fixture
-def stale_binding(native, muse_python):
+def stale_binding(native, muse_python, rebind_runtimes):
+    current, stale = rebind_runtimes
     document = save(native, dry(native, muse_python, "--tracked-bindings", "preserve"))
     result = apply(native, document, "--tracked-bindings", "preserve")
     assert result.returncode == 0, result.stderr
     config = yaml.safe_load((native / v1.CONFIG).read_bytes())
-    assert config["vcs"]["muse"]["binding"]["runtime"]["version"] == "0.2.1rc11"
+    assert config["vcs"]["muse"]["binding"]["runtime"]["version"] == current
     config["vcs"]["muse"]["binding"]["runtime"].update(
-        version="0.2.1rc5", sha256=MUSE_RUNTIMES["0.2.1rc5"])
+        version=stale, sha256=MUSE_RUNTIMES[stale])
     # The obsolete installation need not exist or execute during rebinding.
     config["runtime"].update(root=str(native.parent / "obsolete-kit"), sha256="a" * 64)
     old_launcher = v1.launcher(native, config["repo"]["id"], runtime_root=config["runtime"]["root"])
@@ -55,7 +66,44 @@ def preview(root, args):
     return json.loads(result.stdout)
 
 
-def test_real_rc11_rebind_preserves_settings_source_history_and_publishes_separately(stale_binding, muse_python):
+def expected_config(root, muse_python):
+    config = yaml.safe_load((root / v1.CONFIG).read_bytes())
+    expected = deepcopy(config)
+    expected["runtime"] = v1.runtime()
+    expected["vcs"]["muse"]["binding"]["runtime"] = muse_read(root, str(muse_python))["runtime"]
+    return expected
+
+
+def follow_hint(root, backup, planned):
+    modes = {row['path']: row['before']['mode'] for row in planned['plan']['assets']}
+    for live in LIVE:
+        src = root / backup / live
+        if src.is_file():
+            shutil.copyfile(src, root / live)
+            if live in modes and modes[live] is not None:
+                (root / live).chmod(modes[live])
+
+
+def inject_fail(monkeypatch, fail_path, *, after=False):
+    real = product_migration.atomic
+
+    def wrapper(root, path, data, **kwargs):
+        if path == fail_path:
+            if after:
+                real(root, path, data, **kwargs)
+            raise OSError('injected')
+        return real(root, path, data, **kwargs)
+
+    monkeypatch.setattr(product_migration, 'atomic', wrapper)
+
+
+def parse_apply(root, args, rebind_sha256):
+    return v1.parser().parse_args(args + ["--expect-rebind", rebind_sha256])
+
+
+def test_real_rebind_preserves_settings_source_history_and_publishes_separately(
+        stale_binding, muse_python, rebind_runtimes):
+    current, stale = rebind_runtimes
     root = stale_binding
     args = arguments(root, muse_python)
     before = snapshot(root)
@@ -67,8 +115,8 @@ def test_real_rc11_rebind_preserves_settings_source_history_and_publishes_separa
     planned = preview(root, args)
     assert preview(root, args) == planned and snapshot(root) == before
     plan = planned["plan"]
-    assert plan["before_binding"]["runtime"]["version"] == "0.2.1rc5"
-    assert plan["after_binding"]["runtime"]["version"] == "0.2.1rc11"
+    assert plan["before_binding"]["runtime"]["version"] == stale
+    assert plan["after_binding"]["runtime"]["version"] == current
     assert set(planned["changed"]) == {
         plan["backup"] + "/" + path for path in (v1.CONFIG, ".overseer/bin/ok", ".overseer/version.lock")
     } | {v1.CONFIG, ".overseer/bin/ok", ".overseer/version.lock"}
@@ -165,11 +213,10 @@ def test_rebind_existing_next_stays_byte_exact(stale_binding, muse_python):
 
 
 def test_rebind_rechecks_owner_edits_under_lock(stale_binding, muse_python, monkeypatch):
-    from cli import product_authority, product_migration
     root = stale_binding
     args = arguments(root, muse_python)
     planned = preview(root, args)
-    parsed = v1.parser().parse_args(args + ["--expect-rebind", planned["rebind_sha256"]])
+    parsed = parse_apply(root, args, planned["rebind_sha256"])
     original_apply = product_migration.apply_mapping
     before = None
 
@@ -186,7 +233,7 @@ def test_rebind_rechecks_owner_edits_under_lock(stale_binding, muse_python, monk
     assert snapshot(root) == before
 
 
-def test_rc11_linked_checkout_uses_restored_footprint_contract(tmp_path, muse_python):
+def test_linked_checkout_uses_restored_footprint_contract(tmp_path, muse_python):
     # Reuse the newer contract: the root-bound launcher's tracked lock changes
     # on init and must be reported dirty. The older clean-tree assertion in
     # tests/muse/test_handoffs.py predates the restored footprint.
@@ -197,9 +244,10 @@ def test_rc11_linked_checkout_uses_restored_footprint_contract(tmp_path, muse_py
 
 @pytest.mark.parametrize("change,reason", [
     ("version", "muse_version_unsupported"), ("digest", "muse_source_digest_unsupported")])
-def test_native_reader_refuses_unreviewed_runtime(muse_root, muse_python, change, reason):
+def test_native_reader_refuses_unreviewed_runtime(muse_root, muse_python, muse_runtime, change, reason):
     # Alter only the check's inputs inside a disposable subprocess; the shared
     # installed venv is never patched or downgraded.
+    assert '0.2.1rc999' not in MUSE_RUNTIMES
     script = """
 import sys
 from pathlib import Path
@@ -208,7 +256,7 @@ from cli import v1_muse_reader as reader
 if sys.argv[3] == 'version':
     reader.importlib.metadata.version = lambda name: '0.2.1rc999'
 else:
-    reader.MUSE_RUNTIMES['0.2.1rc11'] = '0' * 64
+    reader.MUSE_RUNTIMES[sys.argv[4]] = '0' * 64
 try:
     reader.run(Path(sys.argv[2]), True)
 except Exception as exc:
@@ -218,7 +266,263 @@ raise SystemExit('unexpected success')
 """
     before = snapshot(muse_root)
     result = subprocess.run([str(muse_python), "-I", "-B", "-c", script,
-                             str(v1.KIT), str(muse_root), change],
+                             str(v1.KIT), str(muse_root), change, muse_runtime.version],
                             capture_output=True, text=True, timeout=30)
     assert result.returncode == 2 and reason in result.stdout, result.stderr
     assert snapshot(muse_root) == before
+
+
+_INTERRUPT = {
+    'before_backup_launcher': {
+        'fail': None,  # filled from backup
+        'kind': 'backup_launcher',
+        'completed': lambda b: [b + '/' + CONFIG],
+        'live': (),
+        'mismatch': False,
+    },
+    'before_backup_lock': {
+        'kind': 'backup_lock',
+        'completed': lambda b: [b + '/' + CONFIG, b + '/' + LAUNCHER],
+        'live': (),
+        'mismatch': False,
+    },
+    'before_launcher': {
+        'kind': 'launcher',
+        'completed': lambda b: [b + '/' + CONFIG, b + '/' + LAUNCHER, b + '/' + LOCK],
+        'live': (),
+        'mismatch': False,
+    },
+    'before_lock': {
+        'kind': 'lock',
+        'completed': lambda b: [b + '/' + CONFIG, b + '/' + LAUNCHER, b + '/' + LOCK, LAUNCHER],
+        'live': (LAUNCHER,),
+        'mismatch': True,
+    },
+    'before_config': {
+        'kind': 'config',
+        'completed': lambda b: [b + '/' + CONFIG, b + '/' + LAUNCHER, b + '/' + LOCK, LAUNCHER, LOCK],
+        'live': (LAUNCHER, LOCK),
+        'mismatch': True,
+    },
+    'after_config': {
+        'kind': 'after_config',
+        'completed': lambda b: [b + '/' + CONFIG, b + '/' + LAUNCHER, b + '/' + LOCK,
+                               LAUNCHER, LOCK, CONFIG],
+        'live': (LAUNCHER, LOCK, CONFIG),
+        'mismatch': False,
+    },
+}
+
+
+def _fail_path(kind, backup):
+    return {
+        'backup_launcher': backup + '/' + LAUNCHER,
+        'backup_lock': backup + '/' + LOCK,
+        'launcher': LAUNCHER,
+        'lock': LOCK,
+        'config': CONFIG,
+        'after_config': CONFIG,
+    }[kind]
+
+
+@pytest.mark.parametrize('point', list(_INTERRUPT))
+def test_interrupted_rebind_reports_backup_restore_and_recovers(
+        stale_binding, muse_python, monkeypatch, point):
+    root = stale_binding
+    args = arguments(root, muse_python)
+    planned = preview(root, args)
+    backup = planned['plan']['backup']
+    info = _INTERRUPT[point]
+    original = {live: (root / live).read_bytes() for live in LIVE}
+    original_modes = {live: (root / live).stat().st_mode & 0o7777 for live in LIVE}
+    before = snapshot(root)
+    before_controls = controls(root)
+    inject_fail(monkeypatch, _fail_path(info['kind'], backup), after=point == 'after_config')
+    with pytest.raises(Refusal) as raised:
+        product_authority.rebind_muse_runtime(root, parse_apply(root, args, planned['rebind_sha256']))
+    message = str(raised.value)
+    hint = REBIND_RECOVERY.format(backup=backup)
+    expected_completed = info['completed'](backup)
+    assert message == (
+        "partial_asset_update: " + hint + "; reason: OSError; completed: " +
+        ",".join(expected_completed))
+    assert "rerun explicit sync" not in message
+    for live in LIVE:
+        if live in info['live']:
+            assert (root / live).read_bytes() != original[live]
+        else:
+            assert (root / live).read_bytes() == original[live]
+            assert ((root / live).stat().st_mode & 0o7777) == original_modes[live]
+    if info['mismatch']:
+        status = subprocess.run([str(root / LAUNCHER), '-C', str(root), 'status', '--json'],
+                                cwd='/', capture_output=True, text=True, timeout=60)
+        assert status.returncode == 2 and 'runtime_installation_mismatch' in status.stderr
+        fresh = command(root, *args, '--dry-run')
+        assert fresh.returncode == 2 and 'rebind_custom_launcher_requires_resolution' in fresh.stderr
+    follow_hint(root, backup, planned)
+    restored = snapshot(root)
+    assert {p: v for p, v in restored.items() if not p.startswith(backup + '/')} == {
+        p: v for p, v in before.items() if not p.startswith(backup + '/')}
+    assert controls(root) == before_controls
+    again = preview(root, args)
+    expected_changed = {LAUNCHER, LOCK, CONFIG}
+    for path in LIVE:
+        copy = backup + '/' + path
+        if not (root / copy).is_file():
+            expected_changed.add(copy)
+    assert set(again['changed']) == expected_changed
+    result = command(root, *args, '--expect-rebind', again['rebind_sha256'])
+    assert result.returncode == 0, result.stderr
+    assert yaml.safe_load((root / CONFIG).read_bytes()) == again['plan']['normalized_config']
+    for path in LIVE:
+        assert (root / backup / path).read_bytes() == original[path]
+    assert not (root / v1.NEXT).exists()
+
+
+def test_interruption_before_first_write_changes_nothing(stale_binding, muse_python, monkeypatch):
+    root = stale_binding
+    args = arguments(root, muse_python)
+    planned = preview(root, args)
+    backup = planned['plan']['backup']
+    before = snapshot(root)
+    inject_fail(monkeypatch, backup + '/' + CONFIG)
+    with pytest.raises(OSError, match='injected'):
+        product_authority.rebind_muse_runtime(root, parse_apply(root, args, planned['rebind_sha256']))
+    assert snapshot(root) == before
+
+
+def test_rebind_plan_shape_unchanged(stale_binding, muse_python):
+    root = stale_binding
+    args = arguments(root, muse_python)
+    planned = preview(root, args)
+    assert set(planned['plan']) == {
+        'operation', 'repository', 'source_config_sha256', 'context', 'branch', 'head',
+        'before_binding', 'after_binding', 'before_runtime', 'after_runtime',
+        'normalized_config', 'assets', 'protected', 'tracked_local', 'tracked_binding_choice',
+        'next', 'backup'}
+    assert preview(root, args) == planned
+
+
+def test_concurrent_live_edit_is_reported_before_restore(stale_binding, muse_python, monkeypatch):
+    root = stale_binding
+    args = arguments(root, muse_python)
+    planned = preview(root, args)
+    backup = planned['plan']['backup']
+    real = product_migration.atomic
+
+    def concurrent(root_arg, path, data, **kwargs):
+        result = real(root_arg, path, data, **kwargs)
+        if path == LAUNCHER:
+            with (root / LOCK).open('ab') as stream:
+                stream.write(b'# concurrent\n')
+        return result
+
+    monkeypatch.setattr(product_migration, 'atomic', concurrent)
+    with pytest.raises(Refusal) as raised:
+        product_authority.rebind_muse_runtime(root, parse_apply(root, args, planned['rebind_sha256']))
+    message = str(raised.value)
+    hint = REBIND_RECOVERY.format(backup=backup)
+    completed = [backup + '/' + CONFIG, backup + '/' + LAUNCHER, backup + '/' + LOCK, LAUNCHER]
+    assert message == (
+        "partial_asset_update: " + hint + "; reason: stale_write: .overseer/version.lock; completed: " +
+        ",".join(completed))
+    mismatched = []
+    for row in planned['plan']['assets']:
+        if row['path'] not in LIVE:
+            continue
+        live = digest((root / row['path']).read_bytes())
+        if live != row['before']['sha256'] and live != row['after']:
+            mismatched.append(row['path'])
+    assert mismatched == [LOCK]
+    assert (root / LOCK).read_bytes().endswith(b'# concurrent\n')
+
+
+def test_partial_rebind_message_has_no_absolute_paths_or_controls(
+        stale_binding, muse_python, monkeypatch, tmp_path):
+    root = stale_binding
+    args = arguments(root, muse_python)
+    planned = preview(root, args)
+    backup = planned['plan']['backup']
+    inject_fail(monkeypatch, CONFIG)
+    with pytest.raises(Refusal) as raised:
+        product_authority.rebind_muse_runtime(root, parse_apply(root, args, planned['rebind_sha256']))
+    message = str(raised.value)
+    assert str(root) not in message
+    assert str(tmp_path) not in message
+    assert '/Users/' not in message
+    assert all(32 <= ord(ch) <= 126 for ch in message)
+    assert '\n' not in message and '\r' not in message and '\x1b' not in message
+    import re
+    assert re.fullmatch(r'\.overseer/local/rebind-[0-9a-f]{64}', backup)
+
+
+def test_repeated_interruption_converges(stale_binding, muse_python, monkeypatch):
+    root = stale_binding
+    args = arguments(root, muse_python)
+    planned = preview(root, args)
+    backup = planned['plan']['backup']
+    before = snapshot(root)
+    before_controls = controls(root)
+    original = {live: (root / live).read_bytes() for live in LIVE}
+    for _ in range(2):
+        inject_fail(monkeypatch, CONFIG)
+        with pytest.raises(Refusal):
+            product_authority.rebind_muse_runtime(
+                root, parse_apply(root, args, planned['rebind_sha256']))
+        follow_hint(root, backup, planned)
+        planned = preview(root, args)
+        backup = planned['plan']['backup']
+    result = command(root, *args, '--expect-rebind', planned['rebind_sha256'])
+    assert result.returncode == 0, result.stderr
+    assert yaml.safe_load((root / CONFIG).read_bytes()) == planned['plan']['normalized_config']
+    for path in LIVE:
+        assert (root / backup / path).read_bytes() == original[path]
+    mapping_paths = {backup + '/' + path for path in LIVE} | set(LIVE)
+    after = snapshot(root)
+    assert {p: v for p, v in after.items() if p not in mapping_paths} == {
+        p: v for p, v in before.items() if p not in mapping_paths}
+    assert controls(root) == before_controls
+    assert not (root / v1.NEXT).exists()
+
+
+def test_cli_interrupted_rebind_shows_restore_hint_and_recovers(stale_binding, muse_python):
+    assert os.geteuid() != 0
+    started = time.monotonic()
+    root = stale_binding
+    args = arguments(root, muse_python)
+    planned = preview(root, args)
+    backup = planned['plan']['backup']
+    hint = REBIND_RECOVERY.format(backup=backup)
+    before = snapshot(root)
+    before_controls = controls(root)
+    overseer = root / '.overseer'
+    try:
+        overseer.chmod(0o555)
+        result = command(root, *args, '--expect-rebind', planned['rebind_sha256'])
+    finally:
+        overseer.chmod(0o755)
+    assert result.returncode == 2
+    completed = ",".join([backup + '/' + CONFIG, backup + '/' + LAUNCHER,
+                          backup + '/' + LOCK, LAUNCHER])
+    full = "partial_asset_update: " + hint + "; reason: PermissionError; completed: " + completed
+    assert result.stderr == "refused: " + full[:300] + "\n"
+    assert "rerun explicit sync" not in result.stderr
+    status = subprocess.run([str(root / LAUNCHER), '-C', str(root), 'status', '--json'],
+                            cwd='/', capture_output=True, text=True, timeout=60)
+    assert status.returncode == 2 and 'runtime_installation_mismatch' in status.stderr
+    fresh = command(root, *args, '--dry-run')
+    assert fresh.returncode == 2 and 'rebind_custom_launcher_requires_resolution' in fresh.stderr
+    follow_hint(root, backup, planned)
+    restored = snapshot(root)
+    assert {p: v for p, v in restored.items() if not p.startswith(backup + '/')} == {
+        p: v for p, v in before.items() if not p.startswith(backup + '/')}
+    assert controls(root) == before_controls
+    again = preview(root, args)
+    assert set(again['changed']) == {LAUNCHER, LOCK, CONFIG}
+    applied = command(root, *args, '--expect-rebind', again['rebind_sha256'])
+    assert applied.returncode == 0, applied.stderr
+    assert yaml.safe_load((root / CONFIG).read_bytes()) == again['plan']['normalized_config']
+    status = command(root, 'status', '--check-footprint', '--json')
+    report = json.loads(status.stdout)
+    assert report['footprint_integrity']['ok'] and report['footprint_coverage']['ok'], status.stdout
+    assert time.monotonic() - started < 180

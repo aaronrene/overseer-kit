@@ -312,8 +312,18 @@ def _updates(root, mapping):
     return updates
 
 
-def apply_mapping(root, mapping, *, check_context, dry_run=False):
-    """Preflight all targets before taking the same directory lock as migration."""
+DEFAULT_RECOVERY = "rerun explicit sync after resolving drift"
+RECOVERY = re.compile(r"[ -:<-~]{1,256}")
+
+
+def apply_mapping(root, mapping, *, check_context, dry_run=False, recovery=None):
+    """Preflight all targets before taking the same directory lock as migration.
+
+    recovery is a caller-supplied, single-line recovery step for a partial
+    failure. Omitting it keeps the sync wording.
+    """
+    if recovery is not None and not (isinstance(recovery, str) and RECOVERY.fullmatch(recovery)):
+        raise Refusal("recovery_hint_invalid")
     updates = _updates(root, mapping)
     if dry_run:
         return [row["path"] for row in updates]
@@ -332,8 +342,11 @@ def apply_mapping(root, mapping, *, check_context, dry_run=False):
                      {"path": row["path"], "sha256": row["after"], "mode": row["mode"]}]
         if completed:
             reason = str(exc) if isinstance(exc, Refusal) else type(exc).__name__
-            raise Refusal("partial_asset_update: " + ",".join(completed) + "; " + reason +
-                          "; config is last; rerun explicit sync after resolving drift") from exc
+            if recovery is None:
+                raise Refusal("partial_asset_update: " + ",".join(completed) + "; " + reason +
+                              "; config is last; " + DEFAULT_RECOVERY) from exc
+            raise Refusal("partial_asset_update: " + recovery + "; reason: " + reason +
+                          "; completed: " + ",".join(completed)) from exc
         raise
     finally:
         os.close(fd)
