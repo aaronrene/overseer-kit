@@ -25,6 +25,8 @@ CONFIG = ".overseer/config.yaml"
 NEXT = "docs/NEXT.md"
 KINDS = ("plan", "implement", "review", "maintain", "stop")
 TOKEN = re.compile(r"[A-Za-z0-9][A-Za-z0-9_.-]{0,127}\Z")
+MODEL_LABEL = re.compile(r"[A-Za-z][A-Za-z0-9._,()+/-]*(?: [A-Za-z0-9._,()+/-]+)*\Z")
+MODEL_LABEL_MAX = 120
 def runtime_files():
     """Owned code/resources used by normalization, migration and bound assets.
 
@@ -82,6 +84,17 @@ def keys(value, required):
 def label(value):
     if not isinstance(value, str) or not value.strip() or len(value) > 200 or any(ord(c) < 32 for c in value):
         raise Refusal("label_invalid")
+    return value
+
+
+def model_label(value):
+    """Strict ASCII model-label grammar (freeze 5.1) for single-lane NEXT when
+    the label differs from context.model (freeze 5.2): letter-first, max 120
+    characters, single spaces between words, punctuation . _ , ( ) + / - only.
+    """
+    if (not isinstance(value, str) or not (1 <= len(value) <= MODEL_LABEL_MAX)
+            or not MODEL_LABEL.fullmatch(value)):
+        raise Refusal("model_label_invalid")
     return value
 
 
@@ -271,7 +284,7 @@ def validate_next(root, config, data, args, *, context, freshness=True):
         if meta[field] != expected:
             raise Refusal("next_" + field + "_mismatch")
     if len(config['docs']['lanes']) == 1 and meta['model'] != config['context']['model']:
-        raise Refusal('next_model_mismatch')
+        model_label(meta['model'])
     check_expectations(meta, args)
     if getattr(args, "expect_next", None) and args.expect_next != digest(data):
         raise Refusal("next_digest_mismatch")
@@ -349,11 +362,12 @@ def write_next(root, config, args, prompt, *, expected, context):
     return payload
 
 
-def launcher(root, identity):
+def launcher(root, identity, *, runtime_root=None):
+    installation = KIT if runtime_root is None else Path(runtime_root)
     q = shlex.quote
     return ("#!/bin/sh\nset -eu\nPATH=/usr/bin:/bin\nexport PATH\n"
             "unset PYTHONPATH PYTHONHOME VIRTUAL_ENV\nexec "
-            + q(str(KIT / ".venv/bin/python3")) + " -I -B " + q(str(KIT / "cli/bootstrap.py"))
+            + q(str(installation / ".venv/bin/python3")) + " -I -B " + q(str(installation / "cli/bootstrap.py"))
             + " --bound-root " + q(str(root)) + " --bound-id " + q(identity)
             + ' --binding-path "$0" "$@"\n').encode()
 

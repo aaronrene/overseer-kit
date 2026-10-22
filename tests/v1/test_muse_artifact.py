@@ -128,8 +128,7 @@ def test_committed_contract_matches_supported_runtime_pin():
     lock, manifest = artifact.contract()
     assert len(manifest) == 388
     assert all(name.startswith(('muse/', artifact.DIST + '/')) for name in manifest)
-    # Keep the runtime's independent installed-source check aligned with the
-    # artifact pin while the Git-only job imports no Muse package.
-    from tools.ci.supported_v1 import MUSE_SOURCE_SHA256
-    assert lock['package_source_sha256'] == MUSE_SOURCE_SHA256
+    # The rc5 artifact pin must equal the reviewed rc5 allowlist entry.
+    from cli.v1_revision import MUSE_RUNTIMES
+    assert lock['package_source_sha256'] == MUSE_RUNTIMES['0.2.1rc5']
     assert lock['artifacts'][artifact.WHEEL_NAME] != lock['r3_reconstructed_wheel_sha256']

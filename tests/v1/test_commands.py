@@ -66,7 +66,7 @@ def test_writer_cas_rejects_stale_and_wrong_context(repo):
 
 
 @pytest.mark.parametrize('field,value', [('repo_id','00000000-0000-0000-0000-000000000000'),
-    ('branch','other'), ('lane','other'), ('model','Other Model'), ('action_id','bad/action'),
+    ('branch','other'), ('lane','other'), ('action_id','bad/action'),
     ('action_kind','deploy')])
 def test_writer_binding_checks(repo, field, value):
     before = (repo / 'docs/NEXT.md').read_bytes()

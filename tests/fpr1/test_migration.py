@@ -204,15 +204,17 @@ def test_symlink_preflight_does_not_start_backup(legacy, tmp_path):
     assert list(outside.iterdir()) == []
 
 
-def test_legacy_prompt_is_exact_draft_only_and_conflicts_refuse(legacy):
+def test_legacy_prompts_are_exact_drafts_without_selection(legacy):
     draft = "Model: preserved historical label\nDo the old task.\n"
     (legacy / "QUEUE_HANDOVER.md").write_text("History stays.\n### Paste-ready prompt\n\n```text\n" + draft + "```\n")
     document, _ = prepare(legacy)
     assert document["plan"]["legacy_prompt_drafts"][0]["text"] == draft
     assert not (legacy / migration.NEXT).exists()
     (legacy / "videos/_active/HANDOVER.md").write_text("### Paste-ready prompt\n```text\nConflicting task.\n```\n")
-    result = command(legacy, "init", "--migrate", "--dry-run")
-    assert result.returncode != 0 and "conflicting_legacy_prompts" in result.stderr
+    document, _ = prepare(legacy)
+    drafts = document["plan"]["legacy_prompt_drafts"]
+    assert {row["text"] for row in drafts} == {draft, "Conflicting task.\n"}
+    assert not (legacy / migration.NEXT).exists()
 
 
 def test_unknown_setting_and_hook_install_refuse(legacy):

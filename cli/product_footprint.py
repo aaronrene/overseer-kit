@@ -1,10 +1,14 @@
-"""Full owned footprint records; existing preserved entries remain authoritative."""
+"""Full owned footprint records; existing preserved entries remain authoritative.
+
+Living documents and assets use migration's asset bound; config and NEXT keep
+the smaller bound through the same bounded reader.
+"""
 from cli import v1
-from cli.v1_io import read, digest
+from cli.v1_io import digest
 
 
 def with_lock(root, mapping, config, *, preserved=()):
-    from cli.product_migration import LOCK, _lock_entries, _document_paths
+    from cli.product_migration import LOCK, _lock_entries, _document_paths, read
     from cli.version_lock import FootprintEntry, compute_lock_digest
     entries = _lock_entries(root)
     raw = read(root, LOCK, missing=True)

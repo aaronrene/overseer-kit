@@ -42,8 +42,10 @@ Install only the verified wheel into a **separate** Python 3.14 venv using
 `pip install --constraint tools/ci/requirements-muse-rc5.txt /absolute/wheel.whl`,
 then `pip check`. The kit keeps its own conventional `.venv`, installed from
 `requirements-v1-dev.txt`. Run `tools/ci/supported_v1.py` with the kit Python and
-explicit `--muse-python /absolute/muse-venv/bin/python`. It verifies rc5's version
-and exact source digest before running the full suite. Git-only CI never needs
+explicit `--muse-python /absolute/muse-venv/bin/python`. It verifies that the
+venv's Muse version and exact source digest are a reviewed pair in
+`cli/v1_revision.py:MUSE_RUNTIMES` before running the full suite; this recovery
+wheel provides the rc5 pair. Git-only CI never needs
 this archive, tool, dependency or Muse installation.
 
 Runtime dependencies are constrained to the versions tested locally. Dependency
