@@ -25,13 +25,16 @@ def test_ci_probe_matches_reader_runtime(muse_runtime, muse_root):
     assert time.monotonic() - started < 15
 
 
-def test_rebind_runtimes_are_current_and_single_other(muse_runtime, rebind_runtimes, monkeypatch):
+def test_rebind_runtimes_use_the_named_partner(muse_runtime, rebind_runtimes, monkeypatch):
     current, stale = rebind_runtimes
     assert current == muse_runtime.version
     assert stale in MUSE_RUNTIMES
     assert stale != current
     assert rebind_pair('0.2.1rc5') == ('0.2.1rc5', '0.2.1rc11')
     assert rebind_pair('0.2.1rc11') == ('0.2.1rc11', '0.2.1rc5')
+    assert rebind_pair('0.2.1rc13') == ('0.2.1rc13', '0.2.1rc11')
     monkeypatch.setitem(MUSE_RUNTIMES, '0.2.1rc999', '0' * 64)
-    with pytest.raises(AssertionError, match='exactly one other reviewed Muse runtime is required'):
+    with pytest.raises(AssertionError, match='reviewed Muse stale partner must be the named map'):
         rebind_pair('0.2.1rc11')
+    with pytest.raises(AssertionError, match='reviewed Muse stale partner must be the named map'):
+        rebind_pair('0.2.1rc13')

@@ -1,5 +1,66 @@
 # Overseer Kit handover
 
+## Muse 0.2.1rc13 allowlist — RC13b DONE, 2026-10-23
+
+### NEXT SESSION
+
+**STOP.** The reviewed runtime allowlist now contains exactly three pairs:
+`0.2.1rc5`, `0.2.1rc11`, and `0.2.1rc13`
+(`8b6667bd475355a955563ddeb1b98444c671cd13f73a1decba6ce227039709ba`).
+Consumer rebind is not authorized. Do not rebind Knowtation, Muse 108, or
+Born Free. Do not invent a following product task, push, or merge.
+
+RC13b build-verification round 1 → **pass** (2026-10-23T13:40:32Z). Frozen
+spec sha256 `184be3598f948c34555c5b6f9fd29b6198233ffe1dfb6abe9747971c4147063b`.
+Evidence and the FPR-5 superseded muse pair are recorded in the roadmap RC13b
+section.
+
+Worktree: `/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-muse-rc13-20261022`.
+Branch: `feat/muse-rc13-allowlist`. Base: `3cf46e6f3dea6aa529f0143f4539a6c335ad32c2`.
+Do not publish `docs/NEXT.md` from this checkout.
+
+### Historical paste-ready prompt (RC13b — done; do not run)
+
+```text
+Model: Auto
+Tier: Auto (build exactly the frozen spec; no redesign)
+Step: RC13b — add Muse 0.2.1rc13 to the reviewed runtime list
+
+Repository: /Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-muse-rc13-20261022
+Branch: feat/muse-rc13-allowlist
+Base: 3cf46e6f3dea6aa529f0143f4539a6c335ad32c2
+
+Read docs/reviews/MUSE-RC13-ALLOWLIST-SPEC.md and build exactly that.
+Do not re-derive the version or the fingerprint.
+```
+
+### Verified snapshot (2026-10-23, RC13b)
+
+- Branch `feat/muse-rc13-allowlist` on base `3cf46e6f3dea6aa529f0143f4539a6c335ad32c2`. No push.
+- Pre-edit fingerprint recheck: version `0.2.1rc13`, 385 regular `*.py`, digest `8b6667bd475355a955563ddeb1b98444c671cd13f73a1decba6ce227039709ba`.
+- `MUSE_RUNTIMES` is exactly the three pairs in the frozen spec. `MUSE_VERSION` remains `0.2.1rc5`.
+- Reader import list unchanged. `tests/muse/test_reader_api_compatibility.py` passed under `readonly` on rc13.
+- `REBIND_STALE` names every allowlist key; rc5↔rc11 preserved; rc13→rc11.
+- Seven tiers: unit 47 passed; integ 4 passed; e2e focused 32 passed; `tests/muse` 202 passed / 2 FPR-5 superseded failures (successors passed). Shared Muse venv unmodified.
+- Build-verification round 1 **pass**. RC13b marked DONE only after that pass.
+- No Knowtation / Muse 108 / Born Free rebind. No Muse install or downgrade. Frozen spec and `docs/NEXT.md` untouched.
+
+### VCS
+
+| Item | Value |
+| --- | --- |
+| Worktree | `/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-muse-rc13-20261022` |
+| Branch | `feat/muse-rc13-allowlist` |
+| Base | `3cf46e6f3dea6aa529f0143f4539a6c335ad32c2` |
+| Spec | `docs/reviews/MUSE-RC13-ALLOWLIST-SPEC.md` |
+| Fingerprint | `8b6667bd475355a955563ddeb1b98444c671cd13f73a1decba6ce227039709ba` |
+| Merge | not authorized |
+
+### Change log
+
+- 2026-10-23: RC13b built and BV pass. Three-pair allowlist landed on the feature branch. STOP — no consumer rebind. No push.
+- 2026-10-22: RC13a frozen. Thinking-loop pass. CLI stamp refused at `cli/ok:8`. RC13b named next. No push.
+
 ## OK-NEXT-MODEL — N1-PR DONE (draft PR #95), 2026-10-22
 
 ### NEXT SESSION

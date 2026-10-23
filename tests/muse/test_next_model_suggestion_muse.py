@@ -43,15 +43,16 @@ def native(muse_root, muse):
 
 
 @pytest.fixture
-def stale_binding(native, muse_python):
-    """Metadata-only stale rc5 binding; identical to tests/muse/test_runtime_rebind.py."""
+def stale_binding(native, muse_python, rebind_runtimes):
+    """Metadata-only stale partner from rebind_runtimes; not a Muse install."""
+    current, stale = rebind_runtimes
     document = save(native, dry(native, muse_python, '--tracked-bindings', 'preserve'))
     result = apply(native, document, '--tracked-bindings', 'preserve')
     assert result.returncode == 0, result.stderr
     config = yaml.safe_load((native / v1.CONFIG).read_bytes())
-    assert config['vcs']['muse']['binding']['runtime']['version'] == '0.2.1rc11'
+    assert config['vcs']['muse']['binding']['runtime']['version'] == current
     config['vcs']['muse']['binding']['runtime'].update(
-        version='0.2.1rc5', sha256=MUSE_RUNTIMES['0.2.1rc5'])
+        version=stale, sha256=MUSE_RUNTIMES[stale])
     config['runtime'].update(root=str(native.parent / 'obsolete-kit'), sha256='a' * 64)
     old_launcher = v1.launcher(native, config['repo']['id'], runtime_root=config['runtime']['root'])
     (native / '.overseer/bin/ok').write_bytes(old_launcher)
