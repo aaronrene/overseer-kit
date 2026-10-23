@@ -1,5 +1,39 @@
 # Overseer Kit roadmap
 
+## Muse 0.2.1rc13 allowlist — RC13a frozen, 2026-10-22
+
+RC13a is done. The frozen spec is
+[MUSE-RC13-ALLOWLIST-SPEC.md](reviews/MUSE-RC13-ALLOWLIST-SPEC.md).
+The thinking-loop review passed on round 4. `ok review --freeze` was run
+and refused at `cli/ok:8` because this checkout has no `.venv`. This step
+does not create one and does not install a package. The tracked config root
+is still the publication checkout, so the product launcher would also refuse
+`config_repository_mismatch`. No stamp was invented. No `cli/` or `tests/`
+files were edited.
+
+The measured shared Muse package is `0.2.1rc13` with source fingerprint
+`8b6667bd475355a955563ddeb1b98444c671cd13f73a1decba6ce227039709ba` (385
+regular `*.py` files). RC13b adds that pair beside `0.2.1rc5` and
+`0.2.1rc11` and refuses every other version. It does not rebind Knowtation,
+Muse 108, or Born Free.
+
+Phase Model Key: Thinking = freeze WHAT/HOW; Auto = build exactly to the frozen spec.
+
+| Step | Model | Status | Deliverable |
+| --- | --- | --- | --- |
+| RC13a | Thinking | **DONE** (thinking-loop pass; CLI stamp refused) | [MUSE-RC13-ALLOWLIST-SPEC.md](reviews/MUSE-RC13-ALLOWLIST-SPEC.md) |
+| RC13b | Auto | **NEXT** | Build that spec. Seven tiers, then build-verification pass, then one feature-branch commit. No push and no merge. |
+
+Definition of Done for RC13b:
+
+1. `MUSE_RUNTIMES` is exactly the three pairs in the spec.
+2. The reader import list is unchanged, and the spec's tests pass against the rc13 interpreter.
+3. `docs/MUSE-RC11-COMPATIBILITY.md`, this roadmap, and the handover are updated in that same commit.
+4. Build verification returns pass. Green tests alone are not enough.
+5. No consumer rebind, no Muse install or downgrade, no push, and no merge.
+
+Older sections below are history. No unfinished N1 task is reopened by this section.
+
 ## OK-NEXT-MODEL (F9) — N1-PR DONE (draft PR #95), 2026-10-22
 
 **N1-PR DONE.** Pushed `feat/next-model-select-20261020` to
