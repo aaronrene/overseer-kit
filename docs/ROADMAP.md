@@ -1,36 +1,62 @@
 # Overseer Kit roadmap
 
-## Muse 0.2.1rc13 allowlist — RC13a frozen, 2026-10-22
+## Muse 0.2.1rc13 allowlist — RC13b DONE, 2026-10-23
 
-RC13a is done. The frozen spec is
-[MUSE-RC13-ALLOWLIST-SPEC.md](reviews/MUSE-RC13-ALLOWLIST-SPEC.md).
-The thinking-loop review passed on round 4. `ok review --freeze` was run
-and refused at `cli/ok:8` because this checkout has no `.venv`. This step
-does not create one and does not install a package. The tracked config root
-is still the publication checkout, so the product launcher would also refuse
-`config_repository_mismatch`. No stamp was invented. No `cli/` or `tests/`
-files were edited.
-
-The measured shared Muse package is `0.2.1rc13` with source fingerprint
-`8b6667bd475355a955563ddeb1b98444c671cd13f73a1decba6ce227039709ba` (385
-regular `*.py` files). RC13b adds that pair beside `0.2.1rc5` and
-`0.2.1rc11` and refuses every other version. It does not rebind Knowtation,
-Muse 108, or Born Free.
+RC13b is done. Built
+[MUSE-RC13-ALLOWLIST-SPEC.md](reviews/MUSE-RC13-ALLOWLIST-SPEC.md) exactly.
+`MUSE_RUNTIMES` is the three reviewed pairs (`0.2.1rc5`, `0.2.1rc11`,
+`0.2.1rc13` with fingerprint
+`8b6667bd475355a955563ddeb1b98444c671cd13f73a1decba6ce227039709ba`).
+Reader imports unchanged. Seven-tier matrix recorded below. Build-verification
+round 1 → **pass**. One feature-branch commit. No push, no merge, no consumer
+rebind, no Muse install or downgrade.
 
 Phase Model Key: Thinking = freeze WHAT/HOW; Auto = build exactly to the frozen spec.
 
 | Step | Model | Status | Deliverable |
 | --- | --- | --- | --- |
 | RC13a | Thinking | **DONE** (thinking-loop pass; CLI stamp refused) | [MUSE-RC13-ALLOWLIST-SPEC.md](reviews/MUSE-RC13-ALLOWLIST-SPEC.md) |
-| RC13b | Auto | **NEXT** | Build that spec. Seven tiers, then build-verification pass, then one feature-branch commit. No push and no merge. |
+| RC13b | Auto | **DONE** 2026-10-23 (BV round 1 pass) | Three-pair allowlist; named stale map; reader API test; compatibility doc; this roadmap + handover. |
 
-Definition of Done for RC13b:
+### RC13b seven-tier evidence (rc13 interpreter)
 
-1. `MUSE_RUNTIMES` is exactly the three pairs in the spec.
-2. The reader import list is unchanged, and the spec's tests pass against the rc13 interpreter.
-3. `docs/MUSE-RC11-COMPATIBILITY.md`, this roadmap, and the handover are updated in that same commit.
-4. Build verification returns pass. Green tests alone are not enough.
-5. No consumer rebind, no Muse install or downgrade, no push, and no merge.
+Interpreter: `/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python3.14`.
+Pre-edit fingerprint recheck: version `0.2.1rc13`, 385 regular `*.py`, digest
+`8b6667bd475355a955563ddeb1b98444c671cd13f73a1decba6ce227039709ba`.
+
+| Tier | Result |
+| --- | --- |
+| unit | `tests/v1/test_supported_v1.py` + `test_muse_artifact.py`: **47 passed** |
+| integration | matrix + reader API with rc13: **4 passed** (probe/reader/allowlist agree; eight imports under `readonly`; named partner map) |
+| end to end | rebind + next-model: **32 passed**; full `tests/muse`: **202 passed, 2 failed** — failures are exactly the FPR-5 superseded pair `test_native_linked_worktree_own_branch_and_checkout_identity` and `test_add_change_delete_and_no_content_source_commit` (`FPR-5-REVIEW.md:269-270`). Successors `test_linked_checkout_uses_restored_footprint_contract` and `test_fpr4_mirror_successor_under_probed_runtime` passed. Same muse failure IDs as R1b E3. No edit outside sections 3–5. |
+| stress / performance | matrix timer under 15 s (integ run wall 26.31 s for four tests including matrix) |
+| data-integrity | three-pair pin + probe/reader equality |
+| security | unreviewed versions/cross digests refuse; `test_native_reader_refuses_unreviewed_runtime` in the 32; shared Muse venv unmodified |
+
+### Build verification — RC13b round 1
+
+**Verdict:** pass
+**Frozen spec:** `docs/reviews/MUSE-RC13-ALLOWLIST-SPEC.md` (sha256 `184be3598f948c34555c5b6f9fd29b6198233ffe1dfb6abe9747971c4147063b`)
+**Diff scope:** `cli/v1_revision.py` `MUSE_RUNTIMES` only under `cli/`; test sections 3–5; `docs/MUSE-RC11-COMPATIBILITY.md`; this roadmap; handover. Frozen spec untouched. `docs/NEXT.md` untouched.
+
+| Check | Evidence |
+| --- | --- |
+| V1 deliverables | Three allowlist keys; `REBIND_STALE`; renamed partner test; probe pins; `tests/muse/test_reader_api_compatibility.py`; compatibility doc section 2026-10-22 |
+| V2 APIs | Reader import list unchanged; membership-only accept/refuse unchanged |
+| V3 tests | Spec section 7 rows; FPR-5 superseded originals fail as documented; successors pass |
+| V4 scope | No consumer rebind; no Muse install/downgrade; no push/merge; no `cli/` edit beyond the dict |
+| V5–V7 | Spec requirements retained; no secrets/URLs/network added |
+| V8 | Claims match git + test outputs below |
+
+| type | sha256 | ref |
+| --- | --- | --- |
+| test_output | `412f937a7349108679bc0de8aac82ce073fc18941a06a8f987b5719f5f223149` | unit `/tmp/rc13b-unit.txt` (47 passed) |
+| test_output | `4ba1d7dac76c8617ef3501c450b4bdf35b0c92ef9ba8de655005fe6f0dce9ff0` | integ `/tmp/rc13b-integ2.txt` (4 passed) |
+| test_output | `4333937b109e967e0153f02192e9c48c072b75b405da070b5c50f7e3e767f8c7` | e2e focused `/tmp/rc13b-e2e.txt` (32 passed) |
+| test_output | `86f0e4c0aa05845a8c6d3dc90266b0737869abf5109b957cdb2546b2e4d87907` | `tests/muse` sweep `/tmp/rc13b-muse-all.txt` (202 passed, 2 FPR-5 superseded) |
+
+**STOP.** Allowlist now contains the three pairs. Consumer rebind is not
+authorized. No following product task.
 
 Older sections below are history. No unfinished N1 task is reopened by this section.
 

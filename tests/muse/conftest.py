@@ -14,10 +14,25 @@ class MuseRuntime(NamedTuple):
     sha256: str
 
 
+REBIND_STALE = {
+    '0.2.1rc5': '0.2.1rc11',
+    '0.2.1rc11': '0.2.1rc5',
+    '0.2.1rc13': '0.2.1rc11',
+}
+
+
 def rebind_pair(current):
-    others = sorted(v for v in MUSE_RUNTIMES if v != current)
-    assert len(others) == 1, 'exactly one other reviewed Muse runtime is required'
-    return current, others[0]
+    """Return (current, stale) from the named one-to-one test map.
+
+    The map must name every allowlist key and nothing else. An extra or
+    missing reviewed version fails here instead of picking a partner by sort.
+    """
+    if set(MUSE_RUNTIMES) != set(REBIND_STALE) or current not in REBIND_STALE:
+        raise AssertionError('reviewed Muse stale partner must be the named map')
+    stale = REBIND_STALE[current]
+    if stale == current or stale not in MUSE_RUNTIMES:
+        raise AssertionError('reviewed Muse stale partner must be the named map')
+    return current, stale
 
 
 def pytest_addoption(parser):

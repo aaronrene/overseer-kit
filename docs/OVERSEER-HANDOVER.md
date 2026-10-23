@@ -1,25 +1,25 @@
 # Overseer Kit handover
 
-## Muse 0.2.1rc13 allowlist — RC13a frozen, 2026-10-22
+## Muse 0.2.1rc13 allowlist — RC13b DONE, 2026-10-23
 
 ### NEXT SESSION
 
-**RC13b (Auto).** Build
-[docs/reviews/MUSE-RC13-ALLOWLIST-SPEC.md](reviews/MUSE-RC13-ALLOWLIST-SPEC.md)
-exactly. The thinking-loop review passed. `ok review --freeze` refused at
-`cli/ok:8` (no `.venv`). No stamp was invented. This author session did not
-append `adversarial_freeze`. The kit config lists `security` under
-`freeze_contract.human_escalation` and does not set
-`honesty.adversarial_freeze`, which the kit derives as `suggest`. A different
-chat can attack the spec before Auto starts. The owner asked for the Auto
-prompt below.
+**STOP.** The reviewed runtime allowlist now contains exactly three pairs:
+`0.2.1rc5`, `0.2.1rc11`, and `0.2.1rc13`
+(`8b6667bd475355a955563ddeb1b98444c671cd13f73a1decba6ce227039709ba`).
+Consumer rebind is not authorized. Do not rebind Knowtation, Muse 108, or
+Born Free. Do not invent a following product task, push, or merge.
+
+RC13b build-verification round 1 → **pass** (2026-10-23T13:40:32Z). Frozen
+spec sha256 `184be3598f948c34555c5b6f9fd29b6198233ffe1dfb6abe9747971c4147063b`.
+Evidence and the FPR-5 superseded muse pair are recorded in the roadmap RC13b
+section.
 
 Worktree: `/Users/aaronrenecarvajal/OVERSEER_KIT/overseer-kit-muse-rc13-20261022`.
 Branch: `feat/muse-rc13-allowlist`. Base: `3cf46e6f3dea6aa529f0143f4539a6c335ad32c2`.
-Bound `ok next` refuses with the `cli/ok:8` message. Do not publish
-`docs/NEXT.md` from this checkout.
+Do not publish `docs/NEXT.md` from this checkout.
 
-### Paste-ready prompt (RC13b)
+### Historical paste-ready prompt (RC13b — done; do not run)
 
 ```text
 Model: Auto
@@ -32,40 +32,18 @@ Base: 3cf46e6f3dea6aa529f0143f4539a6c335ad32c2
 
 Read docs/reviews/MUSE-RC13-ALLOWLIST-SPEC.md and build exactly that.
 Do not re-derive the version or the fingerprint.
-
-The shared Muse interpreter is
-/Users/aaronrenecarvajal/.local/share/muse/venv/bin/python3.14.
-Its package is
-/Users/aaronrenecarvajal/.local/share/muse/venv/lib/python3.14/site-packages/muse.
-Before editing the allowlist, recompute the source fingerprint the way
-cli/v1_muse_reader.py does: sorted package *.py paths, each relative name,
-NUL, file bytes, NUL. Stop unless the version is 0.2.1rc13, there are 385
-regular *.py files, and the fingerprint is
-8b6667bd475355a955563ddeb1b98444c671cd13f73a1decba6ce227039709ba.
-
-Add that exact pair to MUSE_RUNTIMES in cli/v1_revision.py. Keep 0.2.1rc5
-and 0.2.1rc11. Refuse every other version. Confirm the read-only reader
-still imports the same Muse APIs, with the tests the spec names. Update
-docs/MUSE-RC11-COMPATIBILITY.md, docs/ROADMAP.md, and
-docs/OVERSEER-HANDOVER.md together in the same feature-branch commit.
-
-Do not rebind Knowtation, Muse 108, or Born Free. Do not downgrade Muse,
-install a package, push, or merge. Do not edit the frozen spec. Do not
-edit docs/NEXT.md. Do not mark RC13b done on green tests alone. Run
-build-verification review and record pass first.
 ```
 
-### Verified snapshot (2026-10-22, RC13a)
+### Verified snapshot (2026-10-23, RC13b)
 
-- Fresh `main` checkout at `3cf46e6f3dea6aa529f0143f4539a6c335ad32c2`.
-- Branch `feat/muse-rc13-allowlist`. No push.
-- Shared Muse `importlib.metadata` version `0.2.1rc13`.
-- Reader fingerprint `8b6667bd475355a955563ddeb1b98444c671cd13f73a1decba6ce227039709ba`.
-- 385 regular package `*.py` files. `str(relative)` and `as_posix()` match on this host.
-- Eight reader imports still resolve in that tree. `hash_file` matches the blob formula when the file exists before the audit hook.
-- `ok review --freeze --dry-run` exit 2, refusal from `cli/ok:8`.
-- Local checklist engine: no findings. No `review_stamp` written. No `auto_may_start`.
-- No `cli/` or `tests/` edits. No consumer rebind. No Muse install or downgrade.
+- Branch `feat/muse-rc13-allowlist` on base `3cf46e6f3dea6aa529f0143f4539a6c335ad32c2`. No push.
+- Pre-edit fingerprint recheck: version `0.2.1rc13`, 385 regular `*.py`, digest `8b6667bd475355a955563ddeb1b98444c671cd13f73a1decba6ce227039709ba`.
+- `MUSE_RUNTIMES` is exactly the three pairs in the frozen spec. `MUSE_VERSION` remains `0.2.1rc5`.
+- Reader import list unchanged. `tests/muse/test_reader_api_compatibility.py` passed under `readonly` on rc13.
+- `REBIND_STALE` names every allowlist key; rc5↔rc11 preserved; rc13→rc11.
+- Seven tiers: unit 47 passed; integ 4 passed; e2e focused 32 passed; `tests/muse` 202 passed / 2 FPR-5 superseded failures (successors passed). Shared Muse venv unmodified.
+- Build-verification round 1 **pass**. RC13b marked DONE only after that pass.
+- No Knowtation / Muse 108 / Born Free rebind. No Muse install or downgrade. Frozen spec and `docs/NEXT.md` untouched.
 
 ### VCS
 
@@ -80,6 +58,7 @@ build-verification review and record pass first.
 
 ### Change log
 
+- 2026-10-23: RC13b built and BV pass. Three-pair allowlist landed on the feature branch. STOP — no consumer rebind. No push.
 - 2026-10-22: RC13a frozen. Thinking-loop pass. CLI stamp refused at `cli/ok:8`. RC13b named next. No push.
 
 ## OK-NEXT-MODEL — N1-PR DONE (draft PR #95), 2026-10-22

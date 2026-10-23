@@ -1,14 +1,15 @@
 # Reviewed Muse runtime compatibility
 
-This local candidate adds Muse 0.2.1rc11 to the read-only reader. It retains
-0.2.1rc5 compatibility and refuses all other versions or source digests.
-It does not upgrade Muse, migrate its store, run its native CLI during reads,
-or silently change an existing binding.
+The read-only reader accepts exactly three reviewed Muse versions: 0.2.1rc5,
+0.2.1rc11, and 0.2.1rc13. It refuses every other version and every other
+source digest. It does not upgrade Muse, migrate its store, run its native
+CLI during reads, or silently change an existing binding.
 
 | Version | SHA-256 of the sorted package Python sources |
 | --- | --- |
 | 0.2.1rc5 | `7b181b6eff6bde1b53105f2a7be7bd8937224988965d7462a3a6b04658f35e92` |
 | 0.2.1rc11 | `c68f34f8a7b8a645e9ef433fcd34477591819df42944e856556c2bb43dd037fe` |
+| 0.2.1rc13 | `8b6667bd475355a955563ddeb1b98444c671cd13f73a1decba6ce227039709ba` |
 
 The digest concatenates each sorted package-relative `*.py` filename, NUL,
 file bytes, NUL. Both the child reader and parent protocol validator require
@@ -31,9 +32,10 @@ uses where it is. Overseer does not follow a Muse install on its own.
 3. A project that does not use Muse stays where it is. Born Free is Git-only.
 
 Replacing `~/.local/share/muse/venv` while a project still names the old version
-makes that project's checks refuse until step 2. Version 0.2.1rc12 is not in the
-table above. Do not install it over the shared folder until it has been reviewed
-and added.
+makes that project's checks refuse until step 2. Versions other than the three
+rows above, including 0.2.1rc12, are not reviewed. This allowlist step does not
+rebind Knowtation, Muse 108, or Born Free, and it does not install or downgrade
+Muse.
 
 ## Installed-source review, 2026-10-20
 
@@ -69,6 +71,23 @@ symbolic HEAD and branch refs, linked-worktree `musestore:` pointers plus
 `plugins/code/stage.py:read_stage` still deletes obsolete binary stage files,
 so the reader deliberately does not call it. Native CLI discovery/GC, stage
 migration and stat-cache APIs remain excluded. Unknown or corrupt state refuses.
+
+## Installed-source review, 2026-10-22
+
+RC13b confirmation against the same shared Muse package path. The reader import
+list did not change. This is confirmation of those imports for 0.2.1rc13, not
+independent acceptance and not a general Muse audit.
+
+| Imported API | Installed definition checked |
+| --- | --- |
+| `muse.core.commits.read_commit` | `muse/core/commits.py:516`. Reads typed object bytes, builds `CommitRecord`, verifies the content id, returns the record or `None`. The read path does not write. |
+| `muse.core.snapshots.read_snapshot` | `muse/core/snapshots.py:231`. Same contract for `SnapshotRecord`, `manifest`, and `directories`. The read path does not write. |
+| `muse.core.validation.validate_branch_name` | `muse/core/validation.py:123-168`. Returns the string or raises. No I/O. |
+| `muse.core.ignore.resolve_patterns` | `muse/core/ignore.py:157-185`. Concatenates global patterns, then the selected domain. No I/O. |
+| `muse.core.ignore.is_ignored` | `muse/core/ignore.py:234-256`. Last match wins, including negation. No I/O. |
+| `muse.core.snapshot._BUILTIN_SECRET_PATTERNS` | `muse/core/snapshot.py:96`. A static list. It contains `.env`. |
+| `muse.core.types.hash_file` | `muse/core/types.py:198-228`. Stats the file, reads bytes, returns `sha256:` plus the hex digest of `blob <size>\0<content>`. |
+| `muse.plugins.code.plugin._ALWAYS_IGNORE_DIRS` | `muse/plugins/code/plugin.py:158`. A `frozenset`. It contains `.git` and `.muse`. |
 
 ## Explicit same-source rebinding
 
@@ -121,15 +140,16 @@ Rebinding neither accepts a prompt nor publishes NEXT. Operator acceptance and
 
 ## Validation across reviewed runtimes
 
-The Muse tests take the current runtime from the probed `--muse-python` venv and
-use the single other `MUSE_RUNTIMES` entry as the stale binding.
+The Muse tests take the current runtime from the probed `--muse-python` venv.
+The stale binding is `tests/muse/conftest.py` `REBIND_STALE`.
 `tools/ci/supported_v1.py` accepts only an exact (version, digest) pair from
 `cli/v1_revision.py:MUSE_RUNTIMES` and refuses before running pytest otherwise.
 The prepared hosted `muse` job installs only the reviewed rc5 recovery wheel. There
-is no hosted rc11 job: no reviewed rc11 distribution artifact exists, and hosted
-execution is not authorized. Run the rc11 matrix locally:
+is no hosted rc11 job and no hosted rc13 job: no reviewed rc11 or rc13
+distribution artifact exists, and hosted execution is not authorized. Run the
+reviewed matrix locally:
 
     .venv/bin/python tools/ci/supported_v1.py \
-      --muse-python /absolute/rc11-venv/bin/python3.14 \
+      --muse-python /absolute/reviewed-venv/bin/python3.14 \
       --junitxml /absolute/scratch/combined.xml
 
