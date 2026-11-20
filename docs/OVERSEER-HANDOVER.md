@@ -1,5 +1,15 @@
 # Overseer Kit handover
 
+## Repository hygiene review 2026-11-19
+
+[Repository status](REPOSITORY-STATUS.md) is the current publication inventory.
+GitHub main includes PR #96; staging still serves the October 11 mirror and the
+production repo is absent. A verified local candidate preserves both histories;
+it has not been published. Earlier pending PR instructions below are historical.
+The original dirty worktrees and Muse refs remain intact. The copied bound
+launcher refuses with `launcher_repository_mismatch`, so this audit leaves
+canonical NEXT untouched and does not claim a runtime rebind or accepted release.
+
 ## Muse 0.2.1rc13 allowlist — RC13b DONE, 2026-10-23
 
 ### NEXT SESSION
