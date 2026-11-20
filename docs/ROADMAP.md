@@ -1,5 +1,15 @@
 # Overseer Kit roadmap
 
+## Repository hygiene review 2026-11-19
+
+[Repository status](REPOSITORY-STATUS.md) records the accepted GitHub tip,
+older staging mirror, verified local recovery and unpublished reconciliation
+candidate. The initial audit found no open PRs; PRs #94 and #96 are already
+merged, superseding their historical no-push/no-merge status below. Publication,
+authority alignment and executable-mode verification remain review items. No
+runtime rebind, main merge, release or production write is included in this
+documentation change. Canonical NEXT is unchanged.
+
 ## Muse 0.2.1rc13 allowlist — RC13b DONE, 2026-10-23
 
 RC13b is done. Built
