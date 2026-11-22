@@ -14,7 +14,7 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from cli.v1_io import Refusal, confined, read
-from cli.v1_muse_reader import run
+from cli.v1_muse_reader import run, layout
 from cli.v1_policy import local_path
 
 MAX_BYTES = 32 * 1024 * 1024
@@ -32,7 +32,10 @@ def projection(root, executables):
     from muse.core.commits import read_commit
     from muse.core.snapshots import read_snapshot
     from muse.core.object_store import read_object
-    from muse.core.snapshot import _BUILTIN_SECRET_PATTERNS
+    if state['runtime']['version'] == '0.2.3rc8':
+        from muse.core.exclusion import BUILTIN_SECRET_PATTERNS as secret_patterns
+    else:
+        from muse.core.snapshot import _BUILTIN_SECRET_PATTERNS as secret_patterns
     from muse.core.ignore import is_ignored
     store = Path(state['store'])
     for path in ('.muse/bridge-hooks.toml', '.muse/hooks'):
@@ -40,7 +43,8 @@ def projection(root, executables):
             raise Refusal('inherited_muse_hooks: ' + path)
     if state['head'] == 'unborn':
         raise Refusal('mirror_source_unborn')
-    stage = read(store, '.muse/code/stage.json', missing=True)
+    _, _, _, state_dir = layout(root, state['runtime']['version'])
+    stage = read(store, state_dir + '/code/stage.json', missing=True)
     if stage and json.loads(stage).get('entries'):
         raise Refusal('mirror_source_staged')
     commit = read_commit(store, state['head'])
@@ -57,7 +61,7 @@ def projection(root, executables):
         total += len(data)
         if total > MAX_BYTES:
             raise Refusal('mirror_projection_too_large')
-        if excluded(path) or is_ignored(path, _BUILTIN_SECRET_PATTERNS):
+        if excluded(path) or is_ignored(path.lower(), secret_patterns):
             omitted.append(path)
             continue
         file = confined(root, path)
