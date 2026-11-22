@@ -1,4 +1,4 @@
-"""RC13 reader API compatibility under the read-only audit hook.
+"""Reviewed reader API compatibility under the read-only audit hook.
 
 Requires --muse-python. Does not open Knowtation, Muse 108, or Born Free.
 """
@@ -15,8 +15,7 @@ from cli.v1_revision import MUSE_RUNTIMES
 
 def test_reader_imports_eight_apis_under_readonly_hook(tmp_path, muse_runtime):
     """Import the eight reader Muse names under readonly; hash_file matches blob."""
-    assert muse_runtime.version == '0.2.1rc13'
-    assert muse_runtime.sha256 == MUSE_RUNTIMES['0.2.1rc13']
+    assert muse_runtime.sha256 == MUSE_RUNTIMES[muse_runtime.version]
 
     kit_root = Path(__file__).resolve().parents[2]
     sample = tmp_path / 'sample.txt'
@@ -38,9 +37,14 @@ def test_reader_imports_eight_apis_under_readonly_hook(tmp_path, muse_runtime):
         from muse.core.snapshots import read_snapshot
         from muse.core.validation import validate_branch_name
         from muse.core.ignore import resolve_patterns, is_ignored
-        from muse.core.snapshot import _BUILTIN_SECRET_PATTERNS
+        import importlib.metadata
+        if importlib.metadata.version('muse') == '0.2.3rc8':
+            from muse.core.exclusion import BUILTIN_SECRET_PATTERNS as _BUILTIN_SECRET_PATTERNS
+            from muse.core.exclusion import ALWAYS_PRUNE_DIRS as _ALWAYS_IGNORE_DIRS
+        else:
+            from muse.core.snapshot import _BUILTIN_SECRET_PATTERNS
+            from muse.plugins.code.plugin import _ALWAYS_IGNORE_DIRS
         from muse.core.types import hash_file
-        from muse.plugins.code.plugin import _ALWAYS_IGNORE_DIRS
 
         assert callable(read_commit)
         assert callable(read_snapshot)

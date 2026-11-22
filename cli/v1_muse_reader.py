@@ -38,13 +38,13 @@ def document(root, path):
     return json.loads(read(root, path), object_pairs_hook=unique_json)
 
 
-def layout(root):
+def layout(root, version, observe=read):
     marker = root / ".muse"
     if marker.is_symlink():
         raise Refusal("muse_marker_symlink")
     if marker.is_dir():
-        return root, ".muse/HEAD", None
-    pointer = read(root, ".muse").decode().strip()
+        return root, ".muse/HEAD", None, ".muse"
+    pointer = observe(root, ".muse").decode().strip()
     if not pointer.startswith("musestore: "):
         raise Refusal("muse_pointer_invalid")
     path = Path(pointer[len("musestore: "):])
@@ -53,12 +53,16 @@ def layout(root):
     store = path.parent
     matches = []
     for entry in (path / "worktrees").glob("*.json"):
-        data = document(store, str(entry.relative_to(store)))
+        data = json.loads(observe(store, str(entry.relative_to(store))), object_pairs_hook=unique_json)
         if data.get("path") == str(root):
             name = data.get("name")
             if not isinstance(name, str) or not re.fullmatch(r"[A-Za-z0-9_.-]+", name) or entry.stem != name:
                 raise Refusal("muse_worktree_invalid")
-            matches.append((".muse/worktrees/" + name + ".HEAD", data.get("branch")))
+            state = ".muse/worktrees/" + name if version == "0.2.3rc8" else ".muse"
+            head = state + "/HEAD" if version == "0.2.3rc8" else ".muse/worktrees/" + name + ".HEAD"
+            if version == "0.2.3rc8" and observe(store, head, missing=True) is None:
+                raise Refusal("muse_worktree_repair_required")
+            matches.append((head, data.get("branch"), state))
     if len(matches) != 1:
         raise Refusal("muse_worktree_unregistered")
     return store, *matches[0]
@@ -82,13 +86,23 @@ def run(root, with_dirty):
     from muse.core.snapshots import read_snapshot
     from muse.core.validation import validate_branch_name
 
-    store, head_path, registered_branch = layout(root)
-    identity = document(store, ".muse/repo.json")
+    observed = {}
+
+    def observe(base, path, *, missing=False):
+        value = read(base, path, missing=missing)
+        key = (base, path)
+        if key in observed and observed[key] != value:
+            raise Refusal("muse_revision_changed_during_read")
+        observed[key] = value
+        return value
+
+    store, head_path, registered_branch, state_dir = layout(root, version, observe)
+    identity = json.loads(observe(store, ".muse/repo.json"), object_pairs_hook=unique_json)
     if identity.get("domain") != "code" or not OID.fullmatch(identity.get("repo_id", "")):
         raise Refusal("muse_identity_or_domain_unsupported")
-    head_data = read(store, head_path)
+    head_data = observe(store, head_path)
     symbolic = head_data.decode().strip()
-    prefix = "ref: refs/heads/" if registered_branch is None else "refs/heads/"
+    prefix = "ref: refs/heads/" if registered_branch is None or version == "0.2.3rc8" else "refs/heads/"
     if not symbolic.startswith(prefix):
         raise Refusal("muse_detached_or_malformed_head")
     branch = symbolic[len(prefix):]
@@ -96,12 +110,12 @@ def run(root, with_dirty):
     if registered_branch is not None and registered_branch != branch:
         raise Refusal("muse_worktree_branch_mismatch")
     ref_path = ".muse/refs/heads/" + branch
-    ref = read(store, ref_path, missing=True)
+    ref = observe(store, ref_path, missing=True)
     head = "unborn" if ref in (None, b"") else ref.decode().strip()
     if head != "unborn" and not OID.fullmatch(head):
         raise Refusal("muse_ref_invalid")
     for name in ("CHECKOUT_HEAD", "MERGE_STATE.json"):
-        if (store / ".muse" / name).exists():
+        if observe(store, state_dir + "/" + name, missing=True) is not None:
             raise Refusal("muse_checkout_or_merge_in_progress")
     manifest = {}
     directories = []
@@ -116,7 +130,7 @@ def run(root, with_dirty):
         if Path(path).is_absolute() or ".." in Path(path).parts or not OID.fullmatch(oid):
             raise Refusal("muse_manifest_invalid")
     # Never call read_stage: its legacy-format path deletes the old index.
-    stage_raw = read(store, ".muse/code/stage.json", missing=True)
+    stage_raw = observe(store, state_dir + "/code/stage.json", missing=True)
     stage = json.loads(stage_raw, object_pairs_hook=unique_json) if stage_raw else {"entries": {}}
     if not isinstance(stage, dict) or not isinstance(stage.get("entries"), dict):
         raise Refusal("muse_stage_invalid")
@@ -124,34 +138,45 @@ def run(root, with_dirty):
     dirty = None
     if with_dirty:
         from muse.core.ignore import is_ignored, resolve_patterns
-        from muse.core.snapshot import _BUILTIN_SECRET_PATTERNS
         from muse.core.types import hash_file
-        from muse.plugins.code.plugin import _ALWAYS_IGNORE_DIRS
 
-        raw_ignore = read(root, ".museignore", missing=True)
-        ignore = tomllib.loads(raw_ignore.decode()) if raw_ignore else {}
-        patterns = _BUILTIN_SECRET_PATTERNS + resolve_patterns(ignore, "code")
+        raw_ignore = observe(root, ".museignore", missing=True)
+        if version == "0.2.3rc8":
+            # Reuse the pure policy, never the native walker/stat cache (writes).
+            from muse.core.exclusion import ALWAYS_PRUNE_DIRS, load_exclusion_policy
+            policy = load_exclusion_policy(root, "code")
+            ignored = lambda path: policy.decide(path).excluded
+            prune = policy.prunes_dir
+            ignored_dirs = ALWAYS_PRUNE_DIRS
+        else:
+            from muse.core.snapshot import _BUILTIN_SECRET_PATTERNS
+            from muse.plugins.code.plugin import _ALWAYS_IGNORE_DIRS
+            ignore = tomllib.loads(raw_ignore.decode()) if raw_ignore else {}
+            patterns = _BUILTIN_SECRET_PATTERNS + resolve_patterns(ignore, "code")
+            ignored = lambda path: is_ignored(path, patterns)
+            prune = lambda path: is_ignored(path + "/_", patterns)
+            ignored_dirs = _ALWAYS_IGNORE_DIRS
         current = {}
         for directory, dirs, files in os.walk(root, followlinks=False):
             here = Path(directory)
             rel = here.relative_to(root)
-            dirs[:] = [d for d in dirs if d not in _ALWAYS_IGNORE_DIRS
+            dirs[:] = [d for d in dirs if d not in ignored_dirs
                        and not (here / d).is_symlink() and not (here / d / ".muse").exists()
-                       and not is_ignored((rel / d / "_").as_posix(), patterns)]
+                       and not prune((rel / d).as_posix())]
             for name in files:
                 if name in (".muse", ".git"):
                     continue
                 path = here / name
                 relative = path.relative_to(root).as_posix()
-                if is_ignored(relative, patterns):
+                if ignored(relative):
                     continue
                 if stat.S_ISREG(path.lstat().st_mode):
                     current[relative] = hash_file(path)
-        # Staging is shared by this Muse version. It is reported dirty in any
-        # linked checkout too; do not mistake the primary index for a clean lane.
+        # Older releases share stage; rc8 uses each checkout's own stage.
         dirty = bool(stage["entries"]) or current != manifest or any(
             not (root / d).is_dir() for d in directories)
-    if read(store, head_path) != head_data or read(store, ref_path, missing=True) != ref:
+    if any(read(base, path, missing=True) != value
+           for (base, path), value in observed.items()):
         raise Refusal("muse_revision_changed_during_read")
     return {"root": str(root), "store": str(store), "repo_id": identity["repo_id"],
             "branch": branch, "head": head, "dirty": dirty, "tracked_local": tracked,

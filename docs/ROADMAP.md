@@ -1,5 +1,15 @@
 # Overseer Kit roadmap
 
+## Muse 0.2.3rc8 — local O4 candidate, November 21, 2026
+
+The [compatibility candidate](MUSE-RC8-COMPATIBILITY.md) adds the exact rc8
+source pair, its read-only exclusion/linked-state adapter and repeatable checks.
+Independent review and maintainer acceptance remain pending. This is not a DONE
+milestone, an installation, a release or permission to activate held features.
+The private recovery-plan receipt identifies the exact source and fixture results.
+Original launchers, bindings, NEXT and historical evidence remain unchanged.
+
+
 ## Muse 0.2.1rc13 allowlist — RC13b DONE, 2026-10-23
 
 RC13b is done. Built

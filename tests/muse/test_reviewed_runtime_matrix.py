@@ -33,6 +33,7 @@ def test_rebind_runtimes_use_the_named_partner(muse_runtime, rebind_runtimes, mo
     assert rebind_pair('0.2.1rc5') == ('0.2.1rc5', '0.2.1rc11')
     assert rebind_pair('0.2.1rc11') == ('0.2.1rc11', '0.2.1rc5')
     assert rebind_pair('0.2.1rc13') == ('0.2.1rc13', '0.2.1rc11')
+    assert rebind_pair('0.2.3rc8') == ('0.2.3rc8', '0.2.1rc13')
     monkeypatch.setitem(MUSE_RUNTIMES, '0.2.1rc999', '0' * 64)
     with pytest.raises(AssertionError, match='reviewed Muse stale partner must be the named map'):
         rebind_pair('0.2.1rc11')

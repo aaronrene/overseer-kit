@@ -31,11 +31,12 @@ def _emit(version, sha256):
     return f"printf '%s\\n' '{payload}'\n"
 
 
-def test_allowlist_is_the_three_reviewed_pairs():
+def test_allowlist_is_the_exact_reviewed_pairs():
     assert MUSE_RUNTIMES['0.2.1rc5'] == '7b181b6eff6bde1b53105f2a7be7bd8937224988965d7462a3a6b04658f35e92'
     assert MUSE_RUNTIMES['0.2.1rc11'] == 'c68f34f8a7b8a645e9ef433fcd34477591819df42944e856556c2bb43dd037fe'
     assert MUSE_RUNTIMES['0.2.1rc13'] == '8b6667bd475355a955563ddeb1b98444c671cd13f73a1decba6ce227039709ba'
-    assert set(MUSE_RUNTIMES) == {'0.2.1rc5', '0.2.1rc11', '0.2.1rc13'}
+    assert MUSE_RUNTIMES['0.2.3rc8'] == 'a22e489f0f62a1cbfb1ab545646e9bdc89d691bf354b4016468b9b820104598b'
+    assert set(MUSE_RUNTIMES) == {'0.2.1rc5', '0.2.1rc11', '0.2.1rc13', '0.2.3rc8'}
     from cli.v1_revision import MUSE_VERSION
     assert MUSE_VERSION == '0.2.1rc5'
 
@@ -60,6 +61,8 @@ def test_probe_refuses_unreviewed_version(tmp_path, version):
     ('0.2.1rc13', MUSE_RUNTIMES['0.2.1rc11']),
     ('0.2.1rc5', MUSE_RUNTIMES['0.2.1rc13']),
     ('0.2.1rc11', MUSE_RUNTIMES['0.2.1rc13']),
+    ('0.2.3rc8', MUSE_RUNTIMES['0.2.1rc13']),
+    ('0.2.1rc13', MUSE_RUNTIMES['0.2.3rc8']),
 ])
 def test_probe_refuses_cross_paired_digest(tmp_path, version, sha256):
     python = _fake_python(tmp_path, _emit(version, sha256))
