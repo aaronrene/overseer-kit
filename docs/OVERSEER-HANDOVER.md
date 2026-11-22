@@ -1,5 +1,19 @@
 # Overseer Kit handover
 
+## Repository-history reconciliation — November 22, 2026
+
+[PR #99](https://github.com/aaronrene/overseer-kit/pull/99) incorporates the useful
+history from [PR #97](https://github.com/aaronrene/overseer-kit/pull/97) in a dated
+[repository-status record](REPOSITORY-STATUS.md). The exact old draft commit and
+its branch are retained. Clone-recovery and import evidence remains available;
+old staging observations are not presented as current, and a missing production
+listing is not treated as proof of an absent repository.
+
+Current rc8 acceptance and the eventual MuseHub-canonical destination are recorded
+below. This documentation reconciliation resolves the overlapping drafts; broader
+source/configuration hygiene, migration qualification and publication remain open.
+It does not change runtime bytes, bindings, canonical NEXT or hosting settings.
+
 ## Recovery status and MuseHub destination — November 21, 2026
 
 **rc8 source accepted; migration planned.** [PR #98](https://github.com/aaronrene/overseer-kit/pull/98)

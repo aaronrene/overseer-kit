@@ -10,7 +10,7 @@ tree `23e63e5f03af139cff5acce1c6e8cdcc5983c2f5`. Fresh review qualification reco
 and a separate bound disposable working fixture. Installation remains a separate,
 explicitly scoped operation for each consumer.
 
-Accepted main refused this runtime before repository reads. Removing that gate
+Before PR #98, accepted main refused this runtime before repository reads. Removing that gate
 alone would leave imports of `_BUILTIN_SECRET_PATTERNS` and `_ALWAYS_IGNORE_DIRS`
 broken. The rc8 release also moved linked HEAD and stage state into a per-checkout
 directory. The reader handles those changes while retaining the previously
