@@ -1,14 +1,19 @@
-# Muse 0.2.3rc8 compatibility candidate
+# Muse 0.2.3rc8 compatibility
 
-This local feature candidate extends the exact Muse source-pair contract to
+The source change accepted through [PR #98](https://github.com/aaronrene/overseer-kit/pull/98)
+extends the exact Muse source-pair contract to
 `0.2.3rc8` / `a22e489f0f62a1cbfb1ab545646e9bdc89d691bf354b4016468b9b820104598b`.
-Independent review and maintainer acceptance are pending. Installation is a
-separate, explicitly scoped operation for each consumer.
+Independent review passed, followed by owner-authorized acceptance on November 21,
+2026. Merge commit `4129ef1efd96bf67171cd039d90858dc3013b308` has the exact reviewed
+tree `23e63e5f03af139cff5acce1c6e8cdcc5983c2f5`. Fresh review qualification recorded
+221 passing tests, no failures or skips, one explicit historical-fixture deselection,
+and a separate bound disposable working fixture. Installation remains a separate,
+explicitly scoped operation for each consumer.
 
 Accepted main refused this runtime before repository reads. Removing that gate
 alone would leave imports of `_BUILTIN_SECRET_PATTERNS` and `_ALWAYS_IGNORE_DIRS`
 broken. The rc8 release also moved linked HEAD and stage state into a per-checkout
-directory. The candidate handles those changes while retaining the previously
+directory. The reader handles those changes while retaining the previously
 reviewed rc5/rc11/rc13 paths and rejecting every other version/digest pair.
 The 436 Python source hashes are in
 [`muse-rc8-source-files.json`](../tools/ci/muse-rc8-source-files.json).

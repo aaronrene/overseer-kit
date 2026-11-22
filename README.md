@@ -6,6 +6,17 @@ keep each project's instructions tied to the right repository. It includes reusa
 policies, templates, assistant rules and skills, a command-line tool, a local browser
 app and a desktop launcher. Git works on its own; native Muse support is optional.
 
+## Source and hosting roadmap
+
+GitHub is the current accepted source and PR path. The owner selected eventual
+**Muse-canonical development hosted on MuseHub**, after repository cleanup and
+verified migration. The [migration decision](docs/decisions/MUSEHUB-CANONICAL-ROADMAP.md)
+records the required history, executable-mode, clone and cutover checks.
+[PR #98](https://github.com/aaronrene/overseer-kit/pull/98) accepted the exact
+[Muse rc8 compatibility change](docs/MUSE-RC8-COMPATIBILITY.md); existing launchers
+and consumer bindings were not installed or changed by that merge. The kit still
+supports Git-only projects independently of its own future hosting choice.
+
 ## What the kit includes
 
 | Capability | What it does |
