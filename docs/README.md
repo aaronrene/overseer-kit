@@ -1,5 +1,11 @@
 # Current full-product restoration
 
+For current source authority and the dated recovery evidence retained from PR #97,
+see [repository status and preserved reconciliation history](REPOSITORY-STATUS.md)
+and the [eventual MuseHub migration decision](decisions/MUSEHUB-CANONICAL-ROADMAP.md).
+A copied source binding/NEXT must identify the selected physical checkout before
+its historical task can be used.
+
 Start with [source quickstart](V1-QUICKSTART.md), [maintained surfaces](FPR-3-PRODUCT-SURFACES.md), [source distribution](SOURCE-DISTRIBUTION.md), and [FPR-3 evidence](validation/FPR-3-SURFACES.md). Canonical `docs/NEXT.md` is the sole action source. Older phase pages below describe their historical scope, not current release readiness.
 
 # Overseer Kit — public docs
@@ -33,7 +39,7 @@ under [`archive/`](archive/README.md).
 | Doc | Role |
 | --- | --- |
 | [ROADMAP.md](ROADMAP.md) | Phase board |
-| [OVERSEER-HANDOVER.md](OVERSEER-HANDOVER.md) | Session relay + paste-ready NEXT |
+| [OVERSEER-HANDOVER.md](OVERSEER-HANDOVER.md) | Current summary; canonical NEXT requires a valid repository binding |
 
 ## Sister / consumer products
 

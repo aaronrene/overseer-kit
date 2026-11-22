@@ -1,14 +1,50 @@
 # Overseer Kit roadmap
 
-## Muse 0.2.3rc8 — local O4 candidate, November 21, 2026
+## Repository-history reconciliation — November 22, 2026
 
-The [compatibility candidate](MUSE-RC8-COMPATIBILITY.md) adds the exact rc8
-source pair, its read-only exclusion/linked-state adapter and repeatable checks.
-Independent review and maintainer acceptance remain pending. This is not a DONE
-milestone, an installation, a release or permission to activate held features.
-The private recovery-plan receipt identifies the exact source and fixture results.
-Original launchers, bindings, NEXT and historical evidence remain unchanged.
+[PR #99](https://github.com/aaronrene/overseer-kit/pull/99) incorporates the useful
+history from [PR #97](https://github.com/aaronrene/overseer-kit/pull/97) in a dated
+[repository-status record](REPOSITORY-STATUS.md). The exact old draft commit and
+its branch are retained. Clone-recovery and import evidence remains available;
+old staging observations are not presented as current, and a missing production
+listing is not treated as proof of an absent repository.
 
+Current rc8 acceptance and the eventual MuseHub-canonical destination are recorded
+below. This documentation reconciliation resolves the overlapping drafts; broader
+source/configuration hygiene, migration qualification and publication remain open.
+It does not change runtime bytes, bindings, canonical NEXT or hosting settings.
+
+## Recovery status and MuseHub destination — November 21, 2026
+
+**rc8 source accepted; migration planned.** [PR #98](https://github.com/aaronrene/overseer-kit/pull/98)
+merged as `4129ef1efd96bf67171cd039d90858dc3013b308`. Its tree exactly matches the
+independently reviewed candidate: 221 tests passed, no failures or skips, one
+explicit historical-fixture deselection with a tested successor, and a separate
+bound disposable fixture passed. [Compatibility contract](MUSE-RC8-COMPATIBILITY.md).
+No global or existing-consumer installation followed from acceptance.
+
+The owner selected **eventual Muse-canonical development hosted on MuseHub**.
+GitHub remains authoritative during cleanup and qualification. The
+[authority decision and migration gates](decisions/MUSEHUB-CANONICAL-ROADMAP.md)
+require preserved histories, portable configuration, complete clone delivery,
+historical executable/symlink fidelity, reviewed publication and an explicit
+verified cutover. No current authority configuration was switched.
+
+| Milestone | State | Next evidence |
+| --- | --- | --- |
+| Affected Overseer preservation and isolated accepted source | Complete for the rc8 candidate scope | Broader backup and retirement gates remain separate. |
+| Exact rc8 compatibility source | Accepted through PR #98 | Reuse the recorded qualification; refresh fingerprints before later execution. |
+| Eventual MuseHub-canonical destination | Owner decision recorded | GitHub stays current authority until verified cutover. |
+| Selected retained-source/receipt and configuration hygiene | Pending | Review scoped changes; preserve unresolved work and historical installation records. |
+| Muse representation and clone completeness | Pending | Full history, modes/symlinks, provenance and independent restore tests. |
+| Publication and authority cutover | Pending | Exact manifests, Gabriel's execution, independent clone verification and explicit acceptance. |
+| Existing consumer/global installation | Separate; no target selected here | Per-target preservation, dry run, apply authorization and rollback. |
+
+Dependent repository cleanup can proceed in isolated working copies while
+keeping main and held feature histories separate. That work does not require
+installing the kit globally or merging held features. This is a source/hosting
+roadmap; no product feature, production operation or historical NEXT task is
+activated. Earlier sections below are dated history, not the current task queue.
 
 ## Muse 0.2.1rc13 allowlist — RC13b DONE, 2026-10-23
 

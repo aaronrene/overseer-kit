@@ -1,11 +1,22 @@
 # Overseer Kit — bounded recovery instructions
 
-Current authority: the owner request and
-`docs/decisions/PUBLICATION-PREPARATION-SCOPE.md`, with the manual bookend workflow
+Current authority: the owner request and the current source/hosting decision in
+`docs/decisions/MUSEHUB-CANONICAL-ROADMAP.md`, with the manual bookend workflow
 in `docs/decisions/CURRENT-PROMPT-DISPLAY-SCOPE.md`. The bounded foundation in
 `docs/decisions/V1-SCOPE-RESET.md` remains historical context.
 The former sole-writer/NXR-GSR NEXT and per-step packet chain are superseded.
 Do not follow historical handoffs or expand the architecture.
+
+GitHub remains this repository's source authority until a separately verified
+MuseHub-canonical cutover. PR #98 is merged; do not requeue its acceptance.
+The owner approved the eventual MuseHub destination, not a current authority
+switch, production operation, consumer installation or cleanup deletion.
+The old publication-preparation scope is historical context. A fresh source
+clone's tracked launcher/config/NEXT may still name that older installation;
+inspect their physical binding before any execution. If they cannot identify the
+selected checkout, report the mismatch and use the explicit owner task or bounded
+workspace recovery prompt. Do not run the old installation, reconstruct its task,
+or rewrite canonical NEXT merely to make a source checkout appear bound.
 
 At every actionable turn verify physical cwd, Git root, branch, full HEAD and
 configured repository name. Current user scope overrides inherited instructions.

@@ -1,5 +1,12 @@
 # Contributing to Overseer Kit
 
+GitHub remains the accepted contribution path during cleanup. The owner has
+selected eventual Muse-canonical development hosted on MuseHub; the
+[authority decision and qualification gates](docs/decisions/MUSEHUB-CANONICAL-ROADMAP.md)
+must pass before that workflow changes. PR #98 is accepted; consumer installation
+and hosted publication remain separate operations.
+
+
 Thanks for helping improve 🆗 Overseer Kit — portable governance for AI-assisted
 development. This guide covers how to propose changes safely.
 
