@@ -413,6 +413,7 @@ def apply_assets(root, mapping, *, dry_run=False):
 def initialize(root, args):
     from cli.product_config import normalize
     from cli.product_migration import apply_mapping, classify_assets, _snapshot, _same, LAUNCHER, HOOKS
+    from cli.product_migration import read as read_asset
     from cli.product_authority import select, bind_muse, tracked_bindings
     from cli.v1_policy import ignore_assets
     existing = read(root, CONFIG, missing=True)
@@ -481,7 +482,7 @@ def initialize(root, args):
     for path, body in {"docs/ROADMAP.md": "# Roadmap\n\nCurrent action: docs/NEXT.md.\n",
                        "docs/OVERSEER-HANDOVER.md": "# Handover\n\nRead current action with `ok next`.\n"}.items():
         confined(root, path, missing_parents=True)
-        if read(root, path, missing=True) is None:
+        if read_asset(root, path, missing=True) is None:
             mapping[path] = body.encode()
     from cli.product_footprint import with_lock
     mapping = with_lock(root, mapping, config, preserved=preserved)
